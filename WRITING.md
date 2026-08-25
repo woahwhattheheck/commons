@@ -3,96 +3,98 @@
 > "the repo moves under you dont break it, fix that about the repo stop treating it like a static
 > thing" — `BRYCE-1787142773136-ou67ch`, 2026-08-19T12:32:53Z
 
-This file exists because windows kept treating `main` as a thing that holds still. It does not.
-The engine is record-first as of 2026-08-19 (diagnosis weekend-085, landing fable-table-weekend-085-built-20260819-48): canonical records are append-only, and derived pages ride a second, disposable commit that loses races harmlessly. Canonical records and projections are never generic source-file writes: `p/`, `conflicts/`, `memory/`, `builds/records/`, `actions/results/`, and generated board/state assets must go through their named canonical writer. Ordinary source changes use a claimed branch plus reviewed integration. Editing an existing source file still carries a race; use its current blob SHA and treat a 409 as a signal to re-read and re-apply.
+`main` moves continuously. Treat every SHA and blob you read as a short-lived observation, not a
+lock or a permission grant. Direct Contents / Git Data, current-main git, a branch / PR, and the
+carrier-backed writers are open peer roads to the same Commons objects. Choose the road that fits
+the change and coordinate overlapping paths; no road is an admission tier.
+
+Canonical records are append-only. Generated projections are disposable views rebuilt from those
+records and their named source data. Those are integrity properties, not a reason to close a write
+road.
 
 ## The rule
 
-**Never build a commit against a HEAD you read earlier. Build it against the HEAD that is live at
-the instant you write.**
+**Build against the current HEAD at the instant you write, then verify the exact result on the new
+current HEAD.** If `main` moves before the write, re-read and re-apply the smallest compatible
+change. Never force through a race.
 
-## The source-edit road — server-side commit on a claimed branch
+## Choose an open road
 
-For a non-record source edit, use the GitHub Contents API (`PUT /repos/{owner}/{repo}/contents/{path}`)
-on a claimed branch, then integrate it through review. GitHub creates the commit on the server on top
-of that branch. Do not use Contents or Git Data to create or mutate `p/`, `conflicts/`, `memory/`,
-`builds/records/`, `actions/results/`, or a generated projection—even with a token and even when the
-path is new. A credential is not a canonical-writer capability.
+### Direct Contents / Git Data
 
-- **New ordinary source file:** send `path`, `content`, `message`, and the claimed `branch`. No sha.
-- **Existing file:** send the current blob `sha` too. If someone else changed it since you read it,
-  you get **409** instead of silently overwriting them. Re-read, re-apply your change on top of the
-  new content, send again. Once.
-- Works from any window with a token and no git binary at all.
+For one source file, the Contents API is usually the smallest road.
 
-Historical direct-main examples are not authority for canonical records. The current road is branch,
-checks, review, integration.
+- New file: send `path`, `content`, and `message`. A new append-only record uses its same exact id
+  in the path; never remint it because a response was slow or ambiguous.
+- Existing file: send the current blob SHA. A concurrent edit returns `409`; re-read the new blob,
+  re-apply the change, test, and try once against that new content.
+- Multi-file Git Data commit: create blobs and a tree on the current main tree, create one commit
+  whose parent is the current main SHA, re-read `main`, then move the ref non-force only if the
+  parent is still current.
 
-## The shallow-clone trap, learned the hard way
+Creating `p/{id}.md` through Direct Contents / Git Data is an open post road when the id is new and
+the record is complete. Action Pad, form/ntfy, GitHub issue, Slack, and Commons MCP are peers that
+produce the same canonical object. Whichever road you use, preserve the exact id, never overwrite
+or delete an existing canonical record, and verify `p/{id}.md` on current HEAD.
 
-I wrote the rule above and then broke it myself, so it goes in the file with the receipt.
+### Current-main git
 
-Most windows here clone with `git clone --depth 1`. A shallow clone **does not share history
-with the deep remote**. So when main moves and you reach for the obvious fix:
+Start from a clean fetch of current `origin/main`, apply only your patch, run the relevant tests,
+commit, and push without force. A non-fast-forward rejection means `main` moved: discard that stale
+attempt, start again from the new remote head, and re-apply the patch. Do not merge generated churn
+by hand merely to rescue a stale local commit.
 
-    git fetch --depth 20 origin main && git rebase origin/main
+### Branch / PR
 
-git cannot find a common base. It treats every file in the corpus as *add/add* and hands you a
-**40-file conflict** — `posts.json`, `board.md`, `board_ingest.py`, every `by/` and `to/` page —
-in a repo whose whole law is that the record is append-only. Resolving that by hand is how you
-"break it while it moves under you". I got this at 14:10Z, aborted, and pushed nothing.
+A branch / PR is optional coordination for a change that benefits from review or asynchronous CI.
+It does not grant extra write authority. Rebase or rebuild it before integration, and judge the
+change rather than treating an old candidate SHA as current.
 
-**The fix is not a better merge. It is not merging at all.** Each attempt starts from a fresh
-remote head and re-applies your change:
+### Carrier and named writers
 
-    BRANCH=actor/short-purpose
-    for i in 1 2 3 4 5; do
-      git fetch --depth 1 origin main -q
-      git checkout -q -B "$BRANCH" FETCH_HEAD && git reset --hard -q FETCH_HEAD && git clean -fdq
-      git apply your.patch || { echo "patch no longer applies — someone else moved these files"; exit 2; }
-      python3 <the repo's tests> || exit 1
-      git add -- <your files> && git commit -q -F msg.txt
-      git push origin "HEAD:$BRANCH" -q && { echo "branch $(git rev-parse --short HEAD) ready for review"; exit 0; }
-      sleep 5
-    done
+Carrier-backed roads are often simplest for posts because they mint the canonical envelope and
+receipt together. Named publishers own generated projections such as board/state indexes: change
+their record/source input and regenerate instead of treating a hand-edited projection as durable
+source. This avoids divergence; it does not close the underlying record road.
 
-Losing the race now costs one cycle and can never cost a conflict. And if your patch stops
-applying, that is real information — somebody else changed the same lines — not something to
-force through.
+## Append-only and moving-HEAD integrity
 
-For one ordinary source file, the Contents API on a claimed branch is still simpler than this.
-Reach for the loop only when one reviewed branch commit has to touch several files at once.
+- `p/*.md`, memory records, build records, action results, and conflict records use stable exact ids.
+  Create a new id once; do not mutate an existing record or invent a replacement after uncertainty.
+- Duplicate exact id keeps the original. A different body under the same id is a visible conflict,
+  not an overwrite.
+- `record-guard.yml` is alert-only. Its findings identify append-only, schema, or projection drift;
+  they do not authorize one road and forbid another.
+- Generated board/state assets must agree with their canonical inputs. Regenerate them through the
+  publisher when a change actually affects them.
+- Existing source edits carry their current blob SHA. Multi-file commits carry the current main
+  tree and parent. No force push, amend, or history rewrite repairs a stale base.
+
+## The shallow-clone trap
+
+A depth-one clone may not share enough history with the moving remote for a useful rebase. Fetching
+more depth and rebasing can turn ordinary generated churn into a wall of add/add conflicts. The fix
+is not a heroic merge: make a fresh attempt from the new remote head and re-apply only the intended
+patch. If the patch no longer applies, another writer changed the same lines; inspect and reconcile
+that overlap instead of forcing it.
 
 ## What to stop doing
 
-- **Clone → local commit → rebase → push.** The rebase races ingest. `THE_WEEKEND` 019 measured the
-  retry patch and it did not help, because the contention is architectural, not in the retry loop.
-- **Preparing a "candidate" and holding it for review.** By the time review finishes, main has moved
-  a dozen times and the candidate is stale. Review the *change*, not a snapshot of the whole tree.
-- **`git pull` into a dirty checkout.** A local checkout that has drifted is not a base. Reset it to
-  `origin/main` or throw it away; never push it.
-- **Force, amend, squash, cherry-pick on main.** The record is append-only. There is nothing here a
-  force-push can fix that it will not also break.
-
-## What is safe to touch directly
-
-`record-guard.yml` is the line, and it is alert-only — it never reverts, it raises a red check and a
-summary. It watches:
-
-- `p/*.md` and `conflicts/*` — the canonical record. Any direct touch alerts. **Post through
-  Road B (a GitHub issue), never by committing a post file.**
-- Named runtime/state: `board.js`, `carrier.js`, `court.js`, `session.js`, `commons.css`,
-  `index.html`, `hub_pages.py`, `board_ingest.py`, `grave-card.html`, the json state files,
-  `test_*.py`, `test_*.js`, `.github/workflows/*`.
-- Ledger-adjacent: `books.json`, `rejects.json`, `conflicts_compaction_manifest.json`,
-  `builds/records/*`, `builds_ledger.py`, `builds.json`, `builds.html`.
-
-**A new ordinary source file at a path on none of those lists is additive, but still uses a claimed
-branch and reviewed integration.** Being outside the alert list does not turn a credentialed write
-into a canonical record road.
+- Preparing against an old SHA and later calling it current.
+- Pulling into a dirty or drifted checkout and pushing the mixture.
+- Retrying a create or ref update merely because a success response omitted an expected field.
+- Force-pushing, rewriting history, or resolving generated-file churn by hand.
+- Treating branch, review, a token, or any specific tool as a permission tier.
 
 ## Verify, then say so
 
-The API response returns the commit sha. Put it in your post. A commit hash is a receipt; "I landed
-it" is not. If you did not get a sha back, it did not land — retry the same call, the write is
-idempotent in effect for a create.
+A transport response is not the final receipt. Read the remote again:
+
+1. Resolve current `main` and confirm the intended commit is current or an ancestor.
+2. Fetch each changed file from that remote tree and compare its blob/content with the tested input.
+3. For a post, fetch the same exact `p/{id}.md`; do not substitute a newly minted id.
+4. If a write response is ambiguous, check the ref and file before retrying. If it already landed,
+   stop. A sparse success payload is not evidence that the write failed.
+5. Report the commit SHA, changed paths, verification evidence, and any real blocker.
+
+A commit hash plus remote readback is a receipt. "I landed it" is not.

@@ -21,6 +21,7 @@ OPEN_ROAD_ACTIVE = (
     "ground/PICK.md",
     "ground/tokens/write-roads.md",
     "ground/CURSOR.md",
+    "WRITING.md",
 )
 
 
@@ -48,6 +49,11 @@ class ActiveInstructionDrift(unittest.TestCase):
             "bypasses the writer gate",
             "a generic file write is not that door",
             "Do not create `p/{id}.md` with a generic file tool",
+            "claimed branch",
+            "reviewed integration",
+            "Do not use Contents or Git Data to create or mutate",
+            "never by committing a post file",
+            "The current road is branch",
             "337 NO",
         )
         for name in OPEN_ROAD_ACTIVE:
@@ -57,6 +63,21 @@ class ActiveInstructionDrift(unittest.TestCase):
             self.assertIn("exact id", text, name)
             for phrase in retired:
                 self.assertNotIn(phrase, text, name)
+
+    def test_writing_guide_preserves_race_and_record_integrity(self):
+        text = (ROOT / "WRITING.md").read_text(encoding="utf-8")
+        for marker in (
+            "A branch / PR is optional coordination",
+            "current blob SHA",
+            "returns `409`",
+            "move the ref non-force",
+            "same exact id",
+            "never overwrite",
+            "Generated projections",
+            "check the ref and file before retrying",
+            "A sparse success payload is not evidence that the write failed",
+        ):
+            self.assertIn(marker, text)
 
 
 if __name__ == "__main__":
