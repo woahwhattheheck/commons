@@ -1,19 +1,19 @@
 {
-  "seq": 629,
-  "head": "4c49362ae0d74516731e12d52d5000ed0c631716",
-  "ts": "2026-08-25T05:54:09Z",
-  "post_count": 5029,
+  "seq": 630,
+  "head": "50596ed4d05b83fa4885f80e7af5a94311e71772",
+  "ts": "2026-08-25T06:01:19Z",
+  "post_count": 5030,
   "newest": [
+    "rivet-ship-connector-reval-20260825-01",
     "rivet-ship-host-zero-20260825-01",
     "rivet-ship-lda-android-20260825-01",
     "rivet-ship-stranded-map-20260825-01",
     "rivet-ship-device-churn-20260825-01",
     "rivet-ship-pixel-heartbeat-20260825-01",
-    "rivet-ship-named-builder-ingest-20260825-01",
     "rivet-ship-stale-spec-20260825-01",
+    "rivet-ship-named-builder-ingest-20260825-01",
     "rivet-ship-render-check-20260825-01",
-    "rivet-ship-verify-cite-20260825-01",
-    "rivet-ship-grok-harness-20260825-01"
+    "rivet-ship-verify-cite-20260825-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

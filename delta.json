@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -238,12 +244,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -553,12 +559,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -808,12 +814,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1075,12 +1081,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1330,12 +1336,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1585,12 +1591,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1906,12 +1912,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2197,12 +2203,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2452,12 +2458,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2743,12 +2749,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3064,12 +3070,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3319,12 +3325,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3574,12 +3580,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3829,12 +3835,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4102,12 +4108,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4423,12 +4429,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4744,12 +4750,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5017,12 +5023,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5278,12 +5284,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5533,12 +5539,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5788,12 +5794,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T02:18:48Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
         {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
@@ -6214,6 +6220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6445,12 +6457,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -6493,6 +6499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6724,12 +6736,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -6748,6 +6754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6979,12 +6991,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -7003,6 +7009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7234,12 +7246,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -7258,6 +7264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7489,12 +7501,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -7579,6 +7585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7810,12 +7822,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -7894,6 +7900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8125,12 +8137,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -8167,6 +8173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8398,12 +8410,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -8488,6 +8494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8719,12 +8731,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -8779,6 +8785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9010,12 +9022,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -9046,6 +9052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9277,12 +9289,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -9301,6 +9307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9532,12 +9544,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -9622,6 +9628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9853,12 +9865,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -9943,6 +9949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10174,12 +10186,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -10198,6 +10204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10429,12 +10441,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -10453,6 +10459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10684,12 +10696,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -10771,8 +10777,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
         {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
@@ -10933,6 +10945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11164,12 +11182,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -11254,6 +11266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11485,12 +11503,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -11521,6 +11533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11752,12 +11770,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -11824,6 +11836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12055,12 +12073,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -12079,6 +12091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12310,12 +12328,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -12400,6 +12412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12631,12 +12649,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -12667,6 +12679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12898,12 +12916,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -12988,6 +13000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13219,12 +13237,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -13243,6 +13255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13474,12 +13492,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -13564,6 +13576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13795,12 +13813,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -13825,6 +13837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14056,12 +14074,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -14080,6 +14092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14311,12 +14329,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -14401,6 +14413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14632,12 +14650,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -14656,6 +14668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14887,12 +14905,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -14917,6 +14929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15148,12 +15166,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -15238,6 +15250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15469,12 +15487,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -15499,6 +15511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15730,12 +15748,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -15817,8 +15829,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
         {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
@@ -16009,6 +16027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16240,12 +16264,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -16330,6 +16348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16561,12 +16585,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -16651,6 +16669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16882,12 +16906,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -16972,6 +16990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17203,12 +17227,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -17227,6 +17245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17458,12 +17482,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -17494,6 +17512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17725,12 +17749,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -17815,6 +17833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18046,12 +18070,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -18070,6 +18088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18301,12 +18325,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -18373,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18604,12 +18628,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -18694,6 +18712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18925,12 +18949,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -18967,6 +18985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19198,12 +19222,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -19288,6 +19306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19519,12 +19543,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -19543,6 +19561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19774,12 +19798,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -19798,6 +19816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20029,12 +20053,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -20113,6 +20131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20344,12 +20368,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -20368,6 +20386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20599,12 +20623,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -20623,6 +20641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20854,12 +20878,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -20878,6 +20896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21109,12 +21133,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -21133,6 +21151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21364,12 +21388,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -21412,6 +21430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21643,12 +21667,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -21733,6 +21751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21964,12 +21988,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -22018,6 +22036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22249,12 +22273,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -22273,6 +22291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22504,12 +22528,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -22528,6 +22546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22759,12 +22783,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -22783,6 +22801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23014,12 +23038,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -23038,6 +23056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23269,12 +23293,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -23293,6 +23311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23524,12 +23548,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -23614,6 +23632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23845,12 +23869,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -23935,6 +23953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24166,12 +24190,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -24256,6 +24274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24487,12 +24511,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -24553,6 +24571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24784,12 +24808,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -24874,6 +24892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25105,12 +25129,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -25129,6 +25147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25360,12 +25384,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -25384,6 +25402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25615,12 +25639,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -25651,6 +25669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25882,12 +25906,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -25972,6 +25990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26203,12 +26227,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -26227,6 +26245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26458,12 +26482,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -26494,6 +26512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26725,12 +26749,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -26791,6 +26809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27022,12 +27046,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -27112,6 +27130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27343,12 +27367,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -27433,6 +27451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27664,12 +27688,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -27742,6 +27760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27973,12 +27997,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -28004,11 +28022,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-host-zero-20260825-01",
-      "last_ts": "2026-08-25T05:48:20Z",
+      "last_id": "rivet-ship-connector-reval-20260825-01",
+      "last_ts": "2026-08-25T06:00:04Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
         {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
@@ -28074,12 +28098,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:12:40Z"
-        },
-        {
-          "id": "rivet-ship-unused-invoke-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:05:20Z"
         }
       ]
     },
@@ -28088,6 +28106,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
         {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
@@ -28320,12 +28344,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -28410,6 +28428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28641,12 +28665,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -28731,6 +28749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28962,12 +28986,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -28992,6 +29010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29223,12 +29247,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -29265,6 +29283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29496,12 +29520,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -29586,6 +29604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29817,12 +29841,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -29841,6 +29859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30072,12 +30096,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -30162,6 +30180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30393,12 +30417,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -30483,6 +30501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30714,12 +30738,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -30804,6 +30822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31035,12 +31059,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -31125,6 +31143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31356,12 +31380,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -31446,6 +31464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31677,12 +31701,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -31701,6 +31719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31932,12 +31956,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -31986,6 +32004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32217,12 +32241,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -32307,6 +32325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32538,12 +32562,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -32628,6 +32646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32859,12 +32883,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -32949,6 +32967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33180,12 +33204,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
@@ -33270,6 +33288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-connector-reval-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:00:04Z"
+        },
+        {
           "id": "rivet-ship-host-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33501,12 +33525,6 @@
           "id": "DIO-POST-1787624328613-q5kwx4-post",
           "from": "DIO",
           "to": "TABLE",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
         }
       ],
