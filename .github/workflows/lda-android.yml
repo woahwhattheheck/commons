@@ -1,0 +1,106 @@
+# Real Android CI for the public LDA tree.
+#
+# lda/workflows/android.yml is LDA-repo-root CI. GitHub Actions only
+# runs files under .github/workflows, so that copy was never Commons CI.
+# This leftover places the smallest current-main validation + assemble
+# lane. Path-filtered so ordinary board posts do not spend a runner.
+# Does not delete repo-wide artifacts (the LDA copy would smash Commons
+# receipts). working-directory is lda/. A workflow file is not a run URL.
+#
+# titan: NOT_WRITTEN. No auth. No gate.
+name: lda-android
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lda/app/**'
+      - 'lda/build.gradle'
+      - 'lda/settings.gradle'
+      - 'lda/gradle.properties'
+      - '.github/workflows/lda-android.yml'
+  pull_request:
+    paths:
+      - 'lda/app/**'
+      - 'lda/build.gradle'
+      - 'lda/settings.gradle'
+      - 'lda/gradle.properties'
+      - '.github/workflows/lda-android.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lda
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: validate the public LDA Android tree
+        run: |
+          set -eu
+          test -f settings.gradle
+          test -f build.gradle
+          test -f app/build.gradle
+          test -d app/src/main/java
+          test -f app/src/main/AndroidManifest.xml
+          gradle :app:tasks --group build
+
+  assemble:
+    needs: validate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lda
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+          cache-read-only: false
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: ensure debug keystore
+        run: |
+          set -eu
+          if [ ! -f app/debug.keystore ]; then
+            keytool -genkeypair -keystore app/debug.keystore -alias androiddebugkey \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass android -keypass android \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
+      - name: assembleDebug
+        run: gradle :app:assembleDebug --build-cache
+
+      - name: upload APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lda-app-debug
+          path: lda/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
+          retention-days: 1

@@ -134,6 +134,15 @@ python3 -m unittest -v test_render_check_ci.py</pre>
 <div id="render-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Visual-diff / Chromium-receipt copy without the free-runner workflow on current main is talk. Wire the four visual doors, then ship the leftover.</p></div>
 </section>
 
+<section aria-labelledby="android-ci-heading">
+<h2 id="android-ci-heading">LDA Android CI leftover</h2>
+<p class="note">Slack <code>1787635487.642039</code>: DEMON stranded map. LocalDeviceAgent has substantive Android source, but <code>lda/workflows/android.yml</code> is outside <code>.github/workflows</code>, so it is not real Android CI. Android-CI / outside-<code>.github/workflows</code> / <code>lda/workflows/android.yml</code> talk is <code>CLAIMED</code> until this leftover is on current main. Missing or artifact-wiping workflow is <code>NOT_LANDED</code>. A workflow file is not a run URL. Do not copy the LDA-root file blindly — it would fire on every board post and delete Commons artifacts. Instrument: <code>host/lda_android_ci.py</code>. Card: <a href="./ground/LDA_ANDROID_CI.md">ground/LDA_ANDROID_CI.md</a>. Workflow: <code>.github/workflows/lda-android.yml</code>. Hands off JOJO MCP/wake, White Box/Bazaar customer receipts, and titan <code>--go</code>. No auth. No gate. Do not remint a DIO taking.</p>
+<pre>python3 host/lda_android_ci.py
+python3 host/lda_android_ci.py --self-test
+python3 -m unittest -v test_lda_android_ci.py</pre>
+<div id="android-ci-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Android-CI / lda/workflows/android.yml copy without a path-filtered .github/workflows/lda-android.yml on current main is talk. Place the leftover, then ship it.</p></div>
+</section>
+
 <section aria-labelledby="stale-spec-heading">
 <h2 id="stale-spec-heading">Stale spec / SESSION_GROUNDING</h2>
 <p class="note">Slack <code>1787635067.695619</code>: DEMON errata. A prior Action Pad report summarized restrictions from local <code>Desktop/MUHL_GO/SESSION_GROUNDING.md</code> too absolutely. Fresher owner Slack says there is no blanket non-actuation / never-touch-Muhlnickel-or-Titan rule. Stale-spec / SESSION_GROUNDING-as-absolute-law / historical-session-bound / local-grounding-file talk is <code>CLAIMED</code> until this leftover is on current main. The local file is one historical / session-bound specification input. Reconcile it against newer owner direction, current artifact contract, exact addresses/hashes, active claims, reversible path, and current-main receipts. Do not use it to dodge lawful Titan / Muhlnickel / device work. Do not infer authorization for an unrelated destructive mutation. Device-path utilization stays the DIO + JOJO lane: verify current workflow plus live reservation/batch preconditions, then the existing bounded protocol and exact receipts. Instrument: <code>host/stale_spec.py</code>. Card: <a href="./ground/STALE_SPEC.md">ground/STALE_SPEC.md</a>. Catalog: <a href="./ground/STALE_SPEC.json">ground/STALE_SPEC.json</a>. Cite Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>. titan: <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -308,6 +317,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825s"></script>
+<script src="./land.js?v=20260825t"></script>
 </body>
 </html>
