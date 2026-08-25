@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -2797,6 +2803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3029,12 +3041,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -3052,6 +3058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3284,12 +3296,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -3307,6 +3313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3539,12 +3551,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -3562,6 +3568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3794,12 +3806,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -3835,6 +3841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4067,12 +4079,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -4156,6 +4162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4388,12 +4400,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -4477,6 +4483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4709,12 +4721,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -4750,6 +4756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4982,12 +4994,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -5011,6 +5017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5243,12 +5255,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -5266,6 +5272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5498,12 +5510,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -5521,6 +5527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5753,12 +5765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -5818,6 +5824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6050,12 +6062,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -6070,8 +6076,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -6124,6 +6136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6356,12 +6374,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -6403,6 +6415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6635,12 +6653,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -6658,6 +6670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6890,12 +6908,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -6913,6 +6925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7145,12 +7163,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -7168,6 +7180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7400,12 +7418,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -7489,6 +7501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7721,12 +7739,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -7804,6 +7816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8036,12 +8054,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -8077,6 +8089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8309,12 +8327,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -8398,6 +8410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8630,12 +8648,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -8689,6 +8701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8921,12 +8939,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -8956,6 +8968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9188,12 +9206,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -9211,6 +9223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9443,12 +9461,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -9532,6 +9544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9764,12 +9782,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -9853,6 +9865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10085,12 +10103,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -10108,6 +10120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10340,12 +10358,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -10363,6 +10375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10595,12 +10613,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -10681,8 +10693,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -10789,6 +10807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11021,12 +11045,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -11110,6 +11128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11342,12 +11366,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -11377,6 +11395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11609,12 +11633,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -11680,6 +11698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11912,12 +11936,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -11935,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12167,12 +12191,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -12256,6 +12274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12488,12 +12512,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -12523,6 +12541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12755,12 +12779,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -12844,6 +12862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13076,12 +13100,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -13099,6 +13117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13331,12 +13355,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -13420,6 +13438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13652,12 +13676,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -13681,6 +13699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13913,12 +13937,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -13936,6 +13954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14168,12 +14192,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -14257,6 +14275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14489,12 +14513,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -14512,6 +14530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14744,12 +14768,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -14773,6 +14791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15005,12 +15029,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -15094,6 +15112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15326,12 +15350,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -15355,6 +15373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15587,12 +15611,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -15673,8 +15691,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -15811,6 +15835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16043,12 +16073,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -16132,6 +16156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16364,12 +16394,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -16453,6 +16477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16685,12 +16715,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -16774,6 +16798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17006,12 +17036,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -17029,6 +17053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17261,12 +17291,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -17296,6 +17320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17528,12 +17558,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -17617,6 +17641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17849,12 +17879,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -17872,6 +17896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18104,12 +18134,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -18175,6 +18199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18407,12 +18437,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -18496,6 +18520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18728,12 +18758,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -18769,6 +18793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19001,12 +19031,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -19090,6 +19114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19322,12 +19352,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -19345,6 +19369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19577,12 +19607,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -19600,6 +19624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19832,12 +19862,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -19915,6 +19939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20147,12 +20177,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -20170,6 +20194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20402,12 +20432,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -20425,6 +20449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20657,12 +20687,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -20680,6 +20704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20912,12 +20942,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -20935,6 +20959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21167,12 +21197,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -21214,6 +21238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21446,12 +21476,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -21535,6 +21559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21767,12 +21797,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -21820,6 +21844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22052,12 +22082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -22075,6 +22099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22307,12 +22337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -22330,6 +22354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22562,12 +22592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -22585,6 +22609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22817,12 +22847,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -22840,6 +22864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23072,12 +23102,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -23095,6 +23119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23327,12 +23357,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -23416,6 +23440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23648,12 +23678,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -23737,6 +23761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23969,12 +23999,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -24058,6 +24082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24290,12 +24320,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -24355,6 +24379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24587,12 +24617,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -24676,6 +24700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24908,12 +24938,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -24931,6 +24955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25163,12 +25193,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -25186,6 +25210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25418,12 +25448,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -25453,6 +25477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25685,12 +25715,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -25774,6 +25798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26006,12 +26036,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -26029,6 +26053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26261,12 +26291,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -26296,6 +26320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26528,12 +26558,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -26593,6 +26617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26825,12 +26855,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -26914,6 +26938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27146,12 +27176,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -27235,6 +27259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27467,12 +27497,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -27544,6 +27568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27776,12 +27806,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -27806,11 +27830,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-grok-harness-20260825-01",
-      "last_ts": "2026-08-25T05:15:18Z",
+      "last_id": "rivet-ship-verify-cite-20260825-01",
+      "last_ts": "2026-08-25T05:20:12Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -27876,12 +27906,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:33:41Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ]
     },
@@ -27890,6 +27914,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
         {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
@@ -28123,12 +28153,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -28212,6 +28236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28444,12 +28474,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -28533,6 +28557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28765,12 +28795,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -28794,6 +28818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29026,12 +29056,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -29067,6 +29091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29299,12 +29329,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -29388,6 +29412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29620,12 +29650,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -29643,6 +29667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29875,12 +29905,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -29964,6 +29988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30196,12 +30226,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -30285,6 +30309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30517,12 +30547,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -30606,6 +30630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30838,12 +30868,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -30927,6 +30951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31159,12 +31189,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -31248,6 +31272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31480,12 +31510,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -31503,6 +31527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31735,12 +31765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -31788,6 +31812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32020,12 +32050,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -32109,6 +32133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32341,12 +32371,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -32430,6 +32454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32662,12 +32692,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -32751,6 +32775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32983,12 +33013,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
@@ -33072,6 +33096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-verify-cite-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:20:12Z"
+        },
+        {
           "id": "rivet-ship-grok-harness-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33304,12 +33334,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
         }
       ],
       "mine": [
