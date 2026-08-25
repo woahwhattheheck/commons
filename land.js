@@ -159,6 +159,8 @@
     "ground/CLAUDE_TESTER.json",
     "ground/IMPACT_LEDGER.md",
     "ground/IMPACT_LEDGER.json",
+    "ground/CLAUDE_ZERO_DAMAGE.md",
+    "ground/CLAUDE_ZERO_DAMAGE.json",
     "ground/XYZ_ZERO.md",
     "ground/XYZ_ZERO.json",
     "ground/TITAN_APPEND_GUARD.md",
@@ -492,6 +494,9 @@
     if (api.isFinderZeroTalk(t)) {
       return { state: "CLAIMED", note: "finder-zero / false-zero / collision-check / FINDER UNVERIFIED talk. Talk is not a land. A Slack-search zero is not clearance. Ship the leftover that prints the search space and never a silent 0." };
     }
+    if (api.isClaudeZeroDamageTalk(t)) {
+      return { state: "CLAIMED", note: "Claude-zero damage-control / absence-derived Titan / stale KEYB talk. Talk is not a land. Ship the append-only incident leftover. Preserve originals. Retract frozen numbers. Miss is FINDER-FAILED, never 0." };
+    }
     if (api.isTripleAppendTalk(t)) {
       return { state: "CLAIMED", note: "triple-append / byte-identical-appends / P0-utilization-incident / pause-further-append talk. Talk is not a land. Freeze the three spans, ship the fixture guard, and do not truncate the 103831308164-byte artifact." };
     }
@@ -724,6 +729,30 @@
       state: "NOT_LANDED",
       note: "host/finder_zero.py missing the miss-branch rule. Finder-zero talk is CLAIMED until the leftover ships."
     };
+  };
+
+  api.isClaudeZeroDamageTalk = function (text) {
+    return /claude zero damage-control|damage-control durable ledger|absence-derived titan|absence-derived.{0,40}kite|rhetorical consumers of claude|stale keyb or absence-derived/i.test(String(text || ""));
+  };
+
+  api.claudeZeroDamageState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_zero_damage.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body) || /def measure_tree/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasSpace = /def search_space/.test(body);
+    var hasCalibrate = /def calibrate/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /never 0/.test(body);
+    var hasRetract = /UNRECONCILED/.test(body) && /STALE/.test(body) && /preserve_originals/.test(body);
+    if (hasMeasure && hasClassify && hasSpace && hasCalibrate && hasMiss && hasRetract) {
+      return {
+        state: "INTEGRATED",
+        note: "claude-zero-damage leftover is on this file. KEYB a63396 is STALE. Titan SUPERSEDED-from-absence is UNRECONCILED. Claude tester authority refused. Originals preserved. A Slack taking is still not the file."
+      };
+    }
+    return { state: "NOT_LANDED", note: "host/claude_zero_damage.py missing the incident leftover. Damage-control talk is CLAIMED." };
   };
 
   api.isImpactLedgerTalk = function (text) {
@@ -1881,6 +1910,7 @@
   var claudeTesterOut = document.getElementById("claude-tester-result");
   var claudeZeroOut = document.getElementById("claude-zero-result");
   var impactLedgerOut = document.getElementById("impact-ledger-result");
+  var claudeZeroDamageOut = document.getElementById("claude-zero-damage-result");
   var xyzOut = document.getElementById("xyz-zero-result");
   var appendGuardOut = document.getElementById("titan-append-guard-result");
   var measureAbuseOut = document.getElementById("measure-abuse-result");
@@ -2399,6 +2429,12 @@
     if (!impactLedgerOut) return;
     impactLedgerOut.setAttribute("data-tone", api.toneFor(result.state));
     impactLedgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeZeroDamage(result) {
+    if (!claudeZeroDamageOut) return;
+    claudeZeroDamageOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeZeroDamageOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintXyzZero(result) {
@@ -2978,6 +3014,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintWorkingBuilds(err);
+      return err;
+    });
+  }
+
+  function loadClaudeZeroDamage(sha) {
+    if (!claudeZeroDamageOut) return Promise.resolve(null);
+    claudeZeroDamageOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_zero_damage.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_zero_damage.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_zero_damage.py absent at the measured main SHA. Damage-control talk is CLAIMED." };
+        paintClaudeZeroDamage(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeZeroDamage(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeZeroDamageState(body);
+        paintClaudeZeroDamage(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeZeroDamage(err);
       return err;
     });
   }
@@ -3583,6 +3646,7 @@
     loadClaudeTester(sha);
     loadClaudeZero(sha);
     loadImpactLedger(sha);
+    loadClaudeZeroDamage(sha);
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
     loadMeasureAbuse(sha);

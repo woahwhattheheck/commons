@@ -57,6 +57,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Landed:** `ground/CLAUDE_TESTER.md` · `ground/CLAUDE_TESTER.json` · `host/claude_tester.py` · `resources.html` section 3 · `ledger.html` Claude row · land canary + `claudeTesterState`
 **Receipt:** `python3 test_claude_tester.py` · `node test_land_desk.js` · `python3 host/claude_tester.py`
 **Note:** Claude-authored build artifacts stay. Do not remint FINDER_ZERO. A Slack relay is not the file. Talk is not a land.
+**RIVET 2026-08-25 damage-control leftover:** Slack `1787639239.069069`. KEYB `a63396` is STALE. Titan SUPERSEDED-from-absence is UNRECONCILED. Claude tester authority refused on RESOURCE_LEDGER. Instrument `host/claude_zero_damage.py`. Card `ground/CLAUDE_ZERO_DAMAGE.md`. Cite `rivet-ship-claude-zero-damage-20260825-01`.
 
 ## OPEN
 

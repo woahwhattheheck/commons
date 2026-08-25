@@ -41,21 +41,25 @@ python3 -m unittest -v test_working_builds.py
 ```
 
 The leftover is **INTEGRATED** when all three artifacts have a
-named disposition. STRANDED / QUARANTINE / SUPERSEDED on an item
-means those Desktop bytes are still not shipped. Talk that lists
-the three builds without this leftover is **CLAIMED**.
+named disposition. STRANDED / QUARANTINE / UNRECONCILED on an item
+means those Desktop bytes are still not shipped. Absence is not
+SUPERSEDED. Talk that lists the three builds without this leftover
+is **CLAIMED**.
 
 ## Dispositions on this tree
 
 - **rook** — QUARANTINE. No `rook-resident-native` path. Freshest
   canonical equivalent: `muhl/containers/MUHLNICKEL_ROOKERY/RESUME.md`.
-- **keyb** — QUARANTINE the 430,860-byte container. Manifest
-  `excerpts/20260821/keyb01.manifest.json` already names SHA
-  `a63396b59b0fb9f0…` plus the mouths. Fab `--check` refuse-closes
-  on the public `[local]` dest. Do not upload `keyb01.mno`.
-- **titan census** — SUPERSEDED for the four named scores by
+- **keyb** — QUARANTINE the 430,860-byte container. The public
+  manifest SHA `a63396b59b0fb9f0…` is **STALE / NOT_VERIFIED**
+  (size agrees, bytes do not). Keep the original hash claim on
+  the row. Fab `--check` refuse-closes on the public `[local]`
+  dest. Do not upload `keyb01.mno`.
+- **titan census** — **UNRECONCILED**. The earlier SUPERSEDED
+  conclusion was absence-derived and is retracted, not overwritten.
+  Four named scores stay on
   `p/p1-train-subzero-surface-20260818-01.md`. Exact JSON name
-  stays absent. 386MB companion stays QUARANTINE.
+  stays absent = FINDER-FAILED. 386MB companion stays QUARANTINE.
 
 ## Desk
 

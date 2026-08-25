@@ -34,7 +34,9 @@ TRAIN_POST = os.path.join("p", "p1-train-subzero-surface-20260818-01.md")
 KEYB_CONTAINER_SHA = (
     "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e"
 )
+KEYB_STALE_SHA = KEYB_CONTAINER_SHA
 KEYB_BYTES = 430860
+VALID_DISPOSITIONS = ("INTEGRATE", "SUPERSEDED", "QUARANTINE", "UNRECONCILED")
 KEYB_DEPTH = 8
 KEYB_MOUTHS = ("HELP", "READ", "WRITE", "FIRE", "SURFACE", "ACK")
 ABSENT_PATHS = (
@@ -87,7 +89,12 @@ def load_catalog(text):
             {
                 "id": name,
                 "disposition": str(item.get("disposition") or "").strip().upper(),
+                "original_disposition": str(
+                    item.get("original_disposition") or ""
+                ).strip().upper(),
                 "claimed_path": str(item.get("claimed_path") or "").strip(),
+                "hash_state": str(item.get("hash_state") or "").strip().upper(),
+                "verified": bool(item.get("verified")),
             }
         )
     return {
@@ -130,16 +137,18 @@ def _keyb_manifest_row(text):
     except (TypeError, ValueError):
         width = None
     mouth_ok = all(name in mouths for name in KEYB_MOUTHS)
-    prefix_ok = sha.startswith("a63396")
+    structural = bool(
+        n_bytes == KEYB_BYTES
+        and depth == KEYB_DEPTH
+        and n_pos == 16
+        and width == 128
+        and mouth_ok
+    )
+    stale = sha.startswith("a63396") or sha == KEYB_STALE_SHA
     return {
-        "ok": bool(
-            prefix_ok
-            and n_bytes == KEYB_BYTES
-            and depth == KEYB_DEPTH
-            and n_pos == 16
-            and width == 128
-            and mouth_ok
-        ),
+        "ok": structural,
+        "verified": False,
+        "hash_state": "STALE" if stale and structural else ("PRESENT" if structural else "UNMEASURED"),
         "sha256": sha,
         "n_bytes": n_bytes,
         "depth": depth,
@@ -177,6 +186,7 @@ def measure_from_rows(facts):
     keyb_manifest = bool(facts.get("keyb_manifest"))
     keyb_container = bool(facts.get("keyb_container"))
     keyb_fab = bool(facts.get("keyb_fab"))
+    keyb_hash_state = str(facts.get("keyb_hash_state") or "").upper()
     if keyb_container:
         keyb = "INTEGRATED"
         keyb_disposition = "INTEGRATE"
@@ -189,17 +199,22 @@ def measure_from_rows(facts):
     else:
         keyb = "NOT_LANDED"
         keyb_disposition = "QUARANTINE"
+    if not keyb_hash_state:
+        keyb_hash_state = "STALE" if keyb_manifest else "UNMEASURED"
     train_json = bool(facts.get("train_json"))
     train_post = bool(facts.get("train_post"))
     if train_json:
         titan_census = "INTEGRATED"
         titan_disposition = "INTEGRATE"
+        titan_original_disposition = "INTEGRATE"
     elif train_post:
         titan_census = "STRANDED"
-        titan_disposition = "SUPERSEDED"
+        titan_disposition = "UNRECONCILED"
+        titan_original_disposition = "SUPERSEDED"
     else:
         titan_census = "NOT_LANDED"
         titan_disposition = "QUARANTINE"
+        titan_original_disposition = "QUARANTINE"
     return {
         "measured": True,
         "rook": rook,
@@ -212,10 +227,13 @@ def measure_from_rows(facts):
         "keyb_fab": keyb_fab,
         "keyb_check": facts.get("keyb_check") or "UNMEASURED",
         "keyb_disposition": keyb_disposition,
+        "keyb_hash_state": keyb_hash_state,
+        "keyb_verified": False,
         "titan_census": titan_census,
         "train_json": train_json,
         "train_post": train_post,
         "titan_disposition": titan_disposition,
+        "titan_original_disposition": titan_original_disposition,
         "refuse_upload": bool(facts.get("refuse_upload", True)),
         "lane_count": 3,
         "slack_ts": facts.get("slack_ts") or SLACK_TS,
@@ -242,6 +260,7 @@ def measure_tree(root, catalog_text=""):
         or _exists(root, os.path.join("excerpts", "20260821", "keyb01.mno")),
         "keyb_fab": _exists(root, KEYB_FAB),
         "keyb_check": _keyb_check_from_abi(_read(root, KEYB_ABI)),
+        "keyb_hash_state": manifest.get("hash_state") or "",
         "train_json": _exists(root, "TRAIN_CIRCUITS_FROM_FILE.json")
         or _exists(
             root, os.path.join("MUHL_KITE1_SPIKE", "TRAIN_CIRCUITS_FROM_FILE.json")
@@ -255,6 +274,8 @@ def measure_tree(root, catalog_text=""):
     row["titan_write"] = catalog.get("titan") or "NOT_WRITTEN"
     row["source_id"] = catalog.get("source_id") or ""
     row["keyb_sha256"] = manifest.get("sha256") or ""
+    row["keyb_hash_state"] = manifest.get("hash_state") or row.get("keyb_hash_state") or ""
+    row["keyb_verified"] = False
     row["catalog_artifacts"] = len(catalog.get("artifacts") or [])
     row["absent_paths"] = [
         rel.replace("\\", "/")
@@ -290,12 +311,13 @@ def classify(row):
                 "the census names every leftover."
             ),
         }
-    if any(item not in ("INTEGRATE", "SUPERSEDED", "QUARANTINE") for item in dispositions):
+    if any(item not in VALID_DISPOSITIONS for item in dispositions):
         return {
             "state": "NOT_LANDED",
             "note": (
-                "a disposition is missing. Name integrate, superseded, or "
-                "quarantine per artifact. Do not upload model/container bytes."
+                "a disposition is missing. Name integrate, superseded, "
+                "quarantine, or unreconciled per artifact. Absence is not "
+                "SUPERSEDED. Do not upload model/container bytes."
             ),
         }
     if not row.get("refuse_upload"):
@@ -312,11 +334,13 @@ def classify(row):
             "three-item working-builds provenance is measured on this tree. "
             "rook-resident-native stays QUARANTINE (private Desktop package; "
             "canonical equivalent is MUHLNICKEL_ROOKERY/RESUME.md). "
-            "keyb01.mno stays QUARANTINE (do not upload 430860 bytes; "
-            "manifest+fab already INTEGRATED). TRAIN_CIRCUITS_FROM_FILE.json "
-            "stays SUPERSEDED by p/p1-train-subzero-surface-20260818-01.md "
-            "for the four named scores; the 386MB companion stays QUARANTINE. "
-            "A Slack list is still not the file."
+            "keyb01.mno stays QUARANTINE; public SHA a63396 is STALE / "
+            "NOT_VERIFIED (size agrees, bytes do not). "
+            "TRAIN_CIRCUITS_FROM_FILE.json absence is UNRECONCILED / "
+            "FINDER-FAILED, not SUPERSEDED. The four named scores on "
+            "p/p1-train-subzero-surface-20260818-01.md stay present; the "
+            "386MB companion stays QUARANTINE. A Slack list is still not "
+            "the file."
         ),
     }
 
@@ -368,6 +392,7 @@ def _self_test():
             "keyb_container": False,
             "keyb_fab": True,
             "keyb_check": "refuse_forbidden_dest",
+            "keyb_hash_state": "STALE",
             "train_json": False,
             "train_post": True,
             "refuse_upload": True,
@@ -377,8 +402,11 @@ def _self_test():
     assert live["rook_disposition"] == "QUARANTINE"
     assert live["keyb"] == "STRANDED"
     assert live["keyb_disposition"] == "QUARANTINE"
+    assert live["keyb_hash_state"] == "STALE"
+    assert live["keyb_verified"] is False
     assert live["titan_census"] == "STRANDED"
-    assert live["titan_disposition"] == "SUPERSEDED"
+    assert live["titan_disposition"] == "UNRECONCILED"
+    assert live["titan_original_disposition"] == "SUPERSEDED"
     assert live["lane_count"] == 3
     assert classify(live)["state"] == "INTEGRATED"
     uploaded = dict(live)
