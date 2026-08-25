@@ -205,6 +205,8 @@
     "ground/SPECTER_FINAL.json",
     "ground/DEVICE_QUEUE_CAP.md",
     "ground/DEVICE_QUEUE_CAP.json",
+    "ground/MUHL_RECEIPT_LANE.md",
+    "ground/MUHL_RECEIPT_LANE.json",
     "ground/SUPERGROK_HEAVY.md",
     "ground/SUPERGROK_HEAVY.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.md",
@@ -444,6 +446,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isMuhlReceiptLaneTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO TAKING / LocalDeviceAgent subagent receipt lane / request-receiver-result / 175-entry tree / leave-unmerged talk. Talk is not a land. Ship the source-only receipt validator to current main. Do not remint FOREIGN_MAIN, SUBZERO_EXPLORER, or the JOJO protocol id. Do not copy private LDA source." };
     }
     if (api.isSubzeroExplorerTalk(t)) {
       return { state: "CLAIMED", note: "JOJO TECHNICAL_HANDOFF / Subzero Artifact Explorer / STRUCTURAL_ONLY-vs-runtime / BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT talk. Talk is not a land. Ship the read-only explorer + validation packet. Do not remint SUBZERO_TECH, SUBZERO_BUYERS, or the three DEMON panel ids. Do not sell host training or live Titan mutation." };
@@ -822,6 +827,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isMuhlReceiptLaneTalk = function (text) {
+    return /subagent receipt lane|request.receiver.result receipt|175-entry tree|1787646761\.038429|leave unmerged|muhl_receipt_lane|receipt lane leftover/i.test(String(text || ""));
+  };
+
+  api.muhlReceiptLaneState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/muhl_receipt_lane.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasChain = /def validate_chain/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesJob = /request-receiver-result/.test(body) && /175-entry tree/.test(body);
+    var namesUnmerged = /leave unmerged/.test(body);
+    var noCopy = /Do not copy private LDA source/.test(body) || /Do not copy private LocalDeviceAgent source/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasChain && hasMiss && neverZero && namesJob && namesUnmerged && noCopy && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "receipt-lane leftover is on this file. Synthetic request-receiver-result chain validates. A Slack TAKING / leave-unmerged is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/muhl_receipt_lane.py missing the leftover. LocalDeviceAgent / subagent receipt lane / leave-unmerged talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3124,6 +3159,7 @@
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
+  var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
   var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
   var batteryRedOut = document.getElementById("battery-red-result");
@@ -3792,6 +3828,12 @@
     if (!deviceQueueCapOut) return;
     deviceQueueCapOut.setAttribute("data-tone", api.toneFor(result.state));
     deviceQueueCapOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMuhlReceiptLane(result) {
+    if (!muhlReceiptLaneOut) return;
+    muhlReceiptLaneOut.setAttribute("data-tone", api.toneFor(result.state));
+    muhlReceiptLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintSuperGrokHeavy(result) {
@@ -4644,6 +4686,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadMuhlReceiptLane(sha) {
+    if (!muhlReceiptLaneOut) return Promise.resolve(null);
+    muhlReceiptLaneOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/muhl_receipt_lane.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/muhl_receipt_lane.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/muhl_receipt_lane.py absent at the measured main SHA. LocalDeviceAgent / subagent receipt lane / leave-unmerged talk is CLAIMED." };
+        paintMuhlReceiptLane(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMuhlReceiptLane(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.muhlReceiptLaneState(body);
+        paintMuhlReceiptLane(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMuhlReceiptLane(err);
       return err;
     });
   }
@@ -5804,6 +5873,7 @@
     loadSubzeroTech(sha);
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
+    loadMuhlReceiptLane(sha);
     loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);
     loadDeviceQueueCap(sha);

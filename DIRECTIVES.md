@@ -235,6 +235,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_explorer.py` · `node test_land_desk.js` · `python3 host/subzero_explorer.py`
 **Note:** 31/31 excerpts hash-match and stay STRUCTURAL_ONLY. LDA execution BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT. Host training NOT_SOLD. Do not remint SUBZERO_TECH / SUBZERO_BUYERS / the three DEMON panel ids / grok-subzero-buyers-panel. titan NOT_WRITTEN. Talk is not a land.
 
+### 46. Muhlnickel receipt lane — a Slack TAKING is not a land
+> *"JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane … Will open PR and leave unmerged pending non-Claude review + green CI."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:32 Slack `1787646761.038429` / JOJO TAKING + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/MUHL_RECEIPT_LANE.md` · `ground/MUHL_RECEIPT_LANE.json` · `host/muhl_receipt_lane.py` · land canary + `muhlReceiptLaneState`
+**Receipt:** `python3 test_muhl_receipt_lane.py` · `node test_land_desk.js` · `python3 host/muhl_receipt_lane.py`
+**Note:** Synthetic request-receiver-result chain validates. Claimed 175-entry tree published 3 exact chains, not truncated (`FINDER-UNVERIFIED`). Leave-unmerged stays CLAIMED. Do not remint FOREIGN_MAIN / SUBZERO_EXPLORER or `jojo-muhlnickel-subagent-protocol-20260825-01`. Do not copy private LDA source. No host inference. Hands off CML 2108 and JOJO README 2286. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
