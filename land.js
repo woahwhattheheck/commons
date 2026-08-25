@@ -610,7 +610,7 @@
   };
 
   api.isAndroidCiTalk = function (text) {
-    return /lda\/workflows\/android\.yml|not real android ci|outside .github\/workflows|android ci placement|android ci placement\/validation|smallest current-main android/i.test(String(text || ""));
+    return /lda-android\.yml|not real android ci|android ci placement|smallest current-main android/i.test(String(text || ""));
   };
 
   api.androidCiState = function (text) {
