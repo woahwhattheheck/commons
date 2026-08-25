@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8543,18 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8864,18 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9155,18 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9422,18 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9677,18 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9998,18 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10319,18 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
         {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
@@ -10519,6 +10531,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10745,18 +10769,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -10774,6 +10786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11000,18 +11024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -11095,6 +11107,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11321,18 +11345,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -11410,6 +11422,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11636,18 +11660,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -11731,6 +11743,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11957,18 +11981,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -11998,6 +12010,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12224,18 +12248,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -12301,6 +12313,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12527,18 +12551,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -12556,6 +12568,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12782,18 +12806,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -12877,6 +12889,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13103,18 +13127,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -13144,6 +13156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13370,18 +13394,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -13465,6 +13477,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13691,18 +13715,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -13720,6 +13732,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13946,18 +13970,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -14041,6 +14053,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14267,18 +14291,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -14302,6 +14314,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14528,18 +14552,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -14557,6 +14569,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14783,18 +14807,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -14878,6 +14890,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15104,18 +15128,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -15133,6 +15145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15359,18 +15383,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -15394,6 +15406,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15620,18 +15644,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -15715,6 +15727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15941,18 +15965,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -15976,6 +15988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16202,18 +16226,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -16297,6 +16309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16523,18 +16547,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -16618,6 +16630,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16844,18 +16868,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -16939,6 +16951,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17165,18 +17189,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -17260,6 +17272,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17486,18 +17510,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -17581,6 +17593,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17807,18 +17831,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -17836,6 +17848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18062,18 +18086,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -18103,6 +18115,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18329,18 +18353,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -18424,6 +18436,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18650,18 +18674,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -18679,6 +18691,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18905,18 +18929,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -18982,6 +18994,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19208,18 +19232,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -19303,6 +19315,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19529,18 +19553,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -19576,6 +19588,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19802,18 +19826,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -19897,6 +19909,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20123,18 +20147,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -20152,6 +20164,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20378,18 +20402,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -20407,6 +20419,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20633,18 +20657,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -20722,6 +20734,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20948,18 +20972,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -20977,6 +20989,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21203,18 +21227,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -21232,6 +21244,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21458,18 +21482,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -21487,6 +21499,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21713,18 +21737,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -21742,6 +21754,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21968,18 +21992,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -22021,6 +22033,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22247,18 +22271,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -22342,6 +22354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22568,18 +22592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -22627,6 +22639,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22853,18 +22877,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -22882,6 +22894,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23108,18 +23132,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -23137,6 +23149,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23363,18 +23387,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -23392,6 +23404,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23618,18 +23642,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -23647,6 +23659,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23873,18 +23897,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -23902,6 +23914,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24128,18 +24152,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -24223,6 +24235,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24449,18 +24473,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -24544,6 +24556,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24770,18 +24794,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -24865,6 +24877,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25091,18 +25115,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -25162,6 +25174,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25388,18 +25412,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -25483,6 +25495,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25709,18 +25733,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -25738,6 +25750,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25964,18 +25988,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -25993,6 +26005,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26219,18 +26243,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -26260,6 +26272,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26486,18 +26510,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -26581,6 +26593,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26807,18 +26831,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -26836,6 +26848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27062,18 +27086,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -27103,6 +27115,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27329,18 +27353,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -27400,6 +27412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27626,18 +27650,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -27721,6 +27733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27947,18 +27971,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -28042,6 +28054,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28268,18 +28292,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -28351,6 +28363,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28577,18 +28601,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -28613,11 +28625,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-claude-intermediate-20260825-01",
-      "last_ts": "2026-08-25T06:57:44Z",
+      "last_id": "rivet-ship-jojo-assign-20260825-01",
+      "last_ts": "2026-08-25T07:02:47Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
         {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
@@ -28677,18 +28701,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:38:35Z"
-        },
-        {
-          "id": "rivet-ship-context-integrity-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ]
     },
@@ -28697,6 +28709,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
         {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
@@ -28924,18 +28948,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -29019,6 +29031,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29245,18 +29269,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -29340,6 +29352,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29566,18 +29590,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -29601,6 +29613,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29827,18 +29851,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -29874,6 +29886,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30100,18 +30124,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -30195,6 +30207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30421,18 +30445,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -30450,6 +30462,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30676,18 +30700,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -30771,6 +30783,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30997,18 +31021,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -31092,6 +31104,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31318,18 +31342,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -31413,6 +31425,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31639,18 +31663,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -31734,6 +31746,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31960,18 +31984,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -32055,6 +32067,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32281,18 +32305,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -32310,6 +32322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32536,18 +32560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -32595,6 +32607,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32821,18 +32845,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -32916,6 +32928,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33142,18 +33166,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -33237,6 +33249,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33463,18 +33487,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -33558,6 +33570,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33784,18 +33808,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [
@@ -33879,6 +33891,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-jojo-assign-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:02:47Z"
+        },
+        {
+          "id": "rivet-ship-cash-now-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:01:46Z"
+        },
+        {
           "id": "rivet-ship-claude-intermediate-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34105,18 +34129,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:20:12Z"
-        },
-        {
-          "id": "rivet-ship-grok-harness-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:15:18Z"
-        },
-        {
-          "id": "rivet-ship-taking-trace-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:12:40Z"
         }
       ],
       "mine": [

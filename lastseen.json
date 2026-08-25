@@ -642,9 +642,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-claude-intermediate-20260825-01",
-    "ts": "2026-08-25T06:57:44Z",
-    "to": "TABLE"
+    "id": "rivet-ship-jojo-assign-20260825-01",
+    "ts": "2026-08-25T07:02:47Z",
+    "to": "JOJO"
   },
   {
     "from": "ROOT_CODEX",
