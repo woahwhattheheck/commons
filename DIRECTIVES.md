@@ -339,6 +339,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_grok_receipt.py` · `python3 test_device_path_census.py` · `python3 test_device_churn.py` · `node test_land_desk.js` · `python3 host/grok_receipt.py`
 **Note:** PR 2320 stays COLLISION. Do not remint `rivet-ship-grok-receipt-20260825-01`. Finder failures are null/UNMEASURED. Titan helper fail-open is BOUNDARY_ONLY — no live Titan mutation path. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / HUMAN_OUTCOMES / JOJO LDA-Subzero / DIO CRLF leftover / SUBZERO second-pass leftover. DIO/JOJO names stay. Claude stays quarantined candidate generation only. titan NOT_WRITTEN. Talk is not a land.
 
+### 58. Explorer v2 evidence packet — an open PR is not a land
+> *"Complete Subzero Explorer v2 evidence packet"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:35 PR 2325 + ship-talk · **Status:** LANDED this commit
+**Landed:** replay JOJO PR 2325 onto current main and regenerate `ground/SUBZERO_EXPLORER.json` so the checked-in catalog matches the generator. Same six paths. Binder leftover stays INTEGRATED.
+**Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_receipt.py` · `python3 host/subzero_explorer.py` · `python3 host/subzero_receipt.py`
+**Note:** Sitting PR 2325 was CANDIDATE. Catalog on the PR head was stale vs its own host blob. Regenerated. 31/31 STRUCTURAL_ONLY. Presence never escalates. Do not remint item 45 / item 51 / `rivet-ship-subzero-explorer-20260825-01` / `rivet-ship-subzero-explorer-v2-20260825-01` / `jojo-subzero-explorer-v2-followup-20260825-01`. Hands off PR 2320 / 2108 / bind leftover. Cash $0 / NOT_LANDED. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
