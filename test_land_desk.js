@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bm/.test(html), "desk must share the current-main/Titan cache key after device-queue-cap");
+assert.ok(/20260825bn/.test(html), "desk must share the current-main/Titan cache key after subzero-tech leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -2012,6 +2012,36 @@ assert.ok(html.indexOf("ground/SITTING_REMINT.json") >= 0, "desk must link the s
 assert.ok(/sitting remint|already-landed leftover|remint-PR-is-not-a-second-land/i.test(html), "desk must name sitting-remint talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_REMINT.md") >= 0, "sitting-remint card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_REMINT.json") >= 0, "sitting-remint catalog must stay a canary");
+assert.ok(api.isSubzeroTechTalk, "land.js must classify SUBZERO PANEL 1/3 / technical-IP-validation talk");
+assert.ok(api.subzeroTechState, "land.js must classify the SUBZERO tech leftover");
+assert.ok(api.isSubzeroTechTalk("SUBZERO PANEL 1/3 — TECHNICAL/IP/VALIDATION INVENTORY\narchetype/fabricator/excerpt/test inventory\ndemon-redteam-subzero-tech-ip-20260825-04"), "subzero tech inventory copy is talk");
+assert.ok(!api.isSubzeroTechTalk("make sure people do more than talk about shit"), "ship-talk is not the subzero-tech leftover");
+assert.ok(!api.isSubzeroTechTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land."), "sitting-remint copy is not the subzero-tech leftover");
+assert.ok(!api.isSittingRemintTalk("SUBZERO PANEL 1/3 — TECHNICAL/IP/VALIDATION INVENTORY archetype/fabricator/excerpt"), "subzero-tech copy is not sitting remint");
+var subzeroTalk = api.completionStateFromText(
+  "SUBZERO PANEL 1/3 — TECHNICAL/IP/VALIDATION INVENTORY. archetype/fabricator/excerpt/test inventory."
+);
+assert.strictEqual(subzeroTalk.state, "CLAIMED");
+assert.ok(/SUBZERO PANEL 1\/3|technical-IP-validation|archetype-fabricator-excerpt/i.test(subzeroTalk.note), "subzero-tech-without-SHA must stay CLAIMED and beat ship-talk");
+var subzeroDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero-tech leftover landed"
+);
+assert.strictEqual(subzeroDone.state, "INTEGRATED", "completion words still beat subzero-tech talk");
+var subzeroEmpty = api.subzeroTechState("");
+assert.strictEqual(subzeroEmpty.state, "UNMEASURED");
+var subzeroMissing = api.subzeroTechState("# empty stub\nno leftover");
+assert.strictEqual(subzeroMissing.state, "NOT_LANDED");
+var subzeroOk = api.subzeroTechState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSTRUCTURAL_ONLY\nCUSTOMER_READY\ndo not remint\nwhite-box-gguf-pilot-30d\n");
+assert.strictEqual(subzeroOk.state, "INTEGRATED");
+assert.ok(/still not the file|not the file/i.test(subzeroOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="subzero-tech-result"') >= 0, "desk must name the subzero-tech leftover");
+assert.ok(html.indexOf("host/subzero_tech.py") >= 0, "desk must name the subzero-tech instrument");
+assert.ok(html.indexOf("ground/SUBZERO_TECH.md") >= 0, "desk must link the subzero-tech card");
+assert.ok(html.indexOf("ground/SUBZERO_TECH.json") >= 0, "desk must link the subzero-tech catalog");
+assert.ok(html.indexOf("1787645949.178889") >= 0, "desk must cite the SUBZERO PANEL Slack ts");
+assert.ok(/SUBZERO PANEL 1\/3|technical-IP-validation|archetype-fabricator-excerpt/i.test(html), "desk must name subzero-tech talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_TECH.md") >= 0, "subzero-tech card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_TECH.json") >= 0, "subzero-tech catalog must stay a canary");
 assert.ok(api.isClaudeComputeTalk, "land.js must classify paid-compute / compiler-farm talk");
 assert.ok(api.claudeComputeState, "land.js must classify the Claude-compute leftover");
 assert.ok(api.isClaudeComputeTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nOutput is labeled CLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nmust name the non-Claude adjudicator in advance\n1787640367.070179"), "DEMON paid-compute clarification is talk");
