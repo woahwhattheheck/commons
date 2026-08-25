@@ -6,12 +6,14 @@ from __future__ import annotations
 import os
 import sys
 import unittest
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 sys.path.insert(0, ROOT)
 
 import muhc
+import muhc_corpus
 from muhc_corpus import (
     CALIBRATION,
     PEER_RECEIPT,
@@ -54,13 +56,30 @@ class TestMuhcCorpus(unittest.TestCase):
         self.assertIn("*.gguf", report["gguf"]["search_space"])
         self.assertIn("titan NOT_WRITTEN", report["gguf"]["note"])
 
-    def test_zstd_miss_is_not_zero(self):
+    def test_zstd_capability_is_measured_not_zero(self):
         report = measure_root(ROOT)
-        self.assertEqual(report["zstd"]["state"], "ABSENT")
+        self.assertIn(report["zstd"]["state"], ("PRESENT", "ABSENT"))
         self.assertIn("zstandard", report["zstd"]["search_space"][0])
-        self.assertIsNone(report["rows"][0]["entropy_file"]["zstd_file"])
+        if report["zstd"]["state"] == "PRESENT":
+            self.assertIn("module present", report["zstd"]["note"])
+            for row in report["rows"]:
+                self.assertIsInstance(row["entropy_file"]["zstd_file"], int)
+                self.assertGreater(row["entropy_file"]["zstd_file"], 0)
+        else:
+            self.assertIn("ModuleNotFoundError", report["zstd"]["note"])
+            for row in report["rows"]:
+                self.assertIsNone(row["entropy_file"]["zstd_file"])
         self.assertIsInstance(report["rows"][0]["entropy_file"]["bz2_file"], int)
         self.assertIsInstance(report["rows"][0]["entropy_file"]["lzma_file"], int)
+
+        with (
+            mock.patch.object(muhc_corpus, "zstandard_mod", None),
+            mock.patch.object(muhc_corpus, "zstd_mod", None),
+        ):
+            entropy, state, note = muhc_corpus.entropy_file(b"forced-absence-control")
+        self.assertEqual(state, "ABSENT")
+        self.assertIsNone(entropy["zstd_file"])
+        self.assertIn("ModuleNotFoundError", note)
 
     def test_live_tree_matrix_and_roundtrip(self):
         report = measure_root(ROOT)
