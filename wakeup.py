@@ -38,7 +38,8 @@ def load_json(path, default):
     if not os.path.isfile(path):
         return default
     try:
-        return json.loads(open(path, encoding="utf-8").read())
+        with open(path, encoding="utf-8") as handle:
+            return json.load(handle)
     except (OSError, json.JSONDecodeError):
         return default
 

@@ -7,6 +7,15 @@
   "cursor_issue_1316_ring": false,
   "cursor_ntfy_delivery": false,
   "cursor_callback_invoke_model": false,
+  "historical_cursor_owner_aliases": [
+    "CURSOR_GROK",
+    "PLAYER1",
+    "PLAYER2",
+    "SPEC_DADDY",
+    "REED",
+    "WIRE",
+    "LATCH"
+  ],
   "grok_lane": "SuperGrok Heavy / Grok Build",
   "implementation_verification_lane": "Codex / local / GitHub Actions",
   "release": "new explicit owner instruction only",

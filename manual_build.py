@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import os
 
-from harness_wake.cursor_adapter import is_cursor_harness
+from harness_wake.cursor_adapter import is_cursor_owner_claim
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "ground", "MANUAL.md")
@@ -90,7 +90,7 @@ def main():
         for j in open_jobs:
             owner = j.get("from") or ""
             status = j.get("status") or ""
-            if is_cursor_harness(owner):
+            if is_cursor_owner_claim(owner):
                 status = "HELD_CURSOR"
             lines.append("- %s %s [%s](../p/%s.md) tool=%s" % (
                 status,

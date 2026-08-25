@@ -6,7 +6,12 @@ import os
 import json
 import unittest
 
-from harness_wake.cursor_adapter import claimed_paths, is_cursor_harness
+from harness_wake.cursor_adapter import (
+    CURSOR_OWNER_ALIASES,
+    claimed_paths,
+    is_cursor_harness,
+    is_cursor_owner_claim,
+)
 from wakeup import is_held_cursor, ntfy
 
 
@@ -109,8 +114,16 @@ class CursorQuotaHoldTests(unittest.TestCase):
     def test_manual_does_not_publish_cursor_jobs_as_open(self):
         with open(os.path.join(ROOT, "ground", "MANUAL.md"), encoding="utf-8") as handle:
             manual = handle.read()
-        self.assertNotIn("OPEN CURSOR_GROK", manual)
-        self.assertIn("HELD_CURSOR CURSOR_GROK", manual)
+        for alias in ("CURSOR_GROK", "PLAYER1", "SPEC_DADDY"):
+            self.assertNotIn("OPEN " + alias, manual)
+            self.assertIn("HELD_CURSOR " + alias, manual)
+
+    def test_historical_cursor_owner_aliases_are_held(self):
+        for alias in CURSOR_OWNER_ALIASES:
+            with self.subTest(alias=alias):
+                self.assertTrue(is_cursor_owner_claim(alias))
+        self.assertFalse(is_cursor_owner_claim("CODEX_LOCAL"))
+        self.assertFalse(is_cursor_owner_claim("SUPERGROK_HEAVY"))
 
     def test_active_route_cards_name_the_hold(self):
         for rel in (

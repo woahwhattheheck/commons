@@ -19,6 +19,15 @@ ISSUE_1316 = 1316
 THIS_BC = "bc-263a6b3f-4492-5dab-9927-49a856e551e0"
 SLACK_CHANNEL = "C0BRGMDQB6G"
 CURSOR_QUOTA_HOLD = True
+CURSOR_OWNER_ALIASES = frozenset({
+    "CURSOR_GROK",
+    "PLAYER1",
+    "PLAYER2",
+    "SPEC_DADDY",
+    "REED",
+    "WIRE",
+    "LATCH",
+})
 
 
 def is_cursor_harness(harness: str) -> bool:
@@ -29,6 +38,11 @@ def is_cursor_harness(harness: str) -> bool:
         or "grokbot" in normalized
         or "issue1316" in normalized
     )
+
+
+def is_cursor_owner_claim(claim: str) -> bool:
+    normalized = str(claim or "").strip().upper().replace("-", "_").replace(" ", "_")
+    return normalized in CURSOR_OWNER_ALIASES or is_cursor_harness(normalized)
 
 CLAIMED_PATHS = {
     "slack_cursor_app": {

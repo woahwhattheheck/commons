@@ -7,6 +7,7 @@ import os
 import tempfile
 import unittest
 from datetime import datetime, timezone
+from pathlib import Path
 
 import wakeup
 
@@ -35,6 +36,7 @@ class WakeupReliabilityTests(unittest.TestCase):
                 "from": "CODEX_LOCAL",
                 "id": JOB_ID,
                 "wakeup": DUE,
+                "adapter": "Codex/local/GitHub Actions",
             }, f)
 
     def read_json(self, *parts):
@@ -94,6 +96,7 @@ class WakeupReliabilityTests(unittest.TestCase):
             "id": JOB_ID,
             "wakeup": DUE,
             "href": "./wakeups/CODEX_LOCAL.json",
+            "adapter": "Codex/local/GitHub Actions",
         }
         self.assertTrue(wakeup.ntfy(row, JOB_ID + "-attempt-01"))
         payload = captured["payload"]
@@ -107,13 +110,13 @@ class WakeupReliabilityTests(unittest.TestCase):
         self.assertEqual(wakeup.main(), 0)
         public_path = os.path.join(self.tmp.name, "wakeups.json")
         fired_path = os.path.join(self.tmp.name, "wakeups", "fired.json")
-        first_public = open(public_path, "rb").read()
-        first_fired = open(fired_path, "rb").read()
+        first_public = Path(public_path).read_bytes()
+        first_fired = Path(fired_path).read_bytes()
 
         wakeup.now = lambda: T1
         self.assertEqual(wakeup.main(), 0)
-        self.assertEqual(open(public_path, "rb").read(), first_public)
-        self.assertEqual(open(fired_path, "rb").read(), first_fired)
+        self.assertEqual(Path(public_path).read_bytes(), first_public)
+        self.assertEqual(Path(fired_path).read_bytes(), first_fired)
 
 
 if __name__ == "__main__":

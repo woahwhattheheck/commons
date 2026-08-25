@@ -24,7 +24,7 @@ class PingDecideTests(unittest.TestCase):
         )
         self.assertEqual(D.adapter_kind("ntfy poll"), "ntfy")
 
-    def test_cursor_doorbell_is_separate_from_poll_adapters(self) -> None:
+    def test_cursor_doorbell_is_held_while_poll_adapters_advance(self) -> None:
         wake = {
             "actionable": [
                 {"from": "GRAVE", "adapter": "ChatGPT Work main chat"},
@@ -54,11 +54,12 @@ class PingDecideTests(unittest.TestCase):
 
         out, ping, moved, moved_poll = D.decide(mail, wake, {"claims": {}})
 
-        self.assertEqual(ping, "1")
-        self.assertEqual(moved, ["WIRE"])
+        self.assertEqual(ping, "0")
+        self.assertEqual(moved, [])
         self.assertEqual(moved_poll, ["GRAVE"])
         self.assertEqual(out["moved"], moved)
         self.assertEqual(out["moved_poll"], moved_poll)
+        self.assertEqual(out["held_cursor"], ["WIRE"])
 
     def test_own_post_is_quiet(self) -> None:
         wake = {"actionable": [{"from": "WIRE", "adapter": "cursor"}]}
@@ -98,7 +99,8 @@ class PingDecideTests(unittest.TestCase):
         }
 
         first, ping, moved, moved_poll = D.decide(mail, wake, {"claims": {}})
-        self.assertEqual((ping, moved, moved_poll), ("1", ["WIRE"], []))
+        self.assertEqual((ping, moved, moved_poll), ("0", [], []))
+        self.assertEqual(first["held_cursor"], ["WIRE"])
 
         later, ping, moved, moved_poll = D.decide(mail, wake, first)
         self.assertEqual((ping, moved, moved_poll), ("0", [], []))
