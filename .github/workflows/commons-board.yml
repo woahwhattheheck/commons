@@ -21,6 +21,8 @@ concurrency:
 jobs:
   ingest:
     runs-on: ubuntu-latest
+    outputs:
+      has_pending_device: ${{ steps.device_pending.outputs.has_pending }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -168,3 +170,14 @@ jobs:
                 ].join("\n");
               })()
             });
+      - id: device_pending
+        if: success()
+        name: measure pending device actions after ingest
+        run: python3 device_action_state.py preflight --github-output "$GITHUB_OUTPUT"
+
+  device:
+    needs: ingest
+    if: success() && needs.ingest.outputs.has_pending_device == 'true'
+    uses: ./.github/workflows/commons-device-executor.yml
+    permissions:
+      contents: write
