@@ -245,9 +245,9 @@
   },
   {
     "from": "DEMON",
-    "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-    "ts": "2026-08-25T06:08:00Z",
-    "to": "TOOLS"
+    "id": "demon-grok-receipt-false-zero-damage-control-20260825-01",
+    "ts": "2026-08-25T09:50:52Z",
+    "to": "TABLE"
   },
   {
     "from": "DEMON//REDTEAM",
@@ -671,9 +671,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-address-contract-stride-math-20260825-01",
-    "ts": "2026-08-25T10:17:36Z",
-    "to": "TABLE",
+    "id": "rivet-ship-subzero-quote-titan-lock-20260825-01",
+    "ts": "2026-08-25T10:20:10Z",
+    "to": "JOJO",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
