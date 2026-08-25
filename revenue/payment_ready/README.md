@@ -18,6 +18,14 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 | [private_input_manifest.md](./private_input_manifest.md) | Where each secret is entered (official provider/bank UI only). Never store values |
 | [dissent.md](./dissent.md) | Banking is not the last blocker |
 | [source_ledger.md](./source_ledger.md) | Every claim has a source |
+| [recovery.json](./recovery.json) | Zero-Cursor purchase-intent → quote → acceptance → delivery → processor-reference pipeline and exact current truth |
+| [current_receipt.json](./current_receipt.json) | Deterministic public receipt; currently NEEDS_BUYER and USD 0 / NOT_LANDED |
+| [receipt.schema.json](./receipt.schema.json) | Secret-free receipt contract; a public receipt never claims cash |
+| [evidence_contract.md](./evidence_contract.md) | Exact secret-free quote, acceptance, AT1–AT6 delivery, and processor-reference inputs |
+| [prospects.json](./prospects.json) | Four primary-source prospect hypotheses, all explicitly not contacted |
+| [outreach.md](./outreach.md) | Unsent distribution messages and response-state receipt fields |
+| [processor_handoff.md](./processor_handoff.md) | Official hosted provider boundary; payout values never enter Commons |
+| [integration_inventory.json](./integration_inventory.json) | Connected and missing revenue capabilities without mock checkout |
 
 ## What is already landed (do not remint)
 
@@ -36,7 +44,7 @@ exists. It does not mean a dollar cleared.
 ```text
 python3 host/payment_ready.py
 python3 -m unittest -v test_payment_ready.py
+python3 host/revenue_recovery.py --self-test
+python3 host/revenue_recovery.py measure --root .
+python3 -m unittest -v test_revenue_recovery.py
 ```
-
-Hands off DIO `revenue/dio/`, JOJO outreach, CML 2108, SPECTER 2205,
-titan `--go`, and `commons.mno`. titan: **NOT_WRITTEN**. No auth. No gate.

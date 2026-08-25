@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "kind": "REVENUE_RECOVERY_PIPELINE",
+  "mandate": "owner-zero-cursor-end-to-end-revenue-recovery-20260825",
+  "offer": {
+    "offer_id": "gguf-diagnostic-10d-12k",
+    "source": "revenue/payment_ready/pack.json",
+    "source_sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+    "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+    "currency": "USD",
+    "fixed_amount": 12000,
+    "term_calendar_days": 10,
+    "milestones": [
+      {
+        "id": "M1_BEFORE_FILE",
+        "amount": 6000,
+        "due": "before customer file exchange; after NDA and SOW signing"
+      },
+      {
+        "id": "M2_AT1_AT6",
+        "amount": 6000
+      }
+    ],
+    "acceptance_tests": [
+      "AT1",
+      "AT2",
+      "AT3",
+      "AT4",
+      "AT5",
+      "AT6"
+    ],
+    "acceptance_rule": "rollback evidence, not metric lift",
+    "status": "CANDIDATE",
+    "demand": "UNKNOWN",
+    "collected_cash_usd": 0,
+    "cash_state": "NOT_LANDED"
+  },
+  "public_surface": {
+    "path": "diagnostic.html",
+    "route": {
+      "to": "OFFER",
+      "board": "OFFER",
+      "subject": "GGUF DIAGNOSTIC PURCHASE INTENT"
+    },
+    "visibility": "PUBLIC_NON_CONFIDENTIAL",
+    "no_login": true,
+    "no_auth": true,
+    "no_gate": true,
+    "posting_is_never_disabled_by_receipt_state": true
+  },
+  "stages": [
+    {
+      "stage": "PUBLIC_OFFER",
+      "state": "READY",
+      "evidence": "revenue/payment_ready/pack.json + diagnostic.html"
+    },
+    {
+      "stage": "PURCHASE_INTENT",
+      "state": "NEEDS_BUYER",
+      "evidence": null
+    },
+    {
+      "stage": "QUOTE",
+      "state": "NEEDS_BUYER",
+      "evidence": null
+    },
+    {
+      "stage": "ACCEPTANCE",
+      "state": "NEEDS_BUYER",
+      "evidence": null
+    },
+    {
+      "stage": "DELIVERY",
+      "state": "NEEDS_ACCEPTANCE",
+      "evidence": null
+    },
+    {
+      "stage": "PROCESSOR_REFERENCE",
+      "state": "NEEDS_DELIVERY",
+      "evidence": null
+    },
+    {
+      "stage": "PAYOUT_ONBOARDING",
+      "state": "NEEDS_OWNER_PRIVATE",
+      "evidence": null
+    },
+    {
+      "stage": "BANK_AVAILABLE",
+      "state": "NOT_LANDED",
+      "evidence": null
+    }
+  ],
+  "receipt_contract": {
+    "schema": "revenue/payment_ready/receipt.schema.json",
+    "instrument": "host/revenue_recovery.py",
+    "evidence_contract": "revenue/payment_ready/evidence_contract.md",
+    "deterministic_stages": [
+      "PURCHASE_INTENT",
+      "QUOTE",
+      "ACCEPTANCE",
+      "DELIVERY",
+      "PROCESSOR_REFERENCE"
+    ],
+    "public_receipt_never_proves_legal_acceptance": true,
+    "processor_reference_never_proves_bank_available": true,
+    "bank_available_receipt_is_never_automatic": true,
+    "independent_cash_evidence_required": true,
+    "no_private_values": true
+  },
+  "processor_handoff": {
+    "recommended_provider": "Stripe",
+    "owner_surface": "https://dashboard.stripe.com/account/payouts",
+    "invoice_surface": "https://dashboard.stripe.com/invoices",
+    "fallback_provider": "PayPal",
+    "fallback_surface": "https://www.paypal.com/myaccount/money/",
+    "owner_action": "Open the official hosted provider surface directly, complete provider onboarding, and enter payout destination values there only.",
+    "values_never_enter_commons": true
+  },
+  "resource_recovery": {
+    "owner_report": "More than 30 percent of the monthly Cursor Ultra allowance was consumed after explicit directions to preserve it.",
+    "valuation_usd": "UNMEASURED",
+    "cursor_used_for_this_pipeline": false,
+    "repayment_objective": "Convert an existing Commons offer into buyer revenue; do not treat this source-only pipeline as cash."
+  },
+  "truth": {
+    "buyer": "UNKNOWN",
+    "demand": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "delivery": "NOT_LANDED",
+    "processor_payment": "NOT_LANDED",
+    "bank_available": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "contact_sent": false
+  }
+}

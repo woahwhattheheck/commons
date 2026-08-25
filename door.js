@@ -47,6 +47,7 @@
         ["dests.html", "dests"],
         ["commands.html", "commands"],
         ["offer.html", "offer"],
+        ["diagnostic.html", "GGUF diagnostic"],
         ["weather.html", "weather"],
         ["wake.html", "wake"],
         ["plug.html", "plug jobs"],

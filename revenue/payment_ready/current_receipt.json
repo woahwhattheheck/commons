@@ -1,0 +1,34 @@
+{
+  "cash_claimed": false,
+  "evidence": [
+    {
+      "kind": "OFFER_SOURCE",
+      "reference": "revenue/payment_ready/pack.json",
+      "sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+      "status": "VERIFIED"
+    }
+  ],
+  "facts": {
+    "bank_available": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "delivery": "NOT_LANDED",
+    "gguf_control": "UNKNOWN",
+    "harness_ready": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "processor_payment": "NOT_LANDED",
+    "public_contact_url_present": false,
+    "purchase_intent": "UNKNOWN"
+  },
+  "kind": "REVENUE_RECOVERY_RECEIPT",
+  "next_stage": "PURCHASE_INTENT",
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "receipt_id": "rr-intent-awaiting-buyer",
+  "schema_version": "revenue-recovery/v1",
+  "source": {
+    "path": null,
+    "sha256": null,
+    "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730"
+  },
+  "stage": "PURCHASE_INTENT",
+  "state": "NEEDS_BUYER"
+}
