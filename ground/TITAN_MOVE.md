@@ -27,6 +27,11 @@ maps the checked-in packet through `packetRowFromJson` into
 
 `--go` fail-closes when live size already equals `claimed_append_end`.
 A second apply must not reallocate from the new size and append again.
+Slack `1787638151.184599` measured three byte-identical 9,319,291-byte
+copies and live size `103831308164`. That unexpected size now
+refuse-closes through `host/titan_append_guard.py` without rewriting
+the packet or truncating the artifact. Card:
+[TITAN_APPEND_GUARD.md](./TITAN_APPEND_GUARD.md).
 
 Smash/wipe of `commons.mno` is refused. `--inject 0x01` is wipe.
 Address work uses dest FROM FILE. Do not remint

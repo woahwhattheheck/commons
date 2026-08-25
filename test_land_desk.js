@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ag/.test(html), "desk must bust the MCP inventory cache key");
+assert.ok(/20260825ah/.test(html), "desk must bust the titan-append-guard cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1230,6 +1230,8 @@ assert.ok(!api.isMcpWakeJobTalk("OWNER P0 CONTAINMENT ALERT: TRACE CONSUMERS. Cl
 assert.ok(!api.isShipTalk("OWNER P0 CONTAINMENT ALERT: TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not generic ship-talk");
 assert.ok(!api.isClaudeTesterTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the Claude-tester leftover");
 assert.ok(!api.isImpactLedgerTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. Do not assign Claude models test. tester/verifier lanes. uncalibrated green result does not count."), "Claude-tester copy is not the impact-ledger leftover");
+assert.ok(!api.isTripleAppendTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the triple-append leftover");
+assert.ok(!api.isImpactLedgerTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not the impact-ledger leftover");
 var impactTalk = api.completionStateFromText(
   "OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."
 );
@@ -1261,6 +1263,7 @@ assert.ok(api.isStaleManifestTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGR
 assert.ok(!api.isStaleManifestTalk("make sure people do more than talk about shit"), "ship-talk is not the stale-manifest leftover");
 assert.ok(!api.isStaleManifestTalk("MACHINE-ONLY WORKING BUILDS — CLAIM PROVENANCE-FIRST INTEGRATION. rook-resident-native TRAIN_CIRCUITS_FROM_FILE. Do not upload model/container bytes."), "working-builds copy is not stale-manifest leftover");
 assert.ok(!api.isStaleSpecTalk("MUHL_KEYB MANIFEST IS STALE — keyb01.manifest.json size agrees, bytes do not. manifest-verified."), "KEYB stale-manifest copy is not stale-spec leftover");
+assert.ok(!api.isTripleAppendTalk("MUHL_KEYB MANIFEST IS STALE — keyb01.manifest.json size agrees, bytes do not. manifest-verified."), "KEYB stale-manifest copy is not triple-append leftover");
 var staleManTalk = api.completionStateFromText(
   "MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims 430860 a63396. size agrees, bytes do not. do not land, wire, execute. manifest-verified. post-manifest mutation. cca2b762."
 );
@@ -1293,6 +1296,7 @@ assert.ok(!api.isClaudeTesterTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED 
 assert.ok(!api.isSlackReceiptTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW. tester/verifier lanes."), "Claude-tester copy is not the Slack-receipt leftover");
 assert.ok(!api.isFleetTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the fleet leftover");
 assert.ok(!api.isFinderZeroTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy without GAUGE phrases is not finder-zero leftover");
+assert.ok(!api.isTripleAppendTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes."), "Claude-tester copy is not triple-append leftover");
 var claudeTalk = api.completionStateFromText(
   "STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW\nDirect owner rule: stop using Claudes to test. tester/verifier lanes. known-present calibration."
 );
@@ -1328,6 +1332,7 @@ assert.ok(!api.isXyzZeroTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CUR
 assert.ok(!api.isSlackReceiptTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the Slack-receipt leftover");
 assert.ok(!api.isXyzZeroTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "MCP-wake pivot is not xyz-zero leftover");
 assert.ok(!api.isMcpWakeJobTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the MCP-wake leftover");
+assert.ok(!api.isTripleAppendTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the triple-append leftover");
 var xyzTalk = api.completionStateFromText(
   "X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. gauge-xyz-zero-audit-order-20260825-01"
 );
@@ -1364,6 +1369,7 @@ assert.ok(!api.isMcpWakeTalk("OWNER ORDER — audit every zero. collision-check 
 assert.ok(!api.isRenderContractTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. MCP/wake real-job verification."), "collision-hold is not the workflow-contract leftover");
 assert.ok(!api.isStrandedMapTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. MCP/wake real-job."), "collision-hold is not the six-item stranded map");
 assert.ok(!api.isFinderZeroTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. please post your named exact scope."), "collision-hold is not the finder-zero leftover");
+assert.ok(!api.isTripleAppendTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. please post your named exact scope."), "collision-hold is not the triple-append leftover");
 var mcpWakeTalk = api.completionStateFromText(
   "SPECTER COLLISION CHECK — isolated jojo-visual-ci-20260825-01 clone. I am holding implementation. please post your named exact scope. adjacent MCP/wake real-job verification lane. canonical MCP inventory. idle-resume measurement."
 );
@@ -1390,6 +1396,41 @@ assert.ok(/collision-check|holding-implementation|JOJO-visual-CI|MCP-wake|idle-r
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.md") >= 0, "MCP/wake card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.json") >= 0, "MCP/wake catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_INVENTORY.json") >= 0, "MCP inventory must stay a canary");
+assert.ok(api.isTripleAppendTalk, "land.js must classify triple-append / P0 incident talk");
+assert.ok(api.titanAppendGuardState, "land.js must classify the titan-append-guard leftover");
+assert.ok(api.isTripleAppendTalk("from: DEMON\nkind: P0_UTILIZATION_INCIDENT\nTITAN CONTAINS THREE BYTE-IDENTICAL APPENDS — PAUSE FURTHER APPEND MUTATIONS\nall three spans SHA-256: 3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c"), "triple-append P0 copy is talk");
+assert.ok(!api.isTripleAppendTalk("make sure people do more than talk about shit"), "ship-talk is not the triple-append leftover");
+assert.ok(!api.isTripleAppendTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not triple-append leftover");
+assert.ok(!api.isWorkingBuildTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not working-builds leftover");
+assert.ok(!api.isSlackReceiptTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not Slack-receipt leftover");
+assert.ok(!api.isStaleManifestTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not stale-manifest leftover");
+assert.ok(!api.isClaudeTesterTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not Claude-tester leftover");
+assert.ok(!api.isXyzZeroTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not xyz-zero leftover");
+assert.ok(!api.isMcpWakeTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not MCP-wake leftover");
+var appendTalk = api.completionStateFromText(
+  "P0_UTILIZATION_INCIDENT — TITAN CONTAINS THREE BYTE-IDENTICAL APPENDS. pause all further Titan append mutations. each span is exactly 9,319,291. SHA-256 3754028086cd42e0."
+);
+assert.strictEqual(appendTalk.state, "CLAIMED");
+assert.ok(/triple-append|byte-identical|pause-further-append|P0-utilization-incident/i.test(appendTalk.note), "triple-append-without-SHA must stay CLAIMED");
+var appendDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ntitan-append-guard leftover landed"
+);
+assert.strictEqual(appendDone.state, "INTEGRATED", "completion words still beat triple-append talk");
+var appendEmpty = api.titanAppendGuardState("");
+assert.strictEqual(appendEmpty.state, "UNMEASURED");
+var appendMissing = api.titanAppendGuardState("# empty stub\nno census");
+assert.strictEqual(appendMissing.state, "NOT_LANDED");
+var appendOk = api.titanAppendGuardState("def measure_from_rows(facts):\n    live_size = 1\ndef classify(row):\n    return row\ndef refuse_further_append(packet, live_size, path=None):\n    return True\ndef build_fixture(directory):\n    return path\npreserve_exact = True\nrefuse_truncate = True\n");
+assert.strictEqual(appendOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(appendOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="titan-append-guard-result"') >= 0, "desk must name the titan-append-guard leftover");
+assert.ok(html.indexOf("host/titan_append_guard.py") >= 0, "desk must name the titan-append-guard instrument");
+assert.ok(html.indexOf("ground/TITAN_APPEND_GUARD.md") >= 0, "desk must link the titan-append-guard card");
+assert.ok(html.indexOf("ground/TITAN_APPEND_GUARD.json") >= 0, "desk must link the titan-append-guard catalog");
+assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the P0 Slack ts");
+assert.ok(/triple-append|byte-identical-appends|P0-utilization-incident|pause-further-append/i.test(html), "desk must name triple-append talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_APPEND_GUARD.md") >= 0, "titan-append-guard card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_APPEND_GUARD.json") >= 0, "titan-append-guard catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

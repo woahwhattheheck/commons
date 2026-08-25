@@ -161,6 +161,8 @@
     "ground/IMPACT_LEDGER.json",
     "ground/XYZ_ZERO.md",
     "ground/XYZ_ZERO.json",
+    "ground/TITAN_APPEND_GUARD.md",
+    "ground/TITAN_APPEND_GUARD.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -470,6 +472,9 @@
     if (api.isFinderZeroTalk(t)) {
       return { state: "CLAIMED", note: "finder-zero / false-zero / collision-check / FINDER UNVERIFIED talk. Talk is not a land. A Slack-search zero is not clearance. Ship the leftover that prints the search space and never a silent 0." };
     }
+    if (api.isTripleAppendTalk(t)) {
+      return { state: "CLAIMED", note: "triple-append / byte-identical-appends / P0-utilization-incident / pause-further-append talk. Talk is not a land. Freeze the three spans, ship the fixture guard, and do not truncate the 103831308164-byte artifact." };
+    }
     if (api.isImpactLedgerTalk(t)) {
       return { state: "CLAIMED", note: "P0 containment / TRACE CONSUMERS / Claude-cannot-certify talk. Talk is not a land. Ship the impact-ledger leftover. A Claude zero is QUARANTINED. Miss is FINDER-FAILED, never 0." };
     }
@@ -668,6 +673,32 @@
       };
     }
     return { state: "NOT_LANDED", note: "host/impact_ledger.py missing the consumer-trace leftover. P0 containment talk is CLAIMED." };
+  };
+
+  api.isTripleAppendTalk = function (text) {
+    return /p0_utilization_incident|three byte-identical appends|byte-identical appends|pause further append|3754028086cd42e0|each span is exactly 9,?319,?291|two duplicate copies beyond the first|pause all further titan append/i.test(String(text || ""));
+  };
+
+  api.titanAppendGuardState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/titan_append_guard.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasRefuse = /def refuse_further_append/.test(body);
+    var hasFixture = /def build_fixture/.test(body);
+    var preserve = /preserve_exact/.test(body) && /refuse_truncate/.test(body);
+    if (hasMeasure && hasClassify && hasRefuse && hasFixture && preserve) {
+      return {
+        state: "INTEGRATED",
+        note: "titan-append-guard leftover is on this file. Three spans frozen. Fixture refuse-closes further --go. apply:false. Do not truncate/dedupe/overwrite. titan NOT_WRITTEN. A Slack P0 is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/titan_append_guard.py missing the fixture refuse-close. Triple-append / pause-further-append talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.workingBuildState = function (text) {
@@ -1720,6 +1751,7 @@
   var claudeTesterOut = document.getElementById("claude-tester-result");
   var impactLedgerOut = document.getElementById("impact-ledger-result");
   var xyzOut = document.getElementById("xyz-zero-result");
+  var appendGuardOut = document.getElementById("titan-append-guard-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2241,6 +2273,12 @@
     xyzOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintTitanAppendGuard(result) {
+    if (!appendGuardOut) return;
+    appendGuardOut.setAttribute("data-tone", api.toneFor(result.state));
+    appendGuardOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2701,6 +2739,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStaleManifest(err);
+      return err;
+    });
+  }
+
+  function loadTitanAppendGuard(sha) {
+    if (!appendGuardOut) return Promise.resolve(null);
+    appendGuardOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/titan_append_guard.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/titan_append_guard.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/titan_append_guard.py absent at the measured main SHA. Triple-append / pause-further-append talk is CLAIMED." };
+        paintTitanAppendGuard(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTitanAppendGuard(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.titanAppendGuardState(body);
+        paintTitanAppendGuard(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTitanAppendGuard(err);
       return err;
     });
   }
@@ -3252,6 +3317,7 @@
     loadClaudeTester(sha);
     loadImpactLedger(sha);
     loadXyzZero(sha);
+    loadTitanAppendGuard(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
