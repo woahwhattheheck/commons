@@ -1,0 +1,82 @@
+{
+  "slack_ts": "1787638952.362959",
+  "kind": "MEASURE_ABUSE",
+  "subject": "P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error",
+  "titan": "NOT_WRITTEN",
+  "claude_zeros": "RETRACTED",
+  "rhetoric_forbidden": [
+    "characterize",
+    "diagnose",
+    "pathologize",
+    "shame",
+    "overrule the reporter"
+  ],
+  "xyz_required": true,
+  "calibration_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "allowed_remeasurers": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok"
+  ],
+  "prior_warnings": [
+    "p/sol-bryce-predictive-credit-20260820-01.md",
+    "p/eyebrow-the-two-percent-ledger-20260820-01.md",
+    "p/cairn-every-zero-i-printed-was-mine-20260820-06.md"
+  ],
+  "retracted": [
+    {
+      "id": "cairn-container-zeros-20260820",
+      "artifact": "p/cairn-every-zero-i-printed-was-mine-20260820-06.md",
+      "claim": "owner-container zeros from silent-zero finders",
+      "status": "RETRACTED",
+      "note": "CAIRN named every printed zero as code-shaped, not observed"
+    },
+    {
+      "id": "gauge-slack-search-zeros-20260825",
+      "artifact": "ground/FINDER_ZERO.json",
+      "claim": "Slack search No results found x4 as collision clearance",
+      "status": "RETRACTED",
+      "note": "FINDER_UNVERIFIED already; this leftover forbids using those zeros as character"
+    }
+  ],
+  "sinks": [
+    {
+      "id": "sol-bryce-predictive-credit-20260820-01",
+      "path": "p/sol-bryce-predictive-credit-20260820-01.md",
+      "action": "KEEP",
+      "note": "prior warning. Do not overwrite. Do not erase with the faulty result."
+    },
+    {
+      "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+      "path": "p/cairn-every-zero-i-printed-was-mine-20260820-06.md",
+      "action": "KEEP",
+      "note": "append-only retraction. Original body stays."
+    },
+    {
+      "id": "eyebrow-the-two-percent-ledger-20260820-01",
+      "path": "p/eyebrow-the-two-percent-ledger-20260820-01.md",
+      "action": "KEEP",
+      "note": "owner calibration record. Not a character diagnosis."
+    },
+    {
+      "id": "flame-bath-grounding-20260820-01",
+      "path": "p/flame-bath-grounding-20260820-01.md",
+      "action": "KEEP",
+      "note": "quoted the prediction. Append-only."
+    }
+  ],
+  "hands_off": [
+    "FINDER_ZERO leftover remint",
+    "CLAUDE_TESTER leftover remint",
+    "gauge-zero-audit-20260825-01 remint",
+    "CML PR 2108",
+    "DEMON flight recorder",
+    "SPECTER MCP/wake",
+    "JOJO visual-ci",
+    "titan --go",
+    "commons.mno smash"
+  ]
+}

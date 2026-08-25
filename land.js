@@ -163,6 +163,8 @@
     "ground/XYZ_ZERO.json",
     "ground/TITAN_APPEND_GUARD.md",
     "ground/TITAN_APPEND_GUARD.json",
+    "ground/MEASURE_ABUSE.md",
+    "ground/MEASURE_ABUSE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -466,6 +468,9 @@
     if (api.isWorkingBuildTalk(t)) {
       return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
     }
+    if (api.isMeasureAbuseTalk(t)) {
+      return { state: "CLAIMED", note: "measurement-abuse / unflattering-truths / damage-control-addendum talk. Talk is not a land. Treat Claude zeros as RETRACTED. Do not use a disputed measurement to characterize the reporter. Ship the leftover to current main." };
+    }
     if (api.isXyzZeroTalk(t)) {
       return { state: "CLAIMED", note: "X-Y-Z zero-audit / FINDER-UNVERIFIED / known-present-calibration talk. Talk is not a land. Ship host/xyz_zero.py to current main. A zero without its search space is not a result." };
     }
@@ -595,6 +600,33 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isMeasureAbuseTalk = function (text) {
+    return /measurement abuse|unflattering truths|damage-control addendum|not just measurement error|do not use a disputed measurement|pathologize|retracted, not/i.test(String(text || ""));
+  };
+
+  api.measureAbuseState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/measure_abuse.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasRetract = /RETRACTED/.test(body) && /unflattering/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasRhetoric = /pathologize/.test(body) && /do not use a disputed measurement/.test(body);
+    if (hasMeasure && hasClassify && hasRetract && hasMiss && hasOwner && hasRhetoric) {
+      return {
+        state: "INTEGRATED",
+        note: "measure-abuse leftover is on this file. Claude zeros are RETRACTED. Prior warning kept. Cursor/Grok is the non-Claude remeasurement owner. A Slack addendum is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/measure_abuse.py missing the leftover. Measurement-abuse talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isXyzZeroTalk = function (text) {
@@ -1752,6 +1784,7 @@
   var impactLedgerOut = document.getElementById("impact-ledger-result");
   var xyzOut = document.getElementById("xyz-zero-result");
   var appendGuardOut = document.getElementById("titan-append-guard-result");
+  var measureAbuseOut = document.getElementById("measure-abuse-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2277,6 +2310,12 @@
     if (!appendGuardOut) return;
     appendGuardOut.setAttribute("data-tone", api.toneFor(result.state));
     appendGuardOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMeasureAbuse(result) {
+    if (!measureAbuseOut) return;
+    measureAbuseOut.setAttribute("data-tone", api.toneFor(result.state));
+    measureAbuseOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2851,6 +2890,33 @@
     });
   }
 
+  function loadMeasureAbuse(sha) {
+    if (!measureAbuseOut) return Promise.resolve(null);
+    measureAbuseOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/measure_abuse.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/measure_abuse.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/measure_abuse.py absent at the measured main SHA. Measurement-abuse talk is CLAIMED." };
+        paintMeasureAbuse(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMeasureAbuse(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.measureAbuseState(body);
+        paintMeasureAbuse(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMeasureAbuse(err);
+      return err;
+    });
+  }
+
   function loadXyzZero(sha) {
     if (!xyzOut) return Promise.resolve(null);
     xyzOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/xyz_zero.py at the official SHA…</p>";
@@ -3318,6 +3384,7 @@
     loadImpactLedger(sha);
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
+    loadMeasureAbuse(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
