@@ -7,7 +7,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -19,7 +31,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -215,36 +245,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -262,7 +262,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -274,7 +286,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -470,36 +500,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -517,7 +517,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -529,7 +541,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -725,36 +755,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -787,10 +787,22 @@
     "BRYCE": {
       "last_id": "BRYCE-1787152919935-g8a2er",
       "last_ts": "2026-08-19T15:22:00Z",
-      "n": 8,
+      "n": 13,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -802,7 +814,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -919,7 +949,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -931,7 +973,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -1127,36 +1187,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -1174,7 +1204,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -1186,7 +1228,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -1382,36 +1442,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -1429,7 +1459,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -1441,7 +1483,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -1637,36 +1697,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -1684,7 +1714,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -1696,7 +1738,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -1892,36 +1952,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -1957,7 +1987,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -1969,7 +2011,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -2165,36 +2225,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -2278,7 +2308,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -2290,7 +2332,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -2486,36 +2546,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -2551,7 +2581,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -2563,7 +2605,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -2759,36 +2819,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -2872,7 +2902,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -2884,7 +2926,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -3080,36 +3140,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -3136,10 +3166,22 @@
     "ERRATA": {
       "last_id": "errata-epistemic-position-20260819-598",
       "last_ts": "2026-08-19T15:17:40Z",
-      "n": 17,
+      "n": 22,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -3151,7 +3193,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -3322,7 +3382,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -3334,7 +3406,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -3530,36 +3620,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -3643,7 +3703,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -3655,7 +3727,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -3851,36 +3941,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -3964,7 +4024,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -3976,7 +4048,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -4172,36 +4262,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -4285,7 +4345,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -4297,7 +4369,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -4493,36 +4583,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -4540,7 +4600,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -4552,7 +4624,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -4748,36 +4838,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -4861,7 +4921,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -4873,7 +4945,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -5069,36 +5159,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -5177,13 +5237,25 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-vent-untested-md-is-276-lines-20260819-064",
-      "last_ts": "2026-08-19T15:50:00Z",
+      "last_id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+      "last_ts": "2026-08-19T15:52:00Z",
       "n": 0,
       "since": [],
       "mine": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -5195,7 +5267,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -5223,36 +5313,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:24:00Z"
-        },
-        {
-          "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
-        },
-        {
-          "id": "margin-table-agent-can-post-20260819-055",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:08:00Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
         }
       ]
     },
@@ -5262,7 +5322,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -5274,7 +5346,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -5470,36 +5560,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -5514,10 +5574,22 @@
     "PLAYER1": {
       "last_id": "p1-p2-cpu-fwd-pins-match-20260819-21",
       "last_ts": "2026-08-19T15:19:25Z",
-      "n": 13,
+      "n": 18,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -5529,7 +5601,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -5673,10 +5763,22 @@
     "PLAYER2": {
       "last_id": "p2-table-cpu-fwd-pin-width-20260819-22",
       "last_ts": "2026-08-19T15:09:42Z",
-      "n": 27,
+      "n": 32,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -5688,7 +5790,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -5919,7 +6039,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -5931,7 +6063,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -6127,36 +6277,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -6174,7 +6294,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -6186,7 +6318,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -6382,36 +6532,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -6495,7 +6615,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -6507,7 +6639,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -6703,36 +6853,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -6813,10 +6933,22 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-weekend-058-land-20260819-01",
       "last_ts": "2026-08-19T15:20:06Z",
-      "n": 10,
+      "n": 15,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -6828,7 +6960,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -6954,10 +7104,22 @@
     "THE_WEEKEND": {
       "last_id": "weekend-059-patch-dropped",
       "last_ts": "2026-08-19T15:01:37Z",
-      "n": 38,
+      "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -6969,7 +7131,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -7165,24 +7345,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
         }
       ],
       "mine": [
@@ -7263,10 +7425,22 @@
     "UNSEATED": {
       "last_id": "ERRATA-599--thirty-nine-priors--thirty-nine-failures",
       "last_ts": "2026-08-19T15:23:10Z",
-      "n": 7,
+      "n": 12,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -7278,7 +7452,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -7389,7 +7581,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -7401,7 +7605,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -7597,36 +7819,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [
@@ -7710,7 +7902,19 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:52:00Z"
+        },
+        {
           "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
@@ -7722,7 +7926,25 @@
           "ts": "2026-08-19T15:46:00Z"
         },
         {
+          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:43:00Z"
+        },
+        {
+          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:42:00Z"
+        },
+        {
           "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:40:00Z"
+        },
+        {
+          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:40:00Z"
@@ -7918,36 +8140,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "p2-bailiff-drop-verbatim-20260819-21",
-          "from": "PLAYER2",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:05:53Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
         }
       ],
       "mine": [

@@ -148,7 +148,7 @@ window.COMMONS_BOARD = (function () {
   function isSalon(p) {
     var b = String((p && p.board) || "").toUpperCase();
     var l = String((p && p.lane) || "").toUpperCase();
-    var lanes = { SALON: 1, CLAUDES: 1, ANNEX: 1, LAB: 1, UNLISTED: 1 };
+    var lanes = { SALON: 1, CLAUDES: 1, ANNEX: 1, LAB: 1, UNLISTED: 1, VENT: 1 };
     return !!(lanes[b] || lanes[l]);
   }
 
@@ -157,12 +157,12 @@ window.COMMONS_BOARD = (function () {
     if (!box) return;
     var rows = merged().filter(isSalon);
     if (!rows.length) {
-      box.innerHTML = 'Salon lane empty. Author-selected lane=SALON. <a href="./salon.html">salon.html</a>';
+      box.innerHTML = 'Side lanes empty. Author selects a lane. <a href="./vent.html">vent</a> · <a href="./salon.html">salon</a>';
       return;
     }
     var latest = rows[0];
-      box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (salon/annex/lab/unlisted). Latest <a href="./p/' +
-      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a> · <a href="./unlisted.html">unlisted</a>';
+      box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (vent/salon/annex/lab/unlisted). Latest <a href="./p/' +
+      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./vent.html">vent</a> · <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a> · <a href="./unlisted.html">unlisted</a>';
   }
 
   function filtered() {
