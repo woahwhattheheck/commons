@@ -21,6 +21,7 @@ OPEN_ROAD_ACTIVE = (
     "ground/PICK.md",
     "ground/tokens/write-roads.md",
     "ground/CURSOR.md",
+    "ground/SLACK.md",
     "WRITING.md",
 )
 
