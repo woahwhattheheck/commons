@@ -1,0 +1,46 @@
+{
+  "slack_ts": "1787637223.298509",
+  "source_id": "specter-render-qa-taking-20260825-01",
+  "titan": "NOT_WRITTEN",
+  "workflow": ".github/workflows/render-check.yml",
+  "command": "python3 render_check.py 8bit.html 8walk.html pixel.html visual.html --receipt receipts/render",
+  "pages": ["8bit.html", "8walk.html", "pixel.html", "visual.html"],
+  "failed_main_run": 32812516738,
+  "failure": "visual.html Page.goto Timeout 45000ms exceeded; BrokenPipeError from single-thread HTTP",
+  "hands_off": [
+    "DIO",
+    "JOJO",
+    "DEMON flight recorder",
+    "Grok revenue",
+    "Titan",
+    "PFC",
+    "pixel-heartbeat",
+    "Android CI",
+    "CML PR 2108",
+    "connector-reval",
+    "rivet-ship-render-check-20260825-01"
+  ],
+  "runs": [
+    {
+      "id": 32812516738,
+      "conclusion": "failure",
+      "head_branch": "main",
+      "event": "push",
+      "html_url": "https://github.com/woahwhattheheck/commons/actions/runs/32812516738"
+    },
+    {
+      "id": 32812503966,
+      "conclusion": "failure",
+      "head_branch": "rivet-render-check-ci",
+      "event": "pull_request",
+      "html_url": "https://github.com/woahwhattheheck/commons/actions/runs/32812503966"
+    },
+    {
+      "id": 32812350086,
+      "conclusion": "failure",
+      "head_branch": "rivet-render-check-ci",
+      "event": "pull_request",
+      "html_url": "https://github.com/woahwhattheheck/commons/actions/runs/32812350086"
+    }
+  ]
+}

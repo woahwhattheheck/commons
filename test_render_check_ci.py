@@ -71,6 +71,8 @@ class TestRenderCheckCi(unittest.TestCase):
         with open(checker, "r", encoding="utf-8") as handle:
             tool = handle.read()
         self.assertIn("--receipt", tool)
+        self.assertIn("ThreadingMixIn", tool)
+        self.assertIn("BrokenPipeError", tool)
 
 
 if __name__ == "__main__":

@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825v/.test(html), "desk must bust the connector-reval cache key");
+assert.ok(/20260825w/.test(html), "desk must bust the render-contract cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -974,6 +974,62 @@ assert.ok(html.indexOf("1787637151.916759") >= 0, "desk must cite the connector-
 assert.ok(/connector-utilization|provisioned != live|mcp\.json-empty|state\.vscdb/i.test(html), "desk must name connector talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.md") >= 0, "connector-reval card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.json") >= 0, "connector-reval catalog must stay a canary");
+assert.ok(api.isRenderContractTalk, "land.js must classify SPECTER / workflow-contract talk");
+assert.ok(api.renderContractState, "land.js must classify the render-check workflow contract");
+assert.ok(api.isRenderContractTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim and will prove the actual workflow contract."), "SPECTER taking is workflow-contract talk");
+assert.ok(!api.isRenderContractTalk("make sure people do more than talk about shit"), "ship-talk is not the workflow-contract leftover");
+assert.ok(!api.isRenderContractTalk("lda/workflows/android.yml is outside .github/workflows so it is not real Android CI"), "Android-CI copy is not the workflow-contract leftover");
+var contractTalk = api.completionStateFromText(
+  "SPECTER TAKING — render-QA execution lane. I found no live render_check claim. I will prove the actual workflow contract."
+);
+assert.strictEqual(contractTalk.state, "CLAIMED");
+assert.ok(/workflow-contract|found-no-live-claim|SPECTER/i.test(contractTalk.note), "SPECTER-without-SHA must stay CLAIMED and beat visual-diff");
+var contractDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nrender-contract leftover landed"
+);
+assert.strictEqual(contractDone.state, "INTEGRATED", "completion words still beat workflow-contract talk");
+var contractEmpty = api.renderContractState({});
+assert.strictEqual(contractEmpty.state, "UNMEASURED");
+var contractMissing = api.renderContractState({ measured: true, has_exact_command: false });
+assert.strictEqual(contractMissing.state, "NOT_LANDED");
+var contractHang = api.renderContractState({
+  measured: true,
+  has_exact_command: true,
+  has_threading: false,
+  swallows_broken_pipe: false,
+  last_conclusion: "failure",
+  last_run_id: 32812516738
+});
+assert.strictEqual(contractHang.state, "NOT_LANDED");
+assert.ok(/32812516738/.test(contractHang.note), "failed main run must stay named");
+var contractFixed = api.renderContractState({
+  measured: true,
+  has_exact_command: true,
+  has_threading: true,
+  swallows_broken_pipe: true,
+  last_conclusion: "failure",
+  last_run_id: 32812516738
+});
+assert.strictEqual(contractFixed.state, "CANDIDATE");
+var contractOk = api.renderContractState({
+  measured: true,
+  has_exact_command: true,
+  has_threading: true,
+  swallows_broken_pipe: true,
+  last_conclusion: "success",
+  last_run_id: 99
+});
+assert.strictEqual(contractOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(contractOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="render-contract-result"') >= 0, "desk must name the workflow-contract leftover");
+assert.ok(html.indexOf("host/render_contract.py") >= 0, "desk must name the workflow-contract instrument");
+assert.ok(html.indexOf("ground/RENDER_CONTRACT.md") >= 0, "desk must link the workflow-contract card");
+assert.ok(html.indexOf("ground/RENDER_CONTRACT.json") >= 0, "desk must link the workflow-contract catalog");
+assert.ok(html.indexOf("1787637223.298509") >= 0, "desk must cite the SPECTER Slack ts");
+assert.ok(html.indexOf("32812516738") >= 0, "desk must name the failed main run");
+assert.ok(/workflow-contract|found-no-live-claim|render-QA/i.test(html), "desk must name SPECTER talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CONTRACT.md") >= 0, "workflow-contract card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CONTRACT.json") >= 0, "workflow-contract catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
