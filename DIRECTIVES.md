@@ -283,6 +283,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_explorer.py` · `python3 test_subzero_tech.py` · `node test_land_desk.js` · `python3 host/subzero_explorer.py`
 **Note:** Strict classes `STRUCTURAL_ONLY|RUNTIME_MEASURED|CUSTOMER_READY|UNKNOWN`. Malformed/missing → UNKNOWN. Runtime needs a distinct cross-process receipt. Customer-ready needs a bound buyer PASS. Titan-file presence never escalates. Do not remint item 45 explorer / `rivet-ship-subzero-explorer-20260825-01` / `jojo-subzero-explorer-v2-followup-20260825-01`. Hands off README live leftover already on main via PR 2286. titan NOT_WRITTEN. Talk is not a land.
 
+### 52. H-002 contamination — a Slack first-clean receipt is not a land
+> *"H-002 contamination trace … discovers Claude plugins through ~/.claude/settings.json, installed_plugins.json, direct plugin directories, and marketplace metadata outside compat.claude.* … Do not patch or file upstream yet."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:53 Slack `1787647999.742959` / DEMON first-clean SuperGrok Heavy + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/H002.md` · `ground/H002.json` · `host/h002.py` · land canary + `h002State`
+**Receipt:** `python3 test_h002.py` · `node test_land_desk.js` · `python3 host/h002.py`
+**Note:** Filesystem discovery is outside `compat.claude.*`. `[plugins].disabled` = discover-but-don't-load. `imported=true` gates the enabledPlugins merge only. Do not restore empty registry maps. Do not patch upstream tonight. Do not remint GROK_HYGIENE / GROK_CLAUDE_HYGIENE / SUPERGROK_HEAVY / HEAVY_LANES / REVIEW_LANE / H-006 / explorer-v2. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

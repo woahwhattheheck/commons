@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bt/.test(html), "desk must share the current-main/Titan cache key after explorer-v2 leftover");
+assert.ok(/20260825bu/.test(html), "desk must share the current-main/Titan cache key after H-002 leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,41 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isH002Talk, "land.js must classify H-002 leftover talk");
+assert.ok(api.h002State, "land.js must classify the H-002 leftover");
+assert.ok(api.isH002Talk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace: 32 Grok 4.6 Build calls\nMEASURED source finding: ~/.claude/plugins/installed_plugins.json\n[plugins].disabled means discover-but-don't-load\nDo not patch or file upstream yet.\n1787647999.742959"), "DEMON first-clean H-002 is leftover talk");
+assert.ok(!api.isH002Talk("make sure people do more than talk about shit"), "generic ship-talk is not the H-002 leftover");
+assert.ok(!api.isH002Talk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-006 Muhlnickel training bridge"), "H-006 training bridge is not the H-002 leftover");
+assert.ok(!api.isH002Talk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nshared weekly pool. Do not use Cursor Grok as the substitute. 1787645797.029719"), "SuperGrok Heavy sprint is not the H-002 leftover");
+assert.ok(!api.isH002Talk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the H-002 leftover");
+assert.ok(!api.isH002Talk("DEMON — CLEAN SUPERGROK HEAVY LANES LIVE\nH-001-ARCHITECT measured Commons build consumer graph\nH-002-CONTAMINATION official xai-org/grok-build\n1787646811.754939"), "Heavy lanes packet name is not the H-002 leftover");
+assert.ok(!api.isHeavyLanesTalk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace\n1787647999.742959"), "H-002 first-clean is not the Heavy lanes leftover");
+assert.ok(!api.isMuhlTrainBridgeTalk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed. H-002 contamination trace. 1787647999.742959"), "H-002 first-clean is not the training-bridge leftover");
+assert.ok(!api.isReviewLaneTalk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed. H-002 contamination trace. 1787647999.742959"), "H-002 first-clean is not the review-lane leftover");
+var h002Talk = api.completionStateFromText(
+  "DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace\nfilesystem discovery outside compat.claude\n1787647999.742959"
+);
+assert.strictEqual(h002Talk.state, "CLAIMED");
+assert.ok(/H-002|filesystem-discovery|discover-but-don't-load|first-clean/i.test(h002Talk.note), "H-002-without-SHA must stay CLAIMED and beat SuperGrok Heavy / hygiene / ship-talk");
+var h002Done = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nH-002 leftover landed"
+);
+assert.strictEqual(h002Done.state, "INTEGRATED", "completion words still beat H-002 talk");
+var h002Empty = api.h002State("");
+assert.strictEqual(h002Empty.state, "UNMEASURED");
+var h002Missing = api.h002State("# empty stub\nno leftover");
+assert.strictEqual(h002Missing.state, "NOT_LANDED");
+var h002Ok = api.h002State("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef classify_discovery(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nH-002\ndiscover-but-don't-load\nimported=true\ndoes not gate\nDo not restore\nDo not patch\nno auth\nno gate\n");
+assert.strictEqual(h002Ok.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(h002Ok.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="h002-result"') >= 0, "desk must name the H-002 leftover");
+assert.ok(html.indexOf("host/h002.py") >= 0, "desk must name the H-002 instrument");
+assert.ok(html.indexOf("ground/H002.md") >= 0, "desk must link the H-002 card");
+assert.ok(html.indexOf("ground/H002.json") >= 0, "desk must link the H-002 catalog");
+assert.ok(html.indexOf("1787647999.742959") >= 0, "desk must cite the DEMON first-clean Slack ts");
+assert.ok(/H-002|filesystem discovery|discover-but-don't-load/i.test(html), "desk must name H-002 talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/H002.md") >= 0, "H-002 card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/H002.json") >= 0, "H-002 catalog must stay a canary");
 assert.ok(api.isReviewLaneTalk, "land.js must classify review-lane leftover talk");
 assert.ok(api.reviewLaneState, "land.js must classify the review-lane leftover");
 assert.ok(api.isReviewLaneTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. GitHub Actions run 32827964418, job 97740082275: SUCCESS, existing request 9/9 + new receipt 16/16. 1787647408.984179"), "JOJO review-lane SHIPPED is leftover talk");

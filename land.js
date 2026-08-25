@@ -226,6 +226,8 @@
     "ground/MUHL_TRAIN_BRIDGE.md",
     "ground/MUHL_TRAIN_BRIDGE.json",
     "muhl-train.html",
+    "ground/H002.md",
+    "ground/H002.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -456,6 +458,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isH002Talk(t)) {
+      return { state: "CLAIMED", note: "DEMON first-clean SuperGrok Heavy / H-002 contamination / filesystem-discovery / discover-but-don't-load talk. Talk is not a land. Ship the source-finding leftover to current main. imported=true does not gate filesystem discovery. Do not restore registry maps. Do not patch upstream tonight. Do not remint GROK_HYGIENE, GROK_CLAUDE_HYGIENE, SUPERGROK_HEAVY, HEAVY_LANES, or H-006." };
     }
     if (api.isHeavyLanesTalk(t)) {
       return { state: "CLAIMED", note: "CLEAN SUPERGROK HEAVY LANES LIVE / H-001-ARCHITECT / H-002-CONTAMINATION talk. Talk is not a land. Ship the non-Grok verification/implementation consumer. Do not remint SUPERGROK_HEAVY or duplicate the Heavy packets. Packet outputs stay CANDIDATE." };
@@ -911,6 +916,38 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isH002Talk = function (text) {
+    return /1787647999\.742959|first clean SuperGrok Heavy|discover-but-don't-load|installed_plugins\.json|contamination trace|do not patch or file upstream/i.test(String(text || ""));
+  };
+
+  api.h002State = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/h002.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasDiscovery = /def classify_discovery/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesH002 = /H-002/.test(body);
+    var namesDisabled = /discover-but-don't-load/.test(body);
+    var namesMerge = /imported=true/.test(body) && /does not gate/.test(body);
+    var noRestore = /Do not restore/.test(body) || /do not restore/.test(body);
+    var noPatch = /Do not patch/.test(body) || /do not patch/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasDiscovery && hasMiss && neverZero && namesH002 && namesDisabled && namesMerge && noRestore && noPatch && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "H-002 leftover is on this file. Filesystem discovery is outside compat.claude.*. A Slack first-clean SuperGrok Heavy receipt is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/h002.py missing the leftover. DEMON first-clean / H-002 / filesystem-discovery talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3318,6 +3355,7 @@
   var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
   var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
   var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
@@ -4006,6 +4044,12 @@
     if (!reviewLaneOut) return;
     reviewLaneOut.setAttribute("data-tone", api.toneFor(result.state));
     reviewLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintH002(result) {
+    if (!h002Out) return;
+    h002Out.setAttribute("data-tone", api.toneFor(result.state));
+    h002Out.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintMuhlTrainBridge(result) {
@@ -4924,6 +4968,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintReviewLane(err);
+      return err;
+    });
+  }
+
+  function loadH002(sha) {
+    if (!h002Out) return Promise.resolve(null);
+    h002Out.innerHTML = "<b>UNMEASURED</b><p>Reading host/h002.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/h002.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/h002.py absent at the measured main SHA. DEMON first-clean / H-002 / filesystem-discovery talk is CLAIMED." };
+        paintH002(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintH002(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.h002State(body);
+        paintH002(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintH002(err);
       return err;
     });
   }
@@ -6165,6 +6236,7 @@
     loadSubzeroTech(sha);
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
+    loadH002(sha);
     loadHeavyLanes(sha);
     loadMuhlTrainBridge(sha);
     loadLdaReceipt(sha);
