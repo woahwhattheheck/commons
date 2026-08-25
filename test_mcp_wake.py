@@ -131,6 +131,50 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(verified["wake"], "VERIFIED")
         self.assertEqual(classify(verified)["state"], "INTEGRATED")
 
+    def test_wake_jobs_verify_only_when_every_canonical_job_is_done(self):
+        base = {
+            "surfaces": list(SURFACES),
+            "inventory": True,
+            "job_tools": True,
+            "wake_job_json": 2,
+            "job": {"ok": True, "invoke_model": False, "wrote_wake_jobs": False},
+            "idle": {"state": "UNMEASURED"},
+        }
+        verified = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "DONE"},
+                    {"job_id": PRODUCTION_CANARY_ID, "status": "DONE"},
+                ],
+            )
+        )
+        self.assertEqual(verified["wake"], "VERIFIED")
+        mixed = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "OPEN"},
+                    {"job_id": PRODUCTION_CANARY_ID, "status": "DONE"},
+                ],
+            )
+        )
+        self.assertEqual(mixed["wake"], "CANDIDATE")
+        invalid = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "DONE"},
+                    {"job_id": PRODUCTION_CANARY_ID, "status": "INVALID"},
+                ],
+            )
+        )
+        self.assertEqual(invalid["wake"], "CANDIDATE")
+        mismatched = measure_from_rows(
+            dict(base, wake_jobs=[{"job_id": PRODUCTION_CANARY_ID, "status": "DONE"}])
+        )
+        self.assertEqual(mismatched["wake"], "CANDIDATE")
+
     def test_tick_receipt_is_not_counted_as_a_job(self):
         with tempfile.TemporaryDirectory() as root:
             folder = os.path.join(root, "wake_jobs")
@@ -195,6 +239,31 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertFalse(catalog["job"]["wrote_wake_jobs"])
         self.assertFalse(catalog["idle"]["live_resume"])
+        with open(os.path.join(ROOT, "ground", "MCP_WAKE.json"), encoding="utf-8") as handle:
+            wake_catalog = json.load(handle)
+        specter = next(
+            item
+            for item in wake_catalog["production_canaries"]
+            if item["job_id"] == PRODUCTION_CANARY_ID
+        )
+        self.assertEqual(specter["source_state"], "DONE")
+        self.assertEqual(
+            specter["terminal_commit"],
+            "a1a496bd1fb6aedc866817cc7a951173ed22e180",
+        )
+        self.assertEqual(specter["receipt_event"], "auto_complete")
+        self.assertEqual(specter["wake_count"], 0)
+        self.assertEqual(specter["delivery_count"], 0)
+        self.assertEqual(specter["process_model_invocations"], 0)
+        self.assertNotIn("expected_wake_count", specter)
+        with open(
+            os.path.join(ROOT, "ground", "MCP_INVENTORY.json"), encoding="utf-8"
+        ) as handle:
+            inventory = json.load(handle)
+        note = inventory["wake"]["note"]
+        self.assertIn("a1a496bd1fb6aedc866817cc7a951173ed22e180", note)
+        self.assertNotIn("OPEN in source", note)
+        self.assertIn("UNMEASURED", note)
 
 
 if __name__ == "__main__":

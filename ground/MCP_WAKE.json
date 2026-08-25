@@ -31,12 +31,14 @@
       "job_id": "specter-watchdog-head-proof-20260825-01",
       "result_address": "ridge-cursor-wake-loop-20260822-01",
       "source_state": "DONE",
+      "terminal_commit": "a1a496bd1fb6aedc866817cc7a951173ed22e180",
+      "receipt_event": "auto_complete",
       "auto_complete": true,
       "woke_once": false,
       "attempt_count": 0,
-      "expected_wake_count": 0,
-      "expected_delivery_count": 0,
-      "expected_process_model_invocations": 0
+      "wake_count": 0,
+      "delivery_count": 0,
+      "process_model_invocations": 0
     }
   ],
   "idle": {

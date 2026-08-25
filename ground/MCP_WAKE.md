@@ -31,9 +31,11 @@ Instrument: `host/mcp_wake.py`. Stdlib + in-repo JobStore /
 `ground/MCP_WAKE.json`. The named
 `rivet-watchdog-canary-20260825-01` current-main canary is DONE. The
 separately claimed `specter-watchdog-head-proof-20260825-01`
-production canary is DONE (`auto_complete`, `woke_once=false`).
-Named idle-session resume stays UNMEASURED. Neither mutates
-`~/.grok`. titan: **NOT_WRITTEN**.
+production canary is DONE. SPECTER terminal receipt is commit
+`a1a496bd1fb6aedc866817cc7a951173ed22e180` (`auto_complete`,
+`woke_once=false`, wake/delivery/process-model zeroes). Named
+idle-session resume stays UNMEASURED. Neither mutates `~/.grok`.
+titan: **NOT_WRITTEN**.
 
 ```bash
 python3 host/mcp_wake.py
@@ -49,9 +51,10 @@ States:
   stays UNMEASURED, Grok smoke named (UNMEASURED if no `~/.grok`)
 - **FRAGMENTED** — surfaces exist, inventory missing
 - **EMPTY** — `wake_jobs/` has no `{id}.json`
-- **CANDIDATE** — a bounded production canary exists and is not DONE
-- **VERIFIED** — the named bounded production canary is DONE; this
-  still does not claim named idle-session resume
+- **CANDIDATE** — a canonical wake_jobs row is OPEN/INVALID, or the
+  single-snapshot count does not match the row list
+- **VERIFIED** — every canonical wake_jobs row in one snapshot is
+  DONE; this still does not claim named idle-session resume
 - **UNMEASURED** — census not read, or Grok/idle-resume honestly
   not exercised. Absence is not stillness
 - **NOT_LANDED** — leftover incomplete, or the probe invented a

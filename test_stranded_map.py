@@ -64,9 +64,13 @@ class TestStrandedMap(unittest.TestCase):
                 "wake_job_json": 2,
                 "wake_jobs": [
                     {
+                        "job_id": "rivet-watchdog-canary-20260825-01",
+                        "status": "DONE",
+                    },
+                    {
                         "job_id": "specter-watchdog-head-proof-20260825-01",
                         "status": "DONE",
-                    }
+                    },
                 ],
                 "mcp_surfaces": [
                     "commons_mcp.py",
@@ -85,6 +89,64 @@ class TestStrandedMap(unittest.TestCase):
         )
         self.assertEqual(measured["wake"], "VERIFIED")
         self.assertEqual(classify(measured)["state"], "INTEGRATED")
+
+    def test_wake_jobs_verify_only_when_every_canonical_job_is_done(self):
+        base = {
+            "wake_job_json": 2,
+            "titan_packet_size": PACKET_SIZE,
+            "titan_later_size": LATER_SIZE,
+        }
+        verified = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "DONE"},
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "DONE",
+                    },
+                ],
+            )
+        )
+        self.assertEqual(verified["wake"], "VERIFIED")
+        mixed = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "OPEN"},
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "DONE",
+                    },
+                ],
+            )
+        )
+        self.assertEqual(mixed["wake"], "CANDIDATE")
+        invalid = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {"job_id": "rivet-watchdog-canary-20260825-01", "status": "DONE"},
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "INVALID",
+                    },
+                ],
+            )
+        )
+        self.assertEqual(invalid["wake"], "CANDIDATE")
+        mismatched = measure_from_rows(
+            dict(
+                base,
+                wake_jobs=[
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "DONE",
+                    }
+                ],
+            )
+        )
+        self.assertEqual(mismatched["wake"], "CANDIDATE")
 
     def test_open_canary_is_candidate(self):
         measured = measure_from_rows(
@@ -123,6 +185,10 @@ class TestStrandedMap(unittest.TestCase):
         self.assertEqual(row["android"], "STRANDED")
         self.assertGreaterEqual(row["wake_job_json"], 1)
         self.assertEqual(row["wake"], "VERIFIED")
+        self.assertEqual(row["wake_job_json"], len(row["wake_jobs"]))
+        self.assertTrue(
+            all(str(item.get("status") or "").upper() == "DONE" for item in row["wake_jobs"])
+        )
         self.assertGreaterEqual(len(row["mcp_surfaces"]), 4)
         self.assertTrue(row["mcp_inventory"])
         self.assertEqual(row["mcp"], "INTEGRATED")

@@ -105,7 +105,7 @@
       "specter-watchdog-head-proof-20260825-01"
     ],
     "result_address": "ridge-cursor-wake-loop-20260822-01",
-    "note": "RIVET's current-main canary is DONE. SPECTER's bounded canary exercises the SHA-pinned watchdog STOP path and is OPEN in source until its production terminal receipt lands. Named idle bc- resume of a different run remains UNMEASURED."
+    "note": "RIVET and SPECTER current-main canaries are DONE. SPECTER terminal commit a1a496bd1fb6aedc866817cc7a951173ed22e180 records the SHA-pinned watchdog STOP path with zero wake, delivery, and process model invocation. Named idle bc- resume of a different run remains UNMEASURED."
   },
   "grok_smoke": {
     "state": "UNMEASURED",

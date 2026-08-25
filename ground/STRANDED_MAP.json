@@ -23,7 +23,7 @@
         "specter-watchdog-head-proof-20260825-01"
       ],
       "result_address": "ridge-cursor-wake-loop-20260822-01",
-      "note": "both durable canaries are DONE (RIVET rivet-watchdog-canary-20260825-01 and SPECTER specter-watchdog-head-proof-20260825-01 auto_complete, woke_once=false); named idle resume remains UNMEASURED"
+      "note": "both durable canaries are DONE (RIVET rivet-watchdog-canary-20260825-01 and SPECTER specter-watchdog-head-proof-20260825-01); SPECTER terminal commit a1a496bd1fb6aedc866817cc7a951173ed22e180 records auto_complete with zero attempt, wake, delivery, and process model invocation; named idle resume remains UNMEASURED"
     },
     {
       "id": "mcp_surfaces",
