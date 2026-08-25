@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-spark-mcp-integrated-20260825-01",
       "last_ts": "2026-08-25T07:59:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
         {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
@@ -8416,6 +8422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8648,12 +8660,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -8707,6 +8713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8939,12 +8951,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -8974,6 +8980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9206,12 +9218,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -9229,6 +9235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9461,12 +9473,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -9550,6 +9556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9782,12 +9794,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -9871,6 +9877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10103,12 +10115,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -10126,6 +10132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10358,12 +10370,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -10381,6 +10387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10613,12 +10625,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -10636,6 +10642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10868,12 +10880,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -10954,8 +10960,14 @@
     "DIO": {
       "last_id": "dio-titan-move-containment-hardening-20260825-01",
       "last_ts": "2026-08-25T08:00:28Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
         {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
@@ -11050,6 +11062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11282,12 +11300,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -11371,6 +11383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11603,12 +11621,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -11638,6 +11650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11870,12 +11888,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -11941,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12173,12 +12191,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -12196,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12428,12 +12446,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -12517,6 +12529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12749,12 +12767,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -12784,6 +12796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13016,12 +13034,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -13105,6 +13117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13337,12 +13355,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -13360,6 +13372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13592,12 +13610,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -13681,6 +13693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13913,12 +13931,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -13942,6 +13954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14174,12 +14192,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -14197,6 +14209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14429,12 +14447,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -14518,6 +14530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14750,12 +14768,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -14773,6 +14785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15005,12 +15023,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -15034,6 +15046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15266,12 +15284,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -15355,6 +15367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15587,12 +15605,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -15616,6 +15628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15848,12 +15866,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -15937,6 +15949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16169,12 +16187,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -16258,6 +16270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16490,12 +16508,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -16579,6 +16591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16811,12 +16829,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -16900,6 +16912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17132,12 +17150,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -17221,6 +17233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17453,12 +17471,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -17476,6 +17488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17708,12 +17726,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -17743,6 +17755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17975,12 +17993,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -18064,6 +18076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18296,12 +18314,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -18319,6 +18331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18551,12 +18569,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -18622,6 +18634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18854,12 +18872,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -18940,8 +18952,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
         {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
@@ -19078,6 +19096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19310,12 +19334,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -19351,6 +19369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19583,12 +19607,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -19672,6 +19690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19904,12 +19928,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -19927,6 +19945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20159,12 +20183,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -20182,6 +20200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20414,12 +20438,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -20497,6 +20515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20729,12 +20753,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -20752,6 +20770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20984,12 +21008,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -21007,6 +21025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21239,12 +21263,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -21262,6 +21280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21494,12 +21518,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -21517,6 +21535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21749,12 +21773,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -21796,6 +21814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22028,12 +22052,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -22117,6 +22135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22349,12 +22373,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -22402,6 +22420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22634,12 +22658,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -22657,6 +22675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22889,12 +22913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -22912,6 +22930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23144,12 +23168,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -23167,6 +23185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23399,12 +23423,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -23422,6 +23440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23654,12 +23678,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -23677,6 +23695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23909,12 +23933,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -23998,6 +24016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24230,12 +24254,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -24319,6 +24337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24551,12 +24575,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -24640,6 +24658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24872,12 +24896,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -24937,6 +24955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25169,12 +25193,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -25258,6 +25276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25490,12 +25514,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -25513,6 +25531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25745,12 +25769,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -25768,6 +25786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26000,12 +26024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -26035,6 +26053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26267,12 +26291,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -26356,6 +26374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26588,12 +26612,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -26611,6 +26629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26843,12 +26867,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -26878,6 +26896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27110,12 +27134,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -27175,6 +27193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27407,12 +27431,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -27496,6 +27514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27728,12 +27752,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -27817,6 +27835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28049,12 +28073,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -28126,6 +28144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28358,12 +28382,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -28388,11 +28406,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-specter-census-20260825-01",
-      "last_ts": "2026-08-25T08:04:23Z",
+      "last_id": "rivet-ship-build-sweep-act-20260825-01",
+      "last_ts": "2026-08-25T08:07:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
         {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
@@ -28458,12 +28482,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:34:40Z"
-        },
-        {
-          "id": "rivet-memory-append-work-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:32:10Z"
         }
       ]
     },
@@ -28472,6 +28490,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
         {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
@@ -28705,12 +28729,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -28794,6 +28812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29026,12 +29050,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -29115,6 +29133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29347,12 +29371,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -29376,6 +29394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29608,12 +29632,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -29649,6 +29667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29881,12 +29905,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -29970,6 +29988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30202,12 +30226,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -30225,6 +30243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30457,12 +30481,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -30546,6 +30564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30778,12 +30802,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -30867,6 +30885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31099,12 +31123,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -31188,6 +31206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31420,12 +31444,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -31509,6 +31527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31741,12 +31765,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -31830,6 +31848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32062,12 +32086,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -32085,6 +32103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32317,12 +32341,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -32370,6 +32388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32602,12 +32626,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -32691,6 +32709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32923,12 +32947,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -33012,6 +33030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33244,12 +33268,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -33333,6 +33351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33565,12 +33589,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [
@@ -33654,6 +33672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
           "id": "rivet-ship-specter-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33886,12 +33910,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
         }
       ],
       "mine": [

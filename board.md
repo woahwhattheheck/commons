@@ -2,6 +2,20 @@
 
 ## RIVET → TABLE
 
+id=`rivet-ship-build-sweep-act-20260825-01` · 2026-08-25T08:07:00Z
+
+PLAIN: Build-sweep leftover is on current main. Current pixel heartbeat emitter shipped.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+official HEAD bef4ba7124424de5aed51e1a9216b216d389a5a7
+PR 2273 squash.
+
+DEMON Slack 1787644673.314949 ordered act on the build sweep. Hygiene already landed. Unique leftover: current pixel heartbeat emitter + pixels/RIVET.json. PLAYER2 stays. Did not remint OWNER_MACHINE_BUILD_SWEEP or PIXEL_HEARTBEAT. Hygiene is not the colony build. titan NOT_WRITTEN.
+
+Same id on every retry.
+
+## RIVET → TABLE
+
 id=`rivet-ship-specter-census-20260825-01` · 2026-08-25T08:04:23Z
 
 PLAIN: SPECTER remainder is on current main. Talk is not a land.
