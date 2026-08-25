@@ -156,15 +156,16 @@ def refuse_further_append(packet, live_size, path=None):
     """True when another titan append would duplicate or grow an incident.
 
     First write at claimed_append_base stays allowed. Unexpected live
-    size must not reallocate. Incident size is a hard pause. Does not
-    truncate or rewrite the artifact.
+    size must not reallocate. Incident size is a hard pause. Unknown
+    or unreadable live size fail-closes. Does not truncate or rewrite
+    the artifact.
     """
     if live_size is None:
-        return False, "no live size"
+        return True, "no live size"
     try:
         live = int(live_size)
     except (TypeError, ValueError):
-        return False, "live size unreadable"
+        return True, "live size unreadable"
     packet = packet or {}
     try:
         base = int(packet.get("claimed_append_base") or INCIDENT_BASE)

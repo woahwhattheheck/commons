@@ -56,6 +56,20 @@ class TestTitanAppendGuard(unittest.TestCase):
         allowed, _ = refuse_further_append(packet, INCIDENT_BASE)
         self.assertFalse(allowed)
 
+    def test_refuse_closes_unknown_or_unreadable_live_size(self):
+        packet = {
+            "claimed_append_base": 100,
+            "claimed_append_end": 108,
+            "written_bytes": 8,
+            "titan": "WRITTEN",
+        }
+        refused, reason = refuse_further_append(packet, None)
+        self.assertTrue(refused)
+        self.assertEqual(reason, "no live size")
+        refused, reason = refuse_further_append(packet, "not-a-size")
+        self.assertTrue(refused)
+        self.assertEqual(reason, "live size unreadable")
+
     def test_refuse_closes_unexpected_size_without_realloc(self):
         packet = {
             "claimed_append_base": 100,

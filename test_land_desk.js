@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bw/.test(html), "desk must share the current-main/Titan cache key after H-008 receipt leftover");
+assert.ok(/20260825bx/.test(html), "desk must share the current-main/Titan cache key after DIO CRLF leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,38 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isDioCrlfTalk, "land.js must classify DIO CRLF leftover talk");
+assert.ok(api.dioCrlfState, "land.js must classify the DIO CRLF leftover");
+assert.ok(api.isDioCrlfTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\nWindows core.autocrlf=true expands three receipt-bound text artifacts. 798 vs 773 and e4cc1524 vs 15c2a25. 1787650704.417459"), "JOJO DIO checkpoint is leftover talk");
+assert.ok(!api.isDioCrlfTalk("make sure people do more than talk about shit"), "generic ship-talk is not the DIO CRLF leftover");
+assert.ok(!api.isDioCrlfTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY\n1787649732.551439"), "quote leftover is not the DIO CRLF leftover");
+assert.ok(!api.isDioCrlfTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. 1787645172.017469"), "Titan containment Slack is not the DIO CRLF leftover");
+assert.ok(!api.isDioCrlfTalk("JOJO BACKEND CELL H-008 buyer-bound validation receipt 1787650230.035359"), "H-008 receipt leftover is not the DIO CRLF leftover");
+assert.ok(!api.isSubzeroQuoteTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\n798 vs 773 e4cc1524 1787650704.417459"), "DIO CRLF leftover is not the quote leftover");
+assert.ok(!api.isSubzeroReceiptTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\n798 vs 773 e4cc1524 1787650704.417459"), "DIO CRLF leftover is not the H-008 leftover");
+var dioCrlfTalk = api.completionStateFromText(
+  "JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\n798 vs 773\ne4cc1524 vs 15c2a25\n1787650704.417459"
+);
+assert.strictEqual(dioCrlfTalk.state, "CLAIMED");
+assert.ok(/autocrlf|798-vs-773|leave-unmerged/i.test(dioCrlfTalk.note), "DIO CRLF leftover without SHA must stay CLAIMED and beat ship-talk");
+var dioCrlfDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nDIO CRLF leftover landed"
+);
+assert.strictEqual(dioCrlfDone.state, "INTEGRATED", "completion words still beat DIO CRLF leftover talk");
+var dioCrlfEmpty = api.dioCrlfState("");
+assert.strictEqual(dioCrlfEmpty.state, "UNMEASURED");
+var dioCrlfMissing = api.dioCrlfState("# empty stub\nno leftover");
+assert.strictEqual(dioCrlfMissing.state, "NOT_LANDED");
+var dioCrlfOk = api.dioCrlfState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\n-text\n798 vs 773\ne4cc1524\nfail-closed\nno live size\nno auth\nno gate\n");
+assert.strictEqual(dioCrlfOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(dioCrlfOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="dio-crlf-result"') >= 0, "desk must name the DIO CRLF leftover");
+assert.ok(html.indexOf("host/dio_crlf.py") >= 0, "desk must name the DIO CRLF instrument");
+assert.ok(html.indexOf("ground/DIO_CRLF.md") >= 0, "desk must link the DIO CRLF card");
+assert.ok(html.indexOf("ground/DIO_CRLF.json") >= 0, "desk must link the DIO CRLF catalog");
+assert.ok(html.indexOf("1787650704.417459") >= 0, "desk must cite the JOJO DIO checkpoint Slack ts");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DIO_CRLF.md") >= 0, "DIO CRLF card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DIO_CRLF.json") >= 0, "DIO CRLF catalog must stay a canary");
 assert.ok(api.isSubzeroReceiptTalk, "land.js must classify SUBZERO receipt leftover talk");
 assert.ok(api.subzeroReceiptState, "land.js must classify the SUBZERO receipt leftover");
 assert.ok(api.isSubzeroReceiptTalk("JOJO BACKEND CELL H-008 — READ-ONLY / NO LANDING CLAIM\nquote-draft → buyer-bound validation receipt\n1787650230.035359"), "JOJO H-008 is leftover talk");

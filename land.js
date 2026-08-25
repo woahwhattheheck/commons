@@ -239,6 +239,8 @@
     "ground/SUBZERO_RECEIPT.md",
     "ground/SUBZERO_RECEIPT.json",
     "subzero-receipt.html",
+    "ground/DIO_CRLF.md",
+    "ground/DIO_CRLF.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -469,6 +471,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isDioCrlfTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO DIO CHECKPOINT / Windows autocrlf / 798-vs-773 / e4cc1524-vs-15c2a25 / leave-unmerged-PR talk. Talk is not a land. Ship the .gitattributes -text leftover to current main. Canonical blobs still match receipts. Do not remint DIO revenue, Titan containment, SUBZERO quote, or SUBZERO receipt." };
     }
     if (api.isSubzeroReceiptTalk(t)) {
       return { state: "CLAIMED", note: "JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk. Talk is not a land. Ship the receipt leftover to current main. Live bind stays UNBOUND. Cash stays $0 / NOT_LANDED. Do not remint SUBZERO_QUOTE, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320." };
@@ -939,6 +944,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isDioCrlfTalk = function (text) {
+    return /1787650704\.417459|JOJO DIO CHECKPOINT|REGRESSION ROOT CAUSE MEASURED|798 vs 773|e4cc1524|core\.autocrlf=true expands three receipt-bound|leave-unmerged for independent review/i.test(String(text || ""));
+  };
+
+  api.dioCrlfState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/dio_crlf.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPin = /-text/.test(body) && /798 vs 773/.test(body) && /e4cc1524/.test(body);
+    var namesTitan = /fail-closed/.test(body) && /no live size/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesPin && namesTitan && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "DIO CRLF leftover is on this file. Three receipt-bound paths stay -text. A Slack checkpoint / leave-unmerged PR is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/dio_crlf.py missing the leftover. JOJO DIO CHECKPOINT / autocrlf / 798-vs-773 talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3497,6 +3530,7 @@
   var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var dioCrlfOut = document.getElementById("dio-crlf-result");
   var subzeroQuoteOut = document.getElementById("subzero-quote-result");
   var subzeroReceiptOut = document.getElementById("subzero-receipt-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
@@ -4201,6 +4235,12 @@
     if (!humanOutcomesOut) return;
     humanOutcomesOut.setAttribute("data-tone", api.toneFor(result.state));
     humanOutcomesOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintDioCrlf(result) {
+    if (!dioCrlfOut) return;
+    dioCrlfOut.setAttribute("data-tone", api.toneFor(result.state));
+    dioCrlfOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintSubzeroQuote(result) {
@@ -5164,6 +5204,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadDioCrlf(sha) {
+    if (!dioCrlfOut) return Promise.resolve(null);
+    dioCrlfOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/dio_crlf.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/dio_crlf.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/dio_crlf.py absent at the measured main SHA. JOJO DIO CHECKPOINT / autocrlf / 798-vs-773 talk is CLAIMED." };
+        paintDioCrlf(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintDioCrlf(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.dioCrlfState(body);
+        paintDioCrlf(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintDioCrlf(err);
       return err;
     });
   }
@@ -6514,6 +6581,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadDioCrlf(sha);
     loadSubzeroReceipt(sha);
     loadSubzeroQuote(sha);
     loadHumanOutcomes(sha);

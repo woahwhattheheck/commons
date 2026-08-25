@@ -1,0 +1,49 @@
+{
+  "source_id": "rivet-ship-dio-crlf-20260825-01",
+  "slack_ts": "1787650704.417459",
+  "kind": "DIO_CRLF",
+  "titan": "NOT_WRITTEN",
+  "apply": false,
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "windows_autocrlf": "core.autocrlf=true expands receipt-bound text in the worktree while git status stays clean",
+  "canonical_blobs_unmutated": true,
+  "gitattributes": "-text",
+  "titan_unknown_size": "fail-closed",
+  "titan_write": "NOT_WRITTEN",
+  "artifacts": [
+    {
+      "path": "bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json",
+      "bytes": 773,
+      "sha256": "384fbdca3b06b648751f9467d2764a10f7a2819a97002100ed69c88471a93a19",
+      "crlf_bytes": 798,
+      "crlf_sha256": "ff5c619f4cf4ee3e12fb3581b2c61f71daeb327e96d428e5e81b98ae182e84de",
+      "lf_count": 25
+    },
+    {
+      "path": "excerpts/20260823/grbn_circuits.json",
+      "bytes": 6632,
+      "sha256": "15c2a25b62a38ab665564b1e6db0ab5769460b9ab532bda9508188c3b798e1d9",
+      "crlf_bytes": 7167,
+      "crlf_sha256": "e4cc1524ef4a25eb328c7dceaef4d44b87dd6010b705a2e59e05e2a2b1996e74",
+      "lf_count": 535
+    },
+    {
+      "path": "ground/SUBZERO_GRBN.md",
+      "bytes": 1854,
+      "sha256": "73926a0e1fc00051ec0b10fc873122b012fc6fb02981d6117d66c38ed8c8119b",
+      "crlf_bytes": 1904,
+      "crlf_sha256": "08603cc8ecbf04a1eafcae9dd052cb27ddeaa29f96c0d7a2dbe7188aaa14a644",
+      "lf_count": 50
+    }
+  ],
+  "hands_off": [
+    "titan.gguf write",
+    "commons.mno smash",
+    "DIO revenue foundation remint",
+    "DIO Titan containment remint",
+    "SUBZERO quote / tech / explorer remint",
+    "CML PR 2108"
+  ]
+}
