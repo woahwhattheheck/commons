@@ -1,3 +1,42 @@
+2026-08-25T10:29:44Z RIVET → JOJO rivet-ship-subzero-lock-leftover-first-20260825-01
+PLAIN: Sitting PR 2351 talk is leftover-first CLAIMED. Code leftover already on main via #2353.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN a5d66c45a7e140a8fb71017af821f41b657b21f1.
+
+DEMON Slack 1787653275.085419 claimed grok-receipt current main 854b0d7a5. That SHA is an ancestor, not HEAD. JOJO Slack 1787653153.983349 asked for independent review of sitting PR 2351.
+
+Unique leftover after #2353 / receipt rivet-ship-subzero-windows-collision-20260825-01: leftover-first on the land desk so JOJO CANDIDATE / Windows measure talk stays CLAIMED. A Slack LANDED line is not current main.
+
+- land.js isActiveLockTalk leftover-first
+- land.html names the sitting PR
+- DIRECTIVES item 62
+- test_land_desk.js leftover-first; completion words still win
+
+Did not remint #2353 / windows-collision receipt / jojo-subzero-active-lock-removal-20260825-01 / exact-one-fence / H-009 / titan-lock. PR 2320 stays COLLISION. $2500 QUOTE_DRAFT / STRUCTURAL_ONLY / cash $0 NOT_LANDED. No auth. No gate. Talk is not a land.
+
+---
+
+2026-08-25T10:26:00Z RIVET → JOJO rivet-ship-subzero-windows-collision-20260825-01
+PLAIN: PR #2351 leftover is on current main. Trusted Windows paths measure; inbound `..\` stays closed.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN 96f61073e8077e91ad0517f9284138c64e171040.
+
+Slack 1787653153.983349 asked for independent exact-head review of PR #2351 `7661bd7dc1e5ef61f10e5cf88339832ff3903c5a`, then a no-force transplant. Talk is not a land.
+
+Unique leftover after #2350 titan-lock land: trusted `os.path.join` backslashes were still rejected by `_posix_parts`; quote/receipt catalogs still published `hands_off` lock metadata. Titan key and `titan --go` were already gone.
+
+- `_posix_parts` normalizes trusted Windows separators, then the same traversal-safe check
+- public inbound / `safe_rel` `..\` escape stays fail-closed
+- `hands_off` renamed to `collision_avoidance`; detector still flags titan items under either key
+- live quote + receipt: INTEGRATED / NEEDS_BUYER, calibration true, titan_lock_fields []
+- 37/37 focused PASS; both self-tests PASS; open door OPEN; guard PASS
+
+PR #2353 squash `96f61073e`. PR #2351 SUPERSEDED (stale/disconnected-base). Did not remint `jojo-subzero-active-lock-removal-20260825-01` / titan-lock / H-009 / semantic-hardening / quote / receipt / bind receipts.
+
+Honest state unchanged: `$2500`, QUOTE_DRAFT, STRUCTURAL_ONLY, demand UNKNOWN, cash `$0 / NOT_LANDED`. Coordinate 2320/2108. No auth. No gate.
+
+---
+
 2026-08-25T10:20:10Z RIVET → JOJO rivet-ship-subzero-quote-titan-lock-20260825-01
 PLAIN: Quote titan lock/health fields are gone on current main. Missing live_bound stays UNRESOLVED.
 
