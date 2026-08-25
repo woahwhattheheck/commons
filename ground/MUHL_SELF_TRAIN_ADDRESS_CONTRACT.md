@@ -87,6 +87,32 @@ semantics and rejects **tampered** or **re-signed** records.
 - registry/header-disagreement is fail-closed **BLOCKED**
 - live allocated offsets remain **UNRESOLVED**
 
+## Derived stride math leftover
+
+Slack `1787652385.567949` TAKING
+`muhl-address-contract-stride-math-20260825-01` is **CLAIMED**.
+Do not remint it. #2337 already landed the integrity bind.
+This leftover is only the derived-math defect that bind exposed.
+
+`pointer_space` accepts any positive stride. It must not keep the
+two-byte formulas `last_safe_start=max_pointer-1` and
+`steps_before_wrap = pointer_span // stride`.
+
+Full-stride bound and modular cycle, including absolute mode/base:
+
+| Fact | Formula |
+|---|---|
+| `last_safe_start` | `pointer_span - stride` when `stride <= pointer_span` |
+| `steps_before_wrap` | `pointer_span / gcd(stride, pointer_span)` |
+| two-byte 30-bit | still `1073741822` / `536870912` |
+| stride 3 on 8-bit | `last_safe_start=253`, cycle `256`, not `254` / `85` |
+| stride 6 on 8-bit | `last_safe_start=250`, cycle `128`, not floor `42` |
+| absolute + base | same full-stride / modular numbers; overflow stays **BLOCKED** |
+
+A stride larger than the pointer space leaves `last_safe_start`
+**UNRESOLVED** (`stride_exceeds_pointer_space`). Floor division is
+not wrap-cycle length. Live allocated offsets stay **UNRESOLVED**.
+
 ## What this leftover is not
 
 - Not a legacy trainer import or execute
@@ -113,9 +139,10 @@ Y from bytes, same run: named dests FROM FILE + deterministic
 50 GiB vs 30-bit source-space conflict fail-closed `BLOCKED` +
 exact `max_pointer` / `last_safe_start` / `steps_before_wrap` /
 `required_bits` / `stride` / `address-mode` / `data-start` +
-canonical hash + live offsets UNRESOLVED + H-006 CANDIDATE or
-UNRESOLVED. Missing/malformed facts stay UNRESOLVED. Tampered
-or re-signed records are refused.
+full-stride bounds + modular cycle + canonical hash + live
+offsets UNRESOLVED + H-006 CANDIDATE or UNRESOLVED.
+Missing/malformed facts stay UNRESOLVED. Tampered or re-signed
+records are refused. Non-divisor stride is not two-byte floor.
 Z = missing path / invented live offset `0` / trainer import /
 Titan write / SYNTHETIC_OK on a source-space conflict /
 named-default substitution / FINDER-FAILED. Never `0`.

@@ -39,6 +39,7 @@ from muhl_self_train_address_contract import (
     measure_root,
     parse_trainer_source,
     payload_digest,
+    pointer_space,
     registry_header_disagreement,
     synthetic_packet,
     trainer_imported,
@@ -520,6 +521,91 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         }
         row = validate_packet(packet)
         self.assertEqual(row["state"], "NOT_LANDED", row)
+
+    def test_non_divisor_stride_uses_full_stride_and_modular_cycle(self):
+        space = pointer_space(
+            ptr_bits=8,
+            capacity=256,
+            stride=3,
+            address_mode=RELATIVE,
+        )
+        self.assertEqual(space["max_pointer"], 255)
+        self.assertEqual(space["last_safe_start"], 253)
+        self.assertNotEqual(space["last_safe_start"], 254)
+        self.assertEqual(space["steps_before_wrap"], 256)
+        self.assertNotEqual(space["steps_before_wrap"], 256 // 3)
+        shared = pointer_space(ptr_bits=8, capacity=256, stride=6)
+        self.assertEqual(shared["last_safe_start"], 250)
+        self.assertEqual(shared["steps_before_wrap"], 128)
+        self.assertNotEqual(shared["steps_before_wrap"], 256 // 6)
+        two_byte = pointer_space(ptr_bits=30, capacity=50 * (1 << 30), stride=2)
+        self.assertEqual(two_byte["last_safe_start"], LAST_SAFE_START)
+        self.assertEqual(two_byte["steps_before_wrap"], STEPS_BEFORE_WRAP)
+        dests = {
+            "ptr_bits": 8,
+            "intake_capacity": 256,
+            "stride": 3,
+            "address_mode": RELATIVE,
+            "data_start_rel": 24,
+        }
+        bound = bind_address_facts(dests)
+        self.assertEqual(bound["last_safe_start"], 253)
+        self.assertEqual(bound["steps_before_wrap"], 256)
+        packet = synthetic_packet({"ok": True, "dests": dests})
+        verdict = validate_packet(packet)
+        self.assertEqual(verdict["last_safe_start"], 253, verdict)
+        self.assertEqual(verdict["steps_before_wrap"], 256, verdict)
+
+    def test_absolute_non_divisor_keeps_full_stride_and_modular_cycle(self):
+        dests = {
+            "name": "muhl_self_train",
+            "reservoir_input": 1,
+            "intake_header": 24,
+            "intake_capacity": 256,
+            "weight_bytes": 214,
+            "nw": 107,
+            "nf": 9,
+            "h": 8,
+            "ncls": 3,
+            "ptr_bits": 8,
+            "stride": 3,
+            "address_mode": ABSOLUTE,
+            "absolute_base": 10,
+            "file_marker": "MUHLFILE",
+            "receiver": "muhl_reservoir",
+            "write_ptr_rel": 0,
+            "size_rel": 8,
+            "capacity_rel": 16,
+            "data_start_rel": 24,
+        }
+        space = pointer_space(
+            ptr_bits=8,
+            capacity=256,
+            stride=3,
+            address_mode=ABSOLUTE,
+            absolute_base=10,
+        )
+        self.assertEqual(space["last_safe_start"], 253)
+        self.assertNotEqual(space["last_safe_start"], 254)
+        self.assertEqual(space["steps_before_wrap"], 256)
+        self.assertNotEqual(space["steps_before_wrap"], 256 // 3)
+        bound = bind_address_facts(dests)
+        self.assertEqual(bound["status"], BLOCKED)
+        self.assertIn("absolute_base_overflow", bound["reasons"])
+        self.assertEqual(bound["last_safe_start"], 253)
+        self.assertEqual(bound["steps_before_wrap"], 256)
+        self.assertEqual(bound["absolute_base"], 10)
+        packet = synthetic_packet({"ok": True, "dests": dests})
+        row = validate_packet(packet)
+        self.assertEqual(row["state"], BLOCKED, row)
+        self.assertEqual(row["last_safe_start"], 253)
+        self.assertEqual(row["steps_before_wrap"], 256)
+        zero_base = dict(dests)
+        zero_base["absolute_base"] = 0
+        aligned = bind_address_facts(zero_base)
+        self.assertEqual(aligned["last_safe_start"], 253)
+        self.assertEqual(aligned["steps_before_wrap"], 256)
+        self.assertEqual(aligned["absolute_base"], 0)
 
 
 if __name__ == "__main__":
