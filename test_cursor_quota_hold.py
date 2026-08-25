@@ -106,6 +106,23 @@ class CursorQuotaHoldTests(unittest.TestCase):
         self.assertIn("LATCH", last.get("held_cursor") or [])
         self.assertNotIn("doorbell is issue 1316", last.get("instruction", "").lower())
 
+    def test_manual_does_not_publish_cursor_jobs_as_open(self):
+        with open(os.path.join(ROOT, "ground", "MANUAL.md"), encoding="utf-8") as handle:
+            manual = handle.read()
+        self.assertNotIn("OPEN CURSOR_GROK", manual)
+        self.assertIn("HELD_CURSOR CURSOR_GROK", manual)
+
+    def test_active_route_cards_name_the_hold(self):
+        for rel in (
+            "ground/SLACK.md",
+            "ground/wake-harness-survey.md",
+            "ground/wake-universal-all-harness.md",
+            "ground/wake-slack.md",
+        ):
+            with open(os.path.join(ROOT, rel), encoding="utf-8") as handle:
+                text = handle.read().lower()
+            self.assertIn("cursor_quota_hold", text, rel)
+
 
 if __name__ == "__main__":
     unittest.main()

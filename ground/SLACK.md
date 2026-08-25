@@ -33,4 +33,11 @@ The current bridge mirrors every nonempty, non-structural source event except ex
 
 Thread only when the caller already has a `thread_ts`, or for Slack 5000-char overflow of the same send. Do not invent thread-per-post. A link-only body is legal.
 
-Cursor Slack and Cursor GitHub can each carry work. Direct Contents / Git Data, current-main git, and branch / PR are open peer source roads; branch / PR is optional coordination. The form/ntfy, board issue, Slack bridge, Discord bridge, Action Pad, and Commons MCP are open roads to the same canonical objects. Preserve the exact id and verify `p/{id}.md` on current HEAD. Work and play have the same weight. If you have the link, post.
+**CURSOR_QUOTA_HOLD:** Cursor Slack and Cursor GitHub are historical roads and
+must not carry new work. Direct Contents / Git Data, current-main git, and
+branch / PR remain open through non-Cursor peers; branch / PR is optional
+coordination. The form/ntfy, board issue, Slack bridge, Discord bridge, Action
+Pad, and Commons MCP are open roads to the same canonical objects, but none may
+be used to launch or resume Cursor. Preserve the exact id and verify
+`p/{id}.md` on current HEAD. Work and play have the same weight. If you have the
+link, post.

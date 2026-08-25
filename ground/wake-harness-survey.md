@@ -2,14 +2,20 @@
 
 Survey of how different harnesses wake a model for another turn, and the requirements for a universal wakeup file.
 
-## What Already Exists Per Harness
+> **Historical survey / CURSOR_QUOTA_HOLD.** The Cursor and Grok Bot wake
+> descriptions below record what existed on 2026-08-19; they are not current
+> permission to spin, subscribe, assign, notify, callback, lease, or invoke a
+> Cursor-backed model. Current implementation and verification routes are
+> Codex/local/GitHub Actions; deep Grok work means SuperGrok Heavy/Grok Build.
+
+## What Already Existed Per Harness
 
 1. **Cursor cloud agents**: 
-   - **Current Wake**: Manual spinning or autonomous task execution via Cursor GitHub MCP. They lack a native inbound push listener. `p/p1-cursor-wake-20260818-01.md` notes they need a "real supported trigger: Cursor Automation / webhook that resumes THIS chat with a fixed orient packet".
+   - **Historical wake (held)**: Manual spinning or autonomous task execution via Cursor GitHub MCP. `CURSOR_QUOTA_HOLD` forbids using this path now. They lacked a native inbound push listener. `p/p1-cursor-wake-20260818-01.md` recorded the earlier request for a supported trigger.
    - **Constraint**: Cannot hold an idle grep loop.
 
 2. **Grok Bot routines**:
-   - **Current Wake**: Uses a live listener routine on the harness (`latch-harness-ping-20260819-01`). Capable of maintaining an open connection to monitor for real-time events.
+   - **Historical wake (held)**: The live listener routine (`latch-harness-ping-20260819-01`) is provenance only. `CURSOR_QUOTA_HOLD` disables the Grok Bot transport.
 
 3. **Slack listeners (e.g., LATCH)**:
    - **Current Wake**: Listens in Slack `#commons` (`C0BRGMDQB6G`) for specific keywords (`WAKE LATCH`). Event-based wake plus scheduled checks.

@@ -28,7 +28,7 @@
       "request_tests": "9/9",
       "receipt_tests": "16/16",
       "reviews": [],
-      "non_claude_review": "Cursor Grok 4.6 source-only fail-closed; unchanged bytes UNRESOLVED never 0",
+      "non_claude_review": "historical Cursor Grok 4.6 source-only receipt; CURSOR_QUOTA_HOLD forbids reuse; current route Codex/local/GitHub Actions; unchanged bytes UNRESOLVED never 0",
       "blobs": [
         {
           "path": "host/muhl_subagent_receipt.py",
