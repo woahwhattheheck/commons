@@ -55,6 +55,18 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(term_hash, rr.EXPECTED_TERMS_SHA256)
         self.assertEqual(term_hash, self.recovery["offer"]["terms_sha256"])
 
+    def test_pack_hash_is_canonical_across_lf_and_crlf(self):
+        source = (ROOT / rr.PACK_PATH).read_text(encoding="utf-8")
+        normalized = source.replace("\r\n", "\n").replace("\r", "\n")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            lf_path = root / "pack-lf.json"
+            crlf_path = root / "pack-crlf.json"
+            lf_path.write_bytes(normalized.encode("utf-8"))
+            crlf_path.write_bytes(normalized.replace("\n", "\r\n").encode("utf-8"))
+            self.assertEqual(rr.sha256_canonical_text_file(lf_path), self.recovery["offer"]["source_sha256"])
+            self.assertEqual(rr.sha256_canonical_text_file(crlf_path), self.recovery["offer"]["source_sha256"])
+
     def test_safe_path_rejects_escape(self):
         for value in ("../escape", "..\\escape", "a/b", ".", "..", ""):
             with self.subTest(value=value), self.assertRaises(ValueError):
@@ -98,6 +110,26 @@ class RevenueRecoveryTests(unittest.TestCase):
                 finally:
                     temp.cleanup()
 
+    def assert_sensitive_signal_is_incomplete(self, extra):
+        temp, root = self.make_root(self.valid_post(extra))
+        try:
+            receipt = rr.purchase_intent_receipt(root, "buyer-signal")
+            self.assertEqual(receipt["state"], "INCOMPLETE")
+            self.assertFalse(receipt["cash_claimed"])
+        finally:
+            temp.cleanup()
+
+    def test_x_url_embedded_secret_is_incomplete(self):
+        self.assert_sensitive_signal_is_incomplete(
+            "PUBLIC_CONTACT_URL: https://example.com/contact?token=sk_live_ABC123"
+        )
+
+    def test_y_plain_password_is_incomplete(self):
+        self.assert_sensitive_signal_is_incomplete("PASSWORD: hunter2")
+
+    def test_z_model_bytes_are_incomplete(self):
+        self.assert_sensitive_signal_is_incomplete("MODEL_BYTES: payload")
+
     def test_public_surface_is_open_and_exact(self):
         page = (ROOT / "diagnostic.html").read_text(encoding="utf-8")
         self.assertIn('id="say"', page)
@@ -106,6 +138,10 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertIn('name="board" value="OFFER"', page)
         self.assertIn(f'name="subject" value="{rr.SUBJECT}"', page)
         self.assertIn(f"TERMS_SHA256: {rr.EXPECTED_TERMS_SHA256}", page)
+        self.assertIn("after NDA and SOW signing", page)
+        self.assertIn("event.stopImmediatePropagation()", page)
+        self.assertIn("(?:model|gguf)[_ -]?bytes", page)
+        self.assertLess(page.index("event.stopImmediatePropagation()"), page.index('src="./carrier.js?'))
         self.assertIn("No login or approval gate", page)
         lower = page.lower()
         self.assertNotIn('type="password"', lower)
@@ -156,6 +192,26 @@ class RevenueRecoveryTests(unittest.TestCase):
     def test_receipt_schema_never_claims_cash(self):
         schema = json.loads((ROOT / "revenue/payment_ready/receipt.schema.json").read_text(encoding="utf-8"))
         self.assertIs(schema["properties"]["cash_claimed"]["const"], False)
+        self.assertEqual(schema["properties"]["facts"]["properties"]["collected_cash_usd"]["const"], 0)
+
+    def test_false_cash_claim_rejects_positive_previous_cash(self):
+        temp, root = self.make_root()
+        self.addCleanup(temp.cleanup)
+        (root / "receipts").mkdir()
+        (root / "evidence").mkdir()
+        prior = rr.purchase_intent_receipt(root, None)
+        prior["stage"] = "PURCHASE_INTENT"
+        prior["state"] = "RECORDED"
+        prior["facts"]["collected_cash_usd"] = 1
+        (root / "receipts/intent.json").write_text(json.dumps(prior), encoding="utf-8")
+        manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "QUOTE",
+            "artifact": {"kind": "QUOTE_ARTIFACT", "reference": "owner-private:quote-example", "sha256": "a" * 64},
+        }
+        (root / "evidence/quote.json").write_text(json.dumps(manifest), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "collected_cash_usd"):
+            rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json")
 
     def test_public_current_receipt_is_deterministic(self):
         committed = json.loads((ROOT / "revenue/payment_ready/current_receipt.json").read_text(encoding="utf-8"))

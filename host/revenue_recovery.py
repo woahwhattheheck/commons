@@ -25,7 +25,6 @@ EXPECTED_TERMS_SHA256 = "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a
 FIELD_RE = re.compile(r"^([A-Za-z][A-Za-z0-9_]{1,40}):\s*(.*)$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
-URL_RE = re.compile(r"https?://\S+", re.IGNORECASE)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{7,159}$")
 SENSITIVE_PATTERNS = (
@@ -34,6 +33,16 @@ SENSITIVE_PATTERNS = (
     re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
     re.compile(r"\b(?:routing|account)\s*(?:number)?\s*:\s*\d", re.IGNORECASE),
     re.compile(r"\b(?:sk|rk)_live_[A-Za-z0-9]+\b"),
+    re.compile(
+        r"(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret)"
+        r"\s*[:=]\s*\S+",
+        re.IGNORECASE,
+    ),
+    re.compile(r"\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+", re.IGNORECASE),
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
 )
 
@@ -48,6 +57,12 @@ def sha256_bytes(value: bytes) -> str:
 
 def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
+
+
+def sha256_canonical_text_file(path: Path) -> str:
+    """Hash UTF-8 text with every platform newline canonicalized to LF."""
+    with path.open("r", encoding="utf-8", newline=None) as source:
+        return sha256_bytes(source.read().encode("utf-8"))
 
 
 def terms_record(pack: dict[str, Any]) -> dict[str, Any]:
@@ -119,8 +134,7 @@ def parse_post(text: str) -> tuple[dict[str, str], dict[str, str]]:
 
 
 def contains_sensitive_value(text: str) -> bool:
-    without_urls = URL_RE.sub("", text)
-    return any(pattern.search(without_urls) for pattern in SENSITIVE_PATTERNS)
+    return any(pattern.search(text) for pattern in SENSITIVE_PATTERNS)
 
 
 def base_facts() -> dict[str, Any]:
@@ -143,7 +157,7 @@ def validate_contract(root: Path) -> tuple[dict[str, Any], dict[str, Any], str, 
     pack = json.loads(pack_path.read_text(encoding="utf-8"))
     recovery = json.loads(recovery_path.read_text(encoding="utf-8"))
     term_hash = terms_sha256(pack)
-    pack_hash = sha256_file(pack_path)
+    pack_hash = sha256_canonical_text_file(pack_path)
     if term_hash != EXPECTED_TERMS_SHA256:
         raise ValueError(f"term hash mismatch: {term_hash}")
     if recovery["offer"]["offer_id"] != OFFER_ID:
@@ -293,6 +307,8 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
         raise ValueError("previous receipt is not the required predecessor")
     if previous.get("cash_claimed") is not False:
         raise ValueError("previous receipt may not claim cash")
+    if previous.get("facts", {}).get("collected_cash_usd") != 0:
+        raise ValueError("cash_claimed false requires collected_cash_usd to be zero")
     if previous.get("source", {}).get("terms_sha256") != term_hash:
         raise ValueError("previous receipt terms hash mismatch")
     if manifest.get("schema_version") != "revenue-recovery-evidence/v1" or manifest.get("stage") != stage:

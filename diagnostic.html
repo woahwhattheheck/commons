@@ -33,7 +33,7 @@
     <dt>Offer ID</dt><dd id="offer-id">gguf-diagnostic-10d-12k</dd>
     <dt>Term</dt><dd id="term">10 calendar days</dd>
     <dt>Fixed fee</dt><dd id="fee">$12,000 USD</dd>
-    <dt>Milestones</dt><dd id="milestones">$6,000 before customer file exchange; $6,000 on AT1–AT6 acceptance</dd>
+    <dt>Milestones</dt><dd id="milestones">$6,000 before customer file exchange, after NDA and SOW signing; $6,000 on AT1–AT6 acceptance</dd>
     <dt>Acceptance rule</dt><dd id="acceptance-rule">Rollback evidence, not metric lift</dd>
   </dl>
   <p>The work produces a reproducible baseline, diagnostic report, ablation result, bounded intervention, rollback path, and the evidence required by acceptance tests AT1 through AT6. A qualified buyer controls the GGUF and has an evaluation harness ready.</p>
@@ -106,7 +106,7 @@ PUBLIC_OBJECTIVE:</textarea>
     document.getElementById("offer-id").textContent = offer.offer_id;
     document.getElementById("term").textContent = offer.term_calendar_days + " calendar days";
     document.getElementById("fee").textContent = money(offer.fixed_amount, offer.currency) + " fixed";
-    document.getElementById("milestones").textContent = money(offer.milestones[0].amount, offer.currency) + " before customer file exchange; " + money(offer.milestones[1].amount, offer.currency) + " on AT1–AT6 acceptance";
+    document.getElementById("milestones").textContent = money(offer.milestones[0].amount, offer.currency) + " " + offer.milestones[0].due + "; " + money(offer.milestones[1].amount, offer.currency) + " on AT1–AT6 acceptance";
     document.getElementById("acceptance-rule").textContent = offer.acceptance_rule;
     document.getElementById("offer-summary").textContent = money(offer.fixed_amount, offer.currency) + " fixed · " + offer.term_calendar_days + " calendar days · rollback-evidenced GGUF diagnosis";
     var stages = document.getElementById("stages");
@@ -120,6 +120,29 @@ PUBLIC_OBJECTIVE:</textarea>
   }).catch(function (error) {
     document.getElementById("offer-summary").textContent = "Canonical offer unavailable. Read recovery.json and pack.json directly.";
     document.getElementById("offer-source").textContent = "Could not load recovery.json (" + error.message + "). No terms were inferred.";
+  });
+}());
+</script>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("say");
+  var out = document.getElementById("out");
+  var forbidden = [
+    /\b(?:sk|rk)_live_[A-Za-z0-9]+\b/,
+    /(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+/i,
+    /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret)\s*[:=]\s*\S+/i,
+    /\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+/i,
+    /\b(?:routing|account)\s*(?:number)?\s*:\s*\d/i,
+    /\b(?:\d[ -]?){13,19}\b/,
+    /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/
+  ];
+  form.addEventListener("submit", function (event) {
+    var body = form.elements.body.value;
+    if (!forbidden.some(function (pattern) { return pattern.test(body); })) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    out.textContent = "not posted. Remove credentials, model bytes, or private financial values; this public form stores only a non-confidential intent signal.";
   });
 }());
 </script>

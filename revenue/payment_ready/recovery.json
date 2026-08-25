@@ -5,7 +5,7 @@
   "offer": {
     "offer_id": "gguf-diagnostic-10d-12k",
     "source": "revenue/payment_ready/pack.json",
-    "source_sha256": "cea5f2e3dd8088fd9112d4a87feedd7d0155ab0136f104d257ce00aaef632816",
+    "source_sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
     "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
     "currency": "USD",
     "fixed_amount": 12000,
@@ -13,7 +13,8 @@
     "milestones": [
       {
         "id": "M1_BEFORE_FILE",
-        "amount": 6000
+        "amount": 6000,
+        "due": "before customer file exchange; after NDA and SOW signing"
       },
       {
         "id": "M2_AT1_AT6",

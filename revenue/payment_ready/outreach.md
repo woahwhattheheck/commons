@@ -35,7 +35,7 @@ Subject: Reversible 10-day GGUF diagnostic with byte-exact rollback
 > customer-controlled GGUF: one reversible ablation, byte-exact restoration,
 > runs through the customer's own harness, and a concise evidence receipt.
 > The public terms are USD 12,000 / 10 days, split 6,000 before private file
-> exchange and 6,000 on AT1-AT6. Acceptance is rollback evidence, not a
+> exchange, after NDA and SOW signing, and 6,000 on AT1-AT6. Acceptance is rollback evidence, not a
 > promised metric lift. If this is relevant, the public no-login intake is
 > diagnostic.html. Please put only a non-confidential signal there; NDA, SOW,
 > model bytes, and billing move to private hosted surfaces.

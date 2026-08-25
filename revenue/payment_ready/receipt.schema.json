@@ -187,8 +187,7 @@
           ]
         },
         "collected_cash_usd": {
-          "type": "number",
-          "minimum": 0
+          "const": 0
         }
       }
     },
