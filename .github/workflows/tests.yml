@@ -169,6 +169,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Several live-tree contracts classify exact ancestors and inspect
+          # historical source objects. A depth-1 checkout turns those lawful
+          # lookups into FOREIGN/NOT_LANDED false negatives.
+          fetch-depth: 0
 
       - name: the whole battery, one failure fails the run
         run: |

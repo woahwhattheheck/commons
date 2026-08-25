@@ -12,8 +12,9 @@ or demon-redteam-compression-productization-20260825-03. It does not
 edit muhc.py, test_muhc.py, foldpack.py, stackpack.py, or evolve.py.
 It does not write titan. No auth. No gate.
 
-GGUF is ABSENT from the public tree. zstd is ABSENT from this runtime.
-Those zeros name their search space.
+GGUF is ABSENT from the public tree. zstd availability is measured from the
+current runtime: PRESENT is benchmarked, while ABSENT names the calibrated
+module-import search space. Neither result is inferred from a missing number.
 
   python3 host/muhc_corpus.py
   python3 host/muhc_corpus.py --root .
@@ -244,8 +245,9 @@ def measure_root(root: str = ROOT_DEFAULT) -> dict:
             "note": "public tree has no GGUF slice; do not invent one; titan NOT_WRITTEN",
         },
         "zstd": {
-            "state": "ABSENT",
+            "state": "UNMEASURED",
             "search_space": list(ZSTD_SEARCH),
+            "note": "measured from the first verified corpus row",
         },
         "published_program": PUBLISHED_PROGRAM,
         "rows": rows,

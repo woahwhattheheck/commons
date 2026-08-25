@@ -149,6 +149,13 @@ def tick_copy(job, present, worker_id="rivet-canary"):
     try:
         store = JobStore(tmp)
         payload = dict(job)
+        source_harness = str(payload.get("harness") or "")
+        # The durable canary is a terminal legacy Cursor-owned source and must
+        # remain held by production. This verifier reopens only an isolated
+        # copy, so give that copy the existing non-Cursor head-proof harness;
+        # otherwise the ZERO-Cursor pre-lease gate correctly holds it before
+        # the pinned-oracle behavior under test can run.
+        payload["harness"] = "github-actions-head-proof"
         payload["job_id"] = JOB_ID
         payload["status"] = "OPEN"
         payload["attempt_count"] = 0
@@ -177,6 +184,8 @@ def tick_copy(job, present, worker_id="rivet-canary"):
         return {
             "summary": summary,
             "status": stored.get("status"),
+            "source_harness": source_harness,
+            "tick_harness": payload["harness"],
             "head_calls": truth.head_calls,
             "reads": list(truth.reads),
             "sha": truth.sha,
@@ -198,6 +207,8 @@ def run_canary(job):
         "ran": True,
         "temp_store": True,
         "present_status": present["status"],
+        "present_source_harness": present["source_harness"],
+        "present_tick_harness": present["tick_harness"],
         "present_action": (present_summary.get("jobs") or [{}])[0].get("action"),
         "present_reason": (present_summary.get("jobs") or [{}])[0].get("reason"),
         "present_wake_count": int(present_summary.get("wake_count") or 0),
@@ -210,6 +221,8 @@ def run_canary(job):
         "present_read_count": len(present_reads),
         "one_sha": bool(present_reads) and {sha for _path, sha in present_reads} == {PIN_SHA},
         "absent_status": absent["status"],
+        "absent_source_harness": absent["source_harness"],
+        "absent_tick_harness": absent["tick_harness"],
         "absent_action": (absent_summary.get("jobs") or [{}])[0].get("action"),
         "absent_wake_count": int(absent_summary.get("wake_count") or 0),
         "absent_invoke_model": bool((absent_summary.get("jobs") or [{}])[0].get("invoke_model")),
