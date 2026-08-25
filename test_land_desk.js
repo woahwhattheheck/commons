@@ -659,27 +659,91 @@ assert.strictEqual(titanMissing.state, "NOT_LANDED");
 assert.ok(/19\/31/.test(titanMissing.note), "missing excerpts stay NOT_LANDED");
 var titanPacket = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 0, reread: false });
 assert.strictEqual(titanPacket.state, "NOT_LANDED");
-assert.ok(/zero offsets/.test(titanPacket.note), "31 excerpts with offset 0 stay NOT_LANDED");
-var titanClaimed = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false });
+assert.ok(/inconsistent/.test(titanPacket.note), "31 excerpts with offset 0 stay NOT_LANDED");
+var titanClaimed = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false, plan_structure_complete: true });
 assert.strictEqual(titanClaimed.state, "CLAIMED");
 assert.ok(/claimed append/.test(titanClaimed.note), "filled offsets without a write are CLAIMED");
-var titanJournal = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false, journal_reread: true, journal_count: 31 });
+var titanJournal = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false, journal_reread: true, journal_count: 31, plan_structure_complete: true });
 assert.strictEqual(titanJournal.state, "CANDIDATE");
 assert.ok(/journaled/.test(titanJournal.note), "public journal without titan write is CANDIDATE");
-var titanOk = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "WRITTEN", nonzero_offsets: 31, reread: true });
+var titanOk = api.titanMoveState({
+  measured: true,
+  count: 31,
+  excerpt_count: 31,
+  titan: "WRITTEN",
+  packet_state: "INTEGRATED",
+  nonzero_offsets: 31,
+  wrote: true,
+  reread: true,
+  write_count: 31,
+  reread_count: 31,
+  past_eof_count: 31,
+  claimed_append_base: 100,
+  claimed_append_end: 200,
+  structure_complete: true,
+  titan_size_before: 100,
+  titan_size_after: 200,
+  written_bytes: 100,
+  write_receipt: "p/claudelocal-titan-move-go-20260825-01.md",
+  write_receipt_ref_ok: true,
+  write_receipt_content_ok: true,
+  write_receipt_evidence_ok: true,
+  public_journal_evidence_ok: true,
+  canonical_membership: true,
+  integrated_commit_ok: true,
+  legacy_aliases_ok: true,
+  independent_measurement_ok: true
+});
 assert.strictEqual(titanOk.state, "INTEGRATED");
 assert.ok(api.packetRowFromJson, "land.js must map the real packet into titanMoveState");
+assert.ok(api.titanMoveRow, "land.js must expose the strict Titan packet mapper");
+assert.ok(api.titanReceiptJson, "land.js must parse the pinned receipt JSON evidence");
 var livePacket = JSON.parse(fs.readFileSync(path.join(__dirname, "excerpts", "20260823", "titan_move_packet.json"), "utf8"));
 var liveJournal = JSON.parse(fs.readFileSync(path.join(__dirname, "excerpts", "20260823", "titan_move_journal.json"), "utf8"));
-var mapped = api.packetRowFromJson(livePacket, liveJournal);
+var liveReceipt = fs.readFileSync(path.join(__dirname, "p", "claudelocal-titan-move-go-20260825-01.md"), "utf8");
+var mapped = api.packetRowFromJson(livePacket, liveJournal, liveReceipt);
 assert.strictEqual(mapped.titan, "WRITTEN");
 assert.strictEqual(mapped.reread, true);
 assert.strictEqual(mapped.write_count, 31);
 assert.strictEqual(mapped.reread_count, 31);
+assert.strictEqual(mapped.past_eof_count, 31);
+assert.strictEqual(mapped.titan_size_after, 103812669582);
 assert.strictEqual(mapped.live_size_after, 103812669582);
+assert.strictEqual(mapped.legacy_aliases_ok, true);
 assert.strictEqual(mapped.nonzero_offsets, 31);
+assert.strictEqual(mapped.canonical_membership, true);
+assert.strictEqual(mapped.structure_complete, true);
+assert.strictEqual(mapped.write_receipt_ref_ok, true);
+assert.strictEqual(mapped.write_receipt_content_ok, true);
+assert.strictEqual(mapped.write_receipt_evidence_ok, true);
+assert.strictEqual(mapped.public_journal_evidence_ok, true);
+assert.strictEqual(mapped.integrated_commit_ok, true);
+assert.strictEqual(mapped.incident_active, true);
+assert.strictEqual(mapped.incident_evidence_ok, true);
+assert.strictEqual(mapped.independent_measurement_ok, true);
+assert.strictEqual(mapped.observed_titan_size, 103831308164);
+assert.strictEqual(mapped.incident_span_count, 3);
+assert.strictEqual(mapped.duplicate_span_count, 2);
+assert.strictEqual(mapped.incident_search_space.length, 3);
+assert.strictEqual(mapped.incident_span_sha256, "3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c");
+var parsedReceipt = api.titanReceiptJson(liveReceipt);
+assert.strictEqual(parsedReceipt.journals.length, 31, "pinned receipt must expose all 31 reread journals");
+assert.strictEqual(parsedReceipt.plan.organs.length, 31, "pinned receipt must expose the exact 31-row plan");
 var titanLive = api.titanMoveState(mapped);
-assert.strictEqual(titanLive.state, "INTEGRATED", "checked-in packet must classify INTEGRATED");
+assert.strictEqual(titanLive.state, "NOT_LANDED", "checked-in packet must surface the live duplicate-span incident");
+assert.ok(/PAUSED/.test(titanLive.note), "live incident must freeze further append mutation");
+assert.ok(/Claude receipt is quarantined/.test(titanLive.note), "Claude receipt must not certify current state");
+var hiddenIncidentPacket = JSON.parse(JSON.stringify(livePacket));
+delete hiddenIncidentPacket.duplicate_append_incident;
+var hiddenIncidentRow = api.titanMoveRow(hiddenIncidentPacket, liveJournal, liveReceipt);
+assert.strictEqual(hiddenIncidentRow.independent_measurement_ok, false, "removing the non-Claude measurement cannot restore certification");
+assert.strictEqual(api.titanMoveState(hiddenIncidentRow).state, "NOT_LANDED", "historical Claude receipt alone is quarantined");
+var forgedIncidentPacket = JSON.parse(JSON.stringify(livePacket));
+forgedIncidentPacket.duplicate_append_incident.span_sha256 = "0".repeat(64);
+var forgedIncidentRow = api.titanMoveRow(forgedIncidentPacket, liveJournal, liveReceipt);
+assert.strictEqual(forgedIncidentRow.incident_active, true);
+assert.strictEqual(forgedIncidentRow.incident_evidence_ok, false);
+assert.strictEqual(api.titanMoveState(forgedIncidentRow).state, "NOT_LANDED", "malformed incident evidence remains paused and fails closed");
 var countsOnly = api.titanMoveState({
   measured: true,
   count: 31,
@@ -690,7 +754,34 @@ var countsOnly = api.titanMoveState({
   write_count: 31,
   reread_count: 31
 });
-assert.strictEqual(countsOnly.state, "INTEGRATED", "write/reread counts are durable truth");
+assert.strictEqual(countsOnly.state, "NOT_LANDED", "counts without structure or closure refs fail closed");
+var fakeClosurePacket = JSON.parse(JSON.stringify(livePacket));
+fakeClosurePacket.write_receipt = "p/fake.md";
+fakeClosurePacket.integrated_commit = "1".repeat(40);
+assert.strictEqual(api.titanMoveState(api.titanMoveRow(fakeClosurePacket, liveJournal, liveReceipt)).state, "NOT_LANDED", "generic-looking receipt and commit are not closure");
+var duplicateGeometryPacket = JSON.parse(JSON.stringify(livePacket));
+duplicateGeometryPacket.organs[1].offset = duplicateGeometryPacket.organs[0].offset;
+assert.strictEqual(api.titanMoveState(api.titanMoveRow(duplicateGeometryPacket, liveJournal, liveReceipt)).state, "NOT_LANDED", "duplicate offsets fail structural truth");
+var duplicateContainerPacket = JSON.parse(JSON.stringify(livePacket));
+duplicateContainerPacket.organs[1].container = duplicateContainerPacket.organs[0].container;
+duplicateContainerPacket.organs[1].path = duplicateContainerPacket.organs[0].path;
+var duplicateContainerRow = api.titanMoveRow(duplicateContainerPacket, liveJournal, liveReceipt);
+assert.strictEqual(duplicateContainerRow.canonical_membership, false, "duplicate container/path membership is not canonical");
+assert.strictEqual(api.titanMoveState(duplicateContainerRow).state, "NOT_LANDED", "duplicate container/path fails closed");
+var noncanonicalContainerPacket = JSON.parse(JSON.stringify(livePacket));
+noncanonicalContainerPacket.organs[0].container = noncanonicalContainerPacket.organs[0].name + ".bin";
+noncanonicalContainerPacket.organs[0].path = "excerpts/20260823/" + noncanonicalContainerPacket.organs[0].container;
+assert.strictEqual(api.titanMoveRow(noncanonicalContainerPacket, liveJournal, liveReceipt).canonical_membership, false, "container must equal name + .mno");
+var forgedShaPacket = JSON.parse(JSON.stringify(livePacket));
+var forgedJournal = JSON.parse(JSON.stringify(liveJournal));
+forgedShaPacket.organs[0].sha256 = "f".repeat(64);
+forgedJournal.organs[0].mask_sha256 = "f".repeat(64);
+forgedJournal.organs[0].new_sha256 = "f".repeat(64);
+var forgedShaRow = api.titanMoveRow(forgedShaPacket, forgedJournal, liveReceipt);
+assert.strictEqual(forgedShaRow.structure_complete, true, "well-formed forged SHA still passes syntax/geometry");
+assert.strictEqual(forgedShaRow.write_receipt_evidence_ok, false, "exact pinned receipt rejects a co-forged packet/journal SHA");
+assert.strictEqual(api.titanMoveState(forgedShaRow).state, "NOT_LANDED", "forged per-row SHA with exact receipt body fails closed");
+assert.strictEqual(api.titanMoveState(api.titanMoveRow(livePacket, liveJournal, "altered receipt")).state, "NOT_LANDED", "altered receipt body fails closure");
 assert.ok(html.indexOf('id="titan-result"') >= 0, "desk must name the titan MOVE leftover");
 assert.ok(html.indexOf("host/titan_move_dry.py") >= 0, "desk must name the titan dry instrument");
 assert.ok(html.indexOf("host/titan_move_apply.py") >= 0, "desk must name the titan apply button");
@@ -699,13 +790,17 @@ assert.ok(html.indexOf("titan_move_journal.json") >= 0, "desk must name the publ
 assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan MOVE card");
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
+assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measured Titan size");
+assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
+assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bh/.test(html), "desk must bust the terminal-catalog cache key after battery-red");
+assert.ok(/20260825bi/.test(html), "desk must share the current-main/Titan cache key after terminal-catalog");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
 assert.ok(/No Muhlnickel, organ, titan, or device path/i.test(html), "desk must name the exclusion line");
-assert.ok(/needs-bryce|NEED \/ WHY ONLY BRYCE/i.test(html), "desk must name the owner-blocker form");
+assert.ok(/PAUSED/i.test(html), "desk must keep further Titan mutation paused");
+assert.ok(/Claude verification verdict/i.test(html), "desk must quarantine Claude certification");
 assert.ok(api.isAccessIncidentTalk, "land.js must classify slack-access-incident canaries");
 assert.ok(api.slackAccessState, "land.js must classify Slack write vs HEAD file");
 assert.ok(api.isAccessIncidentTalk("SLACK ACCESS INCIDENT CANARY — ChatGPT connector can read and write #commons; Bryce, GitHub, Cursor, Claude, and ChatGPT are all still channel members. Tracing the separate Commons relay/runtime now."), "access-incident copy is talk");
