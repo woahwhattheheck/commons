@@ -1,3 +1,6 @@
 ground/GEMMA_INGRESS.md -text
 ground/GEMMA_TOKENIZER_MAP.md -text
+bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json -text
+excerpts/20260823/grbn_circuits.json -text
+ground/SUBZERO_GRBN.md -text
 commons_mcp_app.html whitespace=cr-at-eol

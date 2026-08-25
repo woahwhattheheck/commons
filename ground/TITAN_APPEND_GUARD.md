@@ -29,6 +29,10 @@ equaled `claimed_append_end` (`103812669582`). At the measured
 `103831308164` it treated the size as a new base and would append
 again. That is how a second unexpected copy becomes a third.
 
+Unknown live size is also a pause. `refuse_further_append(None)`
+and an unreadable size fail-close. They do not return False and
+let `--go` proceed. Synthetic only. No live Titan mutation.
+
 ## Measure
 
 Instrument: `host/titan_append_guard.py`. Stdlib only. Catalog:

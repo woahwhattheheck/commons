@@ -315,6 +315,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
 **Note:** Quote leftover stays QUOTE_DRAFT. Bind is implemented. Live bind stays UNBOUND. Cash $0 / NOT_LANDED. Demand UNKNOWN. Do not remint SUBZERO_QUOTE / BUYERS / EXPLORER / White Box / human-outcomes / grok-receipt PR 2320 / `rivet-ship-subzero-quote-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
 
+### 56. DIO CRLF — Windows autocrlf is not a DIO mutation
+> *"JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED … Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations … PR will stay unmerged for independent review."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:38 Slack `1787650704.417459` / JOJO DIO CHECKPOINT + ship-talk · **Status:** LANDED this commit
+**Landed:** `.gitattributes` `-text` on three receipt-bound paths · `host/dio_crlf.py` · `ground/DIO_CRLF.md` / `.json` · Titan unknown-size fail-close · land canary + `dioCrlfState`
+**Receipt:** `python3 test_dio_crlf.py` · `python3 test_titan_append_guard.py` · `python3 test_dio_revenue_contract.py` · `node test_land_desk.js` · `python3 host/dio_crlf.py`
+**Note:** Canonical blobs still match receipts. 798 vs 773 and `e4cc1524` vs `15c2a25` are worktree CRLF, not DIO mutation. Unknown Titan live size fail-closes. No live Titan write. Do not remint DIO revenue / containment / SUBZERO quote / SUBZERO receipt. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
