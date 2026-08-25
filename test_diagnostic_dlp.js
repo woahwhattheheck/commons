@@ -87,6 +87,7 @@ for (const field of canonicalForbiddenNames) {
 for (const payload of [
   "AUTHORIZATION: Bearer owner-secret-token",
   "PUBLIC_CONTACT_URL: https://alice:secret@example.com/contact",
+  "PUBLIC_CONTACT_URL: https://alice:secret@127.0.0.1/contact",
   "PUBLIC_CONTACT_URL: https://alice%3Asecret%40example.com/contact",
   "AWS_ACCESS_KEY_ID: AKIAABCDEFGHIJKLMNOP",
   "AUTH: ghp_1234567890abcdef",

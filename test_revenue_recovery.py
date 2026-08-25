@@ -251,6 +251,7 @@ class RevenueRecoveryTests(unittest.TestCase):
     def test_x_url_userinfo_credential_is_incomplete(self):
         for value in (
             "PUBLIC_CONTACT_URL: https://alice:secret@example.com/contact",
+            "PUBLIC_CONTACT_URL: https://alice:secret@127.0.0.1/contact",
             "PUBLIC_CONTACT_URL: https://alice%3Asecret%40example.com/contact",
         ):
             with self.subTest(value=value):
