@@ -11,10 +11,13 @@
     "ground/PICK.md",
     "action.html",
     "reply.html",
-    "names.html"
+    "names.html",
+    ".github/workflows/commons-device-cycle.yml"
   ],
   "titan": "NOT_WRITTEN",
   "no_auth": true,
   "no_gate": true,
-  "posting_open": true
+  "posting_open": true,
+  "device_bridge": "addressed device ACTION -> current-main prepare -> self-hosted commons-device cycle -> durable result",
+  "device_proof": "only a durable device result proves PC execution"
 }

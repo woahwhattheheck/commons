@@ -88,6 +88,12 @@ class TestReadmeLive(unittest.TestCase):
         self.assertEqual(verdict["state"], "NOT_LANDED")
         self.assertIn("orient.json", verdict["note"])
 
+    def test_categorical_pc_denial_is_not_landed(self):
+        measured = measure_readme(
+            "Ordinary posts do not write the owner's PC. HTTP is not the computer.\n"
+        )
+        self.assertIn("do not write the owner's pc", measured["forbidden_hits"])
+
     def test_missing_paths_are_not_landed(self):
         measured = measure_from_rows(
             {
@@ -115,6 +121,7 @@ class TestReadmeLive(unittest.TestCase):
                 "no_auth": True,
                 "no_gate": True,
                 "action_pad": True,
+                "device_bridge_grounded": True,
                 "head_truth": True,
                 "ship_main": True,
                 "catalog_roster": STALE_ROSTER,
@@ -134,6 +141,7 @@ class TestReadmeLive(unittest.TestCase):
         self.assertFalse(measured["stale_roster"])
         self.assertEqual(measured["forbidden_hits"], [])
         self.assertEqual(measured["missing_phrases"], [])
+        self.assertTrue(measured["device_bridge_grounded"], measured)
         self.assertEqual(verdict["state"], "INTEGRATED", verdict)
         with open(os.path.join(ROOT, "ground", "README_LIVE.json"), encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
@@ -148,7 +156,7 @@ class TestReadmeLive(unittest.TestCase):
         for phrase in FORBIDDEN_PHRASES:
             self.assertNotIn(phrase.lower(), readme.lower())
         self.assertIn(SLACK_TS, card)
-        self.assertEqual(len(SEARCH_SPACE), 7)
+        self.assertEqual(len(SEARCH_SPACE), 8)
 
 
 if __name__ == "__main__":

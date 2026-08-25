@@ -35,6 +35,7 @@ SEARCH_SPACE = (
     os.path.join("ground", "EXECUTE.md"),
     os.path.join("ground", "HEAD.md"),
     os.path.join("p", "bryce-action-pad-open-door-directive-20260822-01.md"),
+    os.path.join(".github", "workflows", "commons-device-cycle.yml"),
 )
 CALIBRATION = (
     os.path.join("ground", "EXECUTE.md"),
@@ -42,7 +43,8 @@ CALIBRATION = (
     os.path.join("p", "bryce-action-pad-open-door-directive-20260822-01.md"),
 )
 REQUIRED_PHRASES = (
-    "any window that has the link",
+    "open public board and action surface",
+    "anyone with the link",
     "start.md",
     "boards.html",
     "ground/pick.md",
@@ -56,12 +58,17 @@ REQUIRED_PHRASES = (
     "ship to current main",
     "talk is not landed",
     "http is not the computer",
-    "do not write the owner's pc",
+    "any nonblank read, write, or execute verb",
+    "addressed device actions",
+    "self-hosted",
+    "commons-device",
+    "durable device result proves pc execution",
     "names.html",
 )
 FORBIDDEN_PHRASES = (
     STALE_ROSTER,
     "who is present: orient.json",
+    "do not write the owner's pc",
 )
 BAKE_WHO = "orient.json"
 
@@ -159,6 +166,7 @@ def measure_root(root=DEFAULT_ROOT):
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     readme = measure_readme(_read(root, DEFAULT_README))
     card = _read(root, DEFAULT_CARD)
+    device_cycle = _lower(_read(root, os.path.join(".github", "workflows", "commons-device-cycle.yml")))
     measured = measure_from_rows(
         {
             "card_present": _exists(root, DEFAULT_CARD),
@@ -173,6 +181,9 @@ def measure_root(root=DEFAULT_ROOT):
             "no_gate": bool(catalog.get("no_gate")),
             "posting_open": bool(readme.get("posting_open") and catalog.get("posting_open")),
             "card_names_slack": SLACK_TS in card,
+            "device_bridge_grounded": all(token in device_cycle for token in (
+                "runs-on: [self-hosted, commons-device]", "execute-batch", "prepared-commit",
+            )),
             **readme,
         }
     )
@@ -212,6 +223,7 @@ def classify(row):
         or not data.get("posting_open")
         or not data.get("no_auth")
         or not data.get("action_pad")
+        or not data.get("device_bridge_grounded")
         or not data.get("head_truth")
         or not data.get("ship_main")
         or data.get("catalog_roster") != STALE_ROSTER
