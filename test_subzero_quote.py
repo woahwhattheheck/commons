@@ -32,6 +32,7 @@ from subzero_quote import (
     measure_root,
     present_int,
     public_inbound,
+    safe_rel,
 )
 
 
@@ -184,6 +185,10 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(public_inbound("..\\ground\\EXECUTE")["state"], "TRAVERSAL")
         self.assertEqual(public_inbound(QUOTE_RECEIPT)["state"], "SELF_BIND")
         self.assertEqual(public_inbound("")["state"], "EMPTY")
+        self.assertEqual(safe_rel("..\\ground\\EXECUTE.md"), "")
+        self.assertEqual(safe_rel("../ground/EXECUTE.md"), "")
+        self.assertEqual(safe_rel("C:\\Windows\\system32"), "")
+        self.assertEqual(safe_rel("ground/SUBZERO_QUOTE.md"), "ground/SUBZERO_QUOTE.md")
 
     def test_legal_state_is_not_leftover_integrated(self):
         self.assertEqual(legal_state_for({}, inbound_bound=False), "DRAFT")

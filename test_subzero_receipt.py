@@ -20,6 +20,7 @@ from subzero_receipt import (
     FIRST_RECEIPT,
     GRBN_REL,
     GRBN_SHA,
+    HARDENING_TS,
     HUMAN_RECEIPT,
     LVIN_REL,
     P01_ID,
@@ -35,9 +36,11 @@ from subzero_receipt import (
     classify,
     classify_binding,
     inbound_rel,
+    inbound_semantic,
     measure_from_rows,
     measure_root,
     present_int,
+    safe_rel,
     receipt_schema_ok,
     sha256_rel,
     source_index,
@@ -69,6 +72,7 @@ def _complete(**extra):
         "binding_state": "CANDIDATE",
         "legal_state": "NEEDS_BUYER",
         "live_bound_receipts": 0,
+        "live_bound_receipts_state": "PRESENT",
         "bind_works": True,
         "grbn_sha": GRBN_SHA,
         "collected_cash_usd": 0,
@@ -170,9 +174,9 @@ class TestSubzeroReceipt(unittest.TestCase):
 
     def test_quote_receipt_is_self_bind_not_buyer(self):
         got = bind_validation_receipt(ROOT, QUOTE_RECEIPT, GRBN_REL, status="PASS")
-        self.assertTrue(got["inbound_ok"])
+        self.assertFalse(got["inbound_ok"])
         self.assertFalse(got["receipt"]["bound"])
-        self.assertNotEqual(got["binding_state"], "BUYER_BOUND")
+        self.assertEqual(got["binding_state"], "UNBOUND")
         self.assertEqual(got["buyer_reason"], "SELF_BIND")
         self.assertEqual(got["receipt"]["buyer_id"], "")
         self.assertEqual(got["receipt"]["status"], "UNKNOWN")
@@ -182,18 +186,52 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(got["cash_state"], "NOT_LANDED")
         self.assertEqual(got["demand"], "UNKNOWN")
 
-    def test_existing_post_without_acceptance_is_incomplete(self):
+    def test_existing_unrelated_post_is_not_a_public_inbound(self):
         got = bind_validation_receipt(
             ROOT,
             "bryce-action-pad-open-door-directive-20260822-01",
             GRBN_REL,
             status="PASS",
         )
-        self.assertTrue(got["inbound_ok"])
+        self.assertFalse(got["inbound_ok"])
         self.assertFalse(got["receipt"]["bound"])
-        self.assertEqual(got["binding_state"], "INCOMPLETE")
-        self.assertEqual(got["buyer_reason"], "NO_ACCEPTANCE")
+        self.assertEqual(got["binding_state"], "UNBOUND")
+        self.assertEqual(got["buyer_reason"], "IRRELEVANT_INBOUND")
         self.assertEqual(got["status_refused"], "PASS_WITHOUT_BUYER")
+
+    def test_relevant_inbound_without_acceptance_is_incomplete(self):
+        inbound_id = "fixture-quote-mention-sz-20260825-01"
+        tmp = tempfile.mkdtemp(prefix="subzero-receipt-relevant-")
+        try:
+            os.makedirs(os.path.join(tmp, "p"))
+            os.makedirs(os.path.join(tmp, "excerpts", "20260823"))
+            os.makedirs(os.path.join(tmp, "ground"))
+            shutil.copyfile(
+                os.path.join(ROOT, "excerpts", "20260823", "muhl_grbn.mno"),
+                os.path.join(tmp, "excerpts", "20260823", "muhl_grbn.mno"),
+            )
+            shutil.copyfile(
+                os.path.join(ROOT, "ground", "SUBZERO_QUOTE.json"),
+                os.path.join(tmp, "ground", "SUBZERO_QUOTE.json"),
+            )
+            with open(os.path.join(tmp, "p", inbound_id + ".md"), "w", encoding="utf-8") as handle:
+                handle.write(
+                    "---\n"
+                    "from: FIXTURE_WATCHER\n"
+                    "to: TABLE\n"
+                    "id: " + inbound_id + "\n"
+                    "subject: watching sz-paid-validation\n"
+                    "---\n\n"
+                    "This public inbound names sz-paid-validation but does not accept.\n"
+                )
+            got = bind_validation_receipt(tmp, inbound_id, GRBN_REL, status="PASS")
+            self.assertTrue(got["inbound_ok"])
+            self.assertFalse(got["receipt"]["bound"])
+            self.assertEqual(got["binding_state"], "INCOMPLETE")
+            self.assertEqual(got["buyer_reason"], "NO_ACCEPTANCE")
+            self.assertEqual(got["status_refused"], "PASS_WITHOUT_BUYER")
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
     def test_pass_refused_on_non_grbn_excerpt(self):
         got = bind_validation_receipt(ROOT, QUOTE_RECEIPT, LVIN_REL, status="PASS")
@@ -226,6 +264,8 @@ class TestSubzeroReceipt(unittest.TestCase):
                 "binding_state": "CANDIDATE",
                 "collected_cash_usd": 0,
                 "collected_cash_state": "PRESENT",
+                "live_bound_receipts": 0,
+                "live_bound_receipts_state": "PRESENT",
             }
         )
         self.assertEqual(verdict["state"], "FINDER-FAILED")
@@ -311,6 +351,7 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(row["binding_state"], "CANDIDATE")
         self.assertEqual(row["legal_state"], "NEEDS_BUYER")
         self.assertEqual(row["live_bound_receipts"], 0)
+        self.assertEqual(row["live_bound_receipts_state"], "PRESENT")
         self.assertEqual(row["collected_cash_usd"], 0)
         self.assertEqual(row["collected_cash_state"], "PRESENT")
         self.assertEqual(row["demand"], "UNKNOWN")
@@ -319,7 +360,13 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertNotIn("titan", row)
         self.assertEqual(SLACK_TS, "1787650230.035359")
         self.assertEqual(SECOND_PASS_TS, "1787651030.360809")
+        self.assertEqual(HARDENING_TS, "1787651639.893089")
         self.assertEqual(CELL, "H-008")
+        self.assertEqual(safe_rel("..\\ground\\EXECUTE"), "")
+        self.assertEqual(
+            inbound_semantic("", QUOTE_RECEIPT, "")["reason"],
+            "SELF_BIND",
+        )
         self.assertEqual(QUOTE_RECEIPT, "rivet-ship-subzero-quote-20260825-01")
         self.assertEqual(HUMAN_RECEIPT, "rivet-ship-human-outcomes-20260825-01")
         self.assertEqual(FIRST_RECEIPT, "rivet-ship-subzero-receipt-20260825-01")

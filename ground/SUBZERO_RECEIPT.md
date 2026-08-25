@@ -25,11 +25,15 @@ the project's own quote receipt as `buyer_id`, let
 numerics to `0`, refused caller `PASS` only for hard-coded
 GRBN, and framed titan `NOT_WRITTEN` as a leftover lock.
 
-This leftover closes those holes. Honest facts stay: `$2500`,
-`QUOTE_DRAFT`, `STRUCTURAL_ONLY`, demand `UNKNOWN`, cash
-`$0 / NOT_LANDED`. The live binder stays **CANDIDATE /
-INCOMPLETE / NEEDS_BUYER**. That is not buyer acceptance and
-not cash readiness.
+This leftover closes those holes. Slack `1787651639.893089`
+then named the remaining ones: a semantically relevant public
+inbound is required (IRRELEVANT_INBOUND / SELF_BIND are not
+inbound_ok); Windows path escape is rejected, not stripped;
+missing numeric never coerce; leftover INTEGRATED is not a
+legal quote state. Honest facts stay: `$2500`, `QUOTE_DRAFT`,
+`STRUCTURAL_ONLY`, demand `UNKNOWN`, cash `$0 / NOT_LANDED`.
+The live binder stays **CANDIDATE / INCOMPLETE / NEEDS_BUYER**.
+That is not buyer acceptance and not cash readiness.
 
 `inbound_rel()` canonicalizes one post id, forbids `/` and `\`,
 and proves the resolved path stays exactly under `p/`. File

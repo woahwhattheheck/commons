@@ -134,17 +134,36 @@ HASHED_SOURCES = (
 )
 
 
+def safe_rel(rel):
+    """Reject Windows escape, drive letters, and .. . Do not strip them."""
+    raw = str(rel or "")
+    if not raw or raw.startswith("/") or raw.startswith("\\"):
+        return ""
+    if "\\" in raw:
+        return ""
+    head = raw.split("/", 1)[0]
+    if ":" in head:
+        return ""
+    parts = [part for part in raw.split("/") if part]
+    if not parts or any(part in {".", ".."} for part in parts):
+        return ""
+    return "/".join(parts)
+
+
 def _posix_parts(rel):
-    text = str(rel or "").replace("\\", "/")
-    return [part for part in text.split("/") if part and part not in {".", ".."}]
+    text = safe_rel(rel)
+    return text.split("/") if text else []
 
 
 def _posix_rel(rel):
-    return str(rel or "").replace("\\", "/")
+    return safe_rel(rel)
 
 
 def _read(root, rel):
-    path = os.path.join(root, *_posix_parts(rel))
+    parts = _posix_parts(rel)
+    if not parts:
+        return ""
+    path = os.path.join(root, *parts)
     try:
         with open(path, encoding="utf-8", errors="replace") as handle:
             return handle.read()
@@ -153,7 +172,10 @@ def _read(root, rel):
 
 
 def _read_bytes(root, rel):
-    path = os.path.join(root, *_posix_parts(rel))
+    parts = _posix_parts(rel)
+    if not parts:
+        return b""
+    path = os.path.join(root, *parts)
     try:
         with open(path, "rb") as handle:
             return handle.read()
@@ -162,7 +184,10 @@ def _read_bytes(root, rel):
 
 
 def _exists(root, rel):
-    return os.path.isfile(os.path.join(root, *_posix_parts(rel)))
+    parts = _posix_parts(rel)
+    if not parts:
+        return False
+    return os.path.isfile(os.path.join(root, *parts))
 
 
 def _hex_sha(value, sizes=(64,)):

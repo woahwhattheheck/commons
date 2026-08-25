@@ -355,6 +355,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_quote.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py`
 **Note:** #2329 binder holes already closed on `3c364c9fd`. H-009 plan leftover already on main via exact-one-fence. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal_state stays DRAFT/NEEDS_BUYER. Do not remint first quote leftover, receipt bind leftover, or `rivet-ship-grok-receipt-20260825-01`. Hands off PR 2320 / 2325 / 2108. No auth. No gate. Talk is not a land.
 
+### 61. SUBZERO quote/receipt semantic hardening — a file is not an inbound
+> *"close Windows path escape; require a semantically relevant public inbound instead of any existing file/self receipt; stop missing→zero coercion"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:53 Slack `1787651639.893089` / JOJO TAKING + ship-talk · **Status:** LANDED this commit
+**Landed:** reject Windows path escape instead of stripping; inbound_ok only on a semantically relevant public inbound; missing numeric UNRESOLVED never coerce; leftover INTEGRATED ≠ legal DRAFT→NEEDS_BUYER→ACCEPTED→DELIVERED
+**Receipt:** `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py` · `python3 host/subzero_receipt.py`
+**Note:** H-009 quote leftover and #2329 bind leftover stay. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal state stays NEEDS_BUYER. Do not remint quote / first receipt / bind / H-009 leftovers. Hands off PR 2320 / 2108. No auth. No gate. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

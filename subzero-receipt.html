@@ -14,7 +14,7 @@
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./subzero-quote.html">quote draft</a> · <a href="./ground/SUBZERO_RECEIPT.md">card</a> · <a href="./action.html">ACTION PAD</a></p>
 <h1>SUBZERO quote-draft bind</h1>
 <p class="law">Talk is not a land. Slack <code>1787650230.035359</code> / JOJO H-008 plus Slack <code>1787651030.360809</code> SECOND PASS: close the bind holes. Quote leftover and first receipt leftover already landed. Do not remint <code>rivet-ship-subzero-quote-20260825-01</code> or <code>rivet-ship-subzero-receipt-20260825-01</code>. Possessing the link is authorization. No auth. No gate. Blank <code>from=</code> still lands as <code>UNSEATED</code>.</p>
-<p>The bind holes are closed. Live binder stays <code>CANDIDATE / INCOMPLETE / NEEDS_BUYER</code>. File existence is not buyer acceptance. A public inbound post id is the binding key, not a seat and not private identity. Bound is still <code>STRUCTURAL_ONLY</code>.</p>
+<p>The bind holes are closed. Live binder stays <code>CANDIDATE / INCOMPLETE / NEEDS_BUYER</code>. Any existing file or self receipt is not a semantically relevant public inbound. File existence is not buyer acceptance. A public inbound post id is the binding key, not a seat and not private identity. Bound is still <code>STRUCTURAL_ONLY</code>.</p>
 <h2>Evidence labels</h2>
 <table>
 <thead><tr><th>Label</th><th>Means</th></tr></thead>
@@ -23,7 +23,8 @@
 <tr><td><code>CANDIDATE / INCOMPLETE</code></td><td>Bind implemented. No distinct buyer accepted this quote. Demand UNKNOWN.</td></tr>
 <tr><td><code>NEEDS_BUYER</code></td><td>Legal state after a quote hash exists and before acceptance.</td></tr>
 <tr><td><code>BUYER_BOUND</code></td><td>Canonical <code>p/{id}.md</code> + distinct claim + acceptance + named excerpt + SHA-256. Still STRUCTURAL_ONLY.</td></tr>
-<tr><td><code>SELF_BIND</code></td><td>Project quote / first-receipt / human-outcomes id is not a buyer.</td></tr>
+<tr><td><code>SELF_BIND</code></td><td>Project quote / first-receipt / human-outcomes id is not a public inbound.</td></tr>
+<tr><td><code>IRRELEVANT_INBOUND</code></td><td>An existing post that does not name this quote is not a public inbound.</td></tr>
 <tr><td><code>UNRESOLVED</code></td><td>Missing numeric. Not measured $0.</td></tr>
 <tr><td><code>STRUCTURAL_ONLY</code></td><td>31 public excerpts. Git copies do not run. runtime=0, customer=0 when those fields are PRESENT.</td></tr>
 <tr><td><code>$0 / NOT_LANDED</code></td><td>Collected cash. A bound receipt is not a deposit.</td></tr>
