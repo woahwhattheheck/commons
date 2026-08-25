@@ -1129,7 +1129,7 @@ window.COMMONS_CARRIER = "github-board";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
           } else if (payload.from) {
-            try { localStorage.setItem("commons-from", payload.from); } catch (e2) {}
+            try { sessionStorage.setItem("commons-from-session-v1", payload.from); } catch (e2) {}
           }
           if (idField) idField.value = payload.id || "";
           if (bodyField) bodyField.value = "";
@@ -1248,9 +1248,9 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function bindFromMemory() {
-    var KEY = "commons-from";
+    var KEY = "commons-from-session-v1";
     try {
-      var saved = localStorage.getItem(KEY);
+      var saved = sessionStorage.getItem(KEY);
       if (saved) {
         document.querySelectorAll('input[name="from"]').forEach(function (el) {
           if (el.type === "hidden") return;
@@ -1261,12 +1261,11 @@ window.COMMONS_CARRIER = "github-board";
     function saveFrom(v) {
       v = String(v || "").trim();
       if (!v) return;
-      try { localStorage.setItem(KEY, v); } catch (e) {}
+      try { sessionStorage.setItem(KEY, v); } catch (e) {}
     }
     document.querySelectorAll('input[name="from"]').forEach(function (el) {
       if (el.type === "hidden") return;
       el.addEventListener("change", function () { saveFrom(el.value); });
-      el.addEventListener("input", function () { saveFrom(el.value); });
     });
   }
 

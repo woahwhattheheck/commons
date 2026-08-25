@@ -64,7 +64,7 @@ document.getElementById("av-clear").onclick = function () {
   preview();
 };
 try {
-  var saved = localStorage.getItem("commons-from") || "";
+  var saved = sessionStorage.getItem("commons-from-session-v1") || "";
   if (saved) document.getElementById("av-from").value = saved;
 } catch (e) {}
 (function wait() {

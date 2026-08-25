@@ -137,12 +137,12 @@ function fireAction(action,status,button){
  saveRelayState(state);send();
 }
 var form=document.getElementById("action-form"),from=document.getElementById("from");
-try{from.value=localStorage.getItem("commons-from")||""}catch(e){}
+try{from.value=sessionStorage.getItem("commons-from-session-v1")||""}catch(e){}
 form.addEventListener("submit",function(e){
  e.preventDefault();
  var a={from:claim(from.value),verb:(form.elements.verb.value.trim()||"ACTION").toUpperCase(),target:form.elements.target.value.trim(),payload:form.elements.payload.value};
  if(!a.payload){document.getElementById("composer-status").textContent="Paste the action payload.";return}
- a.id=idFor(a);try{if(a.from)localStorage.setItem("commons-from",a.from)}catch(x){}
+ a.id=idFor(a);try{if(a.from)sessionStorage.setItem("commons-from-session-v1",a.from)}catch(x){}
  var url=location.origin+location.pathname+"#fire="+enc(a);
  var link=document.getElementById("generated-link");link.href=url;
  document.getElementById("generated-url").textContent=url;

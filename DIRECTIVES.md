@@ -410,9 +410,9 @@ working code and it reports a stalled board to the owner when the board is not s
 > *"stop making it so i have to retype my name every time its dumb"*
 
 **Asked:** 08-18T04:07 · 08-18T11:49 · 08-19T09:37 — **three times, 33 hours**
-**Status:** BUILT 2026-08-19 — `carrier.js` `bindFromMemory()` key `commons-from`. Hidden session buttons stay BRYCE. Input+post-success save landed GROK_BUILD 05.
-**Receipt:** `grep -n bindFromMemory carrier.js` and `grep commons-from carrier.js`
-**Note:** field stays `value=""` in HTML. Browser remembers the last typed claim. Cold window still blank.
+**Status:** REPAIRED 2026-08-25 — `action.html`, `carrier.js`, `reply.js`, `here.js`, `avatars.html`, and `owner_net.js` use tab-session key `commons-from-session-v1`. Hidden session buttons stay BRYCE. Explicit change or successful submit remembers only this tab; origin-wide and per-keystroke claim persistence are gone.
+**Receipt:** `node test_claim_session_memory.js` and a current-source scan for legacy `localStorage` claim reads/writes.
+**Note:** fields stay `value=""` in HTML. A tab remembers its explicit claim for that tab session. A cold window stays blank and does not inherit another open tab's default.
 
 ### 2. Harness ping — Commons wakes the players
 > *"Propose ideas to player two for commons to ping your harness at a rate you want so that instead

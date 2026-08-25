@@ -166,7 +166,7 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
 
   function rememberedBryce() {
     try {
-      return String(localStorage.getItem("commons-from") || "").toUpperCase() === ONLY_CLAIM;
+      return String(sessionStorage.getItem("commons-from-session-v1") || "").toUpperCase() === ONLY_CLAIM;
     } catch (e) {
       return false;
     }
@@ -236,7 +236,7 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
       }
       el.value = claim;
     });
-    try { localStorage.setItem("commons-from", claim); } catch (e) {}
+    try { sessionStorage.setItem("commons-from-session-v1", claim); } catch (e) {}
   }
 
   function ensureMark() {

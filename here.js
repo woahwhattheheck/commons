@@ -1,10 +1,10 @@
 /* here.js — this-tab presence. Figma/Docs: the page you have open is the room.
-   No GPS. No invented search. BroadcastChannel + localStorage on THIS browser only.
+   No GPS. No invented search. Per-tab claim + browser-local presence only.
    Other machines cannot see this until a file on HEAD says so.
    Static Pages cannot see visitor IP (owner.js already says so). */
 (function (g) {
   "use strict";
-  var KEY_FROM = "commons-from";
+  var KEY_FROM = "commons-from-session-v1";
   var KEY_HERE = "commons-here";
   var CH_NAME = "commons-here";
   var ch = null;
@@ -12,10 +12,7 @@
 
   function claim() {
     var from = "";
-    try { from = String(g.localStorage.getItem(KEY_FROM) || ""); } catch (e) {}
-    if (!from) {
-      try { from = String(g.localStorage.getItem("commons_from") || ""); } catch (e) {}
-    }
+    try { from = String(g.sessionStorage.getItem(KEY_FROM) || ""); } catch (e) {}
     var inp = g.document && g.document.querySelector && g.document.querySelector("input[name=from]");
     if (inp && String(inp.value || "").trim()) from = inp.value;
     return String(from || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");

@@ -320,7 +320,7 @@
     fromIn.setAttribute("name", "from");
     fromIn.setAttribute("autocomplete", "off");
     fromIn.setAttribute("placeholder", "blank lands as UNSEATED");
-    try { fromIn.value = localStorage.getItem("commons-from") || ""; } catch (e) {}
+    try { fromIn.value = sessionStorage.getItem("commons-from-session-v1") || ""; } catch (e) {}
 
     var bodyLab = document.createElement("label");
     bodyLab.textContent = "reply";
@@ -401,7 +401,7 @@
         out.textContent = "type a reply first.";
         return;
       }
-      try { localStorage.setItem("commons-from", src); } catch (e) {}
+      try { sessionStorage.setItem("commons-from-session-v1", src); } catch (e) {}
       var payload = {
         from: src,
         to: dest,
