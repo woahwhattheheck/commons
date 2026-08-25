@@ -5,7 +5,7 @@
   "offer": {
     "offer_id": "gguf-diagnostic-10d-12k",
     "source": "revenue/payment_ready/pack.json",
-    "source_sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+    "source_sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36",
     "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
     "currency": "USD",
     "fixed_amount": 12000,
@@ -46,7 +46,10 @@
     "no_login": true,
     "no_auth": true,
     "no_gate": true,
-    "posting_is_never_disabled_by_receipt_state": true
+    "posting_is_never_disabled_by_receipt_state": true,
+    "anonymous_from": "UNSEATED",
+    "collects_from_field": false,
+    "carrier_from_memory_disabled": true
   },
   "stages": [
     {
@@ -105,7 +108,27 @@
     "processor_reference_never_proves_bank_available": true,
     "bank_available_receipt_is_never_automatic": true,
     "independent_cash_evidence_required": true,
-    "no_private_values": true
+    "no_private_values": true,
+    "artifact_digest_verified_against_exact_bytes": true,
+    "private_artifact_bytes_require_disjoint_external_evidence_root": true,
+    "private_artifact_paths_are_never_emitted": true,
+    "predecessor_source_digest_verified_against_exact_bytes": true,
+    "runtime_deterministic_replay_is_transition_authority": true,
+    "schema_binds_later_stage_state_and_facts": true,
+    "nda_sow_m1_evidence_distinct": true,
+    "diagnostic_dlp_listener_is_capture_phase_and_registered_before_carrier": true,
+    "diagnostic_from_memory_read_write_disabled": true,
+    "real_world_nda_sow_m1_order_is_owner_reported": true,
+    "owner_reported_fractional_timestamp_precision_preserved": true,
+    "private_contact_dlp_is_client_server_symmetric": true,
+    "zero_cash_lineage": [
+      "PROCESSOR_REFERENCE",
+      "PROCESSOR_PAYMENT",
+      "PAYOUT",
+      "BANK_AVAILABLE",
+      "CASH_EVIDENCE",
+      "COLLECTED_CASH_USD"
+    ]
   },
   "processor_handoff": {
     "recommended_provider": "Stripe",

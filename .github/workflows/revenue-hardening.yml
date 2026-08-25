@@ -1,0 +1,80 @@
+name: revenue-hardening
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.gitattributes'
+      - '.gitignore'
+      - '.github/workflows/revenue-hardening.yml'
+      - 'carrier.js'
+      - 'diagnostic.html'
+      - 'host/payment_ready.py'
+      - 'host/revenue_recovery.py'
+      - 'p/demon-revenue-hardening-correction-20260825-01.md'
+      - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
+      - 'revenue/payment_ready/**'
+      - 'test_carrier_from_memory.js'
+      - 'test_diagnostic_dlp.js'
+      - 'test_dio_crlf.py'
+      - 'test_dio_revenue_contract.py'
+      - 'test_payment_ready.py'
+      - 'test_revenue_recovery.py'
+  pull_request:
+    paths:
+      - '.gitattributes'
+      - '.gitignore'
+      - '.github/workflows/revenue-hardening.yml'
+      - 'carrier.js'
+      - 'diagnostic.html'
+      - 'host/payment_ready.py'
+      - 'host/revenue_recovery.py'
+      - 'p/demon-revenue-hardening-correction-20260825-01.md'
+      - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
+      - 'revenue/payment_ready/**'
+      - 'test_carrier_from_memory.js'
+      - 'test_diagnostic_dlp.js'
+      - 'test_dio_crlf.py'
+      - 'test_dio_revenue_contract.py'
+      - 'test_payment_ready.py'
+      - 'test_revenue_recovery.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: focused Python contract suite
+        run: python -W error -m unittest -q test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py
+      - name: actual diagnostic inline DLP
+        run: |
+          node test_diagnostic_dlp.js
+          node test_carrier_from_memory.js
+      - name: deterministic instrument self-test and measurement
+        run: |
+          python host/revenue_recovery.py --self-test
+          python host/revenue_recovery.py measure
+      - name: syntax and JSON checks
+        run: |
+          python -m py_compile host/revenue_recovery.py host/payment_ready.py test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py
+          node --check carrier.js
+          node --check test_diagnostic_dlp.js
+          node --check test_carrier_from_memory.js
+          python -c "import json,pathlib; [json.loads(path.read_text(encoding='utf-8')) for path in pathlib.Path('revenue/payment_ready').glob('*.json')]"
+      - name: no admission lock in the landed commit
+        run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
+      - name: whitespace guard
+        run: git diff --check HEAD^

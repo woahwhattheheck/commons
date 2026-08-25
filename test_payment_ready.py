@@ -103,7 +103,6 @@ class TestPaymentReady(unittest.TestCase):
                 "taking_state": "CARRIER_ONLY",
                 "xyz_required": True,
                 "remeasurement_owner": "Codex / Grok Build",
-                "titan": "NOT_WRITTEN",
                 "rails": pack["rails"],
                 "rail_events": list(REQUIRED_RAIL_EVENTS),
                 "private_manifest_present": True,
@@ -154,7 +153,6 @@ class TestPaymentReady(unittest.TestCase):
                 "taking_state": "CARRIER_ONLY",
                 "xyz_required": True,
                 "remeasurement_owner": "Codex / Grok Build",
-                "titan": "NOT_WRITTEN",
                 "rails": [{"provider": "Stripe"}, {"provider": "PayPal"}],
                 "rail_events": list(REQUIRED_RAIL_EVENTS),
                 "private_manifest_present": True,
@@ -172,7 +170,7 @@ class TestPaymentReady(unittest.TestCase):
         self.assertEqual(pack["slack_ts"], SLACK_TS)
         self.assertEqual(pack["kind"], "PAYMENT_READY_PACK")
         self.assertEqual(pack["mandate"], "demon-redteam-payment-ready-20260825-02")
-        self.assertEqual(pack["titan"], "NOT_WRITTEN")
+        self.assertNotIn("titan", pack)
         self.assertEqual(pack["taking_state"], "CARRIER_ONLY")
         self.assertEqual(pack["collectable_usd"], "NOT_LANDED")
         self.assertEqual(pack["collected_cash_usd"], 0)

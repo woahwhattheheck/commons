@@ -4,18 +4,21 @@
     {
       "kind": "OFFER_SOURCE",
       "reference": "revenue/payment_ready/pack.json",
-      "sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+      "sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36",
       "status": "VERIFIED"
     }
   ],
   "facts": {
     "bank_available": "NOT_LANDED",
+    "cash_evidence": "NOT_LANDED",
     "collected_cash_usd": 0,
     "delivery": "NOT_LANDED",
     "gguf_control": "UNKNOWN",
     "harness_ready": "UNKNOWN",
     "legal_acceptance": "NOT_LANDED",
+    "payout": "NOT_LANDED",
     "processor_payment": "NOT_LANDED",
+    "processor_reference": "NOT_LANDED",
     "public_contact_url_present": false,
     "purchase_intent": "UNKNOWN"
   },

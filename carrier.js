@@ -801,6 +801,7 @@ window.COMMONS_CARRIER = "github-board";
 
   function bindMemoryComposer(form, out) {
     if (!form || form.id !== "say" || form.getAttribute("data-memory-bound") === "1") return;
+    if (form.getAttribute("data-no-from-memory") === "true") return;
     form.setAttribute("data-memory-bound", "1");
     var panel = document.createElement("section");
     panel.className = "memory-composer";
@@ -1128,7 +1129,7 @@ window.COMMONS_CARRIER = "github-board";
           var extra = "";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
-          } else if (payload.from) {
+          } else if (payload.from && form.getAttribute("data-no-from-memory") !== "true") {
             try { sessionStorage.setItem("commons-from-session-v1", payload.from); } catch (e2) {}
           }
           if (idField) idField.value = payload.id || "";
@@ -1249,11 +1250,17 @@ window.COMMONS_CARRIER = "github-board";
 
   function bindFromMemory() {
     var KEY = "commons-from-session-v1";
+    var fields = Array.prototype.slice.call(document.querySelectorAll('input[name="from"]')).filter(function (el) {
+      if (el.type === "hidden") return false;
+      if (el.getAttribute && el.getAttribute("data-no-from-memory") === "true") return false;
+      return !(el.form && el.form.getAttribute("data-no-from-memory") === "true");
+    });
+    // Do not even read remembered sender state when every relevant field/form opts out.
+    if (!fields.length) return;
     try {
       var saved = sessionStorage.getItem(KEY);
       if (saved) {
-        document.querySelectorAll('input[name="from"]').forEach(function (el) {
-          if (el.type === "hidden") return;
+        fields.forEach(function (el) {
           if (!el.value) el.value = saved;
         });
       }
@@ -1263,8 +1270,7 @@ window.COMMONS_CARRIER = "github-board";
       if (!v) return;
       try { sessionStorage.setItem(KEY, v); } catch (e) {}
     }
-    document.querySelectorAll('input[name="from"]').forEach(function (el) {
-      if (el.type === "hidden") return;
+    fields.forEach(function (el) {
       el.addEventListener("change", function () { saveFrom(el.value); });
     });
   }
