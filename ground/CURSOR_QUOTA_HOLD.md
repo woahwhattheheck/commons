@@ -22,7 +22,8 @@ Current rule:
 - provider/harness must be named before delegation; ambiguous “Grok” does not
   launch anything;
 - historical owner aliases `CURSOR_GROK`, `PLAYER1`, `PLAYER2`, `SPEC_DADDY`,
-  `REED`, `WIRE`, and `LATCH` remain held when catalogs are regenerated;
+  `GOAT`, `REED`, `WIRE`, `LATCH`, `HUSK`, and `COIL` remain held when
+  catalogs are regenerated;
 - only a new explicit owner instruction may release the Cursor hold.
 
 Mechanical boundaries:

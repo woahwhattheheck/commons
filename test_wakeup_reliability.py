@@ -78,6 +78,23 @@ class WakeupReliabilityTests(unittest.TestCase):
         self.assertEqual(state["due"], [])
         self.assertEqual(state["pending"], [])
 
+    def test_missing_adapter_is_held_unrouted_without_delivery(self):
+        path = os.path.join(self.tmp.name, "wakeups", "CODEX_LOCAL.json")
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump({"from": "CODEX_LOCAL", "id": JOB_ID, "wakeup": DUE}, handle)
+        calls = []
+        wakeup.ntfy = lambda row, attempt_id: calls.append((row, attempt_id)) or True
+        wakeup.now = lambda: T0
+
+        self.assertEqual(wakeup.main(), 0)
+
+        state = self.read_json("wakeups.json")
+        self.assertEqual(state["due"], [])
+        self.assertEqual(state["held_cursor"], [])
+        self.assertEqual([row["id"] for row in state["held_unrouted"]], [JOB_ID])
+        self.assertEqual(state["fired"], [])
+        self.assertEqual(calls, [])
+
     def test_payload_keeps_stable_job_id_and_separate_attempt(self):
         captured = {}
 

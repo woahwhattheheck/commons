@@ -559,7 +559,7 @@
       return { state: "CLAIMED", note: "SPECTER UPDATE / PR 2205 rebase / _last_tick.json / isolated-temp-copy / zero-oracle-reads talk. Talk is not a land. Ship SPECTER's exact job JSON and the two contract fixes to current main. Do not remint PR 2205 or the RIVET canary. Named idle bc- resume stays UNMEASURED." };
     }
     if (api.isGrokHygieneTalk(t)) {
-      return { state: "CLAIMED", note: "Grok/Claude hygiene-boundary / enabledPlugins / grok_hygiene_gate talk. Talk is not a land. Direct Grok Build stays fail-closed. Clean Cursor is the land lane. Do not disable Claude plugins. Do not remint GROK_HARNESS." };
+      return { state: "CLAIMED", note: "Grok/Claude hygiene-boundary / enabledPlugins / grok_hygiene_gate talk. Talk is not a land. Direct Grok Build stays fail-closed. Codex/local/GitHub Actions is the land lane; Cursor is held. Do not disable Claude plugins. Do not remint GROK_HARNESS." };
     }
     if (api.isForeignMainTalk(t)) {
       return { state: "CLAIMED", note: "foreign official main / LocalDeviceAgent SHIP_RECEIPT / muhl_subagent_protocol talk. Talk is not a land. Measure official LDA main and the named blobs independently. Commons p/{id}.md is a separate fact. Do not remint the JOJO id. Do not copy private LDA source." };
@@ -870,7 +870,7 @@
     var hasClassify = /def classify/.test(body);
     var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
     var neverZero = /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     var hasPark = /PARKED/.test(body) && /BRYCE_ONLY/.test(body);
     if (hasMeasure && hasClassify && hasMiss && neverZero && hasOwner && hasPark) {
       return {
@@ -898,7 +898,7 @@
     var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
     var hasCanary = /planted-deletion canary/.test(body) || /planted_deletion_canary/.test(body);
     var neverZero = /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     if (hasMeasure && hasClassify && hasMiss && hasCanary && neverZero && hasOwner) {
       return {
         state: "INTEGRATED",
@@ -1864,7 +1864,7 @@
     var hasLabel = /CLAUDE_INTERMEDIATE_UNTRUSTED/.test(body);
     var hasClauses = /P2_SCRIBE/.test(body) && /P5_NEVER/.test(body) && /P1_HANDS/.test(body) && /REJECTED_FOR_NOW/.test(body);
     var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     var noGate = /does not add a gate/.test(body) || /no_gate/.test(body);
     var keepCharter = /CLAUDE_ROLE/.test(body) && /does not overwrite/.test(body);
     if (hasMeasure && hasClassify && hasLabel && hasClauses && hasMiss && hasOwner && noGate && keepCharter) {
@@ -1972,7 +1972,7 @@
     var hasClassify = /def classify/.test(body);
     var hasRetract = /RETRACTED stays RETRACTED/.test(body) || /retracted_stays_retracted/.test(body);
     var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     var hasFamilies = /pfc_raw_a_zero/.test(body) && /no_active_claim/.test(body);
     var hasBranch = /sd-wx/.test(body) && /kite-help/.test(body);
     if (hasMeasure && hasClassify && hasRetract && hasMiss && hasOwner && hasFamilies && hasBranch) {
@@ -2001,7 +2001,7 @@
     var hasInfo = /INFORMATIONAL/.test(body);
     var hasUnscanned = /UNSCANNED/.test(body);
     var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     var hasIds = /gauge-p0-compliance/.test(body) && /gauge-secret-rescan/.test(body);
     if (hasMeasure && hasClassify && hasInfo && hasUnscanned && hasMiss && hasOwner && hasIds) {
       return {
@@ -2028,7 +2028,7 @@
     var hasClassify = /def classify/.test(body);
     var hasRetract = /RETRACTED/.test(body) && /unflattering/.test(body);
     var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
-    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasOwner = /Codex \/ Grok Build/.test(body);
     var hasRhetoric = /pathologize/.test(body) && /do not use a disputed measurement/.test(body);
     if (hasMeasure && hasClassify && hasRetract && hasMiss && hasOwner && hasRhetoric) {
       return {

@@ -12,9 +12,12 @@
     "PLAYER1",
     "PLAYER2",
     "SPEC_DADDY",
+    "GOAT",
     "REED",
     "WIRE",
-    "LATCH"
+    "LATCH",
+    "HUSK",
+    "COIL"
   ],
   "grok_lane": "SuperGrok Heavy / Grok Build",
   "implementation_verification_lane": "Codex / local / GitHub Actions",

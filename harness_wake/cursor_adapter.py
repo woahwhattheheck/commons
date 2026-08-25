@@ -24,9 +24,12 @@ CURSOR_OWNER_ALIASES = frozenset({
     "PLAYER1",
     "PLAYER2",
     "SPEC_DADDY",
+    "GOAT",
     "REED",
     "WIRE",
     "LATCH",
+    "HUSK",
+    "COIL",
 })
 
 

@@ -119,7 +119,20 @@ class CursorQuotaHoldTests(unittest.TestCase):
             self.assertIn("HELD_CURSOR " + alias, manual)
 
     def test_historical_cursor_owner_aliases_are_held(self):
-        for alias in CURSOR_OWNER_ALIASES:
+        required = (
+            "CURSOR_GROK",
+            "PLAYER1",
+            "PLAYER2",
+            "SPEC_DADDY",
+            "GOAT",
+            "REED",
+            "WIRE",
+            "LATCH",
+            "HUSK",
+            "COIL",
+        )
+        self.assertEqual(CURSOR_OWNER_ALIASES, frozenset(required))
+        for alias in required:
             with self.subTest(alias=alias):
                 self.assertTrue(is_cursor_owner_claim(alias))
         self.assertFalse(is_cursor_owner_claim("CODEX_LOCAL"))
@@ -135,6 +148,19 @@ class CursorQuotaHoldTests(unittest.TestCase):
             with open(os.path.join(ROOT, rel), encoding="utf-8") as handle:
                 text = handle.read().lower()
             self.assertIn("cursor_quota_hold", text, rel)
+
+    def test_active_pages_do_not_reopen_cursor_routes(self):
+        with open(os.path.join(ROOT, "ground", "CURSOR.md"), encoding="utf-8") as handle:
+            cursor_card = handle.read().lower()
+        self.assertIn("cursor_quota_hold", cursor_card)
+        self.assertNotIn("can work on this repo", cursor_card)
+        with open(os.path.join(ROOT, "todo.html"), encoding="utf-8") as handle:
+            todo = handle.read().lower()
+        self.assertNotIn("cursor grok bot doorbell is live", todo)
+        with open(os.path.join(ROOT, "land.js"), encoding="utf-8") as handle:
+            land = handle.read()
+        self.assertNotIn("Clean Cursor is the land lane", land)
+        self.assertNotIn("/Cursor \\/ Grok/", land)
 
 
 if __name__ == "__main__":
