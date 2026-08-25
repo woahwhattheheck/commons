@@ -1632,6 +1632,7 @@ assert.ok(api.isSubzeroReceiptTalk, "land.js must classify SUBZERO receipt lefto
 assert.ok(api.subzeroReceiptState, "land.js must classify the SUBZERO receipt leftover");
 assert.ok(api.isSubzeroReceiptTalk("JOJO BACKEND CELL H-008 — READ-ONLY / NO LANDING CLAIM\nquote-draft → buyer-bound validation receipt\n1787650230.035359"), "JOJO H-008 is leftover talk");
 assert.ok(api.isSubzeroReceiptTalk("JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET\n1787651030.360809"), "JOJO second pass is leftover talk");
+assert.ok(api.isSubzeroReceiptTalk("TAKING `subzero-quote-receipt-semantic-hardening-20260825-01` — JOJO\n1787651639.893089\nsemantically relevant public inbound"), "JOJO semantic-hardening taking is leftover talk");
 assert.ok(!api.isSubzeroReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the receipt leftover");
 assert.ok(!api.isSubzeroReceiptTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof. 1787649732.551439"), "quote leftover is not the H-008 receipt leftover");
 assert.ok(!api.isSubzeroQuoteTalk("JOJO BACKEND CELL H-008 buyer-bound validation receipt 1787650230.035359"), "H-008 receipt leftover is not the quote leftover");
@@ -1644,6 +1645,10 @@ var subzeroSecondPassTalk = api.completionStateFromText(
   "JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET\n1787651030.360809"
 );
 assert.strictEqual(subzeroSecondPassTalk.state, "CLAIMED");
+var subzeroHardeningTalk = api.completionStateFromText(
+  "TAKING `subzero-quote-receipt-semantic-hardening-20260825-01` — JOJO\n1787651639.893089\nsemantically relevant public inbound"
+);
+assert.strictEqual(subzeroHardeningTalk.state, "CLAIMED");
 var subzeroReceiptDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero receipt leftover landed"
 );
@@ -1652,7 +1657,7 @@ var subzeroReceiptEmpty = api.subzeroReceiptState("");
 assert.strictEqual(subzeroReceiptEmpty.state, "UNMEASURED");
 var subzeroReceiptMissing = api.subzeroReceiptState("# empty stub\nno leftover");
 assert.strictEqual(subzeroReceiptMissing.state, "NOT_LANDED");
-var subzeroReceiptOk = api.subzeroReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef bind_validation_receipt(root, inbound_id, excerpt_rel):\n    return {}\ndef inbound_rel(inbound_id):\n    return ''\nSELF_BIND\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nP01_catalog_receipt\nUNBOUND\nBUYER_BOUND\nCANDIDATE\nINCOMPLETE\nNEEDS_BUYER\nUNRESOLVED\n$0 / NOT_LANDED\nno auth\nno gate\n");
+var subzeroReceiptOk = api.subzeroReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef bind_validation_receipt(root, inbound_id, excerpt_rel):\n    return {}\ndef inbound_rel(inbound_id):\n    return ''\nSELF_BIND\nIRRELEVANT_INBOUND\nsemantically relevant\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nP01_catalog_receipt\nUNBOUND\nBUYER_BOUND\nCANDIDATE\nINCOMPLETE\nNEEDS_BUYER\nUNRESOLVED\n$0 / NOT_LANDED\nno auth\nno gate\n");
 assert.strictEqual(subzeroReceiptOk.state, "INTEGRATED");
 assert.ok(/still not the file/i.test(subzeroReceiptOk.note), "landed leftover must name Slack as not the file");
 assert.ok(html.indexOf('id="subzero-receipt-result"') >= 0, "desk must name the SUBZERO receipt leftover");
