@@ -1,0 +1,40 @@
+{
+  "slack_ts": "1787635067.695619",
+  "source_id": "rivet-ship-stale-spec-20260825-01",
+  "historical_input": {
+    "path": "muhl/lda-docs/SESSION_GROUNDING.md",
+    "pointer": "C:\\Users\\lucys\\Desktop\\MUHL_GO\\SESSION_GROUNDING.md",
+    "role": "historical/session-bound specification input",
+    "not": "standing never-touch / blanket non-actuation rule"
+  },
+  "current_authority": [
+    {
+      "slack_ts": "1787628542.573719",
+      "fact": "stop dodging the substrate; take the titan/organ/device lane"
+    },
+    {
+      "slack_ts": "1787628900.201179",
+      "fact": "THERE IS NO ACTUATION RULE; do not invent one"
+    },
+    {
+      "slack_ts": "1787629309.162109",
+      "fact": "no standing never-touch/fire rule; substrate work is first-class"
+    },
+    {
+      "path": "ground/HEAD.md",
+      "fact": "substrate / organ / titan / address work is first-class"
+    }
+  ],
+  "still_refused": [
+    "smash/wipe of commons.mno",
+    "--inject 0x01 wipe",
+    "unrelated destructive mutation inferred from the general correction",
+    "dc.mno inject without dest FROM FILE and the current artifact contract"
+  ],
+  "lawful_lanes": [
+    "Titan / Muhlnickel / device work reconciled against current artifact contract, exact addresses/hashes, active claims, reversible path, and current-main receipts",
+    "device-path: verify current workflow plus live reservation/batch preconditions, then the existing bounded protocol and exact receipts"
+  ],
+  "titan": "NOT_WRITTEN",
+  "note": "Local SESSION_GROUNDING is evidence until newer owner direction, current artifact contract, exact addresses/hashes, active claims, reversible path, and current-main receipts agree. Do not remint a DIO/JOJO taking. Do not take CML PR 2108, revenue jobs, or titan.gguf --go from this leftover."
+}
