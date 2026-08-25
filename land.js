@@ -190,6 +190,8 @@
     "ground/SITTING_REMINT.json",
     "ground/WAKE_CONTRACT.md",
     "ground/WAKE_CONTRACT.json",
+    "ground/TERMINAL_CATALOG.md",
+    "ground/TERMINAL_CATALOG.json",
     "ground/BATTERY_RED.md",
     "ground/BATTERY_RED.json",
     "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
@@ -425,6 +427,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isTerminalCatalogTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER LANDED + TERMINAL / stale MCP_WAKE/STRANDED OPEN/CANDIDATE / terminal-catalog talk. Talk is not a land. Reconcile the static catalogs to the DONE job JSON. Named idle bc- resume stays UNMEASURED. Do not remint PR 2205, WAKE_CONTRACT, or BATTERY_RED." };
     }
     if (api.isBatteryRedTalk(t)) {
       return { state: "CLAIMED", note: "JOJO battery-red / no-global-green / remeasure-MNO-width-generated-TODO talk. Talk is not a land. Ship the named battery leftover to current main. Do not remint JOJO memory, REMEASURE, watchdog canary, or WAKE_CONTRACT. Do not pad TitanX." };
@@ -779,6 +784,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isTerminalCatalogTalk = function (text) {
+    return /terminal-catalog|stale MCP_WAKE|static MCP_WAKE\/STRANDED|prose at OPEN\/CANDIDATE|1787643878\.878279|SPECTER LANDED \+ TERMINAL/i.test(String(text || ""));
+  };
+
+  api.terminalCatalogState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/terminal_catalog.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesJob = /specter-watchdog-head-proof-20260825-01/.test(body);
+    var namesStale = /OPEN\/CANDIDATE/.test(body) && /stale truths/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesJob && namesStale && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "terminal-catalog leftover is on this file. MCP_WAKE / STRANDED static prose matches DONE. A Slack taking is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/terminal_catalog.py missing the leftover. SPECTER LANDED + TERMINAL / stale OPEN/CANDIDATE talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2578,6 +2611,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
   var foreignMainOut = document.getElementById("foreign-main-result");
@@ -3208,6 +3242,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintTerminalCatalog(result) {
+    if (!terminalCatalogOut) return;
+    terminalCatalogOut.setAttribute("data-tone", api.toneFor(result.state));
+    terminalCatalogOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintBatteryRed(result) {
@@ -4048,6 +4088,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadTerminalCatalog(sha) {
+    if (!terminalCatalogOut) return Promise.resolve(null);
+    terminalCatalogOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/terminal_catalog.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/terminal_catalog.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/terminal_catalog.py absent at the measured main SHA. SPECTER LANDED + TERMINAL / stale OPEN/CANDIDATE talk is CLAIMED." };
+        paintTerminalCatalog(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTerminalCatalog(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.terminalCatalogState(body);
+        paintTerminalCatalog(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTerminalCatalog(err);
       return err;
     });
   }
@@ -4992,6 +5059,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadTerminalCatalog(sha);
     loadBatteryRed(sha);
     loadWakeContract(sha);
     loadForeignMain(sha);

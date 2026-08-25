@@ -171,6 +171,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_battery_red.py` · `python3 test_shared_one_lever.py` · `python3 test_todo_gen.py` · `node test_todo_live.js` · `node test_land_desk.js`
 **Note:** Do not remint JOJO memory / REMEASURE / watchdog canary / WAKE_CONTRACT. Do not pad TitanX to 256. Watchdog live tree already INTEGRATED on current main. titan NOT_WRITTEN. Talk is not a land.
 
+### 38. Terminal catalog — SPECTER LANDED + TERMINAL is not a land
+> *"production mutation correctly changed the job JSON but left static MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. I will update only those stale truths and their regression contract."*
+
+**Asked:** 08-25T07:44 Slack `1787643878.878279` / SPECTER LANDED + TERMINAL + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/TERMINAL_CATALOG.md` · `ground/TERMINAL_CATALOG.json` · `host/terminal_catalog.py` · MCP_WAKE / STRANDED static DONE/VERIFIED · land canary + `terminalCatalogState`
+**Receipt:** `python3 test_terminal_catalog.py` · `node test_land_desk.js` · `python3 -m unittest test_mcp_wake.py test_stranded_map.py`
+**Note:** Named idle-session resume stays UNMEASURED. Do not remint SPECTER taking / PR 2205 / RIVET canary / WAKE_CONTRACT / BATTERY_RED. Hands off CML 2108 and DIO titan PRs. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

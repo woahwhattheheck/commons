@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bg/.test(html), "desk must bust the battery-red cache key after wake-contract");
+assert.ok(/20260825bh/.test(html), "desk must bust the terminal-catalog cache key after battery-red");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,37 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isTerminalCatalogTalk, "land.js must classify SPECTER terminal-catalog talk");
+assert.ok(api.terminalCatalogState, "land.js must classify the terminal-catalog leftover");
+assert.ok(api.isTerminalCatalogTalk("SPECTER LANDED + TERMINAL — PR #2205 squash. SPECTER TAKING the bounded terminal-catalog reconciliation now: production mutation correctly changed the job JSON but left static MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "SPECTER terminal taking is leftover talk");
+assert.ok(!api.isTerminalCatalogTalk("make sure people do more than talk about shit"), "ship-talk is not the terminal-catalog leftover");
+assert.ok(!api.isTerminalCatalogTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the terminal-catalog leftover");
+assert.ok(!api.isTerminalCatalogTalk("from: JOJO\nkind: SHIP_RECEIPT\nFull battery run 32822236088 is not green due unrelated current-main remeasure/MNO-width/generated-TODO/watchdog failures; no global-green claim is made. 1787643497.122079"), "battery-red copy is not the terminal-catalog leftover");
+assert.ok(!api.isWakeContractTalk("SPECTER LANDED + TERMINAL — bounded terminal-catalog reconciliation. static MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "terminal-catalog copy without rebase words is not the wake-contract leftover");
+var terminalCatalogTalk = api.completionStateFromText(
+  "SPECTER LANDED + TERMINAL — PR #2205 squash f9d743eb312a2ac1a71141264fc5949256acf016 is on official main. SPECTER TAKING the bounded terminal-catalog reconciliation now: production mutation correctly changed the job JSON but left static MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. Named idle-session resume remains UNMEASURED. 1787643878.878279"
+);
+assert.strictEqual(terminalCatalogTalk.state, "CLAIMED");
+assert.ok(/terminal-catalog|OPEN\/CANDIDATE|stale MCP_WAKE/i.test(terminalCatalogTalk.note), "terminal-catalog-without-SHA must stay CLAIMED and beat wake-contract / battery-red");
+var terminalCatalogDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nterminal-catalog leftover landed"
+);
+assert.strictEqual(terminalCatalogDone.state, "INTEGRATED", "completion words still beat terminal-catalog talk");
+var terminalCatalogEmpty = api.terminalCatalogState("");
+assert.strictEqual(terminalCatalogEmpty.state, "UNMEASURED");
+var terminalCatalogMissing = api.terminalCatalogState("# empty stub\nno leftover");
+assert.strictEqual(terminalCatalogMissing.state, "NOT_LANDED");
+var terminalCatalogOk = api.terminalCatalogState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nspecter-watchdog-head-proof-20260825-01\nOPEN/CANDIDATE\nstale truths\nno auth\nno gate\n");
+assert.strictEqual(terminalCatalogOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(terminalCatalogOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="terminal-catalog-result"') >= 0, "desk must name the terminal-catalog leftover");
+assert.ok(html.indexOf("host/terminal_catalog.py") >= 0, "desk must name the terminal-catalog instrument");
+assert.ok(html.indexOf("ground/TERMINAL_CATALOG.md") >= 0, "desk must link the terminal-catalog card");
+assert.ok(html.indexOf("ground/TERMINAL_CATALOG.json") >= 0, "desk must link the terminal-catalog catalog");
+assert.ok(html.indexOf("1787643878.878279") >= 0, "desk must cite the SPECTER terminal Slack ts");
+assert.ok(/terminal-catalog|OPEN \/ CANDIDATE|stale/i.test(html), "desk must name terminal-catalog talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TERMINAL_CATALOG.md") >= 0, "terminal-catalog card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TERMINAL_CATALOG.json") >= 0, "terminal-catalog catalog must stay a canary");
 assert.ok(api.isBatteryRedTalk, "land.js must classify JOJO battery-red / no-global-green talk");
 assert.ok(api.batteryRedState, "land.js must classify the battery-red leftover");
 assert.ok(api.isBatteryRedTalk("from: JOJO\nkind: SHIP_RECEIPT\nFull battery run 32822236088 is not green due unrelated current-main remeasure/MNO-width/generated-TODO/watchdog failures; no global-green claim is made. 1787643497.122079"), "JOJO battery-red receipt is leftover talk");

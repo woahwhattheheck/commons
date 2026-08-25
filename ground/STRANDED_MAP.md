@@ -4,7 +4,8 @@ Slack `1787635487.642039` (2026-08-25), DEMON rolling utilization:
 
 > REAL-BUT-STRANDED MAP: (1) LocalDeviceAgent Android source, but
 > `lda/workflows/android.yml` is outside `.github/workflows`.
-> (2) `wake_jobs/` contains only `.gitignore`. (3) Four MCP
+> (2) `wake_jobs/` contains only `.gitignore` (now two DONE canaries;
+> named idle-session resume stays UNMEASURED). (3) Four MCP
 > surfaces are fragmented. (4) White Box $30k pilot stays
 > PROPOSED. (5) Bazaar has seven offers; copy-node fulfillment
 > is absent. (6) Titan 31/31 write+reread is real; later size
@@ -39,9 +40,9 @@ python3 host/stranded_map.py --self-test
 ```
 
 The leftover is **INTEGRATED** when all six items are measured.
-STRANDED / EMPTY / FRAGMENTED / PROPOSED / UNFULFILLED / STALE
-on an item means that lane is still not shipped. Talk that lists
-the map without this leftover is **CLAIMED**.
+STRANDED / EMPTY / CANDIDATE / VERIFIED / FRAGMENTED / PROPOSED /
+UNFULFILLED / STALE on an item names the current lane. Talk that
+lists the map without this leftover is **CLAIMED**.
 
 ## Desk
 

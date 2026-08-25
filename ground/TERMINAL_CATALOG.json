@@ -1,0 +1,30 @@
+{
+  "source_id": "rivet-ship-terminal-catalog-20260825-01",
+  "slack_ts": "1787643878.878279",
+  "kind": "TERMINAL_CATALOG",
+  "subject": "SPECTER terminal talk is not a land — reconcile stale OPEN/CANDIDATE prose",
+  "specter_job": "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
+  "rivet_job": "wake_jobs/rivet-watchdog-canary-20260825-01.json",
+  "result_address": "ridge-cursor-wake-loop-20260822-01",
+  "named_idle_bc_resume": "UNMEASURED",
+  "stale_truths": [
+    "ground/MCP_WAKE.json wake CANDIDATE / SPECTER source_state OPEN",
+    "ground/MCP_WAKE.md OPEN in source",
+    "ground/STRANDED_MAP.json OPEN in source",
+    "host/stranded_map.py CANDIDATE-only live wake"
+  ],
+  "hands_off": [
+    "CML 2108",
+    "SPECTER PR 2205 remint",
+    "rivet-watchdog-canary-20260825-01 remint",
+    "WAKE_CONTRACT remint",
+    "BATTERY_RED remint",
+    "named idle bc- resume of a different run",
+    "titan.gguf write",
+    "commons.mno smash"
+  ],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true,
+  "note": "Do not remint SPECTER's taking or job id. Do not remint the RIVET canary. A Slack taking is still not the file."
+}

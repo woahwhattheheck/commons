@@ -188,11 +188,8 @@ class TestMcpWake(unittest.TestCase):
             if item["job_id"] == PRODUCTION_CANARY_ID
         )
         self.assertEqual(canary["job_id"], PRODUCTION_CANARY_ID)
-        self.assertIn(canary["status"], {"OPEN", "DONE"})
-        self.assertEqual(
-            row["wake"],
-            "VERIFIED" if canary["status"] == "DONE" else "CANDIDATE",
-        )
+        self.assertEqual(canary["status"], "DONE")
+        self.assertEqual(row["wake"], "VERIFIED")
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         catalog = catalog_from_row(row)
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
