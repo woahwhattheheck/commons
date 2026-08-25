@@ -108,6 +108,8 @@
     "ground/HOARD.md",
     "ground/TITAN_MOVE.md",
     "ground/SLACK_ACCESS.md",
+    "ground/PFC_BAKE_CENSUS.md",
+    "docs/PFC_BAKE_CENSUS.md",
     "robots.txt",
     "slack/plugin.html"
   ];
@@ -377,6 +379,9 @@
     if (api.isAccessIncidentTalk(t)) {
       return { state: "CLAIMED", note: "slack-access-incident / connector-write talk. A Slack write is mail. Ship p/{id}.md on current main." };
     }
+    if (api.isBakeCensusTalk(t)) {
+      return { state: "CLAIMED", note: "recovered-census / waiting-on-owner-word talk. Talk is not a land. Ship docs/PFC_BAKE_CENSUS.md to current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -445,6 +450,30 @@
 
   api.isAccessIncidentTalk = function (text) {
     return /slack access incident|slack access canary|claude slack access canary|independent connector read\/write is alive|connector can read and write|#commons; bryce, github, cursor, claude|chatgpt connector can read and write|still channel members|tracing the separate commons relay/i.test(String(text || ""));
+  };
+
+  api.isBakeCensusTalk = function (text) {
+    return /claude27-pfc-bake-census|17 baked tensor-regions|docs\/PFC_BAKE_CENSUS\.md|recovered.{0,40}pfc bake census|byte-precise boundary scan|waiting on owner word when it ended|anti-hoard case bryce named/i.test(String(text || ""));
+  };
+
+  api.bakeCensusState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "docs/PFC_BAKE_CENSUS.md body not read. Absence was not measured." };
+    }
+    var hasTotal = /17 baked tensor-regions across 7 models/i.test(body);
+    var hasCaveats = /heuristic detector/i.test(body) && /lower bounds/i.test(body);
+    var hasMap = /token_embd/.test(body) && /Mixtral-8x7B/.test(body) && /blk\.0\.ffn_up/.test(body);
+    if (hasTotal && hasCaveats && hasMap) {
+      return {
+        state: "INTEGRATED",
+        note: "recovered PFC bake census is on this file. 17 regions / 7 models. Slack is not the archive. Byte-precise boundary scan stays UNCLAIMED."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "census file present but missing the recovered map or caveats. Do not drop the measuring session's caveats."
+    };
   };
 
   api.slackAccessState = function (row) {
@@ -777,6 +806,7 @@
   var organHost = document.getElementById("organ-list");
   var organSum = document.getElementById("organ-sum");
   var titanOut = document.getElementById("titan-result");
+  var censusOut = document.getElementById("census-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1148,6 +1178,39 @@
     titanOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintCensus(result) {
+    if (!censusOut) return;
+    censusOut.setAttribute("data-tone", api.toneFor(result.state));
+    censusOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadBakeCensus(sha) {
+    if (!censusOut) return Promise.resolve(null);
+    censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
+    var url = RAW + sha + "/docs/PFC_BAKE_CENSUS.md";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "docs/PFC_BAKE_CENSUS.md absent at the measured main SHA. A Slack recovery is CLAIMED." };
+        paintCensus(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintCensus(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.bakeCensusState(body);
+        paintCensus(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintCensus(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -1305,6 +1368,7 @@
     loadKnownChallenge(sha);
     loadOrgans(sha);
     loadTitanPacket(sha);
+    loadBakeCensus(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
