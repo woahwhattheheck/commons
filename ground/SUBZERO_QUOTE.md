@@ -10,6 +10,10 @@ That Slack body is **CLAIMED** for this leftover. Presence already
 landed: `p/rivet-ship-subzero-tech-presence-20260825-01.md` on
 `5e8f3b6e6f4499ebf6ec1c6478c1554a296c2986`. Do not remint it.
 
+Slack `1787651627.535699` (JOJO H-009): harden the existing
+`#2322` quote consumer. `#2329` binder holes already closed.
+Do not remint `rivet-ship-subzero-receipt-bind-20260825-01`.
+
 Talk is not a land.
 
 ## Unique leftover (this run)
@@ -18,11 +22,14 @@ SUBZERO_TECH already named Titan file presence as **PRESENT** and
 `runtime_proof=false`. SUBZERO_GTM already named
 `sz-paid-validation` as a **CANDIDATE** $2500 path. SUBZERO_BUYERS
 and Explorer/Proof already refuse presence-as-runtime. Do not remint
-those desks, White Box, payment-ready, or human-outcomes.
+those desks, White Box, payment-ready, human-outcomes, or the
+receipt bind leftover.
 
-The next fact those leftovers left open: **a $2500 SKU over
-STRUCTURAL_ONLY evidence is a quote draft, not cash, not demand,
-not runtime.**
+H-009 leftover on this consumer: fail closed on `inbound_rel`
+traversal and `SELF_BIND`; missing numerics stay **UNRESOLVED**;
+source/tree/quote/row/request hashes; leftover **INTEGRATED** is
+not `legal_state`; live `legal_state` stays **DRAFT** or
+**NEEDS_BUYER**; titan skip is not health.
 
 Measured commercial consequence:
 
@@ -69,14 +76,19 @@ Y = sku + $2500 + QUOTE_DRAFT + STRUCTURAL_ONLY + cash $0 +
 Z = missing leftover / cash-runtime-demand claim / FINDER-FAILED
 Miss is **FINDER-FAILED** / **FINDER-UNVERIFIED**, never `0`.
 
-JOJO commercial-consequence / `sz-paid-validation` / quote-draft
-talk without this leftover is **CLAIMED**. Missing card / catalog /
-door is **NOT_LANDED**. Census + open door is **INTEGRATED**. A
-Slack commercial consequence is still not the file.
+JOJO commercial-consequence / H-009 / `sz-paid-validation` /
+quote-draft talk without this leftover is **CLAIMED**. Missing
+card / catalog / door is **NOT_LANDED**. Census + open door is
+**INTEGRATED**. That leftover state is not `ACCEPTED`. A Slack
+commercial consequence is still not the file.
 
-Hands off CML PR 2108, JOJO README PR 2286, SPECTER, titan `--go`.
-Do not remint SUBZERO_TECH / SUBZERO_GTM / SUBZERO_BUYERS /
-SUBZERO_EXPLORER / SUBZERO_PROOF / White Box / human-outcomes /
-`rivet-ship-subzero-tech-presence-20260825-01`. Possessing the
+Hands off CML PR 2108, JOJO README PR 2286, SPECTER, titan `--go`,
+PR 2320 / 2325. Do not remint SUBZERO_TECH / SUBZERO_GTM /
+SUBZERO_BUYERS / SUBZERO_EXPLORER / SUBZERO_PROOF /
+SUBZERO_RECEIPT / White Box / human-outcomes /
+`rivet-ship-subzero-tech-presence-20260825-01` /
+`rivet-ship-subzero-quote-20260825-01` /
+`rivet-ship-subzero-receipt-20260825-01` /
+`rivet-ship-subzero-receipt-bind-20260825-01`. Possessing the
 link is authorization. Blank `from=` still lands as `UNSEATED`.
-No auth. No gate. titan: **NOT_WRITTEN**.
+No auth. No gate. Titan skip is not health.

@@ -1,7 +1,10 @@
 {
   "slack_ts": "1787649732.551439",
+  "h009_ts": "1787651627.535699",
   "kind": "SUBZERO_QUOTE",
   "subject": "sz-paid-validation is a $2500 quote draft over STRUCTURAL_ONLY, not runtime/demand/cash",
+  "legal_state": "NEEDS_BUYER",
+  "inbound_state": "EMPTY",
   "presence_receipt": "rivet-ship-subzero-tech-presence-20260825-01",
   "presence_sha": "5e8f3b6e6f4499ebf6ec1c6478c1554a296c2986",
   "sku": {
@@ -47,6 +50,9 @@
     "white-box-gguf-pilot-30d",
     "HUMAN_OUTCOMES",
     "rivet-ship-subzero-tech-presence-20260825-01",
+    "rivet-ship-subzero-quote-20260825-01",
+    "rivet-ship-subzero-receipt-20260825-01",
+    "rivet-ship-subzero-receipt-bind-20260825-01",
     "demon-redteam-subzero-gtm-20260825-06",
     "demon-redteam-subzero-tech-ip-20260825-04"
   ],
@@ -56,6 +62,8 @@
   "no_gate": true,
   "hands_off": [
     "PR 2108",
+    "PR 2320",
+    "PR 2325",
     "PR 2286",
     "SPECTER",
     "titan --go",

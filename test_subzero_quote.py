@@ -14,18 +14,24 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 from subzero_quote import (
     ALREADY_LANDED,
     CALIBRATION,
+    H009_TS,
     PRESENCE_RECEIPT,
     QUOTE_PRICE,
+    QUOTE_RECEIPT,
     REQUIRED_PHRASES,
     SEARCH_SPACE,
     SKU_ID,
     SLACK_TS,
     classify,
     classify_quote,
+    inbound_rel,
+    legal_state_for,
     load_arch_sku,
     load_catalog,
     measure_from_rows,
     measure_root,
+    present_int,
+    public_inbound,
 )
 
 
@@ -55,6 +61,9 @@ def _complete(**extra):
         "claims_runtime": False,
         "claims_demand": False,
         "quote_state": "QUOTE_DRAFT",
+        "legal_state": "NEEDS_BUYER",
+        "inbound_state": "EMPTY",
+        "holes_closed": True,
         "posting_open": True,
         "no_auth": True,
         "no_gate": True,
@@ -117,6 +126,29 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(verdict["state"], "NOT_LANDED")
         self.assertIn("2500", verdict["note"])
 
+    def test_missing_price_is_finder_failed(self):
+        verdict = classify_quote(
+            {
+                "measured": True,
+                "sku_id": SKU_ID,
+                "sku_class": "QUOTE_DRAFT",
+                "demand": "UNKNOWN",
+                "structural_only": 31,
+                "runtime_measured": 0,
+                "customer_ready": 0,
+                "collected_cash_usd": 0,
+            }
+        )
+        self.assertEqual(verdict["state"], "FINDER-FAILED")
+        self.assertIn("missing numeric", verdict["note"].lower())
+
+    def test_present_int_never_coerces_zero(self):
+        self.assertEqual(present_int({}, "price_usd")["state"], "UNRESOLVED")
+        self.assertIsNone(present_int({}, "price_usd")["value"])
+        self.assertEqual(present_int({"price_usd": None}, "price_usd")["state"], "UNRESOLVED")
+        self.assertEqual(present_int({"price_usd": True}, "price_usd")["state"], "FINDER-FAILED")
+        self.assertEqual(present_int({"price_usd": 2500}, "price_usd")["value"], 2500)
+
     def test_quote_draft_is_not_cash(self):
         verdict = classify_quote(
             {
@@ -146,10 +178,33 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(verdict["state"], "FINDER-FAILED")
         self.assertIn("never 0", verdict["note"].lower())
 
+    def test_windows_path_stays_out_of_p(self):
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE"), "")
+        self.assertEqual(inbound_rel("../ground/EXECUTE"), "")
+        self.assertEqual(public_inbound("..\\ground\\EXECUTE")["state"], "TRAVERSAL")
+        self.assertEqual(public_inbound(QUOTE_RECEIPT)["state"], "SELF_BIND")
+        self.assertEqual(public_inbound("")["state"], "EMPTY")
+
+    def test_legal_state_is_not_leftover_integrated(self):
+        self.assertEqual(legal_state_for({}, inbound_bound=False), "DRAFT")
+        self.assertEqual(
+            legal_state_for({"quote_hash": "a" * 64}, inbound_bound=False),
+            "NEEDS_BUYER",
+        )
+        self.assertEqual(
+            legal_state_for({"quote_hash": "a" * 64}, inbound_bound=True),
+            "ACCEPTED",
+        )
+        fused = classify(measure_from_rows(_complete(legal_state="ACCEPTED")))
+        self.assertEqual(fused["state"], "NOT_LANDED")
+        self.assertIn("NEEDS_BUYER", fused["note"])
+
     def test_complete_leftover_is_integrated(self):
         verdict = classify(measure_from_rows(_complete()))
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("still not the file", verdict["note"])
+        self.assertIn("H-009", verdict["note"])
+        self.assertIn("NEEDS_BUYER", verdict["note"])
 
     def test_live_tree_has_the_leftover(self):
         row = measure_root(ROOT)
@@ -158,17 +213,24 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(row["landed_missing"], [])
         self.assertEqual(row["sku_id"], SKU_ID)
         self.assertEqual(row["price_usd"], QUOTE_PRICE)
+        self.assertEqual(row["price_usd_state"], "PRESENT")
         self.assertEqual(row["sku_class"], "QUOTE_DRAFT")
         self.assertEqual(row["arch_price_usd"], QUOTE_PRICE)
         self.assertEqual(row["arch_status"], "CANDIDATE")
         self.assertEqual(row["collected_cash_usd"], 0)
+        self.assertEqual(row["collected_cash_state"], "PRESENT")
         self.assertEqual(row["demand"], "UNKNOWN")
         self.assertFalse(row["runtime_proof"])
         self.assertEqual(row["structural_only"], 31)
         self.assertEqual(row["runtime_measured"], 0)
         self.assertEqual(row["customer_ready"], 0)
-        self.assertEqual(row["titan"], "NOT_WRITTEN")
+        self.assertIn(row["legal_state"], ("DRAFT", "NEEDS_BUYER"))
+        self.assertEqual(row["inbound_state"], "EMPTY")
+        self.assertTrue(row["holes_closed"])
+        self.assertEqual(row["hashes"].get("delivery_hash"), "UNRESOLVED")
+        self.assertEqual(len(row["hashes"].get("source_commit") or ""), 40)
         self.assertEqual(SLACK_TS, "1787649732.551439")
+        self.assertEqual(H009_TS, "1787651627.535699")
         self.assertEqual(PRESENCE_RECEIPT, "rivet-ship-subzero-tech-presence-20260825-01")
         self.assertEqual(len(CALIBRATION), 3)
         self.assertGreaterEqual(len(SEARCH_SPACE), 10)
@@ -177,6 +239,7 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(catalog["sku_id"], SKU_ID)
         self.assertEqual(catalog["sku_class"], "QUOTE_DRAFT")
         self.assertEqual(catalog["collected_cash_usd"], 0)
+        self.assertEqual(catalog["price_usd_state"], "PRESENT")
         self.assertFalse(catalog["runtime_proof"])
         with open(
             os.path.join(ROOT, "revenue", "subzero_gtm", "architecture.json"),
@@ -186,7 +249,9 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(arch["id"], SKU_ID)
         self.assertEqual(arch["price_usd"], QUOTE_PRICE)
         self.assertEqual(arch["status"], "CANDIDATE")
-        self.assertEqual(classify(row)["state"], "INTEGRATED")
+        verdict = classify(row)
+        self.assertEqual(verdict["state"], "INTEGRATED")
+        self.assertIn("legal_state", verdict["note"].lower() + " " + row["legal_state"].lower())
 
 
 if __name__ == "__main__":

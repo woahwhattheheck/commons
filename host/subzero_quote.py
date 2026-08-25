@@ -7,19 +7,33 @@ runtime_proof=false. Commercial consequence: sz-paid-validation
 remains a $2,500 quote draft over STRUCTURAL_ONLY evidence — not
 runtime, demand, or cash proof.
 
+Slack 1787651627.535699 (JOJO H-009 BACKEND COMPLETE):
+#2322 quote leftover still coerced missing numbers to 0, fused
+leftover INTEGRATED with legal lifecycle, skipped source/tree
+hashes, and treated titan NOT_WRITTEN as health. #2329 binder
+holes already closed on 3c364c9fd. This leftover hardens the
+existing quote consumer — no second subsystem.
+
 That Slack body is CLAIMED for the quote leftover. Presence already
-landed as rivet-ship-subzero-tech-presence-20260825-01. Do not remint
-it. This leftover names the commercial fact those bytes left open.
+landed as rivet-ship-subzero-tech-presence-20260825-01. Receipt
+bind leftover already landed as
+rivet-ship-subzero-receipt-bind-20260825-01. Do not remint them.
 
 Do not remint SUBZERO_TECH / SUBZERO_GTM / SUBZERO_BUYERS /
-SUBZERO_EXPLORER / SUBZERO_PROOF / White Box / payment-ready /
-human-outcomes. Do not open accounts. Do not message buyers.
-Do not store bank, routing, card, tax, or private-buyer data.
-Do not write titan. Do not smash commons.mno. Do not add a gate.
+SUBZERO_EXPLORER / SUBZERO_PROOF / SUBZERO_RECEIPT / White Box /
+payment-ready / human-outcomes. Do not open accounts. Do not
+message buyers. Do not store bank, routing, card, tax, or
+private-buyer data. Do not smash commons.mno. Do not add a gate.
 
-X = Slack commercial-consequence + architecture sku + presence
-counts + cash $0 / NOT_LANDED + leftover paths.
-Y = those facts named on this tree.
+Leftover INTEGRATED is not DRAFT→NEEDS_BUYER→ACCEPTED→DELIVERED.
+Live legal_state stays DRAFT or NEEDS_BUYER. inbound_rel rejects
+/ \\ .. . Public inbound is a post id, not a seat. Missing
+numeric is UNRESOLVED/FINDER-FAILED, never 0. Titan skip is not
+health.
+
+X = Slack commercial-consequence + H-009 + architecture sku +
+    presence counts + cash $0 / NOT_LANDED + leftover paths.
+Y = those facts named on this tree + closed quote holes.
 Z = missing leftover / cash-runtime-demand claim / FINDER-FAILED /
 FINDER-UNVERIFIED. Never 0.
 
@@ -30,8 +44,11 @@ FINDER-UNVERIFIED. Never 0.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import re
+import subprocess
 import sys
 
 
@@ -41,9 +58,16 @@ DEFAULT_CARD = os.path.join("ground", "SUBZERO_QUOTE.md")
 DEFAULT_DOOR = "subzero-quote.html"
 DEFAULT_ARCH = os.path.join("revenue", "subzero_gtm", "architecture.json")
 SLACK_TS = "1787649732.551439"
+H009_TS = "1787651627.535699"
 SKU_ID = "sz-paid-validation"
 QUOTE_PRICE = 2500
 PRESENCE_RECEIPT = "rivet-ship-subzero-tech-presence-20260825-01"
+QUOTE_RECEIPT = "rivet-ship-subzero-quote-20260825-01"
+FIRST_RECEIPT = "rivet-ship-subzero-receipt-20260825-01"
+BIND_RECEIPT = "rivet-ship-subzero-receipt-bind-20260825-01"
+SELF_BIND_IDS = (PRESENCE_RECEIPT, QUOTE_RECEIPT, FIRST_RECEIPT, BIND_RECEIPT)
+LEGAL_STATES = ("DRAFT", "NEEDS_BUYER", "ACCEPTED", "DELIVERED")
+POST_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -78,11 +102,18 @@ REQUIRED_PHRASES = (
     "sz-paid-validation",
     "quote draft",
     "1787649732.551439",
+    "1787651627.535699",
+    "h-009",
     "structural_only",
     "not runtime",
     "not demand",
     "not cash",
     "commercial consequence",
+    "unresolved",
+    "needs_buyer",
+    "inbound_rel",
+    "legal_state",
+    "self_bind",
     "finder-failed",
     "finder-unverified",
     "never 0",
@@ -92,10 +123,28 @@ REQUIRED_PHRASES = (
     "no gate",
     "talk is not a land",
 )
+HEX64 = set("0123456789abcdef")
+HASHED_SOURCES = (
+    DEFAULT_CATALOG,
+    DEFAULT_CARD,
+    DEFAULT_DOOR,
+    os.path.join("host", "subzero_quote.py"),
+    os.path.join("test_subzero_quote.py"),
+    DEFAULT_ARCH,
+)
+
+
+def _posix_parts(rel):
+    text = str(rel or "").replace("\\", "/")
+    return [part for part in text.split("/") if part and part not in {".", ".."}]
+
+
+def _posix_rel(rel):
+    return str(rel or "").replace("\\", "/")
 
 
 def _read(root, rel):
-    path = os.path.join(root, rel)
+    path = os.path.join(root, *_posix_parts(rel))
     try:
         with open(path, encoding="utf-8", errors="replace") as handle:
             return handle.read()
@@ -103,8 +152,239 @@ def _read(root, rel):
         return ""
 
 
+def _read_bytes(root, rel):
+    path = os.path.join(root, *_posix_parts(rel))
+    try:
+        with open(path, "rb") as handle:
+            return handle.read()
+    except OSError:
+        return b""
+
+
 def _exists(root, rel):
-    return os.path.isfile(os.path.join(root, rel))
+    return os.path.isfile(os.path.join(root, *_posix_parts(rel)))
+
+
+def _hex_sha(value, sizes=(64,)):
+    text = str(value or "").strip().lower()
+    return len(text) in sizes and set(text) <= HEX64
+
+
+def present_int(data, key):
+    """Missing/blank is UNRESOLVED. Bad type is FINDER-FAILED. Never coerce to 0."""
+    if not isinstance(data, dict) or key not in data:
+        return {"state": "UNRESOLVED", "value": None, "key": key}
+    value = data[key]
+    if value is None or value == "":
+        return {"state": "UNRESOLVED", "value": None, "key": key}
+    if isinstance(value, bool):
+        return {"state": "FINDER-FAILED", "value": None, "key": key}
+    try:
+        return {"state": "PRESENT", "value": int(value), "key": key}
+    except (TypeError, ValueError):
+        return {"state": "FINDER-FAILED", "value": None, "key": key}
+
+
+def measured_int(facts, key):
+    """Accept a present int or an explicit {state,value} field. Missing is UNRESOLVED."""
+    facts = facts or {}
+    state_key = key + "_state"
+    raw = facts.get(key)
+    if isinstance(raw, dict) and "state" in raw:
+        state = str(raw.get("state") or "").strip().upper()
+        if state != "PRESENT":
+            return None, state or "UNRESOLVED"
+        try:
+            return int(raw.get("value")), "PRESENT"
+        except (TypeError, ValueError):
+            return None, "FINDER-FAILED"
+    if state_key in facts:
+        state = str(facts.get(state_key) or "").strip().upper()
+        if state in {"UNRESOLVED", "FINDER-FAILED"}:
+            return None, state
+        if state == "PRESENT":
+            try:
+                return int(raw), "PRESENT"
+            except (TypeError, ValueError):
+                return None, "FINDER-FAILED"
+    if raw is None or raw == "":
+        return None, "UNRESOLVED"
+    try:
+        return int(raw), "PRESENT"
+    except (TypeError, ValueError):
+        return None, "FINDER-FAILED"
+
+
+def canonicalize_post_id(inbound_id):
+    """One post id. Forbid / \\ . .. and any traversal token."""
+    name = str(inbound_id or "").strip()
+    if not name:
+        return ""
+    if "/" in name or "\\" in name:
+        return ""
+    if name in {".", ".."} or ".." in name:
+        return ""
+    if not POST_ID_RE.fullmatch(name):
+        return ""
+    return name
+
+
+def inbound_rel(inbound_id):
+    """Always posix p/{id}.md. Empty when the id is not canonical."""
+    name = canonicalize_post_id(inbound_id)
+    if not name:
+        return ""
+    return "p/" + name + ".md"
+
+
+def public_inbound(inbound_id):
+    """Public inbound is a post id. Traversal / self-bind never become buyers."""
+    raw = str(inbound_id or "").strip()
+    if not raw:
+        return {"ok": False, "state": "EMPTY", "id": "", "rel": ""}
+    if "/" in raw or "\\" in raw or ".." in raw:
+        return {"ok": False, "state": "TRAVERSAL", "id": "", "rel": ""}
+    name = canonicalize_post_id(raw)
+    if not name:
+        return {"ok": False, "state": "INVALID_ID", "id": "", "rel": ""}
+    if name in SELF_BIND_IDS:
+        return {
+            "ok": False,
+            "state": "SELF_BIND",
+            "id": name,
+            "rel": inbound_rel(name),
+        }
+    return {"ok": True, "state": "PUBLIC", "id": name, "rel": inbound_rel(name)}
+
+
+def resolved_inbound(root, inbound_id):
+    """Prove the resolved path stays exactly under p/."""
+    located = public_inbound(inbound_id)
+    name = located.get("id") or ""
+    rel = located.get("rel") or ""
+    if located.get("state") == "TRAVERSAL" or not name or not rel:
+        reason = located.get("state") or "INVALID_ID"
+        if reason == "EMPTY":
+            reason = "INVALID_ID"
+        return {"ok": False, "rel": "", "reason": reason, "path": ""}
+    root_abs = os.path.abspath(root)
+    posts = os.path.abspath(os.path.join(root_abs, "p"))
+    resolved = os.path.abspath(os.path.join(root_abs, *rel.split("/")))
+    expected = os.path.abspath(os.path.join(posts, name + ".md"))
+    try:
+        common = os.path.commonpath([posts, resolved])
+    except ValueError:
+        return {"ok": False, "rel": "", "reason": "TRAVERSAL", "path": ""}
+    if common != posts or resolved != expected:
+        return {"ok": False, "rel": "", "reason": "TRAVERSAL", "path": ""}
+    return {"ok": True, "rel": rel, "reason": located.get("state") or "", "path": resolved}
+
+
+def git_source(root):
+    """Name the catalog source commit/tree. Missing git is FINDER-FAILED."""
+
+    def run(args):
+        try:
+            out = subprocess.check_output(args, cwd=root, stderr=subprocess.DEVNULL)
+        except (OSError, subprocess.CalledProcessError):
+            return ""
+        return out.decode("ascii", "replace").strip()
+
+    commit = run(["git", "rev-parse", "HEAD"])
+    tree = run(["git", "rev-parse", "HEAD^{tree}"])
+    return {
+        "source_commit": commit if _hex_sha(commit, (40, 64)) else "FINDER-FAILED",
+        "source_tree": tree if _hex_sha(tree, (40, 64)) else "FINDER-FAILED",
+    }
+
+
+def sha256_rel(root, rel):
+    blob = _read_bytes(root, rel)
+    if not blob:
+        return "UNRESOLVED"
+    return hashlib.sha256(blob).hexdigest()
+
+
+def catalog_row_hash(indexed):
+    """Hash the named sku row facts. Missing identity is UNRESOLVED."""
+    sku = str((indexed or {}).get("sku_id") or "").strip()
+    if not sku:
+        return "UNRESOLVED"
+    payload = json.dumps(
+        {
+            "sku_id": sku,
+            "price_usd": (indexed or {}).get("price_usd"),
+            "price_usd_state": (indexed or {}).get("price_usd_state"),
+            "sku_class": (indexed or {}).get("sku_class"),
+            "arch_status": (indexed or {}).get("arch_status"),
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def request_hash(inbound_id, quote_hash):
+    payload = "|".join(
+        [
+            str(inbound_id or "").strip(),
+            str(quote_hash or "").strip(),
+        ]
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def source_hashes(root, indexed, inbound_id=""):
+    src = git_source(root)
+    quote_hash = sha256_rel(root, DEFAULT_CATALOG)
+    hashes = {
+        "source_commit": src["source_commit"],
+        "source_tree": src["source_tree"],
+        "quote_hash": quote_hash,
+        "catalog_row_hash": catalog_row_hash(indexed),
+        "card_hash": sha256_rel(root, DEFAULT_CARD),
+        "sidecar_hash": sha256_rel(root, DEFAULT_CATALOG),
+        "fab_hash": sha256_rel(root, os.path.join("host", "subzero_quote.py")),
+        "test_hash": sha256_rel(root, os.path.join("test_subzero_quote.py")),
+        "request_hash": request_hash(inbound_id, quote_hash),
+        "delivery_hash": "UNRESOLVED",
+    }
+    for rel in HASHED_SOURCES:
+        hashes[_posix_rel(rel)] = sha256_rel(root, rel)
+    return hashes
+
+
+def legal_state_for(hashes, inbound_bound=False):
+    """DRAFT → NEEDS_BUYER → ACCEPTED → DELIVERED. No skip. File is not a buyer."""
+    delivery = str((hashes or {}).get("delivery_hash") or "").strip()
+    if inbound_bound and _hex_sha(delivery):
+        return "DELIVERED"
+    if inbound_bound:
+        return "ACCEPTED"
+    quote_hash = str((hashes or {}).get("quote_hash") or "").strip()
+    if _hex_sha(quote_hash):
+        return "NEEDS_BUYER"
+    return "DRAFT"
+
+
+def _hashes_ok(hashes):
+    hashes = hashes or {}
+    if not _hex_sha(hashes.get("source_commit"), (40, 64)):
+        return False
+    if not _hex_sha(hashes.get("source_tree"), (40, 64)):
+        return False
+    for key in (
+        "quote_hash",
+        "catalog_row_hash",
+        "fab_hash",
+        "test_hash",
+        "card_hash",
+        "sidecar_hash",
+        "request_hash",
+    ):
+        if not _hex_sha(hashes.get(key)):
+            return False
+    return str(hashes.get("delivery_hash") or "") == "UNRESOLVED"
 
 
 def load_catalog(text):
@@ -117,24 +397,38 @@ def load_catalog(text):
         return {"error": "catalog is not an object"}
     sku = data.get("sku") if isinstance(data.get("sku"), dict) else {}
     evidence = data.get("evidence") if isinstance(data.get("evidence"), dict) else {}
+    price = present_int(sku, "price_usd")
+    collected = present_int(data, "collected_cash_usd")
+    structural_only = present_int(evidence, "structural_only")
+    runtime_measured = present_int(evidence, "runtime_measured")
+    customer_ready = present_int(evidence, "customer_ready")
+    runtime_proof = evidence.get("runtime_proof") if "runtime_proof" in evidence else "UNRESOLVED"
+    titan = str(data.get("titan") or "").strip().upper() or "UNRESOLVED"
     return {
         "error": "",
         "slack_ts": str(data.get("slack_ts") or "").strip() or SLACK_TS,
-        "titan": str(data.get("titan") or "NOT_WRITTEN").strip().upper() or "NOT_WRITTEN",
+        "h009_ts": str(data.get("h009_ts") or "").strip() or H009_TS,
+        "titan": titan,
         "posting": str(data.get("posting") or "").strip(),
         "no_auth": bool(data.get("no_auth", True)),
         "no_gate": bool(data.get("no_gate", True)),
         "sku_id": str(sku.get("id") or "").strip(),
-        "price_usd": int(sku.get("price_usd") or 0),
+        "price_usd": price["value"],
+        "price_usd_state": price["state"],
         "sku_status": str(sku.get("status") or "").strip().upper(),
         "sku_class": str(sku.get("class") or "").strip().upper(),
-        "collected_cash_usd": int(data.get("collected_cash_usd") or 0),
+        "collected_cash_usd": collected["value"],
+        "collected_cash_state": collected["state"],
         "cash_state": str(data.get("cash_state") or "").strip().upper(),
         "demand": str(data.get("demand") or "").strip().upper(),
-        "runtime_proof": bool(evidence.get("runtime_proof")),
-        "structural_only": int(evidence.get("structural_only") or 0),
-        "runtime_measured": int(evidence.get("runtime_measured") or 0),
-        "customer_ready": int(evidence.get("customer_ready") or 0),
+        "runtime_proof": runtime_proof,
+        "structural_only": structural_only["value"],
+        "structural_only_state": structural_only["state"],
+        "runtime_measured": runtime_measured["value"],
+        "runtime_measured_state": runtime_measured["state"],
+        "customer_ready": customer_ready["value"],
+        "customer_ready_state": customer_ready["state"],
+        "legal_state": str(data.get("legal_state") or "").strip().upper(),
         "claims_cash": bool(data.get("claims_cash")),
         "claims_runtime": bool(data.get("claims_runtime")),
         "claims_demand": bool(data.get("claims_demand")),
@@ -151,10 +445,12 @@ def load_arch_sku(text):
         return {"error": "architecture is not an object"}
     for item in data.get("paths") or []:
         if isinstance(item, dict) and str(item.get("id") or "").strip() == SKU_ID:
+            price = present_int(item, "price_usd")
             return {
                 "error": "",
                 "id": SKU_ID,
-                "price_usd": int(item.get("price_usd") or 0),
+                "price_usd": price["value"],
+                "price_usd_state": price["state"],
                 "status": str(item.get("status") or "").strip().upper(),
                 "kind": str(item.get("kind") or "").strip(),
             }
@@ -193,7 +489,8 @@ def classify_quote(row):
                 + ". Commercial consequence stays unnamed. FINDER-FAILED, never 0."
             ),
         }
-    if bool(row.get("claims_cash")) or int(row.get("collected_cash_usd") or 0) > 0:
+    cash_value, cash_state = measured_int(row, "collected_cash_usd")
+    if bool(row.get("claims_cash")):
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -202,7 +499,25 @@ def classify_quote(row):
                 "A quote draft is not a deposit. FINDER-FAILED, never 0."
             ),
         }
-    if bool(row.get("claims_runtime")) or bool(row.get("runtime_proof")):
+    if cash_state in {"UNRESOLVED", "FINDER-FAILED"}:
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "collected_cash_usd "
+                + cash_state
+                + ". Missing numeric is not measured $0. FINDER-FAILED, never 0."
+            ),
+        }
+    if cash_state == "PRESENT" and cash_value not in (None, 0):
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                SKU_ID
+                + " is not cash proof. Collected cash stays $0 / NOT_LANDED. "
+                "A quote draft is not a deposit. FINDER-FAILED, never 0."
+            ),
+        }
+    if bool(row.get("claims_runtime")) or row.get("runtime_proof") is True:
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -223,7 +538,16 @@ def classify_quote(row):
                 "FINDER-FAILED, never 0."
             ),
         }
-    price = int(row.get("price_usd") or 0)
+    price, price_state = measured_int(row, "price_usd")
+    if price_state != "PRESENT":
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "price_usd "
+                + price_state
+                + ". Missing numeric is not measured $0. FINDER-FAILED, never 0."
+            ),
+        }
     if price != QUOTE_PRICE:
         return {
             "state": "NOT_LANDED",
@@ -245,7 +569,17 @@ def classify_quote(row):
                 "CANDIDATE in GTM is not cash. FINDER-FAILED, never 0."
             ),
         }
-    if int(row.get("structural_only") or 0) != 31:
+    structural_only, structural_state = measured_int(row, "structural_only")
+    if structural_state != "PRESENT":
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "structural_only "
+                + structural_state
+                + ". Missing numeric is not measured 0. FINDER-FAILED, never 0."
+            ),
+        }
+    if structural_only != 31:
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -253,7 +587,20 @@ def classify_quote(row):
                 "must keep that count. FINDER-FAILED, never 0."
             ),
         }
-    if int(row.get("runtime_measured") or 0) != 0 or int(row.get("customer_ready") or 0) != 0:
+    runtime_measured, runtime_state = measured_int(row, "runtime_measured")
+    customer_ready, customer_state = measured_int(row, "customer_ready")
+    if runtime_state != "PRESENT" or customer_state != "PRESENT":
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "runtime/customer numeric "
+                + runtime_state
+                + "/"
+                + customer_state
+                + ". Missing numeric is not measured 0. FINDER-FAILED, never 0."
+            ),
+        }
+    if runtime_measured != 0 or customer_ready != 0:
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -277,6 +624,22 @@ def classify_quote(row):
 def measure_from_rows(facts):
     """Classify measured file/phrase facts. Missing calibration is UNMEASURED."""
     facts = facts or {}
+    price, price_state = measured_int(facts, "price_usd")
+    arch_price, arch_price_state = measured_int(facts, "arch_price_usd")
+    collected_cash, collected_cash_state = measured_int(facts, "collected_cash_usd")
+    structural_only, structural_only_state = measured_int(facts, "structural_only")
+    runtime_measured, runtime_measured_state = measured_int(facts, "runtime_measured")
+    customer_ready, customer_ready_state = measured_int(facts, "customer_ready")
+    runtime_proof = facts.get("runtime_proof")
+    if runtime_proof not in {True, False, "UNRESOLVED"}:
+        runtime_proof = bool(runtime_proof)
+    titan = str(facts.get("titan") or "").strip().upper() or "UNRESOLVED"
+    legal = str(facts.get("legal_state") or "NEEDS_BUYER").strip().upper()
+    if legal not in LEGAL_STATES:
+        legal = "NEEDS_BUYER"
+    holes_closed = (
+        True if "holes_closed" not in facts else bool(facts.get("holes_closed"))
+    )
     return {
         "measured": True,
         "card_present": bool(facts.get("card_present")),
@@ -287,22 +650,31 @@ def measure_from_rows(facts):
         "landed_missing": list(facts.get("landed_missing") or []),
         "found_phrases": list(facts.get("found_phrases") or []),
         "sku_id": str(facts.get("sku_id") or ""),
-        "price_usd": int(facts.get("price_usd") or 0),
+        "price_usd": price,
+        "price_usd_state": price_state,
         "sku_status": str(facts.get("sku_status") or ""),
         "sku_class": str(facts.get("sku_class") or ""),
-        "arch_price_usd": int(facts.get("arch_price_usd") or 0),
+        "arch_price_usd": arch_price,
+        "arch_price_usd_state": arch_price_state,
         "arch_status": str(facts.get("arch_status") or ""),
-        "collected_cash_usd": int(facts.get("collected_cash_usd") or 0),
+        "collected_cash_usd": collected_cash,
+        "collected_cash_state": collected_cash_state,
         "cash_state": str(facts.get("cash_state") or ""),
         "demand": str(facts.get("demand") or ""),
-        "runtime_proof": bool(facts.get("runtime_proof")),
-        "structural_only": int(facts.get("structural_only") or 0),
-        "runtime_measured": int(facts.get("runtime_measured") or 0),
-        "customer_ready": int(facts.get("customer_ready") or 0),
+        "runtime_proof": runtime_proof,
+        "structural_only": structural_only,
+        "structural_only_state": structural_only_state,
+        "runtime_measured": runtime_measured,
+        "runtime_measured_state": runtime_measured_state,
+        "customer_ready": customer_ready,
+        "customer_ready_state": customer_ready_state,
         "claims_cash": bool(facts.get("claims_cash")),
         "claims_runtime": bool(facts.get("claims_runtime")),
         "claims_demand": bool(facts.get("claims_demand")),
         "quote_state": str(facts.get("quote_state") or ""),
+        "legal_state": legal,
+        "inbound_state": str(facts.get("inbound_state") or "EMPTY").strip().upper(),
+        "holes_closed": holes_closed,
         "posting_open": bool(facts.get("posting_open")),
         "no_auth": bool(facts.get("no_auth")),
         "no_gate": bool(facts.get("no_gate")),
@@ -310,12 +682,17 @@ def measure_from_rows(facts):
         "calibration_hits": list(facts.get("calibration_hits") or []),
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
-        "titan": str(facts.get("titan") or "NOT_WRITTEN"),
+        "titan": titan,
+        "hashes": dict(facts.get("hashes") or {}),
     }
 
 
 def classify(row):
-    """Turn a measured quote census into a desk state."""
+    """Turn a measured quote census into a leftover desk state.
+
+    Leftover INTEGRATED is not legal ACCEPTED/DELIVERED. A file on
+    the tree is not a buyer. Titan skip is not health.
+    """
     row = row or {}
     if not row.get("measured"):
         return {
@@ -349,7 +726,7 @@ def classify(row):
             "note": (
                 "missing leftover path(s): "
                 + ", ".join(misses or ["card/catalog/door/arch"])
-                + ". JOJO commercial-consequence / sz-paid-validation / "
+                + ". JOJO commercial-consequence / H-009 / sz-paid-validation / "
                 "quote-draft talk is CLAIMED until the leftover ships. "
                 "FINDER-FAILED, never 0."
             ),
@@ -363,10 +740,36 @@ def classify(row):
                 + ". Census is incomplete. FINDER-FAILED, never 0."
             ),
         }
+    legal = str(row.get("legal_state") or "").strip().upper()
+    if legal and legal not in {"DRAFT", "NEEDS_BUYER"}:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "Live legal_state must stay DRAFT or NEEDS_BUYER. "
+                "Leftover INTEGRATED is not ACCEPTED. FINDER-FAILED, never 0."
+            ),
+        }
+    inbound_state = str(row.get("inbound_state") or "EMPTY").strip().upper()
+    if inbound_state not in {"", "EMPTY", "TRAVERSAL", "SELF_BIND", "INVALID_ID"}:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "Quote leftover has no public buyer inbound. "
+                "inbound_state stays EMPTY. FINDER-FAILED, never 0."
+            ),
+        }
+    if row.get("holes_closed") is False:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "quote leftover holes still open. "
+                "FINDER-FAILED, never 0."
+            ),
+        }
     quote = classify_quote(row)
     if quote["state"] != "QUOTE_DRAFT":
         return {
-            "state": "NOT_LANDED",
+            "state": "NOT_LANDED" if quote["state"] != "UNMEASURED" else "UNMEASURED",
             "note": quote["note"],
         }
     needed = [
@@ -384,6 +787,34 @@ def classify(row):
                 "FINDER-FAILED, never 0."
             ),
         }
+    hashes = row.get("hashes") or {}
+    missing_hashes = []
+    if hashes:
+        for key in ("source_commit", "source_tree"):
+            if not _hex_sha(hashes.get(key), (40, 64)):
+                missing_hashes.append(key)
+        for key in (
+            "quote_hash",
+            "catalog_row_hash",
+            "fab_hash",
+            "test_hash",
+            "card_hash",
+            "sidecar_hash",
+            "request_hash",
+        ):
+            if not _hex_sha(hashes.get(key)):
+                missing_hashes.append(key)
+        if str(hashes.get("delivery_hash") or "") != "UNRESOLVED":
+            missing_hashes.append("delivery_hash")
+    if missing_hashes:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "missing quote hashes: "
+                + ", ".join(missing_hashes)
+                + ". FINDER-FAILED, never 0."
+            ),
+        }
     return {
         "state": "INTEGRATED",
         "note": (
@@ -391,8 +822,11 @@ def classify(row):
             + SKU_ID
             + " stays a $"
             + str(QUOTE_PRICE)
-            + " QUOTE_DRAFT over STRUCTURAL_ONLY. Not runtime, not demand, "
-            "not cash. A Slack commercial consequence is still not the file."
+            + " QUOTE_DRAFT over STRUCTURAL_ONLY. "
+            "H-009 quote holes are closed. Live legal_state stays "
+            + (legal or "NEEDS_BUYER")
+            + ". Not runtime, not demand, not cash. "
+            "A Slack commercial consequence is still not the file."
         ),
     }
 
@@ -413,6 +847,38 @@ def measure_root(root):
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     arch = load_arch_sku(_read(root, DEFAULT_ARCH))
+    indexed = {
+        "sku_id": catalog.get("sku_id") or "",
+        "price_usd": catalog.get("price_usd"),
+        "price_usd_state": catalog.get("price_usd_state") or "UNRESOLVED",
+        "sku_class": catalog.get("sku_class") or "",
+        "arch_status": arch.get("status") or "",
+    }
+    hashes = source_hashes(root, indexed)
+    legal = legal_state_for(hashes, inbound_bound=False)
+    escaped = public_inbound("..\\ground\\EXECUTE")
+    posix_escape = public_inbound("../ground/EXECUTE")
+    self_bind = public_inbound(QUOTE_RECEIPT)
+    located = resolved_inbound(root, "..\\ground\\EXECUTE")
+    holes_closed = (
+        inbound_rel("..\\ground\\EXECUTE") == ""
+        and inbound_rel("../ground/EXECUTE") == ""
+        and escaped["state"] == "TRAVERSAL"
+        and posix_escape["state"] == "TRAVERSAL"
+        and self_bind["state"] == "SELF_BIND"
+        and public_inbound("")["state"] == "EMPTY"
+        and located.get("ok") is False
+        and located.get("reason") == "TRAVERSAL"
+        and present_int({}, "price_usd")["state"] == "UNRESOLVED"
+        and present_int({"price_usd": None}, "price_usd")["state"] == "UNRESOLVED"
+        and present_int({"price_usd": True}, "price_usd")["state"] == "FINDER-FAILED"
+        and catalog.get("price_usd_state") == "PRESENT"
+        and catalog.get("price_usd") == QUOTE_PRICE
+        and catalog.get("collected_cash_state") == "PRESENT"
+        and catalog.get("collected_cash_usd") == 0
+        and legal in {"DRAFT", "NEEDS_BUYER"}
+        and _hashes_ok(hashes)
+    )
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     calibration_ok = len(calibration_hits) == len(CALIBRATION)
     if not calibration_ok:
@@ -433,21 +899,30 @@ def measure_root(root):
         "landed_missing": landed_missing,
         "found_phrases": found,
         "sku_id": catalog.get("sku_id") or "",
-        "price_usd": catalog.get("price_usd") or 0,
+        "price_usd": catalog.get("price_usd"),
+        "price_usd_state": catalog.get("price_usd_state") or "UNRESOLVED",
         "sku_status": catalog.get("sku_status") or "",
         "sku_class": catalog.get("sku_class") or "",
-        "arch_price_usd": arch.get("price_usd") or 0,
+        "arch_price_usd": arch.get("price_usd"),
+        "arch_price_usd_state": arch.get("price_usd_state") or "UNRESOLVED",
         "arch_status": arch.get("status") or "",
-        "collected_cash_usd": catalog.get("collected_cash_usd") or 0,
+        "collected_cash_usd": catalog.get("collected_cash_usd"),
+        "collected_cash_state": catalog.get("collected_cash_state") or "UNRESOLVED",
         "cash_state": catalog.get("cash_state") or "",
         "demand": catalog.get("demand") or "",
-        "runtime_proof": bool(catalog.get("runtime_proof")),
-        "structural_only": catalog.get("structural_only") or 0,
-        "runtime_measured": catalog.get("runtime_measured") or 0,
-        "customer_ready": catalog.get("customer_ready") or 0,
+        "runtime_proof": catalog.get("runtime_proof"),
+        "structural_only": catalog.get("structural_only"),
+        "structural_only_state": catalog.get("structural_only_state") or "UNRESOLVED",
+        "runtime_measured": catalog.get("runtime_measured"),
+        "runtime_measured_state": catalog.get("runtime_measured_state") or "UNRESOLVED",
+        "customer_ready": catalog.get("customer_ready"),
+        "customer_ready_state": catalog.get("customer_ready_state") or "UNRESOLVED",
         "claims_cash": bool(catalog.get("claims_cash")),
         "claims_runtime": bool(catalog.get("claims_runtime")),
         "claims_demand": bool(catalog.get("claims_demand")),
+        "legal_state": legal,
+        "inbound_state": "EMPTY",
+        "holes_closed": holes_closed,
         "posting_open": posting_open,
         "no_auth": bool(catalog.get("no_auth")) and "no auth" in hay,
         "no_gate": bool(catalog.get("no_gate")) and "no gate" in hay,
@@ -455,21 +930,28 @@ def measure_root(root):
         "calibration_hits": calibration_hits,
         "search_space": list(SEARCH_SPACE),
         "misses": misses,
-        "titan": catalog.get("titan") or "NOT_WRITTEN",
+        "titan": catalog.get("titan") or "UNRESOLVED",
+        "hashes": hashes,
         "slack_ts": catalog.get("slack_ts") or SLACK_TS,
+        "h009_ts": catalog.get("h009_ts") or H009_TS,
     }
     quote = classify_quote(
         {
             "measured": True,
             "sku_id": facts["sku_id"],
             "price_usd": facts["price_usd"],
+            "price_usd_state": facts["price_usd_state"],
             "sku_class": facts["sku_class"],
             "collected_cash_usd": facts["collected_cash_usd"],
+            "collected_cash_state": facts["collected_cash_state"],
             "demand": facts["demand"],
             "runtime_proof": facts["runtime_proof"],
             "structural_only": facts["structural_only"],
+            "structural_only_state": facts["structural_only_state"],
             "runtime_measured": facts["runtime_measured"],
+            "runtime_measured_state": facts["runtime_measured_state"],
             "customer_ready": facts["customer_ready"],
+            "customer_ready_state": facts["customer_ready_state"],
             "claims_cash": facts["claims_cash"],
             "claims_runtime": facts["claims_runtime"],
             "claims_demand": facts["claims_demand"],
@@ -480,6 +962,7 @@ def measure_root(root):
     row.update(
         {
             "slack_ts": facts["slack_ts"],
+            "h009_ts": facts["h009_ts"],
             "x": [rel for rel in SEARCH_SPACE if _exists(root, rel)],
             "y": {
                 "calibration_hits": calibration_hits,
@@ -487,17 +970,29 @@ def measure_root(root):
                 "landed_present": landed_present,
                 "sku_id": facts["sku_id"],
                 "price_usd": facts["price_usd"],
+                "price_usd_state": facts["price_usd_state"],
                 "sku_class": facts["sku_class"],
                 "arch_status": facts["arch_status"],
                 "arch_price_usd": facts["arch_price_usd"],
                 "quote_state": quote["state"],
+                "legal_state": legal,
+                "holes_closed": holes_closed,
                 "presence_receipt": PRESENCE_RECEIPT,
+                "hashes": {
+                    "source_commit": hashes.get("source_commit"),
+                    "source_tree": hashes.get("source_tree"),
+                    "quote_hash": hashes.get("quote_hash"),
+                    "catalog_row_hash": hashes.get("catalog_row_hash"),
+                    "delivery_hash": hashes.get("delivery_hash"),
+                },
             },
             "z": (
                 "misses "
                 + json.dumps(misses + landed_missing)
                 + " / FINDER-FAILED never 0 / quote "
                 + quote["state"]
+                + " / legal "
+                + legal
             ),
         }
     )
@@ -526,6 +1021,9 @@ def self_test():
             "sku_class": "QUOTE_DRAFT",
             "claims_cash": True,
             "structural_only": 31,
+            "runtime_measured": 0,
+            "customer_ready": 0,
+            "collected_cash_usd": 0,
         }
     )
     assert cash["state"] == "NOT_LANDED", cash
@@ -538,6 +1036,9 @@ def self_test():
             "sku_class": "QUOTE_DRAFT",
             "runtime_proof": True,
             "structural_only": 31,
+            "runtime_measured": 0,
+            "customer_ready": 0,
+            "collected_cash_usd": 0,
         }
     )
     assert runtime["state"] == "NOT_LANDED", runtime
@@ -556,6 +1057,50 @@ def self_test():
         }
     )
     assert draft["state"] == "QUOTE_DRAFT", draft
+    missing_price = classify_quote(
+        {
+            "measured": True,
+            "sku_id": SKU_ID,
+            "sku_class": "QUOTE_DRAFT",
+            "demand": "UNKNOWN",
+            "structural_only": 31,
+            "runtime_measured": 0,
+            "customer_ready": 0,
+            "collected_cash_usd": 0,
+        }
+    )
+    assert missing_price["state"] == "FINDER-FAILED", missing_price
+    assert inbound_rel("..\\ground\\EXECUTE") == ""
+    assert inbound_rel("../ground/EXECUTE") == ""
+    assert public_inbound("..\\ground\\EXECUTE")["state"] == "TRAVERSAL"
+    assert public_inbound(QUOTE_RECEIPT)["state"] == "SELF_BIND"
+    assert legal_state_for({"quote_hash": "a" * 64}, inbound_bound=False) == "NEEDS_BUYER"
+    assert legal_state_for({}, inbound_bound=False) == "DRAFT"
+    fused = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "door_present": True,
+                "arch_present": True,
+                "sku_id": SKU_ID,
+                "price_usd": QUOTE_PRICE,
+                "sku_class": "QUOTE_DRAFT",
+                "collected_cash_usd": 0,
+                "structural_only": 31,
+                "runtime_measured": 0,
+                "customer_ready": 0,
+                "demand": "UNKNOWN",
+                "found_phrases": list(REQUIRED_PHRASES),
+                "posting_open": True,
+                "no_auth": True,
+                "no_gate": True,
+                "calibration_ok": True,
+                "legal_state": "ACCEPTED",
+            }
+        )
+    )
+    assert fused["state"] == "NOT_LANDED", fused
     return "ok"
 
 

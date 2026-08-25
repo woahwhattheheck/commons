@@ -347,6 +347,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_receipt.py` · `python3 host/subzero_explorer.py` · `python3 host/subzero_receipt.py`
 **Note:** Sitting PR 2325 was CANDIDATE. Catalog on the PR head was stale vs its own host blob. Regenerated. 31/31 STRUCTURAL_ONLY. Presence never escalates. Do not remint item 45 / item 51 / `rivet-ship-subzero-explorer-20260825-01` / `rivet-ship-subzero-explorer-v2-20260825-01` / `jojo-subzero-explorer-v2-followup-20260825-01`. Hands off PR 2320 / 2108 / bind leftover. Cash $0 / NOT_LANDED. Talk is not a land.
 
+### 59. SUBZERO quote H-009 — leftover INTEGRATED is not a buyer
+> *"Smallest corrective lane is to harden the existing #2322/#2329 quote+receipt consumers"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:53 Slack `1787651627.535699` / JOJO H-009 + ship-talk · **Status:** LANDED this commit
+**Landed:** fail-close `inbound_rel` / `SELF_BIND`, UNRESOLVED missing numerics, source/tree/quote/row/request hashes, separate leftover INTEGRATED from DRAFT→NEEDS_BUYER, drop titan-lock health · `host/subzero_quote.py` · tests · card/catalog/door · land leftover-first
+**Receipt:** `python3 test_subzero_quote.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py`
+**Note:** #2329 binder holes already closed on `3c364c9fd`. H-009 plan leftover already on main via exact-one-fence. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal_state stays DRAFT/NEEDS_BUYER. Do not remint first quote leftover, receipt bind leftover, or `rivet-ship-grok-receipt-20260825-01`. Hands off PR 2320 / 2325 / 2108. No auth. No gate. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
