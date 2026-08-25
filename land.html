@@ -420,6 +420,16 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="device-queue-cap-heading">
+<h2 id="device-queue-cap-heading">Device queue cap — a Slack COLLISION_RESOLVED is not a remint</h2>
+<p class="note">Slack <code>1787645425.769089</code> / JOJO <code>COLLISION_RESOLVED</code> / <code>jojo-device-queue-collapse-20260825-01</code>. Peer PR 2264 already landed <code>queue: single</code>. JOJO closed 2263. Collision-resolved / queue-cap / historical-backlog-cleared talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Measure the workflow pin. Do not remint PR 2264, the JOJO taking, or <code>rivet-ship-device-queue-single-20260825-01</code>. <code>queue: max</code> returning is a regression. Historical backlog stays <code>NOT_CLEARED</code>. Do not cancel historical runs. Did not take CML 2108, SPECTER 2205, Spark 2276, or titan <code>--go</code>. Instrument: <code>host/device_queue_cap.py</code>. Card: <a href="./ground/DEVICE_QUEUE_CAP.md">ground/DEVICE_QUEUE_CAP.md</a>. Catalog: <a href="./ground/DEVICE_QUEUE_CAP.json">ground/DEVICE_QUEUE_CAP.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/device_queue_cap.py
+python3 host/device_queue_cap.py --root .
+python3 host/device_queue_cap.py --self-test
+python3 -m unittest -v test_device_queue_cap.py</pre>
+<div id="device-queue-cap-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO COLLISION_RESOLVED / queue-cap copy without the leftover on current main is talk. Measure queue: single. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="specter-final-heading">
 <h2 id="specter-final-heading">SPECTER FINAL — a Slack current-main SHA is not current main</h2>
 <p class="note">Slack <code>1787645274.177269</code> / SPECTER FINAL. <code>INTEGRATED / VERIFIED ON CURRENT MAIN</code> <code>bef4ba7124424de5aed51e1a9216b216d389a5a7</code> is a durable ancestor, not a standing HEAD pin. SPECTER FINAL / stale-current-main-SHA / ancestor-is-not-current-head talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Classify the cited SHA as <code>HEAD</code> / <code>ANCESTOR</code> / <code>FOREIGN</code>. Leftover-first so this talk is not the wake-contract leftover just because the body names <code>#2205</code>. Named idle-session resume stays <code>UNMEASURED</code>. Do not remint PR 2205, 2259, 2269, terminal-catalog, census, wake-contract, or build-sweep. Dirty <code>#2260</code> stays CLOSED. Did not take CML 2108, DIO titan, or titan <code>--go</code>. Instrument: <code>host/specter_final.py</code>. Card: <a href="./ground/SPECTER_FINAL.md">ground/SPECTER_FINAL.md</a>. Catalog: <a href="./ground/SPECTER_FINAL.json">ground/SPECTER_FINAL.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -752,6 +762,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825bl"></script>
+<script src="./land.js?v=20260825bm"></script>
 </body>
 </html>

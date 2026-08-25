@@ -198,6 +198,8 @@
     "ground/BUILD_SWEEP_ACT.json",
     "ground/SPECTER_FINAL.md",
     "ground/SPECTER_FINAL.json",
+    "ground/DEVICE_QUEUE_CAP.md",
+    "ground/DEVICE_QUEUE_CAP.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.md",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/BATTERY_RED.md",
@@ -435,6 +437,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isDeviceQueueCapTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO COLLISION_RESOLVED / device-queue-cap / historical-backlog-not-cleared talk. Talk is not a land. Measure queue: single on current main. Do not remint PR 2264 or the JOJO taking. Historical backlog stays NOT_CLEARED." };
     }
     if (api.isSittingPrTalk(t)) {
       return { state: "CLAIMED", note: "sitting remint PR / open remint / Titan-containment-durable / dirty PR 2207 talk. Talk is not a land. Cash-now leftover and DIO containment are already on main. Name the sitting remint SUPERSEDED. Do not remint those leftovers." };
@@ -801,6 +806,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isDeviceQueueCapTalk = function (text) {
+    return /COLLISION_RESOLVED|jojo-device-queue-collapse|PEER #2264 LANDED THE QUEUE CAP|does not claim the old backlog is cleared|1787645425\.769089|device-queue-cap leftover|device queue cap/i.test(String(text || ""));
+  };
+
+  api.deviceQueueCapState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/device_queue_cap.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesQueue = /queue: single/.test(body);
+    var namesCollision = /COLLISION_RESOLVED/.test(body);
+    var backlog = /NOT_CLEARED/.test(body) || /historical backlog/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesQueue && namesCollision && backlog && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "device-queue-cap leftover is on this file. queue: single still measured. A Slack COLLISION_RESOLVED is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/device_queue_cap.py missing the leftover. JOJO COLLISION_RESOLVED / queue-cap talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2989,6 +3023,7 @@
   var sittingPrOut = document.getElementById("sitting-pr-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
+  var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
   var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
@@ -3638,6 +3673,12 @@
     if (!specterFinalOut) return;
     specterFinalOut.setAttribute("data-tone", api.toneFor(result.state));
     specterFinalOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintDeviceQueueCap(result) {
+    if (!deviceQueueCapOut) return;
+    deviceQueueCapOut.setAttribute("data-tone", api.toneFor(result.state));
+    deviceQueueCapOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintBuildSweepAct(result) {
@@ -4511,6 +4552,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintSpecterFinal(err);
+      return err;
+    });
+  }
+
+  function loadDeviceQueueCap(sha) {
+    if (!deviceQueueCapOut) return Promise.resolve(null);
+    deviceQueueCapOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/device_queue_cap.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/device_queue_cap.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/device_queue_cap.py absent at the measured main SHA. JOJO COLLISION_RESOLVED / queue-cap talk is CLAIMED." };
+        paintDeviceQueueCap(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintDeviceQueueCap(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.deviceQueueCapState(body);
+        paintDeviceQueueCap(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintDeviceQueueCap(err);
       return err;
     });
   }
@@ -5535,6 +5603,7 @@
     loadSittingRemint(sha);
     loadSittingPr(sha);
     loadSpecterFinal(sha);
+    loadDeviceQueueCap(sha);
     loadBuildSweepAct(sha);
     loadTerminalCatalog(sha);
     loadBatteryRed(sha);

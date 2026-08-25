@@ -211,6 +211,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_sitting_pr.py` · `node test_land_desk.js` · `python3 host/sitting_pr.py`
 **Note:** Cash-now leftover already INTEGRATED. DIO containment receipt already DURABLE_ON_MAIN. PR 2207 is SUPERSEDED, not a second land. Do not remint SITTING_REMINT / CASH_NOW / DIO containment / Titan MOVE / SPECTER FINAL. Hands off JOJO 2262/2263, CML 2108, payment-ready/device/terminal/revenue. titan NOT_WRITTEN. Talk is not a land.
 
+### 43. Device queue cap — a Slack COLLISION_RESOLVED is not a remint
+> *"PEER #2264 LANDED THE QUEUE CAP; JOJO #2263 CLOSED … this forward cap does not claim the old backlog is cleared."*
+
+**Asked:** 08-25T08:10 Slack `1787645425.769089` / JOJO `COLLISION_RESOLVED` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/DEVICE_QUEUE_CAP.md` · `ground/DEVICE_QUEUE_CAP.json` · `host/device_queue_cap.py` · land canary + `deviceQueueCapState`
+**Receipt:** `python3 test_device_queue_cap.py` · `python3 host/device_queue_cap.py` · `node test_land_desk.js`
+**Note:** Do not remint PR 2264 / JOJO taking `jojo-device-queue-collapse-20260825-01` / `rivet-ship-device-queue-single-20260825-01` / SPECTER FINAL / SITTING_PR. `queue: max` returning is a regression. Historical backlog stays NOT_CLEARED. Do not cancel historical runs. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
