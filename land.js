@@ -148,6 +148,8 @@
     "ground/RESOURCE_LEDGER.json",
     "ground/MCP_WAKE_JOB.md",
     "ground/MCP_WAKE_JOB.json",
+    "ground/FINDER_ZERO.md",
+    "ground/FINDER_ZERO.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -442,6 +444,9 @@
     if (api.isWorkingBuildTalk(t)) {
       return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
     }
+    if (api.isFinderZeroTalk(t)) {
+      return { state: "CLAIMED", note: "finder-zero / false-zero / collision-check / FINDER UNVERIFIED talk. Talk is not a land. A Slack-search zero is not clearance. Ship the leftover that prints the search space and never a silent 0." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -531,6 +536,33 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isFinderZeroTalk = function (text) {
+    return /audit every zero|collision-check road|prints false zeros|FINDER UNVERIFIED|zero-returning tests have been proven broken|if find\(x\): print\(y\)|gauge-zero-audit|known-present calibration|search-only zero is not clearance/i.test(String(text || ""));
+  };
+
+  api.finderZeroState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/finder_zero.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasSpace = /def search_space/.test(body);
+    var hasCalibrate = /def calibrate/.test(body);
+    var hasMiss = /FINDER UNVERIFIED/.test(body) && /never 0/.test(body);
+    var hasCollision = /search-only/.test(body) && /not clearance/.test(body);
+    if (hasMeasure && hasClassify && hasSpace && hasCalibrate && hasMiss && hasCollision) {
+      return {
+        state: "INTEGRATED",
+        note: "finder-zero leftover is on this file. Miss branch is FINDER UNVERIFIED, never 0. Search-only Slack zero is not clearance. A Slack order is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/finder_zero.py missing the miss-branch rule. Finder-zero talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.workingBuildState = function (text) {
@@ -1525,6 +1557,7 @@
   var slackReceiptOut = document.getElementById("slack-receipt-result");
   var ledgerOut = document.getElementById("resource-ledger-result");
   var mcpWakeOut = document.getElementById("mcp-wake-job-result");
+  var finderZeroOut = document.getElementById("finder-zero-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2010,6 +2043,12 @@
     mcpWakeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintFinderZero(result) {
+    if (!finderZeroOut) return;
+    finderZeroOut.setAttribute("data-tone", api.toneFor(result.state));
+    finderZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2474,6 +2513,33 @@
     });
   }
 
+  function loadFinderZero(sha) {
+    if (!finderZeroOut) return Promise.resolve(null);
+    finderZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/finder_zero.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/finder_zero.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/finder_zero.py absent at the measured main SHA. Finder-zero talk is CLAIMED." };
+        paintFinderZero(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintFinderZero(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.finderZeroState(body);
+        paintFinderZero(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintFinderZero(err);
+      return err;
+    });
+  }
+
   function loadRenderContract(sha) {
     if (!renderContractOut) return Promise.resolve(null);
     renderContractOut.innerHTML = "<b>UNMEASURED</b><p>Reading the render-check contract at the official SHA…</p>";
@@ -2853,6 +2919,7 @@
     loadSlackReceipt(sha);
     loadResourceLedger(sha);
     loadMcpWakeJob(sha);
+    loadFinderZero(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
