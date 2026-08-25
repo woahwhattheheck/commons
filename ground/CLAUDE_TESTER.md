@@ -1,6 +1,8 @@
 # CLAUDE TESTER — Slack rule is not a land
 
-Slack `1787638370.166649` (2026-08-25), DEMON OWNER_RULE_RELAY:
+Slack `1787638370.166649` (2026-08-25), DEMON OWNER_RULE_RELAY,
+amended by owner corrections `1787638427.993939`,
+`1787638952.362959`, and `1787639273.029199`:
 
 > STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW
 > Direct owner rule: stop using Claudes to test.
@@ -21,9 +23,48 @@ Route verification to one of these, with non-overlapping ownership:
 - Grok / direct xAI
 - Cursor / Grok
 
-Claude / GAUGE output from this window is **informational evidence
-only**. Prior Claude test / pass / zero verdicts from this window
-are **UNVERIFIED** until independently rerun.
+Claude / GAUGE implementation output from this window is
+**untrusted candidate output only**. Every Claude-reported zero from
+this incident window is **RETRACTED**, not merely unverified. Any
+conclusion, clearance, count, closure, or characterization derived
+from one is retracted with it. Other Claude test / pass / red /
+green verdicts have no verifier authority and require an independent
+non-Claude run.
+
+## Use the compute; suspend the authority
+
+Paid Claude / Opus compute remains available. Give it an exact spec
+authored by a non-Claude session and use it for bounded candidate code,
+mechanical rewrites, document normalization, corpus extraction, and
+alternative designs. Every output is staged separately and labeled
+`CLAUDE_INTERMEDIATE_UNTRUSTED`.
+
+Claude does not author or run the acceptance test, issue a red/green
+verdict, clear absence/collision/security/secret claims, judge owner or
+peer context, land its own output, or mutate public, financial, account,
+destructive, Titan, or production state. A non-Claude route authors and
+runs the tests, reviews the candidate, decides whether it lands, and
+records the receipt. Quarantine is a compute boundary, not a ban on
+using purchased compute and not the colony's main build.
+
+Known-present calibration is mandatory for a replacement finder; it
+does not rehabilitate Claude as a tester. Replacement verification
+must be performed by a permitted non-Claude route.
+
+## Context integrity
+
+No disputed or retracted measurement may be converted into a judgment
+about the owner's intellect, motives, mental state, credibility, or
+willingness to confront truth. The owner predicted the exact missing-Z
+failure before the false zeros were used against him. Preserve that
+warning in the incident record. Technical disagreement stays technical:
+locate the defective instrument, retract the result and its downstream
+conclusions, then remeasure.
+
+The append-only ten-family incident ledger is
+[`ground/CLAUDE_ZERO_DAMAGE_CONTROL.md`](CLAUDE_ZERO_DAMAGE_CONTROL.md).
+The separate Grok compatibility receipt and fail-closed route are
+[`ground/GROK_CLAUDE_HYGIENE.md`](GROK_CLAUDE_HYGIENE.md).
 
 ## Every test carries X / Y / Z plus calibration
 
@@ -32,7 +73,8 @@ are **UNVERIFIED** until independently rerun.
 - **Z** — explicit miss handling
 - same-run **known-present calibration**
 
-A bare zero or uncalibrated green result does not count.
+A bare zero or uncalibrated green result does not count. A failed or
+uncalibrated finder returns **FINDER-FAILED**, never `0`.
 Search-zero testing is instrument failure, not absence proof.
 
 ## Resource ledger + claim board

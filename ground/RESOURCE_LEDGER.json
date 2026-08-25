@@ -1,5 +1,6 @@
 {
   "cache_as_capacity": false,
+  "companion_build_sweep": "ground/OWNER_MACHINE_BUILD_SWEEP.json",
   "hands_off": [
     "vercel production deploy",
     "financial/messaging/account writes",
@@ -59,7 +60,7 @@
       "rate_plan_boundary": "binary absent here; owner-PC millions-of-tokens claim is not this host"
     },
     {
-      "assigned_backlog": "informational evidence only; not tester/verifier/QA; route verification to local/GHA/Codex/Grok/Cursor-Grok",
+      "assigned_backlog": "implementation/informational evidence only; never tester/verifier/QA; retract incident-window zeros and route verification to local/GHA/Codex/Grok/Cursor-Grok",
       "auth_surface": "claude.ai Max + CLI (owner claim)",
       "capacity": "UNMEASURED",
       "evidence_ts": "2026-08-25T06:13:00Z",
@@ -67,7 +68,7 @@
       "last_receipt": "rivet-ship-claude-tester-20260825-01",
       "name": "claude",
       "tester_authority": false,
-      "rate_plan_boundary": "CLI absent here; Commons still cannot doorbell Claude; prior Claude verdicts this window UNVERIFIED"
+      "rate_plan_boundary": "CLI absent on this cloud box only; Commons still cannot doorbell Claude; incident-window Claude zeros RETRACTED; paid Claude compute may produce quarantined candidate artifacts but has no test, review, verifier, or landing authority"
     },
     {
       "assigned_backlog": "flight-recorder/utilization dashboard after scope/current-app reconciliation",
