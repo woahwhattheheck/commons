@@ -168,6 +168,8 @@
     "ground/XYZ_ZERO.json",
     "ground/TITAN_APPEND_GUARD.md",
     "ground/TITAN_APPEND_GUARD.json",
+    "ground/TITAN_TEST_QUARANTINE.md",
+    "ground/TITAN_TEST_QUARANTINE.json",
     "ground/MEASURE_ABUSE.md",
     "ground/MEASURE_ABUSE.json",
     "ground/CLAUDE_ZERO.md",
@@ -412,6 +414,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isTitanTestQuarantineTalk(t)) {
+      return { state: "CLAIMED", note: "live-Titan test quarantine / test_go_without_titan_is_absent / temp-synthetic-Titan talk. Talk is not a land. Isolate default discovery under tests. Require explicit --titan. Add payload-hash idempotence. Do not bind C:\\\\llm\\\\models\\\\titan.gguf from CI." };
     }
     if (api.isCashNowTalk(t)) {
       return { state: "CLAIMED", note: "cash-now / collectable-USD / private-payout talk. Talk is not a land. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. Ship the leftover to current main." };
@@ -748,6 +753,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isTitanTestQuarantineTalk = function (text) {
+    return /live-titan test quarantine|test_go_without_titan_is_absent|test_go_actuates_live_owner_titan|live-titan-contract-20260825|temp synthetic titan|default discovery must never bind|1787641850\.308579/i.test(String(text || ""));
+  };
+
+  api.titanTestQuarantineState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/titan_test_quarantine.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    var hasIsolate = /under_test/.test(body) && /is_owner_titan_path/.test(body);
+    var hasHash = /already_written_move/.test(body) && /payload_sha256/.test(body);
+    var hasSynth = /temp synthetic Titan/.test(body) || /temp synthetic titan/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && hasIsolate && hasHash && hasSynth) {
+      return {
+        state: "INTEGRATED",
+        note: "titan-test-quarantine leftover is on this file. Tests use temp synthetic Titan via --titan. Default discovery does not bind live Titan under tests. A Slack P0 is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/titan_test_quarantine.py missing the leftover. Live-Titan test quarantine talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2377,6 +2409,7 @@
   var claudeIntermediateOut = document.getElementById("claude-intermediate-result");
   var cashNowOut = document.getElementById("cash-now-result");
   var jojoAssignOut = document.getElementById("jojo-assign-result");
+  var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
   var containmentOut = document.getElementById("containment-result");
@@ -2991,6 +3024,12 @@
     if (!cashNowOut) return;
     cashNowOut.setAttribute("data-tone", api.toneFor(result.state));
     cashNowOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintTitanTestQuarantine(result) {
+    if (!titanTestQuarantineOut) return;
+    titanTestQuarantineOut.setAttribute("data-tone", api.toneFor(result.state));
+    titanTestQuarantineOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintSittingRemint(result) {
@@ -3811,6 +3850,33 @@
     });
   }
 
+  function loadTitanTestQuarantine(sha) {
+    if (!titanTestQuarantineOut) return Promise.resolve(null);
+    titanTestQuarantineOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/titan_test_quarantine.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/titan_test_quarantine.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/titan_test_quarantine.py absent at the measured main SHA. Live-Titan test quarantine talk is CLAIMED." };
+        paintTitanTestQuarantine(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTitanTestQuarantine(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.titanTestQuarantineState(body);
+        paintTitanTestQuarantine(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTitanTestQuarantine(err);
+      return err;
+    });
+  }
+
   function loadDeviceCanary(sha) {
     if (!deviceCanaryOut) return Promise.resolve(null);
     deviceCanaryOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/device_canary.py at the official SHA…</p>";
@@ -4585,6 +4651,7 @@
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
+    loadTitanTestQuarantine(sha);
     loadSittingRemint(sha);
     loadDeviceCanary(sha);
     loadClaudeCompute(sha);

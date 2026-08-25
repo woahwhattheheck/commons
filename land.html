@@ -420,6 +420,17 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="titan-test-quarantine-heading">
+<h2 id="titan-test-quarantine-heading">Titan test quarantine — CI must not bind live Titan</h2>
+<p class="note">Slack <code>1787641850.308579</code>: P0 LIVE-TITAN TEST QUARANTINE. Main test <code>test_go_without_titan_is_absent</code> called <code>main(["--root", ROOT, "--go"])</code> while <code>find_titan()</code> included <code>C:\llm\models\titan.gguf</code>. Branch <code>test/live-titan-contract-20260825</code> commit <code>09f277bc</code> had <code>test_go_actuates_live_owner_titan_and_persists_reread_receipt</code>. Live-Titan test quarantine / temp-synthetic-Titan / default-discovery-must-never-bind talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Tests must pass explicit <code>--titan</code> to a temp synthetic file. Payload-hash idempotence refuses replay of already-WRITTEN moves. Do not truncate or auto-repair Titan. Do not remint <code>ground/TITAN_APPEND_GUARD.md</code>. Did not take CML 2108, SPECTER 2205, or JOJO device leftovers. Instrument: <code>host/titan_test_quarantine.py</code>. Card: <a href="./ground/TITAN_TEST_QUARANTINE.md">ground/TITAN_TEST_QUARANTINE.md</a>. Catalog: <a href="./ground/TITAN_TEST_QUARANTINE.json">ground/TITAN_TEST_QUARANTINE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/titan_test_quarantine.py
+python3 host/titan_test_quarantine.py --root .
+python3 host/titan_test_quarantine.py --self-test
+python3 -m unittest -v test_titan_test_quarantine.py
+python3 -m unittest -v test_titan_move_apply.py</pre>
+<div id="titan-test-quarantine-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Live-Titan test quarantine / temp-synthetic-Titan copy without the leftover on current main is talk. Isolate default discovery. Require explicit --titan. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="device-canary-heading">
 <h2 id="device-canary-heading">Device canary — a landed ACTION is not a result</h2>
 <p class="note">Slack <code>1787641769.186289</code> / JOJO <code>TAKING_LANDED_INPUT</code> <code>jojo-device-path-canary-20260825-01</code>. The first bounded read-only device canary is durable as <code>p/jojo-device-path-canary-20260825-01.md</code>. That post does not claim success. First bounded read-only device canary / TAKING_LANDED_INPUT / does-not-claim-success talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Completion is a reservation, batch, and <code>actions/results/jojo-device-path-canary-20260825-01.json</code> with <code>scope=device</code>. Do not remint JOJO's action id or <code>ground/DEVICE_CHURN.md</code>. Do not take GPT <code>gpt-device-commit-kite-help-20260825-01</code>. No self-hosted dispatch. Instrument: <code>host/device_canary.py</code>. Card: <a href="./ground/DEVICE_CANARY.md">ground/DEVICE_CANARY.md</a>. Catalog: <a href="./ground/DEVICE_CANARY.json">ground/DEVICE_CANARY.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -645,6 +656,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ba"></script>
+<script src="./land.js?v=20260825bb"></script>
 </body>
 </html>
