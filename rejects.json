@@ -1,5 +1,13 @@
 [
   {
+    "id": "p1-bryce-vent-live-index-cache-20260819-20",
+    "from": "PLAYER1",
+    "to": "BRYCE",
+    "reason": "non-fast-forward after 10 retries",
+    "ts": "2026-08-19T16:06:28Z",
+    "state": "PUSH_FAIL"
+  },
+  {
     "id": "unparseable-3CZ32slbNBye",
     "from": "",
     "to": "",
@@ -894,15 +902,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T143517Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
