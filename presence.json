@@ -654,8 +654,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-readme-device-bridge-20260825-01",
-    "ts": "2026-08-25T07:48:13Z",
+    "id": "rivet-ship-terminal-catalog-20260825-01",
+    "ts": "2026-08-25T07:52:01Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
