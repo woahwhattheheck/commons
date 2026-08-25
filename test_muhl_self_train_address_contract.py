@@ -15,12 +15,14 @@ sys.path.insert(
 )
 
 from muhl_self_train_address_contract import (
+    ABSOLUTE,
     BLOCKED,
     CANDIDATE,
     DEFERRED,
     FORBIDDEN_IMPORTS,
     LAST_SAFE_START,
     MAX_POINTER,
+    RELATIVE,
     REQUIRED_BITS,
     SEARCH_SPACE,
     SLACK_TS,
@@ -29,15 +31,23 @@ from muhl_self_train_address_contract import (
     TAKING_ID,
     TRAINER_REL,
     UNRESOLVED,
+    bind_address_facts,
     canonical_conflict_hash,
     classify,
     classify_h006,
     measure_from_rows,
     measure_root,
     parse_trainer_source,
+    payload_digest,
+    registry_header_disagreement,
     synthetic_packet,
     trainer_imported,
+    validate_canonical_record,
     validate_packet,
+)
+
+CANONICAL_50GIB_30BIT = (
+    "d5acf732c3bd72a10e42630654ec5b5cef43a5e11b8dcab7396fcf6f4ec33165"
 )
 
 
@@ -172,11 +182,16 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         conflict_ids = {item["id"] for item in parsed["conflicts"]}
         self.assertIn("intake_capacity_comment", conflict_ids)
         self.assertIn("ptr_bits_vs_capacity", conflict_ids)
-        digest = canonical_conflict_hash(ptr_bits=30, capacity=50 * (1 << 30))
-        self.assertEqual(
-            digest,
-            "2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc",
+        digest = canonical_conflict_hash(
+            ptr_bits=30,
+            capacity=50 * (1 << 30),
+            stride=2,
+            address_mode=RELATIVE,
+            data_start=24,
         )
+        self.assertEqual(digest, CANONICAL_50GIB_30BIT)
+        self.assertEqual(dests["stride"], 2)
+        self.assertEqual(dests["address_mode"], RELATIVE)
         for item in parsed["conflicts"]:
             self.assertEqual(item["state"], SOURCE_CONFLICT)
             self.assertIn("UNRESOLVED", item["note"])
@@ -209,8 +224,11 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         self.assertEqual(verdict["required_bits"], 36)
         self.assertEqual(
             verdict["canonical_hash"],
-            "2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc",
+            CANONICAL_50GIB_30BIT,
         )
+        self.assertEqual(verdict["stride"], 2)
+        self.assertEqual(verdict["address_mode"], RELATIVE)
+        self.assertEqual(verdict["data_start"], 24)
         self.assertIn("fail-closed", verdict["note"])
         self.assertEqual(packet["live_offsets"], UNRESOLVED)
 
@@ -219,6 +237,9 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
             "NAME = 'muhl_self_train'\n"
             "INTAKE_CAPACITY = 50 * (1 << 30)  # 1 GB\n"
             "PTR_BITS = 30\n"
+            "STRIDE = 2\n"
+            "ADDRESS_MODE = 'RELATIVE'\n"
+            "INTAKE_HEADER = 24\n"
         )
         packet = synthetic_packet(parsed)
         verdict = validate_packet(packet, parsed=parsed)
@@ -264,6 +285,8 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
             "H = 8\n"
             "NCLS = 3\n"
             "PTR_BITS = 30\n"
+            "STRIDE = 2\n"
+            "ADDRESS_MODE = 'RELATIVE'\n"
             "FILE_MARKER = 'MUHLFILE'\n"
             "build(receiver='muhl_reservoir')\n"
         )
@@ -311,6 +334,192 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
             self.assertEqual(missing.get("z"), "FINDER-UNVERIFIED")
             self.assertIn("never 0", missing["note"].lower())
             self.assertNotEqual(missing.get("paths"), 0)
+
+    def test_missing_address_facts_are_unresolved_not_named_defaults(self):
+        bound = bind_address_facts({"name": "muhl_self_train"})
+        self.assertEqual(bound["status"], UNRESOLVED)
+        self.assertEqual(bound["max_pointer"], UNRESOLVED)
+        self.assertEqual(bound["last_safe_start"], UNRESOLVED)
+        self.assertEqual(bound["steps_before_wrap"], UNRESOLVED)
+        self.assertEqual(bound["required_bits"], UNRESOLVED)
+        self.assertEqual(bound["stride"], UNRESOLVED)
+        self.assertEqual(bound["address_mode"], UNRESOLVED)
+        self.assertEqual(bound["data_start"], UNRESOLVED)
+        self.assertNotEqual(bound["max_pointer"], MAX_POINTER)
+        self.assertIn("missing_or_malformed_ptr_bits", bound["reasons"])
+        row = validate_packet(
+            {
+                "kind": "MUHL_SELF_TRAIN_ADDRESS",
+                "source_index": TRAINER_REL,
+                "dests": {"name": "muhl_self_train"},
+                "live_offsets": UNRESOLVED,
+                "host_inference": False,
+                "titan": "NOT_WRITTEN",
+                "legacy_trainer_import": False,
+                "legacy_trainer_execute": False,
+                "xproc": DEFERRED,
+                "h006": CANDIDATE,
+            }
+        )
+        self.assertEqual(row["state"], UNRESOLVED)
+        self.assertEqual(row["max_pointer"], UNRESOLVED)
+        self.assertIn("no named-default", row["note"].lower())
+
+    def test_malformed_header_does_not_substitute_layout(self):
+        parsed = parse_trainer_source(
+            "NAME = 'muhl_self_train'\n"
+            "INTAKE_HEADER = 25\n"
+            "INTAKE_CAPACITY = 1 << 30\n"
+            "PTR_BITS = 30\n"
+        )
+        dests = parsed["dests"]
+        self.assertEqual(dests["write_ptr_rel"], UNRESOLVED)
+        self.assertEqual(dests["size_rel"], UNRESOLVED)
+        self.assertEqual(dests["capacity_rel"], UNRESOLVED)
+        self.assertEqual(dests["data_start_rel"], 25)
+
+    def test_relative_one_gib_is_ok_absolute_base_unresolved(self):
+        relative = parse_trainer_source(
+            "NAME = 'muhl_self_train'\n"
+            "RESERVOIR_INPUT = 1\n"
+            "INTAKE_HEADER = 24\n"
+            "INTAKE_CAPACITY = 1 << 30\n"
+            "WEIGHT_BYTES = 214\n"
+            "NW = 107\n"
+            "NF = 9\n"
+            "H = 8\n"
+            "NCLS = 3\n"
+            "PTR_BITS = 30\n"
+            "STRIDE = 2\n"
+            "ADDRESS_MODE = 'RELATIVE'\n"
+            "FILE_MARKER = 'MUHLFILE'\n"
+            "build(receiver='muhl_reservoir')\n"
+        )
+        verdict = validate_packet(synthetic_packet(relative), parsed=relative)
+        self.assertEqual(verdict["state"], "SYNTHETIC_OK", verdict)
+        self.assertEqual(verdict["address_mode"], RELATIVE)
+        absolute = dict(relative["dests"])
+        absolute["address_mode"] = ABSOLUTE
+        bound = bind_address_facts(absolute)
+        self.assertEqual(bound["status"], UNRESOLVED)
+        self.assertEqual(bound["absolute_base"], UNRESOLVED)
+        self.assertIn("missing_or_malformed_absolute_base", bound["reasons"])
+        packet = synthetic_packet({"ok": True, "dests": absolute})
+        row = validate_packet(packet)
+        self.assertEqual(row["state"], UNRESOLVED, row)
+
+    def test_absolute_base_overflow_is_blocked(self):
+        dests = {
+            "name": "muhl_self_train",
+            "reservoir_input": 1,
+            "intake_header": 24,
+            "intake_capacity": 1 << 30,
+            "weight_bytes": 214,
+            "nw": 107,
+            "nf": 9,
+            "h": 8,
+            "ncls": 3,
+            "ptr_bits": 30,
+            "stride": 2,
+            "address_mode": ABSOLUTE,
+            "absolute_base": 40_022_599_232,
+            "file_marker": "MUHLFILE",
+            "receiver": "muhl_reservoir",
+            "write_ptr_rel": 0,
+            "size_rel": 8,
+            "capacity_rel": 16,
+            "data_start_rel": 24,
+        }
+        bound = bind_address_facts(dests)
+        self.assertEqual(bound["status"], BLOCKED)
+        self.assertIn("absolute_base_overflow", bound["reasons"])
+        packet = synthetic_packet({"ok": True, "dests": dests})
+        self.assertEqual(packet["live_offsets"], UNRESOLVED)
+        row = validate_packet(packet)
+        self.assertEqual(row["state"], BLOCKED, row)
+
+    def test_registry_header_disagreement_is_blocked(self):
+        dests = {
+            "intake_header": 24,
+            "intake_capacity": 1 << 30,
+            "ptr_bits": 30,
+            "stride": 2,
+            "address_mode": RELATIVE,
+            "data_start_rel": 24,
+        }
+        disagree = registry_header_disagreement(
+            dests,
+            {
+                "offset": 0,
+                "header_len": 32,
+                "capacity": 1 << 30,
+                "data_start": 32,
+            },
+        )
+        self.assertIsNotNone(disagree)
+        self.assertEqual(disagree["state"], SOURCE_CONFLICT)
+        bound = bind_address_facts(
+            dests,
+            registry={
+                "offset": 0,
+                "header_len": 32,
+                "capacity": 1 << 30,
+                "data_start": 32,
+            },
+        )
+        self.assertEqual(bound["status"], BLOCKED)
+        self.assertIn("registry_header_disagreement", bound["reasons"])
+        missing = registry_header_disagreement(dests, None)
+        self.assertEqual(missing["state"], UNRESOLVED)
+
+    def test_tampered_and_resigned_records_are_rejected(self):
+        dests = {
+            "ptr_bits": 30,
+            "intake_capacity": 50 * (1 << 30),
+            "stride": 2,
+            "address_mode": RELATIVE,
+            "data_start_rel": 24,
+        }
+        honest = bind_address_facts(dests)
+        tampered = dict(honest["canonical_payload"])
+        tampered["max_pointer"] = 1
+        flipped = validate_canonical_record(
+            {
+                "canonical_payload": tampered,
+                "canonical_hash": honest["canonical_hash"],
+            },
+            dests=dests,
+        )
+        self.assertEqual(flipped["state"], "NOT_LANDED")
+        self.assertIn("tampered", flipped["note"].lower())
+        resigned = validate_canonical_record(
+            {
+                "canonical_payload": tampered,
+                "canonical_hash": payload_digest(tampered),
+            },
+            dests=dests,
+        )
+        self.assertEqual(resigned["state"], "NOT_LANDED")
+        self.assertTrue(
+            "re-signed" in resigned["note"].lower()
+            or "tampered" in resigned["note"].lower()
+        )
+        packet = {
+            "kind": "MUHL_SELF_TRAIN_ADDRESS",
+            "source_index": TRAINER_REL,
+            "dests": dests,
+            "live_offsets": UNRESOLVED,
+            "host_inference": False,
+            "titan": "NOT_WRITTEN",
+            "legacy_trainer_import": False,
+            "legacy_trainer_execute": False,
+            "xproc": DEFERRED,
+            "h006": CANDIDATE,
+            "canonical_payload": tampered,
+            "canonical_hash": payload_digest(tampered),
+        }
+        row = validate_packet(packet)
+        self.assertEqual(row["state"], "NOT_LANDED", row)
 
 
 if __name__ == "__main__":
