@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import unittest
@@ -12,6 +13,7 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from readme_live import (
     CALIBRATION,
+    DEVICE_CYCLE_REQUIREMENTS,
     FORBIDDEN_PHRASES,
     REQUIRED_PHRASES,
     SEARCH_SPACE,
@@ -20,6 +22,7 @@ from readme_live import (
     classify,
     load_catalog,
     measure_from_rows,
+    measure_device_cycle,
     measure_readme,
     measure_root,
 )
@@ -93,6 +96,16 @@ class TestReadmeLive(unittest.TestCase):
             "Ordinary posts do not write the owner's PC. HTTP is not the computer.\n"
         )
         self.assertIn("do not write the owner's pc", measured["forbidden_hits"])
+        measured.update(
+            {
+                "measured": True,
+                "calibration_ok": True,
+                "card_present": True,
+                "catalog_present": True,
+                "readme_present": True,
+            }
+        )
+        self.assertEqual(classify(measured)["state"], "NOT_LANDED")
 
     def test_missing_paths_are_not_landed(self):
         measured = measure_from_rows(
@@ -105,6 +118,20 @@ class TestReadmeLive(unittest.TestCase):
             }
         )
         self.assertEqual(classify(measured)["state"], "NOT_LANDED")
+
+    def test_catalog_open_door_flags_require_json_true(self):
+        baseline = {
+            "no_auth": True,
+            "no_gate": True,
+            "posting_open": True,
+        }
+        for flag in baseline:
+            for false_like in (False, "false", "true", 1, None):
+                with self.subTest(flag=flag, false_like=false_like):
+                    candidate = dict(baseline)
+                    candidate[flag] = false_like
+                    catalog = load_catalog(json.dumps(candidate))
+                    self.assertFalse(catalog[flag])
 
     def test_complete_leftover_is_integrated(self):
         measured = measure_from_rows(
@@ -122,6 +149,9 @@ class TestReadmeLive(unittest.TestCase):
                 "no_gate": True,
                 "action_pad": True,
                 "device_bridge_grounded": True,
+                "device_cycle_grounded": True,
+                "device_catalog_grounded": True,
+                "catalog_paths_ok": True,
                 "head_truth": True,
                 "ship_main": True,
                 "catalog_roster": STALE_ROSTER,
@@ -133,6 +163,120 @@ class TestReadmeLive(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("never 0", verdict["note"])
 
+    def test_each_open_door_flag_is_required(self):
+        complete = {
+            "measured": True,
+            "card_present": True,
+            "catalog_present": True,
+            "readme_present": True,
+            "found_phrases": list(REQUIRED_PHRASES),
+            "missing_phrases": [],
+            "forbidden_hits": [],
+            "stale_roster": False,
+            "treats_bake_as_presence": False,
+            "posting_open": True,
+            "no_auth": True,
+            "no_gate": True,
+            "action_pad": True,
+            "device_bridge_grounded": True,
+            "device_cycle_grounded": True,
+            "device_catalog_grounded": True,
+            "catalog_paths_ok": True,
+            "head_truth": True,
+            "ship_main": True,
+            "catalog_roster": STALE_ROSTER,
+            "card_names_slack": True,
+            "calibration_ok": True,
+        }
+        for flag in (
+            "posting_open",
+            "no_auth",
+            "no_gate",
+            "device_bridge_grounded",
+            "device_cycle_grounded",
+            "device_catalog_grounded",
+            "catalog_paths_ok",
+        ):
+            with self.subTest(flag=flag):
+                measured = dict(complete)
+                measured[flag] = False
+                self.assertEqual(classify(measured)["state"], "NOT_LANDED")
+
+    def test_device_cycle_rejects_comments_token_bags_and_wrong_job_order(self):
+        path = os.path.join(ROOT, ".github", "workflows", "commons-device-cycle.yml")
+        with open(path, encoding="utf-8") as handle:
+            complete = handle.read()
+        self.assertTrue(measure_device_cycle(complete)["device_cycle_grounded"])
+
+        commented = "\n".join("# " + line for line in complete.splitlines())
+        self.assertFalse(measure_device_cycle(commented)["device_cycle_grounded"])
+
+        token_bag = "\n".join(
+            token
+            for _job, _label, _anchor, token, _mode in DEVICE_CYCLE_REQUIREMENTS
+        )
+        self.assertFalse(measure_device_cycle(token_bag)["device_cycle_grounded"])
+
+        prepare = complete.index("\n  prepare:")
+        execute = complete.index("\n  execute:")
+        finalize = complete.index("\n  finalize:")
+        wrong_order = (
+            complete[:prepare]
+            + complete[prepare:execute]
+            + complete[finalize:]
+            + complete[execute:finalize]
+        )
+        measured = measure_device_cycle(wrong_order)
+        self.assertFalse(measured["device_cycle_stage_order"])
+        self.assertFalse(measured["device_cycle_grounded"])
+
+        decoy = complete.replace(
+            "    runs-on: [self-hosted, commons-device]",
+            "  decoy:\n    runs-on: [self-hosted, commons-device]",
+            1,
+        )
+        measured = measure_device_cycle(decoy)
+        self.assertFalse(measured["device_cycle_grounded"])
+        self.assertIn("self-hosted receiver", measured["device_cycle_missing"])
+
+        checkout_lines = complete.splitlines()
+        checkout_index = next(
+            index
+            for index, line in enumerate(checkout_lines)
+            if line.strip().startswith("- uses: actions/checkout@")
+        )
+        del checkout_lines[checkout_index]
+        measured = measure_device_cycle("\n".join(checkout_lines))
+        self.assertFalse(measured["device_cycle_grounded"])
+        self.assertIn("prepare checkout action", measured["device_cycle_missing"])
+
+        disconnected = complete.splitlines()
+        checkout_index = next(
+            index
+            for index, line in enumerate(disconnected)
+            if line.strip().startswith("- uses: actions/checkout@")
+        )
+        disconnected.insert(
+            checkout_index + 1,
+            "      - uses: actions/github-script@deadbeef",
+        )
+        measured = measure_device_cycle("\n".join(disconnected))
+        self.assertFalse(measured["device_cycle_grounded"])
+        self.assertIn("prepare checkout inputs", measured["device_cycle_missing"])
+        self.assertIn("prepare fresh main checkout", measured["device_cycle_missing"])
+
+    def test_every_device_cycle_binding_is_required(self):
+        path = os.path.join(ROOT, ".github", "workflows", "commons-device-cycle.yml")
+        with open(path, encoding="utf-8") as handle:
+            complete = handle.read()
+        for _job, label, _anchor, token, _mode in DEVICE_CYCLE_REQUIREMENTS:
+            with self.subTest(label=label):
+                self.assertIn(token, complete)
+                broken = complete.replace(token, "REMOVED-" + label)
+                measured = measure_device_cycle(broken)
+                self.assertFalse(measured["device_cycle_grounded"])
+                self.assertIn(label, measured["device_cycle_missing"])
+
     def test_live_tree_is_integrated(self):
         measured = measure_root(ROOT)
         verdict = classify(measured)
@@ -142,7 +286,15 @@ class TestReadmeLive(unittest.TestCase):
         self.assertEqual(measured["forbidden_hits"], [])
         self.assertEqual(measured["missing_phrases"], [])
         self.assertTrue(measured["device_bridge_grounded"], measured)
+        self.assertTrue(measured["device_cycle_grounded"], measured)
+        self.assertTrue(measured["device_catalog_grounded"], measured)
+        self.assertTrue(measured["catalog_paths_ok"], measured)
+        self.assertTrue(measured["no_auth"], measured)
+        self.assertTrue(measured["no_gate"], measured)
+        self.assertTrue(measured["posting_open"], measured)
         self.assertEqual(verdict["state"], "INTEGRATED", verdict)
+        self.assertNotIn("titan", measured)
+        self.assertNotIn("titan", verdict)
         with open(os.path.join(ROOT, "ground", "README_LIVE.json"), encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
         with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as handle:
