@@ -275,6 +275,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_heavy_lanes.py` · `node test_land_desk.js` · `python3 host/heavy_lanes.py`
 **Note:** Consumer gap G-001: SUPERGROK_HEAVY names dir9/dir19 only. H-001/H-002 outputs stay CANDIDATE. Do not remint SUPERGROK_HEAVY / MUHL_RECEIPT_LANE / SUBZERO_EXPLORER / LDA_RECEIPT / REVIEW_LANE / MUHL_TRAIN_BRIDGE / `rivet-ship-supergrok-heavy-20260825-01` / `rivet-ship-lda-receipt-20260825-01` / `rivet-ship-review-lane-20260825-01` / `rivet-ship-muhl-train-bridge-20260825-01`. Cursor Grok is not the Heavy substitute. titan NOT_WRITTEN. Talk is not a land.
 
+### 51. Subzero Explorer v2 — a receipt-gap spec is not a land
+> *"DO NOT DUPLICATE LANDED EXPLORER; V2 RECEIPT GAP SPECCED"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:48 Slack `1787647728.185449` / JOJO `COLLISION_RESOLVED_SPEC_READY` + ship-talk · **Status:** LANDED this commit
+**Landed:** harden `subzero.html` · `ground/SUBZERO_EXPLORER.md` · `ground/SUBZERO_EXPLORER.json` · `host/subzero_explorer.py` · `test_subzero_explorer.py` · add `revenue/subzero_buyers/validation_receipt.schema.json` · fix `host/subzero_tech.py` presence-never-escalates · land leftover-first
+**Receipt:** `python3 test_subzero_explorer.py` · `python3 test_subzero_tech.py` · `node test_land_desk.js` · `python3 host/subzero_explorer.py`
+**Note:** Strict classes `STRUCTURAL_ONLY|RUNTIME_MEASURED|CUSTOMER_READY|UNKNOWN`. Malformed/missing → UNKNOWN. Runtime needs a distinct cross-process receipt. Customer-ready needs a bound buyer PASS. Titan-file presence never escalates. Do not remint item 45 explorer / `rivet-ship-subzero-explorer-20260825-01` / `jojo-subzero-explorer-v2-followup-20260825-01`. Hands off README live leftover already on main via PR 2286. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

@@ -187,8 +187,46 @@ def search_space():
     return list(SEARCH_SPACE)
 
 
+def _runtime_receipt_ok(receipt):
+    """Runtime requires a distinct cross-process receipt. Presence is not enough."""
+    if not isinstance(receipt, dict):
+        return False
+    if receipt.get("kind") not in ("SUBZERO_RUNTIME_RECEIPT", "CROSS_PROCESS_RECEIPT"):
+        return False
+    if receipt.get("cross_process") is not True:
+        return False
+    pid = receipt.get("pid")
+    if not isinstance(pid, int) or pid <= 0 or pid == os.getpid():
+        return False
+    if not str(receipt.get("host") or "").strip():
+        return False
+    if receipt.get("login_required") or receipt.get("privileged_tier"):
+        return False
+    return True
+
+
+def _buyer_pass_ok(receipt):
+    """CUSTOMER_READY requires a bound buyer PASS. A flag is not enough."""
+    if not isinstance(receipt, dict):
+        return False
+    if receipt.get("kind") not in ("SUBZERO_BUYER_VALIDATION", "BUYER_RECEIPT"):
+        return False
+    if receipt.get("status") != "PASS" or receipt.get("bound") is not True:
+        return False
+    if not str(receipt.get("buyer_id") or "").strip():
+        return False
+    if receipt.get("login_required") or receipt.get("privileged_tier"):
+        return False
+    return True
+
+
 def classify_organ(facts):
-    """One class per organ. Runtime is not inferred from a git file."""
+    """One class per organ. Runtime is not inferred from a git file.
+
+    Titan-file presence never escalates. evaluated / titan_remeasured
+    flags without a distinct cross-process receipt stay STRUCTURAL_ONLY
+    or UNKNOWN. CUSTOMER_READY requires a bound buyer PASS.
+    """
     facts = facts or {}
     excerpt = bool(facts.get("excerpt"))
     fab = bool(facts.get("fab"))
@@ -197,6 +235,15 @@ def classify_organ(facts):
     evaluated = bool(facts.get("evaluated"))
     customer = bool(facts.get("customer_ready"))
     titan_remeasured = bool(facts.get("titan_remeasured"))
+    # Presence of titan.gguf or any checked-in file is not runtime.
+    if facts.get("titan_file_present") and not _runtime_receipt_ok(facts.get("runtime_receipt")):
+        titan_remeasured = False
+        evaluated = False
+    if (evaluated or titan_remeasured) and not _runtime_receipt_ok(facts.get("runtime_receipt")):
+        evaluated = False
+        titan_remeasured = False
+    if customer and not _buyer_pass_ok(facts.get("buyer_receipt")):
+        customer = False
     if customer and excerpt and header_ok:
         return "CUSTOMER_READY"
     if evaluated or titan_remeasured:
@@ -306,7 +353,10 @@ def measure_tree(root, catalog_text=""):
             "sha256": header.get("sha256") or "",
             "structural_test": structural_test,
             "evaluated": False,
-            "titan_remeasured": titan_local == "PRESENT",
+            "titan_file_present": titan_local == "PRESENT",
+            "titan_remeasured": False,
+            "runtime_receipt": None,
+            "buyer_receipt": None,
             "customer_ready": False,
         }
         if row["excerpt"]:
@@ -552,6 +602,23 @@ def _self_test():
     assert catalog.get("error")
     assert classify_organ({"excerpt": True, "header_ok": True, "fab": True, "test": True}) == "STRUCTURAL_ONLY"
     assert classify_organ({"fab": True}) == "UNKNOWN"
+    assert classify_organ(
+        {
+            "excerpt": True,
+            "header_ok": True,
+            "fab": True,
+            "test": True,
+            "titan_file_present": True,
+            "titan_remeasured": True,
+        }
+    ) == "STRUCTURAL_ONLY"
+    assert classify_organ(
+        {
+            "excerpt": True,
+            "header_ok": True,
+            "customer_ready": True,
+        }
+    ) == "STRUCTURAL_ONLY"
     return True
 
 

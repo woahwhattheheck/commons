@@ -45,6 +45,64 @@ class TestSubzeroTech(unittest.TestCase):
         )
         self.assertEqual(classify_organ({"fab": True}), "UNKNOWN")
 
+    def test_titan_presence_never_escalates(self):
+        self.assertEqual(
+            classify_organ(
+                {
+                    "excerpt": True,
+                    "fab": True,
+                    "test": True,
+                    "header_ok": True,
+                    "titan_file_present": True,
+                    "titan_remeasured": True,
+                    "evaluated": True,
+                }
+            ),
+            "STRUCTURAL_ONLY",
+        )
+        self.assertEqual(
+            classify_organ(
+                {
+                    "excerpt": True,
+                    "header_ok": True,
+                    "customer_ready": True,
+                }
+            ),
+            "STRUCTURAL_ONLY",
+        )
+        self.assertEqual(
+            classify_organ(
+                {
+                    "excerpt": True,
+                    "header_ok": True,
+                    "evaluated": True,
+                    "runtime_receipt": {
+                        "kind": "SUBZERO_RUNTIME_RECEIPT",
+                        "cross_process": True,
+                        "pid": os.getpid() + 9,
+                        "host": "other-process",
+                    },
+                }
+            ),
+            "CROSS_PROCESS/RUNTIME_MEASURED",
+        )
+        self.assertEqual(
+            classify_organ(
+                {
+                    "excerpt": True,
+                    "header_ok": True,
+                    "customer_ready": True,
+                    "buyer_receipt": {
+                        "kind": "SUBZERO_BUYER_VALIDATION",
+                        "status": "PASS",
+                        "bound": True,
+                        "buyer_id": "P01_catalog_receipt",
+                    },
+                }
+            ),
+            "CUSTOMER_READY",
+        )
+
     def test_current_main_facts_are_integrated(self):
         measured = measure_from_rows(
             {

@@ -199,6 +199,7 @@
     "ground/SUBZERO_EXPLORER.md",
     "ground/SUBZERO_EXPLORER.json",
     "subzero.html",
+    "revenue/subzero_buyers/validation_receipt.schema.json",
     "ground/BUILD_SWEEP_ACT.md",
     "ground/BUILD_SWEEP_ACT.json",
     "ground/SPECTER_FINAL.md",
@@ -470,6 +471,9 @@
     }
     if (api.isMuhlReceiptLaneTalk(t)) {
       return { state: "CLAIMED", note: "JOJO TAKING / LocalDeviceAgent subagent receipt lane / request-receiver-result / 175-entry tree / leave-unmerged talk. Talk is not a land. Ship the source-only receipt validator to current main. Do not remint FOREIGN_MAIN, SUBZERO_EXPLORER, or the JOJO protocol id. Do not copy private LDA source." };
+    }
+    if (api.isSubzeroExplorerV2Talk(t)) {
+      return { state: "CLAIMED", note: "JOJO COLLISION_RESOLVED_SPEC_READY / explorer v2 receipt-gap / validation_receipt.schema / presence-must-never-escalate talk. Talk is not a land. Harden the five landed explorer files plus the buyer schema. Do not remint the landed explorer, SUBZERO_TECH, SUBZERO_BUYERS, or PR 2286." };
     }
     if (api.isSubzeroExplorerTalk(t)) {
       return { state: "CLAIMED", note: "JOJO TECHNICAL_HANDOFF / Subzero Artifact Explorer / STRUCTURAL_ONLY-vs-runtime / BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT talk. Talk is not a land. Ship the read-only explorer + validation packet. Do not remint SUBZERO_TECH, SUBZERO_BUYERS, or the three DEMON panel ids. Do not sell host training or live Titan mutation." };
@@ -1375,6 +1379,10 @@
     return /jojo-model-work-profitability-bridge|subzero artifact explorer|BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT|1787646413\.997539|custom model \/ muhlnickel training inventory|read-only subzero artifact/i.test(String(text || ""));
   };
 
+  api.isSubzeroExplorerV2Talk = function (text) {
+    return /jojo-subzero-explorer-v2-followup|COLLISION_RESOLVED_SPEC_READY|validation_receipt\.schema\.json|presence alone must never escalate|V2 RECEIPT GAP|1787647728\.185449/i.test(String(text || ""));
+  };
+
   api.subzeroExplorerState = function (text) {
     var body = String(text || "");
     if (!body.trim()) {
@@ -1386,10 +1394,18 @@
     var neverZero = /Never 0/.test(body);
     var namesClass = /STRUCTURAL_ONLY/.test(body) && /BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT/.test(body);
     var noGate = /no auth/.test(body) && /no gate/.test(body);
-    if (hasMeasure && hasClassify && hasMiss && neverZero && namesClass && noGate) {
+    var hasV2 = /def evidence_class/.test(body) && /validation_receipt\.schema\.json/.test(body) && /presence_never_escalates/.test(body);
+    var hasStrict = /RUNTIME_MEASURED/.test(body) && /CUSTOMER_READY/.test(body) && /UNKNOWN/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesClass && noGate && hasV2 && hasStrict) {
       return {
         state: "INTEGRATED",
-        note: "Subzero Artifact Explorer leftover is on this file. 31 public excerpts stay STRUCTURAL_ONLY. A Slack TECHNICAL_HANDOFF is still not the file."
+        note: "Subzero Artifact Explorer leftover is on this file. 31 public excerpts stay STRUCTURAL_ONLY. v2 receipts are strict. Presence never escalates. A Slack TECHNICAL_HANDOFF is still not the file."
+      };
+    }
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesClass && noGate) {
+      return {
+        state: "NOT_LANDED",
+        note: "host/subzero_explorer.py has the v1 explorer leftover but not the v2 receipt-gap. JOJO COLLISION_RESOLVED_SPEC_READY is CLAIMED until schema + strict classes ship."
       };
     }
     return {
