@@ -27,6 +27,7 @@ DEFAULT_CARD = os.path.join("ground", "README_LIVE.md")
 DEFAULT_CATALOG = os.path.join("ground", "README_LIVE.json")
 SLACK_TS = "1787643027.186729"
 STALE_ROSTER = "ZERO GROK KITE CAIRN SPALL GRAVE AXIOM SHARD SCREE"
+DEVICE_CYCLE_PATH = os.path.join(".github", "workflows", "commons-device-cycle.yml")
 SEARCH_SPACE = (
     DEFAULT_README,
     DEFAULT_CARD,
@@ -71,7 +72,6 @@ FORBIDDEN_PHRASES = (
     "do not write the owner's pc",
 )
 BAKE_WHO = "orient.json"
-DEVICE_CYCLE_PATH = os.path.join(".github", "workflows", "commons-device-cycle.yml")
 DEVICE_CYCLE_TOKENS = (
     "ref: main",
     "device_action_state.py prepare",
