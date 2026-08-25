@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bk/.test(html), "desk must share the current-main/Titan cache key after specter-final");
+assert.ok(/20260825bl/.test(html), "desk must share the current-main/Titan cache key after sitting-PR leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,38 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isSittingPrTalk, "land.js must classify sitting remint PR leftover talk");
+assert.ok(api.sittingPrState, "land.js must classify the sitting remint PR leftover");
+assert.ok(api.isSittingPrTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. Canonical receipt p/dio-titan-move-containment-hardening-20260825-01.md. 1787645172.017469"), "DIO durable Slack is leftover talk");
+assert.ok(api.isSittingPrTalk("sitting remint PR 2207 is still OPEN_DIRTY. A remint PR is not a land."), "dirty remint PR 2207 is leftover talk");
+assert.ok(!api.isSittingPrTalk("make sure people do more than talk about shit"), "generic ship-talk is not the sitting-PR leftover");
+assert.ok(!api.isSittingPrTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land."), "sitting-remint file census is not the sitting-PR leftover");
+assert.ok(!api.isSittingRemintTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. sitting remint PR 2207 SUPERSEDED."), "containment-durable / sitting-PR copy is not sitting remint");
+assert.ok(!api.isSpecterFinalTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. 1787645172.017469"), "DIO durable Slack is not the SPECTER FINAL leftover");
+var sittingPrTalk = api.completionStateFromText(
+  "DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. p/dio-titan-move-containment-hardening-20260825-01.md. three 9319291-byte identical spans SHA-256 3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c. 1787645172.017469"
+);
+assert.strictEqual(sittingPrTalk.state, "CLAIMED");
+assert.ok(/sitting remint PR|open remint|2207|containment-durable/i.test(sittingPrTalk.note), "containment-durable-without-SHA must stay CLAIMED and beat triple-append / ship-talk");
+var sittingPrDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsitting remint PR leftover landed"
+);
+assert.strictEqual(sittingPrDone.state, "INTEGRATED", "completion words still beat sitting-PR talk");
+var sittingPrEmpty = api.sittingPrState("");
+assert.strictEqual(sittingPrEmpty.state, "UNMEASURED");
+var sittingPrMissing = api.sittingPrState("# empty stub\nno leftover");
+assert.strictEqual(sittingPrMissing.state, "NOT_LANDED");
+var sittingPrOk = api.sittingPrState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\n2207\nSUPERSEDED\ncash-now leftover is already on main\ndio titan containment\nno auth\nno gate\n");
+assert.strictEqual(sittingPrOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(sittingPrOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="sitting-pr-result"') >= 0, "desk must name the sitting-PR leftover");
+assert.ok(html.indexOf("host/sitting_pr.py") >= 0, "desk must name the sitting-PR instrument");
+assert.ok(html.indexOf("ground/SITTING_PR.md") >= 0, "desk must link the sitting-PR card");
+assert.ok(html.indexOf("ground/SITTING_PR.json") >= 0, "desk must link the sitting-PR catalog");
+assert.ok(html.indexOf("1787645172.017469") >= 0, "desk must cite the DIO durable Slack ts");
+assert.ok(/sitting remint PR|open remint|SUPERSEDED/i.test(html), "desk must name sitting remint PR talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_PR.md") >= 0, "sitting-PR card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_PR.json") >= 0, "sitting-PR catalog must stay a canary");
 assert.ok(api.isSpecterFinalTalk, "land.js must classify SPECTER FINAL leftover talk");
 assert.ok(api.specterFinalState, "land.js must classify the SPECTER FINAL leftover");
 assert.ok(api.isSpecterFinalTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba7124424de5aed51e1a9216b216d389a5a7`. Named idle-session resume remains UNMEASURED. 1787645274.177269"), "SPECTER FINAL Slack is leftover talk");
@@ -1570,6 +1602,7 @@ assert.ok(!api.isSpecterFinalTalk("make sure people do more than talk about shit
 assert.ok(!api.isSpecterFinalTalk("SPECTER LANDED + TERMINAL — stale MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "terminal-catalog copy is not the SPECTER FINAL leftover");
 assert.ok(!api.isSpecterFinalTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the SPECTER FINAL leftover");
 assert.ok(!api.isWakeContractTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. Collision hygiene. Named idle UNMEASURED. 1787645274.177269"), "SPECTER FINAL without rebase words is not the wake-contract leftover");
+assert.ok(!api.isSittingPrTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. 1787645274.177269"), "SPECTER FINAL Slack is not the sitting-PR leftover");
 var specterFinalTalk = api.completionStateFromText(
   "SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba7124424de5aed51e1a9216b216d389a5a7`.\n#2205 squash. #2269 squash. Named idle-session resume remains UNMEASURED. 1787645274.177269"
 );
