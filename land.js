@@ -177,6 +177,8 @@
     "ground/CONTAINMENT.json",
     "ground/REMEASURE.md",
     "ground/REMEASURE.json",
+    "ground/CASH_NOW.md",
+    "ground/CASH_NOW.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -386,6 +388,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isCashNowTalk(t)) {
+      return { state: "CLAIMED", note: "cash-now / collectable-USD / private-payout talk. Talk is not a land. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. Ship the leftover to current main." };
     }
     if (/\bPR_OPEN\b/.test(t)) {
       return { state: "PR_OPEN", note: "unfinished ship. A PR is not INTEGRATED." };
@@ -684,6 +689,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/containment.py missing the leftover. GAUGE stand-down talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isCashNowTalk = function (text) {
+    return /72-juror cash-now|cash-now room|collectable usd|private payout handoff|authorization.{0,40}settlement.{0,40}bank-available|first collectable usd|60_immediate_cash/i.test(String(text || ""));
+  };
+
+  api.cashNowState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/cash_now.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasStages = /AUTHORIZATION/.test(body) && /SETTLEMENT/.test(body) && /BANK_AVAILABLE/.test(body);
+    var hasBazaar = /FREE_COLONY_COMPUTE/.test(body) && /usd_offer_count/.test(body);
+    var hasNeeds = /needs-bryce/.test(body) && /smallest_action/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    if (hasMeasure && hasClassify && hasStages && hasBazaar && hasNeeds && hasMiss) {
+      return {
+        state: "INTEGRATED",
+        note: "cash-now leftover is on this file. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. A Slack taking is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/cash_now.py missing the leftover. Cash-now talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1983,6 +2015,7 @@
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var containmentOut = document.getElementById("containment-result");
+  var cashNowOut = document.getElementById("cash-now-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2526,6 +2559,12 @@
     if (!remeasureOut) return;
     remasureOut.setAttribute("data-tone", api.toneFor(result.state));
     remasureOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintCashNow(result) {
+    if (!cashNowOut) return;
+    cashNowOut.setAttribute("data-tone", api.toneFor(result.state));
+    cashNowOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintClaudeZero(result) {
@@ -3205,6 +3244,33 @@
     });
   }
 
+  function loadCashNow(sha) {
+    if (!cashNowOut) return Promise.resolve(null);
+    cashNowOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/cash_now.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/cash_now.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/cash_now.py absent at the measured main SHA. Cash-now / collectable-USD talk is CLAIMED." };
+        paintCashNow(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintCashNow(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.cashNowState(body);
+        paintCashNow(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintCashNow(err);
+      return err;
+    });
+  }
+
   function loadMeasureAbuse(sha) {
     if (!measureAbuseOut) return Promise.resolve(null);
     measureAbuseOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/measure_abuse.py at the official SHA…</p>";
@@ -3787,6 +3853,7 @@
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
     loadContainment(sha);
+    loadCashNow(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
