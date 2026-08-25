@@ -140,6 +140,8 @@
     "ground/CONNECTOR_REVAL.json",
     "ground/RENDER_CONTRACT.md",
     "ground/RENDER_CONTRACT.json",
+    "ground/WORKING_BUILDS.md",
+    "ground/WORKING_BUILDS.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -422,6 +424,9 @@
     if (api.isConnectorRevalTalk(t)) {
       return { state: "CLAIMED", note: "connector-utilization / provisioned-vs-live talk. Talk is not a land. Measure live probes against the Aug 21 cache and ship the leftover. Do not vacuum state.vscdb." };
     }
+    if (api.isWorkingBuildTalk(t)) {
+      return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -482,6 +487,33 @@
 
   api.isConnectorRevalTalk = function (text) {
     return /connector-utilization|39 enabled services|23 cached connected|mcp\.json is empty|provisioned != live|provisioned !== live|read-only connector revalidation|state\.vscdb|do not delete\/vacuum\/repair live/i.test(String(text || ""));
+  };
+
+  api.isWorkingBuildTalk = function (text) {
+    return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.workingBuildState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/working_builds.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasRook = /rook_package/.test(body);
+    var hasKeyb = /keyb_manifest/.test(body);
+    var hasTrain = /train_json/.test(body) || /train_circuits/.test(body);
+    var refuseUpload = /refuse_upload/.test(body) && /do not upload/.test(body);
+    if (hasMeasure && hasClassify && hasRook && hasKeyb && hasTrain && refuseUpload) {
+      return {
+        state: "INTEGRATED",
+        note: "working-builds leftover is on this file. Three dispositions named. Do not upload model/container bytes. titan NOT_WRITTEN. A Slack list is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/working_builds.py missing the census. Machine-only working-builds talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.connectorRevalState = function (text) {
@@ -1384,6 +1416,7 @@
   var hostZeroOut = document.getElementById("host-zero-result");
   var connectorOut = document.getElementById("connector-reval-result");
   var renderContractOut = document.getElementById("render-contract-result");
+  var workingOut = document.getElementById("working-builds-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1845,6 +1878,12 @@
     renderContractOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintWorkingBuilds(result) {
+    if (!workingOut) return;
+    workingOut.setAttribute("data-tone", api.toneFor(result.state));
+    workingOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2282,6 +2321,33 @@
     });
   }
 
+  function loadWorkingBuilds(sha) {
+    if (!workingOut) return Promise.resolve(null);
+    workingOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/working_builds.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/working_builds.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/working_builds.py absent at the measured main SHA. Machine-only working-builds talk is CLAIMED." };
+        paintWorkingBuilds(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintWorkingBuilds(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.workingBuildState(body);
+        paintWorkingBuilds(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintWorkingBuilds(err);
+      return err;
+    });
+  }
+
   function loadRenderContract(sha) {
     if (!renderContractOut) return Promise.resolve(null);
     renderContractOut.innerHTML = "<b>UNMEASURED</b><p>Reading the render-check contract at the official SHA…</p>";
@@ -2554,6 +2620,7 @@
     loadHostZero(sha);
     loadConnectorReval(sha);
     loadRenderContract(sha);
+    loadWorkingBuilds(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
