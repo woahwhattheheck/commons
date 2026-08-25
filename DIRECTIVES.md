@@ -259,6 +259,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_review_lane.py` · `node test_land_desk.js` · `python3 host/review_lane.py`
 **Note:** Official LDA main still `fb0b0b2f59f8ca81741371b6ddd8036b164e77e8`. Receipt path ABSENT there. PR #3 `e9c863a1d945627ff75e0db997ce74dc9efa345f` is CANDIDATE. CI job `97740082275` SUCCESS. Non-Claude review recorded. Do not remint FOREIGN_MAIN / MUHL_RECEIPT_LANE / LDA_RECEIPT or `jojo-muhlnickel-subagent-protocol-20260825-01`. Do not copy private LDA source. titan NOT_WRITTEN. Talk is not a land.
 
+### 49. Muhlnickel training bridge — a read-only backend swarm is not a land
+> *"H-006 Muhlnickel training bridge — source-indexed synthetic-only cross-process implementation spec"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:43 Slack `1787647412.543649` / JOJO `TAKING_BACKEND_SWARM` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/MUHL_TRAIN_BRIDGE.md` · `ground/MUHL_TRAIN_BRIDGE.json` · `host/muhl_train_bridge.py` · `muhl-train.html` · fixtures · land canary + `muhlTrainBridgeState`
+**Receipt:** `python3 test_muhl_train_bridge.py` · `node test_land_desk.js` · `python3 host/muhl_train_bridge.py`
+**Note:** H-006 is the unique leftover. H-005 Subzero artifacts and H-007 LDA_RECEIPT stay NAMED, not reminted. Swarm pin `6a934ed9` is ANCESTOR, not current HEAD. Do not remint the swarm id / MUHL_RECEIPT_LANE / LDA_RECEIPT / explorer / REVIEW_LANE. No host inference. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

@@ -1,0 +1,68 @@
+{
+  "kind": "MUHL_TRAIN_BRIDGE",
+  "subject": "H-006 source-indexed synthetic training bridge",
+  "slack_ts": "1787647412.543649",
+  "taking_id": "jojo-clean-grok-modelwork-swarm-20260825-01",
+  "taking_state": "CARRIER_ONLY",
+  "taking_kind": "TAKING_BACKEND_SWARM",
+  "landing_owner": "cursor-grok-46-muhl-train-bridge-20260825",
+  "swarm_pin": "6a934ed9d07c293296fead0f403fbbcb3afc15a9",
+  "pin_relation": "ANCESTOR",
+  "cells": [
+    {
+      "id": "H-005",
+      "name": "Subzero proof adversary",
+      "state": "NAMED",
+      "leftover": "already-landed SUBZERO_TECH / EXPLORER / BUYERS / GTM",
+      "note": "no duplicate build"
+    },
+    {
+      "id": "H-006",
+      "name": "Muhlnickel training bridge",
+      "state": "THIS_LEFTOVER",
+      "leftover": "source-indexed synthetic-only cross-process packet",
+      "note": "no host inference; no live Titan/device/model/container"
+    },
+    {
+      "id": "H-007",
+      "name": "model-work profitability crosscheck",
+      "state": "NAMED",
+      "leftover": "already-landed LDA_RECEIPT",
+      "note": "do not remint"
+    }
+  ],
+  "does_not_remint": [
+    "jojo-clean-grok-modelwork-swarm-20260825-01",
+    "jojo-model-work-profitability-bridge-20260825-02",
+    "jojo-muhlnickel-subagent-protocol-20260825-01",
+    "MUHL_RECEIPT_LANE",
+    "LDA_RECEIPT",
+    "SUBZERO_TECH",
+    "SUBZERO_EXPLORER",
+    "SUBZERO_BUYERS",
+    "SUBZERO_GTM"
+  ],
+  "hands_off": [
+    "PR 2108",
+    "PR 2286",
+    "PR 2295",
+    "LDA source copy",
+    "commons.mno",
+    "titan.gguf",
+    "white-box-gguf-pilot-30d",
+    "revenue/payment_ready/"
+  ],
+  "fixtures": [
+    {"name": "jojo-swarm.json", "expect": "CARRIER_ONLY"},
+    {"name": "valid-synthetic.json", "expect": "SYNTHETIC_OK"},
+    {"name": "invalid-host-inference.json", "expect": "NOT_LANDED"},
+    {"name": "invalid-live-titan.json", "expect": "NOT_LANDED"},
+    {"name": "invalid-missing-fields.json", "expect": "NOT_LANDED"}
+  ],
+  "copied_source": false,
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true
+}

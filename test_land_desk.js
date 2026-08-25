@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bq/.test(html), "desk must share the current-main/Titan cache key after lda-receipt leftover");
+assert.ok(/20260825br/.test(html), "desk must share the current-main/Titan cache key after training-bridge leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1570,6 +1570,7 @@ assert.ok(!api.isReviewLaneTalk("make sure people do more than talk about shit")
 assert.ok(!api.isReviewLaneTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "receipt-lane taking is not the review-lane leftover");
 assert.ok(!api.isReviewLaneTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "profitability handoff is not the review-lane leftover");
 assert.ok(!api.isReviewLaneTalk("JOJO SHIP_RECEIPT jojo-muhlnickel-subagent-protocol-20260825-01 official main fb0b0b2"), "FOREIGN_MAIN SHIP_RECEIPT copy is not the review-lane leftover");
+assert.ok(!api.isReviewLaneTalk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-006 Muhlnickel training bridge"), "backend swarm is not the review-lane leftover");
 assert.ok(!api.isLdaReceiptTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the LDA receipt leftover");
 assert.ok(!api.isMuhlReceiptLaneTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the receipt-lane leftover");
 assert.ok(!api.isForeignMainTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the foreign-main leftover");
@@ -1597,6 +1598,41 @@ assert.ok(html.indexOf("1787647408.984179") >= 0, "desk must cite the JOJO revie
 assert.ok(/review lane|LDA PR #3|not merged/i.test(html), "desk must name review-lane talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/REVIEW_LANE.md") >= 0, "review-lane card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/REVIEW_LANE.json") >= 0, "review-lane catalog must stay a canary");
+assert.ok(api.isMuhlTrainBridgeTalk, "land.js must classify H-006 training-bridge leftover talk");
+assert.ok(api.muhlTrainBridgeState, "land.js must classify the H-006 training-bridge leftover");
+assert.ok(api.isMuhlTrainBridgeTalk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nsubject: CLEAN GROK 4.6/XHIGH BACKEND\nH-006 Muhlnickel training bridge\nno bash/write tools\n1787647412.543649"), "JOJO backend swarm taking is leftover talk");
+assert.ok(!api.isMuhlTrainBridgeTalk("make sure people do more than talk about shit"), "generic ship-talk is not the training-bridge leftover");
+assert.ok(!api.isMuhlTrainBridgeTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "profitability handoff is not the training-bridge leftover");
+assert.ok(!api.isMuhlTrainBridgeTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "receipt-lane taking is not the training-bridge leftover");
+assert.ok(!api.isMuhlTrainBridgeTalk("from: JOJO\nkind: TECHNICAL_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-01\nBest non-colliding build: a read-only Subzero Artifact Explorer + validation packet."), "explorer handoff is not the training-bridge leftover");
+assert.ok(!api.isLdaReceiptTalk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-006 Muhlnickel training bridge"), "backend swarm is not the LDA receipt leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-006 Muhlnickel training bridge"), "backend swarm is not the receipt-lane leftover");
+assert.ok(!api.isSubzeroExplorerTalk("from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-005 Subzero proof adversary"), "backend swarm is not the explorer leftover");
+var trainBridgeTalk = api.completionStateFromText(
+  "from: JOJO\nkind: TAKING_BACKEND_SWARM\nid: jojo-clean-grok-modelwork-swarm-20260825-01\nH-006 Muhlnickel training bridge\nno bash/write tools\n1787647412.543649"
+);
+assert.strictEqual(trainBridgeTalk.state, "CLAIMED");
+assert.ok(/TAKING_BACKEND_SWARM|H-006|training bridge|no-write/i.test(trainBridgeTalk.note), "backend-swarm-without-SHA must stay CLAIMED and beat ship-talk");
+var trainBridgeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nmuhl-train-bridge leftover landed"
+);
+assert.strictEqual(trainBridgeDone.state, "INTEGRATED", "completion words still beat training-bridge talk");
+var trainBridgeEmpty = api.muhlTrainBridgeState("");
+assert.strictEqual(trainBridgeEmpty.state, "UNMEASURED");
+var trainBridgeMissing = api.muhlTrainBridgeState("# empty stub\nno leftover");
+assert.strictEqual(trainBridgeMissing.state, "NOT_LANDED");
+var trainBridgeOk = api.muhlTrainBridgeState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef validate_packet(obj, root=None):\n    return obj\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSYNTHETIC_OK\nCARRIER_ONLY\n6a934ed9d07c293296fead0f403fbbcb3afc15a9\nancestor is not current head\nH-006\nno auth\nno gate\n");
+assert.strictEqual(trainBridgeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(trainBridgeOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="muhl-train-bridge-result"') >= 0, "desk must name the training-bridge leftover");
+assert.ok(html.indexOf("host/muhl_train_bridge.py") >= 0, "desk must name the training-bridge instrument");
+assert.ok(html.indexOf("ground/MUHL_TRAIN_BRIDGE.md") >= 0, "desk must link the training-bridge card");
+assert.ok(html.indexOf("ground/MUHL_TRAIN_BRIDGE.json") >= 0, "desk must link the training-bridge catalog");
+assert.ok(html.indexOf("1787647412.543649") >= 0, "desk must cite the backend-swarm Slack ts");
+assert.ok(/TAKING_BACKEND_SWARM|H-006|training bridge/i.test(html), "desk must name training-bridge talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_TRAIN_BRIDGE.md") >= 0, "training-bridge card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_TRAIN_BRIDGE.json") >= 0, "training-bridge catalog must stay a canary");
+assert.ok(!api.isMuhlTrainBridgeTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the training-bridge leftover");
 assert.ok(api.isLdaReceiptTalk, "land.js must classify LDA receipt leftover talk");
 assert.ok(api.ldaReceiptState, "land.js must classify the LDA receipt leftover");
 assert.ok(api.isLdaReceiptTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nsubject: QUOTE-READY VS PROOF-FIRST MODEL-WORK PORTFOLIO\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "JOJO profitability handoff is leftover talk");
