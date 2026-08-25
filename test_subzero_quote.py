@@ -23,6 +23,7 @@ from subzero_quote import (
     SEARCH_SPACE,
     SKU_ID,
     SLACK_TS,
+    _posix_parts as quote_posix_parts,
     classify,
     classify_quote,
     inbound_rel,
@@ -192,6 +193,12 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(safe_rel("C:\\Windows\\system32"), "")
         self.assertEqual(safe_rel("ground/SUBZERO_QUOTE.md"), "ground/SUBZERO_QUOTE.md")
 
+    def test_trusted_windows_separator_normalizes_without_inbound_escape(self):
+        self.assertEqual(quote_posix_parts("ground\\HEAD.md"), ["ground", "HEAD.md"])
+        self.assertEqual(quote_posix_parts("..\\ground\\HEAD.md"), [])
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE"), "")
+        self.assertEqual(safe_rel("ground\\HEAD.md"), "")
+
     def test_legal_state_is_not_leftover_integrated(self):
         self.assertEqual(legal_state_for({}, inbound_bound=False), "DRAFT")
         self.assertEqual(
@@ -214,6 +221,10 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertIn(
             "catalog.hands_off:titan --go",
             titan_lock_fields({"hands_off": ["PR 2108", "titan --go"]}, ""),
+        )
+        self.assertIn(
+            "catalog.collision_avoidance:titan --go",
+            titan_lock_fields({"collision_avoidance": ["PR 2108", "titan --go"]}, ""),
         )
         self.assertEqual(
             titan_lock_fields({}, "Hands off CML PR 2108, SPECTER, titan `--go`."),
@@ -278,7 +289,8 @@ class TestSubzeroQuote(unittest.TestCase):
         with open(os.path.join(ROOT, "ground", "SUBZERO_QUOTE.md"), encoding="utf-8") as handle:
             raw_card = handle.read()
         self.assertNotIn("titan", raw_catalog)
-        self.assertNotIn("titan --go", raw_catalog.get("hands_off") or [])
+        self.assertNotIn("hands_off", raw_catalog)
+        self.assertNotIn("titan --go", raw_catalog.get("collision_avoidance") or [])
         self.assertEqual(titan_lock_fields(raw_catalog, raw_card), [])
         with open(
             os.path.join(ROOT, "revenue", "subzero_gtm", "architecture.json"),

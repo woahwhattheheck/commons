@@ -10,7 +10,7 @@ runtime, demand, or cash proof.
 Slack 1787651627.535699 (JOJO H-009 BACKEND COMPLETE):
 #2322 quote leftover still coerced missing numbers to 0, fused
 leftover INTEGRATED with legal lifecycle, skipped source/tree
-hashes, and treated titan NOT_WRITTEN as health. #2329 binder
+hashes, and treated skipped substrate actuation as health. #2329 binder
 holes already closed on 3c364c9fd. This leftover hardens the
 existing quote consumer — no second subsystem.
 
@@ -152,7 +152,9 @@ def safe_rel(rel):
 
 
 def _posix_parts(rel):
-    text = safe_rel(rel)
+    # Internal constants use os.path.join and therefore contain backslashes
+    # on Windows. Normalize them before the same traversal-safe validation.
+    text = safe_rel(str(rel or "").replace("\\", "/"))
     return text.split("/") if text else []
 
 
@@ -464,7 +466,9 @@ def titan_lock_fields(catalog=None, card=""):
 
     Substrate / Titan work is first-class. Skipped actuation is
     not health. A catalog that publishes titan=NOT_WRITTEN or
-    hands_off titan --go is still a lock field.
+    titan --go under hands_off or collision_avoidance is still
+    a lock field. Collision avoidance coordinates concurrent
+    work; it does not forbid substrate work.
     """
     hits = []
     data = catalog
@@ -479,11 +483,15 @@ def titan_lock_fields(catalog=None, card=""):
     if "titan" in data:
         value = str(data.get("titan") or "").strip().upper()
         hits.append("catalog.titan=" + (value or "EMPTY"))
-    hands = data.get("hands_off") if isinstance(data.get("hands_off"), list) else []
-    for item in hands:
-        text = str(item or "").strip().lower()
-        if "titan" in text:
-            hits.append("catalog.hands_off:" + str(item).strip())
+    for key, label in (
+        ("hands_off", "catalog.hands_off:"),
+        ("collision_avoidance", "catalog.collision_avoidance:"),
+    ):
+        items = data.get(key) if isinstance(data.get(key), list) else []
+        for item in items:
+            text = str(item or "").strip().lower()
+            if "titan" in text:
+                hits.append(label + str(item).strip())
     for line in str(card or "").splitlines():
         line_l = line.lower()
         if "hands off" in line_l and "titan" in line_l:
@@ -1175,6 +1183,9 @@ def self_test():
     assert titan_lock_fields({"titan": "NOT_WRITTEN"}, "") == ["catalog.titan=NOT_WRITTEN"]
     assert "catalog.hands_off:titan --go" in titan_lock_fields(
         {"hands_off": ["titan --go"]}, ""
+    )
+    assert "catalog.collision_avoidance:titan --go" in titan_lock_fields(
+        {"collision_avoidance": ["titan --go"]}, ""
     )
     assert titan_lock_fields({}, "Hands off SPECTER, titan `--go`.") == [
         "card:hands-off-titan"

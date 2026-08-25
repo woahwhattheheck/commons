@@ -23,7 +23,7 @@ The first bind treated any `p/{id}.md` as `BUYER_BOUND`, used
 the project's own quote receipt as `buyer_id`, let
 `..\\ground\\EXECUTE` escape `p/` on Windows, coerced missing
 numerics to `0`, refused caller `PASS` only for hard-coded
-GRBN, and framed titan `NOT_WRITTEN` as a leftover lock.
+GRBN, and incorrectly treated skipped substrate actuation as a health signal.
 
 This leftover closes those holes. Slack `1787651639.893089`
 then named the remaining ones: a semantically relevant public
@@ -101,5 +101,6 @@ body is still not the file.
 Do not remint SUBZERO_QUOTE / SUBZERO_TECH / SUBZERO_GTM /
 SUBZERO_BUYERS / SUBZERO_EXPLORER / SUBZERO_PROOF / White Box /
 `rivet-ship-subzero-quote-20260825-01` /
-`rivet-ship-subzero-receipt-20260825-01`. Hands off CML PR 2108,
-grok-receipt PR 2320, human-outcomes, SPECTER. No auth. No gate.
+`rivet-ship-subzero-receipt-20260825-01`. Coordinate to avoid
+collisions with CML PR 2108, grok-receipt PR 2320,
+human-outcomes, and SPECTER. No auth. No gate.
