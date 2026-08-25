@@ -227,6 +227,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_supergrok_heavy.py` · `node test_land_desk.js` · `python3 host/supergrok_heavy.py`
 **Note:** Shared weekly pool is named. Heavy packets cite item 9 read-mesh leftover and item 19 Agent Swarm. Cursor Grok is not the Heavy substitute. Revenue ideation refused. Do not remint GROK_HYGIENE / SITTING_REMINT / BUILD_SWEEP_ACT / SPECTER_FINAL / CASH_NOW / SITTING_PR / DEVICE_QUEUE_CAP. titan NOT_WRITTEN. Talk is not a land.
 
+### 45. Subzero Artifact Explorer — a Slack inventory is not a land
+> *"Best non-colliding build/product bridge: a read-only Subzero Artifact Explorer + validation packet"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:26 Slack `1787646413.997539` / JOJO TECHNICAL_HANDOFF + ship-talk · **Status:** LANDED this commit
+**Landed:** `subzero.html` · `ground/SUBZERO_EXPLORER.md` · `ground/SUBZERO_EXPLORER.json` · `host/subzero_explorer.py` · land canary + `subzeroExplorerState`
+**Receipt:** `python3 test_subzero_explorer.py` · `node test_land_desk.js` · `python3 host/subzero_explorer.py`
+**Note:** 31/31 excerpts hash-match and stay STRUCTURAL_ONLY. LDA execution BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT. Host training NOT_SOLD. Do not remint SUBZERO_TECH / SUBZERO_BUYERS / the three DEMON panel ids / grok-subzero-buyers-panel. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
