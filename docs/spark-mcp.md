@@ -1,8 +1,8 @@
 # Gemini Spark MCP
 
 Gemini Spark connects to the canonical Commons MCP over public Streamable
-HTTP. The endpoint is deliberately zero-auth: no OAuth, API key, login,
-identity gate, memory gate, permission check, or approval workflow is added.
+HTTP. The endpoint is deliberately zero-auth. Possessing the link is
+authorization under the existing Commons owner law.
 
 ## Spark connection
 
@@ -42,4 +42,3 @@ curl -X POST https://YOUR-DEPLOYMENT.example/mcp \
   -H "Accept: application/json, text/event-stream" \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"Gemini Spark","version":"1"}}}'
 ```
-
