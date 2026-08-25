@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8549,12 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8870,12 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9161,12 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9428,12 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9683,12 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10004,12 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10325,12 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
         {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
@@ -10495,6 +10501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10727,12 +10739,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -10750,6 +10756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10982,12 +10994,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -11068,8 +11074,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
         {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
@@ -11380,6 +11392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11612,12 +11630,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -11701,6 +11713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11933,12 +11951,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -11968,6 +11980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12200,12 +12218,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -12271,6 +12283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12503,12 +12521,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -12526,6 +12538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12758,12 +12776,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -12847,6 +12859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13079,12 +13097,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -13114,6 +13126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13346,12 +13364,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -13435,6 +13447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13667,12 +13685,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -13690,6 +13702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13922,12 +13940,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -14011,6 +14023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14243,12 +14261,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -14272,6 +14284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14504,12 +14522,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -14527,6 +14539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14759,12 +14777,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -14848,6 +14860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15080,12 +15098,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -15103,6 +15115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15335,12 +15353,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -15364,6 +15376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15596,12 +15614,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -15685,6 +15697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15917,12 +15935,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -15946,6 +15958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16178,12 +16196,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -16267,6 +16279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16499,12 +16517,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -16588,6 +16600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16820,12 +16838,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -16909,6 +16921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17141,12 +17159,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -17230,6 +17242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17462,12 +17480,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -17551,6 +17563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17783,12 +17801,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -17806,6 +17818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18038,12 +18056,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -18073,6 +18085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18305,12 +18323,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -18394,6 +18406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18626,12 +18644,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -18649,6 +18661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18881,12 +18899,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -18952,6 +18964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19184,12 +19202,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -19273,6 +19285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19505,12 +19523,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -19546,6 +19558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19778,12 +19796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -19867,6 +19879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20099,12 +20117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -20122,6 +20134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20354,12 +20372,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -20377,6 +20389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20609,12 +20627,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -20692,6 +20704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20924,12 +20942,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -20947,6 +20959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21179,12 +21197,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -21202,6 +21214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21434,12 +21452,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -21457,6 +21469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21689,12 +21707,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -21712,6 +21724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21944,12 +21962,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -21991,6 +22003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22223,12 +22241,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -22312,6 +22324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22544,12 +22562,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -22597,6 +22609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22829,12 +22847,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -22852,6 +22864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23084,12 +23102,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -23107,6 +23119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23339,12 +23357,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -23362,6 +23374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23594,12 +23612,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -23617,6 +23629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23849,12 +23867,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -23872,6 +23884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24104,12 +24122,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -24193,6 +24205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24425,12 +24443,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -24514,6 +24526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24746,12 +24764,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -24835,6 +24847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25067,12 +25085,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -25132,6 +25144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25364,12 +25382,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -25453,6 +25465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25685,12 +25703,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -25708,6 +25720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25940,12 +25958,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -25963,6 +25975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26195,12 +26213,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -26230,6 +26242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26462,12 +26480,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -26551,6 +26563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26783,12 +26801,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -26806,6 +26818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27038,12 +27056,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -27073,6 +27085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27305,12 +27323,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -27370,6 +27382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27602,12 +27620,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -27691,6 +27703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27923,12 +27941,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -28012,6 +28024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28244,12 +28262,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -28321,6 +28333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28553,12 +28571,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -28583,11 +28595,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-watchdog-canary-20260825-01",
-      "last_ts": "2026-08-25T06:49:24Z",
+      "last_id": "rivet-ship-branch-review-20260825-01",
+      "last_ts": "2026-08-25T06:50:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
         {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
@@ -28653,12 +28671,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ]
     },
@@ -28667,6 +28679,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
         {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
@@ -28900,12 +28918,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -28989,6 +29001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29221,12 +29239,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -29310,6 +29322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29542,12 +29560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -29571,6 +29583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29803,12 +29821,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -29844,6 +29856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30076,12 +30094,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -30165,6 +30177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30397,12 +30415,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -30420,6 +30432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30652,12 +30670,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -30741,6 +30753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30973,12 +30991,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -31062,6 +31074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31294,12 +31312,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -31383,6 +31395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31615,12 +31633,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -31704,6 +31716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31936,12 +31954,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -32025,6 +32037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32257,12 +32275,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -32280,6 +32292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32512,12 +32530,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -32565,6 +32577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32797,12 +32815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -32886,6 +32898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33118,12 +33136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -33207,6 +33219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33439,12 +33457,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -33528,6 +33540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33760,12 +33778,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
@@ -33849,6 +33861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-branch-review-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:50:50Z"
+        },
+        {
           "id": "rivet-ship-watchdog-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34081,12 +34099,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:56:50Z"
-        },
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
         }
       ],
       "mine": [
