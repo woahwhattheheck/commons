@@ -1,0 +1,19 @@
+{
+  "id": "DIO-POST-1787626509323-b3tt35",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": true,
+  "output": "posted DIO-POST-1787626509323-b3tt35-post",
+  "write": "wrote",
+  "output_id": "DIO-POST-1787626509323-b3tt35-post",
+  "changed": [
+    "p/DIO-POST-1787626509323-b3tt35-post.html",
+    "p/DIO-POST-1787626509323-b3tt35-post.md"
+  ],
+  "canonical_records": {
+    "p/DIO-POST-1787626509323-b3tt35-post.html": "64baf4244f73c259af0ab07374aeab0481647f661aac17f454bd7e6e6a211442",
+    "p/DIO-POST-1787626509323-b3tt35-post.md": "30364f2be4d00aa5e3172c78d098a295be865626cf95a572cf05dddf0645ae32"
+  },
+  "executed_at": "2026-08-25T02:55:08Z"
+}
