@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_PACK",
+  "mandate": "demon-human-outcomes-revenue-20260825-01",
+  "landing_owner": "cursor-grok-46-human-outcomes-20260825",
+  "model": "Cursor Grok 4.6",
+  "harness": "Cursor Automation",
+  "slack_taking_id": "demon-human-outcomes-revenue-20260825-01",
+  "slack_ts": "1787648711.782309",
+  "taking_state": "CARRIER_ONLY",
+  "base_main_sha_at_write": "683d0837f6b4b665bcffd32b5b6766ea48414058",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "collectable_usd": "NOT_LANDED",
+  "collected_cash_usd": 0,
+  "banking_only_blocker": false,
+  "computer_is_the_product": false,
+  "overwrites_commercial_json": false,
+  "overwrites_dio": false,
+  "overwrites_payment_ready": false,
+  "overwrites_portfolio_overdrive": false,
+  "overwrites_subzero_buyers": false,
+  "overwrites_subzero_gtm": false,
+  "no_checkout": true,
+  "no_auth": true,
+  "no_gate": true,
+  "no_buyer_fiction": true,
+  "demand": "UNKNOWN",
+  "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+  "founder_sent_contact": true,
+  "human_value_not_proof_worship": true,
+  "does_not_replace": [
+    "white-box-gguf-pilot-30d",
+    "gguf-diagnostic-10d-12k"
+  ],
+  "fulfillment_modules_remain": [
+    "SUBZERO",
+    "compression",
+    "DIO"
+  ],
+  "white_box_upgrade": {
+    "offer_id": "white-box-gguf-pilot-30d",
+    "status": "PROPOSED",
+    "role": "qualified high-ticket upgrade after a named human outcome, not the first SKU"
+  },
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential",
+    "street address",
+    "private buyer identity"
+  ],
+  "consumed_current_main": [
+    "commercial.json",
+    "revenue/dio/foundation.json",
+    "revenue/payment_ready/pack.json",
+    "revenue/portfolio_overdrive/portfolio.json",
+    "revenue/subzero_gtm/architecture.json",
+    "8bit.html"
+  ],
+  "preserved_occupied_lanes": [
+    "commercial.json",
+    "revenue/dio/",
+    "revenue/payment_ready/",
+    "revenue/portfolio_overdrive/",
+    "revenue/subzero_gtm/",
+    "revenue/subzero_buyers/",
+    "bazaar.json",
+    "ground/CASH_NOW.md"
+  ],
+  "gate": {
+    "pack": "READY",
+    "pack_meaning": "four named human-outcome SKUs exist with scope, price, acceptance, refund, intake, and founder-sent contact; not bank cash",
+    "owner_private": "NEEDS_OWNER_PRIVATE",
+    "buyer": "NEEDS_BUYER",
+    "collected_cash": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "open": [
+      "NEEDS_OWNER_PRIVATE",
+      "NEEDS_BUYER",
+      "NOT_LANDED"
+    ],
+    "ready_does_not_mean_cash": true
+  },
+  "offers": [
+    {
+      "id": "ho-issue-to-pr",
+      "name": "Named issue to a CI-green PR",
+      "status": "CANDIDATE",
+      "human_pain": "A named public repo issue sits open. The buyer needs one merged pull request that closes it with green CI on the merged SHA.",
+      "scope": "one named issue on one named public repository; one pull request; CI green on the integrated SHA; issue closed by that PR",
+      "currency": "USD",
+      "fixed_amount": 2500,
+      "term_calendar_days": 7,
+      "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+      "acceptance": [
+        "issue number named in the SOW",
+        "PR merged to the repository default branch",
+        "CI green on the integrated SHA",
+        "issue closed with the PR as the closer"
+      ],
+      "refund": "If work never starts after written intake, founder refunds the authorized amount. If CI never greens or the PR never merges, the second half is withheld. A style disagreement is not a refund.",
+      "out_of_scope": [
+        "secret or private repos unless the buyer opens a public twin",
+        "auth, login, or permission gates added to Commons",
+        "White Box GGUF work",
+        "titan write"
+      ],
+      "falsifier": [
+        "no named issue",
+        "PR open but unmerged",
+        "CI red on the integrated SHA",
+        "issue left open"
+      ]
+    },
+    {
+      "id": "ho-meeting-packet",
+      "name": "Accessible public-meeting packet",
+      "status": "CANDIDATE",
+      "human_pain": "A public meeting is on the calendar. The buyer needs a readable packet, not a Slack dump or a login wall.",
+      "scope": "one named public meeting; one packet (HTML plus printable); agenda, one-page brief, source list; no login to read",
+      "currency": "USD",
+      "fixed_amount": 1200,
+      "term_calendar_days": 5,
+      "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+      "acceptance": [
+        "meeting name and date written",
+        "packet reachable without login",
+        "plain-language one-page brief",
+        "every claim cites a public source or is marked UNMEASURED"
+      ],
+      "refund": "If the packet is not delivered before the named meeting date because the provider missed the clock, founder refunds. Buyer-late inputs move the clock. A policy disagreement is not a refund.",
+      "out_of_scope": [
+        "speaking for the buyer at the meeting",
+        "invented certifications",
+        "private attendee lists on public roads"
+      ],
+      "falsifier": [
+        "packet behind a login",
+        "no meeting date",
+        "sources invented"
+      ]
+    },
+    {
+      "id": "ho-security-questionnaire",
+      "name": "Security questionnaire completion",
+      "status": "CANDIDATE",
+      "human_pain": "A vendor security questionnaire is blocking a sale or partnership. Empty cells stall a human, not a proof ritual.",
+      "scope": "one named questionnaire; every answer cites a public path or UNMEASURED; no invented certification; returned as a filled copy",
+      "currency": "USD",
+      "fixed_amount": 3000,
+      "term_calendar_days": 10,
+      "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+      "acceptance": [
+        "questionnaire named",
+        "every required cell filled or marked UNMEASURED",
+        "no CMMC / ITAR / defense-ready claim invented",
+        "filled copy returned to the founder-sent contact"
+      ],
+      "refund": "If the filled copy is not returned in 10 days after complete inputs, founder refunds. Missing buyer attachments move the clock. A failed third-party audit is not this SKU and not a refund of a completed questionnaire.",
+      "out_of_scope": [
+        "CMMC, FedRAMP, SOC2, ITAR, or any certification stamp",
+        "defense-ready claims",
+        "storing credentials or private buyer answers on Commons"
+      ],
+      "falsifier": [
+        "invented certification",
+        "blank required cells with no UNMEASURED mark",
+        "credentials pasted onto a public road"
+      ]
+    },
+    {
+      "id": "ho-pixel-pack",
+      "name": "8-bit / pixel agent pack",
+      "status": "CANDIDATE",
+      "human_pain": "The buyer wants a visible little dude that walks and speaks, not another proof essay.",
+      "scope": "one sprite, one walk loop, one speak line wired to a public post id on the existing 8bit door or a linked public page",
+      "currency": "USD",
+      "fixed_amount": 800,
+      "term_calendar_days": 5,
+      "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+      "acceptance": [
+        "sprite visible",
+        "walk loop runs",
+        "speak line cites a public p/{id}.md",
+        "static frame readable with JS off"
+      ],
+      "refund": "If no sprite lands on the named public page in 5 days after intake, founder refunds. Art-direction churn after acceptance is a change order.",
+      "out_of_scope": [
+        "reminting GOAT / iq4fh8 / p2-pixel-floor leftovers",
+        "auth walls on the 8bit door",
+        "titan write"
+      ],
+      "falsifier": [
+        "no sprite",
+        "speak line cites a bake instead of p/{id}.md",
+        "JS-off frame missing"
+      ]
+    }
+  ]
+}
