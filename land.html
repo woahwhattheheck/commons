@@ -251,6 +251,16 @@ python3 -m unittest -v test_mcp_wake_job.py</pre>
 <div id="mcp-wake-job-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>SPECTER pivot / MCP-wake real-job copy without the leftover on current main is talk. Run the job contract, then ship only this leftover.</p></div>
 </section>
 
+<section aria-labelledby="mcp-wake-heading">
+<h2 id="mcp-wake-heading">MCP inventory / idle-resume leftover</h2>
+<p class="note">Slack <code>1787637758.258119</code>: SPECTER collision check held visual CI because an isolated <code>jojo-visual-ci-20260825-01</code> clone had no JOJO <code>p/{id}.md</code>. Visual CI / <code>render_check</code> and SPECTER's job-contract leftover are already on current main. Do not remint <code>rivet-ship-mcp-wake-job-20260825-01</code>. Collision-check / holding-implementation / JOJO-visual-CI / canonical-inventory / idle-resume talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Instrument: <code>host/mcp_wake.py</code>. Card: <a href="./ground/MCP_WAKE.md">ground/MCP_WAKE.md</a>. Catalog: <a href="./ground/MCP_WAKE.json">ground/MCP_WAKE.json</a>. Inventory: <a href="./ground/MCP_INVENTORY.json">ground/MCP_INVENTORY.json</a>. Cheap temp JobStore tick only. Named idle <code>bc-</code> resume stays <code>UNMEASURED</code>. Do not write <code>wake_jobs/{id}.json</code>. Do not mutate <code>~/.grok</code>. Do not remint render-check / render-contract or a JOJO taking with no file. titan <code>NOT_WRITTEN</code>. No auth. No gate. No secrets.</p>
+<pre>python3 host/mcp_wake.py
+python3 host/mcp_wake.py --root .
+python3 host/mcp_wake.py --self-test
+python3 -m unittest -v test_mcp_wake.py</pre>
+<div id="mcp-wake-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Collision-hold / MCP-wake copy without the leftover on current main is talk. Ship the inventory and honest idle-resume measurement.</p></div>
+</section>
+
 <section aria-labelledby="finder-zero-heading">
 <h2 id="finder-zero-heading">Finder zero — miss is unverified</h2>
 <p class="note">Slack <code>1787638031.533189</code>: GAUGE OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. Slack search returned "No results found" four times for content later read via <code>read_channel</code>. The failure shape is <code>if find(x): print(y)</code> with no miss branch. Finder-zero / false-zero / collision-check / FINDER UNVERIFIED / known-present calibration talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Every zero prints its search space. Calibrate against known-present in the same run. Search-only zero is not clearance. The miss branch reports <code>FINDER UNVERIFIED</code>, never 0. Did not remint <code>gauge-zero-audit-20260825-01</code>. Did not take JOJO visual-ci, CML 2108, DEMON flight recorder, or titan <code>--go</code>. Instrument: <code>host/finder_zero.py</code>. Card: <a href="./ground/FINDER_ZERO.md">ground/FINDER_ZERO.md</a>. Catalog: <a href="./ground/FINDER_ZERO.json">ground/FINDER_ZERO.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -435,6 +445,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825af"></script>
+<script src="./land.js?v=20260825ag"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+{
+  "source_id": "rivet-ship-mcp-wake-20260825-01",
+  "slack_ts": "1787637758.258119",
+  "stranded_ts": "1787635487.642039",
+  "kind": "MCP_WAKE",
+  "subject": "MCP/wake real-job verification — collision hold is not a land",
+  "inventory": "ground/MCP_INVENTORY.json",
+  "instrument": "host/mcp_wake.py",
+  "surfaces": [
+    "commons_mcp.py",
+    "independent_commons_mcp",
+    "door/src/mcp.server.ts",
+    "mcp_server"
+  ],
+  "job_tools": [
+    "upsert_job",
+    "get_job",
+    "tick_job",
+    "checkpoint_job",
+    "complete_job"
+  ],
+  "wake": "EMPTY",
+  "wake_job_json": 0,
+  "idle": {
+    "state": "UNMEASURED",
+    "live_resume": false,
+    "invoke_model": false,
+    "bc_id": "bc-5df880c8-9ab2-5c66-b1c0-01d7b0e7b1cd"
+  },
+  "grok": {
+    "state": "UNMEASURED",
+    "exists": false
+  },
+  "hands_off": [
+    "render-check / render-contract leftovers",
+    "rivet-ship-mcp-wake-job-20260825-01 / host/mcp_wake_job.py",
+    "jojo-visual-ci-20260825-01 remint",
+    "named idle bc- resume of a different run",
+    "~/.grok mutate/restart",
+    "wake_jobs/{id}.json invention",
+    "titan.gguf write",
+    "DIO Android / White Box / Bazaar commercial",
+    "DEMON flight recorder"
+  ],
+  "titan": "NOT_WRITTEN",
+  "note": "Do not remint render-check. Do not remint a JOJO taking with no p/{id}.md. Collision hold is CLAIMED. No secrets."
+}
