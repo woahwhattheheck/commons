@@ -1,0 +1,53 @@
+{
+  "slack_ts": "1787634541.520949",
+  "source_id": "rivet-ship-grok-harness-20260825-01",
+  "inspect_source": "slack-claim",
+  "canonical_mcp": [
+    "commons",
+    "independent-commons"
+  ],
+  "sources": [
+    {
+      "kind": "mcp",
+      "path": "mcp_server/cursor_config.json",
+      "present": true,
+      "names": ["commons"],
+      "coordinator": "GROK / PLAYER1 / PLAYER2"
+    },
+    {
+      "kind": "mcp",
+      "path": "independent_commons_mcp/cursor.mcp.example.json",
+      "present": true,
+      "names": ["independent-commons"],
+      "coordinator": "GROK / PLAYER1 / PLAYER2"
+    }
+  ],
+  "gaps": [
+    {
+      "kind": "mcp",
+      "canonical": ["commons", "independent-commons"],
+      "reported": 0,
+      "relay": "existing Grok coordinators (PLAYER1 / PLAYER2 / GROK_BUILD). No new launch."
+    },
+    {
+      "kind": "lsp",
+      "canonical": [],
+      "reported": 0,
+      "note": "no canonical LSP source in this repo. Do not invent a server."
+    },
+    {
+      "kind": "permissions_policy",
+      "action": "do_not_add",
+      "reported": 0,
+      "note": "a zero is not an order to add a lock. Never a gate."
+    }
+  ],
+  "live_home": "UNMEASURED",
+  "inspect_ran": false,
+  "preconditions_agree": false,
+  "apply": false,
+  "mutate_grok": false,
+  "restart_grok": false,
+  "titan": "NOT_WRITTEN",
+  "note": "Slack inspect is evidence until source/generator/SHA/live-session agree. Quarantine. Do not remint a DIO/JOJO taking."
+}

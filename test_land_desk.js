@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825l/.test(html), "desk must bust the taking-trace cache key");
+assert.ok(/20260825m/.test(html), "desk must bust the grok-harness cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -820,6 +820,38 @@ assert.ok(html.indexOf("host/unused_invoke.py") >= 0, "desk must name the unused
 assert.ok(html.indexOf("ground/UNUSED_INVOKE.md") >= 0, "desk must link the unused-invoke card");
 assert.ok(html.indexOf("1787633805.754249") >= 0, "desk must cite the resource-sweep Slack ts");
 assert.ok(/resource-sweep|act-on-the-reports|unused-local-provider-compute|stranded-machine-only-work/i.test(html), "desk must name resource-sweep talk as CLAIMED");
+assert.ok(api.isGrokHarnessTalk, "land.js must classify grok-harness-gap talk");
+assert.ok(api.grokHarnessState, "land.js must classify the grok-harness leftover");
+assert.ok(api.isGrokHarnessTalk("GROK HARNESS GAP (verified read-only): ~/.grok reports 0 MCP servers, 0 LSP servers, 0 loaded permissions policy. harness parity + receipts. do not mutate/restart Grok."), "harness-gap copy is talk");
+assert.ok(!api.isGrokHarnessTalk("make sure people do more than talk about shit"), "ship-talk is not the grok-harness leftover");
+assert.ok(!api.isGrokHarnessTalk("Revenue/substrate fleet live — Grok 4.6 workflows"), "fleet talk is not grok-harness leftover");
+assert.ok(!api.isGrokHarnessTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "utilization talk is not the grok-harness leftover");
+assert.ok(!api.isUtilizationTalk("GROK HARNESS GAP — 0 MCP servers, 0 LSP servers, harness parity. do not mutate/restart Grok."), "harness-gap copy is not utilization leftover");
+var grokTalk = api.completionStateFromText(
+  "GROK HARNESS GAP — ~/.grok reports 0 MCP servers, 0 LSP servers, 0 loaded permissions policy. DIO + JOJO claim harness parity."
+);
+assert.strictEqual(grokTalk.state, "CLAIMED");
+assert.ok(/grok-harness-gap|0-MCP|0-LSP/i.test(grokTalk.note), "harness-gap-without-SHA must stay CLAIMED");
+var grokDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok harness leftover landed"
+);
+assert.strictEqual(grokDone.state, "INTEGRATED", "completion words still beat grok-harness talk");
+var grokEmpty = api.grokHarnessState("");
+assert.strictEqual(grokEmpty.state, "UNMEASURED");
+var grokMissing = api.grokHarnessState("# empty stub\nno compare");
+assert.strictEqual(grokMissing.state, "NOT_LANDED");
+var grokOk = api.grokHarnessState("def measure_from_rows(canonical, inspect, extras=None):\n    mutate_grok = False\ndef classify(row):\n    return row\ndef preconditions_agree(inspect):\n    return False\n");
+assert.strictEqual(grokOk.state, "INTEGRATED");
+assert.ok(/do not mutate grok/i.test(grokOk.note), "landed leftover must refuse a grok mutate");
+assert.ok(html.indexOf('id="grok-harness-result"') >= 0, "desk must name the grok-harness leftover");
+assert.ok(html.indexOf("host/grok_harness_gap.py") >= 0, "desk must name the grok-harness instrument");
+assert.ok(html.indexOf("ground/GROK_HARNESS.md") >= 0, "desk must link the grok-harness card");
+assert.ok(html.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "desk must link the gap catalog");
+assert.ok(html.indexOf("1787634541.520949") >= 0, "desk must cite the harness-gap Slack ts");
+assert.ok(/harness-gap|0-MCP|0-LSP|grok\.exe|harness-parity/i.test(html), "desk must name harness-gap talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
 assert.ok(api.fleetState, "land.js must classify claimed fleet ids");
