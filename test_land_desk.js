@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ba/.test(html), "desk must bust the device-canary cache key");
+assert.ok(/20260825bb/.test(html), "desk must bust the titan-test-quarantine cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,36 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isTitanTestQuarantineTalk, "land.js must classify live-Titan test quarantine talk");
+assert.ok(api.titanTestQuarantineState, "land.js must classify the titan-test-quarantine leftover");
+assert.ok(api.isTitanTestQuarantineTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan via --titan. 1787641850.308579"), "live-Titan quarantine copy is talk");
+assert.ok(!api.isTitanTestQuarantineTalk("make sure people do more than talk about shit"), "ship-talk is not the titan-test-quarantine leftover");
+assert.ok(!api.isTitanTestQuarantineTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land."), "sitting remint is not the titan-test-quarantine leftover");
+assert.ok(!api.isSittingRemintTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan."), "quarantine copy is not the sitting-remint leftover");
+assert.ok(!api.isDeviceCanaryTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan."), "quarantine copy is not the device-canary leftover");
+var quarantineTalk = api.completionStateFromText(
+  "P0 LIVE-TITAN TEST QUARANTINE\ntest_go_without_titan_is_absent\ntemp synthetic Titan via --titan\nlive-titan-contract-20260825"
+);
+assert.strictEqual(quarantineTalk.state, "CLAIMED");
+assert.ok(/live-Titan test quarantine|temp-synthetic-Titan|test_go_without_titan_is_absent/i.test(quarantineTalk.note), "quarantine-without-SHA must stay CLAIMED and beat ship-talk");
+var quarantineDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ntitan-test-quarantine leftover landed"
+);
+assert.strictEqual(quarantineDone.state, "INTEGRATED", "completion words still beat titan-test-quarantine talk");
+var quarantineEmpty = api.titanTestQuarantineState("");
+assert.strictEqual(quarantineEmpty.state, "UNMEASURED");
+var quarantineMissing = api.titanTestQuarantineState("# empty stub\nno leftover");
+assert.strictEqual(quarantineMissing.state, "NOT_LANDED");
+var quarantineOk = api.titanTestQuarantineState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nNever 0\nunder_test\nis_owner_titan_path\nalready_written_move\npayload_sha256\ntemp synthetic Titan\n");
+assert.strictEqual(quarantineOk.state, "INTEGRATED");
+assert.ok(/still not the file|not the file/i.test(quarantineOk.note), "landed leftover must name a Slack P0 as not the file");
+assert.ok(html.indexOf('id="titan-test-quarantine-result"') >= 0, "desk must name the titan-test-quarantine leftover");
+assert.ok(html.indexOf("host/titan_test_quarantine.py") >= 0, "desk must name the titan-test-quarantine instrument");
+assert.ok(html.indexOf("ground/TITAN_TEST_QUARANTINE.md") >= 0, "desk must link the titan-test-quarantine card");
+assert.ok(html.indexOf("ground/TITAN_TEST_QUARANTINE.json") >= 0, "desk must link the titan-test-quarantine catalog");
+assert.ok(/live-titan test quarantine|temp synthetic titan|test_go_without_titan_is_absent/i.test(html), "desk must name titan-test-quarantine talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_TEST_QUARANTINE.md") >= 0, "titan-test-quarantine card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_TEST_QUARANTINE.json") >= 0, "titan-test-quarantine catalog must stay a canary");
 assert.ok(api.isDeviceCanaryTalk, "land.js must classify first bounded read-only device canary talk");
 assert.ok(api.deviceCanaryState, "land.js must classify the device-canary leftover");
 assert.ok(api.isDeviceCanaryTalk("from: JOJO\nkind: TAKING_LANDED_INPUT\nid: jojo-device-path-canary-20260825-01\nsubject: FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN\nthis post does not claim success yet"), "JOJO device canary copy is talk");

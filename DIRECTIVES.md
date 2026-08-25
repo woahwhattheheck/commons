@@ -123,6 +123,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_device_canary.py` · `node test_land_desk.js` · `python3 host/device_canary.py`
 **Note:** Action `p/jojo-device-path-canary-20260825-01.md` is durable. Result is still NOT_LANDED. Do not remint JOJO's action, device-churn, or device-path-census. Do not take GPT kite-help. No self-hosted dispatch.
 
+### 32. Titan test quarantine — CI must not bind live Titan
+> *"tests MUST use temp synthetic Titan via explicit --titan; default discovery must never bind real Titan under tests; add receipt/payload-hash idempotence and refuse replay of already-WRITTEN moves."*
+
+**Asked:** 08-25T07:10 Slack `1787641850.308579` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/TITAN_TEST_QUARANTINE.md` · `ground/TITAN_TEST_QUARANTINE.json` · `host/titan_test_quarantine.py` · `host/titan_move_offsets.py` isolate · `host/titan_move_apply.py` payload-hash · land canary + `titanTestQuarantineState`
+**Receipt:** `python3 test_titan_test_quarantine.py` · `python3 test_titan_move_apply.py` · `node test_land_desk.js` · `python3 host/titan_test_quarantine.py`
+**Note:** Do not remint TITAN_APPEND_GUARD or JOJO device leftovers. Do not land `test_go_actuates_live_owner_titan_and_persists_reread_receipt`. Repair stays apply:false. titan NOT_WRITTEN.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

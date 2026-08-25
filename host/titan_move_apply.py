@@ -24,7 +24,9 @@ from titan_move_offsets import (
     CLAIMED_APPEND_SOURCE,
     allocate_rows,
     find_titan,
+    is_owner_titan_path,
     or_bytes,
+    under_test,
 )
 
 
@@ -49,12 +51,46 @@ def already_applied(packet, live_size):
     return written and end > 0 and live == end
 
 
+def payload_sha256(excerpt_dir, organs):
+    """SHA-256 of concatenated excerpt bytes in organ order. Receipt hash."""
+    digest = hashlib.sha256()
+    for row in organs or []:
+        container = os.path.basename(str((row or {}).get("container") or ""))
+        if not container:
+            continue
+        path = os.path.join(excerpt_dir, container)
+        try:
+            with open(path, "rb") as handle:
+                digest.update(handle.read())
+        except OSError:
+            continue
+    return digest.hexdigest()
+
+
+def already_written_move(packet, live_size=None, payload_hash=""):
+    """Refuse replay of an already-WRITTEN move. Size or payload-hash."""
+    if already_applied(packet, live_size):
+        return True
+    packet = packet or {}
+    written = str(packet.get("titan") or "").upper() == "WRITTEN"
+    stored = str(packet.get("payload_sha256") or "").strip().lower()
+    incoming = str(payload_hash or "").strip().lower()
+    if written and stored and incoming and stored == incoming:
+        return True
+    try:
+        write_count = int(packet.get("write_count") or 0)
+    except (TypeError, ValueError):
+        write_count = 0
+    return written and write_count > 0
+
+
 def persist_write_facts(
     packet,
     write_count,
     reread_count,
     live_size_before,
     live_size_after,
+    payload_hash="",
 ):
     """Durable titan write/reread/size facts. Ones only rise."""
     out = dict(packet or {})
@@ -69,6 +105,9 @@ def persist_write_facts(
     out["live_size_before"] = before
     out["live_size_after"] = after
     out["written_bytes"] = after - before
+    digest = str(payload_hash or out.get("payload_sha256") or "").strip()
+    if digest:
+        out["payload_sha256"] = digest
     organs = []
     for row in list(out.get("organs") or []):
         item = dict(row)
@@ -89,11 +128,19 @@ def plan_from_packet(packet, live_size=None):
     organs = list(packet.get("organs") or [])
     base = int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
     refused, reason = refuse_further_append(packet, live_size)
+    written_move = already_written_move(packet, live_size)
+    if written_move and not refused:
+        refused = True
+        reason = (
+            "already-WRITTEN move. payload-hash/write_count idempotence "
+            "refuses replay. preserve the artifact"
+        )
     if (
         live_size is not None
         and int(live_size) != base
         and not already_applied(packet, live_size)
         and not refused
+        and not written_move
     ):
         base = int(live_size)
     allocated, end = allocate_rows(organs, base=base)
@@ -110,7 +157,8 @@ def plan_from_packet(packet, live_size=None):
         "reallocated": live_size is not None
         and int(live_size) != int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
         and not already_applied(packet, live_size)
-        and not refused,
+        and not refused
+        and not written_move,
         "refused": refused,
         "refuse_reason": reason if refused else "",
     }
@@ -242,7 +290,10 @@ def main(argv=None):
         explicit=args.titan or None,
         env_path=os.environ.get("TITAN"),
     )
+    if titan_path and under_test() and is_owner_titan_path(titan_path):
+        titan_path = None
     live_size = os.path.getsize(titan_path) if titan_path else None
+    receipt_hash = payload_sha256(excerpt_dir, packet.get("organs") or [])
     plan = plan_from_packet(packet, live_size=live_size)
     payload = {
         "measured": True,
@@ -323,7 +374,7 @@ def main(argv=None):
         sys.stdout.write("\n")
         print("DIE")
         return 2
-    if already_applied(packet, live_size):
+    if already_written_move(packet, live_size, payload_hash=receipt_hash):
         write_count = int(
             packet.get("write_count")
             or packet.get("count")
@@ -340,7 +391,8 @@ def main(argv=None):
                 or packet.get("claimed_append_base")
                 or 0
             ),
-            live_size_after=int(live_size),
+            live_size_after=int(live_size or 0),
+            payload_hash=receipt_hash or packet.get("payload_sha256") or "",
         )
         with open(packet_path, "w", encoding="utf-8") as handle:
             json.dump(packet, handle, indent=2)
@@ -353,14 +405,17 @@ def main(argv=None):
         payload["live_size_after"] = packet["live_size_after"]
         payload["written_bytes"] = packet["written_bytes"]
         payload["state"] = "INTEGRATED"
+        payload["payload_sha256"] = packet.get("payload_sha256") or receipt_hash
         payload["note"] = (
             "already written. fail-closed against duplicate append. "
-            "live_size=%s claimed_append_end=%s write_count=%s reread_count=%s"
+            "payload-hash idempotence. live_size=%s claimed_append_end=%s "
+            "write_count=%s reread_count=%s payload_sha256=%s"
             % (
                 live_size,
                 packet.get("claimed_append_end"),
                 write_count,
                 reread_count,
+                payload["payload_sha256"],
             )
         )
         json.dump(payload, sys.stdout, indent=2, sort_keys=True)
@@ -397,6 +452,7 @@ def main(argv=None):
         reread_count=reread_count,
         live_size_before=int(live_size or 0),
         live_size_after=after_size,
+        payload_hash=receipt_hash,
     )
     payload["wrote"] = True
     payload["reread"] = packet["reread"]
@@ -405,6 +461,7 @@ def main(argv=None):
     payload["live_size_before"] = packet["live_size_before"]
     payload["live_size_after"] = packet["live_size_after"]
     payload["written_bytes"] = packet["written_bytes"]
+    payload["payload_sha256"] = packet.get("payload_sha256") or receipt_hash
     payload["journals"] = journals
     payload["state"] = "INTEGRATED" if payload["reread"] else "NOT_LANDED"
     payload["note"] = (

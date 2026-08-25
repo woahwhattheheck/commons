@@ -14,18 +14,26 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 from titan_append_guard import INCIDENT_BASE, INCIDENT_FIRST_END, INCIDENT_LIVE_SIZE, INCIDENT_PAYLOAD
 from titan_move_apply import (
     already_applied,
+    already_written_move,
     apply_journal,
     journal_rows,
     main,
+    payload_sha256,
     persist_write_facts,
     plan_from_packet,
 )
 from titan_move_offsets import (
     CLAIMED_APPEND_BASE,
+    TEST_ISOLATE_ENV,
     allocate_rows,
     find_titan,
+    is_owner_titan_path,
     or_bytes,
+    under_test,
 )
+import titan_move_offsets
+
+os.environ[TEST_ISOLATE_ENV] = "1"
 
 
 class TestTitanMoveOffsets(unittest.TestCase):
@@ -48,6 +56,31 @@ class TestTitanMoveOffsets(unittest.TestCase):
             with open(fake, "wb") as handle:
                 handle.write(b"no")
             self.assertIsNone(find_titan(explicit=fake))
+
+    def test_under_test_is_isolated(self):
+        self.assertEqual(os.environ.get(TEST_ISOLATE_ENV), "1")
+        self.assertTrue(under_test())
+        self.assertTrue(is_owner_titan_path(r"C:\llm\models\titan.gguf"))
+        self.assertTrue(is_owner_titan_path("/llm/models/titan.gguf"))
+        self.assertFalse(is_owner_titan_path("/tmp/synth-titan.gguf"))
+
+    def test_find_titan_under_test_skips_dest_from_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            fake_live = os.path.join(tmp, "titan.gguf")
+            with open(fake_live, "wb") as handle:
+                handle.write(b"LIVE")
+            old = titan_move_offsets.TITAN_DEST_FROM_FILE
+            try:
+                titan_move_offsets.TITAN_DEST_FROM_FILE = fake_live
+                self.assertIsNone(find_titan())
+                self.assertIsNone(find_titan(explicit=fake_live))
+                self.assertIsNone(find_titan(env_path=fake_live))
+                synth = os.path.join(tmp, "synth.gguf")
+                with open(synth, "wb") as handle:
+                    handle.write(b"SYNTH")
+                self.assertEqual(find_titan(explicit=synth), synth)
+            finally:
+                titan_move_offsets.TITAN_DEST_FROM_FILE = old
 
     def test_plan_reallocates_when_live_size_differs(self):
         packet = {
@@ -83,6 +116,22 @@ class TestTitanMoveOffsets(unittest.TestCase):
         self.assertFalse(plan["reallocated"])
         self.assertEqual(plan["claimed_append_base"], 10)
 
+    def test_written_move_refuses_replay_and_reallocate(self):
+        packet = {
+            "titan": "WRITTEN",
+            "claimed_append_base": 10,
+            "claimed_append_end": 14,
+            "write_count": 1,
+            "payload_sha256": "abc",
+            "organs": [{"name": "a", "len": 4}],
+        }
+        self.assertTrue(already_written_move(packet, 20, payload_hash="abc"))
+        self.assertTrue(already_written_move(packet, 10))
+        plan = plan_from_packet(packet, live_size=20)
+        self.assertTrue(plan["refused"])
+        self.assertFalse(plan["reallocated"])
+        self.assertEqual(plan["claimed_append_base"], 10)
+
     def test_persist_write_facts_counts_and_sizes(self):
         packet = persist_write_facts(
             {
@@ -113,6 +162,58 @@ class TestTitanMoveOffsets(unittest.TestCase):
         self.assertTrue(plan["refused"])
         self.assertFalse(plan["reallocated"])
         self.assertEqual(plan["claimed_append_base"], INCIDENT_BASE)
+
+    def test_go_without_titan_stays_absent_even_if_dest_exists(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            fake_live = os.path.join(tmp, "titan.gguf")
+            with open(fake_live, "wb") as handle:
+                handle.write(b"LIVE")
+            old = titan_move_offsets.TITAN_DEST_FROM_FILE
+            try:
+                titan_move_offsets.TITAN_DEST_FROM_FILE = fake_live
+                self.assertEqual(main(["--root", ROOT, "--go"]), 2)
+            finally:
+                titan_move_offsets.TITAN_DEST_FROM_FILE = old
+
+    def test_go_first_write_then_payload_hash_refuses_replay(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            excerpt_dir = os.path.join(tmp, "excerpts", "20260823")
+            os.makedirs(excerpt_dir)
+            with open(os.path.join(excerpt_dir, "a.mno"), "wb") as handle:
+                handle.write(b"ab")
+            packet = {
+                "kind": "TITAN_MOVE_PACKET",
+                "titan": "NOT_WRITTEN",
+                "claimed_append_base": 2,
+                "claimed_append_end": 4,
+                "count": 1,
+                "organs": [
+                    {
+                        "name": "a",
+                        "container": "a.mno",
+                        "len": 2,
+                        "offset": 2,
+                    }
+                ],
+            }
+            packet_path = os.path.join(excerpt_dir, "titan_move_packet.json")
+            with open(packet_path, "w", encoding="utf-8") as handle:
+                json.dump(packet, handle)
+            titan = os.path.join(tmp, "synth.gguf")
+            with open(titan, "wb") as handle:
+                handle.write(b"xx")
+            self.assertEqual(main(["--root", tmp, "--titan", titan, "--go"]), 0)
+            after_first = os.path.getsize(titan)
+            with open(packet_path, encoding="utf-8") as handle:
+                landed = json.load(handle)
+            self.assertEqual(landed["titan"], "WRITTEN")
+            self.assertTrue(landed.get("payload_sha256"))
+            self.assertEqual(
+                landed["payload_sha256"],
+                payload_sha256(excerpt_dir, landed["organs"]),
+            )
+            self.assertEqual(main(["--root", tmp, "--titan", titan, "--go"]), 0)
+            self.assertEqual(os.path.getsize(titan), after_first)
 
     def test_go_fail_closes_against_duplicate_append(self):
         with tempfile.TemporaryDirectory() as tmp:

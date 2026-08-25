@@ -1,0 +1,25 @@
+{
+  "source_id": "rivet-ship-titan-test-quarantine-20260825-01",
+  "slack_ts": "1787641850.308579",
+  "kind": "TITAN_TEST_QUARANTINE",
+  "subject": "Tests must use temp synthetic Titan; refuse live discovery and WRITTEN replay",
+  "titan": "NOT_WRITTEN",
+  "apply": false,
+  "refuse_truncate": true,
+  "refuse_repair": true,
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "branch_quarantined": "test/live-titan-contract-20260825",
+  "commit_quarantined": "09f277bc1432df4f66dc2566b44ebf17fecc182e",
+  "live_test_forbidden": "test_go_actuates_live_owner_titan_and_persists_reread_receipt",
+  "hands_off": [
+    "DIO + JOJO owner-machine live hash / reread of C:\\llm\\models\\titan.gguf",
+    "owner-authorized repair",
+    "titan.gguf write",
+    "truncate / dedupe / overwrite of the 103831308164-byte artifact",
+    "TITAN_APPEND_GUARD remint",
+    "CML PR 2108",
+    "SPECTER PR 2205"
+  ]
+}
