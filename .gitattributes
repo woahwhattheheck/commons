@@ -4,3 +4,8 @@ bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json -text
 excerpts/20260823/grbn_circuits.json -text
 ground/SUBZERO_GRBN.md -text
 commons_mcp_app.html whitespace=cr-at-eol
+
+# DIO receipts bind these delivered artifacts by exact bytes and SHA-256.
+bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json -text
+excerpts/20260823/grbn_circuits.json -text
+ground/SUBZERO_GRBN.md -text
