@@ -1,7 +1,8 @@
 {
   "fabricate": false,
   "files": [
-    "PLAYER2.json"
+    "PLAYER2.json",
+    "RIVET.json"
   ],
   "hands_off": [
     "host/render_check.py",
@@ -14,7 +15,7 @@
   ],
   "heartbeats": [
     {
-      "age_seconds": 411180,
+      "age_seconds": 427552,
       "fabricated": false,
       "freshness": "STALE",
       "from": "PLAYER2",
@@ -23,10 +24,22 @@
       "src": "Cursor side chat \u2014 PLAYER2. Not a guessed search. The session is writing pixel.html / pixel.js / here.js.",
       "ts": "2026-08-20T11:05:00Z",
       "valid": true
+    },
+    {
+      "age_seconds": 6554,
+      "fabricated": false,
+      "freshness": "HOT",
+      "from": "RIVET",
+      "name": "RIVET.json",
+      "path": "host/pixel_heartbeat_emit.py",
+      "src": "Cursor automation Slack 1787644673.314949 wrote host/pixel_heartbeat_emit.py and pixels/RIVET.json. Honest session-state, not guessed.",
+      "ts": "2026-08-25T08:01:38Z",
+      "valid": true
     }
   ],
   "index": [
-    "PLAYER2.json"
+    "PLAYER2.json",
+    "RIVET.json"
   ],
   "listed_missing": [],
   "note": "Do not remint the DEMON offer id. Do not invent a heartbeat. Local exact-SHA verification stays with DEMON. RIVET owns render CI.",

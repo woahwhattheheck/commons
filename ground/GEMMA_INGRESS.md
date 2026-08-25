@@ -12,7 +12,7 @@
 - Adjacent license/config beside that Download filename: none. UNKNOWN rather than inferred.
 - Not the WhiteBox GGUF named gemma-4-26B-A4B. Different file.
 - This-window install: `pfc_load.py` referenced the file (hash-gated). `pfc_harness.py connect` reflector. `ask` REFUSED llama BPE.
-- Tokenizer dests FROM FILE: tokmeta sec#0 @ 16384 size 12192; SPM sec#1 @ 32768 size 4689013 pieces 262144; pad=0 eos=1 bos=2 unk=3 mask=4. Dump: `python host/muhl_dump_litertlm.py` this file.
+- Tokenizer dests FROM FILE: tokmeta sec#0 @ 16384 size 12192; SPM sec#1 @ 32768 size 4689013 pieces 262144; pad=0 eos=1 bos=2 unk=3 mask=4. Dump: `python infra/host/muhl_dump_litertlm.py` this file.
 - Dests FROM FILE: cpu_fwd @ 2380246639, fwd_answer @ 2467652405, receiver @ 2383480831. Do not fire until prompt is addressed from this SPM.
 
 Do not convert, quantize, train, or upload from this folder without owner `--go`. Revert: `python host/pfc_load.py --revert`.

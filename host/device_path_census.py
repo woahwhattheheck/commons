@@ -14,8 +14,9 @@ This leftover re-runs that calibrated device path census on a named
 git tree and inspects one OPEN + DEVICE lawful canary fixture that is
 format-valid but not posted under p/, so it is not pending and cannot
 dispatch the self-hosted runner. No host inference. A Slack census is
-CLAIMED until this leftover ships. Zero reservations is a measured Y,
-not stillness. Miss is FINDER-FAILED / FINDER-UNVERIFIED. Never 0.
+CLAIMED until this leftover ships. Zero reservations is a measured Y only
+after git ls-tree succeeds. Finder failure nulls derived counts. Miss is
+FINDER-FAILED / FINDER-UNVERIFIED. Never 0.
 Open door. No auth. No gate. titan: NOT_WRITTEN.
 
   python3 host/device_path_census.py
@@ -70,6 +71,10 @@ REQUIRED_PHRASES = (
     "no gate",
     "not pending",
 )
+
+
+class FinderError(RuntimeError):
+    """The requested search did not run successfully; it did not find zero."""
 
 
 def _read(root, rel):
@@ -164,7 +169,11 @@ def inspect_canary(text, live_post_exists):
 
 
 def ls_tree(root, ref):
-    """X: recursive path list from git ls-tree. Empty list is measured empty."""
+    """X: recursive path list from git ls-tree.
+
+    A successful empty tree returns ``[]``. Launch errors and invalid refs raise
+    FinderError so callers cannot silently reinterpret search failure as zero.
+    """
     try:
         proc = subprocess.run(
             ["git", "ls-tree", "-r", "--name-only", ref],
@@ -173,10 +182,11 @@ def ls_tree(root, ref):
             capture_output=True,
             check=False,
         )
-    except OSError:
-        return []
+    except OSError as exc:
+        raise FinderError("git ls-tree could not run: %s" % exc) from exc
     if proc.returncode:
-        return []
+        detail = (proc.stderr or "").strip() or "exit %s" % proc.returncode
+        raise FinderError("git ls-tree failed for %s: %s" % (ref, detail))
     return [line.strip().replace("\\", "/") for line in proc.stdout.splitlines() if line.strip()]
 
 
@@ -214,9 +224,9 @@ def count_result_scopes(root, paths):
             other += 1
     return {
         "result_count": github + device + other + failures,
-        "scope_github": github,
-        "scope_device": device,
-        "scope_other": other,
+        "scope_github": None if failures else github,
+        "scope_device": None if failures else device,
+        "scope_other": None if failures else other,
         "parse_failures": failures,
     }
 
@@ -245,19 +255,25 @@ def load_catalog(text):
 def measure_from_rows(facts):
     """Classify measured tree/canary facts. Missing calibration is UNMEASURED."""
     facts = facts or {}
+    def count(name, default=0):
+        value = facts[name] if name in facts else default
+        return None if value is None else int(value)
+
     return {
         "measured": True,
         "card_present": bool(facts.get("card_present")),
         "catalog_present": bool(facts.get("catalog_present")),
         "canary_present": bool(facts.get("canary_present")),
         "canary_lawful": bool(facts.get("canary_lawful")),
-        "tree_count": int(facts.get("tree_count") or 0),
-        "reservation_count": int(facts.get("reservation_count") or 0),
-        "batch_count": int(facts.get("batch_count") or 0),
-        "result_count": int(facts.get("result_count") or 0),
-        "scope_github": int(facts.get("scope_github") or 0),
-        "scope_device": int(facts.get("scope_device") or 0),
-        "parse_failures": int(facts.get("parse_failures") or 0),
+        "tree_count": count("tree_count"),
+        "reservation_count": count("reservation_count"),
+        "batch_count": count("batch_count"),
+        "result_count": count("result_count"),
+        "scope_github": count("scope_github"),
+        "scope_device": count("scope_device"),
+        "parse_failures": count("parse_failures"),
+        "tree_finder_status": str(facts.get("tree_finder_status") or "OK"),
+        "tree_error": str(facts.get("tree_error") or ""),
         "found_phrases": list(facts.get("found_phrases") or []),
         "posting_open": bool(facts.get("posting_open")),
         "no_auth": bool(facts.get("no_auth")),
@@ -291,6 +307,15 @@ def classify(row):
                 + ", ".join(row.get("calibration_hits") or [])
                 + ". Search-zero testing is instrument failure, not absence proof. "
                 "FINDER-FAILED, never 0."
+            ),
+        }
+    if str(row.get("tree_finder_status") or "OK") != "OK":
+        return {
+            "state": "UNMEASURED",
+            "note": (
+                "git tree census failed: "
+                + str(row.get("tree_error") or "unknown finder error")
+                + ". Counts are null, not zero. FINDER-FAILED, never 0."
             ),
         }
     misses = list(row.get("misses") or [])
@@ -358,21 +383,43 @@ def measure_root(root, ref="HEAD"):
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     live_post = _exists(root, os.path.join("p", CANARY_ID + ".md"))
     canary = inspect_canary(canary_text, live_post)
-    paths = ls_tree(root, ref)
-    scopes = count_result_scopes(root, paths)
+    try:
+        paths = ls_tree(root, ref)
+        tree_finder_status = "OK"
+        tree_error = ""
+        scopes = count_result_scopes(root, paths)
+        tree_count = len(paths)
+        reservation_count = count_prefix(paths, RESERVATION_PREFIX)
+        batch_count = count_prefix(paths, BATCH_PREFIX)
+    except FinderError as exc:
+        paths = []
+        tree_finder_status = "FINDER-FAILED"
+        tree_error = str(exc)
+        tree_count = None
+        reservation_count = None
+        batch_count = None
+        scopes = {
+            "result_count": None,
+            "scope_github": None,
+            "scope_device": None,
+            "scope_other": None,
+            "parse_failures": None,
+        }
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     facts = {
         "card_present": bool(card_text) and "lawful canary" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
         "canary_present": bool(canary_text) and bool(canary.get("parsed")),
         "canary_lawful": bool(canary.get("lawful")),
-        "tree_count": len(paths),
-        "reservation_count": count_prefix(paths, RESERVATION_PREFIX),
-        "batch_count": count_prefix(paths, BATCH_PREFIX),
+        "tree_count": tree_count,
+        "reservation_count": reservation_count,
+        "batch_count": batch_count,
         "result_count": scopes["result_count"],
         "scope_github": scopes["scope_github"],
         "scope_device": scopes["scope_device"],
         "parse_failures": scopes["parse_failures"],
+        "tree_finder_status": tree_finder_status,
+        "tree_error": tree_error,
         "found_phrases": found,
         "posting_open": str(catalog.get("posting") or "").upper() == "OPEN",
         "no_auth": bool(catalog.get("no_auth")),
@@ -426,6 +473,7 @@ def main(argv=None):
     payload["x"] = {
         "ref": row.get("ref"),
         "tree_count": row.get("tree_count"),
+        "finder_status": row.get("tree_finder_status"),
         "search_space": row.get("search_space") or [],
         "truncated": False,
     }
@@ -439,7 +487,11 @@ def main(argv=None):
         "canary_lawful": row.get("canary_lawful"),
         "calibration_hits": row.get("calibration_hits") or [],
     }
-    payload["z"] = row.get("misses") or []
+    payload["z"] = {
+        "finder_status": row.get("tree_finder_status"),
+        "finder_error": row.get("tree_error"),
+        "misses": row.get("misses") or [],
+    }
     json.dump(payload, sys.stdout, indent=2, sort_keys=True)
     sys.stdout.write("\n")
     return 0 if verdict.get("state") == "INTEGRATED" else 1

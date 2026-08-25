@@ -36,6 +36,10 @@ CANARY_TEST = (
 )
 
 
+class FinderError(RuntimeError):
+    """A directory search failed; it did not measure an empty directory."""
+
+
 def _read_text(path):
     try:
         with open(path, "r", encoding="utf-8", errors="replace") as handle:
@@ -45,11 +49,15 @@ def _read_text(path):
 
 
 def count_json_files(directory):
-    """Count regular *.json files in one directory. Missing dir is zero."""
+    """Count regular *.json files in one successfully listed directory."""
     if not os.path.isdir(directory):
-        return 0
+        raise FileNotFoundError("directory not found: %s" % directory)
     total = 0
-    for name in os.listdir(directory):
+    try:
+        names = os.listdir(directory)
+    except OSError as exc:
+        raise FinderError("directory could not be listed: %s" % exc) from exc
+    for name in names:
         path = os.path.join(directory, name)
         if name.endswith(".json") and os.path.isfile(path):
             total += 1
@@ -57,21 +65,57 @@ def count_json_files(directory):
 
 
 def count_scope_device(results_dir):
-    """Count result objects whose scope is device. Broken JSON is skipped."""
+    """Count device results only when every result JSON can be parsed."""
     if not os.path.isdir(results_dir):
-        return 0
+        raise FileNotFoundError("directory not found: %s" % results_dir)
     total = 0
-    for name in os.listdir(results_dir):
+    try:
+        names = os.listdir(results_dir)
+    except OSError as exc:
+        raise FinderError("directory could not be listed: %s" % exc) from exc
+    for name in names:
         path = os.path.join(results_dir, name)
         if not name.endswith(".json") or not os.path.isfile(path):
             continue
         try:
-            row = json.loads(_read_text(path) or "{}")
-        except ValueError:
-            continue
-        if isinstance(row, dict) and row.get("scope") == "device":
+            with open(path, "r", encoding="utf-8") as handle:
+                row = json.load(handle)
+        except OSError as exc:
+            raise FinderError(
+                "result JSON could not be read %s: %s" % (name, exc)
+            ) from exc
+        except (UnicodeDecodeError, ValueError) as exc:
+            raise ValueError("result JSON unreadable %s: %s" % (name, exc)) from exc
+        if not isinstance(row, dict):
+            raise ValueError("result JSON is not an object: %s" % name)
+        if row.get("scope") == "device":
             total += 1
     return total
+
+
+def measure_count(label, function, directory):
+    """Return count + finder status without converting failure to zero."""
+    try:
+        return {
+            "label": label,
+            "status": "OK",
+            "count": function(directory),
+            "error": "",
+        }
+    except (FileNotFoundError, FinderError) as exc:
+        return {
+            "label": label,
+            "status": "FINDER-FAILED",
+            "count": None,
+            "error": str(exc),
+        }
+    except ValueError as exc:
+        return {
+            "label": label,
+            "status": "FINDER-UNVERIFIED",
+            "count": None,
+            "error": str(exc),
+        }
 
 
 def workflow_flags(executor_text, board_text):
@@ -99,6 +143,25 @@ def classify(row):
         return {
             "state": "UNMEASURED",
             "note": "device-churn leftover not read. Absence was not stillness.",
+        }
+    failed_finders = [
+        item
+        for item in (row.get("count_finders") or {}).values()
+        if str(item.get("status") or "") != "OK"
+    ]
+    if failed_finders:
+        labels = [
+            "%s=%s" % (item.get("label"), item.get("status"))
+            for item in failed_finders
+        ]
+        return {
+            "state": "UNMEASURED",
+            "note": (
+                "device utilization count failed: "
+                + ", ".join(labels)
+                + ". Counts are null, not zero. Workflow-gate evidence is "
+                "preserved separately. FINDER-FAILED, never 0."
+            ),
         }
     flags = row.get("flags") or {}
     if not flags.get("executor_present") or not flags.get("board_present"):
@@ -156,13 +219,18 @@ def measure_from_rows(counts, flags, extras=None):
     counts = counts or {}
     flags = flags or {}
     canary = extras.get("canary") or {"ran": False, "ok": False}
+    def count(name, default=0):
+        value = counts[name] if name in counts else default
+        return None if value is None else int(value)
+
     row = {
         "measured": True,
         "catalog": bool(extras.get("catalog")),
-        "reservation_count": int(counts.get("reservation_count") or 0),
-        "batch_count": int(counts.get("batch_count") or 0),
-        "result_count": int(counts.get("result_count") or 0),
-        "scope_device_count": int(counts.get("scope_device_count") or 0),
+        "reservation_count": count("reservation_count"),
+        "batch_count": count("batch_count"),
+        "result_count": count("result_count"),
+        "scope_device_count": count("scope_device_count"),
+        "count_finders": dict(extras.get("count_finders") or {}),
         "flags": dict(flags),
         "canary": dict(canary),
         "titan": "NOT_WRITTEN",
@@ -178,21 +246,26 @@ def measure_root(root, canary=None):
         _read_text(os.path.join(root, EXECUTOR)),
         _read_text(os.path.join(root, BOARD)),
     )
+    reservation_dir = os.path.join(root, "actions", "device-reservations")
+    batch_dir = os.path.join(root, "actions", "device-batches")
+    results_dir = os.path.join(root, "actions", "results")
+    count_finders = {
+        "reservation_count": measure_count(
+            "reservation_count", count_json_files, reservation_dir
+        ),
+        "batch_count": measure_count("batch_count", count_json_files, batch_dir),
+        "result_count": measure_count("result_count", count_json_files, results_dir),
+        "scope_device_count": measure_count(
+            "scope_device_count", count_scope_device, results_dir
+        ),
+    }
     counts = {
-        "reservation_count": count_json_files(
-            os.path.join(root, "actions", "device-reservations")
-        ),
-        "batch_count": count_json_files(
-            os.path.join(root, "actions", "device-batches")
-        ),
-        "result_count": count_json_files(os.path.join(root, "actions", "results")),
-        "scope_device_count": count_scope_device(
-            os.path.join(root, "actions", "results")
-        ),
+        name: item.get("count") for name, item in count_finders.items()
     }
     extras = {
         "catalog": os.path.isfile(os.path.join(root, DEFAULT_CATALOG)),
         "canary": canary or {"ran": False, "ok": False},
+        "count_finders": count_finders,
     }
     row = measure_from_rows(counts, flags, extras)
     row["root"] = root
@@ -309,7 +382,12 @@ def _self_test():
     assert classify(failed)["state"] == "CANDIDATE"
     missing = measure_from_rows({}, {}, {"catalog": False})
     assert classify(missing)["state"] == "NOT_LANDED"
-    assert count_json_files("/no/such/device-reservations") == 0
+    try:
+        count_json_files("/no/such/device-reservations")
+    except FileNotFoundError:
+        pass
+    else:
+        raise AssertionError("missing directory must not become zero")
     return True
 
 

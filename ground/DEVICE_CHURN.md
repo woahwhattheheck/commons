@@ -5,8 +5,9 @@ utilization report:
 
 > The device execution protocol is implemented
 > (`device_action_state.py`, reservation/batch/finalizer,
-> `[commons-device]` runner) but current tree shows zero reservations,
-> zero batches, and no `scope=device` result—integrated but unused.
+> `[commons-device]` runner). The original census reported zero reservations
+> and batches from missing directories; that was a false zero and is retracted.
+> Missing/unreadable inputs are now `null` + `FINDER-FAILED`, not unused proof.
 > Yet its workflow is triggered after every Commons board completion:
 > GitHub API shows 511 runs, with current churn even when no device
 > action exists.
@@ -37,11 +38,12 @@ python3 host/device_churn.py --self-test
 python3 -m unittest -v test_device_churn.py
 ```
 
-Official current-main facts at the taking (SHA `da27d5b21`):
+Historical taking at SHA `da27d5b21` (count correction below):
 
-- `actions/device-reservations/` absent — 0 reservations
-- `actions/device-batches/` absent — 0 batches
-- `actions/results/*.json` = 48, `scope=device` = 0
+- `actions/device-reservations/` absent — **FINDER-FAILED / count unknown**, not 0
+- `actions/device-batches/` absent — **FINDER-FAILED / count unknown**, not 0
+- `actions/results/*.json` = 48 was measured; `scope=device` is only numeric
+  when every result JSON parses, otherwise `FINDER-UNVERIFIED` / `null`
 - `commons-device-executor` still `on: workflow_run` after every
   `commons-board` completion — 512 runs, newest still pending
 

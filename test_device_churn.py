@@ -85,11 +85,26 @@ class DeviceChurnTests(unittest.TestCase):
         self.assertTrue(row["measured"])
         self.assertIn("flags", row)
         self.assertGreaterEqual(row["result_count"], 0)
+        self.assertIsNone(row["reservation_count"])
+        self.assertIsNone(row["batch_count"])
+        self.assertEqual(
+            row["count_finders"]["reservation_count"]["status"],
+            "FINDER-FAILED",
+        )
+        self.assertEqual(
+            row["count_finders"]["result_count"]["status"], "OK"
+        )
+        self.assertEqual(dc.classify(row)["state"], "UNMEASURED")
         self.assertEqual(row["titan"], "NOT_WRITTEN")
 
-    def test_count_helpers_skip_missing_and_broken(self):
+    def test_count_helpers_separate_empty_missing_and_broken(self):
         with tempfile.TemporaryDirectory() as td:
-            self.assertEqual(dc.count_json_files(os.path.join(td, "missing")), 0)
+            with self.assertRaises(FileNotFoundError):
+                dc.count_json_files(os.path.join(td, "missing"))
+            empty = Path(td) / "empty"
+            empty.mkdir()
+            self.assertEqual(dc.count_json_files(str(empty)), 0)
+            self.assertEqual(dc.count_scope_device(str(empty)), 0)
             results = Path(td) / "results"
             results.mkdir()
             (results / "ok.json").write_text(
@@ -98,9 +113,54 @@ class DeviceChurnTests(unittest.TestCase):
             (results / "other.json").write_text(
                 json.dumps({"scope": "github"}), encoding="utf-8"
             )
-            (results / "broken.json").write_text("{", encoding="utf-8")
-            self.assertEqual(dc.count_json_files(str(results)), 3)
+            self.assertEqual(dc.count_json_files(str(results)), 2)
             self.assertEqual(dc.count_scope_device(str(results)), 1)
+            broken = Path(td) / "broken"
+            broken.mkdir()
+            (broken / "broken.json").write_text("{", encoding="utf-8")
+            self.assertEqual(dc.count_json_files(str(broken)), 1)
+            with self.assertRaises(ValueError):
+                dc.count_scope_device(str(broken))
+
+    def test_broken_result_is_finder_unverified_not_zero(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "actions" / "device-reservations").mkdir(parents=True)
+            (root / "actions" / "device-batches").mkdir(parents=True)
+            results = root / "actions" / "results"
+            results.mkdir(parents=True)
+            (results / "broken.json").write_text("{", encoding="utf-8")
+            row = dc.measure_root(str(root))
+        self.assertEqual(row["result_count"], 1)
+        self.assertIsNone(row["scope_device_count"])
+        self.assertEqual(
+            row["count_finders"]["scope_device_count"]["status"],
+            "FINDER-UNVERIFIED",
+        )
+        self.assertEqual(dc.classify(row)["state"], "UNMEASURED")
+
+    def test_explicit_none_is_not_rezeroed(self):
+        row = dc.measure_from_rows(
+            {
+                "reservation_count": None,
+                "batch_count": None,
+                "result_count": 2,
+                "scope_device_count": None,
+            },
+            {},
+            {
+                "count_finders": {
+                    "reservation_count": {
+                        "label": "reservation_count",
+                        "status": "FINDER-FAILED",
+                    }
+                }
+            },
+        )
+        self.assertIsNone(row["reservation_count"])
+        self.assertIsNone(row["batch_count"])
+        self.assertIsNone(row["scope_device_count"])
+        self.assertEqual(dc.classify(row)["state"], "UNMEASURED")
 
     def test_self_test_passes(self):
         self.assertTrue(dc._self_test())

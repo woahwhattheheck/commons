@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# host/muhl_dump_litertlm.py
+# infra/host/muhl_dump_litertlm.py
 # Dump .litertlm section table + tokenizer dests FROM FILE, then die.
 # Read-only. Does not fire. Does not convert. Does not copy weights.
-#   python host/muhl_dump_litertlm.py PATH.litertlm
+#   python infra/host/muhl_dump_litertlm.py PATH.litertlm
 # Never --inject 0x01.
 
 from __future__ import annotations
