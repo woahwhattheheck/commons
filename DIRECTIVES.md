@@ -203,6 +203,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_specter_final.py` · `node test_land_desk.js` · `python3 host/specter_final.py`
 **Note:** Cited SHA is an ancestor, not current HEAD. Leftover-first so SPECTER FINAL talk is not the wake-contract leftover. Named idle-session resume stays UNMEASURED. Do not remint PR 2205 / 2259 / 2269 / terminal-catalog / census / wake-contract / build-sweep. Dirty #2260 stays CLOSED. titan NOT_WRITTEN. Talk is not a land.
 
+### 42. Sitting remint PR — an open remint is not a land
+> *"Make sure people do more than talk about shit and it actually gets shipped to main."* / *"TITAN CONTAINMENT DURABLE ON COMMONS MAIN"*
+
+**Asked:** 08-25T08:06 Slack `1787645172.017469` / DIO SHIP_RECEIPT + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SITTING_PR.md` · `ground/SITTING_PR.json` · `host/sitting_pr.py` · land canary + `sittingPrState`
+**Receipt:** `python3 test_sitting_pr.py` · `node test_land_desk.js` · `python3 host/sitting_pr.py`
+**Note:** Cash-now leftover already INTEGRATED. DIO containment receipt already DURABLE_ON_MAIN. PR 2207 is SUPERSEDED, not a second land. Do not remint SITTING_REMINT / CASH_NOW / DIO containment / Titan MOVE / SPECTER FINAL. Hands off JOJO 2262/2263, CML 2108, payment-ready/device/terminal/revenue. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

@@ -1,0 +1,51 @@
+{
+  "slack_ts": "1787645172.017469",
+  "kind": "SITTING_PR",
+  "subject": "An open remint PR is not a land",
+  "already_landed": [
+    "ground/CASH_NOW.md",
+    "host/cash_now.py",
+    "p/dio-titan-move-containment-hardening-20260825-01.md",
+    "ground/SITTING_REMINT.md",
+    "ground/TITAN_MOVE.md",
+    "ground/TITAN_APPEND_GUARD.md",
+    "ground/BUILD_SWEEP_ACT.md"
+  ],
+  "sitting_remints": [
+    {
+      "number": "2207",
+      "leftover": "CASH_NOW",
+      "leftover_paths": [
+        "ground/CASH_NOW.md",
+        "host/cash_now.py"
+      ],
+      "pr_state": "OPEN_DIRTY",
+      "land_state": "SUPERSEDED",
+      "note": "cash-now leftover is already on main; this remint PR is not a second land"
+    }
+  ],
+  "do_not_remint": [
+    "dio-titan-move-containment-hardening-20260825-01",
+    "rivet-ship-sitting-remint-20260825-01",
+    "rivet-ship-cash-now leftover files",
+    "ground/CASH_NOW.md",
+    "ground/SITTING_REMINT.md",
+    "ground/TITAN_MOVE.md",
+    "ground/BUILD_SWEEP_ACT.md"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2262",
+    "PR 2263",
+    "payment-ready",
+    "device",
+    "terminal",
+    "revenue",
+    "titan.gguf",
+    "commons.mno"
+  ]
+}

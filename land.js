@@ -192,6 +192,8 @@
     "ground/WAKE_CONTRACT.json",
     "ground/TERMINAL_CATALOG.md",
     "ground/TERMINAL_CATALOG.json",
+    "ground/SITTING_PR.md",
+    "ground/SITTING_PR.json",
     "ground/BUILD_SWEEP_ACT.md",
     "ground/BUILD_SWEEP_ACT.json",
     "ground/SPECTER_FINAL.md",
@@ -433,6 +435,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSittingPrTalk(t)) {
+      return { state: "CLAIMED", note: "sitting remint PR / open remint / Titan-containment-durable / dirty PR 2207 talk. Talk is not a land. Cash-now leftover and DIO containment are already on main. Name the sitting remint SUPERSEDED. Do not remint those leftovers." };
     }
     if (api.isSpecterFinalTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER FINAL / stale current-main SHA / ancestor-is-not-current-head talk. Talk is not a land. Classify the cited SHA as HEAD / ANCESTOR / FOREIGN. Do not remint PR 2205, 2269, terminal-catalog, or wake-contract. Named idle bc- resume stays UNMEASURED." };
@@ -799,6 +804,35 @@
     };
   };
 
+  api.isSittingPrTalk = function (text) {
+    return /titan containment durable|1787645172\.017469|sitting remint pr|open remint|dirty remint|pr #?2207|pull\/2207|dio-titan-move-containment-hardening/i.test(String(text || ""));
+  };
+
+  api.sittingPrState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/sitting_pr.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPr = /2207/.test(body) && /SUPERSEDED/.test(body);
+    var namesCash = /cash-now leftover is already on main/.test(body);
+    var namesDio = /dio titan containment/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesPr && namesCash && namesDio && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "sitting-PR leftover is on this file. Open remint PR 2207 is SUPERSEDED. A Slack durable announcement is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/sitting_pr.py missing the leftover. Sitting remint PR / Titan-containment-durable talk is CLAIMED until the leftover ships."
+    };
+  };
+
   api.isSpecterFinalTalk = function (text) {
     return /SPECTER FINAL|stale current-main sha|ancestor is not current head|1787645274\.177269|specter-final leftover/i.test(String(text || ""));
   };
@@ -1081,7 +1115,7 @@
   };
 
   api.isSittingRemintTalk = function (text) {
-    return /sitting remint|already-landed leftover|remint pr is not a second land|do not remint an already-landed leftover/i.test(String(text || ""));
+    return /sitting remint leftover|already-landed leftover|remint pr is not a second land|do not remint an already-landed leftover/i.test(String(text || ""));
   };
 
   api.sittingRemintState = function (text) {
@@ -2952,6 +2986,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var sittingPrOut = document.getElementById("sitting-pr-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
@@ -3585,6 +3620,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSittingPr(result) {
+    if (!sittingPrOut) return;
+    sittingPrOut.setAttribute("data-tone", api.toneFor(result.state));
+    sittingPrOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintTerminalCatalog(result) {
@@ -4717,6 +4758,33 @@
     });
   }
 
+  function loadSittingPr(sha) {
+    if (!sittingPrOut) return Promise.resolve(null);
+    sittingPrOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_pr.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/sitting_pr.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/sitting_pr.py absent at the measured main SHA. Sitting remint PR / Titan-containment-durable talk is CLAIMED." };
+        paintSittingPr(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSittingPr(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.sittingPrState(body);
+        paintSittingPr(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSittingPr(err);
+      return err;
+    });
+  }
+
   function loadSittingRemint(sha) {
     if (!sittingRemintOut) return Promise.resolve(null);
     sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
@@ -5465,6 +5533,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadSittingPr(sha);
     loadSpecterFinal(sha);
     loadBuildSweepAct(sha);
     loadTerminalCatalog(sha);
