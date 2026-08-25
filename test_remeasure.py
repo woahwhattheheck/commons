@@ -151,9 +151,9 @@ class TestRemeasure(unittest.TestCase):
             for item in row["head_phrases"]
             if item["phrase"] == "stranded-LocalDeviceAgent"
         ]
-        self.assertTrue(stranded)
-        self.assertEqual(stranded[0]["z"], "FINDER-UNVERIFIED")
-        self.assertIn("Never 0", stranded[0]["note"])
+        self.assertTrue(stranded and stranded[0]["hits"], "stranded-LocalDeviceAgent claims are files on current main")
+        self.assertEqual(stranded[0]["z"], "")
+        self.assertIn("Y from found bytes", stranded[0]["note"])
         self.assertFalse(os.path.isfile(os.path.join(ROOT, BAKE_SCAN)))
         self.assertTrue(os.path.isfile(os.path.join(ROOT, PACKET)))
 
