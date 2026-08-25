@@ -12,6 +12,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from subzero_quote import (
+    _posix_parts as quote_posix_parts,
     ALREADY_LANDED,
     CALIBRATION,
     H009_TS,
@@ -75,6 +76,27 @@ def _complete(**extra):
 
 
 class TestSubzeroQuote(unittest.TestCase):
+    def test_trusted_windows_separator_normalizes_without_inbound_escape(self):
+        self.assertEqual(quote_posix_parts("ground\\HEAD.md"), ["ground", "HEAD.md"])
+        self.assertEqual(quote_posix_parts("..\\ground\\HEAD.md"), [])
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE"), "")
+
+    def test_active_quote_receipt_surfaces_do_not_lock_substrate_work(self):
+        for rel in (
+            "ground/SUBZERO_QUOTE.json",
+            "ground/SUBZERO_QUOTE.md",
+            "ground/SUBZERO_RECEIPT.json",
+            "ground/SUBZERO_RECEIPT.md",
+            "host/subzero_quote.py",
+            "subzero-quote.html",
+            "subzero-receipt.html",
+        ):
+            with open(os.path.join(ROOT, *rel.split("/")), encoding="utf-8") as handle:
+                text = handle.read().lower()
+            self.assertNotIn("not_written", text, rel)
+            self.assertNotIn("titan --go", text, rel)
+            self.assertNotIn('"hands_off"', text, rel)
+
     def test_unmeasured_is_not_stillness(self):
         row = classify({})
         self.assertEqual(row["state"], "UNMEASURED")

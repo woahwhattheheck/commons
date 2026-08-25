@@ -90,7 +90,7 @@
   "posting": "OPEN",
   "no_auth": true,
   "no_gate": true,
-  "hands_off": [
+  "collision_avoidance": [
     "PR 2108",
     "PR 2320",
     "SPECTER",

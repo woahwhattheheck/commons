@@ -14,6 +14,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from subzero_receipt import (
+    _posix_parts as receipt_posix_parts,
     ALREADY_LANDED,
     CALIBRATION,
     CELL,
@@ -99,6 +100,11 @@ def _complete(**extra):
 
 
 class TestSubzeroReceipt(unittest.TestCase):
+    def test_trusted_windows_separator_normalizes_without_inbound_escape(self):
+        self.assertEqual(receipt_posix_parts("ground\\HEAD.md"), ["ground", "HEAD.md"])
+        self.assertEqual(receipt_posix_parts("..\\ground\\HEAD.md"), [])
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE"), "")
+
     def test_unmeasured_is_not_stillness(self):
         row = classify({})
         self.assertEqual(row["state"], "UNMEASURED")

@@ -10,7 +10,7 @@ runtime, demand, or cash proof.
 Slack 1787651627.535699 (JOJO H-009 BACKEND COMPLETE):
 #2322 quote leftover still coerced missing numbers to 0, fused
 leftover INTEGRATED with legal lifecycle, skipped source/tree
-hashes, and treated titan NOT_WRITTEN as health. #2329 binder
+hashes, and treated skipped substrate actuation as health. #2329 binder
 holes already closed on 3c364c9fd. This leftover hardens the
 existing quote consumer — no second subsystem.
 
@@ -151,7 +151,9 @@ def safe_rel(rel):
 
 
 def _posix_parts(rel):
-    text = safe_rel(rel)
+    # Internal constants use os.path.join and therefore contain backslashes
+    # on Windows. Normalize them before the same traversal-safe validation.
+    text = safe_rel(str(rel or "").replace("\\", "/"))
     return text.split("/") if text else []
 
 
