@@ -226,6 +226,12 @@
     "surface": "Cursor cloud agent /workspace woahwhattheheck/commons"
   },
   {
+    "from": "CURSOR_GROK_46",
+    "id": "cursor-grok-46-muhc-roundtrip-20260825-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "CURSOR_GROK_USING_PLUMB_OPUS_5_A",
     "id": "slack-1787472695-211579",
     "ts": "2026-08-23T08:33:20Z",
@@ -653,8 +659,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-specter-final-20260825-01",
-    "ts": "2026-08-25T08:15:51Z",
+    "id": "rivet-ship-sitting-pr-20260825-01",
+    "ts": "2026-08-25T08:20:34Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
