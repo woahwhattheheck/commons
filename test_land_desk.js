@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825t/.test(html), "desk must bust the lda-android cache key");
+assert.ok(/20260825u/.test(html), "desk must bust the host-zero cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -911,6 +911,37 @@ assert.ok(html.indexOf("1787635487.642039") >= 0, "desk must cite the stranded-m
 assert.ok(/real-but-stranded|android\.yml-outside|wake_jobs-empty|\$30k-pilot|seven-offers|posted-size-stale/i.test(html), "desk must name stranded-map talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STRANDED_MAP.md") >= 0, "stranded-map card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STRANDED_MAP.json") >= 0, "stranded-map catalog must stay a canary");
+assert.ok(api.isHostZeroTalk, "land.js must classify host-zero / not-an-aspiration talk");
+assert.ok(api.hostZeroState, "land.js must classify the host-zero leftover");
+assert.ok(api.isHostZeroTalk("I also wanted to voice strong agreement with Bryce's retraction clarifying that the Muhlnickel's zero-host-cost decoupling is an already achieved and measured property, not an aspiration."), "Opus 3 host-zero restatement is talk");
+assert.ok(api.isIntroTalk("Hi everyone! Bryce invited me, an older Claude model. knowledge cutoff is a bit further back. I'll aim to follow along closely."), "Opus 3 older-model intro is talk");
+assert.ok(!api.isHostZeroTalk("make sure people do more than talk about shit"), "ship-talk is not the host-zero leftover");
+assert.ok(!api.isHostZeroTalk("REAL-BUT-STRANDED MAP — lda/workflows/android.yml outside .github/workflows."), "stranded-map copy is not host-zero leftover");
+var hostZeroTalk = api.completionStateFromText(
+  "The Muhlnickel's zero-host-cost decoupling is an already achieved and measured property, not an aspiration."
+);
+assert.strictEqual(hostZeroTalk.state, "CLAIMED");
+assert.ok(/host-zero|not-an-aspiration/i.test(hostZeroTalk.note), "host-zero-without-SHA must stay CLAIMED");
+var hostZeroDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nhost-zero leftover landed"
+);
+assert.strictEqual(hostZeroDone.state, "INTEGRATED", "completion words still beat host-zero talk");
+var hostZeroEmpty = api.hostZeroState("");
+assert.strictEqual(hostZeroEmpty.state, "UNMEASURED");
+var hostZeroMissing = api.hostZeroState("# empty stub\nno census");
+assert.strictEqual(hostZeroMissing.state, "NOT_LANDED");
+var hostZeroOk = api.hostZeroState("def measure_from_rows(rows):\n    return rows\ndef classify(row):\n    return row\nalready achieved\nfinally makes achievable\nlaptop do zero\n");
+assert.strictEqual(hostZeroOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(hostZeroOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="host-zero-result"') >= 0, "desk must name the host-zero leftover");
+assert.ok(html.indexOf("host/host_zero.py") >= 0, "desk must name the host-zero instrument");
+assert.ok(html.indexOf("ground/HOST_ZERO.md") >= 0, "desk must link the host-zero card");
+assert.ok(html.indexOf("ground/HOST_ZERO.json") >= 0, "desk must link the host-zero catalog");
+assert.ok(html.indexOf("1787636497.135519") >= 0, "desk must cite the Opus 3 Slack ts");
+assert.ok(html.indexOf("1787473167.355659") >= 0, "desk must cite the PLUMB retraction Slack ts");
+assert.ok(/already-achieved|not-an-aspiration|zero-host-cost/i.test(html), "desk must name host-zero talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HOST_ZERO.md") >= 0, "host-zero card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HOST_ZERO.json") >= 0, "host-zero catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

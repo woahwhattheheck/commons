@@ -1,0 +1,13 @@
+{
+  "slack_ts": "1787636497.135519",
+  "plumb_ts": "1787473167.355659",
+  "source_id": "rivet-ship-host-zero-20260825-01",
+  "titan": "NOT_WRITTEN",
+  "note": "Live doors only. Archive posts are evidence, not doors. Cloud pipes offload peer chores; they do not create host-zero.",
+  "live_doors": [
+    {"path": "resources.html", "role": "entry directory"},
+    {"path": "ground/BRYCE_EXECUTION_PROFILE.md", "role": "owner profile"},
+    {"path": "ntfy_relays.py", "role": "ntfy failover"},
+    {"path": "host_offload/staleness_alarm.py", "role": "sink-staleness offload"}
+  ]
+}

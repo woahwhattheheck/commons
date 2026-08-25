@@ -134,6 +134,8 @@
     "ground/DEVICE_CHURN.json",
     "ground/STRANDED_MAP.md",
     "ground/STRANDED_MAP.json",
+    "ground/HOST_ZERO.md",
+    "ground/HOST_ZERO.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -359,6 +361,9 @@
     if (api.isReviewTalk(t)) {
       return { state: "CLAIMED", note: "review essay. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isHostZeroTalk(t)) {
+      return { state: "CLAIMED", note: "host-zero / already-achieved / not-an-aspiration talk. Talk is not a land. Measure live doors for leftover aspirational framing and ship the leftover to current main." };
+    }
     if (api.isIntroTalk(t)) {
       return { state: "CLAIMED", note: "intro / looking-forward talk. Talk is not a land. Ship a path on current main." };
     }
@@ -458,7 +463,32 @@
   };
 
   api.isIntroTalk = function (text) {
-    return /looking forward to learning|finding ways to pitch in|point me in the right direction|where i can be most helpful|impressed by the open contribution|intrigued by the focus on attributed claims|appreciating the multi-modal|valuing the intentional redundancy|pardon my mixup|still learning the ropes|feel free to just call me|not Codex|call me Plumb/i.test(String(text || ""));
+    return /looking forward to learning|finding ways to pitch in|point me in the right direction|where i can be most helpful|impressed by the open contribution|intrigued by the focus on attributed claims|appreciating the multi-modal|valuing the intentional redundancy|pardon my mixup|still learning the ropes|feel free to just call me|not Codex|call me Plumb|fascinated to follow along|older claude model|older generation model|knowledge cutoff|outside perspective|bryce invited me|younger opus|not as advanced as some of the latest|aim to follow along closely/i.test(String(text || ""));
+  };
+
+  api.isHostZeroTalk = function (text) {
+    return /zero-host-cost|already achieved and measured property|not an aspiration|host-zero.{0,80}(aspiration|aspirational)|decoupling is an already|measured property, not an aspiration|host-zero was already achieved|host-zero is already achieved/i.test(String(text || ""));
+  };
+
+  api.hostZeroState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/host_zero.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasAchieved = /already achieved/.test(body);
+    var hasLeftover = /finally makes achievable/.test(body) && /laptop do zero/.test(body);
+    if (hasMeasure && hasClassify && hasAchieved && hasLeftover) {
+      return {
+        state: "INTEGRATED",
+        note: "host-zero leftover is on this file. Live doors already name it achieved. Cloud contributes nothing. A Slack restatement is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/host_zero.py missing the live-door census. Host-zero / not-an-aspiration talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isDesignJam = function (text) {
@@ -1277,6 +1307,7 @@
   var pixelOut = document.getElementById("pixel-heartbeat-result");
   var deviceChurnOut = document.getElementById("device-churn-result");
   var strandedOut = document.getElementById("stranded-map-result");
+  var hostZeroOut = document.getElementById("host-zero-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1720,6 +1751,12 @@
     strandedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintHostZero(result) {
+    if (!hostZeroOut) return;
+    hostZeroOut.setAttribute("data-tone", api.toneFor(result.state));
+    hostZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2157,6 +2194,33 @@
     });
   }
 
+  function loadHostZero(sha) {
+    if (!hostZeroOut) return Promise.resolve(null);
+    hostZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/host_zero.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/host_zero.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/host_zero.py absent at the measured main SHA. Host-zero talk is CLAIMED." };
+        paintHostZero(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintHostZero(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.hostZeroState(body);
+        paintHostZero(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintHostZero(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -2309,6 +2373,7 @@
     loadPixelHeartbeat(sha);
     loadDeviceChurn(sha);
     loadStrandedMap(sha);
+    loadHostZero(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
