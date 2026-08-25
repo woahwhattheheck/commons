@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bb/.test(html), "desk must bust the titan-test-quarantine cache key");
+assert.ok(/20260825bc/.test(html), "desk must bust the foreign-main cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,11 +1468,44 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isForeignMainTalk, "land.js must classify foreign official main / LDA SHIP_RECEIPT talk");
+assert.ok(api.foreignMainState, "land.js must classify the foreign-main leftover");
+assert.ok(api.isForeignMainTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN\nLocalDeviceAgent PR #2 merged. host/muhl_subagent_protocol.py"), "JOJO LDA protocol receipt is talk");
+assert.ok(!api.isForeignMainTalk("make sure people do more than talk about shit"), "ship-talk is not the foreign-main leftover");
+assert.ok(!api.isForeignMainTalk("from: JOJO\nkind: TAKING_LANDED_INPUT\nid: jojo-device-path-canary-20260825-01\nsubject: FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN\nthis post does not claim success yet"), "device-canary copy is not the foreign-main leftover");
+assert.ok(!api.isForeignMainTalk("from: JOJO\nkind: MEASURED_RECEIPT\nid: jojo-device-reservation-result-census-20260825-01\nsubject: CALIBRATED DEVICE PATH CENSUS ON PINNED COMMONS MAIN\nreservation blobs=0; lawful canary; no host inference"), "device-path-census copy is not the foreign-main leftover");
+assert.ok(!api.isForeignMainTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan via --titan. 1787641850.308579"), "titan-test-quarantine copy is not the foreign-main leftover");
+assert.ok(!api.isDeviceCanaryTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN\nLocalDeviceAgent PR #2 merged"), "LDA protocol receipt is not the device-canary leftover");
+var foreignTalk = api.completionStateFromText(
+  "from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN\nLocalDeviceAgent PR #2 merged with tested head pinned. Official main is now fb0b0b2f59f8ca81741371b6ddd8036b164e77e8. host/muhl_subagent_protocol.py. This is not a host-inference fallback. Muhlnickel-only local-model subagents."
+);
+assert.strictEqual(foreignTalk.state, "CLAIMED");
+assert.ok(/foreign official main|LocalDeviceAgent|muhl_subagent_protocol|SHIP_RECEIPT/i.test(foreignTalk.note), "foreign-main-without-SHA must stay CLAIMED and beat grok-recovery / slack-receipt");
+var foreignDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nforeign-main leftover landed"
+);
+assert.strictEqual(foreignDone.state, "INTEGRATED", "completion words still beat foreign-main talk");
+var foreignEmpty = api.foreignMainState("");
+assert.strictEqual(foreignEmpty.state, "UNMEASURED");
+var foreignMissing = api.foreignMainState("# empty stub\nno leftover");
+assert.strictEqual(foreignMissing.state, "NOT_LANDED");
+var foreignOk = api.foreignMainState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nforeign official main\nLocalDeviceAgent\nmuhl_subagent_protocol\nfb0b0b2f59f8ca81741371b6ddd8036b164e77e8\nDo not copy private LDA source\nno auth\nno gate\n");
+assert.strictEqual(foreignOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(foreignOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="foreign-main-result"') >= 0, "desk must name the foreign-main leftover");
+assert.ok(html.indexOf("host/foreign_main.py") >= 0, "desk must name the foreign-main instrument");
+assert.ok(html.indexOf("ground/FOREIGN_MAIN.md") >= 0, "desk must link the foreign-main card");
+assert.ok(html.indexOf("ground/FOREIGN_MAIN.json") >= 0, "desk must link the foreign-main catalog");
+assert.ok(html.indexOf("1787642211.512289") >= 0, "desk must cite the JOJO LDA protocol Slack ts");
+assert.ok(/foreign official main|LocalDeviceAgent|muhl_subagent_protocol|SHIP_RECEIPT/i.test(html), "desk must name foreign-main talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FOREIGN_MAIN.md") >= 0, "foreign-main card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FOREIGN_MAIN.json") >= 0, "foreign-main catalog must stay a canary");
 assert.ok(api.isTitanTestQuarantineTalk, "land.js must classify live-Titan test quarantine talk");
 assert.ok(api.titanTestQuarantineState, "land.js must classify the titan-test-quarantine leftover");
 assert.ok(api.isTitanTestQuarantineTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan via --titan. 1787641850.308579"), "live-Titan quarantine copy is talk");
 assert.ok(!api.isTitanTestQuarantineTalk("make sure people do more than talk about shit"), "ship-talk is not the titan-test-quarantine leftover");
 assert.ok(!api.isTitanTestQuarantineTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land."), "sitting remint is not the titan-test-quarantine leftover");
+assert.ok(!api.isTitanTestQuarantineTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN"), "LDA protocol receipt is not the titan-test-quarantine leftover");
 assert.ok(!api.isSittingRemintTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan."), "quarantine copy is not the sitting-remint leftover");
 assert.ok(!api.isDeviceCanaryTalk("P0 LIVE-TITAN TEST QUARANTINE — test_go_without_titan_is_absent. temp synthetic Titan."), "quarantine copy is not the device-canary leftover");
 var quarantineTalk = api.completionStateFromText(
