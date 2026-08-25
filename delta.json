@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -6286,6 +6292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6518,12 +6530,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -6565,6 +6571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6797,12 +6809,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -6820,6 +6826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7052,12 +7064,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -7075,6 +7081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7307,12 +7319,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -7330,6 +7336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7562,12 +7574,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -7651,6 +7657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7883,12 +7895,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -7966,6 +7972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8198,12 +8210,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -8239,6 +8245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8471,12 +8483,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -8560,6 +8566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8792,12 +8804,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -8851,6 +8857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9083,12 +9095,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -9118,6 +9124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9350,12 +9362,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -9373,6 +9379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9605,12 +9617,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -9694,6 +9700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9926,12 +9938,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -10015,6 +10021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10247,12 +10259,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -10267,8 +10273,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -10339,6 +10351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10571,12 +10589,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -10594,6 +10606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10826,12 +10844,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -10912,8 +10924,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -11146,6 +11164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11378,12 +11402,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -11467,6 +11485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11699,12 +11723,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -11734,6 +11752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11966,12 +11990,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -12037,6 +12055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12269,12 +12293,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -12292,6 +12310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12524,12 +12548,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -12613,6 +12631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12845,12 +12869,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -12880,6 +12898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13112,12 +13136,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -13201,6 +13219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13433,12 +13457,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -13456,6 +13474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13688,12 +13712,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -13777,6 +13795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14009,12 +14033,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -14038,6 +14056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14270,12 +14294,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -14293,6 +14311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14525,12 +14549,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -14614,6 +14632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14846,12 +14870,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -14869,6 +14887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15101,12 +15125,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -15130,6 +15148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15362,12 +15386,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -15451,6 +15469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15683,12 +15707,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -15712,6 +15730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15944,12 +15968,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -16030,8 +16048,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -16294,6 +16318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16526,12 +16556,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -16615,6 +16639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16847,12 +16877,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -16936,6 +16960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17168,12 +17198,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -17257,6 +17281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17489,12 +17519,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -17512,6 +17536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17744,12 +17774,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -17779,6 +17803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18011,12 +18041,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -18100,6 +18124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18332,12 +18362,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -18355,6 +18379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18587,12 +18617,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -18658,6 +18682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18890,12 +18920,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -18979,6 +19003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19211,12 +19241,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -19252,6 +19276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19484,12 +19514,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -19573,6 +19597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19805,12 +19835,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -19828,6 +19852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20060,12 +20090,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -20083,6 +20107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20315,12 +20345,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -20398,6 +20422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20630,12 +20660,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -20653,6 +20677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20885,12 +20915,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -20908,6 +20932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21140,12 +21170,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -21163,6 +21187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21395,12 +21425,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -21418,6 +21442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21650,12 +21680,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -21697,6 +21721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21929,12 +21959,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -22018,6 +22042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22250,12 +22280,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -22303,6 +22327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22535,12 +22565,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -22558,6 +22582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22790,12 +22820,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -22813,6 +22837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23045,12 +23075,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -23068,6 +23092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23300,12 +23330,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -23323,6 +23347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23555,12 +23585,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -23578,6 +23602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23810,12 +23840,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -23899,6 +23923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24131,12 +24161,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -24220,6 +24244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24452,12 +24482,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -24541,6 +24565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24773,12 +24803,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -24838,6 +24862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25070,12 +25100,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -25159,6 +25183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25391,12 +25421,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -25414,6 +25438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25646,12 +25676,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -25669,6 +25693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25901,12 +25931,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -25936,6 +25960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26168,12 +26198,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -26257,6 +26281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26489,12 +26519,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -26512,6 +26536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26744,12 +26774,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -26779,6 +26803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27011,12 +27041,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -27076,6 +27100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27308,12 +27338,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -27397,6 +27421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27629,12 +27659,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -27718,6 +27742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27950,12 +27980,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -28027,6 +28051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28259,12 +28289,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -28289,11 +28313,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-impact-ledger-20260825-01",
-      "last_ts": "2026-08-25T06:25:08Z",
+      "last_id": "rivet-ship-xyz-zero-20260825-01",
+      "last_ts": "2026-08-25T06:26:32Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -28359,12 +28389,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ]
     },
@@ -28373,6 +28397,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
         {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
@@ -28606,12 +28636,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -28695,6 +28719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28927,12 +28957,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -29016,6 +29040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29248,12 +29278,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -29277,6 +29301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29509,12 +29539,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -29550,6 +29574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29782,12 +29812,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -29871,6 +29895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30103,12 +30133,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -30126,6 +30150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30358,12 +30388,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -30447,6 +30471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30679,12 +30709,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -30768,6 +30792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31000,12 +31030,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -31089,6 +31113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31321,12 +31351,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -31410,6 +31434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31642,12 +31672,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -31731,6 +31755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31963,12 +31993,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -31986,6 +32010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32218,12 +32248,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -32271,6 +32295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32503,12 +32533,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -32592,6 +32616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32824,12 +32854,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -32913,6 +32937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33145,12 +33175,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -33234,6 +33258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33466,12 +33496,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
@@ -33555,6 +33579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-xyz-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:26:32Z"
+        },
+        {
           "id": "rivet-ship-impact-ledger-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33787,12 +33817,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
         }
       ],
       "mine": [
