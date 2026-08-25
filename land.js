@@ -122,6 +122,8 @@
     "ground/GROK_HARNESS_PATCH.json",
     "ground/VERIFY_CITE.md",
     "ground/VERIFY_CITE.json",
+    "ground/RENDER_CHECK.md",
+    ".github/workflows/render-check.yml",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -353,6 +355,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isRenderCheckTalk(t)) {
+      return { state: "CLAIMED", note: "visual-diff / Chromium-receipt talk. Talk is not a land. Wire render_check.py 8bit.html 8walk.html pixel.html visual.html onto current-main CI." };
+    }
     if (api.isVisualPraise(t)) {
       return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
     }
@@ -572,6 +577,31 @@
     return {
       state: "CANDIDATE",
       note: "cite named a SHA with no paths. Measure the object on current main. A Slack taking is not the file."
+    };
+  };
+
+  api.isRenderCheckTalk = function (text) {
+    return /render_check\.py|visual-diff gate|chromium receipts|free-runner visual|not wired to current-main ci|8bit\.html 8walk\.html pixel\.html visual\.html/i.test(String(text || ""));
+  };
+
+  api.renderCheckState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: ".github/workflows/render-check.yml body not read. Absence was not measured." };
+    }
+    var hasTool = /render_check\.py/.test(body);
+    var hasPages = /8bit\.html/.test(body) && /8walk\.html/.test(body) && /pixel\.html/.test(body) && /visual\.html/.test(body);
+    var hasPlaywright = /playwright/.test(body);
+    var hasReceipt = /receipt/i.test(body) || /upload-artifact/.test(body);
+    if (hasTool && hasPages && hasPlaywright && hasReceipt) {
+      return {
+        state: "INTEGRATED",
+        note: "free-runner visual-diff gate names render_check.py plus the four visual doors and publishes Chromium receipts. A workflow file is not a run URL. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "render_check.py is not a current-main CI gate. Visual-diff / Chromium-receipt talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1080,6 +1110,7 @@
   var takingOut = document.getElementById("taking-result");
   var grokOut = document.getElementById("grok-harness-result");
   var citeOut = document.getElementById("cite-result");
+  var renderOut = document.getElementById("render-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1487,6 +1518,12 @@
     citeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintRender(result) {
+    if (!renderOut) return;
+    renderOut.setAttribute("data-tone", api.toneFor(result.state));
+    renderOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1613,6 +1650,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintUnused(err);
+      return err;
+    });
+  }
+
+  function loadRenderCheck(sha) {
+    if (!renderOut) return Promise.resolve(null);
+    renderOut.innerHTML = "<b>UNMEASURED</b><p>Reading .github/workflows/render-check.yml at the official SHA…</p>";
+    var url = RAW + sha + "/.github/workflows/render-check.yml";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: ".github/workflows/render-check.yml absent at the measured main SHA. Visual-diff talk is CLAIMED." };
+        paintRender(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintRender(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.renderCheckState(body);
+        paintRender(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintRender(err);
       return err;
     });
   }
@@ -1908,6 +1972,7 @@
     loadTakingTrace(sha);
     loadGrokHarness(sha);
     loadVerifyCite(sha);
+    loadRenderCheck(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

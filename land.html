@@ -124,6 +124,16 @@ python3 -m unittest -v test_verify_cite.py</pre>
 <div id="cite-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Independent-verification / first-numbers copy without the cited SHA and paths on current main is talk. Measure the cite, then ship only this leftover.</p></div>
 </section>
 
+<section aria-labelledby="render-heading">
+<h2 id="render-heading">Render check / visual-diff leftover</h2>
+<p class="note">Slack <code>1787634739.531389</code>: DEMON 8-bit/pixel utilization report. <code>render_check.py</code> caught invisible sprites, 8bit pileup, and dead <code>reply.js</code>, but it was not wired to current-main CI. Visual-diff / Chromium-receipt / free-runner-render / <code>8bit.html 8walk.html pixel.html visual.html</code> talk is <code>CLAIMED</code> until this leftover is on current main. Missing workflow is <code>NOT_LANDED</code>. A workflow file is not a run URL. Hands off DEMON's flight recorder and honest <code>pixels/{name}.json</code> emission. Instrument: <code>host/render_check_ci.py</code>. Card: <a href="./ground/RENDER_CHECK.md">ground/RENDER_CHECK.md</a>. Workflow: <code>.github/workflows/render-check.yml</code>. No auth. No gate. Do not remint the DEMON taking.</p>
+<pre>python3 host/render_check_ci.py
+python3 host/render_check_ci.py --self-test
+python3 render_check.py 8bit.html 8walk.html pixel.html visual.html --receipt receipts/render
+python3 -m unittest -v test_render_check_ci.py</pre>
+<div id="render-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Visual-diff / Chromium-receipt copy without the free-runner workflow on current main is talk. Wire the four visual doors, then ship the leftover.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -259,6 +269,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825n"></script>
+<script src="./land.js?v=20260825o"></script>
 </body>
 </html>

@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825n/.test(html), "desk must bust the verify-cite cache key");
+assert.ok(/20260825o/.test(html), "desk must bust the render-check cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1016,6 +1016,36 @@ assert.ok(html.indexOf("cd7d4f864f0c04143a573173e0b42f61f3c65533") >= 0, "desk m
 assert.ok(/independent-verification|first-numbers|one-evidence-message/i.test(html), "desk must name verify-cite talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.md") >= 0, "verify-cite card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.json") >= 0, "verify-cite catalog must stay a canary");
+assert.ok(api.isRenderCheckTalk, "land.js must classify visual-diff / render_check talk");
+assert.ok(api.renderCheckState, "land.js must classify the render-check workflow");
+assert.ok(api.isRenderCheckTalk("DEMON rolling utilization report — 8-BIT/PIXEL STATUS. render_check.py has caught real invisible-sprite failures but is NOT wired to current-main CI. DIO + JOJO: wire a free-runner visual-diff leftover for render_check.py 8bit.html 8walk.html pixel.html visual.html, publishing Chromium receipts."), "render-check copy is talk");
+assert.ok(!api.isRenderCheckTalk("make sure people do more than talk about shit"), "ship-talk is not the render-check leftover");
+assert.ok(!api.isUtilizationTalk("render_check.py 8bit.html 8walk.html pixel.html visual.html publishing Chromium receipts"), "visual-diff copy is not the grok-capacity leftover");
+var renderTalk = api.completionStateFromText(
+  "render_check.py has caught real invisible-sprite failures but is NOT wired to current-main CI. wire a free-runner visual-diff leftover. publishing Chromium receipts."
+);
+assert.strictEqual(renderTalk.state, "CLAIMED");
+assert.ok(/visual-diff|Chromium-receipt/i.test(renderTalk.note), "render-check-without-SHA must stay CLAIMED and beat utilization");
+var renderDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nrender-check leftover landed"
+);
+assert.strictEqual(renderDone.state, "INTEGRATED", "completion words still beat render-check talk");
+var renderEmpty = api.renderCheckState("");
+assert.strictEqual(renderEmpty.state, "UNMEASURED");
+var renderMissing = api.renderCheckState("# battery only\npython3 test_land_desk.js\n");
+assert.strictEqual(renderMissing.state, "NOT_LANDED");
+var renderOk = api.renderCheckState(
+  "python3 render_check.py 8bit.html 8walk.html pixel.html visual.html --receipt receipts/render\nplaywright\nupload-artifact\n"
+);
+assert.strictEqual(renderOk.state, "INTEGRATED");
+assert.ok(/workflow file is not a run URL/i.test(renderOk.note), "landed gate must name a workflow as not a run");
+assert.ok(html.indexOf('id="render-result"') >= 0, "desk must name the render-check leftover");
+assert.ok(html.indexOf("host/render_check_ci.py") >= 0, "desk must name the render-check instrument");
+assert.ok(html.indexOf("ground/RENDER_CHECK.md") >= 0, "desk must link the render-check card");
+assert.ok(html.indexOf("1787634739.531389") >= 0, "desk must cite the 8-bit/pixel Slack ts");
+assert.ok(/visual-diff|Chromium-receipt|free-runner-render/i.test(html), "desk must name render-check talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CHECK.md") >= 0, "render-check card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf(".github/workflows/render-check.yml") >= 0, "render-check workflow must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
 var readTalk = api.readVoltageState({});
