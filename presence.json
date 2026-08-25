@@ -666,8 +666,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-subzero-tech-presence-20260825-01",
-    "ts": "2026-08-25T09:20:30Z",
+    "id": "rivet-ship-grok-receipt-20260825-01",
+    "ts": "2026-08-25T09:26:36Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
