@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825aj/.test(html), "desk must bust the claude-zero retract cache key");
+assert.ok(/20260825ak/.test(html), "desk must bust the grok-recovery cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1257,6 +1257,40 @@ assert.ok(/P0 CONTAINMENT|TRACE CONSUMERS|FINDER-FAILED|Claude cannot certify/i.
 assert.ok(api.CANARY_PATHS.indexOf("ground/IMPACT_LEDGER.md") >= 0, "impact-ledger card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/IMPACT_LEDGER.json") >= 0, "impact-ledger catalog must stay a canary");
 assert.ok(!api.isImpactLedgerTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the impact-ledger leftover");
+assert.ok(api.isGrokRecoveryTalk, "land.js must classify grok-recovery / muhlnickel-subagent talk");
+assert.ok(api.grokRecoveryState, "land.js must classify the grok-recovery leftover");
+assert.ok(api.isGrokRecoveryTalk("from: JOJO\nid: jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01\nsubject: GROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT\nNO host model inference. prompt-address → receiver pulse → result-register. discovery 01a0373e. 50_cross_synthesis.txt. no-host-inference/no-Titan-mutation."), "JOJO grok-recovery taking is talk");
+assert.ok(!api.isGrokRecoveryTalk("make sure people do more than talk about shit"), "ship-talk is not the grok-recovery leftover");
+assert.ok(!api.isGrokRecoveryTalk("Revenue/substrate fleet live — Grok 4.6 workflows + Claude verifier"), "fleet talk is not the grok-recovery leftover");
+assert.ok(!api.isGrokRecoveryTalk("GROK HARNESS GAP (verified read-only): ~/.grok reports 0 MCP servers, 0 LSP servers"), "harness-gap copy is not the grok-recovery leftover");
+assert.ok(!api.isFleetTalk("GROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT. prompt-address. 01a0373e. 50_cross_synthesis.txt."), "grok-recovery copy is not the fleet leftover");
+assert.ok(!api.isGrokHarnessTalk("GROK RECOVERY + MUHLNICKEL-ONLY. prompt-address. 01a0373e. 50_cross_synthesis.txt."), "grok-recovery copy is not the harness leftover");
+assert.ok(!api.isGrokRecoveryTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the grok-recovery leftover");
+assert.ok(!api.isGrokRecoveryTalk("measurement abuse, not just measurement error. unflattering truths. damage-control addendum."), "measure-abuse copy is not the grok-recovery leftover");
+var grokRecTalk = api.completionStateFromText(
+  "from: JOJO\nid: jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01\nGROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT\nprompt-address → receiver pulse → result-register\n01a0373e 50_cross_synthesis.txt\nFINDER-UNVERIFIED known-present calibration"
+);
+assert.strictEqual(grokRecTalk.state, "CLAIMED");
+assert.ok(/grok-recovery|muhlnickel-only|prompt-address/i.test(grokRecTalk.note), "grok-recovery-without-SHA must stay CLAIMED and beat finder-zero");
+var grokRecDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok-recovery leftover landed"
+);
+assert.strictEqual(grokRecDone.state, "INTEGRATED", "completion words still beat grok-recovery talk");
+var grokRecEmpty = api.grokRecoveryState("");
+assert.strictEqual(grokRecEmpty.state, "UNMEASURED");
+var grokRecMissing = api.grokRecoveryState("# empty stub\nno leftover");
+assert.strictEqual(grokRecMissing.state, "NOT_LANDED");
+var grokRecOk = api.grokRecoveryState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER UNVERIFIED\nnever 0\ndests FROM FILE\nno_host_inference\nno_titan_mutation\n01a0373e\n50_cross_synthesis\nknown-present calibration\n");
+assert.strictEqual(grokRecOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(grokRecOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="grok-recovery-result"') >= 0, "desk must name the grok-recovery leftover");
+assert.ok(html.indexOf("host/grok_recovery.py") >= 0, "desk must name the grok-recovery instrument");
+assert.ok(html.indexOf("ground/GROK_RECOVERY.md") >= 0, "desk must link the grok-recovery card");
+assert.ok(html.indexOf("ground/GROK_RECOVERY.json") >= 0, "desk must link the grok-recovery catalog");
+assert.ok(html.indexOf("1787638974.401269") >= 0, "desk must cite the JOJO grok-recovery Slack ts");
+assert.ok(/grok-recovery|muhlnickel-only|prompt-address|01a0373e|50_cross_synthesis/i.test(html), "desk must name grok-recovery talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECOVERY.md") >= 0, "grok-recovery card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECOVERY.json") >= 0, "grok-recovery catalog must stay a canary");
 assert.ok(api.isStaleManifestTalk, "land.js must classify KEYB stale-manifest talk");
 assert.ok(api.staleManifestState, "land.js must classify the stale-manifest leftover");
 assert.ok(api.isStaleManifestTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims a63396. size agrees, bytes do not. do not land, wire, execute, or describe this container as manifest-verified. post-manifest mutation. cca2b762. stale/out-of-spec."), "KEYB stale-manifest correction is talk");

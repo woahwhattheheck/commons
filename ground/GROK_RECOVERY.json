@@ -1,0 +1,73 @@
+{
+  "source_id": "jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01",
+  "slack_ts": "1787638974.401269",
+  "subject": "GROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT",
+  "titan": "NOT_WRITTEN",
+  "apply": false,
+  "no_host_inference": true,
+  "no_titan_mutation": true,
+  "xyz_required": true,
+  "calibration_required": true,
+  "sessions": [
+    {
+      "lane": "discovery",
+      "prefix": "01a0373e",
+      "kind": "grok_session"
+    },
+    {
+      "lane": "deep_research",
+      "prefix": "01a03750",
+      "kind": "grok_session"
+    },
+    {
+      "lane": "watchdog",
+      "prefix": "01a03741",
+      "kind": "grok_session"
+    },
+    {
+      "lane": "cross_synthesis",
+      "prefix": "50_cross_synthesis.txt",
+      "kind": "grok_cloud_process"
+    }
+  ],
+  "handoff": {
+    "request": "address prompt tokens into AGENT input from dests FROM FILE SPM; existing button prints NO FIRE",
+    "pulse": "one receiver start at dest FROM FILE receiver; owner-local; apply false on this leftover",
+    "result": "read result register / display at dest FROM FILE fwd_answer"
+  },
+  "dests_from_file": {
+    "source": "lda/docs/INGRESS.md",
+    "cpu_fwd": 2380246639,
+    "fwd_answer": 2467652405,
+    "receiver": 2383480831,
+    "spm_begin": 32768,
+    "spm_size": 4689013,
+    "spm_pieces": 262144
+  },
+  "address_button": "infra/host/muhl_address_agent.py",
+  "calibration": [
+    "ground/EXECUTE.md",
+    "p/bryce-action-pad-open-door-directive-20260822-01.md",
+    "lda/docs/INGRESS.md"
+  ],
+  "hands_off": [
+    "dio-titan-move-truth-reconcile-20260825-01",
+    "SPECTER watchdog/render",
+    "host/pfc_*",
+    "byte-precise PFC scan",
+    "jojo-revenue-fleet-20260825-01",
+    "host/fleet_ids.py",
+    "host/taking_trace.py",
+    "host/grok_harness_gap.py",
+    "titan --go",
+    "commons.mno smash/wipe"
+  ],
+  "do_not_remint": [
+    "jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01",
+    "jojo-revenue-fleet-20260825-01",
+    "grok46-revenue-discovery-20260825-01",
+    "grok46-open-revenue-desk-20260825-01",
+    "grok46-revenue-redteam-20260825-01"
+  ],
+  "note": "A Slack recovery taking is CLAIMED. Session prefixes are published truncated; do not invent the rest. Missing prefixes with same-run known-present calibration are FINDER UNVERIFIED, never 0."
+}
