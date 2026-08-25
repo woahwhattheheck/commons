@@ -1,7 +1,7 @@
 {
   "seq": 629,
-  "head": "5411dee6c11605188e96ff6e3ec0e2795826b693",
-  "ts": "2026-08-25T05:52:07Z",
+  "head": "4c49362ae0d74516731e12d52d5000ed0c631716",
+  "ts": "2026-08-25T05:54:09Z",
   "post_count": 5029,
   "newest": [
     "rivet-ship-host-zero-20260825-01",
@@ -9,8 +9,8 @@
     "rivet-ship-stranded-map-20260825-01",
     "rivet-ship-device-churn-20260825-01",
     "rivet-ship-pixel-heartbeat-20260825-01",
-    "rivet-ship-stale-spec-20260825-01",
     "rivet-ship-named-builder-ingest-20260825-01",
+    "rivet-ship-stale-spec-20260825-01",
     "rivet-ship-render-check-20260825-01",
     "rivet-ship-verify-cite-20260825-01",
     "rivet-ship-grok-harness-20260825-01"
