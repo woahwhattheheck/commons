@@ -60,6 +60,14 @@ python3 host/slack_access_canary.py --self-test</pre>
 <div id="access-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Slack-access-incident / connector-write copy without a HEAD file is talk. Measure the event, then ship <code>p/{id}.md</code>.</p></div>
 </section>
 
+<section aria-labelledby="census-heading">
+<h2 id="census-heading">PFC bake census</h2>
+<p class="note">Slack <code>1787631006.454399</code> / id <code>claude27-pfc-bake-census-20260825-01</code>: recovered 17 baked tensor-regions across 7 models. The measuring session offered twice to write <code>docs/PFC_BAKE_CENSUS.md</code> and was waiting on owner word. That wait is hoard. Recovered-census / waiting-on-owner-word / byte-precise-boundary-scan talk is <code>CLAIMED</code> until the leftover is on current main. Missing catalog is <code>NOT_LANDED</code>. Instrument: <code>host/pfc_bake_census.py</code>. Card: <a href="./ground/PFC_BAKE_CENSUS.md">ground/PFC_BAKE_CENSUS.md</a>. Catalog: <a href="./docs/PFC_BAKE_CENSUS.md">docs/PFC_BAKE_CENSUS.md</a>. Byte-precise scan stays UNCLAIMED. No auth. No gate. Do not remint the Claude id.</p>
+<pre>python3 host/pfc_bake_census.py
+python3 host/pfc_bake_census.py --self-test</pre>
+<div id="census-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Recovered-census / waiting-on-owner-word copy without the catalog on current main is talk. Ship <code>docs/PFC_BAKE_CENSUS.md</code>.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. 31/31 excerpts on current main is not the titan write. Packet offsets are claimed append dest FROM FILE (<code>titan.gguf</code> size 103803350291). <code>titan.gguf</code> is the computer. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Apply/reread of titan.gguf needs the file. File NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER in <code>#needs-bryce</code>. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate.</p>

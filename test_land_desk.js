@@ -606,6 +606,8 @@ assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-v
 assert.ok(api.CANARY_PATHS.indexOf("ground/HOARD.md") >= 0, "hoard / session-export card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_MOVE.md") >= 0, "titan MOVE card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_ACCESS.md") >= 0, "slack-access card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/PFC_BAKE_CENSUS.md") >= 0, "bake-census card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("docs/PFC_BAKE_CENSUS.md") >= 0, "bake-census catalog must stay a canary");
 assert.ok(api.sessionExportState, "land.js must classify session export");
 assert.ok(api.isHoardTalk, "land.js must classify owner hoard/commit-push copy");
 assert.ok(api.isSubstrateDodgeTalk, "land.js must classify substrate-dodge TAKINGS");
@@ -707,6 +709,35 @@ assert.ok(html.indexOf("ground/SLACK_ACCESS.md") >= 0, "desk must link the slack
 assert.ok(html.indexOf("1787630616.892789") >= 0, "desk must cite the access-incident Slack ts");
 assert.ok(html.indexOf("1787630792.904509") >= 0, "desk must cite the Claude Slack canary ts");
 assert.ok(/slack-access-incident|connector-can-read-and-write|still-channel-members/i.test(html), "desk must name access-incident talk as CLAIMED");
+assert.ok(api.isBakeCensusTalk, "land.js must classify recovered bake-census talk");
+assert.ok(api.bakeCensusState, "land.js must classify the bake-census catalog");
+assert.ok(api.isBakeCensusTalk("id: claude27-pfc-bake-census-20260825-01\n17 baked tensor-regions across 7 models. It offered twice to write docs/PFC_BAKE_CENSUS.md and was waiting on owner word when it ended. This is the anti-hoard case Bryce named at 23:03. BYTE-PRECISE BOUNDARY SCAN."), "recovered census copy is talk");
+assert.ok(!api.isBakeCensusTalk("daily complete inventory of organs"), "generic inventory is not the bake census");
+var censusTalk = api.completionStateFromText(
+  "RECOVERED — PFC BAKE CENSUS, 17 baked tensor-regions. offered twice to write docs/PFC_BAKE_CENSUS.md and was waiting on owner word when it ended."
+);
+assert.strictEqual(censusTalk.state, "CLAIMED");
+assert.ok(/recovered-census|waiting-on-owner-word/i.test(censusTalk.note), "census-without-SHA must stay CLAIMED");
+var censusDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nrecovered PFC bake census leftover landed"
+);
+assert.strictEqual(censusDone.state, "INTEGRATED", "completion words still beat recovered-census talk");
+var censusEmpty = api.bakeCensusState("");
+assert.strictEqual(censusEmpty.state, "UNMEASURED");
+var censusMissing = api.bakeCensusState("# empty catalog\nno map");
+assert.strictEqual(censusMissing.state, "NOT_LANDED");
+var censusOk = api.bakeCensusState(
+  "17 baked tensor-regions across 7 models\nHeuristic detector. Row ranges are LOWER BOUNDS.\nMixtral-8x7B token_embd blk.0.ffn_up"
+);
+assert.strictEqual(censusOk.state, "INTEGRATED");
+assert.ok(/17 regions/.test(censusOk.note), "landed census must name the region count");
+assert.ok(html.indexOf('id="census-result"') >= 0, "desk must name the bake-census leftover");
+assert.ok(html.indexOf("host/pfc_bake_census.py") >= 0, "desk must name the bake-census instrument");
+assert.ok(html.indexOf("ground/PFC_BAKE_CENSUS.md") >= 0, "desk must link the bake-census card");
+assert.ok(html.indexOf("docs/PFC_BAKE_CENSUS.md") >= 0, "desk must link the bake-census catalog");
+assert.ok(html.indexOf("1787631006.454399") >= 0, "desk must cite the recovered-census Slack ts");
+assert.ok(html.indexOf("claude27-pfc-bake-census-20260825-01") >= 0, "desk must name the recovered id");
+assert.ok(/recovered-census|waiting-on-owner-word|byte-precise-boundary-scan/i.test(html), "desk must name recovered-census talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
