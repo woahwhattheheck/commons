@@ -672,8 +672,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
-    "ts": "2026-08-25T10:07:36Z",
+    "id": "rivet-ship-address-contract-stride-math-20260825-01",
+    "ts": "2026-08-25T10:17:36Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

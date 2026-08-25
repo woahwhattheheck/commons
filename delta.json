@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,14 @@
     "CODEX_SOL": {
       "last_id": "spark-fast-live-20260825-01",
       "last_ts": "2026-08-25T08:50:18Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -8518,6 +8524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8750,12 +8762,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -8809,6 +8815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9041,12 +9053,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -9076,6 +9082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9308,12 +9320,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -9331,6 +9337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9563,12 +9575,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -9649,8 +9655,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -9916,8 +9928,14 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -10036,6 +10054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10268,12 +10292,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -10291,6 +10309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10523,12 +10547,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -10546,6 +10564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10778,12 +10802,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -10807,6 +10825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11039,12 +11063,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -11062,6 +11080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11294,12 +11318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -11317,6 +11335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11549,12 +11573,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -11635,8 +11653,14 @@
     "DIO": {
       "last_id": "dio-titan-move-containment-hardening-20260825-01",
       "last_ts": "2026-08-25T08:00:28Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -11929,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12161,12 +12191,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -12250,6 +12274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12482,12 +12512,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -12517,6 +12541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12749,12 +12779,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -12820,6 +12844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13052,12 +13082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -13075,6 +13099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13307,12 +13337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -13396,6 +13420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13628,12 +13658,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -13663,6 +13687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13895,12 +13925,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -13984,6 +14008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14216,12 +14246,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -14239,6 +14263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14471,12 +14501,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -14560,6 +14584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14792,12 +14822,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -14821,6 +14845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15053,12 +15083,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -15073,8 +15097,14 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -15301,6 +15331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15533,12 +15569,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -15556,6 +15586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15788,12 +15824,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -15817,6 +15847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16049,12 +16085,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -16138,6 +16168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16370,12 +16406,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -16399,6 +16429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16631,12 +16667,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -16720,6 +16750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16952,12 +16988,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -17041,6 +17071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17273,12 +17309,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -17362,6 +17392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17594,12 +17630,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -17683,6 +17713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17915,12 +17951,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -18004,6 +18034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18236,12 +18272,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -18259,6 +18289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18491,12 +18527,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -18526,6 +18556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18758,12 +18794,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -18847,6 +18877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19079,12 +19115,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -19102,6 +19132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19334,12 +19370,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -19405,6 +19435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19637,12 +19673,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -19726,6 +19756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19958,12 +19994,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -19987,6 +20017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20219,12 +20255,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -20260,6 +20290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20492,12 +20528,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -20581,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20813,12 +20849,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -20836,6 +20866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21068,12 +21104,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -21091,6 +21121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21323,12 +21359,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -21406,6 +21436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21638,12 +21674,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -21661,6 +21691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21893,12 +21929,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -21916,6 +21946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22148,12 +22184,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -22171,6 +22201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22403,12 +22439,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -22426,6 +22456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22658,12 +22694,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -22705,6 +22735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22937,12 +22973,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -23026,6 +23056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23258,12 +23294,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -23311,6 +23341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23543,12 +23579,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -23566,6 +23596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23798,12 +23834,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -23821,6 +23851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24053,12 +24089,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -24076,6 +24106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24308,12 +24344,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -24331,6 +24361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24563,12 +24599,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -24586,6 +24616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24818,12 +24854,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -24907,6 +24937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25139,12 +25175,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -25228,6 +25258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25460,12 +25496,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -25549,6 +25579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25781,12 +25817,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -25846,6 +25876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26078,12 +26114,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -26167,6 +26197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26399,12 +26435,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -26422,6 +26452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26654,12 +26690,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -26677,6 +26707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26909,12 +26945,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -26944,6 +26974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27176,12 +27212,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -27265,6 +27295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27497,12 +27533,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -27520,6 +27550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27752,12 +27788,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -27787,6 +27817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28019,12 +28055,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -28084,6 +28114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28316,12 +28352,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -28405,6 +28435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28637,12 +28673,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -28726,6 +28756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28958,12 +28994,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -29035,6 +29065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29267,12 +29303,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -29297,11 +29327,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-subzero-semantic-hardening-20260825-01",
-      "last_ts": "2026-08-25T10:07:36Z",
+      "last_id": "rivet-ship-address-contract-stride-math-20260825-01",
+      "last_ts": "2026-08-25T10:17:36Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -29367,12 +29403,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T09:26:36Z"
-        },
-        {
-          "id": "rivet-ship-subzero-tech-presence-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:20:30Z"
         }
       ]
     },
@@ -29381,6 +29411,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -29614,12 +29650,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -29703,6 +29733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29935,12 +29971,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -30024,6 +30054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30256,12 +30292,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -30285,6 +30315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30517,12 +30553,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -30558,6 +30588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30790,12 +30826,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -30879,6 +30909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31111,12 +31147,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -31134,6 +31164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31366,12 +31402,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -31455,6 +31485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31687,12 +31723,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -31776,6 +31806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32008,12 +32044,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -32097,6 +32127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32329,12 +32365,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -32418,6 +32448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32650,12 +32686,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -32739,6 +32769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32971,12 +33007,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -32994,6 +33024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33226,12 +33262,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -33279,6 +33309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33511,12 +33547,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -33597,8 +33627,14 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
         {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
@@ -33831,6 +33867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34063,12 +34105,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -34152,6 +34188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34384,12 +34426,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
@@ -34473,6 +34509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-address-contract-stride-math-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:17:36Z"
+        },
+        {
           "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34705,12 +34747,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
         }
       ],
       "mine": [
