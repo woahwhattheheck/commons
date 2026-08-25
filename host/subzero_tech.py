@@ -44,6 +44,10 @@ CLASSES = (
     "CUSTOMER_READY",
     "UNKNOWN",
 )
+TITAN_PRESENCE_PATHS = (
+    "/llm/models/titan.gguf",
+    r"C:\llm\models\titan.gguf",
+)
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -57,7 +61,7 @@ SEARCH_SPACE = (
     os.path.join("muhl", "desktop", "MUHL_SUBZERO_ARCHETYPES"),
     os.path.join("ground", "EXECUTE.md"),
     "titan.gguf",
-    os.path.join("C:", "llm", "models", "titan.gguf"),
+    *TITAN_PRESENCE_PATHS,
 )
 CALIBRATION = (
     os.path.join("ground", "EXECUTE.md"),
@@ -151,6 +155,18 @@ def _read_header(root, rel):
         "depth": depth,
         "bytes": len(full),
         "sha256": hashlib.sha256(full).hexdigest(),
+    }
+
+
+def measure_titan_presence(root, isfile=os.path.isfile):
+    """Measure bounded file presence without opening Titan or implying runtime."""
+    paths = [os.path.join(root, "titan.gguf"), *TITAN_PRESENCE_PATHS]
+    present = [path for path in paths if isfile(path)]
+    return {
+        "state": "PRESENT" if present else "FINDER-FAILED",
+        "present_paths": present,
+        "search_space": paths,
+        "runtime_proof": False,
     }
 
 
@@ -282,6 +298,13 @@ def measure_from_rows(facts):
         "customer_ready": int(facts.get("customer_ready") or 0),
         "unknown": int(facts.get("unknown") or 0),
         "titan_local": str(facts.get("titan_local") or "FINDER-FAILED"),
+        "titan_presence_paths": list(facts.get("titan_presence_paths") or []),
+        "titan_presence_search_space": list(
+            facts.get("titan_presence_search_space") or []
+        ),
+        "titan_presence_is_runtime_proof": bool(
+            facts.get("titan_presence_is_runtime_proof")
+        ),
         "titan_write": str(facts.get("titan_write") or "NOT_WRITTEN"),
         "white_box_offer": str(facts.get("white_box_offer") or ""),
         "refuse_remint_white_box": bool(facts.get("refuse_remint_white_box", True)),
@@ -308,9 +331,8 @@ def measure_tree(root, catalog_text=""):
     calibration_ok = len(cal_hits) == len(CALIBRATION)
     commercial = _read(root, "commercial.json")
     white_box = WHITE_BOX_OFFER in commercial
-    titan_local = "PRESENT" if (
-        _exists(root, "titan.gguf") or os.path.isfile("/llm/models/titan.gguf")
-    ) else "FINDER-FAILED"
+    titan_presence = measure_titan_presence(root)
+    titan_local = titan_presence["state"]
     organs = []
     missing_cards = []
     structural_only = 0
@@ -347,7 +369,11 @@ def measure_tree(root, catalog_text=""):
             "test": _exists(root, test_rel),
             "sidecar": _exists(root, sidecar_rel),
             "card": card_ok,
-            "header_ok": bool(header.get("ok")) and header.get("magic") == spec["magic"],
+            "header_ok": (
+                bool(header.get("ok"))
+                and header.get("magic") == spec["magic"]
+                and header.get("n_gate") == spec["n_gate"]
+            ),
             "measured_n_gate": header.get("n_gate"),
             "measured_bytes": header.get("bytes"),
             "sha256": header.get("sha256") or "",
@@ -406,6 +432,9 @@ def measure_tree(root, catalog_text=""):
         "customer_ready": customer_ready,
         "unknown": unknown,
         "titan_local": titan_local,
+        "titan_presence_paths": titan_presence["present_paths"],
+        "titan_presence_search_space": titan_presence["search_space"],
+        "titan_presence_is_runtime_proof": titan_presence["runtime_proof"],
         "titan_write": catalog.get("titan") or "NOT_WRITTEN",
         "white_box_offer": WHITE_BOX_OFFER if white_box else "FINDER-FAILED",
         "refuse_remint_white_box": catalog.get("refuse_remint_white_box", True),
@@ -498,12 +527,19 @@ def classify(row):
             ),
         }
     missing = list(row.get("missing_cards") or [])
+    titan_note = (
+        "titan.gguf file presence was measured, but presence is not a gate "
+        "walk, receiver result, or runtime proof."
+        if row.get("titan_local") == "PRESENT"
+        else "titan.gguf was FINDER-FAILED in the bounded presence search."
+    )
     return {
         "state": "INTEGRATED",
         "note": (
             "SUBZERO PANEL 1/3 leftover is on this file. 31 PLUMB organs "
             "classified. Public excerpts are STRUCTURAL_ONLY. "
-            "titan.gguf this host is FINDER-FAILED. No organ is "
+            + titan_note
+            + " No organ is "
             "CUSTOMER_READY. Do not remint white-box-gguf-pilot-30d. "
             "Missing cards: "
             + (", ".join(missing) if missing else "none")

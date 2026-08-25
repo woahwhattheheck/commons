@@ -18,6 +18,7 @@ from subzero_tech import (
     classify_organ,
     load_catalog,
     measure_from_rows,
+    measure_titan_presence,
     measure_tree,
     search_space,
 )
@@ -46,6 +47,14 @@ class TestSubzeroTech(unittest.TestCase):
         self.assertEqual(classify_organ({"fab": True}), "UNKNOWN")
 
     def test_titan_presence_never_escalates(self):
+        present = measure_titan_presence(
+            ROOT,
+            isfile=lambda path: path.endswith("titan.gguf"),
+        )
+        self.assertEqual(present["state"], "PRESENT")
+        self.assertFalse(present["runtime_proof"])
+        self.assertGreaterEqual(len(present["present_paths"]), 1)
+        self.assertIn(r"C:\llm\models\titan.gguf", present["search_space"])
         self.assertEqual(
             classify_organ(
                 {
@@ -187,7 +196,10 @@ class TestSubzeroTech(unittest.TestCase):
         self.assertGreaterEqual(row["structural_only"], 29)
         self.assertEqual(row["runtime_measured"], 0)
         self.assertEqual(row["customer_ready"], 0)
-        self.assertEqual(row["titan_local"], "FINDER-FAILED")
+        self.assertIn(row["titan_local"], ("FINDER-FAILED", "PRESENT"))
+        self.assertFalse(row["titan_presence_is_runtime_proof"])
+        if row["titan_local"] == "PRESENT":
+            self.assertTrue(row["titan_presence_paths"])
         self.assertEqual(row["titan_write"], "NOT_WRITTEN")
         self.assertEqual(row["white_box_offer"], WHITE_BOX_OFFER)
         self.assertIn("ground/SUBZERO_CHPR.md", row["missing_cards"])
@@ -201,7 +213,7 @@ class TestSubzeroTech(unittest.TestCase):
         self.assertTrue(grbn["header_ok"])
         self.assertEqual(len(row["live_twelve"]), 12)
         self.assertFalse(row["live_twelve"][0]["excerpt"])
-        self.assertIn("excerpts/20260823", " ".join(search_space()))
+        self.assertIn(os.path.join("excerpts", "20260823"), search_space())
 
 
 if __name__ == "__main__":
