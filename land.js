@@ -106,6 +106,7 @@
     "ground/SHARED_ONE.md",
     "ground/READ_IS_VOLTAGE.md",
     "ground/HOARD.md",
+    "ground/TITAN_MOVE.md",
     "robots.txt",
     "slack/plugin.html"
   ];
@@ -366,6 +367,9 @@
     if (api.isHoardTalk(t)) {
       return { state: "CLAIMED", note: "session-hoard / commit-push talk. Talk is not a land. Commit, push, and merge the leftover onto current main." };
     }
+    if (api.isSubstrateDodgeTalk(t)) {
+      return { state: "CLAIMED", note: "substrate-dodge TAKING. Talk is not a land. Take the titan write lane or file NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -430,6 +434,38 @@
 
   api.isHoardTalk = function (text) {
     return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
+  };
+
+  api.isSubstrateDodgeTalk = function (text) {
+    return /no muhlnickel,\s*organ,\s*titan,\s*or device path|no muhlnickel.{0,80}organ.{0,80}titan.{0,80}device path|stop dodging the substrate|not to be ignored and it is not to be deferred/i.test(String(text || ""));
+  };
+
+  api.titanMoveState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "titan move packet not measured. Absence was not stillness." };
+    }
+    var count = Number(row.count || 0);
+    var excerpts = Number(row.excerpt_count || 0);
+    var written = String(row.titan || "").toUpperCase();
+    var nonzero = Number(row.nonzero_offsets || 0);
+    var reread = row.reread === true;
+    if (written === "WRITTEN" && reread && nonzero === count && count >= 31) {
+      return { state: "INTEGRATED", note: "titan write and reread measured for " + count + " organs." };
+    }
+    if (excerpts < 31) {
+      return {
+        state: "NOT_LANDED",
+        note: "only " + excerpts + "/31 excerpts on this tree. Fabricate the missing organ. Do not write titan yet."
+      };
+    }
+    if (written === "NOT_WRITTEN" || nonzero === 0) {
+      return {
+        state: "NOT_LANDED",
+        note: excerpts + "/31 excerpts on this tree. titan write is OWNER_LOCAL_ALLOCATOR. Offset 0 is a request, not a band. This cloud box cannot close it."
+      };
+    }
+    return { state: "NOT_LANDED", note: "titan move not closed. Measure the packet and the reread." };
   };
 
   api.sessionExportState = function (row) {
@@ -687,6 +723,7 @@
   var prHost = document.getElementById("pr-list");
   var organHost = document.getElementById("organ-list");
   var organSum = document.getElementById("organ-sum");
+  var titanOut = document.getElementById("titan-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1036,7 +1073,10 @@
       var open = census.length - landed;
       if (organSum) {
         organSum.textContent = landed + " INTEGRATED · " + open + " NOT_LANDED of " + census.length +
-          " PLUMB 1–31 organs. Take a NOT_LANDED row. A PR is not this list.";
+          " PLUMB 1–31 organs. " +
+          (open === 0
+            ? "Excerpts are files. The leftover is titan write (OWNER_LOCAL_ALLOCATOR), not another remint."
+            : "Take a NOT_LANDED row. A PR is not this list.");
       }
       organHost.innerHTML = census.map(function (row) {
         return "<li><span class=\"st st-" + esc(row.state) + "\">" + esc(row.state) + "</span> " +
@@ -1046,6 +1086,53 @@
     }).catch(function (e) {
       if (organSum) organSum.textContent = "excerpt directory lookup failed. Measure the path on current main.";
       organHost.innerHTML = "<li>GitHub contents lookup failed (" + esc(e.message) + "). Use the curl below. Unauthenticated api.github.com is 60 requests/hour.</li>";
+    });
+  }
+
+  function paintTitan(result) {
+    if (!titanOut) return;
+    titanOut.setAttribute("data-tone", api.toneFor(result.state));
+    titanOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadTitanPacket(sha) {
+    if (!titanOut) return Promise.resolve(null);
+    titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
+    var url = RAW + sha + "/excerpts/20260823/titan_move_packet.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "titan_move_packet.json absent at the measured main SHA" };
+        paintTitan(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTitan(failed);
+        return failed;
+      }
+      return r.json().then(function (data) {
+        var organs = (data && data.organs) || [];
+        var nonzero = 0;
+        var i;
+        for (i = 0; i < organs.length; i += 1) {
+          if (Number(organs[i] && organs[i].offset) !== 0) nonzero += 1;
+        }
+        var row = {
+          measured: true,
+          count: Number((data && data.count) || organs.length || 0),
+          excerpt_count: organs.length,
+          titan: (data && data.titan) || "NOT_WRITTEN",
+          nonzero_offsets: nonzero,
+          reread: false
+        };
+        var got = api.titanMoveState(row);
+        paintTitan(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTitan(err);
+      return err;
     });
   }
 
@@ -1146,6 +1233,7 @@
     if (!sha) return;
     loadKnownChallenge(sha);
     loadOrgans(sha);
+    loadTitanPacket(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

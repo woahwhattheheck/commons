@@ -28,7 +28,10 @@ a fresh band is allocated locally.
 ```
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_titan_move_packet.py
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_titan_move_packet.py --dry
+python3 host/titan_move_dry.py
 ```
 
 `--dry` manufactures the packet in memory and writes nothing. It does not
-open `titan.gguf`. Do not smash `commons.mno`. Do not remint a landed excerpt.
+open `titan.gguf`. `host/titan_move_dry.py` measures the landed packet
+against the excerpt files and prints the owner-blocker form. Do not smash
+`commons.mno`. Do not remint a landed excerpt. Card: [TITAN_MOVE.md](./TITAN_MOVE.md).
