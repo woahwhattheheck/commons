@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from harness_wake.callback import consume_delivery, finish_delivery
 from harness_wake.cursor_adapter import claimed_paths, ntfy_payload, should_ring_issue_1316
-from harness_wake.watchdog import run
+from harness_wake.watchdog import pinned_head_oracle, run
 from independent_commons_mcp.jobs import JobError, JobStore, utc_now
 from independent_commons_mcp.server import MCPServer
 
@@ -1255,6 +1255,189 @@ class SchedulerDeliveryTests(unittest.TestCase):
         self.assertEqual(replay_after_done["state"], "REPLAY")
         self.assertFalse(replay_after_done["invoke_model"])
         self.assertEqual(self.store.get(JOB_ID), terminal)
+
+
+class RecordingTruth:
+    """Public HEAD stand-in. Records pin and read calls; never hits the network."""
+
+    def __init__(self, present=(), sha="0123456789abcdef0123456789abcdef01234567"):
+        self.present = set(present)
+        self.sha = sha
+        self.head_calls = 0
+        self.reads = []
+
+    def head_sha(self):
+        self.head_calls += 1
+        return self.sha
+
+    def read_at_sha(self, path, sha):
+        self.reads.append((path, sha))
+        ident = str(path or "").replace("\\", "/").lstrip("/")
+        if ident.startswith("p/") and ident.endswith(".md"):
+            ident = ident[2:-3]
+        if ident in self.present:
+            return 200, "from: TEST\n\n---\n\npage\n"
+        return 404, None
+
+
+class WatchdogHeadOracleTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix="wake-jobs-")
+        self.store = JobStore(self.tmp.name)
+        self.http = FakeDeliver()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _head_job(self, **extra):
+        data = fields(completion_predicate={"type": "result_address_on_head"})
+        data.update(extra)
+        return data
+
+    def test_pinned_head_oracle_is_lazy_and_pins_once(self):
+        truth = RecordingTruth(present={RESULT_ID})
+        oracle = pinned_head_oracle(truth=truth)
+        self.assertEqual(truth.head_calls, 0)
+        self.assertEqual(truth.reads, [])
+        self.assertTrue(oracle(RESULT_ID))
+        self.assertFalse(oracle("missing-page-20260825-01"))
+        self.assertEqual(truth.head_calls, 1)
+        self.assertEqual(
+            [path for path, sha in truth.reads],
+            ["p/%s.md" % RESULT_ID, "p/missing-page-20260825-01.md"],
+        )
+        self.assertEqual({sha for _path, sha in truth.reads}, {truth.sha})
+
+    def test_known_present_is_done_with_zero_delivery_and_zero_model(self):
+        self.store.upsert(self._head_job())
+        truth = RecordingTruth(present={RESULT_ID})
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertFalse(summary["invoke_model"])
+        self.assertEqual(summary["jobs"][0]["action"], "STOP")
+        self.assertEqual(summary["jobs"][0]["reason"], "DONE")
+        self.assertFalse(summary["jobs"][0]["invoke_model"])
+        self.assertEqual(self.store.get(JOB_ID)["status"], "DONE")
+        self.assertEqual(self.http.calls, [])
+        self.assertEqual(truth.head_calls, 1)
+        self.assertEqual(truth.reads, [("p/%s.md" % RESULT_ID, truth.sha)])
+
+    def test_known_absent_is_runnable_mail(self):
+        self.store.upsert(self._head_job())
+        truth = RecordingTruth(present=())
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(summary["wake_count"], 1)
+        self.assertEqual(summary["delivered_count"], 1)
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertFalse(summary["invoke_model"])
+        self.assertEqual(summary["jobs"][0]["action"], "WAKE")
+        self.assertTrue(summary["jobs"][0]["invoke_model"])
+        self.assertEqual(summary["deliveries"][0]["state"], "MAIL")
+        self.assertEqual(len(self.http.calls), 1)
+        self.assertEqual(self.store.get(JOB_ID)["status"], "LEASED")
+        self.assertEqual(truth.head_calls, 1)
+        self.assertEqual(truth.reads, [("p/%s.md" % RESULT_ID, truth.sha)])
+
+    def test_no_job_path_makes_zero_truth_calls(self):
+        truth = RecordingTruth(present={RESULT_ID})
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(summary["jobs"], [])
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertFalse(summary["invoke_model"])
+        self.assertEqual(self.http.calls, [])
+        self.assertEqual(truth.head_calls, 0)
+        self.assertEqual(truth.reads, [])
+
+    def test_terminal_path_makes_zero_truth_calls(self):
+        self.store.upsert(self._head_job())
+        self.store.complete(
+            JOB_ID,
+            result={"durable": True, "kind": "page"},
+            result_address=RESULT_ID,
+            page_exists=lambda _ident: True,
+            now=WATCHDOG,
+        )
+        truth = RecordingTruth(present={RESULT_ID})
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(self.store.get(JOB_ID)["status"], "DONE")
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(summary["jobs"][0]["reason"], "DONE")
+        self.assertFalse(summary["jobs"][0]["invoke_model"])
+        self.assertEqual(self.http.calls, [])
+        self.assertEqual(truth.head_calls, 0)
+        self.assertEqual(truth.reads, [])
+
+        cancelled_id = "ridge-self-wake-cancel-20260822-01"
+        self.store.upsert(self._head_job(job_id=cancelled_id, result_address="ridge-self-wake-cancel-result-20260822-01"))
+        self.store.cancel(cancelled_id, reason="terminal quiet")
+        cancelled = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(self.store.get(cancelled_id)["status"], "CANCELLED")
+        self.assertEqual(cancelled["delivered_count"], 0)
+        self.assertEqual(truth.head_calls, 0)
+        self.assertEqual(truth.reads, [])
+
+    def test_one_run_pins_sha_once_across_jobs(self):
+        other = "ridge-self-wake-other-20260822-01"
+        other_result = "ridge-self-wake-other-result-20260822-01"
+        self.store.upsert(self._head_job())
+        self.store.upsert(self._head_job(job_id=other, result_address=other_result))
+        truth = RecordingTruth(present={RESULT_ID})
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+            truth=truth,
+        )
+        self.assertEqual(truth.head_calls, 1)
+        self.assertEqual({sha for _path, sha in truth.reads}, {truth.sha})
+        self.assertEqual(len(truth.reads), 2)
+        statuses = {row["job_id"]: row for row in summary["jobs"]}
+        self.assertEqual(statuses[JOB_ID]["reason"], "DONE")
+        self.assertEqual(statuses[other]["action"], "WAKE")
+        self.assertEqual(summary["delivered_count"], 1)
+        self.assertEqual(summary["process_model_invocations"], 0)
 
 
 class McpJobToolTests(unittest.TestCase):
