@@ -7,16 +7,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -227,24 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -322,16 +322,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -542,24 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -577,16 +577,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -797,24 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -844,16 +844,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -1064,24 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -1099,16 +1099,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -1319,24 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -1354,16 +1354,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -1574,24 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -1675,16 +1675,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -1895,24 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -1966,16 +1966,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -2186,24 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -2221,16 +2221,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -2441,24 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
@@ -2518,10 +2524,22 @@
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -2629,16 +2647,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -2849,24 +2885,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -2884,16 +2902,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -3104,24 +3140,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -3139,16 +3157,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -3359,24 +3395,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -3394,16 +3412,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -3614,24 +3650,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -3667,16 +3685,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -3887,24 +3923,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -3988,16 +4006,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -4208,24 +4244,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -4309,16 +4327,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -4529,24 +4565,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -4582,16 +4600,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -4802,24 +4838,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -4843,16 +4861,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -5063,24 +5099,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -5098,16 +5116,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -5318,24 +5354,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -5353,16 +5371,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -5573,24 +5609,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -5647,8 +5665,14 @@
     "CLAUDE_CLOUD": {
       "last_id": "claudecloud-audit-lanes-20260824-01",
       "last_ts": "2026-08-24T19:52:47.785779Z",
-      "n": 28,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
@@ -5656,10 +5680,22 @@
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -5833,16 +5869,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -6053,24 +6107,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -6112,16 +6148,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -6332,24 +6386,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -6367,16 +6403,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -6587,24 +6641,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -6622,16 +6658,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -6842,24 +6896,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -6877,16 +6913,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -7097,24 +7151,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -7198,16 +7234,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -7418,24 +7472,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -7513,16 +7549,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -7733,24 +7787,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -7786,16 +7822,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -8006,24 +8060,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -8107,16 +8143,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -8327,24 +8381,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -8398,16 +8434,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -8618,24 +8672,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -8665,16 +8701,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -8885,24 +8939,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -8917,8 +8953,14 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
@@ -8926,10 +8968,22 @@
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -9079,16 +9133,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -9299,24 +9371,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -9400,16 +9454,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -9620,24 +9692,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -9655,16 +9709,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -9875,24 +9947,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -9910,16 +9964,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -10130,24 +10202,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -10226,10 +10280,16 @@
       ]
     },
     "DIO": {
-      "last_id": "DIO-POST-1787624550243-icj51d",
+      "last_id": "DIO-POST-1787624550243-icj51d-post",
       "last_ts": "2026-08-25T02:22:29Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
@@ -10239,10 +10299,22 @@
       ],
       "mine": [
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -10270,16 +10342,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -10490,24 +10580,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -10591,16 +10663,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -10811,24 +10901,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -10858,16 +10930,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -11078,24 +11168,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -11161,16 +11233,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -11381,24 +11471,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -11416,16 +11488,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -11636,24 +11726,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -11737,16 +11809,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -11957,24 +12047,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -12004,16 +12076,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -12224,24 +12314,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -12325,16 +12397,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -12545,24 +12635,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -12580,16 +12652,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -12800,24 +12890,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -12901,16 +12973,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -13121,24 +13211,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -13162,16 +13234,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -13382,24 +13472,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -13417,16 +13489,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -13637,24 +13727,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -13738,16 +13810,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -13958,24 +14048,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -13993,16 +14065,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -14213,24 +14303,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -14254,16 +14326,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -14474,24 +14564,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -14575,16 +14647,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -14795,24 +14885,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -14836,16 +14908,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -15056,24 +15146,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -15154,8 +15226,15 @@
     "GPT": {
       "last_id": "gpt-surfaces-visual-context-ship-20260824-01",
       "last_ts": "2026-08-25T02:24:37Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
@@ -15237,16 +15316,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -15457,24 +15554,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -15558,16 +15637,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -15778,24 +15875,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -15879,16 +15958,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -16099,24 +16196,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -16200,16 +16279,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -16420,24 +16517,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -16455,16 +16534,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -16675,24 +16772,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -16722,16 +16801,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -16942,24 +17039,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -17043,16 +17122,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -17263,24 +17360,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -17298,16 +17377,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -17518,24 +17615,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -17601,16 +17680,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -17821,24 +17918,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -17922,16 +18001,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -18142,24 +18239,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -18195,16 +18274,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -18415,24 +18512,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -18516,16 +18595,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -18736,24 +18833,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -18771,16 +18850,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -18991,24 +19088,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -19026,16 +19105,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -19246,24 +19343,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -19341,16 +19420,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -19561,24 +19658,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -19596,16 +19675,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -19816,24 +19913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -19851,16 +19930,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -20071,24 +20168,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -20106,16 +20185,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -20326,24 +20423,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -20361,16 +20440,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -20581,24 +20678,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -20640,16 +20719,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -20860,24 +20957,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -20961,16 +21040,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -21181,24 +21278,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -21246,16 +21325,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -21466,24 +21563,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -21501,16 +21580,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -21721,24 +21818,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -21756,16 +21835,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -21976,24 +22073,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -22011,16 +22090,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -22231,24 +22328,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -22266,16 +22345,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -22486,24 +22583,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -22521,16 +22600,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -22741,24 +22838,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -22842,16 +22921,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -23062,24 +23159,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -23163,16 +23242,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -23383,24 +23480,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -23484,16 +23563,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -23704,24 +23801,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -23781,16 +23860,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -24001,24 +24098,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -24102,16 +24181,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -24322,24 +24419,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -24357,16 +24436,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -24577,24 +24674,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -24612,16 +24691,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -24832,24 +24929,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -24879,16 +24958,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -25099,24 +25196,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -25200,16 +25279,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -25420,24 +25517,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -25455,16 +25534,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -25675,24 +25772,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -25722,16 +25801,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -25942,24 +26039,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -26019,16 +26098,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -26239,24 +26336,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -26340,16 +26419,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -26560,24 +26657,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -26661,16 +26740,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -26881,24 +26978,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -26970,16 +27049,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -27190,24 +27287,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -27232,96 +27311,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-noauth-doc-desk-20260824-01",
-      "last_ts": "2026-08-24T20:13:53Z",
-      "n": 14,
-      "since": [
-        {
-          "id": "gpt-surfaces-visual-context-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-25T02:24:37Z"
-        },
-        {
-          "id": "DIO-POST-1787624550243-icj51d",
-          "from": "DIO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T02:22:29Z"
-        },
-        {
-          "id": "DIO-POST-1787624328613-q5kwx4",
-          "from": "DIO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
-        },
-        {
-          "id": "gpt-review-and-ship-open-roads-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
-        },
-        {
-          "id": "slack-1787603663-016119",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:34:23.016119Z"
-        },
-        {
-          "id": "slack-1787603363-625339",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:29:23.625339Z"
-        },
-        {
-          "id": "slack-1787603133-876439",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:25:33.876439Z"
-        },
-        {
-          "id": "slack-1787602907-447249",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:21:47.447249Z"
-        },
-        {
-          "id": "slack-1787602687-684079",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:18:07.684079Z"
-        },
-        {
-          "id": "slack-1787602495-363849",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:14:55.363849Z"
-        },
-        {
-          "id": "slack-1787602446-716619",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:14:06.716619Z"
-        }
-      ],
+      "last_id": "rivet-ship-browser-return-20260825-01",
+      "last_ts": "2026-08-25T02:39:33Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
@@ -27387,12 +27387,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:13:06Z"
-        },
-        {
-          "id": "rivet-ship-chss-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:11:11Z"
         }
       ]
     },
@@ -27402,16 +27396,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -27622,24 +27634,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -27723,16 +27717,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -27943,24 +27955,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -28044,16 +28038,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -28264,24 +28276,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -28305,16 +28299,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -28525,24 +28537,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -28578,16 +28572,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -28798,24 +28810,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -28899,16 +28893,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -29119,24 +29131,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -29151,8 +29145,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
       "last_ts": "2026-08-24T19:42:54Z",
-      "n": 29,
+      "n": 32,
       "since": [
+        {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
         {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
@@ -29160,10 +29160,22 @@
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -29409,16 +29421,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -29629,24 +29659,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -29730,16 +29742,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -29950,24 +29980,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -30051,16 +30063,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -30271,24 +30301,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -30372,16 +30384,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -30592,24 +30622,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -30693,16 +30705,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -30913,24 +30943,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -30948,16 +30960,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -31168,24 +31198,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -31233,16 +31245,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -31453,24 +31483,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -31554,16 +31566,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -31774,24 +31804,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -31875,16 +31887,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -32095,24 +32125,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -32196,16 +32208,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -32416,24 +32446,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
@@ -32517,16 +32529,34 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-browser-return-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:39:33Z"
+        },
+        {
           "id": "gpt-surfaces-visual-context-ship-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T02:24:37Z"
         },
         {
+          "id": "DIO-POST-1787624550243-icj51d-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:22:29Z"
+        },
+        {
           "id": "DIO-POST-1787624550243-icj51d",
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:22:29Z"
+        },
+        {
+          "id": "DIO-POST-1787624328613-q5kwx4-post",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T02:18:48Z"
         },
         {
           "id": "DIO-POST-1787624328613-q5kwx4",
@@ -32737,24 +32767,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
         }
       ],
       "mine": [
