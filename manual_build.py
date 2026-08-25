@@ -3,7 +3,7 @@
 
 A bake of the catalog is wrong. This file is rewritten from the JSON
 that tools.html already uses. Runs after ingest. Does not write ingest
-or index. 337 yes.
+or index. Never fire address 337 from this builder.
 """
 from __future__ import annotations
 
@@ -21,11 +21,13 @@ def main():
     share_path = os.path.join(ROOT, "share.json")
     if not os.path.isfile(tools_path):
         return 0
-    data = json.loads(open(tools_path, encoding="utf-8").read())
+    with open(tools_path, encoding="utf-8") as handle:
+        data = json.load(handle)
     share = {}
     if os.path.isfile(share_path):
         try:
-            share = json.loads(open(share_path, encoding="utf-8").read())
+            with open(share_path, encoding="utf-8") as handle:
+                share = json.load(handle)
         except Exception:
             share = {}
     lines = [
@@ -42,7 +44,7 @@ def main():
         "```",
         "",
         "One job. Receipt. Dies. Dest FROM FILE. HTTP is not the computer.",
-        "Do not smash commons.mno. 337 yes. Work and play same weight.",
+        "Do not smash commons.mno. Do not fire 337. Work and play same weight.",
         "",
         data.get("share") or "",
         "",
@@ -106,10 +108,15 @@ def main():
     ]
     text = "\n".join(lines)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    old = open(OUT, encoding="utf-8").read() if os.path.isfile(OUT) else ""
+    if os.path.isfile(OUT):
+        with open(OUT, encoding="utf-8") as handle:
+            old = handle.read()
+    else:
+        old = ""
     if old == text:
         return 0
-    open(OUT, "w", encoding="utf-8").write(text)
+    with open(OUT, "w", encoding="utf-8") as handle:
+        handle.write(text)
     return 0
 
 

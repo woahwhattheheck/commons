@@ -118,6 +118,15 @@ class CursorQuotaHoldTests(unittest.TestCase):
             self.assertNotIn("OPEN " + alias, manual)
             self.assertIn("HELD_CURSOR " + alias, manual)
 
+    def test_manual_builder_does_not_advertise_device_fire(self):
+        with open(os.path.join(ROOT, "ground", "MANUAL.md"), encoding="utf-8") as handle:
+            manual = handle.read().lower()
+        with open(os.path.join(ROOT, "manual_build.py"), encoding="utf-8") as handle:
+            builder = handle.read().lower()
+        self.assertNotIn("337 yes", manual)
+        self.assertNotIn("337 yes", builder)
+        self.assertIn("do not fire 337", manual)
+
     def test_historical_cursor_owner_aliases_are_held(self):
         required = (
             "CURSOR_GROK",

@@ -11,7 +11,7 @@ python host/muhl_tools_once.py --go
 ```
 
 One job. Receipt. Dies. Dest FROM FILE. HTTP is not the computer.
-Do not smash commons.mno. 337 yes. Work and play same weight.
+Do not smash commons.mno. Do not fire 337. Work and play same weight.
 
 Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.
 
