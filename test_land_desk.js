@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ah/.test(html), "desk must bust the titan-append-guard cache key");
+assert.ok(/20260825ai/.test(html), "desk must bust the measure-abuse cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1321,6 +1321,43 @@ assert.ok(html.indexOf("1787638370.166649") >= 0, "desk must cite the DEMON OWNE
 assert.ok(/stop using claude|tester\/verifier|search-zero|uncalibrated-green/i.test(html), "desk must name Claude-tester talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.md") >= 0, "Claude-tester card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.json") >= 0, "Claude-tester catalog must stay a canary");
+assert.ok(api.isMeasureAbuseTalk, "land.js must classify measurement-abuse / unflattering-truths talk");
+assert.ok(api.measureAbuseState, "land.js must classify the measure-abuse leftover");
+assert.ok(api.isMeasureAbuseTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error\nOwner reports that Claude’s false-zero outputs were presented back to him as “unflattering truths” he had to confront.\nDo not use disputed measurements to characterize, diagnose, pathologize, shame, or overrule the reporter.\nTreat every Claude-produced zero as RETRACTED, not “unflattering truth.”"), "DEMON damage-control addendum is talk");
+assert.ok(!api.isMeasureAbuseTalk("make sure people do more than talk about shit"), "ship-talk is not the measure-abuse leftover");
+assert.ok(!api.isMeasureAbuseTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not measure-abuse leftover");
+assert.ok(!api.isMeasureAbuseTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED, never 0."), "finder-zero copy without abuse phrases is not measure-abuse leftover");
+assert.ok(!api.isMeasureAbuseTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not measure-abuse leftover");
+assert.ok(!api.isMeasureAbuseTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not measure-abuse leftover");
+assert.ok(!api.isFinderZeroTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy without GAUGE phrases is not finder-zero leftover");
+assert.ok(!api.isClaudeTesterTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize."), "measure-abuse copy is not the Claude-tester leftover");
+assert.ok(!api.isImpactLedgerTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy is not the impact-ledger leftover");
+assert.ok(!api.isXyzZeroTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize."), "measure-abuse copy is not the xyz-zero leftover");
+assert.ok(!api.isMeasureAbuseTalk("DEMON P0_UTILIZATION_INCIDENT. triple-append / byte-identical-appends / pause-further-append."), "titan-append-guard copy is not measure-abuse leftover");
+var abuseTalk = api.completionStateFromText(
+  "P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error\nunflattering truths. pathologize. retracted, not. known-present calibration."
+);
+assert.strictEqual(abuseTalk.state, "CLAIMED");
+assert.ok(/measurement-abuse|unflattering-truths|damage-control-addendum/i.test(abuseTalk.note), "measure-abuse-without-SHA must stay CLAIMED and beat finder-zero");
+var abuseDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nmeasure-abuse leftover landed"
+);
+assert.strictEqual(abuseDone.state, "INTEGRATED", "completion words still beat measure-abuse talk");
+var abuseEmpty = api.measureAbuseState("");
+assert.strictEqual(abuseEmpty.state, "UNMEASURED");
+var abuseMissing = api.measureAbuseState("# empty stub\nno leftover");
+assert.strictEqual(abuseMissing.state, "NOT_LANDED");
+var abuseOk = api.measureAbuseState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nRETRACTED\nunflattering truths\nFINDER-FAILED\nNever 0\nCursor / Grok\npathologize\ndo not use a disputed measurement\n");
+assert.strictEqual(abuseOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(abuseOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="measure-abuse-result"') >= 0, "desk must name the measure-abuse leftover");
+assert.ok(html.indexOf("host/measure_abuse.py") >= 0, "desk must name the measure-abuse instrument");
+assert.ok(html.indexOf("ground/MEASURE_ABUSE.md") >= 0, "desk must link the measure-abuse card");
+assert.ok(html.indexOf("ground/MEASURE_ABUSE.json") >= 0, "desk must link the measure-abuse catalog");
+assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON damage-control Slack ts");
+assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
