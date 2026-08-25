@@ -1,5 +1,5 @@
 {
-  "ts": "2026-08-24T20:19:04Z",
+  "ts": "2026-08-25T19:01:26Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
   "canonical": {
@@ -63,7 +63,17 @@
       "sha256": "abd35237cbc0a3bc01f2529b1b1c0719ba8336183744536e04c43710328ff6b2",
       "receipt": "./ci/provider_readbacks/jsdelivr-0cc5ccba5815.json",
       "notes": "Measured HTTP 200 with x-jsd-version equal to the source commit and a byte-identical artifact. This is one immutable CDN read receipt backed by GitHub, not moving-main sync, writeback, independent origin, or canonical durability."
+    },
+    {
+      "id": "jsdelivr-main-fallback",
+      "kind": "automatic-non-github-moving-main-read",
+      "href": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/fresh.md",
+      "source_observed_commit": "83f814139956a8235e4bb11e6f4a006e901aa6a2",
+      "artifact_path": "fresh.md",
+      "sha256": "d32129e8459bc4dfc14b9dfd827ca12a61c10aec847822ff26d57325225a2655",
+      "receipt": "./ci/provider_readbacks/jsdelivr-main-83f814139956.json",
+      "notes": "head.js now tries this automatic @main branch mirror only after Pages and exact SHA-pinned raw fail. Observed HTTP 200 and byte-identical to fresh.md on the named current-main commit; response exposes x-jsd-version=main and x-jsd-version-type=branch. Provider cache freshness is bounded by its headers, so this is not exact-HEAD proof, provider writeback, independent-origin durability, or canonical durability."
     }
   ],
-  "still_open": "Automatic non-GitHub copies at moving main, provider writeback, and independent-origin durability. The jsDelivr entry is a SHA-pinned cross-provider read receipt backed by GitHub, not any of those. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+  "still_open": "The automatic non-GitHub moving-main fallback is now wired and measured at one current-main observation. A bounded freshness/SLA proof, provider writeback, and independent-origin durability remain open. Both jsDelivr entries are backed by GitHub and neither is canonical durability. This file is the catalog, not the mesh."
 }
