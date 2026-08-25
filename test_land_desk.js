@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ae/.test(html), "desk must bust the impact-ledger cache key");
+assert.ok(/20260825af/.test(html), "desk must bust the xyz-zero + impact-ledger cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1317,6 +1317,41 @@ assert.ok(html.indexOf("1787638370.166649") >= 0, "desk must cite the DEMON OWNE
 assert.ok(/stop using claude|tester\/verifier|search-zero|uncalibrated-green/i.test(html), "desk must name Claude-tester talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.md") >= 0, "Claude-tester card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.json") >= 0, "Claude-tester catalog must stay a canary");
+assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
+assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
+assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
+assert.ok(!api.isXyzZeroTalk("make sure people do more than talk about shit"), "ship-talk is not the xyz-zero leftover");
+assert.ok(!api.isXyzZeroTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not xyz-zero leftover");
+assert.ok(!api.isXyzZeroTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED, never 0."), "finder-zero copy is not xyz-zero leftover");
+assert.ok(!api.isWorkingBuildTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the working-builds leftover");
+assert.ok(!api.isXyzZeroTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not xyz-zero leftover");
+assert.ok(!api.isSlackReceiptTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the Slack-receipt leftover");
+assert.ok(!api.isXyzZeroTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "MCP-wake pivot is not xyz-zero leftover");
+assert.ok(!api.isMcpWakeJobTalk("X-Y-Z ZERO AUDIT required. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the MCP-wake leftover");
+var xyzTalk = api.completionStateFromText(
+  "X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. gauge-xyz-zero-audit-order-20260825-01"
+);
+assert.strictEqual(xyzTalk.state, "CLAIMED");
+assert.ok(/X-Y-Z|FINDER-UNVERIFIED/i.test(xyzTalk.note), "xyz-zero-without-SHA must stay CLAIMED");
+var xyzDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nxyz-zero leftover landed"
+);
+assert.strictEqual(xyzDone.state, "INTEGRATED", "completion words still beat xyz-zero talk");
+var xyzEmpty = api.xyzZeroState("");
+assert.strictEqual(xyzEmpty.state, "UNMEASURED");
+var xyzMissing = api.xyzZeroState("# empty stub\nno audit");
+assert.strictEqual(xyzMissing.state, "NOT_LANDED");
+var xyzOk = api.xyzZeroState("def measure_from_rows(rows):\n    return rows\ndef classify(row):\n    return row\nFINDER-UNVERIFIED\nknown-present calibration\ndef y_from_hit(text, pattern):\n    return text\ny_from_bytes = True\ndef search_space(finder):\n    return finder\n");
+assert.strictEqual(xyzOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(xyzOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="xyz-zero-result"') >= 0, "desk must name the xyz-zero leftover");
+assert.ok(html.indexOf("host/xyz_zero.py") >= 0, "desk must name the xyz-zero instrument");
+assert.ok(html.indexOf("ground/XYZ_ZERO.md") >= 0, "desk must link the xyz-zero card");
+assert.ok(html.indexOf("ground/XYZ_ZERO.json") >= 0, "desk must link the xyz-zero catalog");
+assert.ok(html.indexOf("1787638124.555469") >= 0, "desk must cite the xyz-zero Slack ts");
+assert.ok(/FINDER-UNVERIFIED|known-present|X-Y-Z/i.test(html), "desk must name xyz-zero talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/XYZ_ZERO.md") >= 0, "xyz-zero card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/XYZ_ZERO.json") >= 0, "xyz-zero catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

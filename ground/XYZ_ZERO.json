@@ -1,0 +1,36 @@
+{
+  "slack_ts": "1787638124.555469",
+  "source_id": "gauge-xyz-zero-audit-order-20260825-01",
+  "titan": "NOT_WRITTEN",
+  "note": "X written. Y from found bytes. Z is FINDER-UNVERIFIED plus the full search space. Known-present calibration in the same run. A Slack order is not the file.",
+  "hands_off": [
+    "gauge-xyz-zero-audit-order-20260825-01",
+    "SPECTER/JOJO 02:02 collision",
+    "CML PR 2108",
+    "titan --go",
+    "working-builds Desktop uploads"
+  ],
+  "finders": [
+    {
+      "id": "calib-head-md",
+      "x_pattern": "A bake is not the board",
+      "x_path": "ground/HEAD.md",
+      "expect": "HIT",
+      "calibration": true
+    },
+    {
+      "id": "calib-owner-door",
+      "x_pattern": "ACTION PAD IS AN UNRESTRICTED OPEN DOOR",
+      "x_path": "p/bryce-action-pad-open-door-directive-20260822-01.md",
+      "expect": "HIT",
+      "calibration": true
+    },
+    {
+      "id": "miss-absent-needle",
+      "x_pattern": "THIS-STRING-IS-NOT-ON-THE-BOARD-XYZ-20260825",
+      "x_path": "ground/HEAD.md",
+      "expect": "MISS",
+      "calibration": false
+    }
+  ]
+}
