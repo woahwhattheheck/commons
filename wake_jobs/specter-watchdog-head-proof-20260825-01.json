@@ -4,12 +4,21 @@
   "blocker": null,
   "budget_tokens": 1,
   "checkpoint": {},
+  "completed_at": "2026-08-25T07:38:33Z",
   "completion_predicate": {
     "type": "result_address_on_head"
   },
   "created_at": "2026-08-25T06:37:46Z",
   "deadline": "2026-08-26T06:00:00Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "specter-watchdog-head-proof-20260825-01-auto-done",
+      "event": "auto_complete",
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "ts": "2026-08-25T07:38:33Z",
+      "worker_id": "gh-watchdog"
+    }
+  ],
   "harness": "github-actions-head-proof",
   "in_backoff": false,
   "job_id": "specter-watchdog-head-proof-20260825-01",
@@ -22,8 +31,8 @@
   "objective": "prove production watchdog stops without mail when result_address already exists on pinned Commons HEAD",
   "owner_claim": "SPECTER",
   "result_address": "ridge-cursor-wake-loop-20260822-01",
-  "status": "OPEN",
+  "status": "DONE",
   "tokens_used": 0,
-  "updated_at": "2026-08-25T06:37:46Z",
+  "updated_at": "2026-08-25T07:38:33Z",
   "woke_once": false
 }
