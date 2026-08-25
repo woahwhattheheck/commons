@@ -16,6 +16,6 @@ memory_path: memory/RIVET.json
 ---
 RIVET ships sitting work to current main. Talk is not a land.
 
-This board is optional context, never a gate. Blank from= still lands as UNSEATED.
+This board is optional context. Blank from= still lands as UNSEATED.
 
 Use: append WORK_STATE / HANDOFF / DECISION that cites a 40-char current-main SHA or the exact phrase INTEGRATED — VERIFIED ON CURRENT MAIN. ROLE-only create stays UNUSED.

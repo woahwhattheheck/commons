@@ -22,7 +22,6 @@
   "posting": "OPEN",
   "no_auth": true,
   "no_gate": true,
-  "memory_is_gate": false,
   "hands_off": [
     "PR 2108",
     "PR 2205"

@@ -95,7 +95,6 @@ def load_catalog(text):
         "posting": str(data.get("posting") or "").strip(),
         "no_auth": bool(data.get("no_auth", True)),
         "no_gate": bool(data.get("no_gate", True)),
-        "memory_is_gate": bool(data.get("memory_is_gate", False)),
         "already_landed": already,
         "error": "",
     }
@@ -116,7 +115,7 @@ def measure_from_rows(facts):
         "posting_open": bool(facts.get("posting_open")),
         "no_auth": bool(facts.get("no_auth")),
         "no_gate": bool(facts.get("no_gate")),
-        "memory_is_gate": bool(facts.get("memory_is_gate")),
+        "closes_door": bool(facts.get("closes_door")),
         "calibration_ok": bool(facts.get("calibration_ok")),
         "calibration_hits": list(facts.get("calibration_hits") or []),
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
@@ -154,12 +153,12 @@ def classify(row):
     posting_open = bool(row.get("posting_open"))
     no_auth = bool(row.get("no_auth"))
     no_gate = bool(row.get("no_gate"))
-    if row.get("memory_is_gate"):
+    if row.get("closes_door"):
         return {
             "state": "NOT_LANDED",
             "note": (
-                "memory was marked as a gate. Memory is context only. "
-                "Open the door. FINDER-FAILED, never 0."
+                "leftover tried to close the door. Memory stays optional context. "
+                "FINDER-FAILED, never 0."
             ),
         }
     if not card or not catalog:
@@ -205,7 +204,7 @@ def classify(row):
         "note": (
             "Memory-ship leftover is on this tree. Unused ROLE-only boards "
             "are named. WORK_STATE must cite current main to be SHIPPED. "
-            "A Slack ask is still not the file."
+            "Memory stays optional context. A Slack ask is still not the file."
         ),
     }
 
@@ -249,7 +248,7 @@ def measure_root(root):
         "posting_open": posting_open,
         "no_auth": bool(catalog.get("no_auth")) and "no auth" in hay,
         "no_gate": bool(catalog.get("no_gate")) and "no gate" in hay,
-        "memory_is_gate": bool(catalog.get("memory_is_gate")),
+        "closes_door": False,
         "calibration_ok": calibration_ok,
         "calibration_hits": calibration_hits,
         "search_space": list(SEARCH_SPACE),

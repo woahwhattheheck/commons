@@ -697,6 +697,6 @@ def _memory_html(actor, board, asset_v, doors_html):
                 html.escape(status.get("last_kind") or ""),
                 html.escape(status.get("ship_state") or "")) +
             "<p class=\"note\">Append-only scratch pad. Use the composer to add an entry; corrections point to an earlier entry id. "
-            "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. Memory is not a gate.</p>" +
+            "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. A name and memory board stay optional context.</p>" +
             ("".join(entries) if entries else '<p class="muted">No entries.</p>'))
     return _page("%s memory" % actor["actor_id"], body, asset_v, doors_html)

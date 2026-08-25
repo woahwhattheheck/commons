@@ -61,13 +61,13 @@ class TestMemoryShip(unittest.TestCase):
             {
                 "card_present": True,
                 "catalog_present": True,
-                "memory_is_gate": True,
+                "closes_door": True,
                 "calibration_ok": True,
             }
         )
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "NOT_LANDED")
-        self.assertIn("gate", verdict["note"].lower())
+        self.assertIn("close the door", verdict["note"].lower())
 
     def test_missing_ship_column_is_not_landed(self):
         measured = measure_from_rows(
@@ -82,7 +82,7 @@ class TestMemoryShip(unittest.TestCase):
                 "posting_open": True,
                 "no_auth": True,
                 "no_gate": True,
-                "memory_is_gate": False,
+                "closes_door": False,
                 "calibration_ok": True,
             }
         )
@@ -103,7 +103,7 @@ class TestMemoryShip(unittest.TestCase):
                 "posting_open": True,
                 "no_auth": True,
                 "no_gate": True,
-                "memory_is_gate": False,
+                "closes_door": False,
                 "calibration_ok": True,
             }
         )
@@ -165,7 +165,7 @@ class TestMemoryShip(unittest.TestCase):
         self.assertEqual(catalog["posting"], "OPEN")
         self.assertTrue(catalog["no_auth"])
         self.assertTrue(catalog["no_gate"])
-        self.assertFalse(catalog["memory_is_gate"])
+        self.assertNotIn("memory_is_gate", catalog)
         self.assertIn("memory_board.py", catalog["already_landed"])
 
     def test_search_space_and_calibration_named(self):
