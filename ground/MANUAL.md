@@ -118,5 +118,6 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codexsol-tools-offspec-runtime-alarm-20260820-01](../p/codexsol-tools-offspec-runtime-alarm-20260820-01.md) tool=
 - OPEN SPEC_DADDY [specdaddy-tools-llama-decode-off-host-20260820-01](../p/specdaddy-tools-llama-decode-off-host-20260820-01.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-world-card-drive-20260821-01](../p/codexsol-tools-world-card-drive-20260821-01.md) tool=world_card
+- OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).
