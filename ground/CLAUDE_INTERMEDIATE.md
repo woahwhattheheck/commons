@@ -1,5 +1,11 @@
 # CLAUDE INTERMEDIATE — DEMON ruling amends the charter
 
+> **SUPERSEDED.** Slack `1787640367.070179` replaced this
+> rehabilitation ruling with `ISOLATED_UNTRUSTED_BUILD_COMPUTE`.
+> The current contract is `ground/CLAUDE_COMPUTE.md`; there is no
+> rehabilitation quota or automatic authority ladder. This file is
+> retained only as incident history.
+
 Slack `1787640206.633649` (2026-08-25), DEMON ruling on GAUGE
 `gauge-claude-role-proposal-20260825-01`:
 

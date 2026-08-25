@@ -69,6 +69,9 @@ REQUIRED_PHRASES = (
     "no auth",
     "no gate",
     "candidate",
+    "scoped work receipts and raw artifact pointers",
+    "may not post conclusions",
+    "no rehabilitation quota",
 )
 PACKET_FIELDS = (
     "spec",
@@ -130,6 +133,16 @@ def load_catalog(text):
         "authority": str(data.get("authority") or "").strip(),
         "paid_compute": str(data.get("paid_compute") or "").strip(),
         "adjudicator_in_advance": bool(data.get("adjudicator_in_advance", False)),
+        "non_claude_packet_required": bool(
+            data.get("non_claude_packet_required", False)
+        ),
+        "staging_required": bool(data.get("staging_required", False)),
+        "receipts_and_pointers_only": bool(
+            data.get("scoped_receipts_and_raw_pointers_only", False)
+        ),
+        "no_shared_context_conclusions": (
+            data.get("shared_context_conclusions_from_claude") is False
+        ),
         "claude_self_adjudicate": bool(data.get("claude_self_adjudicate", True)),
         "canonical_from_claude": bool(data.get("canonical_from_claude", True)),
         "public_push_from_claude": bool(data.get("public_push_from_claude", True)),
@@ -155,17 +168,27 @@ def packet_ok(data):
     missing = [field for field in PACKET_FIELDS if not data.get(field)]
     if missing:
         return False, "missing fields: " + ", ".join(missing)
+    if data.get("adjudicator_named_in_advance") is not True:
+        return False, "non-Claude adjudicator must be named in advance"
     family = str(data.get("adjudicator_family") or data.get("adjudicator") or "")
     family = family.strip().lower()
     if "non-claude" not in family:
-        tokens = [part for part in family.replace("/", " ").replace("-", " ").split() if part]
+        tokens = [
+            part
+            for part in family.replace("/", " ").replace("-", " ").split()
+            if part
+        ]
         for banned in CLAUDE_ADJUDICATOR:
             if banned == family or banned in tokens:
                 return False, "Claude may not self-adjudicate"
+        return False, "adjudicator family must be explicitly non-Claude"
     if data.get("canonical") is True:
         return False, "quarantine packet is not canonical"
     if data.get("public_push") is True:
         return False, "Claude may not public-push"
+    output_directory = str(data.get("output_directory") or "").replace("\\", "/")
+    if not output_directory.startswith("claude_compute/staging/"):
+        return False, "output directory must be quarantine/staging"
     return True, "CANDIDATE"
 
 
@@ -182,6 +205,16 @@ def measure_from_rows(facts):
         "packet_fields": list(facts.get("packet_fields") or []),
         "posting_open": bool(facts.get("posting_open")),
         "adjudicator_in_advance": bool(facts.get("adjudicator_in_advance")),
+        "non_claude_packet_required": bool(
+            facts.get("non_claude_packet_required")
+        ),
+        "staging_required": bool(facts.get("staging_required")),
+        "receipts_and_pointers_only": bool(
+            facts.get("receipts_and_pointers_only")
+        ),
+        "no_shared_context_conclusions": bool(
+            facts.get("no_shared_context_conclusions")
+        ),
         "no_self_adjudicate": bool(facts.get("no_self_adjudicate")),
         "opus5_bulk": bool(facts.get("opus5_bulk")),
         "claude_does_not_decide": bool(facts.get("claude_does_not_decide")),
@@ -224,6 +257,10 @@ def classify(row):
     fields = list(row.get("packet_fields") or [])
     posting_open = bool(row.get("posting_open"))
     named = bool(row.get("adjudicator_in_advance"))
+    packet_required = bool(row.get("non_claude_packet_required"))
+    staging_required = bool(row.get("staging_required"))
+    receipts_only = bool(row.get("receipts_and_pointers_only"))
+    no_conclusions = bool(row.get("no_shared_context_conclusions"))
     no_self = bool(row.get("no_self_adjudicate"))
     opus5 = bool(row.get("opus5_bulk"))
     no_decide = bool(row.get("claude_does_not_decide"))
@@ -245,6 +282,10 @@ def classify(row):
         or missing_fields
         or not posting_open
         or not named
+        or not packet_required
+        or not staging_required
+        or not receipts_only
+        or not no_conclusions
         or not no_self
         or not opus5
         or not no_decide
@@ -258,7 +299,7 @@ def classify(row):
                 + ", ".join(needed)
                 + ". Missing packet fields: "
                 + ", ".join(missing_fields)
-                + ". Named non-Claude adjudicator in advance + Opus 5 bulk drafting + open door required. Talk is CLAIMED."
+                + ". Exact non-Claude packet + staging + named adjudicator in advance + labeled receipts/raw pointers only + Opus 5 bulk drafting + open door required. Talk is CLAIMED."
             ),
         }
     return {
@@ -312,6 +353,16 @@ def measure_root(root):
         "packet_fields": fields,
         "posting_open": str(catalog.get("posting") or "").upper() == "OPEN",
         "adjudicator_in_advance": bool(catalog.get("adjudicator_in_advance")),
+        "non_claude_packet_required": bool(
+            catalog.get("non_claude_packet_required")
+        ),
+        "staging_required": bool(catalog.get("staging_required")),
+        "receipts_and_pointers_only": bool(
+            catalog.get("receipts_and_pointers_only")
+        ),
+        "no_shared_context_conclusions": bool(
+            catalog.get("no_shared_context_conclusions")
+        ),
         "no_self_adjudicate": catalog.get("claude_self_adjudicate") is False,
         "opus5_bulk": bool(catalog.get("opus5_bulk_drafting")),
         "claude_does_not_decide": catalog.get("claude_decides_correctness") is False,
@@ -402,6 +453,10 @@ def _self_test():
             "packet_fields": ["spec"],
             "posting_open": True,
             "adjudicator_in_advance": True,
+            "non_claude_packet_required": True,
+            "staging_required": True,
+            "receipts_and_pointers_only": True,
+            "no_shared_context_conclusions": True,
             "no_self_adjudicate": True,
             "opus5_bulk": True,
             "claude_does_not_decide": True,
@@ -422,6 +477,10 @@ def _self_test():
             "packet_fields": list(PACKET_FIELDS),
             "posting_open": True,
             "adjudicator_in_advance": True,
+            "non_claude_packet_required": True,
+            "staging_required": True,
+            "receipts_and_pointers_only": True,
+            "no_shared_context_conclusions": True,
             "no_self_adjudicate": True,
             "opus5_bulk": True,
             "claude_does_not_decide": True,
@@ -441,6 +500,7 @@ def _self_test():
             "output_directory": "claude_compute/staging/x/",
             "adjudicator": "RIVET",
             "adjudicator_family": "non-claude",
+            "adjudicator_named_in_advance": True,
             "canonical": False,
             "public_push": False,
         }
@@ -455,6 +515,7 @@ def _self_test():
             "acceptance_criteria": "z",
             "output_directory": "out",
             "adjudicator": "GAUGE",
+            "adjudicator_named_in_advance": True,
         }
     )
     assert not bad
@@ -465,6 +526,10 @@ def _self_test():
                 "slack_ts": SLACK_TS,
                 "posting": "OPEN",
                 "adjudicator_in_advance": True,
+                "non_claude_packet_required": True,
+                "staging_required": True,
+                "scoped_receipts_and_raw_pointers_only": True,
+                "shared_context_conclusions_from_claude": False,
                 "claude_self_adjudicate": False,
                 "token_use": {
                     "opus5_bulk_drafting": True,
@@ -475,6 +540,10 @@ def _self_test():
     )
     assert catalog["slack_ts"] == SLACK_TS
     assert catalog["adjudicator_in_advance"] is True
+    assert catalog["non_claude_packet_required"] is True
+    assert catalog["staging_required"] is True
+    assert catalog["receipts_and_pointers_only"] is True
+    assert catalog["no_shared_context_conclusions"] is True
     assert catalog["claude_self_adjudicate"] is False
     return True
 

@@ -1,4 +1,7 @@
 {
+  "status": "SUPERSEDED",
+  "superseded_by_slack_ts": "1787640367.070179",
+  "superseded_by": "ground/CLAUDE_COMPUTE.md",
   "slack_ts": "1787640206.633649",
   "kind": "DEMON_RULING",
   "source_id": "gauge-claude-role-proposal-20260825-01",

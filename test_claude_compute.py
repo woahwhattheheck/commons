@@ -70,6 +70,10 @@ class TestClaudeCompute(unittest.TestCase):
                 "packet_fields": ["spec"],
                 "posting_open": True,
                 "adjudicator_in_advance": True,
+                "non_claude_packet_required": True,
+                "staging_required": True,
+                "receipts_and_pointers_only": True,
+                "no_shared_context_conclusions": True,
                 "no_self_adjudicate": True,
                 "opus5_bulk": True,
                 "claude_does_not_decide": True,
@@ -91,6 +95,10 @@ class TestClaudeCompute(unittest.TestCase):
                 "packet_fields": list(PACKET_FIELDS),
                 "posting_open": True,
                 "adjudicator_in_advance": True,
+                "non_claude_packet_required": True,
+                "staging_required": True,
+                "receipts_and_pointers_only": True,
+                "no_shared_context_conclusions": True,
                 "no_self_adjudicate": True,
                 "opus5_bulk": True,
                 "claude_does_not_decide": True,
@@ -125,6 +133,10 @@ class TestClaudeCompute(unittest.TestCase):
         self.assertEqual(catalog["posting"], "OPEN")
         self.assertEqual(catalog["label"], "CLAUDE_INTERMEDIATE_UNTRUSTED")
         self.assertTrue(catalog["adjudicator_in_advance"])
+        self.assertTrue(catalog["non_claude_packet_required"])
+        self.assertTrue(catalog["staging_required"])
+        self.assertTrue(catalog["receipts_and_pointers_only"])
+        self.assertTrue(catalog["no_shared_context_conclusions"])
         self.assertFalse(catalog["claude_self_adjudicate"])
         self.assertTrue(catalog["opus5_bulk_drafting"])
         self.assertFalse(catalog["claude_decides_correctness"])
@@ -142,6 +154,7 @@ class TestClaudeCompute(unittest.TestCase):
                 "output_directory": "claude_compute/staging/x/",
                 "adjudicator": "RIVET",
                 "adjudicator_family": "non-claude",
+                "adjudicator_named_in_advance": True,
                 "canonical": False,
                 "public_push": False,
             }
@@ -157,10 +170,33 @@ class TestClaudeCompute(unittest.TestCase):
                 "acceptance_criteria": "z",
                 "output_directory": "out",
                 "adjudicator": "Claude",
+                "adjudicator_named_in_advance": True,
             }
         )
         self.assertFalse(bad)
         self.assertIn("self-adjudicate", why)
+
+    def test_packet_requires_advance_adjudicator_and_staging(self):
+        packet = {
+            "label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+            "spec": "x",
+            "input_corpus": "y",
+            "claimed_paths": ["p"],
+            "acceptance_criteria": "z",
+            "output_directory": "claude_compute/staging/x/",
+            "adjudicator": "RIVET",
+            "adjudicator_family": "non-claude",
+            "canonical": False,
+            "public_push": False,
+        }
+        ok, why = packet_ok(packet)
+        self.assertFalse(ok)
+        self.assertIn("named in advance", why)
+        packet["adjudicator_named_in_advance"] = True
+        packet["output_directory"] = "public/"
+        ok, why = packet_ok(packet)
+        self.assertFalse(ok)
+        self.assertIn("quarantine/staging", why)
 
     def test_search_space_and_calibration_named(self):
         self.assertIn("ground/CLAUDE_COMPUTE.md", SEARCH_SPACE)

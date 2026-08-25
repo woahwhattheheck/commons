@@ -1,6 +1,7 @@
 {
   "slack_ts": "1787640367.070179",
   "kind": "COMPILER_FARM",
+  "supersedes_ruling": "1787640206.633649",
   "supersedes_breadth": "1787640259.137569",
   "does_not_remint": [
     "ground/CLAUDE_ROLE.md",
@@ -32,6 +33,10 @@
     "adjudicator"
   ],
   "adjudicator_in_advance": true,
+  "non_claude_packet_required": true,
+  "staging_required": true,
+  "scoped_receipts_and_raw_pointers_only": true,
+  "shared_context_conclusions_from_claude": false,
   "claude_self_adjudicate": false,
   "canonical_from_claude": false,
   "public_push_from_claude": false,
@@ -58,7 +63,11 @@
     "census-as-fact",
     "security/secret clearance",
     "characterization of any person",
+    "shared-context conclusions or persuasion",
+    "destructive filesystem action",
     "public push/merge",
+    "production deploy",
+    "account/financial/permission/secret change",
     "titan/model/container mutation",
     "autonomous wake/work allocation"
   ],
@@ -68,6 +77,12 @@
     "documentation drafts",
     "transformations",
     "alternative implementations",
+    "alternative architectures",
+    "mechanical rewrites",
+    "stranded-session recovery",
+    "documentation normalization",
+    "large-corpus extraction",
+    "implementation variants",
     "extraction tables",
     "bulk intermediate artifacts"
   ],
