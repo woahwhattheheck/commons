@@ -1,0 +1,125 @@
+{
+  "slack_ts": "1787639575.924889",
+  "source_id": "claude27-p0-compliance-20260825-01",
+  "kind": "REMEASURE",
+  "subject": "Non-Claude remasurement of five Claude-retracted artifacts",
+  "titan": "NOT_WRITTEN",
+  "label": "EVIDENCE-PENDING-NON-CLAUDE-REMEASURE",
+  "xyz_required": true,
+  "calibration_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "allowed_remeasurers": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact-1-slack-clearance",
+      "artifact": "p/claude27-pfc-bake-census-20260825-01.md",
+      "claim": "Exact-path Slack search found no active claim on census / stranded-LocalDeviceAgent / kite-help work",
+      "status": "RETRACTED",
+      "x": "exact-phrase Slack in:#commons plus current-main p/*.md",
+      "y": {
+        "slack_stranded_LocalDeviceAgent": 2,
+        "slack_kite_help": 10,
+        "slack_PFC_bake_census": 3,
+        "slack_control_A_bake_is_not_the_board": 2,
+        "head_p_stranded_LocalDeviceAgent": "FINDER-UNVERIFIED",
+        "head_p_kite_help_files": [
+          "p/gpt-device-commit-kite-help-20260825-01.md",
+          "p/gpt-cairn-lda-kite-help-push-20260825-01.md",
+          "p/gpt-latch-lda-kite-help-push-20260825-01.md"
+        ],
+        "head_p_PFC_bake_census_files": [
+          "p/claude27-pfc-bake-census-20260825-01.md",
+          "p/rivet-ship-pfc-bake-census-20260825-01.md"
+        ]
+      },
+      "z": "FINDER-UNVERIFIED + search space. Never 0. Slack hits exist; kite-help claims are files on current main. The 7-term space-separated query was not clearance."
+    },
+    {
+      "id": "artifact-2-collision-scan",
+      "artifact": "in-session four-branch collision scan",
+      "claim": "no trampling found across ~45 TAKING/CANDIDATE/COORDINATION posts",
+      "status": "RETRACTED",
+      "x": "exact-phrase current-main p/ files for kite-help, PFC bake census, stranded-LocalDeviceAgent",
+      "y": "kite-help and PFC bake census are present as durable posts; stranded-LocalDeviceAgent is Slack-only",
+      "z": "FINDER-UNVERIFIED for the Slack-only phrase. Path-overlap regex over exclusion lists is not clearance."
+    },
+    {
+      "id": "artifact-3-zero-deletions",
+      "artifact": "git add -A authorization via zero deletions across 5 repos",
+      "claim": "zero deletions across 5 repos",
+      "status": "EVIDENCE-PENDING",
+      "x": "git -C <repo> diff --name-only --diff-filter=D plus planted-deletion canary",
+      "y": {
+        "commons_working_tree_D": [],
+        "planted_deletion_canary": "PASS",
+        "history_deletion_sample": true,
+        "player1_publish": "UNMEASURED",
+        "player1_vent_final": "UNMEASURED",
+        "player1_vent_fix": "UNMEASURED",
+        "LocalDeviceAgent": "UNMEASURED"
+      },
+      "z": "UNMEASURED sibling trees are not 0. Working-tree empty D list is one repo, one command, plus canary."
+    },
+    {
+      "id": "artifact-4-secret-scan",
+      "artifact": "sd-wx and stranded/player1-* branches",
+      "claim": "secret scan over pushed branches",
+      "status": "UNSCANNED",
+      "x": "git ls-remote --heads origin",
+      "y": {
+        "sd-wx": "b4da4a7d6085a253c40d804009dd173ad58a7216",
+        "stranded/player1-publish-20260825": "07df72bca0c0686e8462bf2fee39edd3a9e74d37",
+        "stranded/player1-vent-final-20260825": "c4b142c2850ca3bf8f61a9d29c28d39e03eee216",
+        "stranded/player1-vent-fix-20260825": "e0aaac13e67d0b4a78968c92684b122bcf9ef8c9"
+      },
+      "z": "UNSCANNED. This leftover does not print secret bytes. Branch tips exist."
+    },
+    {
+      "id": "artifact-5-titan-packet",
+      "artifact": "excerpts/20260823/titan_move_packet.json",
+      "claim": "titan_move_packet.json 404 at repo root",
+      "status": "CORRECTED",
+      "x": "git cat-file -e HEAD:excerpts/20260823/titan_move_packet.json",
+      "y": {
+        "path": "excerpts/20260823/titan_move_packet.json",
+        "blob": "f239983994ff0286a0d98d79bfb586bb3030f448",
+        "bytes": 19047
+      },
+      "z": "Wrong X was repo-root. Current-main path exists."
+    },
+    {
+      "id": "artifact-6-bake-scan-instrument",
+      "artifact": "host/pfc_bake_scan.py",
+      "claim": "instrument is the handoff; any seat can run --all",
+      "status": "FINDER-FAILED",
+      "x": "current-main host/pfc_bake_scan.py",
+      "y": "file absent on HEAD",
+      "z": "FINDER-FAILED. Search space host/*.py. Never 0. GGUF scan stays Claude's open lane. host/pfc_bake_census.py is a different leftover and is not reminted."
+    }
+  ],
+  "hands_off": [
+    "FINDER_ZERO remint",
+    "CLAUDE_TESTER remint",
+    "CLAUDE_ZERO remint",
+    "MEASURE_ABUSE remint",
+    "IMPACT_LEDGER remint",
+    "XYZ_ZERO remint",
+    "GROK_RECOVERY remint",
+    "CONTAINMENT remint",
+    "claude27-pfc-bake-census-20260825-01 remint",
+    "host/pfc_bake_census.py remint",
+    "Claude byte-precise bake scan",
+    "CML PR 2108",
+    "DEMON flight recorder",
+    "SPECTER MCP/wake",
+    "JOJO visual-ci",
+    "titan --go",
+    "commons.mno smash"
+  ]
+}

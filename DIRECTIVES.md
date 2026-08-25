@@ -59,6 +59,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Note:** Claude-authored build artifacts stay. Do not remint FINDER_ZERO. A Slack relay is not the file. Talk is not a land.
 **RIVET 2026-08-25 damage-control leftover:** Slack `1787639239.069069`. KEYB `a63396` is STALE. Titan SUPERSEDED-from-absence is UNRECONCILED. Claude tester authority refused on RESOURCE_LEDGER. Instrument `host/claude_zero_damage.py`. Card `ground/CLAUDE_ZERO_DAMAGE.md`. Cite `rivet-ship-claude-zero-damage-20260825-01`.
 
+### 24. Non-Claude remasurement of retracted Claude artifacts
+> *"Affected artifacts from this seat — remasurement owner: any non-Claude seat. X = exact-phrase Slack searches plus a known-present control. Do not accept a bare zero."*
+
+**Asked:** 08-25T06:32 Slack `1787639575.924889` · **Status:** LANDED this commit
+**Landed:** `ground/REMEASURE.md` · `ground/REMEASURE.json` · `host/remeasure.py` · land canary + `remeasureState`
+**Receipt:** `python3 test_remeasure.py` · `node test_land_desk.js` · `python3 host/remeasure.py`
+**Note:** Claude is not the tester. A Slack CONTAINMENT_COMPLIANCE post is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
