@@ -15,12 +15,18 @@ class TestTitanMovePacket(unittest.TestCase):
         self.assertEqual(len(packet["organs"]), packet["count"])
         names = [row["name"] for row in packet["organs"]]
         self.assertEqual(len(names), len(set(names)))
+        self.assertEqual(packet["claimed_append_base"], 103803350291)
+        self.assertGreater(packet["claimed_append_end"], packet["claimed_append_base"])
+        prev = packet["claimed_append_base"] - 1
         for row in packet["organs"]:
             self.assertEqual(row["titan"], "NOT_WRITTEN")
-            self.assertEqual(row["offset"], 0)
-            self.assertIn("OWNER_LOCAL_ALLOCATOR", row["requested_offset_band"])
+            self.assertGreater(row["offset"], 0)
+            self.assertGreater(row["offset"], prev)
+            self.assertIn("CLAIMED_APPEND", row["requested_offset_band"])
+            self.assertIn("103803350291", row["requested_offset_band"])
             self.assertTrue(row["path"].startswith("excerpts/20260823/"))
             self.assertEqual(len(row["sha256"]), 64)
+            prev = row["offset"]
 
     def test_dry_writes_nothing(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -5,8 +5,8 @@ Owner Slack 1787628542.573719: stop dodging the substrate. Organs
 1–31 excerpts can sit on main while titan.gguf is still NOT_WRITTEN.
 
 This instrument reads the public packet and excerpt files. It does
-not open titan.gguf. It does not smash commons.mno. It does not
-choose an offset band. Offset 0 is a request, not a land.
+not open titan.gguf. It does not smash commons.mno. Claimed offsets
+are dest FROM FILE. A write still needs titan.gguf.
 
   python3 host/titan_move_dry.py
   python3 host/titan_move_dry.py --root /path/to/clone
@@ -51,13 +51,23 @@ def classify(row):
             )
             % excerpts,
         }
+    if written == "NOT_WRITTEN" and nonzero == count and count >= 31:
+        return {
+            "state": "CLAIMED",
+            "note": (
+                "%s/31 claimed append offsets dest FROM FILE. "
+                "titan write still NOT_WRITTEN. Run host/titan_move_apply.py "
+                "--go on the machine that has titan.gguf."
+            )
+            % excerpts,
+        }
     if written == "NOT_WRITTEN" or nonzero == 0:
         return {
             "state": "NOT_LANDED",
             "note": (
-                "%s/31 excerpts on this tree. titan write is "
-                "OWNER_LOCAL_ALLOCATOR. Offset 0 is a request, not a band. "
-                "This cloud box cannot close it."
+                "%s/31 excerpts on this tree. Packet still has zero "
+                "offsets. Fill claimed append offsets dest FROM FILE "
+                "(titan_size 103803350291), then apply."
             )
             % excerpts,
         }
@@ -118,21 +128,22 @@ def owner_blocker(row, verdict):
     excerpts = int((row or {}).get("excerpt_count") or 0)
     return {
         "NEED": (
-            "Allocate a fresh local offset band on the owner PC and journal "
-            "the 31-organ MOVE into titan.gguf (new = old | mask; ones only "
-            "rise; re-read before every write)."
+            "Run host/titan_move_apply.py --go against dest-FROM-FILE "
+            "C:\\llm\\models\\titan.gguf and journal the 31-organ MOVE "
+            "(new = old | mask; ones only rise; re-read before every write)."
         ),
         "WHY_ONLY_BRYCE": (
-            "Offset band is OWNER_LOCAL_ALLOCATOR. Public tree must not "
-            "choose a band. This cloud VM is not his PC. titan.gguf is not "
-            "in the public clone. DIRECTIVES 11 stays PARTIAL from here."
+            "titan.gguf is not on this cloud box. Claimed offsets are "
+            "already dest FROM FILE (titan_size 103803350291). Apply and "
+            "reread need the file. Dirty LocalDeviceAgent/kite-help is on "
+            "the owner PC working tree."
         ),
         "SMALLEST_ACTION": (
-            "On the owner PC: open excerpts/20260823/titan_move_packet.json, "
-            "allocate one unused local band, write the 31 excerpts with "
-            "journaled MOVE, re-read each pre-image, post the nonzero "
-            "offsets + reread receipt. Do not smash commons.mno. Do not "
-            "fire 337."
+            "On the owner PC: python3 host/titan_move_apply.py --go. "
+            "If live size != 103803350291 the button reallocates from "
+            "live size. Post the reread receipt. Do not smash "
+            "commons.mno. Do not fire 337. Commit and push the dirty "
+            "LocalDeviceAgent kite-help tree."
         ),
         "EVIDENCE": (
             "Measured %s/31 excerpts. Packet titan=%s. nonzero_offsets=%s. "

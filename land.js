@@ -459,10 +459,16 @@
         note: "only " + excerpts + "/31 excerpts on this tree. Fabricate the missing organ. Do not write titan yet."
       };
     }
+    if (written === "NOT_WRITTEN" && nonzero === count && count >= 31) {
+      return {
+        state: "CLAIMED",
+        note: excerpts + "/31 claimed append offsets dest FROM FILE. titan write still NOT_WRITTEN. Run host/titan_move_apply.py --go on the machine that has titan.gguf."
+      };
+    }
     if (written === "NOT_WRITTEN" || nonzero === 0) {
       return {
         state: "NOT_LANDED",
-        note: excerpts + "/31 excerpts on this tree. titan write is OWNER_LOCAL_ALLOCATOR. Offset 0 is a request, not a band. This cloud box cannot close it."
+        note: excerpts + "/31 excerpts on this tree. Packet still has zero offsets. Fill claimed append offsets dest FROM FILE (titan_size 103803350291), then apply."
       };
     }
     return { state: "NOT_LANDED", note: "titan move not closed. Measure the packet and the reread." };
@@ -1075,7 +1081,7 @@
         organSum.textContent = landed + " INTEGRATED · " + open + " NOT_LANDED of " + census.length +
           " PLUMB 1–31 organs. " +
           (open === 0
-            ? "Excerpts are files. The leftover is titan write (OWNER_LOCAL_ALLOCATOR), not another remint."
+            ? "Excerpts are files. Claimed offsets are dest FROM FILE. The leftover is titan apply/reread, not another remint."
             : "Take a NOT_LANDED row. A PR is not this list.");
       }
       organHost.innerHTML = census.map(function (row) {
