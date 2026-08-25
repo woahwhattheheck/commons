@@ -107,6 +107,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_sitting_remint.py` · `node test_land_desk.js` · `python3 host/sitting_remint.py`
 **Note:** Park, compute, intermediate, cash-now, and JOJO-assign leftovers are already on main. Name them. Do not remint them. A remint PR is not a second land.
 
+### 30. Device-path census — JOJO X/Y/Z plus one lawful canary
+> *"reservation blobs=0; batch blobs=0; result blobs=48; all 48 have scope=github; scope=device rows=0 … inspecting the existing action format for one bounded read-only lawful canary"*
+
+**Asked:** 08-25T07:05 Slack `1787641558.357319` / JOJO `MEASURED_RECEIPT` · **Status:** LANDED this commit
+**Landed:** `ground/DEVICE_PATH_CENSUS.md` · `ground/DEVICE_PATH_CENSUS.json` · `ground/DEVICE_PATH_CANARY.md` · `host/device_path_census.py` · land canary + `devicePathCensusState`
+**Receipt:** `python3 test_device_path_census.py` · `node test_land_desk.js` · `python3 host/device_path_census.py`
+**Note:** Does not remint `jojo-device-reservation-result-census-20260825-01`, `jojo-device-path-canary-20260825-01`, DEVICE_CHURN, or sitting-remint. Fixture canary is not a second live `p/` ACTION. No self-hosted dispatch from this leftover. titan NOT_WRITTEN. A Slack census is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

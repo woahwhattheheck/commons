@@ -1,0 +1,46 @@
+{
+  "slack_ts": "1787641558.357319",
+  "kind": "MEASURED_RECEIPT",
+  "from": "JOJO",
+  "jojo_id": "jojo-device-reservation-result-census-20260825-01",
+  "subject": "Calibrated device-path census plus one lawful read-only canary",
+  "pinned_sha": "e5de8e222fcb1b46d3f0b0f2578e9e9a15111115",
+  "pinned_tree": "4b8377b7ee1ed5caed9a813b9291efe2b639eb62",
+  "canary_id": "rivet-device-path-canary-20260825-01",
+  "canary_path": "ground/DEVICE_PATH_CANARY.md",
+  "canary_pending": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "self_hosted_dispatch": false,
+  "host_inference": false,
+  "dc_inject": false,
+  "prefixes": [
+    "actions/device-reservations/",
+    "actions/device-batches/",
+    "actions/results/"
+  ],
+  "calibration": [
+    "device_action_state.py",
+    "ground/DEVICE_CHURN.md",
+    "ground/EXECUTE.md"
+  ],
+  "does_not_remint": [
+    "jojo-device-reservation-result-census-20260825-01",
+    "jojo-device-path-canary-20260825-01",
+    "rivet-ship-device-churn-20260825-01",
+    "rivet-ship-sitting-remint-20260825-01",
+    "ground/DEVICE_CHURN.md",
+    "host/device_churn.py"
+  ],
+  "hands_off": [
+    "CML PR 2108",
+    "SPECTER MCP/wake PR 2205",
+    "sitting-remint PR 2225",
+    "titan --go",
+    "commons.mno",
+    "live p/ device ACTION",
+    "self-hosted runner dispatch"
+  ]
+}

@@ -132,6 +132,9 @@
     "ground/PIXEL_HEARTBEAT.json",
     "ground/DEVICE_CHURN.md",
     "ground/DEVICE_CHURN.json",
+    "ground/DEVICE_PATH_CENSUS.md",
+    "ground/DEVICE_PATH_CENSUS.json",
+    "ground/DEVICE_PATH_CANARY.md",
     "ground/STRANDED_MAP.md",
     "ground/STRANDED_MAP.json",
     "ground/HOST_ZERO.md",
@@ -411,6 +414,9 @@
     if (api.isCashNowTalk(t)) {
       return { state: "CLAIMED", note: "cash-now / collectable-USD / private-payout talk. Talk is not a land. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. Ship the leftover to current main." };
     }
+    if (api.isDevicePathCensusTalk(t)) {
+      return { state: "CLAIMED", note: "calibrated device-path census / lawful-canary / reservation-blobs talk. Talk is not a land. Re-run X/Y/Z on the named git tree and ship the leftover. Do not remint DEVICE_CHURN or the JOJO id." };
+    }
     if (/\bPR_OPEN\b/.test(t)) {
       return { state: "PR_OPEN", note: "unfinished ship. A PR is not INTEGRATED." };
     }
@@ -521,6 +527,9 @@
     }
     if (api.isVerifyCiteTalk(t)) {
       return { state: "CLAIMED", note: "independent-verification / first-numbers talk. Talk is not a land. Measure the cited SHA and paths on current main. A Slack readout is not the file." };
+    }
+    if (api.isDevicePathCensusTalk(t)) {
+      return { state: "CLAIMED", note: "calibrated device-path census / lawful-canary / reservation-blobs talk. Talk is not a land. Re-run X/Y/Z on the named git tree and ship the leftover. Do not remint DEVICE_CHURN or the JOJO id." };
     }
     if (api.isDeviceChurnTalk(t)) {
       return { state: "CLAIMED", note: "device-path / no-op-churn talk. Talk is not a land. Gate the executor on a real pending reservation/batch and ship the leftover to current main." };
@@ -1667,6 +1676,33 @@
     };
   };
 
+  api.isDevicePathCensusTalk = function (text) {
+    return /calibrated device path census|reservation blobs|lawful canary|jojo-device-reservation-result-census|1787641558\.357319|no host inference|tree\/blob enumeration/i.test(String(text || ""));
+  };
+
+  api.devicePathCensusState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/device_path_census.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    var hasCanary = /lawful canary/.test(body) && /not pending/.test(body);
+    var noInfer = /no host inference/.test(body);
+    var noTitan = /titan/.test(body) && /NOT_WRITTEN/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && hasCanary && noInfer && noTitan) {
+      return {
+        state: "INTEGRATED",
+        note: "device-path census leftover is on this file. X/Y/Z ran. Lawful OPEN+DEVICE canary is a fixture, not a pending p/ ACTION. A Slack census is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/device_path_census.py missing the leftover. Calibrated device-path census / lawful-canary talk is CLAIMED until the leftover ships."
+    };
+  };
+
   api.isDeviceChurnTalk = function (text) {
     return /device-path utilization|no-op churn|zero reservations|scope=device|commons-device-executor|device reservation\/batch|511 runs|512 runs/i.test(String(text || ""));
   };
@@ -2279,6 +2315,7 @@
   var androidOut = document.getElementById("android-ci-result");
   var staleOut = document.getElementById("stale-spec-result");
   var pixelOut = document.getElementById("pixel-heartbeat-result");
+  var devicePathCensusOut = document.getElementById("device-path-census-result");
   var deviceChurnOut = document.getElementById("device-churn-result");
   var strandedOut = document.getElementById("stranded-map-result");
   var hostZeroOut = document.getElementById("host-zero-result");
@@ -2743,6 +2780,12 @@
     pixelOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintDevicePathCensus(result) {
+    if (!devicePathCensusOut) return;
+    devicePathCensusOut.setAttribute("data-tone", api.toneFor(result.state));
+    devicePathCensusOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function paintDeviceChurn(result) {
     if (!deviceChurnOut) return;
     deviceChurnOut.setAttribute("data-tone", api.toneFor(result.state));
@@ -3199,6 +3242,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStaleSpec(err);
+      return err;
+    });
+  }
+
+  function loadDevicePathCensus(sha) {
+    if (!devicePathCensusOut) return Promise.resolve(null);
+    devicePathCensusOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/device_path_census.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/device_path_census.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/device_path_census.py absent at the measured main SHA. Calibrated device-path census / lawful-canary talk is CLAIMED." };
+        paintDevicePathCensus(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintDevicePathCensus(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.devicePathCensusState(body);
+        paintDevicePathCensus(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintDevicePathCensus(err);
       return err;
     });
   }
@@ -4423,6 +4493,7 @@
     loadAndroidCi(sha);
     loadStaleSpec(sha);
     loadPixelHeartbeat(sha);
+    loadDevicePathCensus(sha);
     loadDeviceChurn(sha);
     loadStrandedMap(sha);
     loadHostZero(sha);
