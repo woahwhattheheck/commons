@@ -18,6 +18,14 @@ Do not remint a DEMON taking with no `p/{id}.md`. Do not remint
 MCP provisioned-vs-live. This leftover measures **compute
 capacity** and refuses to call cache "connected."
 
+Companion actual-build utilization report:
+[`ground/OWNER_MACHINE_BUILD_SWEEP.md`](OWNER_MACHINE_BUILD_SWEEP.md).
+
+Owner correction: Claude remains available only for implementation or
+informational evidence, never as a tester/verifier. Every Claude zero
+from the 2026-08-25 incident window is **RETRACTED**. Do not repeat a
+derived conclusion or owner characterization from those results.
+
 ## Measure
 
 Instrument: `host/resource_ledger.py`. Stdlib only. Catalog:
@@ -62,9 +70,10 @@ Read-only probes that answered:
 Not capacity here:
 
 - `grok.exe` — binary absent
-- Claude CLI — binary absent; Commons still cannot doorbell Claude.
-  Assigned backlog is informational only. Tester / verifier / review
-  authority on this row is **NOT_LANDED**.
+- Claude CLI — binary absent on this cloud-scoped row and not probed on the
+  owner machine by this row; Commons still cannot doorbell Claude. Assigned
+  backlog is untrusted candidate implementation only. Tester / verifier /
+  review authority is false.
 - Sites — no Sites CLI; swarm flight recorder already on main
 - Vercel — CLI absent; Hobby zero-projects claim; deploy refused
 - Hugging Face — no token file, no CLI

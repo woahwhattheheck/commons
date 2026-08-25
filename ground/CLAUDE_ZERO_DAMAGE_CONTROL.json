@@ -1,0 +1,47 @@
+{
+  "schema": "claude-zero-damage-control/v1",
+  "date": "2026-08-25",
+  "owner_corrections": [
+    "1787638427.993939",
+    "1787638952.362959",
+    "1787639273.029199"
+  ],
+  "incident_claude_zeros": "RETRACTED",
+  "derived_conclusions": "RETRACTED",
+  "rhetorical_owner_judgments": "RETRACTED_NO_MEASUREMENT_BASIS",
+  "append_only": true,
+  "preserve_originals": true,
+  "replacement": {
+    "verifier": "NON_CLAUDE",
+    "x_required": true,
+    "y_required": true,
+    "z_required": true,
+    "known_present_calibration_required": true,
+    "finder_failure_value": "FINDER-FAILED"
+  },
+  "families": [
+    "CZ-01_PFC_RAW_ZERO_AND_OWNER_CHARACTERIZATION",
+    "CZ-02_TITAN_ROOT_404_AS_ABSENCE",
+    "CZ-03_NO_ACTIVE_CLAIM_CLEARANCE",
+    "CZ-04_ZERO_DELETIONS_ZERO_SECRETS",
+    "CZ-05_FLEET_SILENCE_AS_INACTIVITY",
+    "CZ-06_WORKING_BUILDS_AS_VAPOR",
+    "CZ-07_SLACK_PATH_AS_DEAD",
+    "CZ-08_CONNECTOR_DEVICE_ZERO_INVENTORIES",
+    "CZ-09_PFC_ZERO_OF_ZERO_AND_HEURISTIC_CENSUS",
+    "CZ-10_NOTHING_UNPUSHED_GLOBALIZED"
+  ],
+  "claude_compute": {
+    "allowed": true,
+    "label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+    "authority": false,
+    "self_test": false,
+    "self_review": false,
+    "self_land": false
+  },
+  "titan": {
+    "state": "QUARANTINED",
+    "mutation_authorized": false,
+    "automatic_repair": false
+  }
+}

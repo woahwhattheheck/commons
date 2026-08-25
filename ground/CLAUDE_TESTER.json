@@ -4,10 +4,21 @@
   "subject": "STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW",
   "titan": "NOT_WRITTEN",
   "preserve_claude_artifacts": true,
-  "claude_output": "informational",
-  "prior_claude_verdicts": "UNVERIFIED",
+  "claude_output": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "claude_compute": "ALLOWED_FOR_QUARANTINED_CANDIDATES",
+  "claude_output_label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "non_claude_spec_required": true,
+  "non_claude_acceptance_required": true,
+  "self_landing": false,
+  "prior_claude_verdicts": "NO_VERIFIER_AUTHORITY",
+  "prior_claude_zero_verdicts": "RETRACTED",
+  "retract_derived_conclusions": true,
+  "context_integrity_required": true,
+  "owner_characterization_from_disputed_measurement": "FORBIDDEN",
+  "owner_predicted_missing_z": true,
   "xyz_required": true,
   "calibration_required": true,
+  "calibration_does_not_rehabilitate_claude": true,
   "allowed_verifiers": [
     "deterministic local checks",
     "GitHub Actions",
@@ -17,15 +28,43 @@
   ],
   "forbidden_claude_roles": [
     "test",
+    "test authorship",
     "verification",
+    "review verdict",
     "red-team-as-verdict",
     "collision-clearance",
     "zero-census",
     "green-suite certification",
     "final QA"
   ],
+  "allowed_claude_compute_roles": [
+    "bounded candidate code",
+    "mechanical rewrite",
+    "document normalization",
+    "corpus extraction",
+    "alternative design"
+  ],
+  "forbidden_claude_mutations": [
+    "public state",
+    "financial state",
+    "account state",
+    "destructive state",
+    "Titan",
+    "production"
+  ],
+  "forbidden_uses": [
+    "characterize owner intellect",
+    "characterize owner motives",
+    "characterize owner mental state",
+    "characterize owner credibility",
+    "convert disputed measurement into owner judgment"
+  ],
   "ledger_paths": [
     "ground/CLAUDE_TESTER.md",
+    "ground/CLAUDE_ZERO_DAMAGE_CONTROL.md",
+    "ground/CLAUDE_ZERO_DAMAGE_CONTROL.json",
+    "ground/GROK_CLAUDE_HYGIENE.md",
+    "ground/GROK_CLAUDE_HYGIENE.json",
     "resources.html"
   ],
   "claim_enroll": {
