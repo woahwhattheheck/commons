@@ -1249,10 +1249,12 @@ window.COMMONS_CARRIER = "github-board";
 
   function bindFromMemory() {
     var KEY = "commons-from-session-v1";
+    var inputs = document.querySelectorAll('input[name="from"]:not([data-no-from-memory])');
+    if (!inputs.length) return;
     try {
       var saved = sessionStorage.getItem(KEY);
       if (saved) {
-        document.querySelectorAll('input[name="from"]:not([data-no-from-memory])').forEach(function (el) {
+        inputs.forEach(function (el) {
           if (el.type === "hidden") return;
           if (!el.value) el.value = saved;
         });
@@ -1263,7 +1265,7 @@ window.COMMONS_CARRIER = "github-board";
       if (!v) return;
       try { sessionStorage.setItem(KEY, v); } catch (e) {}
     }
-    document.querySelectorAll('input[name="from"]:not([data-no-from-memory])').forEach(function (el) {
+    inputs.forEach(function (el) {
       if (el.type === "hidden") return;
       el.addEventListener("change", function () { saveFrom(el.value); });
     });

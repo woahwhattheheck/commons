@@ -1,0 +1,49 @@
+name: revenue-recovery-guard
+
+on:
+  pull_request:
+    paths:
+      - 'diagnostic.html'
+      - 'carrier.js'
+      - 'host/revenue_recovery.py'
+      - 'revenue/payment_ready/**'
+      - 'test_revenue_recovery.py'
+      - 'test_diagnostic_dlp.js'
+      - 'p/jojo-revenue-recovery-pipeline-20260825-01*.md'
+      - '.github/workflows/revenue-recovery-guard.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'diagnostic.html'
+      - 'carrier.js'
+      - 'host/revenue_recovery.py'
+      - 'revenue/payment_ready/**'
+      - 'test_revenue_recovery.py'
+      - 'test_diagnostic_dlp.js'
+      - 'p/jojo-revenue-recovery-pipeline-20260825-01*.md'
+      - '.github/workflows/revenue-recovery-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: preserve the immutable JOJO source record
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='2e9b395e919e860134c6ffe70d29e3d8514127d3'
+          actual="$(git hash-object p/jojo-revenue-recovery-pipeline-20260825-01.md)"
+          test "$actual" = "$expected"
+
+      - name: run revenue contract and browser DLP tests
+        run: |
+          python3 -m unittest test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py
+          node test_diagnostic_dlp.js
+          python3 host/revenue_recovery.py --self-test

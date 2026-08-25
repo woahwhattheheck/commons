@@ -26,12 +26,15 @@ FIELD_RE = re.compile(r"^([A-Za-z][A-Za-z0-9_]{1,40}):\s*(.*)$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{7,159}$")
+OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{7,159}$")
 PRIVATE_CONTACT_FIELD_RE = re.compile(
-    r'''["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|contact)["']?'''
+    r'''["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|'''
+    r'''bank[_ -]?account|routing[_ -]?number|account[_ -]?number|phone[_ -]?number|full[_ -]?name|'''
+    r'''email|phone|address|contact)["']?'''
     r'''\s*[:=]\s*["']?\S+''',
     re.IGNORECASE,
 )
+MAX_DLP_CHARS = 100_000
 SENSITIVE_PATTERNS = (
     re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),
     re.compile(r"\b(?:\d[ -]?){13,19}\b"),
@@ -171,7 +174,19 @@ def parse_post(text: str) -> tuple[dict[str, str], dict[str, str]]:
 
 
 def contains_sensitive_value(text: str) -> bool:
-    return any(pattern.search(text) for pattern in SENSITIVE_PATTERNS)
+    if len(text) > MAX_DLP_CHARS:
+        return True
+    views = [text]
+    for _ in range(2):
+        decoded = re.sub(
+            r"%([0-9A-Fa-f]{2})",
+            lambda match: chr(int(match.group(1), 16)),
+            views[-1].replace("+", " "),
+        )
+        if decoded == views[-1]:
+            break
+        views.append(decoded)
+    return any(pattern.search(view) for view in views for pattern in SENSITIVE_PATTERNS)
 
 
 def base_facts() -> dict[str, Any]:

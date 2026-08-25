@@ -55,6 +55,13 @@ const blocked = [
   "PASSWORD: hunter2",
   "AUTHORIZATION: Bearer secret-token",
   "AKIAABCDEFGHIJKLMNOP",
+  "customerEmail: private@example.com",
+  "phoneNumber: +1-212-555-0199",
+  "fullName: Jane Doe",
+  "bankAccount: 123456789",
+  "routingNumber: 123456789",
+  "https://example.com/contact?email=alice%40example.com",
+  "https://example.com/contact?%65mail=alice%2540example.com",
 ];
 blocked.forEach((value) => {
   const result = attempt(value);
@@ -74,10 +81,13 @@ const privateFrom = attempt("PURCHASE_INTENT: YES", "CONTACT: private@example.co
 assert.ok(privateFrom.prevented && privateFrom.stopped, "private values in from must also be blocked");
 assert.ok(html.indexOf("event.stopImmediatePropagation()") < html.indexOf("carrier.js?"));
 assert.ok(html.includes('data-no-from-memory="true"'));
+const bindFromMemory = carrier.slice(carrier.indexOf("function bindFromMemory()"), carrier.indexOf("function bindMintId()"));
+assert.ok(bindFromMemory.indexOf("var inputs =") < bindFromMemory.indexOf("localStorage.getItem"));
+assert.ok(bindFromMemory.indexOf("if (!inputs.length) return;") < bindFromMemory.indexOf("localStorage.getItem"));
 assert.equal(
   (carrier.match(/input\[name="from"\]:not\(\[data-no-from-memory\]\)/g) || []).length,
-  2,
-  "from-memory load and save must both skip opted-out diagnostic inputs",
+  1,
+  "from-memory selection must exclude opted-out diagnostic inputs before storage access",
 );
 
 console.log("DIAGNOSTIC_DLP_OK " + blocked.length + " blocked vectors + clean/public/from-memory checks");

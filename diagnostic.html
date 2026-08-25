@@ -133,16 +133,30 @@ PUBLIC_OBJECTIVE:</textarea>
     /(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+/i,
     /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret)\s*[:=]\s*\S+/i,
     /\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+/i,
-    /["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|contact)["']?\s*[:=]\s*["']?\S+/i,
+    /["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|bank[_ -]?account|routing[_ -]?number|account[_ -]?number|phone[_ -]?number|full[_ -]?name|email|phone|address|contact)["']?\s*[:=]\s*["']?\S+/i,
     /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/,
     /\bauthorization\s*:\s*(?:basic|bearer)\s+\S+/i,
     /\b(?:routing|account)\s*(?:number)?\s*:\s*\d/i,
     /\b(?:\d[ -]?){13,19}\b/,
     /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/
   ];
+  function sensitiveViews(value) {
+    var views = [value];
+    for (var pass = 0; pass < 2; pass += 1) {
+      var decoded = views[views.length - 1].replace(/\+/g, " ").replace(/%([0-9A-Fa-f]{2})/g, function (_, hex) {
+        return String.fromCharCode(parseInt(hex, 16));
+      });
+      if (decoded === views[views.length - 1]) break;
+      views.push(decoded);
+    }
+    return views;
+  }
   form.addEventListener("submit", function (event) {
     var submitted = [form.elements.from.value, form.elements.body.value].join("\n");
-    if (!forbidden.some(function (pattern) { return pattern.test(submitted); })) return;
+    var blocked = submitted.length > 100000 || sensitiveViews(submitted).some(function (view) {
+      return forbidden.some(function (pattern) { return pattern.test(view); });
+    });
+    if (!blocked) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     out.textContent = "not posted. Remove credentials, model bytes, private contact details, or private financial values; this public form stores only a non-confidential intent signal.";

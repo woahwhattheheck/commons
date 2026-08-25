@@ -153,6 +153,13 @@ class RevenueRecoveryTests(unittest.TestCase):
             "STREET_ADDRESS: 123 Main Street",
             "CONTACT: private@example.com",
             '\"CUSTOMER_EMAIL\": \"private@example.com\"',
+            "customerEmail: private@example.com",
+            "phoneNumber: +1-212-555-0199",
+            "fullName: Jane Doe",
+            "bankAccount: 123456789",
+            "routingNumber: 123456789",
+            "https://example.com/contact?email=alice%40example.com",
+            "https://example.com/contact?%65mail=alice%2540example.com",
         ):
             with self.subTest(value=value):
                 self.assert_sensitive_signal_is_incomplete(value)
@@ -396,6 +403,33 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.write_private_json(private, "quote.json", manifest)
         with self.assertRaisesRegex(ValueError, "does not match"):
             rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json")
+
+    def test_path_shaped_opaque_references_are_rejected(self):
+        temp, root, private = self.make_root(self.valid_post())
+        self.addCleanup(temp.cleanup)
+        (root / "receipts").mkdir()
+        intent = rr.purchase_intent_receipt(root, "buyer-signal")
+        (root / "receipts/intent.json").write_text(json.dumps(intent), encoding="utf-8")
+        digest = self.write_private_artifact(private, "quote.bin", b"real bytes")
+        for reference in (
+            "C:/private-evidence/quote.bin",
+            "C:\\private-evidence\\quote.bin",
+            "/private-evidence/quote.bin",
+            "owner-private:folder/quote.bin",
+        ):
+            manifest = {
+                "schema_version": "revenue-recovery-evidence/v1",
+                "stage": "QUOTE",
+                "artifact": {
+                    "kind": "QUOTE_ARTIFACT",
+                    "reference": reference,
+                    "file": "quote.bin",
+                    "sha256": digest,
+                },
+            }
+            self.write_private_json(private, "quote.json", manifest)
+            with self.subTest(reference=reference), self.assertRaisesRegex(ValueError, "opaque"):
+                rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json")
 
 
 if __name__ == "__main__":
