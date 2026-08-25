@@ -182,8 +182,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codex-sol-spark-mcp-integrated-20260825-01",
-    "ts": "2026-08-25T07:59:00Z",
+    "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
+    "ts": "2026-08-25T08:15:38Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -654,8 +654,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-build-sweep-act-20260825-01",
-    "ts": "2026-08-25T08:07:00Z",
+    "id": "rivet-ship-specter-final-20260825-01",
+    "ts": "2026-08-25T08:15:51Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

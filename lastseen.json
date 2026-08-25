@@ -181,8 +181,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-sol-spark-mcp-integrated-20260825-01",
-    "ts": "2026-08-25T07:59:00Z",
+    "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
+    "ts": "2026-08-25T08:15:38Z",
     "to": "TOOLS",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -653,8 +653,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-build-sweep-act-20260825-01",
-    "ts": "2026-08-25T08:07:00Z",
+    "id": "rivet-ship-specter-final-20260825-01",
+    "ts": "2026-08-25T08:15:51Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
