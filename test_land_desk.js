@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ai/.test(html), "desk must bust the measure-abuse cache key");
+assert.ok(/20260825aj/.test(html), "desk must bust the claude-zero retract cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,46 @@ assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the P0 Slack t
 assert.ok(/triple-append|byte-identical-appends|P0-utilization-incident|pause-further-append/i.test(html), "desk must name triple-append talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_APPEND_GUARD.md") >= 0, "titan-append-guard card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_APPEND_GUARD.json") >= 0, "titan-append-guard catalog must stay a canary");
+assert.ok(api.isClaudeZeroTalk, "land.js must classify Claude-reported-zero retract talk");
+assert.ok(api.claudeZeroState, "land.js must classify the Claude-zero leftover");
+assert.ok(api.isClaudeZeroTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong. RETRACT every Claude-reported zero."), "Claude-zero correction copy is talk");
+assert.ok(!api.isClaudeZeroTalk("make sure people do more than talk about shit"), "ship-talk is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. Do not assign Claude models test. tester/verifier lanes. uncalibrated green result does not count."), "Claude-tester copy is not the Claude-zero leftover");
+assert.ok(!api.isClaudeTesterTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong. RETRACT every Claude-reported zero."), "Claude-zero copy is not the Claude-tester leftover");
+assert.ok(!api.isClaudeZeroTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "containment is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED, never 0."), "finder-zero copy is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. please post your named exact scope."), "collision-hold is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append is not the Claude-zero leftover");
+assert.ok(!api.isClaudeZeroTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. do not characterize the reporter."), "measure-abuse copy is not the Claude-zero leftover");
+assert.ok(!api.isMeasureAbuseTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not the measure-abuse leftover");
+assert.ok(!api.isMcpWakeTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not the MCP/wake leftover");
+assert.ok(!api.isTripleAppendTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not the triple-append leftover");
+assert.ok(!api.isImpactLedgerTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero subject without FINDER-FAILED is not the impact-ledger leftover");
+var claudeZeroTalk = api.completionStateFromText(
+  "CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong. RETRACT every Claude-reported zero."
+);
+assert.strictEqual(claudeZeroTalk.state, "CLAIMED");
+assert.ok(/RETRACT|Claude-reported/i.test(claudeZeroTalk.note), "Claude-zero-without-SHA must stay CLAIMED");
+var claudeZeroDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-zero leftover landed"
+);
+assert.strictEqual(claudeZeroDone.state, "INTEGRATED", "completion words still beat Claude-zero talk");
+var claudeZeroEmpty = api.claudeZeroState("");
+assert.strictEqual(claudeZeroEmpty.state, "UNMEASURED");
+var claudeZeroMissing = api.claudeZeroState("# empty stub\nno retract");
+assert.strictEqual(claudeZeroMissing.state, "NOT_LANDED");
+var claudeZeroOk = api.claudeZeroState("def measure_from_rows(rows):\n    return rows\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nknown-present calibration\nif find(X): return Y\nnever silently emit 0\nNever return 0\n");
+assert.strictEqual(claudeZeroOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(claudeZeroOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-zero-result"') >= 0, "desk must name the Claude-zero leftover");
+assert.ok(html.indexOf("host/claude_zero.py") >= 0, "desk must name the Claude-zero instrument");
+assert.ok(html.indexOf("ground/CLAUDE_ZERO.md") >= 0, "desk must link the Claude-zero card");
+assert.ok(html.indexOf("ground/CLAUDE_ZERO.json") >= 0, "desk must link the Claude-zero catalog");
+assert.ok(html.indexOf("1787638427.993939") >= 0, "desk must cite the Claude-zero Slack ts");
+assert.ok(/RETRACT, DO NOT DOWNGRADE|Claude-reported zeros/i.test(html), "desk must name Claude-zero talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ZERO.md") >= 0, "Claude-zero card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ZERO.json") >= 0, "Claude-zero catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

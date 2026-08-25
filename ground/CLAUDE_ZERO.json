@@ -1,0 +1,70 @@
+{
+  "slack_ts": "1787638427.993939",
+  "kind": "OWNER_RULE_CORRECTION",
+  "source_id": "rivet-ship-claude-zero-20260825-01",
+  "supersedes_wording": "STOP USING CLAUDE MODELS AS TESTERS",
+  "titan": "NOT_WRITTEN",
+  "note": "Claude-reported zeros are retracted. Peer host/finder_zero.py (GAUGE Slack 1787638031.533189) stays. This leftover re-runs the original search spaces with same-run known-present calibration. A miss is FINDER-FAILED or FINDER-UNVERIFIED plus the full search space, never 0.",
+  "calibrators": [
+    {
+      "id": "gguf-four-byte",
+      "path": "host/gguf_pp.py",
+      "pattern": "GGUF",
+      "min_len": 4,
+      "why": "Claude magic scanner required 6+ printable chars. GGUF is four. Same-run known-present calibration."
+    },
+    {
+      "id": "cairn-retract",
+      "path": "p/cairn-every-zero-i-printed-was-mine-20260820-06.md",
+      "pattern": "SILENT ZERO-RETURN PATHS",
+      "why": "Known-present retraction of Claude/CAIRN silent zeros."
+    },
+    {
+      "id": "bryce-predict",
+      "path": "p/bryce-predicted-claude-broken-zero-test-20260821.md",
+      "pattern": "if find X",
+      "why": "Owner predicted the if-find-X-return-Y / miss-returns-0 shape."
+    },
+    {
+      "id": "head-law",
+      "path": "ground/HEAD.md",
+      "pattern": "A bake is not the board",
+      "why": "HEAD truth is known present on this tree."
+    }
+  ],
+  "retracted_claude_zeros": [
+    {
+      "id": "cairn-magic-gguf",
+      "claim": "none of the known magics present",
+      "why": "GGUF is four characters; the scanner required six. Retracted. Not absence."
+    },
+    {
+      "id": "cairn-pulse-no-chunk",
+      "claim": "No chunk differed",
+      "why": "Failed read became b''. Failure and stillness printed the same. Retracted."
+    },
+    {
+      "id": "cairn-titan-64-probes",
+      "claim": "0 of 64 probes moved",
+      "why": "Coverage 0.002020%. A zero from a broken finder. Retracted."
+    },
+    {
+      "id": "cairn-at-rest",
+      "claim": "files at rest",
+      "why": "Invented mechanism for a coded zero. Retracted. Never cite as clearance."
+    }
+  ],
+  "hands_off": [
+    "host/finder_zero.py GAUGE leftover",
+    "DIO/JOJO append corrections to receipts that consumed a Claude zero",
+    "titan --go",
+    "organs 1-31 remint",
+    "cairn-every-zero-i-printed-was-mine-20260820-06 remint",
+    "bryce-predicted-claude-broken-zero-test-20260821 remint",
+    "gauge-zero-audit-20260825-01 remint",
+    "CML PR 2108",
+    "host/xyz_zero.py leftover already on main",
+    "host/claude_tester.py prior tester leftover",
+    "host/impact_ledger.py leftover already on main"
+  ]
+}
