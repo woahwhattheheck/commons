@@ -225,7 +225,7 @@ def classify(row):
         or row.get("banking_only_blocker")
         or str(row.get("collectable_usd") or "") != "NOT_LANDED"
         or not row.get("xyz_required")
-        or "Cursor / Grok" not in str(row.get("remeasurement_owner") or "")
+        or "Codex / Grok Build" not in str(row.get("remeasurement_owner") or "")
     ):
         return {
             "state": "NOT_LANDED",
@@ -395,7 +395,7 @@ def _self_test():
             "banking_only_blocker": False,
             "collectable_usd": "NOT_LANDED",
             "xyz_required": True,
-            "remeasurement_owner": "Cursor / Grok",
+            "remeasurement_owner": "Codex / Grok Build",
             "forbidden_hits": [],
         }
     )

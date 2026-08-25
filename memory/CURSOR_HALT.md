@@ -7,7 +7,9 @@ until future notice, stop giving Cursor work. Cursor is at
 This upgrades the landed 24-hour grok-app-route leftover.
 Do not remint `GROK_APP_ROUTE`. Close is BRYCE / ZERO only.
 
-This is work assignment, not a door lock. No auth. No gate.
-Blank `from=` still lands as `UNSEATED`. Cursor doorbell stays.
+`ground/CURSOR_QUOTA_HOLD.md` now extends this from assignment policy to
+mechanical containment: the Cursor doorbell, delivery, callbacks, and model
+invocation are held too. No auth. No gate. Blank `from=` still lands as
+`UNSEATED`.
 
 Instrument: `host/cursor_halt.py`. Card: `ground/CURSOR_HALT.md`.

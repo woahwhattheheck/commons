@@ -8,12 +8,13 @@ Grok-native deny lists do not override that import.
 
 Do NOT disable those plugins in Claude Code — paid Opus stays.
 Do NOT delete Claude sessions or plugins. Do NOT mutate Titan.
-Direct Grok Build is FAIL-CLOSED. Clean Cursor is the land lane.
+Direct Grok Build is FAIL-CLOSED. Codex/local/GitHub Actions is the land lane;
+SuperGrok Heavy / Grok Build is the analysis lane; Cursor is held.
 Claude/Opus remains isolated UNTRUSTED candidate compute.
 Hygiene is diligence, not the build.
 
 X = exact files in SEARCH_SPACE
-Y = leak plugins + keep-enabled + fail-closed + Cursor clean lane
+Y = leak plugins + keep-enabled + fail-closed + Codex/local/Actions land lane + Cursor held
 Z = missing leftover / failed calibration / FINDER-FAILED
 Calibration = known-present EXECUTE.md + GROK_HARNESS.md + Action Pad
 must be found in the same run or the measure is UNMEASURED.
@@ -70,7 +71,8 @@ REQUIRED_PHRASES = (
     "mcp-tunnels",
     "fail-closed",
     "do not disable",
-    "clean cursor",
+    "codex/local/github actions",
+    "cursor is held",
     "untrusted candidate",
     "diligence",
     "never 0",
@@ -121,6 +123,8 @@ def load_catalog(text):
         "keep_claude_plugins": bool(data.get("keep_claude_plugins", True)),
         "direct_grok": str(data.get("direct_grok") or "").strip(),
         "cursor_surface": str(data.get("cursor_surface") or "").strip(),
+        "land_lane": str(data.get("land_lane") or "").strip(),
+        "grok_analysis_lane": str(data.get("grok_analysis_lane") or "").strip(),
         "claude_compute": str(data.get("claude_compute") or "").strip(),
         "hygiene": str(data.get("hygiene") or "").strip(),
         "mutate_claude": bool(data.get("mutate_claude", False)),
@@ -146,7 +150,8 @@ def measure_from_rows(facts):
         "leak_plugins": list(facts.get("leak_plugins") or []),
         "keep_claude_plugins": bool(facts.get("keep_claude_plugins")),
         "fail_closed": bool(facts.get("fail_closed")),
-        "cursor_clean": bool(facts.get("cursor_clean")),
+        "codex_land_lane": bool(facts.get("codex_land_lane")),
+        "cursor_held": bool(facts.get("cursor_held")),
         "untrusted_candidate": bool(facts.get("untrusted_candidate")),
         "diligence_not_build": bool(facts.get("diligence_not_build")),
         "posting_open": bool(facts.get("posting_open")),
@@ -247,7 +252,8 @@ def classify(row):
     if (
         not row.get("keep_claude_plugins")
         or not row.get("fail_closed")
-        or not row.get("cursor_clean")
+        or not row.get("codex_land_lane")
+        or not row.get("cursor_held")
         or not row.get("untrusted_candidate")
         or not row.get("diligence_not_build")
     ):
@@ -255,7 +261,7 @@ def classify(row):
             "state": "NOT_LANDED",
             "note": (
                 "hygiene leftover present but incomplete. Keep Claude plugins. "
-                "Direct Grok Build fail-closed. Clean Cursor is the land lane. "
+                "Direct Grok Build fail-closed. Codex/local/GitHub Actions is the land lane; Cursor held. "
                 "Hygiene is diligence, not the build. FINDER-FAILED, never 0."
             ),
         }
@@ -275,7 +281,7 @@ def classify(row):
         "note": (
             "Grok-hygiene leftover is on this tree. Three Claude plugin "
             "metadata/payload surfaces stay named. Direct Grok Build is "
-            "fail-closed. Clean Cursor is the land lane. Claude plugins stay "
+            "fail-closed. Codex/local/GitHub Actions is the land lane; Cursor held. Claude plugins stay "
             "enabled. A Slack hygiene boundary is still not the file."
         ),
     }
@@ -317,7 +323,8 @@ def measure_root(root):
         "leak_plugins": leak,
         "keep_claude_plugins": bool(catalog.get("keep_claude_plugins")),
         "fail_closed": catalog.get("direct_grok") == "FAIL_CLOSED",
-        "cursor_clean": catalog.get("cursor_surface") == "CLEAN_LANE",
+        "codex_land_lane": catalog.get("land_lane") == "Codex / local / GitHub Actions",
+        "cursor_held": catalog.get("cursor_surface") == "QUOTA_HOLD",
         "untrusted_candidate": catalog.get("claude_compute") == "UNTRUSTED_CANDIDATE",
         "diligence_not_build": catalog.get("hygiene") == "DILIGENCE_NOT_BUILD",
         "posting_open": posting_open,
@@ -347,7 +354,8 @@ def measure_root(root):
                 "leak_plugins": leak,
                 "keep_claude_plugins": facts["keep_claude_plugins"],
                 "fail_closed": facts["fail_closed"],
-                "cursor_clean": facts["cursor_clean"],
+                "codex_land_lane": facts["codex_land_lane"],
+                "cursor_held": facts["cursor_held"],
             },
             "z": (
                 "misses "

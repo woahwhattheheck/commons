@@ -35,10 +35,11 @@ This leftover is **not** SuperGrok Heavy. Heavy still says Cursor
 Grok is not the Heavy substitute (`ground/SUPERGROK_HEAVY.md`).
 That leftover stays. Do not remint it.
 
-Cursor doorbell (DIRECTIVES item 2) stays. This is work routing,
-not a wake disable. Hygiene (`ground/GROK_HYGIENE.md`) stays
-fail-closed for Direct Build Claude-compat payloads. Do not remint
-GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES.
+This card's original Cursor-doorbell clause is superseded by
+`ground/CURSOR_QUOTA_HOLD.md`. Cursor wake and work are held. Hygiene
+(`ground/GROK_HYGIENE.md`) stays fail-closed for Direct Build
+Claude-compat payloads. Do not remint GROK_HARNESS / GROK_RECEIPT /
+SITTING_REMINT / HEAVY_LANES.
 
 This leftover is operational, not a door lock. Possessing the link
 is authorization. Blank `from=` still lands as `UNSEATED`. No auth.

@@ -187,14 +187,17 @@ class TestSuperGrokHeavy(unittest.TestCase):
         self.assertEqual(classify_sha("", "deadbeef", False), "UNMEASURED")
 
     def test_search_space_and_calibration_named(self):
-        self.assertIn("ground/SUPERGROK_HEAVY.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_HYGIENE.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_HYGIENE.md", CALIBRATION)
-        self.assertIn("ground/EXECUTE.md", CALIBRATION)
-        self.assertIn("ground/CASH_NOW.md", ALREADY_LANDED)
-        self.assertIn("ground/SPECTER_FINAL.md", ALREADY_LANDED)
-        self.assertIn("ground/SITTING_PR.md", ALREADY_LANDED)
-        self.assertIn("ground/DEVICE_QUEUE_CAP.md", ALREADY_LANDED)
+        normalized_search = [path.replace("\\", "/") for path in SEARCH_SPACE]
+        normalized_calibration = [path.replace("\\", "/") for path in CALIBRATION]
+        normalized_landed = [path.replace("\\", "/") for path in ALREADY_LANDED]
+        self.assertIn("ground/SUPERGROK_HEAVY.md", normalized_search)
+        self.assertIn("ground/GROK_HYGIENE.md", normalized_search)
+        self.assertIn("ground/GROK_HYGIENE.md", normalized_calibration)
+        self.assertIn("ground/EXECUTE.md", normalized_calibration)
+        self.assertIn("ground/CASH_NOW.md", normalized_landed)
+        self.assertIn("ground/SPECTER_FINAL.md", normalized_landed)
+        self.assertIn("ground/SITTING_PR.md", normalized_landed)
+        self.assertIn("ground/DEVICE_QUEUE_CAP.md", normalized_landed)
 
 
 if __name__ == "__main__":

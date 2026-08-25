@@ -8,6 +8,8 @@
   "closed": false,
   "closed_by": "",
   "action": "stop giving Cursor work",
+  "doorbell_active": false,
+  "superseded_by": "ground/CURSOR_QUOTA_HOLD.md",
   "already_landed": [
     "ground/GROK_APP_ROUTE.md",
     "ground/GROK_APP_ROUTE.json",

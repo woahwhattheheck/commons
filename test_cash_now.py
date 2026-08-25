@@ -80,7 +80,7 @@ class TestCashNow(unittest.TestCase):
                 "banking_only_blocker": False,
                 "collectable_usd": "NOT_LANDED",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "calibration_ok": True,
             }
         )
@@ -106,7 +106,7 @@ class TestCashNow(unittest.TestCase):
                 "banking_only_blocker": False,
                 "collectable_usd": "NOT_LANDED",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "forbidden_hits": [],
                 "calibration_ok": True,
                 "calibration_hits": list(CALIBRATION),
@@ -126,7 +126,7 @@ class TestCashNow(unittest.TestCase):
         self.assertEqual(catalog["collectable_usd"], "NOT_LANDED")
         self.assertFalse(catalog["banking_only_blocker"])
         self.assertTrue(catalog["xyz_required"])
-        self.assertEqual(catalog["remeasurement_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["remeasurement_owner"], "Codex / Grok Build")
         self.assertEqual(catalog["stages"], list(REQUIRED_STAGES))
         self.assertGreaterEqual(len(catalog["rails"]), 2)
         self.assertTrue(catalog["needs_bryce"]["smallest_action"])

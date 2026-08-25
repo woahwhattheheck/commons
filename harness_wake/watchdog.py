@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from typing import Any, Callable
 
-from independent_commons_mcp.jobs import JobStore
+from independent_commons_mcp.jobs import JobStore, public_job, utc_now
 from independent_commons_mcp.truth import GitTruth
 
 from .cursor_adapter import deliver_ntfy, is_cursor_harness
@@ -52,15 +52,43 @@ def run(
 ) -> dict[str, Any]:
     store = JobStore(jobs_dir)
     oracle = page_exists if page_exists is not None else pinned_head_oracle(truth=truth)
-    summary = store.tick_all(worker_id=worker_id, now=now, page_exists=oracle)
+    rows = []
+    for ident in store.list_ids():
+        job = store.get(ident)
+        if is_cursor_harness(str(job.get("harness") or "")):
+            rows.append({
+                "ok": True,
+                "state": "TICKED",
+                "job_id": ident,
+                "action": "HOLD",
+                "invoke_model": False,
+                "reason": "CURSOR_QUOTA_HOLD",
+                "now": now or utc_now(),
+                "note": "Owner quota hold: this row cannot authorize model invocation.",
+                "job": public_job(job),
+            })
+            continue
+        rows.append(
+            store.tick(ident, now=now, worker_id=worker_id, page_exists=oracle)
+        )
+    summary = {
+        "ok": True,
+        "state": "TICKED",
+        "jobs": rows,
+        "wake_count": sum(1 for row in rows if row.get("action") == "WAKE"),
+        "stop_count": sum(1 for row in rows if row.get("action") == "STOP"),
+        "backoff_count": sum(1 for row in rows if row.get("action") == "BACKOFF"),
+        "hold_count": sum(1 for row in rows if row.get("action") == "HOLD"),
+        "invoke_model_count": sum(1 for row in rows if row.get("invoke_model")),
+        "process_model_invocations": 0,
+        "note": "Watchdog never invokes a model; Cursor rows are held before lease acquisition.",
+    }
+    store._write_last_tick(summary)
     deliveries = []
     if deliver:
         for row in summary.get("jobs") or []:
-            if row.get("action") != "WAKE":
-                continue
-            job = (row.get("job") or {})
-            harness = str(job.get("harness") or "")
-            if is_cursor_harness(harness):
+            if row.get("action") == "HOLD" and row.get("reason") == "CURSOR_QUOTA_HOLD":
+                job = row.get("job") or {}
                 receipt = {
                     "job_id": row["job_id"],
                     "attempt_id": row.get("attempt_id"),
@@ -72,15 +100,12 @@ def run(
                     "ok": True,
                     "state": "CURSOR_QUOTA_HOLD",
                 }
-                store.append_receipt(row["job_id"], {
-                    "attempt_id": row.get("attempt_id"),
-                    "event": "cursor_quota_hold",
-                    "ts": row.get("now"),
-                    "carrier": "CURSOR_QUOTA_HOLD",
-                    "id": job.get("job_id"),
-                })
                 deliveries.append(receipt)
                 continue
+            if row.get("action") != "WAKE":
+                continue
+            job = (row.get("job") or {})
+            harness = str(job.get("harness") or "")
             receipt = deliver_ntfy(job, str(row.get("attempt_id") or ""), http=http)
             store.append_receipt(row["job_id"], {
                 "attempt_id": row.get("attempt_id"),

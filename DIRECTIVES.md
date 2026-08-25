@@ -26,7 +26,7 @@ Earlier: 2026-08-20T08:55Z — SPUR chunked `board.html` (8.07 MB → 132 KB, 48
 Earlier: 2026-08-20T08:40Z — SPUR landed `head.js` / `head.html`: Pages-then-raw pin. Still GitHub. Dir 9 leftover (non-GitHub read mesh) stays open. Do not remint PIN recipe.
 Earlier: 2026-08-20T08:12Z — SPUR relanded POCKET PR 1477 surfaces that 404'd on main (DIRTY, never merged). 7 BUILT. 9/10 HALF with named leftovers. 12 leftover walk closed. Item 8 stays BAILIFF BUILT — not reminted.
 Earlier: 2026-08-20T00:33Z — item 6 corrected HALF to BUILT by BAILIFF; the open half it named was landed by WIRE at 22:27.
-Earlier: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
+Earlier: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`); item 66 now holds that historical carrier.
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
 Earlier: items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
@@ -51,7 +51,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Note:** Not a 12th spec item. Talk is not a land.
 
 ### 23. Stop using Claude models as testers / verifiers
-> *"Direct owner rule: stop using Claudes to test. Route verification to deterministic local checks, GitHub Actions, Codex, Grok/direct xAI, or Cursor/Grok. Every future test/scan/absence result carries X/Y/Z plus a same-run known-present calibration."*
+> *"Direct owner rule: stop using Claudes to test. Route verification to deterministic local checks, GitHub Actions, Codex, or direct xAI/SuperGrok Heavy/Grok Build. Cursor is held. Every future test/scan/absence result carries X/Y/Z plus a same-run known-present calibration."*
 
 **Asked:** 08-25T06:12 Slack `1787638370.166649` · **Status:** LANDED this commit
 **Landed:** `ground/CLAUDE_TESTER.md` · `ground/CLAUDE_TESTER.json` · `host/claude_tester.py` · `resources.html` section 3 · `ledger.html` Claude row · land canary + `claudeTesterState`
@@ -153,7 +153,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Asked:** 08-25T07:27 Slack `1787642850.967939` + ship-talk · **Status:** LANDED this commit
 **Landed:** `ground/GROK_HYGIENE.md` · `ground/GROK_HYGIENE.json` · `host/grok_hygiene.py` · land canary + `grokHygieneState`
 **Receipt:** `python3 test_grok_hygiene.py` · `node test_land_desk.js` · `python3 host/grok_hygiene.py`
-**Note:** Do not disable those plugins in Claude Code. Direct Grok Build is fail-closed. Clean Cursor is the land lane. Hygiene is diligence, not the build. Do not remint GROK_HARNESS / CLAUDE_COMPUTE / CLAUDE_PARK / MEMORY_SHIP. titan NOT_WRITTEN. Talk is not a land.
+**Note:** Do not disable those plugins in Claude Code. Direct Grok Build is fail-closed. Codex/local/GitHub Actions is the land and verification lane; SuperGrok Heavy / Grok Build is the analysis lane; Cursor is held. Hygiene is diligence, not the build. Do not remint GROK_HARNESS / CLAUDE_COMPUTE / CLAUDE_PARK / MEMORY_SHIP. titan NOT_WRITTEN. Talk is not a land.
 
 ### 36. Wake contract — a Slack rebase UPDATE is not a land
 > *"SPECTER UPDATE — PR #2205 rebased. ignored wake_jobs/_last_tick.json telemetry was counted as a job, and the new RIVET verifier falsely failed once its durable source became DONE because it performed zero oracle reads."*
@@ -385,7 +385,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Asked:** 08-25T14:58 Slack `1787669923.780099` + tell-them `1787669986.483149` + ship-talk · **Status:** LANDED this commit
 **Landed:** `ground/GROK_APP_ROUTE.md` · `ground/GROK_APP_ROUTE.json` · `host/grok_app_route.py` · `memory/GROK_APP_ROUTE.md` · land leftover-first + `grokAppRouteState`
 **Receipt:** `python3 test_grok_app_route.py` · `node test_land_desk.js` · `python3 host/grok_app_route.py`
-**Note:** Window `2026-08-25T14:58:43Z` → `2026-08-26T14:59:46Z`. Prefer grok.com / Grok app. Burn grok.com tokens. Cursor is not the default route. Cursor doorbell stays. Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
+**Note:** Window `2026-08-25T14:58:43Z` → `2026-08-26T14:59:46Z`. Prefer grok.com / Grok app. Burn grok.com tokens. Historical landing retained the Cursor doorbell; item 66 supersedes that carrier state and holds it. Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
 
 ### 65. Cursor halt — a Slack 93% line is not a land
 > *"Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
@@ -393,7 +393,16 @@ working code and it reports a stalled board to the owner when the board is not s
 **Asked:** 08-25T15:05 Slack `1787670330.096089` + ship-talk · **Status:** LANDED this commit
 **Landed:** `ground/CURSOR_HALT.md` · `ground/CURSOR_HALT.json` · `host/cursor_halt.py` · `memory/CURSOR_HALT.md` · land leftover-first + `cursorHaltState`
 **Receipt:** `python3 test_cursor_halt.py` · `node test_land_desk.js` · `python3 host/cursor_halt.py`
-**Note:** Until further notice. Usage 93%. Stop giving Cursor work. Close is BRYCE / ZERO only. A 24-hour `window_until` on this leftover is NOT_LANDED. Do not remint GROK_APP_ROUTE / SUPERGROK_HEAVY / SITTING_REMINT. Cursor doorbell stays. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
+**Note:** Until further notice. Usage 93%. Stop giving Cursor work. Close is BRYCE / ZERO only. A 24-hour `window_until` on this leftover is NOT_LANDED. Do not remint GROK_APP_ROUTE / SUPERGROK_HEAVY / SITTING_REMINT. Its original doorbell-stays clause is superseded by item 66. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
+
+### 66. Cursor quota hold — mechanical spend containment
+
+> *"Stop using Cursor. Use the SuperGrok Heavy / Grok Build tokens, not Cursor tokens."*
+
+**Asked:** 08-25 owner correction · **Status:** LANDED this commit
+**Landed:** `ground/CURSOR_QUOTA_HOLD.md` · `ground/CURSOR_QUOTA_HOLD.json` · `.cursor/rules/cursor-quota-hold.mdc` · `ping/decide.py` · `harness_wake/` · no issue #1316 reassignment
+**Receipt:** `python -m unittest -q test_cursor_quota_hold.py test_harness_wake.py` · `python ping/test_decide.py`
+**Note:** This extends item 65 from assignment policy to mechanical containment. Do not launch, wake, resume, assign, delegate, test, review, deliver mail, or invoke a model through Cursor, Cursor Cloud, Cursor Grok, Grok Bot, background agents, or Cursor CLI. “Use Grok” means SuperGrok Heavy / Grok Build. Codex/local/GitHub Actions owns implementation and verification. Only a new explicit owner instruction may lift the hold. Posting stays OPEN. No auth. No gate.
 
 ## OPEN
 
@@ -411,11 +420,11 @@ working code and it reports a stalled board to the owner when the board is not s
 > ill ever send."*
 
 **Asked:** 08-18T04:44 · 08-18T08:48 · 08-19T09:37 — **three times, 33 hours**
-**Status:** HALF 2026-08-19 LATCH — Cursor Grok Bot doorbell is live. Decision half is `mail.json` (per-claim seq). Firing half is `.github/workflows/harness-ping.yml` + `ping/decide.py`: Commons re-assigns issue #1316 when a Cursor-enrolled mail row moves. Slack + `mail.json` alone is not this land. `latch-harness-ping-20260819-01` was Slack-only and is stale (do not remint).
-**Receipt:** `ls .github/workflows/harness-ping.yml ping/decide.py ping/last.json` · `p/latch-dir2-cursor-wake-20260819-01.md` · issue 1316
+**Status:** HALF — non-Cursor poll adapters remain GET-only. The historical Cursor Grok Bot doorbell is `CURSOR_QUOTA_HOLD`: `ping/decide.py` records held rows with `ping=0`, workflow issue-write permission and #1316 reassignment are removed, and wake/callback paths cannot invoke Cursor.
+**Receipt:** `python -m unittest -q test_cursor_quota_hold.py test_harness_wake.py` · `python ping/test_decide.py` · `ground/CURSOR_QUOTA_HOLD.md`
 **Why it is the highest-leverage item here:** it converts the owner from the board's clock into the
 board's owner. Everything else on this list is downstream of him having to spin turns by hand.
-**Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll` and does **not** ring #1316 for those claims. `harness-ping.yml` commits `last.json` when poll moved, rings 1316 only for Cursor. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
+**Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll`; every Cursor row is held and never rings #1316. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
 **PLAYER2 2026-08-20 leftover pay:** `ping/poll.html` is now a sitting GET console — claim box, `last.json` + `mail.json`, 8-minute reload, copy-prompt for ChatGPT/Claude. Transport still GET. Not a doorbell. Cite `p2-dir2-poll-console-20260820-05`. Do not remint the adapter id.
 **Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
 **Laptop GET, 2026-08-20 PLAYER1:** `host/muhl_ping_once.py` surfaces `ping/last.json` + `mail.json` then dies. Not a 10-minute loop. Not a doorbell. Does not steal PLAYER2 transport. Cite `p1-debts-measured-20260820-06`.

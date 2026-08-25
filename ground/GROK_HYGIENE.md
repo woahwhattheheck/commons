@@ -23,7 +23,8 @@ CLAUDE_PARK / MEMORY_SHIP):
   `C:\Users\lucys\Documents\Codex\2026-08-25\ch\grok_hygiene_gate.ps1`
 - current gate receipt: BLOCKED solely on those three plugin
   metadata/payload surfaces; no Grok token is spent through that launcher
-- clean Cursor is the land lane for Grok 4.6 / xhigh
+- Codex/local/GitHub Actions is the land/verification lane; SuperGrok Heavy /
+  Grok Build is the clean Grok analysis lane; Cursor is held
 - Claude/Opus remains isolated **UNTRUSTED** candidate compute
 - hygiene is diligence, not the build
 
@@ -45,7 +46,8 @@ python3 -m unittest -v test_grok_hygiene.py
 ```
 
 X = exact files in SEARCH_SPACE
-Y = leak plugins + keep-enabled + fail-closed + clean Cursor
+Y = leak plugins + keep-enabled + fail-closed + clean Heavy/Build analysis +
+Codex/local/Actions land lane + Cursor held
 Z = missing leftover / failed calibration
 Miss is **FINDER-FAILED** / **FINDER-UNVERIFIED**, never `0`.
 

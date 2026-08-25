@@ -2,7 +2,7 @@
 # GPT, Google, Meta, Gemini, Claude, Grok, Cursor, ntfy, mail, GitHub.
 # Set: wakeup.html form / ntfy / p/{id}.md wakeup: / drop wakeups/CLAIM.json
 # Ping: claim in wakeups.json due, or open wakeup.html. ntfy is mail.
-# Cursor issue-assign stays an adapter under this door. Do not remint Slack land.
+# Cursor rows are held; this universal lane never mails Cursor. Do not remint Slack land.
 # 4/hour max in the set file. Wake never actuates devices or .mno files.
 name: harness-wakeup
 on:

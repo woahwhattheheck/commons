@@ -7,12 +7,12 @@
   "claude_output": "INFORMATIONAL",
   "xyz_required": true,
   "calibration_required": true,
-  "remeasurement_owner": "Cursor / Grok",
+  "remeasurement_owner": "Codex / Grok Build",
   "allowed_remeasurers": [
     "deterministic local checks",
     "GitHub Actions",
     "Codex",
-    "Cursor / Grok",
+    "Codex / Grok Build",
     "DIO titan history"
   ],
   "do_not_remint": [

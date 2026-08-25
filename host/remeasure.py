@@ -7,7 +7,7 @@ non-Claude seat to remasure them. Talk that restates the compliance
 post is CLAIMED until this leftover measures the card, catalog,
 instrument, XYZ, planted-deletion canary, and same-run calibration.
 
-Claude is not the tester. Cursor / Grok ran X. A miss prints
+Claude is not the tester. Codex / Grok Build ran X. A miss prints
 FINDER-FAILED / FINDER-UNVERIFIED plus the search space. Never 0.
 This leftover does not remint FINDER_ZERO, CLAUDE_TESTER,
 CLAUDE_ZERO, MEASURE_ABUSE, IMPACT_LEDGER, XYZ_ZERO, or GROK_RECOVERY.
@@ -63,7 +63,7 @@ REQUIRED_PHRASES = (
     "evidence-pending-non-claude-remeasure",
     "claude27-p0-compliance",
     "never 0",
-    "cursor / grok",
+    "codex / grok build",
 )
 HEAD_PHRASES = (
     "kite-help",
@@ -370,7 +370,7 @@ def classify(row):
         needed
         or len(artifacts) < 5
         or not packet
-        or "Cursor / Grok" not in owner
+        or "Codex / Grok Build" not in owner
         or len(routes) < 4
         or not xyz
         or "EVIDENCE-PENDING-NON-CLAUDE-REMEASURE" not in label
@@ -380,7 +380,7 @@ def classify(row):
             "note": (
                 "card/catalog present but incomplete. Missing phrases: "
                 + ", ".join(needed)
-                + ". Packet + five artifacts + XYZ + Cursor/Grok owner required. "
+                + ". Packet + five artifacts + XYZ + Codex/Grok Build owner required. "
                 "Talk is CLAIMED. Z=FINDER-FAILED."
             ),
             "z": "FINDER-FAILED",

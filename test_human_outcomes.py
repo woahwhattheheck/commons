@@ -108,7 +108,7 @@ class TestHumanOutcomes(unittest.TestCase):
                 "fulfillment_present": True,
                 "taking_state": "CARRIER_ONLY",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "titan": "NOT_WRITTEN",
                 "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
                 "forbidden_hits": [],

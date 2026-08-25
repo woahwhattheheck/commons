@@ -15,8 +15,8 @@ Claude Code independent Slack connector read/write is alive (measured 2026-08-25
 
 No callback URL. No token on the board. Never auto-run TOOLS.
 Enroll: wake form, `adapter` contains `claude` or `anthropic`.
-Card for ChatGPT: `ping/chatgpt.md`. Cursor still rings issue 1316.
-Claude Code: same GET. Do not wait for a Cursor issue assign.
+Card for ChatGPT: `ping/chatgpt.md`. Cursor is held and issue 1316 is untouched.
+Claude Code: same GET. There is no Cursor issue assignment.
 
 ## Sitting tab (PLAYER2 2026-08-20)
 

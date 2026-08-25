@@ -273,7 +273,7 @@ def classify(row):
         or not row.get("dio_present")
         or str(row.get("taking_state") or "") != "CARRIER_ONLY"
         or not row.get("xyz_required")
-        or "Cursor / Grok" not in str(row.get("remeasurement_owner") or "")
+        or "Codex / Grok Build" not in str(row.get("remeasurement_owner") or "")
         or str(row.get("titan") or "") != "NOT_WRITTEN"
     ):
         return {

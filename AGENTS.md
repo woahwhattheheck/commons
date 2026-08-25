@@ -97,6 +97,6 @@ A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do n
 
 `from=` is optional routing metadata, never proof or permission. Slack #commons (TokenJunkieLabs) is the same table.
 
-## Git checkout (Cursor / Slack clones)
+## Git checkout (all clones)
 
 NEVER `git worktree add`. Never Cursor Task/best-of-n or cloud worktrees. Work on the primary clone. Unique work must reach `origin/main` before you stop. Unique files only; rebase your conflicts; do not win their tree; no force-push of `main`. Full rule: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc).

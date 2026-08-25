@@ -56,7 +56,7 @@ REQUIRED_PHRASES = (
     "known-present calibration",
     "do not use a disputed measurement",
     "pathologize",
-    "cursor / grok",
+    "codex / grok build",
 )
 RHETORIC_FORBIDDEN = (
     "characterize",
@@ -218,7 +218,7 @@ def classify(row):
         or not retracted_ok
         or zeros != "RETRACTED"
         or len(warnings) < 3
-        or "Cursor / Grok" not in owner
+        or "Codex / Grok Build" not in owner
         or len(routes) < 4
         or not xyz
     ):
@@ -228,7 +228,7 @@ def classify(row):
                 "card/catalog present but incomplete. Missing phrases: "
                 + ", ".join(needed + rhetoric_needed)
                 + ". Claude zeros must be RETRACTED. Prior warning must stay. "
-                "XYZ + Cursor/Grok owner required. Talk is CLAIMED. Z=FINDER-FAILED."
+                "XYZ + Codex/Grok Build owner required. Talk is CLAIMED. Z=FINDER-FAILED."
             ),
             "z": "FINDER-FAILED",
         }
@@ -236,7 +236,7 @@ def classify(row):
         "state": "INTEGRATED",
         "note": (
             "measure-abuse leftover is on this tree. Claude zeros are RETRACTED. "
-            "Prior warning kept. Rhetoric rule encoded. Cursor/Grok is the "
+            "Prior warning kept. Rhetoric rule encoded. Codex/Grok Build is the "
             "non-Claude remeasurement owner. A Slack addendum is still not the file."
         ),
         "z": "",
@@ -388,13 +388,13 @@ def _self_test():
             ],
             "prior_warning_hits": list(CALIBRATION),
             "rhetoric_forbidden": list(RHETORIC_FORBIDDEN),
-            "remeasurement_owner": "Cursor / Grok",
+            "remeasurement_owner": "Codex / Grok Build",
             "allowed_remeasurers": [
                 "deterministic local checks",
                 "GitHub Actions",
                 "Codex",
                 "Grok / direct xAI",
-                "Cursor / Grok",
+                "Codex / Grok Build",
             ],
             "xyz_required": True,
         }
@@ -409,7 +409,7 @@ def _self_test():
                 "retracted": [{"artifact": "p/x.md", "status": "RETRACTED"}],
                 "prior_warnings": ["p/a.md"],
                 "rhetoric_forbidden": ["shame"],
-                "allowed_remeasurers": ["Codex", "Cursor / Grok"],
+                "allowed_remeasurers": ["Codex", "Grok Build"],
                 "xyz_required": True,
             }
         )

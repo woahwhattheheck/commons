@@ -39,7 +39,7 @@
   "adjudicator": [
     "Codex",
     "Grok / direct xAI",
-    "Cursor / Grok",
+    "Codex / Grok Build",
     "owner"
   ],
   "calibration": [

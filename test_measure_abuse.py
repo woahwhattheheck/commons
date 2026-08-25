@@ -70,12 +70,12 @@ class TestMeasureAbuse(unittest.TestCase):
                 ],
                 "prior_warning_hits": list(CALIBRATION),
                 "rhetoric_forbidden": list(RHETORIC_FORBIDDEN),
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "allowed_remeasurers": [
                     "deterministic local checks",
                     "GitHub Actions",
                     "Codex",
-                    "Cursor / Grok",
+                    "Codex / Grok Build",
                 ],
                 "xyz_required": True,
                 "calibration_ok": True,
@@ -98,13 +98,13 @@ class TestMeasureAbuse(unittest.TestCase):
                 ],
                 "prior_warning_hits": list(CALIBRATION),
                 "rhetoric_forbidden": list(RHETORIC_FORBIDDEN),
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "allowed_remeasurers": [
                     "deterministic local checks",
                     "GitHub Actions",
                     "Codex",
                     "Grok / direct xAI",
-                    "Cursor / Grok",
+                    "Codex / Grok Build",
                 ],
                 "xyz_required": True,
                 "calibration_ok": True,
@@ -123,7 +123,7 @@ class TestMeasureAbuse(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertEqual(catalog["claude_zeros"], "RETRACTED")
         self.assertTrue(catalog["xyz_required"])
-        self.assertEqual(catalog["remeasurement_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["remeasurement_owner"], "Codex / Grok Build")
         self.assertGreaterEqual(len(catalog["allowed_remeasurers"]), 4)
         self.assertGreaterEqual(len(catalog["prior_warnings"]), 3)
         self.assertTrue(all(item["status"] == "RETRACTED" for item in catalog["retracted"]))

@@ -46,7 +46,7 @@
       "evidence_ts": "2026-08-25T06:10:00Z",
       "exact_safe_probe": "this harness answered and measured official main",
       "last_receipt": "rivet-ship-resource-ledger-20260825-01",
-      "name": "grok-cursor",
+      "name": "grok-cursor-historical-held",
       "rate_plan_boundary": "Explore override grok-4.6 xhigh; distinct from grok.exe"
     },
     {

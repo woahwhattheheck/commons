@@ -83,7 +83,7 @@ class TestPortfolioOverdrive(unittest.TestCase):
                 "dio_present": True,
                 "taking_state": "CARRIER_ONLY",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "titan": "NOT_WRITTEN",
                 "calibration_ok": True,
             }

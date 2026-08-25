@@ -24,7 +24,7 @@
     "GitHub Actions",
     "Codex",
     "Grok / direct xAI",
-    "Cursor / Grok"
+    "Codex / Grok Build"
   ],
   "forbidden_claude_roles": [
     "test",

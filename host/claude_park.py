@@ -7,7 +7,7 @@ CLAIMED until this leftover measures the card, catalog, named
 lanes, reinstatement=BRYCE_ONLY, and same-run calibration.
 
 Claude is not the tester and does not evaluate this leftover.
-Cursor / Grok owns the census. A miss prints FINDER-FAILED /
+Codex / Grok Build owns the census. A miss prints FINDER-FAILED /
 FINDER-UNVERIFIED plus the search space. Never 0.
 This leftover does not remint REMEASURE, CONTAINMENT,
 CLAUDE_TESTER, CLAUDE_ZERO, MEASURE_ABUSE, or IMPACT_LEDGER.
@@ -64,7 +64,7 @@ REQUIRED_PHRASES = (
     "claude-produced correction cannot certify",
     "preserve sessions",
     "never 0",
-    "cursor / grok",
+    "codex / grok build",
     "bryce_only",
 )
 ALLOWED_STATUS = frozenset({"PARKED", "REROUTED", "REFUSED", "HANDS_OFF"})
@@ -226,7 +226,7 @@ def classify(row):
         or missing_lanes
         or bad_status
         or claude_owned
-        or "Cursor / Grok" not in owner
+        or "Codex / Grok Build" not in owner
         or reinstatement != "BRYCE_ONLY"
         or certify != "REFUSED"
         or not xyz

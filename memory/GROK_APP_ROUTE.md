@@ -5,7 +5,8 @@ use the Grok app more, Cursor less, until `2026-08-26T14:59:46Z`.
 Burn grok.com tokens. Do not burn Cursor tokens as the default route.
 
 This is work routing, not a door lock. No auth. No gate. Blank
-`from=` still lands as `UNSEATED`. Cursor doorbell stays.
+`from=` still lands as `UNSEATED`. `ground/CURSOR_QUOTA_HOLD.md` supersedes
+the original doorbell-stays clause; Cursor wake and work are held.
 
 Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS.
 Instrument: `host/grok_app_route.py`. Card: `ground/GROK_APP_ROUTE.md`.

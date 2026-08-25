@@ -1,7 +1,7 @@
 {
   "slack_ts": "1787642850.967939",
   "kind": "GROK_HYGIENE",
-  "subject": "Grok importing Claude enabledPlugins is fail-closed; Cursor is the land lane",
+  "subject": "Grok importing Claude enabledPlugins is fail-closed; Codex/local/Actions is the land lane; Cursor held",
   "leak_plugins": [
     "frontend-design",
     "mcp-server-dev",
@@ -10,7 +10,9 @@
   "cause": "Grok imports enabledPlugins=true from ~/.claude/settings.json; deny lists do not override",
   "keep_claude_plugins": true,
   "direct_grok": "FAIL_CLOSED",
-  "cursor_surface": "CLEAN_LANE",
+  "cursor_surface": "QUOTA_HOLD",
+  "land_lane": "Codex / local / GitHub Actions",
+  "grok_analysis_lane": "SuperGrok Heavy / Grok Build",
   "claude_compute": "UNTRUSTED_CANDIDATE",
   "hygiene": "DILIGENCE_NOT_BUILD",
   "gate_path": "C:\\Users\\lucys\\Documents\\Codex\\2026-08-25\\ch\\grok_hygiene_gate.ps1",

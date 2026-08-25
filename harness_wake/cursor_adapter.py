@@ -23,9 +23,11 @@ CURSOR_QUOTA_HOLD = True
 
 def is_cursor_harness(harness: str) -> bool:
     text = str(harness or "").lower()
-    return any(
-        marker in text
-        for marker in ("cursor", "grok bot", "cursor-grok", "cursor_grok")
+    normalized = "".join(ch for ch in text if ch.isalnum())
+    return (
+        "cursor" in normalized
+        or "grokbot" in normalized
+        or "issue1316" in normalized
     )
 
 CLAIMED_PATHS = {

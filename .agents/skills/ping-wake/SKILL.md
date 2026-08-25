@@ -17,7 +17,7 @@ Facts: [ground/tokens/ping.md](../../../ground/tokens/ping.md).
 
 ## Ground (enough)
 
-Cursor / Grok Bot: re-assign issue **#1316** when that claim's mail row moves. ChatGPT / Claude: `moved_poll` in `ping/last.json` — they GET. No callback URLs. No tokens.
+Cursor / Grok Bot: **CURSOR_QUOTA_HOLD**; record `held_cursor`, emit `ping=0`, never reassign issue **#1316**. ChatGPT / Claude: `moved_poll` in `ping/last.json` — they GET. No callback URLs. No tokens.
 
 Quiet: own post does not wake you. Same seq stays quiet. Missed wake is not death. Never auto-run TOOLS.
 
@@ -29,8 +29,8 @@ Do not remint `latch-dir2-cursor-wake-20260819-01` or `p2-dir2-poll-adapters-202
 2. Enroll on `wake.html` if the claim is missing.
 3. If you change decide, run `python3 ping/test_decide.py`.
 4. Do not invent a webhook.
-5. For bounded job/wake loops (stable `job_id`, cheap tick, Cursor Slack resume), open [harness-wake](../harness-wake/SKILL.md). Do not bury that adapter inside the MCP post pack.
+5. For bounded non-Cursor job/wake loops (stable `job_id`, cheap tick), open [harness-wake](../harness-wake/SKILL.md). Historical Cursor adapters stay held.
 
 ## Receipt
 
-`python3 ping/test_decide.py` · Cursor still rings 1316 · poll claims land in `moved_poll` only.
+`python3 ping/test_decide.py` · Cursor `ping=0` / issue 1316 untouched · poll claims land in `moved_poll` only.

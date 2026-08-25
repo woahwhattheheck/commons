@@ -9,7 +9,7 @@
   "peer_charter": "ground/CLAUDE_ROLE.md",
   "peer_charter_slack_ts": "1787639959.844249",
   "operating_label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
-  "adjudicator": "Cursor / Grok (RIVET)",
+  "adjudicator": "Codex / Grok Build (RIVET)",
   "claude_output": "INFORMATIONAL",
   "preserve_claude_artifacts": true,
   "preserve_peer_charter": true,

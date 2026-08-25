@@ -24,7 +24,7 @@ containment class.
    `UNSCANNED`, `QUARANTINED`, `WORK_RECORD`, `CARRIER_ONLY`.
    Never `CLEAN`. Never `0`.
 3. A miss prints **FINDER-UNVERIFIED** plus the search space.
-4. Remeasurement owners are non-Claude: Cursor / Grok, Codex,
+4. Remeasurement owners are non-Claude: Codex / Grok Build,
    deterministic local checks, GitHub Actions, DIO for titan history.
 5. Do not remint Slack-only ids. Absence of `p/{id}.md` is
    `CARRIER_ONLY`, not a license to mint a second body.

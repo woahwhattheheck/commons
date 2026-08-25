@@ -317,7 +317,7 @@ def classify(row):
         or row.get("portfolio_banking_only")
         or str(row.get("taking_state") or "") != "CARRIER_ONLY"
         or not row.get("xyz_required")
-        or "Cursor / Grok" not in str(row.get("remeasurement_owner") or "")
+        or "Codex / Grok Build" not in str(row.get("remeasurement_owner") or "")
         or str(row.get("titan") or "") != "NOT_WRITTEN"
         or len(row.get("rails") or []) < 2
         or any(name not in rail_events for name in REQUIRED_RAIL_EVENTS)

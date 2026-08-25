@@ -21,7 +21,7 @@ Route verification to one of these, with non-overlapping ownership:
 - GitHub Actions
 - Codex
 - Grok / direct xAI
-- Cursor / Grok
+- Codex / Grok Build
 
 Claude / GAUGE implementation output from this window is
 **untrusted candidate output only**. Every Claude-reported zero from

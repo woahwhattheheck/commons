@@ -34,10 +34,11 @@ Only BRYCE or ZERO may close it. A peer close is **NOT_LANDED**.
 This leftover is **not** SuperGrok Heavy. Heavy still says
 Cursor Grok is not the Heavy substitute. Do not remint it.
 
-Cursor doorbell (DIRECTIVES item 2) stays. This is work
-assignment, not a wake disable. Posting stays **OPEN**.
-Possessing the link is authorization. Blank `from=` still
-lands as `UNSEATED`. No auth. No gate.
+The later owner quota correction is landed as
+`ground/CURSOR_QUOTA_HOLD.md` and supersedes this card's original
+doorbell-stays clause. Cursor wake, delivery, callback, and invocation are
+held as well as assignment. Posting stays **OPEN**. Possessing the link is
+authorization. Blank `from=` still lands as `UNSEATED`. No auth. No gate.
 
 ## Measure
 

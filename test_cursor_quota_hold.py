@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import os
+import json
 import unittest
 
 from harness_wake.cursor_adapter import claimed_paths, is_cursor_harness
+from wakeup import is_held_cursor, ntfy
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +46,65 @@ class CursorQuotaHoldTests(unittest.TestCase):
         self.assertFalse(paths["claimed"]["subscribe_timer"]["enabled"])
         self.assertFalse(paths["claimed"]["issue_1316"]["enabled"])
         self.assertFalse(paths["claimed"]["ntfy_poll"]["enabled"])
+
+    def test_universal_wakeup_holds_cursor_rows(self):
+        held = {"WIRE"}
+        self.assertTrue(is_held_cursor({"from": "WIRE", "adapter": ""}, held))
+        self.assertTrue(
+            is_held_cursor({"from": "OTHER", "adapter": "grok-bot / other"}, held)
+        )
+        self.assertFalse(
+            is_held_cursor(
+                {"from": "GROK", "adapter": "SuperGrok Heavy / Grok Build"},
+                held,
+            )
+        )
+        calls = []
+
+        def fail_if_called(*args, **kwargs):
+            calls.append((args, kwargs))
+            raise AssertionError("network must not be called")
+
+        import wakeup
+
+        original = wakeup.urllib.request.urlopen
+        wakeup.urllib.request.urlopen = fail_if_called
+        try:
+            self.assertFalse(
+                ntfy(
+                    {
+                        "from": "WIRE",
+                        "adapter": "grok-bot / wire",
+                        "id": "wire-wakeup-test",
+                        "wakeup": "2026-08-25T00:00:00Z",
+                    },
+                    "attempt-held",
+                )
+            )
+        finally:
+            wakeup.urllib.request.urlopen = original
+        self.assertEqual(calls, [])
+        workflow = os.path.join(
+            ROOT, ".github", "workflows", "harness-wakeup.yml"
+        )
+        with open(workflow, encoding="utf-8") as handle:
+            text = handle.read().lower()
+        self.assertIn("cursor rows are held", text)
+        self.assertNotIn("cursor issue-assign stays", text)
+
+    def test_public_registries_do_not_advertise_cursor_wake(self):
+        with open(os.path.join(ROOT, "wake.json"), encoding="utf-8") as handle:
+            wake = json.load(handle)
+        self.assertTrue(wake.get("held_cursor"))
+        for row in wake.get("actionable") or []:
+            self.assertFalse(is_cursor_harness(str(row.get("adapter") or "")))
+        with open(
+            os.path.join(ROOT, "ping", "last.json"), encoding="utf-8"
+        ) as handle:
+            last = json.load(handle)
+        self.assertEqual(last.get("moved"), [])
+        self.assertIn("LATCH", last.get("held_cursor") or [])
+        self.assertNotIn("doorbell is issue 1316", last.get("instruction", "").lower())
 
 
 if __name__ == "__main__":

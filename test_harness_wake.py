@@ -833,6 +833,10 @@ class BoundedSelfWakeTests(unittest.TestCase):
         self.assertFalse(should_ring_issue_1316("cursor-slack"))
         self.assertTrue(is_cursor_harness("cursor-slack"))
         self.assertTrue(is_cursor_harness("Grok Bot / wire"))
+        self.assertTrue(is_cursor_harness("grok-bot / wire"))
+        self.assertTrue(is_cursor_harness("grokbot / wire"))
+        self.assertTrue(is_cursor_harness("GROK_BOT / wire"))
+        self.assertTrue(is_cursor_harness("issue-1316"))
         self.assertFalse(is_cursor_harness("test-generic"))
         payload = ntfy_payload({"job_id": JOB_ID, "owner_claim": "RIDGE", "harness": "cursor-slack"}, JOB_ID + "-a01")
         self.assertEqual(payload["job_id"], JOB_ID)
@@ -863,6 +867,7 @@ class SchedulerDeliveryTests(unittest.TestCase):
 
     def test_cursor_quota_hold_blocks_mail_callback_and_model(self):
         self.store.upsert(fields(harness="cursor-slack"))
+        before_tick = self.store.get(JOB_ID)
         summary = run(
             self.tmp.name,
             deliver=True,
@@ -870,14 +875,21 @@ class SchedulerDeliveryTests(unittest.TestCase):
             now=WATCHDOG,
             http=self.http,
         )
-        self.assertEqual(summary["wake_count"], 1)
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["hold_count"], 1)
+        self.assertEqual(summary["invoke_model_count"], 0)
+        self.assertEqual(summary["jobs"][0]["action"], "HOLD")
+        self.assertFalse(summary["jobs"][0]["invoke_model"])
         self.assertEqual(summary["delivered_count"], 0)
         self.assertEqual(summary["deliveries"][0]["state"], "CURSOR_QUOTA_HOLD")
         self.assertEqual(self.http.calls, [])
+        after_tick = self.store.get(JOB_ID)
+        self.assertEqual(after_tick["attempt_count"], before_tick["attempt_count"])
+        self.assertEqual(after_tick["lease"], before_tick["lease"])
         mail = {
             "state": "MAIL",
             "job_id": JOB_ID,
-            "attempt_id": summary["jobs"][0]["attempt_id"],
+            "attempt_id": "cursor-held-no-attempt",
         }
         before = self.store.get(JOB_ID)
         consumed = consume_delivery(

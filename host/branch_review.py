@@ -297,7 +297,7 @@ def classify(row):
         or not stays
         or dumped
         or hold != "OWNER_HOLD"
-        or "Cursor / Grok" not in owner
+        or "Codex / Grok Build" not in owner
         or len(routes) < 4
         or not xyz
         or not packet_ok
@@ -336,7 +336,7 @@ def classify(row):
                 + ". "
                 + "; ".join(extra)
                 + ". Ten families must stay RETRACTED. "
-                "XYZ + Cursor/Grok owner required. Talk is CLAIMED. "
+                "XYZ + Codex/Grok Build owner required. Talk is CLAIMED. "
                 "Z=FINDER-UNVERIFIED. Never 0."
             ),
             "z": "FINDER-UNVERIFIED",

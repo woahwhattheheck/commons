@@ -93,12 +93,12 @@ class TestRemeasure(unittest.TestCase):
                 ],
                 "packet_present": True,
                 "canary_ok": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "allowed_remeasurers": [
                     "deterministic local checks",
                     "GitHub Actions",
                     "Codex",
-                    "Cursor / Grok",
+                    "Codex / Grok Build",
                 ],
                 "xyz_required": True,
                 "label": "EVIDENCE-PENDING-NON-CLAUDE-REMEASURE",
@@ -131,7 +131,7 @@ class TestRemeasure(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertEqual(catalog["label"], "EVIDENCE-PENDING-NON-CLAUDE-REMEASURE")
         self.assertTrue(catalog["xyz_required"])
-        self.assertEqual(catalog["remeasurement_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["remeasurement_owner"], "Codex / Grok Build")
         self.assertGreaterEqual(len(catalog["allowed_remeasurers"]), 4)
         self.assertGreaterEqual(len(catalog["artifacts"]), 5)
         row = measure_root(ROOT)

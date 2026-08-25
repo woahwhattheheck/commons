@@ -6,7 +6,7 @@
   "titan": "NOT_WRITTEN",
   "xyz_required": true,
   "calibration_required": true,
-  "census_owner": "Cursor / Grok",
+  "census_owner": "Codex / Grok Build",
   "reinstatement": "BRYCE_ONLY",
   "claude_certify": "REFUSED",
   "preserve_evidence": true,
@@ -16,7 +16,7 @@
     "deterministic local checks",
     "GitHub Actions",
     "Codex",
-    "Cursor / Grok",
+    "Codex / Grok Build",
     "RIVET"
   ],
   "do_not_remint": [
@@ -41,7 +41,7 @@
       "path": "host/pfc_bake_scan.py",
       "was": "Claude open lane (REMEASURE leftover)",
       "status": "PARKED",
-      "owner": "Cursor / Grok",
+      "owner": "Codex / Grok Build",
       "note": "File absent on current main. Missing is FINDER-FAILED plus search space, never 0. Ownership left Claude. Do not assign Claude the GGUF scan."
     },
     {
@@ -49,7 +49,7 @@
       "path": "ground/CLAUDE_TESTER.md",
       "was": "Claude tester/verifier assignment",
       "status": "PARKED",
-      "owner": "deterministic local checks / GitHub Actions / Codex / Cursor / Grok",
+      "owner": "deterministic local checks / GitHub Actions / Codex / Grok Build",
       "note": "Already INTEGRATED by CLAUDE_TESTER. Do not remint. Recorded here so the suspension census names the lane."
     },
     {
@@ -57,7 +57,7 @@
       "path": "ping/claude.md",
       "was": "new Claude work / doorbell assignment",
       "status": "PARKED",
-      "owner": "Cursor / Grok",
+      "owner": "Codex / Grok Build",
       "note": "Stop assigning new work to Claude. ping/claude.md stays as evidence. Do not delete the poll file."
     },
     {
@@ -65,7 +65,7 @@
       "path": "ground/IMPACT_LEDGER.md",
       "was": "Claude-produced correction of Claude damage",
       "status": "REFUSED",
-      "owner": "Cursor / Grok",
+      "owner": "Codex / Grok Build",
       "note": "No Claude-produced correction can certify the damage it caused. Do not remint IMPACT_LEDGER."
     },
     {
@@ -73,7 +73,7 @@
       "path": "p/gauge-claude-role-proposal-20260825-01.md",
       "was": "GAUGE colony-role proposal",
       "status": "PARKED",
-      "owner": "Cursor / Grok",
+      "owner": "Codex / Grok Build",
       "note": "CLAUDE_ROLE charter already INTEGRATED for posting (P1-P6, open door). Do not remint it. This later DEMON ruling parks new swarm-work assignment. Reinstatement of swarm work is BRYCE_ONLY."
     }
   ],

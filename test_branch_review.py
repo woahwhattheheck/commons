@@ -69,12 +69,12 @@ def _complete_facts(**overrides):
         "soften_retracted_to_unverified": False,
         "secret_dump": False,
         "delete_rewrite": "OWNER_HOLD",
-        "remeasurement_owner": "Cursor / Grok",
+        "remeasurement_owner": "Codex / Grok Build",
         "allowed_remeasurers": [
             "deterministic local checks",
             "GitHub Actions",
             "Codex",
-            "Cursor / Grok",
+            "Codex / Grok Build",
         ],
         "xyz_required": True,
         "calibration_ok": True,
@@ -171,7 +171,7 @@ class TestBranchReview(unittest.TestCase):
         self.assertFalse(catalog["soften_retracted_to_unverified"])
         self.assertEqual(catalog["delete_rewrite"], "OWNER_HOLD")
         self.assertFalse(catalog["secret_dump"])
-        self.assertEqual(catalog["remeasurement_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["remeasurement_owner"], "Codex / Grok Build")
         self.assertGreaterEqual(len(catalog["allowed_remeasurers"]), 4)
         self.assertEqual(
             [item["id"] for item in catalog["families"]], list(REQUIRED_FAMILIES)

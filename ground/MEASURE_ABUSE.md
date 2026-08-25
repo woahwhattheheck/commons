@@ -44,7 +44,7 @@ anticipated.
 
 ## Independent remeasurement owner
 
-This leftover’s non-Claude owner is **Cursor / Grok**. Allowed
+This leftover’s non-Claude owner is **Codex / Grok Build**. Allowed
 peers: deterministic local tests, GitHub Actions, Codex, Grok/xAI.
 Claude / GAUGE output remains informational. A retracted zero stays
 RETRACTED until one of those owners reprints X/Y/Z + calibration.

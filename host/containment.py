@@ -267,7 +267,7 @@ def classify(row):
         or missing_owners
         or unclean
         or claude != "INFORMATIONAL"
-        or "Cursor / Grok" not in owner
+        or "Codex / Grok Build" not in owner
         or len(routes) < 4
         or not xyz
         or not packet_ok
@@ -289,7 +289,7 @@ def classify(row):
                 + ". "
                 + "; ".join(extra)
                 + ". Claude output must stay INFORMATIONAL. "
-                "XYZ + Cursor/Grok owner required. Talk is CLAIMED. "
+                "XYZ + Codex/Grok Build owner required. Talk is CLAIMED. "
                 "Z=FINDER-UNVERIFIED. Never 0."
             ),
             "z": "FINDER-UNVERIFIED",
@@ -299,7 +299,7 @@ def classify(row):
         "note": (
             "containment leftover is on this tree. Four artifacts contained. "
             "Claude output INFORMATIONAL. Branches UNSCANNED, not clean. "
-            "Packet path remesasured. Cursor/Grok is the non-Claude "
+            "Packet path remeasured. Codex/Grok Build is the non-Claude "
             "remeasurement owner. A Slack stand-down is still not the file."
         ),
         "z": "",

@@ -109,7 +109,7 @@ class TestSubzeroGtm(unittest.TestCase):
                 "excerpts_present": True,
                 "taking_state": "CARRIER_ONLY",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "titan": "NOT_WRITTEN",
                 "subzero_now_active": "none",
                 "dissent_present": True,

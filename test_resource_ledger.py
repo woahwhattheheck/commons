@@ -155,9 +155,19 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(receipt["titan"], "NOT_WRITTEN")
 
     def test_local_probes_see_absent_hf(self):
-        probes = local_probes(os.path.join(ROOT, "does-not-exist-home"))
+        probes = local_probes(
+            os.path.join(ROOT, "does-not-exist-home"),
+            which=lambda _name: None,
+        )
         self.assertEqual(probes["hf_token_files"], [])
         self.assertFalse(probes["hf_cli"])
+
+    def test_local_probes_do_not_turn_a_missing_home_into_a_fake_cli_zero(self):
+        probes = local_probes(
+            os.path.join(ROOT, "does-not-exist-home"),
+            which=lambda name: "C:/tools/hf.exe" if name == "hf" else None,
+        )
+        self.assertTrue(probes["hf_cli"])
 
     def test_live_tree_measures(self):
         measured = measure_root(ROOT)

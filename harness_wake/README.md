@@ -11,7 +11,8 @@ allowed.
 - harness: Cursor Slack app / Cursor cloud agent runner (`cursor-slack`)
 - historical inbound road: `@Cursor` in #commons started a new cloud agent. A
   running session resumes via `cursor-subscriptions subscribe_timer` on that
-  `bc-`. Desktop Grok Bot stays issue **#1316**.
+  `bc-`. The historical desktop Grok Bot carrier was issue **#1316**; its
+  reassignment doorbell is now held.
 - scheduler: `.github/workflows/job-watchdog.yml` (cheap Python tick) plus
   `subscribe_timer` on a named live session
 - state store: `wake_jobs/{job_id}.json`

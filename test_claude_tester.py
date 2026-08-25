@@ -84,7 +84,7 @@ class TestClaudeTester(unittest.TestCase):
                     "GitHub Actions",
                     "Codex",
                     "Grok / direct xAI",
-                    "Cursor / Grok",
+                    "Codex / Grok Build",
                 ],
                 "preserve_claude_artifacts": True,
                 "xyz_required": True,

@@ -60,12 +60,12 @@ def _complete_facts(**overrides):
             {"name": "vent-fix", "status": "UNSCANNED"},
         ],
         "packet_present": True,
-        "remeasurement_owner": "Cursor / Grok",
+        "remeasurement_owner": "Codex / Grok Build",
         "allowed_remeasurers": [
             "deterministic local checks",
             "GitHub Actions",
             "Codex",
-            "Cursor / Grok",
+            "Codex / Grok Build",
         ],
         "xyz_required": True,
         "calibration_ok": True,
@@ -146,7 +146,7 @@ class TestContainment(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertEqual(catalog["claude_output"], "INFORMATIONAL")
         self.assertTrue(catalog["xyz_required"])
-        self.assertEqual(catalog["remeasurement_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["remeasurement_owner"], "Codex / Grok Build")
         self.assertGreaterEqual(len(catalog["allowed_remeasurers"]), 4)
         self.assertEqual(
             [item["id"] for item in catalog["artifacts"]], list(REQUIRED_IDS)

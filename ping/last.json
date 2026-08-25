@@ -1,8 +1,9 @@
 {
-  "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316.",
+  "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor is held; issue 1316 is untouched.",
   "ts": "2026-08-25T04:15:36Z",
   "mail_seq": 610,
-  "moved": [
+  "moved": [],
+  "held_cursor": [
     "LATCH"
   ],
   "moved_poll": [

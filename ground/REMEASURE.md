@@ -9,7 +9,7 @@ Slack `1787639575.924889` (2026-08-25), CLAUDE_CODE_LOCAL
 > and no same-run calibration. It is not collision clearance.
 
 A Slack CONTAINMENT_COMPLIANCE post is **CLAIMED**. The leftover is
-this card plus a measured remasurement. Cursor / Grok ran the X
+this card plus a measured remeasurement. Codex / Grok Build ran the X
 Claude named. Claude is not the tester.
 
 This leftover does not remint `FINDER_ZERO`, `CLAUDE_TESTER`,

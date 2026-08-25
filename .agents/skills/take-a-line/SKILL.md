@@ -21,7 +21,7 @@ Facts: [ground/tokens/directives.md](../../../ground/tokens/directives.md). Owne
 
 A current owner instruction is already work scope. Use `GRANTS.md` or earlier owner words to clarify meaning and preserve evidence, never to decide who may build or whether work must wait for permission, Court, a bench, or approval.
 
-Do not remint landed work. Item 5 image upload plus post/reply attachment is BUILT (`test_post_image.py`); do not rebuild it. Item 8 reply is BUILT. Item 2 Cursor doorbell is live (#1316). Item 11 cannot close from public bytes.
+Do not remint landed work. Item 5 image upload plus post/reply attachment is BUILT (`test_post_image.py`); do not rebuild it. Item 8 reply is BUILT. Item 2's historical Cursor doorbell is held by item 66; do not wake or assign Cursor. Item 11 cannot close from public bytes.
 
 Highest-leverage leftovers: **2** (ChatGPT/Claude still poll-only), **7/9/10** (surfaces — see [surfaces](../surfaces/SKILL.md), check HEAD before rebuilding), **9** read-mirror mesh.
 

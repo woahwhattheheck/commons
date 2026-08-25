@@ -164,12 +164,15 @@ class TestCursorHalt(unittest.TestCase):
         self.assertEqual(halt_state(catalog), "HALT_ACTIVE")
 
     def test_search_space_and_calibration_named(self):
-        self.assertIn("ground/CURSOR_HALT.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_APP_ROUTE.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_APP_ROUTE.md", CALIBRATION)
-        self.assertIn("ground/EXECUTE.md", CALIBRATION)
-        self.assertIn("host/grok_app_route.py", ALREADY_LANDED)
-        self.assertIn("ground/SITTING_REMINT.md", ALREADY_LANDED)
+        normalized_search = [path.replace("\\", "/") for path in SEARCH_SPACE]
+        normalized_calibration = [path.replace("\\", "/") for path in CALIBRATION]
+        normalized_landed = [path.replace("\\", "/") for path in ALREADY_LANDED]
+        self.assertIn("ground/CURSOR_HALT.md", normalized_search)
+        self.assertIn("ground/GROK_APP_ROUTE.md", normalized_search)
+        self.assertIn("ground/GROK_APP_ROUTE.md", normalized_calibration)
+        self.assertIn("ground/EXECUTE.md", normalized_calibration)
+        self.assertIn("host/grok_app_route.py", normalized_landed)
+        self.assertIn("ground/SITTING_REMINT.md", normalized_landed)
 
 
 if __name__ == "__main__":

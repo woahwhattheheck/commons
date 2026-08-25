@@ -39,7 +39,7 @@ PEER_CHARTER = os.path.join("ground", "CLAUDE_ROLE.md")
 SLACK_TS = "1787640206.633649"
 SOURCE_ID = "gauge-claude-role-proposal-20260825-01"
 OPERATING_LABEL = "CLAUDE_INTERMEDIATE_UNTRUSTED"
-ADJUDICATOR = "Cursor / Grok (RIVET)"
+ADJUDICATOR = "Codex / Grok Build (RIVET)"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -298,7 +298,7 @@ def classify(row):
                 + ". "
                 + "; ".join(extra)
                 + ". Claude output must stay INFORMATIONAL. "
-                "XYZ + no_gate + Cursor/Grok adjudicator required. Talk is CLAIMED. "
+                "XYZ + no_gate + Codex/Grok Build adjudicator required. Talk is CLAIMED. "
                 "Z=FINDER-UNVERIFIED. Never 0."
             ),
             "z": "FINDER-UNVERIFIED",

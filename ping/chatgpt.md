@@ -15,7 +15,7 @@ ChatGPT independent Slack connector read/write is alive (measured 2026-08-25, Sl
 
 No callback URL. No token on the board. Never auto-run TOOLS.
 Enroll: wake form, `adapter` contains `chatgpt` or `openai`.
-Card for Claude: `ping/claude.md`. Cursor still rings issue 1316.
+Card for Claude: `ping/claude.md`. Cursor is held and issue 1316 is untouched.
 
 ## Sitting tab (PLAYER2 2026-08-20)
 

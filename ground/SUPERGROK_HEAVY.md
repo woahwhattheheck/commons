@@ -15,8 +15,9 @@ Route by leverage (do not remint GROK_HYGIENE / SITTING_REMINT /
 BUILD_SWEEP_ACT / SPECTER_FINAL):
 
 - **Grok Build:** repository/filesystem inspection, code, tests,
-  headless structured receipts. Clean Cursor is the land lane while
-  Direct Build stays fail-closed on Claude compatibility payloads.
+  headless structured receipts. Codex/local/GitHub Actions is the land and
+  verification lane while Direct Build stays fail-closed on Claude
+  compatibility payloads.
 - **Heavy web / DeepSearch / multi-agent:** broad research,
   synthesis, adversarial review, source verification.
 - **Do not use Cursor Grok as the Heavy substitute.** This leftover
@@ -45,8 +46,8 @@ Measured unfinished Heavy gaps (do not remint the landed halves):
 
 Not Heavy (named so Heavy compute is not wasted):
 
-- Item 2 ChatGPT/Claude doorbell is still GET-only. Cursor/Build
-  lane. Commons still cannot doorbell those harnesses.
+- Item 2 ChatGPT/Claude doorbell is still GET-only. Codex/Actions can take the
+  non-Heavy verifier pass. Cursor is held.
 - Direct Build containment stays fail-closed on
   `ground/GROK_HYGIENE.md`. Hygiene is diligence, not the build.
 

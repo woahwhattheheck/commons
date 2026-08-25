@@ -52,7 +52,7 @@ REQUIRED_PHRASES = (
     "deterministic local",
     "github actions",
     "codex",
-    "cursor / grok",
+    "codex / grok build",
     "claude_intermediate_untrusted",
     "non-claude",
 )
@@ -315,7 +315,7 @@ def _self_test():
                 "GitHub Actions",
                 "Codex",
                 "Grok / direct xAI",
-                "Cursor / Grok",
+                "Codex / Grok Build",
             ],
             "preserve_claude_artifacts": True,
             "xyz_required": True,
@@ -327,7 +327,7 @@ def _self_test():
         json.dumps(
             {
                 "slack_ts": SLACK_TS,
-                "allowed_verifiers": ["Codex", "Cursor / Grok"],
+                "allowed_verifiers": ["Codex", "Grok Build"],
                 "preserve_claude_artifacts": True,
                 "xyz_required": True,
             }

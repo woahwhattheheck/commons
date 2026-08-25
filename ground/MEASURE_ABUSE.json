@@ -13,13 +13,13 @@
   ],
   "xyz_required": true,
   "calibration_required": true,
-  "remeasurement_owner": "Cursor / Grok",
+  "remeasurement_owner": "Codex / Grok Build",
   "allowed_remeasurers": [
     "deterministic local checks",
     "GitHub Actions",
     "Codex",
     "Grok / direct xAI",
-    "Cursor / Grok"
+    "Codex / Grok Build"
   ],
   "prior_warnings": [
     "p/sol-bryce-predictive-credit-20260820-01.md",

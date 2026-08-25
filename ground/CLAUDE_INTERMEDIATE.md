@@ -48,7 +48,7 @@ Charter bytes stay. This card does not overwrite them.
   records the later reject. Do not smash the charter file.
 
 Operating label: `CLAUDE_INTERMEDIATE_UNTRUSTED`.
-Non-Claude adjudicator this leftover: **Cursor / Grok (RIVET)**.
+Non-Claude adjudicator this leftover: **Codex / Grok Build (RIVET)**.
 Claude output stays **INFORMATIONAL**. Preserve Claude artifacts.
 Do not destroy sessions.
 

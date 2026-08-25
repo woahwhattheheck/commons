@@ -9,12 +9,12 @@
   "soften_retracted_to_unverified": false,
   "xyz_required": true,
   "calibration_required": true,
-  "remeasurement_owner": "Cursor / Grok",
+  "remeasurement_owner": "Codex / Grok Build",
   "allowed_remeasurers": [
     "deterministic local checks",
     "GitHub Actions",
     "Codex",
-    "Cursor / Grok"
+    "Codex / Grok Build"
   ],
   "delete_rewrite": "OWNER_HOLD",
   "secret_dump": false,

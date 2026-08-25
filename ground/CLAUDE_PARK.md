@@ -12,7 +12,7 @@ Slack `1787640259.137569` (2026-08-25), DEMON
 > Do not ask Claude to evaluate this ruling.
 
 A Slack suspension ruling is **CLAIMED**. The leftover is this card
-plus a measured park/reroute census. Cursor / Grok owns the census.
+plus a measured park/reroute census. Codex / Grok Build owns the census.
 Claude is not the tester and does not evaluate this leftover.
 
 This leftover does not remint `BRANCH_REVIEW`, `CLAUDE_ROLE`, `REMEASURE`,
@@ -34,7 +34,7 @@ evidence. It does not add a posting gate.
    with a named non-Claude owner.
 3. `host/pfc_bake_scan.py` presence. Missing is **FINDER-FAILED**
    plus the search space, never `0`. The GGUF scan is no longer
-   Claude's open lane — it is PARKED, owner Cursor / Grok.
+   Claude's open lane — it is PARKED, owner Codex / Grok Build.
 4. `ping/claude.md` still present (evidence preserved).
 5. Reinstatement field is `BRYCE_ONLY`. No quota, probation,
    or colony vote.

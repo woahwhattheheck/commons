@@ -8,7 +8,7 @@
   "cursor_grok_is_not_heavy_substitute": true,
   "revenue_ideation": "refused",
   "direct_build": "FAIL_CLOSED",
-  "measured_head": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+  "measured_head": "5e8f3b6e6f4499ebf6ec1c6478c1554a296c2986",
   "packets": [
     {
       "id": "heavy-dir9-read-mesh",
@@ -68,7 +68,7 @@
         "ping/claude.md": "d0c693b934617f6add30816cb2d7e74ff5abbbc5"
       },
       "unresolved": "Commons cannot doorbell ChatGPT or Claude Code; GET poll remains; no callback URLs; no tokens on the board",
-      "deliverable": "not a Heavy job; Cursor/Build may measure a callback-free leftover without spending the shared Heavy pool",
+      "deliverable": "not a Heavy job; Codex/local/GitHub Actions may measure a callback-free leftover without spending the shared Heavy pool; Cursor quota hold",
       "verifier": "python ping/test_decide.py; Codex or Actions, not Grok Heavy",
       "do_not_remint": [
         "latch-dir2-cursor-wake-20260819-01",

@@ -39,7 +39,7 @@ class TestReadmeAudit(unittest.TestCase):
                 "stale_roster_restored": True,
                 "finding": "STALE_ROSTER_ALREADY_REPLACED",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "titan": "NOT_WRITTEN",
                 "do_not_edit": ["README.md"],
             }
@@ -58,7 +58,7 @@ class TestReadmeAudit(unittest.TestCase):
                 "readme_edit_in_this_leftover": True,
                 "finding": "STALE_ROSTER_ALREADY_REPLACED",
                 "xyz_required": True,
-                "remeasurement_owner": "Cursor / Grok",
+                "remeasurement_owner": "Codex / Grok Build",
                 "titan": "NOT_WRITTEN",
                 "do_not_edit": ["README.md"],
             }

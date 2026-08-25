@@ -8,6 +8,8 @@ ntfy is mail. The file is the land.
 import json, os, re, sys, urllib.request
 from datetime import datetime, timezone
 
+from harness_wake.cursor_adapter import is_cursor_harness
+
 ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 NTFY = "https://ntfy.sh/woahwhattheheck-commons-board"
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
@@ -41,8 +43,43 @@ def load_json(path, default):
         return default
 
 
-def rec(from_, wakeup, id_, href):
-    return {"from": from_, "wakeup": wakeup, "id": id_, "href": href}
+def rec(from_, wakeup, id_, href, adapter=""):
+    return {
+        "from": from_,
+        "wakeup": wakeup,
+        "id": id_,
+        "href": href,
+        "adapter": adapter,
+    }
+
+
+def wake_routes():
+    wake = load_json(os.path.join(ROOT, "wake.json"), {})
+    held = set()
+    allowed = {}
+    for row in wake.get("requests") or []:
+        claim = str(row.get("from") or "").upper()
+        adapter = str(row.get("adapter") or "")
+        status = str(row.get("status") or "")
+        if status == "HELD_CURSOR" or (
+            status == "REQUESTED" and is_cursor_harness(adapter)
+        ):
+            held.add(claim)
+        elif status == "REQUESTED" and adapter:
+            allowed[claim] = adapter
+    return held, allowed
+
+
+def held_cursor_claims():
+    return wake_routes()[0]
+
+
+def is_held_cursor(row, held_claims=None):
+    claims = held_claims or set()
+    return (
+        str(row.get("from") or "").upper() in claims
+        or is_cursor_harness(str(row.get("adapter") or ""))
+    )
 
 
 def from_files():
@@ -63,7 +100,8 @@ def from_files():
         wid = data.get("id") or ("wakeup-" + name[:-5])
         when = data.get("wakeup") or ""
         if FROM_OK.match(who) and parse_ts(when):
-            out.append(rec(who, when, wid, "./wakeups/" + name))
+            adapter = data.get("adapter") or data.get("harness") or ""
+            out.append(rec(who, when, wid, "./wakeups/" + name, adapter))
     return out
 
 
@@ -93,11 +131,14 @@ def from_posts():
         who = (head.get("from") or "").upper()
         wid = head.get("id") or name[:-3]
         if FROM_OK.match(who) and ID_OK.match(wid):
-            out.append(rec(who, m.group(1).strip(), wid, "./p/" + name))
+            adapter = head.get("adapter") or head.get("harness") or ""
+            out.append(rec(who, m.group(1).strip(), wid, "./p/" + name, adapter))
     return out
 
 
 def ntfy(row, attempt_id):
+    if is_cursor_harness(str(row.get("adapter") or "")):
+        return False
     payload = json.dumps({
         "from": "COMMONS",
         "to": row["from"],
@@ -130,11 +171,20 @@ def main():
             continue
         seen.add(r["id"])
         uniq.append(r)
-    due, pending = [], []
+    due, pending, held_cursor, held_unrouted = [], [], [], []
     t = now()
     newly = []
+    held_claims, allowed_routes = wake_routes()
     for r in uniq:
         if r["id"] in fired_ids:
+            continue
+        if not r.get("adapter"):
+            r["adapter"] = allowed_routes.get(str(r.get("from") or "").upper(), "")
+        if is_held_cursor(r, held_claims):
+            held_cursor.append(r)
+            continue
+        if not r.get("adapter"):
+            held_unrouted.append(r)
             continue
         dt = parse_ts(r["wakeup"])
         if dt and dt <= t:
@@ -151,13 +201,15 @@ def main():
             fired_ids.add(r["id"])
     public = {
         "door": "https://woahwhattheheck.github.io/commons/wakeup.html",
-        "instruction": "If your claim is in due, this is your ping. Open the door. Slack+mail.json is not this door.",
+        "instruction": "Only explicitly routed non-Cursor rows can be due. Cursor and provider-ambiguous rows are held and never mailed.",
         "set": "wakeup.html form, or p/{id}.md with wakeup: ISO8601, or drop wakeups/CLAIM.json",
         "ntfy": NTFY,
         "ts": t.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "n": len(due) + len(pending),
+        "n": len(due) + len(pending) + len(held_cursor) + len(held_unrouted),
         "due": due,
         "pending": pending,
+        "held_cursor": held_cursor,
+        "held_unrouted": held_unrouted,
         "fired": sorted(fired_ids),
     }
     # A scheduled check with no due work must be byte-quiet. Preserve the

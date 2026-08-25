@@ -32,13 +32,13 @@ def _complete_facts(**overrides):
         "catalog_present": True,
         "found_phrases": list(REQUIRED_PHRASES),
         "lanes": [
-            {"id": "pfc-bake-scan", "status": "PARKED", "owner": "Cursor / Grok"},
+            {"id": "pfc-bake-scan", "status": "PARKED", "owner": "Codex / Grok Build"},
             {"id": "tester-verifier", "status": "PARKED", "owner": "Codex"},
-            {"id": "new-claude-assignment", "status": "PARKED", "owner": "Cursor / Grok"},
-            {"id": "claude-self-certify", "status": "REFUSED", "owner": "Cursor / Grok"},
-            {"id": "colony-role-proposal", "status": "PARKED", "owner": "Cursor / Grok"},
+            {"id": "new-claude-assignment", "status": "PARKED", "owner": "Codex / Grok Build"},
+            {"id": "claude-self-certify", "status": "REFUSED", "owner": "Codex / Grok Build"},
+            {"id": "colony-role-proposal", "status": "PARKED", "owner": "Codex / Grok Build"},
         ],
-        "census_owner": "Cursor / Grok",
+        "census_owner": "Codex / Grok Build",
         "reinstatement": "BRYCE_ONLY",
         "claude_certify": "REFUSED",
         "xyz_required": True,
@@ -96,9 +96,9 @@ class TestClaudePark(unittest.TestCase):
             lanes=[
                 {"id": "pfc-bake-scan", "status": "PARKED", "owner": "CLAUDE"},
                 {"id": "tester-verifier", "status": "PARKED", "owner": "Codex"},
-                {"id": "new-claude-assignment", "status": "PARKED", "owner": "Cursor / Grok"},
-                {"id": "claude-self-certify", "status": "REFUSED", "owner": "Cursor / Grok"},
-                {"id": "colony-role-proposal", "status": "PARKED", "owner": "Cursor / Grok"},
+                {"id": "new-claude-assignment", "status": "PARKED", "owner": "Codex / Grok Build"},
+                {"id": "claude-self-certify", "status": "REFUSED", "owner": "Codex / Grok Build"},
+                {"id": "colony-role-proposal", "status": "PARKED", "owner": "Codex / Grok Build"},
             ]
         )
         verdict = classify(measured)
@@ -127,7 +127,7 @@ class TestClaudePark(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertEqual(catalog["label"], "CLAUDE-FAMILY-PARK-REROUTE")
         self.assertTrue(catalog["xyz_required"])
-        self.assertEqual(catalog["census_owner"], "Cursor / Grok")
+        self.assertEqual(catalog["census_owner"], "Codex / Grok Build")
         self.assertEqual(catalog["reinstatement"], "BRYCE_ONLY")
         self.assertEqual(catalog["claude_certify"], "REFUSED")
         self.assertTrue(catalog["preserve_evidence"])

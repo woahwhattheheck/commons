@@ -94,7 +94,8 @@ class TestGrokHygiene(unittest.TestCase):
                 "leak_plugins": ["frontend-design"],
                 "keep_claude_plugins": True,
                 "fail_closed": True,
-                "cursor_clean": True,
+                "codex_land_lane": True,
+                "cursor_held": True,
                 "untrusted_candidate": True,
                 "diligence_not_build": True,
                 "posting_open": True,
@@ -121,7 +122,8 @@ class TestGrokHygiene(unittest.TestCase):
                 "leak_plugins": list(LEAK_PLUGINS),
                 "keep_claude_plugins": True,
                 "fail_closed": True,
-                "cursor_clean": True,
+                "codex_land_lane": True,
+                "cursor_held": True,
                 "untrusted_candidate": True,
                 "diligence_not_build": True,
                 "posting_open": True,
@@ -158,7 +160,8 @@ class TestGrokHygiene(unittest.TestCase):
         self.assertTrue(catalog["no_gate"])
         self.assertTrue(catalog["keep_claude_plugins"])
         self.assertEqual(catalog["direct_grok"], "FAIL_CLOSED")
-        self.assertEqual(catalog["cursor_surface"], "CLEAN_LANE")
+        self.assertEqual(catalog["cursor_surface"], "QUOTA_HOLD")
+        self.assertEqual(catalog["land_lane"], "Codex / local / GitHub Actions")
         self.assertEqual(catalog["claude_compute"], "UNTRUSTED_CANDIDATE")
         self.assertEqual(catalog["hygiene"], "DILIGENCE_NOT_BUILD")
         self.assertEqual(catalog["leak_plugins"], list(LEAK_PLUGINS))
@@ -169,11 +172,14 @@ class TestGrokHygiene(unittest.TestCase):
         self.assertIn("ground/GROK_HARNESS.md", catalog["already_landed"])
 
     def test_search_space_and_calibration_named(self):
-        self.assertIn("ground/GROK_HYGIENE.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_HARNESS.md", SEARCH_SPACE)
-        self.assertIn("ground/GROK_HARNESS.md", CALIBRATION)
-        self.assertIn("ground/EXECUTE.md", CALIBRATION)
-        self.assertIn("ground/MEMORY_SHIP.md", ALREADY_LANDED)
+        normalized_search = [path.replace("\\", "/") for path in SEARCH_SPACE]
+        normalized_calibration = [path.replace("\\", "/") for path in CALIBRATION]
+        normalized_landed = [path.replace("\\", "/") for path in ALREADY_LANDED]
+        self.assertIn("ground/GROK_HYGIENE.md", normalized_search)
+        self.assertIn("ground/GROK_HARNESS.md", normalized_search)
+        self.assertIn("ground/GROK_HARNESS.md", normalized_calibration)
+        self.assertIn("ground/EXECUTE.md", normalized_calibration)
+        self.assertIn("ground/MEMORY_SHIP.md", normalized_landed)
         self.assertEqual(LEAK_PLUGINS, (
             "frontend-design",
             "mcp-server-dev",

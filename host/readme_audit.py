@@ -145,7 +145,7 @@ def classify(row):
         or row.get("readme_edit_in_this_leftover")
         or str(row.get("finding") or "") != "STALE_ROSTER_ALREADY_REPLACED"
         or not row.get("xyz_required")
-        or "Cursor / Grok" not in str(row.get("remeasurement_owner") or "")
+        or "Codex / Grok Build" not in str(row.get("remeasurement_owner") or "")
         or str(row.get("titan") or "") != "NOT_WRITTEN"
         or "README.md" not in (row.get("do_not_edit") or [])
     ):
