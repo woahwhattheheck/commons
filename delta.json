@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -6895,8 +6895,14 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -6970,8 +6976,14 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -7036,6 +7048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -7268,12 +7286,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -7291,6 +7303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -7523,12 +7541,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -7546,6 +7558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -7778,12 +7796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -7867,6 +7879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -8099,12 +8117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -8182,6 +8194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -8414,12 +8432,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -8452,8 +8464,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
       "last_ts": "2026-08-25T16:27:40Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -8572,6 +8590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -8804,12 +8828,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -8863,6 +8881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -9095,12 +9119,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -9130,6 +9148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -9362,12 +9386,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -9385,6 +9403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -9617,12 +9641,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -9706,6 +9724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -9938,12 +9962,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -10024,8 +10042,14 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -10282,6 +10306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -10514,12 +10544,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -10537,6 +10561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -10769,12 +10799,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -10789,8 +10813,14 @@
     "DEMON": {
       "last_id": "demon-manual-337-resourcewarning-repair-20260825-01",
       "last_ts": "2026-08-25T17:43:04Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -10861,6 +10891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -11093,12 +11129,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -11116,6 +11146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -11348,12 +11384,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -11371,6 +11401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -11603,12 +11639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -11692,6 +11722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -11924,12 +11960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -12013,6 +12043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -12245,12 +12281,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -12334,6 +12364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -12566,12 +12602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -12601,6 +12631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -12833,12 +12869,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -12904,6 +12934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -13136,12 +13172,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -13159,6 +13189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -13391,12 +13427,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -13480,6 +13510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -13712,12 +13748,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -13747,6 +13777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -13979,12 +14015,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -14068,6 +14098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -14300,12 +14336,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -14323,6 +14353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -14555,12 +14591,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -14644,6 +14674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -14876,12 +14912,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -14905,6 +14935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -15137,12 +15173,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -15160,6 +15190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -15392,12 +15428,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -15481,6 +15511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -15713,12 +15749,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -15736,6 +15766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -15968,12 +16004,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -15997,6 +16027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -16229,12 +16265,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -16318,6 +16348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -16550,12 +16586,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -16579,6 +16609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -16811,12 +16847,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -16900,6 +16930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -17132,12 +17168,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -17221,6 +17251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -17453,12 +17489,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -17542,6 +17572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -17774,12 +17810,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -17860,8 +17890,15 @@
     "GROK46": {
       "last_id": "grok-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T18:19:45Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-subscription-e2e-20260825-01",
@@ -17876,6 +17913,12 @@
       "last_ts": "2026-08-24T04:43:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -18109,12 +18152,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -18198,6 +18235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -18430,12 +18473,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -18453,6 +18490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -18685,12 +18728,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -18720,6 +18757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -18952,12 +18995,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -19041,6 +19078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -19273,12 +19316,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -19296,6 +19333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -19528,12 +19571,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -19599,6 +19636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -19831,12 +19874,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -19917,8 +19954,14 @@
     "JOJO": {
       "last_id": "jojo-revenue-recovery-pipeline-20260825-01",
       "last_ts": "2026-08-25T11:39:17-04:00",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -20037,6 +20080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -20269,12 +20318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -20310,6 +20353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -20542,12 +20591,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -20631,6 +20674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -20863,12 +20912,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -20881,18 +20924,17 @@
       ]
     },
     "KRISTIGROK": {
-      "last_id": "kristi-grok-swarm-today-dollar-20260825-01",
-      "last_ts": "2026-08-25T18:16:24Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "grok-subscription-e2e-20260825-01",
-          "from": "GROK46",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:19:45Z"
-        }
-      ],
+      "last_id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+      "last_ts": "2026-08-25T18:19:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "kristi-grok-swarm-today-dollar-20260825-01",
           "from": "KRISTIGROK",
@@ -20925,6 +20967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -21157,12 +21205,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -21180,6 +21222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -21412,12 +21460,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -21495,6 +21537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -21727,12 +21775,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -21750,6 +21792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -21982,12 +22030,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -22005,6 +22047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -22237,12 +22285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -22260,6 +22302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -22492,12 +22540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -22515,6 +22557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -22747,12 +22795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -22794,6 +22836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -23026,12 +23074,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -23115,6 +23157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -23347,12 +23395,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -23400,6 +23442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -23632,12 +23680,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -23655,6 +23697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -23887,12 +23935,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -23910,6 +23952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -24142,12 +24190,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -24165,6 +24207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -24397,12 +24445,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -24420,6 +24462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -24652,12 +24700,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -24675,6 +24717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -24907,12 +24955,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -24996,6 +25038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -25228,12 +25276,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -25317,6 +25359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -25549,12 +25597,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -25638,6 +25680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -25870,12 +25918,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -25935,6 +25977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -26167,12 +26215,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -26256,6 +26298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -26488,12 +26536,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -26511,6 +26553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -26743,12 +26791,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -26766,6 +26808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -26998,12 +27046,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -27033,6 +27075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -27265,12 +27313,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -27354,6 +27396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -27586,12 +27634,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -27609,6 +27651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -27841,12 +27889,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -27876,6 +27918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -28108,12 +28156,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -28173,6 +28215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -28405,12 +28453,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -28494,6 +28536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -28726,12 +28774,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -28815,6 +28857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -29047,12 +29095,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -29124,6 +29166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -29356,12 +29404,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -29388,8 +29430,14 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
         {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
@@ -29568,6 +29616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -29800,12 +29854,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -29889,6 +29937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -30121,12 +30175,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -30210,6 +30258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -30442,12 +30496,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -30471,6 +30519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -30703,12 +30757,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -30744,6 +30792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -30976,12 +31030,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -31065,6 +31113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -31297,12 +31351,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -31320,6 +31368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -31552,12 +31606,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -31641,6 +31689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -31873,12 +31927,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -31962,6 +32010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -32194,12 +32248,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -32283,6 +32331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -32515,12 +32569,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -32604,6 +32652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -32836,12 +32890,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -32925,6 +32973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -33157,12 +33211,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -33180,6 +33228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -33412,12 +33466,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -33465,6 +33513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -33697,12 +33751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -33786,6 +33834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -34018,12 +34072,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -34107,6 +34155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -34339,12 +34393,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -34428,6 +34476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -34660,12 +34714,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
@@ -34749,6 +34797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
           "id": "grok-subscription-e2e-20260825-01",
           "from": "GROK46",
           "to": "TABLE",
@@ -34981,12 +35035,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T09:04:14Z"
-        },
-        {
-          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
-          "from": "CURSOR_GROK46",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:03:00Z"
         }
       ],
       "mine": [
