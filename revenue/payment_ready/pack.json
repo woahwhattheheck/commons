@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "kind": "PAYMENT_READY_PACK",
+  "mandate": "demon-redteam-payment-ready-20260825-02",
+  "landing_owner": "cursor-grok-46-payment-ready-20260825",
+  "model": "Cursor Grok 4.6",
+  "harness": "Cursor Automation",
+  "slack_taking_id": "demon-redteam-payment-ready-20260825-02",
+  "slack_ts": "1787645021.043069",
+  "taking_state": "CARRIER_ONLY",
+  "base_main_sha_at_write": "6aa069e7a92c63f862d7d009de3c721482e51832",
+  "prior_thread_ts": "1787643743.338469",
+  "cross_synthesis_ts": "1787644100.499729",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "collectable_usd": "NOT_LANDED",
+  "collected_cash_usd": 0,
+  "banking_only_blocker": false,
+  "computer_is_the_product": false,
+  "overwrites_commercial_json": false,
+  "overwrites_dio": false,
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential",
+    "street address",
+    "private buyer identity",
+    "customer model bytes"
+  ],
+  "consumed_current_main": [
+    "revenue/portfolio_overdrive/portfolio.json",
+    "commercial.json",
+    "ground/CASH_NOW.json",
+    "bazaar.json",
+    "revenue/dio/foundation.json"
+  ],
+  "preserved_occupied_lanes": [
+    "revenue/dio/",
+    "commercial.json",
+    "revenue/portfolio_overdrive/",
+    "ground/CASH_NOW.md",
+    "bazaar.json"
+  ],
+  "offer": {
+    "offer_id": "gguf-diagnostic-10d-12k",
+    "status": "CANDIDATE",
+    "evidence_class": "RESEARCH_SYNTHESIS",
+    "evidence_source": "Slack 1787644100.499729 cross-synthesis fallback; 24/24 Grok jurors; $500-first lost 3-1 after plumbing",
+    "does_not_replace": "white-box-gguf-pilot-30d",
+    "public_product_name": "White Box diagnostic",
+    "engagement_type": "professional service and evaluation engagement",
+    "target": "one customer-owned GGUF",
+    "term_calendar_days": 10,
+    "currency": "USD",
+    "fixed_amount": 12000,
+    "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+    "milestones": [
+      {
+        "id": "M1_BEFORE_FILE",
+        "amount": 6000,
+        "due": "before customer file exchange; after NDA and SOW signing"
+      },
+      {
+        "id": "M2_AT1_AT6",
+        "amount": 6000,
+        "due": "on AT1-AT6 acceptance"
+      }
+    ],
+    "buyer_class_proposed": "open-weight or local-GGUF lab with a legally controlled file and a runnable harness",
+    "demand": "UNKNOWN",
+    "founder_slot": {
+      "collision": "HIGH",
+      "occupies": "same founder slot as high-ticket-white-box; 10-day precursor, not a parallel HIGH lane",
+      "next": "same-GGUF $30k / 30d pilot only after AT1-AT6 acceptance; $100k-$175k license only after paid delivery"
+    },
+    "acceptance_rule": "rollback evidence, not metric lift",
+    "falsifier": [
+      "no NDA or SOW",
+      "customer lacks a legally controlled GGUF",
+      "customer harness never runs",
+      "AT1-AT6 incomplete",
+      "public orig/ablated/restored binaries posted (binary diff can leak method)",
+      "acceptance claimed as metric lift",
+      "computer, titan, foundry, or hide-list material transferred"
+    ],
+    "downgrade_path": [
+      {
+        "when": "legal payee, NDA, private intake, or payout destination missing",
+        "then": "stay on D0 plumbing; gate stays NEEDS_OWNER_PRIVATE; do not list a USD checkout"
+      },
+      {
+        "when": "no buyer with a legally controlled GGUF and harness",
+        "then": "gate stays NEEDS_BUYER; demand remains UNKNOWN; cash stays $0 / NOT_LANDED"
+      },
+      {
+        "when": "AT1-AT6 cannot be shown privately without a method-leaking public binary dump",
+        "then": "do not publish artifacts; downgrade to a priced Failure Packet SKU only after payout dest exists (portfolio rank 2)"
+      },
+      {
+        "when": "$12k flagship is rejected by a later measured buyer class",
+        "then": "record the miss; do not resurrect $500-first as the flagship (lost 3-1); Failure Packet remains the fallback"
+      }
+    ]
+  },
+  "acceptance_tests": [
+    {
+      "id": "AT1",
+      "name": "original_hash",
+      "pass": "SHA-256 of the customer-supplied GGUF recorded before any edit"
+    },
+    {
+      "id": "AT2",
+      "name": "ablated_hash_different",
+      "pass": "SHA-256 of the ablated artifact differs from AT1"
+    },
+    {
+      "id": "AT3",
+      "name": "byte_exact_restore",
+      "pass": "restored artifact SHA-256 equals AT1"
+    },
+    {
+      "id": "AT4",
+      "name": "customer_harness_logs",
+      "pass": "baseline, ablation, and restore runs exist from the customer's harness"
+    },
+    {
+      "id": "AT5",
+      "name": "concise_finding",
+      "pass": "short written finding: what was shown, what measured, limitations"
+    },
+    {
+      "id": "AT6",
+      "name": "receipt",
+      "pass": "delivery receipt names artifacts and hashes; payment reference never proves delivery"
+    }
+  ],
+  "gate": {
+    "pack": "READY",
+    "pack_meaning": "templates exist and are secrets-absent; not bank cash",
+    "owner_private": "NEEDS_OWNER_PRIVATE",
+    "buyer": "NEEDS_BUYER",
+    "collected_cash": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "banking_only_blocker": false,
+    "open": [
+      "NEEDS_OWNER_PRIVATE",
+      "NEEDS_BUYER",
+      "NOT_LANDED"
+    ],
+    "ready_does_not_mean_cash": true,
+    "independent_cash_evidence_required": true,
+    "notes": {
+      "READY": "buyer-readable pack is on this tree",
+      "NEEDS_OWNER_PRIVATE": "legal payee, payout destination, NDA signing, W-9/tax determination remain owner-private and unmeasured",
+      "NEEDS_BUYER": "demand UNKNOWN; no public named buyer; no outreach from this leftover",
+      "NOT_LANDED": "collected USD is $0 until a measured BANK_AVAILABLE event is independently evidenced"
+    }
+  },
+  "d0_plumbing": {
+    "status": "OPEN",
+    "items": [
+      "legal payee name chosen inside owner-private records",
+      "private $6k rail (processor invoice or owner-private ACH/wire UI)",
+      "NDA",
+      "private intake for the customer file"
+    ],
+    "source": "Slack 1787644100.499729"
+  },
+  "rails": [
+    {
+      "provider": "Stripe",
+      "source": "https://docs.stripe.com/payouts",
+      "source_measured": "2026-08-25",
+      "authorization": "payment confirmation or capture; not bank cash",
+      "settlement": "US default 2 business days after capture; first live payout typically 7-14 days",
+      "payout": "transfer from available Stripe balance to a destination added in Dashboard Payout settings",
+      "bank_available": "after payout plus any bank delay; US same-day manual payout only after settlement and only if initiated before 17:00 US/Eastern",
+      "kyc_jurisdiction": "UNMEASURED — Stripe KYC varies by country, business type, and capabilities; see https://docs.stripe.com/connect/identity-verification and https://support.stripe.com/questions/know-your-customer-obligations",
+      "owner_only_step": "complete identity/business verification and connect a payout destination inside the official Stripe Dashboard"
+    },
+    {
+      "provider": "PayPal",
+      "source": "https://www.paypal.com/us/cshelp/article/how-do-i-get-money-out-of-my-paypal-account-help394",
+      "source_measured": "2026-08-25",
+      "authorization": "received payment; may remain pending",
+      "settlement": "available PayPal balance, not pending",
+      "payout": "Transfer Money / Transfer to your bank inside official PayPal Wallet",
+      "bank_available": "Instant Transfer typically minutes and charged; Standard Transfer typically 1-3 business days; mailed check typically 5-10 business days",
+      "kyc_jurisdiction": "UNMEASURED — confirmation and seller verification vary by account type and country",
+      "owner_only_step": "confirm the account and connect a withdrawal destination inside the official PayPal UI"
+    },
+    {
+      "provider": "Owner-private bank ACH or wire",
+      "source": "owner bank UI; no public Commons rail",
+      "source_measured": "2026-08-25",
+      "authorization": "buyer bank initiates a credit; not evidenced here",
+      "settlement": "receiving-bank posting clock is bank-specific and UNMEASURED",
+      "payout": "not a processor payout; this is a direct credit",
+      "bank_available": "when the receiving bank posts the credit; timing UNMEASURED",
+      "kyc_jurisdiction": "UNMEASURED — bank CIP/KYC is owner-private",
+      "owner_only_step": "if used, give the buyer remittance instructions only inside an official bank or encrypted owner-private channel; never paste destination data onto Commons or Slack"
+    }
+  ],
+  "owner_private_blockers": [
+    "legal payee / entity",
+    "payout destination inside an official provider or bank UI",
+    "NDA signing authority",
+    "W-9 or equivalent tax form if a requester asks; TIN never stored here",
+    "sales-tax / withholding determination",
+    "founder calendar for the 10-day slot"
+  ],
+  "buyer_blockers": [
+    "demand UNKNOWN",
+    "no named public buyer",
+    "legally controlled GGUF not supplied",
+    "runnable customer harness not supplied",
+    "no outreach from this leftover"
+  ]
+}
