@@ -113,6 +113,33 @@ A stride larger than the pointer space leaves `last_safe_start`
 **UNRESOLVED** (`stride_exceeds_pointer_space`). Floor division is
 not wrap-cycle length. Live allocated offsets stay **UNRESOLVED**.
 
+## Absolute-base / declared-capacity leftover
+
+Slack `1787653848.428899` is **CLAIMED**. Talk is not a land.
+Do not remint #2314, #2326, #2337, #2347, the taking ids, or
+prior receipts.
+
+The landed stride leftover still derived `last_safe_start` from
+`pointer_span - stride` even when ABSOLUTE named a smaller
+declared capacity. Reproducer: ABSOLUTE `base=0` / `capacity=8`
+/ `stride=3` / `ptr_bits=4` reported `last_safe_start=13`
+outside `0..7`. Canonical payload omitted `absolute_base`, so
+bases 10 and 11 hashed identically.
+
+Bind absolute base + declared capacity:
+
+| Fact | Rule |
+|---|---|
+| usable exclusive end | `min(absolute_base + capacity, pointer_span)` |
+| `last_safe_start` | `usable_end - stride` when a full stride fits |
+| out of declared range | never printed; `UNRESOLVED` + `absolute_base_no_full_stride` |
+| canonical payload | ABSOLUTE binds `absolute_base`; RELATIVE omits it |
+| two-byte 30-bit hash | still `d5acf732c3bd72a10e42630654ec5b5cef43a5e11b8dcab7396fcf6f4ec33165` |
+| base=0 / capacity=8 / stride=3 / 4-bit | `last_safe_start=5`, not `13` |
+
+Full-stride bounds stay enforced. Live allocated offsets stay
+**UNRESOLVED**. Never `0`.
+
 ## What this leftover is not
 
 - Not a legacy trainer import or execute
