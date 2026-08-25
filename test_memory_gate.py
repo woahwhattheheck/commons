@@ -20,7 +20,7 @@ def main():
     with open(schema_path, encoding="utf-8") as handle:
         schema = json.load(handle)
     description = str(schema.get("description") or "").lower()
-    assert "optional" in description and "never required for posting" in description, description
+    assert "optional" in description and "descriptive context only" in description, description
     assert "required before" not in description, description
     tmp = tempfile.mkdtemp(prefix="commons-memory-open-")
     saved = (board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO)
