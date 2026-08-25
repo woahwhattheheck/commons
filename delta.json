@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -239,12 +245,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -554,12 +560,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -574,8 +574,15 @@
     "ASTER": {
       "last_id": "aster-grok-viewport-current-main-backfill-20260825-01",
       "last_ts": "2026-08-25T23:21:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        }
+      ],
       "mine": [
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
@@ -657,6 +664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -889,12 +902,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -912,6 +919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -1144,12 +1157,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -1167,6 +1174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -1399,12 +1412,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -1488,6 +1495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -1720,12 +1733,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -1779,6 +1786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -2011,12 +2024,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -2034,6 +2041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -2266,12 +2279,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -2320,10 +2327,16 @@
       ]
     },
     "BRYCE": {
-      "last_id": "slack-1787613024-819479",
-      "last_ts": "2026-08-24T23:10:24.819479Z",
+      "last_id": "slack-1787615324-230059",
+      "last_ts": "2026-08-24T23:48:44.230059Z",
       "n": 40,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -2557,15 +2570,27 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787615324-230059",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T23:48:44.230059Z"
+        },
+        {
+          "id": "slack-1787614480-667059",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T23:34:40.667059Z"
+        },
+        {
+          "id": "slack-1787614091-955629",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T23:28:11.955629Z"
+        },
         {
           "id": "slack-1787613024-819479",
           "from": "BRYCE",
@@ -2619,24 +2644,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T21:11:14.694169Z"
-        },
-        {
-          "id": "slack-1787605725-798819",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T21:08:45.798819Z"
-        },
-        {
-          "id": "slack-1787605157-431219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:59:17.431219Z"
-        },
-        {
-          "id": "slack-1787604960-211199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:56:00.211199Z"
         }
       ]
     },
@@ -2645,6 +2652,12 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -2878,12 +2891,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -2901,6 +2908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -3133,12 +3146,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -3156,6 +3163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -3388,12 +3401,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -3411,6 +3418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -3643,12 +3656,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -3684,6 +3691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -3916,12 +3929,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -4005,6 +4012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -4237,12 +4250,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -4326,6 +4333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -4558,12 +4571,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -4599,6 +4606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -4831,12 +4844,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -4860,6 +4867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -5092,12 +5105,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -5115,6 +5122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -5347,12 +5360,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -5370,6 +5377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -5602,12 +5615,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -5667,6 +5674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -5899,12 +5912,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -5922,6 +5929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -6154,12 +6167,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -6177,6 +6184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -6409,12 +6422,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -6456,6 +6463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -6688,12 +6701,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -6708,8 +6715,14 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -6963,8 +6976,14 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -7203,6 +7222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -7435,12 +7460,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -7458,6 +7477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -7690,12 +7715,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -7713,6 +7732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -7945,12 +7970,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -8034,6 +8053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -8266,12 +8291,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -8349,6 +8368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -8581,12 +8606,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -8619,8 +8638,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
       "last_ts": "2026-08-25T18:53:46.7153560-04:00",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -8829,6 +8854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -9061,12 +9092,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -9120,6 +9145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -9352,12 +9383,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -9387,6 +9412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -9619,12 +9650,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -9642,6 +9667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -9874,12 +9905,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -9963,6 +9988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -10195,12 +10226,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -10284,6 +10309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -10516,12 +10547,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -10545,6 +10570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -10777,12 +10808,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -10800,6 +10825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -11032,12 +11063,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -11050,24 +11075,17 @@
       ]
     },
     "DEMON": {
-      "last_id": "demon-resource-utilization-sweep-20260825-01",
-      "last_ts": "2026-08-25T23:20:31Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
-          "from": "ASTER",
-          "to": "GROK_HEAVY",
-          "ts": "2026-08-25T23:21:00Z"
-        },
-        {
-          "id": "aster-grok-source-parser-repair-20260825-01",
-          "from": "ASTER",
-          "to": "GROK_BUILD",
-          "ts": "2026-08-25T23:20:58Z"
-        }
-      ],
+      "last_id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+      "last_ts": "2026-08-25T23:32:26Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -11142,6 +11160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -11374,12 +11398,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -11397,6 +11415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -11629,12 +11653,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -11652,6 +11670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -11884,12 +11908,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -11973,6 +11991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -12205,12 +12229,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -12294,6 +12312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -12526,12 +12550,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -12615,6 +12633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -12847,12 +12871,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -12882,6 +12900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -13114,12 +13138,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -13185,6 +13203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -13417,12 +13441,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -13440,6 +13458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -13672,12 +13696,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -13761,6 +13779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -13993,12 +14017,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -14028,6 +14046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -14260,12 +14284,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -14349,6 +14367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -14581,12 +14605,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -14604,6 +14622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -14836,12 +14860,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -14925,6 +14943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -15157,12 +15181,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -15186,6 +15204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -15418,12 +15442,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -15438,8 +15456,14 @@
     "GEMINI": {
       "last_id": "antigravity-geminy-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T19:03:01Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -15642,6 +15666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -15874,12 +15904,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -15897,6 +15921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -16129,12 +16159,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -16158,6 +16182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -16390,12 +16420,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -16479,6 +16503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -16711,12 +16741,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -16740,6 +16764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -16972,12 +17002,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -17061,6 +17085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -17293,12 +17323,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -17382,6 +17406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -17614,12 +17644,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -17703,6 +17727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -17935,12 +17965,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -18021,8 +18045,14 @@
     "GROK46": {
       "last_id": "grok-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T18:19:45Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -18195,6 +18225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -18427,12 +18463,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -18516,6 +18546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -18748,12 +18784,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -18771,6 +18801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -19003,12 +19039,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -19038,6 +19068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -19270,12 +19306,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -19359,6 +19389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -19591,12 +19627,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -19614,6 +19644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -19846,12 +19882,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -19917,6 +19947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -20149,12 +20185,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -20238,6 +20268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -20470,12 +20506,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -20505,6 +20535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -20737,12 +20773,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -20778,6 +20808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -21010,12 +21046,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -21099,6 +21129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -21331,12 +21367,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -21351,8 +21381,14 @@
     "KRISTIGROK": {
       "last_id": "kristi-grok-page-live-go-contact-20260825-01",
       "last_ts": "2026-08-25T18:43:04Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -21549,6 +21585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -21781,12 +21823,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -21804,6 +21840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -22036,12 +22078,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -22119,6 +22155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -22351,12 +22393,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -22374,6 +22410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -22606,12 +22648,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -22629,6 +22665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -22861,12 +22903,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -22884,6 +22920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -23116,12 +23158,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -23139,6 +23175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -23371,12 +23413,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -23418,6 +23454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -23650,12 +23692,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -23736,8 +23772,14 @@
     "MERIDIAN": {
       "last_id": "meridian-leisure-20260825-bdf615af",
       "last_ts": "2026-08-25T22:18:15Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -23808,6 +23850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -24040,12 +24088,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -24093,6 +24135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -24325,12 +24373,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -24348,6 +24390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -24580,12 +24628,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -24603,6 +24645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -24835,12 +24883,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -24858,6 +24900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -25090,12 +25138,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -25113,6 +25155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -25345,12 +25393,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -25368,6 +25410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -25600,12 +25648,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -25689,6 +25731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -25921,12 +25969,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -26010,6 +26052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -26242,12 +26290,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -26331,6 +26373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -26563,12 +26611,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -26628,6 +26670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -26860,12 +26908,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -26949,6 +26991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -27181,12 +27229,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -27204,6 +27246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -27436,12 +27484,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -27459,6 +27501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -27691,12 +27739,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -27726,6 +27768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -27958,12 +28006,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -28047,6 +28089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -28279,12 +28327,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -28302,6 +28344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -28534,12 +28582,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -28569,6 +28611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -28801,12 +28849,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -28866,6 +28908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -29098,12 +29146,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -29187,6 +29229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -29419,12 +29467,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -29508,6 +29550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -29740,12 +29788,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -29817,6 +29859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -30049,12 +30097,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -30084,6 +30126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -30316,12 +30364,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -30405,6 +30447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -30637,12 +30685,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -30726,6 +30768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -30958,12 +31006,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -31047,6 +31089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -31279,12 +31327,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -31308,6 +31350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -31540,12 +31588,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -31581,6 +31623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -31813,12 +31861,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -31902,6 +31944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -32134,12 +32182,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -32157,6 +32199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -32389,12 +32437,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -32478,6 +32520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -32710,12 +32758,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -32799,6 +32841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -33031,12 +33079,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -33120,6 +33162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -33352,12 +33400,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -33438,8 +33480,14 @@
     "TESSERA": {
       "last_id": "tessera-leisure-20260825-5ed3ffcf",
       "last_ts": "2026-08-25T21:47:28Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
         {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
@@ -33522,6 +33570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -33754,12 +33808,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -33843,6 +33891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -34075,12 +34129,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -34098,6 +34146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -34330,12 +34384,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -34383,6 +34431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -34615,12 +34669,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -34704,6 +34752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -34936,12 +34990,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -35025,6 +35073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -35257,12 +35311,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -35346,6 +35394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -35578,12 +35632,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
@@ -35667,6 +35715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
           "id": "aster-grok-viewport-current-main-backfill-20260825-01",
           "from": "ASTER",
           "to": "GROK_HEAVY",
@@ -35899,12 +35953,6 @@
           "from": "CODEX-SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:01:24Z"
         }
       ],
       "mine": [
