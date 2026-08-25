@@ -21,12 +21,12 @@
   ],
   "expected_excerpts": 31,
   "generator": {
-    "bytes": 27789,
-    "git_blob_sha1": "89b39a1f14a1d2c3a6d84a09c006f0f717bf5186",
+    "bytes": 31662,
+    "git_blob_sha1": "626144f3c51f6de8ba8de4ee67510a34524ba30f",
     "path": "host/subzero_explorer.py",
-    "sha256": "dc563c1f7a53ea2d29b99863bef731d6db0d68478a32c92944c50ce8ba7fc508",
+    "sha256": "543c4acfb402a55d19037622dbf6372870b52314eb06df5a0a2649b719471f35",
     "status": "PRESENT",
-    "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/host/subzero_explorer.py"
+    "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/host/subzero_explorer.py"
   },
   "handoff_id": "jojo-model-work-profitability-bridge-20260825-01",
   "host_training": "NOT_SOLD",
@@ -48,7 +48,7 @@
     "path": "revenue/subzero_buyers/pack.json",
     "sha256": "d4b4aff4a0dbae1449c8d5ee943cb5cb767e14d63b9815131cabd1e0a39531e4",
     "status": "PRESENT",
-    "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/revenue/subzero_buyers/pack.json"
+    "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/revenue/subzero_buyers/pack.json"
   },
   "offer_refs": [
     "P01",
@@ -64,7 +64,7 @@
       "path": "excerpts/20260823/titan_move_packet.json",
       "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
       "status": "PRESENT",
-      "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+      "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
     }
   },
   "posting": "OPEN",
@@ -76,15 +76,15 @@
     "path": "revenue/subzero_buyers/validation_receipt.schema.json",
     "sha256": "46039ce933dc878e049d64c469929b1a4c2a813d143ce5fdad1d553c8f007ec6",
     "status": "PRESENT",
-    "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/revenue/subzero_buyers/validation_receipt.schema.json"
+    "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/revenue/subzero_buyers/validation_receipt.schema.json"
   },
   "receipt_template": {
     "buyer_acceptance": {
       "status": "PENDING"
     },
     "catalog": {
-      "source_commit": "4ecf03c454255076dee6d1c7927688b3628f3d29",
-      "source_tree": "88cbe19f53826ec79074e36ee9a5095015d50149"
+      "source_commit": "1f19779138392094934b8239d82e2c71fffb1d46",
+      "source_tree": "1b86ed949c8459192abade8e4c03c508e480a5e2"
     },
     "kind": "SUBZERO_VALIDATION_RECEIPT",
     "schema_version": "subzero-validation-receipt/v1"
@@ -110,6 +110,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_BYZQ.md",
+            "evidence_sha256": "6ee11a4d2af1f8bf9683d16767120078aa3c92ef91cf7fb0303546c0a3af206c",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -147,7 +153,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -160,7 +167,7 @@
         "path": "excerpts/20260823/muhl_byzq.mno",
         "sha256": "83c3299088ae56b871af6e14443d3d63c5a9b8a9a123cc4aa9f98ed63fb30b7e",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_byzq.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_byzq.mno"
       },
       "bytes": 387189,
       "depth": 30,
@@ -212,7 +219,7 @@
           "path": "ground/SUBZERO_BYZQ.md",
           "sha256": "6ee11a4d2af1f8bf9683d16767120078aa3c92ef91cf7fb0303546c0a3af206c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_BYZQ.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_BYZQ.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -221,7 +228,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_byzq.py",
           "sha256": "2f38f164afb85cf52a7b7b4a418fe3fb1d1349d7cbb4a6afd67e63b9e38e8253",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_byzq.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_byzq.py"
         },
         "packet": {
           "bytes": 20042,
@@ -229,7 +236,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1385,
@@ -237,7 +244,7 @@
           "path": "excerpts/20260823/byzq_circuits.json",
           "sha256": "f0c01aef2a8985f1a4ad5cd59b3740f609370d849da557e1f0f8dfaea0a2be36",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/byzq_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/byzq_circuits.json"
         },
         "structural_test": {
           "bytes": 3189,
@@ -245,7 +252,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_byzq.py",
           "sha256": "5cd62123a2a4ad5b7870cb43a2a9c6136db0795dd11bd49d3bd1ac06b68b2ffa",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_byzq.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_byzq.py"
         }
       }
     },
@@ -268,6 +275,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHFS.md",
+            "evidence_sha256": "4b1d5ebde25261aaba839c9909939606e022a1b17b3bf795e280692f9419e169",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -305,7 +318,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -318,7 +332,7 @@
         "path": "excerpts/20260823/muhl_chimera_flow_stig.mno",
         "sha256": "20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_flow_stig.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_flow_stig.mno"
       },
       "bytes": 570,
       "depth": 2,
@@ -370,7 +384,7 @@
           "path": "ground/SUBZERO_CHFS.md",
           "sha256": "4b1d5ebde25261aaba839c9909939606e022a1b17b3bf795e280692f9419e169",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHFS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHFS.md"
         },
         "component_cards": [
           {
@@ -379,7 +393,7 @@
             "path": "ground/SUBZERO_FLOW.md",
             "sha256": "cfb91b35ce5f31ef7a758fa2648bd2f683b78c8acaf43831b96d20f9141e4b4a",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_FLOW.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_FLOW.md"
           },
           {
             "bytes": 1967,
@@ -387,7 +401,7 @@
             "path": "ground/SUBZERO_STIG.md",
             "sha256": "684bbaa193cea4b48374d075c30215ff8c1b3aa03ddf644f2f0c623914b01afa",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_STIG.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_STIG.md"
           }
         ],
         "fabricator": {
@@ -396,7 +410,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_flow_stig.py",
           "sha256": "d19ea4a37a1249e377ab6a0ec7143723a4abe5031d66f471a45e39d7763479cf",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_flow_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_flow_stig.py"
         },
         "packet": {
           "bytes": 20042,
@@ -404,7 +418,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1401,
@@ -412,7 +426,7 @@
           "path": "excerpts/20260823/chimera_flow_stig_circuits.json",
           "sha256": "0f7f90f7f75e430217265ab11a122261ca25c55b4e7c7f110dab4beed10150a3",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_flow_stig_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_flow_stig_circuits.json"
         },
         "structural_test": {
           "bytes": 2321,
@@ -420,7 +434,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_flow_stig.py",
           "sha256": "b0ab248f2f82dc58c8fcb78d8deef5199394e8c3151d2ce9ddebeba668560517",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_flow_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_flow_stig.py"
         }
       }
     },
@@ -443,6 +457,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHGS.md",
+            "evidence_sha256": "1cdf71900cbf602df04c4641a263f13cd04d6b2be400e6f53e93e32b4639112d",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -480,7 +500,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -493,7 +514,7 @@
         "path": "excerpts/20260823/muhl_chimera_grbn_socr.mno",
         "sha256": "521a23200c1731ee1e775ab70236569b713cdfca12ca3f921863d3cf68d36fcb",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_grbn_socr.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_grbn_socr.mno"
       },
       "bytes": 630,
       "depth": 2,
@@ -545,7 +566,7 @@
           "path": "ground/SUBZERO_CHGS.md",
           "sha256": "1cdf71900cbf602df04c4641a263f13cd04d6b2be400e6f53e93e32b4639112d",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHGS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHGS.md"
         },
         "component_cards": [
           {
@@ -554,7 +575,7 @@
             "path": "ground/SUBZERO_GRBN.md",
             "sha256": "73926a0e1fc00051ec0b10fc873122b012fc6fb02981d6117d66c38ed8c8119b",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_GRBN.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_GRBN.md"
           },
           {
             "bytes": 1981,
@@ -562,7 +583,7 @@
             "path": "ground/SUBZERO_SOCR.md",
             "sha256": "e0c73bf85d10cf70ed0fe720a8e872d49e8f1189828cb8806882ea171ded83b4",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SOCR.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SOCR.md"
           }
         ],
         "fabricator": {
@@ -571,7 +592,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_grbn_socr.py",
           "sha256": "15d0593900018c78f61186b551464273bd37d97de26251ff9697bb04a8bfda6f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_grbn_socr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_grbn_socr.py"
         },
         "packet": {
           "bytes": 20042,
@@ -579,7 +600,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1436,
@@ -587,7 +608,7 @@
           "path": "excerpts/20260823/chimera_grbn_socr_circuits.json",
           "sha256": "35f1594106da5a52713d4e1dd11a055a0806739c8becbae16fe0073602190305",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_grbn_socr_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_grbn_socr_circuits.json"
         },
         "structural_test": {
           "bytes": 3280,
@@ -595,7 +616,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_grbn_socr.py",
           "sha256": "90cf8aed5162106885383f476df61509a03c405efed70e9e350a11f817788863",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_grbn_socr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_grbn_socr.py"
         }
       }
     },
@@ -618,6 +639,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHHS.md",
+            "evidence_sha256": "1c5c63f905ebb937b7449320c86faeaa8806afd9b87db3640cfcb07e586cdd1d",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -655,7 +682,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -668,7 +696,7 @@
         "path": "excerpts/20260823/muhl_chimera_hopf_sdmk.mno",
         "sha256": "c8301c2345e67dfe6f9b1f91127fab896224347a72ba8ac044313275fe948ee7",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_hopf_sdmk.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_hopf_sdmk.mno"
       },
       "bytes": 690,
       "depth": 2,
@@ -720,7 +748,7 @@
           "path": "ground/SUBZERO_CHHS.md",
           "sha256": "1c5c63f905ebb937b7449320c86faeaa8806afd9b87db3640cfcb07e586cdd1d",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHHS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHHS.md"
         },
         "component_cards": [
           {
@@ -729,7 +757,7 @@
             "path": "ground/SUBZERO_HOPF.md",
             "sha256": "b59547ed3f72972652401d905b9e130de03aea4b22a3bc86206c56958e3907ac",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_HOPF.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_HOPF.md"
           },
           {
             "bytes": 2215,
@@ -737,7 +765,7 @@
             "path": "ground/SUBZERO_SDMK.md",
             "sha256": "c6b942da03fc42d9b924c74075b17eddbe850b7bc8331bbea33a1319570bb97d",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SDMK.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SDMK.md"
           }
         ],
         "fabricator": {
@@ -746,7 +774,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_hopf_sdmk.py",
           "sha256": "aa5a923396c2803060d7cde975209ce7bb7dbb1ab206f9d9a0604bd9f16959d2",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_hopf_sdmk.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_hopf_sdmk.py"
         },
         "packet": {
           "bytes": 20042,
@@ -754,7 +782,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1468,
@@ -762,7 +790,7 @@
           "path": "excerpts/20260823/chimera_hopf_sdmk_circuits.json",
           "sha256": "5fd469d87a8cdbc8f49ea479ae9e58c2df788454738c87f27603b5b6febfba1f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_hopf_sdmk_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_hopf_sdmk_circuits.json"
         },
         "structural_test": {
           "bytes": 3009,
@@ -770,7 +798,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_hopf_sdmk.py",
           "sha256": "e871c5c5e0ba82a51d9218a8ab24347a6b27882721db37557931ab7b10af93e8",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_hopf_sdmk.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_hopf_sdmk.py"
         }
       }
     },
@@ -793,6 +821,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHIH.md",
+            "evidence_sha256": "60612c291ddfc51409ed4f7b9779aeb32c8949d66fccc7e460ce732f7fe075e1",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -830,7 +864,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -843,7 +878,7 @@
         "path": "excerpts/20260823/muhl_chimera_immn_hdvs.mno",
         "sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_immn_hdvs.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_immn_hdvs.mno"
       },
       "bytes": 630,
       "depth": 2,
@@ -895,7 +930,7 @@
           "path": "ground/SUBZERO_CHIH.md",
           "sha256": "60612c291ddfc51409ed4f7b9779aeb32c8949d66fccc7e460ce732f7fe075e1",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHIH.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHIH.md"
         },
         "component_cards": [
           {
@@ -904,7 +939,7 @@
             "path": "ground/SUBZERO_IMMN.md",
             "sha256": "58226427e9d9942dc4fcb909ecd32d54bee3ec70516c29771998db6e213bf831",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_IMMN.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_IMMN.md"
           },
           {
             "bytes": 2478,
@@ -912,7 +947,7 @@
             "path": "ground/SUBZERO_HDVS.md",
             "sha256": "efbdc8620a2f3029defd2233e29feeebfaadd449f3fca0ecbc92e47f02e6a573",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_HDVS.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_HDVS.md"
           }
         ],
         "fabricator": {
@@ -921,7 +956,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_immn_hdvs.py",
           "sha256": "7dd68b232f4c430070f436c9bccd9ebc405f6cb1fc204c3303ad63e778a0fb57",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_immn_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_immn_hdvs.py"
         },
         "packet": {
           "bytes": 20042,
@@ -929,7 +964,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 955,
@@ -937,7 +972,7 @@
           "path": "excerpts/20260823/chimera_immn_hdvs_circuits.json",
           "sha256": "4c257f26879f4b6c2ea4702ea35364b812afe147a03523c1f3b4305f1a7796f7",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_immn_hdvs_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_immn_hdvs_circuits.json"
         },
         "structural_test": {
           "bytes": 3279,
@@ -945,7 +980,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_immn_hdvs.py",
           "sha256": "9e0b1da8a5864cabb3f0b907cd0d5123c07fea1b972bc5b44507536f8f836009",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_immn_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_immn_hdvs.py"
         }
       }
     },
@@ -968,6 +1003,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHLS.md",
+            "evidence_sha256": "a0d67ba60eba265bdc94364f608dacda9a4a30199a367b9782c72cae13bb5b5e",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1005,7 +1046,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1018,7 +1060,7 @@
         "path": "excerpts/20260823/muhl_chimera_lvin_synd.mno",
         "sha256": "43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_lvin_synd.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_lvin_synd.mno"
       },
       "bytes": 690,
       "depth": 2,
@@ -1065,12 +1107,12 @@
       "sha256": "43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae",
       "sources": {
         "card": {
-          "bytes": null,
-          "git_blob_sha1": null,
+          "bytes": 1037,
+          "git_blob_sha1": "e184ff3640bec17ca71c19089b953192c65ff144",
           "path": "ground/SUBZERO_CHLS.md",
-          "sha256": null,
-          "status": "FINDER_FAILED",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHLS.md"
+          "sha256": "a0d67ba60eba265bdc94364f608dacda9a4a30199a367b9782c72cae13bb5b5e",
+          "status": "PRESENT",
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHLS.md"
         },
         "component_cards": [
           {
@@ -1079,7 +1121,7 @@
             "path": "ground/SUBZERO_LVIN.md",
             "sha256": "1a89709483d4f85431ba5812692773f687d116507636c2a693d4281b09a22d33",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_LVIN.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_LVIN.md"
           },
           {
             "bytes": 2499,
@@ -1087,7 +1129,7 @@
             "path": "ground/SUBZERO_SYND.md",
             "sha256": "0250cd5b7b1b64cdeedfeb6cd562321091bc2d24e5fdd6639dc9743774d9ebca",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SYND.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SYND.md"
           }
         ],
         "fabricator": {
@@ -1096,7 +1138,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_lvin_synd.py",
           "sha256": "07701e0ca682a246096c25faad2e08434546e67d630e38a8eafb471265c5f981",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_lvin_synd.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_lvin_synd.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1104,7 +1146,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1469,
@@ -1112,7 +1154,7 @@
           "path": "excerpts/20260823/chimera_lvin_synd_circuits.json",
           "sha256": "d7b5c5192dd006b537f735a51c4cbfd665fdbc6c46601f57d389d5d7d575e02b",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_lvin_synd_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_lvin_synd_circuits.json"
         },
         "structural_test": {
           "bytes": 2468,
@@ -1120,7 +1162,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_lvin_synd.py",
           "sha256": "58bde782fcbed8d80a61620ff33bc1c1effa3a2bd3b8cc6ac92b949585e443a4",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_lvin_synd.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_lvin_synd.py"
         }
       }
     },
@@ -1143,6 +1185,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHPD.md",
+            "evidence_sha256": "eaee96b1e7792d2288444104b959594a02584f829df1b121987cc34d7bd9e82c",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1180,7 +1228,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1193,7 +1242,7 @@
         "path": "excerpts/20260823/muhl_chimera_pots_dmb.mno",
         "sha256": "997c53127e555de004862e602089bc19bf5d2a1d0eb4b853a875aef467b6da82",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_pots_dmb.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_pots_dmb.mno"
       },
       "bytes": 630,
       "depth": 2,
@@ -1245,7 +1294,7 @@
           "path": "ground/SUBZERO_CHPD.md",
           "sha256": "eaee96b1e7792d2288444104b959594a02584f829df1b121987cc34d7bd9e82c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHPD.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHPD.md"
         },
         "component_cards": [
           {
@@ -1254,7 +1303,7 @@
             "path": "ground/SUBZERO_POTS.md",
             "sha256": "fea9b44a4fce6c002b642d239cf2df40b70e6e1ce8914517f734c61c2975107c",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_POTS.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_POTS.md"
           }
         ],
         "fabricator": {
@@ -1263,7 +1312,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pots_dmb.py",
           "sha256": "1da731d711fc7ba1c9cc132fe58346189ef4468e5b25f17ba25a78fb7e98039a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pots_dmb.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pots_dmb.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1271,7 +1320,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1465,
@@ -1279,7 +1328,7 @@
           "path": "excerpts/20260823/chimera_pots_dmb_circuits.json",
           "sha256": "c81492829b079ebc5a87a8e470008c451e011703a8441fb25b4c7b9141144955",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_pots_dmb_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_pots_dmb_circuits.json"
         },
         "structural_test": {
           "bytes": 2458,
@@ -1287,7 +1336,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pots_dmb.py",
           "sha256": "c8511d4d1bbe23bb286df4657357f053a7d88b69a789e723e70336eab12db1fb",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pots_dmb.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pots_dmb.py"
         }
       }
     },
@@ -1310,6 +1359,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHPR.md",
+            "evidence_sha256": "cb7913577d7b10290858dc8ebf1e6ce97dce8e86ca59ca2b58d525284d69bebe",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1347,7 +1402,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1360,7 +1416,7 @@
         "path": "excerpts/20260823/muhl_chimera_pred_rgcg.mno",
         "sha256": "189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_pred_rgcg.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_pred_rgcg.mno"
       },
       "bytes": 750,
       "depth": 2,
@@ -1407,12 +1463,12 @@
       "sha256": "189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9",
       "sources": {
         "card": {
-          "bytes": null,
-          "git_blob_sha1": null,
+          "bytes": 1037,
+          "git_blob_sha1": "4e3ba7c37c95ed14f08ae50c264ca2926dc4455c",
           "path": "ground/SUBZERO_CHPR.md",
-          "sha256": null,
-          "status": "FINDER_FAILED",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHPR.md"
+          "sha256": "cb7913577d7b10290858dc8ebf1e6ce97dce8e86ca59ca2b58d525284d69bebe",
+          "status": "PRESENT",
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHPR.md"
         },
         "component_cards": [
           {
@@ -1421,7 +1477,7 @@
             "path": "ground/SUBZERO_PRED.md",
             "sha256": "db336d2a63a444d240be271a278a4824446b0a198bbd40c4ea98d2cd7084f910",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_PRED.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_PRED.md"
           },
           {
             "bytes": 1381,
@@ -1429,7 +1485,7 @@
             "path": "ground/SUBZERO_RGCG.md",
             "sha256": "2a38de44fa1a09b55f4acaf367bde43dafd4f1651c625c9d93f6a113485ddb7e",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_RGCG.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_RGCG.md"
           }
         ],
         "fabricator": {
@@ -1438,7 +1494,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pred_rgcg.py",
           "sha256": "437d5c246510d31b6a284a1e9a9f0c934db2ceb0ba37ac5c4248b85bc8b06b90",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pred_rgcg.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_pred_rgcg.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1446,7 +1502,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1521,
@@ -1454,7 +1510,7 @@
           "path": "excerpts/20260823/chimera_pred_rgcg_circuits.json",
           "sha256": "9ba5838be7c2c79f84dff738332ca27c2397a4ebaf4fe8f5704bac96e4f96115",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_pred_rgcg_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_pred_rgcg_circuits.json"
         },
         "structural_test": {
           "bytes": 2466,
@@ -1462,7 +1518,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pred_rgcg.py",
           "sha256": "fc3ca66210493414c18a33d71238b3f9dd0172cc505115475dce8f70ff0370da",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pred_rgcg.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_pred_rgcg.py"
         }
       }
     },
@@ -1485,6 +1541,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHSS.md",
+            "evidence_sha256": "db954789ee05691458ab49b4a520261c07dbaf9068d31212c5cd90203166550d",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1522,7 +1584,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1535,7 +1598,7 @@
         "path": "excerpts/20260823/muhl_chimera_socr_stig.mno",
         "sha256": "262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_socr_stig.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_socr_stig.mno"
       },
       "bytes": 570,
       "depth": 2,
@@ -1587,7 +1650,7 @@
           "path": "ground/SUBZERO_CHSS.md",
           "sha256": "db954789ee05691458ab49b4a520261c07dbaf9068d31212c5cd90203166550d",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHSS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHSS.md"
         },
         "component_cards": [
           {
@@ -1596,7 +1659,7 @@
             "path": "ground/SUBZERO_SOCR.md",
             "sha256": "e0c73bf85d10cf70ed0fe720a8e872d49e8f1189828cb8806882ea171ded83b4",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SOCR.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SOCR.md"
           },
           {
             "bytes": 1967,
@@ -1604,7 +1667,7 @@
             "path": "ground/SUBZERO_STIG.md",
             "sha256": "684bbaa193cea4b48374d075c30215ff8c1b3aa03ddf644f2f0c623914b01afa",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_STIG.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_STIG.md"
           }
         ],
         "fabricator": {
@@ -1613,7 +1676,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_socr_stig.py",
           "sha256": "452919c78c5ee1e44989ee552cee05db56b537a003bef0dfc92f18cae83f4b69",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_socr_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_socr_stig.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1621,7 +1684,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1397,
@@ -1629,7 +1692,7 @@
           "path": "excerpts/20260823/chimera_socr_stig_circuits.json",
           "sha256": "7d32b2d08712d6e62f674e7221a19024a9dc1eb2ee932ebf0046d4f0b2e65b12",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_socr_stig_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_socr_stig_circuits.json"
         },
         "structural_test": {
           "bytes": 3055,
@@ -1637,7 +1700,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_socr_stig.py",
           "sha256": "91ee4129dbda17ef0b305291337cd863ba79210ccc3df102e56d37b035934e59",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_socr_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_socr_stig.py"
         }
       }
     },
@@ -1660,6 +1723,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_CHTH.md",
+            "evidence_sha256": "63d8182570908e862b0e911ae4379fb4e1c0c95db55c661bdfb456e74fba923f",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1697,7 +1766,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1710,7 +1780,7 @@
         "path": "excerpts/20260823/muhl_chimera_tset_hdvs.mno",
         "sha256": "f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_chimera_tset_hdvs.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_chimera_tset_hdvs.mno"
       },
       "bytes": 750,
       "depth": 2,
@@ -1762,7 +1832,7 @@
           "path": "ground/SUBZERO_CHTH.md",
           "sha256": "63d8182570908e862b0e911ae4379fb4e1c0c95db55c661bdfb456e74fba923f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_CHTH.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_CHTH.md"
         },
         "component_cards": [
           {
@@ -1771,7 +1841,7 @@
             "path": "ground/SUBZERO_TSET.md",
             "sha256": "a402a849676d212541128c6e89aff516b24998aa83c9cd6550f8b1153b7302d7",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_TSET.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_TSET.md"
           },
           {
             "bytes": 2478,
@@ -1779,7 +1849,7 @@
             "path": "ground/SUBZERO_HDVS.md",
             "sha256": "efbdc8620a2f3029defd2233e29feeebfaadd449f3fca0ecbc92e47f02e6a573",
             "status": "PRESENT",
-            "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_HDVS.md"
+            "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_HDVS.md"
           }
         ],
         "fabricator": {
@@ -1788,7 +1858,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_tset_hdvs.py",
           "sha256": "23ad04d0f713b528787cb31d667044dca61ee5f2baef2ac853f496f6f971b761",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_tset_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_chimera_tset_hdvs.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1796,7 +1866,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1520,
@@ -1804,7 +1874,7 @@
           "path": "excerpts/20260823/chimera_tset_hdvs_circuits.json",
           "sha256": "46943247587fb83a77e59f8400add902ebb405f23626291813bd9d7890366ca5",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/chimera_tset_hdvs_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/chimera_tset_hdvs_circuits.json"
         },
         "structural_test": {
           "bytes": 3171,
@@ -1812,7 +1882,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_tset_hdvs.py",
           "sha256": "d971ee6813c05393606078dbd7c132cf397b991a77761ad8a036467710d3bf69",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_tset_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_chimera_tset_hdvs.py"
         }
       }
     },
@@ -1835,6 +1905,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_ESNR.md",
+            "evidence_sha256": "edfcabfcc2cb6c6e844b06539f21e64b484df48fe0a06138b172faed3e117241",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -1872,7 +1948,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -1885,7 +1962,7 @@
         "path": "excerpts/20260823/muhl_esnr.mno",
         "sha256": "d842726a5ddfa7d82bb1026cd0d199140b168e882013fe6d23e6abe0624b39e1",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_esnr.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_esnr.mno"
       },
       "bytes": 1125830,
       "depth": 16,
@@ -1937,7 +2014,7 @@
           "path": "ground/SUBZERO_ESNR.md",
           "sha256": "edfcabfcc2cb6c6e844b06539f21e64b484df48fe0a06138b172faed3e117241",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_ESNR.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_ESNR.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -1946,7 +2023,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_esnr.py",
           "sha256": "6598a9447b3392df4483be8f9ff6a8b4449f8d686e758e2114dfd7d90f786508",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_esnr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_esnr.py"
         },
         "packet": {
           "bytes": 20042,
@@ -1954,7 +2031,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 12970,
@@ -1962,7 +2039,7 @@
           "path": "excerpts/20260823/esnr_circuits.json",
           "sha256": "fab9a2ffc29b9583d995d60aa68ece05b7a8408ff0cf94de386d903144f6fb6e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/esnr_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/esnr_circuits.json"
         },
         "structural_test": {
           "bytes": 3384,
@@ -1970,7 +2047,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_esnr.py",
           "sha256": "c4b970a9104eb7892083c83022c0d5c016b301a1aba5bfbc836ff386b684151c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_esnr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_esnr.py"
         }
       }
     },
@@ -1993,6 +2070,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_FLOW.md",
+            "evidence_sha256": "cfb91b35ce5f31ef7a758fa2648bd2f683b78c8acaf43831b96d20f9141e4b4a",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2030,7 +2113,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2043,7 +2127,7 @@
         "path": "excerpts/20260823/muhl_flow.mno",
         "sha256": "8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_flow.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_flow.mno"
       },
       "bytes": 617502,
       "depth": 16,
@@ -2095,7 +2179,7 @@
           "path": "ground/SUBZERO_FLOW.md",
           "sha256": "cfb91b35ce5f31ef7a758fa2648bd2f683b78c8acaf43831b96d20f9141e4b4a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_FLOW.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_FLOW.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2104,7 +2188,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_flow.py",
           "sha256": "f5458a21abafd6bb0b95e187225f20372cf369369c142736f1781d9b41563671",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_flow.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_flow.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2112,7 +2196,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 54075,
@@ -2120,7 +2204,7 @@
           "path": "excerpts/20260823/flow_circuits.json",
           "sha256": "966eaa3457a1b3c2cbd09ec998a6f9f651bdf9d113967492f5e9bd672cca882a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/flow_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/flow_circuits.json"
         },
         "structural_test": {
           "bytes": 3267,
@@ -2128,7 +2212,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_flow.py",
           "sha256": "4af4936a6d5ff4e0b99b96e0a0031525c5309b2b40c4d8839e8f9fbe98f928ca",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_flow.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_flow.py"
         }
       }
     },
@@ -2151,6 +2235,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_GRBN.md",
+            "evidence_sha256": "73926a0e1fc00051ec0b10fc873122b012fc6fb02981d6117d66c38ed8c8119b",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2188,7 +2278,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2201,7 +2292,7 @@
         "path": "excerpts/20260823/muhl_grbn.mno",
         "sha256": "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_grbn.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_grbn.mno"
       },
       "bytes": 228638,
       "depth": 7,
@@ -2253,7 +2344,7 @@
           "path": "ground/SUBZERO_GRBN.md",
           "sha256": "73926a0e1fc00051ec0b10fc873122b012fc6fb02981d6117d66c38ed8c8119b",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_GRBN.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_GRBN.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2262,7 +2353,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_grbn.py",
           "sha256": "4b7cdebe8ae3cfb7833e258f239e2b33a3901eea4114bb47453026ca45c61bb4",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_grbn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_grbn.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2270,7 +2361,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 6632,
@@ -2278,7 +2369,7 @@
           "path": "excerpts/20260823/grbn_circuits.json",
           "sha256": "15c2a25b62a38ab665564b1e6db0ab5769460b9ab532bda9508188c3b798e1d9",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/grbn_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/grbn_circuits.json"
         },
         "structural_test": {
           "bytes": 2765,
@@ -2286,7 +2377,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_grbn.py",
           "sha256": "effe25cac2026471203793d11068528b18d85792c62024025e11ffd30c77ad96",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_grbn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_grbn.py"
         }
       }
     },
@@ -2309,6 +2400,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_HDVS.md",
+            "evidence_sha256": "efbdc8620a2f3029defd2233e29feeebfaadd449f3fca0ecbc92e47f02e6a573",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2346,7 +2443,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2359,7 +2457,7 @@
         "path": "excerpts/20260823/muhl_hdvs.mno",
         "sha256": "1f392a877594a9a81d28cca02e3f204355aba1e02c4c11b5cb94370ded7309bd",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_hdvs.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_hdvs.mno"
       },
       "bytes": 328734,
       "depth": 34,
@@ -2411,7 +2509,7 @@
           "path": "ground/SUBZERO_HDVS.md",
           "sha256": "efbdc8620a2f3029defd2233e29feeebfaadd449f3fca0ecbc92e47f02e6a573",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_HDVS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_HDVS.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2420,7 +2518,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hdvs.py",
           "sha256": "070cb8933b37d17b58c4dfdbd0b8a4bc0e17e6f52cbd86e9326284f9dde35f54",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hdvs.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2428,7 +2526,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 26316,
@@ -2436,7 +2534,7 @@
           "path": "excerpts/20260823/hdvs_circuits.json",
           "sha256": "dc5f29f04d394ac521d908a84d4154a48befc7a53e1d5739da4ced747d8d0eae",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/hdvs_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/hdvs_circuits.json"
         },
         "structural_test": {
           "bytes": 3874,
@@ -2444,7 +2542,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hdvs.py",
           "sha256": "7fce853175fcc34381ed1b92eae782b3a34637e64d7a65fe4903a645fcb6d2f5",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hdvs.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hdvs.py"
         }
       }
     },
@@ -2467,6 +2565,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_HOPF.md",
+            "evidence_sha256": "b59547ed3f72972652401d905b9e130de03aea4b22a3bc86206c56958e3907ac",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2504,7 +2608,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2517,7 +2622,7 @@
         "path": "excerpts/20260823/muhl_hopf.mno",
         "sha256": "f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_hopf.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_hopf.mno"
       },
       "bytes": 973150,
       "depth": 24,
@@ -2569,7 +2674,7 @@
           "path": "ground/SUBZERO_HOPF.md",
           "sha256": "b59547ed3f72972652401d905b9e130de03aea4b22a3bc86206c56958e3907ac",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_HOPF.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_HOPF.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2578,7 +2683,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hopf.py",
           "sha256": "cce642596888dbfb01971f3b854b1d8fd056a4d2a924c901c3360da648e3fce1",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hopf.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_hopf.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2586,7 +2691,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 2039,
@@ -2594,7 +2699,7 @@
           "path": "excerpts/20260823/hopf_circuits.json",
           "sha256": "49ec6b4025063c07668dc61dc1afd5cbce23935e2bc4447bb72c3b72cde10776",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/hopf_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/hopf_circuits.json"
         },
         "structural_test": {
           "bytes": 2941,
@@ -2602,7 +2707,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hopf.py",
           "sha256": "11d96432fe7d35acdf1b4509f80fa5e7734d0c680c37982dbc1c57d40b447496",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hopf.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_hopf.py"
         }
       }
     },
@@ -2625,6 +2730,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_IMMN.md",
+            "evidence_sha256": "58226427e9d9942dc4fcb909ecd32d54bee3ec70516c29771998db6e213bf831",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2662,7 +2773,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2675,7 +2787,7 @@
         "path": "excerpts/20260823/muhl_immn.mno",
         "sha256": "9aaa8c738f9c2e8a0eaa24f419da83ef7e3125897e80a1f732067db02fdac827",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_immn.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_immn.mno"
       },
       "bytes": 782892,
       "depth": 27,
@@ -2727,7 +2839,7 @@
           "path": "ground/SUBZERO_IMMN.md",
           "sha256": "58226427e9d9942dc4fcb909ecd32d54bee3ec70516c29771998db6e213bf831",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_IMMN.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_IMMN.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2736,7 +2848,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_immn.py",
           "sha256": "31458c84a113e99b889681cadfac390ebeb266462f92b65450d4bb35253a194f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_immn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_immn.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2744,7 +2856,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1117,
@@ -2752,7 +2864,7 @@
           "path": "excerpts/20260823/immn_circuits.json",
           "sha256": "2191542b53a618843d06f2623694adbd15df8f1fae0dac6a40f04665e75eb5be",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/immn_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/immn_circuits.json"
         },
         "structural_test": {
           "bytes": 3395,
@@ -2760,7 +2872,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_immn.py",
           "sha256": "121ce90802d1743f7c8338bc552a3a960b0b833da3a9b7109f86e92b9aabcc8a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_immn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_immn.py"
         }
       }
     },
@@ -2783,6 +2895,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_ISPN.md",
+            "evidence_sha256": "78567469b2c67d2b0efabe80cf976a2ee3b7f953c7a901f6bea69251b66a15cc",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2820,7 +2938,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2833,7 +2952,7 @@
         "path": "excerpts/20260823/muhl_ispn.mno",
         "sha256": "9930ee8299abb029e5ec1c7c20c9f905e22f3d2d7801719e75cb8739cf75244f",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_ispn.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_ispn.mno"
       },
       "bytes": 230734,
       "depth": 12,
@@ -2885,7 +3004,7 @@
           "path": "ground/SUBZERO_ISPN.md",
           "sha256": "78567469b2c67d2b0efabe80cf976a2ee3b7f953c7a901f6bea69251b66a15cc",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_ISPN.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_ISPN.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -2894,7 +3013,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_ispn.py",
           "sha256": "d20db86ddcf6f1d7929e53008b68f2e107a6dbc0bc6a910eb9aa160143392c93",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_ispn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_ispn.py"
         },
         "packet": {
           "bytes": 20042,
@@ -2902,7 +3021,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 6659,
@@ -2910,7 +3029,7 @@
           "path": "excerpts/20260823/ispn_circuits.json",
           "sha256": "076e96f28aad623f887e25774a0e348ae1a3936632b04a968c248f32080e42a5",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/ispn_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/ispn_circuits.json"
         },
         "structural_test": {
           "bytes": 3239,
@@ -2918,7 +3037,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_ispn.py",
           "sha256": "fcbfb261336bdf662b0dcfcdda600a34ba6f3b6ac27be00272d2568d711d0883",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_ispn.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_ispn.py"
         }
       }
     },
@@ -2941,6 +3060,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_LVIN.md",
+            "evidence_sha256": "1a89709483d4f85431ba5812692773f687d116507636c2a693d4281b09a22d33",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -2978,7 +3103,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -2991,7 +3117,7 @@
         "path": "excerpts/20260823/muhl_lvin.mno",
         "sha256": "a4d019d59035be2ff3300a18bf71bf4c880fdbc7b66ed21c8fe8844073d5496a",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_lvin.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_lvin.mno"
       },
       "bytes": 62250,
       "depth": 30,
@@ -3043,7 +3169,7 @@
           "path": "ground/SUBZERO_LVIN.md",
           "sha256": "1a89709483d4f85431ba5812692773f687d116507636c2a693d4281b09a22d33",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_LVIN.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_LVIN.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3052,7 +3178,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_lvin.py",
           "sha256": "c41a9da8bb292c7bc2fc47cdb0ce14d065d018c913d74006c9290520bfd4d0cd",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_lvin.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_lvin.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3060,7 +3186,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1927,
@@ -3068,7 +3194,7 @@
           "path": "excerpts/20260823/lvin_circuits.json",
           "sha256": "d8400ad6bfae2139325f28e8aa95ffd4362eeae5e74978544057cbd1734bf75c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/lvin_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/lvin_circuits.json"
         },
         "structural_test": {
           "bytes": 2615,
@@ -3076,7 +3202,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_lvin.py",
           "sha256": "778ffe23659afdfa072e9d2a99ec67110528ac4f41a69c0eca82ae4acd82bfc0",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_lvin.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_lvin.py"
         }
       }
     },
@@ -3099,6 +3225,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_PDAP.md",
+            "evidence_sha256": "e37aa218527fccc48abd1d48c85dff15717dfab53d869876f17501fef9506adc",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3136,7 +3268,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3149,7 +3282,7 @@
         "path": "excerpts/20260823/muhl_pdap.mno",
         "sha256": "874b08be34ba5263ef9ece0217c213aa14d9d9fa0e673c74c0d12a8b8799f4b4",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_pdap.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_pdap.mno"
       },
       "bytes": 69374,
       "depth": 192,
@@ -3201,7 +3334,7 @@
           "path": "ground/SUBZERO_PDAP.md",
           "sha256": "e37aa218527fccc48abd1d48c85dff15717dfab53d869876f17501fef9506adc",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_PDAP.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_PDAP.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3210,7 +3343,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pdap.py",
           "sha256": "287a9ef7c7754115fc02dbe2e9074a0adc770cc278c79c8dd55ae983e8cecb1a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pdap.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pdap.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3218,7 +3351,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 811,
@@ -3226,7 +3359,7 @@
           "path": "excerpts/20260823/pdap_circuits.json",
           "sha256": "e021aee8fd674f7ec088338bd88077d01e4f97dcbdf652431abaf159c39fb770",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/pdap_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/pdap_circuits.json"
         },
         "structural_test": {
           "bytes": 2641,
@@ -3234,7 +3367,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pdap.py",
           "sha256": "c5057971d54f7588d57c51886471993f190904d260d9a874d2b21b9ef046bb2a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pdap.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pdap.py"
         }
       }
     },
@@ -3257,6 +3390,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_PETR.md",
+            "evidence_sha256": "2ee6b866810bcaa8405d915ca483994467af3d873c9a8558aa3ad3c6dca16092",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3294,7 +3433,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3307,7 +3447,7 @@
         "path": "excerpts/20260823/muhl_petr.mno",
         "sha256": "55a52541c1bbee1c4b7115d4ca745b6c04f71eec2832307f2b5d19c398148f44",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_petr.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_petr.mno"
       },
       "bytes": 94686,
       "depth": 14,
@@ -3359,7 +3499,7 @@
           "path": "ground/SUBZERO_PETR.md",
           "sha256": "2ee6b866810bcaa8405d915ca483994467af3d873c9a8558aa3ad3c6dca16092",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_PETR.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_PETR.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3368,7 +3508,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_petr.py",
           "sha256": "0cb3ec256d807407e4ce10279ae557f2f70c6ebf5d5a4c66fca32e0f16e95909",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_petr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_petr.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3376,7 +3516,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 14165,
@@ -3384,7 +3524,7 @@
           "path": "excerpts/20260823/petr_circuits.json",
           "sha256": "25f27feb32a0619f8b2ce4caa8e954f17022cde29e89d2702f3915fe97e9415d",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/petr_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/petr_circuits.json"
         },
         "structural_test": {
           "bytes": 4435,
@@ -3392,7 +3532,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_petr.py",
           "sha256": "a9abcfc39e53af1ac6a602d56b37382fac28fda3f4659c561c75fbe94606cf2b",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_petr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_petr.py"
         }
       }
     },
@@ -3415,6 +3555,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_POTS.md",
+            "evidence_sha256": "fea9b44a4fce6c002b642d239cf2df40b70e6e1ce8914517f734c61c2975107c",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3452,7 +3598,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3465,7 +3612,7 @@
         "path": "excerpts/20260823/muhl_pots.mno",
         "sha256": "ac8e7473739af617f3231d027d679aceb4ed809f2cf0b5f2900add38e85aae71",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_pots.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_pots.mno"
       },
       "bytes": 901150,
       "depth": 20,
@@ -3517,7 +3664,7 @@
           "path": "ground/SUBZERO_POTS.md",
           "sha256": "fea9b44a4fce6c002b642d239cf2df40b70e6e1ce8914517f734c61c2975107c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_POTS.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_POTS.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3526,7 +3673,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pots.py",
           "sha256": "3dc9e0c7cfc588cb95b6dc0abde203201fd0630777a0530e04e76e05a3bbf54e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pots.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pots.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3534,7 +3681,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 25210,
@@ -3542,7 +3689,7 @@
           "path": "excerpts/20260823/pots_circuits.json",
           "sha256": "9801c51bb4507394465e3de44ee762538427c49a960ea55ff0935adffe2af774",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/pots_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/pots_circuits.json"
         },
         "structural_test": {
           "bytes": 3215,
@@ -3550,7 +3697,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pots.py",
           "sha256": "1154f21d451dbff05b193af7f955c7ee03c0a984d38ef84bf717e0d727ed0e8c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pots.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pots.py"
         }
       }
     },
@@ -3573,6 +3720,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_PRED.md",
+            "evidence_sha256": "db336d2a63a444d240be271a278a4824446b0a198bbd40c4ea98d2cd7084f910",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3610,7 +3763,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3623,7 +3777,7 @@
         "path": "excerpts/20260823/muhl_pred.mno",
         "sha256": "be5ba528497b2cc2c8f14cfb433d8fdc2a49d1bf6477159ca92e844b6f665658",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_pred.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_pred.mno"
       },
       "bytes": 462750,
       "depth": 42,
@@ -3675,7 +3829,7 @@
           "path": "ground/SUBZERO_PRED.md",
           "sha256": "db336d2a63a444d240be271a278a4824446b0a198bbd40c4ea98d2cd7084f910",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_PRED.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_PRED.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3684,7 +3838,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pred.py",
           "sha256": "83a46050d87ec6ff40a8f6832ff9ed778457193421f108b3817ac9252375b4df",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pred.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_pred.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3692,7 +3846,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 9848,
@@ -3700,7 +3854,7 @@
           "path": "excerpts/20260823/pred_circuits.json",
           "sha256": "07e066525e2036cddd3c9c8eee762286d2766a19be3fc41c3676e4a68db8c864",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/pred_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/pred_circuits.json"
         },
         "structural_test": {
           "bytes": 3138,
@@ -3708,7 +3862,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pred.py",
           "sha256": "1f0bbe79cf44251067fd3e065a2a0b2cabc0f272d0d76c5090f29a094da8a0f8",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pred.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_pred.py"
         }
       }
     },
@@ -3731,6 +3885,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_RGCG.md",
+            "evidence_sha256": "2a38de44fa1a09b55f4acaf367bde43dafd4f1651c625c9d93f6a113485ddb7e",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3768,7 +3928,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3781,7 +3942,7 @@
         "path": "excerpts/20260823/muhl_rgcg.mno",
         "sha256": "fcd359538d3568018c650db7384fa1c1dffc982a4eecded47d716a645a15cd21",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_rgcg.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_rgcg.mno"
       },
       "bytes": 204406,
       "depth": 32,
@@ -3833,7 +3994,7 @@
           "path": "ground/SUBZERO_RGCG.md",
           "sha256": "2a38de44fa1a09b55f4acaf367bde43dafd4f1651c625c9d93f6a113485ddb7e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_RGCG.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_RGCG.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -3842,7 +4003,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_rgcg.py",
           "sha256": "8936456782fc511e65ac230ecf09b551357b95f30f187d2c20e2e42c34b66771",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_rgcg.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_rgcg.py"
         },
         "packet": {
           "bytes": 20042,
@@ -3850,7 +4011,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 11882,
@@ -3858,7 +4019,7 @@
           "path": "excerpts/20260823/rgcg_circuits.json",
           "sha256": "8f5da24763d44046d0a18e604037e25a6f8b0db1480b74387cce97388bdb7623",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/rgcg_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/rgcg_circuits.json"
         },
         "structural_test": {
           "bytes": 2566,
@@ -3866,7 +4027,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_rgcg.py",
           "sha256": "0cbc2029e8cb215be8b4f341567372d4ff1bcc75d54e1367a24aaee832640fc0",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_rgcg.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_rgcg.py"
         }
       }
     },
@@ -3889,6 +4050,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_SDMK.md",
+            "evidence_sha256": "c6b942da03fc42d9b924c74075b17eddbe850b7bc8331bbea33a1319570bb97d",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -3926,7 +4093,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -3939,7 +4107,7 @@
         "path": "excerpts/20260823/muhl_sdmk.mno",
         "sha256": "f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_sdmk.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_sdmk.mno"
       },
       "bytes": 645214,
       "depth": 25,
@@ -3991,7 +4159,7 @@
           "path": "ground/SUBZERO_SDMK.md",
           "sha256": "c6b942da03fc42d9b924c74075b17eddbe850b7bc8331bbea33a1319570bb97d",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SDMK.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SDMK.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4000,7 +4168,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_sdmk.py",
           "sha256": "29324fe803f530d67db39969a4db247e7a7d584a378961babd540e692303b04c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_sdmk.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_sdmk.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4008,7 +4176,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 2503,
@@ -4016,7 +4184,7 @@
           "path": "excerpts/20260823/sdmk_circuits.json",
           "sha256": "3d9fd5f043b744bcb5a701851fd40f85f43f89c084c02680e6b8445fa319e2b7",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/sdmk_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/sdmk_circuits.json"
         },
         "structural_test": {
           "bytes": 3986,
@@ -4024,7 +4192,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_sdmk.py",
           "sha256": "b8ca3bb8691ecae7201491b13154fe22c8e471215b0e3f4934c658d5975ec7c0",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_sdmk.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_sdmk.py"
         }
       }
     },
@@ -4047,6 +4215,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_SOCR.md",
+            "evidence_sha256": "e0c73bf85d10cf70ed0fe720a8e872d49e8f1189828cb8806882ea171ded83b4",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4084,7 +4258,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4097,7 +4272,7 @@
         "path": "excerpts/20260823/muhl_socr.mno",
         "sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_socr.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_socr.mno"
       },
       "bytes": 419614,
       "depth": 14,
@@ -4149,7 +4324,7 @@
           "path": "ground/SUBZERO_SOCR.md",
           "sha256": "e0c73bf85d10cf70ed0fe720a8e872d49e8f1189828cb8806882ea171ded83b4",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SOCR.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SOCR.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4158,7 +4333,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_socr.py",
           "sha256": "786aeaaebfec17e11c74468d42f5e685bd26b9003dd84f7fc0d2d1ec8241397b",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_socr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_socr.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4166,7 +4341,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 19219,
@@ -4174,7 +4349,7 @@
           "path": "excerpts/20260823/socr_circuits.json",
           "sha256": "cf3b904cbb1ba6a481bca5760991a646eeb48751addcefe67948c87ba844dd9e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/socr_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/socr_circuits.json"
         },
         "structural_test": {
           "bytes": 3169,
@@ -4182,7 +4357,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_socr.py",
           "sha256": "51769ed1efbe31b9fc472269a96d188393eb8fa9d1904b07e22c4829f88524a0",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_socr.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_socr.py"
         }
       }
     },
@@ -4205,6 +4380,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_STIG.md",
+            "evidence_sha256": "684bbaa193cea4b48374d075c30215ff8c1b3aa03ddf644f2f0c623914b01afa",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4242,7 +4423,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4255,7 +4437,7 @@
         "path": "excerpts/20260823/muhl_stig.mno",
         "sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_stig.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_stig.mno"
       },
       "bytes": 406302,
       "depth": 18,
@@ -4307,7 +4489,7 @@
           "path": "ground/SUBZERO_STIG.md",
           "sha256": "684bbaa193cea4b48374d075c30215ff8c1b3aa03ddf644f2f0c623914b01afa",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_STIG.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_STIG.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4316,7 +4498,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_stig.py",
           "sha256": "6189b2043d0b3fc906c8fb3b3270206ce6459553a085e576c64320f199e5cfc7",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_stig.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4324,7 +4506,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 19186,
@@ -4332,7 +4514,7 @@
           "path": "excerpts/20260823/stig_circuits.json",
           "sha256": "843e594561a73ff18645cf2760539d09e4d2ba01c010caf0fa8292ffcf492937",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/stig_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/stig_circuits.json"
         },
         "structural_test": {
           "bytes": 3127,
@@ -4340,7 +4522,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_stig.py",
           "sha256": "9fdf294bb82c665ea2fbe13641e2560fbcd0187665b01da052ceedd1a7e1feb9",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_stig.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_stig.py"
         }
       }
     },
@@ -4363,6 +4545,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_SYND.md",
+            "evidence_sha256": "0250cd5b7b1b64cdeedfeb6cd562321091bc2d24e5fdd6639dc9743774d9ebca",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4400,7 +4588,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4413,7 +4602,7 @@
         "path": "excerpts/20260823/muhl_synd.mno",
         "sha256": "302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_synd.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_synd.mno"
       },
       "bytes": 717854,
       "depth": 45,
@@ -4465,7 +4654,7 @@
           "path": "ground/SUBZERO_SYND.md",
           "sha256": "0250cd5b7b1b64cdeedfeb6cd562321091bc2d24e5fdd6639dc9743774d9ebca",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_SYND.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_SYND.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4474,7 +4663,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_synd.py",
           "sha256": "55a5418dd27d8a8314cf9b757309747d1406adb48e38fbb94ea2a179befc48cd",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_synd.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_synd.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4482,7 +4671,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 6801,
@@ -4490,7 +4679,7 @@
           "path": "excerpts/20260823/synd_circuits.json",
           "sha256": "d9bb28b4b496c348aa68949ca94b377a898a8a23abc2343832f90c10e40ecbff",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/synd_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/synd_circuits.json"
         },
         "structural_test": {
           "bytes": 5022,
@@ -4498,7 +4687,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_synd.py",
           "sha256": "5f19d2a20b75040c15e43903a368e06f08edbcd83e04a4215df6a8207980dd0f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_synd.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_synd.py"
         }
       }
     },
@@ -4521,6 +4710,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_TITX.md",
+            "evidence_sha256": "056587eea8cffa3f30aba7bc37897450927fbc54caed3377c113719b3af80d7c",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4558,7 +4753,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4571,7 +4767,7 @@
         "path": "excerpts/20260823/muhl_titanx_commons.mno",
         "sha256": "20e48ea737c37cca5c4bb4afe782eb9f945f429cdd5ad5949c0b6f5a31678e43",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_titanx_commons.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_titanx_commons.mno"
       },
       "bytes": 18030,
       "depth": 2,
@@ -4623,7 +4819,7 @@
           "path": "ground/SUBZERO_TITX.md",
           "sha256": "056587eea8cffa3f30aba7bc37897450927fbc54caed3377c113719b3af80d7c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_TITX.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_TITX.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4632,7 +4828,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_commons.py",
           "sha256": "ec970f88cd378ae0d1275bddd0af4e8bb3cfb4278c069004210837ef2ebbdae7",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_commons.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_commons.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4640,7 +4836,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 26006,
@@ -4648,7 +4844,7 @@
           "path": "excerpts/20260823/titanx_commons_circuits.json",
           "sha256": "cc8e0686d4249e9b8e36c116980e549750b7272b5e08bbeeb9f5125153a7da3c",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titanx_commons_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titanx_commons_circuits.json"
         },
         "structural_test": {
           "bytes": 3510,
@@ -4656,7 +4852,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_commons.py",
           "sha256": "6fdc90358c500dbba5fa6b6dbbcd85fd2f59733496a6350db3c174058eefa064",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_commons.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_commons.py"
         }
       }
     },
@@ -4679,6 +4875,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_TITF.md",
+            "evidence_sha256": "2c49721e0f47e5850a98e18dd97230e010983de7eeaa48d54cb62c6a621f0854",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4716,7 +4918,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4729,7 +4932,7 @@
         "path": "excerpts/20260823/muhl_titanx_forge.mno",
         "sha256": "29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_titanx_forge.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_titanx_forge.mno"
       },
       "bytes": 5430,
       "depth": 2,
@@ -4781,7 +4984,7 @@
           "path": "ground/SUBZERO_TITF.md",
           "sha256": "2c49721e0f47e5850a98e18dd97230e010983de7eeaa48d54cb62c6a621f0854",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_TITF.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_TITF.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4790,7 +4993,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_forge.py",
           "sha256": "28d25ca5a955a5274793246266fc2905d3c5a534ded319c151337345b043b2e9",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_forge.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_forge.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4798,7 +5001,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 9856,
@@ -4806,7 +5009,7 @@
           "path": "excerpts/20260823/titanx_forge_circuits.json",
           "sha256": "1bcab79000abdc444952c40b6e0b4cf21fa9ab835fcee177beba32e3e5a87f0f",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titanx_forge_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titanx_forge_circuits.json"
         },
         "structural_test": {
           "bytes": 2906,
@@ -4814,7 +5017,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_forge.py",
           "sha256": "161bc0fcae2fdeb6fd6cb35c507d9175619d5d8327ddb3273c58c342be07a12e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_forge.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_forge.py"
         }
       }
     },
@@ -4837,6 +5040,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_TITM.md",
+            "evidence_sha256": "c3db3c9f870a802b5c7e61941b5ea77e5d184bd37ad8abb57e7fc709fff3fea5",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -4874,7 +5083,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -4887,7 +5097,7 @@
         "path": "excerpts/20260823/muhl_titanx_mirror.mno",
         "sha256": "29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_titanx_mirror.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_titanx_mirror.mno"
       },
       "bytes": 7230,
       "depth": 2,
@@ -4939,7 +5149,7 @@
           "path": "ground/SUBZERO_TITM.md",
           "sha256": "c3db3c9f870a802b5c7e61941b5ea77e5d184bd37ad8abb57e7fc709fff3fea5",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_TITM.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_TITM.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -4948,7 +5158,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_mirror.py",
           "sha256": "4226c73efe0fbcb0cdbe24ceba8783afd0e39e81f3147a8a07ea9f9a6e5174c5",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_mirror.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_mirror.py"
         },
         "packet": {
           "bytes": 20042,
@@ -4956,7 +5166,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 9341,
@@ -4964,7 +5174,7 @@
           "path": "excerpts/20260823/titanx_mirror_circuits.json",
           "sha256": "7681d90a4b7f41a3661a11236f51929072b8dd0d4c70c4bb49e6a8c205ccd29a",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titanx_mirror_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titanx_mirror_circuits.json"
         },
         "structural_test": {
           "bytes": 3190,
@@ -4972,7 +5182,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_mirror.py",
           "sha256": "bec3e30f8e715f0c71aa7bfa4ca38b723c49adffbeaea20ac9b1cdd603daa2ab",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_mirror.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_mirror.py"
         }
       }
     },
@@ -4995,6 +5205,12 @@
             "evidence_path": null,
             "evidence_sha256": null,
             "id": "calibration",
+            "status": "PASS"
+          },
+          {
+            "evidence_path": "ground/SUBZERO_TSET.md",
+            "evidence_sha256": "a402a849676d212541128c6e89aff516b24998aa83c9cd6550f8b1153b7302d7",
+            "id": "card",
             "status": "PASS"
           },
           {
@@ -5032,7 +5248,8 @@
         "falsifiers": [
           "artifact SHA-256 differs from the packet",
           "stored header differs from the packet",
-          "fabricator, structural test, or sidecar evidence is missing",
+          "fabricator, structural test, sidecar, or card evidence is missing or stale",
+          "named source is not the Git blob at the pinned commit",
           "runtime receipt is not bound to this artifact and source tree",
           "buyer PASS receipt is not bound to this artifact and source tree"
         ],
@@ -5045,7 +5262,7 @@
         "path": "excerpts/20260823/muhl_tset.mno",
         "sha256": "f526cdbf6307df52bfa87fdc806f17f75f04e47b7ae3d0adaceb8bfabae28c4b",
         "status": "PRESENT",
-        "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/muhl_tset.mno"
+        "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/muhl_tset.mno"
       },
       "bytes": 624422,
       "depth": 23,
@@ -5097,7 +5314,7 @@
           "path": "ground/SUBZERO_TSET.md",
           "sha256": "a402a849676d212541128c6e89aff516b24998aa83c9cd6550f8b1153b7302d7",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/ground/SUBZERO_TSET.md"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/ground/SUBZERO_TSET.md"
         },
         "component_cards": [],
         "fabricator": {
@@ -5106,7 +5323,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_tset.py",
           "sha256": "5c14531f3215b2d5dadcdc7de2a8611912b7332cc493f96eb21ff7b04d8333e9",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_tset.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_tset.py"
         },
         "packet": {
           "bytes": 20042,
@@ -5114,7 +5331,7 @@
           "path": "excerpts/20260823/titan_move_packet.json",
           "sha256": "96fe91f21276da9b362765ad91f30999e6aecdac3e458931e532c74ed4dfcc5e",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/titan_move_packet.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/titan_move_packet.json"
         },
         "sidecar": {
           "bytes": 1004,
@@ -5122,7 +5339,7 @@
           "path": "excerpts/20260823/tset_circuits.json",
           "sha256": "b2a2cfb918554fd38ef35832082169addca8771bb3ed75b96f0715fffca0c4d8",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/excerpts/20260823/tset_circuits.json"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/excerpts/20260823/tset_circuits.json"
         },
         "structural_test": {
           "bytes": 2824,
@@ -5130,7 +5347,7 @@
           "path": "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_tset.py",
           "sha256": "ea57e3cc0d92da72af808e46ec76d8d73297838940cef8aa7ce96ae8dafd3fed",
           "status": "PRESENT",
-          "url": "https://github.com/woahwhattheheck/commons/blob/4ecf03c454255076dee6d1c7927688b3628f3d29/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_tset.py"
+          "url": "https://github.com/woahwhattheheck/commons/blob/1f19779138392094934b8239d82e2c71fffb1d46/muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_tset.py"
         }
       }
     }
@@ -5329,8 +5546,8 @@
   "source_class_aliases": {
     "CROSS_PROCESS/RUNTIME_MEASURED": "RUNTIME_MEASURED"
   },
-  "source_commit": "4ecf03c454255076dee6d1c7927688b3628f3d29",
-  "source_tree": "88cbe19f53826ec79074e36ee9a5095015d50149",
+  "source_commit": "1f19779138392094934b8239d82e2c71fffb1d46",
+  "source_tree": "1b86ed949c8459192abade8e4c03c508e480a5e2",
   "subject": "Read-only Subzero Artifact Explorer + validation packet",
   "summary": {
     "artifact_count": 31,
@@ -5531,8 +5748,8 @@
       "subzero.html"
     ],
     "slack_ts": "1787647728.185449",
-    "source_commit": "4ecf03c454255076dee6d1c7927688b3628f3d29",
-    "source_tree": "88cbe19f53826ec79074e36ee9a5095015d50149",
+    "source_commit": "1f19779138392094934b8239d82e2c71fffb1d46",
+    "source_tree": "1b86ed949c8459192abade8e4c03c508e480a5e2",
     "spec_id": "jojo-subzero-explorer-v2-followup-20260825-01",
     "writer": "host/subzero_explorer.py:build_catalog"
   }
