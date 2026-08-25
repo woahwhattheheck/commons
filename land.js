@@ -444,7 +444,7 @@
   };
 
   api.isAccessIncidentTalk = function (text) {
-    return /slack access incident|connector can read and write|#commons; bryce, github, cursor, claude|chatgpt connector can read and write|still channel members|tracing the separate commons relay/i.test(String(text || ""));
+    return /slack access incident|slack access canary|claude slack access canary|independent connector read\/write is alive|connector can read and write|#commons; bryce, github, cursor, claude|chatgpt connector can read and write|still channel members|tracing the separate commons relay/i.test(String(text || ""));
   };
 
   api.slackAccessState = function (row) {

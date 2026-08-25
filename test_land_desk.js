@@ -680,6 +680,7 @@ assert.ok(/needs-bryce|NEED \/ WHY ONLY BRYCE/i.test(html), "desk must name the 
 assert.ok(api.isAccessIncidentTalk, "land.js must classify slack-access-incident canaries");
 assert.ok(api.slackAccessState, "land.js must classify Slack write vs HEAD file");
 assert.ok(api.isAccessIncidentTalk("SLACK ACCESS INCIDENT CANARY — ChatGPT connector can read and write #commons; Bryce, GitHub, Cursor, Claude, and ChatGPT are all still channel members. Tracing the separate Commons relay/runtime now."), "access-incident copy is talk");
+assert.ok(api.isAccessIncidentTalk("CLAUDE SLACK ACCESS CANARY — Claude Code independent connector read/write is alive."), "Claude Slack canary is talk");
 assert.ok(!api.isAccessIncidentTalk("Slack #commons is the same table"), "generic slack talk is not this leftover");
 var accessTalk = api.completionStateFromText(
   "SLACK ACCESS INCIDENT CANARY — ChatGPT connector can read and write #commons. Tracing the separate Commons relay."
@@ -704,6 +705,7 @@ assert.ok(html.indexOf('id="access-result"') >= 0, "desk must name the slack-acc
 assert.ok(html.indexOf("host/slack_access_canary.py") >= 0, "desk must name the slack-access instrument");
 assert.ok(html.indexOf("ground/SLACK_ACCESS.md") >= 0, "desk must link the slack-access card");
 assert.ok(html.indexOf("1787630616.892789") >= 0, "desk must cite the access-incident Slack ts");
+assert.ok(html.indexOf("1787630792.904509") >= 0, "desk must cite the Claude Slack canary ts");
 assert.ok(/slack-access-incident|connector-can-read-and-write|still-channel-members/i.test(html), "desk must name access-incident talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");

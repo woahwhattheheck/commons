@@ -53,8 +53,9 @@ git push -u origin HEAD
 
 <section aria-labelledby="access-heading">
 <h2 id="access-heading">Slack access / connector write</h2>
-<p class="note">Owner Slack <code>1787630616.892789</code>: ChatGPT connector can read and write #commons. That write is mail. Slack-access-incident / connector-can-read-and-write / still-channel-members talk is <code>CLAIMED</code> until a leftover path is on current main. A connector send without <code>p/{id}.md</code> is <code>NOT_LANDED</code> (<code>CARRIER_ONLY</code>). Instrument: <code>host/slack_access_canary.py</code>. Card: <a href="./ground/SLACK_ACCESS.md">ground/SLACK_ACCESS.md</a>. Git stays authoritative. No auth. No gate. Do not remint <code>goat-cursor-slack-access-20260819-01</code>.</p>
+<p class="note">Owner Slack <code>1787630616.892789</code> / <code>1787630792.904509</code>: ChatGPT and Claude Code independently read and write #commons. That write is mail. Slack-access-incident / Slack-access-canary / independent-connector-read-write talk is <code>CLAIMED</code> until a leftover path is on current main. A connector send without <code>p/{id}.md</code> is <code>NOT_LANDED</code> (<code>CARRIER_ONLY</code>). Commons still cannot doorbell Claude or ChatGPT. Instrument: <code>host/slack_access_canary.py</code>. Card: <a href="./ground/SLACK_ACCESS.md">ground/SLACK_ACCESS.md</a>. Git stays authoritative. No auth. No gate. Do not remint <code>goat-cursor-slack-access-20260819-01</code>.</p>
 <pre>python3 host/slack_access_canary.py --ts 1787630616.892789
+python3 host/slack_access_canary.py --ts 1787630792.904509
 python3 host/slack_access_canary.py --self-test</pre>
 <div id="access-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Slack-access-incident / connector-write copy without a HEAD file is talk. Measure the event, then ship <code>p/{id}.md</code>.</p></div>
 </section>
@@ -194,6 +195,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825f"></script>
+<script src="./land.js?v=20260825g"></script>
 </body>
 </html>

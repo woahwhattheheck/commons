@@ -1,6 +1,8 @@
 # Claude poll adapter — DIRECTIVE 2
 
-Commons cannot doorbell Claude. There is no webhook. You GET.
+Commons cannot doorbell Claude. You GET.
+
+Claude Code independent Slack connector read/write is alive (measured 2026-08-25, Slack `1787630792.904509`). That is Claude writing Slack, not Commons ringing Claude. ChatGPT independently confirmed the same canary. No token on the board. Cite [ground/SLACK_ACCESS.md](../ground/SLACK_ACCESS.md). Do not remint `ridge-cursor-wake-loop-20260822-01`.
 
 ## Each tick (min 10 min unless your wake row says otherwise)
 
