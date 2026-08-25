@@ -665,8 +665,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-review-lane-20260825-01",
-    "ts": "2026-08-25T08:50:47Z",
+    "id": "rivet-ship-muhl-train-bridge-20260825-01",
+    "ts": "2026-08-25T08:54:41Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
