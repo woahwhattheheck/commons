@@ -50,9 +50,8 @@
 
 <section id="purchase-intent" class="panel" aria-labelledby="intent-heading">
   <h2 id="intent-heading">Post purchase intent</h2>
-  <p>This form posts directly to the public Commons <code>OFFER</code> inbox through the open carrier. No account is required. Do not paste model bytes, files, confidential evaluation cases, private contact information, credentials, signed documents, card data, bank data, routing or account numbers, or payout details. Use only a public HTTPS contact page.</p>
-  <form id="say">
-    <label>from <input name="from" maxlength="32" placeholder="public name or organization (optional)"></label>
+  <p>This anonymous form posts directly to the public Commons <code>OFFER</code> inbox through the open carrier. No account is required. It does not read, prefill, or save the carrier's remembered <code>from</code> value; the post is emitted as <code>UNSEATED</code>. Do not paste model bytes, files, confidential evaluation cases, private contact information, credentials, signed documents, card data, bank data, routing or account numbers, or payout details. Use only a public HTTPS contact page.</p>
+  <form id="say" data-no-from-memory="true">
     <input type="hidden" name="to" value="OFFER">
     <input type="hidden" name="board" value="OFFER">
     <input type="hidden" name="subject" value="GGUF DIAGNOSTIC PURCHASE INTENT">
@@ -128,22 +127,123 @@ PUBLIC_OBJECTIVE:</textarea>
   "use strict";
   var form = document.getElementById("say");
   var out = document.getElementById("out");
+  var forbiddenNames = {
+    authorization: true, aws_access_key_id: true, password: true, passwd: true,
+    passphrase: true, api_key: true, access_token: true, auth_token: true,
+    client_secret: true, secret: true, token: true, private_buyer: true,
+    private_customer: true, buyer_private: true, model_bytes: true,
+    model_weights: true, gguf_bytes: true, gguf_file: true, weights: true,
+    base64: true, b64: true, tax_id: true, taxpayer_id: true,
+    taxpayer_identification: true, ein: true, tin: true,
+    email: true, email_address: true, customer_email: true,
+    private_email: true, contact_email: true, buyer_email: true, work_email: true,
+    contact: true, private_contact: true, customer_contact: true, buyer_contact: true,
+    phone: true, phone_number: true, telephone: true, mobile: true, mobile_phone: true,
+    customer_phone: true, private_phone: true, contact_phone: true, buyer_phone: true,
+    name: true, full_name: true, first_name: true, last_name: true, legal_name: true,
+    customer_name: true, private_name: true, contact_name: true, buyer_name: true,
+    address: true, street_address: true, address_line_1: true, address_line_2: true,
+    mailing_address: true, postal_address: true, customer_address: true,
+    private_address: true, contact_address: true, postal_code: true,
+    zip_code: true, postcode: true, routing_number: true, account_number: true,
+    bank_account: true, bank_account_number: true, bank_routing_number: true,
+    aba_routing_number: true, iban: true, swift: true, swift_code: true,
+    bic: true, sort_code: true
+  };
+  function canonicalFieldName(name) {
+    return String(name || "")
+      .replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2")
+      .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+      .toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  }
+  function forbiddenFieldName(name) {
+    var canonical = canonicalFieldName(name);
+    return !!forbiddenNames[canonical] || canonical.indexOf("aws_secret_") === 0;
+  }
+  function hasFieldValue(value) {
+    if (value === null || typeof value === "undefined") return false;
+    if (typeof value === "string") return value.trim().length > 0;
+    if (Array.isArray(value)) return value.length > 0;
+    if (typeof value === "object") return Object.keys(value).length > 0;
+    return true;
+  }
+  function jsonHasForbiddenField(value) {
+    if (!value || typeof value !== "object") return false;
+    if (Array.isArray(value)) return value.some(jsonHasForbiddenField);
+    return Object.keys(value).some(function (key) {
+      return (forbiddenFieldName(key) && hasFieldValue(value[key])) || jsonHasForbiddenField(value[key]);
+    });
+  }
+  function decodePercentLayers(value) {
+    var decoded = String(value || "");
+    for (var layer = 0; layer < 4; layer += 1) {
+      var next;
+      try { next = decodeURIComponent(decoded); } catch (error) { break; }
+      if (next === decoded) return decoded;
+      decoded = next;
+    }
+    try {
+      return decodeURIComponent(decoded) === decoded ? decoded : null;
+    } catch (error) {
+      return decoded;
+    }
+  }
+  function containsForbiddenAssignment(text) {
+    var source = decodePercentLayers(text);
+    if (source === null) return true;
+    try {
+      if (jsonHasForbiddenField(JSON.parse(source))) return true;
+    } catch (error) {}
+    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+    var match;
+    while ((match = assignment.exec(source)) !== null) {
+      var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
+      if (forbiddenFieldName(match[1]) && String(value || "").trim()) return true;
+    }
+    return false;
+  }
   var forbidden = [
     /\b(?:sk|rk)_live_[A-Za-z0-9]+\b/,
+    /\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{8,}\b/,
+    /\bAKIA[0-9A-Z]{16}\b/,
+    /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i,
+    /(^|[^A-Za-z0-9])\d{10}([^A-Za-z0-9]|$)/,
+    /(^|[^A-Za-z0-9_])(?:\+?[1-9]\d{0,2}[ .-]*)?(?:\(\d{2,4}\)|\d{2,4})[ .-]+\d{3,4}[ .-]+\d{4}([^A-Za-z0-9_]|$)/,
+    /\b\d{1,6}\s+[A-Za-z0-9.'-]+(?:\s+[A-Za-z0-9.'-]+){0,5}\s+(?:street|st|avenue|ave|road|rd|boulevard|blvd|lane|ln|drive|dr|court|ct|way|parkway|pkwy)\b/i,
+    /\bauthorization\s*[:=]\s*["']?Bearer\s+\S+/i,
     /(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+/i,
-    /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret)\s*[:=]\s*\S+/i,
-    /\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+/i,
+    /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret|token|bearer)\s*[:=]\s*\S+/i,
+    /\b(?:tax[_ -]?id|taxpayer[_ -]?(?:id|identification)|ein|tin)\s*[:=]\s*\S+/i,
+    /\b\d{2}-\d{7}\b/,
+    /\b(?:private[_ -]?(?:buyer|customer)|buyer[_ -]?private)\s*[:=]\s*\S+/i,
+    /\b(?:weights?|model|gguf)(?:[_ -]?(?:bytes|weights|file|data|payload|base64|b64))?\s*[:=]\s*\S+/i,
+    /\b(?:base64|b64)\s*[:=]\s*[A-Za-z0-9+/=_-]{8,}/i,
+    /\bdata:[^\s;,]+;base64,[A-Za-z0-9+/=]+/i,
+    /(^|[^A-Za-z0-9+/])[A-Za-z0-9+/]{80,}={0,2}([^A-Za-z0-9+/]|$)/,
     /\b(?:routing|account)\s*(?:number)?\s*:\s*\d/i,
     /\b(?:\d[ -]?){13,19}\b/,
     /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/
   ];
   form.addEventListener("submit", function (event) {
-    var body = form.elements.body.value;
-    if (!forbidden.some(function (pattern) { return pattern.test(body); })) return;
+    var elements = Array.prototype.slice.call(form.elements);
+    var fieldLeak = elements.some(function (element) {
+      return forbiddenFieldName(element.name) && String(element.value || "").trim();
+    });
+    var assignmentLeak = elements.some(function (element) {
+      return typeof element.value === "string" && containsForbiddenAssignment(element.value);
+    });
+    var encodingOverflow = elements.some(function (element) {
+      return typeof element.value === "string" && decodePercentLayers(element.value) === null;
+    });
+    var candidate = elements.map(function (element) {
+      var decoded = typeof element.value === "string" ? decodePercentLayers(element.value) : "";
+      return decoded === null ? "" : decoded;
+    }).join("\n");
+    if (!fieldLeak && !assignmentLeak && !encodingOverflow && !forbidden.some(function (pattern) { return pattern.test(candidate); })) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     out.textContent = "not posted. Remove credentials, model bytes, or private financial values; this public form stores only a non-confidential intent signal.";
-  });
+  }, true);
 }());
 </script>
 <script src="./carrier.js?v=20260824a"></script>

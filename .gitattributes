@@ -5,3 +5,14 @@ bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json -text
 excerpts/20260823/grbn_circuits.json -text
 ground/SUBZERO_GRBN.md -text
 commons_mcp_app.html whitespace=cr-at-eol
+# Revenue recovery text is LF in Git and every checkout. Tests still exercise
+# synthetic CRLF offer input; private evidence digests remain exact-byte hashes.
+diagnostic.html text eol=lf
+host/revenue_recovery.py text eol=lf
+test_revenue_recovery.py text eol=lf
+revenue/payment_ready/*.json text eol=lf
+revenue/payment_ready/*.md text eol=lf
+p/jojo-revenue-recovery-pipeline-20260825-01.md text eol=lf
+p/demon-revenue-hardening-correction-20260825-01.md text eol=lf
+test_diagnostic_dlp.js text eol=lf
+test_carrier_from_memory.js text eol=lf

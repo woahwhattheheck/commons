@@ -40,6 +40,7 @@ on:
       - main
     paths:
       - 'AGENTS.md'
+      - '.gitattributes'
       - 'START.md'
       - 'ENTRY.md'
       - 'WRITING.md'
@@ -67,6 +68,10 @@ on:
       - 'muhl/**'
       - 'action.html'
       - 'index.html'
+      - 'commercial.html'
+      - 'diagnostic.html'
+      - 'door.js'
+      - 'revenue/payment_ready/**'
       - 'docs/commons-gateway/**'
       - 'hub_pages.py'
       - 'owner_pin.py'
@@ -97,6 +102,7 @@ on:
   pull_request:
     paths:
       - 'AGENTS.md'
+      - '.gitattributes'
       - 'START.md'
       - 'ENTRY.md'
       - 'WRITING.md'
@@ -124,6 +130,10 @@ on:
       - 'muhl/**'
       - 'action.html'
       - 'index.html'
+      - 'commercial.html'
+      - 'diagnostic.html'
+      - 'door.js'
+      - 'revenue/payment_ready/**'
       - 'docs/commons-gateway/**'
       - 'hub_pages.py'
       - 'owner_pin.py'

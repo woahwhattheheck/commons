@@ -115,7 +115,6 @@ def load_pack(text):
         "slack_ts": str(data.get("slack_ts") or "").strip() or SLACK_TS,
         "taking_id": str(data.get("slack_taking_id") or "").strip(),
         "taking_state": str(data.get("taking_state") or "").strip().upper(),
-        "titan": str(data.get("titan") or "NOT_WRITTEN").strip().upper() or "NOT_WRITTEN",
         "xyz_required": bool(data.get("xyz_required")),
         "remeasurement_owner": str(data.get("remeasurement_owner") or "").strip(),
         "collectable_usd": str(data.get("collectable_usd") or "").strip().upper(),
@@ -318,7 +317,6 @@ def classify(row):
         or str(row.get("taking_state") or "") != "CARRIER_ONLY"
         or not row.get("xyz_required")
         or "Codex / Grok Build" not in str(row.get("remeasurement_owner") or "")
-        or str(row.get("titan") or "") != "NOT_WRITTEN"
         or len(row.get("rails") or []) < 2
         or any(name not in rail_events for name in REQUIRED_RAIL_EVENTS)
         or not row.get("private_manifest_present")
@@ -428,7 +426,6 @@ def measure_root(root):
         "taking_present": taking_present,
         "remeasurement_owner": pack.get("remeasurement_owner") or "",
         "xyz_required": bool(pack.get("xyz_required")),
-        "titan": pack.get("titan") or "NOT_WRITTEN",
         "rails": pack.get("rails") or [],
         "rail_events": rail_events_present(card_text, rails_md),
         "private_manifest_present": "Official surface only" in manifest,
