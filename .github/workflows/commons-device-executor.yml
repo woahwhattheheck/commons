@@ -29,4 +29,4 @@ jobs:
     concurrency:
       group: commons-device-executor
       cancel-in-progress: false
-      queue: max
+      queue: single
