@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825be/.test(html), "desk must share the fresh current-main/Titan cache key");
+assert.ok(/20260825bf/.test(html), "desk must share the fresh current-main/Titan cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1657,6 +1657,38 @@ assert.ok(html.indexOf("1787641769.186289") >= 0, "desk must cite the JOJO devic
 assert.ok(/first bounded read-only device canary|TAKING_LANDED_INPUT|does-not-claim-success/i.test(html), "desk must name device-canary talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.md") >= 0, "device-canary card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.json") >= 0, "device-canary catalog must stay a canary");
+assert.ok(api.isGrokHygieneTalk, "land.js must classify Grok/Claude hygiene-boundary talk");
+assert.ok(api.grokHygieneState, "land.js must classify the grok-hygiene leftover");
+assert.ok(api.isGrokHygieneTalk("DEMON — GROK/CLAUDE HYGIENE BOUNDARY. enabledPlugins from ~/.claude/settings.json. grok_hygiene_gate.ps1"), "DEMON hygiene ACT NOW is talk");
+assert.ok(api.isGrokHygieneTalk("frontend-design and then mcp-tunnels still enabled after compat.claude cells"), "named leak plugins are talk");
+assert.ok(!api.isGrokHygieneTalk("Use the memory feature i built and improve it while you work"), "memory ask is not the hygiene leftover");
+assert.ok(!api.isGrokHygieneTalk("GROK HARNESS GAP 0 MCP servers 0 LSP servers loaded permissions policy"), "harness-gap copy is not the hygiene leftover");
+assert.ok(!api.isGrokHygieneTalk("make sure people do more than talk about shit"), "generic ship-talk is not the hygiene leftover");
+assert.ok(!api.isGrokHarnessTalk("DEMON — GROK/CLAUDE HYGIENE BOUNDARY. enabledPlugins. grok_hygiene_gate."), "hygiene copy is not the harness-gap leftover");
+var hygieneTalk = api.completionStateFromText(
+  "DEMON — GROK/CLAUDE HYGIENE BOUNDARY\nenabledPlugins from ~/.claude/settings.json\ngrok_hygiene_gate.ps1 FAIL-CLOSED"
+);
+assert.strictEqual(hygieneTalk.state, "CLAIMED");
+assert.ok(/hygiene-boundary|enabledPlugins|grok_hygiene_gate/i.test(hygieneTalk.note), "hygiene-without-leftover must stay CLAIMED and beat harness-gap / ship-talk");
+var hygieneDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok-hygiene leftover landed"
+);
+assert.strictEqual(hygieneDone.state, "INTEGRATED", "completion words still beat hygiene talk");
+var hygieneEmpty = api.grokHygieneState("");
+assert.strictEqual(hygieneEmpty.state, "UNMEASURED");
+var hygieneMissing = api.grokHygieneState("# empty stub\nno leftover");
+assert.strictEqual(hygieneMissing.state, "NOT_LANDED");
+var hygieneOk = api.grokHygieneState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nenabledPlugins\nfrontend-design\ndo not disable\nfail-closed\ndiligence\n");
+assert.strictEqual(hygieneOk.state, "INTEGRATED");
+assert.ok(/still not the file|not the file/i.test(hygieneOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="grok-hygiene-result"') >= 0, "desk must name the grok-hygiene leftover");
+assert.ok(html.indexOf("host/grok_hygiene.py") >= 0, "desk must name the grok-hygiene instrument");
+assert.ok(html.indexOf("ground/GROK_HYGIENE.md") >= 0, "desk must link the grok-hygiene card");
+assert.ok(html.indexOf("ground/GROK_HYGIENE.json") >= 0, "desk must link the grok-hygiene catalog");
+assert.ok(html.indexOf("1787642850.967939") >= 0, "desk must cite the DEMON hygiene Slack ts");
+assert.ok(/hygiene-boundary|enabledPlugins|grok_hygiene_gate/i.test(html), "desk must name hygiene talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HYGIENE.md") >= 0, "grok-hygiene card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HYGIENE.json") >= 0, "grok-hygiene catalog must stay a canary");
 assert.ok(api.isMemoryShipTalk, "land.js must classify use-the-memory-feature / unused-memory-board talk");
 assert.ok(api.memoryShipState, "land.js must classify the memory-ship leftover");
 assert.ok(api.isMemoryShipTalk("Use the memory feature i built and improve it while you work"), "Bryce memory ask is talk");

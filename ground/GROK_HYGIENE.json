@@ -1,0 +1,45 @@
+{
+  "slack_ts": "1787642850.967939",
+  "kind": "GROK_HYGIENE",
+  "subject": "Grok importing Claude enabledPlugins is fail-closed; Cursor is the land lane",
+  "leak_plugins": [
+    "frontend-design",
+    "mcp-server-dev",
+    "mcp-tunnels"
+  ],
+  "cause": "Grok imports enabledPlugins=true from ~/.claude/settings.json; deny lists do not override",
+  "keep_claude_plugins": true,
+  "direct_grok": "FAIL_CLOSED",
+  "cursor_surface": "CLEAN_LANE",
+  "claude_compute": "UNTRUSTED_CANDIDATE",
+  "hygiene": "DILIGENCE_NOT_BUILD",
+  "gate_path": "C:\\Users\\lucys\\Documents\\Codex\\2026-08-25\\ch\\grok_hygiene_gate.ps1",
+  "gate_receipt": "BLOCKED solely on 3 enabled Claude plugin metadata/payload surfaces; no Grok token through that launcher",
+  "mutate_claude": false,
+  "mutate_grok": false,
+  "delete_sessions": false,
+  "already_landed": [
+    "ground/GROK_HARNESS.md",
+    "ground/CLAUDE_COMPUTE.md",
+    "ground/CLAUDE_PARK.md",
+    "ground/MEMORY_SHIP.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-grok-harness-20260825-01",
+    "rivet-ship-claude-compute-20260825-01",
+    "rivet-ship-claude-park-20260825-01",
+    "rivet-ship-memory-open-20260825-01",
+    "ground/GROK_HARNESS.md"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "titan --go",
+    "~/.claude",
+    "~/.grok"
+  ]
+}

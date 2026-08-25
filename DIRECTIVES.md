@@ -147,6 +147,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_memory_ship.py` · `node test_land_desk.js` · `python3 host/memory_ship.py`
 **Note:** ROLE-only create is UNUSED. WORK_STATE must cite current main to be SHIPPED. Memory stays optional context. Do not remint sitting-remint / cash-now / JOJO-assign / device-path-census / device-canary / titan-test-quarantine / foreign-main / `rivet-ship-memory-open-20260825-01` / `jojo-memory-create-20260825-01`.
 
+### 35. Grok hygiene — Claude plugin metadata does not ride Direct Grok Build
+> *"Grok still declares 3 Claude plugins enabled: frontend-design, mcp-server-dev, mcp-tunnels. Cause: Grok imports enabledPlugins=true from ~/.claude/settings.json"*
+
+**Asked:** 08-25T07:27 Slack `1787642850.967939` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/GROK_HYGIENE.md` · `ground/GROK_HYGIENE.json` · `host/grok_hygiene.py` · land canary + `grokHygieneState`
+**Receipt:** `python3 test_grok_hygiene.py` · `node test_land_desk.js` · `python3 host/grok_hygiene.py`
+**Note:** Do not disable those plugins in Claude Code. Direct Grok Build is fail-closed. Clean Cursor is the land lane. Hygiene is diligence, not the build. Do not remint GROK_HARNESS / CLAUDE_COMPUTE / CLAUDE_PARK / MEMORY_SHIP. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

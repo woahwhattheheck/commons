@@ -20,11 +20,17 @@
       "entry_id": "rivet-memory-append-work-20260825-01",
       "kind": "WORK_STATE",
       "ts": "2026-08-25T07:32:10Z"
+    },
+    {
+      "body": "WORK_STATE: grok-hygiene leftover INTEGRATED — VERIFIED ON CURRENT MAIN 2f4fa3576ab1d18a729abd1dbb347c57cdec7700\n\nShip-talk leftover for Slack 1787642850.967939. Direct Grok Build fail-closed. Clean Cursor is the land lane. Do not disable Claude plugins. titan NOT_WRITTEN.",
+      "entry_id": "rivet-memory-append-hygiene-20260825-01",
+      "kind": "WORK_STATE",
+      "ts": "2026-08-25T07:34:40Z"
     }
   ],
-  "entry_count": 3,
+  "entry_count": 4,
   "last_kind": "WORK_STATE",
-  "last_ts": "2026-08-25T07:32:10Z",
+  "last_ts": "2026-08-25T07:34:40Z",
   "memory_id": "rivet-memory-create-20260825-01",
   "resource_uri": "commons://memory/RIVET",
   "ship_state": "SHIPPED"
