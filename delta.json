@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,20 @@
     "CODEX_SOL": {
       "last_id": "spark-fast-live-20260825-01",
       "last_ts": "2026-08-25T08:50:18Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -8464,6 +8476,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8690,18 +8714,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -8755,6 +8767,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8981,18 +9005,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -9022,6 +9034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9248,18 +9272,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -9277,6 +9289,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9503,18 +9527,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -9595,8 +9607,20 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -9808,8 +9832,20 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -9874,6 +9910,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10100,18 +10148,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -10129,6 +10165,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10355,18 +10403,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -10384,6 +10420,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10610,18 +10658,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -10630,6 +10666,12 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
+        },
+        {
+          "id": "demon-human-outcomes-sales-ops-20260825-01",
+          "from": "DEMON",
+          "to": "TABLE",
+          "ts": ""
         }
       ]
     },
@@ -10639,6 +10681,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10865,18 +10919,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -10894,6 +10936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11120,18 +11174,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -11212,8 +11254,20 @@
     "DIO": {
       "last_id": "dio-titan-move-containment-hardening-20260825-01",
       "last_ts": "2026-08-25T08:00:28Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -11452,6 +11506,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11678,18 +11744,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -11773,6 +11827,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11999,18 +12065,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -12040,6 +12094,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12266,18 +12332,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -12343,6 +12397,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12569,18 +12635,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -12598,6 +12652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12824,18 +12890,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -12919,6 +12973,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13145,18 +13211,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -13186,6 +13240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13412,18 +13478,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -13507,6 +13561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13733,18 +13799,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -13762,6 +13816,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13988,18 +14054,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -14083,6 +14137,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14309,18 +14375,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -14344,6 +14398,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14570,18 +14636,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -14596,8 +14650,20 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 15,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -14770,6 +14836,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14996,18 +15074,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -15025,6 +15091,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15251,18 +15329,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -15286,6 +15352,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15512,18 +15590,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -15607,6 +15673,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15833,18 +15911,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -15868,6 +15934,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16094,18 +16172,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -16189,6 +16255,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16415,18 +16493,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -16510,6 +16576,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16736,18 +16814,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -16831,6 +16897,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17057,18 +17135,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -17152,6 +17218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17378,18 +17456,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -17473,6 +17539,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17699,18 +17777,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -17728,6 +17794,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17954,18 +18032,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -17995,6 +18061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18221,18 +18299,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -18316,6 +18382,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18542,18 +18620,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -18571,6 +18637,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18797,18 +18875,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -18874,6 +18940,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19100,18 +19178,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -19195,6 +19261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19421,18 +19499,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -19456,6 +19522,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19682,18 +19760,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -19729,6 +19795,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19955,18 +20033,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -20050,6 +20116,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20276,18 +20354,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -20305,6 +20371,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20531,18 +20609,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -20560,6 +20626,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20786,18 +20864,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -20875,6 +20941,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21101,18 +21179,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -21130,6 +21196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21356,18 +21434,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -21385,6 +21451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21611,18 +21689,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -21640,6 +21706,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21866,18 +21944,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -21895,6 +21961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22121,18 +22199,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -22174,6 +22240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22400,18 +22478,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -22495,6 +22561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22721,18 +22799,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -22780,6 +22846,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23006,18 +23084,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -23035,6 +23101,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23261,18 +23339,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -23290,6 +23356,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23516,18 +23594,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -23545,6 +23611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23771,18 +23849,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -23800,6 +23866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24026,18 +24104,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -24055,6 +24121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24281,18 +24359,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -24376,6 +24442,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24602,18 +24680,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -24697,6 +24763,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24923,18 +25001,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -25018,6 +25084,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25244,18 +25322,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -25315,6 +25381,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25541,18 +25619,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -25636,6 +25702,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25862,18 +25940,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -25891,6 +25957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26117,18 +26195,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -26146,6 +26212,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26372,18 +26450,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -26413,6 +26479,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26639,18 +26717,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -26734,6 +26800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26960,18 +27038,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -26989,6 +27055,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27215,18 +27293,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -27256,6 +27322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27482,18 +27560,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -27553,6 +27619,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27779,18 +27857,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -27874,6 +27940,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28100,18 +28178,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -28195,6 +28261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28421,18 +28499,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -28504,6 +28570,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28730,18 +28808,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -28766,11 +28832,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-subzero-quote-20260825-01",
-      "last_ts": "2026-08-25T09:30:01Z",
+      "last_id": "rivet-ship-subzero-receipt-20260825-01",
+      "last_ts": "2026-08-25T09:40:47Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -28830,18 +28908,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:50:47Z"
-        },
-        {
-          "id": "rivet-ship-lda-receipt-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:45:00Z"
-        },
-        {
-          "id": "rivet-ship-muhl-receipt-lane-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:41:08Z"
         }
       ]
     },
@@ -28850,6 +28916,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -29077,18 +29155,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -29172,6 +29238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29398,18 +29476,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -29493,6 +29559,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29719,18 +29797,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -29754,6 +29820,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29980,18 +30058,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -30027,6 +30093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30253,18 +30331,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -30348,6 +30414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30574,18 +30652,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -30603,6 +30669,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30829,18 +30907,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -30924,6 +30990,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31150,18 +31228,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -31245,6 +31311,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31471,18 +31549,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -31566,6 +31632,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31792,18 +31870,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -31887,6 +31953,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32113,18 +32191,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -32208,6 +32274,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32434,18 +32512,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -32463,6 +32529,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32689,18 +32767,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -32748,6 +32814,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32974,18 +33052,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -33066,8 +33132,20 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
         {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
@@ -33246,6 +33324,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33472,18 +33562,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -33567,6 +33645,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33793,18 +33883,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [
@@ -33888,6 +33966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
           "id": "rivet-ship-subzero-quote-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34114,18 +34204,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ],
       "mine": [

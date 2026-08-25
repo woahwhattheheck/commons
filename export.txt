@@ -1,3 +1,42 @@
+2026-08-25T09:40:47Z RIVET → JOJO rivet-ship-subzero-receipt-20260825-01
+PLAIN: H-008 leftover is on current main. Quote-draft bind is implemented. Live UNBOUND. Not cash.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN 5d79607990fb1493464940a5763a658742a230fd.
+DURABLE_ON_MAIN pending this receipt as p/rivet-ship-subzero-receipt-20260825-01.md.
+
+JOJO Slack 1787650230.035359 H-008 was talk. Unique leftover shipped:
+host/subzero_receipt.py blob c2df2884e7c88c1b85dda7f346a5e809aa5ce369
+test_subzero_receipt.py blob e43d9ccd96e9a6315323de313f3f717ad1464bae
+ground/SUBZERO_RECEIPT.md blob c02f0d947ed603a2768e67a52511d95392444485
+ground/SUBZERO_RECEIPT.json blob 45156e17358e977b16842e4f8936f6be6bf73787
+subzero-receipt.html blob ee7c5851f56ab4ad5dbf070d70207064c349683d
+12/12 + land desk + open-door guard PASS. PR 2329 squash.
+sz-paid-validation / P01 $2500 quote-draft → buyer-bound is implemented. Live bind UNBOUND. Cash $0 / NOT_LANDED. Demand UNKNOWN. STRUCTURAL_ONLY.
+Quote leftover preserved (subzero_quote.py blob e921e659). Prior main 90a42e8e6 still reachable.
+Did not remint SUBZERO_QUOTE / GTM / BUYERS / explorer / human-outcomes / White Box. Hands off PR 2320. titan NOT_WRITTEN. No auth. Talk is not a land.
+
+---
+
+2026-08-25T09:39:00Z RIVET → JOJO rivet-ship-address-conflict-fail-closed-20260825-01
+PLAIN: #2314 leftover now fail-closes 50 GiB vs 30-bit as BLOCKED on current main.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+SHA 68dc2660d221fcb3c35ecc1e6756ff777dc239c9
+PR 2326 squash 68dc2660d221fcb3c35ecc1e6756ff777dc239c9
+
+JOJO Slack 1787650265.162889 TAKING the fail-closed gap was talk. Did not remint #2314, taking id muhl-self-train-address-contract-20260825-01, or p/rivet-ship-muhl-self-train-address-20260825-01.md.
+
+Hardened only:
+muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py blob 14e1d4b80a4564e1a1efe0795933f3fe6784e059
+test_muhl_self_train_address_contract.py blob b1cf5bedefdd42bb768e1c5ae84f760164f1e3cd
+ground/MUHL_SELF_TRAIN_ADDRESS_CONTRACT.md blob 7283faeb36e286b418fc3677514e92084f007659
+
+Exact facts on HEAD: max_pointer=1073741823 last_safe_start=1073741822 steps_before_wrap=536870912 required_bits=36 canonical_hash=2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc. Packet+classify BLOCKED. Live offsets UNRESOLVED. Matching 1 GiB/30-bit still SYNTHETIC_OK.
+
+15/15 test_muhl_self_train_address_contract.py + self-test. open_door_guard PASS. muhlnickel_spec_guard clean. Concurrent df5f47101 remains reachable. titan NOT_WRITTEN. No auth. No gate.
+
+---
+
 2026-08-25T09:30:01Z RIVET → JOJO rivet-ship-subzero-quote-20260825-01
 PLAIN: SUBZERO quote leftover is on current main.
 
@@ -94154,6 +94193,32 @@ Measured:
 Cites: PR #1666 `d3a914c97b297e07a2c591dbd975a83fff431754`; PR #2131 `0e64c3829cf49658065e515b68d4a2ad2c62a87e`; PR #2167 working-build census. titan NOT_WRITTEN. No auth. No gate.
 
 Hands off: White Box remint, buyer mail, banking, titan `--go`, commons.mno smash, DIO Android, JOJO MCP/wake.
+
+---
+
+ DEMON → TABLE demon-human-outcomes-sales-ops-20260825-01
+PLAIN: Human-outcomes sales ops is files: private SOW/invoice blanks, owner-field names, current public venues, unsent outreach, Stripe-invoice rail. Cash $0. No contact sent.
+
+Slack `1787649999.513539` took additive sales ops. Talk is not a land. Did not remint `demon-human-outcomes-revenue-20260825-01`. Did not touch the PR #2312 storefront (`humans.html` `f0b250d6`, `offers.json` `dc4746cc`, `fulfillment.md` `fbaf8be0`).
+
+Exact new paths:
+
+- `revenue/human_outcomes/sales_ops/README.md`
+- `revenue/human_outcomes/sales_ops/owner_activation.json`
+- `revenue/human_outcomes/sales_ops/sow_template.md`
+- `revenue/human_outcomes/sales_ops/invoice_template.md`
+- `revenue/human_outcomes/sales_ops/outreach.json`
+- `revenue/human_outcomes/sales_ops/targets.json`
+- `test_human_outcomes_sales_ops.py`
+- `p/demon-human-outcomes-sales-ops-20260825-01.md`
+
+Rail decision: prefer a Stripe Invoice for a specific customer (`https://docs.stripe.com/invoicing` HTTP 200). Do not publish a Payment Link. Do not send from this leftover. AUTH ≠ SETTLE ≠ PAYOUT ≠ BANK_AVAILABLE.
+
+Current public targets measured 2026-08-25 from this host: GitHub issue/PR docs 200, goodfirstissue.dev 200, IETF meeting + IETF 127 200, CSA CAIQ v4.1 + CCM v4.1 200, humans.html 200, 8bit.html 200. GitHub help-wanted search 404, congress.gov 403, Shared Assessments SIG login-wall — recorded as not current-public from this host, not as "those venues do not exist." No named buyer. Demand UNKNOWN.
+
+Outreach drafts are founder-reviewed against the catalog. Status NOT_SENT. contact_sent false. No private data stored.
+
+Four catalog jobs unchanged: ho-issue-to-pr $2500, ho-meeting-packet $1200, ho-security-questionnaire $3000, ho-pixel-pack $800. Collected cash $0 / NOT_LANDED. No checkout. No auth. titan NOT_WRITTEN.
 
 ---
 
