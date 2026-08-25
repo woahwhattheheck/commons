@@ -666,8 +666,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-subzero-proof-20260825-01",
-    "ts": "2026-08-25T09:06:52Z",
+    "id": "rivet-ship-human-outcomes-20260825-01",
+    "ts": "2026-08-25T09:12:20Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
