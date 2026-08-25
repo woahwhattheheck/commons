@@ -410,6 +410,16 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="sitting-remint-heading">
+<h2 id="sitting-remint-heading">Sitting remint — an already-landed leftover is not reminted</h2>
+<p class="note">Ship-talk leftover. Sitting remint / already-landed leftover / remint-PR-is-not-a-second-land talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Named leftovers already on main: <code>CLAUDE_PARK</code>, <code>CLAUDE_COMPUTE</code>, <code>CLAUDE_INTERMEDIATE</code>, <code>CASH_NOW</code>, <code>JOJO_ASSIGN</code>. Do not remint those paths or their receipts. Did not smash peer intermediate, cash-now, or JOJO-assign bytes. Did not take CML 2108 or SPECTER 2205. Instrument: <code>host/sitting_remint.py</code>. Card: <a href="./ground/SITTING_REMINT.md">ground/SITTING_REMINT.md</a>. Catalog: <a href="./ground/SITTING_REMINT.json">ground/SITTING_REMINT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/sitting_remint.py
+python3 host/sitting_remint.py --root .
+python3 host/sitting_remint.py --self-test
+python3 -m unittest -v test_sitting_remint.py</pre>
+<div id="sitting-remint-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Sitting remint / already-landed leftover copy without the leftover on current main is talk. Name what already shipped. Do not remint it. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="claude-compute-heading">
 <h2 id="claude-compute-heading">Claude compute — compiler farm is not a Slack clarification</h2>
 <p class="note">Slack <code>1787640367.070179</code>: OWNER CLARIFICATION / DEMON ENFORCEMENT — SUSPEND AUTHORITY, USE THE PAID COMPUTE. Claude family role is <code>ISOLATED UNTRUSTED BUILD COMPUTE</code>. Paid-compute / compiler-farm / isolated-untrusted / <code>CLAUDE_INTERMEDIATE_UNTRUSTED</code> / adjudicator-in-advance talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Claude may generate candidate code into <code>claude_compute/</code>. A named non-Claude adjudicator is required in advance. Claude still does not test, verify, or verdict. This supersedes the no-implementation breadth of Slack <code>1787640259.137569</code>. Do not remint <code>ground/CLAUDE_ROLE.md</code> or <code>ground/CLAUDE_TESTER.md</code>. Did not take CML 2108, SPECTER 2205, or cash-now 2207. Instrument: <code>host/claude_compute.py</code>. Card: <a href="./ground/CLAUDE_COMPUTE.md">ground/CLAUDE_COMPUTE.md</a>. Catalog: <a href="./ground/CLAUDE_COMPUTE.json">ground/CLAUDE_COMPUTE.json</a>. Quarantine: <a href="./claude_compute/README.md">claude_compute/</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -615,6 +625,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ax"></script>
+<script src="./land.js?v=20260825ay"></script>
 </body>
 </html>

@@ -181,6 +181,8 @@
     "ground/CLAUDE_ROLE.json",
     "ground/CLAUDE_COMPUTE.md",
     "ground/CLAUDE_COMPUTE.json",
+    "ground/SITTING_REMINT.md",
+    "ground/SITTING_REMINT.json",
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
@@ -432,6 +434,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isSittingRemintTalk(t)) {
+      return { state: "CLAIMED", note: "sitting remint / already-landed leftover / remint-PR-is-not-a-second-land talk. Talk is not a land. Name the leftovers already on current main. Do not remint them. A remint PR is not a second land." };
     }
     if (api.isJojoAssignTalk(t)) {
       return { state: "CLAIMED", note: "JOJO RULE_ACK / assignment-before-packet / no-JOJO-decision-depends-on-Claude-verdict talk. Talk is not a land. Ship the JOJO assignment leftover to current main. Do not remint CLAUDE_COMPUTE, CLAUDE_INTERMEDIATE, or GROK_RECOVERY." };
@@ -729,6 +734,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isSittingRemintTalk = function (text) {
+    return /sitting remint|already-landed leftover|remint pr is not a second land|do not remint an already-landed leftover/i.test(String(text || ""));
+  };
+
+  api.sittingRemintState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/sitting_remint.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesLanded = /already-landed leftover/.test(body) && /CLAUDE_COMPUTE/.test(body);
+    var refusesRemint = /remint PR is not a second land/i.test(body) && /do not remint/i.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesLanded && refusesRemint) {
+      return {
+        state: "INTEGRATED",
+        note: "sitting-remint leftover is on this file. Already-landed leftovers are named. A remint PR is not a second land. A Slack ruling is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/sitting_remint.py missing the leftover. Sitting remint / already-landed leftover talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2276,6 +2308,7 @@
   var claudeIntermediateOut = document.getElementById("claude-intermediate-result");
   var cashNowOut = document.getElementById("cash-now-result");
   var jojoAssignOut = document.getElementById("jojo-assign-result");
+  var sittingRemintOut = document.getElementById("sitting-remint-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -2882,6 +2915,12 @@
     if (!cashNowOut) return;
     cashNowOut.setAttribute("data-tone", api.toneFor(result.state));
     cashNowOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSittingRemint(result) {
+    if (!sittingRemintOut) return;
+    sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
+    sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -3663,6 +3702,33 @@
     });
   }
 
+  function loadSittingRemint(sha) {
+    if (!sittingRemintOut) return Promise.resolve(null);
+    sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/sitting_remint.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/sitting_remint.py absent at the measured main SHA. Sitting remint / already-landed leftover talk is CLAIMED." };
+        paintSittingRemint(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSittingRemint(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.sittingRemintState(body);
+        paintSittingRemint(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSittingRemint(err);
+      return err;
+    });
+  }
+
   function loadClaudeCompute(sha) {
     if (!claudeComputeOut) return Promise.resolve(null);
     claudeComputeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_compute.py at the official SHA…</p>";
@@ -4382,6 +4448,7 @@
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
+    loadSittingRemint(sha);
     loadClaudeCompute(sha);
     loadClaudeIntermediate(sha);
     loadCashNow(sha);
