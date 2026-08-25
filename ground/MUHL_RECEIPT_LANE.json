@@ -1,0 +1,42 @@
+{
+  "slack_ts": "1787646761.038429",
+  "kind": "MUHL_RECEIPT_LANE",
+  "subject": "A Slack TAKING / leave-unmerged is not a request-receiver-result receipt",
+  "claimed_lda_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "claimed_tree": 175,
+  "published_tree": 3,
+  "leave_unmerged": true,
+  "live_measure": {
+    "claimed_lda_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+    "claimed_tree": 175,
+    "published_tree": 3,
+    "truncated": false,
+    "next_substrate": "FINDER-UNVERIFIED",
+    "synthetic_chain": "VALID",
+    "taking_state": "CLAIMED"
+  },
+  "do_not_remint": [
+    "jojo-muhlnickel-subagent-protocol-20260825-01",
+    "rivet-ship-foreign-main-20260825-01",
+    "rivet-ship-grok-recovery-20260825-01",
+    "rivet-ship-slack-receipt-20260825-01",
+    "rivet-ship-device-canary-20260825-01",
+    "rivet-ship-subzero-explorer-20260825-01"
+  ],
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2286",
+    "commons.mno",
+    "titan.gguf",
+    "LDA source copy",
+    "pfc_*"
+  ],
+  "copied_source": false,
+  "host_inference": false,
+  "self_hosted_dispatch": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true
+}

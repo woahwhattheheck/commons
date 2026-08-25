@@ -1563,6 +1563,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isMuhlReceiptLaneTalk, "land.js must classify receipt-lane leftover talk");
+assert.ok(api.muhlReceiptLaneState, "land.js must classify the receipt-lane leftover");
+assert.ok(api.isMuhlReceiptLaneTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "JOJO receipt-lane taking is leftover talk");
+assert.ok(!api.isMuhlReceiptLaneTalk("make sure people do more than talk about shit"), "generic ship-talk is not the receipt-lane leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("LocalDeviceAgent PR #2 merged. Official main is now fb0b0b2f. host/muhl_subagent_protocol.py. 1787642211.512289"), "foreign-main protocol copy is not the receipt-lane leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("DEMON — SUPERGROK HEAVY RESET SPRINT. shared weekly pool. 1787645797.029719"), "SuperGrok Heavy copy is not the receipt-lane leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("from: JOJO\nkind: TECHNICAL_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-01\nSubzero Artifact Explorer + validation packet. 1787646413.997539"), "subzero-explorer copy is not the receipt-lane leftover");
+assert.ok(!api.isForeignMainTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane. leave unmerged. 1787646761.038429"), "receipt-lane taking is not the foreign-main leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane. leave unmerged."), "receipt-lane taking is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSubzeroExplorerTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane. leave unmerged. 1787646761.038429"), "receipt-lane taking is not the subzero-explorer leftover");
+var receiptLaneTalk = api.completionStateFromText(
+  "JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"
+);
+assert.strictEqual(receiptLaneTalk.state, "CLAIMED");
+assert.ok(/receipt lane|request-receiver-result|leave-unmerged|175-entry/i.test(receiptLaneTalk.note), "receipt-lane-without-SHA must stay CLAIMED and beat foreign-main / ship-talk");
+var receiptLaneDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nreceipt-lane leftover landed"
+);
+assert.strictEqual(receiptLaneDone.state, "INTEGRATED", "completion words still beat receipt-lane talk");
+var receiptLaneEmpty = api.muhlReceiptLaneState("");
+assert.strictEqual(receiptLaneEmpty.state, "UNMEASURED");
+var receiptLaneMissing = api.muhlReceiptLaneState("# empty stub\nno leftover");
+assert.strictEqual(receiptLaneMissing.state, "NOT_LANDED");
+var receiptLaneOk = api.muhlReceiptLaneState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef validate_chain(request, receiver, result):\n    return {}\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nrequest-receiver-result\n175-entry tree\nleave unmerged\nDo not copy private LDA source\nno auth\nno gate\n");
+assert.strictEqual(receiptLaneOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(receiptLaneOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="muhl-receipt-lane-result"') >= 0, "desk must name the receipt-lane leftover");
+assert.ok(html.indexOf("host/muhl_receipt_lane.py") >= 0, "desk must name the receipt-lane instrument");
+assert.ok(html.indexOf("ground/MUHL_RECEIPT_LANE.md") >= 0, "desk must link the receipt-lane card");
+assert.ok(html.indexOf("ground/MUHL_RECEIPT_LANE.json") >= 0, "desk must link the receipt-lane catalog");
+assert.ok(html.indexOf("1787646761.038429") >= 0, "desk must cite the JOJO receipt-lane Slack ts");
+assert.ok(/subagent receipt lane|leave-unmerged|175-entry tree/i.test(html), "desk must name receipt-lane talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_RECEIPT_LANE.md") >= 0, "receipt-lane card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_RECEIPT_LANE.json") >= 0, "receipt-lane catalog must stay a canary");
 assert.ok(api.isSuperGrokHeavyTalk, "land.js must classify SuperGrok Heavy leftover talk");
 assert.ok(api.superGrokHeavyState, "land.js must classify the SuperGrok Heavy leftover");
 assert.ok(api.isSuperGrokHeavyTalk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nOwner correction confirmed by current xAI docs: SuperGrok paid usage is one shared weekly pool across Chat, Build, API, Imagine, and Voice. Grok Build is not a separate unavailable bucket. Do not use Cursor Grok as the substitute. utilization receipts. 1787645797.029719"), "DEMON SuperGrok Heavy Slack is leftover talk");
