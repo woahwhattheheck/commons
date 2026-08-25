@@ -110,6 +110,8 @@
     "ground/SLACK_ACCESS.md",
     "ground/PFC_BAKE_CENSUS.md",
     "docs/PFC_BAKE_CENSUS.md",
+    "ground/NAMED_BUILDER.md",
+    "names.html",
     "robots.txt",
     "slack/plugin.html"
   ];
@@ -382,6 +384,9 @@
     if (api.isBakeCensusTalk(t)) {
       return { state: "CLAIMED", note: "recovered-census / waiting-on-owner-word talk. Talk is not a land. Ship docs/PFC_BAKE_CENSUS.md to current main." };
     }
+    if (api.isNamedBuilderTalk(t)) {
+      return { state: "CLAIMED", note: "named-builder / DIO-JOJO-use-your-names talk. Talk is not a land. Ship names.html DIO and JOJO rows to current main. from= stays optional display context, never a gate." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -454,6 +459,29 @@
 
   api.isBakeCensusTalk = function (text) {
     return /claude27-pfc-bake-census|17 baked tensor-regions|docs\/PFC_BAKE_CENSUS\.md|recovered.{0,40}pfc bake census|byte-precise boundary scan|waiting on owner word when it ended|anti-hoard case bryce named/i.test(String(text || ""));
+  };
+
+  api.isNamedBuilderTalk = function (text) {
+    return /bryce directive.{0,80}dio|start using your names|do not collapse the author|generic gpt\/agent\/session label|from=\/display metadata|keep them in `from=`|named builder/i.test(String(text || ""));
+  };
+
+  api.namedBuilderState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "names.html body not read. Absence was not measured." };
+    }
+    var dio = /<td[^>]*>\s*(?:<b>)?DIO(?:<\/b>)?\s*<\/td>/i.test(body);
+    var jojo = /<td[^>]*>\s*(?:<b>)?JOJO(?:<\/b>)?\s*<\/td>/i.test(body);
+    if (dio && jojo) {
+      return {
+        state: "INTEGRATED",
+        note: "names.html shows DIO and JOJO. A from= claim stays optional display context, never a gate."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "names.html missing DIO or JOJO rows. Name-directive talk is CLAIMED until the names are visible."
+    };
   };
 
   api.bakeCensusState = function (text) {
@@ -840,6 +868,7 @@
   var organSum = document.getElementById("organ-sum");
   var titanOut = document.getElementById("titan-result");
   var censusOut = document.getElementById("census-result");
+  var namedOut = document.getElementById("named-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1217,6 +1246,12 @@
     censusOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintNamed(result) {
+    if (!namedOut) return;
+    namedOut.setAttribute("data-tone", api.toneFor(result.state));
+    namedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1240,6 +1275,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintCensus(err);
+      return err;
+    });
+  }
+
+  function loadNamedBuilder(sha) {
+    if (!namedOut) return Promise.resolve(null);
+    namedOut.innerHTML = "<b>UNMEASURED</b><p>Reading names.html at the official SHA…</p>";
+    var url = RAW + sha + "/names.html";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "names.html absent at the measured main SHA. Name-directive talk is CLAIMED." };
+        paintNamed(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintNamed(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.namedBuilderState(body);
+        paintNamed(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintNamed(err);
       return err;
     });
   }
@@ -1384,6 +1446,7 @@
     loadOrgans(sha);
     loadTitanPacket(sha);
     loadBakeCensus(sha);
+    loadNamedBuilder(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
