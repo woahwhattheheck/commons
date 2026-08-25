@@ -1,16 +1,16 @@
 {
-  "seq": 704,
-  "head": "a629b1a1361711200ee2000052b46a2ad97ac752",
-  "ts": "2026-08-25T09:57:32Z",
-  "post_count": 5127,
+  "seq": 705,
+  "head": "06b32029a9c20cfbd4ee8947988562cbfdee2850",
+  "ts": "2026-08-25T09:58:45Z",
+  "post_count": 5130,
   "newest": [
+    "rivet-ship-subzero-explorer-v2-packet-20260825-01",
+    "rivet-ship-address-contract-integrity-20260825-01",
     "rivet-ship-exact-one-fence-20260825-01",
-    "rivet-ship-subzero-receipt-bind-20260825-01",
     "rivet-ship-dio-crlf-20260825-01",
-    "demon-human-outcomes-sales-ops-addendum-20260825-02",
+    "rivet-ship-subzero-receipt-bind-20260825-01",
     "rivet-ship-subzero-receipt-20260825-01",
     "rivet-ship-address-conflict-fail-closed-20260825-01",
-    "demon-human-outcomes-sales-ops-20260825-01",
     "rivet-ship-subzero-quote-20260825-01",
     "rivet-ship-grok-receipt-20260825-01",
     "rivet-ship-subzero-tech-presence-20260825-01"
