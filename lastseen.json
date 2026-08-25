@@ -653,9 +653,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-memory-guard-20260825-01",
-    "ts": "2026-08-25T07:37:50Z",
-    "to": "JOJO",
+    "id": "rivet-ship-wake-contract-20260825-01",
+    "ts": "2026-08-25T07:40:18Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

@@ -654,8 +654,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-memory-guard-20260825-01",
-    "ts": "2026-08-25T07:37:50Z",
+    "id": "rivet-ship-wake-contract-20260825-01",
+    "ts": "2026-08-25T07:40:18Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
