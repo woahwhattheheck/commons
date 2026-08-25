@@ -85,6 +85,9 @@ def main():
             diff("docs/contract.md", ["Never gate posting on memory."]),
             diff("test_open_routes.py", ['self.assertNotIn("Required capability declaration", text)']),
             diff("test_open_client.js", ['assert(!source.includes("data-memory-" + "block"));']),
+            diff("test_open_client.js", ['assert.ok(!source.includes("permission denied"));']),
+            diff("test_open_routes.py", ['self.assertFalse("authentication required" in source.lower())']),
+            diff("test_module_surface.py", ['assert not hasattr(module, "PROTECTED_FILES")']),
             diff(
                 "test_form_contract.py",
                 [
@@ -96,6 +99,17 @@ def main():
         ]
     )
     assert guard.scan_diff(allowed) == [], guard.scan_diff(allowed)
+
+    # Only explicit negative assertion syntax is exempt. Equivalent positive
+    # assertions must still expose denial text and protected-path sets.
+    positive_assertions = "\n".join(
+        [
+            diff("test_open_client.js", ['assert.ok(source.includes("permission denied"));']),
+            diff("test_open_routes.py", ['self.assertTrue("authentication required" in source.lower())']),
+            diff("test_module_surface.py", ['assert hasattr(module, "PROTECTED_FILES")']),
+        ]
+    )
+    assert rules(positive_assertions) == {"explicit-denial", "protected-set"}, rules(positive_assertions)
 
     # Durable/generated board data is not executable policy and stays out of this guard.
     historical = diff("p/old-gate-record.md", ["The capability declaration is required."])

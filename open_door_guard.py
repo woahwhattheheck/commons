@@ -239,6 +239,11 @@ def active_path(path: str) -> bool:
 
 def _negative_assertion(text: str) -> bool:
     compact = " ".join(text.strip().lower().split())
+    if re.match(
+        r"^(?:assert\.ok\s*\(\s*!|(?:self\.)?assertfalse\s*\(|assert\s+not\s+hasattr\s*\()",
+        compact,
+    ):
+        return True
     return (
         compact.startswith(("assert ", "expect(", "expect "))
         and (" not in " in compact or ".not." in compact or "== false" in compact)
