@@ -13,6 +13,10 @@
     {
       "source": "/mcp",
       "destination": "/api/mcp"
+    },
+    {
+      "source": "/send",
+      "destination": "/api/mcp"
     }
   ]
 }
