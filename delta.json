@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8549,12 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8870,12 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9161,12 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9428,12 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9683,12 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10004,12 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10325,12 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
         {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
@@ -10555,6 +10561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10787,12 +10799,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -10810,6 +10816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11042,12 +11054,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -11131,6 +11137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11363,12 +11375,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -11446,6 +11452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11678,12 +11690,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -11767,6 +11773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11999,12 +12011,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -12034,6 +12040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12266,12 +12278,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -12337,6 +12343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12569,12 +12581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -12592,6 +12598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12824,12 +12836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -12913,6 +12919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13145,12 +13157,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -13180,6 +13186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13412,12 +13424,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -13501,6 +13507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13733,12 +13745,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -13756,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13988,12 +14000,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -14077,6 +14083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14309,12 +14321,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -14338,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14570,12 +14582,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -14593,6 +14599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14825,12 +14837,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -14914,6 +14920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15146,12 +15158,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -15169,6 +15175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15401,12 +15413,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -15430,6 +15436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15662,12 +15674,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -15751,6 +15757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15983,12 +15995,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -16012,6 +16018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16244,12 +16256,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -16333,6 +16339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16565,12 +16577,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -16654,6 +16660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16886,12 +16898,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -16975,6 +16981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17207,12 +17219,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -17296,6 +17302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17528,12 +17540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -17617,6 +17623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17849,12 +17861,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -17872,6 +17878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18104,12 +18116,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -18139,6 +18145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18371,12 +18383,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -18460,6 +18466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18692,12 +18704,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -18715,6 +18721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18947,12 +18959,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -19018,6 +19024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19250,12 +19262,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -19336,8 +19342,14 @@
     "JOJO": {
       "last_id": "jojo-device-path-canary-20260825-01",
       "last_ts": "2026-08-25T07:08:59.791Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
         {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
@@ -19365,6 +19377,12 @@
       "last_ts": "2026-08-21T13:21:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
         {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
@@ -19598,12 +19616,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -19639,6 +19651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19871,12 +19889,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -19960,6 +19972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20192,12 +20210,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -20215,6 +20227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20447,12 +20465,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -20470,6 +20482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20702,12 +20720,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -20785,6 +20797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21017,12 +21035,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -21040,6 +21052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21272,12 +21290,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -21295,6 +21307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21527,12 +21545,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -21550,6 +21562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21782,12 +21800,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -21805,6 +21817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22037,12 +22055,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -22084,6 +22096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22316,12 +22334,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -22405,6 +22417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22637,12 +22655,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -22690,6 +22702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22922,12 +22940,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -22945,6 +22957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23177,12 +23195,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -23200,6 +23212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23432,12 +23450,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -23455,6 +23467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23687,12 +23705,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -23710,6 +23722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23942,12 +23960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -23965,6 +23977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24197,12 +24215,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -24286,6 +24298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24518,12 +24536,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -24607,6 +24619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24839,12 +24857,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -24928,6 +24940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25160,12 +25178,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -25225,6 +25237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25457,12 +25475,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -25546,6 +25558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25778,12 +25796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -25801,6 +25813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26033,12 +26051,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -26056,6 +26068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26288,12 +26306,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -26323,6 +26335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26555,12 +26573,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -26644,6 +26656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26876,12 +26894,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -26899,6 +26911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27131,12 +27149,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -27166,6 +27178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27398,12 +27416,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -27463,6 +27475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27695,12 +27713,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -27784,6 +27796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28016,12 +28034,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -28105,6 +28117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28337,12 +28355,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -28414,6 +28426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28646,12 +28664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -28676,11 +28688,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-device-canary-20260825-01",
-      "last_ts": "2026-08-25T07:18:58Z",
+      "last_id": "rivet-ship-titan-test-quarantine-20260825-01",
+      "last_ts": "2026-08-25T07:22:40Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
         {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
@@ -28746,12 +28764,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ]
     },
@@ -28760,6 +28772,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
         {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
@@ -28993,12 +29011,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -29082,6 +29094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29314,12 +29332,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -29403,6 +29415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29635,12 +29653,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -29664,6 +29676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29896,12 +29914,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -29937,6 +29949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30169,12 +30187,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -30258,6 +30270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30490,12 +30508,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -30513,6 +30525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30745,12 +30763,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -30834,6 +30846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31066,12 +31084,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -31155,6 +31167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31387,12 +31405,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -31476,6 +31488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31708,12 +31726,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -31797,6 +31809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32029,12 +32047,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -32118,6 +32130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32350,12 +32368,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -32373,6 +32385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32605,12 +32623,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -32658,6 +32670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32890,12 +32908,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -32979,6 +32991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33211,12 +33229,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -33300,6 +33312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33532,12 +33550,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -33621,6 +33633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33853,12 +33871,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
@@ -33942,6 +33954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-test-quarantine-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:22:40Z"
+        },
+        {
           "id": "rivet-ship-device-canary-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34174,12 +34192,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:29:29Z"
-        },
-        {
-          "id": "rivet-ship-pixel-heartbeat-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:26:55Z"
         }
       ],
       "mine": [
