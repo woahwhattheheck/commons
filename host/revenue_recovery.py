@@ -17,7 +17,7 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from urllib.parse import unquote
+from urllib.parse import unquote_to_bytes
 
 OFFER_ID = "gguf-diagnostic-10d-12k"
 SUBJECT = "GGUF DIAGNOSTIC PURCHASE INTENT"
@@ -118,6 +118,8 @@ FIELD_ASSIGNMENT_RE = re.compile(
     r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
     re.IGNORECASE,
 )
+PERCENT_ESCAPE_RE = re.compile(r"%[0-9A-Fa-f]{2}")
+HTTPS_TOKEN_RE = re.compile(r"\bhttps://[^\s]+", re.IGNORECASE)
 SENSITIVE_PATTERNS = (
     re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),
     re.compile(r"\b(?:\d[ -]?){13,19}\b"),
@@ -141,7 +143,7 @@ SENSITIVE_PATTERNS = (
         r"(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+",
         re.IGNORECASE,
     ),
-    re.compile(r"\bhttps://[^/?#\s@]*:[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE),
+    re.compile(r"\bhttps://[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE),
     re.compile(
         r"\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret|token|bearer)"
         r"\s*[:=]\s*\S+",
@@ -315,15 +317,37 @@ def _json_has_sensitive_field(value: Any) -> bool:
     return False
 
 
+def _decode_percent_once(value: str) -> tuple[str, bool, bool]:
+    """Decode one percent layer with strict UTF-8; preserve literal percent."""
+    if not PERCENT_ESCAPE_RE.search(value):
+        return value, False, False
+    try:
+        decoded = unquote_to_bytes(value).decode("utf-8", errors="strict")
+    except UnicodeDecodeError:
+        return value, False, True
+    return decoded, decoded != value, False
+
+
 def decode_percent_layers(value: Any) -> tuple[str, bool]:
-    """Decode URL encoding without `+` rewriting; flag depth overflow."""
+    """Decode bounded URL layers; flag overflow or invalid UTF-8 fail closed."""
     decoded = str(value)
     for _ in range(PERCENT_DECODE_LAYERS):
-        next_value = unquote(decoded)
-        if next_value == decoded:
+        next_value, changed, invalid = _decode_percent_once(decoded)
+        if invalid:
+            return decoded, True
+        if not changed:
             return decoded, False
         decoded = next_value
-    return decoded, unquote(decoded) != decoded
+    _next_value, changed, invalid = _decode_percent_once(decoded)
+    return decoded, invalid or changed
+
+
+def _has_sensitive_assignment(text: str) -> bool:
+    for match in FIELD_ASSIGNMENT_RE.finditer(text):
+        value = match.group(2) if match.group(2) is not None else match.group(3)
+        if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
+            return True
+    return False
 
 
 def contains_sensitive_value(text: str) -> bool:
@@ -332,9 +356,10 @@ def contains_sensitive_value(text: str) -> bool:
         return True
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
         return True
-    for match in FIELD_ASSIGNMENT_RE.finditer(source):
-        value = match.group(2) if match.group(2) is not None else match.group(3)
-        if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
+    if _has_sensitive_assignment(source):
+        return True
+    for url in HTTPS_TOKEN_RE.findall(source):
+        if any(_has_sensitive_assignment(part) for part in re.split(r"[/?#&;]", url)[1:]):
             return True
     try:
         return _json_has_sensitive_field(json.loads(source))

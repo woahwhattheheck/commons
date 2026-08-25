@@ -253,10 +253,34 @@ class RevenueRecoveryTests(unittest.TestCase):
             "PUBLIC_CONTACT_URL: https://alice:secret@example.com/contact",
             "PUBLIC_CONTACT_URL: https://alice:secret@127.0.0.1/contact",
             "PUBLIC_CONTACT_URL: https://alice%3Asecret%40example.com/contact",
+            "PUBLIC_CONTACT_URL: https://alice@example.com/contact",
+            "PUBLIC_CONTACT_URL: https://alice@127.0.0.1/contact",
+            "PUBLIC_CONTACT_URL: https://alice%40example.com/contact",
+            "PUBLIC_CONTACT_URL: https://alice%40127.0.0.1/contact",
         ):
             with self.subTest(value=value):
                 self.assertTrue(rr.contains_sensitive_value(value))
                 self.assert_sensitive_signal_is_incomplete(value)
+
+    def test_x_invalid_utf8_and_fragment_assignments_are_incomplete(self):
+        for value in (
+            "PUBLIC_OBJECTIVE: priv%FFateEmail=hidden",
+            "PUBLIC_OBJECTIVE: tok%FFen=hidden",
+            "PUBLIC_CONTACT_URL: https://example.com/contact#privateEmail=hidden",
+            "PUBLIC_CONTACT_URL: https://example.com/contact#token=hidden",
+            "PUBLIC_CONTACT_URL: https://example.com/contact#%70rivateEmail=hidden",
+        ):
+            with self.subTest(value=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        for value in (
+            "PUBLIC_OBJECTIVE: 100%",
+            "PUBLIC_OBJECTIVE: 100%25",
+            "PUBLIC_CONTACT_URL: https://example.com/contact#section",
+        ):
+            with self.subTest(value=value):
+                self.assertFalse(rr.contains_sensitive_value(value))
 
     def test_y_plain_password_is_incomplete(self):
         self.assert_sensitive_signal_is_incomplete("PASSWORD: hunter2")
