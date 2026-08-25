@@ -188,6 +188,8 @@
     "ground/CLAUDE_COMPUTE.json",
     "ground/SITTING_REMINT.md",
     "ground/SITTING_REMINT.json",
+    "ground/FOREIGN_MAIN.md",
+    "ground/FOREIGN_MAIN.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/WATCHDOG_CANARY.md",
@@ -414,6 +416,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isForeignMainTalk(t)) {
+      return { state: "CLAIMED", note: "foreign official main / LocalDeviceAgent SHIP_RECEIPT / muhl_subagent_protocol talk. Talk is not a land. Measure official LDA main and the named blobs independently. Commons p/{id}.md is a separate fact. Do not remint the JOJO id. Do not copy private LDA source." };
     }
     if (api.isTitanTestQuarantineTalk(t)) {
       return { state: "CLAIMED", note: "live-Titan test quarantine / test_go_without_titan_is_absent / temp-synthetic-Titan talk. Talk is not a land. Isolate default discovery under tests. Require explicit --titan. Add payload-hash idempotence. Do not bind C:\\\\llm\\\\models\\\\titan.gguf from CI." };
@@ -753,6 +758,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isForeignMainTalk = function (text) {
+    return /jojo-muhlnickel-subagent-protocol|muhl_subagent_protocol|localdeviceagent pr|landed on lda main|foreign official main|1787642211\.512289/i.test(String(text || ""));
+  };
+
+  api.foreignMainState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/foreign_main.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesForeign = /foreign official main/.test(body) && /LocalDeviceAgent/.test(body);
+    var namesProtocol = /muhl_subagent_protocol/.test(body) && /fb0b0b2f59f8ca81741371b6ddd8036b164e77e8/.test(body);
+    var noCopy = /Do not copy private LDA source/.test(body) || /Do not copy private LocalDeviceAgent source/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesForeign && namesProtocol && noCopy && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "foreign-main leftover is on this file. Official LDA main was measured independently. A Slack SHIP_RECEIPT is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/foreign_main.py missing the leftover. LocalDeviceAgent / muhl_subagent_protocol / SHIP_RECEIPT talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2411,6 +2445,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var foreignMainOut = document.getElementById("foreign-main-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
@@ -3036,6 +3071,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintForeignMain(result) {
+    if (!foreignMainOut) return;
+    foreignMainOut.setAttribute("data-tone", api.toneFor(result.state));
+    foreignMainOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintDeviceCanary(result) {
@@ -3850,6 +3891,33 @@
     });
   }
 
+  function loadForeignMain(sha) {
+    if (!foreignMainOut) return Promise.resolve(null);
+    foreignMainOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/foreign_main.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/foreign_main.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/foreign_main.py absent at the measured main SHA. LocalDeviceAgent / muhl_subagent_protocol / SHIP_RECEIPT talk is CLAIMED." };
+        paintForeignMain(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintForeignMain(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.foreignMainState(body);
+        paintForeignMain(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintForeignMain(err);
+      return err;
+    });
+  }
+
   function loadTitanTestQuarantine(sha) {
     if (!titanTestQuarantineOut) return Promise.resolve(null);
     titanTestQuarantineOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/titan_test_quarantine.py at the official SHA…</p>";
@@ -4653,6 +4721,7 @@
     loadClaudeRole(sha);
     loadTitanTestQuarantine(sha);
     loadSittingRemint(sha);
+    loadForeignMain(sha);
     loadDeviceCanary(sha);
     loadClaudeCompute(sha);
     loadClaudeIntermediate(sha);

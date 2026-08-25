@@ -131,6 +131,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_titan_test_quarantine.py` · `python3 test_titan_move_apply.py` · `node test_land_desk.js` · `python3 host/titan_test_quarantine.py`
 **Note:** Do not remint TITAN_APPEND_GUARD or JOJO device leftovers. Do not land `test_go_actuates_live_owner_titan_and_persists_reread_receipt`. Repair stays apply:false. titan NOT_WRITTEN.
 
+### 33. Foreign main — a Slack SHIP_RECEIPT is not official main
+> *"LocalDeviceAgent PR #2 merged with tested head pinned. Official main is now fb0b0b2f… This is not a host-inference fallback."*
+
+**Asked:** 08-25T07:17 Slack `1787642211.512289` / JOJO `SHIP_RECEIPT` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/FOREIGN_MAIN.md` · `ground/FOREIGN_MAIN.json` · `host/foreign_main.py` · land canary + `foreignMainState`
+**Receipt:** `python3 test_foreign_main.py` · `node test_land_desk.js` · `python3 host/foreign_main.py`
+**Note:** Official LDA main independently matched 3/3 claimed blobs. Commons `p/jojo-muhlnickel-subagent-protocol-20260825-01.md` is still 404 — do not remint. Actions run and next substrate stay FINDER-UNVERIFIED. Do not copy private LDA source. Do not remint GROK_RECOVERY / SLACK_RECEIPT / DEVICE_CANARY / TITAN_TEST_QUARANTINE. Hands off CML 2108 and SPECTER 2205. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
