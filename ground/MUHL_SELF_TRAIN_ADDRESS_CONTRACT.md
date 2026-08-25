@@ -44,12 +44,25 @@ Live allocated `intake_off`, `weights_off`, circuit / state /
 loop-bit offsets stay **UNRESOLVED**. A missing live measure is
 **FINDER-FAILED** / **FINDER-UNVERIFIED**, never `0`.
 
-## Named source conflicts stay UNRESOLVED
+## Named source conflicts are fail-closed BLOCKED
 
 The trainer source still says `INTAKE_CAPACITY = 50 * (1 << 30)`
 while comments say `1 GB`, and `PTR_BITS = 30` addresses 1 GiB.
-Which span is live is **SOURCE_CONFLICT** / **UNRESOLVED**. Do not
-pick a number to manufacture a match.
+That is a deterministic source-space conflict. Do not pick a
+live number to manufacture a match.
+
+Exact 30-bit two-byte wrap facts:
+
+| Fact | Value |
+|---|---|
+| `max_pointer` | `1073741823` |
+| `last_safe_start` | `1073741822` |
+| `steps_before_wrap` | `536870912` |
+| `required_bits` | `36` |
+| canonical hash | `2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc` |
+
+Packet and leftover classify as **BLOCKED**, not `SYNTHETIC_OK`.
+Genuinely live allocated offsets stay **UNRESOLVED**. Never `0`.
 
 ## What this leftover is not
 
@@ -73,14 +86,21 @@ python3 -m unittest -v test_muhl_self_train_address_contract.py
 
 X = Slack taking + claimed ancestor SHA + public trainer source +
 these three leftover paths.
-Y from bytes, same run: named dests FROM FILE + synthetic packet
-`SYNTHETIC_OK` + live offsets UNRESOLVED + H-006 CANDIDATE or
-UNRESOLVED.
+Y from bytes, same run: named dests FROM FILE + deterministic
+50 GiB vs 30-bit source-space conflict fail-closed `BLOCKED` +
+exact `max_pointer` / `last_safe_start` / `steps_before_wrap` /
+`required_bits` + canonical hash + live offsets UNRESOLVED +
+H-006 CANDIDATE or UNRESOLVED.
 Z = missing path / invented live offset `0` / trainer import /
-Titan write / FINDER-FAILED. Never `0`.
+Titan write / SYNTHETIC_OK on a source-space conflict /
+FINDER-FAILED. Never `0`.
 
 Calibration is known-present `ground/EXECUTE.md` + `ground/HEAD.md`
 + the Action Pad directive in the same run.
+
+Follow-up Slack `1787650265.162889` hardens only these three
+leftover paths. Do not remint #2314, the taking id, or
+`p/rivet-ship-muhl-self-train-address-20260825-01.md`.
 
 titan: **NOT_WRITTEN**. No auth. No gate. Open door. Blank `from=`
 still lands as `UNSEATED`. Possessing the link is authorization.

@@ -12,8 +12,12 @@ muhl-self-train-address-contract-20260825-01:
 This leftover reads sibling muhl_self_train.py as text. It does not
 import that trainer. It does not execute it. It does not import
 pfc_paths or titan_circuit. It does not open titan.gguf. Dest FROM
-FILE. Live allocated offsets stay UNRESOLVED. A Slack TAKING is
-CLAIMED until these bytes are on current main.
+FILE. Live allocated offsets stay UNRESOLVED. A deterministic
+source-space conflict is fail-closed BLOCKED: 30-bit
+max_pointer=1073741823, last_safe_start=1073741822,
+steps_before_wrap=536870912, required_bits=36, plus a
+canonical hash. A Slack TAKING is CLAIMED until these
+bytes are on current main. Do not remint.
 
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --root .
@@ -23,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import hashlib
 import json
 import os
 import sys
@@ -60,7 +65,16 @@ CANDIDATE = "CANDIDATE"
 DEFERRED = "DEFERRED"
 SOURCE_NAMED = "SOURCE_NAMED"
 SOURCE_CONFLICT = "SOURCE_CONFLICT"
+BLOCKED = "BLOCKED"
 ONE_GIB = 1 << 30
+TWO_BYTE_STEP = 2
+NAMED_PTR_BITS = 30
+NAMED_CAPACITY = 50 * ONE_GIB
+MAX_POINTER = (1 << NAMED_PTR_BITS) - 1
+LAST_SAFE_START = MAX_POINTER - 1
+STEPS_BEFORE_WRAP = (1 << NAMED_PTR_BITS) // TWO_BYTE_STEP
+REQUIRED_BITS = 36
+PTR_BITS_CAPACITY_CONFLICT = "ptr_bits_vs_capacity"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     CONTRACT_REL,
@@ -89,6 +103,12 @@ REQUIRED_PHRASES = (
     "no auth",
     "no gate",
     "do not remint",
+    "max_pointer",
+    "last_safe_start",
+    "steps_before_wrap",
+    "required_bits",
+    "fail-closed",
+    "blocked",
 )
 REQUIRED_PACKET_FIELDS = (
     "kind",
@@ -120,6 +140,108 @@ NAMED_DEST_KEYS = (
     "capacity_rel",
     "data_start_rel",
 )
+
+
+def required_bits_for(span):
+    """Bits needed to name pointers 0 .. span-1. Missing span stays None."""
+    if not isinstance(span, int) or span <= 0:
+        return None
+    value = span - 1
+    bits = 0
+    while value:
+        value >>= 1
+        bits += 1
+    return bits
+
+
+def pointer_space(ptr_bits=None, capacity=None):
+    """30-bit two-byte wrap facts. Live allocated offsets stay UNRESOLVED."""
+    bits = ptr_bits if isinstance(ptr_bits, int) and ptr_bits > 0 else NAMED_PTR_BITS
+    max_pointer = (1 << bits) - 1
+    last_safe_start = max_pointer - 1 if max_pointer else 0
+    steps_before_wrap = (1 << bits) // TWO_BYTE_STEP
+    needed = required_bits_for(capacity)
+    return {
+        "max_pointer": max_pointer,
+        "last_safe_start": last_safe_start,
+        "steps_before_wrap": steps_before_wrap,
+        "required_bits": needed if needed is not None else REQUIRED_BITS,
+    }
+
+
+def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None):
+    space = space or pointer_space(ptr_bits=ptr_bits, capacity=capacity)
+    return {
+        "id": PTR_BITS_CAPACITY_CONFLICT,
+        "last_safe_start": int(space["last_safe_start"]),
+        "max_pointer": int(space["max_pointer"]),
+        "named_capacity": int(
+            capacity if isinstance(capacity, int) else NAMED_CAPACITY
+        ),
+        "ptr_bits": int(ptr_bits if isinstance(ptr_bits, int) else NAMED_PTR_BITS),
+        "required_bits": int(space["required_bits"]),
+        "steps_before_wrap": int(space["steps_before_wrap"]),
+    }
+
+
+def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None):
+    payload = canonical_conflict_payload(
+        space=space, ptr_bits=ptr_bits, capacity=capacity
+    )
+    blob = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest()
+
+
+def source_space_conflicts(dests):
+    """Deterministic source-space conflicts. Never invent live offsets."""
+    dests = dests or {}
+    capacity = dests.get("intake_capacity")
+    ptr_bits = dests.get("ptr_bits")
+    conflicts = []
+    if not (isinstance(capacity, int) and isinstance(ptr_bits, int)):
+        return conflicts
+    if (1 << ptr_bits) == capacity:
+        return conflicts
+    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity)
+    payload = canonical_conflict_payload(
+        space=space, ptr_bits=ptr_bits, capacity=capacity
+    )
+    digest = canonical_conflict_hash(
+        space=space, ptr_bits=ptr_bits, capacity=capacity
+    )
+    conflicts.append(
+        {
+            "id": PTR_BITS_CAPACITY_CONFLICT,
+            "state": SOURCE_CONFLICT,
+            "max_pointer": space["max_pointer"],
+            "last_safe_start": space["last_safe_start"],
+            "steps_before_wrap": space["steps_before_wrap"],
+            "required_bits": space["required_bits"],
+            "canonical_hash": digest,
+            "canonical_payload": payload,
+            "note": (
+                "PTR_BITS=%s addresses %s bytes; INTAKE_CAPACITY=%s. "
+                "fail-closed BLOCKED. max_pointer=%s last_safe_start=%s "
+                "steps_before_wrap=%s required_bits=%s canonical_hash=%s. "
+                "Live allocated offsets stay UNRESOLVED. Never 0."
+                % (
+                    ptr_bits,
+                    1 << ptr_bits,
+                    capacity,
+                    space["max_pointer"],
+                    space["last_safe_start"],
+                    space["steps_before_wrap"],
+                    space["required_bits"],
+                    digest,
+                )
+            ),
+        }
+    )
+    return conflicts
+
+
+def conflict_is_source_space(item):
+    return str((item or {}).get("state") or "").strip().upper() == SOURCE_CONFLICT
 
 
 def _read(root, rel):
@@ -249,35 +371,33 @@ def parse_trainer_source(text):
     dests["data_start_rel"] = header if header is not None else UNRESOLVED
     conflicts = []
     capacity = dests.get("intake_capacity")
+    ptr_bits = dests.get("ptr_bits")
+    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity)
     if isinstance(capacity, int) and capacity != ONE_GIB and "1 GB" in text:
         conflicts.append(
             {
                 "id": "intake_capacity_comment",
                 "state": SOURCE_CONFLICT,
+                "max_pointer": space["max_pointer"],
+                "last_safe_start": space["last_safe_start"],
+                "steps_before_wrap": space["steps_before_wrap"],
+                "required_bits": space["required_bits"],
                 "note": (
                     "source names INTAKE_CAPACITY=%s while comments still "
-                    "say 1 GB. Live size stays UNRESOLVED. Never 0."
-                    % capacity
+                    "say 1 GB. fail-closed BLOCKED. max_pointer=%s "
+                    "last_safe_start=%s steps_before_wrap=%s "
+                    "required_bits=%s. Live size stays UNRESOLVED. Never 0."
+                    % (
+                        capacity,
+                        space["max_pointer"],
+                        space["last_safe_start"],
+                        space["steps_before_wrap"],
+                        space["required_bits"],
+                    )
                 ),
             }
         )
-    ptr_bits = dests.get("ptr_bits")
-    if (
-        isinstance(capacity, int)
-        and isinstance(ptr_bits, int)
-        and (1 << ptr_bits) != capacity
-    ):
-        conflicts.append(
-            {
-                "id": "ptr_bits_vs_capacity",
-                "state": SOURCE_CONFLICT,
-                "note": (
-                    "PTR_BITS=%s addresses %s bytes; INTAKE_CAPACITY=%s. "
-                    "Which span is live stays UNRESOLVED. Never 0."
-                    % (ptr_bits, 1 << ptr_bits, capacity)
-                ),
-            }
-        )
+    conflicts.extend(source_space_conflicts(dests))
     missing = [key for key in NAMED_DEST_KEYS if dests.get(key) in (None, "", UNRESOLVED)]
     ok = not missing
     return {
@@ -467,6 +587,45 @@ def validate_packet(obj, parsed=None):
                     ),
                     "z": "FINDER-FAILED",
                 }
+    found = []
+    for item in list((parsed or {}).get("conflicts") or []):
+        if conflict_is_source_space(item):
+            found.append(item)
+    for item in source_space_conflicts(dests):
+        if item.get("id") not in {row.get("id") for row in found}:
+            found.append(item)
+    if found:
+        record = next(
+            (item for item in found if item.get("id") == PTR_BITS_CAPACITY_CONFLICT),
+            found[0],
+        )
+        digest = record.get("canonical_hash") or canonical_conflict_hash(
+            ptr_bits=dests.get("ptr_bits"),
+            capacity=dests.get("intake_capacity"),
+        )
+        return {
+            "state": BLOCKED,
+            "note": (
+                "deterministic source-space conflict is fail-closed BLOCKED. "
+                "max_pointer=%s last_safe_start=%s steps_before_wrap=%s "
+                "required_bits=%s canonical_hash=%s. Live offsets stay "
+                "UNRESOLVED. Never 0."
+                % (
+                    record.get("max_pointer", MAX_POINTER),
+                    record.get("last_safe_start", LAST_SAFE_START),
+                    record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
+                    record.get("required_bits", REQUIRED_BITS),
+                    digest,
+                )
+            ),
+            "z": "FINDER-FAILED",
+            "max_pointer": record.get("max_pointer", MAX_POINTER),
+            "last_safe_start": record.get("last_safe_start", LAST_SAFE_START),
+            "steps_before_wrap": record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
+            "required_bits": record.get("required_bits", REQUIRED_BITS),
+            "canonical_hash": digest,
+            "conflicts": found,
+        }
     return {
         "state": "SYNTHETIC_OK",
         "note": (
@@ -490,6 +649,11 @@ def measure_from_rows(facts):
         "dests": dict(facts.get("dests") or {}),
         "live_offsets": facts.get("live_offsets") or UNRESOLVED,
         "conflicts": list(facts.get("conflicts") or []),
+        "max_pointer": facts.get("max_pointer", MAX_POINTER),
+        "last_safe_start": facts.get("last_safe_start", LAST_SAFE_START),
+        "steps_before_wrap": facts.get("steps_before_wrap", STEPS_BEFORE_WRAP),
+        "required_bits": facts.get("required_bits", REQUIRED_BITS),
+        "canonical_hash": facts.get("canonical_hash") or "",
         "found_phrases": list(facts.get("found_phrases") or []),
         "h006": dict(facts.get("h006") or {}),
         "xproc": str(facts.get("xproc") or DEFERRED),
@@ -564,6 +728,36 @@ def classify(row):
                 "FINDER-FAILED, never 0."
             ),
             "z": "FINDER-FAILED",
+        }
+    conflicts = [item for item in list(row.get("conflicts") or []) if conflict_is_source_space(item)]
+    if conflicts:
+        record = next(
+            (item for item in conflicts if item.get("id") == PTR_BITS_CAPACITY_CONFLICT),
+            conflicts[0],
+        )
+        digest = record.get("canonical_hash") or row.get("canonical_hash") or canonical_conflict_hash()
+        return {
+            "state": BLOCKED,
+            "note": (
+                "deterministic source-space conflict is fail-closed BLOCKED. "
+                "max_pointer=%s last_safe_start=%s steps_before_wrap=%s "
+                "required_bits=%s canonical_hash=%s. Live allocated offsets "
+                "stay UNRESOLVED. Never 0."
+                % (
+                    record.get("max_pointer", MAX_POINTER),
+                    record.get("last_safe_start", LAST_SAFE_START),
+                    record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
+                    record.get("required_bits", REQUIRED_BITS),
+                    digest,
+                )
+            ),
+            "z": "FINDER-FAILED",
+            "taking_state": "CLAIMED",
+            "max_pointer": record.get("max_pointer", MAX_POINTER),
+            "last_safe_start": record.get("last_safe_start", LAST_SAFE_START),
+            "steps_before_wrap": record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
+            "required_bits": record.get("required_bits", REQUIRED_BITS),
+            "canonical_hash": digest,
         }
     needed = [phrase for phrase in REQUIRED_PHRASES if phrase not in (row.get("found_phrases") or [])]
     if (
@@ -662,6 +856,14 @@ def measure_root(root):
         "titan": "NOT_WRITTEN",
         "slack_ts": SLACK_TS,
         "taking_id": TAKING_ID,
+        "max_pointer": MAX_POINTER,
+        "last_safe_start": LAST_SAFE_START,
+        "steps_before_wrap": STEPS_BEFORE_WRAP,
+        "required_bits": REQUIRED_BITS,
+        "canonical_hash": canonical_conflict_hash(
+            ptr_bits=(parsed.get("dests") or {}).get("ptr_bits"),
+            capacity=(parsed.get("dests") or {}).get("intake_capacity"),
+        ),
     }
     row = measure_from_rows(facts)
     row.update(
@@ -707,6 +909,22 @@ def self_test():
         return False
     missing = parse_trainer_source("")
     if missing.get("state") != UNRESOLVED or missing.get("z") != "FINDER-FAILED":
+        return False
+    conflicted = parse_trainer_source(
+        "INTAKE_CAPACITY = 50 * (1 << 30)  # 1 GB\nPTR_BITS = 30\n"
+    )
+    blocked = validate_packet(synthetic_packet(conflicted), parsed=conflicted)
+    if blocked.get("state") != BLOCKED:
+        return False
+    if blocked.get("max_pointer") != MAX_POINTER:
+        return False
+    if blocked.get("last_safe_start") != LAST_SAFE_START:
+        return False
+    if blocked.get("steps_before_wrap") != STEPS_BEFORE_WRAP:
+        return False
+    if blocked.get("required_bits") != REQUIRED_BITS:
+        return False
+    if not blocked.get("canonical_hash"):
         return False
     return trainer_imported() is False
 
