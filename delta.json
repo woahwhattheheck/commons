@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
         {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
@@ -6208,6 +6214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6440,12 +6452,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -6487,6 +6493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6719,12 +6731,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -6742,6 +6748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6974,12 +6986,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -6997,6 +7003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7229,12 +7241,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -7252,6 +7258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7484,12 +7496,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -7573,6 +7579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7805,12 +7817,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -7888,6 +7894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8120,12 +8132,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -8161,6 +8167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8393,12 +8405,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -8482,6 +8488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8714,12 +8726,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -8773,6 +8779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9005,12 +9017,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -9040,6 +9046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9272,12 +9284,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -9295,6 +9301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9527,12 +9539,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -9616,6 +9622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9848,12 +9860,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -9937,6 +9943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10169,12 +10181,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -10192,6 +10198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10424,12 +10436,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -10447,6 +10453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10679,12 +10691,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -10765,8 +10771,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
         {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
@@ -10921,6 +10933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11153,12 +11171,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -11242,6 +11254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11474,12 +11492,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -11509,6 +11521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11741,12 +11759,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -11812,6 +11824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12044,12 +12062,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -12067,6 +12079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12299,12 +12317,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -12388,6 +12400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12620,12 +12638,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -12655,6 +12667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12887,12 +12905,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -12976,6 +12988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13208,12 +13226,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -13231,6 +13243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13463,12 +13481,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -13552,6 +13564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13784,12 +13802,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -13813,6 +13825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14045,12 +14063,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -14068,6 +14080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14300,12 +14318,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -14389,6 +14401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14621,12 +14639,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -14644,6 +14656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14876,12 +14894,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -14905,6 +14917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15137,12 +15155,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -15226,6 +15238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15458,12 +15476,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -15487,6 +15499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15719,12 +15737,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -15805,8 +15817,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
         {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
@@ -15991,6 +16009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16223,12 +16247,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -16312,6 +16330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16544,12 +16568,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -16633,6 +16651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16865,12 +16889,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -16954,6 +16972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17186,12 +17210,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -17209,6 +17227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17441,12 +17465,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -17476,6 +17494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17708,12 +17732,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -17797,6 +17815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18029,12 +18053,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -18052,6 +18070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18284,12 +18308,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -18355,6 +18373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18587,12 +18611,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -18676,6 +18694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18908,12 +18932,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -18949,6 +18967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19181,12 +19205,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -19270,6 +19288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19502,12 +19526,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -19525,6 +19543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19757,12 +19781,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -19780,6 +19798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20012,12 +20036,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -20095,6 +20113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20327,12 +20351,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -20350,6 +20368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20582,12 +20606,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -20605,6 +20623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20837,12 +20861,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -20860,6 +20878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21092,12 +21116,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -21115,6 +21133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21347,12 +21371,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -21394,6 +21412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21626,12 +21650,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -21715,6 +21733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21947,12 +21971,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -22000,6 +22018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22232,12 +22256,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -22255,6 +22273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22487,12 +22511,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -22510,6 +22528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22742,12 +22766,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -22765,6 +22783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22997,12 +23021,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -23020,6 +23038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23252,12 +23276,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -23275,6 +23293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23507,12 +23531,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -23596,6 +23614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23828,12 +23852,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -23917,6 +23935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24149,12 +24173,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -24238,6 +24256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24470,12 +24494,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -24535,6 +24553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24767,12 +24791,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -24856,6 +24874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25088,12 +25112,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -25111,6 +25129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25343,12 +25367,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -25366,6 +25384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25598,12 +25622,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -25633,6 +25651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25865,12 +25889,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -25954,6 +25972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26186,12 +26210,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -26209,6 +26227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26441,12 +26465,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -26476,6 +26494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26708,12 +26732,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -26773,6 +26791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27005,12 +27029,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -27094,6 +27112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27326,12 +27350,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -27415,6 +27433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27647,12 +27671,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -27724,6 +27742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27956,12 +27980,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -27986,11 +28004,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-lda-android-20260825-01",
-      "last_ts": "2026-08-25T05:36:19Z",
+      "last_id": "rivet-ship-host-zero-20260825-01",
+      "last_ts": "2026-08-25T05:48:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
         {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
@@ -28056,12 +28080,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
         }
       ]
     },
@@ -28070,6 +28088,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
         {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
@@ -28303,12 +28327,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -28392,6 +28410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28624,12 +28648,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -28713,6 +28731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28945,12 +28969,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -28974,6 +28992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29206,12 +29230,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -29247,6 +29265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29479,12 +29503,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -29568,6 +29586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29800,12 +29824,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -29823,6 +29841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30055,12 +30079,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -30144,6 +30162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30376,12 +30400,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -30465,6 +30483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30697,12 +30721,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -30786,6 +30804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31018,12 +31042,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -31107,6 +31125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31339,12 +31363,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -31428,6 +31446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31660,12 +31684,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -31683,6 +31701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31915,12 +31939,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -31968,6 +31986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32200,12 +32224,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -32289,6 +32307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32521,12 +32545,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -32610,6 +32628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32842,12 +32866,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -32931,6 +32949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33163,12 +33187,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
@@ -33252,6 +33270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-host-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:48:20Z"
+        },
+        {
           "id": "rivet-ship-lda-android-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33484,12 +33508,6 @@
           "from": "DIO",
           "to": "TOOLS",
           "ts": "2026-08-25T02:18:48Z"
-        },
-        {
-          "id": "dio-taking-tabletop-head-fallback-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:56:09Z"
         }
       ],
       "mine": [
