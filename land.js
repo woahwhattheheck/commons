@@ -194,6 +194,8 @@
     "ground/TERMINAL_CATALOG.json",
     "ground/SITTING_PR.md",
     "ground/SITTING_PR.json",
+    "ground/SUBZERO_TECH.md",
+    "ground/SUBZERO_TECH.json",
     "ground/BUILD_SWEEP_ACT.md",
     "ground/BUILD_SWEEP_ACT.json",
     "ground/SPECTER_FINAL.md",
@@ -511,6 +513,9 @@
     }
     if (api.isSittingRemintTalk(t)) {
       return { state: "CLAIMED", note: "sitting remint / already-landed leftover / remint-PR-is-not-a-second-land talk. Talk is not a land. Name the leftovers already on current main. Do not remint them. A remint PR is not a second land." };
+    }
+    if (api.isSubzeroTechTalk(t)) {
+      return { state: "CLAIMED", note: "SUBZERO PANEL 1/3 / technical-IP-validation / archetype-fabricator-excerpt talk. Talk is not a land. Measure current-main excerpts and ship the leftover. Do not remint White Box. titan.gguf this host is FINDER-FAILED." };
     }
     if (api.isJojoAssignTalk(t)) {
       return { state: "CLAIMED", note: "JOJO RULE_ACK / assignment-before-packet / no-JOJO-decision-depends-on-Claude-verdict talk. Talk is not a land. Ship the JOJO assignment leftover to current main. Do not remint CLAUDE_COMPUTE, CLAUDE_INTERMEDIATE, or GROK_RECOVERY." };
@@ -1183,6 +1188,33 @@
 
   api.isSittingRemintTalk = function (text) {
     return /sitting remint leftover|already-landed leftover|remint pr is not a second land|do not remint an already-landed leftover/i.test(String(text || ""));
+  };
+
+  api.isSubzeroTechTalk = function (text) {
+    return /subzero panel 1\/3|technical\/ip\/validation inventory|archetype\/fabricator\/excerpt|demon-redteam-subzero-tech-ip/i.test(String(text || ""));
+  };
+
+  api.subzeroTechState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/subzero_tech.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesClass = /STRUCTURAL_ONLY/.test(body) && /CUSTOMER_READY/.test(body);
+    var refusesRemint = /do not remint/.test(body) && /white-box-gguf-pilot-30d/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesClass && refusesRemint) {
+      return {
+        state: "INTEGRATED",
+        note: "SUBZERO tech leftover is on this file. PLUMB excerpts are STRUCTURAL_ONLY. titan.gguf this host is FINDER-FAILED. Do not remint White Box. A Slack inventory is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/subzero_tech.py missing the leftover. SUBZERO PANEL 1/3 / technical-IP-validation talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.sittingRemintState = function (text) {
@@ -3053,6 +3085,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var subzeroTechOut = document.getElementById("subzero-tech-result");
   var sittingPrOut = document.getElementById("sitting-pr-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
@@ -3689,6 +3722,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSubzeroTech(result) {
+    if (!subzeroTechOut) return;
+    subzeroTechOut.setAttribute("data-tone", api.toneFor(result.state));
+    subzeroTechOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintSittingPr(result) {
@@ -4920,6 +4959,33 @@
     });
   }
 
+  function loadSubzeroTech(sha) {
+    if (!subzeroTechOut) return Promise.resolve(null);
+    subzeroTechOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/subzero_tech.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/subzero_tech.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/subzero_tech.py absent at the measured main SHA. SUBZERO PANEL 1/3 / technical-IP-validation talk is CLAIMED." };
+        paintSubzeroTech(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSubzeroTech(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.subzeroTechState(body);
+        paintSubzeroTech(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSubzeroTech(err);
+      return err;
+    });
+  }
+
   function loadSittingRemint(sha) {
     if (!sittingRemintOut) return Promise.resolve(null);
     sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
@@ -5668,6 +5734,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadSubzeroTech(sha);
     loadSittingPr(sha);
     loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);
