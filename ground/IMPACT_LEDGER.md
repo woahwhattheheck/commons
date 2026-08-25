@@ -8,9 +8,9 @@ Slack `1787638509.277739` (2026-08-25), owner P0:
 
 A Slack alert is **CLAIMED**. The leftover is TRACE CONSUMERS. This
 instrument records, for each high-risk consumer: source post/ID/time,
-exact claimed search space X, bytes-derived Y or `FINDER-FAILED`,
-explicit Z, downstream claim/branch/PR, current owner, and required
-repair.
+exact named search space X, bytes-derived Y or `FINDER-FAILED`,
+explicit Z, downstream row/branch/PR, lane holder, and the repair
+that lands.
 
 It does not remint `gauge-zero-audit-20260825-01`. It does not take
 finder-zero PR 2175, JOJO `jojo-visual-ci-20260825-01`, SPECTER

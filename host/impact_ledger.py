@@ -7,8 +7,8 @@ authoritative zeros. Every Claude-reported zero is quarantined.
 
 The leftover is TRACE CONSUMERS, not another essay. For each named
 high-risk consumer this instrument records source id/time, exact
-claimed search space X, bytes-derived Y or FINDER-FAILED, explicit Z,
-downstream claim/PR, current owner, and required repair.
+named search space X, bytes-derived Y or FINDER-FAILED, explicit Z,
+downstream row/PR, lane holder, and the repair that lands.
 
 A miss never prints 0. Calibration miss or Z prints FINDER-FAILED
 plus the full search space. Claude zeros stay QUARANTINED even when
