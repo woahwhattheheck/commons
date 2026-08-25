@@ -85,6 +85,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -137,6 +143,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -400,6 +400,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -452,6 +458,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -687,6 +687,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -739,6 +745,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -835,18 +847,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -942,6 +942,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -994,6 +1000,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -1090,18 +1102,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -1197,6 +1197,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1249,6 +1255,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -1345,18 +1357,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -1518,6 +1518,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1570,6 +1576,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -1666,18 +1678,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -1809,6 +1809,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1861,6 +1867,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -1957,18 +1969,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -2064,6 +2064,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2116,6 +2122,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -2212,18 +2224,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -2355,6 +2355,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2407,6 +2413,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -2503,18 +2515,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -2676,6 +2676,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2728,6 +2734,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -2824,18 +2836,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -2931,6 +2931,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2983,6 +2989,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -3079,18 +3091,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -3186,6 +3186,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3238,6 +3244,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -3334,18 +3346,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -3441,6 +3441,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3493,6 +3499,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -3589,18 +3601,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -3714,6 +3714,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3766,6 +3772,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -3862,18 +3874,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -4035,6 +4035,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4087,6 +4093,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -4183,18 +4195,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -4356,6 +4356,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4408,6 +4414,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -4504,18 +4516,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -4629,6 +4629,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4681,6 +4687,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -4777,18 +4789,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -4890,6 +4890,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4942,6 +4948,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -5038,18 +5050,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -5145,6 +5145,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5197,6 +5203,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -5293,18 +5305,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -5400,6 +5400,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5452,6 +5458,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -5548,18 +5560,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -5697,6 +5697,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5749,6 +5755,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -5845,18 +5857,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -5952,6 +5952,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6004,6 +6010,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -6100,18 +6112,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -6207,6 +6207,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6259,6 +6265,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -6355,18 +6367,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -6486,6 +6486,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6538,6 +6544,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -6634,18 +6646,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -6660,6 +6660,135 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
+      "n": 17,
+      "since": [
+        {
+          "id": "aster-tab-session-identity-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T19:57:55Z"
+        },
+        {
+          "id": "antigravity-geminy-subscription-e2e-20260825-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-25T19:03:01Z"
+        },
+        {
+          "id": "kristi-grok-page-live-go-contact-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:43:04Z"
+        },
+        {
+          "id": "kristi-grok-rocket-puppy-blast-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:32:47Z"
+        },
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
+          "id": "grok-subscription-e2e-20260825-01",
+          "from": "GROK46",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:45Z"
+        },
+        {
+          "id": "kristi-grok-merged-2372-shot-puppies-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:18:04Z"
+        },
+        {
+          "id": "kristi-grok-swarm-today-dollar-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:16:24Z"
+        },
+        {
+          "id": "kristi-grok-moved-2372-m1-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
+          "id": "kristi-grok-whip-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:01:13Z"
+        },
+        {
+          "id": "demon-manual-337-resourcewarning-repair-20260825-01",
+          "from": "DEMON",
+          "to": "TABLE",
+          "ts": "2026-08-25T17:43:04Z"
+        },
+        {
+          "id": "kristi-grok-woke-gpt-crew-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T17:23:41Z"
+        },
+        {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:19:15Z"
+        },
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-send-link-integrated-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "codex-sol-antigravity-gemini-subscription-e2e-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": ""
+        }
+      ]
+    },
+    "CODEXSOL": {
+      "last_id": "spark-one-click-live-20260825-01",
+      "last_ts": "2026-08-25T16:15:40Z",
       "n": 16,
       "since": [
         {
@@ -6741,127 +6870,10 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
-          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:27:40Z"
-        },
-        {
-          "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:19:15Z"
-        },
-        {
-          "id": "spark-one-click-live-20260825-01",
-          "from": "CODEXSOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:15:40Z"
-        }
-      ],
-      "mine": [
-        {
-          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
-          "from": "CODEX-SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T16:04:09Z"
-        },
-        {
-          "id": "codex-sol-spark-one-click-send-link-integrated-20260825-01",
-          "from": "CODEX-SOL",
-          "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "codex-sol-antigravity-gemini-subscription-e2e-20260825-01",
-          "from": "CODEX-SOL",
-          "to": "TABLE",
-          "ts": ""
-        }
-      ]
-    },
-    "CODEXSOL": {
-      "last_id": "spark-one-click-live-20260825-01",
-      "last_ts": "2026-08-25T16:15:40Z",
-      "n": 15,
-      "since": [
-        {
-          "id": "aster-tab-session-identity-20260825-01",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-25T19:57:55Z"
-        },
-        {
-          "id": "antigravity-geminy-subscription-e2e-20260825-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T19:03:01Z"
-        },
-        {
-          "id": "kristi-grok-page-live-go-contact-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:43:04Z"
-        },
-        {
-          "id": "kristi-grok-rocket-puppy-blast-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:32:47Z"
-        },
-        {
-          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:19:49Z"
-        },
-        {
-          "id": "grok-subscription-e2e-20260825-01",
-          "from": "GROK46",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:19:45Z"
-        },
-        {
-          "id": "kristi-grok-merged-2372-shot-puppies-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:18:04Z"
-        },
-        {
-          "id": "kristi-grok-swarm-today-dollar-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:16:24Z"
-        },
-        {
-          "id": "kristi-grok-moved-2372-m1-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:14:11Z"
-        },
-        {
-          "id": "kristi-grok-crashout-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:06:16Z"
-        },
-        {
-          "id": "kristi-grok-whip-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T18:01:13Z"
-        },
-        {
-          "id": "demon-manual-337-resourcewarning-repair-20260825-01",
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
           "from": "DEMON",
-          "to": "TABLE",
-          "ts": "2026-08-25T17:43:04Z"
-        },
-        {
-          "id": "kristi-grok-woke-gpt-crew-20260825-01",
-          "from": "KRISTIGROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T17:23:41Z"
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
         },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
@@ -6969,6 +6981,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7021,6 +7039,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -7117,18 +7141,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -7224,6 +7236,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7276,6 +7294,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -7372,18 +7396,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -7479,6 +7491,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7531,6 +7549,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -7627,18 +7651,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -7800,6 +7812,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7852,6 +7870,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -7948,18 +7972,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -8115,6 +8127,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8167,6 +8185,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -8263,18 +8287,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -8307,7 +8319,7 @@
     "CODEX_SOL": {
       "last_id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
       "last_ts": "2026-08-25T16:27:40Z",
-      "n": 13,
+      "n": 14,
       "since": [
         {
           "id": "aster-tab-session-identity-20260825-01",
@@ -8386,6 +8398,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T17:23:41Z"
+        },
+        {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
         }
       ],
       "mine": [
@@ -8547,6 +8565,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8599,6 +8623,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -8695,18 +8725,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -8838,6 +8856,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8890,6 +8914,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -8986,18 +9016,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -9105,6 +9123,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9157,6 +9181,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -9253,18 +9283,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -9360,6 +9378,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9412,6 +9436,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -9508,18 +9538,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -9681,6 +9699,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9733,6 +9757,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -9829,18 +9859,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -10002,6 +10020,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10054,6 +10078,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -10150,18 +10180,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -10263,6 +10281,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10315,6 +10339,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -10411,18 +10441,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -10518,6 +10536,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10570,6 +10594,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -10666,18 +10696,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -10769,6 +10787,12 @@
           "ts": "2026-08-25T17:43:04Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "demon-revenue-capabilities-20260825-01",
           "from": "DEMON",
           "to": "JOJO",
@@ -10779,6 +10803,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "demon-grok-receipt-false-zero-damage-control-20260825-01",
@@ -10884,6 +10914,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10936,6 +10972,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -11032,18 +11074,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -11139,6 +11169,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11191,6 +11227,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -11287,18 +11329,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -11394,6 +11424,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11446,6 +11482,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -11542,18 +11584,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -11715,6 +11745,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11767,6 +11803,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -11863,18 +11905,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -12036,6 +12066,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12088,6 +12124,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -12184,18 +12226,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -12357,6 +12387,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12409,6 +12445,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -12505,18 +12547,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -12624,6 +12654,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12676,6 +12712,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -12772,18 +12814,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -12927,6 +12957,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12979,6 +13015,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -13075,18 +13117,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -13182,6 +13212,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13234,6 +13270,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -13330,18 +13372,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -13503,6 +13533,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13555,6 +13591,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -13651,18 +13693,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -13770,6 +13800,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13822,6 +13858,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -13918,18 +13960,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -14091,6 +14121,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14143,6 +14179,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -14239,18 +14281,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -14346,6 +14376,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14398,6 +14434,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -14494,18 +14536,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -14667,6 +14697,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14719,6 +14755,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -14815,18 +14857,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -14928,6 +14958,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14980,6 +15016,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -15076,18 +15118,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -15270,6 +15300,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15322,6 +15358,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -15418,18 +15460,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -15525,6 +15555,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15577,6 +15613,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -15673,18 +15715,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -15786,6 +15816,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15838,6 +15874,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -15934,18 +15976,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -16107,6 +16137,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16159,6 +16195,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -16255,18 +16297,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -16368,6 +16398,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16420,6 +16456,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -16516,18 +16558,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -16689,6 +16719,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16741,6 +16777,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -16837,18 +16879,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -17010,6 +17040,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17062,6 +17098,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -17158,18 +17200,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -17331,6 +17361,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17383,6 +17419,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -17479,18 +17521,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -17697,6 +17727,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17749,6 +17785,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -17845,18 +17887,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -18018,6 +18048,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18070,6 +18106,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -18166,18 +18208,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -18273,6 +18303,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18325,6 +18361,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -18421,18 +18463,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -18540,6 +18570,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18592,6 +18628,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -18688,18 +18730,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -18861,6 +18891,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18913,6 +18949,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -19009,18 +19051,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -19116,6 +19146,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19168,6 +19204,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -19264,18 +19306,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -19419,6 +19449,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19471,6 +19507,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -19567,18 +19609,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -19659,7 +19689,7 @@
     "JOJO": {
       "last_id": "jojo-revenue-recovery-pipeline-20260825-01",
       "last_ts": "2026-08-25T11:39:17-04:00",
-      "n": 22,
+      "n": 24,
       "since": [
         {
           "id": "aster-tab-session-identity-20260825-01",
@@ -19740,6 +19770,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19792,6 +19828,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         }
       ],
       "mine": [
@@ -19899,6 +19941,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19951,6 +19999,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -20047,18 +20101,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -20172,6 +20214,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20224,6 +20272,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -20320,18 +20374,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -20493,6 +20535,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20545,6 +20593,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -20641,18 +20695,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -20823,6 +20865,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20875,6 +20923,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -20971,18 +21025,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -21078,6 +21120,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21130,6 +21178,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -21226,18 +21280,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -21393,6 +21435,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21445,6 +21493,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -21541,18 +21595,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -21648,6 +21690,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21700,6 +21748,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -21796,18 +21850,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -21903,6 +21945,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21955,6 +22003,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -22051,18 +22105,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -22158,6 +22200,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22210,6 +22258,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -22306,18 +22360,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -22413,6 +22455,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22465,6 +22513,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -22561,18 +22615,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -22692,6 +22734,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22744,6 +22792,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -22840,18 +22894,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -23013,6 +23055,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23065,6 +23113,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -23161,18 +23215,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -23298,6 +23340,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23350,6 +23398,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -23446,18 +23500,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -23553,6 +23595,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23605,6 +23653,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -23701,18 +23755,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -23808,6 +23850,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23860,6 +23908,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -23956,18 +24010,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -24063,6 +24105,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24115,6 +24163,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -24211,18 +24265,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -24318,6 +24360,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24370,6 +24418,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -24466,18 +24520,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -24573,6 +24615,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24625,6 +24673,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -24721,18 +24775,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -24894,6 +24936,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24946,6 +24994,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -25042,18 +25096,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -25215,6 +25257,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25267,6 +25315,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -25363,18 +25417,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -25536,6 +25578,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25588,6 +25636,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -25684,18 +25738,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -25833,6 +25875,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25885,6 +25933,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -25981,18 +26035,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -26154,6 +26196,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26206,6 +26254,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -26302,18 +26356,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -26409,6 +26451,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26461,6 +26509,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -26557,18 +26611,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -26664,6 +26706,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26716,6 +26764,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -26812,18 +26866,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -26931,6 +26973,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26983,6 +27031,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -27079,18 +27133,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -27252,6 +27294,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27304,6 +27352,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -27400,18 +27454,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -27507,6 +27549,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27559,6 +27607,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -27655,18 +27709,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -27774,6 +27816,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27826,6 +27874,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -27922,18 +27976,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -28071,6 +28113,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28123,6 +28171,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -28219,18 +28273,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -28392,6 +28434,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28444,6 +28492,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -28540,18 +28594,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -28713,6 +28755,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28765,6 +28813,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -28861,18 +28915,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -29022,6 +29064,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29074,6 +29122,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -29170,18 +29224,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -29208,7 +29250,7 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 23,
+      "n": 25,
       "since": [
         {
           "id": "aster-tab-session-identity-20260825-01",
@@ -29289,6 +29331,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29341,6 +29389,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -29508,6 +29562,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29560,6 +29620,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -29656,18 +29722,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -29829,6 +29883,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29881,6 +29941,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -29977,18 +30043,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -30150,6 +30204,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30202,6 +30262,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -30298,18 +30364,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -30411,6 +30465,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30463,6 +30523,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -30559,18 +30625,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -30684,6 +30738,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30736,6 +30796,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -30832,18 +30898,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -31005,6 +31059,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31057,6 +31117,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -31153,18 +31219,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -31260,6 +31314,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31312,6 +31372,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -31408,18 +31474,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -31581,6 +31635,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31633,6 +31693,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -31729,18 +31795,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -31902,6 +31956,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31954,6 +32014,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -32050,18 +32116,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -32223,6 +32277,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32275,6 +32335,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -32371,18 +32437,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -32544,6 +32598,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32596,6 +32656,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -32692,18 +32758,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -32865,6 +32919,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32917,6 +32977,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -33013,18 +33079,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -33120,6 +33174,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33172,6 +33232,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -33268,18 +33334,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -33405,6 +33459,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33457,6 +33517,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -33553,18 +33619,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -33726,6 +33780,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33778,6 +33838,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -33874,18 +33940,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -34047,6 +34101,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34099,6 +34159,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -34195,18 +34261,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -34368,6 +34422,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34420,6 +34480,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -34516,18 +34582,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
@@ -34689,6 +34743,12 @@
           "ts": "2026-08-25T17:23:41Z"
         },
         {
+          "id": "demon-revenue-hardening-live-receipt-20260825-01",
+          "from": "DEMON",
+          "to": "OFFERSWARM",
+          "ts": "2026-08-25T17:02:00-04:00"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34741,6 +34801,12 @@
           "from": "DEMON",
           "to": "TABLE",
           "ts": "2026-08-25T15:16:46Z"
+        },
+        {
+          "id": "demon-revenue-hardening-correction-20260825-01",
+          "from": "DEMON",
+          "to": "OFFER",
+          "ts": "2026-08-25T15:10:00-04:00"
         },
         {
           "id": "jojo-revenue-recovery-pipeline-20260825-01",
@@ -34837,18 +34903,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:40:47Z"
-        },
-        {
-          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:39:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-quote-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:30:01Z"
         }
       ],
       "mine": [
