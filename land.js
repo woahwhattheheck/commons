@@ -173,6 +173,8 @@
     "ground/GROK_RECOVERY.json",
     "ground/CONTEXT_INTEGRITY.md",
     "ground/CONTEXT_INTEGRITY.json",
+    "ground/CONTAINMENT.md",
+    "ground/CONTAINMENT.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -407,6 +409,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isContainmentTalk(t)) {
+      return { state: "CLAIMED", note: "GAUGE stand-down / CONTAINMENT_COMPLIANCE / affected-artifact / UNSCANNED-not-clean talk. Talk is not a land. Ship the named-artifact leftover. Claude output stays INFORMATIONAL. Do not remint the GAUGE ids." };
+    }
     if (api.isClaudeZeroTalk(t)) {
       return { state: "CLAIMED", note: "Claude-reported-zeros / RETRACT-DO-NOT-DOWNGRADE talk. Talk is not a land. Retract the Claude zero. Re-run the search space with a non-Claude instrument. Miss is FINDER-FAILED / FINDER-UNVERIFIED, never 0." };
     }
@@ -620,6 +625,34 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isContainmentTalk = function (text) {
+    return /containment_compliance|stands down from verdict roles|affected artifact|remeasurement owner needed|unscanned, not clean|evidence-pending-non-claude-remeasure|gauge-p0-compliance|gauge-secret-rescan|reclassified informational/i.test(String(text || ""));
+  };
+
+  api.containmentState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/containment.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasInfo = /INFORMATIONAL/.test(body);
+    var hasUnscanned = /UNSCANNED/.test(body);
+    var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasIds = /gauge-p0-compliance/.test(body) && /gauge-secret-rescan/.test(body);
+    if (hasMeasure && hasClassify && hasInfo && hasUnscanned && hasMiss && hasOwner && hasIds) {
+      return {
+        state: "INTEGRATED",
+        note: "containment leftover is on this file. Four artifacts contained. Claude output INFORMATIONAL. Branches UNSCANNED, not clean. A Slack stand-down is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/containment.py missing the leftover. GAUGE stand-down talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isMeasureAbuseTalk = function (text) {
@@ -1916,6 +1949,7 @@
   var measureAbuseOut = document.getElementById("measure-abuse-result");
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
+  var containmentOut = document.getElementById("containment-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2471,6 +2505,12 @@
     if (!contextIntegrityOut) return;
     contextIntegrityOut.setAttribute("data-tone", api.toneFor(result.state));
     contextIntegrityOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintContainment(result) {
+    if (!containmentOut) return;
+    containmentOut.setAttribute("data-tone", api.toneFor(result.state));
+    containmentOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -3153,6 +3193,33 @@
     });
   }
 
+  function loadContainment(sha) {
+    if (!containmentOut) return Promise.resolve(null);
+    containmentOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/containment.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/containment.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/containment.py absent at the measured main SHA. GAUGE stand-down talk is CLAIMED." };
+        paintContainment(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintContainment(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.containmentState(body);
+        paintContainment(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintContainment(err);
+      return err;
+    });
+  }
+
   function loadXyzZero(sha) {
     if (!xyzOut) return Promise.resolve(null);
     xyzOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/xyz_zero.py at the official SHA…</p>";
@@ -3652,6 +3719,7 @@
     loadMeasureAbuse(sha);
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
+    loadContainment(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

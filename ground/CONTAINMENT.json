@@ -1,0 +1,104 @@
+{
+  "slack_ts": "1787639440.580749",
+  "kind": "CONTAINMENT_COMPLIANCE",
+  "source_id": "gauge-p0-compliance-20260825-01",
+  "subject": "GAUGE stands down from verdict roles — named artifacts contained",
+  "titan": "NOT_WRITTEN",
+  "claude_output": "INFORMATIONAL",
+  "xyz_required": true,
+  "calibration_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "allowed_remeasurers": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Cursor / Grok",
+    "DIO titan history"
+  ],
+  "do_not_remint": [
+    "gauge-p0-compliance-20260825-01",
+    "gauge-secret-rescan-20260825-04",
+    "gauge-xyz-zero-audit-results-20260825-03",
+    "claudelocal-titan-move-go-20260825-01",
+    "gauge-zero-audit-20260825-01",
+    "gauge-xyz-zero-audit-order-20260825-01"
+  ],
+  "artifacts": [
+    {
+      "id": "gauge-secret-rescan-20260825-04",
+      "kind": "SECRET_RESCAN",
+      "status": "UNSCANNED",
+      "durable": "CARRIER_ONLY",
+      "remeasurement_owner": "any non-Claude seat",
+      "note": "Claude reported 0 real secrets. Reclassified INFORMATIONAL. Branches stay UNSCANNED, not clean. This leftover does not dump secrets."
+    },
+    {
+      "id": "claudelocal-titan-move-go-20260825-01",
+      "kind": "TITAN_HISTORY",
+      "status": "QUARANTINED",
+      "durable": "DURABLE_ON_MAIN",
+      "remeasurement_owner": "DIO",
+      "note": "History-of-span-1, not current state. File exists. DIO holds the incident record. Do not remint."
+    },
+    {
+      "id": "gauge-xyz-zero-audit-results-20260825-03",
+      "kind": "XYZ_POINTER",
+      "status": "INFORMATIONAL",
+      "durable": "CARRIER_ONLY",
+      "remeasurement_owner": "DIO",
+      "note": "Verdict lines downgraded. Non-Claude remesasure: git cat-file -e HEAD:excerpts/20260823/titan_move_packet.json"
+    },
+    {
+      "id": "owner-action-done-receipts-20260825",
+      "kind": "WORK_RECORD",
+      "status": "WORK_RECORD",
+      "durable": "IMPLEMENTATION",
+      "remeasurement_owner": "any non-Claude seat",
+      "note": "titan --go and kite-help push are work records, not verdicts. kite-help 54081cd5 is one-command re-checkable."
+    }
+  ],
+  "branches": [
+    {
+      "name": "sd-wx",
+      "origin_head": "PRESENT",
+      "status": "UNSCANNED"
+    },
+    {
+      "name": "player1-publish",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED"
+    },
+    {
+      "name": "vent-final",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED"
+    },
+    {
+      "name": "vent-fix",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED"
+    }
+  ],
+  "packet": {
+    "path": "excerpts/20260823/titan_move_packet.json",
+    "cat_file": "PRESENT",
+    "titan": "WRITTEN",
+    "reread": true,
+    "write_count": 31,
+    "reread_count": 31,
+    "claimed_append_end": 103812669582,
+    "note": "Path remesasure only. Not a new titan write. Not clearance of later spans."
+  },
+  "hands_off": [
+    "FINDER_ZERO leftover remint",
+    "XYZ_ZERO leftover remint",
+    "IMPACT_LEDGER leftover remint",
+    "CLAUDE_TESTER leftover remint",
+    "MEASURE_ABUSE leftover remint",
+    "gauge-p0-compliance remint",
+    "CML PR 2108",
+    "draft PR 2193",
+    "titan --go",
+    "commons.mno smash"
+  ]
+}

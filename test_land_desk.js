@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825am/.test(html), "desk must bust the context-integrity cache key");
+assert.ok(/20260825am/.test(html), "desk must bust the containment cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1433,6 +1433,49 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isContainmentTalk, "land.js must classify GAUGE stand-down / CONTAINMENT_COMPLIANCE talk");
+assert.ok(api.containmentState, "land.js must classify the containment leftover");
+assert.ok(api.isContainmentTalk("from: GAUGE\nid: gauge-p0-compliance-20260825-01\nkind: CONTAINMENT_COMPLIANCE\nsubject: GAUGE stands down from verdict roles\nAFFECTED ARTIFACT 1\nREMEASUREMENT OWNER NEEDED\nUNSCANNED, not clean\nreclassified INFORMATIONAL\nevidence-pending-non-Claude-remeasure"), "GAUGE stand-down is talk");
+assert.ok(!api.isContainmentTalk("make sure people do more than talk about shit"), "ship-talk is not the containment leftover");
+assert.ok(!api.isContainmentTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy is not the containment leftover");
+assert.ok(!api.isContainmentTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not the containment leftover");
+assert.ok(!api.isContainmentTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the containment leftover");
+assert.ok(!api.isContainmentTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the containment leftover");
+assert.ok(!api.isContainmentTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not the containment leftover");
+assert.ok(!api.isContainmentTalk("GROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT. prompt-address. 01a0373e."), "grok-recovery copy is not the containment leftover");
+assert.ok(!api.isClaudeZeroTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the Claude-zero leftover");
+assert.ok(!api.isGrokRecoveryTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the grok-recovery leftover");
+assert.ok(!api.isContextIntegrityTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean. remesasurement owner needed."), "containment copy is not the context-integrity leftover");
+assert.ok(!api.isContainmentTalk("OWNER CONTEXT-INTEGRITY BOUNDARY. uncalibrated doubt. pseudo-clinical. intellect / motives / mental state."), "context-integrity copy is not the containment leftover");
+assert.ok(!api.isMeasureAbuseTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not measure-abuse leftover");
+assert.ok(!api.isImpactLedgerTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean. remesasurement owner needed."), "containment copy is not impact-ledger leftover");
+assert.ok(!api.isFinderZeroTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy without GAUGE zero-audit phrases is not finder-zero leftover");
+assert.ok(!api.isClaudeTesterTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the Claude-tester leftover");
+var containTalk = api.completionStateFromText(
+  "from: GAUGE\nid: gauge-p0-compliance-20260825-01\nkind: CONTAINMENT_COMPLIANCE\nGAUGE stands down from verdict roles\nAFFECTED ARTIFACT\nREMEASUREMENT OWNER NEEDED\nUNSCANNED, not clean\nknown-present calibration."
+);
+assert.strictEqual(containTalk.state, "CLAIMED");
+assert.ok(/CONTAINMENT_COMPLIANCE|stand-down|UNSCANNED/i.test(containTalk.note), "containment-without-SHA must stay CLAIMED and beat finder-zero");
+var containDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ncontainment leftover landed"
+);
+assert.strictEqual(containDone.state, "INTEGRATED", "completion words still beat containment talk");
+var containEmpty = api.containmentState("");
+assert.strictEqual(containEmpty.state, "UNMEASURED");
+var containMissing = api.containmentState("# empty stub\nno leftover");
+assert.strictEqual(containMissing.state, "NOT_LANDED");
+var containOk = api.containmentState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nINFORMATIONAL\nUNSCANNED\nFINDER-UNVERIFIED\nNever 0\nCursor / Grok\ngauge-p0-compliance\ngauge-secret-rescan\n");
+assert.strictEqual(containOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(containOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="containment-result"') >= 0, "desk must name the containment leftover");
+assert.ok(html.indexOf("host/containment.py") >= 0, "desk must name the containment instrument");
+assert.ok(html.indexOf("ground/CONTAINMENT.md") >= 0, "desk must link the containment card");
+assert.ok(html.indexOf("ground/CONTAINMENT.json") >= 0, "desk must link the containment catalog");
+assert.ok(html.indexOf("1787639440.580749") >= 0, "desk must cite the GAUGE stand-down Slack ts");
+assert.ok(html.indexOf("gauge-p0-compliance-20260825-01") >= 0, "desk must name the GAUGE compliance id");
+assert.ok(/CONTAINMENT_COMPLIANCE|stands down|UNSCANNED-not-clean|reclassified-INFORMATIONAL/i.test(html), "desk must name containment talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONTAINMENT.md") >= 0, "containment card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONTAINMENT.json") >= 0, "containment catalog must stay a canary");
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
