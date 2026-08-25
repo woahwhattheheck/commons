@@ -233,6 +233,9 @@
     "ground/H002.json",
     "ground/HUMAN_OUTCOMES.md",
     "ground/HUMAN_OUTCOMES.json",
+    "ground/SUBZERO_QUOTE.md",
+    "ground/SUBZERO_QUOTE.json",
+    "subzero-quote.html",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -463,6 +466,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSubzeroQuoteTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO commercial-consequence / sz-paid-validation / $2500 quote-draft / STRUCTURAL_ONLY-is-not-cash talk. Talk is not a land. Ship the quote leftover to current main. Presence stays PRESENT and not runtime. Do not remint SUBZERO_TECH, SUBZERO_GTM, SUBZERO_BUYERS, explorer, proof, White Box, or human-outcomes." };
     }
     if (api.isHumanOutcomesTalk(t)) {
       return { state: "CLAIMED", note: "DEMON TAKING / revenue/human-outcomes / humans.html / human-value-not-proof-worship talk. Talk is not a land. Ship the four named human jobs to current main. Collected cash stays $0 / NOT_LANDED. Do not remint the DEMON taking id, White Box, payment-ready, SUBZERO, compression, or DIO." };
@@ -927,6 +933,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isSubzeroQuoteTalk = function (text) {
+    return /1787649732\.551439|sz-paid-validation[\s\S]{0,80}quote draft|quote draft over STRUCTURAL_ONLY|commercial consequence|not runtime, demand, or cash proof/i.test(String(text || ""));
+  };
+
+  api.subzeroQuoteState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/subzero_quote.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasQuote = /def classify_quote/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesSku = /sz-paid-validation/.test(body);
+    var namesDraft = /QUOTE_DRAFT/.test(body);
+    var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasQuote && hasMiss && neverZero && namesSku && namesDraft && namesCash && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "SUBZERO quote leftover is on this file. sz-paid-validation stays a $2500 QUOTE_DRAFT. A Slack commercial consequence is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/subzero_quote.py missing the leftover. JOJO commercial-consequence / sz-paid-validation / quote-draft talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3425,6 +3461,7 @@
   var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var subzeroQuoteOut = document.getElementById("subzero-quote-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4127,6 +4164,12 @@
     if (!humanOutcomesOut) return;
     humanOutcomesOut.setAttribute("data-tone", api.toneFor(result.state));
     humanOutcomesOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSubzeroQuote(result) {
+    if (!subzeroQuoteOut) return;
+    subzeroQuoteOut.setAttribute("data-tone", api.toneFor(result.state));
+    subzeroQuoteOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5078,6 +5121,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadSubzeroQuote(sha) {
+    if (!subzeroQuoteOut) return Promise.resolve(null);
+    subzeroQuoteOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/subzero_quote.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/subzero_quote.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/subzero_quote.py absent at the measured main SHA. JOJO commercial-consequence / sz-paid-validation / quote-draft talk is CLAIMED." };
+        paintSubzeroQuote(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSubzeroQuote(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.subzeroQuoteState(body);
+        paintSubzeroQuote(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSubzeroQuote(err);
       return err;
     });
   }
@@ -6374,6 +6444,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadSubzeroQuote(sha);
     loadHumanOutcomes(sha);
     loadH002(sha);
     loadHeavyLanes(sha);

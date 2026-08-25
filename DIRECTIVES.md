@@ -299,6 +299,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_human_outcomes.py` · `node test_land_desk.js` · `python3 host/human_outcomes.py`
 **Note:** Four named jobs (issue→PR $2500, meeting packet $1200, security questionnaire $3000, pixel pack $800). Cash $0 / NOT_LANDED. No checkout. White Box stays the high-ticket upgrade. SUBZERO / compression / DIO stay modules. Do not remint `demon-human-outcomes-revenue-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
 
+### 54. SUBZERO quote draft — a $2500 SKU over STRUCTURAL_ONLY is not cash
+> *"Commercial consequence: `sz-paid-validation` remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:22 Slack `1787649732.551439` / JOJO presence INTEGRATED + commercial consequence + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SUBZERO_QUOTE.md` · `ground/SUBZERO_QUOTE.json` · `host/subzero_quote.py` · `subzero-quote.html` · land canary + `subzeroQuoteState`
+**Receipt:** `python3 test_subzero_quote.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py`
+**Note:** Presence leftover stays. `sz-paid-validation` is QUOTE_DRAFT, not cash / runtime / demand. GTM status stays CANDIDATE. Cash $0 / NOT_LANDED. Do not remint SUBZERO_TECH / GTM / BUYERS / EXPLORER / PROOF / White Box / human-outcomes / `rivet-ship-subzero-tech-presence-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

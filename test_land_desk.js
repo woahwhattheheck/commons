@@ -1563,6 +1563,37 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isSubzeroQuoteTalk, "land.js must classify SUBZERO quote leftover talk");
+assert.ok(api.subzeroQuoteState, "land.js must classify the SUBZERO quote leftover");
+assert.ok(api.isSubzeroQuoteTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof. 1787649732.551439"), "JOJO commercial consequence is leftover talk");
+assert.ok(!api.isSubzeroQuoteTalk("make sure people do more than talk about shit"), "generic ship-talk is not the quote leftover");
+assert.ok(!api.isSubzeroQuoteTalk("TAKING revenue/human-outcomes package from current main\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the quote leftover");
+assert.ok(!api.isSubzeroQuoteTalk("SUBZERO PANEL 1/3 — TECHNICAL/IP/VALIDATION INVENTORY\ndemon-redteam-subzero-tech-ip-20260825-04"), "SUBZERO tech inventory is not the quote leftover");
+assert.ok(!api.isHumanOutcomesTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY\n1787649732.551439"), "quote leftover is not the human-outcomes leftover");
+var subzeroQuoteTalk = api.completionStateFromText(
+  "Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof.\n1787649732.551439"
+);
+assert.strictEqual(subzeroQuoteTalk.state, "CLAIMED");
+assert.ok(/quote-draft|sz-paid-validation|STRUCTURAL_ONLY-is-not-cash/i.test(subzeroQuoteTalk.note), "quote leftover without SHA must stay CLAIMED and beat ship-talk");
+var subzeroQuoteDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero quote leftover landed"
+);
+assert.strictEqual(subzeroQuoteDone.state, "INTEGRATED", "completion words still beat quote leftover talk");
+var subzeroQuoteEmpty = api.subzeroQuoteState("");
+assert.strictEqual(subzeroQuoteEmpty.state, "UNMEASURED");
+var subzeroQuoteMissing = api.subzeroQuoteState("# empty stub\nno leftover");
+assert.strictEqual(subzeroQuoteMissing.state, "NOT_LANDED");
+var subzeroQuoteOk = api.subzeroQuoteState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef classify_quote(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nQUOTE_DRAFT\n$0 / NOT_LANDED\nno auth\nno gate\n");
+assert.strictEqual(subzeroQuoteOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(subzeroQuoteOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="subzero-quote-result"') >= 0, "desk must name the SUBZERO quote leftover");
+assert.ok(html.indexOf("host/subzero_quote.py") >= 0, "desk must name the quote instrument");
+assert.ok(html.indexOf("ground/SUBZERO_QUOTE.md") >= 0, "desk must link the quote card");
+assert.ok(html.indexOf("ground/SUBZERO_QUOTE.json") >= 0, "desk must link the quote catalog");
+assert.ok(html.indexOf("1787649732.551439") >= 0, "desk must cite the JOJO commercial-consequence Slack ts");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_QUOTE.md") >= 0, "quote card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_QUOTE.json") >= 0, "quote catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("subzero-quote.html") >= 0, "quote door must stay a canary");
 assert.ok(api.isHumanOutcomesTalk, "land.js must classify human-outcomes leftover talk");
 assert.ok(api.humanOutcomesState, "land.js must classify the human-outcomes leftover");
 assert.ok(api.isHumanOutcomesTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\nhuman value, not proof worship\naccessible public-meeting packet\nsecurity questionnaire completion\n8-bit/pixel agent pack\np/demon-human-outcomes-revenue-20260825-01.md\n1787648711.782309"), "DEMON human-outcomes taking is leftover talk");
