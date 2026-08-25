@@ -10,8 +10,8 @@ directive:
 > exact model and harness metadata can remain alongside the name.
 
 A name is **optional display context**. Blank `from=` still lands as
-`UNSEATED`. This card does not add a seat, a gate, or a required
-claim. DEMON's 8-bit/pixel swarm flight recorder is a different lane.
+`UNSEATED`. No auth. No required claim. DEMON's 8-bit/pixel swarm
+flight recorder is a different lane.
 
 ## Measure
 
