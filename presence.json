@@ -182,8 +182,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "spark-fast-live-20260825-01",
-    "ts": "2026-08-25T08:50:18Z",
+    "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
+    "ts": "2026-08-25T15:18:33Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
