@@ -668,12 +668,39 @@ assert.strictEqual(titanJournal.state, "CANDIDATE");
 assert.ok(/journaled/.test(titanJournal.note), "public journal without titan write is CANDIDATE");
 var titanOk = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "WRITTEN", nonzero_offsets: 31, reread: true });
 assert.strictEqual(titanOk.state, "INTEGRATED");
+assert.ok(api.packetRowFromJson, "land.js must map the real packet into titanMoveState");
+var livePacket = JSON.parse(fs.readFileSync(path.join(__dirname, "excerpts", "20260823", "titan_move_packet.json"), "utf8"));
+var liveJournal = JSON.parse(fs.readFileSync(path.join(__dirname, "excerpts", "20260823", "titan_move_journal.json"), "utf8"));
+var mapped = api.packetRowFromJson(livePacket, liveJournal);
+assert.strictEqual(mapped.titan, "WRITTEN");
+assert.strictEqual(mapped.reread, true);
+assert.strictEqual(mapped.write_count, 31);
+assert.strictEqual(mapped.reread_count, 31);
+assert.strictEqual(mapped.live_size_after, 103812669582);
+assert.strictEqual(mapped.nonzero_offsets, 31);
+var titanLive = api.titanMoveState(mapped);
+assert.strictEqual(titanLive.state, "INTEGRATED", "checked-in packet must classify INTEGRATED");
+var countsOnly = api.titanMoveState({
+  measured: true,
+  count: 31,
+  excerpt_count: 31,
+  titan: "WRITTEN",
+  nonzero_offsets: 31,
+  reread: false,
+  write_count: 31,
+  reread_count: 31
+});
+assert.strictEqual(countsOnly.state, "INTEGRATED", "write/reread counts are durable truth");
 assert.ok(html.indexOf('id="titan-result"') >= 0, "desk must name the titan MOVE leftover");
 assert.ok(html.indexOf("host/titan_move_dry.py") >= 0, "desk must name the titan dry instrument");
 assert.ok(html.indexOf("host/titan_move_apply.py") >= 0, "desk must name the titan apply button");
 assert.ok(html.indexOf("--journal") >= 0, "desk must name the public journal apply");
 assert.ok(html.indexOf("titan_move_journal.json") >= 0, "desk must name the public journal sidecar");
 assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan MOVE card");
+assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
+assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
+assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
+assert.ok(/20260825h/.test(html), "desk must bust the titan-truth cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");

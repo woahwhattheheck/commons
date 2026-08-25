@@ -137,7 +137,16 @@ def measure_from_packet(packet, excerpt_dir):
         "sha_ok": sha_ok,
         "titan": packet.get("titan") or "NOT_WRITTEN",
         "nonzero_offsets": nonzero,
-        "reread": False,
+        "reread": packet.get("reread") is True or (
+            int(packet.get("write_count") or 0) >= 31
+            and int(packet.get("reread_count") or 0)
+            == int(packet.get("write_count") or 0)
+        ),
+        "write_count": int(packet.get("write_count") or 0),
+        "reread_count": int(packet.get("reread_count") or 0),
+        "live_size_before": int(packet.get("live_size_before") or 0),
+        "live_size_after": int(packet.get("live_size_after") or 0),
+        "written_bytes": int(packet.get("written_bytes") or 0),
         "journal_reread": False,
         "journal_count": 0,
         "missing": missing,
@@ -148,6 +157,36 @@ def measure_from_packet(packet, excerpt_dir):
 def owner_blocker(row, verdict):
     """NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER."""
     excerpts = int((row or {}).get("excerpt_count") or 0)
+    if (verdict or {}).get("state") == "INTEGRATED":
+        return {
+            "NEED": "closed. titan write/reread already measured on the packet.",
+            "WHY_ONLY_BRYCE": (
+                "no longer blocked. dest FROM FILE C:\\llm\\models\\titan.gguf "
+                "was written on the owner PC. Receipt "
+                "p/claudelocal-titan-move-go-20260825-01.md."
+            ),
+            "SMALLEST_ACTION": (
+                "Do not run --go again. Packet write_count/reread_count/size "
+                "facts already classify INTEGRATED. --go fail-closes when "
+                "live_size equals claimed_append_end."
+            ),
+            "EVIDENCE": (
+                "Measured %s/31 excerpts. Packet titan=%s. nonzero_offsets=%s. "
+                "reread=%s write_count=%s reread_count=%s live_size_after=%s. "
+                "Desk state %s."
+            )
+            % (
+                excerpts,
+                (row or {}).get("titan") or "UNMEASURED",
+                (row or {}).get("nonzero_offsets") or 0,
+                (row or {}).get("reread"),
+                (row or {}).get("write_count") or 0,
+                (row or {}).get("reread_count") or 0,
+                (row or {}).get("live_size_after") or 0,
+                (verdict or {}).get("state") or "UNMEASURED",
+            ),
+            "AFTER": "already INTEGRATED. Do not remint the write receipt.",
+        }
     return {
         "NEED": (
             "Run host/titan_move_apply.py --go against dest-FROM-FILE "

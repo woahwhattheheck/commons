@@ -109,24 +109,48 @@ class TestTitanMoveDry(unittest.TestCase):
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertFalse(row["reread"])
 
-    def test_live_tree_is_thirty_one_and_not_written(self):
+    def test_packet_parser_reads_write_reread_facts(self):
+        packet = {
+            "kind": "TITAN_MOVE_PACKET",
+            "titan": "WRITTEN",
+            "reread": True,
+            "write_count": 31,
+            "reread_count": 31,
+            "live_size_before": 103803350291,
+            "live_size_after": 103812669582,
+            "written_bytes": 9319291,
+            "count": 1,
+            "organs": [
+                {
+                    "container": "muhl_hdvs.mno",
+                    "offset": 103805715360,
+                    "sha256": "",
+                }
+            ],
+        }
+        excerpt_dir = os.path.join(ROOT, "excerpts", "20260823")
+        row = measure_from_packet(packet, excerpt_dir)
+        self.assertEqual(row["titan"], "WRITTEN")
+        self.assertTrue(row["reread"])
+        self.assertEqual(row["write_count"], 31)
+        self.assertEqual(row["live_size_after"], 103812669582)
+        self.assertEqual(classify(row)["state"], "NOT_LANDED")
+
+    def test_live_tree_is_thirty_one_written_and_reread(self):
         row = measure_tree(ROOT)
         self.assertTrue(row["measured"], row)
         self.assertGreaterEqual(row["excerpt_count"], 31)
-        self.assertEqual(row["titan"], "NOT_WRITTEN")
+        self.assertEqual(row["titan"], "WRITTEN")
         self.assertEqual(row["nonzero_offsets"], 31)
-        self.assertFalse(row["reread"])
+        self.assertTrue(row["reread"])
+        self.assertEqual(row["write_count"], 31)
+        self.assertEqual(row["reread_count"], 31)
+        self.assertEqual(row["live_size_after"], 103812669582)
         verdict = classify(row)
-        self.assertIn(verdict["state"], ("CLAIMED", "CANDIDATE"))
-        if row.get("journal_reread") and int(row.get("journal_count") or 0) >= 31:
-            self.assertEqual(verdict["state"], "CANDIDATE")
-            self.assertIn("journaled", verdict["note"])
-        else:
-            self.assertEqual(verdict["state"], "CLAIMED")
+        self.assertEqual(verdict["state"], "INTEGRATED")
         blocker = owner_blocker(row, verdict)
-        self.assertIn("titan.gguf is not on this cloud box", blocker["WHY_ONLY_BRYCE"])
-        self.assertIn("titan.gguf", blocker["NEED"])
-        self.assertIn("titan_move_apply.py", blocker["NEED"])
+        self.assertIn("closed", blocker["NEED"])
+        self.assertIn("claudelocal-titan-move-go-20260825-01", blocker["WHY_ONLY_BRYCE"])
 
 
 if __name__ == "__main__":

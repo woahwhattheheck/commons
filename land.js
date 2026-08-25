@@ -508,6 +508,37 @@
     return /no muhlnickel,\s*organ,\s*titan,\s*or device path|no muhlnickel.{0,80}organ.{0,80}titan.{0,80}device path|stop dodging the substrate|not to be ignored and it is not to be deferred|337\s*=\s*NO|did not touch titan|did not touch \.mno|did not fire 337|did not write titan\.gguf/i.test(String(text || ""));
   };
 
+  api.packetRowFromJson = function (data, journal) {
+    data = data || {};
+    var organs = data.organs || [];
+    var nonzero = 0;
+    var i;
+    for (i = 0; i < organs.length; i += 1) {
+      if (Number(organs[i] && organs[i].offset) !== 0) nonzero += 1;
+    }
+    var writeCount = Number(data.write_count || 0);
+    var rereadCount = Number(data.reread_count || 0);
+    var reread = data.reread === true || (writeCount >= 31 && rereadCount === writeCount);
+    var row = {
+      measured: true,
+      count: Number((data && data.count) || organs.length || 0),
+      excerpt_count: organs.length,
+      titan: (data && data.titan) || "NOT_WRITTEN",
+      nonzero_offsets: nonzero,
+      reread: reread,
+      write_count: writeCount,
+      reread_count: rereadCount,
+      live_size_before: Number(data.live_size_before || 0),
+      live_size_after: Number(data.live_size_after || 0),
+      written_bytes: Number(data.written_bytes || 0),
+      journal_reread: data.public_journal_reread === true,
+      journal_count: Number((data && data.public_journal_count) || 0)
+    };
+    if (journal && journal.reread === true) row.journal_reread = true;
+    if (journal && journal.count) row.journal_count = Number(journal.count || 0);
+    return row;
+  };
+
   api.titanMoveState = function (row) {
     row = row || {};
     if (!row.measured) {
@@ -517,7 +548,9 @@
     var excerpts = Number(row.excerpt_count || 0);
     var written = String(row.titan || "").toUpperCase();
     var nonzero = Number(row.nonzero_offsets || 0);
-    var reread = row.reread === true;
+    var writeCount = Number(row.write_count || 0);
+    var rereadCount = Number(row.reread_count || 0);
+    var reread = row.reread === true || (writeCount >= 31 && rereadCount === writeCount);
     var journalReread = row.journal_reread === true;
     var journalCount = Number(row.journal_count || 0);
     if (written === "WRITTEN" && reread && nonzero === count && count >= 31) {
@@ -1158,7 +1191,7 @@
         organSum.textContent = landed + " INTEGRATED · " + open + " NOT_LANDED of " + census.length +
           " PLUMB 1–31 organs. " +
           (open === 0
-            ? "Excerpts are files. Claimed offsets are dest FROM FILE. The leftover is titan apply/reread, not another remint."
+            ? "Excerpts are files. Packet write/reread/size facts classify the MOVE. A WRITTEN+reread packet is INTEGRATED."
             : "Take a NOT_LANDED row. A PR is not this list.");
       }
       organHost.innerHTML = census.map(function (row) {
@@ -1227,38 +1260,20 @@
         return failed;
       }
       return r.json().then(function (data) {
-        var organs = (data && data.organs) || [];
-        var nonzero = 0;
-        var i;
-        for (i = 0; i < organs.length; i += 1) {
-          if (Number(organs[i] && organs[i].offset) !== 0) nonzero += 1;
-        }
-        var row = {
-          measured: true,
-          count: Number((data && data.count) || organs.length || 0),
-          excerpt_count: organs.length,
-          titan: (data && data.titan) || "NOT_WRITTEN",
-          nonzero_offsets: nonzero,
-          reread: false,
-          journal_reread: data && data.public_journal_reread === true,
-          journal_count: Number((data && data.public_journal_count) || 0)
-        };
         var journalUrl = RAW + sha + "/excerpts/20260823/titan_move_journal.json";
         return fetch(journalUrl, { cache: "no-store" }).then(function (jr) {
           if (jr.ok) {
             return jr.json().then(function (journal) {
-              if (journal && journal.reread === true) row.journal_reread = true;
-              if (journal && journal.count) row.journal_count = Number(journal.count || 0);
-              var got = api.titanMoveState(row);
+              var got = api.titanMoveState(api.packetRowFromJson(data, journal));
               paintTitan(got);
               return got;
             });
           }
-          var got = api.titanMoveState(row);
+          var got = api.titanMoveState(api.packetRowFromJson(data));
           paintTitan(got);
           return got;
         }).catch(function () {
-          var got = api.titanMoveState(row);
+          var got = api.titanMoveState(api.packetRowFromJson(data));
           paintTitan(got);
           return got;
         });

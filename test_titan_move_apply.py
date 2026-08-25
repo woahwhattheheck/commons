@@ -11,7 +11,14 @@ import unittest
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
-from titan_move_apply import apply_journal, journal_rows, main, plan_from_packet
+from titan_move_apply import (
+    already_applied,
+    apply_journal,
+    journal_rows,
+    main,
+    persist_write_facts,
+    plan_from_packet,
+)
 from titan_move_offsets import (
     CLAIMED_APPEND_BASE,
     allocate_rows,
@@ -59,6 +66,82 @@ class TestTitanMoveOffsets(unittest.TestCase):
 
     def test_inject_is_refused(self):
         self.assertEqual(main(["--inject", "0x01"]), 2)
+
+    def test_already_applied_when_live_size_equals_end(self):
+        packet = {
+            "titan": "WRITTEN",
+            "claimed_append_base": 10,
+            "claimed_append_end": 14,
+            "count": 1,
+            "organs": [{"name": "a", "len": 4}],
+        }
+        self.assertTrue(already_applied(packet, 14))
+        self.assertFalse(already_applied(packet, 10))
+        self.assertFalse(already_applied(packet, None))
+        plan = plan_from_packet(packet, live_size=14)
+        self.assertFalse(plan["reallocated"])
+        self.assertEqual(plan["claimed_append_base"], 10)
+
+    def test_persist_write_facts_counts_and_sizes(self):
+        packet = persist_write_facts(
+            {
+                "titan": "NOT_WRITTEN",
+                "organs": [{"name": "a", "titan": "NOT_WRITTEN"}],
+            },
+            write_count=31,
+            reread_count=31,
+            live_size_before=103803350291,
+            live_size_after=103812669582,
+        )
+        self.assertEqual(packet["titan"], "WRITTEN")
+        self.assertTrue(packet["reread"])
+        self.assertEqual(packet["write_count"], 31)
+        self.assertEqual(packet["reread_count"], 31)
+        self.assertEqual(packet["written_bytes"], 9319291)
+        self.assertEqual(packet["organs"][0]["titan"], "WRITTEN")
+
+    def test_go_fail_closes_against_duplicate_append(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            excerpt_dir = os.path.join(tmp, "excerpts", "20260823")
+            os.makedirs(excerpt_dir)
+            with open(os.path.join(excerpt_dir, "a.mno"), "wb") as handle:
+                handle.write(b"ab")
+            packet = {
+                "kind": "TITAN_MOVE_PACKET",
+                "titan": "WRITTEN",
+                "reread": True,
+                "write_count": 1,
+                "reread_count": 1,
+                "claimed_append_base": 2,
+                "claimed_append_end": 4,
+                "count": 1,
+                "organs": [
+                    {
+                        "name": "a",
+                        "container": "a.mno",
+                        "len": 2,
+                        "offset": 2,
+                        "titan": "WRITTEN",
+                    }
+                ],
+            }
+            packet_path = os.path.join(excerpt_dir, "titan_move_packet.json")
+            with open(packet_path, "w", encoding="utf-8") as handle:
+                json.dump(packet, handle)
+            titan = os.path.join(tmp, "titan.gguf")
+            with open(titan, "wb") as handle:
+                handle.write(b"xxab")
+            before = os.path.getsize(titan)
+            self.assertEqual(
+                main(["--root", tmp, "--titan", titan, "--go"]),
+                0,
+            )
+            self.assertEqual(os.path.getsize(titan), before)
+            with open(packet_path, encoding="utf-8") as handle:
+                landed = json.load(handle)
+            self.assertEqual(landed["titan"], "WRITTEN")
+            self.assertTrue(landed["reread"])
+            self.assertEqual(landed["live_size_after"], before)
 
     def test_journal_or_writes_and_rereads(self):
         with tempfile.TemporaryDirectory() as tmp:
