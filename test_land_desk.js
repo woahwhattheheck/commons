@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ab/.test(html), "desk must bust the finder-zero cache key");
+assert.ok(/20260825ac/.test(html), "desk must bust the stale-manifest cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1218,6 +1218,36 @@ assert.ok(!api.isFinderZeroTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + 
 assert.ok(!api.isSlackReceiptTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not Slack-receipt leftover");
 assert.ok(!api.isFinderZeroTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not finder-zero leftover");
 assert.ok(!api.isMcpWakeJobTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not the MCP-wake leftover");
+assert.ok(api.isStaleManifestTalk, "land.js must classify KEYB stale-manifest talk");
+assert.ok(api.staleManifestState, "land.js must classify the stale-manifest leftover");
+assert.ok(api.isStaleManifestTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims a63396. size agrees, bytes do not. do not land, wire, execute, or describe this container as manifest-verified. post-manifest mutation. cca2b762. stale/out-of-spec."), "KEYB stale-manifest correction is talk");
+assert.ok(!api.isStaleManifestTalk("make sure people do more than talk about shit"), "ship-talk is not the stale-manifest leftover");
+assert.ok(!api.isStaleManifestTalk("MACHINE-ONLY WORKING BUILDS — CLAIM PROVENANCE-FIRST INTEGRATION. rook-resident-native TRAIN_CIRCUITS_FROM_FILE. Do not upload model/container bytes."), "working-builds copy is not stale-manifest leftover");
+assert.ok(!api.isStaleSpecTalk("MUHL_KEYB MANIFEST IS STALE — keyb01.manifest.json size agrees, bytes do not. manifest-verified."), "KEYB stale-manifest copy is not stale-spec leftover");
+var staleManTalk = api.completionStateFromText(
+  "MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims 430860 a63396. size agrees, bytes do not. do not land, wire, execute. manifest-verified. post-manifest mutation. cca2b762."
+);
+assert.strictEqual(staleManTalk.state, "CLAIMED");
+assert.ok(/stale-manifest|size-agrees-bytes-do-not|manifest-verified/i.test(staleManTalk.note), "KEYB stale-manifest-without-SHA must stay CLAIMED");
+var staleManDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nstale-manifest leftover landed"
+);
+assert.strictEqual(staleManDone.state, "INTEGRATED", "completion words still beat stale-manifest talk");
+var staleManEmpty = api.staleManifestState("");
+assert.strictEqual(staleManEmpty.state, "UNMEASURED");
+var staleManMissing = api.staleManifestState("# empty stub\nno mismatch");
+assert.strictEqual(staleManMissing.state, "NOT_LANDED");
+var staleManOk = api.staleManifestState("def measure_from_parts(manifest_text, catalog_text):\n    claimed_sha256 = ''\n    cited_sha256 = ''\n    size_agrees = True\ndef classify(row):\n    return row\nrefuse_verified = True\ndo not describe as manifest-verified\nrefuse_rewrite = True\ndo not rewrite the original manifest\n");
+assert.strictEqual(staleManOk.state, "INTEGRATED");
+assert.ok(/NOT_VERIFIED/i.test(staleManOk.note), "landed leftover must name KEYB NOT_VERIFIED");
+assert.ok(html.indexOf('id="stale-manifest-result"') >= 0, "desk must name the stale-manifest leftover");
+assert.ok(html.indexOf("host/stale_manifest.py") >= 0, "desk must name the stale-manifest instrument");
+assert.ok(html.indexOf("ground/STALE_MANIFEST.md") >= 0, "desk must link the stale-manifest card");
+assert.ok(html.indexOf("ground/STALE_MANIFEST.json") >= 0, "desk must link the stale-manifest catalog");
+assert.ok(html.indexOf("1787638201.498979") >= 0, "desk must cite the DEMON KEYB correction Slack ts");
+assert.ok(/size-agrees-bytes-do-not|do-not-integrate-as-verified|manifest-verified|post-manifest-mutation/i.test(html), "desk must name stale-manifest talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_MANIFEST.md") >= 0, "stale-manifest card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_MANIFEST.json") >= 0, "stale-manifest catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

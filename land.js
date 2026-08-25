@@ -150,6 +150,8 @@
     "ground/MCP_WAKE_JOB.json",
     "ground/FINDER_ZERO.md",
     "ground/FINDER_ZERO.json",
+    "ground/STALE_MANIFEST.md",
+    "ground/STALE_MANIFEST.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -441,6 +443,9 @@
     if (api.isConnectorRevalTalk(t)) {
       return { state: "CLAIMED", note: "connector-utilization / provisioned-vs-live talk. Talk is not a land. Measure live probes against the Aug 21 cache and ship the leftover. Do not vacuum state.vscdb." };
     }
+    if (api.isStaleManifestTalk(t)) {
+      return { state: "CLAIMED", note: "KEYB stale-manifest / size-agrees-bytes-do-not talk. Talk is not a land. Record the hash mismatch. Do not land, wire, execute, or describe the container as manifest-verified." };
+    }
     if (api.isWorkingBuildTalk(t)) {
       return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
     }
@@ -532,6 +537,34 @@
 
   api.isConnectorRevalTalk = function (text) {
     return /connector-utilization|39 enabled services|23 cached connected|mcp\.json is empty|provisioned != live|provisioned !== live|read-only connector revalidation|state\.vscdb|do not delete\/vacuum\/repair live/i.test(String(text || ""));
+  };
+
+  api.isStaleManifestTalk = function (text) {
+    return /muhl_keyb manifest is stale|keyb01\.manifest|size agrees.{0,40}bytes do not|do not land, wire, execute|do not integrate as verified|manifest-verified|post-manifest mutation|cca2b762|stale\/out-of-spec/i.test(String(text || ""));
+  };
+
+  api.staleManifestState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/stale_manifest.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_parts/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasClaimed = /claimed_sha256/.test(body);
+    var hasCited = /cited_sha256/.test(body);
+    var sizeAgrees = /size_agrees/.test(body);
+    var refuseVerified = /refuse_verified|do not describe/.test(body) && /manifest-verified/.test(body);
+    var refuseRewrite = /refuse_rewrite|do not rewrite/.test(body);
+    if (hasMeasure && hasClassify && hasClaimed && hasCited && sizeAgrees && refuseVerified && refuseRewrite) {
+      return {
+        state: "INTEGRATED",
+        note: "stale-manifest leftover is on this file. Size agrees, bytes do not. KEYB is NOT_VERIFIED. Do not rewrite the original manifest. titan NOT_WRITTEN."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/stale_manifest.py missing the mismatch leftover. KEYB stale-manifest talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isWorkingBuildTalk = function (text) {
@@ -1558,6 +1591,7 @@
   var ledgerOut = document.getElementById("resource-ledger-result");
   var mcpWakeOut = document.getElementById("mcp-wake-job-result");
   var finderZeroOut = document.getElementById("finder-zero-result");
+  var staleManifestOut = document.getElementById("stale-manifest-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2049,6 +2083,12 @@
     finderZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintStaleManifest(result) {
+    if (!staleManifestOut) return;
+    staleManifestOut.setAttribute("data-tone", api.toneFor(result.state));
+    staleManifestOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2482,6 +2522,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStrandedMap(err);
+      return err;
+    });
+  }
+
+  function loadStaleManifest(sha) {
+    if (!staleManifestOut) return Promise.resolve(null);
+    staleManifestOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/stale_manifest.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/stale_manifest.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/stale_manifest.py absent at the measured main SHA. KEYB stale-manifest talk is CLAIMED." };
+        paintStaleManifest(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintStaleManifest(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.staleManifestState(body);
+        paintStaleManifest(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintStaleManifest(err);
       return err;
     });
   }
@@ -2920,6 +2987,7 @@
     loadResourceLedger(sha);
     loadMcpWakeJob(sha);
     loadFinderZero(sha);
+    loadStaleManifest(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
