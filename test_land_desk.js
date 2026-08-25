@@ -605,6 +605,7 @@ assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lev
 assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-voltage card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/HOARD.md") >= 0, "hoard / session-export card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_MOVE.md") >= 0, "titan MOVE card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_ACCESS.md") >= 0, "slack-access card must stay a canary");
 assert.ok(api.sessionExportState, "land.js must classify session export");
 assert.ok(api.isHoardTalk, "land.js must classify owner hoard/commit-push copy");
 assert.ok(api.isSubstrateDodgeTalk, "land.js must classify substrate-dodge TAKINGS");
@@ -676,6 +677,34 @@ assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner corr
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
 assert.ok(/No Muhlnickel, organ, titan, or device path/i.test(html), "desk must name the exclusion line");
 assert.ok(/needs-bryce|NEED \/ WHY ONLY BRYCE/i.test(html), "desk must name the owner-blocker form");
+assert.ok(api.isAccessIncidentTalk, "land.js must classify slack-access-incident canaries");
+assert.ok(api.slackAccessState, "land.js must classify Slack write vs HEAD file");
+assert.ok(api.isAccessIncidentTalk("SLACK ACCESS INCIDENT CANARY — ChatGPT connector can read and write #commons; Bryce, GitHub, Cursor, Claude, and ChatGPT are all still channel members. Tracing the separate Commons relay/runtime now."), "access-incident copy is talk");
+assert.ok(!api.isAccessIncidentTalk("Slack #commons is the same table"), "generic slack talk is not this leftover");
+var accessTalk = api.completionStateFromText(
+  "SLACK ACCESS INCIDENT CANARY — ChatGPT connector can read and write #commons. Tracing the separate Commons relay."
+);
+assert.strictEqual(accessTalk.state, "CLAIMED");
+assert.ok(/slack-access-incident|connector-write/i.test(accessTalk.note), "access-incident-without-SHA must stay CLAIMED");
+var accessDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nslack access incident leftover landed"
+);
+assert.strictEqual(accessDone.state, "INTEGRATED", "completion words still beat access-incident talk");
+var accessEmpty = api.slackAccessState({});
+assert.strictEqual(accessEmpty.state, "UNMEASURED");
+var accessMail = api.slackAccessState({ measured: true, slack_write: true, file_on_head: false });
+assert.strictEqual(accessMail.state, "NOT_LANDED");
+assert.ok(/CARRIER_ONLY|mail/i.test(accessMail.note), "connector write without a file is NOT_LANDED");
+var accessHit = api.slackAccessState({ measured: true, slack_write: true, file_on_head: true, landed_id: "slack-1787630616-892789" });
+assert.strictEqual(accessHit.state, "INTEGRATED");
+assert.ok(/slack-1787630616-892789/.test(accessHit.note), "listing hit must name the file");
+var accessClaim = api.slackAccessState({ measured: true, slack_write: false, file_on_head: false });
+assert.strictEqual(accessClaim.state, "CLAIMED");
+assert.ok(html.indexOf('id="access-result"') >= 0, "desk must name the slack-access leftover");
+assert.ok(html.indexOf("host/slack_access_canary.py") >= 0, "desk must name the slack-access instrument");
+assert.ok(html.indexOf("ground/SLACK_ACCESS.md") >= 0, "desk must link the slack-access card");
+assert.ok(html.indexOf("1787630616.892789") >= 0, "desk must cite the access-incident Slack ts");
+assert.ok(/slack-access-incident|connector-can-read-and-write|still-channel-members/i.test(html), "desk must name access-incident talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");

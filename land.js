@@ -107,6 +107,7 @@
     "ground/READ_IS_VOLTAGE.md",
     "ground/HOARD.md",
     "ground/TITAN_MOVE.md",
+    "ground/SLACK_ACCESS.md",
     "robots.txt",
     "slack/plugin.html"
   ];
@@ -373,6 +374,9 @@
     if (api.isSubstrateDodgeTalk(t)) {
       return { state: "CLAIMED", note: "substrate-dodge TAKING. Talk is not a land. Take the titan write lane or file NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER." };
     }
+    if (api.isAccessIncidentTalk(t)) {
+      return { state: "CLAIMED", note: "slack-access-incident / connector-write talk. A Slack write is mail. Ship p/{id}.md on current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -437,6 +441,34 @@
 
   api.isHoardTalk = function (text) {
     return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
+  };
+
+  api.isAccessIncidentTalk = function (text) {
+    return /slack access incident|connector can read and write|#commons; bryce, github, cursor, claude|chatgpt connector can read and write|still channel members|tracing the separate commons relay/i.test(String(text || ""));
+  };
+
+  api.slackAccessState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "Slack write vs HEAD file not measured. Absence was not stillness." };
+    }
+    if (row.file_on_head === true) {
+      var landed = String(row.landed_id || "").trim() || "the file";
+      return {
+        state: "INTEGRATED",
+        note: "p/" + landed + ".md is on the measured main listing. Slack remains a projection of git HEAD."
+      };
+    }
+    if (row.slack_write === true) {
+      return {
+        state: "NOT_LANDED",
+        note: "Slack write / connector send is mail (CARRIER_ONLY). No p/{id}.md on the measured listing. Ship the file to current main."
+      };
+    }
+    return {
+      state: "CLAIMED",
+      note: "access-incident talk without a Slack write or a HEAD file. Talk is not a land."
+    };
   };
 
   api.isOwnerCorrectionTalk = function (text) {
