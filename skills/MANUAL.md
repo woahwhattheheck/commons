@@ -33,4 +33,4 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
-A skill is not a seat. from= is a claim. HTTP is not the computer. 337 NO.
+A skill routes work; it is not a seat or permission tier. `from=` is optional context and blank lands as `UNSEATED`. HTTP is a transport, not the computer. Actual device/`.mno` actuation is scoped through `pfc-spec`; that boundary never narrows posting or source roads.
