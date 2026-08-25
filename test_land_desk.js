@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825w/.test(html), "desk must bust the render-contract cache key");
+assert.ok(/20260825x/.test(html), "desk must bust the working-builds cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1030,6 +1030,36 @@ assert.ok(html.indexOf("32812516738") >= 0, "desk must name the failed main run"
 assert.ok(/workflow-contract|found-no-live-claim|render-QA/i.test(html), "desk must name SPECTER talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CONTRACT.md") >= 0, "workflow-contract card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CONTRACT.json") >= 0, "workflow-contract catalog must stay a canary");
+assert.ok(api.isWorkingBuildTalk, "land.js must classify machine-only working-builds talk");
+assert.ok(api.workingBuildState, "land.js must classify the working-builds leftover");
+assert.ok(api.isWorkingBuildTalk("MACHINE-ONLY WORKING BUILDS — CLAIM PROVENANCE-FIRST INTEGRATION. Desktop\\rook-resident-native\\, Desktop\\MUHL_KEYB\\keyb01.mno, TRAIN_CIRCUITS_FROM_FILE.json. Do not upload model/container bytes."), "working-builds copy is talk");
+assert.ok(!api.isWorkingBuildTalk("make sure people do more than talk about shit"), "ship-talk is not the working-builds leftover");
+assert.ok(!api.isWorkingBuildTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim."), "workflow-contract copy is not working-builds leftover");
+assert.ok(!api.isRenderContractTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not the workflow-contract leftover");
+var workingTalk = api.completionStateFromText(
+  "MACHINE-ONLY WORKING BUILDS — CLAIM PROVENANCE-FIRST INTEGRATION. rook-resident-native, keyb01.mno, TRAIN_CIRCUITS_FROM_FILE.json. Do not upload model/container bytes."
+);
+assert.strictEqual(workingTalk.state, "CLAIMED");
+assert.ok(/machine-only|rook-resident-native|keyb01|TRAIN_CIRCUITS/i.test(workingTalk.note), "working-builds-without-SHA must stay CLAIMED");
+var workingDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nworking-builds leftover landed"
+);
+assert.strictEqual(workingDone.state, "INTEGRATED", "completion words still beat working-builds talk");
+var workingEmpty = api.workingBuildState("");
+assert.strictEqual(workingEmpty.state, "UNMEASURED");
+var workingMissing = api.workingBuildState("# empty stub\nno census");
+assert.strictEqual(workingMissing.state, "NOT_LANDED");
+var workingOk = api.workingBuildState("def measure_from_rows(facts):\n    rook_package = False\n    keyb_manifest = True\n    train_json = False\ndef classify(row):\n    return row\nrefuse_upload = True\ndo not upload model/container bytes\n");
+assert.strictEqual(workingOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(workingOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="working-builds-result"') >= 0, "desk must name the working-builds leftover");
+assert.ok(html.indexOf("host/working_builds.py") >= 0, "desk must name the working-builds instrument");
+assert.ok(html.indexOf("ground/WORKING_BUILDS.md") >= 0, "desk must link the working-builds card");
+assert.ok(html.indexOf("ground/WORKING_BUILDS.json") >= 0, "desk must link the working-builds catalog");
+assert.ok(html.indexOf("1787637681.321149") >= 0, "desk must cite the working-builds Slack ts");
+assert.ok(/machine-only|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE/i.test(html), "desk must name working-builds talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WORKING_BUILDS.md") >= 0, "working-builds card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WORKING_BUILDS.json") >= 0, "working-builds catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
