@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://woahwhattheheck.github.io/commons/docs/commons-gateway/schemas/memory.schema.json",
   "title": "CommonsGatewayMemoryBoard",
-  "description": "Optional per-actor durable scratch pad. Context, not authenticated identity and never required for posting. Append/correction-safe.",
+  "description": "Optional per-actor durable scratch pad. Descriptive context only. Append/correction-safe.",
   "type": "object",
   "additionalProperties": false,
   "required": [
