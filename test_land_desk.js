@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825x/.test(html), "desk must bust the working-builds cache key");
+assert.ok(/20260825y/.test(html), "desk must bust the slack-receipt cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1060,6 +1060,61 @@ assert.ok(html.indexOf("1787637681.321149") >= 0, "desk must cite the working-bu
 assert.ok(/machine-only|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE/i.test(html), "desk must name working-builds talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/WORKING_BUILDS.md") >= 0, "working-builds card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/WORKING_BUILDS.json") >= 0, "working-builds catalog must stay a canary");
+assert.ok(api.isSlackReceiptTalk, "land.js must classify Slack SHIP_RECEIPT land brags");
+assert.ok(api.slackReceiptState, "land.js must classify Slack receipt vs p/{id}.md");
+assert.ok(api.isSlackReceiptTalk("from: DEMON\nkind: SHIP_RECEIPT\nsubject: DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED\nPOST-PUSH CURRENT MAIN"), "DEMON Slack SHIP_RECEIPT is talk");
+assert.ok(api.isSlackReceiptTalk("will not call work LANDED without an exact SHA observed in public main"), "exact-SHA land rule without a file is talk");
+assert.ok(!api.isSlackReceiptTalk("make sure people do more than talk about shit"), "ship-talk is not the Slack-receipt leftover");
+assert.ok(!api.isSlackReceiptTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim."), "workflow-contract copy is not the Slack-receipt leftover");
+assert.ok(!api.isRenderContractTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the workflow-contract leftover");
+assert.ok(!api.isWorkingBuildTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not working-builds leftover");
+var slackTalk = api.completionStateFromText(
+  "DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED\nPOST-PUSH CURRENT MAIN"
+);
+assert.strictEqual(slackTalk.state, "CLAIMED");
+assert.ok(/SHIP_RECEIPT|CURRENT-MAIN VERIFIED|mail/i.test(slackTalk.note), "Slack SHIP_RECEIPT without SHA file must stay CLAIMED");
+var slackDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nslack-receipt leftover landed"
+);
+assert.strictEqual(slackDone.state, "INTEGRATED", "completion words still beat Slack-receipt talk");
+var slackEmpty = api.slackReceiptState({});
+assert.strictEqual(slackEmpty.state, "UNMEASURED");
+var slackMissing = api.slackReceiptState({
+  measured: true,
+  source_id: "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+  source_paths: ["swarm.html"],
+  present_paths: [],
+  receipt_present: false
+});
+assert.strictEqual(slackMissing.state, "NOT_LANDED");
+var slackMail = api.slackReceiptState({
+  measured: true,
+  source_id: "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+  source_paths: ["swarm.html", "swarm.js"],
+  present_paths: ["swarm.html", "swarm.js"],
+  receipt_present: false
+});
+assert.strictEqual(slackMail.state, "CARRIER_ONLY");
+assert.ok(/mail/i.test(slackMail.note), "sources without p/{id}.md must stay mail");
+var slackOk = api.slackReceiptState({
+  measured: true,
+  source_id: "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+  source_paths: ["swarm.html"],
+  present_paths: ["swarm.html"],
+  receipt_present: true
+});
+assert.strictEqual(slackOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(slackOk.note), "landed leftover must name Slack as not the file");
+assert.strictEqual(api.toneFor("CARRIER_ONLY"), "wait", "mail is unfinished ship, not a broken canary");
+assert.ok(html.indexOf('id="slack-receipt-result"') >= 0, "desk must name the Slack-receipt leftover");
+assert.ok(html.indexOf("host/slack_receipt.py") >= 0, "desk must name the Slack-receipt instrument");
+assert.ok(html.indexOf("ground/SLACK_RECEIPT.md") >= 0, "desk must link the Slack-receipt card");
+assert.ok(html.indexOf("ground/SLACK_RECEIPT.json") >= 0, "desk must link the Slack-receipt catalog");
+assert.ok(html.indexOf("1787637937.023799") >= 0, "desk must cite the DEMON Slack SHIP_RECEIPT ts");
+assert.ok(html.indexOf("demon-pixel-swarm-flight-recorder-landed-20260825-01") >= 0, "desk must name the DEMON receipt id");
+assert.ok(/SHIP_RECEIPT|LANDED \+ CURRENT-MAIN VERIFIED|POST-PUSH CURRENT MAIN|flight-recorder-landed/i.test(html), "desk must name Slack SHIP_RECEIPT talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.md") >= 0, "Slack-receipt card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.json") >= 0, "Slack-receipt catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
