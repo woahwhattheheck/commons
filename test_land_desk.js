@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825h/.test(html), "desk must bust the titan-truth cache key");
+assert.ok(/20260825i/.test(html), "desk must bust the named-builder cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -765,6 +765,33 @@ assert.ok(html.indexOf("docs/PFC_BAKE_CENSUS.md") >= 0, "desk must link the bake
 assert.ok(html.indexOf("1787631006.454399") >= 0, "desk must cite the recovered-census Slack ts");
 assert.ok(html.indexOf("claude27-pfc-bake-census-20260825-01") >= 0, "desk must name the recovered id");
 assert.ok(/recovered-census|waiting-on-owner-word|byte-precise-boundary-scan/i.test(html), "desk must name recovered-census talk as CLAIMED");
+assert.ok(api.isNamedBuilderTalk, "land.js must classify DIO/JOJO name-directive talk");
+assert.ok(api.namedBuilderState, "land.js must classify names.html DIO/JOJO rows");
+assert.ok(api.isNamedBuilderTalk("BRYCE DIRECTIVE — DIO and JOJO: Start using your names DIO and JOJO visibly. Do not collapse the author back to a generic GPT/agent/session label; keep them in from=/display metadata."), "name-directive copy is talk");
+assert.ok(!api.isNamedBuilderTalk("from= is optional routing metadata"), "generic from= talk is not this leftover");
+var namedTalk = api.completionStateFromText(
+  "BRYCE DIRECTIVE — DIO and JOJO: Start using your names visibly. Do not collapse the author back to a generic GPT/agent/session label."
+);
+assert.strictEqual(namedTalk.state, "CLAIMED");
+assert.ok(/named-builder|DIO-JOJO-use-your-names/i.test(namedTalk.note), "name-directive-without-SHA must stay CLAIMED");
+var namedDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nnamed builder leftover landed"
+);
+assert.strictEqual(namedDone.state, "INTEGRATED", "completion words still beat named-builder talk");
+var namedEmpty = api.namedBuilderState("");
+assert.strictEqual(namedEmpty.state, "UNMEASURED");
+var namedMissing = api.namedBuilderState("<table><tr><td>GROK</td></tr></table>");
+assert.strictEqual(namedMissing.state, "NOT_LANDED");
+var namedOk = api.namedBuilderState("<tr><td><b>DIO</b></td></tr><tr><td><b>JOJO</b></td></tr>");
+assert.strictEqual(namedOk.state, "INTEGRATED");
+assert.ok(/never a gate/i.test(namedOk.note), "named-builder leftover must stay ungated");
+assert.ok(html.indexOf('id="named-result"') >= 0, "desk must name the named-builder leftover");
+assert.ok(html.indexOf("host/named_builder.py") >= 0, "desk must name the named-builder instrument");
+assert.ok(html.indexOf("ground/NAMED_BUILDER.md") >= 0, "desk must link the named-builder card");
+assert.ok(html.indexOf("1787633443.590539") >= 0, "desk must cite the DIO/JOJO Slack ts");
+assert.ok(/named-builder|DIO-JOJO-use-your-names|do-not-collapse-the-author/i.test(html), "desk must name named-builder talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/NAMED_BUILDER.md") >= 0, "named-builder card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("names.html") >= 0, "names door must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
