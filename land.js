@@ -194,6 +194,8 @@
     "ground/CLAUDE_INTERMEDIATE.json",
     "ground/CASH_NOW.md",
     "ground/CASH_NOW.json",
+    "ground/JOJO_ASSIGN.md",
+    "ground/JOJO_ASSIGN.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -430,6 +432,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isJojoAssignTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO RULE_ACK / assignment-before-packet / no-JOJO-decision-depends-on-Claude-verdict talk. Talk is not a land. Ship the JOJO assignment leftover to current main. Do not remint CLAUDE_COMPUTE, CLAUDE_INTERMEDIATE, or GROK_RECOVERY." };
     }
     if (api.isClaudeIntermediateTalk(t)) {
       return { state: "CLAIMED", note: "DEMON ruling / quarantined-intermediate-worker / P1-rejected-for-now / P6-amended / rehabilitation-gate talk. Talk is not a land. Ship the amendment leftover. Do not remint the colony charter or the GAUGE proposal. No auth. No gate." };
@@ -724,6 +729,32 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isJojoAssignTalk = function (text) {
+    return /no active jojo decision|jojo will give exact specs|1787640828\.462769|muhlnickel contract reconciliation remain non-claude/i.test(String(text || ""));
+  };
+
+  api.jojoAssignState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/jojo_assign.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasProtocol = /before any assignment/i.test(body) && /no active jojo decision/i.test(body);
+    var hasIndependence = /jojo_decisions_depend_on_claude_verdict/.test(body) && /non-claude-owned/i.test(body);
+    var noGate = /no_auth/.test(body) && /no_gate/.test(body) && /open door/i.test(body);
+    if (hasMeasure && hasClassify && hasProtocol && hasIndependence && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "JOJO-assign leftover is on this file. Packet + named non-Claude adjudicator before any assignment. A Slack RULE_ACK is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/jojo_assign.py missing the leftover. JOJO RULE_ACK / assignment-before-packet talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2244,6 +2275,7 @@
   var claudeComputeOut = document.getElementById("claude-compute-result");
   var claudeIntermediateOut = document.getElementById("claude-intermediate-result");
   var cashNowOut = document.getElementById("cash-now-result");
+  var jojoAssignOut = document.getElementById("jojo-assign-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -2826,6 +2858,12 @@
     if (!claudeIntermediateOut) return;
     claudeIntermediateOut.setAttribute("data-tone", api.toneFor(result.state));
     claudeIntermediateOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintJojoAssign(result) {
+    if (!jojoAssignOut) return;
+    jojoAssignOut.setAttribute("data-tone", api.toneFor(result.state));
+    jojoAssignOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintClaudeRole(result) {
@@ -3652,6 +3690,33 @@
     });
   }
 
+  function loadJojoAssign(sha) {
+    if (!jojoAssignOut) return Promise.resolve(null);
+    jojoAssignOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/jojo_assign.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/jojo_assign.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/jojo_assign.py absent at the measured main SHA. JOJO RULE_ACK / assignment-before-packet talk is CLAIMED." };
+        paintJojoAssign(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintJojoAssign(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.jojoAssignState(body);
+        paintJojoAssign(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintJojoAssign(err);
+      return err;
+    });
+  }
+
   function loadClaudeIntermediate(sha) {
     if (!claudeIntermediateOut) return Promise.resolve(null);
     claudeIntermediateOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_intermediate.py at the official SHA…</p>";
@@ -4320,6 +4385,7 @@
     loadClaudeCompute(sha);
     loadClaudeIntermediate(sha);
     loadCashNow(sha);
+    loadJojoAssign(sha);
     loadContainment(sha);
     loadWatchdogCanary(sha);
     loadBranchReview(sha);

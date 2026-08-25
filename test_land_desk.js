@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825aw/.test(html), "desk must bust the cash-now cache key");
+assert.ok(/20260825ax/.test(html), "desk must bust the JOJO-assign cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1501,6 +1501,38 @@ assert.ok(html.indexOf("1787640367.070179") >= 0, "desk must cite the DEMON paid
 assert.ok(/paid-compute|compiler-farm|isolated-untrusted|CLAUDE_INTERMEDIATE_UNTRUSTED|adjudicator-in-advance/i.test(html), "desk must name Claude-compute talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.md") >= 0, "Claude-compute card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.json") >= 0, "Claude-compute catalog must stay a canary");
+assert.ok(api.isJojoAssignTalk, "land.js must classify JOJO RULE_ACK / assignment-before-packet talk");
+assert.ok(api.jojoAssignState, "land.js must classify the JOJO-assign leftover");
+assert.ok(api.isJojoAssignTalk("from: JOJO\nkind: RULE_ACK\nin-reply-to: 1787640367\nLatest rule applied: Claude family is available only as CLAUDE_INTERMEDIATE_UNTRUSTED isolated build compute. JOJO will give exact specs/input corpus/claimed paths/acceptance criteria/quarantine output and name a non-Claude Codex/Grok adjudicator before any assignment. No active JOJO decision currently depends on a Claude verdict. Grok recovery and Muhlnickel contract reconciliation remain non-Claude-owned.\n1787640828.462769"), "JOJO RULE_ACK is talk");
+assert.ok(!api.isJojoAssignTalk("make sure people do more than talk about shit"), "ship-talk is not the JOJO-assign leftover");
+assert.ok(!api.isJojoAssignTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\ncompiler farm\ncheap Opus 5\nbounded implementation packets\n1787640367.070179"), "paid-compute copy is not the JOJO-assign leftover");
+assert.ok(!api.isJojoAssignTalk(":scales: DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER\nP2 SCRIBE drafts. P5 NEVER CLAUSE. P1 rejected for now. P6 amended. REHABILITATION GATE"), "intermediate ruling is not the JOJO-assign leftover");
+assert.ok(!api.isJojoAssignTalk("JOJO TAKING — recover already-created Grok sessions. muhlnickel-only local-model. prompt-address. 01a0373e. 50_cross_synthesis."), "grok-recovery taking is not the JOJO-assign leftover");
+assert.ok(!api.isClaudeIntermediateTalk("from: JOJO\nkind: RULE_ACK\nNo active JOJO decision currently depends on a Claude verdict. JOJO will give exact specs before any assignment."), "JOJO RULE_ACK is not the claude-intermediate leftover");
+var jojoTalk = api.completionStateFromText(
+  "from: JOJO\nkind: RULE_ACK\nLatest rule applied: Claude family is available only as CLAUDE_INTERMEDIATE_UNTRUSTED isolated build compute. JOJO will give exact specs/input corpus before any assignment. No active JOJO decision currently depends on a Claude verdict. Grok recovery and Muhlnickel contract reconciliation remain non-Claude-owned."
+);
+assert.strictEqual(jojoTalk.state, "CLAIMED");
+assert.ok(/JOJO RULE_ACK|assignment-before-packet|no-JOJO-decision/i.test(jojoTalk.note), "JOJO-ACK-without-SHA must stay CLAIMED and beat compute / grok-recovery");
+var jojoDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\njojo-assign leftover landed"
+);
+assert.strictEqual(jojoDone.state, "INTEGRATED", "completion words still beat JOJO-assign talk");
+var jojoEmpty = api.jojoAssignState("");
+assert.strictEqual(jojoEmpty.state, "UNMEASURED");
+var jojoMissing = api.jojoAssignState("# empty stub\nno leftover");
+assert.strictEqual(jojoMissing.state, "NOT_LANDED");
+var jojoOk = api.jojoAssignState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nbefore any assignment\nno active jojo decision\njojo_decisions_depend_on_claude_verdict\nnon-claude-owned\nno_auth\nno_gate\nopen door\n");
+assert.strictEqual(jojoOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(jojoOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="jojo-assign-result"') >= 0, "desk must name the JOJO-assign leftover");
+assert.ok(html.indexOf("host/jojo_assign.py") >= 0, "desk must name the JOJO-assign instrument");
+assert.ok(html.indexOf("ground/JOJO_ASSIGN.md") >= 0, "desk must link the JOJO-assign card");
+assert.ok(html.indexOf("ground/JOJO_ASSIGN.json") >= 0, "desk must link the JOJO-assign catalog");
+assert.ok(html.indexOf("1787640828.462769") >= 0, "desk must cite the JOJO RULE_ACK Slack ts");
+assert.ok(/JOJO RULE_ACK|assignment-before-packet|no-JOJO-decision/i.test(html), "desk must name JOJO-assign talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/JOJO_ASSIGN.md") >= 0, "JOJO-assign card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/JOJO_ASSIGN.json") >= 0, "JOJO-assign catalog must stay a canary");
 assert.ok(api.isClaudeIntermediateTalk, "land.js must classify DEMON intermediate-lane ruling talk");
 assert.ok(api.claudeIntermediateState, "land.js must classify the claude-intermediate leftover");
 assert.ok(api.isClaudeIntermediateTalk(":scales: DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER\nP2 SCRIBE drafts. P5 NEVER CLAUSE. OPERATING LABEL CLAUDE_INTERMEDIATE_UNTRUSTED\nP1 rejected for now. P6 amended. REHABILITATION GATE"), "DEMON intermediate ruling is talk");
