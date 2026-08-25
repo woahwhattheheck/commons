@@ -1137,13 +1137,8 @@ def measure_root(root):
         and present_int({"price_usd": None}, "price_usd")["state"] == "UNRESOLVED"
         and present_int({"price_usd": True}, "price_usd")["state"] == "FINDER-FAILED"
     )
-    live_bound = catalog.get("live_bound_receipts")
-    live_bound_value, live_bound_state = measured_int(
-        {"live_bound_receipts": live_bound, "live_bound_receipts_state": (
-            "UNRESOLVED" if "live_bound_receipts" not in catalog else "PRESENT"
-        )},
-        "live_bound_receipts",
-    )
+    live_bound = present_int(catalog, "live_bound_receipts")
+    live_bound_value, live_bound_state = live_bound["value"], live_bound["state"]
     facts = {
         "card_present": _exists(root, DEFAULT_CARD),
         "catalog_present": _exists(root, DEFAULT_CATALOG) and not catalog.get("error"),
@@ -1309,6 +1304,23 @@ def self_test():
         }
     )
     assert missing_price["state"] == "FINDER-FAILED", missing_price
+    missing_live = classify_binding(
+        {
+            "measured": True,
+            "sku_id": SKU_ID,
+            "quote_price": QUOTE_PRICE,
+            "quote_price_state": "PRESENT",
+            "p01_id": P01_ID,
+            "schema_has_buyer": True,
+            "bind_works": True,
+            "binding_state": "CANDIDATE",
+            "collected_cash_usd": 0,
+            "collected_cash_state": "PRESENT",
+            "live_bound_receipts": None,
+            "live_bound_receipts_state": "UNRESOLVED",
+        }
+    )
+    assert missing_live["state"] == "FINDER-FAILED", missing_live
     assert inbound_rel("..\\ground\\EXECUTE") == ""
     assert inbound_rel("../ground/EXECUTE") == ""
     assert canonicalize_post_id("rivet-ship-subzero-quote-20260825-01")

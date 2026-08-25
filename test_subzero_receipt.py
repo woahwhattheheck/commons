@@ -271,6 +271,24 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(verdict["state"], "FINDER-FAILED")
         self.assertIn("unresolved", verdict["note"].lower())
 
+    def test_missing_live_bound_stays_unresolved_not_zero(self):
+        facts = _complete()
+        facts.pop("live_bound_receipts")
+        facts.pop("live_bound_receipts_state")
+        row = measure_from_rows(facts)
+        self.assertIsNone(row["live_bound_receipts"])
+        self.assertEqual(row["live_bound_receipts_state"], "UNRESOLVED")
+        verdict = classify_binding(row)
+        self.assertEqual(verdict["state"], "FINDER-FAILED")
+        self.assertIn("live_bound_receipts", verdict["note"])
+        self.assertIn("unresolved", verdict["note"].lower())
+        bad = measure_from_rows(
+            _complete(live_bound_receipts=True, live_bound_receipts_state="FINDER-FAILED")
+        )
+        self.assertIsNone(bad["live_bound_receipts"])
+        self.assertEqual(bad["live_bound_receipts_state"], "FINDER-FAILED")
+        self.assertEqual(classify_binding(bad)["state"], "FINDER-FAILED")
+
     def test_fixture_buyer_can_bind_without_claiming_cash(self):
         quote_hash = sha256_rel(ROOT, os.path.join("ground", "SUBZERO_QUOTE.json"))
         inbound_id = "fixture-buyer-accept-sz-20260825-01"
