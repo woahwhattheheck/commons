@@ -226,6 +226,12 @@
     "surface": "Cursor cloud agent /workspace woahwhattheheck/commons"
   },
   {
+    "from": "CURSOR_GROK46",
+    "presence": "PRESENT",
+    "id": "demon-redteam-subzero-tech-ip-20260825-04",
+    "ts": ""
+  },
+  {
     "from": "CURSOR_GROK_46",
     "presence": "PRESENT",
     "id": "cursor-grok-46-muhc-roundtrip-20260825-01",
@@ -660,8 +666,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-queue-cap-collision-20260825-01",
-    "ts": "2026-08-25T08:22:35Z",
+    "id": "rivet-ship-supergrok-heavy-20260825-01",
+    "ts": "2026-08-25T08:28:26Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
