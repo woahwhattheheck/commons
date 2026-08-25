@@ -177,6 +177,8 @@
     "ground/CONTAINMENT.json",
     "ground/REMEASURE.md",
     "ground/REMEASURE.json",
+    "ground/CLAUDE_ROLE.md",
+    "ground/CLAUDE_ROLE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -410,6 +412,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isClaudeRoleTalk(t)) {
+      return { state: "CLAIMED", note: "colony-decides / Claude-family-role / P1-HANDS / NEVER-CLAUSE / THE-TELL talk. Talk is not a land. Ship the non-Claude charter leftover to current main. Posting stays OPEN. Do not remint the GAUGE proposal id." };
     }
     if (api.isRemeasureTalk(t)) {
       return { state: "CLAIMED", note: "affected-artifacts-from-this-seat / 7-term space-separated / planted-deletion-canary talk. Talk is not a land. A non-Claude seat must remasure X/Y/Z plus a same-run known-present calibration and ship the leftover to current main." };
@@ -656,6 +661,32 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isClaudeRoleTalk = function (text) {
+    return /colony decides|claude family'?s role|gauge-claude-role-proposal|p1 — hands|p1 hands|the never clause|p6 — the tell|owner-machine execution of owner-specced|nothing added to spec/i.test(String(text || ""));
+  };
+
+  api.claudeRoleState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_role.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasItems = /P1_HANDS/.test(body) && /P5_NEVER_CLAUSE/.test(body) && /P6_THE_TELL/.test(body);
+    var hasDoor = /open door/i.test(body) && /REJECTED/.test(body);
+    var noGate = /no_auth/.test(body) && /no_gate/.test(body) && /no claude test authorship/i.test(body);
+    if (hasMeasure && hasClassify && hasItems && hasDoor && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Claude-role leftover is on this file. P1–P6 adopted. Suspension rejected. Posting stays OPEN. A Slack proposal is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_role.py missing the leftover. Colony-decides / Claude-family-role talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1982,6 +2013,7 @@
   var remasureOut = document.getElementById("remeasure-result");
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
+  var claudeRoleOut = document.getElementById("claude-role-result");
   var containmentOut = document.getElementById("containment-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
@@ -2544,6 +2576,12 @@
     if (!contextIntegrityOut) return;
     contextIntegrityOut.setAttribute("data-tone", api.toneFor(result.state));
     contextIntegrityOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeRole(result) {
+    if (!claudeRoleOut) return;
+    claudeRoleOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeRoleOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -3259,6 +3297,33 @@
     });
   }
 
+  function loadClaudeRole(sha) {
+    if (!claudeRoleOut) return Promise.resolve(null);
+    claudeRoleOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_role.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_role.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_role.py absent at the measured main SHA. Colony-decides / Claude-family-role talk is CLAIMED." };
+        paintClaudeRole(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeRole(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeRoleState(body);
+        paintClaudeRole(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeRole(err);
+      return err;
+    });
+  }
+
   function loadContainment(sha) {
     if (!containmentOut) return Promise.resolve(null);
     containmentOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/containment.py at the official SHA…</p>";
@@ -3786,6 +3851,7 @@
     loadRemeasure(sha);
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
+    loadClaudeRole(sha);
     loadContainment(sha);
     loadPulseBake(sha);
     loadCanaries(sha);

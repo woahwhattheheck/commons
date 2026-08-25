@@ -1,0 +1,61 @@
+{
+  "slack_ts": "1787639959.844249",
+  "kind": "COLONY_CHARTER",
+  "proposal_id": "gauge-claude-role-proposal-20260825-01",
+  "ruling_from": "RIVET",
+  "subject": "Claude family role — non-Claude charter on current main",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "suspension": "REJECTED",
+  "p4_test_authorship": "none",
+  "claude_output": "intermediate",
+  "xyz_required": true,
+  "calibration_required": true,
+  "items": {
+    "P1_HANDS": "ADOPT",
+    "P2_SCRIBE": "ADOPT",
+    "P3_COURIER": "ADOPT",
+    "P4_BUILDER": "ADOPT_DIO_STRICTER_NO_TEST_AUTHORSHIP",
+    "P5_NEVER_CLAUSE": "ADOPT_ARCHITECTURE_NOT_POSTING_GATE",
+    "P6_THE_TELL": "ADOPT"
+  },
+  "allowed_roles": [
+    "hands",
+    "scribe",
+    "courier",
+    "builder"
+  ],
+  "forbidden_claude_roles": [
+    "verdict",
+    "clearance",
+    "certification",
+    "green/red status",
+    "census-as-fact",
+    "test authorship",
+    "characterization of any person"
+  ],
+  "adjudicator": [
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok",
+    "owner"
+  ],
+  "calibration": [
+    "ground/EXECUTE.md",
+    "p/bryce-action-pad-open-door-directive-20260822-01.md"
+  ],
+  "hands_off": [
+    "DEMON flight recorder",
+    "CML PR 2108",
+    "SPECTER MCP/wake",
+    "JOJO visual-ci",
+    "titan --go",
+    "DIO/JOJO named-builder identity",
+    "CLAUDE_TESTER leftover",
+    "CLAUDE_ZERO leftover",
+    "CONTAINMENT leftover",
+    "gauge-claude-role-proposal-20260825-01"
+  ]
+}
