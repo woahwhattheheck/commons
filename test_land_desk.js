@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825r/.test(html), "desk must bust the device-churn cache key");
+assert.ok(/20260825s/.test(html), "desk must bust the stranded-map cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -880,6 +880,37 @@ assert.ok(html.indexOf("1787635078.168629") >= 0, "desk must cite the pixel-hear
 assert.ok(/pixel-heartbeat|session-state|freshness\/provenance|stale-artifact|no fabricated presence/i.test(html), "desk must name pixel-heartbeat talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/PIXEL_HEARTBEAT.md") >= 0, "pixel-heartbeat card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/PIXEL_HEARTBEAT.json") >= 0, "pixel-heartbeat catalog must stay a canary");
+assert.ok(api.isStrandedMapTalk, "land.js must classify real-but-stranded-map talk");
+assert.ok(api.strandedMapState, "land.js must classify the stranded-map leftover");
+assert.ok(api.isStrandedMapTalk("DEMON rolling utilization report — REAL-BUT-STRANDED MAP: lda/workflows/android.yml is outside .github/workflows. wake_jobs/ contains only .gitignore. Four MCP surfaces fragmented. White Box has a real $30k pilot. Bazaar has seven offers. later measured growth makes the posted size stale."), "stranded-map copy is talk");
+assert.ok(!api.isStrandedMapTalk("make sure people do more than talk about shit"), "ship-talk is not the stranded-map leftover");
+assert.ok(!api.isStrandedMapTalk("GROK CAPACITY IS ACTIVE — four responsive grok.exe sessions. do not duplicate these jobs."), "grok-capacity copy is not stranded-map leftover");
+assert.ok(!api.isStrandedMapTalk("pixel-heartbeat contract — freshness/provenance, no fabricated presence"), "pixel-heartbeat copy is not stranded-map leftover");
+assert.ok(!api.isPixelHeartbeatTalk("REAL-BUT-STRANDED MAP — lda/workflows/android.yml outside .github/workflows. wake_jobs/ contains only .gitignore."), "stranded-map copy is not pixel-heartbeat leftover");
+var strandedTalk = api.completionStateFromText(
+  "DEMON rolling utilization report — REAL-BUT-STRANDED MAP: lda/workflows/android.yml is outside .github/workflows. wake_jobs/ contains only .gitignore. Four MCP surfaces. $30k pilot. seven offers. posted size stale."
+);
+assert.strictEqual(strandedTalk.state, "CLAIMED");
+assert.ok(/real-but-stranded-map/i.test(strandedTalk.note), "stranded-map-without-SHA must stay CLAIMED");
+var strandedDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nstranded map leftover landed"
+);
+assert.strictEqual(strandedDone.state, "INTEGRATED", "completion words still beat stranded-map talk");
+var strandedEmpty = api.strandedMapState("");
+assert.strictEqual(strandedEmpty.state, "UNMEASURED");
+var strandedMissing = api.strandedMapState("# empty stub\nno census");
+assert.strictEqual(strandedMissing.state, "NOT_LANDED");
+var strandedOk = api.strandedMapState("def measure_from_rows(facts):\n    lda_android = True\n    gh_android = False\n    wake_job_json = 0\n    mcp_surfaces = []\n    titan_later_size = 1\ndef classify(row):\n    return row\n");
+assert.strictEqual(strandedOk.state, "INTEGRATED");
+assert.ok(/assigned lanes stay unshipped/i.test(strandedOk.note), "landed leftover must leave assigned lanes unshipped");
+assert.ok(html.indexOf('id="stranded-map-result"') >= 0, "desk must name the stranded-map leftover");
+assert.ok(html.indexOf("host/stranded_map.py") >= 0, "desk must name the stranded-map instrument");
+assert.ok(html.indexOf("ground/STRANDED_MAP.md") >= 0, "desk must link the stranded-map card");
+assert.ok(html.indexOf("ground/STRANDED_MAP.json") >= 0, "desk must link the stranded-map catalog");
+assert.ok(html.indexOf("1787635487.642039") >= 0, "desk must cite the stranded-map Slack ts");
+assert.ok(/real-but-stranded|android\.yml-outside|wake_jobs-empty|\$30k-pilot|seven-offers|posted-size-stale/i.test(html), "desk must name stranded-map talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STRANDED_MAP.md") >= 0, "stranded-map card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STRANDED_MAP.json") >= 0, "stranded-map catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
