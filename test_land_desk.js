@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825aq/.test(html), "desk must bust the watchdog-canary plus Claude-role cache key");
+assert.ok(/20260825ar/.test(html), "desk must bust the branch-review cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1557,6 +1557,41 @@ assert.ok(html.indexOf("1787639575.924889") >= 0, "desk must cite the Claude com
 assert.ok(/CONTAINMENT_COMPLIANCE|affected-artifacts|7-term space-separated|planted-deletion-canary/i.test(html), "desk must name remeasure talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/REMEASURE.md") >= 0, "remeasure card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/REMEASURE.json") >= 0, "remeasure catalog must stay a canary");
+assert.ok(api.isBranchReviewTalk, "land.js must classify DEMON P0 IMPACT LEDGER / public-branch review talk");
+assert.ok(api.branchReviewState, "land.js must classify the branch-review leftover");
+assert.ok(api.isBranchReviewTalk("DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE\npublic-branch review coordination\nDo not soften RETRACTED into UNVERIFIED\nplanted-canary scan + CAIRN/quarantine/license/delete review\npublic sd-wx (258 files)"), "DEMON P0 ledger is talk");
+assert.ok(!api.isBranchReviewTalk("make sure people do more than talk about shit"), "ship-talk is not the branch-review leftover");
+assert.ok(!api.isBranchReviewTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the branch-review leftover");
+assert.ok(!api.isBranchReviewTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not the branch-review leftover");
+assert.ok(!api.isBranchReviewTalk("OWNER CONTEXT-INTEGRITY BOUNDARY. uncalibrated doubt. pseudo-clinical. intellect / motives / mental state."), "context-integrity copy is not the branch-review leftover");
+assert.ok(!api.isBranchReviewTalk("Affected artifacts from this seat. 7-term space-separated. planted-deletion canary. claude27-p0-compliance-20260825-01."), "remeasure copy is not the branch-review leftover");
+assert.ok(!api.isContainmentTalk("DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE. public-branch review. Do not soften RETRACTED. planted-canary scan."), "branch-review copy is not the containment leftover");
+assert.ok(!api.isImpactLedgerTalk("DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE. public-branch review. Do not soften RETRACTED. planted-canary scan."), "branch-review copy is not the impact-ledger leftover");
+assert.ok(!api.isContextIntegrityTalk("DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE. public-branch review. Do not soften RETRACTED. planted-canary scan."), "branch-review copy is not the context-integrity leftover");
+var branchTalk = api.completionStateFromText(
+  "DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE\npublic-branch review coordination\nDo not soften RETRACTED into UNVERIFIED\nplanted-canary scan\nknown-present calibration."
+);
+assert.strictEqual(branchTalk.state, "CLAIMED");
+assert.ok(/public-branch review|do-not-soften-RETRACTED|IMPACT LEDGER/i.test(branchTalk.note), "branch-review-without-SHA must stay CLAIMED and beat later leftovers");
+var branchDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nbranch-review leftover landed"
+);
+assert.strictEqual(branchDone.state, "INTEGRATED", "completion words still beat branch-review talk");
+var branchEmpty = api.branchReviewState("");
+assert.strictEqual(branchEmpty.state, "UNMEASURED");
+var branchMissing = api.branchReviewState("# empty stub\nno leftover");
+assert.strictEqual(branchMissing.state, "NOT_LANDED");
+var branchOk = api.branchReviewState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nretracted_stays_retracted\nFINDER-UNVERIFIED\nNever 0\nCursor / Grok\npfc_raw_a_zero\nno_active_claim\nsd-wx\nkite-help\n");
+assert.strictEqual(branchOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(branchOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="branch-review-result"') >= 0, "desk must name the branch-review leftover");
+assert.ok(html.indexOf("host/branch_review.py") >= 0, "desk must name the branch-review instrument");
+assert.ok(html.indexOf("ground/BRANCH_REVIEW.md") >= 0, "desk must link the branch-review card");
+assert.ok(html.indexOf("ground/BRANCH_REVIEW.json") >= 0, "desk must link the branch-review catalog");
+assert.ok(html.indexOf("1787640071.636039") >= 0, "desk must cite the DEMON P0 ledger Slack ts");
+assert.ok(/DEMON P0 IMPACT LEDGER|public-branch review|do-not-soften-RETRACTED|planted-canary/i.test(html), "desk must name branch-review talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BRANCH_REVIEW.md") >= 0, "branch-review card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BRANCH_REVIEW.json") >= 0, "branch-review catalog must stay a canary");
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
