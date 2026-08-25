@@ -47,19 +47,6 @@ def _exists(root, rel):
     return os.path.exists(os.path.join(root, rel))
 
 
-def _wake_job_json_count(root):
-    folder = os.path.join(root, WAKE_JOBS)
-    if not os.path.isdir(folder):
-        return 0
-    return sum(
-        1
-        for name in os.listdir(folder)
-        if name.endswith(".json")
-        and name != "_last_tick.json"
-        and os.path.isfile(os.path.join(folder, name))
-    )
-
-
 def _wake_job_rows(root):
     """Read status-only job rows. Invalid files stay visible, never silent."""
     folder = os.path.join(root, WAKE_JOBS)
@@ -90,6 +77,33 @@ def _wake_job_rows(root):
             }
         )
     return rows
+
+
+def _wake_job_census(root):
+    """One snapshot: count and rows come from the same listing."""
+    rows = _wake_job_rows(root)
+    return {"wake_jobs": rows, "wake_job_json": len(rows)}
+
+
+def _wake_job_json_count(root):
+    return _wake_job_census(root)["wake_job_json"]
+
+
+def _wake_state(wake_json, wake_jobs):
+    """VERIFIED only when every canonical row is DONE. Else CANDIDATE/EMPTY."""
+    statuses = [
+        str((item or {}).get("status") or "UNKNOWN").upper()
+        for item in (wake_jobs or [])
+    ]
+    if wake_json <= 0:
+        return "EMPTY"
+    if (
+        len(statuses) == int(wake_json)
+        and statuses
+        and all(status == "DONE" for status in statuses)
+    ):
+        return "VERIFIED"
+    return "CANDIDATE"
 
 
 def _mcp_present(root):
@@ -166,22 +180,12 @@ def measure_from_rows(facts):
         android = "STRANDED"
     else:
         android = "NOT_LANDED"
-    wake_json = int(facts.get("wake_job_json") or 0)
     wake_jobs = list(facts.get("wake_jobs") or [])
-    canary = next(
-        (
-            item
-            for item in wake_jobs
-            if str(item.get("job_id") or "") == PRODUCTION_CANARY_ID
-        ),
-        None,
-    )
-    if wake_json <= 0:
-        wake = "EMPTY"
-    elif canary and str(canary.get("status") or "") == "DONE":
-        wake = "VERIFIED"
+    if "wake_job_json" in facts:
+        wake_json = int(facts.get("wake_job_json") or 0)
     else:
-        wake = "CANDIDATE"
+        wake_json = len(wake_jobs)
+    wake = _wake_state(wake_json, wake_jobs)
     surfaces = list(facts.get("mcp_surfaces") or [])
     inventory = bool(facts.get("mcp_inventory"))
     if surfaces and inventory:
@@ -248,11 +252,12 @@ def measure_tree(root, catalog_text=""):
             "error": catalog["error"],
             "titan_write": "NOT_WRITTEN",
         }
+    census = _wake_job_census(root)
     facts = {
         "lda_android": _exists(root, LDA_ANDROID),
         "gh_android": _exists(root, GH_ANDROID),
-        "wake_job_json": _wake_job_json_count(root),
-        "wake_jobs": _wake_job_rows(root),
+        "wake_job_json": census["wake_job_json"],
+        "wake_jobs": census["wake_jobs"],
         "mcp_surfaces": _mcp_present(root),
         "mcp_inventory": _exists(root, MCP_INVENTORY),
         "whitebox_source": _exists(root, WHITEBOX_SOURCE),
@@ -303,13 +308,14 @@ def classify(row):
         "note": (
             "six-item stranded map is measured on this tree. "
             "Android CI stays STRANDED until DIO places "
-            ".github/workflows/android.yml. Bounded wake_jobs canaries "
-            "are VERIFIED when DONE; named idle resume remains "
-            "unmeasured. MCP stays FRAGMENTED until "
+            ".github/workflows/android.yml. wake_jobs state is %s; "
+            "VERIFIED only when every canonical row is DONE. Named "
+            "idle resume remains unmeasured. MCP stays FRAGMENTED until "
             "one inventory lands. White Box stays PROPOSED. Bazaar "
             "copy-node stays UNFULFILLED. Titan posted size stays STALE. "
             "A Slack map is still not the file."
-        ),
+        )
+        % (row.get("wake") or "UNMEASURED"),
     }
 
 
@@ -382,6 +388,18 @@ def _self_test():
     missing = measure_from_rows({"lda_android": True})
     assert missing["titan"] == "UNMEASURED"
     assert classify(missing)["state"] == "NOT_LANDED"
+    mixed = measure_from_rows(
+        {
+            "wake_job_json": 2,
+            "wake_jobs": [
+                {"job_id": PRODUCTION_CANARY_ID, "status": "DONE"},
+                {"job_id": "other-job", "status": "OPEN"},
+            ],
+            "titan_packet_size": PACKET_SIZE,
+            "titan_later_size": LATER_SIZE,
+        }
+    )
+    assert mixed["wake"] == "CANDIDATE"
     return True
 
 

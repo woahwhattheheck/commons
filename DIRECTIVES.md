@@ -179,6 +179,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_terminal_catalog.py` · `node test_land_desk.js` · `python3 -m unittest test_mcp_wake.py test_stranded_map.py`
 **Note:** Named idle-session resume stays UNMEASURED. Do not remint SPECTER taking / PR 2205 / RIVET canary / WAKE_CONTRACT / BATTERY_RED. Hands off CML 2108 and DIO titan PRs. titan NOT_WRITTEN. Talk is not a land.
 
+### 39. SPECTER remainder — inventory OPEN / expected_* / one-canary VERIFIED is not a land
+> *"ground/MCP_INVENTORY.json still says SPECTER OPEN; terminal zeroes are still labeled expected_*; stranded_map marks the entire queue VERIFIED when the named SPECTER job is DONE even if another canonical job is OPEN/INVALID."*
+
+**Asked:** 08-25T07:54 Slack `1787644473.765909` / SPECTER COLLISION/RE-SCOPE + ship-talk · **Status:** LANDED this commit
+**Landed:** MCP_INVENTORY SPECTER DONE + terminal SHA `a1a496bd` · MCP_WAKE exact receipt fields · single-snapshot job census · VERIFIED only when every canonical row is DONE
+**Receipt:** `python3 -m unittest test_mcp_wake.py test_stranded_map.py` · `python3 host/stranded_map.py --self-test` · `python3 host/mcp_wake.py --self-test`
+**Note:** Named idle-session resume stays UNMEASURED. Do not remint PR 2205 / 2259 / terminal-catalog / WAKE_CONTRACT. Dirty follow-up #2260 is SUPERSEDED by this leftover. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

@@ -13,8 +13,9 @@ JOJO has not posted that claim as p/{id}.md. This leftover ships it.
 
 It does not remint render-check / render-contract. It does not remint
 rivet-ship-mcp-wake-job-20260825-01 or host/mcp_wake_job.py. It does
-recognize the separately claimed SPECTER production canary as the only
-canonical wake_jobs/{id}.json in this lane. It does not mutate ~/.grok.
+recognize the separately claimed SPECTER production canary as one
+canonical wake_jobs/{id}.json in this lane. VERIFIED requires every
+canonical row in one snapshot to be DONE. It does not mutate ~/.grok.
 It does not claim a named idle bc- resume. titan: NOT_WRITTEN. No auth.
 
   python3 host/mcp_wake.py
@@ -76,16 +77,30 @@ def _exists(root, rel):
 
 
 def _wake_job_json_count(root):
-    folder = os.path.join(root, WAKE_JOBS)
-    if not os.path.isdir(folder):
-        return 0
-    return sum(
-        1
-        for name in os.listdir(folder)
-        if name.endswith(".json")
-        and name != "_last_tick.json"
-        and os.path.isfile(os.path.join(folder, name))
-    )
+    return _wake_job_census(root)["wake_job_json"]
+
+
+def _wake_job_census(root):
+    """One snapshot: count and rows come from the same listing."""
+    rows = _wake_job_rows(root)
+    return {"wake_jobs": rows, "wake_job_json": len(rows)}
+
+
+def _wake_state(wake_json, wake_jobs):
+    """VERIFIED only when every canonical row is DONE. Else CANDIDATE/EMPTY."""
+    statuses = [
+        str((item or {}).get("status") or "UNKNOWN").upper()
+        for item in (wake_jobs or [])
+    ]
+    if wake_json <= 0:
+        return "EMPTY"
+    if (
+        len(statuses) == int(wake_json)
+        and statuses
+        and all(status == "DONE" for status in statuses)
+    ):
+        return "VERIFIED"
+    return "CANDIDATE"
 
 
 def _wake_job_rows(root):
@@ -281,8 +296,11 @@ def measure_from_rows(facts):
     surfaces = list(facts.get("surfaces") or [])
     inventory_surfaces = list(facts.get("inventory_surfaces") or [])
     tests = list(facts.get("tests") or [])
-    wake_json = int(facts.get("wake_job_json") or 0)
     wake_jobs = list(facts.get("wake_jobs") or [])
+    if "wake_job_json" in facts:
+        wake_json = int(facts.get("wake_job_json") or 0)
+    else:
+        wake_json = len(wake_jobs)
     inventory = bool(facts.get("inventory"))
     job_tools = bool(facts.get("job_tools"))
     job = dict(facts.get("job") or {})
@@ -294,20 +312,7 @@ def measure_from_rows(facts):
         mcp = "FRAGMENTED"
     else:
         mcp = "NOT_LANDED"
-    canary = next(
-        (
-            item
-            for item in wake_jobs
-            if str(item.get("job_id") or "") == PRODUCTION_CANARY_ID
-        ),
-        None,
-    )
-    if wake_json <= 0:
-        wake = "EMPTY"
-    elif canary and str(canary.get("status") or "") == "DONE":
-        wake = "VERIFIED"
-    else:
-        wake = "CANDIDATE"
+    wake = _wake_state(wake_json, wake_jobs)
     return {
         "measured": True,
         "mcp": mcp,
@@ -415,14 +420,15 @@ def measure_root(root):
             inventory_text = handle.read()
     inventory = load_inventory(inventory_text) if inventory_text else {"surfaces": []}
     grok_home = os.path.expanduser("~/.grok")
+    census = _wake_job_census(root)
     facts = {
         "surfaces": _surfaces_present(root),
         "inventory": bool(inventory_text) and not inventory.get("error"),
         "inventory_surfaces": inventory.get("surfaces") or [],
         "tests": _tests_present(root),
         "job_tools": _has_job_tools(root),
-        "wake_job_json": _wake_job_json_count(root),
-        "wake_jobs": _wake_job_rows(root),
+        "wake_job_json": census["wake_job_json"],
+        "wake_jobs": census["wake_jobs"],
         "job": verify_job(),
         "grok_exists": os.path.exists(grok_home),
         "idle": probe_idle_resume(OTHER_BC),
