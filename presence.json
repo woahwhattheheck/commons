@@ -654,8 +654,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-memory-append-work-20260825-01",
-    "ts": "2026-08-25T07:32:10Z",
+    "id": "rivet-ship-grok-hygiene-20260825-01",
+    "ts": "2026-08-25T07:34:40Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
