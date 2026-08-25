@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8543,18 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8864,18 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9155,18 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9422,18 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9677,18 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9998,18 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10319,18 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -10348,6 +10348,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10574,18 +10586,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -10603,6 +10603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10829,18 +10841,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -10858,6 +10858,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11084,18 +11096,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -11179,6 +11179,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11405,18 +11417,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -11494,6 +11494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11720,18 +11732,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -11815,6 +11815,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12041,18 +12053,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -12082,6 +12082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12308,18 +12320,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -12385,6 +12385,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12611,18 +12623,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -12640,6 +12640,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12866,18 +12878,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -12961,6 +12961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13187,18 +13199,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -13228,6 +13228,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13454,18 +13466,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -13549,6 +13549,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13775,18 +13787,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -13804,6 +13804,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14030,18 +14042,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -14125,6 +14125,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14351,18 +14363,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -14386,6 +14386,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14612,18 +14624,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -14641,6 +14641,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14867,18 +14879,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -14962,6 +14962,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15188,18 +15200,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -15217,6 +15217,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15443,18 +15455,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -15478,6 +15478,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15704,18 +15716,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -15799,6 +15799,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16025,18 +16037,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -16060,6 +16060,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16286,18 +16298,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -16381,6 +16381,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16607,18 +16619,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -16702,6 +16702,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16928,18 +16940,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -17023,6 +17023,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17249,18 +17261,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -17344,6 +17344,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17570,18 +17582,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -17665,6 +17665,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17891,18 +17903,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -17920,6 +17920,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18146,18 +18158,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -18187,6 +18187,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18413,18 +18425,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -18508,6 +18508,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18734,18 +18746,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -18763,6 +18763,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18989,18 +19001,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -19066,6 +19066,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19292,18 +19304,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -19384,8 +19384,20 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
         {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
@@ -19456,6 +19468,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19682,18 +19706,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -19729,6 +19741,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19955,18 +19979,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -20050,6 +20062,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20276,18 +20300,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -20305,6 +20317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20531,18 +20555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -20560,6 +20572,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20786,18 +20810,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -20875,6 +20887,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21101,18 +21125,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -21130,6 +21142,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21356,18 +21380,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -21385,6 +21397,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21611,18 +21635,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -21640,6 +21652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21866,18 +21890,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -21895,6 +21907,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22121,18 +22145,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -22174,6 +22186,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22400,18 +22424,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -22495,6 +22507,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22721,18 +22745,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -22780,6 +22792,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23006,18 +23030,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -23035,6 +23047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23261,18 +23285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -23290,6 +23302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23516,18 +23540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -23545,6 +23557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23771,18 +23795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -23800,6 +23812,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24026,18 +24050,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -24055,6 +24067,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24281,18 +24305,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -24376,6 +24388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24602,18 +24626,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -24697,6 +24709,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24923,18 +24947,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -25018,6 +25030,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25244,18 +25268,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -25315,6 +25327,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25541,18 +25565,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -25636,6 +25648,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25862,18 +25886,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -25891,6 +25903,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26117,18 +26141,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -26146,6 +26158,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26372,18 +26396,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -26413,6 +26425,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26639,18 +26663,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -26734,6 +26746,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26960,18 +26984,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -26989,6 +27001,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27215,18 +27239,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -27256,6 +27268,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27482,18 +27506,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -27553,6 +27565,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27779,18 +27803,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -27874,6 +27886,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28100,18 +28124,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -28195,6 +28207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28421,18 +28445,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -28504,6 +28516,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28730,18 +28754,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -28766,11 +28778,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-grok-hygiene-20260825-01",
-      "last_ts": "2026-08-25T07:34:40Z",
+      "last_id": "rivet-ship-memory-guard-20260825-01",
+      "last_ts": "2026-08-25T07:37:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
         {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
@@ -28830,18 +28854,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:18:58Z"
-        },
-        {
-          "id": "rivet-ship-device-path-census-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:14:09Z"
-        },
-        {
-          "id": "rivet-ship-sitting-remint-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:08:28Z"
         }
       ]
     },
@@ -28850,6 +28862,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
         {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
@@ -29077,18 +29101,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -29172,6 +29184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29398,18 +29422,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -29493,6 +29505,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29719,18 +29743,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -29754,6 +29766,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29980,18 +30004,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -30027,6 +30039,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30253,18 +30277,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -30348,6 +30360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30574,18 +30598,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -30603,6 +30615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30829,18 +30853,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -30924,6 +30936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31150,18 +31174,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -31245,6 +31257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31471,18 +31495,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -31566,6 +31578,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31792,18 +31816,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -31887,6 +31899,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32113,18 +32137,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -32208,6 +32220,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32434,18 +32458,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -32463,6 +32475,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32689,18 +32713,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -32748,6 +32760,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32974,18 +32998,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -33069,6 +33081,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33295,18 +33319,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -33390,6 +33402,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33616,18 +33640,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -33711,6 +33723,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33937,18 +33961,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
@@ -34032,6 +34044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
           "id": "rivet-ship-grok-hygiene-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34258,18 +34282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
         }
       ],
       "mine": [
