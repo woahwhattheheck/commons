@@ -2,11 +2,11 @@
 """host/titan_move_dry.py — measure the public titan MOVE packet.
 
 Owner Slack 1787628542.573719: stop dodging the substrate. Organs
-1–31 excerpts can sit on main while titan.gguf is still NOT_WRITTEN.
+1–31 may be NOT_WRITTEN, or may carry a real live-computer receipt.
 
-This instrument reads the public packet and excerpt files. It does
-not open titan.gguf. It does not smash commons.mno. Claimed offsets
-are dest FROM FILE. A write still needs titan.gguf.
+This instrument reads the public packet, excerpt files, and latest
+live receipt. It does not open titan.gguf. Claimed offsets are dest
+FROM FILE. A WRITTEN packet is integrated only with reread evidence.
 
   python3 host/titan_move_dry.py
   python3 host/titan_move_dry.py --root /path/to/clone
@@ -138,6 +138,13 @@ def measure_from_packet(packet, excerpt_dir):
         "titan": packet.get("titan") or "NOT_WRITTEN",
         "nonzero_offsets": nonzero,
         "reread": False,
+        "packet_reread": packet.get("reread") is True,
+        "claimed_append_base": packet.get("claimed_append_base"),
+        "claimed_append_end": packet.get("claimed_append_end"),
+        "live_before_size": packet.get("live_before_size"),
+        "live_after_size": packet.get("live_after_size"),
+        "live_bytes_added": packet.get("live_bytes_added"),
+        "last_live_receipt": packet.get("last_live_receipt"),
         "journal_reread": False,
         "journal_count": 0,
         "missing": missing,
@@ -148,6 +155,25 @@ def measure_from_packet(packet, excerpt_dir):
 def owner_blocker(row, verdict):
     """NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER."""
     excerpts = int((row or {}).get("excerpt_count") or 0)
+    if (verdict or {}).get("state") == "INTEGRATED":
+        return {
+            "NEED": "NONE. The 31-organ Titan MOVE is integrated and reread.",
+            "WHY_ONLY_BRYCE": (
+                "NOT_APPLICABLE. The live owner computer was present for actuation."
+            ),
+            "SMALLEST_ACTION": "Keep the immutable live receipt with the packet.",
+            "EVIDENCE": (
+                "Receipt %s records %s -> %s bytes (%s added), reread=%s."
+                % (
+                    (row or {}).get("last_live_receipt") or "UNRECORDED",
+                    (row or {}).get("live_before_size"),
+                    (row or {}).get("live_after_size"),
+                    (row or {}).get("live_bytes_added"),
+                    (row or {}).get("reread"),
+                )
+            ),
+            "AFTER": "Already INTEGRATED; future live runs append and issue a new receipt.",
+        }
     return {
         "NEED": (
             "Run host/titan_move_apply.py --go against dest-FROM-FILE "
@@ -210,6 +236,36 @@ def measure_tree(root):
         row["journal_reread"] = journal.get("reread") is True
         row["journal_count"] = int(journal.get("count") or 0)
         row["journal_path"] = JOURNAL_REL
+    receipt_rel = row.get("last_live_receipt")
+    if receipt_rel:
+        receipt_path = os.path.abspath(
+            os.path.join(root, str(receipt_rel).replace("/", os.sep))
+        )
+        if os.path.commonpath([root, receipt_path]) == root and os.path.isfile(
+            receipt_path
+        ):
+            with open(receipt_path, encoding="utf-8") as handle:
+                receipt = json.load(handle)
+            row["receipt_path"] = str(receipt_rel).replace(os.sep, "/")
+            row["receipt_count"] = int(receipt.get("count") or 0)
+            row["receipt_reread"] = receipt.get("reread") is True
+            row["reread"] = (
+                row["packet_reread"]
+                and row["receipt_reread"]
+                and row["receipt_count"] == int(row.get("count") or 0)
+                and receipt.get("wrote") is True
+                and receipt.get("before_size") == row.get("live_before_size")
+                and receipt.get("after_size") == row.get("live_after_size")
+                and receipt.get("bytes_added") == row.get("live_bytes_added")
+                and receipt.get("claimed_append_base")
+                == row.get("claimed_append_base")
+                and receipt.get("claimed_append_end")
+                == row.get("claimed_append_end")
+                and all(
+                    item.get("reread") is True
+                    for item in receipt.get("organs") or []
+                )
+            )
     return row
 
 

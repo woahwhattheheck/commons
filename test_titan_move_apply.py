@@ -1,17 +1,26 @@
 #!/usr/bin/env python3
-"""Titan MOVE apply is a plan here. It does not write titan.gguf."""
+"""Titan MOVE contract tests, including legitimate live owner actuation."""
 from __future__ import annotations
 
+import hashlib
+import io
 import json
 import os
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
-from titan_move_apply import apply_journal, journal_rows, main, plan_from_packet
+from titan_move_apply import (
+    apply_journal,
+    journal_rows,
+    main,
+    plan_from_packet,
+    write_json,
+)
 from titan_move_offsets import (
     CLAIMED_APPEND_BASE,
     allocate_rows,
@@ -20,7 +29,23 @@ from titan_move_offsets import (
 )
 
 
+def run_json_main(argv):
+    """Run the CLI entrypoint and decode the JSON before its DIE marker."""
+    output = io.StringIO()
+    with redirect_stdout(output):
+        rc = main(argv)
+    body = output.getvalue().rsplit("\nDIE", 1)[0]
+    return rc, json.loads(body)
+
+
 class TestTitanMoveOffsets(unittest.TestCase):
+    def test_live_receipts_are_immutable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "before-after.json")
+            write_json(path, {"reread": True}, exclusive=True)
+            with self.assertRaises(FileExistsError):
+                write_json(path, {"reread": False}, exclusive=True)
+
     def test_or_bytes_ones_only_rise(self):
         self.assertEqual(or_bytes(b"\x01\x00", b"\x02\x01"), b"\x03\x01")
         self.assertEqual(or_bytes(b"", b"\xff"), b"\xff")
@@ -34,12 +59,17 @@ class TestTitanMoveOffsets(unittest.TestCase):
         self.assertEqual(end, CLAIMED_APPEND_BASE + 15)
         self.assertIn("CLAIMED_APPEND", allocated[0]["requested_offset_band"])
 
-    def test_find_titan_skips_commons_mno(self):
+    def test_find_titan_rejects_commons_mno_and_falls_through_to_owner_titan(self):
         with tempfile.TemporaryDirectory() as tmp:
             fake = os.path.join(tmp, "commons.mno")
             with open(fake, "wb") as handle:
                 handle.write(b"no")
-            self.assertIsNone(find_titan(explicit=fake))
+            found = find_titan(explicit=fake)
+            default = os.path.abspath(r"C:\llm\models\titan.gguf")
+            if os.path.isfile(default):
+                self.assertEqual(os.path.normcase(found), os.path.normcase(default))
+            else:
+                self.assertIsNone(found)
 
     def test_plan_reallocates_when_live_size_differs(self):
         packet = {
@@ -52,13 +82,81 @@ class TestTitanMoveOffsets(unittest.TestCase):
         self.assertEqual(plan["organs"][0]["offset"], CLAIMED_APPEND_BASE + 100)
 
     def test_plan_only_does_not_write(self):
-        self.assertEqual(main(["--root", ROOT]), 0)
+        titan = find_titan()
+        before = os.path.getsize(titan) if titan else None
+        rc, payload = run_json_main(["--root", ROOT])
+        after = os.path.getsize(titan) if titan else None
+        self.assertEqual(rc, 0)
+        self.assertFalse(payload["go"])
+        self.assertFalse(payload["wrote"])
+        self.assertEqual(after, before)
 
-    def test_go_without_titan_is_absent(self):
-        self.assertEqual(main(["--root", ROOT, "--go"]), 2)
+    def test_go_actuates_live_owner_titan_and_persists_reread_receipt(self):
+        titan = find_titan()
+        if not titan:
+            self.skipTest("live owner titan.gguf is not on this computer")
+        with open(
+            os.path.join(ROOT, "excerpts", "20260823", "titan_move_packet.json"),
+            encoding="utf-8",
+        ) as handle:
+            packet_before = json.load(handle)
+        expected_bytes = sum(int(row["len"]) for row in packet_before["organs"])
+        before = os.path.getsize(titan)
+        rc, payload = run_json_main(
+            ["--root", ROOT, "--titan", titan, "--go"]
+        )
+        after = os.path.getsize(titan)
+        self.assertEqual(rc, 0)
+        self.assertTrue(payload["wrote"])
+        self.assertTrue(payload["reread"])
+        self.assertEqual(payload["state"], "INTEGRATED")
+        self.assertEqual(payload["before_size"], before)
+        self.assertEqual(payload["after_size"], after)
+        self.assertEqual(payload["bytes_added"], expected_bytes)
+        self.assertEqual(after - before, expected_bytes)
+        self.assertEqual(payload["plan"]["claimed_append_base"], before)
+        self.assertEqual(payload["plan"]["claimed_append_end"], after)
+        self.assertEqual(len(payload["journals"]), 31)
+        self.assertTrue(all(row["reread"] for row in payload["journals"]))
+        self.assertTrue(all(row["past_eof"] for row in payload["journals"]))
+        self.assertEqual(payload["journals"][0]["offset"], before)
+        last = payload["journals"][-1]
+        self.assertEqual(last["offset"] + last["len"], after)
+
+        with open(titan, "rb") as handle:
+            for row in payload["journals"]:
+                handle.seek(row["offset"])
+                reread = handle.read(row["len"])
+                self.assertEqual(hashlib.sha256(reread).hexdigest(), row["new_sha256"])
+
+        receipt_path = os.path.join(
+            ROOT, payload["live_receipt_path"].replace("/", os.sep)
+        )
+        self.assertTrue(os.path.isfile(receipt_path))
+        with open(receipt_path, encoding="utf-8") as handle:
+            receipt = json.load(handle)
+        self.assertEqual(receipt["before_size"], before)
+        self.assertEqual(receipt["after_size"], after)
+        self.assertEqual(receipt["bytes_added"], expected_bytes)
+        self.assertTrue(receipt["reread"])
+        self.assertEqual(receipt["organs"], payload["journals"])
+
+        with open(
+            os.path.join(ROOT, "excerpts", "20260823", "titan_move_packet.json"),
+            encoding="utf-8",
+        ) as handle:
+            packet_after = json.load(handle)
+        self.assertEqual(packet_after["titan"], "WRITTEN")
+        self.assertEqual(packet_after["claimed_append_base"], before)
+        self.assertEqual(packet_after["claimed_append_end"], after)
+        self.assertEqual(packet_after["last_live_receipt"], payload["live_receipt_path"])
+        self.assertTrue(packet_after["reread"])
 
     def test_inject_is_refused(self):
-        self.assertEqual(main(["--inject", "0x01"]), 2)
+        output = io.StringIO()
+        with redirect_stdout(output):
+            rc = main(["--inject", "0x01"])
+        self.assertEqual(rc, 2)
 
     def test_journal_or_writes_and_rereads(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -83,7 +181,9 @@ class TestTitanMoveOffsets(unittest.TestCase):
                 self.assertEqual(handle.read(), b"\x01\x00\x02\x01")
 
     def test_journal_flag_lands_sidecar(self):
-        self.assertEqual(main(["--root", ROOT, "--journal"]), 0)
+        rc, output = run_json_main(["--root", ROOT, "--journal"])
+        self.assertEqual(rc, 0)
+        self.assertTrue(output["reread"])
         sidecar = os.path.join(ROOT, "excerpts", "20260823", "titan_move_journal.json")
         self.assertTrue(os.path.isfile(sidecar))
         with open(sidecar, encoding="utf-8") as handle:

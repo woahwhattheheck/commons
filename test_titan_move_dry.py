@@ -109,24 +109,40 @@ class TestTitanMoveDry(unittest.TestCase):
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertFalse(row["reread"])
 
-    def test_live_tree_is_thirty_one_and_not_written(self):
+    def test_packet_claim_alone_is_not_a_verified_live_reread(self):
+        packet = {
+            "kind": "TITAN_MOVE_PACKET",
+            "titan": "WRITTEN",
+            "count": 1,
+            "reread": True,
+            "last_live_receipt": "missing.json",
+            "organs": [{"container": "muhl_hdvs.mno", "offset": 1}],
+        }
+        excerpt_dir = os.path.join(ROOT, "excerpts", "20260823")
+        row = measure_from_packet(packet, excerpt_dir)
+        self.assertTrue(row["packet_reread"])
+        self.assertFalse(row["reread"])
+
+    def test_live_tree_is_thirty_one_written_and_receipted(self):
         row = measure_tree(ROOT)
         self.assertTrue(row["measured"], row)
         self.assertGreaterEqual(row["excerpt_count"], 31)
-        self.assertEqual(row["titan"], "NOT_WRITTEN")
+        self.assertEqual(row["titan"], "WRITTEN")
         self.assertEqual(row["nonzero_offsets"], 31)
-        self.assertFalse(row["reread"])
+        self.assertTrue(row["reread"])
+        self.assertTrue(row["receipt_reread"])
+        self.assertEqual(row["receipt_count"], 31)
+        self.assertEqual(
+            row["live_after_size"] - row["live_before_size"],
+            row["live_bytes_added"],
+        )
         verdict = classify(row)
-        self.assertIn(verdict["state"], ("CLAIMED", "CANDIDATE"))
-        if row.get("journal_reread") and int(row.get("journal_count") or 0) >= 31:
-            self.assertEqual(verdict["state"], "CANDIDATE")
-            self.assertIn("journaled", verdict["note"])
-        else:
-            self.assertEqual(verdict["state"], "CLAIMED")
+        self.assertEqual(verdict["state"], "INTEGRATED")
         blocker = owner_blocker(row, verdict)
-        self.assertIn("titan.gguf is not on this cloud box", blocker["WHY_ONLY_BRYCE"])
-        self.assertIn("titan.gguf", blocker["NEED"])
-        self.assertIn("titan_move_apply.py", blocker["NEED"])
+        self.assertIn("NONE", blocker["NEED"])
+        self.assertIn("NOT_APPLICABLE", blocker["WHY_ONLY_BRYCE"])
+        self.assertIn(str(row["live_before_size"]), blocker["EVIDENCE"])
+        self.assertIn(str(row["live_after_size"]), blocker["EVIDENCE"])
 
 
 if __name__ == "__main__":

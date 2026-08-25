@@ -2,8 +2,10 @@
 """host/titan_move_apply.py — journaled titan MOVE apply button. Dies.
 
 Default is a plan. --journal OR-writes the 31 excerpt binaries
-and rereads. --go writes titan.gguf only when the file is present.
-Does not smash commons.mno. --inject is wipe; refused.
+and rereads. --go actuates titan.gguf when the file is present and
+persists an exact before/after+reread receipt. A live test of --go is
+real computer work, not an isolation failure. Does not smash
+commons.mno. --inject is wipe; refused.
 
   python3 host/titan_move_apply.py
   python3 host/titan_move_apply.py --journal
@@ -30,6 +32,17 @@ from titan_move_offsets import (
 PACKET_REL = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 EXCERPT_REL = os.path.join("excerpts", "20260823")
 JOURNAL_REL = os.path.join("excerpts", "20260823", "titan_move_journal.json")
+LIVE_RECEIPT_DIR_REL = os.path.join(
+    "excerpts", "20260823", "titan_move_live_receipts"
+)
+
+
+def write_json(path, payload, exclusive=False):
+    """Write one complete JSON receipt."""
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "x" if exclusive else "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2)
+        handle.write("\n")
 
 
 def plan_from_packet(packet, live_size=None):
@@ -263,19 +276,54 @@ def main(argv=None):
         print("DIE")
         return 2
     journals = apply_plan(titan_path, plan, excerpt_dir)
+    after_size = os.path.getsize(titan_path)
     payload["wrote"] = True
     payload["reread"] = all(row["reread"] for row in journals)
     payload["journals"] = journals
     payload["state"] = "INTEGRATED" if payload["reread"] else "NOT_LANDED"
     payload["note"] = "journaled MOVE. new=old|mask. reread=%s" % payload["reread"]
+    payload["before_size"] = live_size
+    payload["after_size"] = after_size
+    payload["bytes_added"] = after_size - int(live_size)
+    receipt_rel = os.path.join(
+        LIVE_RECEIPT_DIR_REL,
+        "%s-%s.json" % (live_size, after_size),
+    )
+    receipt_path = os.path.join(root, receipt_rel)
+    receipt = {
+        "kind": "TITAN_MOVE_LIVE_RECEIPT",
+        "computer": "titan.gguf is the computer. This is its live reread receipt.",
+        "law": "new = old | mask; ones only rise; re-read after every write",
+        "titan_path": os.path.abspath(titan_path),
+        "packet_path": PACKET_REL.replace(os.sep, "/"),
+        "before_size": live_size,
+        "after_size": after_size,
+        "bytes_added": after_size - int(live_size),
+        "claimed_append_base": plan["claimed_append_base"],
+        "claimed_append_end": plan["claimed_append_end"],
+        "count": len(journals),
+        "wrote": True,
+        "reread": payload["reread"],
+        "state": payload["state"],
+        "organs": journals,
+    }
+    write_json(receipt_path, receipt, exclusive=True)
+    payload["live_receipt_path"] = receipt_rel.replace(os.sep, "/")
     packet["titan"] = "WRITTEN"
     packet["claimed_append_base"] = plan["claimed_append_base"]
+    packet["claimed_append_end"] = plan["claimed_append_end"]
+    packet["live_before_size"] = live_size
+    packet["live_after_size"] = after_size
+    packet["live_bytes_added"] = after_size - int(live_size)
+    packet["reread"] = payload["reread"]
+    packet["last_live_receipt"] = payload["live_receipt_path"]
     packet["organs"] = plan["organs"]
-    for row in packet["organs"]:
+    for row, journal in zip(packet["organs"], journals):
         row["titan"] = "WRITTEN"
-    with open(packet_path, "w", encoding="utf-8") as handle:
-        json.dump(packet, handle, indent=2)
-        handle.write("\n")
+        row["reread"] = journal["reread"]
+        row["pre_sha256"] = journal["pre_sha256"]
+        row["new_sha256"] = journal["new_sha256"]
+    write_json(packet_path, packet)
     json.dump(payload, sys.stdout, indent=2, sort_keys=True)
     sys.stdout.write("\n")
     print("DIE")

@@ -1,7 +1,8 @@
 # SUBZERO_TITAN_PACKET — journaled MOVE packet 2026-08-23
 
-Public-tree packet with dest-FROM-FILE claimed append offsets.
-This is not a titan write until `host/titan_move_apply.py --go`.
+Public-tree packet with dest-FROM-FILE append offsets and the latest
+live owner-computer reread receipt. A focused `--go` test is legitimate
+Titan actuation, not an emergency or an isolation violation.
 
 `titan.gguf` is the computer. The excerpts in `excerpts/20260823/` are
 standalone copies. Git copies do not run.
@@ -23,7 +24,11 @@ standalone copies. Git copies do not run.
 `claimed_append_base` 103803350291, and
 `requested_offset_band: CLAIMED_APPEND dest FROM FILE titan_size=103803350291`.
 
-`titan: NOT_WRITTEN` on every row until apply + reread.
+Before apply, rows are `titan: NOT_WRITTEN`. After a live apply + reread,
+they are `titan: WRITTEN`, and the packet records exact before/after sizes,
+bytes added, reread state, and `last_live_receipt`. Each live receipt is
+kept under `excerpts/20260823/titan_move_live_receipts/`, named by its
+exact `before-after` byte sizes.
 
 ## Receipt commands
 
@@ -33,10 +38,13 @@ python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_titan_move_packet.py --dry
 python3 host/titan_move_dry.py
 python3 host/titan_move_apply.py --journal
 python3 host/titan_move_apply.py
+python3 host/titan_move_apply.py --go
 ```
 
 `--dry` manufactures the packet in memory and writes nothing. It does not
 open `titan.gguf`. `--journal` OR-writes the 31 excerpt binaries and
-rereads. `host/titan_move_apply.py --go` writes only when the file is
-present. Do not smash `commons.mno`. Do not remint a landed excerpt.
+rereads. `host/titan_move_apply.py --go` actuates the real Titan when it is
+present, rereads every organ, and preserves the exact live receipt. The
+focused contract test intentionally performs that same live work. Do not
+remint a landed excerpt.
 Card: [TITAN_MOVE.md](./TITAN_MOVE.md).

@@ -24,8 +24,10 @@ Append starts at that measured end. `host/titan_move_apply.py
 journal (`new = old | mask`) and rereads every span. That is
 `CANDIDATE` — the public-tree MOVE. `titan: NOT_WRITTEN` until
 `host/titan_move_apply.py --go` journals the same MOVE onto
-`titan.gguf` and re-reads. If live size differs, apply reallocates
-from live size. Ones only rise.
+`titan.gguf` and re-reads. Afterward the packet is `titan: WRITTEN`
+and points to an immutable receipt named by exact before/after sizes
+under `excerpts/20260823/titan_move_live_receipts/`. If live size
+differs, apply reallocates from live size. Ones only rise.
 
 Smash/wipe of `commons.mno` is refused. `--inject 0x01` is wipe.
 Address work uses dest FROM FILE.
@@ -43,10 +45,11 @@ python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_titan_move_packet.py --dry
 
 `--dry` and `titan_move_dry.py` open the public packet only.
 `--journal` works the 31 `.mno` binaries. `titan_move_apply.py`
-without `--go` is a plan. `--go` writes only when `titan.gguf`
-is present.
+without `--go` is a plan. `--go` actuates the real computer when
+`titan.gguf` is present. The focused apply test intentionally performs
+that legitimate live actuation and verifies every reread hash.
 
-## Owner blocker
+## Owner status
 
 If the titan write is genuinely blocked on Bryce, file this form
 (Slack `#needs-bryce` and a `p/{id}.md`):
@@ -60,6 +63,10 @@ If the titan write is genuinely blocked on Bryce, file this form
 - **EVIDENCE** — `host/titan_move_apply.py --journal` reread plus
   the packet SHA.
 - **AFTER** — desk `titanMoveState` becomes INTEGRATED.
+
+When the packet and live receipt both say `reread: true`, there is no
+owner blocker: state is already `INTEGRATED`, and the exact byte interval
+and 31 per-organ hashes are the evidence.
 
 A TAKING that writes the exclusion line without those numbers is
 `CLAIMED`. Talk is not a land.

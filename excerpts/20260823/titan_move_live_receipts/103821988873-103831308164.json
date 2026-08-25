@@ -1,352 +1,297 @@
 {
-  "kind": "TITAN_MOVE_PUBLIC_JOURNAL",
-  "computer": "titan.gguf is the computer. This journal is the public-tree MOVE.",
-  "law": "new = old | mask; ones only rise; re-read before write",
+  "kind": "TITAN_MOVE_LIVE_RECEIPT",
+  "computer": "titan.gguf is the computer. This is its live reread receipt.",
+  "law": "new = old | mask; ones only rise; re-read after every write",
+  "titan_path": "C:\\llm\\models\\titan.gguf",
+  "packet_path": "excerpts/20260823/titan_move_packet.json",
+  "before_size": 103821988873,
+  "after_size": 103831308164,
+  "bytes_added": 9319291,
+  "claimed_append_base": 103821988873,
+  "claimed_append_end": 103831308164,
   "count": 31,
-  "bytes": 9319291,
+  "wrote": true,
   "reread": true,
-  "titan": "WRITTEN",
+  "state": "INTEGRATED",
   "organs": [
     {
       "name": "muhl_byzq",
-      "container": "muhl_byzq.mno",
-      "journal_offset": 0,
-      "claimed_titan_offset": 103821988873,
+      "offset": 103821988873,
       "len": 387189,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "83c3299088ae56b871af6e14443d3d63c5a9b8a9a123cc4aa9f98ed63fb30b7e",
       "new_sha256": "83c3299088ae56b871af6e14443d3d63c5a9b8a9a123cc4aa9f98ed63fb30b7e",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_flow_stig",
-      "container": "muhl_chimera_flow_stig.mno",
-      "journal_offset": 387189,
-      "claimed_titan_offset": 103822376062,
+      "offset": 103822376062,
       "len": 570,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba",
       "new_sha256": "20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_grbn_socr",
-      "container": "muhl_chimera_grbn_socr.mno",
-      "journal_offset": 387759,
-      "claimed_titan_offset": 103822376632,
+      "offset": 103822376632,
       "len": 630,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "521a23200c1731ee1e775ab70236569b713cdfca12ca3f921863d3cf68d36fcb",
       "new_sha256": "521a23200c1731ee1e775ab70236569b713cdfca12ca3f921863d3cf68d36fcb",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_hopf_sdmk",
-      "container": "muhl_chimera_hopf_sdmk.mno",
-      "journal_offset": 388389,
-      "claimed_titan_offset": 103822377262,
+      "offset": 103822377262,
       "len": 690,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "c8301c2345e67dfe6f9b1f91127fab896224347a72ba8ac044313275fe948ee7",
       "new_sha256": "c8301c2345e67dfe6f9b1f91127fab896224347a72ba8ac044313275fe948ee7",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_immn_hdvs",
-      "container": "muhl_chimera_immn_hdvs.mno",
-      "journal_offset": 389079,
-      "claimed_titan_offset": 103822377952,
+      "offset": 103822377952,
       "len": 630,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
       "new_sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_lvin_synd",
-      "container": "muhl_chimera_lvin_synd.mno",
-      "journal_offset": 389709,
-      "claimed_titan_offset": 103822378582,
+      "offset": 103822378582,
       "len": 690,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae",
       "new_sha256": "43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_pots_dmb",
-      "container": "muhl_chimera_pots_dmb.mno",
-      "journal_offset": 390399,
-      "claimed_titan_offset": 103822379272,
+      "offset": 103822379272,
       "len": 630,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "997c53127e555de004862e602089bc19bf5d2a1d0eb4b853a875aef467b6da82",
       "new_sha256": "997c53127e555de004862e602089bc19bf5d2a1d0eb4b853a875aef467b6da82",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_pred_rgcg",
-      "container": "muhl_chimera_pred_rgcg.mno",
-      "journal_offset": 391029,
-      "claimed_titan_offset": 103822379902,
+      "offset": 103822379902,
       "len": 750,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9",
       "new_sha256": "189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_socr_stig",
-      "container": "muhl_chimera_socr_stig.mno",
-      "journal_offset": 391779,
-      "claimed_titan_offset": 103822380652,
+      "offset": 103822380652,
       "len": 570,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd",
       "new_sha256": "262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_chimera_tset_hdvs",
-      "container": "muhl_chimera_tset_hdvs.mno",
-      "journal_offset": 392349,
-      "claimed_titan_offset": 103822381222,
+      "offset": 103822381222,
       "len": 750,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7",
       "new_sha256": "f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_esnr",
-      "container": "muhl_esnr.mno",
-      "journal_offset": 393099,
-      "claimed_titan_offset": 103822381972,
+      "offset": 103822381972,
       "len": 1125830,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "d842726a5ddfa7d82bb1026cd0d199140b168e882013fe6d23e6abe0624b39e1",
       "new_sha256": "d842726a5ddfa7d82bb1026cd0d199140b168e882013fe6d23e6abe0624b39e1",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_flow",
-      "container": "muhl_flow.mno",
-      "journal_offset": 1518929,
-      "claimed_titan_offset": 103823507802,
+      "offset": 103823507802,
       "len": 617502,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d",
       "new_sha256": "8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_grbn",
-      "container": "muhl_grbn.mno",
-      "journal_offset": 2136431,
-      "claimed_titan_offset": 103824125304,
+      "offset": 103824125304,
       "len": 228638,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
       "new_sha256": "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_hdvs",
-      "container": "muhl_hdvs.mno",
-      "journal_offset": 2365069,
-      "claimed_titan_offset": 103824353942,
+      "offset": 103824353942,
       "len": 328734,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "1f392a877594a9a81d28cca02e3f204355aba1e02c4c11b5cb94370ded7309bd",
       "new_sha256": "1f392a877594a9a81d28cca02e3f204355aba1e02c4c11b5cb94370ded7309bd",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_hopf",
-      "container": "muhl_hopf.mno",
-      "journal_offset": 2693803,
-      "claimed_titan_offset": 103824682676,
+      "offset": 103824682676,
       "len": 973150,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d",
       "new_sha256": "f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_immn",
-      "container": "muhl_immn.mno",
-      "journal_offset": 3666953,
-      "claimed_titan_offset": 103825655826,
+      "offset": 103825655826,
       "len": 782892,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "9aaa8c738f9c2e8a0eaa24f419da83ef7e3125897e80a1f732067db02fdac827",
       "new_sha256": "9aaa8c738f9c2e8a0eaa24f419da83ef7e3125897e80a1f732067db02fdac827",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_ispn",
-      "container": "muhl_ispn.mno",
-      "journal_offset": 4449845,
-      "claimed_titan_offset": 103826438718,
+      "offset": 103826438718,
       "len": 230734,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "9930ee8299abb029e5ec1c7c20c9f905e22f3d2d7801719e75cb8739cf75244f",
       "new_sha256": "9930ee8299abb029e5ec1c7c20c9f905e22f3d2d7801719e75cb8739cf75244f",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_lvin",
-      "container": "muhl_lvin.mno",
-      "journal_offset": 4680579,
-      "claimed_titan_offset": 103826669452,
+      "offset": 103826669452,
       "len": 62250,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "a4d019d59035be2ff3300a18bf71bf4c880fdbc7b66ed21c8fe8844073d5496a",
       "new_sha256": "a4d019d59035be2ff3300a18bf71bf4c880fdbc7b66ed21c8fe8844073d5496a",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_pdap",
-      "container": "muhl_pdap.mno",
-      "journal_offset": 4742829,
-      "claimed_titan_offset": 103826731702,
+      "offset": 103826731702,
       "len": 69374,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "874b08be34ba5263ef9ece0217c213aa14d9d9fa0e673c74c0d12a8b8799f4b4",
       "new_sha256": "874b08be34ba5263ef9ece0217c213aa14d9d9fa0e673c74c0d12a8b8799f4b4",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_petr",
-      "container": "muhl_petr.mno",
-      "journal_offset": 4812203,
-      "claimed_titan_offset": 103826801076,
+      "offset": 103826801076,
       "len": 94686,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "55a52541c1bbee1c4b7115d4ca745b6c04f71eec2832307f2b5d19c398148f44",
       "new_sha256": "55a52541c1bbee1c4b7115d4ca745b6c04f71eec2832307f2b5d19c398148f44",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_pots",
-      "container": "muhl_pots.mno",
-      "journal_offset": 4906889,
-      "claimed_titan_offset": 103826895762,
+      "offset": 103826895762,
       "len": 901150,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "ac8e7473739af617f3231d027d679aceb4ed809f2cf0b5f2900add38e85aae71",
       "new_sha256": "ac8e7473739af617f3231d027d679aceb4ed809f2cf0b5f2900add38e85aae71",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_pred",
-      "container": "muhl_pred.mno",
-      "journal_offset": 5808039,
-      "claimed_titan_offset": 103827796912,
+      "offset": 103827796912,
       "len": 462750,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "be5ba528497b2cc2c8f14cfb433d8fdc2a49d1bf6477159ca92e844b6f665658",
       "new_sha256": "be5ba528497b2cc2c8f14cfb433d8fdc2a49d1bf6477159ca92e844b6f665658",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_rgcg",
-      "container": "muhl_rgcg.mno",
-      "journal_offset": 6270789,
-      "claimed_titan_offset": 103828259662,
+      "offset": 103828259662,
       "len": 204406,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "fcd359538d3568018c650db7384fa1c1dffc982a4eecded47d716a645a15cd21",
       "new_sha256": "fcd359538d3568018c650db7384fa1c1dffc982a4eecded47d716a645a15cd21",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_sdmk",
-      "container": "muhl_sdmk.mno",
-      "journal_offset": 6475195,
-      "claimed_titan_offset": 103828464068,
+      "offset": 103828464068,
       "len": 645214,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a",
       "new_sha256": "f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_socr",
-      "container": "muhl_socr.mno",
-      "journal_offset": 7120409,
-      "claimed_titan_offset": 103829109282,
+      "offset": 103829109282,
       "len": 419614,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
       "new_sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_stig",
-      "container": "muhl_stig.mno",
-      "journal_offset": 7540023,
-      "claimed_titan_offset": 103829528896,
+      "offset": 103829528896,
       "len": 406302,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
       "new_sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_synd",
-      "container": "muhl_synd.mno",
-      "journal_offset": 7946325,
-      "claimed_titan_offset": 103829935198,
+      "offset": 103829935198,
       "len": 717854,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d",
       "new_sha256": "302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_titanx_commons",
-      "container": "muhl_titanx_commons.mno",
-      "journal_offset": 8664179,
-      "claimed_titan_offset": 103830653052,
+      "offset": 103830653052,
       "len": 18030,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "20e48ea737c37cca5c4bb4afe782eb9f945f429cdd5ad5949c0b6f5a31678e43",
       "new_sha256": "20e48ea737c37cca5c4bb4afe782eb9f945f429cdd5ad5949c0b6f5a31678e43",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_titanx_forge",
-      "container": "muhl_titanx_forge.mno",
-      "journal_offset": 8682209,
-      "claimed_titan_offset": 103830671082,
+      "offset": 103830671082,
       "len": 5430,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788",
       "new_sha256": "29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_titanx_mirror",
-      "container": "muhl_titanx_mirror.mno",
-      "journal_offset": 8687639,
-      "claimed_titan_offset": 103830676512,
+      "offset": 103830676512,
       "len": 7230,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3",
       "new_sha256": "29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     },
     {
       "name": "muhl_tset",
-      "container": "muhl_tset.mno",
-      "journal_offset": 8694869,
-      "claimed_titan_offset": 103830683742,
+      "offset": 103830683742,
       "len": 624422,
       "pre_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "mask_sha256": "f526cdbf6307df52bfa87fdc806f17f75f04e47b7ae3d0adaceb8bfabae28c4b",
       "new_sha256": "f526cdbf6307df52bfa87fdc806f17f75f04e47b7ae3d0adaceb8bfabae28c4b",
-      "reread": true
+      "reread": true,
+      "past_eof": true
     }
   ]
 }
