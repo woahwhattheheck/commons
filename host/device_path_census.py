@@ -382,8 +382,9 @@ def classify(row):
         "note": (
             "device-path census leftover is on this tree. X/Y/Z ran on the named "
             "git tree. Lawful read-only OPEN+DEVICE canary is a fixture, not a "
-            "pending p/ ACTION. Zero reservations is measured Y. A Slack census "
-            "is still not the file."
+            "pending p/ ACTION. Current-tree counts are measured, not inferred: "
+            "reservations=%s, batches=%s. A Slack census is still not the file."
+            % (row.get("reservation_count"), row.get("batch_count"))
         ),
     }
 

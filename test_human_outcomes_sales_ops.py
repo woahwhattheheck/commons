@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SALES = os.path.join(ROOT, "revenue", "human_outcomes", "sales_ops")
 CATALOG = {
     "humans.html": "f0b250d6b6eb83f0b8b914f7720d9d84f20645e4",
-    "revenue/human_outcomes/offers.json": "dc4746ccf07e82669c09f0cd6d215deeb3061340",
+    "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
     "revenue/human_outcomes/README.md": "66c64b6eba9b7aba035223940676bb134590a660",
     "revenue/human_outcomes/fulfillment.md": "fbaf8be09bc4bc544ea470670f3eb6435ebc5838",
 }
