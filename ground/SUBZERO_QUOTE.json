@@ -1,0 +1,66 @@
+{
+  "slack_ts": "1787649732.551439",
+  "kind": "SUBZERO_QUOTE",
+  "subject": "sz-paid-validation is a $2500 quote draft over STRUCTURAL_ONLY, not runtime/demand/cash",
+  "presence_receipt": "rivet-ship-subzero-tech-presence-20260825-01",
+  "presence_sha": "5e8f3b6e6f4499ebf6ec1c6478c1554a296c2986",
+  "sku": {
+    "id": "sz-paid-validation",
+    "name": "paid excerpt validation",
+    "price_usd": 2500,
+    "status": "CANDIDATE",
+    "class": "QUOTE_DRAFT",
+    "gtm_path": "revenue/subzero_gtm/architecture.json"
+  },
+  "evidence": {
+    "titan_local": "PRESENT",
+    "structural_only": 31,
+    "runtime_measured": 0,
+    "customer_ready": 0,
+    "runtime_proof": false,
+    "label": "STRUCTURAL_ONLY"
+  },
+  "collected_cash_usd": 0,
+  "cash_state": "NOT_LANDED",
+  "demand": "UNKNOWN",
+  "claims_cash": false,
+  "claims_runtime": false,
+  "claims_demand": false,
+  "commercial_consequence": "sz-paid-validation remains a $2500 quote draft over STRUCTURAL_ONLY evidence — not runtime, not demand, not cash proof",
+  "already_landed": [
+    "host/subzero_tech.py",
+    "ground/SUBZERO_TECH.md",
+    "host/subzero_gtm.py",
+    "ground/SUBZERO_GTM.md",
+    "revenue/subzero_gtm/architecture.json",
+    "host/subzero_buyers.py",
+    "host/subzero_explorer.py",
+    "host/subzero_proof.py",
+    "p/rivet-ship-subzero-tech-presence-20260825-01.md"
+  ],
+  "do_not_remint": [
+    "SUBZERO_TECH",
+    "SUBZERO_GTM",
+    "SUBZERO_BUYERS",
+    "SUBZERO_EXPLORER",
+    "SUBZERO_PROOF",
+    "white-box-gguf-pilot-30d",
+    "HUMAN_OUTCOMES",
+    "rivet-ship-subzero-tech-presence-20260825-01",
+    "demon-redteam-subzero-gtm-20260825-06",
+    "demon-redteam-subzero-tech-ip-20260825-04"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2286",
+    "SPECTER",
+    "titan --go",
+    "White Box",
+    "payment-ready",
+    "human-outcomes checkout"
+  ]
+}
