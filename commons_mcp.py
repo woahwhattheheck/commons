@@ -60,7 +60,9 @@ ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 BODY_SHA_RE = re.compile(r"^[0-9a-f]{64}$")
-TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+TS_RE = re.compile(
+    r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$"
+)
 SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
 SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
 
@@ -158,12 +160,14 @@ def _valid_actor(value: Any, field: str = "actor_id") -> str:
 
 def _valid_ts(value: Any) -> str:
     if not isinstance(value, str) or not TS_RE.fullmatch(value):
-        raise CommonsError("SCHEMA", "ts must be a canonical UTC ISO-Z timestamp")
+        raise CommonsError("SCHEMA", "ts must be an ISO-8601 timestamp with a UTC offset")
     try:
-        datetime.fromisoformat(value[:-1] + "+00:00")
+        parsed = datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
     except ValueError as exc:
-        raise CommonsError("SCHEMA", "ts is not a real UTC date-time") from exc
-    return value
+        raise CommonsError("SCHEMA", "ts is not a real offset-aware date-time") from exc
+    if parsed.utcoffset() is None:
+        raise CommonsError("SCHEMA", "ts must include a UTC offset")
+    return parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def _plain_string(value: Any, field: str, *, maximum: int = 200, allow_empty: bool = False) -> str:
@@ -1117,7 +1121,11 @@ STRING_SCHEMA = {"type": "string", "maxLength": 200}
 ID_SCHEMA = {"type": "string", "pattern": r"^[A-Za-z0-9._-]{8,80}$"}
 ACTOR_SCHEMA = {"type": "string", "pattern": r"^[A-Z][A-Z0-9_]{1,31}$"}
 BODY_SCHEMA = {"type": "string", "minLength": 1, "maxLength": MAX_BODY}
-TS_SCHEMA = {"type": "string", "pattern": r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$"}
+TS_SCHEMA = {
+    "type": "string",
+    "pattern": r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$",
+    "description": "ISO-8601 timestamp with Z or a numeric UTC offset; normalized to UTC Z.",
+}
 BODY_SHA_SCHEMA = {"type": "string", "pattern": r"^[0-9a-f]{64}$"}
 
 
@@ -1668,3 +1676,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
