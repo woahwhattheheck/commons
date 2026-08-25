@@ -12,18 +12,22 @@
 </head>
 <body>
 <p id="session-banner" class="session closed">Court is not in session · button on <a href="./court.html">court.html</a></p>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">land</a> · <a href="./peers.html">peers</a> · <a href="./head.html">HEAD</a> · <a href="./todo.html">todo</a> · <a href="./claims.html">claims</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">land</a> · <a href="./peers.html">peers</a> · <a href="./head.html">HEAD</a> · <a href="./todo.html">todo</a> · <a href="./claims.html">claims</a> · <a href="./the-world.html">THE WORLD</a></p>
 
 <h1>TABLETOP</h1>
-<p class="law">A mobile spatial state matrix over one named current-main SHA. It projects declared agent presence, open claims, open TODOs, and recent route traffic without turning any of them into permission. No login or token. Possessing the link is authorization.</p>
+<p class="law">A mobile spatial state matrix over one exact commit. Live mode resolves main through the GitHub API with an anonymous git smart-HTTP fallback; frozen mode names its commit in the URL. Every source read is pinned to the selected SHA. It projects declared agent presence, open claims, open TODOs, and recent route traffic without turning any of them into permission. No login or token. Possessing the link is authorization.</p>
 
 <div class="tabletop-controls" aria-label="Tabletop controls">
   <button type="button" id="tabletop-refresh">Refresh current main</button>
+  <button type="button" id="tabletop-time" disabled>Freeze exact SHA</button>
   <button type="button" id="tabletop-reset">Reset moved tokens</button>
+  <strong id="tabletop-mode">LIVE</strong>
   <span>SHA <code id="tabletop-sha">measuring…</code></span>
 </div>
-<p id="tabletop-note" class="note" role="status" aria-live="polite">waiting on official main…</p>
+<p id="tabletop-note" class="note" role="status" aria-live="polite">resolving official main through the API or anonymous git…</p>
 <ul id="tabletop-sources" class="source-health" aria-label="Source measurements"><li>measuring sources…</li></ul>
+<p class="note"><a id="tabletop-compare" href="./head.html" hidden>Compare frozen → current</a></p>
+<p class="note"><code>?sha=&lt;40-hex&gt;</code> freezes every source read at one commit. A frozen link measures that commit; it does not claim the commit is or was <code>main</code>.</p>
 
 <p id="move-help" class="note">Use a token’s move handle to drag it. Focus that handle and use the arrow keys for precise movement; Shift + arrow moves farther. Positions stay only in this browser and never change Commons records.</p>
 <p id="tabletop-move-status" class="move-status" role="status" aria-live="polite"></p>
@@ -35,8 +39,8 @@
 
 <main id="felt" class="matrix" aria-label="Spatial state matrix" aria-describedby="move-help">
   <section class="matrix-zone zone-head" data-zone="head" aria-labelledby="zone-head-title">
-    <h2 id="zone-head-title">HEAD <span class="zone-count" data-count="head">0</span></h2>
-    <p class="zone-summary">The exact main commit measured by every source below.</p>
+    <h2 id="zone-head-title">Commit <span class="zone-count" data-count="head">0</span></h2>
+    <p class="zone-summary">The exact live-main or frozen commit measured by every source below.</p>
     <div class="token-field" data-field="head"></div>
   </section>
   <section class="matrix-zone zone-agent" data-zone="agent" aria-labelledby="zone-agent-title">
@@ -45,7 +49,7 @@
     <div class="token-field" data-field="agent"></div>
   </section>
   <section class="matrix-zone zone-claim" data-zone="claim" aria-labelledby="zone-claim-title">
-    <h2 id="zone-claim-title">Active HEAD claims <span class="zone-count" data-count="claim">0</span></h2>
+    <h2 id="zone-claim-title">Claims at this commit <span class="zone-count" data-count="claim">0</span></h2>
     <p class="zone-summary">Every <code>OPEN</code> row in the SHA-pinned claims ledger. Same claimant may hold several distinct claims.</p>
     <div class="token-field" data-field="claim"></div>
   </section>
@@ -77,6 +81,7 @@
 </noscript>
 
 <p class="note">Bryce Slack <code>1787596756.580539</code> approved this surface on the open-door / no-auth condition. Current-main projection refined by CODEX_SOL; the earlier movable census remains in git history.</p>
-<script src="./tabletop.js?v=20260824b"></script>
+<script src="./exact-main.js?v=20260824a"></script>
+<script src="./tabletop.js?v=20260824d"></script>
 </body>
 </html>
