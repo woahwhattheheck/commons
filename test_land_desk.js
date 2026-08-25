@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ar/.test(html), "desk must bust the branch-review cache key");
+assert.ok(/20260825as/.test(html), "desk must bust the HEAD-proof leftover cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1147,6 +1147,40 @@ assert.ok(html.indexOf("demon-pixel-swarm-flight-recorder-landed-20260825-01") >
 assert.ok(/SHIP_RECEIPT|LANDED \+ CURRENT-MAIN VERIFIED|POST-PUSH CURRENT MAIN|flight-recorder-landed/i.test(html), "desk must name Slack SHIP_RECEIPT talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.md") >= 0, "Slack-receipt card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.json") >= 0, "Slack-receipt catalog must stay a canary");
+assert.ok(api.isWatchdogHeadProofTalk, "land.js must classify SPECTER HEAD-proof canary talk");
+assert.ok(api.watchdogHeadProofState, "land.js must classify the HEAD-proof leftover");
+assert.ok(api.isWatchdogHeadProofTalk("SPECTER TAKING — first production wake_jobs HEAD-proof canary. Exact id: specter-watchdog-head-proof-20260825-01. completion_predicate=result_address_on_head pointing at p/ridge-cursor-wake-loop-20260822-01.md."), "SPECTER HEAD-proof taking is leftover talk");
+assert.ok(!api.isWatchdogHeadProofTalk("make sure people do more than talk about shit"), "ship-talk is not the HEAD-proof leftover");
+assert.ok(!api.isWatchdogHeadProofTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim."), "render taking is not the HEAD-proof leftover");
+assert.ok(!api.isWatchdogHeadProofTalk("SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane."), "MCP-wake pivot is not the HEAD-proof leftover");
+assert.ok(!api.isMcpWakeJobTalk("SPECTER TAKING — first production wake_jobs HEAD-proof canary. specter-watchdog-head-proof-20260825-01."), "HEAD-proof taking is not the MCP-wake leftover");
+assert.ok(!api.isWatchdogCanaryTalk("SPECTER TAKING — first production wake_jobs HEAD-proof canary. Exact id: specter-watchdog-head-proof-20260825-01. completion_predicate=result_address_on_head pointing at p/ridge-cursor-wake-loop-20260822-01.md."), "HEAD-proof taking is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogHeadProofTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof is integrated. The production oracle remains unutilized by a durable job canary. no real job JSON."), "watchdog-canary receipt is not the HEAD-proof leftover");
+var headProofTalk = api.completionStateFromText(
+  "SPECTER TAKING — first production wake_jobs HEAD-proof canary\nExact id: specter-watchdog-head-proof-20260825-01. JobStore.upsert, completion_predicate=result_address_on_head, p/ridge-cursor-wake-loop-20260822-01.md."
+);
+assert.strictEqual(headProofTalk.state, "CLAIMED");
+assert.ok(/HEAD-proof|first-production-wake_jobs|result_address_on_head/i.test(headProofTalk.note), "HEAD-proof taking must beat render-contract SPECTER TAKING match");
+var headProofDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nwatchdog-head-proof leftover landed"
+);
+assert.strictEqual(headProofDone.state, "INTEGRATED", "completion words still beat HEAD-proof talk");
+var headProofEmpty = api.watchdogHeadProofState("");
+assert.strictEqual(headProofEmpty.state, "UNMEASURED");
+var headProofMissing = api.watchdogHeadProofState("# empty stub\nno census");
+assert.strictEqual(headProofMissing.state, "NOT_LANDED");
+var headProofOk = api.watchdogHeadProofState("def measure_root(root):\n    return root\ndef classify(row):\n    return row\nJobStore\nupsert\nresult_address_on_head\nspecter-watchdog-head-proof-20260825-01\nridge-cursor-wake-loop-20260822-01\n");
+assert.strictEqual(headProofOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(headProofOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="watchdog-head-proof-result"') >= 0, "desk must name the HEAD-proof leftover");
+assert.ok(html.indexOf("host/watchdog_head_proof.py") >= 0, "desk must name the HEAD-proof instrument");
+assert.ok(html.indexOf("ground/WATCHDOG_HEAD_PROOF.md") >= 0, "desk must link the HEAD-proof card");
+assert.ok(html.indexOf("ground/WATCHDOG_HEAD_PROOF.json") >= 0, "desk must link the HEAD-proof catalog");
+assert.ok(html.indexOf("1787639783.177559") >= 0, "desk must cite the SPECTER HEAD-proof Slack ts");
+assert.ok(html.indexOf("specter-watchdog-head-proof-20260825-01") >= 0, "desk must name the canonical job id");
+assert.ok(/HEAD-proof|first-production-wake_jobs|result_address_on_head/i.test(html), "desk must name SPECTER HEAD-proof talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WATCHDOG_HEAD_PROOF.md") >= 0, "HEAD-proof card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WATCHDOG_HEAD_PROOF.json") >= 0, "HEAD-proof catalog must stay a canary");
 assert.ok(api.isMcpWakeJobTalk, "land.js must classify SPECTER pivot / MCP-wake real-job talk");
 assert.ok(api.mcpWakeJobState, "land.js must classify the MCP/wake real-job leftover");
 assert.ok(api.isMcpWakeJobTalk("SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane."), "SPECTER pivot is MCP-wake real-job talk");

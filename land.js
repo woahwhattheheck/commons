@@ -184,6 +184,8 @@
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
     "ground/BRANCH_REVIEW.md",
     "ground/BRANCH_REVIEW.json",
+    "ground/WATCHDOG_HEAD_PROOF.md",
+    "ground/WATCHDOG_HEAD_PROOF.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -417,6 +419,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isWatchdogHeadProofTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER HEAD-proof / first-production-wake_jobs / result_address_on_head canary talk. Talk is not a land. Ship the one canonical job JSON via JobStore.upsert. Do not remint the SPECTER taking. Do not claim named idle bc- resume." };
     }
     if (api.isBranchReviewTalk(t)) {
       return { state: "CLAIMED", note: "DEMON P0 IMPACT LEDGER / public-branch review / do-not-soften-RETRACTED talk. Talk is not a land. Ship the ten-family RETRACTED catalog and sd-wx coordinator. Do not remint CONTEXT_INTEGRITY / CONTAINMENT / IMPACT_LEDGER." };
@@ -1298,6 +1303,30 @@
     };
   };
 
+  api.isWatchdogHeadProofTalk = function (text) {
+    return /head-proof canary|watchdog-head-proof|first production.{0,40}wake_jobs|result_address_on_head.{0,80}ridge-cursor-wake-loop/i.test(String(text || ""));
+  };
+
+  api.watchdogHeadProofState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/watchdog_head_proof.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_root/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasUpsert = /JobStore/.test(body) && /upsert/.test(body);
+    var hasPredicate = /result_address_on_head/.test(body);
+    var hasJob = /specter-watchdog-head-proof-20260825-01/.test(body);
+    var hasRidge = /ridge-cursor-wake-loop-20260822-01/.test(body);
+    if (hasMeasure && hasClassify && hasUpsert && hasPredicate && hasJob && hasRidge) {
+      return {
+        state: "INTEGRATED",
+        note: "HEAD-proof leftover is on this file. One canonical job JSON via JobStore.upsert. A Slack taking is still not the file."
+      };
+    }
+    return { state: "NOT_LANDED", note: "host/watchdog_head_proof.py missing the leftover. SPECTER HEAD-proof taking is CLAIMED." };
+  };
+
   api.isMcpWakeJobTalk = function (text) {
     return /specter pivot|mcp\/wake real-job|real-job verification|no render duplication|adjacent.{0,40}mcp\/wake/i.test(String(text || ""));
   };
@@ -2065,6 +2094,7 @@
   var workingOut = document.getElementById("working-builds-result");
   var slackReceiptOut = document.getElementById("slack-receipt-result");
   var ledgerOut = document.getElementById("resource-ledger-result");
+  var watchdogHeadProofOut = document.getElementById("watchdog-head-proof-result");
   var mcpWakeJobOut = document.getElementById("mcp-wake-job-result");
   var mcpWakeOut = document.getElementById("mcp-wake-result");
   var finderZeroOut = document.getElementById("finder-zero-result");
@@ -2560,6 +2590,12 @@
     if (!ledgerOut) return;
     ledgerOut.setAttribute("data-tone", api.toneFor(result.state));
     ledgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintWatchdogHeadProof(result) {
+    if (!watchdogHeadProofOut) return;
+    watchdogHeadProofOut.setAttribute("data-tone", api.toneFor(result.state));
+    watchdogHeadProofOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintMcpWakeJob(result) {
@@ -3678,6 +3714,33 @@
     });
   }
 
+  function loadWatchdogHeadProof(sha) {
+    if (!watchdogHeadProofOut) return Promise.resolve(null);
+    watchdogHeadProofOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/watchdog_head_proof.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/watchdog_head_proof.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/watchdog_head_proof.py absent at the measured main SHA. SPECTER HEAD-proof taking is CLAIMED." };
+        paintWatchdogHeadProof(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintWatchdogHeadProof(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.watchdogHeadProofState(body);
+        paintWatchdogHeadProof(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintWatchdogHeadProof(err);
+      return err;
+    });
+  }
+
   function loadMcpWakeJob(sha) {
     if (!mcpWakeJobOut) return Promise.resolve(null);
     mcpWakeJobOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake_job.py at the official SHA…</p>";
@@ -3971,6 +4034,7 @@
     loadWorkingBuilds(sha);
     loadSlackReceipt(sha);
     loadResourceLedger(sha);
+    loadWatchdogHeadProof(sha);
     loadMcpWakeJob(sha);
     loadMcpWake(sha);
     loadFinderZero(sha);
