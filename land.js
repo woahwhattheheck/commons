@@ -207,6 +207,8 @@
     "ground/DEVICE_QUEUE_CAP.json",
     "ground/MUHL_RECEIPT_LANE.md",
     "ground/MUHL_RECEIPT_LANE.json",
+    "ground/HEAVY_LANES.md",
+    "ground/HEAVY_LANES.json",
     "ground/SUPERGROK_HEAVY.md",
     "ground/SUPERGROK_HEAVY.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.md",
@@ -453,6 +455,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isHeavyLanesTalk(t)) {
+      return { state: "CLAIMED", note: "CLEAN SUPERGROK HEAVY LANES LIVE / H-001-ARCHITECT / H-002-CONTAMINATION talk. Talk is not a land. Ship the non-Grok verification/implementation consumer. Do not remint SUPERGROK_HEAVY or duplicate the Heavy packets. Packet outputs stay CANDIDATE." };
     }
     if (api.isMuhlTrainBridgeTalk(t)) {
       return { state: "CLAIMED", note: "TAKING_BACKEND_SWARM / CLEAN GROK / H-006 Muhlnickel training bridge / no-write-tools talk. Talk is not a land. Ship the source-indexed synthetic training-bridge leftover to current main. Do not remint H-005 Subzero artifacts, H-007 LDA_RECEIPT, or the JOJO swarm id." };
@@ -843,6 +848,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isHeavyLanesTalk = function (text) {
+    return /CLEAN SUPERGROK HEAVY LANES LIVE|H-001-ARCHITECT|H-002-CONTAMINATION|1787646811\.754939|H-001-SKEPTIC|H-004-FALSE-ZERO|non-Grok verification\/implementation lanes|heavy lanes leftover/i.test(String(text || ""));
+  };
+
+  api.heavyLanesState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/heavy_lanes.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesLive = /H-001-ARCHITECT/.test(body) && /H-002-CONTAMINATION/.test(body);
+    var namesGap = /G-001/.test(body);
+    var notSub = /Cursor Grok is not the Heavy substitute/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesLive && namesGap && notSub && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Heavy lanes leftover is on this file. H-001/H-002 have a non-Grok consumer. A Slack lanes-live line is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/heavy_lanes.py missing the leftover. CLEAN SUPERGROK HEAVY LANES LIVE / H-001 / H-002 talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3265,6 +3299,7 @@
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
+  var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -3937,6 +3972,12 @@
     if (!deviceQueueCapOut) return;
     deviceQueueCapOut.setAttribute("data-tone", api.toneFor(result.state));
     deviceQueueCapOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintHeavyLanes(result) {
+    if (!heavyLanesOut) return;
+    heavyLanesOut.setAttribute("data-tone", api.toneFor(result.state));
+    heavyLanesOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintLdaReceipt(result) {
@@ -4813,6 +4854,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadHeavyLanes(sha) {
+    if (!heavyLanesOut) return Promise.resolve(null);
+    heavyLanesOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/heavy_lanes.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/heavy_lanes.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/heavy_lanes.py absent at the measured main SHA. CLEAN SUPERGROK HEAVY LANES LIVE / H-001 / H-002 talk is CLAIMED." };
+        paintHeavyLanes(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintHeavyLanes(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.heavyLanesState(body);
+        paintHeavyLanes(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintHeavyLanes(err);
       return err;
     });
   }
@@ -6081,6 +6149,7 @@
     loadSubzeroTech(sha);
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
+    loadHeavyLanes(sha);
     loadMuhlTrainBridge(sha);
     loadLdaReceipt(sha);
     loadReviewLane(sha);
