@@ -2293,6 +2293,39 @@ assert.ok(api.CANARY_PATHS.indexOf("subzero.html") >= 0, "explorer door must sta
 assert.ok(api.CANARY_PATHS.indexOf("revenue/subzero_buyers/validation_receipt.schema.json") >= 0, "buyer validation schema must stay a canary");
 assert.ok(html.indexOf("1787647728.185449") >= 0, "desk must cite the JOJO v2 follow-up Slack ts");
 assert.ok(html.indexOf("validation_receipt.schema.json") >= 0, "desk must link the v2 schema");
+assert.ok(api.isSubzeroProofTalk, "land.js must classify JOJO Subzero Explorer v2 leftover talk");
+assert.ok(api.subzeroProofState, "land.js must classify the Subzero Explorer v2 leftover");
+assert.ok(api.isSubzeroProofTalk("Next slot is assigned: Subzero Explorer v2 proof-classification hardening on fresh current main. 1787648254.904309"), "JOJO v2 assignment is leftover talk");
+assert.ok(!api.isSubzeroProofTalk("make sure people do more than talk about shit"), "generic ship-talk is not the v2 leftover");
+assert.ok(!api.isSubzeroProofTalk("from: JOJO\nkind: TECHNICAL_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-01\nread-only Subzero Artifact Explorer + validation packet. 1787646413.997539"), "v1 explorer handoff is not the v2 leftover");
+assert.ok(!api.isSubzeroExplorerTalk("Next slot is assigned: Subzero Explorer v2 proof-classification hardening on fresh current main. 1787648254.904309"), "v2 assignment is not the v1 explorer leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("Next slot is assigned: Subzero Explorer v2 proof-classification hardening. classify-public-excerpts. 1787648254.904309"), "v2 assignment is not SuperGrok Heavy leftover");
+var proofTalk = api.completionStateFromText(
+  "Next slot is assigned: Subzero Explorer v2 proof-classification hardening on fresh current main.\n1787648254.904309\nclassify-public-excerpts"
+);
+assert.strictEqual(proofTalk.state, "CLAIMED");
+assert.ok(/proof-classification|Explorer v2|STRUCTURAL_ONLY/i.test(proofTalk.note), "JOJO v2 assignment without SHA must stay CLAIMED and beat explorer / ship-talk");
+var proofDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero-proof leftover landed"
+);
+assert.strictEqual(proofDone.state, "INTEGRATED", "completion words still beat v2 proof talk");
+var proofEmpty = api.subzeroProofState("");
+assert.strictEqual(proofEmpty.state, "UNMEASURED");
+var proofMissing = api.subzeroProofState("# empty stub\nno leftover");
+assert.strictEqual(proofMissing.state, "NOT_LANDED");
+var proofOk = api.subzeroProofState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef classify_claim(claim):\n    return claim\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSTRUCTURAL_ONLY\nUNRESOLVED\nRUNTIME_MEASURED\nCUSTOMER_READY\nno auth\nno gate\n");
+assert.strictEqual(proofOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(proofOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="subzero-proof-result"') >= 0, "desk must name the v2 proof leftover");
+assert.ok(html.indexOf("host/subzero_proof.py") >= 0, "desk must name the v2 proof instrument");
+assert.ok(html.indexOf("ground/SUBZERO_PROOF.md") >= 0, "desk must link the v2 proof card");
+assert.ok(html.indexOf("ground/SUBZERO_PROOF.json") >= 0, "desk must link the v2 proof catalog");
+assert.ok(html.indexOf("1787648254.904309") >= 0, "desk must cite the JOJO assignment Slack ts");
+assert.ok(/proof-classification|Explorer v2|classify-public-excerpts/i.test(html), "desk must name v2 proof talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_PROOF.md") >= 0, "v2 proof card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_PROOF.json") >= 0, "v2 proof catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("subzero-proof.html") >= 0, "v2 proof door must stay a canary");
+assert.ok(!api.isSubzeroProofTalk("from: JOJO\nkind: COLLISION_RESOLVED_SPEC_READY\nid: jojo-subzero-explorer-v2-followup-20260825-01\nvalidation_receipt.schema.json\npresence alone must never escalate\n1787647728.185449"), "receipt-gap leftover is not the proof-classification leftover");
 assert.ok(api.isClaudeComputeTalk, "land.js must classify paid-compute / compiler-farm talk");
 assert.ok(api.claudeComputeState, "land.js must classify the Claude-compute leftover");
 assert.ok(api.isClaudeComputeTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nOutput is labeled CLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nmust name the non-Claude adjudicator in advance\n1787640367.070179"), "DEMON paid-compute clarification is talk");

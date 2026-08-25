@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>SUBZERO Explorer v2 proof-classification</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260824a"></script>
+<style>
+body.subzero{max-width:56rem;margin:0 auto;padding:1rem 1.25rem 3rem}
+table.pack{width:100%;border-collapse:collapse;font-size:.9rem}
+table.pack th,table.pack td{border-bottom:1px solid #2a2a33;padding:.35rem .4rem;text-align:left;vertical-align:top}
+table.pack th{opacity:.75;font-weight:600}
+.tag{color:#c08a2e}
+.ok{color:#3fa45b}
+.sha{font-family:ui-monospace,monospace;font-size:.8em;word-break:break-all}
+</style>
+</head>
+<body class="subzero">
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./subzero.html">v1 explorer</a> · <a href="./ground/SUBZERO_PROOF.md">card</a></p>
+<h1>SUBZERO Explorer v2 proof-classification</h1>
+<p class="law">Hash-match stays <code>STRUCTURAL_ONLY</code>. It cannot promote to <code>RUNTIME_MEASURED</code>, <code>CROSS_PROCESS</code>, or <code>CUSTOMER_READY</code>. Missing job/step/order/sha/runner/receipt is <code>UNRESOLVED</code>, never 0. Titan status does not decide this leftover. Grok Heavy audits stay <code>CANDIDATE_PENDING_NON_GROK_SYNTHESIS</code>. Possessing the link is authorization. No auth. No gate. titan <code>NOT_WRITTEN</code>.</p>
+<p class="note">Do not remint v1 <a href="./ground/SUBZERO_EXPLORER.md">SUBZERO_EXPLORER</a>, <a href="./ground/SUBZERO_TECH.md">SUBZERO_TECH</a>, or <a href="./ground/SUBZERO_BUYERS.md">SUBZERO_BUYERS</a>. Slack <code>1787648254.904309</code> JOJO assignment is mail until this door + classifier are on current main. Blank <code>from=</code> still lands as <code>UNSEATED</code>.</p>
+<pre>python3 host/subzero_proof.py
+python3 host/subzero_proof.py --self-test
+python3 -m unittest -v test_subzero_proof.py</pre>
+<p id="sum" class="note">reading <a href="./ground/SUBZERO_PROOF.json">ground/SUBZERO_PROOF.json</a> …</p>
+<table class="pack" id="pack">
+<thead><tr><th>binding</th><th>value</th></tr></thead>
+<tbody></tbody>
+</table>
+<script>
+(function(){
+  var sum=document.getElementById("sum");
+  var body=document.querySelector("#pack tbody");
+  function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}
+  fetch("./ground/SUBZERO_PROOF.json?b="+Date.now(),{cache:"no-store"}).then(function(r){
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return r.json();
+  }).then(function(pack){
+    var keys=["job","step","order","sha","runner","receipt"];
+    keys.forEach(function(key){
+      var tr=document.createElement("tr");
+      var value=pack[key];
+      if(value===undefined||value===null||value==="") value="UNRESOLVED";
+      tr.innerHTML="<td>"+esc(key)+"</td><td class=\"sha\">"+esc(value)+"</td>";
+      body.appendChild(tr);
+    });
+    sum.innerHTML="<b class=\"ok\">label "+esc(pack.label||"STRUCTURAL_ONLY")+"</b> · refused "+esc((pack.refused_promotions||[]).join(", "))+" · Heavy "+esc(pack.heavy_audits||"UNRESOLVED")+" · titan_in_verdict "+esc(String(pack.titan_in_verdict))+" · titan "+esc(pack.titan||"NOT_WRITTEN")+". A Slack assignment is still not the file.";
+  }).catch(function(err){
+    sum.textContent="packet unread: "+err.message+". Absence was not stillness. FINDER-FAILED, never 0.";
+  });
+})();
+</script>
+<p class="note">JS off: the packet is still <a href="./ground/SUBZERO_PROOF.json">ground/SUBZERO_PROOF.json</a>. Truth is git HEAD, not this bake.</p>
+</body>
+</html>
