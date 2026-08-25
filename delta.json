@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -6895,8 +6895,14 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -6928,8 +6934,14 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -6952,6 +6964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7184,12 +7202,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -7207,6 +7219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7439,12 +7457,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -7462,6 +7474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7694,12 +7712,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -7783,6 +7795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8015,12 +8033,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -8098,6 +8110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8330,12 +8348,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -8366,11 +8378,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
-      "last_ts": "2026-08-25T16:19:15Z",
+      "last_id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+      "last_ts": "2026-08-25T16:27:40Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -8436,12 +8454,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:19Z"
-        },
-        {
-          "id": "slack-1787492807-264459",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T01:16:18Z"
         }
       ]
     },
@@ -8450,6 +8462,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -8683,12 +8701,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -8742,6 +8754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8974,12 +8992,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -9009,6 +9021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9241,12 +9259,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -9264,6 +9276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9496,12 +9514,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -9585,6 +9597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9817,12 +9835,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -9903,8 +9915,14 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -10113,6 +10131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10345,12 +10369,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -10368,6 +10386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10600,12 +10624,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -10620,8 +10638,14 @@
     "DEMON": {
       "last_id": "demon-revenue-capabilities-20260825-01",
       "last_ts": "2026-08-25T15:46:13Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -10686,6 +10710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10918,12 +10948,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -10941,6 +10965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11173,12 +11203,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -11196,6 +11220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11428,12 +11458,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -11517,6 +11541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11749,12 +11779,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -11838,6 +11862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12070,12 +12100,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -12159,6 +12183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12391,12 +12421,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -12426,6 +12450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12658,12 +12688,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -12729,6 +12753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12961,12 +12991,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -12984,6 +13008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13216,12 +13246,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -13305,6 +13329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13537,12 +13567,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -13572,6 +13596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13804,12 +13834,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -13893,6 +13917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14125,12 +14155,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -14148,6 +14172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14380,12 +14410,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -14469,6 +14493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14701,12 +14731,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -14730,6 +14754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14962,12 +14992,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -14982,8 +15006,14 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -15300,6 +15330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15532,12 +15568,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -15555,6 +15585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15787,12 +15823,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -15816,6 +15846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16048,12 +16084,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -16137,6 +16167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16369,12 +16405,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -16398,6 +16428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16630,12 +16666,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -16719,6 +16749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16951,12 +16987,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -17040,6 +17070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17272,12 +17308,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -17361,6 +17391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17593,12 +17629,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -17682,6 +17712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17914,12 +17950,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -18003,6 +18033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18235,12 +18271,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -18258,6 +18288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18490,12 +18526,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -18525,6 +18555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18757,12 +18793,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -18846,6 +18876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19078,12 +19114,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -19101,6 +19131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19333,12 +19369,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -19404,6 +19434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19636,12 +19672,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -19725,6 +19755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19957,12 +19993,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -19986,6 +20016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20218,12 +20254,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -20259,6 +20289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20491,12 +20527,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -20580,6 +20610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20812,12 +20848,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -20835,6 +20865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21067,12 +21103,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -21090,6 +21120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21322,12 +21358,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -21405,6 +21435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21637,12 +21673,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -21660,6 +21690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21892,12 +21928,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -21915,6 +21945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22147,12 +22183,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -22170,6 +22200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22402,12 +22438,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -22425,6 +22455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22657,12 +22693,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -22704,6 +22734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22936,12 +22972,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -23025,6 +23055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23257,12 +23293,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -23310,6 +23340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23542,12 +23578,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -23565,6 +23595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23797,12 +23833,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -23820,6 +23850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24052,12 +24088,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -24075,6 +24105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24307,12 +24343,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -24330,6 +24360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24562,12 +24598,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -24585,6 +24615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24817,12 +24853,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -24906,6 +24936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25138,12 +25174,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -25227,6 +25257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25459,12 +25495,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -25548,6 +25578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25780,12 +25816,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -25845,6 +25875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26077,12 +26113,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -26166,6 +26196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26398,12 +26434,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -26421,6 +26451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26653,12 +26689,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -26676,6 +26706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26908,12 +26944,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -26943,6 +26973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27175,12 +27211,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -27264,6 +27294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27496,12 +27532,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -27519,6 +27549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27751,12 +27787,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -27786,6 +27816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28018,12 +28054,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -28083,6 +28113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28315,12 +28351,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -28404,6 +28434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28636,12 +28672,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -28725,6 +28755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28957,12 +28993,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -29034,6 +29064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29266,12 +29302,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -29298,8 +29328,14 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
@@ -29430,6 +29466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29662,12 +29704,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -29751,6 +29787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29983,12 +30025,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -30072,6 +30108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30304,12 +30346,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -30333,6 +30369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30565,12 +30607,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -30606,6 +30642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30838,12 +30880,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -30927,6 +30963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31159,12 +31201,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -31182,6 +31218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31414,12 +31456,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -31503,6 +31539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31735,12 +31777,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -31824,6 +31860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32056,12 +32098,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -32145,6 +32181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32377,12 +32419,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -32466,6 +32502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32698,12 +32740,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -32787,6 +32823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33019,12 +33061,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -33042,6 +33078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33274,12 +33316,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -33327,6 +33363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33559,12 +33601,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -33648,6 +33684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33880,12 +33922,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -33969,6 +34005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34201,12 +34243,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -34290,6 +34326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34522,12 +34564,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
@@ -34611,6 +34647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:27:40Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34843,12 +34885,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T08:36:19Z"
-        },
-        {
-          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:34:51Z"
         }
       ],
       "mine": [
