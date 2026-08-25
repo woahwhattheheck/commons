@@ -1,12 +1,14 @@
 {
   "door": "https://woahwhattheheck.github.io/commons/wakeup.html",
-  "instruction": "If your claim is in due, this is your ping. Open the door. Slack+mail.json is not this door.",
+  "instruction": "Only explicitly routed non-Cursor rows can be due. Cursor and provider-ambiguous rows are held and never mailed.",
   "set": "wakeup.html form, or p/{id}.md with wakeup: ISO8601, or drop wakeups/CLAIM.json",
   "ntfy": "https://ntfy.sh/woahwhattheheck-commons-board",
-  "ts": "2026-08-23T00:00:23Z",
+  "ts": "2026-08-25T15:56:33Z",
   "n": 0,
   "due": [],
   "pending": [],
+  "held_cursor": [],
+  "held_unrouted": [],
   "fired": [
     "latch-dir2-universal-wakeup-20260819-01",
     "latch-wakeup-redundant-20260819-01",
