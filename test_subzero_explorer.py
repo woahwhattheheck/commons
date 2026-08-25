@@ -5,7 +5,9 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import stat
 import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -119,6 +121,7 @@ def _valid_customer(row, commit, tree):
 def _seed_grbn_repo(paths=GRBN_PATHS):
     temp = tempfile.mkdtemp()
     subprocess.check_call(["git", "init", "-q"], cwd=temp)
+    subprocess.check_call(["git", "config", "core.autocrlf", "false"], cwd=temp)
     subprocess.check_call(["git", "config", "user.email", "test@example.com"], cwd=temp)
     subprocess.check_call(["git", "config", "user.name", "fixture"], cwd=temp)
     for rel in paths:
@@ -128,6 +131,19 @@ def _seed_grbn_repo(paths=GRBN_PATHS):
     subprocess.check_call(["git", "add", "-A"], cwd=temp)
     subprocess.check_call(["git", "commit", "-q", "-m", "fixture"], cwd=temp)
     return temp, _git(temp, "rev-parse", "HEAD"), _git(temp, "rev-parse", "HEAD^{tree}")
+
+
+def _rmtree(path):
+    """Remove temporary Git repositories whose objects are read-only on Windows."""
+
+    def make_writable(function, item, _error):
+        os.chmod(item, stat.S_IWRITE)
+        function(item)
+
+    if sys.version_info >= (3, 12):
+        shutil.rmtree(path, onexc=make_writable)
+    else:
+        shutil.rmtree(path, onerror=make_writable)
 
 
 class SubzeroExplorerV2Tests(unittest.TestCase):
@@ -194,7 +210,7 @@ class SubzeroExplorerV2Tests(unittest.TestCase):
         try:
             row = build_artifact_row(temp, _grbn_expected(), commit, tree, calibrated=True)
         finally:
-            shutil.rmtree(temp)
+            _rmtree(temp)
         self.assertEqual(row["sources"]["card"]["status"], "FINDER_FAILED")
         self.assertEqual(row["evidence_class"], "UNKNOWN")
         self.assertEqual(row["acceptance"]["status"], "FAIL")
@@ -211,7 +227,7 @@ class SubzeroExplorerV2Tests(unittest.TestCase):
                 handle.write(bytes([byte[0] ^ 1]))
             row = build_artifact_row(temp, _grbn_expected(), commit, tree, calibrated=True)
         finally:
-            shutil.rmtree(temp)
+            _rmtree(temp)
         self.assertEqual(row["evidence_class"], "UNKNOWN")
         self.assertIn(row["artifact"]["status"], ("STALE_BINDING", "FINDER_FAILED"))
         self.assertTrue(
@@ -233,7 +249,7 @@ class SubzeroExplorerV2Tests(unittest.TestCase):
                     handle.write(b"\n# stale\n")
             row = build_artifact_row(temp, _grbn_expected(), commit, tree, calibrated=True)
         finally:
-            shutil.rmtree(temp)
+            _rmtree(temp)
         self.assertEqual(row["evidence_class"], "UNKNOWN")
         self.assertEqual(row["acceptance"]["status"], "FAIL")
         self.assertEqual(row["sources"]["fabricator"]["status"], "STALE_BINDING")
@@ -253,7 +269,7 @@ class SubzeroExplorerV2Tests(unittest.TestCase):
         try:
             row = build_artifact_row(temp, _grbn_expected(), commit, tree, calibrated=True)
         finally:
-            shutil.rmtree(temp)
+            _rmtree(temp)
         self.assertEqual(row["evidence_class"], "UNKNOWN")
         self.assertIn("structural_test", row["acceptance"]["failures"])
         self.assertIsNone(row["sources"]["structural_test"]["bytes"])
