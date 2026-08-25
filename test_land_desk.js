@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825q/.test(html), "desk must bust the pixel-heartbeat cache key");
+assert.ok(/20260825r/.test(html), "desk must bust the device-churn cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -913,7 +913,37 @@ assert.ok(html.indexOf("1787635067.695619") >= 0, "desk must cite the DEMON erra
 assert.ok(/stale-spec|SESSION_GROUNDING-as-absolute-law|historical-session-bound|local-grounding-file/i.test(html), "desk must name stale-spec talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_SPEC.md") >= 0, "stale-spec card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_SPEC.json") >= 0, "stale-spec catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CHURN.md") >= 0, "device-churn card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CHURN.json") >= 0, "device-churn catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
+assert.ok(api.isDeviceChurnTalk, "land.js must classify device-path / no-op-churn talk");
+assert.ok(api.deviceChurnState, "land.js must classify the device-churn leftover");
+assert.ok(api.isDeviceChurnTalk("DIO + JOJO claim a joint device-path utilization + no-op churn lane. zero reservations, zero batches, no scope=device result. commons-device-executor 511 runs."), "device-churn copy is talk");
+assert.ok(!api.isDeviceChurnTalk("make sure people do more than talk about shit"), "ship-talk is not the device-churn leftover");
+assert.ok(!api.isDeviceChurnTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "capacity talk is not the device-churn leftover");
+assert.ok(!api.isUtilizationTalk("device-path utilization + no-op churn. zero reservations. gate commons-device-executor on a real reservation/batch."), "device-churn copy is not utilization leftover");
+var churnTalk = api.completionStateFromText(
+  "DEMON rolling utilization report. DIO + JOJO claim device-path utilization + no-op churn. zero reservations. 511 runs."
+);
+assert.strictEqual(churnTalk.state, "CLAIMED");
+assert.ok(/device-path|no-op-churn/i.test(churnTalk.note), "device-churn-without-SHA must stay CLAIMED and beat utilization");
+var churnDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ndevice-churn leftover landed"
+);
+assert.strictEqual(churnDone.state, "INTEGRATED", "completion words still beat device-churn talk");
+var churnEmpty = api.deviceChurnState("");
+assert.strictEqual(churnEmpty.state, "UNMEASURED");
+var churnMissing = api.deviceChurnState("# empty stub\nno trigger census");
+assert.strictEqual(churnMissing.state, "NOT_LANDED");
+var churnOk = api.deviceChurnState("def measure_from_rows(counts, flags, extras=None):\n    titan = 'NOT_WRITTEN'\ndef classify(row):\n    return row\nworkflow_run = False\n");
+assert.strictEqual(churnOk.state, "INTEGRATED");
+assert.ok(/gated on pending work/i.test(churnOk.note), "landed leftover must name the trigger gate");
+assert.ok(html.indexOf('id="device-churn-result"') >= 0, "desk must name the device-churn leftover");
+assert.ok(html.indexOf("host/device_churn.py") >= 0, "desk must name the device-churn instrument");
+assert.ok(html.indexOf("ground/DEVICE_CHURN.md") >= 0, "desk must link the device-churn card");
+assert.ok(html.indexOf("ground/DEVICE_CHURN.json") >= 0, "desk must link the device-churn catalog");
+assert.ok(html.indexOf("1787635008.594599") >= 0, "desk must cite the device-churn Slack ts");
+assert.ok(/device-path|no-op-churn|zero-reservations|511-runs/i.test(html), "desk must name device-churn talk as CLAIMED");
 assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
 assert.ok(api.fleetState, "land.js must classify claimed fleet ids");
 assert.ok(api.isFleetTalk("from: JOJO\nid: jojo-revenue-fleet-20260825-01\nRevenue/substrate fleet live — Grok 4.6 workflows + Claude verifier\nActive isolated lanes:\n• Grok 4.6 exact-128 revenue discovery: grok46-revenue-discovery-20260825-01"), "fleet copy is talk");

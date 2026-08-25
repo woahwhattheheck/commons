@@ -128,6 +128,8 @@
     "ground/STALE_SPEC.json",
     "ground/PIXEL_HEARTBEAT.md",
     "ground/PIXEL_HEARTBEAT.json",
+    "ground/DEVICE_CHURN.md",
+    "ground/DEVICE_CHURN.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -392,6 +394,9 @@
     if (api.isVerifyCiteTalk(t)) {
       return { state: "CLAIMED", note: "independent-verification / first-numbers talk. Talk is not a land. Measure the cited SHA and paths on current main. A Slack readout is not the file." };
     }
+    if (api.isDeviceChurnTalk(t)) {
+      return { state: "CLAIMED", note: "device-path / no-op-churn talk. Talk is not a land. Gate the executor on a real pending reservation/batch and ship the leftover to current main." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -615,8 +620,33 @@
     };
   };
 
+  api.isDeviceChurnTalk = function (text) {
+    return /device-path utilization|no-op churn|zero reservations|scope=device|commons-device-executor|device reservation\/batch|511 runs|512 runs/i.test(String(text || ""));
+  };
+
   api.isUtilizationTalk = function (text) {
     return /rolling utilization report|grok capacity is active|four responsive|grok\.exe|deep-research run lane|claim only missing verification|trace their taking\/receipt|do not duplicate these jobs/i.test(String(text || ""));
+  };
+
+  api.deviceChurnState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/device_churn.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasTrigger = /workflow_run/.test(body);
+    var noTitan = /titan/.test(body) && /NOT_WRITTEN/.test(body);
+    if (hasMeasure && hasClassify && hasTrigger && noTitan) {
+      return {
+        state: "INTEGRATED",
+        note: "device-churn leftover is on this file. Executor is gated on pending work. Zero reservations is unused readiness, not a run. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/device_churn.py missing the trigger census. No-op-churn talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.takingTraceState = function (row) {
@@ -1174,6 +1204,7 @@
   var renderOut = document.getElementById("render-result");
   var staleOut = document.getElementById("stale-spec-result");
   var pixelOut = document.getElementById("pixel-heartbeat-result");
+  var deviceChurnOut = document.getElementById("device-churn-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1599,6 +1630,12 @@
     pixelOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintDeviceChurn(result) {
+    if (!deviceChurnOut) return;
+    deviceChurnOut.setAttribute("data-tone", api.toneFor(result.state));
+    deviceChurnOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1830,6 +1867,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStaleSpec(err);
+      return err;
+    });
+  }
+
+  function loadDeviceChurn(sha) {
+    if (!deviceChurnOut) return Promise.resolve(null);
+    deviceChurnOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/device_churn.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/device_churn.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/device_churn.py absent at the measured main SHA. No-op-churn talk is CLAIMED." };
+        paintDeviceChurn(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintDeviceChurn(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.deviceChurnState(body);
+        paintDeviceChurn(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintDeviceChurn(err);
       return err;
     });
   }
@@ -2104,6 +2168,7 @@
     loadRenderCheck(sha);
     loadStaleSpec(sha);
     loadPixelHeartbeat(sha);
+    loadDeviceChurn(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

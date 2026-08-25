@@ -1,14 +1,11 @@
 name: commons-device-executor
 on:
-  workflow_run:
-    workflows: ["commons-board"]
-    types: [completed]
+  workflow_call:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   preflight:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     outputs:
       has_pending: ${{ steps.pending.outputs.has_pending }}

@@ -684,7 +684,9 @@ new file mode 100644
         workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
         self.assertNotIn("device execution requires --only-id", executor)
         self.assertNotIn("unsigned board actions", executor)
-        self.assertIn('workflows: ["commons-board"]', workflow)
+        self.assertNotIn("workflow_run:", workflow)
+        self.assertIn("workflow_call:", workflow)
+        self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("device_action_state.py preflight", workflow)
         self.assertIn("uses: ./.github/workflows/commons-device-cycle.yml", workflow)
         self.assertNotIn("reviewed Commons action id", workflow)
@@ -717,6 +719,9 @@ new file mode 100644
         preflight, cycle = jobs.split("  cycle:\n", 1)
 
         self.assertNotIn("concurrency:", prefix)
+        self.assertNotIn("workflow_run:", prefix)
+        self.assertIn("workflow_call:", prefix)
+        self.assertIn("workflow_dispatch:", prefix)
         self.assertIn("permissions:\n  contents: read", prefix)
 
         self.assertIn("  preflight:\n", "jobs:\n" + preflight)
@@ -725,6 +730,7 @@ new file mode 100644
         self.assertIn("device_action_state.py preflight", preflight)
         self.assertIn("has_pending: ${{ steps.pending.outputs.has_pending }}", preflight)
         self.assertIn('"$GITHUB_OUTPUT"', preflight)
+        self.assertNotIn("github.event.workflow_run", preflight)
 
         self.assertIn("needs: preflight", cycle)
         self.assertIn("if: needs.preflight.outputs.has_pending == 'true'", cycle)
@@ -820,6 +826,10 @@ new file mode 100644
         self.assertNotIn("manifest path is not a regular file", workflow)
         self.assertNotIn('muhlnickel_spec_guard.py', Path(__file__).with_name('action_land.py').read_text(encoding='utf-8'))
         self.assertNotIn("action_executor.py --scope github", board)
+        self.assertIn("device_action_state.py preflight", board)
+        self.assertIn("has_pending_device", board)
+        self.assertIn("uses: ./.github/workflows/commons-device-executor.yml", board)
+        self.assertIn("needs.ingest.outputs.has_pending_device == 'true'", board)
 
 
 if __name__ == "__main__":

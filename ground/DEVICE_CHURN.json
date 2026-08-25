@@ -1,0 +1,22 @@
+{
+  "base_sha": "da27d5b21f510d309492cc3af400eeccb6001804",
+  "batch_count": 0,
+  "canary": {
+    "ok": true,
+    "returncode": 0,
+    "test": "test_device_action_state.DeviceActionStateTests.test_prepare_execute_finalize_success_is_exact_and_history_latched"
+  },
+  "dc_inject": false,
+  "executor_runs_measured": 512,
+  "lane": "device-path utilization + no-op churn",
+  "measured_at": "2026-08-25T05:16:00Z",
+  "note": "Catalog of the measured leftover. After the trigger gate lands, executor is call/dispatch only.",
+  "reservation_count": 0,
+  "result_count": 48,
+  "schema": "COMMONS_DEVICE_CHURN.v1",
+  "scope_device_count": 0,
+  "self_hosted_dispatch": false,
+  "slack_ts": "1787635008.594599",
+  "titan": "NOT_WRITTEN",
+  "workflow_run_before": true
+}
