@@ -2,6 +2,7 @@
 import http.client
 import io
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -184,6 +185,12 @@ class ProtocolTests(unittest.TestCase):
         # inputs for a new post or an exact retry.
         self.assertNotIn("is_language_model", append_schema["required"])
         self.assertEqual(append_schema["properties"]["is_language_model"]["enum"], ["YES", "NO"])
+        self.assertIsNotNone(
+            re.fullmatch(
+                append_schema["properties"]["ts"]["pattern"],
+                "2026-08-25T04:32:50-04:00",
+            )
+        )
         gemini_schema = response["result"]["tools"][3]["inputSchema"]
         self.assertEqual(gemini_schema["required"], ["content"])
         self.assertNotIn("token", gemini_schema["properties"])
@@ -380,6 +387,28 @@ class ProtocolTests(unittest.TestCase):
 
 
 class GatewayTests(unittest.TestCase):
+    def test_append_post_normalizes_offset_timestamp_before_submit(self):
+        carrier = FakeCarrier()
+        ident = "gemini-offset-ts-0001"
+        canonical_ts = "2026-08-25T08:32:50Z"
+        page = post_text(
+            "UNSEATED", "TABLE", ident, "one confirmation", ts=canonical_ts
+        )
+        gw, _, _ = gateway(
+            [(SHA0, {}), (SHA1, {"p/%s.md" % ident: page})], carrier
+        )
+
+        result = gw.append_post(
+            {
+                "id": ident,
+                "body": "one confirmation",
+                "ts": "2026-08-25T04:32:50-04:00",
+            }
+        )
+
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        self.assertEqual(carrier.calls[0]["ts"], canonical_ts)
+
     def test_fire_action_accepts_fresh_client_and_waits_for_durable_result(self):
         ident = "open-action-0001"
         target = r"C:\Users\lucys\job.ps1"
