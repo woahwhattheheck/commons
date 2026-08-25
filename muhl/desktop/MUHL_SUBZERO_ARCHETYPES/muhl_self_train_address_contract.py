@@ -29,6 +29,15 @@ muhl-address-contract-integrity-followup-20260825-02:
   50 GiB / 30-bit stays BLOCKED. 1 GiB / 30-bit relative is OK.
   Live allocated offsets stay UNRESOLVED. Do not remint.
 
+Follow-up Slack 1787652385.567949
+muhl-address-contract-stride-math-20260825-01:
+
+  #2337 already landed integrity bind. Unique leftover is derived
+  math: pointer_space accepts any positive stride but still used
+  two-byte last_safe_start=max_pointer-1 and floor wrap-cycle
+  length. Full-stride bounds and modular cycle math, including
+  absolute mode/base. Do not remint.
+
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --root .
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --self-test
@@ -39,6 +48,7 @@ import argparse
 import ast
 import hashlib
 import json
+import math
 import os
 import sys
 
@@ -94,6 +104,8 @@ HEADER_LAYOUT_BYTES = 24
 HEADER_FIELD_SPAN = 8
 FOLLOWUP_SLACK_TS = "1787651271.265499"
 FOLLOWUP_ID = "muhl-address-contract-integrity-followup-20260825-02"
+STRIDE_MATH_SLACK_TS = "1787652385.567949"
+STRIDE_MATH_ID = "muhl-address-contract-stride-math-20260825-01"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     CONTRACT_REL,
@@ -134,6 +146,8 @@ REQUIRED_PHRASES = (
     "stride",
     "tampered",
     "re-signed",
+    "full-stride",
+    "modular cycle",
 )
 REQUIRED_PACKET_FIELDS = (
     "kind",
@@ -256,8 +270,8 @@ def registry_header_disagreement(dests, registry=None):
     }
 
 
-def pointer_space(ptr_bits=None, capacity=None, stride=None):
-    """Wrap facts only from presented ints. Missing stays UNRESOLVED."""
+def pointer_space(ptr_bits=None, capacity=None, stride=None, address_mode=None, absolute_base=None):
+    """Full-stride bounds and modular wrap-cycle. Missing stays UNRESOLVED."""
     reasons = []
     bits = ptr_bits if _valid_positive_int(ptr_bits) else UNRESOLVED
     step = stride if _valid_positive_int(stride) else UNRESOLVED
@@ -267,15 +281,26 @@ def pointer_space(ptr_bits=None, capacity=None, stride=None):
         reasons.append("missing_or_malformed_capacity")
     if step is UNRESOLVED:
         reasons.append("missing_or_malformed_stride")
-    max_pointer = (1 << bits) - 1 if bits is not UNRESOLVED else UNRESOLVED
-    last_safe_start = (
-        max_pointer - 1 if isinstance(max_pointer, int) and max_pointer else UNRESOLVED
-    )
-    steps_before_wrap = (
-        (1 << bits) // step
-        if bits is not UNRESOLVED and step is not UNRESOLVED
-        else UNRESOLVED
-    )
+    pointer_span = (1 << bits) if bits is not UNRESOLVED else UNRESOLVED
+    max_pointer = (pointer_span - 1) if isinstance(pointer_span, int) else UNRESOLVED
+    last_safe_start = UNRESOLVED
+    steps_before_wrap = UNRESOLVED
+    if isinstance(pointer_span, int) and isinstance(step, int):
+        if step > pointer_span:
+            reasons.append("stride_exceeds_pointer_space")
+        else:
+            last_safe_start = pointer_span - step
+        steps_before_wrap = pointer_span // math.gcd(step, pointer_span)
+        mode = _mode_text(address_mode)
+        if (
+            mode == ABSOLUTE
+            and isinstance(absolute_base, int)
+            and not isinstance(absolute_base, bool)
+            and absolute_base >= 0
+            and isinstance(last_safe_start, int)
+            and last_safe_start < absolute_base
+        ):
+            reasons.append("absolute_base_no_full_stride")
     needed = required_bits_for(capacity)
     return {
         "max_pointer": max_pointer,
@@ -328,7 +353,13 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         reasons.append("missing_or_malformed_absolute_base")
     elif mode != ABSOLUTE:
         base = UNRESOLVED if not (isinstance(base, int) and not isinstance(base, bool) and base >= 0) else base
-    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity, stride=stride)
+    space = pointer_space(
+        ptr_bits=ptr_bits,
+        capacity=capacity,
+        stride=stride,
+        address_mode=mode,
+        absolute_base=base,
+    )
     if mode == ABSOLUTE and isinstance(base, int) and not isinstance(base, bool) and base >= 0 and _valid_positive_int(capacity):
         needed = required_bits_for(base + capacity)
         space["required_bits"] = needed if needed is not None else UNRESOLVED
@@ -348,6 +379,12 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
     elif mode is UNRESOLVED:
         status = UNRESOLVED
         reasons.append("missing_or_malformed_address_mode")
+    for reason in space.get("reasons") or []:
+        if reason in ("stride_exceeds_pointer_space", "absolute_base_no_full_stride"):
+            if reason not in reasons:
+                reasons.append(reason)
+            if status == OK:
+                status = BLOCKED
     registry_row = registry_header_disagreement(dests, registry)
     if registry_row and registry_row.get("state") == SOURCE_CONFLICT:
         status = BLOCKED
@@ -739,6 +776,8 @@ def parse_trainer_source(text):
         ptr_bits=dests.get("ptr_bits"),
         capacity=capacity,
         stride=dests.get("stride"),
+        address_mode=dests.get("address_mode"),
+        absolute_base=dests.get("absolute_base"),
     )
     if isinstance(capacity, int) and capacity != ONE_GIB and "1 GB" in text:
         conflicts.append(
@@ -1399,6 +1438,20 @@ def self_test():
     if missing.get("state") != UNRESOLVED:
         return False
     if missing.get("max_pointer") != UNRESOLVED:
+        return False
+    odd = pointer_space(
+        ptr_bits=8,
+        capacity=256,
+        stride=3,
+        address_mode=RELATIVE,
+    )
+    if odd.get("last_safe_start") != 253:
+        return False
+    if odd.get("steps_before_wrap") != 256:
+        return False
+    if odd.get("last_safe_start") == 254:
+        return False
+    if odd.get("steps_before_wrap") == (256 // 3):
         return False
     tampered = dict(blocked.get("canonical_payload") or {})
     if tampered:
