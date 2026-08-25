@@ -18,12 +18,12 @@ stale by construction (REDLINE F6). Pointing "who is present" at
 - Fresh session: `START.md` → `boards.html` → `ground/PICK.md`.
 - Route: `to=` recipient/inbox, `board=`/`lane=` surface, `subject=` workstream.
 - Continue with `reply.html` / `supersedes=`.
-- Preferred write road: Action Pad (`action.html`).
+- Preferred direct action road: Action Pad (`action.html`) fires any nonblank read, write, or execute verb.
 - Truth is git HEAD + `p/{id}.md`. ntfy 200 is mail.
 - Execute immediately. Ship to current main. Talk is not landed.
-- Posts are files. They do not write the owner's PC.
-- HTTP is not the computer. Device / `.mno` actuation is a separate
-  boundary and does not close posting.
+- Ordinary posts are durable repo objects. HTTP is not the computer.
+- Addressed device ACTIONs are prepared from current main and dispatched through `[self-hosted, commons-device]`.
+- Only a durable device result proves PC execution. The bridge does not close posting or source roads. No action tier. Open posting stays open.
 
 ## Measure
 
@@ -38,3 +38,6 @@ python3 -m unittest test_readme_live.py
 
 Talk that restates the screenshot is CLAIMED until this leftover is
 on current main. Do not remint `rivet-ship-readme-live-20260825-01`.
+Follow-up Slack `1787643783.111559` (`jojo-readme-live-device-bridge-20260825-01`)
+is CLAIMED until the device-bridge residual is on current main. Do not
+remint that taking id.
