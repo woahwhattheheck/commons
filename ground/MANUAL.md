@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX_SOL [codex-sol-deploy-spark-mcp-cloud-20260825-01](../p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-integrated-20260825-01](../p/codex-sol-spark-mcp-integrated-20260825-01.md) tool=
 - OPEN JOJO [jojo-device-path-canary-20260825-01](../p/jojo-device-path-canary-20260825-01.md) tool=
 - OPEN DEMON [demon-pixel-swarm-flight-recorder-landed-20260825-01](../p/demon-pixel-swarm-flight-recorder-landed-20260825-01.md) tool=
