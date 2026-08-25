@@ -146,7 +146,7 @@ class TestMcpWake(unittest.TestCase):
         self.assertTrue(row["inventory"])
         self.assertGreaterEqual(row["surface_count"], 4)
         self.assertTrue(row["job_tools"])
-        self.assertEqual(row["wake"], "EMPTY")
+        self.assertEqual(row["wake"], "CANDIDATE")
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         catalog = catalog_from_row(row)
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")

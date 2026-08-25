@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ao/.test(html), "desk must bust the Claude-role cache key");
+assert.ok(/20260825aq/.test(html), "desk must bust the watchdog-canary plus Claude-role cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1671,6 +1671,50 @@ assert.ok(html.indexOf("1787639273.029199") >= 0, "desk must cite the context-in
 assert.ok(/context-integrity|uncalibrated-doubt|pseudo-clinical|predicted-missing-Z/i.test(html), "desk must name context-integrity talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONTEXT_INTEGRITY.md") >= 0, "context-integrity card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONTEXT_INTEGRITY.json") >= 0, "context-integrity catalog must stay a canary");
+assert.ok(api.isWatchdogCanaryTalk, "land.js must classify SPECTER watchdog-canary / unutilized-oracle talk");
+assert.ok(api.watchdogCanaryState, "land.js must classify the watchdog-canary leftover");
+assert.ok(api.isWatchdogCanaryTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof is integrated\nThe production oracle is now real but remains unutilized by a durable job canary. wake_jobs/ contains only .gitignore + README.md, no real job JSON."), "SPECTER ship receipt is watchdog-canary talk");
+assert.ok(!api.isWatchdogCanaryTalk("make sure people do more than talk about shit"), "ship-talk is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogCanaryTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogCanaryTalk("SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane."), "MCP-wake pivot is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogCanaryTalk("REAL-BUT-STRANDED MAP — lda/workflows/android.yml outside .github/workflows. wake_jobs/ contains only .gitignore."), "stranded-map copy is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogCanaryTalk("SPECTER collision check held visual CI. canonical MCP inventory. idle-resume measurement."), "collision-hold copy is not the watchdog-canary leftover");
+assert.ok(!api.isWatchdogCanaryTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the watchdog-canary leftover");
+assert.ok(!api.isRemeasureTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof is integrated\nThe production oracle is now real but remains unutilized by a durable job canary. wake_jobs/ contains only .gitignore + README.md, no real job JSON."), "SPECTER watchdog receipt is not remasure leftover");
+assert.ok(!api.isWatchdogCanaryTalk("from: CLAUDE_CODE_LOCAL\nid: claude27-p0-compliance-20260825-01\nAffected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not the watchdog-canary leftover");
+assert.ok(!api.isClaudeRoleTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the Claude-role leftover");
+assert.ok(!api.isWatchdogCanaryTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE."), "Claude-role copy is not the watchdog-canary leftover");
+assert.ok(!api.isContainmentTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the containment leftover");
+assert.ok(!api.isRemeasureTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the remasure leftover");
+assert.ok(!api.isWatchdogCanaryTalk("from: CLAUDE_CODE_LOCAL\nkind: CONTAINMENT_COMPLIANCE\nAffected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remasure copy is not the watchdog-canary leftover");
+assert.ok(!api.isContextIntegrityTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not context-integrity leftover");
+assert.ok(!api.isMcpWakeJobTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the MCP-wake leftover");
+assert.ok(!api.isShipTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not generic ship-talk");
+var canaryTalk = api.completionStateFromText(
+  "SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof is integrated. The production oracle remains unutilized by a durable job canary. no real job JSON."
+);
+assert.strictEqual(canaryTalk.state, "CLAIMED");
+assert.ok(/watchdog-HEAD-proof|durable job canary|no-real-job-JSON|SPECTER ship-receipt/i.test(canaryTalk.note), "SPECTER ship-receipt without SHA must stay CLAIMED as watchdog-canary leftover");
+var canaryDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nwatchdog-canary leftover landed"
+);
+assert.strictEqual(canaryDone.state, "INTEGRATED", "completion words still beat watchdog-canary talk");
+var canaryEmpty = api.watchdogCanaryState("");
+assert.strictEqual(canaryEmpty.state, "UNMEASURED");
+var canaryMissing = api.watchdogCanaryState("# empty stub\nno leftover");
+assert.strictEqual(canaryMissing.state, "NOT_LANDED");
+var canaryOk = api.watchdogCanaryState("def measure_root(root):\n    return {}\ndef classify(row):\n    return row\nridge-cursor-wake-loop-20260822-01\nrivet-watchdog-canary-absent-20260825-01\nRecordingTruth\nnamed_idle_bc_resume\nUNMEASURED\n");
+assert.strictEqual(canaryOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(canaryOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="watchdog-canary-result"') >= 0, "desk must name the watchdog-canary leftover");
+assert.ok(html.indexOf("host/watchdog_canary.py") >= 0, "desk must name the watchdog-canary instrument");
+assert.ok(html.indexOf("ground/WATCHDOG_CANARY.md") >= 0, "desk must link the watchdog-canary card");
+assert.ok(html.indexOf("ground/WATCHDOG_CANARY.json") >= 0, "desk must link the watchdog-canary catalog");
+assert.ok(html.indexOf("1787639656.279039") >= 0, "desk must cite the SPECTER ship-receipt Slack ts");
+assert.ok(/watchdog-HEAD-proof|durable job canary|no-real-job-JSON|SPECTER ship-receipt/i.test(html), "desk must name watchdog-canary talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WATCHDOG_CANARY.md") >= 0, "watchdog-canary card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WATCHDOG_CANARY.json") >= 0, "watchdog-canary catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("wake_jobs/rivet-watchdog-canary-20260825-01.json") >= 0, "durable job JSON must stay a canary");
 assert.ok(api.isTripleAppendTalk, "land.js must classify triple-append / P0 incident talk");
 assert.ok(api.titanAppendGuardState, "land.js must classify the titan-append-guard leftover");
 assert.ok(api.isTripleAppendTalk("from: DEMON\nkind: P0_UTILIZATION_INCIDENT\nTITAN CONTAINS THREE BYTE-IDENTICAL APPENDS — PAUSE FURTHER APPEND MUTATIONS\nall three spans SHA-256: 3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c"), "triple-append P0 copy is talk");

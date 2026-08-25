@@ -18,7 +18,7 @@
       "id": "wake_jobs",
       "path": "wake_jobs/",
       "claim": "JOJO",
-      "note": "directory has .gitignore and README.md; no wake_jobs/{id}.json"
+      "note": "durable canary wake_jobs/rivet-watchdog-canary-20260825-01.json now present; named idle bc- resume stays UNMEASURED"
     },
     {
       "id": "mcp_surfaces",

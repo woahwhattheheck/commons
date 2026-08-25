@@ -1,0 +1,23 @@
+{
+  "source_id": "rivet-ship-watchdog-canary-20260825-01",
+  "slack_ts": "1787639656.279039",
+  "kind": "WATCHDOG_CANARY",
+  "titan": "NOT_WRITTEN",
+  "job_id": "rivet-watchdog-canary-20260825-01",
+  "result_address": "ridge-cursor-wake-loop-20260822-01",
+  "absent_control": "rivet-watchdog-canary-absent-20260825-01",
+  "wrote_wake_jobs": true,
+  "named_idle_bc_resume": "UNMEASURED",
+  "hands_off": [
+    "named idle bc- resume",
+    "RIDGE/PLUMB named external-wake canary",
+    "rivet-ship-watchdog-oracle-20260825-01",
+    "rivet-ship-mcp-wake-job-20260825-01",
+    "rivet-ship-mcp-wake-20260825-01",
+    "JOJO MCP inventory / Grok smoke / idle-resume",
+    "SPECTER render CI",
+    "CML PR 2108",
+    "titan.gguf write",
+    "commons.mno smash"
+  ]
+}
