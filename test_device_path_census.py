@@ -24,6 +24,7 @@ from device_path_census import (
     measure_root,
     parse_action,
 )
+import device_path_census as dpc
 
 
 class TestDevicePathCensus(unittest.TestCase):
@@ -161,12 +162,26 @@ class TestDevicePathCensus(unittest.TestCase):
         self.assertIn("never []", verdict["note"].lower())
         self.assertIn("FINDER-FAILED", verdict["note"])
 
+    def test_broken_result_json_nulls_derived_scope_counts(self):
+        paths = ["actions/results/broken.json"]
+        original = dpc._read_bytes
+        try:
+            dpc._read_bytes = lambda root, rel: b"{"
+            got = dpc.count_result_scopes(ROOT, paths)
+        finally:
+            dpc._read_bytes = original
+        self.assertEqual(got["result_count"], 1)
+        self.assertEqual(got["parse_failures"], 1)
+        self.assertIsNone(got["scope_github"])
+        self.assertIsNone(got["scope_device"])
+        self.assertIsNone(got["scope_other"])
+
     def test_search_space_and_calibration_named(self):
-        self.assertIn("ground/DEVICE_PATH_CENSUS.md", SEARCH_SPACE)
-        self.assertIn("ground/DEVICE_PATH_CANARY.md", SEARCH_SPACE)
+        self.assertIn(os.path.join("ground", "DEVICE_PATH_CENSUS.md"), SEARCH_SPACE)
+        self.assertIn(os.path.join("ground", "DEVICE_PATH_CANARY.md"), SEARCH_SPACE)
         self.assertIn("device_action_state.py", CALIBRATION)
-        self.assertIn("ground/DEVICE_CHURN.md", CALIBRATION)
-        self.assertIn("ground/EXECUTE.md", CALIBRATION)
+        self.assertIn(os.path.join("ground", "DEVICE_CHURN.md"), CALIBRATION)
+        self.assertIn(os.path.join("ground", "EXECUTE.md"), CALIBRATION)
 
 
 if __name__ == "__main__":

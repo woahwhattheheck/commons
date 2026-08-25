@@ -226,11 +226,14 @@ def count_result_scopes(root, paths):
             device += 1
         else:
             other += 1
+    scope_github = None if failures else github
+    scope_device = None if failures else device
+    scope_other = None if failures else other
     return {
         "result_count": github + device + other + failures,
-        "scope_github": github,
-        "scope_device": device,
-        "scope_other": other,
+        "scope_github": scope_github,
+        "scope_device": scope_device,
+        "scope_other": scope_other,
         "parse_failures": failures,
     }
 

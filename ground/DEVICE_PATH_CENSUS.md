@@ -18,16 +18,20 @@ do not remint that either. The no-op-churn **trigger gate** already
 landed (`ground/DEVICE_CHURN.md`) — do not remint it. Miss is
 FINDER-FAILED / FINDER-UNVERIFIED. Never 0.
 
-Zero reservations is a measured **Y**, not stillness. The unique
+Zero reservations is a measured **Y** only after `git ls-tree` exits 0.
+Invalid refs and finder errors produce `null` + **FINDER-FAILED**, never `[]`
+that can be reinterpreted as zero. The unique
 leftover is this census instrument plus one **lawful canary** that
 uses the existing ACTION format without becoming pending.
 
 ## Measure
 
 Instrument: `host/device_path_census.py`. Stdlib only. X is
-`git ls-tree -r` (non-truncated). Y is prefix counts plus JSON-parsed
+`git ls-tree -r` (non-truncated and successful). Y is prefix counts plus JSON-parsed
 `scope` on every `actions/results/*.json`. Z is missing leftover /
-failed calibration / parse failure. Calibration is known-present
+failed calibration / invalid ref / parse failure. A failed tree lookup
+nulls all derived counts; a parse failure preserves result-blob count but
+nulls scope counts. Calibration is known-present
 `device_action_state.py` + `ground/DEVICE_CHURN.md` + `ground/EXECUTE.md`
 in the same run. Miss is **FINDER-FAILED**, never `0`.
 

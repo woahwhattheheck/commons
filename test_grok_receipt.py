@@ -3,13 +3,17 @@
 
 from __future__ import annotations
 
+import io
+import json
 import os
 import sys
+import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
+import grok_receipt as gr
 from grok_receipt import (
     ALREADY_LANDED,
     CALIBRATION,
@@ -139,6 +143,152 @@ class TestGrokReceipt(unittest.TestCase):
         self.assertGreaterEqual(len(SEARCH_SPACE), 8)
         self.assertEqual(len(row["landed_missing"]), 0)
         self.assertEqual(len(row["landed_present"]), len(ALREADY_LANDED))
+
+
+def completed_envelope_bytes(text=None, thought="scratch"):
+    packet = {"packet_id": "synthetic-packet", "value": 7}
+    if text is None:
+        text = "answer\n```json\n%s\n```\n" % json.dumps(packet)
+    return json.dumps(
+        {
+            "text": text,
+            "thought": thought,
+            "stopReason": "end_turn",
+            "sessionId": "synthetic-session",
+            "requestId": "synthetic-request",
+            "usage": {"total_tokens": 42},
+            "num_turns": 2,
+            "total_cost_usd": 0.01,
+            "modelUsage": {
+                "grok-4.6-build": {
+                    "inputTokens": 30,
+                    "outputTokens": 12,
+                    "modelCalls": 2,
+                }
+            },
+        }
+    ).encode("utf-8")
+
+
+class TestCompletedGrokEnvelope(unittest.TestCase):
+    def test_valid_envelope_ignores_outer_thought(self):
+        raw = completed_envelope_bytes(
+            thought="```json\n{\"packet_id\":\"scratch\",\"value\":0}\n```"
+        )
+        got, code = gr.evaluate_receipt(raw, source="C:/private/receipt.json")
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["packet_id"], "synthetic-packet")
+        self.assertEqual(got["packet"]["value"], 7)
+        self.assertEqual(got["source"]["name"], "receipt.json")
+        self.assertEqual(got["sessionId"], "synthetic-session")
+        self.assertEqual(got["model"], "grok-4.6-build")
+        self.assertNotIn("thought", got)
+        self.assertNotIn("text", got)
+        self.assertEqual(got["excluded_fields"], ["text", "thought"])
+
+    def test_source_sha_is_exact_completed_envelope_bytes(self):
+        raw = completed_envelope_bytes()
+        got, code = gr.evaluate_receipt(raw)
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["source_sha256"], gr.receipt_sha256(raw))
+        self.assertEqual(got["source"]["bytes"], len(raw))
+
+    def test_literal_fence_markers_and_thinking_string_stay_packet_data(self):
+        packet = {
+            "packet_id": "synthetic-packet",
+            "example": "literal markers: ```json and ``` stay packet data",
+            "note": "thinking: keep this",
+        }
+        text = "```json\n%s\n```\n" % json.dumps(packet, indent=2)
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["packet"], packet)
+
+    def test_outer_validation_is_explicit(self):
+        for raw in (b"not-json", b"[]"):
+            got, code = gr.evaluate_receipt(raw)
+            self.assertEqual(code, gr.RECEIPT_EXIT_INVALID_ENVELOPE)
+            self.assertEqual(got["status"], "INVALID_ENVELOPE")
+        raw = json.dumps({"text": "```json\n{}\n```"}).encode("utf-8")
+        got, code = gr.evaluate_receipt(raw)
+        self.assertEqual(code, gr.RECEIPT_EXIT_INVALID_ENVELOPE)
+        self.assertIn("sessionId", got["error"])
+        self.assertIn("usage", got["error"])
+        self.assertIn("modelUsage", got["error"])
+
+    def test_zero_multiple_and_unclosed_fences_are_distinct(self):
+        _, zero = gr.evaluate_receipt(completed_envelope_bytes(text="prose only"))
+        self.assertEqual(zero, gr.RECEIPT_EXIT_ZERO_FENCES)
+        two = (
+            "```json\n{\"packet_id\":\"scratch\"}\n```\n"
+            "```json\n{\"packet_id\":\"final\"}\n```\n"
+        )
+        _, multiple = gr.evaluate_receipt(completed_envelope_bytes(text=two))
+        self.assertEqual(multiple, gr.RECEIPT_EXIT_MULTIPLE_FENCES)
+        unclosed = "```json\n{\"packet_id\":\"x\"}"
+        _, invalid = gr.evaluate_receipt(completed_envelope_bytes(text=unclosed))
+        self.assertEqual(invalid, gr.RECEIPT_EXIT_INVALID_INNER_JSON)
+
+    def test_complete_fence_plus_unclosed_second_opener_is_multiple(self):
+        text = (
+            "```json\n{\"packet_id\":\"first\"}\n```\n"
+            "```json\n{\"packet_id\":\"scratch\"}"
+        )
+        _, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_MULTIPLE_FENCES)
+
+    def test_inner_shape_and_packet_id_are_explicit(self):
+        _, invalid = gr.evaluate_receipt(
+            completed_envelope_bytes(text="```json\n{\n```")
+        )
+        self.assertEqual(invalid, gr.RECEIPT_EXIT_INVALID_INNER_JSON)
+        _, wrong_type = gr.evaluate_receipt(
+            completed_envelope_bytes(text="```json\n[]\n```")
+        )
+        self.assertEqual(wrong_type, gr.RECEIPT_EXIT_WRONG_TYPE)
+        _, no_id = gr.evaluate_receipt(
+            completed_envelope_bytes(text="```json\n{}\n```")
+        )
+        self.assertEqual(no_id, gr.RECEIPT_EXIT_MISSING_PACKET_ID)
+
+    def test_measured_appended_opener_and_non_json_fence(self):
+        appended = (
+            "Returning the single JSON object.```json\n"
+            "{\"packet_id\":\"synthetic-packet\"}\n```\n"
+        )
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=appended))
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["packet_id"], "synthetic-packet")
+        text = (
+            "```text\nnot authoritative\n```\n"
+            "```json\n{\"packet_id\":\"synthetic-packet\"}\n```\n"
+        )
+        _, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+
+    def test_cli_stdin_output_and_failures(self):
+        raw = completed_envelope_bytes()
+        out = io.BytesIO()
+        code = gr.main(["--check", "-"], stdin=io.BytesIO(raw), stdout=out)
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(json.loads(out.getvalue())["source"]["name"], "-")
+        with tempfile.TemporaryDirectory() as td:
+            source = os.path.join(td, "receipt.json")
+            target = os.path.join(td, "normalized.json")
+            with open(source, "wb") as handle:
+                handle.write(raw)
+            out = io.BytesIO()
+            code = gr.main(["--output", target, source], stdout=out)
+            self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+            with open(target, "rb") as handle:
+                self.assertEqual(handle.read(), out.getvalue())
+            missing_out = io.BytesIO()
+            code = gr.main([os.path.join(td, "missing.json")], stdout=missing_out)
+            self.assertEqual(code, gr.RECEIPT_EXIT_MISSING_FILE)
+            bad_target = os.path.join(td, "missing-parent", "normalized.json")
+            write_out = io.BytesIO()
+            code = gr.main(["--output", bad_target, source], stdout=write_out)
+            self.assertEqual(code, gr.RECEIPT_EXIT_WRITE_FAILURE)
 
 
 if __name__ == "__main__":

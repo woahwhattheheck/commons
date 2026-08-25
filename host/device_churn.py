@@ -117,12 +117,17 @@ def count_scope_device(results_dir):
             continue
         if row.get("scope") == "device":
             total += 1
-    return {
-        "ok": True,
-        "count": total,
-        "parse_failures": failures,
-        "error": "",
-    }
+    if failures:
+        return {
+            "ok": False,
+            "count": None,
+            "parse_failures": failures,
+            "error": (
+                "%d result JSON file(s) could not be parsed. "
+                "FINDER-UNVERIFIED, never 0." % failures
+            ),
+        }
+    return {"ok": True, "count": total, "parse_failures": 0, "error": ""}
 
 
 def workflow_flags(executor_text, board_text):
@@ -180,6 +185,17 @@ def classify(row):
             "note": (
                 "workflow_run is gone but board does not dispatch the "
                 "executor only when has_pending_device is true."
+            ),
+        }
+    if row.get("listing_failed") or row.get("parse_failures"):
+        return {
+            "state": "UNMEASURED",
+            "note": (
+                "workflow gate is integrated, but utilization count finders "
+                "failed or were unverified: "
+                + str(row.get("listing_error") or "result parse failure")
+                + " Counts are null, not zero. FINDER-FAILED / "
+                "FINDER-UNVERIFIED, never 0."
             ),
         }
     canary = row.get("canary") or {}
@@ -337,7 +353,12 @@ def main(argv=None):
     payload.update(verdict)
     json.dump(payload, sys.stdout, indent=2, sort_keys=True)
     sys.stdout.write("\n")
-    return 0 if row.get("measured") else 2
+    state = verdict.get("state")
+    if state == "INTEGRATED":
+        return 0
+    if state == "UNMEASURED":
+        return 2
+    return 1
 
 
 def _self_test():

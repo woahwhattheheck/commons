@@ -105,9 +105,36 @@ class DeviceChurnTests(unittest.TestCase):
             (results / "broken.json").write_text("{", encoding="utf-8")
             self.assertEqual(dc.count_json_files(str(results)), 3)
             scopes = dc.count_scope_device(str(results))
-            self.assertTrue(scopes["ok"])
-            self.assertEqual(scopes["count"], 1)
+            self.assertFalse(scopes["ok"])
+            self.assertIsNone(scopes["count"])
             self.assertEqual(scopes["parse_failures"], 1)
+            self.assertIn("FINDER-UNVERIFIED", scopes["error"])
+
+    def test_finder_failure_cannot_classify_integrated(self):
+        flags = dc.workflow_flags(
+            "on:\n  workflow_call:\n  workflow_dispatch:\n",
+            (
+                "device_action_state.py preflight\n"
+                "has_pending_device: x\n"
+                "uses: ./.github/workflows/commons-device-executor.yml\n"
+            ),
+        )
+        row = dc.measure_from_rows(
+            {
+                "reservation_count": None,
+                "batch_count": None,
+                "result_count": 1,
+                "scope_device_count": None,
+                "parse_failures": 1,
+                "listing_failed": True,
+                "listing_error": "FINDER-UNVERIFIED",
+            },
+            flags,
+            {"catalog": True, "canary": {"ran": True, "ok": True}},
+        )
+        verdict = dc.classify(row)
+        self.assertEqual(verdict["state"], "UNMEASURED")
+        self.assertIn("null, not zero", verdict["note"])
 
     def test_self_test_passes(self):
         self.assertTrue(dc._self_test())

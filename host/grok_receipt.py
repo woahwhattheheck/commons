@@ -19,13 +19,16 @@ Current-main bytes + non-Grok tests decide. Never 0.
   python3 host/grok_receipt.py
   python3 host/grok_receipt.py --root .
   python3 host/grok_receipt.py --self-test
+  python3 host/grok_receipt.py --check completed-envelope.json
+  python3 host/grok_receipt.py --output normalized.json completed-envelope.json
+  grok ... --output-format json | python3 host/grok_receipt.py --check -
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
-import re
 import subprocess
 import sys
 
@@ -37,10 +40,6 @@ H009_CARD = os.path.join("ground", "H009.md")
 H009_CATALOG = os.path.join("ground", "H009.json")
 SLACK_TS = "1787650886.402809"
 PRIOR_SLACK_TS = "1787649265.015869"
-FENCE_RE = re.compile(r"```(?:json)?\s*\n(.*?)```", re.DOTALL | re.IGNORECASE)
-THOUGHT_RE = re.compile(
-    r"(?is)<think>.*?</think>|thinking:.*?(?=```|\Z)|scratch/thought.*?(?=```|\Z)"
-)
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -105,6 +104,41 @@ EXIT_NOT_LANDED = 1
 EXIT_UNMEASURED = 2
 EXIT_FINDER_FAILED = 3
 
+# Completed Grok Build envelope exits are namespaced so the existing land-desk
+# 0/1/2/3 contract above remains stable for callers such as land.js.
+RECEIPT_SCHEMA = "grok-receipt/v1"
+RECEIPT_EXIT_OK = 0
+RECEIPT_EXIT_MISSING_FILE = 3
+RECEIPT_EXIT_INVALID_ENVELOPE = 4
+RECEIPT_EXIT_ZERO_FENCES = 5
+RECEIPT_EXIT_MULTIPLE_FENCES = 6
+RECEIPT_EXIT_INVALID_INNER_JSON = 7
+RECEIPT_EXIT_WRONG_TYPE = 8
+RECEIPT_EXIT_MISSING_PACKET_ID = 9
+RECEIPT_EXIT_WRITE_FAILURE = 10
+RECEIPT_EXIT_FINDER_FAILED = 12
+
+RECEIPT_STATUS_BY_EXIT = {
+    RECEIPT_EXIT_OK: "OK",
+    RECEIPT_EXIT_MISSING_FILE: "MISSING_FILE",
+    RECEIPT_EXIT_INVALID_ENVELOPE: "INVALID_ENVELOPE",
+    RECEIPT_EXIT_ZERO_FENCES: "ZERO_FENCES",
+    RECEIPT_EXIT_MULTIPLE_FENCES: "MULTIPLE_FENCES",
+    RECEIPT_EXIT_INVALID_INNER_JSON: "INVALID_INNER_JSON",
+    RECEIPT_EXIT_WRONG_TYPE: "WRONG_TYPE",
+    RECEIPT_EXIT_MISSING_PACKET_ID: "MISSING_PACKET_ID",
+    RECEIPT_EXIT_WRITE_FAILURE: "WRITE_FAILURE",
+    RECEIPT_EXIT_FINDER_FAILED: "FINDER_FAILED",
+}
+
+RECEIPT_OPTIONAL_OUTER_FIELDS = (
+    "stopReason",
+    "requestId",
+    "num_turns",
+    "total_cost_usd",
+    "total_cost_usd_ticks",
+)
+
 
 def _read(root, rel):
     path = os.path.join(root, rel)
@@ -139,35 +173,73 @@ def raw_sha(root):
     return sha
 
 
-def strip_thought(text):
-    """Remove thought/text wrappers. Unfenced prose is not a fence."""
-    return THOUGHT_RE.sub("", str(text or ""))
+def _receipt_json_fence(text):
+    """Return exactly one JSON fence body using line-state, not a regex.
+
+    Grok Build sometimes appends the opener to the final prose line. That
+    measured form is accepted when the marker ends the line. A marker string
+    inside the JSON body stays packet data; a second opener after a completed
+    block is counted and rejected.
+    """
+    lines = str(text).splitlines(keepends=True)
+    openers = 0
+    blocks = []
+    body_lines = []
+    in_json = False
+    for line in lines:
+        if not in_json:
+            if line.rstrip().lower().endswith("```json"):
+                openers += 1
+                in_json = True
+                body_lines = []
+            continue
+        if line.strip() == "```":
+            blocks.append("".join(body_lines))
+            body_lines = []
+            in_json = False
+        else:
+            body_lines.append(line)
+    if not openers:
+        return None, RECEIPT_EXIT_ZERO_FENCES, "text contains no fenced JSON object", 0
+    if openers != 1:
+        return (
+            None,
+            RECEIPT_EXIT_MULTIPLE_FENCES,
+            "text contains %d JSON fence openers; exactly one is required" % openers,
+            openers,
+        )
+    if in_json or len(blocks) != 1:
+        return (
+            None,
+            RECEIPT_EXIT_INVALID_INNER_JSON,
+            "JSON fence is not closed",
+            openers,
+        )
+    return blocks[0], RECEIPT_EXIT_OK, "", openers
 
 
 def normalize_envelope(text):
     """Exact-one-fence is authoritative. Last-fence is scratch-smuggling.
 
     0 fences or 2+ fences: FINDER-FAILED, authoritative=None.
-    thought/text is excluded before the fence count. Every envelope
-    stays CANDIDATE until current-main bytes + non-Grok tests decide.
+    Unfenced prose is ignored structurally; packet strings are never scrubbed.
+    The completed-envelope boundary excludes outer thought/text separately.
+    Every envelope stays CANDIDATE until current-main bytes + non-Grok tests decide.
     """
-    body = strip_thought(text)
-    fences = list(FENCE_RE.finditer(body))
-    count = len(fences)
-    if count != 1:
+    raw, fence_exit, fence_error, count = _receipt_json_fence(text)
+    if count != 1 or fence_exit != RECEIPT_EXIT_OK:
         return {
             "status": "CANDIDATE",
             "authoritative": None,
             "error": (
-                "exact-one-fence required. fence_count=%s. "
+                "exact-one-fence required. fence_count=%s. %s. "
                 "Last-fence is collision / scratch-smuggling. "
                 "FINDER-FAILED, never 0."
-                % count
+                % (count, fence_error)
             ),
             "excluded": "scratch/thought/text plus extra fences",
             "fence_count": count,
         }
-    raw = fences[0].group(1).strip()
     try:
         parsed = json.loads(raw)
     except ValueError:
@@ -185,6 +257,165 @@ def normalize_envelope(text):
         "excluded": "scratch/thought/text",
         "fence_count": 1,
     }
+
+
+def receipt_sha256(raw):
+    """SHA-256 of the exact completed-envelope source bytes."""
+    return hashlib.sha256(bytes(raw)).hexdigest()
+
+
+def _receipt_source_name(source):
+    """Keep private/absolute input paths out of normalized output."""
+    if source in (None, "-"):
+        return "-"
+    return os.path.basename(os.fspath(source))
+
+
+def _receipt_error(exit_code, message, raw=None, source="-"):
+    payload = {
+        "schema": RECEIPT_SCHEMA,
+        "status": RECEIPT_STATUS_BY_EXIT[exit_code],
+        "exit_code": exit_code,
+        "error": str(message),
+        "source": {"name": _receipt_source_name(source)},
+    }
+    if raw is not None:
+        payload["source"]["bytes"] = len(raw)
+        payload["source_sha256"] = receipt_sha256(raw)
+    return payload, exit_code
+
+
+def evaluate_receipt(raw, source="-"):
+    """Validate completed Grok Build envelope bytes and normalize one packet.
+
+    Only the outer ``text`` field is parsed. The optional outer ``thought``
+    field is never inspected or merged into the packet.
+    """
+    try:
+        envelope = json.loads(bytes(raw).decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as exc:
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_ENVELOPE,
+            "outer envelope is not UTF-8 JSON: %s" % exc,
+            raw,
+            source,
+        )
+    if not isinstance(envelope, dict):
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_ENVELOPE,
+            "outer envelope must be an object",
+            raw,
+            source,
+        )
+
+    text = envelope.get("text")
+    session_id = envelope.get("sessionId")
+    usage = envelope.get("usage")
+    model_usage = envelope.get("modelUsage")
+    invalid = []
+    if not isinstance(text, str):
+        invalid.append("text:string")
+    if not isinstance(session_id, str) or not session_id.strip():
+        invalid.append("sessionId:nonempty-string")
+    if not isinstance(usage, dict):
+        invalid.append("usage:object")
+    if (
+        not isinstance(model_usage, dict)
+        or not model_usage
+        or not all(isinstance(value, dict) for value in model_usage.values())
+    ):
+        invalid.append("modelUsage:nonempty-object")
+    if invalid:
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_ENVELOPE,
+            "outer envelope missing/invalid " + ", ".join(invalid),
+            raw,
+            source,
+        )
+
+    body, fence_exit, fence_error, fence_count = _receipt_json_fence(text)
+    if fence_exit != RECEIPT_EXIT_OK:
+        return _receipt_error(fence_exit, fence_error, raw, source)
+    try:
+        packet = json.loads(body)
+    except ValueError as exc:
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_INNER_JSON,
+            "fenced body is not JSON: %s" % exc,
+            raw,
+            source,
+        )
+    if not isinstance(packet, dict):
+        return _receipt_error(
+            RECEIPT_EXIT_WRONG_TYPE,
+            "fenced JSON must be an object",
+            raw,
+            source,
+        )
+    packet_id = packet.get("packet_id")
+    if not isinstance(packet_id, str) or not packet_id.strip():
+        return _receipt_error(
+            RECEIPT_EXIT_MISSING_PACKET_ID,
+            "fenced object requires packet_id:nonempty-string",
+            raw,
+            source,
+        )
+
+    models = sorted(str(name) for name in model_usage)
+    outer = {
+        name: envelope[name]
+        for name in RECEIPT_OPTIONAL_OUTER_FIELDS
+        if name in envelope
+    }
+    digest = receipt_sha256(raw)
+    return {
+        "schema": RECEIPT_SCHEMA,
+        "status": "OK",
+        "exit_code": RECEIPT_EXIT_OK,
+        "source_sha256": digest,
+        "source": {
+            "name": _receipt_source_name(source),
+            "bytes": len(raw),
+            "sha256": digest,
+        },
+        "sessionId": session_id,
+        "model": models[0] if len(models) == 1 else None,
+        "models": models,
+        "usage": usage,
+        "modelUsage": model_usage,
+        "outer": outer,
+        "packet_id": packet_id,
+        "packet": packet,
+        "fence_count": fence_count,
+        "excluded_fields": ["text", "thought"],
+    }, RECEIPT_EXIT_OK
+
+
+def _render_receipt(payload):
+    return (
+        json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    ).encode("utf-8")
+
+
+def _read_receipt_source(source, stdin=None):
+    if source == "-":
+        stream = stdin or sys.stdin.buffer
+        return stream.read(), None
+    try:
+        with open(source, "rb") as handle:
+            return handle.read(), None
+    except FileNotFoundError:
+        return None, _receipt_error(
+            RECEIPT_EXIT_MISSING_FILE,
+            "input file does not exist",
+            source=source,
+        )
+    except OSError as exc:
+        return None, _receipt_error(
+            RECEIPT_EXIT_FINDER_FAILED,
+            "input file could not be read: %s" % exc,
+            source=source,
+        )
 
 
 def load_catalog(text):
@@ -544,6 +775,19 @@ def self_test():
     no_fence = normalize_envelope("thought only, no fence")
     assert no_fence["authoritative"] is None, no_fence
     assert "FINDER-FAILED" in no_fence["error"], no_fence
+    packet = {"packet_id": "synthetic-self-test", "value": 1}
+    completed = {
+        "text": "result\n```json\n%s\n```\n" % json.dumps(packet),
+        "thought": "```json\n{\"packet_id\":\"scratch\"}\n```",
+        "sessionId": "synthetic-session",
+        "usage": {"total_tokens": 1},
+        "modelUsage": {"synthetic-model": {"modelCalls": 1}},
+    }
+    normalized, code = evaluate_receipt(json.dumps(completed).encode("utf-8"))
+    assert code == RECEIPT_EXIT_OK, normalized
+    assert normalized["packet"] == packet, normalized
+    assert "thought" not in normalized, normalized
+    assert "text" not in normalized, normalized
     missing = classify(
         measure_from_rows(
             {
@@ -560,16 +804,52 @@ def self_test():
     return "ok"
 
 
-def main(argv=None):
+def main(argv=None, stdin=None, stdout=None):
     parser = argparse.ArgumentParser(
-        description="Measure exact-one-fence grok-receipt leftover"
+        description=(
+            "Measure the grok-receipt leftover or normalize one completed "
+            "Grok Build envelope"
+        )
     )
+    parser.add_argument("source", nargs="?", help="completed receipt JSON or -")
     parser.add_argument("--root", default=DEFAULT_ROOT)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="validate/normalize source (use - or piped stdin if omitted)",
+    )
+    parser.add_argument("--output", help="also write normalized receipt JSON")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
     if args.self_test:
         print(self_test())
         return EXIT_INTEGRATED
+
+    receipt_mode = args.source is not None or args.check or args.output is not None
+    if receipt_mode:
+        source = args.source or "-"
+        raw, read_error = _read_receipt_source(source, stdin=stdin)
+        if read_error is not None:
+            payload, code = read_error
+        else:
+            payload, code = evaluate_receipt(raw, source=source)
+        rendered = _render_receipt(payload)
+        if args.output:
+            try:
+                with open(args.output, "wb") as handle:
+                    handle.write(rendered)
+            except OSError as exc:
+                payload, code = _receipt_error(
+                    RECEIPT_EXIT_WRITE_FAILURE,
+                    "normalized output could not be written: %s" % exc,
+                    raw,
+                    source,
+                )
+                rendered = _render_receipt(payload)
+        out = stdout or sys.stdout.buffer
+        out.write(rendered)
+        return code
+
     row = measure_root(args.root)
     verdict = classify(row)
     payload = {"verdict": verdict, "row": row}
