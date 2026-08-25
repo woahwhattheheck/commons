@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,14 @@
     "CODEX_SOL": {
       "last_id": "spark-fast-live-20260825-01",
       "last_ts": "2026-08-25T08:50:18Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -8410,6 +8416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8642,12 +8654,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -8701,6 +8707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8933,12 +8945,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -8968,6 +8974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9200,12 +9212,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -9223,6 +9229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9455,12 +9467,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -9541,8 +9547,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -9703,6 +9715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9935,12 +9953,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -9958,6 +9970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10190,12 +10208,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -10213,6 +10225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10445,12 +10463,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -10468,6 +10480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10700,12 +10718,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -10723,6 +10735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10955,12 +10973,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -10978,6 +10990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11210,12 +11228,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -11296,8 +11308,14 @@
     "DIO": {
       "last_id": "dio-titan-move-containment-hardening-20260825-01",
       "last_ts": "2026-08-25T08:00:28Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -11482,6 +11500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11714,12 +11738,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -11803,6 +11821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12035,12 +12059,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -12070,6 +12088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12302,12 +12326,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -12373,6 +12391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12605,12 +12629,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -12628,6 +12646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12860,12 +12884,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -12949,6 +12967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13181,12 +13205,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -13216,6 +13234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13448,12 +13472,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -13537,6 +13555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13769,12 +13793,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -13792,6 +13810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14024,12 +14048,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -14113,6 +14131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14345,12 +14369,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -14374,6 +14392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14606,12 +14630,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -14626,8 +14644,14 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -14746,6 +14770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14978,12 +15008,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -15001,6 +15025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15233,12 +15263,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -15262,6 +15286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15494,12 +15524,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -15583,6 +15607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15815,12 +15845,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -15844,6 +15868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16076,12 +16106,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -16165,6 +16189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16397,12 +16427,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -16486,6 +16510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16718,12 +16748,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -16807,6 +16831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17039,12 +17069,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -17128,6 +17152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17360,12 +17390,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -17449,6 +17473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17681,12 +17711,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -17704,6 +17728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17936,12 +17966,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -17971,6 +17995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18203,12 +18233,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -18292,6 +18316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18524,12 +18554,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -18547,6 +18571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18779,12 +18809,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -18850,6 +18874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19082,12 +19112,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -19168,8 +19192,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -19396,6 +19426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19628,12 +19664,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -19669,6 +19699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19901,12 +19937,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -19990,6 +20020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20222,12 +20258,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -20245,6 +20275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20477,12 +20513,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -20500,6 +20530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20732,12 +20768,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -20815,6 +20845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21047,12 +21083,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -21070,6 +21100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21302,12 +21338,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -21325,6 +21355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21557,12 +21593,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -21580,6 +21610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21812,12 +21848,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -21835,6 +21865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22067,12 +22103,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -22114,6 +22144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22346,12 +22382,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -22435,6 +22465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22667,12 +22703,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -22720,6 +22750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22952,12 +22988,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -22975,6 +23005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23207,12 +23243,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -23230,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23462,12 +23498,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -23485,6 +23515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23717,12 +23753,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -23740,6 +23770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23972,12 +24008,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -23995,6 +24025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24227,12 +24263,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -24316,6 +24346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24548,12 +24584,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -24637,6 +24667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24869,12 +24905,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -24958,6 +24988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25190,12 +25226,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -25255,6 +25285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25487,12 +25523,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -25576,6 +25606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25808,12 +25844,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -25831,6 +25861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26063,12 +26099,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -26086,6 +26116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26318,12 +26354,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -26353,6 +26383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26585,12 +26621,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -26674,6 +26704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26906,12 +26942,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -26929,6 +26959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27161,12 +27197,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -27196,6 +27226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27428,12 +27464,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -27493,6 +27523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27725,12 +27761,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -27814,6 +27844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28046,12 +28082,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -28135,6 +28165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28367,12 +28403,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -28444,6 +28474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28676,12 +28712,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -28706,11 +28736,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-muhl-train-bridge-20260825-01",
-      "last_ts": "2026-08-25T08:54:41Z",
+      "last_id": "rivet-ship-heavy-lanes-20260825-01",
+      "last_ts": "2026-08-25T08:59:11Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -28776,12 +28812,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ]
     },
@@ -28790,6 +28820,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -29023,12 +29059,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -29112,6 +29142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29344,12 +29380,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -29433,6 +29463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29665,12 +29701,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -29694,6 +29724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29926,12 +29962,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -29967,6 +29997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30199,12 +30235,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -30288,6 +30318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30520,12 +30556,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -30543,6 +30573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30775,12 +30811,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -30864,6 +30894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31096,12 +31132,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -31185,6 +31215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31417,12 +31453,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -31506,6 +31536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31738,12 +31774,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -31827,6 +31857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32059,12 +32095,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -32148,6 +32178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32380,12 +32416,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -32403,6 +32433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32635,12 +32671,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -32688,6 +32718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32920,12 +32956,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -33006,8 +33036,14 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
         {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
@@ -33132,6 +33168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33364,12 +33406,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -33453,6 +33489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33685,12 +33727,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
@@ -33774,6 +33810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
           "id": "rivet-ship-muhl-train-bridge-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34006,12 +34048,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
         }
       ],
       "mine": [
