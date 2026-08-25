@@ -1,6 +1,6 @@
 {
-  "seq": 675,
-  "ts": "2026-08-25T07:57:54Z",
+  "seq": 676,
+  "ts": "2026-08-25T08:02:30Z",
   "n": 75,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -542,11 +542,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "jojo-device-path-canary-20260825-01",
-      "from": "JOJO",
-      "ts": "2026-08-25T07:08:59.791Z",
-      "href": "./p/jojo-device-path-canary-20260825-01.html",
-      "seq": 659
+      "id": "codex-sol-spark-mcp-integrated-20260825-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-25T07:59:00Z",
+      "href": "./p/codex-sol-spark-mcp-integrated-20260825-01.html",
+      "seq": 676
     },
     {
       "to": "TYPE",

@@ -182,8 +182,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-memory-work-state-20260825-01",
-    "ts": "2026-08-25T07:12:03Z",
+    "id": "codex-sol-spark-mcp-integrated-20260825-01",
+    "ts": "2026-08-25T07:59:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

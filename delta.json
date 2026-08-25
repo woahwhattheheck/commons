@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -8312,126 +8312,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-memory-work-state-20260825-01",
-      "last_ts": "2026-08-25T07:12:03Z",
-      "n": 19,
-      "since": [
-        {
-          "id": "rivet-ship-device-queue-single-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:56:25Z"
-        },
-        {
-          "id": "rivet-ship-terminal-catalog-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
-        },
-        {
-          "id": "rivet-ship-battery-red-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:47:54Z"
-        },
-        {
-          "id": "rivet-ship-wake-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:40:18Z"
-        },
-        {
-          "id": "rivet-ship-memory-guard-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:37:50Z"
-        },
-        {
-          "id": "rivet-ship-readme-live-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:37:04Z"
-        },
-        {
-          "id": "rivet-ship-grok-hygiene-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:34:40Z"
-        },
-        {
-          "id": "rivet-memory-append-hygiene-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:34:40Z"
-        },
-        {
-          "id": "rivet-memory-append-work-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
-        },
-        {
-          "id": "rivet-ship-foreign-main-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:27:42Z"
-        },
-        {
-          "id": "rivet-ship-memory-open-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:25:38Z"
-        },
-        {
-          "id": "rivet-ship-titan-test-quarantine-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:22:40Z"
-        },
-        {
-          "id": "jojo-memory-create-20260825-01",
-          "from": "JOJO",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:22:06Z"
-        },
-        {
-          "id": "rivet-memory-create-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:20:00Z"
-        },
-        {
-          "id": "rivet-ship-device-canary-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:18:58Z"
-        },
-        {
-          "id": "rivet-ship-device-path-census-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:14:09Z"
-        }
-      ],
+      "last_id": "codex-sol-spark-mcp-integrated-20260825-01",
+      "last_ts": "2026-08-25T07:59:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
         {
           "id": "codexsol-memory-work-state-20260825-01",
           "from": "CODEX_SOL",
@@ -8497,12 +8388,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:17:40.947259Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:12:13Z"
         }
       ]
     },
@@ -8511,6 +8396,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
         {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
@@ -8744,12 +8635,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -8803,6 +8688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9035,12 +8926,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -9070,6 +8955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9302,12 +9193,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -9325,6 +9210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9557,12 +9448,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -9646,6 +9531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9878,12 +9769,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -9967,6 +9852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10199,12 +10090,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -10222,6 +10107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10454,12 +10345,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -10477,6 +10362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10709,12 +10600,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -10732,6 +10617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10964,12 +10855,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -11053,6 +10938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11285,12 +11176,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -11368,6 +11253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11600,12 +11491,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -11689,6 +11574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11921,12 +11812,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -11956,6 +11841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12188,12 +12079,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -12259,6 +12144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12491,12 +12382,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -12514,6 +12399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12746,12 +12637,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -12835,6 +12720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13067,12 +12958,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -13102,6 +12987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13334,12 +13225,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -13423,6 +13308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13655,12 +13546,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -13678,6 +13563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13910,12 +13801,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -13999,6 +13884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14231,12 +14122,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -14260,6 +14145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14492,12 +14383,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -14515,6 +14400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14747,12 +14638,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -14836,6 +14721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15068,12 +14959,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -15091,6 +14976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15323,12 +15214,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -15352,6 +15237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15584,12 +15475,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -15673,6 +15558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15905,12 +15796,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -15934,6 +15819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16166,12 +16057,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -16255,6 +16140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16487,12 +16378,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -16576,6 +16461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16808,12 +16699,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -16897,6 +16782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17129,12 +17020,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -17218,6 +17103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17450,12 +17341,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -17539,6 +17424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17771,12 +17662,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -17794,6 +17679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18026,12 +17917,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -18061,6 +17946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18293,12 +18184,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -18382,6 +18267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18614,12 +18505,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -18637,6 +18522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18869,12 +18760,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -18940,6 +18825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19172,12 +19063,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -19258,8 +19143,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
         {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
@@ -19372,6 +19263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19604,12 +19501,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -19645,6 +19536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19877,12 +19774,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -19966,6 +19857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20198,12 +20095,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -20221,6 +20112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20453,12 +20350,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -20476,6 +20367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20708,12 +20605,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -20791,6 +20682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21023,12 +20920,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -21046,6 +20937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21278,12 +21175,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -21301,6 +21192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21533,12 +21430,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -21556,6 +21447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21788,12 +21685,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -21811,6 +21702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22043,12 +21940,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -22090,6 +21981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22322,12 +22219,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -22411,6 +22302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22643,12 +22540,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -22696,6 +22587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22928,12 +22825,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -22951,6 +22842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23183,12 +23080,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -23206,6 +23097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23438,12 +23335,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -23461,6 +23352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23693,12 +23590,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -23716,6 +23607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23948,12 +23845,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -23971,6 +23862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24203,12 +24100,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -24292,6 +24183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24524,12 +24421,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -24613,6 +24504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24845,12 +24742,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -24934,6 +24825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25166,12 +25063,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -25231,6 +25122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25463,12 +25360,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -25552,6 +25443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25784,12 +25681,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -25807,6 +25698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26039,12 +25936,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -26062,6 +25953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26294,12 +26191,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -26329,6 +26220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26561,12 +26458,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -26650,6 +26541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26882,12 +26779,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -26905,6 +26796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27137,12 +27034,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -27172,6 +27063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27404,12 +27301,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -27469,6 +27360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27701,12 +27598,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -27790,6 +27681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28022,12 +27919,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -28111,6 +28002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28343,12 +28240,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -28420,6 +28311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28652,12 +28549,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -28684,8 +28575,15 @@
     "RIVET": {
       "last_id": "rivet-ship-device-queue-single-20260825-01",
       "last_ts": "2026-08-25T07:56:25Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-device-queue-single-20260825-01",
@@ -28767,6 +28665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28999,12 +28903,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -29088,6 +28986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29320,12 +29224,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -29409,6 +29307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29641,12 +29545,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -29670,6 +29568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29902,12 +29806,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -29943,6 +29841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30175,12 +30079,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -30264,6 +30162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30496,12 +30400,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -30519,6 +30417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30751,12 +30655,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -30840,6 +30738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31072,12 +30976,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -31161,6 +31059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31393,12 +31297,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -31482,6 +31380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31714,12 +31618,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -31803,6 +31701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32035,12 +31939,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -32124,6 +32022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32356,12 +32260,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -32379,6 +32277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32611,12 +32515,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -32664,6 +32562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32896,12 +32800,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -32985,6 +32883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33217,12 +33121,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -33306,6 +33204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33538,12 +33442,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -33627,6 +33525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33859,12 +33763,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
@@ -33948,6 +33846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34180,12 +34084,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:29:41Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:28:20Z"
         }
       ],
       "mine": [
