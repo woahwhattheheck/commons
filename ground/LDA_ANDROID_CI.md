@@ -16,11 +16,16 @@ This leftover is the smallest current-main placement:
 - `.github/workflows/lda-android.yml`
 - `working-directory: lda`
 - path-filtered to `lda/app/**` plus the Gradle files
-- `gradle :app:tasks` validation, then `assembleDebug`
-- APK artifact `lda-app-debug`
+- `gradle :app:tasks` validation is the required leftover
+- `assembleDebug` still runs so a compile failure is a receipt, not a guess
+- APK artifact `lda-app-debug` when assemble produces one
 - `workflow_dispatch` stays open
 
 A workflow file is not a run URL. A Slack stranded-map is not a land.
+The first measured assemble of the public dump failed compile
+(`MechanismRouter` / `ScoreboardActivity` unresolved refs, missing
+Shizuku). Do not copy private LocalDeviceAgent bytes to fake a green
+APK. That compile hole is a later leftover.
 
 ## Measure
 
