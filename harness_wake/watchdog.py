@@ -5,11 +5,39 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from independent_commons_mcp.jobs import JobStore
+from independent_commons_mcp.truth import GitTruth
 
 from .cursor_adapter import deliver_ntfy, should_ring_issue_1316
+
+
+def pinned_head_oracle(
+    *,
+    truth: Any | None = None,
+    ls_remote: Callable[[], str] | None = None,
+    http: Callable[..., dict[str, Any]] | None = None,
+) -> Callable[[str], bool]:
+    """One lazily SHA-pinned public HEAD page oracle for a single watchdog run.
+
+    Official HEAD is resolved on first use, then reused for every page check.
+    Constructing the oracle makes zero truth calls, so no-job and already
+    terminal ticks stay silent.
+    """
+    source = truth
+    pinned: dict[str, str | None] = {"sha": None}
+
+    def page_exists(ident: str) -> bool:
+        nonlocal source
+        if source is None:
+            source = GitTruth(http=http, ls_remote=ls_remote)
+        if pinned["sha"] is None:
+            pinned["sha"] = source.head_sha()
+        status, text = source.read_at_sha("p/%s.md" % ident, pinned["sha"])
+        return status == 200 and text is not None
+
+    return page_exists
 
 
 def run(
@@ -19,9 +47,12 @@ def run(
     worker_id: str = "gh-watchdog",
     now: str | None = None,
     http=None,
+    page_exists: Callable[[str], bool] | None = None,
+    truth: Any | None = None,
 ) -> dict[str, Any]:
     store = JobStore(jobs_dir)
-    summary = store.tick_all(worker_id=worker_id, now=now)
+    oracle = page_exists if page_exists is not None else pinned_head_oracle(truth=truth)
+    summary = store.tick_all(worker_id=worker_id, now=now, page_exists=oracle)
     deliveries = []
     if deliver:
         for row in summary.get("jobs") or []:
