@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825u/.test(html), "desk must bust the host-zero cache key");
+assert.ok(/20260825v/.test(html), "desk must bust the connector-reval cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -942,6 +942,38 @@ assert.ok(html.indexOf("1787473167.355659") >= 0, "desk must cite the PLUMB retr
 assert.ok(/already-achieved|not-an-aspiration|zero-host-cost/i.test(html), "desk must name host-zero talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/HOST_ZERO.md") >= 0, "host-zero card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/HOST_ZERO.json") >= 0, "host-zero catalog must stay a canary");
+assert.ok(api.isConnectorRevalTalk, "land.js must classify connector-utilization talk");
+assert.ok(api.connectorRevalState, "land.js must classify the connector-reval leftover");
+assert.ok(api.isConnectorRevalTalk("DEMON connector-utilization report — Cursor cloud cache shows 39 enabled services; 23 cached connected as of Aug 21. ~/.cursor/mcp.json is empty and cache age is four days, so provisioned != live. read-only connector revalidation. Do not delete/vacuum/repair live state.vscdb."), "connector-utilization copy is talk");
+assert.ok(!api.isConnectorRevalTalk("make sure people do more than talk about shit"), "ship-talk is not the connector leftover");
+assert.ok(!api.isConnectorRevalTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "grok-capacity copy is not connector leftover");
+assert.ok(!api.isConnectorRevalTalk("GROK HARNESS GAP — 0 MCP servers, 0 LSP servers. do not mutate/restart Grok."), "harness-gap copy is not connector leftover");
+assert.ok(!api.isUtilizationTalk("DEMON connector-utilization report — 39 enabled services; 23 cached connected. mcp.json is empty. provisioned != live."), "connector copy is not grok-capacity leftover");
+assert.ok(!api.isHostZeroTalk("DEMON connector-utilization report — 39 enabled services; mcp.json is empty."), "connector copy is not host-zero leftover");
+var connectorTalk = api.completionStateFromText(
+  "DEMON connector-utilization report — 39 enabled services; 23 cached connected. ~/.cursor/mcp.json is empty. provisioned != live. read-only connector revalidation. Do not delete/vacuum/repair live state.vscdb."
+);
+assert.strictEqual(connectorTalk.state, "CLAIMED");
+assert.ok(/connector-utilization|provisioned-vs-live/i.test(connectorTalk.note), "connector-without-SHA must stay CLAIMED and beat utilization");
+var connectorDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nconnector-reval leftover landed"
+);
+assert.strictEqual(connectorDone.state, "INTEGRATED", "completion words still beat connector talk");
+var connectorEmpty = api.connectorRevalState("");
+assert.strictEqual(connectorEmpty.state, "UNMEASURED");
+var connectorMissing = api.connectorRevalState("# empty stub\nno census");
+assert.strictEqual(connectorMissing.state, "NOT_LANDED");
+var connectorOk = api.connectorRevalState("def measure_from_rows(facts):\n    provisioned_ne_live = True\ndef classify(row):\n    return row\nrefuse_live_repair = True\ndo not delete/vacuum/repair live\n");
+assert.strictEqual(connectorOk.state, "INTEGRATED");
+assert.ok(/Provisioned != live/i.test(connectorOk.note), "landed leftover must name provisioned != live");
+assert.ok(html.indexOf('id="connector-reval-result"') >= 0, "desk must name the connector-reval leftover");
+assert.ok(html.indexOf("host/connector_reval.py") >= 0, "desk must name the connector-reval instrument");
+assert.ok(html.indexOf("ground/CONNECTOR_REVAL.md") >= 0, "desk must link the connector-reval card");
+assert.ok(html.indexOf("ground/CONNECTOR_REVAL.json") >= 0, "desk must link the connector-reval catalog");
+assert.ok(html.indexOf("1787637151.916759") >= 0, "desk must cite the connector-utilization Slack ts");
+assert.ok(/connector-utilization|provisioned != live|mcp\.json-empty|state\.vscdb/i.test(html), "desk must name connector talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.md") >= 0, "connector-reval card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.json") >= 0, "connector-reval catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
