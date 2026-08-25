@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "REVENUE_RECOVERY_INTEGRATION_INVENTORY",
+  "measured_at": "2026-08-25",
+  "zero_cursor": true,
+  "pipeline_blockers": [
+    "A real accepted buyer is not yet evidenced.",
+    "A hosted payment provider and private payout destination are not yet provisioned."
+  ],
+  "connected": [
+    {
+      "capability": "source_and_public_distribution",
+      "provider": "GitHub",
+      "state": "CONNECTED",
+      "public_base": "https://woahwhattheheck.github.io/commons/",
+      "diagnostic_surface_state": "PENDING_REVIEW_AND_MERGE",
+      "required_for_pipeline": true
+    },
+    {
+      "capability": "coordination_receipts",
+      "provider": "Slack",
+      "state": "CONNECTED",
+      "required_for_pipeline": false
+    },
+    {
+      "capability": "optional_deployment",
+      "provider": "Vercel",
+      "state": "CONNECTED_ZERO_PROJECTS",
+      "team_id": "team_GLbcX0t5AtQhiTrLCa7xduUn",
+      "plan": "hobby",
+      "required_for_pipeline": false
+    }
+  ],
+  "missing_or_pending": [
+    {
+      "capability": "lead_intelligence",
+      "provider": "Apollo.io",
+      "plugin_id": "apollo@openai-curated-remote",
+      "state": "AVAILABLE_NOT_CONNECTED",
+      "required_for_pipeline": false,
+      "fallback": "Primary-source prospect ledger in prospects.json"
+    },
+    {
+      "capability": "crm_ledger",
+      "provider": "Airtable",
+      "plugin_id": "airtable@openai-curated-remote",
+      "state": "AVAILABLE_NOT_CONNECTED",
+      "required_for_pipeline": false,
+      "fallback": "Deterministic Commons receipt chain"
+    },
+    {
+      "capability": "hosted_checkout_and_payout",
+      "provider": "Stripe",
+      "state": "NOT_PROVISIONED",
+      "required_for_pipeline": true,
+      "handoff": "revenue/payment_ready/processor_handoff.md",
+      "private_values_never_enter_commons": true
+    }
+  ],
+  "first_revenue_result": {
+    "public_offer_artifact": "diagnostic.html",
+    "public_receipt": "revenue/payment_ready/current_receipt.json",
+    "purchase_intent": "NEEDS_BUYER",
+    "contact_sent": false,
+    "buyer": "UNKNOWN",
+    "collected_cash_usd": 0,
+    "cash_state": "NOT_LANDED"
+  }
+}

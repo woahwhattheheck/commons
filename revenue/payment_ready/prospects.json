@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "kind": "GGUF_DIAGNOSTIC_PUBLIC_PROSPECTS",
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "measured_at": "2026-08-25",
+  "demand": "UNKNOWN",
+  "buyer_authorizations_observed": 0,
+  "contact_sent": false,
+  "prospect_is_not_buyer": true,
+  "method": "Primary public product, documentation, enterprise, and business-contact pages only. Fit is a hypothesis, not demand.",
+  "prospects": [
+    {
+      "rank": 1,
+      "organization": "LM Studio",
+      "state": "PROSPECT_NOT_CONTACTED",
+      "fit_hypothesis": "LM Studio runs llama.cpp GGUF models and sells enterprise deployment; a reversible GGUF diagnostic may fit evaluation or partner work.",
+      "product_evidence_url": "https://lmstudio.ai/docs/app/advanced/import-model",
+      "buyer_channel_url": "https://lmstudio.ai/enterprise",
+      "channel": "official enterprise form",
+      "disqualifier": "LM Studio may consider this internal capability, competition, or outside current priorities; budget and interest are unmeasured."
+    },
+    {
+      "rank": 2,
+      "organization": "Ollama",
+      "state": "PROSPECT_NOT_CONTACTED",
+      "fit_hypothesis": "Ollama documents GGUF import and offers enterprise deployment planning and support; model diagnostics may fit partner or support-adjacent work.",
+      "product_evidence_url": "https://docs.ollama.com/import",
+      "buyer_channel_url": "https://ollama.com/pricing",
+      "channel": "official enterprise contact route",
+      "disqualifier": "Ollama may perform this work internally; no posted project, budget, or request for model editing was observed."
+    },
+    {
+      "rank": 3,
+      "organization": "Jan",
+      "state": "PROSPECT_NOT_CONTACTED",
+      "fit_hypothesis": "Jan publicly supports community GGUF models and publishes a business-inquiry route; a bounded reversible diagnostic may fit model evaluation or partnership work.",
+      "product_evidence_url": "https://jan.ai/docs/manage-models",
+      "buyer_channel_url": "https://www.jan.ai/support",
+      "channel": "official business-inquiry address published on the support page",
+      "disqualifier": "Jan is open source and may not have a procurement need or budget for this service; interest is unmeasured."
+    },
+    {
+      "rank": 4,
+      "organization": "AnythingLLM",
+      "state": "PROSPECT_NOT_CONTACTED",
+      "fit_hypothesis": "AnythingLLM offers local-model integrations and enterprise on-premise customization; a GGUF diagnostic may fit customer-specific local-model evaluation.",
+      "product_evidence_url": "https://docs.anythingllm.com/",
+      "buyer_channel_url": "https://anythingllm.com/cloud",
+      "channel": "official enterprise request-quote route",
+      "disqualifier": "AnythingLLM may route model behavior to upstream runtimes and may not control a target GGUF; no budget or request was observed."
+    }
+  ],
+  "distribution_sequence": [
+    "Publish diagnostic.html and the exact offer/terms hash.",
+    "Use the official enterprise or business route only after the owner reviews the public draft.",
+    "Ask for a legally controlled GGUF, runnable harness, and one technical owner before any private file exchange.",
+    "Record an exact public purchase-intent post before generating a receipt.",
+    "Move NDA, SOW, customer bytes, and processor invoice to owner-private hosted surfaces."
+  ],
+  "truth": {
+    "named_buyers": [],
+    "accepted_quotes": 0,
+    "deliveries": 0,
+    "processor_payments": 0,
+    "collected_cash_usd": 0,
+    "cash_state": "NOT_LANDED"
+  }
+}

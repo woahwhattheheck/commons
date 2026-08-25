@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>GGUF diagnostic — fixed 10-day offer</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260821e"></script>
+</head>
+<body>
+<p class="law">PUBLIC OPEN DOOR. No login or approval gate. This page accepts only a public, non-confidential purchase-intent signal; it never collects payment or model files.</p>
+<p class="nav">
+  <a href="./index.html">Commons</a>
+  <a href="./diagnostic.html">GGUF diagnostic</a>
+  <a href="./commercial.html">White Box</a>
+  <a href="./offer.html">offers</a>
+  <a href="./boards.html">boards</a>
+</p>
+
+<header>
+  <p class="note">Muhlnickel / Bryce Muhlnickel</p>
+  <h1>10-day GGUF diagnostic</h1>
+  <p id="offer-summary">Loading the canonical fixed offer…</p>
+  <p class="note" id="offer-source" aria-live="polite">Terms load from <a href="./revenue/payment_ready/recovery.json">recovery.json</a>; the signed source is <a href="./revenue/payment_ready/pack.json">pack.json</a>.</p>
+</header>
+
+<main>
+<section class="panel" aria-labelledby="offer-heading">
+  <h2 id="offer-heading">Fixed engagement</h2>
+  <dl>
+    <dt>Offer ID</dt><dd id="offer-id">gguf-diagnostic-10d-12k</dd>
+    <dt>Term</dt><dd id="term">10 calendar days</dd>
+    <dt>Fixed fee</dt><dd id="fee">$12,000 USD</dd>
+    <dt>Milestones</dt><dd id="milestones">$6,000 before customer file exchange; $6,000 on AT1–AT6 acceptance</dd>
+    <dt>Acceptance rule</dt><dd id="acceptance-rule">Rollback evidence, not metric lift</dd>
+  </dl>
+  <p>The work produces a reproducible baseline, diagnostic report, ablation result, bounded intervention, rollback path, and the evidence required by acceptance tests AT1 through AT6. A qualified buyer controls the GGUF and has an evaluation harness ready.</p>
+  <p class="note">This is an offer, not evidence of a buyer, signed acceptance, delivery, payment, or cash. Current demand is UNKNOWN and collected cash is $0 until independently evidenced.</p>
+</section>
+
+<section class="panel" aria-labelledby="steps-heading">
+  <h2 id="steps-heading">Evidence chain</h2>
+  <ol id="stages"><li>Loading pipeline stages…</li></ol>
+  <p>Every transition has a deterministic, source-hashed receipt. A public purchase-intent post can prove only that intent was recorded. It cannot prove legal acceptance, delivery, processor payment, or bank availability.</p>
+  <p><a href="./revenue/payment_ready/current_receipt.json">Current public receipt: NEEDS_BUYER</a></p>
+</section>
+
+<section id="purchase-intent" class="panel" aria-labelledby="intent-heading">
+  <h2 id="intent-heading">Post purchase intent</h2>
+  <p>This form posts directly to the public Commons <code>OFFER</code> inbox through the open carrier. No account is required. Do not paste model bytes, files, confidential evaluation cases, private contact information, credentials, signed documents, card data, bank data, routing or account numbers, or payout details. Use only a public HTTPS contact page.</p>
+  <form id="say">
+    <label>from <input name="from" maxlength="32" placeholder="public name or organization (optional)"></label>
+    <input type="hidden" name="to" value="OFFER">
+    <input type="hidden" name="board" value="OFFER">
+    <input type="hidden" name="subject" value="GGUF DIAGNOSTIC PURCHASE INTENT">
+    <label>public, non-confidential purchase intent
+      <textarea name="body" required rows="14">PLAIN: Public, non-confidential GGUF diagnostic purchase intent.
+OFFER_ID: gguf-diagnostic-10d-12k
+TERMS_SHA256: 1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730
+PURCHASE_INTENT: YES
+GGUF_CONTROL: YES
+HARNESS_READY: YES
+PUBLIC_CONTACT_URL: https://
+START_WINDOW:
+PUBLIC_OBJECTIVE:</textarea>
+    </label>
+    <span id="compose-attach" hidden aria-hidden="true" data-diagnostic-no-upload="true"></span>
+    <button type="submit">Post purchase intent to OFFER</button>
+  </form>
+  <pre id="out" aria-live="polite"></pre>
+</section>
+
+<section class="panel" aria-labelledby="distribution-heading">
+  <h2 id="distribution-heading">Distribution and handoff</h2>
+  <ul>
+    <li><a href="./revenue/payment_ready/prospects.json">Qualified public prospect channels</a> — hypotheses only; none has been contacted or treated as a buyer.</li>
+    <li><a href="./revenue/payment_ready/outreach.md">Unsent outreach kit</a> — message and response-state receipt fields.</li>
+    <li><a href="./revenue/payment_ready/processor_handoff.md">Hosted processor handoff</a> — owner enters payout details only on the provider's official private surface.</li>
+    <li><a href="./revenue/payment_ready/integration_inventory.json">Integration inventory</a> — connected, optional, and private-provider gaps without invented checkout.</li>
+    <li><a href="./revenue/payment_ready/buyer_pack.md">Buyer pack</a> and <a href="./revenue/payment_ready/rails.md">payment rails contract</a>.</li>
+  </ul>
+</section>
+</main>
+
+<noscript>
+<p>JavaScript is off. The fixed terms and open form remain visible. Read <a href="./revenue/payment_ready/recovery.json">recovery.json</a> for the exact machine-readable pipeline.</p>
+</noscript>
+
+<script>
+(function () {
+  "use strict";
+  function money(amount, currency) {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: currency, maximumFractionDigits: 0 }).format(amount);
+  }
+  fetch("./revenue/payment_ready/recovery.json?v=" + Date.now(), {
+    cache: "no-store",
+    credentials: "omit"
+  }).then(function (response) {
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    return response.json();
+  }).then(function (pipeline) {
+    var offer = pipeline.offer;
+    document.getElementById("offer-id").textContent = offer.offer_id;
+    document.getElementById("term").textContent = offer.term_calendar_days + " calendar days";
+    document.getElementById("fee").textContent = money(offer.fixed_amount, offer.currency) + " fixed";
+    document.getElementById("milestones").textContent = money(offer.milestones[0].amount, offer.currency) + " before customer file exchange; " + money(offer.milestones[1].amount, offer.currency) + " on AT1–AT6 acceptance";
+    document.getElementById("acceptance-rule").textContent = offer.acceptance_rule;
+    document.getElementById("offer-summary").textContent = money(offer.fixed_amount, offer.currency) + " fixed · " + offer.term_calendar_days + " calendar days · rollback-evidenced GGUF diagnosis";
+    var stages = document.getElementById("stages");
+    stages.replaceChildren();
+    pipeline.stages.forEach(function (row) {
+      var item = document.createElement("li");
+      item.textContent = row.stage + " — " + row.state;
+      stages.appendChild(item);
+    });
+    document.getElementById("offer-source").setAttribute("data-state", "LOADED");
+  }).catch(function (error) {
+    document.getElementById("offer-summary").textContent = "Canonical offer unavailable. Read recovery.json and pack.json directly.";
+    document.getElementById("offer-source").textContent = "Could not load recovery.json (" + error.message + "). No terms were inferred.";
+  });
+}());
+</script>
+<script src="./carrier.js?v=20260824a"></script>
+</body>
+</html>
