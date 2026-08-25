@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bl/.test(html), "desk must share the current-main/Titan cache key after sitting-PR leftover");
+assert.ok(/20260825bm/.test(html), "desk must share the current-main/Titan cache key after device-queue-cap");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isDeviceQueueCapTalk, "land.js must classify device-queue-cap leftover talk");
+assert.ok(api.deviceQueueCapState, "land.js must classify the device-queue-cap leftover");
+assert.ok(api.isDeviceQueueCapTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nsubject: PEER #2264 LANDED THE QUEUE CAP; JOJO #2263 CLOSED\nthis forward cap does not claim the old backlog is cleared. 1787645425.769089"), "JOJO collision is leftover talk");
+assert.ok(!api.isDeviceQueueCapTalk("make sure people do more than talk about shit"), "generic ship-talk is not the device-queue-cap leftover");
+assert.ok(!api.isDeviceQueueCapTalk("DEMON LANDED ON COMMONS MAIN. This hygiene arm is not the colony build. Act on the build sweep priorities."), "build-sweep copy is not the device-queue-cap leftover");
+assert.ok(!api.isDeviceQueueCapTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. Named idle UNMEASURED."), "SPECTER FINAL copy is not the device-queue-cap leftover");
+assert.ok(!api.isDeviceQueueCapTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. sitting remint PR 2207 SUPERSEDED."), "sitting-PR copy is not the device-queue-cap leftover");
+assert.ok(!api.isBuildSweepActTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nPEER #2264 LANDED THE QUEUE CAP"), "device-queue-cap copy is not the build-sweep leftover");
+assert.ok(!api.isSittingRemintTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nPEER #2264 LANDED THE QUEUE CAP"), "device-queue-cap copy is not sitting remint");
+assert.ok(!api.isSittingPrTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nPEER #2264 LANDED THE QUEUE CAP"), "device-queue-cap copy is not the sitting-PR leftover");
+var deviceQueueTalk = api.completionStateFromText(
+  "from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nsubject: PEER #2264 LANDED THE QUEUE CAP; JOJO #2263 CLOSED\nthis forward cap does not claim the old backlog is cleared. 1787645425.769089"
+);
+assert.strictEqual(deviceQueueTalk.state, "CLAIMED");
+assert.ok(/device-queue-cap|COLLISION_RESOLVED|historical-backlog/i.test(deviceQueueTalk.note), "collision-without-SHA must stay CLAIMED and beat sitting-PR / sitting remint");
+var deviceQueueDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ndevice-queue-cap leftover landed"
+);
+assert.strictEqual(deviceQueueDone.state, "INTEGRATED", "completion words still beat device-queue-cap talk");
+var deviceQueueEmpty = api.deviceQueueCapState("");
+assert.strictEqual(deviceQueueEmpty.state, "UNMEASURED");
+var deviceQueueMissing = api.deviceQueueCapState("# empty stub\nno leftover");
+assert.strictEqual(deviceQueueMissing.state, "NOT_LANDED");
+var deviceQueueOk = api.deviceQueueCapState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nqueue: single\nCOLLISION_RESOLVED\nhistorical backlog NOT_CLEARED\nno auth\nno gate\n");
+assert.strictEqual(deviceQueueOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(deviceQueueOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="device-queue-cap-result"') >= 0, "desk must name the device-queue-cap leftover");
+assert.ok(html.indexOf("host/device_queue_cap.py") >= 0, "desk must name the device-queue-cap instrument");
+assert.ok(html.indexOf("ground/DEVICE_QUEUE_CAP.md") >= 0, "desk must link the device-queue-cap card");
+assert.ok(html.indexOf("ground/DEVICE_QUEUE_CAP.json") >= 0, "desk must link the device-queue-cap catalog");
+assert.ok(html.indexOf("1787645425.769089") >= 0, "desk must cite the JOJO collision Slack ts");
+assert.ok(/COLLISION_RESOLVED|queue: single|NOT_CLEARED/i.test(html), "desk must name device-queue-cap talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_QUEUE_CAP.md") >= 0, "device-queue-cap card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_QUEUE_CAP.json") >= 0, "device-queue-cap catalog must stay a canary");
 assert.ok(api.isSittingPrTalk, "land.js must classify sitting remint PR leftover talk");
 assert.ok(api.sittingPrState, "land.js must classify the sitting remint PR leftover");
 assert.ok(api.isSittingPrTalk("DIO — TITAN CONTAINMENT DURABLE ON COMMONS MAIN. Canonical receipt p/dio-titan-move-containment-hardening-20260825-01.md. 1787645172.017469"), "DIO durable Slack is leftover talk");
@@ -1601,6 +1635,7 @@ assert.ok(api.isSpecterFinalTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CUR
 assert.ok(!api.isSpecterFinalTalk("make sure people do more than talk about shit"), "generic ship-talk is not the SPECTER FINAL leftover");
 assert.ok(!api.isSpecterFinalTalk("SPECTER LANDED + TERMINAL — stale MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "terminal-catalog copy is not the SPECTER FINAL leftover");
 assert.ok(!api.isSpecterFinalTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the SPECTER FINAL leftover");
+assert.ok(!api.isSpecterFinalTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01"), "device-queue-cap copy is not the SPECTER FINAL leftover");
 assert.ok(!api.isWakeContractTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. Collision hygiene. Named idle UNMEASURED. 1787645274.177269"), "SPECTER FINAL without rebase words is not the wake-contract leftover");
 assert.ok(!api.isSittingPrTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. 1787645274.177269"), "SPECTER FINAL Slack is not the sitting-PR leftover");
 var specterFinalTalk = api.completionStateFromText(
