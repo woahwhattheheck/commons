@@ -105,6 +105,7 @@
     "ground/EXECUTE.md",
     "ground/SHARED_ONE.md",
     "ground/READ_IS_VOLTAGE.md",
+    "ground/HOARD.md",
     "robots.txt",
     "slack/plugin.html"
   ];
@@ -362,6 +363,9 @@
     if (api.isBrowserDownTalk(t)) {
       return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
     }
+    if (api.isHoardTalk(t)) {
+      return { state: "CLAIMED", note: "session-hoard / commit-push talk. Talk is not a land. Commit, push, and merge the leftover onto current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -422,6 +426,36 @@
 
   api.isBrowserDownTalk = function (text) {
     return /browser is broken|extension is not displaying|cannot talk to the browser session|working return path|silence in the browser|do not treat.{0,80}disengagement|browser silence is not disengagement/i.test(String(text || ""));
+  };
+
+  api.isHoardTalk = function (text) {
+    return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
+  };
+
+  api.sessionExportState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "session dirty/unpushed state not measured. Absence was not stillness." };
+    }
+    var dirty = Number(row.dirty || 0);
+    var unpushed = Number(row.unpushed || 0);
+    var ahead = Number(row.ahead_of_main || 0);
+    if (dirty > 0 || unpushed > 0) {
+      return {
+        state: "NOT_LANDED",
+        note: "session has " + dirty + " dirty path(s) and " + unpushed + " unpushed commit(s). Commit, push, and merge to current main."
+      };
+    }
+    if (ahead > 0) {
+      return {
+        state: "CANDIDATE",
+        note: "this clone is " + ahead + " commit(s) ahead of origin/main and still not merged. A push is not current main."
+      };
+    }
+    return {
+      state: "INTEGRATED",
+      note: "this clone has no hoarded bytes. Still measure the intended path on official main."
+    };
   };
 
   api.noAuthDocState = function (text) {

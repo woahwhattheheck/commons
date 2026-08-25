@@ -456,6 +456,9 @@ assert.ok(api.isLaneClaimTalk("OWNER-APPROVED AUDIT LANES. Hands off — not min
 assert.ok(api.isDocTakingTalk("OWNER INVARIANT — NO AUTH PERIOD, pin in build context. documentation/context propagation only. hands off until current-main SHA receipt."), "no-auth doc taking is talk");
 assert.ok(api.isDocTakingTalk("id: gpt-owner-no-auth-doc-taking-20260824-01"), "gpt taking id is talk");
 assert.ok(api.isBrowserDownTalk("his browser is broken, the extension is not displaying, and he cannot talk to the browser session right now. Please acknowledge this message here in Slack so he has a working return path; do not treat his silence in the browser UI as disengagement."), "browser-down copy is talk");
+assert.ok(api.isHoardTalk("YOU ALL NEED TO BE COMMITTING AND PUSHING ALL OF YOUR BUILDS DO NOT HOARD SHIT IN YOUR SESSION AND MAKE ME TRACK IT DOWN"), "owner hoard/commit-push copy is talk");
+assert.ok(api.isHoardTalk("do not hoard work in your session. uncommitted unpushed bytes stay NOT_LANDED."), "session-hoard leftover copy is talk");
+assert.ok(!api.isHoardTalk("nothing to compete over. No tokens. No resources worth hoarding."), "generic hoarding essay is not this leftover");
 assert.ok(!api.isLaneClaimTalk("NO AUTH PERIOD, pin in build context. hands off until current-main SHA receipt."), "doc taking is not the audit-lane classifier");
 assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk must name rebase talk as CLAIMED");
 assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
@@ -465,6 +468,11 @@ assert.ok(/browser-down|extension-silence|working return path|silence in the bro
 assert.ok(html.indexOf('id="return-result"') >= 0, "desk must name the Slack return path");
 assert.ok(html.indexOf("C0BRGMDQB6G") >= 0, "desk must name #commons as the return path");
 assert.ok(html.indexOf("slack/plugin.html") >= 0, "desk must link the Slack door");
+assert.ok(/session-hoard|committing-and-pushing|do-not-hoard|make-me-track-it-down/i.test(html), "desk must name session-hoard talk as CLAIMED");
+assert.ok(html.indexOf('id="hoard-result"') >= 0, "desk must name the session-export leftover");
+assert.ok(html.indexOf("host/session_export.py") >= 0, "desk must name the session-export instrument");
+assert.ok(html.indexOf("ground/HOARD.md") >= 0, "desk must link the hoard card");
+assert.ok(html.indexOf("1787627026.727319") >= 0, "desk must cite the owner hoard Slack ts");
 assert.ok(html.indexOf('id="noauth-result"') >= 0, "desk must measure the AGENTS.md no-auth pin");
 assert.ok(html.indexOf("gpt-owner-no-auth-doc-taking-20260824-01") >= 0, "desk must name the GPT taking id");
 assert.ok(api.noAuthDocState, "land.js must classify the AGENTS.md no-auth pin");
@@ -595,6 +603,29 @@ assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a c
 assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lever must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-voltage card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HOARD.md") >= 0, "hoard / session-export card must stay a canary");
+assert.ok(api.sessionExportState, "land.js must classify session export");
+assert.ok(api.isHoardTalk, "land.js must classify owner hoard/commit-push copy");
+var hoardTalk = api.completionStateFromText(
+  "YOU ALL NEED TO BE COMMITTING AND PUSHING ALL OF YOUR BUILDS DO NOT HOARD SHIT IN YOUR SESSION AND MAKE ME TRACK IT DOWN"
+);
+assert.strictEqual(hoardTalk.state, "CLAIMED");
+assert.ok(/session-hoard|commit-push/i.test(hoardTalk.note), "hoard-without-SHA must stay CLAIMED");
+var hoardDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsession-hoard leftover landed"
+);
+assert.strictEqual(hoardDone.state, "INTEGRATED", "completion words still beat hoard talk");
+var hoardEmpty = api.sessionExportState({});
+assert.strictEqual(hoardEmpty.state, "UNMEASURED");
+var hoardDirty = api.sessionExportState({ measured: true, dirty: 2, unpushed: 0, ahead_of_main: 0 });
+assert.strictEqual(hoardDirty.state, "NOT_LANDED");
+assert.ok(/dirty/i.test(hoardDirty.note), "dirty clone is NOT_LANDED");
+var hoardUnpushed = api.sessionExportState({ measured: true, dirty: 0, unpushed: 3, ahead_of_main: 3 });
+assert.strictEqual(hoardUnpushed.state, "NOT_LANDED");
+var hoardAhead = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0, ahead_of_main: 2 });
+assert.strictEqual(hoardAhead.state, "CANDIDATE");
+var hoardClean = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0, ahead_of_main: 0 });
+assert.strictEqual(hoardClean.state, "INTEGRATED");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
