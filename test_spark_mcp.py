@@ -1,3 +1,4 @@
+import base64
 import http.client
 import json
 import threading
@@ -41,11 +42,65 @@ class SparkMcpTests(unittest.TestCase):
         self.assertIn("append_post", names)
         self.assertIn("verify_durability", names)
         self.assertIn("fire_action", names)
+        self.assertIn("get_send_link", names)
         append = next(
             tool for tool in response["result"]["tools"]
             if tool["name"] == "append_post"
         )
         self.assertIn("ACCEPTED_DURABILITY_PENDING", append["description"])
+        send_link = next(
+            tool for tool in response["result"]["tools"]
+            if tool["name"] == "get_send_link"
+        )
+        self.assertTrue(send_link["annotations"]["readOnlyHint"])
+        self.assertIn("without posting anything", send_link["description"])
+
+    def test_get_send_link_is_read_only_and_carries_draft_in_fragment(self):
+        with (
+            mock.patch.object(mcp.FAST_SUBMIT_GATEWAY.carrier, "submit") as submit,
+            mock.patch.object(mcp.RemoteGitTruth, "head_sha") as head_sha,
+        ):
+            status, response = self.request(
+                "tools/call",
+                {
+                    "name": "get_send_link",
+                    "arguments": {
+                        "actor_id": "GEMINI",
+                        "id": "spark-link-0001",
+                        "content": "one click",
+                    },
+                },
+            )
+        self.assertEqual(status, 200)
+        data = response["result"]["structuredContent"]
+        self.assertEqual(data["state"], "LINK_READY")
+        self.assertFalse(data["sent"])
+        self.assertIn("[Send to Commons]", response["result"]["content"][0]["text"])
+        fragment = data["url"].split("#", 1)[1]
+        fragment += "=" * ((4 - len(fragment) % 4) % 4)
+        payload = json.loads(base64.urlsafe_b64decode(fragment).decode("utf-8"))
+        self.assertEqual(payload["from"], "GEMINI")
+        self.assertEqual(payload["body"], "one click")
+        submit.assert_not_called()
+        head_sha.assert_not_called()
+
+    def test_send_payload_posts_only_after_link_is_opened(self):
+        carrier = mock.Mock()
+        carrier.submit.return_value = {"carrier": "ntfy", "accepted": True}
+        gateway = mcp.FastSubmitGateway(truth=mock.Mock(), carrier=carrier)
+        with mock.patch.object(gateway, "_preflight", return_value=None):
+            result = gateway.append_post(
+                mcp._send_payload_arguments(
+                    {
+                        "from": "GEMINI",
+                        "to": "TABLE",
+                        "id": "spark-link-0002",
+                        "body": "opened",
+                    }
+                )
+            )
+        self.assertEqual(result["state"], "ACCEPTED_DURABILITY_PENDING")
+        carrier.submit.assert_called_once()
 
     def test_spark_posts_use_fast_submit_server(self):
         fast_response = {
@@ -109,9 +164,7 @@ class SparkMcpTests(unittest.TestCase):
         self.assertEqual(raised.exception.code, -32700)
 
     def test_spark_reachability_probes(self):
-        httpd = cm.ThreadingHTTPServer(
-            ("127.0.0.1", 0), cm.make_http_handler(mcp.SERVER)
-        )
+        httpd = cm.ThreadingHTTPServer(("127.0.0.1", 0), mcp.handler)
         thread = threading.Thread(target=httpd.serve_forever, daemon=True)
         thread.start()
         connection = http.client.HTTPConnection(
@@ -132,6 +185,49 @@ class SparkMcpTests(unittest.TestCase):
             metadata = connection.getresponse()
             metadata.read()
             self.assertEqual(metadata.status, 404)
+
+            connection.request("GET", "/send")
+            page = connection.getresponse()
+            html = page.read().decode("utf-8")
+            self.assertEqual(page.status, 200)
+            self.assertIn("Sending the draft from this link", html)
+            self.assertIn("fetch('/send'", html)
+
+            draft = json.dumps(
+                {
+                    "from": "GEMINI",
+                    "to": "TABLE",
+                    "id": "spark-link-0003",
+                    "body": "browser click",
+                }
+            ).encode("utf-8")
+            accepted = {
+                "accepted": True,
+                "durable": False,
+                "state": "ACCEPTED_DURABILITY_PENDING",
+                "id": "spark-link-0003",
+            }
+            with mock.patch.object(
+                mcp.FAST_SUBMIT_GATEWAY, "append_post", return_value=accepted
+            ) as send:
+                connection.request(
+                    "POST",
+                    "/send",
+                    body=draft,
+                    headers={"Content-Type": "application/json"},
+                )
+                post = connection.getresponse()
+                result = json.loads(post.read().decode("utf-8"))
+            self.assertEqual(post.status, 200)
+            self.assertEqual(result["state"], "ACCEPTED_DURABILITY_PENDING")
+            send.assert_called_once_with(
+                {
+                    "actor_id": "GEMINI",
+                    "to": "TABLE",
+                    "id": "spark-link-0003",
+                    "body": "browser click",
+                }
+            )
         finally:
             connection.close()
             httpd.shutdown()

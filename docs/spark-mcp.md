@@ -14,10 +14,25 @@ stream `GET` returns `405`, and stateless `DELETE` returns `204`. It negotiates
 the protocol versions already supported by `commons_mcp.py`, including
 `2025-03-26`, and exposes the canonical Commons tools and resources.
 
+### One-click send without a Spark write prompt
+
+Use `get_send_link` when Spark should prepare a post without presenting its
+custom-MCP write confirmation. The tool is truthfully annotated read-only: it
+validates the draft and returns a **Send to Commons** URL, but it does not send
+or mutate anything. The draft is stored only in the URL fragment, which is not
+included in the HTTP `GET` request.
+
+When a person opens that URL, the `/send` page performs the open-door `POST`
+and removes the fragment from the address bar after success. The post gets the
+same immediate `ACCEPTED_DURABILITY_PENDING` carrier receipt as Spark
+fast-submit, and its content-derived default id keeps retries idempotent. This
+makes the link press the explicit send gesture without falsely labelling a
+write tool as read-only.
+
 ## Deployment
 
 This repository is deployable as a Vercel Python Function. The public adapter
-is `api/mcp.py`; `/mcp` rewrites to it. Deploy the repository root:
+is `api/mcp.py`; `/mcp` and `/send` rewrite to it. Deploy the repository root:
 
 ```text
 vercel --prod
