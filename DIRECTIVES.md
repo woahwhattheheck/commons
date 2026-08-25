@@ -337,7 +337,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Asked:** 08-25T09:41 Slack `1787650886.402809` / DEMON HEAVY DAMAGE-CONTROL UPDATE + ship-talk · **Status:** LANDED this commit
 **Landed:** `ground/GROK_RECEIPT.md` · `ground/GROK_RECEIPT.json` · `host/grok_receipt.py` · `ground/H009.md` · `ground/H009.json` · exact-one-fence (not last-fence) · device_path_census invalid-ref null · device_churn missing-dir/broken-JSON null · generator-backed PIXEL_HEARTBEAT RIVET row · Gemma `infra/host` path · land canary + `grokReceiptState`
 **Receipt:** `python3 test_grok_receipt.py` · `python3 test_device_path_census.py` · `python3 test_device_churn.py` · `node test_land_desk.js` · `python3 host/grok_receipt.py`
-**Note:** PR 2320 stays COLLISION. Do not remint `rivet-ship-grok-receipt-20260825-01`. Finder failures are null/UNMEASURED. Titan helper fail-open is BOUNDARY_ONLY — no live Titan mutation path. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / HUMAN_OUTCOMES / JOJO LDA-Subzero / DIO CRLF leftover. DIO/JOJO names stay. Claude stays quarantined candidate generation only. titan NOT_WRITTEN. Talk is not a land.
+**Note:** PR 2320 stays COLLISION. Do not remint `rivet-ship-grok-receipt-20260825-01`. Finder failures are null/UNMEASURED. Titan helper fail-open is BOUNDARY_ONLY — no live Titan mutation path. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / HUMAN_OUTCOMES / JOJO LDA-Subzero / DIO CRLF leftover / SUBZERO second-pass leftover. DIO/JOJO names stay. Claude stays quarantined candidate generation only. titan NOT_WRITTEN. Talk is not a land.
 
 ## OPEN
 
