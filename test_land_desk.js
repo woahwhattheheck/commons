@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ca/.test(html), "desk must share the current-main/Titan cache key after exact-one-fence leftover");
+assert.ok(/20260825cb/.test(html), "desk must share the current-main/Titan cache key after H-009 quote leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1568,6 +1568,7 @@ assert.ok(api.grokReceiptState, "land.js must classify the exact-one-fence lefto
 assert.ok(api.isGrokReceiptTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nPR 2320 / demon/grok-receipt-catalog-delta is a COLLISION\nexact-one-fence Grok receipt normalizer\n1787650886.402809"), "DEMON damage-control exact-one-fence is leftover talk");
 assert.ok(!api.isGrokReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the exact-one-fence leftover");
 assert.ok(!api.isGrokReceiptTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the exact-one-fence leftover");
+assert.ok(!api.isGrokReceiptTalk("JOJO H-009 BACKEND COMPLETE — CANDIDATE RECONCILED BY NON-GROK SECOND PASS\n1787651627.535699\n#2322/#2329 quote+receipt consumers"), "H-009 quote leftover is not the exact-one-fence leftover");
 assert.ok(!api.isSubzeroReceiptTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence Grok receipt normalizer. 1787650886.402809"), "exact-one-fence Slack is not the H-008 leftover");
 assert.ok(!api.isHumanOutcomesTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence. 1787650886.402809"), "exact-one-fence Slack is not the human-outcomes leftover");
 var grokReceiptTalk = api.completionStateFromText(
@@ -1665,6 +1666,8 @@ assert.ok(api.CANARY_PATHS.indexOf("subzero-receipt.html") >= 0, "receipt door m
 assert.ok(api.isSubzeroQuoteTalk, "land.js must classify SUBZERO quote leftover talk");
 assert.ok(api.subzeroQuoteState, "land.js must classify the SUBZERO quote leftover");
 assert.ok(api.isSubzeroQuoteTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof. 1787649732.551439"), "JOJO commercial consequence is leftover talk");
+assert.ok(api.isSubzeroQuoteTalk("JOJO H-009 BACKEND COMPLETE — CANDIDATE RECONCILED BY NON-GROK SECOND PASS\n1787651627.535699\n#2322/#2329 quote+receipt consumers"), "JOJO H-009 is quote leftover talk");
+assert.ok(!api.isSubzeroReceiptTalk("JOJO H-009 BACKEND COMPLETE — CANDIDATE RECONCILED BY NON-GROK SECOND PASS\n1787651627.535699\n#2322/#2329 quote+receipt consumers"), "H-009 quote leftover is not the H-008 receipt leftover");
 assert.ok(!api.isSubzeroQuoteTalk("make sure people do more than talk about shit"), "generic ship-talk is not the quote leftover");
 assert.ok(!api.isSubzeroQuoteTalk("TAKING revenue/human-outcomes package from current main\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the quote leftover");
 assert.ok(!api.isSubzeroQuoteTalk("SUBZERO PANEL 1/3 — TECHNICAL/IP/VALIDATION INVENTORY\ndemon-redteam-subzero-tech-ip-20260825-04"), "SUBZERO tech inventory is not the quote leftover");
@@ -1673,7 +1676,7 @@ var subzeroQuoteTalk = api.completionStateFromText(
   "Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof.\n1787649732.551439"
 );
 assert.strictEqual(subzeroQuoteTalk.state, "CLAIMED");
-assert.ok(/quote-draft|sz-paid-validation|STRUCTURAL_ONLY-is-not-cash/i.test(subzeroQuoteTalk.note), "quote leftover without SHA must stay CLAIMED and beat ship-talk");
+assert.ok(/quote-draft|sz-paid-validation|STRUCTURAL_ONLY-is-not-cash|H-009/i.test(subzeroQuoteTalk.note), "quote leftover without SHA must stay CLAIMED and beat ship-talk");
 var subzeroQuoteDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero quote leftover landed"
 );
@@ -1682,7 +1685,7 @@ var subzeroQuoteEmpty = api.subzeroQuoteState("");
 assert.strictEqual(subzeroQuoteEmpty.state, "UNMEASURED");
 var subzeroQuoteMissing = api.subzeroQuoteState("# empty stub\nno leftover");
 assert.strictEqual(subzeroQuoteMissing.state, "NOT_LANDED");
-var subzeroQuoteOk = api.subzeroQuoteState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef classify_quote(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nQUOTE_DRAFT\n$0 / NOT_LANDED\nno auth\nno gate\n");
+var subzeroQuoteOk = api.subzeroQuoteState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef classify_quote(row):\n    return row\ndef legal_state_for(hashes, inbound_bound=False):\n    return 'NEEDS_BUYER'\ninbound_rel\nSELF_BIND\nUNRESOLVED\nH-009\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nQUOTE_DRAFT\n$0 / NOT_LANDED\nno auth\nno gate\n");
 assert.strictEqual(subzeroQuoteOk.state, "INTEGRATED");
 assert.ok(/still not the file/i.test(subzeroQuoteOk.note), "landed leftover must name Slack as not the file");
 assert.ok(html.indexOf('id="subzero-quote-result"') >= 0, "desk must name the SUBZERO quote leftover");
@@ -1690,6 +1693,7 @@ assert.ok(html.indexOf("host/subzero_quote.py") >= 0, "desk must name the quote 
 assert.ok(html.indexOf("ground/SUBZERO_QUOTE.md") >= 0, "desk must link the quote card");
 assert.ok(html.indexOf("ground/SUBZERO_QUOTE.json") >= 0, "desk must link the quote catalog");
 assert.ok(html.indexOf("1787649732.551439") >= 0, "desk must cite the JOJO commercial-consequence Slack ts");
+assert.ok(html.indexOf("1787651627.535699") >= 0, "desk must cite the JOJO H-009 Slack ts");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_QUOTE.md") >= 0, "quote card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_QUOTE.json") >= 0, "quote catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("subzero-quote.html") >= 0, "quote door must stay a canary");

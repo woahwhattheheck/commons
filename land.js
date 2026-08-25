@@ -486,7 +486,7 @@
       return { state: "CLAIMED", note: "JOJO H-008 / second-pass / quote-draft bind / validation-receipt talk. Talk is not a land. Ship the receipt leftover to current main. Live binder stays CANDIDATE/INCOMPLETE/NEEDS_BUYER. Cash stays $0 / NOT_LANDED. Do not remint SUBZERO_QUOTE, first receipt leftover, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320." };
     }
     if (api.isSubzeroQuoteTalk(t)) {
-      return { state: "CLAIMED", note: "JOJO commercial-consequence / sz-paid-validation / $2500 quote-draft / STRUCTURAL_ONLY-is-not-cash talk. Talk is not a land. Ship the quote leftover to current main. Presence stays PRESENT and not runtime. Do not remint SUBZERO_TECH, SUBZERO_GTM, SUBZERO_BUYERS, explorer, proof, White Box, or human-outcomes." };
+      return { state: "CLAIMED", note: "JOJO commercial-consequence / H-009 / sz-paid-validation / $2500 quote-draft / STRUCTURAL_ONLY-is-not-cash talk. Talk is not a land. Ship the quote leftover to current main. Fail-close traversal and missing numerics. Live legal_state stays DRAFT/NEEDS_BUYER. Presence stays PRESENT and not runtime. Do not remint SUBZERO_TECH, SUBZERO_GTM, SUBZERO_BUYERS, explorer, proof, receipt bind, White Box, or human-outcomes." };
     }
     if (api.isHumanOutcomesTalk(t)) {
       return { state: "CLAIMED", note: "DEMON TAKING / revenue/human-outcomes / humans.html / human-value-not-proof-worship talk. Talk is not a land. Ship the four named human jobs to current main. Collected cash stays $0 / NOT_LANDED. Do not remint the DEMON taking id, White Box, payment-ready, SUBZERO, compression, or DIO." };
@@ -1044,7 +1044,7 @@
   };
 
   api.isSubzeroQuoteTalk = function (text) {
-    return /1787649732\.551439|sz-paid-validation[\s\S]{0,80}quote draft|quote draft over STRUCTURAL_ONLY|commercial consequence|not runtime, demand, or cash proof/i.test(String(text || ""));
+    return /1787649732\.551439|1787651627\.535699|H-009 BACKEND COMPLETE|#2322\/#2329 quote|missing numbers are coerced|quote lifecycle is fused|sz-paid-validation[\s\S]{0,80}quote draft|quote draft over STRUCTURAL_ONLY|commercial consequence|not runtime, demand, or cash proof/i.test(String(text || ""));
   };
 
   api.subzeroQuoteState = function (text) {
@@ -1055,21 +1055,25 @@
     var hasMeasure = /def measure_from_rows/.test(body);
     var hasClassify = /def classify/.test(body);
     var hasQuote = /def classify_quote/.test(body);
+    var hasCanonical = /inbound_rel/.test(body) && /SELF_BIND/.test(body);
+    var hasLegal = /legal_state_for/.test(body) && /NEEDS_BUYER/.test(body);
     var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
     var neverZero = /Never 0/.test(body);
     var namesSku = /sz-paid-validation/.test(body);
     var namesDraft = /QUOTE_DRAFT/.test(body);
     var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var namesUnresolved = /UNRESOLVED/.test(body);
+    var namesH009 = /H-009/.test(body);
     var noGate = /no auth/.test(body) && /no gate/.test(body);
-    if (hasMeasure && hasClassify && hasQuote && hasMiss && neverZero && namesSku && namesDraft && namesCash && noGate) {
+    if (hasMeasure && hasClassify && hasQuote && hasCanonical && hasLegal && hasMiss && neverZero && namesSku && namesDraft && namesCash && namesUnresolved && namesH009 && noGate) {
       return {
         state: "INTEGRATED",
-        note: "SUBZERO quote leftover is on this file. sz-paid-validation stays a $2500 QUOTE_DRAFT. A Slack commercial consequence is still not the file."
+        note: "SUBZERO quote leftover is on this file. H-009 quote holes are closed. sz-paid-validation stays a $2500 QUOTE_DRAFT. Live legal_state stays NEEDS_BUYER. A Slack commercial consequence is still not the file."
       };
     }
     return {
       state: "NOT_LANDED",
-      note: "host/subzero_quote.py missing the leftover. JOJO commercial-consequence / sz-paid-validation / quote-draft talk is CLAIMED until the leftover ships."
+      note: "host/subzero_quote.py missing the leftover. JOJO commercial-consequence / H-009 / sz-paid-validation / quote-draft talk is CLAIMED until the leftover ships."
     };
   };
 
