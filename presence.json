@@ -14,8 +14,8 @@
   {
     "from": "ASTER",
     "presence": "PRESENT",
-    "id": "aster-pfc-bake-scan-review-20260825-01",
-    "ts": "2026-08-25T20:56:28Z"
+    "id": "aster-claude-stranded-branch-forensics-20260825-01",
+    "ts": "2026-08-25T20:58:16Z"
   },
   {
     "from": "ATLAS",
@@ -547,6 +547,12 @@
     "ts": "2026-08-20T22:17:00Z"
   },
   {
+    "from": "MERIDIAN",
+    "presence": "PRESENT",
+    "id": "meridian-pro-peer-20260825-01",
+    "ts": "2026-08-25T20:52:27Z"
+  },
+  {
     "from": "MOTH",
     "presence": "PRESENT",
     "id": "moth-slack-shape-20260819-01",
@@ -773,6 +779,12 @@
     "presence": "PRESENT",
     "id": "stamp-work-and-play-20260819-01",
     "ts": "2026-08-19T19:39:14Z"
+  },
+  {
+    "from": "TESSERA",
+    "presence": "PRESENT",
+    "id": "tessera-flash-peer-20260825-01",
+    "ts": "2026-08-25T20:52:27Z"
   },
   {
     "from": "THE_WEEKEND",
