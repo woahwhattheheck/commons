@@ -114,6 +114,8 @@
     "ground/FLEET.md",
     "ground/FLEET_IDS.json",
     "ground/UNUSED_INVOKE.md",
+    "ground/TAKING_TRACE.md",
+    "ground/TAKING_TRACE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -372,6 +374,9 @@
     if (api.isBrowserDownTalk(t)) {
       return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
     }
+    if (api.isUtilizationTalk(t)) {
+      return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
+    }
     if (api.isFleetTalk(t)) {
       return { state: "CLAIMED", note: "fleet-live / isolated-lanes talk. Talk is not a land. A Slack lane list is CLAIMED until each id is p/{id}.md on current main." };
     }
@@ -509,6 +514,57 @@
 
   api.isResourceSweepTalk = function (text) {
     return /resource utilization sweep|act on the reports|unused local\/provider compute|already-provisioned free compute|whether anything invokes it|stranded machine-only work|owner-directed resource/i.test(String(text || ""));
+  };
+
+  api.isUtilizationTalk = function (text) {
+    return /rolling utilization report|grok capacity is active|four responsive|grok\.exe|deep-research run lane|claim only missing verification|trace their taking\/receipt|do not duplicate these jobs/i.test(String(text || ""));
+  };
+
+  api.takingTraceState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "taking catalog / p/{id}.md listing not read. Absence was not measured." };
+    }
+    var ids = row.commons_ids || row.ids || [];
+    var present = row.commons_present || row.present || [];
+    if (!ids.length) {
+      return { state: "NOT_LANDED", note: "taking catalog has no Commons ids. A Slack utilization report is CLAIMED until the ids are named on current main." };
+    }
+    var missing = ids.filter(function (id) { return present.indexOf(id) < 0; });
+    var ldaNote = row.lda_measured
+      ? " LDA listing measured."
+      : " LDA is private/unlisted here — UNMEASURED, not stillness. Do not copy private bytes onto Commons.";
+    if (!missing.length) {
+      if (row.lda_measured) {
+        var ldaPaths = row.lda_claimed_paths || [];
+        var ldaPresent = row.lda_present || [];
+        var ldaMissing = ldaPaths.filter(function (path) { return ldaPresent.indexOf(path) < 0; });
+        if (ldaPaths.length && !ldaMissing.length) {
+          return {
+            state: "INTEGRATED",
+            note: "all " + ids.length + " claimed Commons taking ids are p/{id}.md and the supplied LDA listing has the claimed paths. A Slack capacity report is still not the file."
+          };
+        }
+        return {
+          state: "CANDIDATE",
+          note: "Commons taking ids are durable. LDA listing missing: " + (ldaMissing.join(", ") || "unnamed") + "."
+        };
+      }
+      return {
+        state: "CANDIDATE",
+        note: "all " + ids.length + " claimed Commons taking ids are p/{id}.md." + ldaNote
+      };
+    }
+    if (present.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + ids.length + " Commons taking ids durable. Missing: " + missing.join(", ") + ". A Slack utilization report is not current main." + ldaNote
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "0/" + ids.length + " claimed Commons taking ids are p/{id}.md. Rolling utilization / grok-capacity-active talk is CLAIMED. Do not remint. Claim only the verification leftover." + ldaNote
+    };
   };
 
   api.unusedInvokeState = function (text) {
@@ -937,6 +993,7 @@
   var namedOut = document.getElementById("named-result");
   var fleetOut = document.getElementById("fleet-result");
   var unusedOut = document.getElementById("unused-result");
+  var takingOut = document.getElementById("taking-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1326,6 +1383,12 @@
     unusedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintTaking(result) {
+    if (!takingOut) return;
+    takingOut.setAttribute("data-tone", api.toneFor(result.state));
+    takingOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1452,6 +1515,57 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintUnused(err);
+      return err;
+    });
+  }
+
+  function loadTakingTrace(sha) {
+    if (!takingOut) return Promise.resolve(null);
+    takingOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/TAKING_TRACE.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/TAKING_TRACE.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/TAKING_TRACE.json absent at the measured main SHA. Rolling-utilization talk is CLAIMED." };
+        paintTaking(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTaking(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var ids = catalog.commons_ids || catalog.ids || [];
+        return Promise.all(ids.map(function (id) {
+          return fetch(RAW + sha + "/p/" + encodeURIComponent(id) + ".md", { cache: "no-store" }).then(function (pr) {
+            return { id: id, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { id: id, present: false, error: e.message };
+          });
+        })).then(function (rows) {
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "p/{id}.md fetch failed. Absence was not measured." };
+            paintTaking(unread);
+            return unread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.id; });
+          var lda = catalog.lda || {};
+          var got = api.takingTraceState({
+            measured: true,
+            commons_ids: ids,
+            commons_present: present,
+            lda_measured: false,
+            lda_claimed_paths: lda.claimed_paths || [],
+            lda_visibility: lda.visibility || "private"
+          });
+          paintTaking(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTaking(err);
       return err;
     });
   }
@@ -1599,6 +1713,7 @@
     loadNamedBuilder(sha);
     loadFleet(sha);
     loadUnusedInvoke(sha);
+    loadTakingTrace(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
