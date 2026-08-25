@@ -77,6 +77,15 @@ python3 host/named_builder.py --self-test</pre>
 <div id="named-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Named-builder / DIO-JOJO-use-your-names copy without the names.html rows on current main is talk. Ship the leftover.</p></div>
 </section>
 
+<section aria-labelledby="fleet-heading">
+<h2 id="fleet-heading">Revenue fleet ids</h2>
+<p class="note">Slack <code>1787633743.561299</code> / id <code>jojo-revenue-fleet-20260825-01</code>: JOJO announced a revenue/substrate fleet with isolated Grok 4.6 lanes and a Claude verifier. Fleet-live / isolated-lanes / grok46-revenue talk is <code>CLAIMED</code> until each id is <code>p/{id}.md</code> on current main. Missing claimed ids are <code>NOT_LANDED</code>. A Slack lane list, LDA receipt, or <code>/loop</code> is not Commons HEAD. Instrument: <code>host/fleet_ids.py</code>. Card: <a href="./ground/FLEET.md">ground/FLEET.md</a>. Catalog: <a href="./ground/FLEET_IDS.json">ground/FLEET_IDS.json</a>. Hands off LDA <code>host/muhl_revenue.py</code>, Titan live-contract, and DIO revenue contracts. No auth. No gate. Do not remint the JOJO id.</p>
+<pre>python3 host/fleet_ids.py
+python3 host/fleet_ids.py --catalog ground/FLEET_IDS.json --posts-dir p
+python3 host/fleet_ids.py --self-test</pre>
+<div id="fleet-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Fleet-live / isolated-lanes copy without <code>p/{id}.md</code> on current main is talk. Measure the catalog, then ship the exact id or a unique leftover.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -212,6 +221,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825i"></script>
+<script src="./land.js?v=20260825j"></script>
 </body>
 </html>

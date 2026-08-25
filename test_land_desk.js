@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825i/.test(html), "desk must bust the named-builder cache key");
+assert.ok(/20260825j/.test(html), "desk must bust the fleet-ids cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -791,8 +791,55 @@ assert.ok(html.indexOf("ground/NAMED_BUILDER.md") >= 0, "desk must link the name
 assert.ok(html.indexOf("1787633443.590539") >= 0, "desk must cite the DIO/JOJO Slack ts");
 assert.ok(/named-builder|DIO-JOJO-use-your-names|do-not-collapse-the-author/i.test(html), "desk must name named-builder talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/NAMED_BUILDER.md") >= 0, "named-builder card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET.md") >= 0, "fleet card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET_IDS.json") >= 0, "fleet catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("names.html") >= 0, "names door must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
+assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
+assert.ok(api.fleetState, "land.js must classify claimed fleet ids");
+assert.ok(api.isFleetTalk("from: JOJO\nid: jojo-revenue-fleet-20260825-01\nRevenue/substrate fleet live — Grok 4.6 workflows + Claude verifier\nActive isolated lanes:\n• Grok 4.6 exact-128 revenue discovery: grok46-revenue-discovery-20260825-01"), "fleet copy is talk");
+assert.ok(!api.isFleetTalk("from= is optional routing metadata"), "generic from= talk is not fleet leftover");
+assert.ok(!api.isFleetTalk("INTEGRATED — VERIFIED ON CURRENT MAIN\nrevenue foundation landed"), "DIO revenue receipt is not fleet talk");
+var fleetTalk = api.completionStateFromText(
+  "Revenue/substrate fleet live — Grok 4.6 workflows + Claude verifier. Active isolated lanes. grok46-revenue-discovery-20260825-01. no session hoarding."
+);
+assert.strictEqual(fleetTalk.state, "CLAIMED");
+assert.ok(/fleet-live|isolated-lanes/i.test(fleetTalk.note), "fleet-without-SHA must stay CLAIMED and beat hoard");
+var fleetDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nfleet leftover landed"
+);
+assert.strictEqual(fleetDone.state, "INTEGRATED", "completion words still beat fleet talk");
+var fleetEmpty = api.fleetState({});
+assert.strictEqual(fleetEmpty.state, "UNMEASURED");
+var fleetNone = api.fleetState({ measured: true, ids: [], present: [] });
+assert.strictEqual(fleetNone.state, "NOT_LANDED");
+var fleetMiss = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01", "grok46-revenue-discovery-20260825-01"],
+  present: []
+});
+assert.strictEqual(fleetMiss.state, "NOT_LANDED");
+assert.ok(/0\/2/.test(fleetMiss.note), "missing fleet must name the zero");
+var fleetHalf = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01", "grok46-open-revenue-desk-20260825-01"],
+  present: ["jojo-revenue-fleet-20260825-01"]
+});
+assert.strictEqual(fleetHalf.state, "CANDIDATE");
+var fleetOk = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01"],
+  present: ["jojo-revenue-fleet-20260825-01"]
+});
+assert.strictEqual(fleetOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(fleetOk.note), "durable fleet ids still name Slack as not the file");
+assert.ok(html.indexOf('id="fleet-result"') >= 0, "desk must name the fleet leftover");
+assert.ok(html.indexOf("host/fleet_ids.py") >= 0, "desk must name the fleet instrument");
+assert.ok(html.indexOf("ground/FLEET.md") >= 0, "desk must link the fleet card");
+assert.ok(html.indexOf("ground/FLEET_IDS.json") >= 0, "desk must link the fleet catalog");
+assert.ok(html.indexOf("1787633743.561299") >= 0, "desk must cite the JOJO fleet Slack ts");
+assert.ok(html.indexOf("jojo-revenue-fleet-20260825-01") >= 0, "desk must name the JOJO fleet id");
+assert.ok(/fleet-live|isolated-lanes|grok46-revenue/i.test(html), "desk must name fleet talk as CLAIMED");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
 var readTalk = api.readVoltageState({});

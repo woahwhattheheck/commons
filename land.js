@@ -111,6 +111,8 @@
     "ground/PFC_BAKE_CENSUS.md",
     "docs/PFC_BAKE_CENSUS.md",
     "ground/NAMED_BUILDER.md",
+    "ground/FLEET.md",
+    "ground/FLEET_IDS.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -369,6 +371,9 @@
     if (api.isBrowserDownTalk(t)) {
       return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
     }
+    if (api.isFleetTalk(t)) {
+      return { state: "CLAIMED", note: "fleet-live / isolated-lanes talk. Talk is not a land. A Slack lane list is CLAIMED until each id is p/{id}.md on current main." };
+    }
     if (api.isHoardTalk(t)) {
       return { state: "CLAIMED", note: "session-hoard / commit-push talk. Talk is not a land. Commit, push, and merge the leftover onto current main." };
     }
@@ -451,6 +456,39 @@
 
   api.isHoardTalk = function (text) {
     return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
+  };
+
+  api.isFleetTalk = function (text) {
+    return /revenue\/substrate fleet|fleet live|isolated lanes|grok46-revenue|grok 4\.6 workflows|claude verifier|jojo-revenue-fleet|background fleet live|exact-128 revenue/i.test(String(text || ""));
+  };
+
+  api.fleetState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "fleet catalog / p/{id}.md listing not read. Absence was not measured." };
+    }
+    var ids = row.ids || [];
+    var present = row.present || [];
+    if (!ids.length) {
+      return { state: "NOT_LANDED", note: "fleet catalog has no ids. A Slack fleet list is CLAIMED until the ids are named on current main." };
+    }
+    var missing = ids.filter(function (id) { return present.indexOf(id) < 0; });
+    if (!missing.length) {
+      return {
+        state: "INTEGRATED",
+        note: "all " + ids.length + " claimed fleet ids are p/{id}.md on this SHA. A Slack announcement is still not the file."
+      };
+    }
+    if (present.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + ids.length + " fleet ids durable. Missing: " + missing.join(", ") + ". A Slack lane list is not current main."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "0/" + ids.length + " claimed fleet ids are p/{id}.md. Fleet-live / isolated-lanes talk is CLAIMED. Do not remint. Ship the exact id or a unique leftover."
+    };
   };
 
   api.isAccessIncidentTalk = function (text) {
@@ -869,6 +907,7 @@
   var titanOut = document.getElementById("titan-result");
   var censusOut = document.getElementById("census-result");
   var namedOut = document.getElementById("named-result");
+  var fleetOut = document.getElementById("fleet-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1279,6 +1318,55 @@
     });
   }
 
+  function paintFleet(result) {
+    if (!fleetOut) return;
+    fleetOut.setAttribute("data-tone", api.toneFor(result.state));
+    fleetOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadFleet(sha) {
+    if (!fleetOut) return Promise.resolve(null);
+    fleetOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/FLEET_IDS.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/FLEET_IDS.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/FLEET_IDS.json absent at the measured main SHA. Fleet-live talk is CLAIMED." };
+        paintFleet(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintFleet(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var ids = catalog.ids || [];
+        return Promise.all(ids.map(function (id) {
+          return fetch(RAW + sha + "/p/" + encodeURIComponent(id) + ".md", { cache: "no-store" }).then(function (pr) {
+            return { id: id, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { id: id, present: false, error: e.message };
+          });
+        })).then(function (rows) {
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "p/{id}.md fetch failed. Absence was not measured." };
+            paintFleet(unread);
+            return unread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.id; });
+          var got = api.fleetState({ measured: true, ids: ids, present: present });
+          paintFleet(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintFleet(err);
+      return err;
+    });
+  }
+
   function loadNamedBuilder(sha) {
     if (!namedOut) return Promise.resolve(null);
     namedOut.innerHTML = "<b>UNMEASURED</b><p>Reading names.html at the official SHA…</p>";
@@ -1447,6 +1535,7 @@
     loadTitanPacket(sha);
     loadBakeCensus(sha);
     loadNamedBuilder(sha);
+    loadFleet(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
