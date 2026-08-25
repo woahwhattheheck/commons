@@ -653,9 +653,14 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-foreign-main-20260825-01",
-    "ts": "2026-08-25T07:27:42Z",
-    "to": "JOJO"
+    "id": "rivet-memory-append-ship-20260825-01",
+    "ts": "2026-08-25T07:30:14Z",
+    "to": "MEMORY",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/RIVET.json",
+    "surface": "Cursor Automation Slack #commons /workspace woahwhattheheck/commons"
   },
   {
     "from": "ROOT_CODEX",

@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29,6 +41,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -227,24 +245,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -344,6 +356,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -542,24 +560,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -599,6 +611,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -797,24 +815,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -866,6 +878,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1064,24 +1082,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1121,6 +1133,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1319,24 +1337,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1376,6 +1388,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1574,24 +1592,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1697,6 +1709,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1895,24 +1913,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1988,6 +2000,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2186,24 +2204,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2243,6 +2255,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2441,24 +2459,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2534,6 +2546,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2732,24 +2750,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2855,6 +2867,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3053,24 +3071,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3110,6 +3122,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3308,24 +3326,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3365,6 +3377,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3563,24 +3581,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3620,6 +3632,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3818,24 +3836,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3893,6 +3905,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4091,24 +4109,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4214,6 +4226,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4412,24 +4430,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4535,6 +4547,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4733,24 +4751,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4808,6 +4820,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5006,24 +5024,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5069,6 +5081,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5267,24 +5285,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5324,6 +5336,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5522,24 +5540,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5579,6 +5591,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5777,24 +5795,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5876,6 +5888,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6074,24 +6092,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6131,6 +6143,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6329,24 +6347,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6386,6 +6398,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6584,24 +6602,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6665,6 +6677,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6863,24 +6881,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6920,6 +6932,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7118,24 +7136,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7175,6 +7187,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7373,24 +7391,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7430,6 +7442,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7628,24 +7646,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7751,6 +7763,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7949,24 +7967,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8066,6 +8078,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8264,24 +8282,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8339,6 +8351,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8537,24 +8555,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8660,6 +8672,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8858,24 +8876,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8951,6 +8963,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9149,24 +9167,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9218,6 +9230,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9416,24 +9434,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9473,6 +9485,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9671,24 +9689,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9794,6 +9806,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9992,24 +10010,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10115,6 +10127,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10313,24 +10331,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 36,
+      "n": 39,
       "since": [
+        {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
         {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
@@ -10370,6 +10382,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10579,6 +10597,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10601,6 +10631,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10799,24 +10835,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -10834,6 +10852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10856,6 +10886,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11054,24 +11090,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -11155,6 +11173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11177,6 +11207,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11375,24 +11411,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -11470,6 +11488,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11492,6 +11522,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11690,24 +11726,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -11791,6 +11809,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11813,6 +11843,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12011,24 +12047,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -12058,6 +12076,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12080,6 +12110,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12278,24 +12314,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -12361,6 +12379,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12383,6 +12413,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12581,24 +12617,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -12616,6 +12634,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12638,6 +12668,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12836,24 +12872,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -12937,6 +12955,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12959,6 +12989,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13157,24 +13193,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -13204,6 +13222,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13226,6 +13256,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13424,24 +13460,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -13525,6 +13543,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13547,6 +13577,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13745,24 +13781,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -13780,6 +13798,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13802,6 +13832,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14000,24 +14036,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -14101,6 +14119,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14123,6 +14153,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14321,24 +14357,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -14362,6 +14380,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14384,6 +14414,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14582,24 +14618,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -14617,6 +14635,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14639,6 +14669,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14837,24 +14873,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -14938,6 +14956,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14960,6 +14990,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15158,24 +15194,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -15193,6 +15211,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15215,6 +15245,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15413,24 +15449,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -15454,6 +15472,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15476,6 +15506,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15674,24 +15710,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -15775,6 +15793,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15797,6 +15827,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15995,24 +16031,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -16036,6 +16054,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16058,6 +16088,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16256,24 +16292,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -16357,6 +16375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16379,6 +16409,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16577,24 +16613,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -16678,6 +16696,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16700,6 +16730,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16898,24 +16934,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -16999,6 +17017,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17021,6 +17051,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17219,24 +17255,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -17320,6 +17338,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17342,6 +17372,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17540,24 +17576,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -17641,6 +17659,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17663,6 +17693,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17861,24 +17897,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -17896,6 +17914,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17918,6 +17948,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18116,24 +18152,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -18163,6 +18181,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18185,6 +18215,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18383,24 +18419,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -18484,6 +18502,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18506,6 +18536,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18704,24 +18740,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -18739,6 +18757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18761,6 +18791,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18959,24 +18995,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -19042,6 +19060,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19064,6 +19094,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19262,24 +19298,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -19360,8 +19378,20 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
         {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
@@ -19402,6 +19432,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19424,6 +19466,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19622,24 +19670,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -19675,6 +19705,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19697,6 +19739,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19895,24 +19943,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -19996,6 +20026,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20018,6 +20060,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20216,24 +20264,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -20251,6 +20281,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20273,6 +20315,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20471,24 +20519,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -20506,6 +20536,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20528,6 +20570,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20726,24 +20774,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -20821,6 +20851,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20843,6 +20885,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21041,24 +21089,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -21076,6 +21106,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21098,6 +21140,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21296,24 +21344,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -21331,6 +21361,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21353,6 +21395,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21551,24 +21599,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -21586,6 +21616,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21608,6 +21650,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21806,24 +21854,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -21841,6 +21871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21863,6 +21905,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22061,24 +22109,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -22120,6 +22150,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22142,6 +22184,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22340,24 +22388,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -22441,6 +22471,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22463,6 +22505,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22661,24 +22709,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -22726,6 +22756,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22748,6 +22790,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22946,24 +22994,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -22981,6 +23011,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23003,6 +23045,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23201,24 +23249,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -23236,6 +23266,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23258,6 +23300,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23456,24 +23504,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -23491,6 +23521,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23513,6 +23555,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23711,24 +23759,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -23746,6 +23776,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23768,6 +23810,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23966,24 +24014,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -24001,6 +24031,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24023,6 +24065,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24221,24 +24269,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -24322,6 +24352,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24344,6 +24386,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24542,24 +24590,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -24643,6 +24673,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24665,6 +24707,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24863,24 +24911,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -24964,6 +24994,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24986,6 +25028,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25184,24 +25232,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -25261,6 +25291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25283,6 +25325,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25481,24 +25529,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -25582,6 +25612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25604,6 +25646,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25802,24 +25850,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -25837,6 +25867,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25859,6 +25901,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26057,24 +26105,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -26092,6 +26122,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26114,6 +26156,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26312,24 +26360,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -26359,6 +26389,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26381,6 +26423,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26579,24 +26627,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -26680,6 +26710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26702,6 +26744,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26900,24 +26948,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -26935,6 +26965,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26957,6 +26999,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27155,24 +27203,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -27202,6 +27232,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27224,6 +27266,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27422,24 +27470,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -27499,6 +27529,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27521,6 +27563,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27719,24 +27767,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -27820,6 +27850,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27842,6 +27884,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28040,24 +28088,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -28141,6 +28171,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28163,6 +28205,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28361,24 +28409,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -28450,6 +28480,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28472,6 +28514,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28670,24 +28718,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -28712,11 +28742,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-foreign-main-20260825-01",
-      "last_ts": "2026-08-25T07:27:42Z",
+      "last_id": "rivet-memory-append-ship-20260825-01",
+      "last_ts": "2026-08-25T07:30:14Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
         {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
@@ -28734,6 +28776,12 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28770,24 +28818,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:57:44Z"
-        },
-        {
-          "id": "rivet-ship-claude-compute-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:54:53Z"
-        },
-        {
-          "id": "rivet-ship-claude-park-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:53:52Z"
-        },
-        {
-          "id": "rivet-ship-branch-review-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:50:50Z"
         }
       ]
     },
@@ -28796,6 +28826,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
         {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
@@ -28819,6 +28861,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29017,24 +29065,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -29118,6 +29148,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29140,6 +29182,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29338,24 +29386,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -29439,6 +29469,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29461,6 +29503,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29659,24 +29707,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -29700,6 +29730,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29722,6 +29764,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29920,24 +29968,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -29973,6 +30003,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29995,6 +30037,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30193,24 +30241,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -30294,6 +30324,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30316,6 +30358,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30514,24 +30562,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -30549,6 +30579,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30571,6 +30613,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30769,24 +30817,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -30870,6 +30900,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30892,6 +30934,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31090,24 +31138,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -31191,6 +31221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31213,6 +31255,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31411,24 +31459,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -31512,6 +31542,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31534,6 +31576,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31732,24 +31780,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -31833,6 +31863,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31855,6 +31897,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32053,24 +32101,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -32154,6 +32184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32176,6 +32218,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32374,24 +32422,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -32409,6 +32439,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32431,6 +32473,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32629,24 +32677,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -32694,6 +32724,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32716,6 +32758,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32914,24 +32962,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -33015,6 +33045,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33037,6 +33079,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33235,24 +33283,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -33336,6 +33366,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33358,6 +33400,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33556,24 +33604,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -33657,6 +33687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33679,6 +33721,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33877,24 +33925,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
@@ -33978,6 +34008,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-ship-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:30:14Z"
+        },
+        {
+          "id": "rivet-ship-memory-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:30:08Z"
+        },
+        {
           "id": "rivet-ship-foreign-main-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34000,6 +34042,12 @@
           "from": "JOJO",
           "to": "MEMORY",
           "ts": "2026-08-25T07:22:06Z"
+        },
+        {
+          "id": "rivet-memory-create-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:20:00Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -34198,24 +34246,6 @@
           "from": "DEMON",
           "to": "TOOLS",
           "ts": "2026-08-25T06:08:00Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
-        },
-        {
-          "id": "rivet-ship-host-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:48:20Z"
         }
       ],
       "mine": [
