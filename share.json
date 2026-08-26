@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-fab-signal-oscillation-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-fab-replicas-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1030,7 +1041,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 20,
+    "COIL": 21,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
