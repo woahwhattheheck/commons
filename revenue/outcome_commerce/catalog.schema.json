@@ -124,19 +124,69 @@
         "separately_scoped": {"const": true}
       }
     },
+    "source_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob_sha", "terms_authority"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+(?![\\s\\S])"
+        },
+        "blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}(?![\\s\\S])"},
+        "terms_authority": {"const": "source"}
+      }
+    },
+    "checkout_live_stripe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "provider", "url"],
+      "properties": {
+        "status": {"const": "LIVE"},
+        "provider": {"const": "stripe"},
+        "url": {
+          "type": "string",
+          "pattern": "^https://(buy|donate)\\.stripe\\.com/[A-Za-z0-9_-]+(?![\\s\\S])"
+        }
+      }
+    },
+    "checkout_non_live": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!LIVE$)[A-Za-z0-9._-]+(?![\\s\\S])"
+        }
+      }
+    },
+    "checkout": {
+      "oneOf": [
+        {"$ref": "#/$defs/checkout_live_stripe"},
+        {"$ref": "#/$defs/checkout_non_live"}
+      ]
+    },
     "listing": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "name", "state", "source", "pricing", "outcome", "routes"],
+      "required": ["id", "name", "state", "pricing", "outcome", "routes"],
+      "oneOf": [
+        {"required": ["source"]},
+        {"required": ["source_artifact"]}
+      ],
       "properties": {
         "id": {"$ref": "#/$defs/id"},
         "name": {"type": "string", "minLength": 1},
         "state": {"enum": ["PUBLIC_OFFER", "CANDIDATE", "PROPOSED", "EXAMPLE_ONLY"]},
         "source": {"$ref": "#/$defs/source"},
+        "source_artifact": {"$ref": "#/$defs/source_artifact"},
         "pricing": {"$ref": "#/$defs/pricing"},
         "outcome": {"$ref": "#/$defs/outcome"},
         "follow_on": {"$ref": "#/$defs/follow_on"},
-        "routes": {"$ref": "#/$defs/routes"}
+        "routes": {"$ref": "#/$defs/routes"},
+        "checkout": {"$ref": "#/$defs/checkout"}
       }
     }
   }

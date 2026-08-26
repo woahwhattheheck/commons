@@ -25,6 +25,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
@@ -42,6 +43,14 @@ ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CURRENCY_RE = re.compile(r"^[A-Z][A-Z0-9._-]{1,31}$")
 DECIMAL_RE = re.compile(r"^-?(?:0|[1-9][0-9]*)(?:\.[0-9]{1,8})?$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+BLOB_SHA_RE = re.compile(r"[0-9a-f]{40}\Z")
+ARTIFACT_PATH_RE = re.compile(
+    r"(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\.\.(?:/|$))[A-Za-z0-9._/-]+\Z"
+)
+CHECKOUT_STATUS_RE = re.compile(r"(?!LIVE\Z)[A-Za-z0-9._-]+\Z")
+STRIPE_CHECKOUT_RE = re.compile(
+    r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+\Z"
+)
 KINDS = {
     "fixed",
     "subscription",
@@ -280,6 +289,9 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                         errors.append("duplicate component id %s in %s" % (component["id"], listing.get("id")))
                     component_ids.add(component["id"])
         source = listing.get("source")
+        source_artifact = listing.get("source_artifact")
+        if (source is None) == (source_artifact is None):
+            errors.append(prefix + " requires exactly one of source or source_artifact")
         if source is not None:
             if not isinstance(source, dict) or not source.get("path") or "pointer" not in source:
                 errors.append(prefix + ".source requires path and pointer")
@@ -299,6 +311,84 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                                 errors.append("source offer id mismatch for %s: %r" % (listing.get("id"), actual))
                     except (CommerceError, OSError, json.JSONDecodeError) as exc:
                         errors.append("source read failed for %s: %s" % (source["path"], exc))
+        if source_artifact is not None:
+            if not isinstance(source_artifact, dict):
+                errors.append(prefix + ".source_artifact must be an object")
+            elif set(source_artifact) != {"path", "blob_sha", "terms_authority"}:
+                errors.append(prefix + ".source_artifact has invalid fields")
+            else:
+                artifact_path = source_artifact.get("path")
+                blob_sha = source_artifact.get("blob_sha")
+                if (
+                    not isinstance(artifact_path, str)
+                    or not ARTIFACT_PATH_RE.fullmatch(artifact_path)
+                ):
+                    errors.append(prefix + ".source_artifact.path is invalid")
+                if not isinstance(blob_sha, str) or not BLOB_SHA_RE.fullmatch(blob_sha):
+                    errors.append(prefix + ".source_artifact.blob_sha is invalid")
+                if source_artifact.get("terms_authority") != "source":
+                    errors.append(prefix + ".source_artifact.terms_authority must be source")
+                if (
+                    check_sources
+                    and root is not None
+                    and isinstance(artifact_path, str)
+                    and ARTIFACT_PATH_RE.fullmatch(artifact_path)
+                    and isinstance(blob_sha, str)
+                    and BLOB_SHA_RE.fullmatch(blob_sha)
+                ):
+                    try:
+                        resolved_root = root.resolve()
+                        resolved_path = (resolved_root / artifact_path).resolve()
+                    except (OSError, ValueError) as exc:
+                        errors.append(
+                            "source artifact path failed for %s: %s" % (artifact_path, exc)
+                        )
+                        continue
+                    try:
+                        resolved_path.relative_to(resolved_root)
+                    except ValueError:
+                        errors.append("source artifact escapes root: %s" % artifact_path)
+                    else:
+                        if not resolved_path.is_file():
+                            errors.append("source artifact missing: %s" % artifact_path)
+                        else:
+                            try:
+                                actual = subprocess.run(
+                                    ["git", "hash-object", str(resolved_path)],
+                                    cwd=resolved_root,
+                                    capture_output=True,
+                                    text=True,
+                                    check=True,
+                                ).stdout.strip()
+                            except (OSError, subprocess.CalledProcessError) as exc:
+                                errors.append(
+                                    "source artifact hash failed for %s: %s"
+                                    % (artifact_path, exc)
+                                )
+                            else:
+                                if actual != blob_sha:
+                                    errors.append(
+                                        "source artifact blob mismatch for %s: %s"
+                                        % (listing.get("id"), actual)
+                                    )
+        checkout = listing.get("checkout")
+        if checkout is not None:
+            if not isinstance(checkout, dict):
+                errors.append(prefix + ".checkout must be an object")
+            elif checkout.get("status") == "LIVE":
+                if set(checkout) != {"status", "provider", "url"}:
+                    errors.append(prefix + ".checkout LIVE fields are invalid")
+                if checkout.get("provider") != "stripe":
+                    errors.append(prefix + ".checkout LIVE provider must be stripe")
+                url = checkout.get("url")
+                if not isinstance(url, str) or not STRIPE_CHECKOUT_RE.fullmatch(url):
+                    errors.append(prefix + ".checkout LIVE url is invalid")
+            else:
+                status = checkout.get("status")
+                if set(checkout) != {"status"}:
+                    errors.append(prefix + ".checkout non-LIVE fields are invalid")
+                if not isinstance(status, str) or not CHECKOUT_STATUS_RE.fullmatch(status):
+                    errors.append(prefix + ".checkout non-LIVE status is invalid")
     return errors
 
 
@@ -361,7 +451,11 @@ def quote(catalog: dict[str, Any], listing_id: str, metrics: dict[str, Decimal])
         raise CommerceError("metrics name unknown components: %s" % ", ".join(unknown))
     lines = []
     for component in listing["pricing"]["components"]:
-        default = Decimal("1") if component["kind"] in {"fixed", "milestone", "license"} else Decimal("0")
+        default = (
+            Decimal("1")
+            if component["kind"] in {"fixed", "subscription", "milestone", "license"}
+            else Decimal("0")
+        )
         lines.append(_line_for_component(component, metrics.get(component["id"], default)))
     total = sum((_decimal(row["amount"], "line amount") for row in lines), Decimal("0"))
     digest = _sha256_text(_canonical({"listing_id": listing_id, "metrics": {k: str(v) for k, v in sorted(metrics.items())}}))
@@ -818,6 +912,14 @@ def cmd_catalog(args: argparse.Namespace) -> int:
         print("%s  %-15s %-9s %s" % (listing["id"], listing.get("state", "UNMEASURED"), listing["pricing"]["currency"], kinds))
         if listing.get("source"):
             print("  source %s#%s" % (listing["source"]["path"], listing["source"]["pointer"]))
+        elif listing.get("source_artifact"):
+            print(
+                "  source %s@%s"
+                % (
+                    listing["source_artifact"]["path"],
+                    listing["source_artifact"]["blob_sha"],
+                )
+            )
     return 0
 
 
