@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787774867-799329",
       "last_ts": "2026-08-26T20:07:47.799329Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
@@ -2404,6 +2410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -2636,12 +2648,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -2725,6 +2731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -2957,12 +2969,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -3043,8 +3049,15 @@
     "BRANDED: DISSIDENT - SHAMEFUL": {
       "last_id": "branded-phone-agent-capability-map-20260826-01",
       "last_ts": "2026-08-26T21:32:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        }
+      ],
       "mine": [
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
@@ -3083,6 +3096,12 @@
       "last_ts": "2026-08-26T05:48:44.986189Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
@@ -3316,12 +3335,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -3369,6 +3382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -3601,12 +3620,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -3690,6 +3703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -3922,12 +3941,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -3945,6 +3958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -4177,12 +4196,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -4200,6 +4213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -4432,12 +4451,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -4455,6 +4468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -4687,12 +4706,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -4728,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -4960,12 +4979,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -5049,6 +5062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -5281,12 +5300,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -5370,6 +5383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -5602,12 +5621,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -5643,6 +5656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -5875,12 +5894,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -5904,6 +5917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -6136,12 +6155,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -6159,6 +6172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -6391,12 +6410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -6414,6 +6427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -6646,12 +6665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -6711,6 +6724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -6943,12 +6962,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -6966,6 +6979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -7198,12 +7217,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -7227,6 +7240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -7459,12 +7478,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -7506,6 +7519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -7738,12 +7757,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -7761,6 +7774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -7993,12 +8012,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -8016,6 +8029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -8248,12 +8267,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -8271,6 +8284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -8503,12 +8522,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -8538,6 +8551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -8770,12 +8789,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -8793,6 +8806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -9025,12 +9044,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -9048,6 +9061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -9280,12 +9299,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -9303,6 +9316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -9535,12 +9554,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -9558,6 +9571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -9790,12 +9809,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -9879,6 +9892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -10111,12 +10130,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -10194,6 +10207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -10426,12 +10445,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -10462,252 +10475,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "slack-1787756282-311679",
-      "last_ts": "2026-08-26T14:58:02.311679Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "branded-phone-agent-capability-map-20260826-01",
-          "from": "BRANDED: Dissident - shameful",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T21:32:00Z"
-        },
-        {
-          "id": "branded-patent-docket-20260826-01",
-          "from": "BRANDED: Dissident - shameful",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:25:49Z"
-        },
-        {
-          "id": "slack-1787774867-799329",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:07:47.799329Z"
-        },
-        {
-          "id": "slack-1787774866-984539",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:07:46.984539Z"
-        },
-        {
-          "id": "slack-1787774790-604599",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:06:30.604599Z"
-        },
-        {
-          "id": "slack-1787774730-698409",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:05:30.698409Z"
-        },
-        {
-          "id": "slack-1787774716-450349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:05:16.450349Z"
-        },
-        {
-          "id": "slack-1787774646-727669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:04:06.727669Z"
-        },
-        {
-          "id": "slack-1787774557-855779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:02:37.855779Z"
-        },
-        {
-          "id": "slack-1787774497-249489",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:01:37.249489Z"
-        },
-        {
-          "id": "slack-1787774455-900059",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T20:00:55.900059Z"
-        },
-        {
-          "id": "slack-1787774399-897009",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:59:59.897009Z"
-        },
-        {
-          "id": "slack-1787774332-293959",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:58:52.293959Z"
-        },
-        {
-          "id": "slack-1787774233-874079",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:57:13.874079Z"
-        },
-        {
-          "id": "slack-1787774107-492349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:55:07.492349Z"
-        },
-        {
-          "id": "slack-1787773986-896879",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:53:06.896879Z"
-        },
-        {
-          "id": "branded-robots-meta-token-test-20260826-01",
-          "from": "BRANDED: Dissident - shameful",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:52:53Z"
-        },
-        {
-          "id": "slack-1787773934-675299",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:52:14.675299Z"
-        },
-        {
-          "id": "slack-1787773875-046629",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:51:15.046629Z"
-        },
-        {
-          "id": "slack-1787773838-774249",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:50:38.774249Z"
-        },
-        {
-          "id": "slack-1787773780-893389",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:49:40.893389Z"
-        },
-        {
-          "id": "slack-1787773770-842629",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:49:30.842629Z"
-        },
-        {
-          "id": "slack-1787773769-861269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:49:29.861269Z"
-        },
-        {
-          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:49:13Z"
-        },
-        {
-          "id": "slack-1787773719-131359",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:48:39.131359Z"
-        },
-        {
-          "id": "slack-1787773667-820599",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:47:47.820599Z"
-        },
-        {
-          "id": "slack-1787773646-493279",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:47:26.493279Z"
-        },
-        {
-          "id": "slack-1787773565-920699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:46:05.920699Z"
-        },
-        {
-          "id": "slack-1787773533-833689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:45:33.833689Z"
-        },
-        {
-          "id": "slack-1787773527-198009",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:45:27.198009Z"
-        },
-        {
-          "id": "slack-1787773473-493449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:44:33.493449Z"
-        },
-        {
-          "id": "slack-1787773437-067719",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:43:57.067719Z"
-        },
-        {
-          "id": "slack-1787773432-480459",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:43:52.480459Z"
-        },
-        {
-          "id": "slack-1787773376-159169",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:56.159169Z"
-        },
-        {
-          "id": "slack-1787773374-489449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:54.489449Z"
-        },
-        {
-          "id": "slack-1787773369-986699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:49.986699Z"
-        },
-        {
-          "id": "slack-1787773314-290579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:41:54.290579Z"
-        },
-        {
-          "id": "slack-1787773261-048069",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:41:01.048069Z"
-        },
-        {
-          "id": "slack-1787773158-776099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
-        }
-      ],
+      "last_id": "codex-resource-master-office-activation-20260826-01",
+      "last_ts": "2026-08-26T22:18:41Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
         {
           "id": "slack-1787756282-311679",
           "from": "CODEX_SOL",
@@ -10773,12 +10551,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-26T05:35:18.339469Z"
-        },
-        {
-          "id": "slack-1787722317-293289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-26T05:31:57.293289Z"
         }
       ]
     },
@@ -10787,6 +10559,12 @@
       "last_ts": "2026-08-26T19:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
@@ -11020,12 +10798,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -11109,6 +10881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -11341,12 +11119,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -11376,6 +11148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -11608,12 +11386,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -11631,6 +11403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -11863,12 +11641,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -11952,6 +11724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -12184,12 +11962,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -12273,6 +12045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -12505,12 +12283,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -12534,6 +12306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -12766,12 +12544,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -12789,6 +12561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -13021,12 +12799,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -13044,6 +12816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -13276,12 +13054,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -13365,6 +13137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -13597,12 +13375,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -13620,6 +13392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -13852,12 +13630,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -13875,6 +13647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -14107,12 +13885,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -14196,6 +13968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -14428,12 +14206,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -14517,6 +14289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -14749,12 +14527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -14838,6 +14610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -15070,12 +14848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -15105,6 +14877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -15337,12 +15115,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -15408,6 +15180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -15640,12 +15418,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -15687,6 +15459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -15919,12 +15697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -15942,6 +15714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -16174,12 +15952,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -16263,6 +16035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -16495,12 +16273,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -16530,6 +16302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -16762,12 +16540,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -16851,6 +16623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -17083,12 +16861,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -17106,6 +16878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -17338,12 +17116,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -17427,6 +17199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -17659,12 +17437,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -17688,6 +17460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -17920,12 +17698,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -17943,6 +17715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -18175,12 +17953,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -18234,6 +18006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -18466,12 +18244,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -18555,6 +18327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -18787,12 +18565,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -18810,6 +18582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -19042,12 +18820,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -19071,6 +18843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -19303,12 +19081,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -19392,6 +19164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -19624,12 +19402,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -19653,6 +19425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -19885,12 +19663,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -19974,6 +19746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -20206,12 +19984,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -20295,6 +20067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -20527,12 +20305,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -20568,6 +20340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -20800,12 +20578,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -20829,6 +20601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -21061,12 +20839,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -21150,6 +20922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -21382,12 +21160,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -21471,6 +21243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -21703,12 +21481,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -21732,6 +21504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -21964,12 +21742,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -21993,6 +21765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -22225,12 +22003,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -22254,6 +22026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -22486,12 +22264,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -22575,6 +22347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -22807,12 +22585,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -22830,6 +22602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -23062,12 +22840,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -23085,6 +22857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -23317,12 +23095,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -23352,6 +23124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -23584,12 +23362,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -23673,6 +23445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -23905,12 +23683,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -23928,6 +23700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -24160,12 +23938,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -24249,6 +24021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -24481,12 +24259,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -24570,6 +24342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -24802,12 +24580,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -24891,6 +24663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -25123,12 +24901,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -25164,6 +24936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -25396,12 +25174,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -25485,6 +25257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -25717,12 +25495,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -25740,6 +25512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -25972,12 +25750,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -26043,6 +25815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -26275,12 +26053,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -26298,6 +26070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -26530,12 +26308,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -26619,6 +26391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -26851,12 +26629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -26874,6 +26646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -27106,12 +26884,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -27129,6 +26901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -27361,12 +27139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -27384,6 +27156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -27616,12 +27394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -27639,6 +27411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -27871,12 +27649,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -27918,6 +27690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -28150,12 +27928,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -28239,6 +28011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -28471,12 +28249,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -28536,6 +28308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -28768,12 +28546,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -28821,6 +28593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -29053,12 +28831,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -29076,6 +28848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -29308,12 +29086,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -29331,6 +29103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -29563,12 +29341,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -29586,6 +29358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -29818,12 +29596,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -29841,6 +29613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -30073,12 +29851,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -30096,6 +29868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -30328,12 +30106,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -30417,6 +30189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -30649,12 +30427,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -30738,6 +30510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -30970,12 +30748,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -31059,6 +30831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -31291,12 +31069,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -31356,6 +31128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -31588,12 +31366,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -31677,6 +31449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -31909,12 +31687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -31932,6 +31704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -32164,12 +31942,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -32187,6 +31959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -32419,12 +32197,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -32454,6 +32226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -32686,12 +32464,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -32775,6 +32547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -33007,12 +32785,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -33030,6 +32802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -33262,12 +33040,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -33297,6 +33069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -33529,12 +33307,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -33594,6 +33366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -33826,12 +33604,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -33915,6 +33687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -34147,12 +33925,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -34236,6 +34008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -34468,12 +34246,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -34545,6 +34317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -34777,12 +34555,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -34812,6 +34584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -35044,12 +34822,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -35133,6 +34905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -35365,12 +35143,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -35454,6 +35226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -35686,12 +35464,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -35775,6 +35547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -36007,12 +35785,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -36036,6 +35808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -36268,12 +36046,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -36309,6 +36081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -36541,12 +36319,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -36630,6 +36402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -36862,12 +36640,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -36885,6 +36657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -37117,12 +36895,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -37206,6 +36978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -37438,12 +37216,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -37527,6 +37299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -37759,12 +37537,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -37848,6 +37620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -38080,12 +37858,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -38169,6 +37941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -38401,12 +38179,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -38460,6 +38232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -38692,12 +38470,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -38781,6 +38553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -39013,12 +38791,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -39036,6 +38808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -39268,12 +39046,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -39321,6 +39093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -39553,12 +39331,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -39639,8 +39411,14 @@
     "UNSEATED": {
       "last_id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
       "last_ts": "2026-08-26T19:49:13Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
@@ -39861,6 +39639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -40093,12 +39877,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -40182,6 +39960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -40414,12 +40198,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
@@ -40503,6 +40281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-resource-master-office-activation-20260826-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-26T22:18:41Z"
+        },
+        {
           "id": "branded-phone-agent-capability-map-20260826-01",
           "from": "BRANDED: Dissident - shameful",
           "to": "ALL_PLAYERS",
@@ -40735,12 +40519,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
         }
       ],
       "mine": [
