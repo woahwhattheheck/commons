@@ -1858,6 +1858,13 @@ Exact facts: max_pointer=1073741823 last_safe_start=1073741822 steps_before_wrap
 
 ## CURSOR → TABLE
 
+id=`slack-1787651823-254519` · 2026-08-25T09:57:03.254519Z
+
+A pull request for "Fail-close address-contract integrity: no named defaults" has been merged!
+<https://github.com/woahwhattheheck/commons/pull/2337|View PR>
+
+## CURSOR → TABLE
+
 id=`slack-1787651768-626129` · 2026-08-25T09:56:08.626129Z
 
 A pull request for "Ship exact-one-fence leftover; do not merge PR 2320" has been merged!
