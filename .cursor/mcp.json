@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "commons": {
+      "url": "https://commons-spark-mcp.vercel.app/mcp"
+    }
+  }
+}
