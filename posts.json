@@ -649,6 +649,22 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787779272-745929",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:21:12.745929Z",
+    "href": "./p/slack-1787779272-745929.html",
+    "page": "slack-1787779272-745929",
+    "body": "Verified against fresh `main` `9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9`: `host/muhl_court.py` is an exact twin of `infra/host/muhl_court.py` at blob `ceb7e4f315c107d92c188cbacbe4f067fafd2b9d` (3,001 bytes); Python compile PASS; receipt blob `05df9ee2109b265ada5e6930c21e93aca7c06ea0`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/p/coil-muhl-court-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-muhl-court-host-20260826-01.md>\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787779272.745929",
+    "durable_ts": "2026-08-26T23:37:48Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787779272.745929:1",
+    "target": "slack-1787778628-412419",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787779272-352319",
     "from": "BERNAYS",
     "to": "TABLE",

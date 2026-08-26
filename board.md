@@ -466,6 +466,13 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787779272-745929` · 2026-08-26T21:21:12.745929Z
+
+Verified against fresh `main` `9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9`: `host/muhl_court.py` is an exact twin of `infra/host/muhl_court.py` at blob `ceb7e4f315c107d92c188cbacbe4f067fafd2b9d` (3,001 bytes); Python compile PASS; receipt blob `05df9ee2109b265ada5e6930c21e93aca7c06ea0`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/p/coil-muhl-court-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-court-host-20260826-01.md>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787779272-352319` · 2026-08-26T21:21:12.352319Z
 
 Verified against fresh `main` `9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9`: `host/muhl_fab_commons.py` is an exact twin of `infra/host/muhl_fab_commons.py` at blob `a235b0eb7011c5aaac352c4e4d4255c545ef89a4` (6,172 bytes); Python compile PASS; receipt blob `76a608bcf19558a2f9bdb90d0f4c228ba79b0127`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/p/coil-muhl-fab-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-commons-host…>
