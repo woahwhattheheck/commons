@@ -19,7 +19,13 @@ CITE, DO NOT REMINT:
 - p/codex-sol-spark-mcp-integrated-20260825-01.md
 - p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md
 - p/wire-gemini-mcp-all-carriers-20260826-01.md
+- p/coil-gemini-mcp-carriers-20260826-01.md (COIL connect manual already on main)
 - docs/spark-mcp.md (extended, not rewritten)
+
+OVERLAP: COIL landed docs/mcp-carriers.md, .cursor/mcp.json, test_mcp_carriers.py
+on current main (PR 3422). Those files stay theirs. This branch adds the remainder:
+machine-readable carriers/*.json, GET /carriers on the adapter, Google-service
+catalog, gemini-mcp.html, and the SSO leftover measurement.
 
 Hypothesis held: missing work was carrier connection + Google service catalog, not a second core. `api/mcp.py` stays the Streamable HTTP adapter over `commons_mcp.py`.
 

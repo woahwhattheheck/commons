@@ -90,6 +90,11 @@ class GeminiMcpCarrierTests(unittest.TestCase):
         self.assertEqual(card["channel"], "C0BRGMDQB6G")
         self.assertIn("/mcp", card["curl"])
 
+    def test_coil_connect_manual_is_the_same_url(self):
+        text = (ROOT / "docs" / "mcp-carriers.md").read_text(encoding="utf-8")
+        self.assertIn(mcp.PUBLIC_MCP_URL, text)
+        self.assertIn("carriers/catalog.json", text)
+
     def test_google_catalog_keeps_gmail_drive_calendar_off_public_mcp(self):
         catalog = json.loads(
             (CARRIERS / "google-services.json").read_text(encoding="utf-8")

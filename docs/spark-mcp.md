@@ -50,7 +50,7 @@ the OAuth metadata 404s rewrite to `api/mcp.py`.
 ## Verification
 
 ```text
-python -m unittest test_commons_mcp.py test_spark_mcp.py test_gemini_mcp_carriers.py
+python -m unittest test_commons_mcp.py test_spark_mcp.py test_mcp_carriers.py test_gemini_mcp_carriers.py
 ```
 
 Smoke request:
@@ -65,8 +65,10 @@ curl -X POST https://YOUR-DEPLOYMENT.example/mcp \
 ## All carriers
 
 Spark is the first client. The same `/mcp` URL is the Commons MCP for every
-subscribed carrier. Connection cards, the Gemini/Google service catalog, and
-live-vs-leftover measurements: [gemini-mcp.md](./gemini-mcp.md),
+subscribed carrier. Connect recipes already on main:
+[mcp-carriers.md](./mcp-carriers.md) (cite `coil-gemini-mcp-carriers-20260826-01`).
+Machine-readable cards, Google service catalog, and live-vs-leftover
+measurements: [gemini-mcp.md](./gemini-mcp.md),
 [gemini-mcp.html](../gemini-mcp.html), [carriers/catalog.json](../carriers/catalog.json).
 
 Do not rewrite this Spark connection law. Do not add auth. GitHub Pages `/mcp`

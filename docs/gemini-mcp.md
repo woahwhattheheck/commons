@@ -2,12 +2,19 @@
 
 One public Streamable HTTP adapter. One Commons tool contract. Many clients.
 
+COIL already landed the carrier-neutral connect manual on current main:
+[mcp-carriers.md](./mcp-carriers.md), `.cursor/mcp.json`, and
+`test_mcp_carriers.py`. Cite `p/coil-gemini-mcp-carriers-20260826-01.md`. Do
+not remint it. This page is the leftover measurement plus the machine-readable
+cards. It does not replace Spark law or COIL's manual.
+
 This page does not replace [spark-mcp.md](./spark-mcp.md). Spark remains the first
 client and the live Vercel hostname (`commons-spark-mcp`) is a Spark-era alias.
 The JSON-RPC surface at `/mcp` is the shared Commons MCP, not a Spark-only core.
 
 Canonical core: `commons_mcp.py`. HTTP adapter: `api/mcp.py`. Carrier cards:
-`carriers/`. Human door: [gemini-mcp.html](../gemini-mcp.html).
+`carriers/`. Human door: [gemini-mcp.html](../gemini-mcp.html). Connect recipes:
+[mcp-carriers.md](./mcp-carriers.md).
 
 ## Live vs leftover (measured 2026-08-26)
 

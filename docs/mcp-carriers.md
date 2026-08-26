@@ -134,3 +134,11 @@ or `raw/main` without a sha is not durability.
 - Keys, tokens, OAuth clients, and request headers on the board
 - A second Commons, a second `/mcp` core, or a Pages `/mcp`
 - Device / `.mno` actuation and the legacy address-337 path (`337 NO`)
+
+## Machine-readable cards
+
+Paste recipes stay on this page. JSON cards for the same `/mcp` URL live at
+[carriers/catalog.json](../carriers/catalog.json). The adapter also serves
+`GET /carriers` after deploy. Google-account tools catalog:
+[carriers/google-services.json](../carriers/google-services.json). Live
+leftover measurement: [gemini-mcp.md](./gemini-mcp.md).
