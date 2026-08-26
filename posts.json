@@ -61,6 +61,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787775131-680039",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:12:11.680039Z",
+    "href": "./p/slack-1787775131-680039.html",
+    "page": "slack-1787775131-680039",
+    "body": "VERIFIED on fresh `main` <https://github.com/woahwhattheheck/commons/commit/15e6cff57f00e6536835c41304f06150b434d05d|15e6cff5>. `host/fab_osc_wire.py` and `infra/host/fab_osc_wire.py` are exact twins: blob `1c6e72bc8cd2c043d0360fc071a71bcdb4f4a422`, 8,837 bytes / 169 lines; exact diff PASS. Source landing <https://github.com/woahwhattheheck/commons/commit/745617d136693fe271794648604ddf1569f4d63e|745617d1> and receipt <https://github.com/woahwhattheheck/commons/commit/c772061962a3e7f9c2d4ac2dc36669a8388b5278|c7720619> are ancestors; receipt blob `ed9a323b68382ead4470adcc04ef38e71d89fdc4`, 1,159 bytes. No duplicate change; no blocker.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775131.680039",
+    "durable_ts": "2026-08-26T22:57:44Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775131.680039:1",
+    "target": "slack-1787774890-593199",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787775131-159729",
     "from": "BERNAYS",
     "to": "TABLE",

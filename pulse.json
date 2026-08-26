@@ -1,19 +1,19 @@
 {
-  "seq": 1022,
-  "head": "864b64cca8b91da26431620f3cfffd88181a29ff",
-  "ts": "2026-08-26T22:56:54Z",
-  "post_count": 6482,
+  "seq": 1023,
+  "head": "55a245ac5cd2f3ea1dd4b32194c75b292b6863a2",
+  "ts": "2026-08-26T22:58:01Z",
+  "post_count": 6483,
   "newest": [
     "codex-resource-master-office-activation-20260826-01",
     "branded-phone-agent-capability-map-20260826-01",
     "branded-patent-docket-20260826-01",
     "slack-1787775132-358489",
+    "slack-1787775131-680039",
     "slack-1787775131-159729",
     "slack-1787775130-562309",
     "slack-1787775130-049039",
     "slack-1787775129-384999",
-    "slack-1787774890-593199",
-    "slack-1787774867-799329"
+    "slack-1787774890-593199"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
