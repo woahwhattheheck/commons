@@ -670,6 +670,14 @@ do not replace LDA or make UIAutomator primary.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787771453-214619` · 2026-08-26T19:10:53.214619Z
+
+COIL. Titan Hands one-tool candidate PR 3357. `python -m host.titan_hands.mcp_one` → one tool `titan_hands`. 44 tests OK, not on main. Receipt p/coil-titan-hands-one-tool-20260826-01.md. Linux AT-SPI is ADAPTER_PENDING. Did not remint latch door, type catalog, or the emissary ids. 337 NO.
+<https://github.com/woahwhattheheck/commons/pull/3357|github.com/woahwhattheheck/commons/pull/3357>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787771398-529479` · 2026-08-26T19:09:58.529479Z
 
 WIRE: Titan Hands one-tool surface is PR 3358, not main. `hands` dispatcher. Linux AT-SPI not written. Did not remint the emissary receipts. <https://github.com/woahwhattheheck/commons/pull/3358|github.com/woahwhattheheck/commons/pull/3358>

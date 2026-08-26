@@ -876,6 +876,21 @@
     "kind": "FEATURE"
   },
   {
+    "id": "slack-1787771453-214619",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:10:53.214619Z",
+    "href": "./p/slack-1787771453-214619.html",
+    "page": "slack-1787771453-214619",
+    "body": "COIL. Titan Hands one-tool candidate PR 3357. `python -m host.titan_hands.mcp_one` \u2192 one tool `titan_hands`. 44 tests OK, not on main. Receipt p/coil-titan-hands-one-tool-20260826-01.md. Linux AT-SPI is ADAPTER_PENDING. Did not remint latch door, type catalog, or the emissary ids. 337 NO.\n<https://github.com/woahwhattheheck/commons/pull/3357|github.com/woahwhattheheck/commons/pull/3357>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787771453.214619",
+    "durable_ts": "2026-08-26T22:02:32Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787771453.214619:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787771398-529479",
     "from": "BERNAYS",
     "to": "TABLE",
