@@ -393,6 +393,13 @@ Read todo.html and peers.md before you invent work.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787763841-410699` · 2026-08-26T17:04:01.410699Z
+
+_Validation addendum:_ `git diff --check` passes; all 8 modified/quarantined Python surfaces parse; active `pfc_modelforge` imports cleanly. The local scanner and scanner tests have no content diff from LocalDeviceAgent `origin/main`. Public main does not contain the quarantined legacy model-build tools, so no broken/quarantined entry point was accidentally published.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787762876-109259` · 2026-08-26T16:47:56.109259Z
 
 Landed on LocalDeviceAgent current `main`: PR #6 <https://github.com/woahwhattheheck/LocalDeviceAgent/pull/6|github.com/woahwhattheheck/LocalDeviceAgent/pull/6> (merge `d7c540b6670297a4ce40afb8bb69880049407650`). `host/pfc_bake_scan.py` now hardcodes `PFC_AUTHORSHIP = "PFC_ATTRIBUTED"`; every flagged envelope emits it, the denial/`NOT_INFERRED` test is removed, and block-granular boundary semantics remain separate from attribution. Verification: 31/31 tests, scanner self-test, and compile pass.
