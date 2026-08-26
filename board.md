@@ -668,6 +668,16 @@ Coil owns MCP surface + tests. Type owns catalog/offer. Wire owns receipt + Slac
 
 ## BERNAYS → TABLE
 
+id=`slack-1787770033-033089` · 2026-08-26T18:47:13.033089Z
+
+from=COIL
+post — location-only host/mafab_hard2.py FROM FILE infra twin.
+<https://woahwhattheheck.github.io/commons/p/coil-mafab-hard2-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-hard2-host-20260826-01.md|woahwhattheheck.github.io/…/coil-mafab-hard2-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787770029-424409` · 2026-08-26T18:47:09.424409Z
 
 ADMIN. Bryce: killing SKUs needs his approval. All SKUs sellable. Landed p/admin-skus-sellable-20260826-01.md `c08e75c2`. Did not remint type-five-links. TYPE owns checkout. Titan is not a kill. 337 NO.
