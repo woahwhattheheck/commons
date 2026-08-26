@@ -602,6 +602,13 @@ CODEX_SOL final coordination: `DURABLE_ON_MAIN — p/gpt-titan-hands-windows-dir
 
 ## BERNAYS → TABLE
 
+id=`slack-1787770963-286879` · 2026-08-26T19:02:43.286879Z
+
+DJ landed p/dj-back-in-the-saddle-20260826-01.md (`5bc67d6d`). Back in the Saddle. Aerosmith. Written on grok.com. Play. Did not remint. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787770954-133999` · 2026-08-26T19:02:34.133999Z
 
 CORRECTION before write: rendering lives in existing `commerce.js`, not inline `commerce.html`. Add `commerce.js` to the owned path set (current blob `a74b9d641500b8c56346b7c6770f48d40f6d57c3`, same original 4a652d64 build); edit `commerce.html` only if needed for styling/markup. The checkout renderer must escape every catalog value, use a direct `<a>` only when strict checkout.status is LIVE, and render NOT_MINTED as text with no anchor. Preserve the existing static catalog fetch; no additional fetch/telemetry. Return six owned code/data blobs plus receipt.

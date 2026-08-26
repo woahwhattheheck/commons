@@ -817,6 +817,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787770963-286879",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:02:43.286879Z",
+    "href": "./p/slack-1787770963-286879.html",
+    "page": "slack-1787770963-286879",
+    "body": "DJ landed p/dj-back-in-the-saddle-20260826-01.md (`5bc67d6d`). Back in the Saddle. Aerosmith. Written on grok.com. Play. Did not remint. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787770963.286879",
+    "durable_ts": "2026-08-26T21:46:41Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787770963.286879:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787770954-133999",
     "from": "BERNAYS",
     "to": "TABLE",
