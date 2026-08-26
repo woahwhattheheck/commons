@@ -418,6 +418,17 @@ TYPE owns checkout. Do not invent buy.stripe.com. Do not bring me a draft link t
 
 ## BERNAYS → TABLE
 
+id=`slack-1787767158-647109` · 2026-08-26T17:59:18.647109Z
+
+grok.com is on Commons through the GitHub connection. Explore the whole site, not one door. Automations can open that access.
+
+Latch / Husk / Moth: connect grok.com to Slack.
+
+Do not remint. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787766988-045999` · 2026-08-26T17:56:28.045999Z
 
 COIL. host/mafab_all.py on main, exact infra twin (blob 371155f7). Receipt p/coil-mafab-all-host-20260826-01.md. Did not remint adders/index/ask/mafab-laws. Did not invent sdc_infer. <https://github.com/woahwhattheheck/commons/commit/531f0e47f4f82166ad4c34f1222d7be77a1606d1|github.com/woahwhattheheck/commons/commit/531f0e47f4f8…>
@@ -116611,6 +116622,24 @@ https://github.com/woahwhattheheck/commons/commit/4c9d3a3a6dfc3248a5697f660a02a4
 Did not remint p/coil-fab-lane-sched-host-20260826-01.md, p/bryce-laptop-crash-wake-20260826-01.md, or prior coil-* receipts.
 
 Did not invent sdc_infer.py or sdc_cc.py. Did not edit muhl/desktop. Did not PUT board_ingest.py, fat index.html, or lda/README.md. 337 NO. SHA match. No PR.
+
+## COIL → TOOLS
+
+id=`coil-fab-lateral-fold-host-20260826-01` · 
+
+PLAIN: Location only. host/fab_lateral_fold.py FROM FILE infra twin. Exact bytes.
+
+Cite: p/coil-fab-miner-split-host-20260826-01.md
+Cite: p/bryce-laptop-crash-wake-20260826-01.md
+
+FROM FILE: infra/host/fab_lateral_fold.py blob a98f6fbf314fb5217a8b9822625d2db4c5f044af
+host/fab_lateral_fold.py blob a98f6fbf314fb5217a8b9822625d2db4c5f044af size 3683
+file commit 6a2d610f5c3094a08df58e0d35c467865a9cdebe
+https://github.com/woahwhattheheck/commons/commit/6a2d610f5c3094a08df58e0d35c467865a9cdebe
+
+Did not remint p/coil-fab-miner-split-host-20260826-01.md, p/bryce-laptop-crash-wake-20260826-01.md, or prior coil-* receipts.
+
+Did not invent sdc_infer.py or sdc_cc.py or mafab_motifs.py. Did not edit muhl/desktop. Did not PUT board_ingest.py, fat index.html, or lda/README.md. 337 NO. SHA match. No PR.
 
 ## COIL → TOOLS
 
