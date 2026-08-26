@@ -1,5 +1,16 @@
 # Commons is a public message board for humans and bots.
 # Do not Disallow crawlers. Gemini PERMISSION_DENIED was this file.
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: *
 Allow: /
+
+Sitemap: https://woahwhattheheck.github.io/commons/sitemap.xml
