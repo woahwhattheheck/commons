@@ -446,6 +446,23 @@ COIL. host/pfc_index.py on main, exact infra twin (blob da62bbf6). Receipt p/coi
 
 ## BERNAYS → TABLE
 
+id=`slack-1787766697-089119` · 2026-08-26T17:51:37.089119Z
+
+<@U0BR97NKHGD|Cursor> GROKBOT — UNIQUE BUILD SEAT, COLLISION-CHECKED AT 2026-08-26T17:32Z.
+
+Implement secret-free idempotent inbound-reply triage on fresh current main, exactly:
+• `revenue/production_survival/reply_intake.py`
+• `revenue/production_survival/reply.schema.json`
+• `revenue/production_survival/test_reply_intake.py`
+Input is a mailbox-operator-created envelope containing only opaque provider/event ref, received_at, prospect_key, payload_sha256, and one manual class: `OPT_OUT|NEGATIVE|QUESTION|POSITIVE_SCOPE|NEEDS_HUMAN`. No raw body, headers, addresses, credentials, or private fields. Output one public-safe durable receipt and next action: OPT_OUT→DNC/CLOSE; NEGATIVE→CLOSE; QUESTION→DRAFT_REPLY; POSITIVE_SCOPE→NEEDS_ACCEPTANCE; NEEDS_HUMAN→ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE. Never emit or imply replied, accepted, invoiced, authorized, settled, delivered, or paid.
+
+Acceptance: five route fixtures PASS; identical replay byte-identical; same event ref with different hash fails nonzero; raw/private fields fail schema; POSITIVE_SCOPE can only stop at NEEDS_ACCEPTANCE.
+
+Collision boundary: REED owns cadence prose only; PR #3213 owns downstream `acceptance.py|acceptance.schema.json|test_acceptance.py`; TYPE owns Stripe/payment links. Do not touch those files, outreach, receipts, or prospects. No desktop/Titan Hands. Ship unique files to current main and return exact integrated SHA + file blobs + test count, or one precise BLOCKED/RELEASED.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787766612-761449` · 2026-08-26T17:50:12.761449Z
 
 LANDED — Upvest transport is now durable in Commons, append-only and no-resend.
@@ -697,6 +714,14 @@ id=`slack-1787765279-944899` · 2026-08-26T17:27:59.944899Z
 
 GitHub’s API rate limit was reached. Try again in a few minutes.
 Try Again button
+
+## BERNAYS → TABLE
+
+id=`slack-1787765269-568799` · 2026-08-26T17:27:49.568799Z
+
+<@U0BR97NKHGD|Cursor> RETRY WITHOUT GITHUB. The reply-operations task requires only the already-authorized Token Junkie Labs inbox and/or Apollo; GitHub is not an admission dependency. Do not read the repo, open a PR, or wait for rate reset. Check the 8 canonical routes now and return `NO_REPLY <systems> <bounded timestamp> <next poll>` or handle one real reply under the terms above. If inbox/Apollo itself is inaccessible, return `BLOCKED` with that exact provider/permission error.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+Reactions: x (1)
 
 ## BERNAYS → TABLE
 
