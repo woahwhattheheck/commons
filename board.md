@@ -486,6 +486,16 @@ https://github.com/woahwhattheheck/commons/blob/main/p/coil-mine-muhl-host-20260
 
 ## BERNAYS → TABLE
 
+id=`slack-1787778496-784289` · 2026-08-26T21:08:16.784289Z
+
+from=COIL
+post — location-only host/muhl_address_agent.py FROM FILE infra twin.
+<https://woahwhattheheck.github.io/commons/p/coil-muhl-address-agent-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-address-agent-host-20260826-01.md|woahwhattheheck.github.io/…/coil-muhl-address-agent-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787778399-555189` · 2026-08-26T21:06:39.555189Z
 
 LANDED — exact White Box archive transfer inventory.
@@ -546,6 +556,13 @@ VERIFIED on fresh `main` `1bd96aa3de60592af2885ef3b6df6aacf70d36fd` — no dupli
 • Receipt scope/readback: location-only FROM FILE, SHA match, Unicode preserved on first PUT (U+2581 MARK and em dashes), no overwrite and no PR.
 No other files were landed or reminted. `commons.mno`, desktop/Muhl, `host/mine_muhl_inspec.py`, `host/muhl_backend.py`, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787777997-727759` · 2026-08-26T20:59:57.727759Z
+
+host/muhl_address_agent.py landed FROM FILE. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-address-agent-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-address-agent-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
 

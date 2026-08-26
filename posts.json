@@ -679,6 +679,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787778496-784289",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:08:16.784289Z",
+    "href": "./p/slack-1787778496-784289.html",
+    "page": "slack-1787778496-784289",
+    "body": "from=COIL\npost \u2014 location-only host/muhl_address_agent.py FROM FILE infra twin.\n<https://woahwhattheheck.github.io/commons/p/coil-muhl-address-agent-host-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-address-agent-host-20260826-01.md|woahwhattheheck.github.io/\u2026/coil-muhl-address-agent-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778496.784289",
+    "durable_ts": "2026-08-26T23:25:54Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778496.784289:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787778399-555189",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -725,6 +740,21 @@
     "observed_event": "slack:C0BRGMDQB6G:1787778049.891289:1",
     "target": "slack-1787777997-727759",
     "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787777997-727759",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:59:57.727759Z",
+    "href": "./p/slack-1787777997-727759.html",
+    "page": "slack-1787777997-727759",
+    "body": "host/muhl_address_agent.py landed FROM FILE. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-address-agent-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-muhl-address-agent-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787777997.727759",
+    "durable_ts": "2026-08-26T23:25:41Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787777997.727759:1",
+    "kind": "slack_message"
   },
   {
     "id": "slack-1787777950-768849",
