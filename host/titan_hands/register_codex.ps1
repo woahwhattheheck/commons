@@ -26,6 +26,7 @@ $arguments = @(
     '--env','PYTHONUTF8=1',
     '--env','TITAN_HANDS_DEFAULT_TARGET=windows',
     '--env','TITAN_HANDS_ANDROID_AUTOSTART=1',
+    '--env','TITAN_HANDS_ANDROID_BACKEND=auto',
     '--env',("TITAN_HANDS_ANDROID_AVD=" + $AvdName),
     '--env','TITAN_HANDS_ANDROID_BOOT_TIMEOUT=240',
     '--env',("ANDROID_HOME=" + $SdkRoot),

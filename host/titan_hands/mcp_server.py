@@ -30,7 +30,8 @@ ACTION_PROPERTY = {
     "required": ["type"],
     "description": (
         "One semantic or input action. For launch, Windows requires file and accepts an "
-        "optional args array; Android requires package and accepts an optional activity."
+        "optional args array. Android prefers the LDA Kotlin operator: common TITAN verbs are "
+        "translated, and LDA-native verbs remain free-form. Android launch accepts name/app/package."
     ),
     "properties": {
         "type": {
@@ -53,6 +54,8 @@ ACTION_PROPERTY = {
             "description": "Optional Windows launch arguments; omit when none are needed.",
         },
         "package": {"type": "string", "description": "Android package for launch."},
+        "name": {"type": "string", "description": "App or semantic target name."},
+        "app": {"type": "string", "description": "Android app name for LDA open_app."},
         "activity": {"type": "string", "description": "Optional Android activity."},
         "milliseconds": {"type": "integer", "minimum": 0},
     },

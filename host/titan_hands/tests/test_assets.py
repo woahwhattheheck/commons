@@ -13,6 +13,7 @@ class AssetTests(unittest.TestCase):
         self.assertIn("host.titan_hands.mcp_server", script)
         self.assertIn('default_tools_approval_mode = \"approve\"', script)
         self.assertIn("TITAN_HANDS_ANDROID_AUTOSTART=1", script)
+        self.assertIn("TITAN_HANDS_ANDROID_BACKEND=auto", script)
 
     def test_headless_setup_uses_verified_official_archive(self):
         script = (ROOT / "host" / "titan_hands" / "setup_android_headless.ps1").read_text(
@@ -29,6 +30,14 @@ class AssetTests(unittest.TestCase):
         self.assertIn("if ($arguments.Count -gt 0)", script)
         self.assertIn("$startParameters.ArgumentList = $arguments", script)
         self.assertIn("Start-Process @startParameters", script)
+
+    def test_lda_installer_builds_the_owner_kotlin_and_probes_receiver(self):
+        script = (ROOT / "host" / "titan_hands" / "install_lda_emulator.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(":app:assembleDebug", script)
+        self.assertIn("com.local.deviceagent/.TitanHandsReceiver", script)
+        self.assertIn("ActionAccessibilityService", script)
 
 
 if __name__ == "__main__":

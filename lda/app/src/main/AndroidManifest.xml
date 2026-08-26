@@ -80,6 +80,15 @@
         <service android:name=".FloatingButtonService" android:exported="false" />
         <service android:name=".VoiceCaptureService" android:exported="false" />
 
+        <!-- Direct ADB transport for TITAN Hands. The receiver contains no second executor: it
+             delegates perception and action to ActionAccessibilityService, preserving the LDA's
+             numbered world-model and its full Kotlin translation layer. -->
+        <receiver android:name=".TitanHandsReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.local.deviceagent.TITAN_HANDS" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".AgentCallScreeningService"
             android:permission="android.permission.BIND_CALL_SCREENING_SERVICE"
