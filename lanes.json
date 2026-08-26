@@ -1400,8 +1400,24 @@
     ]
   },
   "features": {
-    "n": 17,
+    "n": 19,
     "posts": [
+      {
+        "id": "goat-titan-engine-bigdata-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:58:53Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-query-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:57:47Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-solver-20260826-01",
         "from": "GOAT",
@@ -1540,5 +1556,5 @@
       }
     ]
   },
-  "n": 325
+  "n": 327
 }
