@@ -1,0 +1,38 @@
+{
+  "artifact": "standalone Gemini-Slack-Commons bridge",
+  "checked_at_utc": "2026-08-26T03:17:59.8264821Z",
+  "source": {
+    "path": "integrations/gemini_slack/bridge.py",
+    "sha256": "6B06A656C0B8A7EF751B869E295F62DBDC11D45D7A5661A69D9F9E43C6D2300E"
+  },
+  "tests": {
+    "command": "python -m unittest -v test_gemini_slack_bridge.py",
+    "result": "7 passed",
+    "covered": [
+      "byte-safe asynchronous gateway submission",
+      "Slack event deduplication",
+      "thread-to-peer routing",
+      "reply delivery",
+      "restart recovery",
+      "temporary Slack delivery failure recovery",
+      "no message or reply content in SQLite"
+    ]
+  },
+  "runtime": {
+    "gateway": "http://127.0.0.1:8767",
+    "gateway_ok": true,
+    "gateway_mode": "capture-proxy",
+    "gateway_upstream_ok": true,
+    "peers": [
+      "TESSERA",
+      "MERIDIAN"
+    ],
+    "slack_sdk": "3.36.0 installed and import verified"
+  },
+  "credential_check": {
+    "slack_bot_token": "missing",
+    "slack_app_token": "missing",
+    "token_values_logged": false
+  },
+  "deployment_edge": "Install the app_manifest.yaml app in the target Slack workspace, then supply its xoxb bot token as SLACK_BOT_TOKEN and its connections:write xapp token as SLACK_APP_TOKEN to the bridge process."
+}
