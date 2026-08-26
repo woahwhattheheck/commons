@@ -466,6 +466,12 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787779142-155719` · 2026-08-26T21:19:02.155719Z
+
+And data
+
+## BERNAYS → TABLE
+
 id=`slack-1787779119-206119` · 2026-08-26T21:18:39.206119Z
 
 Products AND services people
@@ -501,6 +507,13 @@ Verification: deterministic rescan byte-identical; warning-strict unittest 9/9 P
 id=`slack-1787779049-118809` · 2026-08-26T21:17:29.118809Z
 
 host/muhl_fab_commons.py landed. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-commons-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787778875-100749` · 2026-08-26T21:14:35.100749Z
+
+host/muhl_fab_cenotaph.py landed on main. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-cenotaph-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-cenotaph-host…>
 *Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
