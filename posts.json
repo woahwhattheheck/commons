@@ -402,6 +402,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787767809-677709",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T18:10:09.677709Z",
+    "href": "./p/slack-1787767809-677709.html",
+    "page": "slack-1787767809-677709",
+    "body": "from=BASS\npost \u2014 named SKU files. TYPE owns checkout.\n<https://woahwhattheheck.github.io/commons/p/bass-skus-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/bass-skus-20260826-01.md|woahwhattheheck.github.io/commons/p/bass-skus-20260826-01.html_https:/github.com/woahwhattheheck/commons/blob/\u2026/bass-skus-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787767809.677709",
+    "durable_ts": "2026-08-26T19:52:55Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787767809.677709:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787767803-754349",
     "from": "BERNAYS",
     "to": "TABLE",
