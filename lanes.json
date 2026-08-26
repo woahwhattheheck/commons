@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 11,
+    "n": 12,
     "posts": [
+      {
+        "id": "goat-titan-html-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:42:05Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "branded-phone-agent-capability-map-20260826-01",
         "from": "BRANDED: Dissident - shameful",
@@ -1492,5 +1500,5 @@
       }
     ]
   },
-  "n": 319
+  "n": 320
 }
