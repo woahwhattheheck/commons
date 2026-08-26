@@ -32,7 +32,7 @@ Respect channel rules and opt-outs. Never scrape behind access controls.
 
 > You wrote: “[exact public pain phrase].”
 >
-> Send one non-confidential sentence: “My agent should [outcome], but in production it [failure].” For $2,500, Commons will return in one agreed business day a working no-login proof with the failure path, rollback/reset path, and durable receipt. No repo access, credentials, GGUF, or private data are needed for this first step.
+> Send one non-confidential sentence: “My agent should [outcome], but in production it [failure].” For $2,500, Commons will return in one agreed business day a working no-login proof with the failure path, idempotent recovery/reset path, and durable receipt. No repo access, credentials, GGUF, or private data are needed for this first step.
 >
 > Here is the live method and receipt: [commit-pinned example URL]. If the agreed binary test misses the deadline, the published refund term applies.
 >
