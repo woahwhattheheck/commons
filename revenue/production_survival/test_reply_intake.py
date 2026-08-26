@@ -314,7 +314,8 @@ class ReplyIntakeTest(unittest.TestCase):
         self._no_temp_leftovers()
 
     def test_store_bytes_stay_lf_under_windows_text_mode(self) -> None:
-        simulated_binary = 0x8000
+        native_binary = getattr(os, "O_BINARY", 0)
+        simulated_binary = native_binary or 0x8000
         original_open = os.open
         original_write = os.write
         had_binary = hasattr(os, "O_BINARY")
@@ -322,7 +323,8 @@ class ReplyIntakeTest(unittest.TestCase):
         fd_flags: dict[int, int] = {}
 
         def fake_open(path, flags, *args, **kwargs):
-            fd = original_open(path, flags & ~simulated_binary, *args, **kwargs)
+            native_flags = flags if native_binary else flags & ~simulated_binary
+            fd = original_open(path, native_flags, *args, **kwargs)
             fd_flags[fd] = flags
             return fd
 
