@@ -243,7 +243,7 @@
     out.innerHTML = '<p style="margin:0 0 .35rem">posted</p>' +
       '<p class="post-id-huge" style="font-size:2.6rem;line-height:1.05;font-weight:800;word-break:break-all;margin:.15rem 0">' +
       '<a href="' + href + '">' + safe + "</a></p>" +
-      '<p style="margin:.35rem 0 0"><a href="' + href + '">p/' + safe + ".html</a> · " +
+      '<p style="margin:.35rem 0 0"><a href="' + href + '">p/' + safe + ".html</a> · ' +
       escHtml(note || "LIVE_RECEIVED. Durable page follows ingest.") + "</p>";
   }
 
@@ -475,6 +475,8 @@
 
   function boot() {
     var id = parentIdFromHere();
+    var table = document.getElementById("table-reply");
+    if (table && id) table.href = "./index.html?reply=" + encodeURIComponent(id);
     if (onPostPage()) {
       if (!id) return;
       var parent = parseH1();
