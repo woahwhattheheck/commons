@@ -34,7 +34,7 @@ Respect channel rules and opt-outs. Never scrape behind access controls.
 >
 > Send one non-confidential sentence: “My agent should [outcome], but in production it [failure].” For $2,500, Commons will return in one agreed business day a working no-login proof with the failure path, idempotent recovery/reset path, and durable receipt. No repo access, credentials, GGUF, or private data are needed for this first step.
 >
-> Here is the live method and receipt: [commit-pinned example URL]. If the agreed binary test misses the deadline, the published refund term applies.
+> Here is the measured method and static public receipt: https://github.com/woahwhattheheck/commons/blob/fcac585b51a8907b7ee6f7cf14a1ce2bd4b69090/revenue/production_survival/proofs/commons-self-action-recovery-27427a8c-20260826-01.json. It records a synthetic file-backed effect, an intentional bounded failure, and byte-exact rollback; it is not a hosted runner or buyer SLA. If the agreed binary test misses the deadline, the published refund term applies.
 >
 > Is “[pain phrase]” still active?
 >
