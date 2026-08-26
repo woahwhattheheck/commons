@@ -150,15 +150,34 @@ PUBLIC_OBJECTIVE:</textarea>
     aba_routing_number: true, iban: true, swift: true, swift_code: true,
     bic: true, sort_code: true
   };
+  var jsonMaxDepth = 32;
+  var jsonMaxNodes = 1000;
+  function normalizeFieldText(name) {
+    var value = String(name || "");
+    return typeof value.normalize === "function" ? value.normalize("NFKC") : value;
+  }
   function canonicalFieldName(name) {
-    return String(name || "")
+    return normalizeFieldText(name)
       .replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2")
       .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
       .toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   }
+  function compactFieldName(name) {
+    return normalizeFieldText(name).toLowerCase().replace(/[^a-z0-9]+/g, "");
+  }
+  var forbiddenCompactNames = Object.keys(forbiddenNames).reduce(function (result, name) {
+    result[compactFieldName(name)] = true;
+    return result;
+  }, {});
   function forbiddenFieldName(name) {
-    var canonical = canonicalFieldName(name);
-    return !!forbiddenNames[canonical] || canonical.indexOf("aws_secret_") === 0;
+    return normalizeFieldText(name).split(/[.\[\]]+/).filter(Boolean).some(function (segment) {
+      var canonical = canonicalFieldName(segment);
+      var compact = compactFieldName(segment);
+      return !!forbiddenNames[canonical]
+        || canonical.indexOf("aws_secret_") === 0
+        || !!forbiddenCompactNames[compact]
+        || /^aws(?:[_. -]+)secret(?:[_. -]+)/i.test(segment);
+    });
   }
   function hasFieldValue(value) {
     if (value === null || typeof value === "undefined") return false;
@@ -168,11 +187,55 @@ PUBLIC_OBJECTIVE:</textarea>
     return true;
   }
   function jsonHasForbiddenField(value) {
-    if (!value || typeof value !== "object") return false;
-    if (Array.isArray(value)) return value.some(jsonHasForbiddenField);
-    return Object.keys(value).some(function (key) {
-      return (forbiddenFieldName(key) && hasFieldValue(value[key])) || jsonHasForbiddenField(value[key]);
+    var stack = [{ value: value, depth: 0 }];
+    var visited = 0;
+    try {
+      while (stack.length) {
+        var current = stack.pop();
+        visited += 1;
+        if (visited > jsonMaxNodes) return true;
+        if (current.value && typeof current.value === "object" && current.depth > jsonMaxDepth) return true;
+        if (!current.value || typeof current.value !== "object") continue;
+        var childIndex;
+        if (Array.isArray(current.value)) {
+          for (childIndex = 0; childIndex < current.value.length; childIndex += 1) {
+            stack.push({ value: current.value[childIndex], depth: current.depth + 1 });
+          }
+          continue;
+        }
+        var keys = Object.keys(current.value);
+        for (childIndex = 0; childIndex < keys.length; childIndex += 1) {
+          var key = keys[childIndex];
+          if (forbiddenFieldName(key) && hasFieldValue(current.value[key])) {
+            return true;
+          }
+          stack.push({ value: current.value[key], depth: current.depth + 1 });
+        }
+      }
+    } catch (error) {
+      return true;
+    }
+    return false;
+  }
+  function jsonCandidatesHaveForbiddenField(source) {
+    var candidates = [source];
+    String(source).split(/\r?\n/).forEach(function (line) {
+      var stripped = line.trim();
+      var objectIndex = stripped.indexOf("{");
+      var arrayIndex = stripped.indexOf("[");
+      var indexes = [objectIndex, arrayIndex].filter(function (index) { return index >= 0; });
+      if (!indexes.length) return;
+      var candidate = stripped.slice(Math.min.apply(Math, indexes));
+      if (candidates.indexOf(candidate) < 0) candidates.push(candidate);
     });
+    for (var index = 0; index < candidates.length; index += 1) {
+      try {
+        if (jsonHasForbiddenField(JSON.parse(candidates[index]))) return true;
+      } catch (error) {
+        if (!error || error.name !== "SyntaxError") return true;
+      }
+    }
+    return false;
   }
   function decodePercentLayers(value) {
     var decoded = String(value || "");
@@ -199,20 +262,24 @@ PUBLIC_OBJECTIVE:</textarea>
     if (/\bhttps:\/\/[^/?#\s@]+@[^/?#\s]+/i.test(raw)) return true;
     var source = decodePercentLayers(text);
     if (source === null) return true;
-    try {
-      if (jsonHasForbiddenField(JSON.parse(source))) return true;
-    } catch (error) {}
-    var assignment = /(?:^|[\s,{#?&;])["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+    source = normalizeFieldText(source);
+    if (jsonCandidatesHaveForbiddenField(source)) return true;
+    var assignment = /(?:^|[\s,{#?&;])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,96})["']?\s*[:=]\s*/g;
     var match;
     while ((match = assignment.exec(source)) !== null) {
-      var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
-      if (forbiddenFieldName(match[1]) && String(value || "").trim()) return true;
+      if (!forbiddenFieldName(match[1])) continue;
+      var tail = source.slice(assignment.lastIndex);
+      var valueMatch = tail.match(/^(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/);
+      if (!valueMatch) continue;
+      var value = typeof valueMatch[1] === "string" ? valueMatch[1]
+        : (typeof valueMatch[2] === "string" ? valueMatch[2] : valueMatch[3]);
+      if (String(value || "").trim()) return true;
     }
     var urls = source.match(/\bhttps:\/\/[^\s]+/gi) || [];
     for (var urlIndex = 0; urlIndex < urls.length; urlIndex += 1) {
       var parts = urls[urlIndex].split(/[/?#&;]/);
       for (var partIndex = 0; partIndex < parts.length; partIndex += 1) {
-        var partMatch = parts[partIndex].match(/^["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*(.+)$/);
+        var partMatch = parts[partIndex].match(/^["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,96})["']?\s*[:=]\s*(.+)$/);
         if (partMatch && forbiddenFieldName(partMatch[1]) && partMatch[2].trim()) return true;
       }
     }

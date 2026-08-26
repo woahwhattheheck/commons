@@ -14,6 +14,7 @@ import json
 import re
 import sys
 import tempfile
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -33,6 +34,8 @@ OPAQUE_REFERENCE_RE = re.compile(
     r"^[A-Za-z][A-Za-z0-9._-]{0,31}:[A-Za-z0-9][A-Za-z0-9._-]{0,126}$"
 )
 PERCENT_DECODE_LAYERS = 4
+JSON_MAX_DEPTH = 32
+JSON_MAX_NODES = 1000
 SENSITIVE_FIELD_NAMES = frozenset({
     "authorization",
     "aws_access_key_id",
@@ -114,8 +117,7 @@ SENSITIVE_FIELD_NAMES = frozenset({
     "sort_code",
 })
 FIELD_ASSIGNMENT_RE = re.compile(
-    r'''["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*'''
-    r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
+    r'''(?:^|[\s,{#?&;])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,96})["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
 PERCENT_ESCAPE_RE = re.compile(r"%[0-9A-Fa-f]{2}")
@@ -296,25 +298,85 @@ def parse_post(text: str) -> tuple[dict[str, str], dict[str, str]]:
 
 
 def canonical_field_name(name: str) -> str:
-    value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", str(name))
+    value = unicodedata.normalize("NFKC", str(name))
+    value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", value)
     value = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", value)
     return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
 
 
+def _compact_field_name(name: str) -> str:
+    normalized = unicodedata.normalize("NFKC", str(name)).casefold()
+    return re.sub(r"[^a-z0-9]+", "", normalized)
+
+
+SENSITIVE_FIELD_COMPACT = frozenset(_compact_field_name(name) for name in SENSITIVE_FIELD_NAMES)
+FIELD_PATH_SEPARATOR_RE = re.compile(r"[.\[\]]+")
+
+
 def is_sensitive_field_name(name: str) -> bool:
-    canonical = canonical_field_name(name)
-    return canonical in SENSITIVE_FIELD_NAMES or canonical.startswith("aws_secret_")
+    normalized = unicodedata.normalize("NFKC", str(name))
+    segments = (segment for segment in FIELD_PATH_SEPARATOR_RE.split(normalized) if segment)
+    for segment in segments:
+        canonical = canonical_field_name(segment)
+        compact = _compact_field_name(segment)
+        if (
+            canonical in SENSITIVE_FIELD_NAMES
+            or canonical.startswith("aws_secret_")
+            or compact in SENSITIVE_FIELD_COMPACT
+            or bool(re.match(r"^aws(?:[_. -]+)secret(?:[_. -]+)", segment, re.IGNORECASE))
+        ):
+            return True
+    return False
+
+
+def _has_field_value(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, (list, dict)):
+        return bool(value)
+    return True
 
 
 def _json_has_sensitive_field(value: Any) -> bool:
-    if isinstance(value, dict):
-        for key, child in value.items():
-            if is_sensitive_field_name(str(key)) and child not in (None, "", [], {}):
-                return True
-            if _json_has_sensitive_field(child):
-                return True
-    elif isinstance(value, list):
-        return any(_json_has_sensitive_field(child) for child in value)
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    visited = 0
+    while stack:
+        child, depth = stack.pop()
+        visited += 1
+        if visited > JSON_MAX_NODES:
+            return True
+        if isinstance(child, (dict, list)) and depth > JSON_MAX_DEPTH:
+            return True
+        if isinstance(child, dict):
+            for key, nested in child.items():
+                if is_sensitive_field_name(str(key)) and _has_field_value(nested):
+                    return True
+                stack.append((nested, depth + 1))
+        elif isinstance(child, list):
+            stack.extend((nested, depth + 1) for nested in child)
+    return False
+
+
+def _json_candidates_have_sensitive_field(source: str) -> bool:
+    candidates = [source]
+    for line in source.splitlines():
+        stripped = line.strip()
+        starts = [index for index in (stripped.find("{"), stripped.find("[")) if index >= 0]
+        if starts:
+            candidate = stripped[min(starts):]
+            if candidate not in candidates:
+                candidates.append(candidate)
+    for candidate in candidates:
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+        except (MemoryError, RecursionError, TypeError, ValueError):
+            return True
+        if _json_has_sensitive_field(parsed):
+            return True
     return False
 
 
@@ -345,8 +407,19 @@ def decode_percent_layers(value: Any) -> tuple[str, bool]:
 
 def _has_sensitive_assignment(text: str) -> bool:
     for match in FIELD_ASSIGNMENT_RE.finditer(text):
-        value = match.group(2) if match.group(2) is not None else match.group(3)
-        if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
+        if not is_sensitive_field_name(match.group(1)):
+            continue
+        tail = text[match.end():]
+        if not tail:
+            continue
+        if tail[0] in ('"', "'"):
+            quote = tail[0]
+            closing = tail.find(quote, 1)
+            value = tail[1:] if closing < 0 else tail[1:closing]
+        else:
+            value_match = re.match(r"[^\s,}\r\n]+", tail)
+            value = value_match.group(0) if value_match else ""
+        if value.strip():
             return True
     return False
 
@@ -360,6 +433,7 @@ def contains_sensitive_value(text: str) -> bool:
     source, decoding_overflow = decode_percent_layers(text)
     if decoding_overflow:
         return True
+    source = unicodedata.normalize("NFKC", source)
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
         return True
     if _has_sensitive_assignment(source):
@@ -367,10 +441,7 @@ def contains_sensitive_value(text: str) -> bool:
     for url in HTTPS_TOKEN_RE.findall(source):
         if any(_has_sensitive_assignment(part) for part in re.split(r"[/?#&;]", url)[1:]):
             return True
-    try:
-        return _json_has_sensitive_field(json.loads(source))
-    except (TypeError, ValueError, json.JSONDecodeError):
-        return False
+    return _json_candidates_have_sensitive_field(source)
 
 
 def base_facts() -> dict[str, Any]:

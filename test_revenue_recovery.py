@@ -352,6 +352,70 @@ class RevenueRecoveryTests(unittest.TestCase):
                 self.assertTrue(rr.contains_sensitive_value(json.dumps({name: "hidden"})))
                 self.assertTrue(rr.contains_sensitive_value(json.dumps({"safe": {name: "hidden"}})))
 
+    def test_server_rejects_binding_paths_case_and_json_budget(self):
+        blocked_assignments = (
+            "?privateEmail[0]=hidden",
+            "?user.privateEmail=hidden",
+            "?user[privateEmail]=hidden",
+            "?users[0][privateEmail]=hidden",
+            "?PrIvAtEeMaIl=hidden",
+            "?user%5BprivateEmail%5D=hidden",
+        )
+        for value in blocked_assignments:
+            with self.subTest(blocked=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        for key in (
+            "user.private_email",
+            "privateEmail[0]",
+            "users[0][privateEmail]",
+            "PrIvAtEeMaIl",
+        ):
+            with self.subTest(json_key=key):
+                self.assertTrue(rr.contains_sensitive_value(json.dumps({key: "hidden"})))
+
+        safe_assignments = (
+            "?user[privateEmail]=",
+            "?user[privateEmail]=%20%20",
+            "?publicObjective=fix_user[privateEmail]_parsing",
+            "?public_privateEmail=hidden",
+            "?email_address_public_opt_in=false",
+            "?awssecretary=public",
+        )
+        for value in safe_assignments:
+            with self.subTest(safe=value):
+                self.assertFalse(rr.contains_sensitive_value(value))
+
+        self.assertTrue(rr.contains_sensitive_value('payload={"private_email": "secret"'))
+        self.assertTrue(rr.contains_sensitive_value('{"private_email": \'secret\'}'))
+
+        def nested_array(depth, leaf):
+            return "[" * depth + json.dumps(leaf, separators=(",", ":")) + "]" * depth
+
+        safe_at_depth_limit = nested_array(rr.JSON_MAX_DEPTH, {"public_objective": "safe"})
+        over_depth = nested_array(rr.JSON_MAX_DEPTH + 1, {"public_objective": "safe"})
+        depth_2200 = nested_array(2200, {"public_objective": "safe"})
+        self.assertFalse(rr.contains_sensitive_value(safe_at_depth_limit))
+        self.assertTrue(rr.contains_sensitive_value(over_depth))
+        self.assertTrue(rr.contains_sensitive_value(depth_2200))
+        self.assertTrue(rr.contains_sensitive_value(nested_array(
+            rr.JSON_MAX_DEPTH, {"privateEmail": "hidden"}
+        )))
+        safe_at_node_limit = json.dumps(
+            [0] * (rr.JSON_MAX_NODES - 1), separators=(",", ":")
+        )
+        over_nodes = json.dumps([0] * rr.JSON_MAX_NODES, separators=(",", ":"))
+        self.assertFalse(rr.contains_sensitive_value(safe_at_node_limit))
+        self.assertTrue(rr.contains_sensitive_value(over_nodes))
+
+        self.assertFalse(rr.contains_sensitive_value(self.valid_post(safe_at_depth_limit)))
+        self.assertFalse(rr.contains_sensitive_value(self.valid_post(safe_at_node_limit)))
+        for value in (over_depth, depth_2200, over_nodes):
+            with self.subTest(full_post_budget=value[:32]):
+                self.assertTrue(rr.contains_sensitive_value(self.valid_post(value)))
+                self.assert_sensitive_signal_is_incomplete(value)
+
     def test_server_rejects_raw_private_contact_values_but_keeps_public_https_url(self):
         for value in (
             "alice.customer@example.com", "555-123-4567", "+1 (555) 123-4567",

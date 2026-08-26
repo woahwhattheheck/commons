@@ -142,6 +142,64 @@ for (const field of reviewerCamelFields) {
   assert.strictEqual(fieldEvent.stopped, true, `camelCase form field did not stop propagation: ${field}`);
 }
 
+const bindingPathPayloads = [
+  "?privateEmail[0]=hidden",
+  "?user.privateEmail=hidden",
+  "?user[privateEmail]=hidden",
+  "?users[0][privateEmail]=hidden",
+  "?PrIvAtEeMaIl=hidden",
+  "?user%5BprivateEmail%5D=hidden",
+  JSON.stringify({ "user.private_email": "hidden" }),
+  JSON.stringify({ "privateEmail[0]": "hidden" }),
+  JSON.stringify({ "users[0][privateEmail]": "hidden" }),
+  JSON.stringify({ PrIvAtEeMaIl: "hidden" }),
+  'payload={"private_email": "secret"',
+  '{"private_email": \'secret\'}',
+];
+for (const payload of bindingPathPayloads) {
+  const event = submit(payload);
+  assert.strictEqual(event.prevented, true, `binding-path payload was not prevented: ${payload}`);
+  assert.strictEqual(event.stopped, true, `binding-path payload did not stop propagation: ${payload}`);
+}
+
+const safeBindingPayloads = [
+  "?user[privateEmail]=",
+  "?user[privateEmail]=%20%20",
+  "?publicObjective=fix_user[privateEmail]_parsing",
+  "?public_privateEmail=hidden",
+  "?email_address_public_opt_in=false",
+  "?awssecretary=public",
+];
+for (const payload of safeBindingPayloads) {
+  const event = submit(payload);
+  assert.strictEqual(event.prevented, false, `safe binding control was prevented: ${payload}`);
+  assert.strictEqual(event.stopped, false, `safe binding control stopped propagation: ${payload}`);
+}
+
+function nestedArrayJson(depth, leaf) {
+  return "[".repeat(depth) + JSON.stringify(leaf) + "]".repeat(depth);
+}
+
+for (const payload of [
+  nestedArrayJson(33, { public_objective: "safe" }),
+  nestedArrayJson(2200, { public_objective: "safe" }),
+  nestedArrayJson(32, { privateEmail: "hidden" }),
+  JSON.stringify(Array(1000).fill(0)),
+]) {
+  const event = submit(payload);
+  assert.strictEqual(event.prevented, true, "over-budget JSON was not prevented");
+  assert.strictEqual(event.stopped, true, "over-budget JSON did not stop propagation");
+}
+
+for (const payload of [
+  nestedArrayJson(32, { public_objective: "safe" }),
+  JSON.stringify(Array(999).fill(0)),
+]) {
+  const event = submit(payload);
+  assert.strictEqual(event.prevented, false, "in-budget safe JSON was prevented");
+  assert.strictEqual(event.stopped, false, "in-budget safe JSON stopped propagation");
+}
+
 let overDepthPayload = JSON.stringify({ privateEmail: "alice@example.com" });
 for (let layer = 0; layer < 5; layer += 1) overDepthPayload = encodeURIComponent(overDepthPayload);
 const encodedReviewerPayloads = [
@@ -168,10 +226,24 @@ const fullPostPrefix = [
 for (const payload of [
   ...reviewerCamelFields.map((field) => `${field}=hidden`),
   ...encodedReviewerPayloads,
+  ...bindingPathPayloads,
+  nestedArrayJson(33, { public_objective: "safe" }),
+  nestedArrayJson(2200, { public_objective: "safe" }),
+  JSON.stringify(Array(1000).fill(0)),
 ]) {
   const event = submit(`${fullPostPrefix}\n${payload}`);
   assert.strictEqual(event.prevented, true, `full-post bypass was not prevented: ${payload}`);
   assert.strictEqual(event.stopped, true, `full-post bypass did not stop propagation: ${payload}`);
+}
+
+for (const payload of [
+  ...safeBindingPayloads,
+  nestedArrayJson(32, { public_objective: "safe" }),
+  JSON.stringify(Array(999).fill(0)),
+]) {
+  const event = submit(`${fullPostPrefix}\n${payload}`);
+  assert.strictEqual(event.prevented, false, `safe full-post control was prevented: ${payload.slice(0, 80)}`);
+  assert.strictEqual(event.stopped, false, `safe full-post control stopped propagation: ${payload.slice(0, 80)}`);
 }
 
 for (const safe of [
