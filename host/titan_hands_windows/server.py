@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Mapping, Protocol
 
 from .protocol import PROTOCOL_VERSION, DeltaTracker, ProtocolError, failure
+from .retarget import needs_tree, prepare_action, run_assert, verify_after
 
 
 class Backend(Protocol):
@@ -111,12 +112,19 @@ class TitanHandsServer:
                 backend = self.backend.request({"op": "capabilities"})
                 if not backend.get("ok"):
                     return backend
+                backend_actions = [str(item) for item in (backend.get("actions") or [])]
+                extra = ["assert", "verify", "check", "set_text", "type", "tap", "clear"]
+                advertised = list(dict.fromkeys([*backend_actions, *extra]))
                 return {
                     "ok": True,
                     "protocol": PROTOCOL_VERSION,
                     "kind": "capabilities",
                     "platform": "windows",
                     "transport": "jsonl",
+                    "implementation": "windows-uia-adapter",
+                    "retarget": True,
+                    "verify_after": True,
+                    "actions": advertised,
                     "backend": backend,
                 }
             if op == "observe":
@@ -132,10 +140,49 @@ class TitanHandsServer:
                 action = request.get("action")
                 if not isinstance(action, Mapping):
                     raise ProtocolError("act requires an action object")
-                result = self.backend.request({"op": "action", "action": dict(action)})
+                if needs_tree(action) and not self.tracker.current_nodes():
+                    self._observe(request)
+                prepared = prepare_action(
+                    action, self.tracker.current_nodes(), self.tracker.current_meta()
+                )
+                if prepared.failure is not None:
+                    return prepared.failure
+                expect = request.get("expect")
+                if expect is None:
+                    expect = action.get("expect")
+                if prepared.local:
+                    result = run_assert(
+                        prepared.action, self.tracker.current_nodes(), self.tracker.current_meta()
+                    )
+                    result.setdefault("protocol", PROTOCOL_VERSION)
+                    if prepared.retarget:
+                        result["retarget"] = prepared.retarget
+                    if result.get("ok") and request.get("observe_after", True):
+                        result["observation"] = self._observe(request)
+                    return result
+                before_nodes = dict(self.tracker.current_nodes())
+                result = self.backend.request({"op": "action", "action": prepared.action})
                 result.setdefault("protocol", PROTOCOL_VERSION)
+                if prepared.retarget:
+                    result["retarget"] = prepared.retarget
                 if result.get("ok") and request.get("observe_after", True):
                     result["observation"] = self._observe(request)
+                    result["verification"] = verify_after(
+                        prepared.action,
+                        before_nodes=before_nodes,
+                        after_nodes=self.tracker.current_nodes(),
+                        observation=result["observation"],
+                        expect=expect,
+                        meta=self.tracker.current_meta(),
+                    )
+                elif result.get("ok"):
+                    result["verification"] = {
+                        "kind": "verification",
+                        "status": "unchecked",
+                        "message": "observe_after disabled; action-return is not proof",
+                        "checked": [],
+                        "ok": False,
+                    }
                 return result
             return failure("UNKNOWN_OPERATION", f"unknown operation: {op or '<empty>'}")
         except (ProtocolError, TypeError, ValueError) as exc:

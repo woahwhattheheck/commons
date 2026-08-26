@@ -30,7 +30,21 @@ behind the Python process so node IDs refer to cached `AutomationElement` object
 ```
 
 Every successful action observes again by default and returns the resulting semantic delta. Failures use stable
-classes such as `ELEMENT_STALE`, `PATTERN_UNAVAILABLE`, `WINDOW_MISS`, `ACTION_FAILED`, and `CAPTURE_FAILED`.
+classes such as `ELEMENT_STALE`, `PATTERN_UNAVAILABLE`, `WINDOW_MISS`, `ACTION_FAILED`, `TARGET_AMBIGUOUS`, and `CAPTURE_FAILED`.
+
+## Retarget and verify
+
+The Windows adapter translates the owner's LDA patterns from
+`ActionAccessibilityService.performActionJson()` and `verifyExpectation()`; it does not replace that
+Kotlin executor and it does not add a second Windows executor.
+
+- Stale or missing ids retarget by label, focused field, or the lone editable control. Ambiguous
+  matches return `TARGET_AMBIGUOUS` instead of guessing.
+- `set_text` / `type` salvage onto `set_value`. A non-field target retargets onto an editable. Unknown
+  verbs still go to the backend so the action space stays open.
+- After an action, the adapter attaches a `verification` receipt from the new semantic tree. An
+  action-return boolean is not treated as proof. `assert` / `verify` is a checkpoint verb that reports
+  ✓/✗ without shrinking invoke/click/set_value/key/launch or the Android lda-kotlin road.
 
 ## Current pixel fallback
 

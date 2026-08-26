@@ -28,12 +28,13 @@ TOOLS = [
     },
     {
         "name": "hands_act",
-        "description": "Perform one semantic or input action and return the resulting UI delta.",
+        "description": "Perform one semantic or input action, retarget stale ids using the live tree, and return the UI delta plus honest post-action verification.",
         "inputSchema": {
             "type": "object",
             "required": ["action"],
             "properties": {
                 "action": {"type": "object"},
+                "expect": {},
                 "observe_after": {"type": "boolean"},
                 "max_nodes": {"type": "integer", "minimum": 1},
                 "max_depth": {"type": "integer", "minimum": 0},
