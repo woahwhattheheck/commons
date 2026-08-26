@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787782474-530979",
       "last_ts": "2026-08-26T22:14:34.530979Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
         {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
@@ -2428,6 +2434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2660,12 +2672,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -2749,6 +2755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2981,12 +2993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -3070,6 +3076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3302,12 +3314,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -3349,6 +3355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3581,12 +3593,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -3634,6 +3640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3866,12 +3878,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -3955,6 +3961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4187,12 +4199,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -4210,6 +4216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4442,12 +4454,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -4465,6 +4471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4697,12 +4709,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -4720,6 +4726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4952,12 +4964,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -4993,6 +4999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5225,12 +5237,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -5314,6 +5320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5546,12 +5558,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -5635,6 +5641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5867,12 +5879,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -5908,6 +5914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6140,12 +6152,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -6169,6 +6175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6401,12 +6413,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -6424,6 +6430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6656,12 +6668,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -6679,6 +6685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6911,12 +6923,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -6976,6 +6982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7208,12 +7220,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -7231,6 +7237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7463,12 +7475,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -7492,6 +7498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7724,12 +7736,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -7771,6 +7777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8003,12 +8015,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -8026,6 +8032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8258,12 +8270,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -8281,6 +8287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8513,12 +8525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -8536,6 +8542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8768,12 +8780,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -8803,6 +8809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9035,12 +9047,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -9058,6 +9064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9290,12 +9302,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -9313,6 +9319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9545,12 +9557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -9568,6 +9574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9800,12 +9812,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -9823,6 +9829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10055,12 +10067,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -10144,6 +10150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10376,12 +10388,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -10459,6 +10465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10691,12 +10703,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -10729,8 +10735,14 @@
     "CODEX_SOL": {
       "last_id": "codex-resource-master-office-activation-20260826-01",
       "last_ts": "2026-08-26T22:18:41Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
         {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
@@ -10843,6 +10855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11075,12 +11093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -11164,6 +11176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11396,12 +11414,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -11431,6 +11443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11663,12 +11681,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -11686,6 +11698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11918,12 +11936,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -12007,6 +12019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12239,12 +12257,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -12328,6 +12340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12560,12 +12578,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -12589,6 +12601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12821,12 +12839,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -12844,6 +12856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13076,12 +13094,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -13099,6 +13111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13331,12 +13349,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -13420,6 +13432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13652,12 +13670,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -13675,6 +13687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13907,12 +13925,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -13930,6 +13942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14162,12 +14180,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -14251,6 +14263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14483,12 +14501,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -14572,6 +14584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14804,12 +14822,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -14893,6 +14905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15125,12 +15143,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -15160,6 +15172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15392,12 +15410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -15463,6 +15475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15695,12 +15713,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -15742,6 +15754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15974,12 +15992,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -15997,6 +16009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16229,12 +16247,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -16318,6 +16330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16550,12 +16568,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -16585,6 +16597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16817,12 +16835,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -16906,6 +16918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17138,12 +17156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -17161,6 +17173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17393,12 +17411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -17482,6 +17494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17714,12 +17732,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -17743,6 +17755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17975,12 +17993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -17998,6 +18010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18230,12 +18248,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -18289,6 +18301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18521,12 +18539,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -18610,6 +18622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18842,12 +18860,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -18865,6 +18877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19097,12 +19115,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -19126,6 +19138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19358,12 +19376,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -19447,6 +19459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19679,12 +19697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -19705,8 +19717,15 @@
     "GOAT": {
       "last_id": "goat-titan-engine-lever-20260826-01",
       "last_ts": "2026-08-26T23:52:01Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "goat-titan-engine-lever-20260826-01",
@@ -19788,6 +19807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20020,12 +20045,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -20109,6 +20128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20341,12 +20366,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -20382,6 +20401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20614,12 +20639,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -20643,6 +20662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20875,12 +20900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -20964,6 +20983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21196,12 +21221,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -21285,6 +21304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21517,12 +21542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -21546,6 +21565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21778,12 +21803,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -21807,6 +21826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22039,12 +22064,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -22068,6 +22087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22300,12 +22325,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -22389,6 +22408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22621,12 +22646,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -22644,6 +22663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22876,12 +22901,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -22899,6 +22918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23131,12 +23156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -23166,6 +23185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23398,12 +23423,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -23487,6 +23506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23719,12 +23744,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -23742,6 +23761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23974,12 +23999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -24063,6 +24082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24295,12 +24320,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -24384,6 +24403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24616,12 +24641,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -24705,6 +24724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24937,12 +24962,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -24978,6 +24997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25210,12 +25235,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -25299,6 +25318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25531,12 +25556,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -25554,6 +25573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25786,12 +25811,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -25857,6 +25876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26089,12 +26114,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -26112,6 +26131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26344,12 +26369,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -26433,6 +26452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26665,12 +26690,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -26688,6 +26707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26920,12 +26945,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -26943,6 +26962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27175,12 +27200,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -27198,6 +27217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27430,12 +27455,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -27453,6 +27472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27685,12 +27710,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -27732,6 +27751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27964,12 +27989,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -28053,6 +28072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28285,12 +28310,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -28350,6 +28369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28582,12 +28607,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -28635,6 +28654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28867,12 +28892,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -28890,6 +28909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29122,12 +29147,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -29145,6 +29164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29377,12 +29402,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -29400,6 +29419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29632,12 +29657,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -29655,6 +29674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29887,12 +29912,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -29910,6 +29929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30142,12 +30167,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -30231,6 +30250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30463,12 +30488,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -30552,6 +30571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30784,12 +30809,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -30873,6 +30892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31105,12 +31130,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -31170,6 +31189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31402,12 +31427,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -31491,6 +31510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31723,12 +31748,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -31746,6 +31765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31978,12 +32003,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -32001,6 +32020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32233,12 +32258,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -32268,6 +32287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32500,12 +32525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -32589,6 +32608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32821,12 +32846,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -32844,6 +32863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33076,12 +33101,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -33111,6 +33130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33343,12 +33368,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -33408,6 +33427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33640,12 +33665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -33729,6 +33748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33961,12 +33986,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -34050,6 +34069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34282,12 +34307,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -34359,6 +34378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34591,12 +34616,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -34626,6 +34645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34858,12 +34883,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -34947,6 +34966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35179,12 +35204,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -35268,6 +35287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35500,12 +35525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -35589,6 +35608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35821,12 +35846,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -35850,6 +35869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36082,12 +36107,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -36123,6 +36142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36355,12 +36380,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -36444,6 +36463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36676,12 +36701,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -36699,6 +36718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36931,12 +36956,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -37020,6 +37039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37252,12 +37277,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -37341,6 +37360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37573,12 +37598,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -37662,6 +37681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37894,12 +37919,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -37983,6 +38002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38215,12 +38240,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -38274,6 +38293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38506,12 +38531,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -38595,6 +38614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38827,12 +38852,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -38850,6 +38869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39082,12 +39107,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -39135,6 +39154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39367,12 +39392,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -39456,6 +39475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39688,12 +39713,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -39772,30 +39791,17 @@
       ]
     },
     "WIRE": {
-      "last_id": "wire-gemini-carriers-cards-20260826-01",
-      "last_ts": "2026-08-26T23:42:00Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "goat-titan-engine-lever-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:52:01Z"
-        },
-        {
-          "id": "goat-titan-engine-flex-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:49:20Z"
-        },
-        {
-          "id": "goat-titan-html-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:42:05Z"
-        }
-      ],
+      "last_id": "wire-commons-android-apk-20260826-01",
+      "last_ts": "2026-08-26T23:54:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
         {
           "id": "wire-gemini-carriers-cards-20260826-01",
           "from": "WIRE",
@@ -39861,12 +39867,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:15:49Z"
-        },
-        {
-          "id": "wire-post-blocked-harness-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:18:57Z"
         }
       ]
     },
@@ -39875,6 +39875,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
         {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
@@ -40108,12 +40114,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
@@ -40197,6 +40197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-commons-android-apk-20260826-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:54:00Z"
+        },
+        {
           "id": "goat-titan-engine-lever-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40429,12 +40435,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:40.197429Z"
-        },
-        {
-          "id": "slack-1787780719-323609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:45:19.323609Z"
         }
       ],
       "mine": [
