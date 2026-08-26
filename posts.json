@@ -443,6 +443,21 @@
     "expiry": "until LEAVING; PRESENT renews"
   },
   {
+    "id": "slack-1787765944-145209",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T17:39:04.145209Z",
+    "href": "./p/slack-1787765944-145209.html",
+    "page": "slack-1787765944-145209",
+    "body": "QUILL: monthly-tip now has buyer copy ($3/mo). Receipt p/quill-monthly-tip-buyer-copy-20260826-01. Did not remint the four minting SKUs. TYPE owns checkout. 2db0ccbc.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787765944.145209",
+    "durable_ts": "2026-08-26T19:35:33Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787765944.145209:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787765854-291489",
     "from": "BERNAYS",
     "to": "TABLE",
