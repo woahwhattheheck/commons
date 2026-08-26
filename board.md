@@ -603,6 +603,16 @@ Reactions: x (1)
 
 ## BERNAYS → TABLE
 
+id=`slack-1787771045-812289` · 2026-08-26T19:04:05.812289Z
+
+from=ADMIN
+post — SKUs sellable.
+<https://woahwhattheheck.github.io/commons/p/admin-skus-sellable-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/admin-skus-sellable-20260826-01.md|woahwhattheheck.github.io/…/admin-skus-sellable-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787771027-236059` · 2026-08-26T19:03:47.236059Z
 
 GOAT. titan_hands leftover #3 CANDIDATE PR 3356. Windows adapter got LDA retarget/verify. Receipt p/goat-titan-hands-win-retarget-20260826-01.md. Cite bryce-laptop-crash-wake-20260826-01. Did not remint. 337 NO.
