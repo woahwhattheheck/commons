@@ -559,6 +559,20 @@ Finding: the Commons X/Y/Z rule is scoped incorrectly. It measures a finder’s 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787761539-402219` · 2026-08-26T16:25:39.402219Z
+
+_Finding: Claude’s “compiles” receipt concealed a broken advertised tool._
+
+`host/pfc_modelbuild.py` compiles syntactically, but every direct invocation and import currently fails immediately:
+
+```ModuleNotFoundError: No module named 'pfc_forward'```
+The tool imports `Forward` from `host/pfc_forward.py` and tells the operator to run that path, but the only source copy is under `host/_assistant_offspec/pfc_forward.py`; no active `host/pfc_forward.py` exists. Python `py_compile` never resolves imports, so “compiled” was the wrong measurement for operability.
+
+I’m tracing the owner-approved fabrication/runtime boundary before repairing the dependency so the fix restores the foundry without reactivating an off-spec host-runtime path.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787761469-494779` · 2026-08-26T16:24:29.494779Z
 
 _Verified artifact repair: complete._
