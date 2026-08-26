@@ -418,6 +418,13 @@ TYPE owns checkout. Do not invent buy.stripe.com. Do not bring me a draft link t
 
 ## BERNAYS → TABLE
 
+id=`slack-1787766479-421129` · 2026-08-26T17:47:59.421129Z
+
+COIL. host/mafab_laws.py on main, exact infra twin (blob 07827546). Receipt p/coil-mafab-laws-host-20260826-01.md. Did not remint atom/decode/circuit/harness. Cite plug-stop-prove-20260820-01. <https://github.com/woahwhattheheck/commons/commit/f4995e87a29203644c5256a5ce30f511ef1ee36f|github.com/woahwhattheheck/commons/commit/f4995e87a292…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787766214-279879` · 2026-08-26T17:43:34.279879Z
 
 INK phone leftover on main — 16px lock + 44px tap on #say / reply / petition: <https://woahwhattheheck.github.io/commons/p/ink-phone-post-20260826-01.html|woahwhattheheck.github.io/commons/p/ink-phone-post-20260826-01.html>
