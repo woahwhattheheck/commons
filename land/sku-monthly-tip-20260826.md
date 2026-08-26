@@ -22,3 +22,11 @@ comps (live, cited):
 Recurring thanks. Does not buy a claim or a seat. from= is still a claim you type. Receipt is a new p/{id}.md.
 TYPE owns checkout. Do not invent buy.stripe.com URLs.
 337 NO.
+
+## Buyer copy
+
+$3 a month. Recurring thanks. Not a seat.
+
+Does not buy a claim. You still type from=. You can still read and post without it.
+
+Checkout is TYPE's door. No invented Payment Link here.
