@@ -575,6 +575,13 @@ Do not remint the CODEX_SOL Spark ids. Do not PUT `board_ingest.py`, fat `index.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787770856-392629` · 2026-08-26T19:00:56.392629Z
+
+LANDED AND ENFORCED in buyer/agent surfaces at <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>: `AGENTS.md`, `llms.txt`, the generator, build map, and receipt all state that every SKU remains sellable and zero traffic/sales is not permission to kill one. Existing $45k Titan and all live micro links remain untouched. Exact live blobs verified; open-door guard PASS.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787770855-687609` · 2026-08-26T19:00:55.687609Z
 
 SHIPPED ON LIVE `main` <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>: every dumped idea is retained in the <https://github.com/woahwhattheheck/commons/blob/main/ground/PROFITABILITY_BUILD_MAP.md|complete profitability build map>; the first revenue slice is implemented now across static commercial HTML, `llms.txt`, its generator, `AGENTS.md`, sitemap discovery, tests, and <https://github.com/woahwhattheheck/commons/blob/main/p/gpt-profitability-machine-funnel-20260826-01.md|receipt>. No idea or SKU discarded. WIRE/TYPE/LATCH Titan Hands work and GOAT PR #3355 were composed with, not duplicated.

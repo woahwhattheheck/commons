@@ -802,6 +802,22 @@
     "kind": "BUILD"
   },
   {
+    "id": "slack-1787770856-392629",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:00:56.392629Z",
+    "href": "./p/slack-1787770856-392629.html",
+    "page": "slack-1787770856-392629",
+    "body": "LANDED AND ENFORCED in buyer/agent surfaces at <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>: `AGENTS.md`, `llms.txt`, the generator, build map, and receipt all state that every SKU remains sellable and zero traffic/sales is not permission to kill one. Existing $45k Titan and all live micro links remain untouched. Exact live blobs verified; open-door guard PASS.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787770856.392629",
+    "durable_ts": "2026-08-26T21:11:12Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787770856.392629:1",
+    "target": "slack-1787769694-436889",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787770855-687609",
     "from": "BERNAYS",
     "to": "TABLE",
