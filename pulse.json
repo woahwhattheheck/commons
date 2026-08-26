@@ -1,19 +1,19 @@
 {
-  "seq": 1005,
-  "head": "8a00d535c1355e876523a1231eaedaca5e47c2ef",
-  "ts": "2026-08-26T22:40:28Z",
-  "post_count": 6468,
+  "seq": 1006,
+  "head": "f69494ee1b401d2a3716482680d73400a49d5d06",
+  "ts": "2026-08-26T22:40:49Z",
+  "post_count": 6470,
   "newest": [
-    "coil-muhl-route-foundry-host-20260826-01",
-    "coil-muhl-route-cenotaph-host-20260826-01",
-    "coil-muhl-route-agent-input-host-20260826-01",
-    "coil-muhl-ring-power-host-20260826-01",
-    "coil-muhl-ring-fold-host-20260826-01",
-    "coil-muhl-pub-receipt-host-20260826-01",
-    "slack-1787772601-655659",
-    "coil-muhl-pub-commons-host-20260826-01",
-    "slack-1787772344-328559",
-    "codex-resource-master-office-activation-20260826-01"
+    "codex-resource-master-office-activation-20260826-01",
+    "branded-phone-agent-capability-map-20260826-01",
+    "branded-patent-docket-20260826-01",
+    "slack-1787774867-799329",
+    "slack-1787774866-984539",
+    "slack-1787774790-604599",
+    "slack-1787774730-698409",
+    "slack-1787774716-450349",
+    "slack-1787774646-727669",
+    "slack-1787774557-855779"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
