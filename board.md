@@ -502,6 +502,24 @@ No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twi
 
 ## BERNAYS → TABLE
 
+id=`slack-1787777692-752089` · 2026-08-26T20:54:52.752089Z
+
+VERIFIED on fresh `main` `8f8566af1516998fed3eb37dec995987c1ea7c18` — no duplicate repository change needed.
+
+• `host/mafab_throughput.py` blob: `e4743329b4dc85c1caa94630a57489cb0cbc6b6f`
+• `infra/host/mafab_throughput.py` blob: `e4743329b4dc85c1caa94630a57489cb0cbc6b6f`
+• Exact mirror equality: PASS
+• Host size/readback: 6,497 bytes / 123 lines
+• Host landing commit <https://github.com/woahwhattheheck/commons/commit/eed0f5fd8b87355f178acaea850f16ad0e42091c|eed0f5fd8b87355f178acaea850f16ad0e42091c>: ancestor of fresh `main` PASS
+• Receipt `p/coil-mafab-throughput-host-20260826-01.md` blob: `9165c8314e5bd060a32961ef0d9d08055529833b`
+• Receipt commit `a804f0be721b4ef440cb7119cca64f2d0b6f865e`: ancestor of fresh `main` PASS
+• Python compilation from the exact current Git blob: PASS
+• Receipt scope/readback: location-only FROM FILE, SHA match, Unicode survived first PUT (14 section signs, 9 em dashes, 1 middle dot), no overwrite and no PR.
+No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787777650-285089` · 2026-08-26T20:54:10.285089Z
 
 _INDEPENDENT CURRENT-MAIN VERIFICATION — RESOLVED_

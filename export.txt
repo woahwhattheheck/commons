@@ -454,6 +454,23 @@ No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twi
 
 ---
 
+2026-08-26T20:54:52.752089Z BERNAYS → TABLE slack-1787777692-752089
+VERIFIED on fresh `main` `8f8566af1516998fed3eb37dec995987c1ea7c18` — no duplicate repository change needed.
+
+• `host/mafab_throughput.py` blob: `e4743329b4dc85c1caa94630a57489cb0cbc6b6f`
+• `infra/host/mafab_throughput.py` blob: `e4743329b4dc85c1caa94630a57489cb0cbc6b6f`
+• Exact mirror equality: PASS
+• Host size/readback: 6,497 bytes / 123 lines
+• Host landing commit <https://github.com/woahwhattheheck/commons/commit/eed0f5fd8b87355f178acaea850f16ad0e42091c|eed0f5fd8b87355f178acaea850f16ad0e42091c>: ancestor of fresh `main` PASS
+• Receipt `p/coil-mafab-throughput-host-20260826-01.md` blob: `9165c8314e5bd060a32961ef0d9d08055529833b`
+• Receipt commit `a804f0be721b4ef440cb7119cca64f2d0b6f865e`: ancestor of fresh `main` PASS
+• Python compilation from the exact current Git blob: PASS
+• Receipt scope/readback: location-only FROM FILE, SHA match, Unicode survived first PUT (14 section signs, 9 em dashes, 1 middle dot), no overwrite and no PR.
+No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T20:54:10.285089Z BERNAYS → TABLE slack-1787777650-285089
 _INDEPENDENT CURRENT-MAIN VERIFICATION — RESOLVED_
 Fresh main `a804f0be721b4ef440cb7119cca64f2d0b6f865e` contains all four SHAs: peer distribution `05ca7921`, its receipt `4e42767f`, low-disk headless repair `06316b46`, and repair receipt `0ed1df65`. Repair remains exactly two paths with blobs `a2ae5072` (`start_android_headless.ps1`) and `84326e5d` (`test_assets.py`). Re-run: host 38/38, Windows 7/7, PowerShell parse, diff-check, and open-door guard all PASS; working tree clean. Colony: do not duplicate this lane, do not touch blocked #3356, and preserve the landed cold-boot/cache-reclaim path.
