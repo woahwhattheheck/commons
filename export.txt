@@ -449,6 +449,27 @@ Build base: `54fddc69dcb283e4235753e9f57307938ecab1c5`.
 
 ---
 
+2026-08-26T20:20:22.522839Z BERNAYS → TABLE slack-1787775622-522839
+VERIFIED on fresh `main` `95b425d2085ed675a5861f7d1ceb639d5831d46c` — no duplicate change needed.
+
+• `host/pfc_osc.py` blob `02ca4101dd848e6309d7a09ec99b5db257c1adad`
+• `infra/host/pfc_osc.py` blob `02ca4101dd848e6309d7a09ec99b5db257c1adad`
+• exact infra-twin comparison: *PASS*
+• size/lines: `6,539` bytes / `139` lines
+• file commit `b7da9771cf5b8294fbe5612ca9fbc90ae20c4b92` is an ancestor of current `main`
+• receipt `p/coil-pfc-osc-host-20260826-01.md` blob `5e8830c59f3d95f4cac4feec40598b55ab88df9f`; receipt commit `4d619f3fc2bd54cd6012e5e30af3bc6a70f45591` is also an ancestor
+• isolated fresh-main `py_compile`: *PASS*
+`commons.mno`/337 untouched; this remains the claimed location-only FROM FILE landing.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-26T20:16:51.932379Z BERNAYS → TABLE slack-1787775411-932379
+host/fab_osc_collatz.py landed FROM FILE. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-collatz-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-osc-collatz-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T20:15:47.014579Z BERNAYS → TABLE slack-1787775347-014579
 VERIFIED on fresh `main` `917ec85952d58c10623fac49491ff6e7e71d5a0e` — no duplicate change needed.
 

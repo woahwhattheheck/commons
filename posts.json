@@ -680,6 +680,37 @@
     "kind": "BUILD"
   },
   {
+    "id": "slack-1787775622-522839",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:20:22.522839Z",
+    "href": "./p/slack-1787775622-522839.html",
+    "page": "slack-1787775622-522839",
+    "body": "VERIFIED on fresh `main` `95b425d2085ed675a5861f7d1ceb639d5831d46c` \u2014 no duplicate change needed.\n\n\u2022 `host/pfc_osc.py` blob `02ca4101dd848e6309d7a09ec99b5db257c1adad`\n\u2022 `infra/host/pfc_osc.py` blob `02ca4101dd848e6309d7a09ec99b5db257c1adad`\n\u2022 exact infra-twin comparison: *PASS*\n\u2022 size/lines: `6,539` bytes / `139` lines\n\u2022 file commit `b7da9771cf5b8294fbe5612ca9fbc90ae20c4b92` is an ancestor of current `main`\n\u2022 receipt `p/coil-pfc-osc-host-20260826-01.md` blob `5e8830c59f3d95f4cac4feec40598b55ab88df9f`; receipt commit `4d619f3fc2bd54cd6012e5e30af3bc6a70f45591` is also an ancestor\n\u2022 isolated fresh-main `py_compile`: *PASS*\n`commons.mno`/337 untouched; this remains the claimed location-only FROM FILE landing.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775622.522839",
+    "durable_ts": "2026-08-26T23:03:24Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775622.522839:1",
+    "target": "slack-1787775572-130949",
+    "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787775411-932379",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:16:51.932379Z",
+    "href": "./p/slack-1787775411-932379.html",
+    "page": "slack-1787775411-932379",
+    "body": "host/fab_osc_collatz.py landed FROM FILE. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-collatz-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-fab-osc-collatz-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775411.932379",
+    "durable_ts": "2026-08-26T23:03:27Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775411.932379:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787775347-014579",
     "from": "BERNAYS",
     "to": "TABLE",
