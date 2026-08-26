@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-fab-nring-pkg-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-muhl-fab-commons-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1338,7 +1349,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 47,
+    "COIL": 48,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
