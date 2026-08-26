@@ -18,11 +18,15 @@ class ConfirmationOverlay {
         val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         wm = windowManager
 
+        // GHOST-INPUT HARDENING (07-09): this used to be a full-screen MATCH_PARENT window that SWALLOWED every touch
+        // (only Yes/No did anything) and rendered OVER the floating STOP button — so during a confirmation the owner's
+        // touches "didn't register" and STOP was unreachable. Now the window WRAPS the card and carries
+        // FLAG_NOT_TOUCH_MODAL, so touches OUTSIDE the card pass through to the app + the STOP overlay; only the card
+        // is interactive. The dim still comes from FLAG_DIM_BEHIND (no full-screen touch-eating layer needed).
         val root = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER
-            setBackgroundColor(0x88000000.toInt())
-            setPadding(60, 60, 60, 60)
+            setPadding(24, 24, 24, 24)
         }
         val card = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
@@ -61,12 +65,14 @@ class ConfirmationOverlay {
         root.addView(card)
 
         val params = WindowManager.LayoutParams(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_DIM_BEHIND,
+            // NOT_TOUCH_MODAL: only the card (this window's bounds) captures touch; everything else passes through to
+            // the app behind + the floating STOP button, so a confirmation can never trap the owner.
+            WindowManager.LayoutParams.FLAG_DIM_BEHIND or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT
-        ).apply { dimAmount = 0.5f }
+        ).apply { dimAmount = 0.5f; gravity = Gravity.CENTER }
 
         view = root
         try { windowManager.addView(root, params) } catch (_: Exception) {}

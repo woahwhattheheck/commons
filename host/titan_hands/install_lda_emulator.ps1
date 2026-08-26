@@ -3,7 +3,8 @@ param(
     [string]$SdkRoot = (Join-Path $env:LOCALAPPDATA 'TitanHands\AndroidSdk'),
     [string]$Gradle = 'C:\Gradle\gradle-8.9\bin\gradle.bat',
     [string]$Serial = 'emulator-5554',
-    [switch]$AllowPhysicalDevice
+    [switch]$AllowPhysicalDevice,
+    [switch]$SkipBuild
 )
 
 $ErrorActionPreference = 'Stop'
@@ -35,15 +36,19 @@ if (-not (Test-Path -LiteralPath $debugKey)) {
     if ($LASTEXITCODE -ne 0) { throw 'Could not create the local Android debug keystore' }
 }
 
-Push-Location $ldaRoot
-try {
-    # The in-process compiler and bounded worker count keep the large imported LDA tree reliable
-    # on the same laptop that hosts the headless emulator.
-    & $Gradle ':app:assembleDebug' '--no-daemon' '--max-workers=2' `
-        '-Pkotlin.compiler.execution.strategy=in-process'
-    if ($LASTEXITCODE -ne 0) { throw "LDA Gradle build failed with exit code $LASTEXITCODE" }
-} finally {
-    Pop-Location
+if ($SkipBuild) {
+    if (-not (Test-Path -LiteralPath $apk)) { throw "Cannot skip build; APK not found: $apk" }
+} else {
+    Push-Location $ldaRoot
+    try {
+        # The in-process compiler and bounded worker count keep the large imported LDA tree reliable
+        # on the same laptop that hosts the headless emulator.
+        & $Gradle ':app:assembleDebug' '--no-daemon' '--max-workers=2' `
+            '-Pkotlin.compiler.execution.strategy=in-process' '-PtitanHandsAbi=x86_64'
+        if ($LASTEXITCODE -ne 0) { throw "LDA Gradle build failed with exit code $LASTEXITCODE" }
+    } finally {
+        Pop-Location
+    }
 }
 
 & $adb -s $Serial install -r $apk | Out-Host
@@ -57,11 +62,32 @@ if ($LASTEXITCODE -ne 0) { throw 'Could not enable the LDA accessibility service
 & $adb -s $Serial shell settings put secure accessibility_enabled 1
 if ($LASTEXITCODE -ne 0) { throw 'Could not enable Android accessibility' }
 
-Start-Sleep -Milliseconds 750
-$proof = & $adb -s $Serial shell am broadcast -W -a com.local.deviceagent.TITAN_HANDS `
-    -n com.local.deviceagent/.TitanHandsReceiver --es op capabilities
-if ($LASTEXITCODE -ne 0) { throw 'LDA TITAN receiver capability probe failed' }
-$proof | Out-Host
+function Get-TitanCapabilities {
+    $raw = & $adb -s $Serial shell am broadcast -W -a com.local.deviceagent.TITAN_HANDS `
+        -n com.local.deviceagent/.TitanHandsReceiver --es op capabilities
+    if ($LASTEXITCODE -ne 0) { return $null }
+    $match = [regex]::Match(($raw -join "`n"), 'data="?([A-Za-z0-9+/=]+)"?')
+    if (-not $match.Success) { return $null }
+    try {
+        $json = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($match.Groups[1].Value))
+        return $json | ConvertFrom-Json
+    } catch {
+        return $null
+    }
+}
+
+# Android may acknowledge the secure-settings write before binding the accessibility service. A
+# receiver process alone is not a live proof: wait until the Kotlin service instance itself exists.
+$capabilities = $null
+for ($attempt = 0; $attempt -lt 30; $attempt++) {
+    $capabilities = Get-TitanCapabilities
+    if ($capabilities.ok -and $capabilities.accessibility_ready) { break }
+    Start-Sleep -Milliseconds 500
+}
+if (-not $capabilities -or -not $capabilities.ok -or -not $capabilities.accessibility_ready) {
+    throw 'LDA installed, but its accessibility service did not become ready for TITAN Hands'
+}
+$capabilities | ConvertTo-Json -Depth 8 | Out-Host
 
 [ordered]@{
     ok = $true

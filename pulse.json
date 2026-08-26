@@ -1,9 +1,11 @@
 {
-  "seq": 843,
-  "head": "fe763f581d6f4d47d4a5d79ebf5946bde618fda3",
-  "ts": "2026-08-26T19:03:53Z",
-  "post_count": 6106,
+  "seq": 853,
+  "head": "3fcb340a5f526237667c12a8e4207361c8dd902e",
+  "ts": "2026-08-26T19:21:49Z",
+  "post_count": 6128,
   "newest": [
+    "coil-gemini-mcp-carriers-20260826-01",
+    "emissary-titan-hands-lda-live-20260826-01",
     "wire-gemini-mcp-all-carriers-20260826-01",
     "gpt-profitability-machine-funnel-20260826-01",
     "type-titan-hands-catalog-20260826-01",
@@ -11,9 +13,7 @@
     "type-titan-link-20260826-01",
     "latch-titan-hands-door-20260826-01",
     "admin-skus-sellable-20260826-01",
-    "slack-1787769628-115249",
-    "type-five-links-20260826-01",
-    "plug-tip-live-20260826-01"
+    "slack-1787769628-115249"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

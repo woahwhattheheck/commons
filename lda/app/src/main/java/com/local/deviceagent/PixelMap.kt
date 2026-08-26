@@ -32,4 +32,30 @@ object PixelMap {
 
     /** 0 = identical, up to 64 = completely different. */
     fun distance(a: Long, b: Long): Int = java.lang.Long.bitCount(a xor b)
+
+    /** Which of the 64 cells (8x8, row-major i = y*N + x) flipped between two average-hashes. */
+    fun cellsChanged(a: Long, b: Long): List<Int> {
+        val diff = a xor b
+        val out = ArrayList<Int>()
+        for (i in 0 until N * N) if ((diff shr i) and 1L == 1L) out.add(i)
+        return out
+    }
+
+    /** Track 1 (continuous change-sense): the NAMED screen region where the pixels changed most between
+     *  two frames - the token-free "what moved between snapshots" signal. Centroid of the changed 8x8
+     *  cells -> a 3x3 named region whose names match the peek / parseZoomRegion vocabulary
+     *  (top/bottom/left/right/center/corners). "" when nothing changed. Pure geometry, no allocation cost
+     *  worth caring about; runs on the frame hashes the loop already keeps. */
+    fun regionOfChange(a: Long, b: Long): String {
+        val cells = cellsChanged(a, b)
+        if (cells.isEmpty()) return ""
+        var sx = 0; var sy = 0
+        for (c in cells) { sx += c % N; sy += c / N }
+        val cx = sx.toFloat() / cells.size; val cy = sy.toFloat() / cells.size
+        val col = (cx / N * 3f).toInt().coerceIn(0, 2)
+        val row = (cy / N * 3f).toInt().coerceIn(0, 2)
+        val vert = when (row) { 0 -> "top"; 2 -> "bottom"; else -> "" }
+        val horiz = when (col) { 0 -> "left"; 2 -> "right"; else -> "" }
+        return listOf(vert, horiz).filter { it.isNotEmpty() }.joinToString("-").ifEmpty { "center" }
+    }
 }
