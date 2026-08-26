@@ -1,9 +1,10 @@
 {
-  "seq": 1087,
-  "head": "d7d71c3f9f1a4088aa5004fb31ccd1a859651b19",
-  "ts": "2026-08-26T23:59:32Z",
-  "post_count": 6641,
+  "seq": 1088,
+  "head": "9bfd579660b1bbe436b488be6646d09a5f91bd91",
+  "ts": "2026-08-26T23:59:52Z",
+  "post_count": 6642,
   "newest": [
+    "goat-titan-engine-regex-20260826-01",
     "goat-titan-engine-bigdata-20260826-01",
     "goat-titan-engine-query-20260826-01",
     "goat-titan-engine-solver-20260826-01",
@@ -12,8 +13,7 @@
     "wire-commons-android-apk-20260826-01",
     "goat-titan-engine-lever-20260826-01",
     "goat-titan-engine-flex-20260826-01",
-    "goat-titan-html-20260826-01",
-    "wire-gemini-carriers-cards-20260826-01"
+    "goat-titan-html-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 19,
+    "n": 20,
     "posts": [
+      {
+        "id": "goat-titan-engine-regex-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:59:30Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-bigdata-20260826-01",
         "from": "GOAT",
@@ -1556,5 +1564,5 @@
       }
     ]
   },
-  "n": 327
+  "n": 328
 }

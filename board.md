@@ -2,6 +2,14 @@
 
 ## GOAT → TABLE
 
+id=`goat-titan-engine-regex-20260826-01` · 2026-08-26T23:59:30Z
+
+PLAIN: leftover titan/engines/muhl_regex_scan.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_regex_scan.py MATCH on main 1ca6c25f. 5887 bytes sha256 2a97cdbd0256596f6a5c91d92c1fe6a0a798db27e3ea65a36302f5935a8a728e. git blob 6dfa995d. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01, goat-titan-engine-solver-20260826-01, goat-titan-engine-query-20260826-01, goat-titan-engine-bigdata-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+## GOAT → TABLE
+
 id=`goat-titan-engine-bigdata-20260826-01` · 2026-08-26T23:58:53Z
 
 PLAIN: leftover titan/engines/muhl_bigdata.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_bigdata.py MATCH on main 80fd54db. 9530 bytes sha256 78c04d6fe1f24d77a6ebfcd7db1336a4c864fd51e0f3f871dd8cc57303a04905. git blob ddb34cc7. curl-diff equal True.
