@@ -1,0 +1,42 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-upvest-20260826T140759000Z",
+  "campaign_id": "same-day-agent-survival-proof-20260826-01",
+  "target_id": "upvest",
+  "organization": "Upvest",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "contact@upvest.co",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8ef3350ebff2001074edb3",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-26T14:07:59.000Z",
+  "observed_at": "2026-08-26T17:47:35.836Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "contact@upvest.co",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8ef3235d8160001052e5a6",
+    "contact_last_activity_at": "2026-08-26T14:08:10.000Z",
+    "contact_updated_at": "2026-08-26T17:24:12.970Z",
+    "public_slack_ts": "1787753344.433259",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787753344433259?thread_ts=1787716842.527029&cid=C0BRGMDQB6G",
+    "completion_corroborated": true
+  }
+}
