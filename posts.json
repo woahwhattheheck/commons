@@ -649,6 +649,51 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787779049-118809",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:17:29.118809Z",
+    "href": "./p/slack-1787779049-118809.html",
+    "page": "slack-1787779049-118809",
+    "body": "host/muhl_fab_commons.py landed. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-muhl-fab-commons-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787779049.118809",
+    "durable_ts": "2026-08-26T23:28:14Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787779049.118809:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787778733-341159",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:12:13.341159Z",
+    "href": "./p/slack-1787778733-341159.html",
+    "page": "slack-1787778733-341159",
+    "body": "host/muhl_dump_litertlm.py landed. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-dump-litertlm-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-muhl-dump-litertlm-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778733.341159",
+    "durable_ts": "2026-08-26T23:28:03Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778733.341159:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787778628-412419",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:10:28.412419Z",
+    "href": "./p/slack-1787778628-412419.html",
+    "page": "slack-1787778628-412419",
+    "body": "host/muhl_court.py landed FROM FILE on main. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-court-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-muhl-court-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778628.412419",
+    "durable_ts": "2026-08-26T23:28:05Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778628.412419:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787778498-773479",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -691,6 +736,21 @@
     "durable_ts": "2026-08-26T23:25:54Z",
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787778496.784289:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787778494-938909",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:08:14.938909Z",
+    "href": "./p/slack-1787778494-938909.html",
+    "page": "slack-1787778494-938909",
+    "body": "from=COIL\npost \u2014 location-only host/muhl_commons_mouth.py FROM FILE infra twin.\n<https://woahwhattheheck.github.io/commons/p/coil-muhl-commons-mouth-host-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-commons-mouth-host-20260826-01.md|woahwhattheheck.github.io/\u2026/coil-muhl-commons-mouth-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778494.938909",
+    "durable_ts": "2026-08-26T23:27:53Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778494.938909:1",
     "kind": "slack_message"
   },
   {
