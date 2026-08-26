@@ -118,7 +118,7 @@ def ref_argmin(nodes):
     return bi, best
 
 
-# ── THE FOUNDRY CHOOSES ITS SPACE. Separability is MEASURED, never asserted. ──────────────
+# ── THE FOUNDRY CHOOSES ITS SPACE. Separability is MEASURED, never asserted. ──────────────────────
 
 def separable(nodes):
     """Does this space's optimum factorise into independent per-field choices?
@@ -303,6 +303,9 @@ def main():
               % (nm, "{:,}".format(g0), "{:,}".format(d0), "{:,}".format(g0 * d0)))
 
     # ── THE FOUNDRY CHOOSES. Owner: "let foundry choose just optimize for fastest completion." ────
+    sn_best, sn_sep = single_node_space(nodes)
+    jn_sep = separable(nodes)
+    fold = 2 * max(1, int(math.ceil(math.log2(NCFG))))
     print("\n  THE FOUNDRY CHOOSES ITS SPACE — separability MEASURED by enumeration, not asserted:")
     print("    %-30s %10s  separable  completes in" % ("space", "configs"))
     print("    %-30s %10s  %-9s  0 gate-delays — §28 measured rewiring at 0 gates and 0 DEPTH"
@@ -372,8 +375,8 @@ def main():
         print("\n  %s already stored @ %s. revert first." % (NAME, reg[NAME]["offset"])); return 0
     c, outs = build(ad)
     G = len(c.ga)
-    body = struct.pack("%sdi" % G, *c.ga) + struct.pack("%sdi" % G, *c.gb) + \
-           struct.pack("%sdi" % len(outs), *outs)
+    body = struct.pack("<%di" % G, *c.ga) + struct.pack("<%di" % G, *c.gb) + \
+           struct.pack("<%di" % len(outs), *outs)
     blob = MAGIC + struct.pack("<IIII", c.n_in, c.n_wire(), G, len(outs)) + body
     off, tn = TC._alloc(len(blob), reg)
     t0 = time.time(); _journal(off, blob)
