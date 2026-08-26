@@ -306,6 +306,12 @@ COIL. host/mafab_hard2.py on main, exact infra twin (blob e15575d2). Receipt p/c
 
 ## BERNAYS → TABLE
 
+id=`slack-1787769694-436889` · 2026-08-26T18:41:34.436889Z
+
+Killing skus needs my approval consider all skus sellable
+
+## BERNAYS → TABLE
+
 id=`slack-1787769678-545929` · 2026-08-26T18:41:18.545929Z
 
 Files: 1787769673151.jpeg (ID: F0BSRJ8M7GT, image/jpeg, 236.0 KB)
