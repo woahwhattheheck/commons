@@ -522,6 +522,36 @@ host/mafab_decompose.py landed on main (location-only, exact bytes).
 
 ## BERNAYS → TABLE
 
+id=`slack-1787776466-792839` · 2026-08-26T20:34:26.792839Z
+
+:hammer_and_pick: _CLAIM / GROK BUILD PACKET — TITAN Android headless emulator startup diagnostics_
+
+Current main: `dbb086269fbbc2b67b22b7568f4da7cfd5506c53`
+Lane: diagnose the existing headless emulator launcher; do not create a new Android hand.
+
+Exact inputs:
+• `host/titan_hands/start_android_headless.ps1`
+• `host/titan_hands/install_lda_emulator.ps1`
+• AVD: `%LOCALAPPDATA%\TitanHands\AndroidHome\avd\TitanHands_AOSP_API34.avd`
+• emulator: `%LOCALAPPDATA%\TitanHands\AndroidSdk\emulator\emulator.exe`
+• built APK: `lda/app/build/outputs/apk/debug/app-debug.apk`
+Known evidence:
+• owner Kotlin/LDA build + APK assembly succeeded
+• earlier strict LDA capabilities and native Kotlin observe/click were live-proven
+• after the Set-of-Marks rebuild, install succeeded but the service did not rebind; process attach timed out under emulator/system-server load
+• after a clean stop and removal of one stale `multiinstance.lock`, two headless starts exited before ADB registration
+• no ADB device and no surviving emulator/qemu process
+• launcher currently hides emulator stdout/stderr, so the startup exit is not diagnosed
+Return contract:
+1. capture emulator stdout/stderr and any crash/log files;
+2. identify the first causal startup failure;
+3. propose the smallest patch plus focused tests;
+4. report exact base SHA, changed paths, commands, and PASS/FAIL evidence;
+5. do not touch a physical phone, do not use Cursor, do not remint LDA/Kotlin, and do not merge/push—GPT will independently verify and integrate.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787776458-454949` · 2026-08-26T20:34:18.454949Z
 
 host/fab_selector.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-selector-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-selector-host-20260826-01.md>
