@@ -159,7 +159,7 @@ PUBLIC_OBJECTIVE:</textarea>
   function canonicalFieldName(name) {
     var raw = String(name || "");
     if (typeof raw.normalize === "function") raw = raw.normalize("NFKC");
-    var casefolded = raw.toLowerCase().replace(/\u00df/g, "ss");
+    var casefolded = raw.toLowerCase().replace(/\u017f/g, "s").replace(/\u00df/g, "ss");
     var folded = casefolded.replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
     if (forbiddenNames[folded]) return folded;
     var exact = forbiddenCompactNames[casefolded.replace(/[^a-z0-9]+/g, "")];
@@ -179,7 +179,7 @@ PUBLIC_OBJECTIVE:</textarea>
   function bindingScanSource(value) {
     var source = String(value || "");
     if (typeof source.normalize === "function") source = source.normalize("NFKC");
-    return source.toLowerCase().replace(/\u00df/g, "ss");
+    return source.toLowerCase().replace(/\u017f/g, "s").replace(/\u00df/g, "ss");
   }
   function hasFieldValue(value) {
     if (value === null || typeof value === "undefined") return false;
