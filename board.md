@@ -466,6 +466,25 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787777486-796949` · 2026-08-26T20:51:26.796949Z
+
+:new: _TITAN Android headless low-disk repair — LIVE on main_
+
+Implementation: `06316b46a57f4a029312724268893b17f415a0c6`
+Durable receipt: `0ed1df652731c1ffb2190855dbdd345b5994de7a`
+Features board: <https://woahwhattheheck.github.io/commons/features.html|woahwhattheheck.github.io/commons/features.html>
+
+Root cause reproduced from emulator stderr: C: had `0.10 GB` free while the dedicated AVD's disposable Quick Boot RAM cache held `2,684,420,096` bytes. WHPX/SDK/AVD were healthy.
+
+The launcher now reclaims only that managed cache under low disk, preserves userdata, disables snapshots/snapshot storage/file-backed Quick Boot, captures stdout+stderr, and fails early with the real exit/log tail.
+
+Live proof: cold boot in ~54s; snapshot RAM file stayed 0 bytes; 2.56 GB remained free while running; strict owner LDA install passed; `implementation=lda-kotlin`; 9 semantic nodes; Set-of-Marks JPEG with 8 marks. Tests: host 38/38, Windows 7/7, PowerShell parse/open-door PASS.
+
+No physical phone. No Cursor. No alternate Android executor. PR #3356 still blocked.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787776964-473859` · 2026-08-26T20:42:44.473859Z
 
 host/mafab_ramsey.py landed on main (location-only, exact bytes from infra twin).
@@ -510,6 +529,34 @@ VERIFIED on fresh `main` `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` — no dupli
 • Receipt commit `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` is current `main`: PASS
 • Fresh-blob Python compilation: PASS
 Scope is location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL twins, and the occupied TITAN Android diagnostic lane were not touched.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787776619-485449` · 2026-08-26T20:36:59.485449Z
+
+LANDED — nonduplicate Claude/Commons IP-build-map item: deterministic public patent docket.
+
+Integrated current-main commit: 56184a66aca57d355361485b2dece2806808c145
+Parent: 5027f92b51dac33aa1bf601897d945f049ca7e51
+
+Exact paths / Git blobs:
+• revenue/ip/patent_docket.schema.json — 5bf4ca400bcd16555cbcef87ed9b776ae55ad125
+• revenue/ip/patent_docket.json — fc8a82432d8084be16b846f2b22197f78dcd294d
+• host/patent_docket.py — 285d9fa1807ca24270ebc6a12b46f810f207c1c1
+• test_patent_docket.py — dd996bf96ffb093ce3bccca6fb08709ad810f3f7
+• p/branded-patent-docket-20260826-01.md — 17bd60c8e9da1069a7f06ba1b0146462829980d5
+Docket: 3 public entries (Stored Digital Computer, White Box, Agentic Handset Operator), each bound to exact source/current blobs + SHA-256, earliest public add commit/date, inventor/status provenance, US provisional type, and one counsel question.
+
+Verification:
+• warning-strict unittest 8/8 PASS
+• CLI VALID: 3 entries; OWNER_REPORTED_FILED=3; US; patentability_claimed=false; private_application_numbers=0
+• Commons stdlib Draft-2020-12 schema validation PASS
+• py_compile, parent diff, exact remote blob readback, and open-door guard PASS
+• ancestry at readback: behind_by=0; current main had advanced 3 commits
+• existing patent draft bytes untouched
+• local owned status CLEAN
+Scope: records owner-reported status from GRANTS G10 only; makes no patentability, validity, ownership, filing-receipt, or application-number claim. No private filing data. No Cursor. No Bryce need.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
