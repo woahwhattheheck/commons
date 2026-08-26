@@ -29,6 +29,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -107,6 +108,7 @@ EXIT_FINDER_FAILED = 3
 # Completed Grok Build envelope exits are namespaced so the existing land-desk
 # 0/1/2/3 contract above remains stable for callers such as land.js.
 RECEIPT_SCHEMA = "grok-receipt/v1"
+SCHEMA = RECEIPT_SCHEMA
 RECEIPT_EXIT_OK = 0
 RECEIPT_EXIT_MISSING_FILE = 3
 RECEIPT_EXIT_INVALID_ENVELOPE = 4
@@ -116,7 +118,19 @@ RECEIPT_EXIT_INVALID_INNER_JSON = 7
 RECEIPT_EXIT_WRONG_TYPE = 8
 RECEIPT_EXIT_MISSING_PACKET_ID = 9
 RECEIPT_EXIT_WRITE_FAILURE = 10
+RECEIPT_EXIT_REVISION_CONTRADICTION = 11
 RECEIPT_EXIT_FINDER_FAILED = 12
+RECEIPT_MAX_SOURCE_BYTES = 8 * 1024 * 1024
+SOURCE_REVISION_KEYS = frozenset(
+    {"source_head", "git_head", "source_rev", "source_rev_file"}
+)
+HEX_REV_RE = re.compile(r"^[0-9a-f]{7,40}$")
+MEASURED_NAMES = (
+    "H-001-ARCHITECT.json",
+    "H-001-SKEPTIC.json",
+    "H-002-CONTAMINATION.json",
+)
+SMOKE_ENV = "GROK_HEAVY_RECEIPTS"
 
 RECEIPT_STATUS_BY_EXIT = {
     RECEIPT_EXIT_OK: "OK",
@@ -128,6 +142,7 @@ RECEIPT_STATUS_BY_EXIT = {
     RECEIPT_EXIT_WRONG_TYPE: "WRONG_TYPE",
     RECEIPT_EXIT_MISSING_PACKET_ID: "MISSING_PACKET_ID",
     RECEIPT_EXIT_WRITE_FAILURE: "WRITE_FAILURE",
+    RECEIPT_EXIT_REVISION_CONTRADICTION: "REVISION_CONTRADICTION",
     RECEIPT_EXIT_FINDER_FAILED: "FINDER_FAILED",
 }
 
@@ -174,31 +189,19 @@ def raw_sha(root):
 
 
 def _receipt_json_fence(text):
-    """Return exactly one JSON fence body using line-state, not a regex.
+    """Return one JSON fence whose markers occupy their own lines.
 
-    Grok Build sometimes appends the opener to the final prose line. That
-    measured form is accepted when the marker ends the line. A marker string
-    inside the JSON body stays packet data; a second opener after a completed
-    block is counted and rejected.
+    Inline prose containing the literal marker is not a fence. A marker string
+    inside the JSON body stays packet data. Every line-anchored JSON opener is
+    counted, including an unclosed extra opener after a complete block.
     """
     lines = str(text).splitlines(keepends=True)
-    openers = 0
-    blocks = []
-    body_lines = []
-    in_json = False
-    for line in lines:
-        if not in_json:
-            if line.rstrip().lower().endswith("```json"):
-                openers += 1
-                in_json = True
-                body_lines = []
-            continue
-        if line.strip() == "```":
-            blocks.append("".join(body_lines))
-            body_lines = []
-            in_json = False
-        else:
-            body_lines.append(line)
+    opener_lines = [
+        position
+        for position, line in enumerate(lines)
+        if line.strip().lower() == "```json"
+    ]
+    openers = len(opener_lines)
     if not openers:
         return None, RECEIPT_EXIT_ZERO_FENCES, "text contains no fenced JSON object", 0
     if openers != 1:
@@ -208,14 +211,23 @@ def _receipt_json_fence(text):
             "text contains %d JSON fence openers; exactly one is required" % openers,
             openers,
         )
-    if in_json or len(blocks) != 1:
+    opener = opener_lines[0]
+    closer = next(
+        (
+            position
+            for position in range(opener + 1, len(lines))
+            if lines[position].strip() == "```"
+        ),
+        None,
+    )
+    if closer is None:
         return (
             None,
             RECEIPT_EXIT_INVALID_INNER_JSON,
             "JSON fence is not closed",
             openers,
         )
-    return blocks[0], RECEIPT_EXIT_OK, "", openers
+    return "".join(lines[opener + 1 : closer]), RECEIPT_EXIT_OK, "", openers
 
 
 def normalize_envelope(text):
@@ -264,6 +276,126 @@ def receipt_sha256(raw):
     return hashlib.sha256(bytes(raw)).hexdigest()
 
 
+def collect_revision_values(obj):
+    """Collect authoritative revision-key shapes from the inner packet only."""
+    grouped = {key: [] for key in SOURCE_REVISION_KEYS}
+    stack = [(obj, "$")]
+    while stack:
+        value, path = stack.pop()
+        if isinstance(value, dict):
+            for key, child in reversed(list(value.items())):
+                child_path = "%s/%s" % (path, str(key).replace("~", "~0").replace("/", "~1"))
+                if key in SOURCE_REVISION_KEYS:
+                    if isinstance(child, dict):
+                        kind, scalar = "object", None
+                    elif isinstance(child, (str, int)) and not isinstance(child, bool):
+                        kind, scalar = "scalar", str(child)
+                    else:
+                        kind, scalar = type(child).__name__, None
+                    grouped[key].append(
+                        {"path": child_path, "type": kind, "value": scalar}
+                    )
+                if isinstance(child, (dict, list)):
+                    stack.append((child, child_path))
+        elif isinstance(value, list):
+            for position in range(len(value) - 1, -1, -1):
+                child = value[position]
+                if isinstance(child, (dict, list)):
+                    stack.append((child, "%s/%d" % (path, position)))
+    return {key: rows for key, rows in grouped.items() if rows}
+
+
+def revisions_compatible(left, right):
+    """Accept exact identities and canonical hex prefix/full-SHA pairs."""
+    if left == right:
+        return True
+    left = str(left).strip().lower()
+    right = str(right).strip().lower()
+    if not HEX_REV_RE.fullmatch(left) or not HEX_REV_RE.fullmatch(right):
+        return False
+    return left.startswith(right) or right.startswith(left)
+
+
+def detect_revision_contradictions(packet):
+    """Return stable truth labels for incompatible inner revision facts."""
+    contradictions = []
+    for key, rows in sorted(collect_revision_values(packet).items()):
+        types = {row["type"] for row in rows}
+        invalid_types = sorted(types - {"object", "scalar"})
+        paths = [row["path"] for row in rows]
+        values = sorted(
+            {row["value"] for row in rows if row["type"] == "scalar"}
+        )
+        if invalid_types:
+            contradictions.append(
+                {
+                    "key": key,
+                    "reason": "INVALID_REVISION_TYPE",
+                    "paths": paths,
+                    "types": sorted(types),
+                    "values": values,
+                }
+            )
+            continue
+        if "object" in types and "scalar" in types:
+            contradictions.append(
+                {
+                    "key": key,
+                    "reason": "SCALAR_OBJECT_CONFLICT",
+                    "paths": paths,
+                    "types": sorted(types),
+                    "values": values,
+                }
+            )
+            continue
+        incompatible = any(
+            not revisions_compatible(left, right)
+            for position, left in enumerate(values)
+            for right in values[position + 1 :]
+        )
+        if incompatible:
+            contradictions.append(
+                {
+                    "key": key,
+                    "reason": "INCOMPATIBLE_REVISIONS",
+                    "paths": paths,
+                    "types": sorted(types),
+                    "values": values,
+                }
+            )
+    return contradictions
+
+
+def find_measured_receipts(root, calibration_path=None):
+    """Find measured smoke inputs without turning finder failure into zero."""
+    base = os.fspath(root) if root else None
+    if calibration_path is not None and not os.path.isfile(calibration_path):
+        return {
+            "state": "FINDER-FAILED",
+            "count": None,
+            "hits": [],
+            "missing": list(MEASURED_NAMES),
+            "z": "known-present calibration miss",
+        }
+    if not base or not os.path.isdir(base):
+        return {
+            "state": "FINDER-FAILED",
+            "count": None,
+            "hits": [],
+            "missing": list(MEASURED_NAMES),
+            "z": "receipt directory missing or unreadable",
+        }
+    hits = [name for name in MEASURED_NAMES if os.path.isfile(os.path.join(base, name))]
+    missing = [name for name in MEASURED_NAMES if name not in hits]
+    return {
+        "state": "FOUND" if not missing else "FINDER-FAILED",
+        "count": len(hits) if hits else None,
+        "hits": hits,
+        "missing": missing,
+        "z": "" if not missing else "one or more named receipts were not found",
+    }
+
+
 def _receipt_source_name(source):
     """Keep private/absolute input paths out of normalized output."""
     if source in (None, "-"):
@@ -292,8 +424,22 @@ def evaluate_receipt(raw, source="-"):
     field is never inspected or merged into the packet.
     """
     try:
-        envelope = json.loads(bytes(raw).decode("utf-8"))
-    except (UnicodeDecodeError, ValueError) as exc:
+        raw = bytes(raw)
+    except (TypeError, ValueError) as exc:
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_ENVELOPE,
+            "outer envelope is not bytes: %s" % exc,
+            source=source,
+        )
+    if len(raw) > RECEIPT_MAX_SOURCE_BYTES:
+        return _receipt_error(
+            RECEIPT_EXIT_INVALID_ENVELOPE,
+            "source exceeds %d-byte receipt budget" % RECEIPT_MAX_SOURCE_BYTES,
+            source=source,
+        )
+    try:
+        envelope = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError, RecursionError) as exc:
         return _receipt_error(
             RECEIPT_EXIT_INVALID_ENVELOPE,
             "outer envelope is not UTF-8 JSON: %s" % exc,
@@ -317,8 +463,8 @@ def evaluate_receipt(raw, source="-"):
         invalid.append("text:string")
     if not isinstance(session_id, str) or not session_id.strip():
         invalid.append("sessionId:nonempty-string")
-    if not isinstance(usage, dict):
-        invalid.append("usage:object")
+    if not isinstance(usage, dict) or not usage:
+        invalid.append("usage:nonempty-object")
     if (
         not isinstance(model_usage, dict)
         or not model_usage
@@ -338,7 +484,7 @@ def evaluate_receipt(raw, source="-"):
         return _receipt_error(fence_exit, fence_error, raw, source)
     try:
         packet = json.loads(body)
-    except ValueError as exc:
+    except (ValueError, RecursionError) as exc:
         return _receipt_error(
             RECEIPT_EXIT_INVALID_INNER_JSON,
             "fenced body is not JSON: %s" % exc,
@@ -368,10 +514,16 @@ def evaluate_receipt(raw, source="-"):
         if name in envelope
     }
     digest = receipt_sha256(raw)
-    return {
+    contradictions = detect_revision_contradictions(packet)
+    exit_code = (
+        RECEIPT_EXIT_REVISION_CONTRADICTION
+        if contradictions
+        else RECEIPT_EXIT_OK
+    )
+    result = {
         "schema": RECEIPT_SCHEMA,
-        "status": "OK",
-        "exit_code": RECEIPT_EXIT_OK,
+        "status": RECEIPT_STATUS_BY_EXIT[exit_code],
+        "exit_code": exit_code,
         "source_sha256": digest,
         "source": {
             "name": _receipt_source_name(source),
@@ -388,7 +540,11 @@ def evaluate_receipt(raw, source="-"):
         "packet": packet,
         "fence_count": fence_count,
         "excluded_fields": ["text", "thought"],
-    }, RECEIPT_EXIT_OK
+        "revision_contradictions": contradictions,
+    }
+    if contradictions:
+        result["error"] = "inner packet contains incompatible source revision facts"
+    return result, exit_code
 
 
 def _render_receipt(payload):
@@ -400,10 +556,24 @@ def _render_receipt(payload):
 def _read_receipt_source(source, stdin=None):
     if source == "-":
         stream = stdin or sys.stdin.buffer
-        return stream.read(), None
+        raw = stream.read(RECEIPT_MAX_SOURCE_BYTES + 1)
+        if len(raw) > RECEIPT_MAX_SOURCE_BYTES:
+            return None, _receipt_error(
+                RECEIPT_EXIT_INVALID_ENVELOPE,
+                "source exceeds %d-byte receipt budget" % RECEIPT_MAX_SOURCE_BYTES,
+                source=source,
+            )
+        return raw, None
     try:
         with open(source, "rb") as handle:
-            return handle.read(), None
+            raw = handle.read(RECEIPT_MAX_SOURCE_BYTES + 1)
+        if len(raw) > RECEIPT_MAX_SOURCE_BYTES:
+            return None, _receipt_error(
+                RECEIPT_EXIT_INVALID_ENVELOPE,
+                "source exceeds %d-byte receipt budget" % RECEIPT_MAX_SOURCE_BYTES,
+                source=source,
+            )
+        return raw, None
     except FileNotFoundError:
         return None, _receipt_error(
             RECEIPT_EXIT_MISSING_FILE,
@@ -786,8 +956,19 @@ def self_test():
     normalized, code = evaluate_receipt(json.dumps(completed).encode("utf-8"))
     assert code == RECEIPT_EXIT_OK, normalized
     assert normalized["packet"] == packet, normalized
+    assert normalized["revision_contradictions"] == [], normalized
     assert "thought" not in normalized, normalized
     assert "text" not in normalized, normalized
+    conflicting = dict(completed)
+    conflicting["text"] = "```json\n%s\n```\n" % json.dumps(
+        {
+            "packet_id": "synthetic-conflict",
+            "source_head": "1111111",
+            "nested": {"source_head": "2222222"},
+        }
+    )
+    contradiction, code = evaluate_receipt(json.dumps(conflicting).encode("utf-8"))
+    assert code == RECEIPT_EXIT_REVISION_CONTRADICTION, contradiction
     missing = classify(
         measure_from_rows(
             {
@@ -834,7 +1015,10 @@ def main(argv=None, stdin=None, stdout=None):
         else:
             payload, code = evaluate_receipt(raw, source=source)
         rendered = _render_receipt(payload)
-        if args.output:
+        if args.output and code in (
+            RECEIPT_EXIT_OK,
+            RECEIPT_EXIT_REVISION_CONTRADICTION,
+        ):
             try:
                 with open(args.output, "wb") as handle:
                     handle.write(rendered)

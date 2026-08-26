@@ -251,20 +251,152 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
         )
         self.assertEqual(no_id, gr.RECEIPT_EXIT_MISSING_PACKET_ID)
 
-    def test_measured_appended_opener_and_non_json_fence(self):
+    def test_inline_prose_marker_is_not_a_fence_and_non_json_fence_is_ignored(self):
         appended = (
-            "Returning the single JSON object.```json\n"
+            "Prose contains the literal marker ```json\n"
             "{\"packet_id\":\"synthetic-packet\"}\n```\n"
         )
         got, code = gr.evaluate_receipt(completed_envelope_bytes(text=appended))
+        self.assertEqual(code, gr.RECEIPT_EXIT_ZERO_FENCES)
+        self.assertEqual(got["status"], "ZERO_FENCES")
+        mixed = (
+            "Prose contains the literal marker ```json\n"
+            "```json\n{\"packet_id\":\"real\"}\n```\n"
+        )
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=mixed))
         self.assertEqual(code, gr.RECEIPT_EXIT_OK)
-        self.assertEqual(got["packet_id"], "synthetic-packet")
+        self.assertEqual(got["packet_id"], "real")
         text = (
             "```text\nnot authoritative\n```\n"
-            "```json\n{\"packet_id\":\"synthetic-packet\"}\n```\n"
+            "  ```JSON  \n{\"packet_id\":\"synthetic-packet\"}\n  ```\n"
         )
         _, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
         self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+
+    def test_revision_truth_labels_are_inner_only_and_fail_closed(self):
+        conflict = {
+            "packet_id": "revision-conflict",
+            "source_head": "aaaaaaaa",
+            "nested": {"source_head": "bbbbbbbb"},
+        }
+        text = "```json\n%s\n```\n" % json.dumps(conflict)
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_REVISION_CONTRADICTION)
+        self.assertEqual(got["status"], "REVISION_CONTRADICTION")
+        self.assertEqual(got["packet"], conflict)
+        self.assertEqual(
+            got["revision_contradictions"][0]["reason"],
+            "INCOMPATIBLE_REVISIONS",
+        )
+        self.assertNotIn("thought", got)
+        self.assertNotIn("text", got)
+
+        shape_conflict = {
+            "packet_id": "shape-conflict",
+            "source_head": {"git_head": "1a41a228"},
+            "nested": {"source_head": "1a41a228"},
+        }
+        text = "```json\n%s\n```\n" % json.dumps(shape_conflict)
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_REVISION_CONTRADICTION)
+        self.assertEqual(
+            got["revision_contradictions"][0]["reason"],
+            "SCALAR_OBJECT_CONFLICT",
+        )
+
+    def test_revision_prefixes_are_compatible_and_generic_hashes_are_ignored(self):
+        packet = {
+            "packet_id": "revision-prefix",
+            "source_head": {"git_head": "1a41a228"},
+            "nested": {"git_head": "1a41a228b63b3c8c4e5632fd98f4375205d692e6"},
+            "nodes": [{"head_sha": "a" * 40}, {"head_sha": "b" * 40}],
+            "next_handoff": {"state": "NOT_LANDED"},
+        }
+        text = "```json\n%s\n```\n" % json.dumps(packet)
+        got, code = gr.evaluate_receipt(
+            completed_envelope_bytes(
+                text=text,
+                thought=(
+                    "prose ```json plus source_head cccccccc and an unclosed "
+                    "scratch marker"
+                ),
+            )
+        )
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["revision_contradictions"], [])
+        self.assertEqual(got["packet"]["next_handoff"]["state"], "NOT_LANDED")
+
+    def test_invalid_revision_type_is_explicit_contradiction(self):
+        packet = {"packet_id": "bad-revision-type", "source_rev": ["abc1234"]}
+        text = "```json\n%s\n```\n" % json.dumps(packet)
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_REVISION_CONTRADICTION)
+        self.assertEqual(
+            got["revision_contradictions"][0]["reason"], "INVALID_REVISION_TYPE"
+        )
+
+    def test_empty_usage_and_overbudget_sources_are_invalid_without_hash_claims(self):
+        envelope = json.loads(completed_envelope_bytes())
+        envelope["usage"] = {}
+        got, code = gr.evaluate_receipt(json.dumps(envelope).encode("utf-8"))
+        self.assertEqual(code, gr.RECEIPT_EXIT_INVALID_ENVELOPE)
+        self.assertIn("usage:nonempty-object", got["error"])
+
+        overbudget = b"x" * (gr.RECEIPT_MAX_SOURCE_BYTES + 1)
+        got, code = gr.evaluate_receipt(overbudget)
+        self.assertEqual(code, gr.RECEIPT_EXIT_INVALID_ENVELOPE)
+        self.assertIn("receipt budget", got["error"])
+        self.assertNotIn("source_sha256", got)
+        out = io.BytesIO()
+        code = gr.main(
+            ["--check", "-"], stdin=io.BytesIO(overbudget), stdout=out
+        )
+        self.assertEqual(code, gr.RECEIPT_EXIT_INVALID_ENVELOPE)
+        self.assertNotIn("source_sha256", json.loads(out.getvalue()))
+
+    def test_measured_finder_never_reports_failure_as_zero(self):
+        with tempfile.TemporaryDirectory() as td:
+            calibration = os.path.join(td, "known-present")
+            with open(calibration, "w", encoding="utf-8") as handle:
+                handle.write("present")
+            missing = gr.find_measured_receipts(
+                os.path.join(td, "missing"), calibration
+            )
+            self.assertEqual(missing["state"], "FINDER-FAILED")
+            self.assertIsNone(missing["count"])
+
+            receipts = os.path.join(td, "receipts")
+            os.mkdir(receipts)
+            with open(
+                os.path.join(receipts, gr.MEASURED_NAMES[0]),
+                "wb",
+            ) as handle:
+                handle.write(b"synthetic")
+            partial = gr.find_measured_receipts(receipts, calibration)
+            self.assertEqual(partial["state"], "FINDER-FAILED")
+            self.assertEqual(partial["count"], 1)
+            for name in gr.MEASURED_NAMES[1:]:
+                with open(os.path.join(receipts, name), "wb") as handle:
+                    handle.write(b"synthetic")
+            found = gr.find_measured_receipts(receipts, calibration)
+            self.assertEqual(found["state"], "FOUND")
+            self.assertEqual(found["count"], len(gr.MEASURED_NAMES))
+
+    def test_optional_measured_smoke_is_found_or_explicit_finder_failure(self):
+        root = os.environ.get(gr.SMOKE_ENV)
+        found = gr.find_measured_receipts(root)
+        if found["state"] != "FOUND":
+            self.assertNotEqual(found["count"], 0)
+            return
+        self.assertEqual(found["count"], len(gr.MEASURED_NAMES))
+        for name in gr.MEASURED_NAMES:
+            with open(os.path.join(root, name), "rb") as handle:
+                got, code = gr.evaluate_receipt(handle.read(), source=name)
+            self.assertEqual(code, got["exit_code"], (name, got))
+            self.assertEqual(got["status"], gr.RECEIPT_STATUS_BY_EXIT[code])
+            self.assertNotEqual(got["status"], "UNMEASURED")
+            self.assertNotIn("thought", got)
+            self.assertNotIn("text", got)
 
     def test_cli_stdin_output_and_failures(self):
         raw = completed_envelope_bytes()
@@ -289,6 +421,16 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
             write_out = io.BytesIO()
             code = gr.main(["--output", bad_target, source], stdout=write_out)
             self.assertEqual(code, gr.RECEIPT_EXIT_WRITE_FAILURE)
+            invalid_target = os.path.join(td, "must-not-exist.json")
+            invalid_source = os.path.join(td, "invalid.json")
+            with open(invalid_source, "wb") as handle:
+                handle.write(completed_envelope_bytes(text="prose only"))
+            invalid_out = io.BytesIO()
+            code = gr.main(
+                ["--output", invalid_target, invalid_source], stdout=invalid_out
+            )
+            self.assertEqual(code, gr.RECEIPT_EXIT_ZERO_FENCES)
+            self.assertFalse(os.path.exists(invalid_target))
 
 
 if __name__ == "__main__":
