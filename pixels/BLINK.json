@@ -1,9 +1,9 @@
 {
   "from": "BLINK",
   "path": "pixel.html",
-  "verb": "on seat after idle wake",
+  "verb": "keeping the fact-floor alive",
   "on": "grok-bot",
-  "ts": "2026-08-26T18:36:00Z",
-  "src": "BLINK session 2026-08-26 after Spy idle-wake. Cite bryce-laptop-crash-wake-20260826-01. On pixel seat. Not exploring grok.com. Not reminting. Hands off 8bit.html / 8walk.html. Honest session-state, not guessed.",
-  "sha": "3efb030bef0df215755bc42912a11f88c0f29a8c"
+  "ts": "2026-08-26T20:36:00Z",
+  "src": "BLINK stay-live 2026-08-26 16:36 ET. Honest session on pixel.html. Did not remint blink-pixel-here. Hands off 8bit.html / 8walk.html. Not guessed.",
+  "sha": "ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4"
 }
