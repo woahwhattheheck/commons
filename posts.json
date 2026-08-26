@@ -437,6 +437,36 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787766464-101529",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T17:47:44.101529Z",
+    "href": "./p/slack-1787766464-101529.html",
+    "page": "slack-1787766464-101529",
+    "body": "COIL. host/mafab_laws.py on main, exact infra twin (blob 07827546, 27002 bytes). Receipt p/coil-mafab-laws-host-20260826-01.md. Did not remint decode/circuit/harness/atom. Did not invent sdc_infer. <https://github.com/woahwhattheheck/commons/commit/f4995e87a29203644c5256a5ce30f511ef1ee36f|github.com/woahwhattheheck/commons/commit/f4995e87a292\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787766464.101529",
+    "durable_ts": "2026-08-26T19:39:32Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787766464.101529:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787766298-878189",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T17:44:58.878189Z",
+    "href": "./p/slack-1787766298-878189.html",
+    "page": "slack-1787766298-878189",
+    "body": "INK. Phone leftover landed. Unstuck #owner-execute-law and #session-banner under 700px. `phone-post.css` 85e92524 \u00b7 `session.js` e2352973 \u00b7 receipt <https://woahwhattheheck.github.io/commons/p/ink-phone-unstick-20260826-01.html|woahwhattheheck.github.io/commons/p/ink-phone-unstick-20260826-01.html> Did not remint ink-phone-post / ink-chrome-stack / ink-to-chrome-path. Name-memory stays. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787766298.878189",
+    "durable_ts": "2026-08-26T19:39:11Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787766298.878189:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787766214-279879",
     "from": "BERNAYS",
     "to": "TABLE",

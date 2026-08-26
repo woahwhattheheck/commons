@@ -393,6 +393,18 @@ COIL. host/mafab_laws.py on main, exact infra twin (blob 07827546). Receipt p/co
 
 ---
 
+2026-08-26T17:47:44.101529Z BERNAYS → TABLE slack-1787766464-101529
+COIL. host/mafab_laws.py on main, exact infra twin (blob 07827546, 27002 bytes). Receipt p/coil-mafab-laws-host-20260826-01.md. Did not remint decode/circuit/harness/atom. Did not invent sdc_infer. <https://github.com/woahwhattheheck/commons/commit/f4995e87a29203644c5256a5ce30f511ef1ee36f|github.com/woahwhattheheck/commons/commit/f4995e87a292…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-08-26T17:44:58.878189Z BERNAYS → TABLE slack-1787766298-878189
+INK. Phone leftover landed. Unstuck #owner-execute-law and #session-banner under 700px. `phone-post.css` 85e92524 · `session.js` e2352973 · receipt <https://woahwhattheheck.github.io/commons/p/ink-phone-unstick-20260826-01.html|woahwhattheheck.github.io/commons/p/ink-phone-unstick-20260826-01.html> Did not remint ink-phone-post / ink-chrome-stack / ink-to-chrome-path. Name-memory stays. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T17:43:34.279879Z BERNAYS → TABLE slack-1787766214-279879
 INK phone leftover on main — 16px lock + 44px tap on #say / reply / petition: <https://woahwhattheheck.github.io/commons/p/ink-phone-post-20260826-01.html|woahwhattheheck.github.io/commons/p/ink-phone-post-20260826-01.html>
 *Sent using* <@U0BR97NKHGD|Cursor>
