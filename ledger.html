@@ -4,141 +4,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
-<title>Commons — live resource ledger</title>
+<title>Commons — master resource ledger</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <script src="./session.js?v=20260824a"></script>
 <style>
-table.ledger{width:100%;border-collapse:collapse;font-size:.92rem}
-table.ledger th,table.ledger td{border:1px solid #bbb;padding:.45rem .5rem;vertical-align:top;text-align:left}
-table.ledger th{background:#111;color:#f4f1ea}
-.cap-LIVE{color:#3fa45b;font-weight:700}
-.cap-CACHE,.cap-NOT_VERIFIED{color:#c08a2e;font-weight:700}
-.cap-UNMEASURED{color:#555;font-weight:700}
-.cap-FORBIDDEN{color:#c0554a;font-weight:700}
-.banner{background:#111;color:#f4f1ea;padding:.9rem 1rem;margin:0 0 1rem;font-weight:700}
+.banner{background:#111;color:#f4f1ea;padding:1rem;margin:0 0 1rem;font-weight:700}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.65rem;margin:1rem 0}
+.metric{border:1px solid #999;padding:.7rem;background:#faf8f2}.metric b{display:block;font-size:1.45rem}
+.controls{display:flex;gap:.75rem;flex-wrap:wrap;align-items:end;margin:1rem 0}.controls label{display:grid;gap:.2rem}
+.queue{display:grid;gap:.55rem;margin:1rem 0}.queue article{border-left:.35rem solid #111;padding:.45rem .7rem;background:#faf8f2}
+.queue b{margin-right:.4rem}
+.table-wrap{overflow-x:auto}
+table.ledger{width:100%;border-collapse:collapse;font-size:.88rem}
+table.ledger th,table.ledger td{border:1px solid #aaa;padding:.45rem .5rem;vertical-align:top;text-align:left}
+table.ledger th{background:#111;color:#f4f1ea;position:sticky;top:0}
+.state{font-weight:700;white-space:nowrap}.cap-LIVE,.stage-PRODUCING{color:#24783a}.cap-CACHE,.cap-NOT_VERIFIED,.cond-HELD,.cond-BLOCKED{color:#9a6417}.cap-UNMEASURED,.cond-UNMEASURED,.cond-ACTIVE_UNKNOWN{color:#555}.cond-DEGRADED,.cap-FORBIDDEN{color:#a43e35}
+.small{font-size:.8rem;color:#555}.owner-row{background:#fff3bf}
+@media(max-width:720px){table.ledger{font-size:.8rem}.optional{display:none}}
 </style>
 </head><body>
 <p id="session-banner" class="session open">COURT IS NOW IN SESSION · opened 2026-08-19T07:34:41Z by BRYCE · <a href="./court.html">court</a></p>
 <p id="owner-execute-law" class="law execute-now" aria-label="Pinned owner law — execute immediately"><strong>OWNER LAW.</strong> Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. <a href="./ground/EXECUTE.md">EXECUTE.md</a> · <a href="./memory/LAW.md">memory card</a></p>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./swarm.html">swarm</a> · <a href="./health.html">health</a> · <a href="./START.md">START.md</a></p>
-<h1>Live resource ledger</h1>
-<p class="banner">Cache is not capacity. A Slack report is CLAIMED until a row has evidence, a safe probe, and a receipt on current main.</p>
-<p class="note">Slack <code>1787637936.134649</code>. Instrument <code>host/resource_ledger.py</code>. Card <a href="./ground/RESOURCE_LEDGER.md">ground/RESOURCE_LEDGER.md</a>. Catalog <a href="./ground/RESOURCE_LEDGER.json">ground/RESOURCE_LEDGER.json</a>. No auth. No secrets. Vercel deploy refused. titan <code>NOT_WRITTEN</code>.</p>
-<p id="ledger-summary" class="note">Reading the catalog…</p>
-<table class="ledger" id="ledger-table">
-<thead>
-<tr>
-<th>surface</th>
-<th>capacity</th>
-<th>evidence</th>
-<th>auth / probe</th>
-<th>rate / plan</th>
-<th>backlog</th>
-<th>last receipt</th>
-</tr>
-</thead>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./resources.html">resources</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./swarm.html">swarm</a> · <a href="./health.html">health</a></p>
+
+<h1>Master resource ledger</h1>
+<p class="banner">Inventory is not utilization. Capacity, lifecycle, condition, and authority are separate. A reset is not permission. Activity is not value.</p>
+<p>Anything that can become Commons capability or value belongs here—including Bryce, attention, devices, repositories, builds, models, subscriptions, quotas, agents, tools, skills, data, hosting, automations, public roads, and commercial assets.</p>
+<p class="note">Canonical catalog <a href="./ground/RESOURCE_LEDGER.json">ground/RESOURCE_LEDGER.json</a> · operating card <a href="./ground/RESOURCE_LEDGER.md">ground/RESOURCE_LEDGER.md</a> · append-only evidence <a href="./inventory/resources/README.md">inventory/resources</a> · instrument <a href="./host/resource_ledger.py">host/resource_ledger.py</a>. Public pointers and aggregate quotas only. No secrets or private content. No auth gate. titan <code>NOT_WRITTEN</code>.</p>
+
+<div class="metrics" id="ledger-metrics">
+  <div class="metric"><b>47</b>resources in the reconciled census</div>
+  <div class="metric"><b>16</b>producing at the reconciled census</div>
+  <div class="metric"><b>7</b>priority activations</div>
+  <div class="metric"><b>1</b>protected owner queue</div>
+</div>
+
+<h2>Activation queue</h2>
+<div class="queue" id="activation-queue">
+  <article><b>100 · Swarm Gateway</b> prove one named peer end to end.</article>
+  <article><b>95 · Titan Hands</b> execute one benign reversible Windows workflow.</article>
+  <article><b>90 · Stale claims</b> force LANDED, BLOCKED, or RELEASED.</article>
+  <article><b>85 · Compute roads</b> repair GitHub Actions and canary external CI.</article>
+  <article><b>80 · Spark MCP</b> consume the live endpoint; do not redeploy it.</article>
+  <article><b>75 · Revenue</b> monitor without resending; activate acceptance and invoice only on reply.</article>
+  <article><b>70 · Data aliases</b> index duplicate content without deleting history.</article>
+</div>
+
+<h2>All resources</h2>
+<div class="controls">
+  <label>Stage <select id="stage-filter"><option value="">all stages</option></select></label>
+  <label>Condition <select id="condition-filter"><option value="">all conditions</option></select></label>
+  <label>Kind <select id="kind-filter"><option value="">all kinds</option></select></label>
+  <label>Find <input id="text-filter" type="search" placeholder="resource, consumer, value"></label>
+  <button id="clear-filter" type="button">clear</button>
+</div>
+<p id="ledger-summary" class="note">Reading the canonical catalog…</p>
+<div class="table-wrap"><table class="ledger" id="ledger-table">
+<thead><tr>
+  <th>resource / kind</th>
+  <th>capacity</th>
+  <th>stage / condition</th>
+  <th>holder / authority</th>
+  <th>consumer / value</th>
+  <th>next bounded activation</th>
+  <th class="optional">evidence / freshness</th>
+</tr></thead>
 <tbody id="ledger-body">
-<tr>
-<td>github</td>
-<td class="cap-LIVE">LIVE</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>GitHub MCP get_me + official main SHA</td>
-<td>one app installation; local gh may hang</td>
-<td>current-main writes and SHA-pinned readback</td>
-<td>rivet-ship-connector-reval-20260825-01</td>
-</tr>
-<tr>
-<td>slack</td>
-<td class="cap-LIVE">LIVE</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>Slack MCP read #commons thread 1787637936.134649</td>
-<td>one workspace; Slack write is not the file</td>
-<td>swarm/receipt road</td>
-<td>rivet-ship-slack-access-20260825-01</td>
-</tr>
-<tr>
-<td>grok-cursor</td>
-<td class="cap-LIVE">LIVE</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>this Cursor Grok 4.6 session</td>
-<td>distinct from grok.exe</td>
-<td>bounded audits; do not spawn duplicates</td>
-<td>rivet-ship-resource-ledger-20260825-01</td>
-</tr>
-<tr>
-<td>grok-exe</td>
-<td class="cap-UNMEASURED">UNMEASURED</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>which grok / grok.exe — absent here</td>
-<td>owner-PC OAuth claim is not this host</td>
-<td>leave to existing coordinators</td>
-<td>rivet-ship-taking-trace-20260825-01</td>
-</tr>
-<tr>
-<td>claude</td>
-<td class="cap-UNMEASURED">UNMEASURED</td>
-<td>2026-08-25T06:13:00Z</td>
-<td>which claude — absent here; not a tester</td>
-<td>Commons cannot doorbell Claude; prior verdicts UNVERIFIED</td>
-<td>informational only; route verification to local/GHA/Codex; Grok analysis to SuperGrok Heavy/Grok Build; Cursor held</td>
-<td>rivet-ship-claude-tester-20260825-01</td>
-</tr>
-<tr>
-<td>sites</td>
-<td class="cap-UNMEASURED">UNMEASURED</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>no Sites CLI here; swarm.html already on main</td>
-<td>deployment is a production write</td>
-<td>dashboard after scope reconciliation</td>
-<td>f84b46b5c swarm flight recorder</td>
-</tr>
-<tr>
-<td>vercel</td>
-<td class="cap-NOT_VERIFIED">NOT_VERIFIED</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>which vercel — absent; Hobby zero projects</td>
-<td>production deploy refused</td>
-<td>do not invent a project</td>
-<td>rivet-ship-resource-ledger-20260825-01</td>
-</tr>
-<tr>
-<td>huggingface</td>
-<td class="cap-NOT_VERIFIED">NOT_VERIFIED</td>
-<td>2026-08-25T06:10:00Z</td>
-<td>no token file, no huggingface-cli</td>
-<td>Aug 21 cache is not capacity</td>
-<td>do not call cache connected</td>
-<td>rivet-ship-connector-reval-20260825-01</td>
-</tr>
+  <tr class="owner-row"><td><b>bryce-owner-operator</b><br><span class="small">HUMAN</span></td><td class="state cap-LIVE">LIVE</td><td><span class="state stage-PRODUCING">PRODUCING</span><br><span class="state cond-CONSTRAINED">CONSTRAINED</span></td><td>Bryce<br><span class="small">owner-only identity, payment, policy, and physical acts</span></td><td>Commons direction<br><span class="small">intent, judgment, reputation, legal agency, attention</span></td><td>Batch irreducibly owner-only decisions; protect attention.</td><td class="optional">direct owner instruction<br><span class="small">fresh until next instruction</span></td></tr>
+  <tr><td><b>commons-swarm-gateway</b><br><span class="small">AGENT_ROUTER</span></td><td class="state cap-LIVE">LIVE</td><td><span class="state">EXERCISED</span><br><span class="state">LIVE</span></td><td>Commons owner workstation<br><span class="small">loopback + #commons</span></td><td>named peers<br><span class="small">restartable router and durable journal</span></td><td>Prove wake → callback → durable DONE → quiet tick.</td><td class="optional">verified 2026-08-26<br><span class="small">stale after 6h</span></td></tr>
+  <tr><td><b>titan-hands-windows</b><br><span class="small">BUILD</span></td><td class="state cap-LIVE">LIVE</td><td><span class="state">EXERCISED</span><br><span class="state">LIVE</span></td><td>Commons owner workstation<br><span class="small">benign bounded write next</span></td><td>unassigned Windows workflow<br><span class="small">UIA, deltas, screenshots, MCP facade</span></td><td>Run one benign reversible workflow and receipt it.</td><td class="optional">21 tests + read-only UIA<br><span class="small">stale after 1d</span></td></tr>
+  <tr><td><b>cursor-ultra</b><br><span class="small">SUBSCRIPTION</span></td><td class="state cap-CACHE">CACHE</td><td><span class="state">EXERCISED</span><br><span class="state cond-HELD">HELD</span></td><td>Bryce<br><span class="small">explicit fresh release required</span></td><td>none</td><td>Do nothing. A reset is not permission.</td><td class="optional">owner hold<br><span class="small">until explicit release</span></td></tr>
+  <tr><td><b>claude</b><br><span class="small">SUBSCRIPTION</span></td><td class="state cap-UNMEASURED">UNMEASURED</td><td><span class="state">AVAILABLE</span><br><span class="state cond-HELD">HELD</span></td><td>Bryce<br><span class="small">suspended; never tester or verifier</span></td><td>none</td><td>Wait for explicit policy clarification.</td><td class="optional">policy receipts<br><span class="small">until next owner statement</span></td></tr>
 </tbody>
-</table>
-<p class="note">No JS required. If JS is on, the table refreshes from the same-origin catalog. A bake of this page is not current main — pin <a href="./head.html?path=ground/RESOURCE_LEDGER.json">head.html?path=ground/RESOURCE_LEDGER.json</a>.</p>
+</table></div>
+<p class="note">The rows above are a no-JavaScript fallback. With JavaScript, all current rows load from the same-origin catalog. Pin <a href="./head.html?path=ground/RESOURCE_LEDGER.json">current HEAD</a> before relying on a moving-page snapshot.</p>
+
 <script>
 (function(){
+  var allRows = [];
   var body = document.getElementById("ledger-body");
-  var sum = document.getElementById("ledger-summary");
+  var summary = document.getElementById("ledger-summary");
+  var stage = document.getElementById("stage-filter");
+  var condition = document.getElementById("condition-filter");
+  var kind = document.getElementById("kind-filter");
+  var text = document.getElementById("text-filter");
+
   fetch("./ground/RESOURCE_LEDGER.json", {cache:"no-store"}).then(function(r){
     if (!r.ok) throw new Error("HTTP " + r.status);
     return r.json();
   }).then(function(data){
-    var rows = data.surfaces || [];
-    var live = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "LIVE"; }).length;
-    var cache = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "CACHE"; }).length;
-    var unverified = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "NOT_VERIFIED"; }).length;
-    sum.textContent = "LIVE " + live + " · CACHE " + cache + " · NOT_VERIFIED " + unverified + " · cache_as_capacity=" + (!!data.cache_as_capacity) + " · titan " + (data.titan || "NOT_WRITTEN");
-    if (!rows.length) return;
-    body.innerHTML = rows.map(function(row){
-      var cap = String(row.capacity || "UNMEASURED").toUpperCase();
-      return "<tr><td>" + esc(row.name) + "</td><td class=\"cap-" + cap + "\">" + esc(cap) + "</td><td>" + esc(row.evidence_ts) + "</td><td>" + esc(row.auth_surface) + " / " + esc(row.exact_safe_probe) + "</td><td>" + esc(row.rate_plan_boundary) + "</td><td>" + esc(row.assigned_backlog) + "</td><td>" + esc(row.last_receipt) + "</td></tr>";
-    }).join("");
+    allRows = data.surfaces || [];
+    fill(stage, data.stage_order || unique(allRows, "stage"));
+    fill(condition, data.condition_order || unique(allRows, "condition"));
+    fill(kind, unique(allRows, "kind"));
+    renderQueue(data.priority_queue || []);
+    var producing = allRows.filter(function(x){ return x.stage === "PRODUCING"; }).length;
+    var held = allRows.filter(function(x){ return x.condition === "HELD"; }).length;
+    var unmeasured = allRows.filter(function(x){ return x.capacity === "UNMEASURED" || x.capacity === "NOT_VERIFIED"; }).length;
+    document.getElementById("ledger-metrics").innerHTML = metric(allRows.length, "resources") + metric(producing, "producing") + metric(held, "held") + metric(unmeasured, "unmeasured / not verified");
+    render();
   }).catch(function(err){
-    sum.textContent = "Catalog fetch failed (" + err.message + "). The no-JS table above is the fallback. A 404 is not 'not a file' — pin HEAD.";
+    summary.textContent = "Catalog fetch failed (" + err.message + "). The no-JavaScript fallback remains visible; a 404 is not proof of absence.";
   });
-  function esc(s){
-    return String(s || "").replace(/[&<>"]/g, function(ch){
-      return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]);
+
+  [stage, condition, kind].forEach(function(el){ el.addEventListener("change", render); });
+  text.addEventListener("input", render);
+  document.getElementById("clear-filter").addEventListener("click", function(){ stage.value=""; condition.value=""; kind.value=""; text.value=""; render(); });
+
+  function render(){
+    var q = text.value.trim().toLowerCase();
+    var rows = allRows.filter(function(row){
+      return (!stage.value || row.stage === stage.value) && (!condition.value || row.condition === condition.value) && (!kind.value || row.kind === kind.value) && (!q || JSON.stringify(row).toLowerCase().indexOf(q) !== -1);
     });
+    summary.textContent = rows.length + " of " + allRows.length + " resources shown · " + allRows.filter(function(x){return x.capacity === "LIVE";}).length + " safely probed LIVE · cache_as_capacity=false";
+    body.innerHTML = rows.map(function(row){
+      var owner = row.name === "bryce-owner-operator" ? " class=\"owner-row\"" : "";
+      return "<tr" + owner + "><td><b>" + esc(row.name) + "</b><br><span class=\"small\">" + esc(row.kind) + "</span></td>" +
+        "<td class=\"state cap-" + esc(row.capacity) + "\">" + esc(row.capacity) + "</td>" +
+        "<td><span class=\"state stage-" + esc(row.stage) + "\">" + esc(row.stage) + "</span><br><span class=\"state cond-" + esc(row.condition) + "\">" + esc(row.condition) + "</span></td>" +
+        "<td>" + esc(row.holder) + "<br><span class=\"small\">" + esc(row.authority) + "</span></td>" +
+        "<td>" + esc(row.consumer) + "<br><span class=\"small\">" + esc(row.value) + "</span></td>" +
+        "<td>" + esc(row.next_action) + "</td>" +
+        "<td class=\"optional\">" + esc(row.source) + "<br><span class=\"small\">" + esc(row.evidence_ts) + " · stale " + esc(row.stale_after) + " · " + esc(row.last_receipt) + "</span></td></tr>";
+    }).join("");
   }
+  function renderQueue(items){
+    if (!items.length) return;
+    document.getElementById("activation-queue").innerHTML = items.map(function(item){ return "<article><b>" + esc(item.priority) + " · " + esc(item.resource) + "</b>" + esc(item.activation) + "</article>"; }).join("");
+  }
+  function fill(select, values){ values.forEach(function(value){ var opt=document.createElement("option"); opt.value=value; opt.textContent=value; select.appendChild(opt); }); }
+  function unique(rows, field){ return rows.map(function(x){return x[field];}).filter(Boolean).filter(function(x,i,a){return a.indexOf(x)===i;}).sort(); }
+  function metric(number, label){ return "<div class=\"metric\"><b>" + esc(number) + "</b>" + esc(label) + "</div>"; }
+  function esc(value){ return String(value == null ? "" : value).replace(/[&<>\"]/g,function(ch){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[ch];}); }
 })();
 </script>
 </body></html>

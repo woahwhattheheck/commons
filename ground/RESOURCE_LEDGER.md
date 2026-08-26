@@ -1,90 +1,89 @@
-# RESOURCE LEDGER — cache is not capacity
+# MASTER RESOURCE LEDGER — inventory is not utilization
 
-Slack `1787637936.134649` (2026-08-25), DEMON live
-compute/connector board:
+The Commons resource ledger now covers anything that can become capability or
+value: Bryce, devices, repositories, builds, models, subscriptions, quotas,
+agents, tools, skills, data, hosting, public roads, automations, commercial
+assets, and future resources.
 
-> USE THESE, DO NOT COUNT CACHE AS CAPACITY
-> Keep a live resource ledger with evidence timestamp, auth
-> surface, exact safe probe, rate/plan boundary, assigned
-> backlog outcome, and last receipt.
+Catalog: [`ground/RESOURCE_LEDGER.json`](RESOURCE_LEDGER.json). Human door:
+[`ledger.html`](../ledger.html). Append-only census evidence:
+[`inventory/resources/`](../inventory/resources/README.md). Instrument:
+`host/resource_ledger.py`.
 
-A Slack utilization report is **CLAIMED**. This leftover is
-the ledger. It does not write financial, messaging, account,
-or production connectors. It does not deploy Vercel. It does
-not actuate `state.vscdb`. titan: **NOT_WRITTEN**.
+This extends the original DEMON live-compute board from Slack
+`1787637936.134649`; it does not replace that history or repurpose the old Court
+grant file `resources.json`.
 
-Do not remint a DEMON taking with no `p/{id}.md`. Do not remint
-`rivet-ship-connector-reval-20260825-01`. That leftover measured
-MCP provisioned-vs-live. This leftover measures **compute
-capacity** and refuses to call cache "connected."
+## Four independent truths
 
-Companion actual-build utilization report:
-[`ground/OWNER_MACHINE_BUILD_SWEEP.md`](OWNER_MACHINE_BUILD_SWEEP.md).
+Every row separates:
 
-Owner correction: Claude remains available only for implementation or
-informational evidence, never as a tester/verifier. Every Claude zero
-from the 2026-08-25 incident window is **RETRACTED**. Do not repeat a
-derived conclusion or owner characterization from those results.
+1. **Capacity** — did a current safe probe answer? `LIVE`, `CACHE`,
+   `NOT_VERIFIED`, `UNMEASURED`, or `FORBIDDEN`.
+2. **Lifecycle stage** — `DECLARED → AVAILABLE → REACHABLE → ASSIGNED →
+   EXERCISED → PRODUCING`.
+3. **Condition** — live, idle, constrained, degraded, dormant, unmeasured,
+   active-unknown, held, blocked, stale, superseded, archived, or dead.
+4. **Authority** — what the current owner instruction and resource boundary
+   permit. A reset is capacity, not permission.
 
-## Measure
+`LIVE` never means allocatable by itself. `PRESENT` never means a live agent.
+An installed connector is not an exercised connector. A queued action is not a
+device result. A sent message is not revenue.
 
-Instrument: `host/resource_ledger.py`. Stdlib only. Catalog:
-`ground/RESOURCE_LEDGER.json`. Door: [`ledger.html`](../ledger.html).
-Names and states only. No tokens, env, or emails.
+## Required operating fields
+
+Every v2 resource records kind, stage, condition, holder, authority, current
+consumer, expected value, next bounded action, evidence source and timestamp,
+safe probe, rate/plan boundary, assigned backlog, last receipt, last use, and a
+staleness boundary.
+
+Public state includes pointers and aggregate quotas only. It contains no
+credentials, tokens, private file names, personal account identifiers, legal
+identity data, or raw model weights.
+
+## Current high-leverage queue
+
+1. Prove the live Commons Swarm Gateway with one separately running named peer:
+   wake → callback → durable DONE → quiet next tick.
+2. Give Titan Hands one benign reversible Windows workflow consumer. This does
+   not claim Android use.
+3. Force stale agent claims, PR work, infra work, and device reservations to a
+   terminal `LANDED`, `BLOCKED`, or `RELEASED` state.
+4. Repair exact-head GitHub Actions health, then canary Cirrus, GitLab, and
+   Woodpecker before assigning compute.
+5. Consume the already-live Spark MCP on a real backlog; do not redeploy it.
+6. Monitor the eight unique outreach deliveries without resending. A positive
+   reply unlocks acceptance proof and a Bryce-controlled invoice.
+7. Index duplicate repository content as aliases and lineage instead of
+   double-counting paths as new capacity.
+
+## Protected owner queue
+
+Bryce is a producing but constrained resource. Batch only decisions no tool can
+safely substitute: explicit Cursor/Claude policy changes, Titan recovery
+approval, legal identity/conflicts, customer payment ownership, live calls, and
+physical-device acts. Do not spend owner attention on report churn.
+
+Current holds remain conservative:
+
+- Cursor is held until a fresh explicit owner release for a named task.
+- Claude is suspended pending clarification of the later reset bulletin and is
+  never a tester, verifier, reviewer, QA authority, or landing authority.
+- Titan model mutation remains held pending canonical-span resolution and an
+  owner-approved recovery packet.
+- Already-delivered prospects must not be resent.
+
+## Validate
+
+The instrument is stdlib-only and performs no production or account writes:
 
 ```bash
-python3 host/resource_ledger.py
 python3 host/resource_ledger.py --root .
 python3 host/resource_ledger.py --self-test
+python3 -m unittest -v test_resource_ledger.py
 ```
 
-Required fields on every row:
-
-- evidence timestamp
-- auth surface
-- exact safe probe
-- rate/plan boundary
-- assigned backlog
-- last receipt
-
-Capacity states:
-
-- **LIVE** — this session answered a read-only probe
-- **CACHE** — Aug 21 / provisioned list, not live here
-- **NOT_VERIFIED** — claimed or cached, probe failed or absent
-- **UNMEASURED** — no claim and no probe. Absence is not stillness
-- **FORBIDDEN** — financial / messaging / account / production write
-
-Hugging Face with no token file and no CLI is **NOT_VERIFIED**.
-Vercel with zero projects and no CLI is **NOT_VERIFIED**.
-A production deploy is refused.
-
-## This session (2026-08-25 cloud)
-
-Read-only probes that answered:
-
-- GitHub — `get_me` + official main `62c46802e`
-- Slack — read `#commons` thread `1787637936.134649`
-- Grok/Cursor — this historical census harness was Cursor Grok 4.6; current
-  owner routing holds Cursor and sends Grok analysis to SuperGrok Heavy / Grok
-  Build
-
-Not capacity here:
-
-- `grok.exe` — binary absent
-- Claude CLI — binary absent on this cloud-scoped row and not probed on the
-  owner machine by this row; Commons still cannot doorbell Claude. Assigned
-  backlog is untrusted candidate implementation only. Tester / verifier /
-  review authority is false.
-- Sites — no Sites CLI; swarm flight recorder already on main
-- Vercel — CLI absent; Hobby zero-projects claim; deploy refused
-- Hugging Face — no token file, no CLI
-
-`~/.cursor/mcp.json` absent. Forbidden writes skipped.
-
-Live-compute-board / cache-as-capacity / resource-ledger /
-five-high-value-surfaces / huggingface-not-verified talk
-without this leftover is **CLAIMED**. Missing instrument is
-**NOT_LANDED**.
-
-Possessing the link is authorization. No auth. No gate.
+The output includes counts by lifecycle and kind plus a priority-sorted
+activation queue. Cache is not capacity. No auth gate is added. Possessing the
+link remains authorization. `titan: NOT_WRITTEN`.

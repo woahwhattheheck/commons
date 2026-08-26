@@ -12,6 +12,9 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from resource_ledger import (
     REQUIRED_FIELDS,
+    RESOURCE_CONDITIONS,
+    RESOURCE_STAGES,
+    V2_REQUIRED_FIELDS,
     catalog_from_row,
     classify,
     classify_surface,
@@ -153,6 +156,56 @@ class TestResourceLedger(unittest.TestCase):
         self.assertFalse(receipt["secrets"])
         self.assertFalse(receipt["cache_as_capacity"])
         self.assertEqual(receipt["titan"], "NOT_WRITTEN")
+
+    def test_v2_catalog_covers_the_whole_resource_lifecycle(self):
+        catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
+        with open(catalog_path, encoding="utf-8") as handle:
+            catalog = load_catalog(handle.read())
+        self.assertEqual(catalog["schema"], "commons-resource-ledger/v2")
+        self.assertEqual(tuple(catalog["stage_order"]), RESOURCE_STAGES)
+        self.assertGreaterEqual(len(catalog["surfaces"]), 40)
+        self.assertGreaterEqual(len({row["kind"] for row in catalog["surfaces"]}), 12)
+        for row in catalog["surfaces"]:
+            for field in V2_REQUIRED_FIELDS:
+                self.assertTrue(row[field], "%s.%s" % (row["name"], field))
+            self.assertIn(row["stage"], RESOURCE_STAGES)
+            self.assertIn(row["condition"], RESOURCE_CONDITIONS)
+
+        measured = measure_from_rows(catalog)
+        self.assertEqual(classify(measured)["state"], "INTEGRATED")
+        self.assertGreaterEqual(measured["producing_count"], 10)
+        self.assertEqual(measured["activation_queue"][0]["name"], "commons-swarm-gateway")
+
+    def test_owner_and_holds_are_resources_not_capacity_inferences(self):
+        with open(os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json"), encoding="utf-8") as handle:
+            rows = {row["name"]: row for row in load_catalog(handle.read())["surfaces"]}
+        self.assertEqual(rows["bryce-owner-operator"]["kind"], "HUMAN")
+        self.assertEqual(rows["bryce-owner-operator"]["stage"], "PRODUCING")
+        self.assertEqual(rows["cursor-ultra"]["capacity"], "CACHE")
+        self.assertEqual(rows["cursor-ultra"]["condition"], "HELD")
+        self.assertEqual(rows["claude"]["condition"], "HELD")
+        self.assertIn("not tester/verifier", rows["claude"]["assigned_backlog"].lower())
+        self.assertEqual(rows["titan-hands-windows"]["stage"], "EXERCISED")
+
+    def test_append_only_census_and_human_doors_exist(self):
+        record_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-master-resource-census-20260826-01.json",
+        )
+        with open(record_path, encoding="utf-8") as handle:
+            record_text = handle.read()
+        self.assertFalse(json_has_secret_key(record_text))
+        self.assertIn('"event_type": "MASTER_CENSUS"', record_text)
+        with open(os.path.join(ROOT, "resources.html"), encoding="utf-8") as handle:
+            resources_html = handle.read()
+        with open(os.path.join(ROOT, "ledger.html"), encoding="utf-8") as handle:
+            ledger_html = handle.read()
+        self.assertIn('href="./ledger.html"', resources_html)
+        self.assertIn("bryce-owner-operator", ledger_html)
+        self.assertIn("stage-filter", ledger_html)
 
     def test_local_probes_see_absent_hf(self):
         probes = local_probes(
