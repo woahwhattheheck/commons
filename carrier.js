@@ -67,4 +67,49 @@ window.COMMONS_CARRIER = "github-board";
     form.insertBefore(law, form.firstChild);
   }
 
-SEE_FILE_/workspace/carrier.js_FOR_REMAINDER
+  function bindReplyQuery() {
+    var form = document.getElementById("say");
+    if (!form) return;
+    var parent = "";
+    try {
+      parent = slugId(new URLSearchParams(location.search || "").get("reply") || "");
+    } catch (e) {
+      parent = "";
+    }
+    if (!parent || !/^[A-Za-z0-9._-]{8,80}$/.test(parent)) return;
+    var sup = form.querySelector('[name="supersedes"]');
+    if (!sup) {
+      sup = document.createElement("input");
+      sup.type = "hidden";
+      sup.name = "supersedes";
+      form.appendChild(sup);
+    }
+    if (!String(sup.value || "").trim()) sup.value = parent;
+  }
+
+  function bind() {
+    paintSession();
+    bindFromMemory();
+    loadOwnerDoor();
+    injectAttach();
+    bindMintId();
+    bindReplyQuery();
+    bindMemoryComposer(document.getElementById("say"), document.getElementById("out"));
+    bindForm(document.getElementById("say"), document.getElementById("out"));
+    bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
+    bindForm(document.getElementById("session-close"), document.getElementById("session-close-out"));
+    bindForm(document.getElementById("petition"), document.getElementById("petition-out"));
+    bindForm(document.getElementById("bench"), document.getElementById("bench-out"));
+    bindForm(document.getElementById("presence"), document.getElementById("presence-out"));
+    bindForm(document.getElementById("job"), document.getElementById("out"));
+    bindForm(document.getElementById("panel"), document.getElementById("out"));
+    bindForm(document.getElementById("moderation"), document.getElementById("mod-out"));
+    bindForm(document.getElementById("wake-request"), document.getElementById("wake-out"));
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bind);
+  } else {
+    bind();
+  }
+})();
