@@ -71,4 +71,3 @@ collision work, CML PR 2108, titan `--go`, or working-builds
 Desktop uploads.
 
 Possessing the link is authorization. No auth. No gate.
-
