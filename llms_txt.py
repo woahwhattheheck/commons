@@ -350,6 +350,16 @@ def main(publish_mesh=True):
         "",
         "Baked %s from %s. If a row is missing here and the file exists on HEAD, the file is the post." % (ts, src),
         "",
+        "## Commercial",
+        "",
+        "- [$2,500 same-day crash-resume proof](%s/agent-rescue.html): refund if the agreed same-day proof window is missed." % BASE,
+        "- [$15,000 five-day recovery sprint](%s/agent-rescue.html): bounded recovery implementation with a durable receipt." % BASE,
+        "- [$12,000 GGUF diagnostic](%s/diagnostic.html): diagnosis before a larger engagement." % BASE,
+        "- [$30,000 White Box pilot](%s/commercial.html): 30 calendar days for one customer-owned GGUF model family; $15,000 at NDA/SOW and $15,000 on delivery." % BASE,
+        "- [$45,000 Muhlnickel / Titan keep-or-build](%s/land/sku-muhlnickel-titan-20260826.html): live checkout and current status are in the SKU." % BASE,
+        "- [Live micro-SKU catalog](%s/land/stripe-payment-links-20260826.html): tip, seat, unlock, monthly tip, boost, and White Box hour." % BASE,
+        "- Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.",
+        "",
         "## Fresh",
     ]
     fresh = [
