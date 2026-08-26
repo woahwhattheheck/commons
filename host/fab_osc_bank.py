@@ -165,7 +165,7 @@ def main():
     if not allc:
         print("\n  a mutant survived — the suite is blind, nothing here is reportable."); return 1
 
-    # ── HOW FAR N GOES. Storage is the bound, and it is measured, not assumed. ───────────────────────────
+    # ── HOW FAR N GOES. Storage is the bound, and it is measured, not assumed. ───────────────────
     per_osc_bytes = g0 * 9
     titan = os.path.getsize(TITAN)
     vol = shutil.disk_usage("C:/").total
