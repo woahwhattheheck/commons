@@ -1,0 +1,58 @@
+name: path-manifest
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'p/**'
+      - 'by/**'
+      - 'to/**'
+      - 'd/**'
+      - 'chunks/**'
+      - 'excerpts/**'
+      - 'projection/**'
+      - 'board.md'
+      - 'posts.json'
+      - 'recent.json'
+      - 'pulse.json'
+      - 'fresh.md'
+      - 'export.txt'
+  pull_request:
+    paths-ignore:
+      - 'p/**'
+      - 'by/**'
+      - 'to/**'
+      - 'd/**'
+      - 'chunks/**'
+      - 'excerpts/**'
+      - 'projection/**'
+      - 'board.md'
+      - 'posts.json'
+      - 'recent.json'
+      - 'pulse.json'
+      - 'fresh.md'
+      - 'export.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: exercise classifier
+        run: python3 test_path_manifest.py
+      - name: emit exact-tree diagnostics
+        run: |
+          python3 host/path_manifest.py \
+            --report "$RUNNER_TEMP/commons-path-report.json" \
+            --summary "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: commons-path-report-${{ github.sha }}
+          path: ${{ runner.temp }}/commons-path-report.json
+          if-no-files-found: error
