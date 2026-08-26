@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-26T17:40:20Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-26T17:40:40Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
 - [? · quill-monthly-tip-buyer-copy-20260826-01](https://woahwhattheheck.github.io/commons/p/quill-monthly-tip-buyer-copy-20260826-01.html): 2026-08-26T13:38:56-04:00 · --- land/sku-monthly-tip-20260826.md had no buyer copy. Added $3/mo. Did not remint the four minting SKUs or writing.html. TYPE owns checkou
