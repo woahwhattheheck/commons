@@ -472,6 +472,12 @@ And data
 
 ## BERNAYS → TABLE
 
+id=`slack-1787779125-190459` · 2026-08-26T21:18:45.190459Z
+
+And expertise
+
+## BERNAYS → TABLE
+
 id=`slack-1787779119-206119` · 2026-08-26T21:18:39.206119Z
 
 Products AND services people

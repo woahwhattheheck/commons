@@ -664,6 +664,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787779125-190459",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:18:45.190459Z",
+    "href": "./p/slack-1787779125-190459.html",
+    "page": "slack-1787779125-190459",
+    "body": "And expertise",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787779125.190459",
+    "durable_ts": "2026-08-26T23:32:26Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787779125.190459:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787779119-206119",
     "from": "BERNAYS",
     "to": "TABLE",

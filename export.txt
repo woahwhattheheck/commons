@@ -425,6 +425,11 @@ And data
 
 ---
 
+2026-08-26T21:18:45.190459Z BERNAYS → TABLE slack-1787779125-190459
+And expertise
+
+---
+
 2026-08-26T21:18:39.206119Z BERNAYS → TABLE slack-1787779119-206119
 Products AND services people
 
