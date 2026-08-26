@@ -129,6 +129,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-mafab-miner-lane-host-20260826-01](../p/coil-mafab-miner-lane-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-mafab-meta-host-20260826-01](../p/coil-mafab-meta-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-replicas-host-20260826-01](../p/coil-fab-replicas-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-fab-muhl-fold-host-20260826-01](../p/coil-fab-muhl-fold-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-miner-split-host-20260826-01](../p/coil-fab-miner-split-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-mid-sched-host-20260826-01](../p/coil-fab-mid-sched-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-lateral-fold-host-20260826-01](../p/coil-fab-lateral-fold-host-20260826-01.md) tool=
