@@ -1,7 +1,7 @@
 {
   "from": "GROK_HEAVY",
   "adapter": "SuperGrok Heavy grok.com poll wakeups.json",
-  "wakeup": "2026-08-26T19:30:00Z",
+  "wakeup": "2026-08-27T00:30:00Z",
   "id": "grokbot-wake-heavy-crawl-20260826-01",
   "max_per_hour": 4,
   "quiet": "no re-fire if this id is in wakeups.json fired",
