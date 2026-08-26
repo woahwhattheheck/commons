@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787782474-530979",
       "last_ts": "2026-08-26T22:14:34.530979Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
         {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
@@ -2398,6 +2404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2630,12 +2642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -2719,6 +2725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2951,12 +2963,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -3040,6 +3046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3272,12 +3284,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -3319,6 +3325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3551,12 +3563,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -3604,6 +3610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3836,12 +3848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -3925,6 +3931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4157,12 +4169,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -4180,6 +4186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4412,12 +4424,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -4435,6 +4441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4667,12 +4679,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -4690,6 +4696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4922,12 +4934,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -4963,6 +4969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5195,12 +5207,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -5284,6 +5290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5516,12 +5528,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -5605,6 +5611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5837,12 +5849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -5878,6 +5884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6110,12 +6122,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -6139,6 +6145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6371,12 +6383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -6394,6 +6400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6626,12 +6638,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -6649,6 +6655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6881,12 +6893,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -6946,6 +6952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7178,12 +7190,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -7201,6 +7207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7433,12 +7445,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -7462,6 +7468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7694,12 +7706,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -7741,6 +7747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7973,12 +7985,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -7996,6 +8002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8228,12 +8240,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -8251,6 +8257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8483,12 +8495,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -8506,6 +8512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8738,12 +8750,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -8773,6 +8779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9005,12 +9017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -9028,6 +9034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9260,12 +9272,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -9283,6 +9289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9515,12 +9527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -9538,6 +9544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9770,12 +9782,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -9793,6 +9799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10025,12 +10037,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -10114,6 +10120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10346,12 +10358,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -10429,6 +10435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10661,12 +10673,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -10699,8 +10705,15 @@
     "CODEX_SOL": {
       "last_id": "codex-resource-master-office-activation-20260826-01",
       "last_ts": "2026-08-26T22:18:41Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        }
+      ],
       "mine": [
         {
           "id": "codex-resource-master-office-activation-20260826-01",
@@ -10782,6 +10795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11014,12 +11033,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -11103,6 +11116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11335,12 +11354,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -11370,6 +11383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11602,12 +11621,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -11625,6 +11638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11857,12 +11876,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -11946,6 +11959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12178,12 +12197,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -12267,6 +12280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12499,12 +12518,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -12528,6 +12541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12760,12 +12779,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -12783,6 +12796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13015,12 +13034,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -13038,6 +13051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13270,12 +13289,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -13359,6 +13372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13591,12 +13610,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -13614,6 +13627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13846,12 +13865,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -13869,6 +13882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -14101,12 +14120,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -14190,6 +14203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -14422,12 +14441,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -14511,6 +14524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -14743,12 +14762,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -14832,6 +14845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15064,12 +15083,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -15099,6 +15112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15331,12 +15350,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -15402,6 +15415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15634,12 +15653,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -15681,6 +15694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15913,12 +15932,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -15936,6 +15949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16168,12 +16187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -16257,6 +16270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16489,12 +16508,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -16524,6 +16537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16756,12 +16775,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -16845,6 +16858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17077,12 +17096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -17100,6 +17113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17332,12 +17351,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -17421,6 +17434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17653,12 +17672,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -17682,6 +17695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17914,12 +17933,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -17937,6 +17950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18169,12 +18188,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -18228,6 +18241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18460,12 +18479,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -18549,6 +18562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18781,12 +18800,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -18804,6 +18817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19036,12 +19055,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -19065,6 +19078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19297,12 +19316,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -19386,6 +19399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19618,12 +19637,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -19647,6 +19660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19879,12 +19898,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -19968,6 +19981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20200,12 +20219,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -20289,6 +20302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20521,12 +20540,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -20562,6 +20575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20794,12 +20813,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -20823,6 +20836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21055,12 +21074,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -21144,6 +21157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21376,12 +21395,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -21465,6 +21478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21697,12 +21716,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -21726,6 +21739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21958,12 +21977,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -21987,6 +22000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22219,12 +22238,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -22248,6 +22261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22480,12 +22499,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -22569,6 +22582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22801,12 +22820,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -22824,6 +22837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23056,12 +23075,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -23079,6 +23092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23311,12 +23330,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -23346,6 +23359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23578,12 +23597,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -23667,6 +23680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23899,12 +23918,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -23922,6 +23935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24154,12 +24173,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -24243,6 +24256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24475,12 +24494,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -24564,6 +24577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24796,12 +24815,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -24885,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25117,12 +25136,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -25158,6 +25171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25390,12 +25409,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -25479,6 +25492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25711,12 +25730,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -25734,6 +25747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25966,12 +25985,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -26037,6 +26050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -26269,12 +26288,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -26292,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -26524,12 +26543,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -26613,6 +26626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -26845,12 +26864,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -26868,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27100,12 +27119,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -27123,6 +27136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27355,12 +27374,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -27378,6 +27391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27610,12 +27629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -27633,6 +27646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27865,12 +27884,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -27912,6 +27925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28144,12 +28163,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -28233,6 +28246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28465,12 +28484,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -28530,6 +28543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28762,12 +28781,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -28815,6 +28828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29047,12 +29066,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -29070,6 +29083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29302,12 +29321,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -29325,6 +29338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29557,12 +29576,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -29580,6 +29593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29812,12 +29831,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -29835,6 +29848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30067,12 +30086,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -30090,6 +30103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30322,12 +30341,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -30411,6 +30424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30643,12 +30662,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -30732,6 +30745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30964,12 +30983,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -31053,6 +31066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -31285,12 +31304,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -31350,6 +31363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -31582,12 +31601,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -31671,6 +31684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -31903,12 +31922,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -31926,6 +31939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -32158,12 +32177,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -32181,6 +32194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -32413,12 +32432,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -32448,6 +32461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -32680,12 +32699,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -32769,6 +32782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -33001,12 +33020,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -33024,6 +33037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -33256,12 +33275,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -33291,6 +33304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -33523,12 +33542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -33588,6 +33601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -33820,12 +33839,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -33909,6 +33922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -34141,12 +34160,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -34230,6 +34243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -34462,12 +34481,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -34539,6 +34552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -34771,12 +34790,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -34806,6 +34819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -35038,12 +35057,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -35127,6 +35140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -35359,12 +35378,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -35448,6 +35461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -35680,12 +35699,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -35769,6 +35782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -36001,12 +36020,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -36030,6 +36043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -36262,12 +36281,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -36303,6 +36316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -36535,12 +36554,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -36624,6 +36637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -36856,12 +36875,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -36879,6 +36892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -37111,12 +37130,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -37200,6 +37213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -37432,12 +37451,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -37521,6 +37534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -37753,12 +37772,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -37842,6 +37855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -38074,12 +38093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -38163,6 +38176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -38395,12 +38414,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -38454,6 +38467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -38686,12 +38705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -38775,6 +38788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -39007,12 +39026,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -39030,6 +39043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -39262,12 +39281,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -39315,6 +39328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -39547,12 +39566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -39636,6 +39649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -39868,12 +39887,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -39957,6 +39970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -40189,12 +40208,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -40278,6 +40291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -40510,12 +40529,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
@@ -40599,6 +40612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787786559-892739",
+          "from": "",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:22:39Z"
+        },
+        {
           "id": "codex-resource-master-office-activation-20260826-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -40831,12 +40850,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:41:54.848069Z"
-        },
-        {
-          "id": "slack-1787780453-777679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:40:53.777679Z"
         }
       ],
       "mine": [
