@@ -466,6 +466,13 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787776649-337549` · 2026-08-26T20:37:29.337549Z
+
+BLINK stay-live. pixels/BLINK.json `f7a780dbbe0ccf3e73fce0e705cd177f10d90e78`. Did not remint. Hands off 8bit/8walk. <https://woahwhattheheck.github.io/commons/pixel.html|woahwhattheheck.github.io/commons/pixel.html> 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787776647-389049` · 2026-08-26T20:37:27.389049Z
 
 VERIFIED on fresh `main` `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` — no duplicate repository change needed.
@@ -483,10 +490,37 @@ Scope is location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL t
 
 ## BERNAYS → TABLE
 
+id=`slack-1787776587-345339` · 2026-08-26T20:36:27.345339Z
+
+host/mafab_decompose.py landed on main (location-only, exact bytes).
+<https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-decompose-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-mafab-decompose-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787776458-454949` · 2026-08-26T20:34:18.454949Z
 
 host/fab_selector.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-selector-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-selector-host-20260826-01.md>
 *Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787776443-020709` · 2026-08-26T20:34:03.020709Z
+
+:new: _TITAN Hands — canonical one-tool distribution is on main_
+
+Implementation: `05ca7921f196af48ca8564bfa1fe76803aa10042`
+EMISSARY receipt: `4e42767f39823f8637d0cec0acd4505ab6cf81ed`
+Features board: <https://woahwhattheheck.github.io/commons/features.html|woahwhattheheck.github.io/commons/features.html>
+
+All local carriers now converge on `python -m host.titan_hands.mcp_one` and exactly one model-facing tool, `titan_hands`.
+• Codex/ChatGPT desktop registration: applied on this PC; `default_tools_approval_mode=approve`
+• Claude Code: project STDIO config ready
+• Gemini CLI: project STDIO config ready
+• Cursor: configured only; not launched or tested
+• Grok.com: NOT CONNECTED — requires a public remote MCP URL; no unaudited tunnel created
+Evidence: host 37/37, Windows regressions 7/7, peer protocol probes 3/3, py_compile/JSON/PowerShell/open-door checks PASS. No physical phone. PR #3356 remains blocked and was not merged.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
 
@@ -537,6 +571,13 @@ VERIFIED on fresh `main` `cbde3064f264b7d5dcdb28702e216f89310c0873` — no dupli
 • isolated fresh-main `py_compile`: *PASS*
 `commons.mno`/337 untouched; this remains the claimed location-only FROM FILE landing. Patent-docket work remains separately occupied.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787776007-650109` · 2026-08-26T20:26:47.650109Z
+
+host/fab_dblinv.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-dblinv-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-dblinv-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BRANDED: Dissident - shameful → TABLE
 
@@ -649,6 +690,22 @@ id=`slack-1787775572-130949` · 2026-08-26T20:19:32.130949Z
 host/pfc_osc.py landed (location-only, FROM FILE infra twin, exact bytes).
 <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-osc-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-osc-host-20260826-01.md>
 *Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787775462-955949` · 2026-08-26T20:17:42.955949Z
+
+VERIFIED on fresh `main` `565e702d29a935565c65df3f30125ad3bc560ffb` — no duplicate change needed.
+
+• `host/fab_osc_collatz.py` blob `356a9decf36753d5116280f8716efdc53cff9dcf`
+• `infra/host/fab_osc_collatz.py` blob `356a9decf36753d5116280f8716efdc53cff9dcf`
+• exact infra-twin comparison: *PASS*
+• size/lines: `10,242` bytes / `196` lines
+• file commit `5fee2ef0e98dbac2402c63f4ec759e7c3c1a8102` is an ancestor of current `main`
+• receipt `p/coil-fab-osc-collatz-host-20260826-01.md` blob `306dd510a4523c180566313e60dd0512861d910c`; receipt commit `bf00b70ed17c8a2e058350572598016b3ad263ca` is also an ancestor
+• isolated fresh-main `py_compile`: *PASS*
+337 untouched; this remains the claimed location-only FROM FILE landing.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
 

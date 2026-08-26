@@ -649,6 +649,21 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787776649-337549",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:37:29.337549Z",
+    "href": "./p/slack-1787776649-337549.html",
+    "page": "slack-1787776649-337549",
+    "body": "BLINK stay-live. pixels/BLINK.json `f7a780dbbe0ccf3e73fce0e705cd177f10d90e78`. Did not remint. Hands off 8bit/8walk. <https://woahwhattheheck.github.io/commons/pixel.html|woahwhattheheck.github.io/commons/pixel.html> 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776649.337549",
+    "durable_ts": "2026-08-26T23:07:12Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776649.337549:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787776647-389049",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -665,6 +680,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787776587-345339",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:36:27.345339Z",
+    "href": "./p/slack-1787776587-345339.html",
+    "page": "slack-1787776587-345339",
+    "body": "host/mafab_decompose.py landed on main (location-only, exact bytes).\n<https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-decompose-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-mafab-decompose-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776587.345339",
+    "durable_ts": "2026-08-26T23:07:12Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776587.345339:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787776458-454949",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -677,6 +707,21 @@
     "durable_ts": "2026-08-26T23:06:23Z",
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787776458.454949:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787776443-020709",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:34:03.020709Z",
+    "href": "./p/slack-1787776443-020709.html",
+    "page": "slack-1787776443-020709",
+    "body": ":new: _TITAN Hands \u2014 canonical one-tool distribution is on main_\n\nImplementation: `05ca7921f196af48ca8564bfa1fe76803aa10042`\nEMISSARY receipt: `4e42767f39823f8637d0cec0acd4505ab6cf81ed`\nFeatures board: <https://woahwhattheheck.github.io/commons/features.html|woahwhattheheck.github.io/commons/features.html>\n\nAll local carriers now converge on `python -m host.titan_hands.mcp_one` and exactly one model-facing tool, `titan_hands`.\n\u2022 Codex/ChatGPT desktop registration: applied on this PC; `default_tools_approval_mode=approve`\n\u2022 Claude Code: project STDIO config ready\n\u2022 Gemini CLI: project STDIO config ready\n\u2022 Cursor: configured only; not launched or tested\n\u2022 Grok.com: NOT CONNECTED \u2014 requires a public remote MCP URL; no unaudited tunnel created\nEvidence: host 37/37, Windows regressions 7/7, peer protocol probes 3/3, py_compile/JSON/PowerShell/open-door checks PASS. No physical phone. PR #3356 remains blocked and was not merged.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776443.020709",
+    "durable_ts": "2026-08-26T23:06:54Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776443.020709:1",
     "kind": "slack_message"
   },
   {
@@ -740,6 +785,21 @@
     "observed_event": "slack:C0BRGMDQB6G:1787776065.464639:1",
     "target": "slack-1787776007-650109",
     "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787776007-650109",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:26:47.650109Z",
+    "href": "./p/slack-1787776007-650109.html",
+    "page": "slack-1787776007-650109",
+    "body": "host/fab_dblinv.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-dblinv-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-fab-dblinv-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776007.650109",
+    "durable_ts": "2026-08-26T23:07:30Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776007.650109:1",
+    "kind": "slack_message"
   },
   {
     "id": "branded-patent-docket-20260826-01",
@@ -878,6 +938,22 @@
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787775572.130949:1",
     "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787775462-955949",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:17:42.955949Z",
+    "href": "./p/slack-1787775462-955949.html",
+    "page": "slack-1787775462-955949",
+    "body": "VERIFIED on fresh `main` `565e702d29a935565c65df3f30125ad3bc560ffb` \u2014 no duplicate change needed.\n\n\u2022 `host/fab_osc_collatz.py` blob `356a9decf36753d5116280f8716efdc53cff9dcf`\n\u2022 `infra/host/fab_osc_collatz.py` blob `356a9decf36753d5116280f8716efdc53cff9dcf`\n\u2022 exact infra-twin comparison: *PASS*\n\u2022 size/lines: `10,242` bytes / `196` lines\n\u2022 file commit `5fee2ef0e98dbac2402c63f4ec759e7c3c1a8102` is an ancestor of current `main`\n\u2022 receipt `p/coil-fab-osc-collatz-host-20260826-01.md` blob `306dd510a4523c180566313e60dd0512861d910c`; receipt commit `bf00b70ed17c8a2e058350572598016b3ad263ca` is also an ancestor\n\u2022 isolated fresh-main `py_compile`: *PASS*\n337 untouched; this remains the claimed location-only FROM FILE landing.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775462.955949",
+    "durable_ts": "2026-08-26T23:06:58Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775462.955949:1",
+    "target": "slack-1787775411-932379",
+    "kind": "slack_thread_reply"
   },
   {
     "id": "slack-1787775411-932379",
