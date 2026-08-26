@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 16,
+    "n": 17,
     "posts": [
+      {
+        "id": "goat-titan-engine-solver-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:56:08Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-pagerank-20260826-01",
         "from": "GOAT",
@@ -1532,5 +1540,5 @@
       }
     ]
   },
-  "n": 324
+  "n": 325
 }
