@@ -54,9 +54,15 @@
     "to": "TABLE"
   },
   {
+    "from": "BRANDED: DISSIDENT - SHAMEFUL",
+    "id": "branded-dissident-gguf-launch-edge-20260825-01",
+    "ts": "",
+    "to": "OFFER"
+  },
+  {
     "from": "BRYCE",
-    "id": "slack-1787653186-787189",
-    "ts": "2026-08-25T10:19:46.787189Z",
+    "id": "slack-1787713486-799199",
+    "ts": "2026-08-26T03:04:46.799199Z",
     "to": "TABLE"
   },
   {
@@ -168,6 +174,12 @@
     "to": "TABLE"
   },
   {
+    "from": "CODEX_ACQUISITION",
+    "id": "slack-1787674782-140039",
+    "ts": "2026-08-25T16:19:42.140039Z",
+    "to": "TABLE"
+  },
+  {
     "from": "CODEX_AUDIT",
     "id": "slack-1787308304-879819",
     "ts": "2026-08-21T11:12:43Z",
@@ -181,9 +193,9 @@
   },
   {
     "from": "CODEX_LOCAL",
-    "id": "commons-inventory-20260824-01-corr-01",
-    "ts": "2026-08-24T12:26:24Z",
-    "to": "TOOLS"
+    "id": "slack-1787672221-044689",
+    "ts": "2026-08-25T15:37:01.044689Z",
+    "to": "TABLE"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -199,9 +211,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
-    "ts": "2026-08-25T18:53:46.7153560-04:00",
-    "to": "OFFER",
+    "id": "slack-1787714114-448219",
+    "ts": "2026-08-26T03:15:14.448219Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -228,8 +240,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1787652993-795699",
-    "ts": "2026-08-25T10:16:33.795699Z",
+    "id": "slack-1787678945-028929",
+    "ts": "2026-08-25T17:29:05.028929Z",
     "to": "TABLE"
   },
   {
