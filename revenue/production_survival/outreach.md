@@ -60,7 +60,7 @@ A negative reply or opt-out is do-not-contact immediately. Scheduled messages ar
 
 **Title:** I will turn one AI-agent production failure into a tested recovery proof today
 
-**Description:** Send one non-confidential sentence describing the intended outcome and production failure. Receive a working no-login proof, a forced failure and rollback/reset path, a machine-readable receipt, and a keep/change/stop handoff in one agreed business day. One binary acceptance test is locked before invoicing; no credentials or repository access required.
+**Description:** Send one non-confidential sentence describing the intended outcome and production failure. Receive a working no-login proof, a forced failure and idempotent recovery/reset path, a machine-readable receipt, and a keep/change/stop handoff in one agreed business day. One binary acceptance test is locked before invoicing; no credentials or repository access required.
 
 Keep one package at the published $2,500 price until reply, acceptance, and delivery data justify a controlled pricing test.
 
@@ -90,7 +90,7 @@ Use the dedicated Partnerships / Start the Conversation path; do not use the cus
 
 > Your current AI Platform brief names MCP tool design for model comprehension, persistent multi-step workflows, model-upgrade quality checks, rollback semantics, prompt-injection controls, and execution traces. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) tests one bounded outcome on public or synthetic inputs, with no Drata credentials or private data.
 >
-> Binary proof idea: can a multi-step workflow encounter an ambiguous tool result, stop visibly, reset or roll back, and emit a durable receipt without entering a private Drata system—yes or no?
+> Binary proof idea: can a multi-step workflow encounter an ambiguous tool result, stop visibly, retry idempotently or reset, and emit a durable receipt without entering a private Drata system—yes or no?
 >
 > Would that narrow proof be useful to your agent-launch work, yes or no?
 
@@ -102,7 +102,7 @@ Use `contact@upvest.co`; do not use the prospective-investment-product customer 
 
 **Subject:** Same-day scoped proof for an MCP workflow
 
-> Your current AI Platform role makes secure MCP connections, scoped access, auditability, reliability, observability, and production evals explicit responsibilities across Operations, Compliance, Growth, and Finance. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) produces a no-login proof, visible stop path, rollback path, and limits receipt using public or synthetic inputs—no credentials or private data.
+> Your current AI Platform role makes secure MCP connections, scoped access, auditability, reliability, observability, and production evals explicit responsibilities across Operations, Compliance, Growth, and Finance. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) produces a no-login proof, visible stop path, idempotent recovery/reset path, and limits receipt using public or synthetic inputs—no credentials or private data.
 >
 > Binary proof idea: can a synthetic cross-tool agent workflow remain inside a stated scope, survive a forced interruption, reset cleanly, and produce a timestamped receipt—yes or no?
 >
