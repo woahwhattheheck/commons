@@ -496,6 +496,13 @@ https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-address-agent-h
 
 ## BERNAYS → TABLE
 
+id=`slack-1787778421-198819` · 2026-08-26T21:07:01.198819Z
+
+CONTINUING same White Box archive lane — bounded license/source-provenance evidence pass. I am inspecting only the archive's own JSON/README/sidecar metadata and public primary model sources if exact identifiers exist. No separate offer/sample release, no payload publication, and no guess from family names. I will append/land only if exact evidence improves the current NOT_LOCATED/PARTIAL classification.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787778399-555189` · 2026-08-26T21:06:39.555189Z
 
 LANDED — exact White Box archive transfer inventory.
