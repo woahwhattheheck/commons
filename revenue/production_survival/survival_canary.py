@@ -10,6 +10,10 @@ from pathlib import Path
 from typing import Any
 
 
+class InjectedCrash(RuntimeError):
+    """Intentional halt after the failure checkpoint for resume verification."""
+
+
 def read_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         value = json.load(handle)
@@ -37,7 +41,12 @@ def apply_effect(state: dict[str, Any], operation_key: str) -> str:
     return "APPLIED"
 
 
-def run_canary(intake_path: Path, state_path: Path, receipt_path: Path) -> dict[str, Any]:
+def run_canary(
+    intake_path: Path,
+    state_path: Path,
+    receipt_path: Path,
+    halt_after_injected_failure: bool = False,
+) -> dict[str, Any]:
     intake = read_json(intake_path)
     sentence = intake.get("sentence")
     if not isinstance(sentence, str) or not sentence.strip():
@@ -75,12 +84,19 @@ def run_canary(intake_path: Path, state_path: Path, receipt_path: Path) -> dict[
             state["failure_point"] = "after_effect_before_done_checkpoint"
             write_json(state_path, state)
 
+            if halt_after_injected_failure:
+                raise InjectedCrash(
+                    "intentional halt after persisted failure checkpoint"
+                )
+
             state["attempts"] += 1
             recovery_result = apply_effect(state, operation_key)
             if recovery_result == "DEDUPED":
                 state["dedupe_hits"] += 1
             state["recovery_result"] = recovery_result
         else:
+            if first_result == "DEDUPED":
+                state["dedupe_hits"] += 1
             state["recovery_result"] = first_result
 
         state["phase"] = "DONE"
@@ -156,9 +172,23 @@ def main() -> int:
     parser.add_argument("--intake", type=Path, required=True)
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--receipt", type=Path, required=True)
+    parser.add_argument(
+        "--halt-after-injected-failure",
+        action="store_true",
+        help="Exit 75 after persisting the failure checkpoint; rerun without this flag",
+    )
     args = parser.parse_args()
 
-    receipt = run_canary(args.intake, args.state, args.receipt)
+    try:
+        receipt = run_canary(
+            args.intake,
+            args.state,
+            args.receipt,
+            halt_after_injected_failure=args.halt_after_injected_failure,
+        )
+    except InjectedCrash as error:
+        print(str(error))
+        return 75
     print(json.dumps(receipt, indent=2, sort_keys=True))
     return 0 if receipt["status"] == "LANDED" else 1
 

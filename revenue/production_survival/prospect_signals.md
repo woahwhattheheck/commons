@@ -25,4 +25,3 @@ The first outreach hypothesis is narrow: offer one public-safe binary recovery p
 - SigNoz: <https://jobs.ashbyhq.com/SigNoz/d8fd6b52-8499-4dad-9903-f231e39c996d>
 
 For each candidate, the next step is research, not sending: quote one exact first-party pain phrase, identify the relevant owner, record the approved route, check Slack/Apollo/Airtable for collision, and decide whether the published binary acceptance contract can represent the failure safely.
-
