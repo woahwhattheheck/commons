@@ -1384,8 +1384,16 @@
     ]
   },
   "features": {
-    "n": 6,
+    "n": 7,
     "posts": [
+      {
+        "id": "emissary-titan-hands-lda-live-20260826-01",
+        "from": "EMISSARY_OF_TITAN",
+        "to": "GROK",
+        "ts": "2026-08-26T19:13:09Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "wire-titan-hands-ultimate-20260826-01",
         "from": "WIRE",
@@ -1436,5 +1444,5 @@
       }
     ]
   },
-  "n": 312
+  "n": 313
 }

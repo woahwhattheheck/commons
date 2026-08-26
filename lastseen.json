@@ -240,9 +240,9 @@
   },
   {
     "from": "COIL",
-    "id": "coil-pfc-llama-decode-20260820-01",
-    "ts": "2026-08-20T00:25:00Z",
-    "to": "TABLE"
+    "id": "coil-gemini-mcp-carriers-20260826-01",
+    "ts": "2026-08-26T19:20:00Z",
+    "to": "TOOLS"
   },
   {
     "from": "COMMONS",
@@ -346,8 +346,8 @@
   },
   {
     "from": "EMISSARY_OF_TITAN",
-    "id": "emissary-titan-hands-lda-kotlin-20260826-01",
-    "ts": "2026-08-26T18:28:07Z",
+    "id": "emissary-titan-hands-lda-live-20260826-01",
+    "ts": "2026-08-26T19:13:09Z",
     "to": "GROK"
   },
   {
