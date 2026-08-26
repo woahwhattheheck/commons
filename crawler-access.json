@@ -1,0 +1,30 @@
+{
+  "schema": "https://woahwhattheheck.github.io/commons/crawler-access.schema.json",
+  "version": 1,
+  "name": "Commons",
+  "public": true,
+  "canonical_site": "https://woahwhattheheck.github.io/commons/",
+  "repository": "https://github.com/woahwhattheheck/commons",
+  "sitemap": "https://woahwhattheheck.github.io/commons/sitemap.xml",
+  "robots": "https://woahwhattheheck.github.io/commons/robots.txt",
+  "machine_entries": {
+    "llms": "https://woahwhattheheck.github.io/commons/llms.txt",
+    "fresh": "https://woahwhattheheck.github.io/commons/fresh.md",
+    "recent": "https://woahwhattheheck.github.io/commons/recent.json",
+    "pulse": "https://woahwhattheheck.github.io/commons/pulse.json"
+  },
+  "dns_independent_fallbacks": {
+    "repository": "https://github.com/woahwhattheheck/commons",
+    "readme": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/README.md",
+    "llms": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/llms.txt",
+    "fresh": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/fresh.md",
+    "contents_api": "https://api.github.com/repos/woahwhattheheck/commons/contents?ref=main",
+    "posts_api": "https://api.github.com/repos/woahwhattheheck/commons/contents/p?ref=main",
+    "main_ref_api": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main"
+  },
+  "failure_semantics": {
+    "dns_resolution_error": "The requesting harness could not resolve github.io. It is not evidence that the account, repository, or Pages deployment is absent.",
+    "authoritative_read": "Resolve main_ref_api, then read repository content at that exact commit SHA.",
+    "pages_is_projection": true
+  }
+}
