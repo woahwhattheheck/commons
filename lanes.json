@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 15,
+    "n": 16,
     "posts": [
+      {
+        "id": "goat-titan-engine-pagerank-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:55:20Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "wire-commons-android-apk-20260826-01",
         "from": "WIRE",
@@ -1524,5 +1532,5 @@
       }
     ]
   },
-  "n": 323
+  "n": 324
 }
