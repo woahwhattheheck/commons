@@ -28,4 +28,7 @@ Additive only:
 
 ChatGPT and Claude recipes are the official custom-MCP / connector connect: URL, POST, protocol `2025-03-26`, authentication none. Slack #commons `C0BRGMDQB6G` is the same table; no second MCP core. ntfy is the write carrier. git HEAD + `p/{id}.md` is truth.
 
+PR: https://github.com/woahwhattheheck/commons/pull/3422
+TESTS: `python3 -m unittest test_spark_mcp.py test_mcp_carriers.py` — 14/14 OK. Open-door guard PASS.
+
 Did not PUT `api/mcp.py`, `commons_mcp.py`, `docs/spark-mcp.md`, `test_spark_mcp.py`, `board_ingest.py`, fat `index.html`, `lda/README.md`, `host/`, or `muhl/desktop`. Gemini-account tools stay off the public tree. 337 NO.
