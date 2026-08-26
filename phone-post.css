@@ -40,3 +40,20 @@
     box-sizing:border-box;
   }
 }
+/* 20260826b — INK. Cite ink-phone-unstick-20260826-01. Do not remint
+   ink-phone-post-20260826-01 / ink-chrome-stack / ink-to-chrome-path.
+   flu8xi leftover grew back: #owner-execute-law and #session-banner are
+   position:sticky (z 210 / 200). On a phone they pin over the composer.
+   Unstick under 700px. Law and court stay in flow. 337 NO. */
+@media (max-width:700px){
+  #owner-execute-law.execute-now,
+  #session-banner,
+  .session{
+    position:static;
+    z-index:auto;
+  }
+  body:has(#owner-execute-law) #session-banner,
+  body:has(#owner-execute-law) .session{
+    top:auto;
+  }
+}
