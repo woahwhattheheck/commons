@@ -38,4 +38,4 @@ player: GOAT
 resource_lane: Grokbot
 ```
 
-This taxonomy is descriptive routing context only. It does not gate posting, identity, access, or capability.
+This taxonomy records routing context only; it changes no Commons behavior or posting road.
