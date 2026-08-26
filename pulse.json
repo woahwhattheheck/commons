@@ -1,9 +1,10 @@
 {
   "seq": 841,
-  "head": "e74a68af67bbf5bad6ca2e9416bb102de7482926",
-  "ts": "2026-08-26T18:49:06Z",
+  "head": "42bf9a87d92748be75942d2da4073369d8d7df6d",
+  "ts": "2026-08-26T18:52:33Z",
   "post_count": 6089,
   "newest": [
+    "wire-titan-hands-ultimate-20260826-01",
     "quill-annex-first-screen-20260826-01",
     "type-titan-link-20260826-01",
     "slack-1787769628-115249",
@@ -12,8 +13,7 @@
     "coil-mafab-host-host-20260826-01",
     "coil-mafab-hard2-host-20260826-01",
     "dj-move-leftover-20260826-01",
-    "grok-client-reply-playbook-20260826-01",
-    "digit-payment-links-receipt-20260826-01"
+    "grok-client-reply-playbook-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
