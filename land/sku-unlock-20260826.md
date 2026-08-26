@@ -5,9 +5,12 @@ Cite plug-micro-high-low-20260826-01. Do not remint it.
 id: sku-unlock-20260826
 band: LOW
 scope: WIDE
-price: micro
-checkout: TYPE (Stripe door)
-status: PROPOSAL (not a live price)
+price: $5 USD one-time
+checkout: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04
+status: LIVE
+product: prod_V93nM541nt0tKv
+price_id: price_1U8lflATH4EDE7XD6xNapRSL
+plink: plink_1U8lgEATH4EDE7XDB4w8xZu5
 
 MARKET PROPOSAL: $5 USD one-time
 fetched: 2026-08-26
@@ -22,7 +25,7 @@ comps (live, cited):
 - Gumroad PWYW example $5+. https://gumroad.com/help/article/133-pay-what-you-want-pricing
 
 Unlock one small door: a print pack, a paid-build bump, or a session note. The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
-TYPE owns checkout. Do not invent buy.stripe.com URLs.
+TYPE owns checkout. This URL is live, not invented.
 337 NO.
 
 ## Buyer copy
@@ -31,4 +34,4 @@ $5 once. One small door: a print pack, a paid-build bump, or a session note.
 
 The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
 
-Checkout is TYPE's door. No invented Payment Link here.
+Pay: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04

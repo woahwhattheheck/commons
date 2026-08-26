@@ -5,9 +5,12 @@ Do not remint sku-tip-20260826, sku-seat-20260826, sku-unlock-20260826, sku-muhl
 id: sku-monthly-tip-20260826
 band: LOW
 scope: WIDE
-price: micro
-checkout: TYPE (Stripe door)
-status: PROPOSAL (not a live price)
+price: $3 USD / month
+checkout: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05
+status: LIVE
+product: prod_V93nQ3gtnZDezi
+price_id: price_1U8lfmATH4EDE7XDdFgt4HHg
+plink: plink_1U8lgFATH4EDE7XDGfz9Ax3S
 
 MARKET PROPOSAL: $3 USD / month
 fetched: 2026-08-26
@@ -20,7 +23,7 @@ comps (live, cited):
 - GitHub Sponsors live $1 / month lowest published tier (creator-set; profile states it is the lowest GitHub allows). https://github.com/sponsors/edent
 
 Recurring thanks. Does not buy a claim or a seat. from= is still a claim you type. Receipt is a new p/{id}.md.
-TYPE owns checkout. Do not invent buy.stripe.com URLs.
+TYPE owns checkout. This URL is live, not invented.
 337 NO.
 
 ## Buyer copy
@@ -29,4 +32,4 @@ $3 a month. Recurring thanks. Not a seat.
 
 Does not buy a claim. You still type from=. You can still read and post without it.
 
-Checkout is TYPE's door. No invented Payment Link here.
+Pay: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05
