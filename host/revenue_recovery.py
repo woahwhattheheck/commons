@@ -14,10 +14,11 @@ import json
 import re
 import sys
 import tempfile
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from urllib.parse import unquote
+from urllib.parse import urlsplit
 
 OFFER_ID = "gguf-diagnostic-10d-12k"
 SUBJECT = "GGUF DIAGNOSTIC PURCHASE INTENT"
@@ -28,11 +29,15 @@ EXPECTED_TERMS_SHA256 = "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a
 FIELD_RE = re.compile(r"^([A-Za-z][A-Za-z0-9_]{1,40}):\s*(.*)$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
+HTTPS_URL_RE = re.compile(r'''https://[^\s<>"']+''', re.IGNORECASE)
+PERCENT_BYTE_RUN_RE = re.compile(r"(?:%[0-9A-Fa-f]{2})+")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 OPAQUE_REFERENCE_RE = re.compile(
     r"^[A-Za-z][A-Za-z0-9._-]{0,31}:[A-Za-z0-9][A-Za-z0-9._-]{0,126}$"
 )
 PERCENT_DECODE_LAYERS = 4
+JSON_SCAN_MAX_DEPTH = 64
+JSON_SCAN_MAX_NODES = 4096
 SENSITIVE_FIELD_NAMES = frozenset({
     "authorization",
     "aws_access_key_id",
@@ -113,9 +118,16 @@ SENSITIVE_FIELD_NAMES = frozenset({
     "bic",
     "sort_code",
 })
+SENSITIVE_FIELD_BY_COMPACT = {
+    name.replace("_", ""): name for name in SENSITIVE_FIELD_NAMES
+}
 FIELD_ASSIGNMENT_RE = re.compile(
-    r'''["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*'''
+    r'''["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*'''
     r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
+    re.IGNORECASE,
+)
+JSON_ASSIGNMENT_PREFIX_RE = re.compile(
+    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
 SENSITIVE_PATTERNS = (
@@ -292,53 +304,330 @@ def parse_post(text: str) -> tuple[dict[str, str], dict[str, str]]:
 
 
 def canonical_field_name(name: str) -> str:
-    value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", str(name))
+    raw = unicodedata.normalize("NFKC", str(name))
+    casefolded = raw.casefold()
+    folded = re.sub(r"[^a-z0-9]+", "_", casefolded).strip("_")
+    if folded in SENSITIVE_FIELD_NAMES:
+        return folded
+    exact = SENSITIVE_FIELD_BY_COMPACT.get(re.sub(r"[^a-z0-9]+", "", casefolded))
+    if exact is not None:
+        return exact
+    value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", raw)
     value = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", value)
     return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
 
 
 def is_sensitive_field_name(name: str) -> bool:
-    canonical = canonical_field_name(name)
-    return canonical in SENSITIVE_FIELD_NAMES or canonical.startswith("aws_secret_")
-
-
-def _json_has_sensitive_field(value: Any) -> bool:
-    if isinstance(value, dict):
-        for key, child in value.items():
-            if is_sensitive_field_name(str(key)) and child not in (None, "", [], {}):
-                return True
-            if _json_has_sensitive_field(child):
-                return True
-    elif isinstance(value, list):
-        return any(_json_has_sensitive_field(child) for child in value)
+    segments = [segment for segment in re.split(r"[.\[\]]+", str(name)) if segment]
+    for segment in segments:
+        canonical = canonical_field_name(segment)
+        if canonical in SENSITIVE_FIELD_NAMES or canonical.startswith("aws_secret_"):
+            return True
     return False
 
 
-def decode_percent_layers(value: Any) -> tuple[str, bool]:
-    """Decode URL encoding without `+` rewriting; flag depth overflow."""
+def _json_has_sensitive_field(value: Any, query_depth: int) -> bool:
+    """Scan parsed JSON iteratively and fail closed on depth/node exhaustion."""
+    stack = [(value, 0)]
+    nodes = 0
+    while stack:
+        child, depth = stack.pop()
+        nodes += 1
+        if nodes > JSON_SCAN_MAX_NODES or depth > JSON_SCAN_MAX_DEPTH:
+            return True
+        if isinstance(child, dict):
+            for key, nested in child.items():
+                if is_sensitive_field_name(str(key)) and nested not in (None, "", [], {}):
+                    return True
+                stack.append((nested, depth + 1))
+        elif isinstance(child, list):
+            stack.extend((nested, depth + 1) for nested in child)
+        elif isinstance(child, str) and child.strip():
+            if query_depth >= PERCENT_DECODE_LAYERS:
+                return True
+            if _contains_sensitive_value(child, query_depth + 1):
+                return True
+    return False
+
+
+def _json_container_end(source: str, value_start: int) -> int | None:
+    """Return the end of one bounded JSON object/array, or None when malformed."""
+    expected_closer = {"[": "]", "{": "}"}
+    if value_start >= len(source) or source[value_start] not in expected_closer:
+        return None
+    closers: list[str] = []
+    in_string = False
+    escaped = False
+    for index in range(value_start, len(source)):
+        character = source[index]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+        if character == '"':
+            in_string = True
+        elif character in expected_closer:
+            closers.append(expected_closer[character])
+            if len(closers) > JSON_SCAN_MAX_DEPTH + 1:
+                return None
+        elif character in "]}":
+            if not closers or character != closers.pop():
+                return None
+            if not closers:
+                return index + 1
+    return None
+
+
+def _decode_quoted_assignment(source: str, value_start: int) -> tuple[str | None, int | None]:
+    """Decode one complete quoted assignment scalar without eval or regex backtracking."""
+    quote = source[value_start]
+    escaped = False
+    value_end = None
+    for index in range(value_start + 1, len(source)):
+        character = source[index]
+        if escaped:
+            escaped = False
+        elif character == "\\":
+            escaped = True
+        elif character == quote:
+            value_end = index + 1
+            break
+    if value_end is None:
+        return None, None
+    literal = source[value_start:value_end]
+    if quote == '"':
+        try:
+            decoded = json.loads(literal)
+        except (json.JSONDecodeError, MemoryError, RecursionError, TypeError, ValueError):
+            return None, None
+        return (decoded, value_end) if isinstance(decoded, str) else (None, None)
+
+    decoded_characters: list[str] = []
+    content = literal[1:-1]
+    index = 0
+    escapes = {
+        "\\": "\\", "'": "'", '"': '"', "/": "/",
+        "b": "\b", "f": "\f", "n": "\n", "r": "\r", "t": "\t",
+    }
+    while index < len(content):
+        character = content[index]
+        if ord(character) < 0x20:
+            return None, None
+        if character != "\\":
+            decoded_characters.append(character)
+            index += 1
+            continue
+        index += 1
+        if index >= len(content):
+            return None, None
+        escape = content[index]
+        if escape == "u":
+            digits = content[index + 1:index + 5]
+            if len(digits) != 4 or any(digit not in "0123456789abcdefABCDEF" for digit in digits):
+                return None, None
+            decoded_characters.append(chr(int(digits, 16)))
+            index += 5
+        elif escape in escapes:
+            decoded_characters.append(escapes[escape])
+            index += 1
+        else:
+            return None, None
+    return "".join(decoded_characters), value_end
+
+
+def _json_assignment_has_sensitive_value(source: str, query_depth: int) -> bool:
+    """Scan complete structured/quoted assignment values and fail closed."""
+    for match in JSON_ASSIGNMENT_PREFIX_RE.finditer(source):
+        value_start = match.end()
+        if value_start >= len(source):
+            continue
+        first = source[value_start]
+        if first in "[{":
+            value_end = _json_container_end(source, value_start)
+            if value_end is None:
+                return True
+            try:
+                parsed_json = json.loads(source[value_start:value_end])
+            except (json.JSONDecodeError, MemoryError, RecursionError, TypeError, ValueError):
+                return True
+            if _json_has_sensitive_field(parsed_json, query_depth):
+                return True
+        elif first in "\"'":
+            decoded, value_end = _decode_quoted_assignment(source, value_start)
+            if value_end is None or decoded is None:
+                return True
+            if not decoded.strip():
+                continue
+            if query_depth >= PERCENT_DECODE_LAYERS:
+                return True
+            stripped = decoded.lstrip()
+            if stripped.startswith(("[", "{")):
+                nested_start = len(decoded) - len(stripped)
+                nested_end = _json_container_end(decoded, nested_start)
+                if nested_end is None or decoded[nested_end:].strip():
+                    return True
+                try:
+                    json.loads(decoded[nested_start:nested_end])
+                except (json.JSONDecodeError, MemoryError, RecursionError, TypeError, ValueError):
+                    return True
+            if _contains_sensitive_value(decoded, query_depth + 1):
+                return True
+    return False
+
+
+def _decode_percent_byte_runs_once(value: str, plus_as_space: bool) -> tuple[str, bool]:
+    """Strictly decode complete percent-byte runs; literal/incomplete percent text is opaque."""
+    source = value.replace("+", " ") if plus_as_space else value
+    invalid_utf8 = False
+
+    def replace(match: re.Match[str]) -> str:
+        nonlocal invalid_utf8
+        encoded = match.group(0)
+        raw = bytes(int(encoded[index + 1:index + 3], 16) for index in range(0, len(encoded), 3))
+        try:
+            return raw.decode("utf-8", "strict")
+        except UnicodeDecodeError:
+            invalid_utf8 = True
+            return encoded
+
+    decoded = PERCENT_BYTE_RUN_RE.sub(replace, source)
+    return decoded, invalid_utf8
+
+
+def _decode_percent_layers(value: Any, plus_as_space: bool) -> tuple[str, bool]:
     decoded = str(value)
     for _ in range(PERCENT_DECODE_LAYERS):
-        next_value = unquote(decoded)
+        next_value, invalid_utf8 = _decode_percent_byte_runs_once(decoded, plus_as_space)
+        if invalid_utf8:
+            return decoded, True
         if next_value == decoded:
             return decoded, False
         decoded = next_value
-    return decoded, unquote(decoded) != decoded
+    next_value, invalid_utf8 = _decode_percent_byte_runs_once(decoded, plus_as_space)
+    return decoded, invalid_utf8 or next_value != decoded
 
 
-def contains_sensitive_value(text: str) -> bool:
-    source, decoding_overflow = decode_percent_layers(text)
+def decode_percent_layers(value: Any) -> tuple[str, bool]:
+    """Bounded strict percent-byte decoding without rewriting `+`."""
+    return _decode_percent_layers(value, False)
+
+
+def decode_query_component_layers(value: Any) -> tuple[str, bool]:
+    """Bounded strict query/form decoding; only this path rewrites `+` as space."""
+    return _decode_percent_layers(value, True)
+
+
+def _component_has_sensitive_value(component: str, plus_as_space: bool, query_depth: int) -> bool:
+    if query_depth >= PERCENT_DECODE_LAYERS:
+        return bool(component)
+    for raw_part in re.split(r"[&;]", component):
+        if not raw_part:
+            continue
+        decoder = decode_query_component_layers if plus_as_space else decode_percent_layers
+        decoded_part, decoding_overflow = decoder(raw_part)
+        if decoding_overflow:
+            return True
+        if "=" in decoded_part:
+            name, value = decoded_part.split("=", 1)
+            if is_sensitive_field_name(name) and value.strip():
+                return True
+            if _contains_sensitive_value(name, query_depth + 1):
+                return True
+            if _contains_sensitive_value(value, query_depth + 1):
+                return True
+        elif _contains_sensitive_value(decoded_part, query_depth + 1):
+            return True
+    return False
+
+
+def _bare_component_has_sensitive_value(source: str, query_depth: int) -> bool:
+    for raw_line in source.splitlines() or [source]:
+        line = raw_line.lstrip()
+        if line.startswith(("?", "#")) and _component_has_sensitive_value(
+            line[1:], line.startswith("?"), query_depth
+        ):
+            return True
+    return False
+
+
+def _url_query_has_sensitive_value(source: str, query_depth: int) -> bool:
+    for match in HTTPS_URL_RE.finditer(source):
+        raw_url = match.group(0)
+        raw_authority = re.split(r"[/?#]", raw_url[len("https://"):], maxsplit=1)[0]
+        decoded_authority, authority_overflow = decode_percent_layers(raw_authority)
+        if authority_overflow:
+            return True
+        if "@" in decoded_authority or any(
+            character.isspace() or ord(character) < 0x20
+            for character in decoded_authority
+        ):
+            return True
+        try:
+            parsed = urlsplit(raw_url)
+        except ValueError:
+            return True
+        if parsed.username is not None or parsed.password is not None:
+            return True
+        if parsed.fragment:
+            if _component_has_sensitive_value(parsed.fragment, False, query_depth):
+                return True
+        if not parsed.query:
+            continue
+        if _component_has_sensitive_value(parsed.query, True, query_depth):
+            return True
+    return False
+
+
+def _contains_sensitive_value(text: str, query_depth: int) -> bool:
+    raw_source = str(text)
+    source, decoding_overflow = decode_percent_layers(raw_source)
     if decoding_overflow:
         return True
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
+        return True
+    if _json_assignment_has_sensitive_value(source, query_depth):
         return True
     for match in FIELD_ASSIGNMENT_RE.finditer(source):
         value = match.group(2) if match.group(2) is not None else match.group(3)
         if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
             return True
+        if str(value or "").lstrip().startswith(("[", "{")):
+            continue
+        is_url_scheme = canonical_field_name(match.group(1)) in {"http", "https"} and str(
+            value or ""
+        ).startswith("//")
+        if str(value or "").strip() and not is_url_scheme:
+            if query_depth >= PERCENT_DECODE_LAYERS:
+                return True
+            if _contains_sensitive_value(str(value), query_depth + 1):
+                return True
     try:
-        return _json_has_sensitive_field(json.loads(source))
-    except (TypeError, ValueError, json.JSONDecodeError):
-        return False
+        parsed_json = json.loads(source)
+    except json.JSONDecodeError:
+        pass
+    except (MemoryError, RecursionError, TypeError, ValueError):
+        return True
+    else:
+        if _json_has_sensitive_field(parsed_json, query_depth):
+            return True
+    if _url_query_has_sensitive_value(raw_source, query_depth):
+        return True
+    if source != raw_source:
+        if _url_query_has_sensitive_value(source, query_depth):
+            return True
+    if _bare_component_has_sensitive_value(raw_source, query_depth):
+        return True
+    if source != raw_source and _bare_component_has_sensitive_value(source, query_depth):
+        return True
+    return False
+
+
+def contains_sensitive_value(text: str) -> bool:
+    return _contains_sensitive_value(text, 0)
 
 
 def base_facts() -> dict[str, Any]:
