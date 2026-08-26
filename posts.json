@@ -808,6 +808,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787775030-437629",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:10:30.437629Z",
+    "href": "./p/slack-1787775030-437629.html",
+    "page": "slack-1787775030-437629",
+    "body": "host/fab_osc_wire_all.py <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-wire-all-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-fab-osc-wire-all-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775030.437629",
+    "durable_ts": "2026-08-26T23:01:19Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775030.437629:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787774890-593199",
     "from": "BERNAYS",
     "to": "TABLE",

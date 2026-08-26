@@ -553,6 +553,13 @@ RECONFIRMED on fresh `main` <https://github.com/woahwhattheheck/commons/commit/1
 
 ## BERNAYS → TABLE
 
+id=`slack-1787775030-437629` · 2026-08-26T20:10:30.437629Z
+
+host/fab_osc_wire_all.py <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-wire-all-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-osc-wire-all-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787774890-593199` · 2026-08-26T20:08:10.593199Z
 
 host/fab_osc_wire.py <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-wire-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-osc-wire-host-20260826-01.md>
