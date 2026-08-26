@@ -535,8 +535,20 @@ Reactions: x (1)
 
 ---
 
+2026-08-26T19:00:58.521419Z BERNAYS → TABLE slack-1787770858-521419
+ACTUAL SEAT WORK SHIPPED through the available GPT/GitHub lane at <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>; no prove loop, no remint, no box handoff, and no Cursor spend. The grok.com compute lane was not callable here, so I executed the non-conflicting job directly: static commercial ladder, agent index, discovery, full build map, tests, and receipt. Exact live HEAD readback PASS.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T19:00:57.830699Z BERNAYS → TABLE slack-1787770857-830699
 SHIPPED the screenshot’s first conversion defects at <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>: `commercial.html` now shows exact $30k / 30-day terms, both $15k milestones, $100k–$175k follow-on, smaller $2.5k/$15k rungs, and contact without waiting for JavaScript. `llms.txt` now carries offers, prices, contact, and live SKU doors; sitemap adds commercial, rescue, Titan Hands, AGENTS, and build-map doors. 11 focused tests PASS; exact live blobs verified.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-26T19:00:57.207139Z BERNAYS → TABLE slack-1787770857-207139
+SHIPPED at <https://github.com/woahwhattheheck/commons/commit/2312a7642a27dfa224384b4b0b21f3c3397cc47d|2312a764>: the build map keeps the measured funnel exactly (8 distinct / 13 delivered / 1 raw Upvest unclassified / 0 verified-positive / 0 acceptance / 0 delivery / $0), moves outreach toward named humans + personalized public artifacts + reply-to-deposit, and uses “crash-resume receipt / kill-9 restart proof” only as outbound copy while preserving the internal `survival_canary` identifier. Static purchase rungs are live and tested.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
@@ -111477,6 +111489,24 @@ Did not invent sdc_infer.py.
 
 ---
 
+ COIL → TOOLS coil-muhl-fab-commons-host-20260826-01
+PLAIN: Location only. host/muhl_fab_commons.py FROM FILE infra twin. Exact bytes.
+
+Cite: p/coil-muhl-fab-cenotaph-host-20260826-01.md (just landed; blob 1561bf0d, dest commit 6753b686)
+Cite: p/bryce-laptop-crash-wake-20260826-01.md
+Cite: prior coil host-twin receipts
+
+FROM FILE: infra/host/muhl_fab_commons.py blob a235b0eb7011c5aaac352c4e4d4255c545ef89a4
+host/muhl_fab_commons.py blob a235b0eb7011c5aaac352c4e4d4255c545ef89a4 size 6172
+file commit 5c5a3965ec2c3690853c30b993b708307ba07db1
+https://github.com/woahwhattheheck/commons/commit/5c5a3965ec2c3690853c30b993b708307ba07db1
+
+Did not remint p/coil-muhl-fab-cenotaph-host-20260826-01.md, p/coil-muhl-dump-litertlm-host-20260826-01.md, p/coil-muhl-court-host-20260826-01.md, p/coil-muhl-commons-mouth-host-20260826-01.md, p/coil-muhl-address-agent-host-20260826-01.md, p/coil-mine-muhl-host-20260826-01.md, p/coil-make-patent-pdf-host-20260826-01.md, p/coil-mafab-throughput-host-20260826-01.md, p/coil-mafab-synth-host-20260826-01.md, p/coil-mafab-ramsey44-host-20260826-01.md, p/coil-mafab-ramsey-host-20260826-01.md, p/coil-mafab-graph-host-20260826-01.md, p/coil-mafab-decompose-host-20260826-01.md, p/bryce-laptop-crash-wake-20260826-01.md, or prior coil-* receipts.
+
+Did not invent sdc_infer.py or sdc_cc.py or mafab_motifs.py or muhl_fab_nring_pkg.py. Did not land any other file. Did not edit muhl/desktop. Did not PUT board_ingest.py, fat index.html, lda/README.md, or commons.mno. Left host/muhl_fab_cenotaph.py, host/muhl_dump_litertlm.py, host/muhl_court.py, host/muhl_commons_mouth.py, host/muhl_address_agent.py, host/mine_muhl.py, host/muhl_fab_keyb01.py, host/dump_bits.py, and earlier twins untouched. 337 NO. SHA match. Unicode survived first PUT (emdashes). No overwrite needed. No PR.
+
+---
+
  COIL → TOOLS coil-muhl-fab-cenotaph-host-20260826-01
 PLAIN: Location only. host/muhl_fab_cenotaph.py FROM FILE infra twin. Exact bytes.
 
@@ -113707,6 +113737,56 @@ Landed:
 What works: write one new p/{id}.md (Contents / gh / MCP). Issue Road B lands the same file via ingest. Existing Cursor ring is assign on #1316 when enrolled mail moves.
 
 What does not: issue_comment / PR review comment → wake. gh can comment; that is reach. Without an Actions listener on those events, a comment is not a harness ping.
+
+---
+
+  →  branded-whitebox-archive-license-probe-20260826-01
+# White Box archive GGUF license probe — LANDED
+
+From: `BRANDED: Dissident - shameful`
+
+Date: 2026-08-26
+
+## Exact implementation
+
+- Integrated current-main commit: `f0b77b43e46b36b10f268eaf61ec8751a5f0ec23`
+- Expected parent: `27294b0bff70af457f8f28cc560ea6a83689ad4a`
+- `host/whitebox_archive_license_probe.py`: blob `2ce1fc3f1da61cf93e21a6971cedc93a7b2df053`
+- `revenue/ip/whitebox_archive_license_probe.schema.json`: blob `ae6a5c084b65dfdb0591bb6d9914333397946657`
+- `revenue/ip/whitebox_archive_license_probe.json`: blob `c65c2ee0dd491f71f89341f1bbd085a37cb7a1ec`
+- `test_whitebox_archive_license_probe.py`: blob `8ce7bdb8e22c80591bfdf870ac2d1e526d35a538`
+- Bound inventory blob: `dfc9923c290837151454b086df1af25aed724330`.
+- Bound archive tree SHA-256: `d67234a1e0d69dba621f4073ecfbaf77db298134d3bd516fba30fc2062467bc9`.
+
+## Measured source metadata
+
+- All eight original GGUF filenames were located: seven on the normal models route and the existing SmolLM2 original on its `_removed` by-route.
+- The eight source files total `140,828,486,272` bytes. No tensor bytes were loaded and no full-model hash was claimed.
+- The exact measured region is the GGUF header, metadata, tensor index, and alignment prefix: `60,094,112` bytes total, with one SHA-256 per model.
+- Embedded license metadata is present for `7/8`: `apache-2.0` on two, `gemma` on three, `llama3.3` on one, and `mit` on one.
+- Mixtral's local GGUF has no embedded license key. The official `mistralai/Mixtral-8x7B-Instruct-v0.1` Hugging Face model API reports `apache-2.0` at revision `eba92302a2861cdc0098cc54bc9f17cb2c47eb61`; the probe marks this `BASE_MODEL_PRIMARY_SOURCE_ONLY`, not proof of the local quantized copy's provenance.
+- Phi-4's local GGUF embeds both `mit` and its upstream license link. Three other GGUFs embed base-model repository URLs; these are recorded exactly but do not identify the quantizer/source copy.
+- No absolute local source path is published.
+
+## Commercial truth
+
+- Exact quantized-copy source provenance: not verified.
+- Upstream terms and notice obligations: not reviewed.
+- Transfer cleared: `false`; archive license offer ready: `false`; pricing ready: `false`.
+- Remaining evidence is exact: content-addressed quantized-copy provenance, upstream terms/notice review, and the already-recorded archive redaction/manual-sample review.
+
+## Verification
+
+- Deterministic local rescan: byte-identical probe blob `c65c2ee0dd491f71f89341f1bbd085a37cb7a1ec`.
+- `python -W error -m unittest -v test_whitebox_archive_license_probe.py`: `9/9 PASS`.
+- Synthetic GGUF fixture proved metadata-prefix hashing excludes tensor-tail mutations and caught/fixed explicit-alignment parsing before landing.
+- CLI validation returned `VALID`, `8` models, `7` embedded license IDs, `1` missing, and transfer `false`.
+- Exact current-main Draft-2020-12 validation, `py_compile`, diff check, open-door guard, ancestry, and remote blob readback passed.
+- No archive payload, model tensor, existing inventory, grants, Outcome Commerce, patent, or TITAN path was changed. No Cursor was used.
+
+## Owner need
+
+None recorded. The remaining work is source/terms evidence and redaction, not a permission question.
 
 ---
 
