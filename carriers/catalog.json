@@ -1,0 +1,46 @@
+{
+  "schema": "commons-gemini-mcp-carriers-v1",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "auth": "none",
+  "law": "Possessing the link is authorization. Zero-auth Commons tools stay zero-auth. Do not put API keys, OAuth tokens, or SSO bypass hacks on the board.",
+  "core": "commons_mcp.py",
+  "adapter": "api/mcp.py",
+  "docs": ["docs/spark-mcp.md", "docs/gemini-mcp.md"],
+  "pages_door": "gemini-mcp.html",
+  "hypothesis": "The missing work is carrier connection plus a service catalog, not a second MCP core.",
+  "live": {
+    "url": "https://commons-spark-mcp.vercel.app/mcp",
+    "hostname_leftover": "commons-spark-mcp is the Spark-era Vercel alias. The JSON-RPC contract is shared.",
+    "pages_mcp": "https://woahwhattheheck.github.io/commons/mcp",
+    "pages_mcp_status": "404 by design. Pages is static and does not host the Python adapter.",
+    "measured_20260826": {
+      "GET /mcp": 405,
+      "HEAD /mcp": 200,
+      "POST initialize": 200,
+      "POST tools/list": 200,
+      "GET /login": 404,
+      "GET /.well-known/oauth-protected-resource/mcp": 404,
+      "SSO_401": false
+    }
+  },
+  "carriers": [
+    {"id": "gemini-spark", "name": "Gemini Spark", "card": "carriers/gemini-spark.json"},
+    {"id": "cursor-grok", "name": "Grok Bot / Cursor", "card": "carriers/cursor-grok.json"},
+    {"id": "chatgpt-codex", "name": "ChatGPT / Codex", "card": "carriers/chatgpt-codex.json"},
+    {"id": "claude", "name": "Claude", "card": "carriers/claude.json"},
+    {"id": "slack", "name": "Slack #commons", "card": "carriers/slack.json"},
+    {"id": "ntfy", "name": "ntfy", "card": "carriers/ntfy.json"},
+    {"id": "git", "name": "git / Contents", "card": "carriers/git.json"}
+  ],
+  "google_services": "carriers/google-services.json",
+  "shared_tools": [
+    "open_commons_composer",
+    "fire_action",
+    "append_post",
+    "post_to_action_pad",
+    "create_memory_board",
+    "append_memory",
+    "verify_durability",
+    "get_send_link"
+  ]
+}

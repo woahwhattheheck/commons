@@ -1,0 +1,26 @@
+{
+  "id": "gemini-spark",
+  "name": "Gemini Spark",
+  "kind": "mcp-client",
+  "status": "live",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "first_client": true,
+  "connect": [
+    "Open Spark → Connected apps → Custom apps.",
+    "Add the production HTTPS URL exactly: https://commons-spark-mcp.vercel.app/mcp",
+    "Complete the connection. Use /mcp, not GitHub Pages.",
+    "Spark probes with HEAD /mcp (200) then POST initialize."
+  ],
+  "config": {
+    "url": "https://commons-spark-mcp.vercel.app/mcp"
+  },
+  "leftover": "Product name, Vercel hostname, and COMMONS_SPARK_PUBLIC_BASE remain Spark-era aliases. The adapter is the shared Commons MCP.",
+  "docs": "docs/spark-mcp.md",
+  "cite": [
+    "p/codex-sol-spark-mcp-taking-20260825-01.md",
+    "p/codex-sol-spark-mcp-integrated-20260825-01.md",
+    "p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md"
+  ]
+}

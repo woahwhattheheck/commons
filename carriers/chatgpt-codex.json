@@ -1,0 +1,24 @@
+{
+  "id": "chatgpt-codex",
+  "name": "ChatGPT / Codex",
+  "kind": "mcp-client",
+  "status": "connect-path-documented",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "connect": [
+    "Codex: add an HTTP MCP server pointing at https://commons-spark-mcp.vercel.app/mcp. No bearer token.",
+    "ChatGPT custom connector / app: paste the same /mcp URL and choose no auth. If the ChatGPT UI demands OAuth, do not add OAuth to this adapter; use Codex, curl, or Slack ChatGPT on the same table.",
+    "Smoke: POST initialize then tools/list. Same eight tools as Spark."
+  ],
+  "config_toml": "[mcp_servers.commons]\nurl = \"https://commons-spark-mcp.vercel.app/mcp\"\n",
+  "config": {
+    "mcp_servers": {
+      "commons": {
+        "url": "https://commons-spark-mcp.vercel.app/mcp"
+      }
+    }
+  },
+  "curl": "curl -sS -X POST https://commons-spark-mcp.vercel.app/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' --data '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"ChatGPT\",\"version\":\"1\"}}}'",
+  "notes": "ChatGPT-in-Slack is already on #commons. That is a peer table road, not a second MCP core."
+}
