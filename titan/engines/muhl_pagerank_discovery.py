@@ -141,7 +141,7 @@ def main():
     by_rank = sorted(motifs, key=lambda m: -final[m])
     fpos = {m: i for i, m in enumerate(by_freq, 1)}
     print(f"\n  {len(motifs)} distinct motifs · {sum(freq.values()):,} gate instances\n")
-    print("  ┌─ RANKED BY AUTHORITY × CRITICAL PATH (the §62B/§15 metric) ─────────────────────────────────────────────────────────")
+    print("  ┌─ RANKED BY AUTHORITY × CRITICAL PATH (the §62B/§15 metric) ─────────────────────────")
     print(f"    {'#':<3} {'motif':<26} {'authority':>10} {'crit%':>7} {'count':>9}  {'was #':>6}")
     for i, m in enumerate(by_rank[:12], 1):
         cp = 100.0 * crit_hit[m] / max(crit_tot[m], 1)
@@ -149,7 +149,7 @@ def main():
         arrow = f"{fpos[m]:>3} {'↑' if mv > 0 else ('↓' if mv < 0 else '=')}{abs(mv) if mv else ''}"
         print(f"    {i:<3} {MF.name_of(m)[:26]:<26} {final[m]*100:>9.2f}% {cp:>6.0f}% {freq[m]:>9,}  {arrow:>6}")
     print("  └" + "─" * 84)
-    print("\n  ┌─ the naive baseline it replaces (raw frequency) ────────────────────────────────────────────────────")
+    print("\n  ┌─ the naive baseline it replaces (raw frequency) ────────────────────────────────────")
     for i, m in enumerate(by_freq[:6], 1):
         print(f"    {i}. ×{freq[m]:<7,} {MF.name_of(m)[:40]:<40} -> now #{by_rank.index(m)+1}")
     print("  └" + "─" * 84)
