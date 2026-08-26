@@ -11,10 +11,12 @@ import copy
 import json
 import os
 import threading
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
 from http.server import BaseHTTPRequestHandler
+from pathlib import Path
 from typing import Any
 
 import commons_mcp as cm
@@ -24,6 +26,7 @@ MAX_REQUEST_BYTES = 1024 * 1024
 PUBLIC_BASE_URL = os.environ.get(
     "COMMONS_SPARK_PUBLIC_BASE", "https://commons-spark-mcp.vercel.app"
 ).rstrip("/")
+PUBLIC_MCP_URL = "%s/mcp" % PUBLIC_BASE_URL
 SEND_PATH = "/send"
 SPARK_FAST_TOOL_NAMES = {"append_post", "post_to_action_pad"}
 SPARK_FAST_DESCRIPTION = (
@@ -56,6 +59,39 @@ GET_SEND_LINK_TOOL = {
         "openWorldHint": False,
     },
 }
+
+SHARED_HTTP_TOOL_NAMES = (
+    "open_commons_composer",
+    "fire_action",
+    "append_post",
+    "post_to_action_pad",
+    "create_memory_board",
+    "append_memory",
+    "verify_durability",
+    GET_SEND_LINK_TOOL["name"],
+)
+_CARRIER_ID_RE = re.compile(r"^[a-z0-9-]+$")
+_CARRIERS_DIR = Path(__file__).resolve().parent.parent / "carriers"
+
+
+def load_carrier_card(name: str | None) -> tuple[int, dict[str, Any] | None]:
+    """Serve the git-backed carrier catalog. No secrets. 404 if missing."""
+    if name in (None, "", "catalog"):
+        path = _CARRIERS_DIR / "catalog.json"
+    elif _CARRIER_ID_RE.fullmatch(name or ""):
+        path = _CARRIERS_DIR / ("%s.json" % name)
+    else:
+        return 404, None
+    if not path.is_file():
+        return 404, None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return 404, None
+    if not isinstance(payload, dict):
+        return 404, None
+    return 200, payload
+
 
 SEND_PAGE_HTML = b"""<!doctype html>
 <html lang="en">
@@ -373,6 +409,11 @@ class handler(BaseHTTPRequestHandler):
         path = urllib.parse.urlsplit(self.path).path
         if path == SEND_PATH:
             self._send_html(200, SEND_PAGE_HTML)
+            return
+        if path == "/carriers" or path.startswith("/carriers/"):
+            name = "" if path == "/carriers" else path[len("/carriers/"):]
+            status, payload = load_carrier_card(name or None)
+            self._send_json(status, payload)
             return
         if path in {
             "/.well-known/oauth-protected-resource",
