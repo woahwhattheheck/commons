@@ -133,7 +133,7 @@ def run(n=17, k=4):
         del cm, om
     del c, outs
 
-    # ── THE SCALE-UP, MEASURED RATHER THAN DECLARED ──────────────────────────────────────
+    # ── THE SCALE-UP, MEASURED RATHER THAN DECLARED ──────────────────────────────────────────────
     print("\n  SCALE-UP — ACTUALLY BUILT on this host, not extrapolated by me. §31: manufacturing is")
     print("  off the clock, so the honest answer to 'how big' is to build it and read the number.")
     per_clique = G / max(nclq, 1)
