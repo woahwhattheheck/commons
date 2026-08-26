@@ -1,9 +1,10 @@
 {
   "seq": 893,
-  "head": "a394d4872ca71c3db84fd29860e3dcc97ca2f19a",
-  "ts": "2026-08-26T19:58:37Z",
+  "head": "54d1615869ab4c66a1552603043a54b47eceb870",
+  "ts": "2026-08-26T19:58:47Z",
   "post_count": 6228,
   "newest": [
+    "slack-1787768238-827819",
     "coil-fab-osc-junction-host-20260826-01",
     "slack-1787768446-373139",
     "slack-1787767961-142289",
@@ -12,8 +13,7 @@
     "slack-1787767797-358679",
     "coil-fab-osc-bank-host-20260826-01",
     "slack-1787766576-707609",
-    "slack-1787767839-488019",
-    "slack-1787767807-908759"
+    "slack-1787767839-488019"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
