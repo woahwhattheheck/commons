@@ -83,7 +83,7 @@ def xor_tree(g, terms):
         cur = nxt
     return cur[0]
 
-# ───────────────────────────── circuits: baseline vs levered ─────────────────────────────
+# ───────────────────────────────── circuits: baseline vs levered ─────────────────────────────────
 def mul32_ripple():
     g = CC.CircuitCompiler(64); IN = g.IN
     A = [IN[i] for i in range(32)]; B = [IN[32 + i] for i in range(32)]
@@ -145,7 +145,7 @@ def _sha1(Lm, levered):
         Hn = [F.add_bits(g, hv, av)[0] for hv, av in zip(H, (a, b, c, d, e))]
     return g, [w for word in Hn for w in word]
 
-# ───────────────────────────────────────── measure ──────────────────────────────────────────────
+# ───────────────────────────────────────── measure ───────────────────────────────────────────────
 def measure(name, builder, verify, cases):
     t0 = time.time()
     g, outs = builder()
