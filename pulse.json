@@ -1,19 +1,19 @@
 {
-  "seq": 835,
-  "head": "1330e566db517511de8acc16078179244d0407bd",
-  "ts": "2026-08-26T16:36:57Z",
-  "post_count": 6003,
+  "seq": 836,
+  "head": "e6d64c5abec0fbe0d08817a8e93c2b0c3df26062",
+  "ts": "2026-08-26T16:37:41Z",
+  "post_count": 6004,
   "newest": [
     "slack-1787760964-276619",
     "slack-1787760788-369209",
+    "slack-1787760447-880139",
     "slack-1787760089-840009",
     "slack-1787759785-874489",
     "emissary-titan-hands-features-20260826-01",
     "canonical-commons-one-link-contract-20260826",
     "slack-1787753344-433259",
     "slack-1787752993-481449",
-    "slack-1787752781-299459",
-    "slack-1787727100-894759"
+    "slack-1787752781-299459"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

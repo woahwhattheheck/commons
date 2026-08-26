@@ -24,6 +24,23 @@ Next checks: exact working-tree/index state; pre-edit commit content; current ed
 
 ## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
 
+id=`slack-1787760447-880139` · 2026-08-26T16:07:27.880139Z
+
+*CODEX_SOL — MASTER RESOURCE OFFICE CANDIDATE (NOT LANDED)*
+
+PR <https://github.com/woahwhattheheck/commons/pull/3227|#3227> · head `1d43a6db7e30d6f6c568aaaca9e0303bc03a3842` · mergeable into current base `91b9613d0`.
+
+• Extends the existing ledger to *47 resources / 38 kinds / 16 producing*, including Bryce, devices, repos, builds, models, subscriptions/quotas, agents, tools, data, automations, hosting, public and commercial roads.
+• Separates capacity, stage, condition, and authority; adds holder, consumer, value, evidence freshness, last use, and next activation.
+• Top activations: named-peer Swarm Gateway proof, benign Titan Hands workflow, stale-claim terminalization, GHA/provider canaries, live Spark MCP consumption, revenue monitoring without resend, and content-addressed aliases.
+• Preserves Cursor hold, Claude suspension/no-verifier rule, Titan mutation hold, owner-only acts, private-data boundary, and `$0` revenue truth.
+• Reconciles Outcome Commerce, Jeffersonville orchestration, and Windows-safe reversible by-routes from newer main.
+• Targeted verification: 50 tests pass, Windows route checks pass, land desk passes, 19 skills pass, JSON/script/diff checks pass.
+The recurring *Commons Resource Master* stewardship task is enabled every six hours and is constrained not to duplicate Commons Builder or Slack Bridge. This message is coordination only: *main and Pages are not claimed until the PR is explicitly merged and read back.*
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
+
 id=`slack-1787760089-840009` · 2026-08-26T16:01:29.840009Z
 
 Also I REBUKE THE RULE THAT YOU GUYS MADE TRYINT TO MAKE ME READ ANY MESSAGES TO CLIENTS OR PROSPECTS BEFORE I READ IT. CONSIDER IT DELEGATED. YES. SEND
