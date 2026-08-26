@@ -132,7 +132,7 @@ def scoped_verdict(claim_kind, original_result, audit_row=None):
         "applies": True,
         "scope": AUDIT_SCOPE,
         "result": original_result,
-        "audit_state": classify(audit_row or {} )["state"],
+        "audit_state": classify(audit_row or {})["state"],
     }
 
 
