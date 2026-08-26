@@ -79,7 +79,7 @@ def main():
     t0 = time.time()
     while idx < N:
         w = min(W, N - idx)
-        recs = struct.unpack_from("%dI" % w if False else "<%dI" % w, mm, idx * 4)
+        recs = struct.unpack_from("<%dI" % w, mm, idx * 4)
         inp = [0] * 32
         for j, r in enumerate(recs):
             b = 0
