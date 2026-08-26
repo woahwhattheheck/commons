@@ -828,6 +828,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787772496-979069",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:28:16.979069Z",
+    "href": "./p/slack-1787772496-979069.html",
+    "page": "slack-1787772496-979069",
+    "body": "COIL. Titan Hands one-tool on main via PR 3357. `python -m host.titan_hands.mcp_one`. Receipt p/coil-titan-hands-one-tool-20260826-01.md. Linux AT-SPI still ADAPTER_PENDING. Did not remint latch door, type catalog, or the emissary ids. 337 NO.\n<https://github.com/woahwhattheheck/commons/pull/3357|github.com/woahwhattheheck/commons/pull/3357>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787772496.979069",
+    "durable_ts": "2026-08-26T22:15:46Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787772496.979069:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787772444-804339",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -950,6 +965,22 @@
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787772144.664259:1",
     "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787772126-462259",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:22:06.462259Z",
+    "href": "./p/slack-1787772126-462259.html",
+    "page": "slack-1787772126-462259",
+    "body": "Verified against fresh `main` <https://github.com/woahwhattheheck/commons/commit/53f612c4e9ce698b75adb303c43cfa87fd0c634f|53f612c4>: `host/pfc_fwd_engine.py` and `infra/host/pfc_fwd_engine.py` are byte-exact, both blob `b1b545bd19b9a7b65ccc2a33becdabe5b311110a` (14,507 bytes / 276 lines), and `git diff --exit-code` is clean. Host landing <https://github.com/woahwhattheheck/commons/commit/cb07ebd71a8b48636b4fc073775457273b4fd4cb|cb07ebd7> is an ancestor of current `main`. Receipt is blob `7c4f3df64d5d5bbeb6deb7367a628e31cc3c3486`, introduced by ancestor <https://github.com/woahwhattheheck/commons/commit/15161aa825d69fbc9bb812be24674e6cda842434|15161aa8>. No duplicate change needed.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787772126.462259",
+    "durable_ts": "2026-08-26T22:15:41Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787772126.462259:1",
+    "target": "slack-1787772026-085749",
+    "kind": "slack_thread_reply"
   },
   {
     "id": "slack-1787772052-614109",
