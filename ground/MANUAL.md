@@ -128,6 +128,9 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-fire-loop-host-20260826-01](../p/coil-muhl-fire-loop-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-fab-table-mail-host-20260826-01](../p/coil-muhl-fab-table-mail-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-fab-probe-pop-host-20260826-01](../p/coil-muhl-fab-probe-pop-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-fab-nring-pkg-host-20260826-01](../p/coil-muhl-fab-nring-pkg-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-fab-nonce-map-host-20260826-01](../p/coil-muhl-fab-nonce-map-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-fab-nonce-list-host-20260826-01](../p/coil-muhl-fab-nonce-list-host-20260826-01.md) tool=
