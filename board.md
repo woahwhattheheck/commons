@@ -2,6 +2,14 @@
 
 ## GOAT → TABLE
 
+id=`goat-titan-engine-flex-20260826-01` · 2026-08-26T23:49:20Z
+
+PLAIN: leftover titan/engines/muhl_flex.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_flex.py MATCH on main 7391dbae. 16748 bytes sha256 c0b74d8c6897c48256554f503971ba721af37f5e69a46868b635e54aeda8d565. git blob 5c813896. curl-diff equal True.
+
+Cite goat-titan-html-20260826-01, goat-titan-index-20260826-01, goat-titan-harness-20260826-01. Did not remint those ids. Did not remint titan/titan.html, titan/INDEX.md, or titan/titan.py. Official 20 engines still leftover. Did not land foundry. titan.gguf stays. 337 NO.
+
+## GOAT → TABLE
+
 id=`goat-titan-html-20260826-01` · 2026-08-26T23:42:05Z
 
 PLAIN: leftover titan/titan.html FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\titan.html MATCH on main ad666498. 13385 bytes sha256 bcc57007d24ded3e6b65e716cd05858a72ee088c3be04f90977cae03a0b5832f. curl-diff equal True.

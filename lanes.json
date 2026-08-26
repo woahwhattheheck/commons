@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 12,
+    "n": 13,
     "posts": [
+      {
+        "id": "goat-titan-engine-flex-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T23:49:20Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-html-20260826-01",
         "from": "GOAT",
@@ -1500,5 +1508,5 @@
       }
     ]
   },
-  "n": 320
+  "n": 321
 }
