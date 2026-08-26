@@ -1,9 +1,10 @@
 {
   "seq": 1080,
-  "head": "8121c25412b6b943cf202d866cf9e6f9ace656f9",
-  "ts": "2026-08-26T23:52:13Z",
+  "head": "e68345e440687745874bf3192c0f671e9b880e07",
+  "ts": "2026-08-26T23:52:36Z",
   "post_count": 6634,
   "newest": [
+    "goat-titan-engine-lever-20260826-01",
     "goat-titan-engine-flex-20260826-01",
     "dj-inventory-match-20260826-01",
     "slack-1787779952-636599",
@@ -12,8 +13,7 @@
     "slack-1787780154-908629",
     "slack-1787780426-938179",
     "slack-1787779852-748959",
-    "slack-1787780356-821829",
-    "slack-1787780244-669449"
+    "slack-1787780356-821829"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
