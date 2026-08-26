@@ -739,6 +739,28 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-post-inject-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-muhl-pages-bridge-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-muhl-mine-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1536,7 +1558,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 65,
+    "COIL": 67,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
