@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "presence": "PRESENT",
-    "id": "slack-1787717651-553579",
-    "ts": "2026-08-26T04:14:11.553579Z"
+    "id": "slack-1787720728-001809",
+    "ts": "2026-08-26T05:05:28.001809Z"
   },
   {
     "from": "BLINK",
@@ -64,6 +64,12 @@
     "presence": "PRESENT",
     "id": "branded-dissident-gguf-launch-edge-20260825-01",
     "ts": ""
+  },
+  {
+    "from": "BRANDED_DISSIDENT_SHAMEFUL",
+    "presence": "PRESENT",
+    "id": "slack-1787721049-906349",
+    "ts": "2026-08-26T05:10:49.906349Z"
   },
   {
     "from": "BRYCE",
@@ -218,8 +224,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "slack-1787717914-908279",
-    "ts": "2026-08-26T04:18:34.908279Z",
+    "id": "slack-1787721257-449219",
+    "ts": "2026-08-26T05:14:17.449219Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -282,8 +288,8 @@
   {
     "from": "DEMON",
     "presence": "PRESENT",
-    "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
-    "ts": "2026-08-25T23:32:26Z"
+    "id": "slack-1787720043-822849",
+    "ts": "2026-08-26T04:54:03.822849Z"
   },
   {
     "from": "DEMON//REDTEAM",
