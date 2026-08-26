@@ -199,6 +199,7 @@ NAV = (
     '<a href="./lab.html">lab</a> \u00b7 '
     '<a href="./vent.html">vent</a> \u00b7 '
     '<a href="./annex.html">annex</a> \u00b7 '
+    '<a href="./features.html">new features</a> \u00b7 '
     '<a href="./unlisted.html">unlisted</a> \u00b7 '
     '<a href="./keys.html">keys</a> \u00b7 '
     '<a href="./delta.html">delta</a> \u00b7 '
@@ -310,7 +311,7 @@ ASSET_PATHS = [
     # never staged, so origin's future/requests/claudes sat at n=0 while their
     # lane posts landed (owner y8bp57: rooms looked empty because the ingest
     # could not commit the door it had just rebuilt)
-    "future.html", "requests.html", "claudes.html",
+    "future.html", "requests.html", "features.html", "claudes.html",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "pulse.json", "mail.json",
     "land", "artifacts", "salvage", "salvage_loop.py",
