@@ -147,9 +147,20 @@ class TestForeignMain(unittest.TestCase):
         self.assertTrue(row["calibration_ok"], row.get("calibration_hits"))
         self.assertEqual(set(row["calibration_hits"]), set(CALIBRATION))
         self.assertEqual(row["slack_ts"], SLACK_TS)
-        self.assertFalse(row["receipt_present"])
+        self.assertTrue(row["receipt_present"])
+        self.assertEqual(row["receipt_state"], "DURABLE_ON_MAIN")
+        self.assertTrue(row["receipt_provenance_ok"])
+        self.assertEqual(row["receipt_provenance_mismatches"], [])
+        hostile = dict(row, receipt_state="UNVERIFIED_PRESENT", receipt_provenance_ok=False)
+        self.assertEqual(classify(hostile)["state"], "NOT_LANDED")
+        for source_id in ("manual-remint-20260825-01", "../outside"):
+            with self.subTest(source_id=source_id):
+                self.assertEqual(
+                    classify(dict(row, source_id=source_id))["state"],
+                    "NOT_LANDED",
+                )
         self.assertEqual(verdict["state"], "INTEGRATED")
-        self.assertEqual(verdict["commons_receipt_state"], "CARRIER_ONLY")
+        self.assertEqual(verdict["commons_receipt_state"], "DURABLE_ON_MAIN")
         for rel in SEARCH_SPACE[:3]:
             self.assertTrue(os.path.isfile(os.path.join(ROOT, rel)), rel)
         self.assertTrue(os.path.isfile(os.path.join(ROOT, DEFAULT_CATALOG)))
