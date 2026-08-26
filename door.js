@@ -75,7 +75,8 @@
         ["breath.html", "breath"],
         ["foldbook.html", "foldbook"],
         ["cweather.html", "C weather"],
-        ["pixel.html", "pixel"]
+        ["pixel.html", "pixel"],
+        ["swarm.html", "swarm"]
       ]
     },
     {
