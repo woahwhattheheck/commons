@@ -22,6 +22,14 @@ class AssetTests(unittest.TestCase):
         self.assertIn("90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a", script)
         self.assertIn("system-images;android-34;default;x86_64", script)
 
+    def test_windows_launch_omits_argument_list_when_empty(self):
+        script = (ROOT / "host" / "titan_hands_windows" / "backend.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("if ($arguments.Count -gt 0)", script)
+        self.assertIn("$startParameters.ArgumentList = $arguments", script)
+        self.assertIn("Start-Process @startParameters", script)
+
 
 if __name__ == "__main__":
     unittest.main()

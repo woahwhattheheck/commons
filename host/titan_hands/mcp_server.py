@@ -25,6 +25,39 @@ TARGET_PROPERTY = {
     "description": "Execution surface. Defaults to windows.",
 }
 
+ACTION_PROPERTY = {
+    "type": "object",
+    "required": ["type"],
+    "description": (
+        "One semantic or input action. For launch, Windows requires file and accepts an "
+        "optional args array; Android requires package and accepts an optional activity."
+    ),
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": (
+                "Free-form adapter action verb. Built-ins include invoke, set_value, toggle, "
+                "expand, collapse, select, focus, click, type_text, key, scroll, launch, wait, "
+                "and done."
+            ),
+        },
+        "id": {"type": "string", "description": "Stable node ID from hands_observe."},
+        "text": {"type": "string"},
+        "value": {"type": "string"},
+        "key": {"type": "string"},
+        "delta": {"type": "integer"},
+        "file": {"type": "string", "description": "Windows executable for launch."},
+        "args": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Optional Windows launch arguments; omit when none are needed.",
+        },
+        "package": {"type": "string", "description": "Android package for launch."},
+        "activity": {"type": "string", "description": "Optional Android activity."},
+        "milliseconds": {"type": "integer", "minimum": 0},
+    },
+}
+
 TOOLS = [
     {
         "name": "hands_targets",
@@ -54,7 +87,7 @@ TOOLS = [
             "required": ["action"],
             "properties": {
                 "target": TARGET_PROPERTY,
-                "action": {"type": "object"},
+                "action": ACTION_PROPERTY,
                 "observe_after": {"type": "boolean"},
                 "max_nodes": {"type": "integer", "minimum": 1},
                 "max_depth": {"type": "integer", "minimum": 0},

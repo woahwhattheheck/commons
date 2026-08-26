@@ -46,6 +46,11 @@ class BrokerTests(unittest.TestCase):
         self.assertIn("semantic", initialized["result"]["instructions"])
         listed = dispatch(self.broker, {"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
         self.assertEqual(len(listed["result"]["tools"]), 5)
+        tools = {tool["name"]: tool for tool in listed["result"]["tools"]}
+        action_schema = tools["hands_act"]["inputSchema"]["properties"]["action"]
+        self.assertIn("type", action_schema["required"])
+        self.assertIn("file", action_schema["properties"])
+        self.assertIn("package", action_schema["properties"])
 
 
 if __name__ == "__main__":

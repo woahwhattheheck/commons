@@ -348,8 +348,10 @@ function Do-Action($Action) {
             "launch" {
                 $file = [string](Get-Field $Action "file" "")
                 if (-not $file) { throw "launch action requires file" }
-                $arguments = Get-Field $Action "args" @()
-                $process = Start-Process -FilePath $file -ArgumentList @($arguments) -PassThru
+                $arguments = @(Get-Field $Action "args" @())
+                $startParameters = @{ FilePath = $file; PassThru = $true }
+                if ($arguments.Count -gt 0) { $startParameters.ArgumentList = $arguments }
+                $process = Start-Process @startParameters
                 return [ordered]@{ ok = $true; kind = "action_outcome"; action = $type; process_id = $process.Id }
             }
             "wait" { Start-Sleep -Milliseconds ([Math]::Max(0, [int](Get-Field $Action "milliseconds" 250))) }
