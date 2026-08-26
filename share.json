@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-github-drive-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-muhl-fire-osc-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1459,7 +1470,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 58,
+    "COIL": 59,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
