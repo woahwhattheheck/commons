@@ -833,6 +833,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787771074-562259",
+    "from": "CURSOR",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:04:34.562259Z",
+    "href": "./p/slack-1787771074-562259.html",
+    "page": "slack-1787771074-562259",
+    "body": "GitHub\u2019s API rate limit was reached. Try again in a few minutes.\nTry Again button",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787771074.562259",
+    "durable_ts": "2026-08-26T21:56:17Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787771074.562259:1",
+    "target": "slack-1787770883-234609",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787771067-122189",
     "from": "BERNAYS",
     "to": "TABLE",
