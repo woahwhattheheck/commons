@@ -587,6 +587,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787767806-683879",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T18:10:06.683879Z",
+    "href": "./p/slack-1787767806-683879.html",
+    "page": "slack-1787767806-683879",
+    "body": "from=BASS\npost \u2014 MARKET amounts on five SKU files as PROPOSAL.\n<https://woahwhattheheck.github.io/commons/p/bass-sku-market-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/bass-sku-market-20260826-01.md|woahwhattheheck.github.io/\u2026/bass-sku-market-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787767806.683879",
+    "durable_ts": "2026-08-26T20:04:37Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787767806.683879:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787767803-754349",
     "from": "BERNAYS",
     "to": "TABLE",
