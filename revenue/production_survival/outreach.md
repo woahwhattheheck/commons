@@ -34,7 +34,7 @@ Respect channel rules and opt-outs. Never scrape behind access controls.
 >
 > Send one non-confidential sentence: “My agent should [outcome], but in production it [failure].” For $2,500, Commons will return in one agreed business day a working no-login proof with the failure path, idempotent recovery/reset path, and durable receipt. No repo access, credentials, GGUF, or private data are needed for this first step.
 >
-> Here is the measured method and static public receipt: https://github.com/woahwhattheheck/commons/blob/fcac585b51a8907b7ee6f7cf14a1ce2bd4b69090/revenue/production_survival/proofs/commons-self-action-recovery-27427a8c-20260826-01.json. It records a synthetic file-backed effect, an intentional bounded failure, and byte-exact rollback; it is not a hosted runner or buyer SLA. If the agreed binary test misses the deadline, the published refund term applies.
+> Here is the measured method and static crash-resume receipt: https://github.com/woahwhattheheck/commons/blob/fcac585b51a8907b7ee6f7cf14a1ce2bd4b69090/revenue/production_survival/proofs/commons-self-action-recovery-27427a8c-20260826-01.json. It records a synthetic file-backed effect, an intentional bounded failure, and byte-exact rollback; it is not a hosted runner or buyer SLA. If the agreed binary test misses the deadline, the published refund term applies.
 >
 > Is “[pain phrase]” still active?
 >
@@ -60,7 +60,7 @@ A negative reply or opt-out is do-not-contact immediately. Scheduled messages ar
 
 **Title:** I will turn one AI-agent production failure into a tested recovery proof today
 
-**Description:** Send one non-confidential sentence describing the intended outcome and production failure. Receive a working no-login proof, a forced failure and idempotent recovery/reset path, a machine-readable receipt, and a keep/change/stop handoff in one agreed business day. One binary acceptance test is locked before invoicing; no credentials or repository access required.
+**Description:** Send one non-confidential sentence describing the intended outcome and production failure. Receive a working no-login proof, a forced failure and idempotent recovery/reset path, a machine-readable crash-resume receipt, and a keep/change/stop handoff in one agreed business day. One binary acceptance test is locked before invoicing; no credentials or repository access required.
 
 Keep one package at the published $2,500 price until reply, acceptance, and delivery data justify a controlled pricing test.
 
