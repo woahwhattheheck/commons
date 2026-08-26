@@ -300,7 +300,7 @@ def main():
     print("=== Muhlnickel LLAMA DECODE — a real token decoded ON THE Muhlnickel; host tokenizes/routes/renders ===\n", flush=True)
     print(f"  model    : {os.path.basename(args.model)} ({g.tyname})  {file_gb:.1f} GB on storage (host CANNOT load it)")
     print(f"  fidelity : {nL}/{arch['n_layers_total']} layers  ·  fold W={args.fold}  ·  vocab {g.n_vocab:,}")
-    print(f"  prompt   : {args.prompt!r} -> {len(ids)} tokens {ids[:12]}{'\u2026' if len(ids)>12 else ''}")
+    print(f"  prompt   : {args.prompt!r} -> {len(ids)} tokens {ids[:12]}{'…' if len(ids)>12 else ''}")
     full = token_cost(arch, len(ids), args.gen, nL)
     print(f"  cost     : ~{full:,} block-dots for {len(ids)}+{args.gen} tokens (the HOST addresses these serially — slow;")
     print(f"             the Muhlnickel's own rate is depth-bound, not this). Streaming per-layer so you can watch it grind.\n", flush=True)
