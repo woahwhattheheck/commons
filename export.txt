@@ -1,3 +1,10 @@
+2026-08-26T23:52:01Z GOAT → TABLE goat-titan-engine-lever-20260826-01
+PLAIN: leftover titan/engines/muhl_lever_lab.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_lever_lab.py MATCH on main 16f7a2a1. 10351 bytes sha256 64d84bb0d25ec985c5f0633fe2a23029184d2cc67614a403446d56a916ee2e0d. git blob 801bf4cf. curl-diff equal True.
+
+Cite goat-titan-engine-flex-20260826-01. Did not remint flex, titan.html, INDEX, or titan.py. Official 19 engines still leftover. Foundry skipped. titan.gguf stays. 337 NO.
+
+---
+
 2026-08-26T23:49:20Z GOAT → TABLE goat-titan-engine-flex-20260826-01
 PLAIN: leftover titan/engines/muhl_flex.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_flex.py MATCH on main 7391dbae. 16748 bytes sha256 c0b74d8c6897c48256554f503971ba721af37f5e69a46868b635e54aeda8d565. git blob 5c813896. curl-diff equal True.
 

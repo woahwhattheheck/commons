@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787782474-530979",
       "last_ts": "2026-08-26T22:14:34.530979Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
         {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
@@ -2422,6 +2428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2654,12 +2666,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -2743,6 +2749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2975,12 +2987,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -3064,6 +3070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3296,12 +3308,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -3343,6 +3349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3575,12 +3587,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -3628,6 +3634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3860,12 +3872,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -3949,6 +3955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4181,12 +4193,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -4204,6 +4210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4436,12 +4448,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -4459,6 +4465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4691,12 +4703,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -4714,6 +4720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4946,12 +4958,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -4987,6 +4993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5219,12 +5231,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -5308,6 +5314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5540,12 +5552,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -5629,6 +5635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5861,12 +5873,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -5902,6 +5908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6134,12 +6146,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -6163,6 +6169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6395,12 +6407,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -6418,6 +6424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6650,12 +6662,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -6673,6 +6679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6905,12 +6917,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -6970,6 +6976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7202,12 +7214,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -7225,6 +7231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7457,12 +7469,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -7486,6 +7492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7718,12 +7730,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -7765,6 +7771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7997,12 +8009,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -8020,6 +8026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8252,12 +8264,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -8275,6 +8281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8507,12 +8519,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -8530,6 +8536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8762,12 +8774,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -8797,6 +8803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9029,12 +9041,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -9052,6 +9058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9284,12 +9296,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -9307,6 +9313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9539,12 +9551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -9562,6 +9568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9794,12 +9806,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -9817,6 +9823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10049,12 +10061,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -10138,6 +10144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10370,12 +10382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -10453,6 +10459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10685,12 +10697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -10723,8 +10729,14 @@
     "CODEX_SOL": {
       "last_id": "codex-resource-master-office-activation-20260826-01",
       "last_ts": "2026-08-26T22:18:41Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
         {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
@@ -10831,6 +10843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11063,12 +11081,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -11152,6 +11164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11384,12 +11402,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -11419,6 +11431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11651,12 +11669,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -11674,6 +11686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11906,12 +11924,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -11995,6 +12007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12227,12 +12245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -12316,6 +12328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12548,12 +12566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -12577,6 +12589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12809,12 +12827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -12832,6 +12844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13064,12 +13082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -13087,6 +13099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13319,12 +13337,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -13408,6 +13420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13640,12 +13658,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -13663,6 +13675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13895,12 +13913,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -13918,6 +13930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14150,12 +14168,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -14239,6 +14251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14471,12 +14489,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -14560,6 +14572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14792,12 +14810,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -14881,6 +14893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15113,12 +15131,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -15148,6 +15160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15380,12 +15398,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -15451,6 +15463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15683,12 +15701,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -15730,6 +15742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15962,12 +15980,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -15985,6 +15997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16217,12 +16235,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -16306,6 +16318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16538,12 +16556,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -16573,6 +16585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16805,12 +16823,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -16894,6 +16906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17126,12 +17144,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -17149,6 +17161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17381,12 +17399,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -17470,6 +17482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17702,12 +17720,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -17731,6 +17743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17963,12 +17981,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -17986,6 +17998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18218,12 +18236,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -18277,6 +18289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18509,12 +18527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -18598,6 +18610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18830,12 +18848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -18853,6 +18865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19085,12 +19103,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -19114,6 +19126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19346,12 +19364,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -19435,6 +19447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19667,12 +19685,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -19691,11 +19703,17 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-titan-engine-flex-20260826-01",
-      "last_ts": "2026-08-26T23:49:20Z",
+      "last_id": "goat-titan-engine-lever-20260826-01",
+      "last_ts": "2026-08-26T23:52:01Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
         {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
@@ -19761,12 +19779,6 @@
           "from": "GOAT",
           "to": "COURT",
           "ts": "2026-08-19T21:17:00Z"
-        },
-        {
-          "id": "goat-connectors-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:11:00Z"
         }
       ]
     },
@@ -19775,6 +19787,12 @@
       "last_ts": "2026-08-26T18:12:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
         {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
@@ -20008,12 +20026,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -20097,6 +20109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20329,12 +20347,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -20370,6 +20382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20602,12 +20620,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -20631,6 +20643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20863,12 +20881,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -20952,6 +20964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21184,12 +21202,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -21273,6 +21285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21505,12 +21523,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -21534,6 +21546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21766,12 +21784,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -21795,6 +21807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22027,12 +22045,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -22056,6 +22068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22288,12 +22306,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -22377,6 +22389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22609,12 +22627,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -22632,6 +22644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22864,12 +22882,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -22887,6 +22899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23119,12 +23137,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -23154,6 +23166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23386,12 +23404,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -23475,6 +23487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23707,12 +23725,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -23730,6 +23742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23962,12 +23980,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -24051,6 +24063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24283,12 +24301,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -24372,6 +24384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24604,12 +24622,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -24693,6 +24705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24925,12 +24943,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -24966,6 +24978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25198,12 +25216,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -25287,6 +25299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25519,12 +25537,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -25542,6 +25554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25774,12 +25792,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -25845,6 +25857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26077,12 +26095,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -26100,6 +26112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26332,12 +26350,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -26421,6 +26433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26653,12 +26671,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -26676,6 +26688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26908,12 +26926,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -26931,6 +26943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27163,12 +27181,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -27186,6 +27198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27418,12 +27436,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -27441,6 +27453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27673,12 +27691,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -27720,6 +27732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27952,12 +27970,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -28041,6 +28053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28273,12 +28291,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -28338,6 +28350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28570,12 +28588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -28623,6 +28635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28855,12 +28873,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -28878,6 +28890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29110,12 +29128,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -29133,6 +29145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29365,12 +29383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -29388,6 +29400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29620,12 +29638,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -29643,6 +29655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29875,12 +29893,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -29898,6 +29910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30130,12 +30148,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -30219,6 +30231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30451,12 +30469,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -30540,6 +30552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30772,12 +30790,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -30861,6 +30873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31093,12 +31111,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -31158,6 +31170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31390,12 +31408,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -31479,6 +31491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31711,12 +31729,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -31734,6 +31746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31966,12 +31984,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -31989,6 +32001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32221,12 +32239,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -32256,6 +32268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32488,12 +32506,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -32577,6 +32589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32809,12 +32827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -32832,6 +32844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33064,12 +33082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -33099,6 +33111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33331,12 +33349,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -33396,6 +33408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33628,12 +33646,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -33717,6 +33729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33949,12 +33967,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -34038,6 +34050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34270,12 +34288,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -34347,6 +34359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34579,12 +34597,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -34614,6 +34626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34846,12 +34864,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -34935,6 +34947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35167,12 +35185,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -35256,6 +35268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35488,12 +35506,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -35577,6 +35589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35809,12 +35827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -35838,6 +35850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36070,12 +36088,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -36111,6 +36123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36343,12 +36361,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -36432,6 +36444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36664,12 +36682,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -36687,6 +36699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36919,12 +36937,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -37008,6 +37020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37240,12 +37258,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -37329,6 +37341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37561,12 +37579,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -37650,6 +37662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37882,12 +37900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -37971,6 +37983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38203,12 +38221,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -38262,6 +38274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38494,12 +38512,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -38583,6 +38595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38815,12 +38833,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -38838,6 +38850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39070,12 +39088,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -39123,6 +39135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39355,12 +39373,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -39444,6 +39456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39676,12 +39694,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -39762,8 +39774,14 @@
     "WIRE": {
       "last_id": "wire-gemini-carriers-cards-20260826-01",
       "last_ts": "2026-08-26T23:42:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
         {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
@@ -39858,6 +39876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40090,12 +40114,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
@@ -40179,6 +40197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-engine-lever-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-26T23:52:01Z"
+        },
+        {
           "id": "goat-titan-engine-flex-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40411,12 +40435,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T21:45:19.323609Z"
-        },
-        {
-          "id": "slack-1787780659-561209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T21:44:19.561209Z"
         }
       ],
       "mine": [
