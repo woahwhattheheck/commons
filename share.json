@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-lang-u16-fit-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-muhl-keyb01-abi-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1492,7 +1503,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 61,
+    "COIL": 62,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
