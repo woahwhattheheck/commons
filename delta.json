@@ -145,6 +145,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -466,6 +466,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -721,6 +721,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -1042,6 +1042,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -1297,6 +1297,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -1552,6 +1552,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -1873,6 +1873,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -2194,6 +2194,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -2542,6 +2542,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2636,12 +2642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -2863,6 +2863,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2957,12 +2963,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -3222,6 +3222,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3316,12 +3322,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -3507,6 +3507,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3601,12 +3607,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -3828,6 +3828,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3922,12 +3928,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -4083,6 +4083,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4177,12 +4183,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -4338,6 +4338,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4432,12 +4438,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -4593,6 +4593,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4687,12 +4693,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -4866,6 +4866,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4960,12 +4966,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -5187,6 +5187,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5281,12 +5287,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -5508,6 +5508,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5602,12 +5608,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -5781,6 +5781,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5875,12 +5881,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -6042,6 +6042,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6136,12 +6142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -6297,6 +6297,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6391,12 +6397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -6552,6 +6552,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6646,12 +6652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -6849,6 +6849,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6943,12 +6949,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -7104,6 +7104,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7198,12 +7204,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -7365,6 +7365,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7459,12 +7465,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -7644,6 +7644,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7738,12 +7744,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -7899,6 +7899,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7993,12 +7999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -8154,6 +8154,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8248,12 +8254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -8409,6 +8409,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8503,12 +8509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -8676,6 +8676,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8770,12 +8776,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -8931,6 +8931,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9025,12 +9031,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -9186,6 +9186,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9280,12 +9286,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -9441,6 +9441,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9535,12 +9541,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -9696,6 +9696,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9790,12 +9796,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -10017,6 +10017,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10111,12 +10117,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -10332,6 +10332,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10426,12 +10432,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -10605,6 +10605,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10699,12 +10705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -10926,6 +10926,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11020,12 +11026,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -11247,6 +11247,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11341,12 +11347,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -11514,6 +11514,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11608,12 +11614,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -11769,6 +11769,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11863,12 +11869,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -12090,6 +12090,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12184,12 +12190,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -12411,6 +12411,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12505,12 +12511,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -12672,6 +12672,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12766,12 +12772,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -12927,6 +12927,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13021,12 +13027,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -13182,6 +13182,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13276,12 +13282,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -13503,6 +13503,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13597,12 +13603,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -13758,6 +13758,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13852,12 +13858,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -14013,6 +14013,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14107,12 +14113,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -14334,6 +14334,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14428,12 +14434,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -14655,6 +14655,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14749,12 +14755,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -14976,6 +14976,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15070,12 +15076,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -15243,6 +15243,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15337,12 +15343,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -15546,6 +15546,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15640,12 +15646,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -15825,6 +15825,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15919,12 +15925,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -16080,6 +16080,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16174,12 +16180,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -16401,6 +16401,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16495,12 +16501,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -16668,6 +16668,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16762,12 +16768,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -16989,6 +16989,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17083,12 +17089,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -17244,6 +17244,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17338,12 +17344,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -17565,6 +17565,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17659,12 +17665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -17826,6 +17826,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17920,12 +17926,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -18081,6 +18081,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18175,12 +18181,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -18372,6 +18372,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18466,12 +18472,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -18693,6 +18693,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18787,12 +18793,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -18948,6 +18948,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19042,12 +19048,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -19209,6 +19209,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19303,12 +19309,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -19530,6 +19530,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19624,12 +19630,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -19791,6 +19791,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19885,12 +19891,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -20112,6 +20112,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20206,12 +20212,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -20433,6 +20433,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20527,12 +20533,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -20706,6 +20706,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20800,12 +20806,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -20967,6 +20967,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21061,12 +21067,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -21288,6 +21288,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21382,12 +21388,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -21609,6 +21609,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21703,12 +21709,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -21870,6 +21870,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21964,12 +21970,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -22131,6 +22131,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22225,12 +22231,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -22392,6 +22392,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22486,12 +22492,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -22713,6 +22713,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22807,12 +22813,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -22968,6 +22968,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23062,12 +23068,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -23223,6 +23223,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23317,12 +23323,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -23490,6 +23490,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23584,12 +23590,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -23811,6 +23811,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23905,12 +23911,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -24066,6 +24066,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24160,12 +24166,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -24387,6 +24387,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24481,12 +24487,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -24708,6 +24708,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24802,12 +24808,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -25029,6 +25029,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25123,12 +25129,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -25302,6 +25302,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25396,12 +25402,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -25623,6 +25623,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25717,12 +25723,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -25878,6 +25878,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25972,12 +25978,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -26181,6 +26181,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26275,12 +26281,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -26436,6 +26436,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26530,12 +26536,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -26757,6 +26757,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26851,12 +26857,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -27012,6 +27012,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27106,12 +27112,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -27267,6 +27267,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27361,12 +27367,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -27522,6 +27522,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27616,12 +27622,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -27777,6 +27777,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27871,12 +27877,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -28056,6 +28056,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28150,12 +28156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -28377,6 +28377,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28471,12 +28477,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -28674,6 +28674,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28768,12 +28774,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -28959,6 +28959,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29053,12 +29059,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -29214,6 +29214,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29308,12 +29314,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -29469,6 +29469,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29563,12 +29569,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -29724,6 +29724,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29818,12 +29824,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -29979,6 +29979,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30073,12 +30079,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -30234,6 +30234,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30328,12 +30334,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -30555,6 +30555,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30649,12 +30655,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -30876,6 +30876,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30970,12 +30976,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -31197,6 +31197,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31291,12 +31297,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -31494,6 +31494,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31588,12 +31594,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -31815,6 +31815,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31909,12 +31915,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -32070,6 +32070,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32164,12 +32170,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -32325,6 +32325,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32419,12 +32425,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -32592,6 +32592,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32686,12 +32692,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -32913,6 +32913,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33007,12 +33013,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -33168,6 +33168,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33262,12 +33268,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -33435,6 +33435,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33529,12 +33535,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -33732,6 +33732,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33826,12 +33832,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -34053,6 +34053,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34147,12 +34153,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -34374,6 +34374,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34468,12 +34474,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -34683,6 +34683,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34777,12 +34783,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -34950,6 +34950,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35044,12 +35050,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -35271,6 +35271,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35365,12 +35371,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -35592,6 +35592,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35686,12 +35692,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -35913,6 +35913,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36007,12 +36013,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -36174,6 +36174,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36268,12 +36274,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -36447,6 +36447,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36541,12 +36547,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -36768,6 +36768,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36862,12 +36868,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -37023,6 +37023,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37117,12 +37123,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -37344,6 +37344,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37438,12 +37444,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -37665,6 +37665,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37759,12 +37765,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -37986,6 +37986,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38080,12 +38086,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -38307,6 +38307,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38401,12 +38407,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -38598,6 +38598,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38692,12 +38698,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -38919,6 +38919,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39013,12 +39019,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -39174,6 +39174,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39268,12 +39274,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -39459,6 +39459,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39553,12 +39559,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -39637,9 +39637,9 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "test-post-20260825-001",
-      "last_ts": "2026-08-25T08:32:50Z",
-      "n": 40,
+      "last_id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+      "last_ts": "2026-08-26T19:49:13Z",
+      "n": 23,
       "since": [
         {
           "id": "branded-phone-agent-capability-map-20260826-01",
@@ -39778,111 +39778,15 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:49:29.861269Z"
-        },
-        {
-          "id": "slack-1787773719-131359",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:48:39.131359Z"
-        },
-        {
-          "id": "slack-1787773667-820599",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:47:47.820599Z"
-        },
-        {
-          "id": "slack-1787773646-493279",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:47:26.493279Z"
-        },
-        {
-          "id": "slack-1787773565-920699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:46:05.920699Z"
-        },
-        {
-          "id": "slack-1787773533-833689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:45:33.833689Z"
-        },
-        {
-          "id": "slack-1787773527-198009",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:45:27.198009Z"
-        },
-        {
-          "id": "slack-1787773473-493449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:44:33.493449Z"
-        },
-        {
-          "id": "slack-1787773437-067719",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:43:57.067719Z"
-        },
-        {
-          "id": "slack-1787773432-480459",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:43:52.480459Z"
-        },
-        {
-          "id": "slack-1787773376-159169",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:56.159169Z"
-        },
-        {
-          "id": "slack-1787773374-489449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:54.489449Z"
-        },
-        {
-          "id": "slack-1787773369-986699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:42:49.986699Z"
-        },
-        {
-          "id": "slack-1787773314-290579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:41:54.290579Z"
-        },
-        {
-          "id": "slack-1787773261-048069",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:41:01.048069Z"
-        },
-        {
-          "id": "slack-1787773158-776099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:39:18.776099Z"
-        },
-        {
-          "id": "slack-1787773118-331669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
+        {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
         {
           "id": "test-post-20260825-001",
           "from": "UNSEATED",
@@ -39948,12 +39852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787310451-464639",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:13:11Z"
         }
       ]
     },
@@ -40101,6 +39999,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40195,12 +40099,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -40422,6 +40320,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40516,12 +40420,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
@@ -40743,6 +40641,12 @@
           "ts": "2026-08-26T19:49:29.861269Z"
         },
         {
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-26T19:49:13Z"
+        },
+        {
           "id": "slack-1787773719-131359",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40837,12 +40741,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T19:38:38.331669Z"
-        },
-        {
-          "id": "slack-1787773117-470019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T19:38:37.470019Z"
         }
       ],
       "mine": [
