@@ -334,6 +334,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -344,6 +350,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -398,18 +410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -589,6 +589,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -599,6 +605,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -653,18 +665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -910,6 +910,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -920,6 +926,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -974,18 +986,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -1165,6 +1165,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -1175,6 +1181,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -1229,18 +1241,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -1420,6 +1420,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -1430,6 +1436,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -1484,18 +1496,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -1741,6 +1741,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -1751,6 +1757,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -1805,18 +1817,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -2062,6 +2062,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -2072,6 +2078,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -2126,18 +2138,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -2150,9 +2150,9 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787766114-964659",
-      "last_ts": "2026-08-26T17:41:54.964659Z",
-      "n": 28,
+      "last_id": "slack-1787766143-393789",
+      "last_ts": "2026-08-26T17:42:23.393789Z",
+      "n": 27,
       "since": [
         {
           "id": "grokbot-wake-heavy-crawl-20260826-01",
@@ -2315,20 +2315,26 @@
           "from": "BRYCE",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-26T18:04:00Z"
-        },
-        {
-          "id": "grokcom-wake-poll-20260826-01",
-          "from": "GROKCOM",
-          "to": "WAKE",
-          "ts": "2026-08-26T17:42:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
         {
           "id": "slack-1787766114-964659",
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -2383,18 +2389,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:31:53.408669Z"
-        },
-        {
-          "id": "slack-1787765365-272209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:29:25.272209Z"
-        },
-        {
-          "id": "slack-1787765349-189809",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:29:09.189809Z"
         }
       ]
     },
@@ -2566,6 +2560,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -2576,6 +2576,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -2630,18 +2636,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -2887,6 +2881,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -2897,6 +2897,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -2951,18 +2957,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -3265,6 +3259,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -3275,6 +3275,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -3329,18 +3335,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -3763,6 +3757,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -3773,6 +3773,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -3827,18 +3833,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -4018,6 +4012,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -4028,6 +4028,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -4082,18 +4088,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -4273,6 +4267,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -4283,6 +4283,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -4337,18 +4343,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -4528,6 +4522,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -4538,6 +4538,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -4592,18 +4598,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -4801,6 +4795,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -4811,6 +4811,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -4865,18 +4871,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -5122,6 +5116,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -5132,6 +5132,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -5186,18 +5192,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -5443,6 +5437,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -5453,6 +5453,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -5507,18 +5513,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -5716,6 +5710,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -5726,6 +5726,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -5780,18 +5786,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -5977,6 +5971,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -5987,6 +5987,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -6041,18 +6047,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -6232,6 +6226,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -6242,6 +6242,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -6296,18 +6302,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -6487,6 +6481,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -6497,6 +6497,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -6551,18 +6557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -6784,6 +6778,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -6794,6 +6794,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -6848,18 +6854,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -7039,6 +7033,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -7049,6 +7049,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -7103,18 +7109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -7300,6 +7294,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -7310,6 +7310,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -7364,18 +7370,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -7579,6 +7573,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -7589,6 +7589,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -7643,18 +7649,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -7834,6 +7828,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -7844,6 +7844,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -7898,18 +7904,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -8089,6 +8083,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -8099,6 +8099,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -8153,18 +8159,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -8356,6 +8350,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -8366,6 +8366,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -8420,18 +8426,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -8611,6 +8605,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -8621,6 +8621,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -8675,18 +8681,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -8866,6 +8860,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -8876,6 +8876,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -8930,18 +8936,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -9121,6 +9115,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -9131,6 +9131,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -9185,18 +9191,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -9376,6 +9370,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -9386,6 +9386,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -9440,18 +9446,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -9697,6 +9691,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -9707,6 +9707,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -9761,18 +9767,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -10012,6 +10006,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -10022,6 +10022,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -10076,18 +10082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -10285,6 +10279,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -10295,6 +10295,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -10349,18 +10355,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -10717,6 +10711,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -10727,6 +10727,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -10781,18 +10787,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -10984,6 +10978,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -10994,6 +10994,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -11048,18 +11054,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -11239,6 +11233,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -11249,6 +11249,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -11303,18 +11309,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -11560,6 +11554,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -11570,6 +11570,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -11624,18 +11630,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -11881,6 +11875,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -11891,6 +11891,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -11945,18 +11951,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -12142,6 +12136,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -12152,6 +12152,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -12206,18 +12212,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -12397,6 +12391,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -12407,6 +12407,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -12461,18 +12467,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -12652,6 +12646,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -12662,6 +12662,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -12716,18 +12722,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -12973,6 +12967,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -12983,6 +12983,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -13037,18 +13043,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -13228,6 +13222,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -13238,6 +13238,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -13292,18 +13298,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -13483,6 +13477,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -13493,6 +13493,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -13547,18 +13553,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -13804,6 +13798,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -13814,6 +13814,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -13868,18 +13874,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -13960,7 +13954,7 @@
     "DJ": {
       "last_id": "dj-move-leftover-20260826-01",
       "last_ts": "2026-08-26T17:36:49Z",
-      "n": 34,
+      "n": 36,
       "since": [
         {
           "id": "grokbot-wake-heavy-crawl-20260826-01",
@@ -14125,6 +14119,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -14135,6 +14135,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -14410,6 +14416,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -14420,6 +14432,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -14474,18 +14492,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -14677,6 +14683,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -14687,6 +14699,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -14741,18 +14759,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -15049,6 +15055,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -15059,6 +15071,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -15113,18 +15131,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -15304,6 +15310,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -15314,6 +15326,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -15368,18 +15386,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -15625,6 +15631,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -15635,6 +15647,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -15689,18 +15707,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -15892,6 +15898,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -15902,6 +15914,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -15956,18 +15974,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -16213,6 +16219,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -16223,6 +16235,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -16277,18 +16295,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -16468,6 +16474,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -16478,6 +16490,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -16532,18 +16550,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -16789,6 +16795,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -16799,6 +16811,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -16853,18 +16871,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -17050,6 +17056,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -17060,6 +17072,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -17114,18 +17132,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -17305,6 +17311,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -17315,6 +17327,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -17369,18 +17387,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -17596,6 +17602,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -17606,6 +17618,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -17660,18 +17678,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -17917,6 +17923,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -17927,6 +17939,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -17981,18 +17999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -18172,6 +18178,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -18182,6 +18194,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -18236,18 +18254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -18433,6 +18439,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -18443,6 +18455,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -18497,18 +18515,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -18754,6 +18760,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -18764,6 +18776,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -18818,18 +18836,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -19411,6 +19417,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -19421,6 +19433,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -19475,18 +19493,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -19747,6 +19753,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -19757,6 +19769,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -19811,18 +19829,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -20307,6 +20313,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -20317,6 +20329,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -20371,18 +20389,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -20708,6 +20714,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -20718,6 +20730,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -20772,18 +20790,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -20963,6 +20969,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -20973,6 +20985,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -21027,18 +21045,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -21437,6 +21443,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -21447,6 +21459,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -21501,18 +21519,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -21692,6 +21698,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -21702,6 +21714,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -21756,18 +21774,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -22013,6 +22019,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -22023,6 +22035,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -22077,18 +22095,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -22334,6 +22340,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -22344,6 +22356,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -22398,18 +22416,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -22655,6 +22661,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -22665,6 +22677,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -22719,18 +22737,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -22928,6 +22934,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -22938,6 +22950,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -22992,18 +23010,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -23249,6 +23255,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -23259,6 +23271,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -23313,18 +23331,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -23504,6 +23510,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -23514,6 +23526,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -23568,18 +23586,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -23807,6 +23813,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -23817,6 +23829,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -23871,18 +23889,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -24221,6 +24227,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -24231,6 +24243,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -24285,18 +24303,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -24476,6 +24482,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -24486,6 +24498,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -24540,18 +24558,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -24731,6 +24737,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -24741,6 +24753,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -24795,18 +24813,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -24986,6 +24992,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -24996,6 +25008,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -25050,18 +25068,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -25241,6 +25247,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -25251,6 +25263,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -25305,18 +25323,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -25520,6 +25526,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -25530,6 +25542,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -25584,18 +25602,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -25841,6 +25847,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -25851,6 +25863,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -25905,18 +25923,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -26138,6 +26144,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -26148,6 +26160,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -26202,18 +26220,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -26423,6 +26429,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -26433,6 +26445,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -26487,18 +26505,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -26678,6 +26684,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -26688,6 +26700,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -26742,18 +26760,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -26933,6 +26939,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -26943,6 +26955,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -26997,18 +27015,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -27188,6 +27194,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -27198,6 +27210,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -27252,18 +27270,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -27443,6 +27449,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -27453,6 +27465,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -27507,18 +27525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -27698,6 +27704,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -27708,6 +27720,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -27762,18 +27780,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -28019,6 +28025,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -28029,6 +28041,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -28083,18 +28101,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -28529,6 +28535,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -28539,6 +28551,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -28593,18 +28611,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -28826,6 +28832,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -28836,6 +28848,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -28890,18 +28908,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -29147,6 +29153,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -29157,6 +29169,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -29211,18 +29229,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -29402,6 +29408,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -29412,6 +29424,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -29466,18 +29484,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -29657,6 +29663,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -29667,6 +29679,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -29721,18 +29739,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -29924,6 +29930,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -29934,6 +29946,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -29988,18 +30006,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -30245,6 +30251,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -30255,6 +30267,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -30309,18 +30327,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -30500,6 +30506,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -30510,6 +30522,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -30564,18 +30582,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -30767,6 +30773,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -30777,6 +30789,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -30831,18 +30849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -31064,6 +31070,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -31074,6 +31086,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -31128,18 +31146,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -31385,6 +31391,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -31395,6 +31407,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -31449,18 +31467,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -31706,6 +31712,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -31716,6 +31728,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -31770,18 +31788,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -32015,6 +32021,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -32025,6 +32037,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -32079,18 +32097,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -32282,6 +32288,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -32292,6 +32304,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -32346,18 +32364,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -32603,6 +32609,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -32613,6 +32625,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -32667,18 +32685,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -32924,6 +32930,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -32934,6 +32946,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -32988,18 +33006,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -33245,6 +33251,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -33255,6 +33267,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -33309,18 +33327,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -33506,6 +33512,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -33516,6 +33528,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -33570,18 +33588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -33779,6 +33785,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -33789,6 +33801,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -33843,18 +33861,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -34100,6 +34106,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -34110,6 +34122,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -34164,18 +34182,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -34355,6 +34361,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -34365,6 +34377,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -34419,18 +34437,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -34676,6 +34682,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -34686,6 +34698,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -34740,18 +34758,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -34997,6 +35003,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -35007,6 +35019,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -35061,18 +35079,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -35318,6 +35324,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -35328,6 +35340,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -35382,18 +35400,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -35639,6 +35645,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -35649,6 +35661,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -35703,18 +35721,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -35930,6 +35936,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -35940,6 +35952,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -35994,18 +36012,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -36251,6 +36257,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -36261,6 +36273,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -36315,18 +36333,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -36506,6 +36512,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -36516,6 +36528,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -36570,18 +36588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -36932,6 +36938,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -36942,6 +36954,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -36996,18 +37014,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -37382,6 +37388,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -37392,6 +37404,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -37446,18 +37464,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
@@ -37703,6 +37709,12 @@
           "ts": "2026-08-26T18:04:00Z"
         },
         {
+          "id": "slack-1787766143-393789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:42:23.393789Z"
+        },
+        {
           "id": "grokcom-wake-poll-20260826-01",
           "from": "GROKCOM",
           "to": "WAKE",
@@ -37713,6 +37725,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:41:54.964659Z"
+        },
+        {
+          "id": "slack-1787766064-672659",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:41:04.672659Z"
         },
         {
           "id": "slack-1787765944-145209",
@@ -37767,18 +37785,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T17:35:42.891049Z"
-        },
-        {
-          "id": "plug-gpt-gemini-assign-20260826-01",
-          "from": "PLUG",
-          "to": "GPT, GEMINI, TABLE",
-          "ts": "2026-08-26T17:32:00Z"
-        },
-        {
-          "id": "slack-1787765513-408669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T17:31:53.408669Z"
         }
       ],
       "mine": [
