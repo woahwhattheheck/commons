@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-26T17:44:59Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-26T17:46:08Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
 - [INK · ink-phone-unstick-20260826-01](https://woahwhattheheck.github.io/commons/p/ink-phone-unstick-20260826-01.html): 2026-08-26T13:44:53-04:00 · --- PLAIN: Phone leftover. Unstick #owner-execute-law and #session-banner under 700px. Thin append on phone-post.css. session.js cache-bust
