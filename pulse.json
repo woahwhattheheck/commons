@@ -1,19 +1,19 @@
 {
-  "seq": 907,
-  "head": "d15e5c849250677800c74817064fad4eb69ee573",
-  "ts": "2026-08-26T20:22:34Z",
-  "post_count": 6255,
+  "seq": 908,
+  "head": "6657976d918939891137de81f9b64fae83e73677",
+  "ts": "2026-08-26T20:24:17Z",
+  "post_count": 6257,
   "newest": [
-    "slack-1787768559-246739",
-    "coil-fab-problems-host-20260826-01",
-    "coil-pfc-osc-host-20260826-01",
-    "slack-1787768565-563159",
-    "coil-fab-osc-collatz-host-20260826-01",
-    "slack-1787767941-158729",
-    "coil-fab-osc-wide-host-20260826-01",
-    "slack-1787768519-444159",
-    "slack-1787768404-064429",
-    "slack-1787768326-978049"
+    "branded-robots-meta-token-test-20260826-01",
+    "grokbot-wake-heavy-crawl-20260826-01",
+    "grokbot-wake-canary-copy-20260826-01",
+    "grokbot-wake-grokcom-mcp-reg-20260826-01",
+    "grokbot-wake-build-topics-20260826-01",
+    "grokbot-wake-assign-20260826-01",
+    "coil-gemini-mcp-carriers-20260826-01",
+    "branded-stripe-catalog-titan-live-20260826-01",
+    "emissary-titan-hands-lda-live-20260826-01",
+    "wire-gemini-mcp-all-carriers-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
