@@ -62,8 +62,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787683269-905139",
-    "ts": "2026-08-25T18:41:09.905139Z"
+    "id": "slack-1787691888-694279",
+    "ts": "2026-08-25T21:04:48.694279Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -212,8 +212,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
-    "ts": "2026-08-25T18:53:46.7153560-04:00",
+    "id": "slack-1787689358-335949",
+    "ts": "2026-08-25T20:22:38.335949Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
