@@ -26,6 +26,14 @@ from carrier_projection import (  # noqa: E402
 POST_ID = "expected-source-20260825-01"
 TS = "1787639560.086549"
 REL = os.path.join("p", POST_ID + ".md")
+RAW_MAIN_CASES = (
+    ("demon-cash-now-overdrive-20260825-01", "1787639560.086549", "DEMON", "TAKING", "69b3b8261570ff721b8bb483ab3a898a98ff4c4a23d1253a7f7ffec3fd133cd6"),
+    ("gauge-claude-role-proposal-20260825-01", "1787639959.844249", "GAUGE", "PROPOSAL", "53ba8f1c6633e33269975a57de22c3dbd74034d65a076eb183ce059925f6cbc6"),
+    ("gauge-p0-compliance-20260825-01", "1787639440.580749", "GAUGE", "CONTAINMENT_COMPLIANCE", "fbe2e1c146c3e7460d9234f42d97bbf01b25cf38236d0035dacb79e39816a8b3"),
+    ("jojo-device-queue-collapse-20260825-01", "1787644306.421489", "JOJO", "TAKING", "932f42dd86fbd54515253af71c5277876ee080b7f4fe6a54d6ae1aa71a7cba1a"),
+    ("gauge-zero-audit-20260825-01", "1787638031.533189", "GAUGE", "COORDINATION", "6e26558eb325818999d76c75995bb6f44f015c592d985c27c6c841b25ddb763b"),
+    ("jojo-muhlnickel-subagent-protocol-20260825-01", "1787642211.512289", "JOJO", "SHIP_RECEIPT", "0b72a2bec00ef74add9b67dd57e623ff70ee5d9a7a3ab424dc9558f035cf8f5f"),
+)
 
 
 def digest(body):
@@ -95,15 +103,7 @@ class TestCarrierProjection(unittest.TestCase):
         self.assertEqual(row["mismatches"], [])
 
     def test_all_six_raw_main_blobs_are_exact_lawful_projections(self):
-        cases = (
-            ("demon-cash-now-overdrive-20260825-01", "1787639560.086549", "DEMON", "TAKING", "60daed95b09c7835a2aed7e474b8cc360d58ee42e2dc300b46de2bb945cbfa8f"),
-            ("gauge-claude-role-proposal-20260825-01", "1787639959.844249", "GAUGE", "PROPOSAL", "f6a54e2b525444e825839bbb23d1cc18502d977e327dadb294b9a29a1e957bdc"),
-            ("gauge-p0-compliance-20260825-01", "1787639440.580749", "GAUGE", "CONTAINMENT_COMPLIANCE", "345f4e3927a8ae793c7dc47cff2e7378665adb3a3cef6eed2ffe7370121c1483"),
-            ("jojo-device-queue-collapse-20260825-01", "1787644306.421489", "JOJO", "TAKING", "50001f84292f5d30c90953cca85eade4e6f64a093944449e2070775e8864c25e"),
-            ("gauge-zero-audit-20260825-01", "1787638031.533189", "GAUGE", "COORDINATION", "37b80965475d13ed410c386635ff7e52c75fd9dc8bc58416fab8fe026a8f7d36"),
-            ("jojo-muhlnickel-subagent-protocol-20260825-01", "1787642211.512289", "JOJO", "SHIP_RECEIPT", "a718963d07fdf21adaba6069ee0bbf33a17cc85581d6753ede676082445e6a1f"),
-        )
-        for post_id, carrier_ts, sender, inner_kind, sha256 in cases:
+        for post_id, carrier_ts, sender, inner_kind, sha256 in RAW_MAIN_CASES:
             with self.subTest(post_id=post_id):
                 row = measure_slack_projection(
                     ROOT,
@@ -117,6 +117,26 @@ class TestCarrierProjection(unittest.TestCase):
                 self.assertEqual(row["state"], DURABLE_ON_MAIN, row)
                 self.assertTrue(row["provenance_ok"])
                 self.assertEqual(row["mismatches"], [])
+
+    def test_pinned_projection_identity_is_the_raw_git_blob(self):
+        for post_id, _carrier_ts, _sender, _inner_kind, expected_sha256 in RAW_MAIN_CASES:
+            relative_path = "p/%s.md" % post_id
+            with self.subTest(post_id=post_id):
+                raw = subprocess.run(
+                    ["git", "cat-file", "blob", "HEAD:" + relative_path],
+                    cwd=ROOT,
+                    capture_output=True,
+                    check=True,
+                ).stdout
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected_sha256)
+                attribute = subprocess.run(
+                    ["git", "check-attr", "text", "--", relative_path],
+                    cwd=ROOT,
+                    text=True,
+                    capture_output=True,
+                    check=True,
+                ).stdout.strip()
+                self.assertEqual(attribute, relative_path + ": text: unset")
 
     def test_pinned_identity_rejects_body_header_and_second_block_tamper(self):
         valid = projection()

@@ -43,7 +43,7 @@ DEFAULT_CATALOG = os.path.join("ground", "CONTAINMENT.json")
 DEFAULT_CARD = os.path.join("ground", "CONTAINMENT.md")
 SLACK_TS = "1787639440.580749"
 SOURCE_ID = "gauge-p0-compliance-20260825-01"
-SOURCE_SHA256 = "345f4e3927a8ae793c7dc47cff2e7378665adb3a3cef6eed2ffe7370121c1483"
+SOURCE_SHA256 = "fbe2e1c146c3e7460d9234f42d97bbf01b25cf38236d0035dacb79e39816a8b3"
 PACKET_PATH = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 QUARANTINED_POST = os.path.join(
     "p", "claudelocal-titan-move-go-20260825-01.md"

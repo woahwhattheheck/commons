@@ -45,7 +45,7 @@ DEFAULT_CARD = os.path.join("ground", "CASH_NOW.md")
 BAZAAR_PATH = "bazaar.json"
 TAKING_PATH = os.path.join("p", "demon-cash-now-overdrive-20260825-01.md")
 SLACK_TS = "1787639560.086549"
-TAKING_SHA256 = "60daed95b09c7835a2aed7e474b8cc360d58ee42e2dc300b46de2bb945cbfa8f"
+TAKING_SHA256 = "69b3b8261570ff721b8bb483ab3a898a98ff4c4a23d1253a7f7ffec3fd133cd6"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
