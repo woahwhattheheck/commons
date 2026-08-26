@@ -106,6 +106,7 @@ def check_r33(c, outs, cs):
 
 
 # ══ R(5,5) — the OPEN case, as its replicated lane: is this one 5-subset monochromatic? ═══════════
+R55_E = 10
 def build_r55(adder, mutant=None):
     c = TC.Circuit(R55_E); g = Shim(c)
     e = list(c.IN)
