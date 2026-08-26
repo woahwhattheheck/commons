@@ -190,7 +190,7 @@ class RetargetVerifyTests(unittest.TestCase):
         self.assertEqual(missing["verification"]["status"], "contradicted")
         server.close()
 
-    def test_unknown_verb_is_forwarded(self):
+    def test_mystery_type_is_forwarded(self):
         server, backend = self._server(
             [{"id": "go", "role": "Button", "name": "Go", "actions": ["invoke", "click"]}]
         )

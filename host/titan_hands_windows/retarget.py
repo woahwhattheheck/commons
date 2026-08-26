@@ -23,8 +23,8 @@ WINDOWS_ID_RE = re.compile(r"^w_[0-9a-f]{16,}$", re.IGNORECASE)
 LABEL_NOISE_RE = re.compile(r"[^a-z0-9]+")
 WORD_RE = re.compile(r"\b[a-z0-9]{4,}\b")
 
-# Salvage off-list names the way performActionJson does. Unknown verbs stay as-is
-# so the backend can still run them or return useful corrective feedback.
+# Salvage LDA off-list names onto Windows types. Any other type is forwarded
+# to the backend so it can run or return useful corrective feedback.
 VERB_ALIASES = {
     "type": "set_value",
     "input": "set_value",

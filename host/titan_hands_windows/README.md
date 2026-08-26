@@ -40,8 +40,8 @@ Kotlin executor and it does not add a second Windows executor.
 
 - Stale or missing ids retarget by label, focused field, or the lone editable control. Ambiguous
   matches return `TARGET_AMBIGUOUS` instead of guessing.
-- `set_text` / `type` salvage onto `set_value`. A non-field target retargets onto an editable. Unknown
-  verbs still go to the backend so the action space stays open.
+- `set_text` / `type` salvage onto `set_value`. A non-field target retargets onto an editable. Types
+  the alias map does not name still go to the backend, so the action space stays open.
 - After an action, the adapter attaches a `verification` receipt from the new semantic tree. An
   action-return boolean is not treated as proof. `assert` / `verify` is a checkpoint verb that reports
   ✓/✗ without shrinking invoke/click/set_value/key/launch or the Android lda-kotlin road.

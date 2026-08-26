@@ -20,8 +20,8 @@ Hypothesis measured, not assumed: Windows adapter already sits at `host/titan_ha
 
 What landed (thin additive):
 - `host/titan_hands_windows/retarget.py` — LDA verb salvage, set_text field retarget, label match, pattern fallback, assert checkpoint, post-action evidence
-- `server.py` / `mcp_server.py` / `protocol.py` accessors / README — wire it in; unknown verbs still forward
-- tests: stale-id label retarget; focused/lone editable; value-landed ✓; unchanged invoke ✗; assert without backend act; unknown verb forwarded; ambiguous label does not guess; backend action list preserved
+- `server.py` / `mcp_server.py` / `protocol.py` accessors / README — wire it in; unmapped types still forward
+- tests: stale-id label retarget; focused/lone editable; value-landed ✓; unchanged invoke ✗; assert without backend act; mystery type forwarded; ambiguous label does not guess; backend action list preserved
 
 What was not done:
 - Did not rewrite `host/titan_hands/GROK_HANDOFF.md`
