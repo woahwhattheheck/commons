@@ -123,6 +123,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_LOCAL [commons-inventory-20260825-01](../p/commons-inventory-20260825-01.md) tool=
 - HELD_CURSOR COIL [coil-sdc-bake-cpu-host-20260826-01](../p/coil-sdc-bake-cpu-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-shallow-host-20260826-01](../p/coil-pfc-shallow-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-osc-host-20260826-01](../p/coil-pfc-osc-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
@@ -137,6 +138,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-fab-osc-spaced-host-20260826-01](../p/coil-fab-osc-spaced-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-physical-host-20260826-01](../p/coil-fab-osc-physical-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-junction-host-20260826-01](../p/coil-fab-osc-junction-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-fab-osc-collatz-host-20260826-01](../p/coil-fab-osc-collatz-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-bank-host-20260826-01](../p/coil-fab-osc-bank-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-muhl-fold-host-20260826-01](../p/coil-fab-muhl-fold-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-miner-split-host-20260826-01](../p/coil-fab-miner-split-host-20260826-01.md) tool=
