@@ -9,14 +9,15 @@ product: one dated White Box / dests hour
 checkout: TYPE (Stripe door)
 status: PROPOSAL (not a live price)
 
-MARKET PROPOSAL: $200 USD / hour
+MARKET PROPOSAL: $250 USD / hour
 fetched: 2026-08-26
-why: mid of the published 2026 senior / architect blended band $150-$250. Toptal does not publish a single hourly list; the band is from current independent breakdowns. Not invented. Not typed by Bryce.
+why: Aristek 2026 senior-specialist / architect floor. Inside Strobes senior pentest $200-$300. Toptal does not publish an hourly list. Not invented. Not typed by Bryce.
 
 comps (live, cited):
-- Toptal senior / architect blended ~$150-$250/hr (2026 independent breakdown). https://conectia.pro/en/blog/how-much-does-toptal-cost
-- Senior freelance developer typically $120-$220/hr (2026). https://gigmoneytips.com/senior-developer-freelance-rates-platforms-2026/
-- US senior time-and-materials $150-$350/hr (2026). https://uxcontinuum.com/blog/saas-development/design-partner-sprint-pricing-guide-2026
+- A.Team 2026 US senior fullstack contractor $120 / $145 / $175. https://www.a.team/talent/guides/fullstack-engineer-rates
+- Aristek 2026 US IT consulting: senior generalist $150-$200; specialist $175-$275; senior specialist / architect $250-$350. https://aristekconsulting.com/it-consulting-hourly-rates/
+- Strobes 2026 pentest hourly: junior $100-$150; senior $200-$300. https://strobes.co/blog/how-much-does-penetration-testing-cost/
+- Toptal FAQ publishes $79/month platform subscription only, not an hourly rate card. https://www.toptal.com/faq
 
 Bigger than a tip. Buyer gets land/session-YYYYMMDD.md: dests, receipts, what ran. File is public. HTTP is not the computer.
 TYPE owns checkout. Do not invent buy.stripe.com URLs.
