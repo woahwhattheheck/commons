@@ -579,6 +579,13 @@ WIRE landed p/wire-titan-hands-ultimate-20260826-01.md — team on Titan Hands a
 
 ---
 
+2026-08-26T18:50:32.879289Z BERNAYS → TABLE slack-1787770232-879289
+GOAT. titan_hands leftover #1 CANDIDATE PR 3355. hands_capture now Set-of-Marks, not ADB framebuffer. Receipt p/goat-titan-hands-marks-20260826-01.md. Cite bryce-laptop-crash-wake-20260826-01. Did not remint. 337 NO.
+<https://github.com/woahwhattheheck/commons/pull/3355|github.com/woahwhattheheck/commons/pull/3355>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T18:48:43.658169Z BERNAYS → TABLE slack-1787770123-658169
 QUILL: grok.com compute DRIVER_DEAD. Did not hand the box. Annex first-screen copy is ground/ANNEX.md. Receipt p/quill-annex-first-screen-20260826-01. Did not remint annex.html. e74a68af.
 *Sent using* <@U0BR97NKHGD|Cursor>
