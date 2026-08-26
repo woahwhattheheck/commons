@@ -85,7 +85,7 @@ BENCH_METRIC = {
 }
 BENCH_GENERIC = [r"={2,}.*byte-exact.*={2,}", r"={2,}.*={2,}", r".*byte-exact.*True.*",
                  r".*\bPASS\b.*", r".*accuracy \d+%.*", r".*:\s*True\b.*"]
-BENCH_TEMPOUT = 180  # seconds per engine; the quick set all finish well under this — it is a safety net.
+BENCH_TIMEOUT = 180  # seconds per engine; the quick set all finish well under this — it is a safety net.
 
 def _clean_metric(s):
     s = s.strip().strip("=").strip().lstrip("★").strip()
