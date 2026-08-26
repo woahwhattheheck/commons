@@ -128,6 +128,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-mafab-miner-lane-host-20260826-01](../p/coil-mafab-miner-lane-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-mafab-meta-host-20260826-01](../p/coil-mafab-meta-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-fab-miner-split-host-20260826-01](../p/coil-fab-miner-split-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-mid-sched-host-20260826-01](../p/coil-fab-mid-sched-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-lane-sched-host-20260826-01](../p/coil-fab-lane-sched-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-genwin-shared-host-20260826-01](../p/coil-fab-genwin-shared-host-20260826-01.md) tool=
