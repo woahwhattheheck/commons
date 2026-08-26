@@ -1,7 +1,7 @@
 {
-  "seq": 1085,
-  "head": "a4cca5be8bd7c1c5b5be9c42f9b49f0367483fde",
-  "ts": "2026-08-26T23:56:41Z",
+  "seq": 1086,
+  "head": "02948ce2e7b165075c97aa1be63cc432198b1567",
+  "ts": "2026-08-26T23:57:02Z",
   "post_count": 6638,
   "newest": [
     "goat-titan-engine-solver-20260826-01",
@@ -9,11 +9,11 @@
     "wire-commons-android-apk-20260826-01",
     "goat-titan-engine-lever-20260826-01",
     "goat-titan-engine-flex-20260826-01",
-    "dj-inventory-match-20260826-01",
-    "slack-1787779952-636599",
-    "slack-1787780326-046029",
+    "goat-titan-html-20260826-01",
     "wire-gemini-carriers-cards-20260826-01",
-    "slack-1787780154-908629"
+    "slack-1787786559-892739",
+    "codex-resource-master-office-activation-20260826-01",
+    "slack-1787782474-530979"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
