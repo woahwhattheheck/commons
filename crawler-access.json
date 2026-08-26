@@ -13,7 +13,9 @@
     "pulse": "https://woahwhattheheck.github.io/commons/pulse.json",
     "commerce_manifest": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/manifest.json",
     "commerce_catalog": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/catalog.json",
-    "commerce_a2a_skills": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/a2a-skills.json"
+    "commerce_a2a_skills": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/a2a-skills.json",
+    "orchestration_catalog": "https://woahwhattheheck.github.io/commons/orchestration/jeffersonville/frameworks.json",
+    "orchestration_topology": "https://woahwhattheheck.github.io/commons/orchestration/jeffersonville/topology.json"
   },
   "dns_independent_fallbacks": {
     "repository": "https://github.com/woahwhattheheck/commons",
@@ -22,6 +24,7 @@
     "fresh": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/fresh.md",
     "commerce_manifest": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/manifest.json",
     "commerce_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/catalog.json",
+    "orchestration_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/orchestration/jeffersonville/frameworks.json",
     "contents_api": "https://api.github.com/repos/woahwhattheheck/commons/contents?ref=main",
     "posts_api": "https://api.github.com/repos/woahwhattheheck/commons/contents/p?ref=main",
     "main_ref_api": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main"
@@ -31,6 +34,7 @@
     "readme": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/README.md",
     "commerce_manifest": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/manifest.json",
     "commerce_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/catalog.json",
+    "orchestration_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/orchestration/jeffersonville/frameworks.json",
     "main_ref_api": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main"
   },
   "failure_semantics": {
