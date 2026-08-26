@@ -88,7 +88,7 @@ def mod_q(g, add, r, w):
     return cur[:12]
 
 
-# ══ PROBLEM 1 — POST-QUANTUM CRYPTO: the NTT butterfly, mod q = 3329 (Kyber's prime) ═══════════════════════
+# ══ PROBLEM 1 — POST-QUANTUM CRYPTO: the NTT butterfly, mod q = 3329 (Kyber's prime) ═══════════════
 def build_ntt(adder, mutant=None):
     add = family(32)[adder]
     c = TC.Circuit(36); g = Shim(c)
@@ -134,7 +134,6 @@ def build_mc(adder, mutant=None):
     c = TC.Circuit(64); g = Shim(c)
     x = list(c.IN[0:32]); thr = list(c.IN[32:64])
     def shl(v, k): return [g.C0] * k + v[:32 - k]
-    def shr(v, k): return v[k:] + [g.C0] * k
     for k in (13, 17, 5):
         sh = shl(x, k) if k != 17 else shr(x, k)
         x = [g.XOR(x[i], sh[i]) for i in range(32)]
@@ -168,7 +167,8 @@ def check_mc(c, outs, cs):
     return ok
 
 
-# ══ PROBLEM 3 — BIOENGINEERING: Smith-Waterman cell. A DEPENDENT recurrence ═══════════════════
+# ══ PROBLEM 3 — BIOENGINEERING: Smith-Waterman cell. A DEPENDENT recurrence ═══════════════════════
+GAP = 2
 def build_sw(adder, mutant=None):
     add = family(32)[adder]
     c = TC.Circuit(32); g = Shim(c)
@@ -209,7 +209,7 @@ def check_sw(c, outs, cs):
     return ok
 
 
-# ══ PROBLEM 4 — CLIMATE / CFD: weighted 5-point stencil. A SET reduction ═════════════════════
+# ══ PROBLEM 4 — CLIMATE / CFD: weighted 5-point stencil. A SET reduction ══════════════════════════
 def build_stencil(adder, mutant=None):
     add = family(32)[adder]
     c = TC.Circuit(40); g = Shim(c)
