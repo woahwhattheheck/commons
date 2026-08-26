@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-fab-replicas-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-fab-miner-split-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -975,7 +986,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 15,
+    "COIL": 16,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
