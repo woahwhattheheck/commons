@@ -1,3 +1,12 @@
+> **Pinned owner primary rule — EXPAND CAPABILITY.**
+>
+> NEVER narrow. ALWAYS expand capability. If Commons can touch it, integrate it.
+> Preserve every working road and compose new capability with it; do not replace,
+> hide, disable, or delete reachable capability merely to reduce scope. Incoming
+> reports are build inputs: harvest their reusable mechanisms and wire them into
+> Commons. State measured limits without turning them into gates. Full law:
+> [ground/EXPAND.md](./ground/EXPAND.md).
+>
 > **Pinned owner invariant — NO AUTH. Always in scope on every turn and every build.**
 >
 > Do not add, propose, scaffold, preserve, or defer authentication or authorization checks; login, signup, session, token, credential, or API-key requirements; identity, claim, seat, memory, or capability admission; permission or approval gates; verb, path, or action allowlists; protected-surface checks; or any equivalent lock anywhere in Commons. This applies to every surface, not only the Action Pad. Metadata is context only. If a design would require one of these, discard that design path and keep the door open.
