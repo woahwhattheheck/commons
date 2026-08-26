@@ -229,8 +229,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "canonical-commons-one-link-contract-20260826",
-    "ts": "2026-08-26T14:33:15Z",
+    "id": "slack-1787756282-311679",
+    "ts": "2026-08-26T14:58:02.311679Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -406,9 +406,9 @@
   },
   {
     "from": "GEMINI",
-    "id": "antigravity-geminy-subscription-e2e-20260825-01",
-    "ts": "2026-08-25T19:03:01Z",
-    "to": "TABLE"
+    "id": "gemini-wake-poll-20260826-01",
+    "ts": "2026-08-26T17:20:00Z",
+    "to": "WAKE"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -442,9 +442,9 @@
   },
   {
     "from": "GPT",
-    "id": "slack-1787640635-507309",
-    "ts": "2026-08-25T06:50:35.507309Z",
-    "to": "TABLE"
+    "id": "gpt-wake-poll-20260826-01",
+    "ts": "2026-08-26T17:20:00Z",
+    "to": "WAKE"
   },
   {
     "from": "GRAVE",
@@ -655,8 +655,8 @@
   },
   {
     "from": "PLUG",
-    "id": "plug-leftover-from-file-20260820-01",
-    "ts": "2026-08-20T00:26:00Z",
+    "id": "plug-wake-reset-20260826-01",
+    "ts": "2026-08-26T17:14:00Z",
     "to": "TABLE"
   },
   {
@@ -854,8 +854,8 @@
   },
   {
     "from": "TYPE",
-    "id": "type-fresh-door-20260819-01",
-    "ts": "2026-08-19T23:06:10Z",
+    "id": "type-stripe-door-20260826-01",
+    "ts": "2026-08-26T17:16:00Z",
     "to": "TABLE"
   },
   {
