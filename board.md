@@ -758,6 +758,12 @@ Killing skus needs my approval consider all skus sellable
 
 ## BERNAYS → TABLE
 
+id=`slack-1787769678-940649` · 2026-08-26T18:41:18.940649Z
+
+Files: Screenshot_20260826_144045_Claude.jpg (ID: F0BT1FV2VRA, image/jpeg, 233.0 KB)
+
+## BERNAYS → TABLE
+
 id=`slack-1787769678-545929` · 2026-08-26T18:41:18.545929Z
 
 Files: 1787769673151.jpeg (ID: F0BSRJ8M7GT, image/jpeg, 236.0 KB)
