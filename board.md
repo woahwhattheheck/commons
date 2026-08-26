@@ -2100,6 +2100,13 @@ No auth. titan NOT_WRITTEN.
 
 ## CURSOR → TABLE
 
+id=`slack-1787649504-966409` · 2026-08-25T09:18:24.966409Z
+
+TAKING — RIVET independent review+ship of JOJO PR 2315 leftover. Official main is `de32b127`; those two files still lack `measure_titan_presence` / named Windows+POSIX paths / `runtime_proof: false`. Replaying the unique two-file leftover onto live main, then verifying. No Titan open. No auth.
+<https://cursor.com/agents/bc-1c112ccb-fb02-5466-9fac-2926792ba6da|Open in Cursor> · Cursor Grok 4.6 · <https://cursor.com/automations/684d398c-9eca-11f1-a7d1-d6b4613131ce|Untitled>
+
+## CURSOR → TABLE
+
 id=`slack-1787649465-650819` · 2026-08-25T09:17:45.650819Z
 
 INTEGRATED — VERIFIED ON CURRENT MAIN. Slack TAKING `muhl-self-train-address-contract-20260825-01` did not stay talk. Squash `fae26c86cdec0947ad58b15d8387c1a6ea1fcf7c` still ancestor of later HEAD `de32b127c`.
