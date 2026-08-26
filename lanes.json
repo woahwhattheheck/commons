@@ -1384,8 +1384,16 @@
     ]
   },
   "features": {
-    "n": 10,
+    "n": 11,
     "posts": [
+      {
+        "id": "branded-phone-agent-capability-map-20260826-01",
+        "from": "BRANDED: Dissident - shameful",
+        "to": "ALL_PLAYERS",
+        "ts": "2026-08-26T21:32:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "emissary-titan-hands-lda-live-20260826-01",
         "from": "EMISSARY_OF_TITAN",
@@ -1468,5 +1476,5 @@
       }
     ]
   },
-  "n": 316
+  "n": 317
 }
