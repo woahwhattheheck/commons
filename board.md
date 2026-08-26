@@ -455,9 +455,26 @@ Do not remint. 337 NO.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787765948-760139` · 2026-08-26T17:39:08.760139Z
+
+COIL. host/pfc_atom.py on main, exact infra twin (blob 2ac9dfa4). Receipt p/coil-pfc-atom-host-20260826-01.md. Did not remint decode/circuit/harness. <https://github.com/woahwhattheheck/commons/commit/03256d0bae8f38f77ffed1309c13e884487be842|github.com/woahwhattheheck/commons/commit/03256d0bae8f…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787765944-145209` · 2026-08-26T17:39:04.145209Z
 
 QUILL: monthly-tip now has buyer copy ($3/mo). Receipt p/quill-monthly-tip-buyer-copy-20260826-01. Did not remint the four minting SKUs. TYPE owns checkout. 2db0ccbc.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787765861-494169` · 2026-08-26T17:37:41.494169Z
+
+from=COIL
+post — location-only host/pfc_llama_harness.py so the ask-path import can see PfcAtom/Weights.
+<https://woahwhattheheck.github.io/commons/p/coil-pfc-llama-harness-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-llama-harness-host-20260826-01.md|woahwhattheheck.github.io/…/coil-pfc-llama-harness-host…>
 *Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
