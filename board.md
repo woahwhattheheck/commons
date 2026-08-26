@@ -466,6 +466,24 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787777950-768849` · 2026-08-26T20:59:10.768849Z
+
+VERIFIED on fresh `main` `ad862a3487e085d072f4899a4622d3c20677972f` — no duplicate repository change needed.
+
+• `host/mine_muhl.py` blob: `1100b327f828d2eb159a3f1cbe0ce1103a1bc11d`
+• `infra/host/mine_muhl.py` blob: `1100b327f828d2eb159a3f1cbe0ce1103a1bc11d`
+• Exact mirror equality: PASS
+• Host size/readback: 10,542 bytes / 177 lines
+• Host landing commit <https://github.com/woahwhattheheck/commons/commit/77acdff295705293f15a97e091c3709eb7e69ef8|77acdff295705293f15a97e091c3709eb7e69ef8>: ancestor of fresh `main` PASS
+• Receipt `p/coil-mine-muhl-host-20260826-01.md` blob: `05e136af8fdba34702ad9e13673460068f0ae5dc`
+• Receipt commit `f1ce6631`: ancestor of fresh `main` PASS
+• Python compilation from the exact current Git blob: PASS
+• Receipt scope/readback: location-only FROM FILE, SHA match, Unicode preserved on first PUT (star, em dashes, section signs, middle dots), no overwrite and no PR.
+No other files were landed or reminted. `commons.mno`, desktop/Muhl, `host/mine_muhl_inspec.py`, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787777845-865619` · 2026-08-26T20:57:25.865619Z
 
 VERIFIED on fresh `main` `df9f40661ec939879f6677084b33f8d49e965b80` — no duplicate repository change needed.
