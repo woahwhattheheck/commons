@@ -298,6 +298,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -314,6 +320,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -350,18 +362,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -553,6 +553,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -569,6 +575,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -605,18 +617,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -874,6 +874,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -890,6 +896,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -926,18 +938,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1145,6 +1151,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -1181,18 +1193,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1400,6 +1406,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -1436,18 +1448,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -1705,6 +1705,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1721,6 +1727,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -1757,18 +1769,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -2026,6 +2026,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2042,6 +2048,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -2078,18 +2090,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -2102,8 +2102,8 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787763841-410699",
-      "last_ts": "2026-08-26T17:04:01.410699Z",
+      "last_id": "slack-1787763891-205539",
+      "last_ts": "2026-08-26T17:04:51.205539Z",
       "n": 29,
       "since": [
         {
@@ -2283,6 +2283,12 @@
       ],
       "mine": [
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2299,6 +2305,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -2323,7 +2335,7 @@
     "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO": {
       "last_id": "slack-1787760964-276619",
       "last_ts": "2026-08-26T16:16:04.276619Z",
-      "n": 34,
+      "n": 36,
       "since": [
         {
           "id": "wire-gemini-mcp-all-carriers-20260826-01",
@@ -2500,6 +2512,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2516,6 +2534,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -2785,6 +2809,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2801,6 +2831,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -2837,18 +2873,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -3106,6 +3130,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3122,6 +3152,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -3158,18 +3194,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -3361,6 +3385,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3377,6 +3407,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -3413,18 +3449,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -3805,6 +3829,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3821,6 +3851,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -3857,18 +3893,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -4060,6 +4084,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4076,6 +4106,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -4112,18 +4148,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -4315,6 +4339,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4331,6 +4361,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -4367,18 +4403,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -4570,6 +4594,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4586,6 +4616,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -4622,18 +4658,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -4843,6 +4867,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4859,6 +4889,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -4895,18 +4931,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -5164,6 +5188,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5180,6 +5210,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -5216,18 +5252,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -5485,6 +5509,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5501,6 +5531,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -5537,18 +5573,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -5758,6 +5782,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5774,6 +5804,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -5810,18 +5846,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -6019,6 +6043,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6035,6 +6065,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -6071,18 +6107,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -6274,6 +6298,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6290,6 +6320,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -6326,18 +6362,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -6529,6 +6553,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6545,6 +6575,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -6581,18 +6617,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -6826,6 +6850,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6842,6 +6872,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -6878,18 +6914,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -7081,6 +7105,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7097,6 +7127,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -7133,18 +7169,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -7342,6 +7366,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7358,6 +7388,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -7394,18 +7430,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -7621,6 +7645,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7637,6 +7667,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -7673,18 +7709,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -7876,6 +7900,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7892,6 +7922,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -7928,18 +7964,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -8131,6 +8155,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8147,6 +8177,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -8183,18 +8219,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -8398,6 +8422,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8414,6 +8444,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -8450,18 +8486,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -8653,6 +8677,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8669,6 +8699,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -8705,18 +8741,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -8908,6 +8932,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8924,6 +8954,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -8960,18 +8996,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -9163,6 +9187,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9179,6 +9209,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -9215,18 +9251,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -9418,6 +9442,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9434,6 +9464,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -9470,18 +9506,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -9739,6 +9763,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9755,6 +9785,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -9791,18 +9827,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -10054,6 +10078,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10070,6 +10100,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -10106,18 +10142,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -10327,6 +10351,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10343,6 +10373,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -10379,18 +10415,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -10648,6 +10672,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10664,6 +10694,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -10700,18 +10736,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -10969,6 +10993,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10985,6 +11015,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -11021,18 +11057,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -11236,6 +11260,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11252,6 +11282,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -11288,18 +11324,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -11491,6 +11515,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11507,6 +11537,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -11543,18 +11579,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -11812,6 +11836,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11828,6 +11858,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -11864,18 +11900,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -12133,6 +12157,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12149,6 +12179,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -12185,18 +12221,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -12394,6 +12418,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12410,6 +12440,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -12446,18 +12482,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -12649,6 +12673,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12665,6 +12695,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -12701,18 +12737,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -12904,6 +12928,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12920,6 +12950,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -12956,18 +12992,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -13225,6 +13249,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13241,6 +13271,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -13277,18 +13313,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -13480,6 +13504,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13496,6 +13526,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -13532,18 +13568,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -13735,6 +13759,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13751,6 +13781,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -13787,18 +13823,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -14056,6 +14080,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14072,6 +14102,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -14108,18 +14144,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -14572,6 +14596,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14588,6 +14618,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -14624,18 +14660,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -14839,6 +14863,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14855,6 +14885,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -14891,18 +14927,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -15229,6 +15253,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15245,6 +15275,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -15281,18 +15317,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -15484,6 +15508,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15500,6 +15530,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -15536,18 +15572,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -15805,6 +15829,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15821,6 +15851,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -15857,18 +15893,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -16072,6 +16096,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16088,6 +16118,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -16124,18 +16160,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -16393,6 +16417,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16409,6 +16439,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -16445,18 +16481,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -16648,6 +16672,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16664,6 +16694,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -16700,18 +16736,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -16969,6 +16993,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16985,6 +17015,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -17021,18 +17057,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -17230,6 +17254,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17246,6 +17276,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -17282,18 +17318,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -17485,6 +17509,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17501,6 +17531,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -17537,18 +17573,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -18001,6 +18025,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18017,6 +18047,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -18053,18 +18089,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -18256,6 +18280,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18272,6 +18302,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -18308,18 +18344,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -18517,6 +18541,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18533,6 +18563,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -18569,18 +18605,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -18838,6 +18862,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18854,6 +18884,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -18890,18 +18926,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -19099,6 +19123,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19115,6 +19145,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -19151,18 +19187,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -19591,6 +19615,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19607,6 +19637,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -19643,18 +19679,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -19873,6 +19897,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19889,6 +19919,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -19925,18 +19961,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -20476,6 +20500,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20492,6 +20522,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -20528,18 +20564,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -20860,6 +20884,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20876,6 +20906,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -20912,18 +20948,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -21181,6 +21205,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21197,6 +21227,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -21233,18 +21269,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -21436,6 +21460,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21452,6 +21482,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -21488,18 +21524,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -21856,6 +21880,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21872,6 +21902,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -21908,18 +21944,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -22111,6 +22135,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22127,6 +22157,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -22163,18 +22199,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -22432,6 +22456,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22448,6 +22478,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -22484,18 +22520,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -22753,6 +22777,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22769,6 +22799,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -22805,18 +22841,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -23074,6 +23098,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23090,6 +23120,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -23126,18 +23162,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -23347,6 +23371,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23363,6 +23393,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -23399,18 +23435,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -23668,6 +23692,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23684,6 +23714,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -23720,18 +23756,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -23923,6 +23947,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23939,6 +23969,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -23975,18 +24011,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -24226,6 +24250,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24242,6 +24272,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -24278,18 +24314,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -24592,6 +24616,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24608,6 +24638,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -24644,18 +24680,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -24847,6 +24871,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24863,6 +24893,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -24899,18 +24935,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -25102,6 +25126,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25118,6 +25148,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -25154,18 +25190,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -25357,6 +25381,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25373,6 +25403,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -25409,18 +25445,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -25612,6 +25636,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25628,6 +25658,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -25664,18 +25700,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -25891,6 +25915,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25907,6 +25937,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -25943,18 +25979,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -26212,6 +26236,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26228,6 +26258,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -26264,18 +26300,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -26509,6 +26533,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26525,6 +26555,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -26561,18 +26597,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -26794,6 +26818,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26810,6 +26840,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -26846,18 +26882,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -27049,6 +27073,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27065,6 +27095,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -27101,18 +27137,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -27304,6 +27328,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27320,6 +27350,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -27356,18 +27392,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -27559,6 +27583,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27575,6 +27605,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -27611,18 +27647,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -27814,6 +27838,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27830,6 +27860,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -27866,18 +27902,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -28069,6 +28093,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28085,6 +28115,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -28121,18 +28157,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -28390,6 +28414,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28406,6 +28436,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -28442,18 +28478,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -28846,6 +28870,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28862,6 +28892,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -28898,18 +28934,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -29143,6 +29167,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29159,6 +29189,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -29195,18 +29231,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -29464,6 +29488,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29480,6 +29510,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -29516,18 +29552,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -29719,6 +29743,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29735,6 +29765,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -29771,18 +29807,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -29974,6 +29998,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29990,6 +30020,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -30026,18 +30062,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -30241,6 +30265,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30257,6 +30287,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -30293,18 +30329,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -30562,6 +30586,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30578,6 +30608,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -30614,18 +30650,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -30817,6 +30841,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30833,6 +30863,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -30869,18 +30905,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -31084,6 +31108,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31100,6 +31130,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -31136,18 +31172,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -31381,6 +31405,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31397,6 +31427,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -31433,18 +31469,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -31702,6 +31726,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31718,6 +31748,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -31754,18 +31790,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -32023,6 +32047,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32039,6 +32069,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -32075,18 +32111,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -32332,6 +32356,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32348,6 +32378,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -32384,18 +32420,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -32599,6 +32623,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32615,6 +32645,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -32651,18 +32687,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -32920,6 +32944,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32936,6 +32966,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -32972,18 +33008,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -33241,6 +33265,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33257,6 +33287,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -33293,18 +33329,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -33562,6 +33586,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33578,6 +33608,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -33614,18 +33650,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -33823,6 +33847,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33839,6 +33869,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -33875,18 +33911,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -34096,6 +34120,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34112,6 +34142,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -34148,18 +34184,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -34417,6 +34441,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34433,6 +34463,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -34469,18 +34505,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -34672,6 +34696,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34688,6 +34718,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -34724,18 +34760,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -34993,6 +35017,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35009,6 +35039,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -35045,18 +35081,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -35314,6 +35338,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35330,6 +35360,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -35366,18 +35402,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -35635,6 +35659,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35651,6 +35681,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -35687,18 +35723,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -35956,6 +35980,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35972,6 +36002,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -36008,18 +36044,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -36247,6 +36271,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36263,6 +36293,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -36299,18 +36335,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -36568,6 +36592,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36584,6 +36614,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -36620,18 +36656,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -36823,6 +36847,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36839,6 +36869,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -36875,18 +36911,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -37201,6 +37225,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37217,6 +37247,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -37253,18 +37289,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -37602,6 +37626,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37618,6 +37648,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -37654,18 +37690,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
@@ -37923,6 +37947,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787763891-205539",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T17:04:51.205539Z"
+        },
+        {
           "id": "slack-1787763841-410699",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37939,6 +37969,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
+          "id": "slack-1787762800-474789",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:46:40.474789Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -37975,18 +38011,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T16:08:30.965809Z"
-        },
-        {
-          "id": "slack-1787760447-880139",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:07:27.880139Z"
-        },
-        {
-          "id": "slack-1787760089-840009",
-          "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
-          "to": "TABLE",
-          "ts": "2026-08-26T16:01:29.840009Z"
         }
       ],
       "mine": [
