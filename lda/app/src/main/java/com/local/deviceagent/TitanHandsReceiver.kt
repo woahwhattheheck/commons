@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Base64
+import org.json.JSONArray
 import org.json.JSONObject
 
 /**
@@ -16,8 +17,9 @@ import org.json.JSONObject
  * operation in and one result out so an off-device model can drive the same translated handset.
  *
  * Input and output JSON are base64-wrapped because `adb shell am broadcast` otherwise damages
- * quotes, spaces, and Unicode. The receiver does not listen to accessibility events or capture
- * pixels; normal observations are the compact numbered LDA screen representation.
+ * quotes, spaces, and Unicode. The receiver does not listen to accessibility events. Normal
+ * observations stay the compact numbered LDA screen representation. An explicit capture/marks
+ * operation returns the LDA Set-of-Marks screenshot rather than a raw ADB framebuffer.
  */
 class TitanHandsReceiver : BroadcastReceiver() {
 
@@ -27,12 +29,33 @@ class TitanHandsReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent?) {
+        val op = intent?.getStringExtra("op")?.trim()?.lowercase()
+        // takeScreenshot's callback runs on the main executor. Blocking this thread with a latch
+        // would deadlock, so capture uses goAsync and finishes from that callback.
+        if (op == "capture" || op == "marks") {
+            val pending = goAsync()
+            try {
+                captureAsync { response ->
+                    pending.setResultCode(
+                        if (response.optBoolean("ok")) Activity.RESULT_OK else Activity.RESULT_CANCELED
+                    )
+                    pending.setResultData(encode(response.toString()))
+                    pending.finish()
+                }
+            } catch (t: Throwable) {
+                val response = failure("BRIDGE_ERROR", t.message ?: t.javaClass.simpleName)
+                pending.setResultCode(Activity.RESULT_CANCELED)
+                pending.setResultData(encode(response.toString()))
+                pending.finish()
+            }
+            return
+        }
         val response = try {
-            when (intent?.getStringExtra("op")?.trim()?.lowercase()) {
+            when (op) {
                 "capabilities" -> capabilities()
                 "observe" -> observe()
-                "act" -> act(intent)
-                else -> failure("UNKNOWN_OPERATION", "op must be capabilities, observe, or act")
+                "act" -> act(intent!!)
+                else -> failure("UNKNOWN_OPERATION", "op must be capabilities, observe, act, or capture")
             }
         } catch (t: Throwable) {
             failure("BRIDGE_ERROR", t.message ?: t.javaClass.simpleName)
@@ -49,6 +72,9 @@ class TitanHandsReceiver : BroadcastReceiver() {
         .put("accessibility_ready", ActionAccessibilityService.instance != null)
         .put("perception", "ActionAccessibilityService.snapshotScreen")
         .put("actuation", "ActionAccessibilityService.performActionJson")
+        .put("capture", "ActionAccessibilityService.captureScreenshot")
+        .put("marks", "ActionAccessibilityService.currentMarks")
+        .put("visual", "set-of-marks")
 
     private fun observe(): JSONObject {
         val service = ActionAccessibilityService.instance
@@ -94,6 +120,48 @@ class TitanHandsReceiver : BroadcastReceiver() {
                 .put("before", before)
         } finally {
             AgentService.isAgentBusy = wasBusy
+        }
+    }
+
+    private fun captureAsync(done: (JSONObject) -> Unit) {
+        val service = ActionAccessibilityService.instance
+        if (service == null) {
+            done(failure("ACCESSIBILITY_UNAVAILABLE", "enable Local Agent accessibility service"))
+            return
+        }
+        // Populate lastRenderedIds first so currentMarks badges match the numbered [N] list.
+        val snapshot = service.snapshotScreen()
+        val marks = service.currentMarks()
+        service.captureScreenshot { bmp ->
+            try {
+                if (bmp == null) {
+                    done(failure("CAPTURE_FAILED", "LDA screenshot returned null"))
+                    return@captureScreenshot
+                }
+                val jpeg = TitanHandsMarks.jpeg(bmp, marks)
+                val ids = JSONArray()
+                for (id in marks.ids) ids.put(id)
+                done(
+                    JSONObject()
+                        .put("ok", true)
+                        .put("bridge", BRIDGE_VERSION)
+                        .put("platform", "android")
+                        .put("implementation", "lda-kotlin")
+                        .put("kind", "pixel_capture")
+                        .put("visual", "set-of-marks")
+                        .put("pixels", "lda-marked-screenshot")
+                        .put("source", "ActionAccessibilityService.captureScreenshot")
+                        .put("marks_source", "ActionAccessibilityService.currentMarks")
+                        .put("mime", "image/jpeg")
+                        .put("image_b64", Base64.encodeToString(jpeg, Base64.NO_WRAP))
+                        .put("mark_ids", ids)
+                        .put("screen_w", marks.screenW)
+                        .put("screen_h", marks.screenH)
+                        .put("snapshot", snapshot)
+                )
+            } catch (t: Throwable) {
+                done(failure("BRIDGE_ERROR", t.message ?: t.javaClass.simpleName))
+            }
         }
     }
 

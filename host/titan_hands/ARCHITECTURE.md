@@ -10,6 +10,7 @@ model
       -> target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
       -> hands_capture  -> pixels only when requested
+                           Android+LDA returns Set-of-Marks, not ADB framebuffer
 ```
 
 ## What is headless now

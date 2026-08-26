@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import json
 import re
+from pathlib import Path
 from typing import Any, Mapping, Protocol
 
 
@@ -32,13 +33,13 @@ class LdaBridge:
     def __init__(self, backend: AdbShell) -> None:
         self.backend = backend
 
-    def _call(self, op: str, action: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    def _call(self, op: str, action: Mapping[str, Any] | None = None, timeout: float = 30) -> dict[str, Any]:
         args = ["am", "broadcast", "-W", "-a", ACTION, "-n", COMPONENT, "--es", "op", op]
         if action is not None:
             raw = json.dumps(dict(action), ensure_ascii=False, separators=(",", ":"))
             encoded = base64.b64encode(raw.encode("utf-8")).decode("ascii")
             args.extend(["--es", "action_b64", encoded])
-        output = self.backend.shell(*args, timeout=30)
+        output = self.backend.shell(*args, timeout=timeout)
         match = RESULT_RE.search(output)
         if not match:
             raise LdaBridgeError(f"LDA TITAN receiver returned no result data: {output.strip()}")
@@ -66,6 +67,9 @@ class LdaBridge:
 
     def act(self, action: Mapping[str, Any]) -> dict[str, Any]:
         return self._call("act", action)
+
+    def capture(self) -> dict[str, Any]:
+        return self._call("capture", timeout=45)
 
 
 def snapshot_nodes(snapshot: str) -> list[dict[str, Any]]:
@@ -161,3 +165,30 @@ def to_lda_action(action: Mapping[str, Any], nodes: Mapping[str, Mapping[str, An
         # sketch, assert, get_text, open_app, batch, and future verbs) as a free-form road.
         payload["action"] = action_type
     return payload
+
+
+def write_marked_image(result: Mapping[str, Any], output: Path) -> dict[str, Any]:
+    """Persist the LDA Set-of-Marks JPEG and drop the wire base64 from the model-facing result."""
+
+    encoded = str(result.get("image_b64") or "")
+    if not encoded:
+        raise LdaBridgeError("LDA marked capture returned no image_b64")
+    try:
+        payload = base64.b64decode(encoded, validate=True)
+    except ValueError as exc:
+        raise LdaBridgeError("LDA marked capture image_b64 is not valid base64") from exc
+    if not payload:
+        raise LdaBridgeError("LDA marked capture image is empty")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(payload)
+    normalized = dict(result)
+    normalized.pop("image_b64", None)
+    normalized.pop("snapshot", None)
+    normalized["ok"] = True
+    normalized["pixel_ref"] = str(output)
+    normalized["bytes"] = len(payload)
+    normalized.setdefault("kind", "pixel_capture")
+    normalized.setdefault("visual", "set-of-marks")
+    normalized.setdefault("implementation", "lda-kotlin")
+    normalized.setdefault("mime", "image/jpeg")
+    return normalized

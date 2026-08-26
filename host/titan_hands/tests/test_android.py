@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import base64
+import tempfile
 import unittest
+from pathlib import Path
 
 from host.titan_hands.android import AndroidHandsServer, parse_uiautomator_xml
 
@@ -62,9 +65,13 @@ class PhysicalOnlyAdb(FakeAdb):
         raise AndroidBackendError("DEVICE_MISS", "no online Android emulator")
 
 
+MARKED_JPEG = b"LDA-SET-OF-MARKS-JPEG"
+
+
 class FakeLdaBridge:
     def __init__(self):
         self.actions = []
+        self.captures = 0
 
     def available(self):
         return True
@@ -83,6 +90,30 @@ class FakeLdaBridge:
             "implementation": "lda-kotlin",
             "result": "CONTINUE",
             "summary": "typed it",
+        }
+
+    def capture(self):
+        self.captures += 1
+        return {
+            "ok": True,
+            "implementation": "lda-kotlin",
+            "visual": "set-of-marks",
+            "mime": "image/jpeg",
+            "source": "ActionAccessibilityService.captureScreenshot",
+            "marks_source": "ActionAccessibilityService.currentMarks",
+            "image_b64": base64.b64encode(MARKED_JPEG).decode("ascii"),
+            "mark_ids": [0],
+            "snapshot": '[0] "Untitled" field [focused]',
+        }
+
+
+class UnknownCaptureLda(FakeLdaBridge):
+    def capture(self):
+        self.captures += 1
+        return {
+            "ok": False,
+            "failure_reason": "UNKNOWN_OPERATION",
+            "message": "op must be capabilities, observe, or act",
         }
 
 
@@ -137,6 +168,59 @@ class AndroidHandsTests(unittest.TestCase):
         self.assertEqual(
             lda.actions[-1], {"id": 0, "text": "owner build", "action": "set_text"}
         )
+
+    def test_capture_without_lda_uses_adb_framebuffer(self):
+        adb = FakeAdb()
+        with tempfile.TemporaryDirectory() as tmp:
+            path = str(Path(tmp) / "raw.png")
+            result = AndroidHandsServer(adb).handle({"op": "capture", "path": path})
+            self.assertTrue(result["ok"])
+            self.assertEqual(result["visual"], "adb-framebuffer")
+            self.assertIn(("exec_out", ("screencap", "-p")), adb.calls)
+            self.assertEqual(Path(result["pixel_ref"]).read_bytes(), b"PNG")
+
+    def test_lda_capture_returns_set_of_marks_not_adb_framebuffer(self):
+        adb = FakeAdb()
+        lda = FakeLdaBridge()
+        server = AndroidHandsServer(adb, lda_bridge=lda)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = str(Path(tmp) / "marks.jpg")
+            result = server.handle({"op": "capture", "path": path})
+            self.assertTrue(result["ok"])
+            self.assertEqual(result["visual"], "set-of-marks")
+            self.assertEqual(result["implementation"], "lda-kotlin")
+            self.assertEqual(result["mime"], "image/jpeg")
+            self.assertEqual(result["mark_ids"], [0])
+            self.assertEqual(lda.captures, 1)
+            self.assertNotIn("image_b64", result)
+            self.assertNotIn("snapshot", result)
+            self.assertEqual(Path(result["pixel_ref"]).read_bytes(), MARKED_JPEG)
+        self.assertFalse(any(call[0] == "exec_out" and call[1][:1] == ("screencap",) for call in adb.calls))
+
+    def test_lda_capabilities_advertise_set_of_marks_capture(self):
+        result = AndroidHandsServer(FakeAdb(), lda_bridge=FakeLdaBridge()).handle({"op": "capabilities"})
+        self.assertEqual(result["implementation"], "lda-kotlin")
+        self.assertEqual(result["pixels"], "lda-set-of-marks-on-demand")
+
+    def test_old_receiver_without_capture_falls_back_to_adb(self):
+        adb = FakeAdb()
+        lda = UnknownCaptureLda()
+        with tempfile.TemporaryDirectory() as tmp:
+            path = str(Path(tmp) / "fallback.png")
+            result = AndroidHandsServer(adb, lda_bridge=lda).handle({"op": "capture", "path": path})
+            self.assertTrue(result["ok"])
+            self.assertEqual(result["visual"], "adb-framebuffer")
+            self.assertEqual(result["fallback"], "adb-screencap")
+            self.assertEqual(Path(result["pixel_ref"]).read_bytes(), b"PNG")
+
+    def test_lda_forced_mode_does_not_fallback_unknown_capture(self):
+        lda = UnknownCaptureLda()
+        server = AndroidHandsServer(FakeAdb(), lda_bridge=lda)
+        server._lda_mode = "lda"
+        with tempfile.TemporaryDirectory() as tmp:
+            result = server.handle({"op": "capture", "path": str(Path(tmp) / "nope.jpg")})
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["failure_reason"], "UNKNOWN_OPERATION")
 
 
 if __name__ == "__main__":

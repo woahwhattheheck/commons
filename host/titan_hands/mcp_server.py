@@ -100,7 +100,11 @@ TOOLS = [
     },
     {
         "name": "hands_capture",
-        "description": "Explicitly capture pixels from the selected Windows or Android surface.",
+        "description": (
+            "Explicitly capture pixels from the selected Windows or Android surface. "
+            "On Android with LDA, this returns the Kotlin Set-of-Marks screenshot "
+            "rather than a raw ADB framebuffer."
+        ),
         "inputSchema": {
             "type": "object",
             "properties": {

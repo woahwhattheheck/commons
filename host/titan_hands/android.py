@@ -19,7 +19,7 @@ from typing import Any, Mapping, Protocol
 
 from host.titan_hands_windows.protocol import PROTOCOL_VERSION, DeltaTracker, ProtocolError, failure
 
-from .lda_bridge import LdaBridge, snapshot_nodes, to_lda_action
+from .lda_bridge import LdaBridge, LdaBridgeError, snapshot_nodes, to_lda_action, write_marked_image
 
 
 BOUNDS_RE = re.compile(r"^\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]$")
@@ -398,6 +398,47 @@ class AndroidHandsServer:
             "screen": screen,
         }
 
+    def _lda_capture(self, output: Path) -> dict[str, Any]:
+        assert self._lda is not None
+        capture = getattr(self._lda, "capture", None)
+        if not callable(capture):
+            result: dict[str, Any] = {
+                "ok": False,
+                "failure_reason": "UNKNOWN_OPERATION",
+                "message": "LDA bridge has no capture operation",
+            }
+        else:
+            result = capture()
+        if not result.get("ok"):
+            reason = str(result.get("failure_reason") or "LDA_BRIDGE_FAILED")
+            if reason == "UNKNOWN_OPERATION" and self._lda_mode != "lda":
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_bytes(self.backend.exec_out("screencap", "-p", timeout=30))
+                return {
+                    "ok": True,
+                    "protocol": PROTOCOL_VERSION,
+                    "kind": "pixel_capture",
+                    "platform": "android",
+                    "visual": "adb-framebuffer",
+                    "pixel_ref": str(output),
+                    "serial": self.backend.resolve_serial(),
+                    "fallback": "adb-screencap",
+                    "lda_failure_reason": reason,
+                }
+            raise AndroidBackendError(
+                reason,
+                str(result.get("message") or "LDA Kotlin marked capture failed"),
+            )
+        try:
+            normalized = write_marked_image(result, output)
+        except LdaBridgeError as exc:
+            raise AndroidBackendError("LDA_CAPTURE_INVALID", str(exc)) from exc
+        normalized.setdefault("protocol", PROTOCOL_VERSION)
+        normalized.setdefault("kind", "pixel_capture")
+        normalized.setdefault("platform", "android")
+        normalized["serial"] = self.backend.resolve_serial()
+        return normalized
+
     def _snapshot(self) -> dict[str, Any]:
         if self._lda_available():
             return self._lda_snapshot()
@@ -572,7 +613,9 @@ class AndroidHandsServer:
                     "observation": (
                         "lda-numbered-world-model" if lda_ready else "uiautomator-semantic-delta"
                     ),
-                    "pixels": "on-demand-only",
+                    "pixels": (
+                        "lda-set-of-marks-on-demand" if lda_ready else "on-demand-only"
+                    ),
                     "implementation": "lda-kotlin" if lda_ready else "uiautomator-fallback",
                     "fallback": "uiautomator" if self._lda_mode != "lda" else None,
                     "online": bool(online),
@@ -608,6 +651,8 @@ class AndroidHandsServer:
                 return result
             if op == "capture":
                 output = Path(str(request.get("path") or "artifacts/titan-hands/android.png")).resolve()
+                if self._lda_available():
+                    return self._lda_capture(output)
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_bytes(self.backend.exec_out("screencap", "-p", timeout=30))
                 return {
@@ -615,6 +660,7 @@ class AndroidHandsServer:
                     "protocol": PROTOCOL_VERSION,
                     "kind": "pixel_capture",
                     "platform": "android",
+                    "visual": "adb-framebuffer",
                     "pixel_ref": str(output),
                     "serial": self.backend.resolve_serial(),
                 }
