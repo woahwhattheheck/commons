@@ -364,6 +364,315 @@ class RevenueRecoveryTests(unittest.TestCase):
         finally:
             temp.cleanup()
 
+    def test_server_recursively_scans_public_contact_url_query_components(self):
+        over_depth = "privateEmail=hidden"
+        for _ in range(rr.PERCENT_DECODE_LAYERS + 1):
+            over_depth = quote(over_depth, safe="")
+        sensitive_urls = (
+            "https://example.com/contact?private+email%3Dhidden",
+            "https://example.com/contact?privateEmail%3Dhidden",
+            "https://example.com/contact?priv%FFateEmail=hidden",
+            "https://example.com/contact?tok%FFen=hidden",
+            "https://example.com/contact?pass%FFword=hidden",
+            "https://example.com/contact?accountNum%FFber=hidden",
+            "https://example.com/contact?topic=%FF",
+            "https://example.com/contact?topic=%C3%28",
+            "https://example.com/contact?payload=private%252Bemail%253Dhidden",
+            "https://example.com/contact?payload=%257B%2522privateEmail%2522%253A%2522hidden%2522%257D",
+            "https://example.com/contact?next=https%3A%2F%2Fpublic.example%2Fcontact%3FprivateEmail%253Dhidden",
+            "https://example.com/contact#private_email=hidden",
+            "https://example.com/contact#private%5Femail%3Dhidden",
+            "https://example.com/contact#privateEmail=hidden",
+            "https://example.com/contact#accountNumber=hidden",
+            "https://example.com/contact#safe=1&privateEmail=hidden",
+            f"https://example.com/contact?payload={over_depth}",
+            "https://alice@example.com",
+            "https://alice@127.0.0.1",
+            "https://alice%40example.com",
+            "https://alice%40127.0.0.1",
+            "https://alice:secret@example.com",
+            "https://alice:secret@127.0.0.1",
+            "https://alice%3Asecret%40example.com",
+            "https://alice%3Asecret%40127.0.0.1",
+            "https://alice%2F@127.0.0.1/contact",
+            "https://alice%3F@127.0.0.1/contact",
+            "https://alice%23@127.0.0.1/contact",
+            "https://alice%0A@example.com/contact",
+            "https://alice%252F@127.0.0.1/contact",
+            "https://@example.com",
+            "https://:@example.com",
+            "https://%40example.com",
+        )
+        for url in sensitive_urls:
+            with self.subTest(url=url):
+                line = f"PUBLIC_CONTACT_URL: {url}"
+                self.assertTrue(rr.contains_sensitive_value(line))
+                temp, root = self.make_root(self.valid_post().replace(
+                    "PUBLIC_CONTACT_URL: https://example.com/contact", line
+                ))
+                try:
+                    receipt = rr.purchase_intent_receipt(root, "buyer-signal")
+                    self.assertEqual(receipt["state"], "INCOMPLETE")
+                    self.assertFalse(receipt["cash_claimed"])
+                finally:
+                    temp.cleanup()
+
+    def test_server_scans_bare_query_fragment_and_wrapper_values(self):
+        nested_json = json.dumps({"privateEmail": "hidden"}, separators=(",", ":"))
+        once_nested_json = quote(nested_json, safe="")
+        twice_nested_json = quote(once_nested_json, safe="")
+        sensitive_values = (
+            "?privateEmail[0]=hidden",
+            "?user.privateEmail=hidden",
+            "?user[privateEmail]=hidden",
+            "?PrIvAtEeMaIl=hidden",
+            "?privateEmail=hidden",
+            "?privateEmail%3Dhidden",
+            "?private_email=hidden",
+            "?customerEmail=hidden",
+            "#privateEmail=hidden",
+            "#privateEmail%3Dhidden",
+            "#customerEmail=hidden",
+            "?payload=privateEmail=hidden",
+            "?payload=privateEmail%3Dhidden",
+            "#payload=privateEmail%3Dhidden",
+            "payload=privateEmail%3Dhidden",
+            f"?payload={nested_json}",
+            f"?payload={once_nested_json}",
+            f"?payload={twice_nested_json}",
+            f"payload={once_nested_json}",
+            "%C0%AF",
+            "%ED%A0%80",
+            "%F4%90%80%80",
+        )
+        for value in sensitive_values:
+            with self.subTest(value=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+
+        for value in sensitive_values[:-3]:
+            with self.subTest(full_post=value):
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        safe_values = (
+            "?topic=reproducibility",
+            "?progress=100%",
+            "?progress=100%25",
+            "?topic=C%2B%2B",
+            "?topic[0]=reproducibility",
+            "?user.progress=steady",
+            "?domain=docs.example.com",
+            "?ToPiC[0]=reproducibility",
+            "?UsEr.PrOgReSs=steady",
+            "?note=%2",
+            "?note=%GG",
+            "#section-2",
+            "#topic=C%2B%2B",
+            "#progress=100%25",
+            "payload=topic%3Dreproducibility",
+            "payload=progress%3D100%2525",
+        )
+        for value in safe_values:
+            with self.subTest(value=value):
+                self.assertFalse(rr.contains_sensitive_value(value))
+
+        for value in safe_values:
+            with self.subTest(full_post=value):
+                temp, root = self.make_root(self.valid_post().replace(
+                    "PUBLIC_OBJECTIVE: reproducibility", f"PUBLIC_OBJECTIVE: {value}"
+                ))
+                try:
+                    self.assertEqual(rr.purchase_intent_receipt(root, "buyer-signal")["state"], "RECORDED")
+                finally:
+                    temp.cleanup()
+
+        for supplied in (
+            "privateEmail[0]", "user.privateEmail", "user[privateEmail]", "PrIvAtEeMaIl",
+        ):
+            with self.subTest(sensitive_path_name=supplied):
+                self.assertTrue(rr.is_sensitive_field_name(supplied))
+        self.assertEqual(rr.canonical_field_name("PrIvAtEeMaIl"), "private_email")
+        for supplied in (
+            "topic[0]", "user.progress", "docs.example.com",
+            "ToPiC[0]", "UsEr.PrOgReSs", "DoCs.ExAmPlE.CoM",
+        ):
+            with self.subTest(safe_path_name=supplied):
+                self.assertFalse(rr.is_sensitive_field_name(supplied))
+
+        below_safe_json = json.dumps("topic=reproducibility")
+        below_sensitive_json = json.dumps("privateEmail=hidden")
+        for _ in range(rr.JSON_SCAN_MAX_DEPTH // 2):
+            below_safe_json = "[" + below_safe_json + "]"
+            below_sensitive_json = "[" + below_sensitive_json + "]"
+        self.assertFalse(rr.contains_sensitive_value(below_safe_json))
+        self.assertTrue(rr.contains_sensitive_value(below_sensitive_json))
+        self.assert_sensitive_signal_is_incomplete(
+            "PUBLIC_OBJECTIVE: " + below_sensitive_json
+        )
+
+        over_depth_json = json.dumps("topic=reproducibility")
+        for _ in range(rr.JSON_SCAN_MAX_DEPTH + 1):
+            over_depth_json = "[" + over_depth_json + "]"
+        self.assertTrue(rr.contains_sensitive_value(over_depth_json))
+        self.assert_sensitive_signal_is_incomplete("PUBLIC_OBJECTIVE: " + over_depth_json)
+
+        hostile_depth_json = json.dumps("topic=reproducibility")
+        for _ in range(2200):
+            hostile_depth_json = "[" + hostile_depth_json + "]"
+        self.assertTrue(rr.contains_sensitive_value(hostile_depth_json))
+        self.assert_sensitive_signal_is_incomplete(
+            "PUBLIC_OBJECTIVE: " + hostile_depth_json
+        )
+
+        safe_boundary_json = json.dumps(
+            [None] * (rr.JSON_SCAN_MAX_NODES - 1), separators=(",", ":")
+        )
+        hostile_over_node_json = json.dumps(
+            [None] * (rr.JSON_SCAN_MAX_NODES + 1), separators=(",", ":")
+        )
+        safe_boundary_assignment = "payload=" + safe_boundary_json
+        hostile_over_node_assignment = "payload=" + hostile_over_node_json
+        self.assertFalse(rr.contains_sensitive_value(safe_boundary_assignment))
+        safe_temp, safe_root = self.make_root(self.valid_post(safe_boundary_assignment))
+        try:
+            self.assertEqual(
+                rr.purchase_intent_receipt(safe_root, "buyer-signal")["state"], "RECORDED"
+            )
+        finally:
+            safe_temp.cleanup()
+        self.assertTrue(rr.contains_sensitive_value(hostile_over_node_assignment))
+        self.assert_sensitive_signal_is_incomplete(hostile_over_node_assignment)
+
+        malformed_assignments = (
+            "payload=[null,null",
+            'payload={"topic":"reproducibility",}',
+        )
+        for assignment in malformed_assignments:
+            with self.subTest(malformed_json_assignment=assignment):
+                self.assertTrue(rr.contains_sensitive_value(assignment))
+                self.assert_sensitive_signal_is_incomplete(assignment)
+
+        safe_comma_assignments = (
+            "payload=alpha,beta",
+            'payload={"topics":["reproducibility","diagnostics"]}',
+        )
+        for assignment in safe_comma_assignments:
+            with self.subTest(safe_comma_assignment=assignment):
+                self.assertFalse(rr.contains_sensitive_value(assignment))
+                temp, root = self.make_root(self.valid_post(assignment))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"], "RECORDED"
+                    )
+                finally:
+                    temp.cleanup()
+
+        sensitive_comma_assignment = (
+            'payload={"topic":"reproducibility","privateEmail":"hidden"}'
+        )
+        self.assertTrue(rr.contains_sensitive_value(sensitive_comma_assignment))
+        self.assert_sensitive_signal_is_incomplete(sensitive_comma_assignment)
+
+        for field in ("privateEmail", "token"):
+            assignment = "payload=" + json.dumps(json.dumps(
+                {field: "hidden"}, separators=(",", ":")
+            ))
+            with self.subTest(quoted_sensitive_json_assignment=field):
+                self.assertTrue(rr.contains_sensitive_value(assignment))
+                self.assert_sensitive_signal_is_incomplete(assignment)
+
+        safe_quoted_assignments = (
+            "payload=" + json.dumps("alpha,beta"),
+            "payload=" + json.dumps(json.dumps(
+                {"topics": ["reproducibility", "diagnostics"]}, separators=(",", ":")
+            )),
+        )
+        for assignment in safe_quoted_assignments:
+            with self.subTest(safe_quoted_comma_or_json_assignment=assignment):
+                self.assertFalse(rr.contains_sensitive_value(assignment))
+                temp, root = self.make_root(self.valid_post(assignment))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"], "RECORDED"
+                    )
+                finally:
+                    temp.cleanup()
+
+        malformed_quoted_assignments = (
+            "payload=" + json.dumps("[null,null"),
+            "payload=" + json.dumps('{"topic":"reproducibility",}'),
+            'payload="[null,null',
+        )
+        for assignment in malformed_quoted_assignments:
+            with self.subTest(malformed_quoted_json_assignment=assignment):
+                self.assertTrue(rr.contains_sensitive_value(assignment))
+                self.assert_sensitive_signal_is_incomplete(assignment)
+
+        overbudget_quoted_assignments = (
+            "payload=" + json.dumps(over_depth_json),
+            "payload=" + json.dumps(hostile_depth_json),
+            "payload=" + json.dumps(hostile_over_node_json),
+        )
+        for assignment in overbudget_quoted_assignments:
+            with self.subTest(overbudget_quoted_json_assignment=len(assignment)):
+                self.assertTrue(rr.contains_sensitive_value(assignment))
+                self.assert_sensitive_signal_is_incomplete(assignment)
+
+        encoded_percent = "%"
+        for layer in range(1, rr.PERCENT_DECODE_LAYERS + 2):
+            encoded_percent = quote(encoded_percent, safe="")
+            candidate = f"PUBLIC_OBJECTIVE: {encoded_percent}"
+            with self.subTest(percent_layer=layer):
+                self.assertEqual(
+                    rr.contains_sensitive_value(candidate),
+                    layer > rr.PERCENT_DECODE_LAYERS,
+                )
+
+        safe_urls = (
+            "https://example.com/contact?next=%2Fpublic",
+            "https://example.com/contact?topic=C%2B%2B",
+            "https://example.com/contact?progress=100%",
+            "https://example.com/contact?progress=100%25",
+            "https://example.com/contact?note=%2",
+            "https://example.com/contact?note=%GG",
+            "https://example.com/contact?next=https%3A%2F%2Fpublic.example%2Fdocs%3Ftopic%3Dreproducibility",
+            "https://example.com/contact#section-2",
+            "https://example.com/contact#topic=C%2B%2B",
+            "https://example.com/contact#progress=100%25",
+        )
+        for url in safe_urls:
+            with self.subTest(url=url):
+                line = f"PUBLIC_CONTACT_URL: {url}"
+                self.assertFalse(rr.contains_sensitive_value(line))
+                temp, root = self.make_root(self.valid_post().replace(
+                    "PUBLIC_CONTACT_URL: https://example.com/contact", line
+                ))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"],
+                        "RECORDED",
+                    )
+                finally:
+                    temp.cleanup()
+
+        safe_public_texts = (
+            "PUBLIC_OBJECTIVE: improve by 100% reproducibly",
+            "PUBLIC_OBJECTIVE: improve by 100%25 reproducibly",
+            "PUBLIC_OBJECTIVE: literal %2 and %GG",
+        )
+        for line in safe_public_texts:
+            with self.subTest(line=line):
+                self.assertFalse(rr.contains_sensitive_value(line))
+                temp, root = self.make_root(self.valid_post().replace(
+                    "PUBLIC_OBJECTIVE: reproducibility", line
+                ))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"],
+                        "RECORDED",
+                    )
+                finally:
+                    temp.cleanup()
+
     def test_public_surface_is_open_and_exact(self):
         page = (ROOT / "diagnostic.html").read_text(encoding="utf-8")
         self.assertIn('id="say"', page)

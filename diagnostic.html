@@ -150,15 +150,29 @@ PUBLIC_OBJECTIVE:</textarea>
     aba_routing_number: true, iban: true, swift: true, swift_code: true,
     bic: true, sort_code: true
   };
+  var forbiddenCompactNames = {};
+  Object.keys(forbiddenNames).forEach(function (name) {
+    forbiddenCompactNames[name.replace(/_/g, "")] = name;
+  });
+  var jsonScanMaxDepth = 64;
+  var jsonScanMaxNodes = 4096;
   function canonicalFieldName(name) {
-    return String(name || "")
+    var raw = String(name || "");
+    var folded = raw.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+    if (forbiddenNames[folded]) return folded;
+    var exact = forbiddenCompactNames[raw.toLowerCase().replace(/[^a-z0-9]+/g, "")];
+    if (exact) return exact;
+    return raw
       .replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2")
       .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
       .toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   }
   function forbiddenFieldName(name) {
-    var canonical = canonicalFieldName(name);
-    return !!forbiddenNames[canonical] || canonical.indexOf("aws_secret_") === 0;
+    return String(name || "").split(/[.\[\]]+/).some(function (segment) {
+      if (!segment) return false;
+      var canonical = canonicalFieldName(segment);
+      return !!forbiddenNames[canonical] || canonical.indexOf("aws_secret_") === 0;
+    });
   }
   function hasFieldValue(value) {
     if (value === null || typeof value === "undefined") return false;
@@ -167,39 +181,254 @@ PUBLIC_OBJECTIVE:</textarea>
     if (typeof value === "object") return Object.keys(value).length > 0;
     return true;
   }
-  function jsonHasForbiddenField(value) {
-    if (!value || typeof value !== "object") return false;
-    if (Array.isArray(value)) return value.some(jsonHasForbiddenField);
-    return Object.keys(value).some(function (key) {
-      return (forbiddenFieldName(key) && hasFieldValue(value[key])) || jsonHasForbiddenField(value[key]);
-    });
+  function jsonHasForbiddenField(value, queryDepth) {
+    var stack = [{ value: value, depth: 0 }];
+    var nodes = 0;
+    while (stack.length) {
+      var item = stack.pop();
+      var child = item.value;
+      nodes += 1;
+      if (nodes > jsonScanMaxNodes || item.depth > jsonScanMaxDepth) return true;
+      if (typeof child === "string" && child.trim()) {
+        if (queryDepth >= 4 || containsForbiddenAssignment(child, queryDepth + 1)) return true;
+      } else if (child && typeof child === "object") {
+        if (Array.isArray(child)) {
+          for (var arrayIndex = 0; arrayIndex < child.length; arrayIndex += 1) {
+            stack.push({ value: child[arrayIndex], depth: item.depth + 1 });
+          }
+        } else {
+          var keys = Object.keys(child);
+          for (var keyIndex = 0; keyIndex < keys.length; keyIndex += 1) {
+            var key = keys[keyIndex];
+            if (forbiddenFieldName(key) && hasFieldValue(child[key])) return true;
+            stack.push({ value: child[key], depth: item.depth + 1 });
+          }
+        }
+      }
+    }
+    return false;
   }
-  function decodePercentLayers(value) {
+  function jsonContainerEnd(source, valueStart) {
+    var expectedCloser = { "[": "]", "{": "}" };
+    if (!expectedCloser[source.charAt(valueStart)]) return -1;
+    var closers = [];
+    var inString = false;
+    var escaped = false;
+    for (var index = valueStart; index < source.length; index += 1) {
+      var character = source.charAt(index);
+      if (inString) {
+        if (escaped) escaped = false;
+        else if (character === "\\") escaped = true;
+        else if (character === '"') inString = false;
+        continue;
+      }
+      if (character === '"') {
+        inString = true;
+      } else if (expectedCloser[character]) {
+        closers.push(expectedCloser[character]);
+        if (closers.length > jsonScanMaxDepth + 1) return -1;
+      } else if (character === "]" || character === "}") {
+        if (!closers.length || character !== closers.pop()) return -1;
+        if (!closers.length) return index + 1;
+      }
+    }
+    return -1;
+  }
+  function decodedQuotedAssignment(source, valueStart) {
+    var quote = source.charAt(valueStart);
+    var escaped = false;
+    var valueEnd = -1;
+    for (var index = valueStart + 1; index < source.length; index += 1) {
+      var character = source.charAt(index);
+      if (escaped) escaped = false;
+      else if (character === "\\") escaped = true;
+      else if (character === quote) {
+        valueEnd = index + 1;
+        break;
+      }
+    }
+    if (valueEnd === -1) return null;
+    var literal = source.slice(valueStart, valueEnd);
+    if (quote === '"') {
+      try {
+        var parsed = JSON.parse(literal);
+        return typeof parsed === "string" ? { value: parsed, end: valueEnd } : null;
+      } catch (error) {
+        return null;
+      }
+    }
+    var decoded = "";
+    var content = literal.slice(1, -1);
+    var escapes = { "\\": "\\", "'": "'", '"': '"', "/": "/", b: "\b", f: "\f", n: "\n", r: "\r", t: "\t" };
+    for (var contentIndex = 0; contentIndex < content.length; contentIndex += 1) {
+      var contentCharacter = content.charAt(contentIndex);
+      if (contentCharacter.charCodeAt(0) < 32) return null;
+      if (contentCharacter !== "\\") {
+        decoded += contentCharacter;
+        continue;
+      }
+      contentIndex += 1;
+      if (contentIndex >= content.length) return null;
+      var escape = content.charAt(contentIndex);
+      if (escape === "u") {
+        var digits = content.slice(contentIndex + 1, contentIndex + 5);
+        if (!/^[0-9A-Fa-f]{4}$/.test(digits)) return null;
+        decoded += String.fromCharCode(parseInt(digits, 16));
+        contentIndex += 4;
+      } else if (Object.prototype.hasOwnProperty.call(escapes, escape)) {
+        decoded += escapes[escape];
+      } else {
+        return null;
+      }
+    }
+    return { value: decoded, end: valueEnd };
+  }
+  function jsonAssignmentHasForbiddenField(source, queryDepth) {
+    var prefix = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*/g;
+    var match;
+    while ((match = prefix.exec(source)) !== null) {
+      var valueStart = prefix.lastIndex;
+      var first = source.charAt(valueStart);
+      if (first === "[" || first === "{") {
+        var valueEnd = jsonContainerEnd(source, valueStart);
+        if (valueEnd === -1) return true;
+        var parsed;
+        try {
+          parsed = JSON.parse(source.slice(valueStart, valueEnd));
+        } catch (error) {
+          return true;
+        }
+        try {
+          if (jsonHasForbiddenField(parsed, queryDepth)) return true;
+        } catch (error) {
+          return true;
+        }
+      } else if (first === '"' || first === "'") {
+        var quoted = decodedQuotedAssignment(source, valueStart);
+        if (!quoted) return true;
+        if (!quoted.value.trim()) continue;
+        if (queryDepth >= 4) return true;
+        var stripped = quoted.value.replace(/^\s+/, "");
+        if (stripped.charAt(0) === "[" || stripped.charAt(0) === "{") {
+          var nestedStart = quoted.value.length - stripped.length;
+          var nestedEnd = jsonContainerEnd(quoted.value, nestedStart);
+          if (nestedEnd === -1 || quoted.value.slice(nestedEnd).trim()) return true;
+          try {
+            JSON.parse(quoted.value.slice(nestedStart, nestedEnd));
+          } catch (error) {
+            return true;
+          }
+        }
+        if (containsForbiddenAssignment(quoted.value, queryDepth + 1)) return true;
+      }
+    }
+    return false;
+  }
+  function decodePercentLayers(value, plusAsSpace) {
     var decoded = String(value || "");
     for (var layer = 0; layer < 4; layer += 1) {
-      var next;
-      try { next = decodeURIComponent(decoded); } catch (error) { break; }
+      var invalidUtf8 = false;
+      var component = plusAsSpace ? decoded.replace(/\+/g, " ") : decoded;
+      var next = component.replace(/(?:%[0-9A-Fa-f]{2})+/g, function (encoded) {
+        try { return decodeURIComponent(encoded); } catch (error) { invalidUtf8 = true; return encoded; }
+      });
+      if (invalidUtf8) return null;
       if (next === decoded) return decoded;
       decoded = next;
     }
-    try {
-      return decodeURIComponent(decoded) === decoded ? decoded : null;
-    } catch (error) {
-      return decoded;
-    }
+    var finalInvalidUtf8 = false;
+    var finalComponent = plusAsSpace ? decoded.replace(/\+/g, " ") : decoded;
+    var finalDecoded = finalComponent.replace(/(?:%[0-9A-Fa-f]{2})+/g, function (encoded) {
+      try { return decodeURIComponent(encoded); } catch (error) { finalInvalidUtf8 = true; return encoded; }
+    });
+    return !finalInvalidUtf8 && finalDecoded === decoded ? decoded : null;
   }
-  function containsForbiddenAssignment(text) {
-    var source = decodePercentLayers(text);
+  function containsForbiddenComponent(component, queryDepth, plusAsSpace, decodeWhole) {
+    if (queryDepth >= 4) return !!component;
+    var source = component;
+    if (decodeWhole) {
+      source = decodePercentLayers(source, plusAsSpace);
+      if (source === null) return true;
+    }
+    var parts = source.split(/[&;]/);
+    for (var index = 0; index < parts.length; index += 1) {
+      if (!parts[index]) continue;
+      var decodedPart = decodePercentLayers(parts[index], plusAsSpace);
+      if (decodedPart === null) return true;
+      var separator = decodedPart.indexOf("=");
+      if (separator !== -1 && forbiddenFieldName(decodedPart.slice(0, separator)) &&
+          decodedPart.slice(separator + 1).trim()) return true;
+      if (separator !== -1) {
+        if (containsForbiddenAssignment(decodedPart.slice(0, separator), queryDepth + 1)) return true;
+        if (containsForbiddenAssignment(decodedPart.slice(separator + 1), queryDepth + 1)) return true;
+      } else if (containsForbiddenAssignment(decodedPart, queryDepth + 1)) return true;
+    }
+    return false;
+  }
+  function containsForbiddenBareComponent(source, queryDepth) {
+    var lines = String(source || "").split(/\r?\n/);
+    for (var index = 0; index < lines.length; index += 1) {
+      var line = lines[index].replace(/^\s+/, "");
+      if (line.charAt(0) === "?" &&
+          containsForbiddenComponent(line.slice(1), queryDepth, true, false)) return true;
+      if (line.charAt(0) === "#" &&
+          containsForbiddenComponent(line.slice(1), queryDepth, false, true)) return true;
+    }
+    return false;
+  }
+  function containsForbiddenQuery(source, queryDepth) {
+    var urlPattern = /https:\/\/[^\s<>"']+/gi;
+    var urlMatch;
+    while ((urlMatch = urlPattern.exec(source)) !== null) {
+      var parsed;
+      try { parsed = new URL(urlMatch[0]); } catch (error) { return true; }
+      var authority = urlMatch[0].slice("https://".length).split(/[/?#]/, 1)[0];
+      if (authority.indexOf("@") !== -1 || parsed.username || parsed.password) return true;
+      if (parsed.hash && containsForbiddenComponent(parsed.hash.slice(1), queryDepth, false, true)) return true;
+      if (!parsed.search) continue;
+      if (containsForbiddenComponent(parsed.search.slice(1), queryDepth, true, false)) return true;
+    }
+    return false;
+  }
+  function containsForbiddenAssignment(text, queryDepth) {
+    var rawSource = String(text || "");
+    queryDepth = queryDepth || 0;
+    var source = decodePercentLayers(rawSource);
     if (source === null) return true;
+    var parsedJson;
+    var parsedJsonOk = false;
     try {
-      if (jsonHasForbiddenField(JSON.parse(source))) return true;
-    } catch (error) {}
-    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_. -]{1,60})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+      parsedJson = JSON.parse(source);
+      parsedJsonOk = true;
+    } catch (error) {
+      if (!error || error.name !== "SyntaxError") return true;
+    }
+    if (parsedJsonOk) {
+      try {
+        if (jsonHasForbiddenField(parsedJson, queryDepth)) return true;
+      } catch (error) {
+        return true;
+      }
+    }
+    if (jsonAssignmentHasForbiddenField(source, queryDepth)) return true;
+    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
     var match;
     while ((match = assignment.exec(source)) !== null) {
       var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
       if (forbiddenFieldName(match[1]) && String(value || "").trim()) return true;
+      if (/^[\[{]/.test(String(value || "").replace(/^\s+/, ""))) continue;
+      var isUrlScheme = /^(?:https?)$/i.test(match[1]) && String(value || "").indexOf("//") === 0;
+      if (String(value || "").trim() && !isUrlScheme) {
+        if (queryDepth >= 4) return true;
+        if (containsForbiddenAssignment(value, queryDepth + 1)) return true;
+      }
     }
+    if (containsForbiddenQuery(rawSource, queryDepth)) return true;
+    if (source !== rawSource) {
+      if (containsForbiddenQuery(source, queryDepth)) return true;
+    }
+    if (containsForbiddenBareComponent(rawSource, queryDepth)) return true;
+    if (source !== rawSource && containsForbiddenBareComponent(source, queryDepth)) return true;
     return false;
   }
   var forbidden = [
