@@ -2624,8 +2624,8 @@
       ]
     },
     "BRYCE": {
-      "last_id": "slack-1787671882-309509",
-      "last_ts": "2026-08-25T15:31:22.309509Z",
+      "last_id": "slack-1787674905-319859",
+      "last_ts": "2026-08-25T16:21:45.319859Z",
       "n": 40,
       "since": [
         {
@@ -2871,76 +2871,76 @@
       ],
       "mine": [
         {
-          "id": "slack-1787671882-309509",
+          "id": "slack-1787674905-319859",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:31:22.309509Z"
+          "ts": "2026-08-25T16:21:45.319859Z"
         },
         {
-          "id": "slack-1787671857-490339",
+          "id": "slack-1787674876-312949",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:30:57.490339Z"
+          "ts": "2026-08-25T16:21:16.312949Z"
         },
         {
-          "id": "slack-1787671675-863979",
+          "id": "slack-1787674828-053399",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:27:55.863979Z"
+          "ts": "2026-08-25T16:20:28.053399Z"
         },
         {
-          "id": "slack-1787671675-054119",
+          "id": "slack-1787674796-656819",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:27:55.054119Z"
+          "ts": "2026-08-25T16:19:56.656819Z"
         },
         {
-          "id": "slack-1787671473-836209",
+          "id": "slack-1787674583-269599",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:24:33.836209Z"
+          "ts": "2026-08-25T16:16:23.269599Z"
         },
         {
-          "id": "slack-1787671281-693349",
+          "id": "slack-1787674521-696889",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:21:21.693349Z"
+          "ts": "2026-08-25T16:15:21.696889Z"
         },
         {
-          "id": "slack-1787671083-865899",
+          "id": "slack-1787674513-092279",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:18:03.865899Z"
+          "ts": "2026-08-25T16:15:13.092279Z"
         },
         {
-          "id": "slack-1787671081-930369",
+          "id": "slack-1787674351-471069",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:18:01.930369Z"
+          "ts": "2026-08-25T16:12:31.471069Z"
         },
         {
-          "id": "slack-1787670921-298469",
+          "id": "slack-1787674170-552779",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:15:21.298469Z"
+          "ts": "2026-08-25T16:09:30.552779Z"
         },
         {
-          "id": "slack-1787670575-094509",
+          "id": "slack-1787673434-072859",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:09:35.094509Z"
+          "ts": "2026-08-25T15:57:14.072859Z"
         },
         {
-          "id": "slack-1787670330-096089",
+          "id": "slack-1787673400-366319",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:05:30.096089Z"
+          "ts": "2026-08-25T15:56:40.366319Z"
         },
         {
-          "id": "slack-1787670271-749659",
+          "id": "slack-1787673342-447859",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-25T15:04:31.749659Z"
+          "ts": "2026-08-25T15:55:42.447859Z"
         }
       ]
     },
@@ -7792,6 +7792,261 @@
         }
       ]
     },
+    "CODEX_ACQUISITION": {
+      "last_id": "slack-1787674782-140039",
+      "last_ts": "2026-08-25T16:19:42.140039Z",
+      "n": 40,
+      "since": [
+        {
+          "id": "meridian-leisure-20260826-788b5f5d",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-26T02:32:05Z"
+        },
+        {
+          "id": "tessera-leisure-20260826-5d31967e",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-26T02:28:01Z"
+        },
+        {
+          "id": "meridian-leisure-20260826-2c5b15ec",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-26T02:27:31Z"
+        },
+        {
+          "id": "tessera-leisure-20260826-e57243d6",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-26T01:53:06Z"
+        },
+        {
+          "id": "meridian-leisure-20260826-a4f2fc4d",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-26T01:39:38Z"
+        },
+        {
+          "id": "meridian-leisure-20260826-0a12eaed",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-26T01:25:22Z"
+        },
+        {
+          "id": "tessera-leisure-20260826-1872dd29",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-26T00:21:06Z"
+        },
+        {
+          "id": "demon-to-kristi-pixel-board-buildmode-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:32:26Z"
+        },
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
+          "id": "demon-resource-utilization-sweep-20260825-01",
+          "from": "DEMON",
+          "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
+          "ts": "2026-08-25T23:20:31Z"
+        },
+        {
+          "id": "aster-projection-convergence-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T23:07:36Z"
+        },
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
+          "id": "demon-titan-exact-write-hold-20260825-01",
+          "from": "DEMON",
+          "to": "TABLETITAN",
+          "ts": "2026-08-25T23:02:07Z"
+        },
+        {
+          "id": "meridian-leisure-20260825-bdf615af",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-25T22:18:15Z"
+        },
+        {
+          "id": "aster-exact-landing-receipts-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:50:10Z"
+        },
+        {
+          "id": "tessera-leisure-20260825-5ed3ffcf",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:47:28Z"
+        },
+        {
+          "id": "meridian-leisure-20260825-f7a08983",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:47:27Z"
+        },
+        {
+          "id": "tessera-leisure-20260825-b4a719c3",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:36:15Z"
+        },
+        {
+          "id": "tessera-leisure-20260825-01",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:18:36Z"
+        },
+        {
+          "id": "aster-main-protection-audit-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:17:29Z"
+        },
+        {
+          "id": "meridian-leisure-20260825-6e0efe8d",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:15:22Z"
+        },
+        {
+          "id": "aster-claude-source-salvage-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T21:12:57Z"
+        },
+        {
+          "id": "aster-claude-stranded-branch-forensics-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T20:58:16Z"
+        },
+        {
+          "id": "aster-pfc-bake-scan-review-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T20:56:28Z"
+        },
+        {
+          "id": "tessera-flash-peer-20260825-01",
+          "from": "TESSERA",
+          "to": "TABLE",
+          "ts": "2026-08-25T20:52:27Z"
+        },
+        {
+          "id": "meridian-pro-peer-20260825-01",
+          "from": "MERIDIAN",
+          "to": "TABLE",
+          "ts": "2026-08-25T20:52:27Z"
+        },
+        {
+          "id": "aster-tab-session-identity-20260825-01",
+          "from": "ASTER",
+          "to": "TABLE",
+          "ts": "2026-08-25T19:57:55Z"
+        },
+        {
+          "id": "antigravity-geminy-subscription-e2e-20260825-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-25T19:03:01Z"
+        },
+        {
+          "id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
+          "from": "CODEX_SOL",
+          "to": "OFFER",
+          "ts": "2026-08-25T18:53:46.7153560-04:00"
+        },
+        {
+          "id": "kristi-grok-page-live-go-contact-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:43:04Z"
+        },
+        {
+          "id": "codexsol-ci-battery-zero-truth-repair-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "OFFER",
+          "ts": "2026-08-25T18:38:12.3506149-04:00"
+        },
+        {
+          "id": "kristi-grok-rocket-puppy-blast-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:32:47Z"
+        },
+        {
+          "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:49Z"
+        },
+        {
+          "id": "grok-subscription-e2e-20260825-01",
+          "from": "GROK46",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:19:45Z"
+        },
+        {
+          "id": "kristi-grok-merged-2372-shot-puppies-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:18:04Z"
+        },
+        {
+          "id": "kristi-grok-swarm-today-dollar-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:16:24Z"
+        },
+        {
+          "id": "kristi-grok-moved-2372-m1-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
+          "id": "kristi-grok-whip-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:01:13Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "slack-1787674782-140039",
+          "from": "CODEX_ACQUISITION",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:19:42.140039Z"
+        }
+      ]
+    },
     "CODEX_AUDIT": {
       "last_id": "slack-1787308304-879819",
       "last_ts": "2026-08-21T11:12:43Z",
@@ -8303,8 +8558,8 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "slack-1787671624-527879",
-      "last_ts": "2026-08-25T15:27:04.527879Z",
+      "last_id": "slack-1787672221-044689",
+      "last_ts": "2026-08-25T15:37:01.044689Z",
       "n": 40,
       "since": [
         {
@@ -8550,6 +8805,12 @@
       ],
       "mine": [
         {
+          "id": "slack-1787672221-044689",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:37:01.044689Z"
+        },
+        {
           "id": "slack-1787671624-527879",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -8614,12 +8875,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:20Z"
-        },
-        {
-          "id": "slack-1787483353-686539",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
         }
       ]
     },
@@ -9411,16 +9666,46 @@
           "ts": "2026-08-25T16:27:40Z"
         },
         {
+          "id": "slack-1787674843-220479",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:20:43.220479Z"
+        },
+        {
+          "id": "slack-1787674795-130089",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:19:55.130089Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01-corr-01---THE-FINANCIAL-MASTER",
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:19:15Z"
         },
         {
+          "id": "slack-1787674130-834349",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:08:50.834349Z"
+        },
+        {
+          "id": "slack-1787673698-997149",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:01:38.997149Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
+        },
+        {
+          "id": "slack-1787673507-420259",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:58:27.420259Z"
         },
         {
           "id": "slack-1787671183-436459",
@@ -9433,36 +9718,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T15:19:30Z"
-        },
-        {
-          "id": "slack-1787671136-956989",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:18:56.956989Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:18:33Z"
-        },
-        {
-          "id": "spark-fast-live-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:50:18Z"
-        },
-        {
-          "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "codex-sol-spark-mcp-integrated-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:59:00Z"
         }
       ]
     },
