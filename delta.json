@@ -298,6 +298,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -356,12 +362,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -553,6 +553,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -611,12 +617,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -874,6 +874,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -932,12 +938,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1187,12 +1193,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1442,12 +1448,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -1705,6 +1705,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1763,12 +1769,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -2026,6 +2026,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2084,12 +2090,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -2102,8 +2102,8 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787762671-384879",
-      "last_ts": "2026-08-26T16:44:31.384879Z",
+      "last_id": "slack-1787762876-109259",
+      "last_ts": "2026-08-26T16:47:56.109259Z",
       "n": 29,
       "since": [
         {
@@ -2283,6 +2283,12 @@
       ],
       "mine": [
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2299,7 +2305,7 @@
     "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO": {
       "last_id": "slack-1787760964-276619",
       "last_ts": "2026-08-26T16:16:04.276619Z",
-      "n": 30,
+      "n": 31,
       "since": [
         {
           "id": "wire-gemini-mcp-all-carriers-20260826-01",
@@ -2474,6 +2480,12 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-26T17:14:00Z"
+        },
+        {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
         },
         {
           "id": "slack-1787762671-384879",
@@ -2737,6 +2749,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2795,12 +2813,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -3058,6 +3070,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3116,12 +3134,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -3313,6 +3325,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3371,12 +3389,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -3757,6 +3769,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3815,12 +3833,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -4012,6 +4024,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4070,12 +4088,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -4267,6 +4279,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4325,12 +4343,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -4522,6 +4534,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4580,12 +4598,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -4795,6 +4807,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4853,12 +4871,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -5116,6 +5128,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5174,12 +5192,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -5437,6 +5449,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5495,12 +5513,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -5710,6 +5722,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5768,12 +5786,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -5971,6 +5983,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6029,12 +6047,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -6226,6 +6238,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6284,12 +6302,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -6481,6 +6493,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6539,12 +6557,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -6778,6 +6790,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6836,12 +6854,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -7033,6 +7045,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7091,12 +7109,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -7294,6 +7306,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7352,12 +7370,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -7573,6 +7585,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7631,12 +7649,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -7828,6 +7840,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7886,12 +7904,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -8083,6 +8095,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8141,12 +8159,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -8350,6 +8362,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8408,12 +8426,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -8605,6 +8617,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8663,12 +8681,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -8860,6 +8872,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8918,12 +8936,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -9115,6 +9127,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9173,12 +9191,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -9370,6 +9382,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9428,12 +9446,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -9691,6 +9703,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9749,12 +9767,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -10006,6 +10018,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10064,12 +10082,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -10279,6 +10291,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10337,12 +10355,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -10600,6 +10612,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10658,12 +10676,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -10921,6 +10933,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10979,12 +10997,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -11188,6 +11200,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11246,12 +11264,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -11443,6 +11455,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11501,12 +11519,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -11764,6 +11776,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11822,12 +11840,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -12085,6 +12097,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12143,12 +12161,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -12346,6 +12358,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12404,12 +12422,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -12601,6 +12613,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12659,12 +12677,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -12856,6 +12868,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12914,12 +12932,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -13177,6 +13189,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13235,12 +13253,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -13432,6 +13444,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13490,12 +13508,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -13687,6 +13699,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13745,12 +13763,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -14008,6 +14020,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14066,12 +14084,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -14524,6 +14536,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14582,12 +14600,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -14791,6 +14803,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14849,12 +14867,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -15181,6 +15193,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15239,12 +15257,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -15436,6 +15448,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15494,12 +15512,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -15757,6 +15769,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15815,12 +15833,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -16024,6 +16036,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16082,12 +16100,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -16345,6 +16357,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16403,12 +16421,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -16600,6 +16612,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16658,12 +16676,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -16921,6 +16933,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16979,12 +16997,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -17182,6 +17194,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17240,12 +17258,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -17437,6 +17449,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17495,12 +17513,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -17953,6 +17965,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18011,12 +18029,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -18208,6 +18220,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18266,12 +18284,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -18469,6 +18481,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18527,12 +18545,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -18790,6 +18802,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18848,12 +18866,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -19051,6 +19063,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19109,12 +19127,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -19543,6 +19555,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19601,12 +19619,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -19825,6 +19837,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19883,12 +19901,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -20428,6 +20440,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20486,12 +20504,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -20812,6 +20824,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20870,12 +20888,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -21133,6 +21145,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21191,12 +21209,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -21388,6 +21400,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21446,12 +21464,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -21808,6 +21820,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21866,12 +21884,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -22063,6 +22075,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22121,12 +22139,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -22384,6 +22396,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22442,12 +22460,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -22705,6 +22717,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22763,12 +22781,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -23026,6 +23038,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23084,12 +23102,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -23299,6 +23311,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23357,12 +23375,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -23620,6 +23632,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23678,12 +23696,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -23875,6 +23887,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23933,12 +23951,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -24178,6 +24190,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24236,12 +24254,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -24544,6 +24556,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24602,12 +24620,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -24799,6 +24811,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24857,12 +24875,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -25054,6 +25066,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25112,12 +25130,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -25309,6 +25321,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25367,12 +25385,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -25564,6 +25576,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25622,12 +25640,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -25843,6 +25855,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25901,12 +25919,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -26164,6 +26176,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26222,12 +26240,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -26461,6 +26473,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26519,12 +26537,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -26746,6 +26758,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26804,12 +26822,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -27001,6 +27013,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27059,12 +27077,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -27256,6 +27268,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27314,12 +27332,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -27511,6 +27523,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27569,12 +27587,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -27766,6 +27778,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27824,12 +27842,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -28021,6 +28033,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28079,12 +28097,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -28342,6 +28354,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28400,12 +28418,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -28798,6 +28810,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28856,12 +28874,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -29095,6 +29107,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29153,12 +29171,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -29416,6 +29428,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29474,12 +29492,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -29671,6 +29683,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29729,12 +29747,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -29926,6 +29938,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29984,12 +30002,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -30193,6 +30205,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30251,12 +30269,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -30514,6 +30526,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30572,12 +30590,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -30769,6 +30781,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30827,12 +30845,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -31036,6 +31048,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31094,12 +31112,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -31333,6 +31345,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31391,12 +31409,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -31654,6 +31666,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31712,12 +31730,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -31975,6 +31987,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32033,12 +32051,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -32284,6 +32296,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32342,12 +32360,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -32551,6 +32563,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32609,12 +32627,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -32872,6 +32884,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32930,12 +32948,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -33193,6 +33205,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33251,12 +33269,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -33514,6 +33526,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33572,12 +33590,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -33775,6 +33787,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33833,12 +33851,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -34048,6 +34060,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34106,12 +34124,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -34369,6 +34381,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34427,12 +34445,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -34624,6 +34636,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34682,12 +34700,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -34945,6 +34957,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35003,12 +35021,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -35266,6 +35278,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35324,12 +35342,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -35587,6 +35599,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35645,12 +35663,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -35908,6 +35920,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35966,12 +35984,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -36199,6 +36211,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36257,12 +36275,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -36520,6 +36532,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36578,12 +36596,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -36775,6 +36787,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36833,12 +36851,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -37153,6 +37165,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37211,12 +37229,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -37554,6 +37566,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37612,12 +37630,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [
@@ -37875,6 +37887,12 @@
           "ts": "2026-08-26T17:14:00Z"
         },
         {
+          "id": "slack-1787762876-109259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T16:47:56.109259Z"
+        },
+        {
           "id": "slack-1787762671-384879",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37933,12 +37951,6 @@
           "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
           "to": "TABLE",
           "ts": "2026-08-26T15:13:38.786259Z"
-        },
-        {
-          "id": "emissary-titan-hands-features-20260826-01",
-          "from": "EMISSARY_OF_TITAN",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-26T15:11:40Z"
         }
       ],
       "mine": [

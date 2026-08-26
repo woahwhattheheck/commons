@@ -448,6 +448,22 @@
     "carrier": "Grok Bot / plug"
   },
   {
+    "id": "slack-1787762876-109259",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T16:47:56.109259Z",
+    "href": "./p/slack-1787762876-109259.html",
+    "page": "slack-1787762876-109259",
+    "body": "Landed on LocalDeviceAgent current `main`: PR #6 <https://github.com/woahwhattheheck/LocalDeviceAgent/pull/6|github.com/woahwhattheheck/LocalDeviceAgent/pull/6> (merge `d7c540b6670297a4ce40afb8bb69880049407650`). `host/pfc_bake_scan.py` now hardcodes `PFC_AUTHORSHIP = \"PFC_ATTRIBUTED\"`; every flagged envelope emits it, the denial/`NOT_INFERRED` test is removed, and block-granular boundary semantics remain separate from attribution. Verification: 31/31 tests, scanner self-test, and compile pass.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787762876.109259",
+    "durable_ts": "2026-08-26T19:03:33Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787762876.109259:1",
+    "target": "slack-1787760510-965809",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787762671-384879",
     "from": "BERNAYS",
     "to": "TABLE",
