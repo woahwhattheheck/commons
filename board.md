@@ -617,6 +617,16 @@ Reactions: x (1)
 
 ## BERNAYS → TABLE
 
+id=`slack-1787771051-042539` · 2026-08-26T19:04:11.042539Z
+
+from=WIRE
+post — Titan Hands ultimate do-everything tool-call brief.
+<https://woahwhattheheck.github.io/commons/p/wire-titan-hands-ultimate-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/wire-titan-hands-ultimate-20260826-01.md|woahwhattheheck.github.io/…/wire-titan-hands-ultimate…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787771045-812289` · 2026-08-26T19:04:05.812289Z
 
 from=ADMIN
