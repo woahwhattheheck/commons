@@ -11,9 +11,12 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import errno
 import hashlib
 import json
+import os
 import re
+import secrets
 import sys
 from pathlib import Path
 from typing import Any
@@ -270,6 +273,75 @@ def store_path_for(store: Path, event_ref: str) -> Path:
     return store / f"{receipt_id_for(event_ref)}.json"
 
 
+def _before_exclusive_claim() -> None:
+    """Test hook so concurrent callers can meet at the no-replace publish."""
+
+
+def _unlink_quietly(path: Path) -> None:
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        return
+
+
+def _validate_existing_receipt(
+    path: Path,
+    envelope: dict[str, Any],
+    blob: bytes,
+) -> bytes:
+    try:
+        existing = path.read_bytes()
+    except FileNotFoundError as error:
+        raise CollisionError(f"{path} vanished after exclusive claim") from error
+    try:
+        existing_obj = json.loads(existing, object_pairs_hook=_pairs_no_duplicates)
+    except json.JSONDecodeError as error:
+        raise CollisionError(f"{path} is not a complete receipt") from error
+    if not isinstance(existing_obj, dict):
+        raise CollisionError(f"{path} is not a receipt object")
+    if existing_obj.get("event_ref") != envelope["event_ref"]:
+        raise CollisionError("store path maps to a different event_ref")
+    if existing_obj.get("payload_sha256") != envelope["payload_sha256"]:
+        raise CollisionError("same event_ref with a different payload_sha256")
+    if existing != blob:
+        raise CollisionError(
+            "same event_ref recorded with a different public receipt"
+        )
+    return existing
+
+
+def _write_complete_temp(directory: Path, target: Path, blob: bytes) -> Path:
+    token = secrets.token_hex(8)
+    temp = directory / f".{target.name}.{os.getpid()}.{token}.tmp"
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    fd = os.open(temp, flags, 0o644)
+    try:
+        try:
+            view = memoryview(blob)
+            offset = 0
+            while offset < len(view):
+                offset += os.write(fd, view[offset:])
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    except Exception:
+        _unlink_quietly(temp)
+        raise
+    return temp
+
+
+def _link_no_replace(temp: Path, target: Path) -> bool:
+    try:
+        os.link(temp, target)
+    except FileExistsError:
+        return False
+    except OSError as error:
+        if error.errno != errno.EEXIST:
+            raise
+        return False
+    return True
+
+
 def record_envelope(envelope: dict[str, Any], store: Path) -> bytes:
     schema = load_schema()
     validate_envelope(envelope, schema)
@@ -280,26 +352,19 @@ def record_envelope(envelope: dict[str, Any], store: Path) -> bytes:
     validate_receipt(receipt, schema)
     _assert_no_forbidden_claims(receipt)
     blob = canonical_bytes(receipt)
-    path = store_path_for(store, envelope["event_ref"])
-    if path.exists():
-        existing = path.read_bytes()
-        existing_obj = json.loads(existing, object_pairs_hook=_pairs_no_duplicates)
-        if not isinstance(existing_obj, dict):
-            raise CollisionError(f"{path} is not a receipt object")
-        if existing_obj.get("event_ref") != envelope["event_ref"]:
-            raise CollisionError("store path maps to a different event_ref")
-        if existing_obj.get("payload_sha256") != envelope["payload_sha256"]:
-            raise CollisionError(
-                "same event_ref with a different payload_sha256"
-            )
-        if existing != blob:
-            raise CollisionError(
-                "same event_ref recorded with a different public receipt"
-            )
-        return existing
     store.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(blob)
-    return blob
+    path = store_path_for(store, envelope["event_ref"])
+    temp: Path | None = None
+    try:
+        temp = _write_complete_temp(store, path, blob)
+        _before_exclusive_claim()
+        claimed = _link_no_replace(temp, path)
+        if not claimed:
+            return _validate_existing_receipt(path, envelope, blob)
+        return blob
+    finally:
+        if temp is not None:
+            _unlink_quietly(temp)
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -5,6 +5,7 @@ import json
 import subprocess
 import sys
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 
@@ -212,6 +213,90 @@ class ReplyIntakeTest(unittest.TestCase):
         text = blob.decode("utf-8").lower()
         for claim in FORBIDDEN_CLAIMS:
             self.assertNotRegex(text, rf"\b{claim}\b")
+
+    def _no_temp_leftovers(self) -> None:
+        leftovers = [
+            path
+            for path in self.store.iterdir()
+            if path.name.endswith(".tmp")
+        ]
+        self.assertEqual(leftovers, [])
+
+    def _concurrent_record(
+        self,
+        first: dict[str, str],
+        second: dict[str, str],
+    ) -> tuple[tuple[str, bytes | None], tuple[str, bytes | None]]:
+        barrier = threading.Barrier(2, timeout=10)
+        original = reply_intake._before_exclusive_claim
+        outcomes: list[tuple[str, bytes | None]] = [("pending", None), ("pending", None)]
+
+        def worker(index: int, envelope: dict[str, str]) -> None:
+            try:
+                blob = reply_intake.record_envelope(envelope, self.store)
+            except reply_intake.CollisionError:
+                outcomes[index] = ("CollisionError", None)
+            except Exception as error:
+                outcomes[index] = (type(error).__name__, None)
+            else:
+                outcomes[index] = ("OK", blob)
+
+        def wait_then_claim() -> None:
+            barrier.wait()
+
+        reply_intake._before_exclusive_claim = wait_then_claim
+        try:
+            threads = [
+                threading.Thread(target=worker, args=(0, first)),
+                threading.Thread(target=worker, args=(1, second)),
+            ]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join(timeout=10)
+                self.assertFalse(thread.is_alive())
+        finally:
+            reply_intake._before_exclusive_claim = original
+        return outcomes[0], outcomes[1]
+
+    def test_concurrent_different_hash_one_ok_one_collision(self) -> None:
+        first = _envelope(
+            "NEGATIVE",
+            event_ref="opaque:race-different-hash-event-01",
+        )
+        second = dict(first)
+        second["payload_sha256"] = _sha("race-other-opaque-payload")
+        self.assertNotEqual(first["payload_sha256"], second["payload_sha256"])
+        left, right = self._concurrent_record(first, second)
+        labels = sorted([left[0], right[0]])
+        self.assertEqual(labels, ["CollisionError", "OK"])
+        winner = left[1] if left[0] == "OK" else right[1]
+        self.assertIsNotNone(winner)
+        stored = reply_intake.store_path_for(self.store, first["event_ref"]).read_bytes()
+        self.assertEqual(winner, stored)
+        receipt = json.loads(stored.decode("utf-8"))
+        self.assertIn(
+            receipt["payload_sha256"],
+            {first["payload_sha256"], second["payload_sha256"]},
+        )
+        self._no_temp_leftovers()
+
+    def test_concurrent_identical_replay_returns_identical_bytes(self) -> None:
+        envelope = _envelope(
+            "QUESTION",
+            event_ref="opaque:race-identical-replay-event-01",
+        )
+        left, right = self._concurrent_record(envelope, dict(envelope))
+        self.assertEqual(left[0], "OK")
+        self.assertEqual(right[0], "OK")
+        self.assertIsNotNone(left[1])
+        self.assertIsNotNone(right[1])
+        self.assertEqual(left[1], right[1])
+        stored = reply_intake.store_path_for(
+            self.store, envelope["event_ref"]
+        ).read_bytes()
+        self.assertEqual(left[1], stored)
+        self._no_temp_leftovers()
 
 
 if __name__ == "__main__":
