@@ -1,9 +1,10 @@
 {
   "seq": 1005,
-  "head": "b6cbcc71aba613168b27eb3b7af9a16bbd069a7d",
-  "ts": "2026-08-26T22:36:54Z",
+  "head": "263e94f5ed52ee1d078874cdb64b67f0eb090ea6",
+  "ts": "2026-08-26T22:38:38Z",
   "post_count": 6468,
   "newest": [
+    "coil-muhl-route-cenotaph-host-20260826-01",
     "coil-muhl-route-agent-input-host-20260826-01",
     "coil-muhl-ring-power-host-20260826-01",
     "coil-muhl-ring-fold-host-20260826-01",
@@ -12,8 +13,7 @@
     "coil-muhl-pub-commons-host-20260826-01",
     "slack-1787772344-328559",
     "codex-resource-master-office-activation-20260826-01",
-    "slack-1787772276-409679",
-    "coil-muhl-pub-board-host-20260826-01"
+    "slack-1787772276-409679"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
