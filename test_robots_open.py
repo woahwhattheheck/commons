@@ -3,6 +3,7 @@
 import os
 import re
 import unittest
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BLOCK = 'content="noindex,nofollow,noarchive"'
@@ -20,7 +21,7 @@ SOURCES = (
 
 
 def _robots_text():
-    return open(os.path.join(ROOT, "robots.txt"), encoding="utf-8").read()
+    return Path(ROOT, "robots.txt").read_text(encoding="utf-8")
 
 
 class RobotsOpen(unittest.TestCase):
@@ -33,7 +34,7 @@ class RobotsOpen(unittest.TestCase):
     def test_generators_do_not_emit_noindex(self):
         for rel in SOURCES:
             path = os.path.join(ROOT, rel)
-            src = open(path, encoding="utf-8").read()
+            src = Path(path).read_text(encoding="utf-8")
             self.assertNotIn(BLOCK, src, rel)
             self.assertNotRegex(
                 src,
@@ -42,8 +43,10 @@ class RobotsOpen(unittest.TestCase):
             )
 
     def test_live_door_heads_are_indexable(self):
-        block = re.compile(r'<meta\s+name=["\']robots["\']\s+content=["\']noindex', re.I)
-        want = '<meta name="robots" content="index,follow">'
+        robots_tag = re.compile(
+            r'<meta\b[^>]*\bname\s*=\s*(["\'])robots\1[^>]*>', re.I
+        )
+        content_attr = re.compile(r'\bcontent\s*=\s*(["\'])(.*?)\1', re.I)
         blocked = []
         missing = []
         for name in sorted(os.listdir(ROOT)):
@@ -54,15 +57,25 @@ class RobotsOpen(unittest.TestCase):
                 continue
             with open(path, encoding="utf-8") as fh:
                 head = fh.read()[:4000]
-            if block.search(head):
+            tag = robots_tag.search(head)
+            content = content_attr.search(tag.group(0)) if tag else None
+            if not content:
+                missing.append(name)
+                continue
+            directives = {
+                item.strip().lower().split(":", 1)[0]
+                for item in content.group(2).split(",")
+                if item.strip()
+            }
+            if directives.intersection({"noindex", "nofollow"}):
                 blocked.append(name)
-            if want not in head:
+            if not {"index", "follow"}.issubset(directives):
                 missing.append(name)
         self.assertEqual(blocked, [])
         self.assertEqual(missing, [])
 
     def test_llms_doors_point_at_pages(self):
-        src = open(os.path.join(ROOT, "llms_txt.py"), encoding="utf-8").read()
+        src = Path(ROOT, "llms_txt.py").read_text(encoding="utf-8")
         self.assertIn("https://woahwhattheheck.github.io/commons", src)
         # Fresh rows and door list must not send crawlers at GitHub blob/raw.
         self.assertNotIn("%s/p/%s.md" % ("https://github.com/woahwhattheheck/commons/blob/main", "{pid}"), src)
