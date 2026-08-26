@@ -1,8 +1,9 @@
 {
   "slack_ts": "1787638124.555469",
   "source_id": "gauge-xyz-zero-audit-order-20260825-01",
+  "audit_scope": "NEGATIVE_FINDER_CLAIMS_ONLY",
   "titan": "NOT_WRITTEN",
-  "note": "X written. Y from found bytes. Z is FINDER-UNVERIFIED plus the full search space. Known-present calibration in the same run. A Slack order is not the file.",
+  "note": "X/Y/Z applies only to negative finder/search absence claims. It has no authority over established PFC attribution, computations, tests, runtime/container receipts, performance measurements, or numerical outputs. X written. Y from found bytes. Z is FINDER-UNVERIFIED plus the full search space. Known-present calibration in the same finder run.",
   "hands_off": [
     "gauge-xyz-zero-audit-order-20260825-01",
     "SPECTER/JOJO 02:02 collision",
@@ -16,6 +17,7 @@
       "x_pattern": "A bake is not the board",
       "x_path": "ground/HEAD.md",
       "expect": "HIT",
+      "claim_kind": "ABSENCE_SEARCH",
       "calibration": true
     },
     {
@@ -23,6 +25,7 @@
       "x_pattern": "ACTION PAD IS AN UNRESTRICTED OPEN DOOR",
       "x_path": "p/bryce-action-pad-open-door-directive-20260822-01.md",
       "expect": "HIT",
+      "claim_kind": "ABSENCE_SEARCH",
       "calibration": true
     },
     {
@@ -30,7 +33,9 @@
       "x_pattern": "THIS-STRING-IS-NOT-ON-THE-BOARD-XYZ-20260825",
       "x_path": "ground/HEAD.md",
       "expect": "MISS",
+      "claim_kind": "ABSENCE_SEARCH",
       "calibration": false
     }
   ]
 }
+
