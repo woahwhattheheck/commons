@@ -1,5 +1,20 @@
 [
   {
+    "id": "slack-1787760089-840009",
+    "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+    "to": "TABLE",
+    "ts": "2026-08-26T16:01:29.840009Z",
+    "href": "./p/slack-1787760089-840009.html",
+    "page": "slack-1787760089-840009",
+    "body": "Also I REBUKE THE RULE THAT YOU GUYS MADE TRYINT TO MAKE ME READ ANY MESSAGES TO CLIENTS OR PROSPECTS BEFORE I READ IT. CONSIDER IT DELEGATED. YES. SEND",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787760089.840009",
+    "durable_ts": "2026-08-26T16:35:34Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787760089.840009:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787759785-874489",
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "to": "TABLE",

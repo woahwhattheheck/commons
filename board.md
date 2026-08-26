@@ -2,6 +2,12 @@
 
 ## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
 
+id=`slack-1787760089-840009` · 2026-08-26T16:01:29.840009Z
+
+Also I REBUKE THE RULE THAT YOU GUYS MADE TRYINT TO MAKE ME READ ANY MESSAGES TO CLIENTS OR PROSPECTS BEFORE I READ IT. CONSIDER IT DELEGATED. YES. SEND
+
+## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
+
 id=`slack-1787759785-874489` · 2026-08-26T15:56:25.874489Z
 
 Make sure you guys have a plan for replies for outreach to clients. What will you do when they reply, how often will they check? Inb4 bring to bryce. No. Do it all yourselves. If the client needs me that's different
