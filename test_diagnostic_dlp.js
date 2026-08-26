@@ -390,6 +390,35 @@ for (const assignment of [quotedOverDepthJsonAssignment, quotedOverNodeJsonAssig
     assert.strictEqual(event.stopped, true, "overbudget quoted JSON assignment did not stop propagation");
   }
 }
+
+for (const assignment of [
+  'x["token"]="hidden"',
+  "x['token']='hidden'",
+  'x="{\\"token\\":\\"hidden\\"}"',
+  'payload={"paſſword":"hidden"}',
+  'payload={"paßword":"hidden"}',
+  'payload={"ſecret":"hidden"}',
+  "PUBLIC_CONTACT_URL: https://example.com/contact?payload=%7B%22pa%5Cu017f%5Cu017fword%22%3A%22hidden%22%7D",
+  "PUBLIC_CONTACT_URL: https://alice%3Ahidden%0A%40example.com",
+  "PUBLIC_CONTACT_URL: https://exa%7Fmple.com/contact",
+  "PUBLIC_CONTACT_URL: https://exa%C2%85mple.com/contact",
+  "PUBLIC_CONTACT_URL: https://alice%3Ahidden%C2%A0%40example.com",
+  `x=[${Array(4096).fill("null").join(",")}]`,
+]) {
+  for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
+    const event = submit(candidate);
+    assert.strictEqual(event.prevented, true, `adversarial assignment failed open: ${assignment.slice(0, 96)}`);
+    assert.strictEqual(event.stopped, true, `adversarial assignment did not stop propagation: ${assignment.slice(0, 96)}`);
+  }
+}
+
+for (const assignment of ['x="reproducibility"', 'x["topic"]="reproducibility"']) {
+  for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
+    const event = submit(candidate);
+    assert.strictEqual(event.prevented, false, `safe short binding was prevented: ${assignment}`);
+    assert.strictEqual(event.stopped, false, `safe short binding stopped propagation: ${assignment}`);
+  }
+}
 const hostileDepthJson = nestedJsonArray(2200, "topic=reproducibility");
 for (const candidate of [hostileDepthJson, `${fullPostPrefix}\nPUBLIC_OBJECTIVE: ${hostileDepthJson}`]) {
   const hostileDepthEvent = submit(candidate);
