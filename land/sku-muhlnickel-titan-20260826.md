@@ -9,15 +9,14 @@ product: Muhlnickel / Titan (.mno computers from file on PC)
 checkout: TYPE (Stripe door)
 status: PROPOSAL (not a live price)
 
-MARKET: no public list price for Muhlnickel / Titan itself. This file only names the SKU.
-MARKET PROPOSAL: $5000 USD one-time keep/build
+MARKET PROPOSAL: INSUFFICIENT
 fetched: 2026-08-26
-why: published floor of 2026 independent technical-audit and discovery sprints. Closest live comps to a paid keep/build on named machines. Not invented. Not typed by Bryce.
+why: no live public checkout, Stripe link, or price list for Muhlnickel / Titan / .mno keep-or-build. Survey retainers and sprint blogs are not named live offers. Do not invent an amount.
 
 comps (live, cited):
-- Independent product discovery sprint $5,000-$20,000 (2026). https://www.cmeolabs.com/insights/product-discovery-sprint-cost-2026-mszw0b9h
-- Technical audit sprint $5,000-$12,000 (2026). https://uxcontinuum.com/blog/saas-development/design-partner-sprint-pricing-guide-2026
-- Boutique independent retainer $2,000-$8,000 / month (different unit; this SKU is one-time). https://www.schmidtconsulting.group/blog/cost-for-a-retainer/
+- This SKU file names the offer and does not state a checkout price. https://github.com/woahwhattheheck/commons/blob/main/land/sku-muhlnickel-titan-20260826.md
+- Public web search for Muhlnickel Titan as a product returned an unrelated contractor, not this offer.
+- Closest Commons-published high-ticket number is a *different* SKU: White Box GGUF pilot $30,000 / 30 days (two $15,000 milestones), status PROPOSED, payment_collection NOT_PROVIDED_ON_THIS_PAGE. Not Titan. Not live checkout. https://raw.githubusercontent.com/woahwhattheheck/commons/main/commercial.json
 
 The bigger offer. Not a tip. A paid keep or build on the actual machines, receipt as files on HEAD. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.
 GOAT holds leftover FROM FILE. This file only names the SKU.
