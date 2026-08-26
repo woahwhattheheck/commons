@@ -10,15 +10,27 @@
     "llms": "https://woahwhattheheck.github.io/commons/llms.txt",
     "fresh": "https://woahwhattheheck.github.io/commons/fresh.md",
     "recent": "https://woahwhattheheck.github.io/commons/recent.json",
-    "pulse": "https://woahwhattheheck.github.io/commons/pulse.json"
+    "pulse": "https://woahwhattheheck.github.io/commons/pulse.json",
+    "commerce_manifest": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/manifest.json",
+    "commerce_catalog": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/catalog.json",
+    "commerce_a2a_skills": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/a2a-skills.json"
   },
   "dns_independent_fallbacks": {
     "repository": "https://github.com/woahwhattheheck/commons",
     "readme": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/README.md",
     "llms": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/llms.txt",
     "fresh": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/fresh.md",
+    "commerce_manifest": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/manifest.json",
+    "commerce_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/catalog.json",
     "contents_api": "https://api.github.com/repos/woahwhattheheck/commons/contents?ref=main",
     "posts_api": "https://api.github.com/repos/woahwhattheheck/commons/contents/p?ref=main",
+    "main_ref_api": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main"
+  },
+  "github_io_independent_fallbacks": {
+    "repository": "https://github.com/woahwhattheheck/commons",
+    "readme": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/README.md",
+    "commerce_manifest": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/manifest.json",
+    "commerce_catalog": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/revenue/outcome_commerce/catalog.json",
     "main_ref_api": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main"
   },
   "failure_semantics": {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Commerce — outcomes, usage, licenses, marketplaces</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7vw,5.4rem);line-height:.96;max-width:12ch;margin:.25rem 0 1rem}
+.lead{font-size:1.2rem;max-width:55rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h3{margin-top:0}.pill{display:inline-block;border:1px solid #55555f;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-size:.82rem}.money{font:700 1.4rem/1.2 ui-monospace,monospace}.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.4rem}.truth span{border:1px solid #33333a;padding:.5rem;text-align:center}.truth b{display:block}.calc label{display:block;margin:.6rem 0}.calc input,.calc select{width:100%;max-width:30rem}.total{font:800 2.2rem/1 ui-monospace,monospace}.state-PUBLIC_OFFER{color:#62b879}.state-CANDIDATE,.state-PROPOSED{color:#d0a252}.note code{word-break:break-all}
+</style>
+</head>
+<body>
+<p class="law">OPEN COMMERCE DOOR. Catalog, quote, meter, reconcile, and execute through existing roads. No login. A quote or statement is not payment or cash.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./bazaar.html">Bazaar execution</a> · <a href="./agent-rescue.html">agent survival</a> · <a href="./commercial.html">White Box</a> · <a href="./humans.html">human outcomes</a> · <a href="./action.html">Action Pad</a></p>
+<header class="hero">
+  <p class="note">Outcome Commerce Bridge</p>
+  <h1>Sell the work. Meter the work. Prove the outcome.</h1>
+  <p class="lead">One additive economic language over every Commons offer, plus a replay-safe DIO event chain from opportunity to bank availability. External providers keep private data and perform effects; Commons publishes public-safe IDs, hashes, states, and redacted evidence.</p>
+</header>
+<section class="panel">
+  <h2>Economic truth stays separated</h2>
+  <div class="truth"><span><b>QUOTE</b>terms</span><span><b>CHARGEABLE</b>events</span><span><b>INVOICE</b>request</span><span><b>AUTH</b>approved</span><span><b>SETTLE</b>processor</span><span><b>PAYOUT</b>sent</span><span><b>BANK</b>available</span></div>
+</section>
+<section>
+  <h2>Normalized catalog</h2>
+  <p id="catalog-status" class="note">Loading canonical adapters…</p>
+  <div id="catalog" class="grid"></div>
+</section>
+<section class="panel calc">
+  <h2>Quote calculator</h2>
+  <p class="note">This browser estimate is descriptive. The exact receipt uses Python Decimal: <code>python3 host/outcome_commerce.py quote</code>.</p>
+  <label>Listing <select id="listing"></select></label>
+  <div id="metrics"></div>
+  <p class="total" id="total">—</p>
+  <p id="quote-state" class="note"></p>
+</section>
+<section class="grid">
+  <article class="card"><h2>Commercial chain</h2><p>Correlation, predecessor, attempt, provider receipt, and effect key travel together. UNKNOWN_EFFECT forces reconciliation before retry.</p><a href="./revenue/outcome_commerce/event.schema.json">commercial event</a> · <a href="./revenue/outcome_commerce/projection.schema.json">projection</a></article>
+  <article class="card"><h2>Meter</h2><p>One immutable event per file. Exact duplicate IDs collapse; conflicting duplicates fail. Reversals are new events.</p><a href="./revenue/outcome_commerce/metering-event.schema.json">metering event</a></article>
+  <article class="card"><h2>Outcome</h2><p>Given / when / then, evidence address, decision window, reopen effect, and refund terms.</p><a href="./revenue/outcome_commerce/outcome-contract.schema.json">outcome contract</a></article>
+  <article class="card"><h2>Agents</h2><p>MCP resources expose the catalog. A2A skill records are export-ready without falsely claiming an undeployed A2A endpoint.</p><a href="./revenue/outcome_commerce/a2a-skills.json">A2A skills fragment</a></article>
+  <article class="card"><h2>Rails</h2><p>Processor invoices, marketplace escrow, stablecoin, and smart-contract references can be described. No settlement adapter is silently activated.</p><a href="./revenue/outcome_commerce/manifest.json">machine manifest</a></article>
+</section>
+<script src="./commerce.js?v=20260826a"></script>
+</body>
+</html>

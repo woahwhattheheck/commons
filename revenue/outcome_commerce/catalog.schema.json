@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/revenue/outcome_commerce/catalog.schema.json",
+  "title": "Commons Outcome Commerce Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "canonical_page",
+    "manifest",
+    "terms_rule",
+    "economic_truth",
+    "pricing_models",
+    "integration_sources",
+    "listings"
+  ],
+  "properties": {
+    "schema_version": {"const": "outcome-commerce/v1"},
+    "kind": {"const": "OUTCOME_COMMERCE_CATALOG"},
+    "canonical_page": {"type": "string", "minLength": 1},
+    "manifest": {"type": "string", "minLength": 1},
+    "terms_rule": {"type": "string", "minLength": 1},
+    "economic_truth": {"type": "array", "minItems": 7, "uniqueItems": true, "items": {"type": "string"}},
+    "pricing_models": {"type": "array", "minItems": 8, "uniqueItems": true, "items": {"type": "string"}},
+    "integration_sources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "listings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/listing"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 8, "maxLength": 80, "pattern": "^[A-Za-z0-9._-]+$"},
+    "money": {"type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,8})?$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "pointer", "blob_sha", "terms_authority"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "pointer": {"type": "string", "pattern": "^(|/.*)$"},
+        "offer_id": {"$ref": "#/$defs/id"},
+        "blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "terms_authority": {"const": "source"}
+      }
+    },
+    "component": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "amount", "basis"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "kind": {"enum": ["fixed", "subscription", "milestone", "license"]},
+            "amount": {"$ref": "#/$defs/money"},
+            "basis": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "meter", "unit_amount"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "kind": {"enum": ["usage", "outcome", "sponsorship"]},
+            "meter": {"type": "string", "minLength": 1},
+            "unit_amount": {"$ref": "#/$defs/money"},
+            "included": {"$ref": "#/$defs/money"},
+            "basis": {"type": "string"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "meter", "rate_bps"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "kind": {"const": "take_rate"},
+            "meter": {"type": "string", "minLength": 1},
+            "rate_bps": {"type": "integer", "minimum": 0, "maximum": 10000},
+            "basis": {"type": "string"}
+          }
+        }
+      ]
+    },
+    "pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "mode", "components"],
+      "properties": {
+        "currency": {"type": "string", "pattern": "^[A-Z][A-Z0-9._-]{1,31}$"},
+        "mode": {"type": "string", "minLength": 1},
+        "components": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/component"}}
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["acceptance_source", "evidence_required"],
+      "properties": {
+        "acceptance_source": {"type": "string", "minLength": 1},
+        "receipt_schema": {"type": "string", "minLength": 1},
+        "evidence_required": {"const": true}
+      }
+    },
+    "routes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["human", "machine"],
+      "properties": {
+        "human": {"type": "string", "minLength": 1},
+        "machine": {"type": "string", "minLength": 1}
+      }
+    },
+    "follow_on": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source", "term_months", "currency", "amount_from", "amount_to", "separately_scoped"],
+      "properties": {
+        "kind": {"const": "license"},
+        "source": {"type": "string", "minLength": 1},
+        "term_months": {"type": "integer", "minimum": 1},
+        "currency": {"type": "string", "pattern": "^[A-Z][A-Z0-9._-]{1,31}$"},
+        "amount_from": {"$ref": "#/$defs/money"},
+        "amount_to": {"$ref": "#/$defs/money"},
+        "separately_scoped": {"const": true}
+      }
+    },
+    "listing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "state", "source", "pricing", "outcome", "routes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "name": {"type": "string", "minLength": 1},
+        "state": {"enum": ["PUBLIC_OFFER", "CANDIDATE", "PROPOSED", "EXAMPLE_ONLY"]},
+        "source": {"$ref": "#/$defs/source"},
+        "pricing": {"$ref": "#/$defs/pricing"},
+        "outcome": {"$ref": "#/$defs/outcome"},
+        "follow_on": {"$ref": "#/$defs/follow_on"},
+        "routes": {"$ref": "#/$defs/routes"}
+      }
+    }
+  }
+}

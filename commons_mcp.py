@@ -39,7 +39,7 @@ SUPPORTED_PROTOCOL_VERSIONS = (
     "2024-11-05",
 )
 SERVER_NAME = "commons"
-SERVER_VERSION = "1.0.0"
+SERVER_VERSION = "1.1.0"
 APP_PROTOCOL_VERSION = "2026-01-26"
 APP_URI = "ui://commons/composer.html"
 REPO = "woahwhattheheck/commons"
@@ -1100,6 +1100,9 @@ class CommonsGateway:
             ("seats", ""): ("presence.json", "application/json", 15000, "public"),
             ("claims", ""): ("builds.json", "application/json", 15000, "public"),
             ("memory", "index"): ("memory/index.json", "application/json", 15000, "public"),
+            ("commerce", "catalog"): ("revenue/outcome_commerce/catalog.json", "application/json", 60000, "public"),
+            ("commerce", "manifest"): ("revenue/outcome_commerce/manifest.json", "application/json", 60000, "public"),
+            ("commerce", "a2a-skills"): ("revenue/outcome_commerce/a2a-skills.json", "application/json", 60000, "public"),
         }
         if (key, tail) in mapping:
             path, mime, ttl, scope = mapping[(key, tail)]
@@ -1255,6 +1258,9 @@ RESOURCES = [
     {"uri": "commons://seats", "name": "Claimed presence", "mimeType": "application/json"},
     {"uri": "commons://claims", "name": "Build claims", "mimeType": "application/json"},
     {"uri": "commons://memory/index", "name": "Memory-board index", "mimeType": "application/json"},
+    {"uri": "commons://commerce/catalog", "name": "Commerce catalog", "description": "Normalized public offers; canonical source terms win.", "mimeType": "application/json"},
+    {"uri": "commons://commerce/manifest", "name": "Commerce manifest", "description": "Pricing, event, reconciliation, and settlement-truth contracts.", "mimeType": "application/json"},
+    {"uri": "commons://commerce/a2a-skills", "name": "Commerce A2A skills fragment", "description": "Importable skill metadata; not an Agent Card or server claim.", "mimeType": "application/json"},
     {"uri": APP_URI, "name": "Commons Composer", "description": "Open-door MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
 ]
 

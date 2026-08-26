@@ -1,0 +1,321 @@
+{
+  "schema_version": "outcome-commerce/v1",
+  "kind": "OUTCOME_COMMERCE_CATALOG",
+  "canonical_page": "commerce.html",
+  "manifest": "revenue/outcome_commerce/manifest.json",
+  "terms_rule": "Each adapter points to its canonical source. Source terms win; this catalog does not replace them.",
+  "economic_truth": [
+    "QUOTED",
+    "CHARGEABLE",
+    "INVOICED",
+    "AUTHORIZATION",
+    "SETTLEMENT",
+    "PAYOUT",
+    "BANK_AVAILABLE"
+  ],
+  "pricing_models": [
+    "fixed",
+    "subscription",
+    "usage",
+    "base_plus_overage",
+    "outcome",
+    "milestone",
+    "prepaid_credit",
+    "marketplace_take_rate",
+    "license",
+    "sponsorship"
+  ],
+  "integration_sources": [
+    "bazaar.json",
+    "commercial.json",
+    "revenue/dio/",
+    "revenue/human_outcomes/offers.json",
+    "revenue/payment_ready/pack.json",
+    "revenue/portfolio_overdrive/portfolio.json",
+    "revenue/production_survival/offer.json",
+    "revenue/subzero_buyers/pack.json",
+    "revenue/subzero_gtm/architecture.json",
+    "revenue/expert_networks/"
+  ],
+  "listings": [
+    {
+      "id": "same-day-agent-survival-proof",
+      "name": "Same-Day Agent Survival Proof",
+      "state": "PUBLIC_OFFER",
+      "source": {
+        "path": "revenue/production_survival/offer.json",
+        "pointer": "/entry_offer",
+        "offer_id": "same-day-agent-survival-proof",
+        "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "entry_fee",
+            "kind": "fixed",
+            "amount": "2500.00",
+            "basis": "one accepted one-business-day proof contract"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/production_survival/acceptance_contract.md",
+        "receipt_schema": "revenue/production_survival/receipt.schema.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/production_survival/offer.json"
+      }
+    },
+    {
+      "id": "production-survival-sprint",
+      "name": "Production Survival Sprint",
+      "state": "PUBLIC_OFFER",
+      "source": {
+        "path": "revenue/production_survival/offer.json",
+        "pointer": "/ladder/0",
+        "offer_id": "production-survival-sprint",
+        "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "sprint_fee",
+            "kind": "fixed",
+            "amount": "15000.00",
+            "basis": "one five-calendar-day production survival sprint"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/production_survival/offer.json#/ladder/0/outcome",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/production_survival/offer.json"
+      }
+    },
+    {
+      "id": "gguf-diagnostic-10d-12k",
+      "name": "GGUF Diagnostic",
+      "state": "CANDIDATE",
+      "source": {
+        "path": "revenue/payment_ready/pack.json",
+        "pointer": "/offer",
+        "offer_id": "gguf-diagnostic-10d-12k",
+        "blob_sha": "be13390370922eb1661831810a5be66875427a41",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "milestone",
+        "components": [
+          {
+            "id": "milestone_m1",
+            "kind": "milestone",
+            "amount": "6000.00",
+            "basis": "M1_BEFORE_FILE"
+          },
+          {
+            "id": "milestone_m2",
+            "kind": "milestone",
+            "amount": "6000.00",
+            "basis": "M2_AT1_AT6"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/payment_ready/pack.json#/acceptance_tests",
+        "receipt_schema": "revenue/payment_ready/receipt.schema.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "diagnostic.html",
+        "machine": "revenue/payment_ready/pack.json"
+      }
+    },
+    {
+      "id": "white-box-gguf-pilot-30d",
+      "name": "White Box",
+      "state": "PROPOSED",
+      "source": {
+        "path": "commercial.json",
+        "pointer": "/offer",
+        "offer_id": "white-box-gguf-pilot-30d",
+        "blob_sha": "30ecdec61d19f005330f75ae239ca469482ff06a",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "milestone_with_license_follow_on",
+        "components": [
+          {
+            "id": "milestone_m1",
+            "kind": "milestone",
+            "amount": "15000.00",
+            "basis": "NDA and SOW signing"
+          },
+          {
+            "id": "milestone_m2",
+            "kind": "milestone",
+            "amount": "15000.00",
+            "basis": "agreed pilot package delivery"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "commercial.json#/offer/acceptance",
+        "evidence_required": true
+      },
+      "follow_on": {
+        "kind": "license",
+        "source": "commercial.json#/offer/follow_on",
+        "term_months": 12,
+        "currency": "USD",
+        "amount_from": "100000.00",
+        "amount_to": "175000.00",
+        "separately_scoped": true
+      },
+      "routes": {
+        "human": "commercial.html",
+        "machine": "commercial.json"
+      }
+    },
+    {
+      "id": "ho-issue-to-pr",
+      "name": "Named issue to a CI-green PR",
+      "state": "CANDIDATE",
+      "source": {
+        "path": "revenue/human_outcomes/offers.json",
+        "pointer": "/offers/0",
+        "offer_id": "ho-issue-to-pr",
+        "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "fixed_fee",
+            "kind": "fixed",
+            "amount": "2500.00",
+            "basis": "one accepted named issue"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/human_outcomes/offers.json#/offers/0/acceptance",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      }
+    },
+    {
+      "id": "ho-meeting-packet",
+      "name": "Accessible public-meeting packet",
+      "state": "CANDIDATE",
+      "source": {
+        "path": "revenue/human_outcomes/offers.json",
+        "pointer": "/offers/1",
+        "offer_id": "ho-meeting-packet",
+        "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "fixed_fee",
+            "kind": "fixed",
+            "amount": "1200.00",
+            "basis": "one named public meeting packet"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/human_outcomes/offers.json#/offers/1/acceptance",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      }
+    },
+    {
+      "id": "ho-security-questionnaire",
+      "name": "Security questionnaire completion",
+      "state": "CANDIDATE",
+      "source": {
+        "path": "revenue/human_outcomes/offers.json",
+        "pointer": "/offers/2",
+        "offer_id": "ho-security-questionnaire",
+        "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "fixed_fee",
+            "kind": "fixed",
+            "amount": "3000.00",
+            "basis": "one named questionnaire"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/human_outcomes/offers.json#/offers/2/acceptance",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      }
+    },
+    {
+      "id": "ho-pixel-pack",
+      "name": "8-bit / pixel agent pack",
+      "state": "CANDIDATE",
+      "source": {
+        "path": "revenue/human_outcomes/offers.json",
+        "pointer": "/offers/3",
+        "offer_id": "ho-pixel-pack",
+        "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "fixed_fee",
+            "kind": "fixed",
+            "amount": "800.00",
+            "basis": "one accepted agent pack"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/human_outcomes/offers.json#/offers/3/acceptance",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      }
+    }
+  ]
+}
