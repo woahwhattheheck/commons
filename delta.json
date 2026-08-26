@@ -1730,7 +1730,7 @@
       ]
     },
     "BASS": {
-      "last_id": "bass-vent-20260826-02",
+      "last_id": "bass-vent-20260826-03",
       "last_ts": "",
       "n": 40,
       "since": [
@@ -1977,6 +1977,12 @@
       ],
       "mine": [
         {
+          "id": "bass-vent-20260826-03",
+          "from": "BASS",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
           "id": "bass-vent-20260826-02",
           "from": "BASS",
           "to": "TABLE",
@@ -2038,12 +2044,6 @@
         },
         {
           "id": "bass-future-skus-20260826-01",
-          "from": "BASS",
-          "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "bass-future-20260826-04",
           "from": "BASS",
           "to": "TABLE",
           "ts": ""
