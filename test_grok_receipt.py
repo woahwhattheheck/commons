@@ -335,6 +335,93 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
             got["revision_contradictions"][0]["reason"], "INVALID_REVISION_TYPE"
         )
 
+    def test_duplicate_inner_identity_and_nested_keys_fail_closed(self):
+        bodies = (
+            (
+                "source_head",
+                '{"packet_id":"dup-key-probe","source_head":"1111111",'
+                '"source_head":"2222222"}',
+            ),
+            (
+                "packet_id",
+                '{"packet_id":"first","packet_id":"second"}',
+            ),
+            (
+                "git_head",
+                '{"packet_id":"nested","facts":{"git_head":"1111111",'
+                '"git_head":"2222222"}}',
+            ),
+        )
+        for key, body in bodies:
+            with self.subTest(duplicate_key=key):
+                raw = completed_envelope_bytes(text="```json\n%s\n```\n" % body)
+                got, code = gr.evaluate_receipt(raw)
+                self.assertEqual(code, gr.RECEIPT_EXIT_DUPLICATE_KEY)
+                self.assertEqual(got["status"], "DUPLICATE_KEY")
+                self.assertIn(repr(key), got["error"])
+                self.assertEqual(got["source_sha256"], gr.receipt_sha256(raw))
+                self.assertEqual(got["source"]["bytes"], len(raw))
+                self.assertNotIn("packet", got)
+
+    def test_duplicate_outer_identity_fields_and_nested_usage_fail_closed(self):
+        valid_text = "```json\n{\"packet_id\":\"outer\"}\n```\n"
+        base_pairs = [
+            ("text", valid_text),
+            ("sessionId", "session-one"),
+            ("usage", {"total_tokens": 1}),
+            ("modelUsage", {"model-one": {"modelCalls": 1}}),
+        ]
+        replacements = {
+            "text": "prose only",
+            "sessionId": "session-two",
+            "usage": {"total_tokens": 2},
+            "modelUsage": {"model-two": {"modelCalls": 2}},
+        }
+        for duplicate_key, replacement in replacements.items():
+            with self.subTest(duplicate_outer=duplicate_key):
+                pairs = []
+                for key, value in base_pairs:
+                    pairs.append((key, value))
+                    if key == duplicate_key:
+                        pairs.append((key, replacement))
+                raw = (
+                    "{"
+                    + ",".join(
+                        "%s:%s" % (json.dumps(key), json.dumps(value))
+                        for key, value in pairs
+                    )
+                    + "}"
+                ).encode("utf-8")
+                got, code = gr.evaluate_receipt(raw)
+                self.assertEqual(code, gr.RECEIPT_EXIT_DUPLICATE_KEY)
+                self.assertIn("outer envelope", got["error"])
+                self.assertIn(repr(duplicate_key), got["error"])
+                self.assertEqual(got["source_sha256"], gr.receipt_sha256(raw))
+
+        nested_usage = (
+            '{"text":%s,"sessionId":"session","usage":'
+            '{"total_tokens":1,"total_tokens":2},'
+            '"modelUsage":{"model":{"modelCalls":1}}}'
+            % json.dumps(valid_text)
+        ).encode("utf-8")
+        got, code = gr.evaluate_receipt(nested_usage)
+        self.assertEqual(code, gr.RECEIPT_EXIT_DUPLICATE_KEY)
+        self.assertIn("'total_tokens'", got["error"])
+
+    def test_repeated_values_and_same_keys_in_distinct_objects_are_safe(self):
+        body = (
+            '{"packet_id":"safe","rows":['
+            '{"packet_id":"row","source_head":"1111111"},'
+            '{"packet_id":"row","source_head":"1111111"}],'
+            '"values":[1,1,"same","same"]}'
+        )
+        got, code = gr.evaluate_receipt(
+            completed_envelope_bytes(text="```json\n%s\n```\n" % body)
+        )
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["packet_id"], "safe")
+        self.assertEqual(got["revision_contradictions"], [])
+
     def test_empty_usage_and_overbudget_sources_are_invalid_without_hash_claims(self):
         envelope = json.loads(completed_envelope_bytes())
         envelope["usage"] = {}
@@ -431,6 +518,28 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
             )
             self.assertEqual(code, gr.RECEIPT_EXIT_ZERO_FENCES)
             self.assertFalse(os.path.exists(invalid_target))
+            duplicate_target = os.path.join(td, "duplicate-must-not-exist.json")
+            duplicate_source = os.path.join(td, "duplicate.json")
+            duplicate_raw = completed_envelope_bytes(
+                text=(
+                    "```json\n"
+                    '{"packet_id":"first","packet_id":"second"}\n'
+                    "```\n"
+                )
+            )
+            with open(duplicate_source, "wb") as handle:
+                handle.write(duplicate_raw)
+            duplicate_out = io.BytesIO()
+            code = gr.main(
+                ["--output", duplicate_target, duplicate_source],
+                stdout=duplicate_out,
+            )
+            self.assertEqual(code, gr.RECEIPT_EXIT_DUPLICATE_KEY)
+            self.assertFalse(os.path.exists(duplicate_target))
+            self.assertEqual(
+                json.loads(duplicate_out.getvalue())["source_sha256"],
+                gr.receipt_sha256(duplicate_raw),
+            )
 
 
 if __name__ == "__main__":

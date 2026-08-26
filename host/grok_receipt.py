@@ -120,6 +120,7 @@ RECEIPT_EXIT_MISSING_PACKET_ID = 9
 RECEIPT_EXIT_WRITE_FAILURE = 10
 RECEIPT_EXIT_REVISION_CONTRADICTION = 11
 RECEIPT_EXIT_FINDER_FAILED = 12
+RECEIPT_EXIT_DUPLICATE_KEY = 13
 RECEIPT_MAX_SOURCE_BYTES = 8 * 1024 * 1024
 SOURCE_REVISION_KEYS = frozenset(
     {"source_head", "git_head", "source_rev", "source_rev_file"}
@@ -144,6 +145,7 @@ RECEIPT_STATUS_BY_EXIT = {
     RECEIPT_EXIT_WRITE_FAILURE: "WRITE_FAILURE",
     RECEIPT_EXIT_REVISION_CONTRADICTION: "REVISION_CONTRADICTION",
     RECEIPT_EXIT_FINDER_FAILED: "FINDER_FAILED",
+    RECEIPT_EXIT_DUPLICATE_KEY: "DUPLICATE_KEY",
 }
 
 RECEIPT_OPTIONAL_OUTER_FIELDS = (
@@ -153,6 +155,23 @@ RECEIPT_OPTIONAL_OUTER_FIELDS = (
     "total_cost_usd",
     "total_cost_usd_ticks",
 )
+
+
+class DuplicateJSONKey(ValueError):
+    """A JSON object repeated a member name and therefore has no unique meaning."""
+
+    def __init__(self, key):
+        super().__init__("duplicate JSON object key %r" % key)
+        self.key = key
+
+
+def _unique_json_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateJSONKey(key)
+        result[key] = value
+    return result
 
 
 def _read(root, rel):
@@ -438,7 +457,16 @@ def evaluate_receipt(raw, source="-"):
             source=source,
         )
     try:
-        envelope = json.loads(raw.decode("utf-8"))
+        envelope = json.loads(
+            raw.decode("utf-8"), object_pairs_hook=_unique_json_object
+        )
+    except DuplicateJSONKey as exc:
+        return _receipt_error(
+            RECEIPT_EXIT_DUPLICATE_KEY,
+            "outer envelope contains %s" % exc,
+            raw,
+            source,
+        )
     except (UnicodeDecodeError, ValueError, RecursionError) as exc:
         return _receipt_error(
             RECEIPT_EXIT_INVALID_ENVELOPE,
@@ -483,7 +511,14 @@ def evaluate_receipt(raw, source="-"):
     if fence_exit != RECEIPT_EXIT_OK:
         return _receipt_error(fence_exit, fence_error, raw, source)
     try:
-        packet = json.loads(body)
+        packet = json.loads(body, object_pairs_hook=_unique_json_object)
+    except DuplicateJSONKey as exc:
+        return _receipt_error(
+            RECEIPT_EXIT_DUPLICATE_KEY,
+            "inner packet contains %s" % exc,
+            raw,
+            source,
+        )
     except (ValueError, RecursionError) as exc:
         return _receipt_error(
             RECEIPT_EXIT_INVALID_INNER_JSON,
@@ -969,6 +1004,15 @@ def self_test():
     )
     contradiction, code = evaluate_receipt(json.dumps(conflicting).encode("utf-8"))
     assert code == RECEIPT_EXIT_REVISION_CONTRADICTION, contradiction
+    duplicate = dict(completed)
+    duplicate["text"] = (
+        "```json\n"
+        '{"packet_id":"duplicate","source_head":"1111111",'
+        '"source_head":"2222222"}\n'
+        "```\n"
+    )
+    duplicate_error, code = evaluate_receipt(json.dumps(duplicate).encode("utf-8"))
+    assert code == RECEIPT_EXIT_DUPLICATE_KEY, duplicate_error
     missing = classify(
         measure_from_rows(
             {
