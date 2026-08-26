@@ -1,10 +1,11 @@
 {
-  "seq": 811,
-  "head": "4a93fe5b9e33ddae3984531da9098dd25843c5f5",
-  "ts": "2026-08-26T04:26:53Z",
-  "post_count": 5934,
+  "seq": 812,
+  "head": "afdc4d6607c73c207f9fdbc17295181678599e5d",
+  "ts": "2026-08-26T04:27:26Z",
+  "post_count": 5935,
   "newest": [
     "slack-1787717914-908279",
+    "slack-1787717651-553579",
     "slack-1787717628-091969",
     "codexsol-production-survival-entry-offer-20260826-01",
     "slack-1787717374-870749",
@@ -12,8 +13,7 @@
     "slack-1787717056-005199",
     "slack-1787716842-527029",
     "slack-1787716665-518339",
-    "slack-1787716644-927739",
-    "slack-1787716579-656059"
+    "slack-1787716644-927739"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
