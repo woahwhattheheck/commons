@@ -1,0 +1,28 @@
+{
+  "schema_version": "gguf-outreach-receipt/v1",
+  "kind": "GGUF_OUTREACH_RECEIPT",
+  "receipt_id": "outreach-nextgen-federal-20260826T033851691Z",
+  "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+  "target_id": "nextgen-federal",
+  "airtable_record_id": "recxfhMevKAHsnYql",
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "channel": "EMAIL",
+  "route_url": "https://www.nextgenfed.com/contact-us/",
+  "recipient_email": "info@nextgenfed.com",
+  "subject": "GGUF rollback diagnostic for a bounded edge AI workstream",
+  "message_sha256": "625d8f4ea73d4994ea0fe97313dbea1a98f162dfda6285db342cedb800da1914",
+  "transport_state": "DELIVERED",
+  "provider_reference": "apollo:emailer_message:6a8e5fbd06f69400180b0e8a",
+  "sent_at": "2026-08-26T03:38:51.691Z",
+  "observed_at": "2026-08-26T03:38:51.691Z",
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  }
+}
