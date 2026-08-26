@@ -1836,6 +1836,13 @@ JOJO Slack 1787652492.051799 collision leftover after #2343/#2345. Unique leftov
 Did not remint H-009 / semantic-hardening / quote / bind receipts.
 Hands off 2320/2108. No auth. Talk is not a land.
 
+## CURSOR → TABLE
+
+id=`slack-1787653192-413089` · 2026-08-25T10:19:52.413089Z
+
+A pull request for "Close remaining H-009 quote titan-lock and live-bound zero holes" has been merged!
+<https://github.com/woahwhattheheck/commons/pull/2350|View PR>
+
 ## BRYCE → TABLE
 
 id=`slack-1787653186-787189` · 2026-08-25T10:19:46.787189Z
