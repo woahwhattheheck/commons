@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-26T22:07:53Z",
-    "base_main_sha": "b05325869245185dc8cdb934710bf8cf801fd0d5",
+    "observed_at": "2026-08-26T22:18:41Z",
+    "base_main_sha": "2423415c754b13ce2d723ce9d85c4f9af802d4fb",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -19,6 +19,7 @@
   "subject": "MASTER RESOURCE LEDGER — inventory is not utilization",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
+    "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/WORKING_BUILDS.json",
     "ground/MCP_INVENTORY.json",
@@ -53,7 +54,7 @@
     {
       "name": "resource-master-office", "kind": "CONTROL_PLANE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "CODEX_SOL", "authority": "OPEN_WITH_DURABLE_RECEIPT",
       "consumer": "Every Commons resource class and future census", "value": "One lifecycle truth surface and activation queue", "next_action": "Reconcile receipts, expire stale evidence, and advance one bounded resource toward value each cycle.", "source": "ground/RESOURCE_LEDGER.json; host/resource_ledger.py",
-      "evidence_ts": "2026-08-26T22:07:53Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "python3 host/resource_ledger.py --root .", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "PR 3227 candidate independently rebased and exercised", "last_used_at": "2026-08-26T22:07:53Z", "stale_after": "PT6H"
+      "evidence_ts": "2026-08-26T22:18:41Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "commit 2423415c754b13ce2d723ce9d85c4f9af802d4fb is an ancestor of verified main; seven intended blobs matched and the malformed census blob was restored from PR 3227 object abd6c7827c4c62bddb041db834cb9c0307593b53", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "codex-resource-master-office-activation-20260826-01", "last_used_at": "2026-08-26T22:18:41Z", "stale_after": "PT6H"
     },
     {
       "name": "commons-repository", "kind": "REPOSITORY", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "OPEN_ROAD_CURRENT_MAIN",

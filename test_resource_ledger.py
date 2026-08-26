@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import unittest
@@ -248,6 +249,22 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn('href="./ledger.html"', resources_html)
         self.assertIn("bryce-owner-operator", ledger_html)
         self.assertIn("stage-filter", ledger_html)
+
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-resource-master-office-activation-20260826-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(activation["selected_resource"], "resource-master-office")
+        self.assertEqual(
+            activation["after"]["integration_main_sha"],
+            "2423415c754b13ce2d723ce9d85c4f9af802d4fb",
+        )
 
     def test_local_probes_see_absent_hf(self):
         probes = local_probes(
