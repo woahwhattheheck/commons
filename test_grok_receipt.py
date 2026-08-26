@@ -31,6 +31,37 @@ from grok_receipt import (
 )
 
 
+MEASURED_EXPECTED_EXITS = {
+    "H-001-ARCHITECT.json": gr.RECEIPT_EXIT_OK,
+    "H-001-SKEPTIC.json": gr.RECEIPT_EXIT_OK,
+    "H-002-CONTAMINATION.json": gr.RECEIPT_EXIT_OK,
+    "H-003-INTEGRATION-ARCHITECT.json": gr.RECEIPT_EXIT_OK,
+    "H-004-FALSE-ZERO.json": gr.RECEIPT_EXIT_OK,
+    "H-005-FRONTIER-ADJACENCY.json": gr.RECEIPT_EXIT_OK,
+    "H-006-RESOURCE-ROUTER.json": gr.RECEIPT_EXIT_OK,
+    "H-007-RECONCILE.json": gr.RECEIPT_EXIT_OK,
+    "H-008-RECEIPT-VALIDATOR.json": gr.RECEIPT_EXIT_REVISION_CONTRADICTION,
+    "H-009-DEVICE-ZERO-PATCH.json": gr.RECEIPT_EXIT_OK,
+    "H-010-CATALOG-DELTA.json": gr.RECEIPT_EXIT_OK,
+}
+
+LEGACY_SUFFIX_PROSE = {
+    "H-001-ARCHITECT.json": "Returning the single JSON object.",
+    "H-002-CONTAMINATION.json": (
+        "Cargo is not on this host, so unit tests were not executed."
+    ),
+    "H-003-INTEGRATION-ARCHITECT.json": (
+        "I will pull those plus the seven consumer files and check for MORROW."
+    ),
+    "H-005-FRONTIER-ADJACENCY.json": (
+        "Next I will compare reversible hardware and mmap model execution."
+    ),
+    "H-006-RESOURCE-ROUTER.json": (
+        "Re-pinning origin/main, then I will emit the single JSON object."
+    ),
+}
+
+
 class TestGrokReceipt(unittest.TestCase):
     def test_unmeasured_is_not_stillness(self):
         row = classify({})
@@ -237,6 +268,65 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
         _, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
         self.assertEqual(code, gr.RECEIPT_EXIT_MULTIPLE_FENCES)
 
+    def test_multiple_markers_on_one_line_cannot_smuggle_one_opener(self):
+        for opener in (
+            "```json```json",
+            "prose ```json before an apparent suffix ```json",
+        ):
+            with self.subTest(opener=opener):
+                text = "%s\n{\"packet_id\":\"smuggled\"}\n```\n" % opener
+                got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+                self.assertEqual(code, gr.RECEIPT_EXIT_ZERO_FENCES)
+                self.assertEqual(got["status"], "ZERO_FENCES")
+                self.assertNotIn("packet", got)
+
+    def test_measured_legacy_suffix_openers_are_accepted(self):
+        for name, prose in LEGACY_SUFFIX_PROSE.items():
+            with self.subTest(receipt=name):
+                packet = {
+                    "packet_id": name[:-5],
+                    "source_head": "1a41a228",
+                }
+                text = "%s```json\n%s\n```\n" % (
+                    prose,
+                    json.dumps(packet),
+                )
+                thought = (
+                    "non-authoritative scratch has an unclosed ```json marker "
+                    "and another ```json marker"
+                    if name == "H-002-CONTAMINATION.json"
+                    else "scratch"
+                )
+                got, code = gr.evaluate_receipt(
+                    completed_envelope_bytes(text=text, thought=thought)
+                )
+                self.assertEqual(code, gr.RECEIPT_EXIT_OK, (name, got))
+                self.assertEqual(got["fence_count"], 1)
+                self.assertEqual(got["packet_id"], packet["packet_id"])
+                self.assertNotIn("thought", got)
+
+    def test_measured_h008_shape_remains_revision_contradiction(self):
+        packet = {
+            "packet_id": "H-008-RECEIPT-VALIDATOR",
+            "source_head": {"git_head": "1a41a228"},
+            "measured_envelope_contract": {
+                "inner_3_of_3": {"source_head": "1a41a228"}
+            },
+        }
+        text = "```json\n%s\n```\n" % json.dumps(packet)
+        got, code = gr.evaluate_receipt(
+            completed_envelope_bytes(
+                text=text,
+                thought="scratch contains an unclosed ```json opener",
+            )
+        )
+        self.assertEqual(code, gr.RECEIPT_EXIT_REVISION_CONTRADICTION)
+        self.assertEqual(got["fence_count"], 1)
+        self.assertEqual(
+            got["revision_contradictions"][0]["reason"],
+            "SCALAR_OBJECT_CONFLICT",
+        )
+
     def test_inner_shape_and_packet_id_are_explicit(self):
         _, invalid = gr.evaluate_receipt(
             completed_envelope_bytes(text="```json\n{\n```")
@@ -253,14 +343,14 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
 
     def test_inline_prose_marker_is_not_a_fence_and_non_json_fence_is_ignored(self):
         appended = (
-            "Prose contains the literal marker ```json\n"
+            "Prose contains the literal marker ```json before more prose\n"
             "{\"packet_id\":\"synthetic-packet\"}\n```\n"
         )
         got, code = gr.evaluate_receipt(completed_envelope_bytes(text=appended))
         self.assertEqual(code, gr.RECEIPT_EXIT_ZERO_FENCES)
         self.assertEqual(got["status"], "ZERO_FENCES")
         mixed = (
-            "Prose contains the literal marker ```json\n"
+            "Prose contains the literal marker ```json before more prose\n"
             "```json\n{\"packet_id\":\"real\"}\n```\n"
         )
         got, code = gr.evaluate_receipt(completed_envelope_bytes(text=mixed))
@@ -325,6 +415,22 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
         self.assertEqual(code, gr.RECEIPT_EXIT_OK)
         self.assertEqual(got["revision_contradictions"], [])
         self.assertEqual(got["packet"]["next_handoff"]["state"], "NOT_LANDED")
+
+    def test_revision_placeholders_inside_schema_templates_are_not_facts(self):
+        packet = {
+            "packet_id": "schema-placeholder",
+            "source_head": {"git_head": "1a41a228"},
+            "final_receipt_schema": {"source_head": "official main SHA"},
+            "nested": {
+                "schema": {
+                    "source_head": ["placeholder with an invalid fact type"]
+                }
+            },
+        }
+        text = "```json\n%s\n```\n" % json.dumps(packet)
+        got, code = gr.evaluate_receipt(completed_envelope_bytes(text=text))
+        self.assertEqual(code, gr.RECEIPT_EXIT_OK)
+        self.assertEqual(got["revision_contradictions"], [])
 
     def test_invalid_revision_type_is_explicit_contradiction(self):
         packet = {"packet_id": "bad-revision-type", "source_rev": ["abc1234"]}
@@ -482,6 +588,16 @@ class TestCompletedGrokEnvelope(unittest.TestCase):
             self.assertEqual(code, got["exit_code"], (name, got))
             self.assertEqual(got["status"], gr.RECEIPT_STATUS_BY_EXIT[code])
             self.assertNotEqual(got["status"], "UNMEASURED")
+            self.assertNotIn("thought", got)
+            self.assertNotIn("text", got)
+        for name, expected_exit in MEASURED_EXPECTED_EXITS.items():
+            path = os.path.join(root, name)
+            self.assertTrue(os.path.isfile(path), name)
+            with open(path, "rb") as handle:
+                got, code = gr.evaluate_receipt(handle.read(), source=name)
+            self.assertEqual(code, expected_exit, (name, got))
+            self.assertEqual(got["exit_code"], expected_exit)
+            self.assertEqual(got["status"], gr.RECEIPT_STATUS_BY_EXIT[expected_exit])
             self.assertNotIn("thought", got)
             self.assertNotIn("text", got)
 

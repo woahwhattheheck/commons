@@ -208,17 +208,32 @@ def raw_sha(root):
 
 
 def _receipt_json_fence(text):
-    """Return one JSON fence whose markers occupy their own lines.
+    """Return one JSON fence whose opener ends a line.
 
-    Inline prose containing the literal marker is not a fence. A marker string
-    inside the JSON body stays packet data. Every line-anchored JSON opener is
-    counted, including an unclosed extra opener after a complete block.
+    Heavy receipts use two measured opener dialects: a marker on its own line,
+    or the same marker appended to the end of a prose line.  Inline prose that
+    continues after a literal marker is not a fence, and marker strings inside
+    the JSON body stay packet data.  Every qualifying opener is counted,
+    including an unclosed extra opener after a complete block.
     """
     lines = str(text).splitlines(keepends=True)
+
+    def is_json_opener(line):
+        logical = line.rstrip("\r\n").rstrip(" \t").casefold()
+        marker = "```json"
+        if logical.count(marker) != 1:
+            return False
+        if logical == marker:
+            return True
+        if not logical.endswith(marker):
+            return False
+        prefix = logical[: -len(marker)]
+        return bool(prefix) and not prefix.endswith("`")
+
     opener_lines = [
         position
         for position, line in enumerate(lines)
-        if line.strip().lower() == "```json"
+        if is_json_opener(line)
     ]
     openers = len(opener_lines)
     if not openers:
@@ -298,13 +313,19 @@ def receipt_sha256(raw):
 def collect_revision_values(obj):
     """Collect authoritative revision-key shapes from the inner packet only."""
     grouped = {key: [] for key in SOURCE_REVISION_KEYS}
-    stack = [(obj, "$")]
+    stack = [(obj, "$", False)]
     while stack:
-        value, path = stack.pop()
+        value, path, in_schema_template = stack.pop()
         if isinstance(value, dict):
             for key, child in reversed(list(value.items())):
                 child_path = "%s/%s" % (path, str(key).replace("~", "~0").replace("/", "~1"))
-                if key in SOURCE_REVISION_KEYS:
+                key_lower = str(key).casefold()
+                child_in_schema_template = (
+                    in_schema_template
+                    or key_lower == "schema"
+                    or key_lower.endswith("_schema")
+                )
+                if key in SOURCE_REVISION_KEYS and not in_schema_template:
                     if isinstance(child, dict):
                         kind, scalar = "object", None
                     elif isinstance(child, (str, int)) and not isinstance(child, bool):
@@ -315,12 +336,14 @@ def collect_revision_values(obj):
                         {"path": child_path, "type": kind, "value": scalar}
                     )
                 if isinstance(child, (dict, list)):
-                    stack.append((child, child_path))
+                    stack.append((child, child_path, child_in_schema_template))
         elif isinstance(value, list):
             for position in range(len(value) - 1, -1, -1):
                 child = value[position]
                 if isinstance(child, (dict, list)):
-                    stack.append((child, "%s/%d" % (path, position)))
+                    stack.append(
+                        (child, "%s/%d" % (path, position), in_schema_template)
+                    )
     return {key: rows for key, rows in grouped.items() if rows}
 
 
