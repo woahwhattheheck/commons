@@ -395,6 +395,10 @@ for (const assignment of [
   'x["token"]="hidden"',
   "x['token']='hidden'",
   'x="{\\"token\\":\\"hidden\\"}"',
+  "paſſword=hidden",
+  "paßword=hidden",
+  "ſecret=hidden",
+  'x["paßword"]="hidden"',
   'payload={"paſſword":"hidden"}',
   'payload={"paßword":"hidden"}',
   'payload={"ſecret":"hidden"}',
@@ -412,7 +416,12 @@ for (const assignment of [
   }
 }
 
-for (const assignment of ['x="reproducibility"', 'x["topic"]="reproducibility"']) {
+for (const assignment of [
+  'x="reproducibility"',
+  'x["topic"]="reproducibility"',
+  "topic=straße",
+  "notepaßword=hidden",
+]) {
   for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
     const event = submit(candidate);
     assert.strictEqual(event.prevented, false, `safe short binding was prevented: ${assignment}`);

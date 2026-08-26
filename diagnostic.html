@@ -176,6 +176,11 @@ PUBLIC_OBJECTIVE:</textarea>
       return !!forbiddenNames[canonical] || canonical.indexOf("aws_secret_") === 0;
     });
   }
+  function bindingScanSource(value) {
+    var source = String(value || "");
+    if (typeof source.normalize === "function") source = source.normalize("NFKC");
+    return source.toLowerCase().replace(/\u00df/g, "ss");
+  }
   function hasFieldValue(value) {
     if (value === null || typeof value === "undefined") return false;
     if (typeof value === "string") return value.trim().length > 0;
@@ -415,10 +420,11 @@ PUBLIC_OBJECTIVE:</textarea>
         return true;
       }
     }
-    if (jsonAssignmentHasForbiddenField(source, queryDepth)) return true;
+    var bindingSource = bindingScanSource(source);
+    if (jsonAssignmentHasForbiddenField(bindingSource, queryDepth)) return true;
     var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
     var match;
-    while ((match = assignment.exec(source)) !== null) {
+    while ((match = assignment.exec(bindingSource)) !== null) {
       var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
       if (forbiddenFieldName(match[1]) && String(value || "").trim()) return true;
       if (/^[\[{]/.test(String(value || "").replace(/^\s+/, ""))) continue;

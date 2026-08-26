@@ -369,6 +369,10 @@ class RevenueRecoveryTests(unittest.TestCase):
             'x["token"]="hidden"',
             "x['token']='hidden'",
             'x="{\\"token\\":\\"hidden\\"}"',
+            "paſſword=hidden",
+            "paßword=hidden",
+            "ſecret=hidden",
+            'x["paßword"]="hidden"',
             'payload={"paſſword":"hidden"}',
             'payload={"paßword":"hidden"}',
             'payload={"ſecret":"hidden"}',
@@ -388,7 +392,12 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(rr.canonical_field_name("paſſword"), "password")
         self.assertEqual(rr.canonical_field_name("paßword"), "password")
         self.assertEqual(rr.canonical_field_name("ſecret"), "secret")
-        for value in ('x="reproducibility"', 'x["topic"]="reproducibility"'):
+        for value in (
+            'x="reproducibility"',
+            'x["topic"]="reproducibility"',
+            "topic=straße",
+            "notepaßword=hidden",
+        ):
             with self.subTest(safe_short_binding=value):
                 self.assertFalse(rr.contains_sensitive_value(value))
                 temp, root = self.make_root(self.valid_post(value))

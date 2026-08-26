@@ -326,6 +326,10 @@ def is_sensitive_field_name(name: str) -> bool:
     return False
 
 
+def binding_scan_source(value: str) -> str:
+    return unicodedata.normalize("NFKC", str(value)).casefold()
+
+
 def _json_has_sensitive_field(value: Any, query_depth: int) -> bool:
     """Scan parsed JSON iteratively and fail closed on depth/node exhaustion."""
     stack = [(value, 0)]
@@ -591,9 +595,10 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
         return True
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
         return True
-    if _json_assignment_has_sensitive_value(source, query_depth):
+    binding_source = binding_scan_source(source)
+    if _json_assignment_has_sensitive_value(binding_source, query_depth):
         return True
-    for match in FIELD_ASSIGNMENT_RE.finditer(source):
+    for match in FIELD_ASSIGNMENT_RE.finditer(binding_source):
         value = match.group(2) if match.group(2) is not None else match.group(3)
         if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
             return True
