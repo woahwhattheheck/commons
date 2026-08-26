@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""host/xyz_zero.py — every test/result carries X, Y, Z, and calibration.
+"""host/xyz_zero.py — X/Y/Z for negative finder claims.
 
 Slack 1787638124.555469 / id gauge-xyz-zero-audit-order-20260825-01
-Owner order via GAUGE: an X-Y-Z zero audit is needed on every test
-and result. Not just collision checks — every test, every scan,
-every census, every "absent", every green suite.
+The earlier universal wording ("every test and result") was an
+incorrect scope expansion. This instrument audits only a negative
+finder/search claim: a claim that a searched-for item is absent.
 
 X — the find. Pattern, path, query, ref, SHA. If X is not written,
     the result is unauditable and does not count.
@@ -15,9 +15,14 @@ Z — the miss branch. Every way find(x) can fail without X being
     absent, named. A miss prints FINDER-UNVERIFIED + the full
     search space — never a bare 0, never "none found", never a
     silent pass. The hunted bug: `if find(x): print(y)` with no else.
-Calibration — in the same run, point the finder at a target known
-    present. If that misses, every zero and every pass in that run
-    is VOID. No known-present calibration = no valid zero.
+Calibration — in the same finder run, point the finder at a target
+    known present. If that misses, negative absence conclusions from
+    that finder are void. No calibration = no valid absence claim.
+
+This instrument has no authority over PFC attribution, computations,
+tests, runtime/container receipts, performance measurements, or
+numerical outputs. PFC attribution is established and is not inferred,
+qualified, or overridden here.
 
 This leftover does not remint the GAUGE id. It does not take the
 SPECTER/JOJO 02:02 collision case. titan NOT_WRITTEN. No auth.
@@ -39,6 +44,17 @@ DEFAULT_CATALOG = os.path.join("ground", "XYZ_ZERO.json")
 SLACK_TS = "1787638124.555469"
 SOURCE_ID = "gauge-xyz-zero-audit-order-20260825-01"
 FINDER_UNVERIFIED = "FINDER-UNVERIFIED"
+AUDIT_SCOPE = "NEGATIVE_FINDER_CLAIMS_ONLY"
+IN_SCOPE_CLAIMS = frozenset(("ABSENCE_SEARCH", "NEGATIVE_FINDER_CLAIM"))
+PROTECTED_CLAIMS = (
+    "PFC_ATTRIBUTION",
+    "COMPUTATION_RESULT",
+    "TEST_RESULT",
+    "RUNTIME_RECEIPT",
+    "CONTAINER_HEALTH",
+    "PERFORMANCE_MEASUREMENT",
+    "NUMERICAL_OUTPUT",
+)
 BARE_ZERO_MARKERS = ("none found", "no matches", "0 found", "absent")
 Z_FAILURE_MODES = (
     "wrong pattern",
@@ -80,6 +96,7 @@ def load_catalog(text):
                 "x_sha": str(item.get("x_sha") or item.get("sha") or "").strip(),
                 "expect": str(item.get("expect") or "").strip().upper() or "HIT",
                 "calibration": bool(item.get("calibration")),
+                "claim_kind": str(item.get("claim_kind") or "ABSENCE_SEARCH").strip().upper(),
             }
         )
     return {
@@ -87,11 +104,35 @@ def load_catalog(text):
         "slack_ts": str(data.get("slack_ts") or "").strip(),
         "source_id": str(data.get("source_id") or "").strip(),
         "titan": str(data.get("titan") or "NOT_WRITTEN").strip() or "NOT_WRITTEN",
+        "audit_scope": str(data.get("audit_scope") or AUDIT_SCOPE).strip() or AUDIT_SCOPE,
         "hands_off": [
             str(item or "").strip()
             for item in (data.get("hands_off") or [])
             if str(item or "").strip()
         ],
+    }
+
+
+def applies_to(claim_kind):
+    """True only for negative finder/search absence claims."""
+    normalized = str(claim_kind or "").strip().upper().replace("-", "_").replace(" ", "_")
+    return normalized in IN_SCOPE_CLAIMS
+
+
+def scoped_verdict(claim_kind, original_result, audit_row=None):
+    """Never rewrite an out-of-scope result with a finder verdict."""
+    if not applies_to(claim_kind):
+        return {
+            "applies": False,
+            "scope": AUDIT_SCOPE,
+            "result": original_result,
+            "audit_state": "OUT_OF_SCOPE",
+        }
+    return {
+        "applies": True,
+        "scope": AUDIT_SCOPE,
+        "result": original_result,
+        "audit_state": classify(audit_row or {})["state"],
     }
 
 
@@ -156,19 +197,31 @@ def z_from_miss(finder):
 
 
 def z_is_verified(z_text):
-    """Bare 0 / none-found / silent pass is not a Z."""
+    """Z must contain the marker and a parseable, full search space."""
     body = str(z_text or "").strip()
     if not body:
         return False
     low = body.lower()
-    if FINDER_UNVERIFIED.lower() not in low:
+    if not body.startswith(FINDER_UNVERIFIED):
         return False
     if low in ("0", "none", "none found", "no matches", "absent"):
         return False
     for marker in BARE_ZERO_MARKERS:
         if body == marker or low == marker:
             return False
-    return True
+    payload = body[len(FINDER_UNVERIFIED):].strip()
+    try:
+        space = json.loads(payload)
+    except (TypeError, ValueError):
+        return False
+    if not isinstance(space, dict) or not str(space.get("pattern") or "").strip():
+        return False
+    if not any(str(space.get(key) or "").strip() for key in ("path", "query", "ref", "sha")):
+        return False
+    if not str(space.get("operator") or "").strip():
+        return False
+    modes = space.get("failure_modes")
+    return isinstance(modes, list) and set(Z_FAILURE_MODES).issubset(set(modes))
 
 
 def run_finder(finder, text, present, silent_miss=False):
@@ -187,6 +240,8 @@ def run_finder(finder, text, present, silent_miss=False):
         "z_verified": False,
         "void": False,
         "void_reason": "",
+        "claim_kind": str(finder.get("claim_kind") or "ABSENCE_SEARCH").strip().upper(),
+        "audit_scope": AUDIT_SCOPE,
     }
     if not row["x_written"]:
         row["void"] = True
@@ -231,7 +286,7 @@ def run_finder(finder, text, present, silent_miss=False):
 
 
 def measure_from_rows(rows):
-    """Census already-run finder rows. Calibration miss voids the run."""
+    """Census finder rows. A miss voids only negative finder claims."""
     scanned = []
     voids = []
     silent = []
@@ -241,6 +296,8 @@ def measure_from_rows(rows):
     misses = 0
     for row in rows or []:
         if not isinstance(row, dict):
+            continue
+        if not applies_to(row.get("claim_kind") or "ABSENCE_SEARCH"):
             continue
         scanned.append(row)
         if row.get("void"):
@@ -259,12 +316,14 @@ def measure_from_rows(rows):
     void_reason = ""
     if not calibs:
         void_run = True
-        void_reason = "no known-present calibration. No valid zero."
+        void_reason = "no known-present finder calibration. No valid absence claim."
     elif calib_hits == 0:
         void_run = True
         void_reason = (
-            "calibration missed a known-present target. "
-            "Every zero and every pass in this run is VOID."
+            "calibration missed a known-present finder target. "
+            "Negative finder/absence conclusions from this finder run are VOID. "
+            "Unrelated computations, tests, runtime/container receipts, numerical "
+            "results, and established PFC attribution are unchanged."
         )
     elif voids:
         void_run = True
@@ -284,6 +343,8 @@ def measure_from_rows(rows):
         "titan": "NOT_WRITTEN",
         "slack_ts": SLACK_TS,
         "source_id": SOURCE_ID,
+        "audit_scope": AUDIT_SCOPE,
+        "protected_claims": list(PROTECTED_CLAIMS),
     }
 
 
@@ -326,6 +387,7 @@ def measure_tree(root, catalog_text, silent_ids=None):
     measured["source_id"] = catalog.get("source_id") or SOURCE_ID
     measured["titan"] = catalog.get("titan") or "NOT_WRITTEN"
     measured["hands_off"] = list(catalog.get("hands_off") or [])
+    measured["audit_scope"] = AUDIT_SCOPE
     return measured
 
 
@@ -348,7 +410,7 @@ def measure_paths(root, catalog_path):
 
 
 def classify(row):
-    """Turn a measured X-Y-Z run into a land-desk state."""
+    """Classify this negative-finder instrument, never another result."""
     row = row or {}
     if not row.get("measured"):
         return {
@@ -362,9 +424,10 @@ def classify(row):
         return {
             "state": "NOT_LANDED",
             "note": (
-                "VOID. "
+                "FINDER CLAIM VOID. "
                 + str(row.get("void_reason") or "uncalibrated zero")
-                + " A Slack order is CLAIMED until a calibrated leftover "
+                + " This verdict applies only to a negative finder/absence claim. "
+                + "A Slack order is CLAIMED until a calibrated leftover "
                 "is on current main."
             ),
         }
@@ -394,6 +457,7 @@ def classify(row):
                 + " hits printed Y from found bytes. "
                 + str(row.get("miss_count") or 0)
                 + " misses printed FINDER-UNVERIFIED + search space. "
+                "Scope: negative finder/absence claims only. "
                 "A Slack order is still not the file."
             ),
         }
@@ -411,7 +475,7 @@ def classify(row):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        description="X-Y-Z zero audit: X written, Y from bytes, Z on miss, known-present calibration"
+        description="X-Y-Z negative-finder audit: X written, Y from bytes, Z on miss, known-present calibration"
     )
     parser.add_argument("--root", default=DEFAULT_ROOT)
     parser.add_argument("--catalog", default=DEFAULT_CATALOG)
@@ -514,9 +578,18 @@ def _self_test():
     assert classify(ok)["state"] == "INTEGRATED"
     assert "still not the file" in classify(ok)["note"]
     assert not y_sources_from_bytes("FOUND", "A bake is not the board")
-    assert z_is_verified(FINDER_UNVERIFIED + " path=ground/HEAD.md")
+    assert not z_is_verified(FINDER_UNVERIFIED + " path=ground/HEAD.md")
+    assert z_is_verified(miss["z"])
     assert not z_is_verified("none found")
     assert not z_is_verified("0")
+    for protected in PROTECTED_CLAIMS:
+        assert not applies_to(protected)
+        original = {"state": "SUCCESS", "value": 42, "attribution": "PFC_ATTRIBUTED"}
+        guarded = scoped_verdict(protected, original, no_cal)
+        assert guarded["applies"] is False
+        assert guarded["result"] is original
+        assert guarded["audit_state"] == "OUT_OF_SCOPE"
+    assert applies_to("absence_search")
     return True
 
 
