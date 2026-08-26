@@ -24,3 +24,11 @@ comps (live, cited):
 Unlock one small door: a print pack, a paid-build bump, or a session note. The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
 TYPE owns checkout. Do not invent buy.stripe.com URLs.
 337 NO.
+
+## Buyer copy
+
+$5 once. One small door: a print pack, a paid-build bump, or a session note.
+
+The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
+
+Checkout is TYPE's door. No invented Payment Link here.

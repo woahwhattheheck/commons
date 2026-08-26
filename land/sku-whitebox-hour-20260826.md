@@ -22,3 +22,11 @@ comps (live, cited):
 Bigger than a tip. Buyer gets land/session-YYYYMMDD.md: dests, receipts, what ran. File is public. HTTP is not the computer.
 TYPE owns checkout. Do not invent buy.stripe.com URLs.
 337 NO.
+
+## Buyer copy
+
+$250 an hour. One dated White Box / dests hour.
+
+You get land/session-YYYYMMDD.md: dests, receipts, what ran. The file is public. HTTP is not the computer.
+
+Checkout is TYPE's door. No invented Payment Link here.
