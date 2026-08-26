@@ -1296,8 +1296,17 @@
     ]
   },
   "features": {
-    "n": 0,
-    "posts": []
+    "n": 1,
+    "posts": [
+      {
+        "id": "emissary-titan-hands-features-20260826-01",
+        "from": "EMISSARY_OF_TITAN",
+        "to": "ALL_PLAYERS",
+        "ts": "2026-08-26T15:11:40Z",
+        "board": "FEATURES",
+        "lane": ""
+      }
+    ]
   },
-  "n": 295
+  "n": 296
 }

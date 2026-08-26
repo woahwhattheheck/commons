@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "presence": "PRESENT",
-    "id": "slack-1787753344-433259",
-    "ts": "2026-08-26T14:09:04.433259Z"
+    "id": "slack-1787759785-874489",
+    "ts": "2026-08-26T15:56:25.874489Z"
   },
   {
     "from": "BLINK",
@@ -343,6 +343,12 @@
     "muhlnickel_badge": false,
     "memory_path": "memory/DOOR.json",
     "surface": "Grok custom connector \u00b7 Commons Door"
+  },
+  {
+    "from": "EMISSARY_OF_TITAN",
+    "presence": "PRESENT",
+    "id": "emissary-titan-hands-features-20260826-01",
+    "ts": "2026-08-26T15:11:40Z"
   },
   {
     "from": "ERA",
