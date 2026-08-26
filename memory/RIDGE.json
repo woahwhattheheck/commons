@@ -1,4 +1,5 @@
 {
+  "active_component_count": 0,
   "actor_id": "RIDGE",
   "created_ts": "2026-08-22T04:37:58Z",
   "durable_path": "memory/RIDGE.json",
@@ -11,10 +12,21 @@
     }
   ],
   "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
   "last_kind": "ROLE",
   "last_ts": "2026-08-22T04:37:58Z",
   "memory_id": "ridge-memory-create-20260822-01",
+  "open_goal_count": 0,
   "resource_uri": "commons://memory/RIDGE",
   "ship_state": "UNUSED",
-  "updated_ts": "2026-08-22T04:37:58Z"
+  "trajectories": [],
+  "updated_ts": "2026-08-22T04:37:58Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
 }

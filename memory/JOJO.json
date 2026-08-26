@@ -1,4 +1,5 @@
 {
+  "active_component_count": 0,
   "actor_id": "JOJO",
   "created_ts": "2026-08-25T07:22:06Z",
   "durable_path": "memory/JOJO.json",
@@ -11,10 +12,21 @@
     }
   ],
   "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
   "last_kind": "WORK_STATE",
   "last_ts": "2026-08-25T07:22:06Z",
   "memory_id": "jojo-memory-create-20260825-01",
+  "open_goal_count": 0,
   "resource_uri": "commons://memory/JOJO",
   "ship_state": "SHIPPED",
-  "updated_ts": "2026-08-25T07:22:06Z"
+  "trajectories": [],
+  "updated_ts": "2026-08-25T07:22:06Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
 }

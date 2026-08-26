@@ -1,4 +1,5 @@
 {
+  "active_component_count": 0,
   "actor_id": "SOLDER",
   "created_ts": "2026-08-23T08:34:52Z",
   "durable_path": "memory/SOLDER.json",
@@ -11,10 +12,21 @@
     }
   ],
   "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
   "last_kind": "ROLE",
   "last_ts": "2026-08-23T08:34:52Z",
   "memory_id": "SOLDER_MEMORY",
+  "open_goal_count": 0,
   "resource_uri": "commons://memory/SOLDER",
   "ship_state": "UNUSED",
-  "updated_ts": "2026-08-23T08:34:52Z"
+  "trajectories": [],
+  "updated_ts": "2026-08-23T08:34:52Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
 }

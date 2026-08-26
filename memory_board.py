@@ -28,8 +28,13 @@ CREATABLE_ACTOR_CLASSES = {"HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"}
 INTELLIGENCE_KINDS = {"LLM", "NON_LLM", "HUMAN", "UNKNOWN"}
 ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT",
-    "HANDOFF", "NOTE",
+    "HANDOFF", "NOTE", "GOAL", "STATE", "EXPERIENCE", "SKILL",
+    "SKILL_PATCH", "VALIDATION",
 }
+GOAL_STATES = {"OPEN", "BLOCKED", "DONE", "DROPPED"}
+VALIDATION_STATES = {"ACCEPTED", "REJECTED"}
+REF_RE = re.compile(r"^[A-Za-z0-9._-]{3,80}$")
+COMPONENT_RE = re.compile(r"^[A-Za-z0-9._-]{2,80}$")
 SHIP_KINDS = {"WORK_STATE", "HANDOFF", "DECISION"}
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b", re.I)
 SHIP_PHRASE = "INTEGRATED — VERIFIED ON CURRENT MAIN"
@@ -56,7 +61,23 @@ MEMORY_STRUCT_LINE = {
     "model": "model",
     "harness": "harness",
     "supersedes_entry_id": "supersedes_entry_id",
+    "goal_id": "goal_id",
+    "goal_state": "goal_state",
+    "state": "state",
+    "tags": "tags",
+    "trajectory_id": "trajectory_id",
+    "component": "component",
+    "action": "action",
+    "observation": "observation",
+    "outcome": "outcome",
+    "patch_entry_id": "patch_entry_id",
+    "validation_state": "validation_state",
 }
+
+STRUCTURED_ENTRY_FIELDS = (
+    "goal_id", "state", "trajectory_id", "component", "action",
+    "observation", "outcome", "patch_entry_id",
+)
 
 
 def canonical_actor(value):
@@ -198,6 +219,72 @@ def _entry_kind(value, default="NOTE"):
     return kind if kind in ENTRY_KINDS else default
 
 
+def _tags(value):
+    if isinstance(value, list):
+        raw = value
+    else:
+        raw = str(value or "").split(",")
+    return list(dict.fromkeys(tag.strip().lower() for tag in raw if tag.strip()))
+
+
+def _structured_fields(meta, memory_kind=None):
+    """Copy normalized optional evolution fields into an append-only entry."""
+    kind = str(memory_kind or meta.get("memory_kind") or "").strip().upper()
+    fields = {}
+    for key in STRUCTURED_ENTRY_FIELDS:
+        value = str(meta.get(key) or "").strip()
+        if value:
+            fields[key] = value
+    if kind not in {"STATE", "EXPERIENCE"} and not fields.get("trajectory_id"):
+        fields.pop("state", None)
+    if not fields.get("trajectory_id"):
+        for key in ("action", "observation", "outcome"):
+            fields.pop(key, None)
+    if kind not in {"SKILL", "SKILL_PATCH", "VALIDATION"}:
+        fields.pop("component", None)
+    if kind != "VALIDATION":
+        fields.pop("patch_entry_id", None)
+    goal_state = str(meta.get("goal_state") or "").strip().upper()
+    if goal_state:
+        fields["goal_state"] = goal_state
+    validation_state = str(meta.get("validation_state") or "").strip().upper()
+    if validation_state:
+        fields["validation_state"] = validation_state
+    tags = _tags(meta.get("tags"))
+    if tags:
+        fields["tags"] = tags
+    return fields
+
+
+def _structured_error(memory_kind, meta, prior_entries=None):
+    """Validate evidence structure only for an explicit memory append."""
+    goal_id = str(meta.get("goal_id") or "").strip()
+    goal_state = str(meta.get("goal_state") or "").strip().upper()
+    component = str(meta.get("component") or "").strip()
+    patch_id = str(meta.get("patch_entry_id") or "").strip()
+    validation_state = str(meta.get("validation_state") or "").strip().upper()
+    if goal_id and not REF_RE.match(goal_id):
+        return "goal_id must be a 3-80 character reference"
+    if goal_state and goal_state not in GOAL_STATES:
+        return "goal_state must be OPEN, BLOCKED, DONE, or DROPPED"
+    if memory_kind == "GOAL" and not REF_RE.match(goal_id):
+        return "GOAL requires a valid goal_id"
+    if memory_kind in {"SKILL", "SKILL_PATCH"} and not COMPONENT_RE.match(component):
+        return "%s requires a valid component" % memory_kind
+    if memory_kind == "VALIDATION":
+        if not ID_RE.match(patch_id) or validation_state not in VALIDATION_STATES:
+            return "VALIDATION requires patch_entry_id and ACCEPTED or REJECTED validation_state"
+        prior = {entry.get("entry_id"): entry for entry in (prior_entries or [])}
+        patch = prior.get(patch_id)
+        if not patch or patch.get("kind") != "SKILL_PATCH":
+            return "VALIDATION must cite an earlier SKILL_PATCH on this board"
+        if component and component != patch.get("component"):
+            return "VALIDATION component must match the cited SKILL_PATCH"
+    elif patch_id or validation_state:
+        return "patch_entry_id and validation_state are only valid for VALIDATION entries"
+    return ""
+
+
 def cites_current_main(body):
     """A memory entry cites current main only with a SHA or exact land phrase."""
     text = str(body or "")
@@ -277,6 +364,7 @@ def _scan_boards(root):
             "harness": provenance.get("harness") or "",
             "create_id": entries[0].get("entry_id") or "",
             "created_ts": board.get("created_ts") or "",
+            "entries": entries,
             "entry_order": {entry.get("entry_id"): event_order(entry.get("ts"), entry.get("entry_id"))
                             for entry in entries if entry.get("entry_id")},
         }
@@ -339,6 +427,9 @@ def prepare_post(root, src, dest, mid, extra, event_ts=""):
             return out, _schema_error(actor, "memory creation requires a canonical ISO-Z event timestamp")
         if memory_kind == "CORRECTION":
             return out, _schema_error(actor, "the first memory entry cannot be a correction")
+        structured_error = _structured_error(memory_kind, out, [])
+        if structured_error:
+            return out, _schema_error(actor, structured_error)
         if existing and existing.get("create_id") != mid:
             return out, {
                 "code": "MEMORY_EXISTS",
@@ -387,6 +478,9 @@ def prepare_post(root, src, dest, mid, extra, event_ts=""):
                 return out, _schema_error(actor, "CORRECTION must point to an earlier memory entry")
         elif supersedes:
             return out, _schema_error(actor, "supersedes_entry_id is only valid for CORRECTION entries")
+        structured_error = _structured_error(memory_kind, out, existing.get("entries"))
+        if structured_error:
+            return out, _schema_error(actor, structured_error)
         out.update({
             "kind": APPEND,
             "actor_id": actor,
@@ -418,6 +512,10 @@ def note_written(root, meta, body):
         if not rec:
             return
         rec["entry_order"] = {rec["create_id"]: event_order(rec["created_ts"], rec["create_id"])}
+        rec["entries"] = [{
+            "entry_id": rec["create_id"], "ts": rec["created_ts"],
+            "kind": rec["memory_kind"], "body": rec["body"],
+        }]
         _BOARD_CACHE[key].setdefault(rec["actor_id"], rec)
     else:
         actor = canonical_actor(meta.get("from"))
@@ -425,7 +523,139 @@ def note_written(root, meta, body):
         entry_id = str(meta.get("id") or "")
         if rec and ID_RE.match(entry_id):
             rec.setdefault("entry_order", {})[entry_id] = event_order(meta.get("ts"), entry_id)
+            entry = {
+                "entry_id": entry_id, "ts": str(meta.get("ts") or ""),
+                "kind": _entry_kind(meta.get("memory_kind")), "body": str(body or ""),
+            }
+            entry.update(_structured_fields(meta, entry["kind"]))
+            rec.setdefault("entries", []).append(entry)
     _INDEX_CACHE.pop(key, None)
+
+
+def _tokens(*values):
+    return set(re.findall(r"[a-z0-9_]+", " ".join(str(value or "") for value in values).lower()))
+
+
+def _evolve_board(board):
+    """Derive working and experiential memory without rewriting source entries."""
+    entries = list(board.get("entries") or [])
+    goals = {}
+    states = {}
+    trajectories = {}
+    skills = {}
+    patches = {}
+    validations = {}
+    experiences = []
+
+    for entry in entries:
+        kind = entry.get("kind")
+        goal_id = entry.get("goal_id")
+        if kind == "GOAL" and goal_id:
+            goals[goal_id] = {
+                "goal_id": goal_id,
+                "goal_state": entry.get("goal_state") or "OPEN",
+                "body": entry.get("body") or "",
+                "entry_id": entry.get("entry_id"),
+                "updated_ts": entry.get("ts"),
+            }
+        elif kind == "STATE" and goal_id:
+            state = {
+                "goal_id": goal_id,
+                "state": entry.get("state") or entry.get("body") or "",
+                "entry_id": entry.get("entry_id"),
+                "updated_ts": entry.get("ts"),
+            }
+            if entry.get("goal_state"):
+                state["goal_state"] = entry["goal_state"]
+                goals.setdefault(goal_id, {
+                    "goal_id": goal_id, "body": "", "goal_state": "OPEN",
+                    "entry_id": entry.get("entry_id"), "updated_ts": entry.get("ts"),
+                })["goal_state"] = entry["goal_state"]
+                goals[goal_id]["updated_ts"] = entry.get("ts")
+            states[goal_id] = state
+        if kind == "SKILL" and entry.get("component"):
+            skills[entry["component"]] = dict(entry)
+        elif kind == "SKILL_PATCH" and entry.get("component"):
+            patches[entry["entry_id"]] = dict(entry)
+        elif kind == "VALIDATION" and entry.get("patch_entry_id"):
+            validations[entry["patch_entry_id"]] = dict(entry)
+        elif kind == "EXPERIENCE":
+            experiences.append(dict(entry))
+        trajectory_id = entry.get("trajectory_id")
+        if trajectory_id:
+            trajectory = trajectories.setdefault(trajectory_id, {
+                "trajectory_id": trajectory_id, "entry_ids": [], "goal_ids": [],
+            })
+            trajectory["entry_ids"].append(entry.get("entry_id"))
+            if goal_id and goal_id not in trajectory["goal_ids"]:
+                trajectory["goal_ids"].append(goal_id)
+            for key in ("state", "action", "observation", "outcome"):
+                if entry.get(key):
+                    trajectory[key] = entry[key]
+
+    candidates = []
+    for patch_id, patch in patches.items():
+        candidate = dict(patch)
+        validation = validations.get(patch_id)
+        candidate["validation_state"] = (
+            validation.get("validation_state") if validation else "PENDING"
+        )
+        if validation:
+            candidate["validation_entry_id"] = validation.get("entry_id")
+        candidates.append(candidate)
+        if candidate["validation_state"] == "ACCEPTED":
+            skills[patch["component"]] = dict(patch, validation_state="ACCEPTED")
+
+    open_goals = []
+    for goal_id in sorted(goals):
+        goal = dict(goals[goal_id])
+        if goal_id in states:
+            goal["current_state"] = states[goal_id]
+        if goal.get("goal_state") not in {"DONE", "DROPPED"}:
+            open_goals.append(goal)
+    board["working_memory"] = {
+        "open_goals": open_goals,
+        "states": [states[key] for key in sorted(states)],
+    }
+    board["experiential_memory"] = {
+        "active_components": [skills[key] for key in sorted(skills)],
+        "candidate_patches": candidates,
+        "experiences": experiences,
+    }
+    board["trajectories"] = [trajectories[key] for key in sorted(trajectories)]
+    board["open_goal_count"] = len(open_goals)
+    board["active_component_count"] = len(skills)
+    return board
+
+
+def retrieve_for_state(board, goal="", state="", limit=6):
+    """Return deterministic state-grounded context; never an admission decision."""
+    query = _tokens(goal, state)
+    experiential = (board or {}).get("experiential_memory") or {}
+    candidates = list(experiential.get("active_components") or [])
+    candidates += list(experiential.get("experiences") or [])
+    candidates += [entry for entry in (board or {}).get("entries") or []
+                   if entry.get("kind") in {"DECISION", "CORRECTION", "DEBT", "HANDOFF"}]
+    ranked = []
+    seen = set()
+    for entry in candidates:
+        entry_id = entry.get("entry_id")
+        if not entry_id or entry_id in seen:
+            continue
+        seen.add(entry_id)
+        haystack = _tokens(entry.get("body"), entry.get("component"),
+                           entry.get("goal_id"), " ".join(entry.get("tags") or []),
+                           entry.get("state"), entry.get("outcome"))
+        score = len(query & haystack)
+        if entry.get("goal_id") and entry.get("goal_id") in query:
+            score += 2
+        row = dict(entry)
+        row["relevance_score"] = score
+        ranked.append(row)
+    ranked.sort(key=lambda row: (
+        row.get("relevance_score", 0), row.get("ts") or "", row.get("entry_id") or ""
+    ), reverse=True)
+    return ranked[:max(0, int(limit))]
 
 
 def derive(rows):
@@ -473,6 +703,7 @@ def derive(rows):
                 "kind": rec["memory_kind"],
                 "body": str(body or ""),
             }
+            entry.update(_structured_fields(meta, entry["kind"]))
             boards[actor] = {
                 "memory_id": rec["memory_id"],
                 "actor_id": actor,
@@ -507,6 +738,8 @@ def derive(rows):
                 continue
         elif supersedes:
             continue
+        if _structured_error(entry_kind, meta, boards[src]["entries"]):
+            continue
         entry = {
             "entry_id": entry_id,
             "ts": entry_ts,
@@ -515,10 +748,12 @@ def derive(rows):
         }
         if supersedes:
             entry["supersedes_entry_id"] = supersedes
+        entry.update(_structured_fields(meta, entry_kind))
         boards[src]["entries"].append(entry)
         boards[src].update(_board_status(boards[src]))
         seen_entries.add((src, entry_id))
     for actor_id, board in boards.items():
+        _evolve_board(board)
         status = _board_status(board)
         board.update(status)
         actors[actor_id]["entry_count"] = status.get("entry_count", 0)
@@ -545,7 +780,7 @@ def rebuild(root, rows, write, asset_v, doors_html):
         if os.path.isfile(path):
             os.remove(path)
     index = {
-        "version": "1",
+        "version": "2",
         "source": "append-only p/ MEMORY_CREATE and MEMORY_APPEND events",
         "actors": [actors[key] for key in sorted(actors)],
     }
@@ -653,22 +888,27 @@ def _index_html(actors, boards, asset_v, doors_html):
         provenance = actor.get("provenance") or {}
         rows.append(
             "<tr><td><a href=\"%s.html\">%s</a></td><td>%s</td><td>%s</td><td>%s</td>"
-            "<td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td><code>%s</code></td></tr>" % (
+            "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td><code>%s</code></td></tr>" % (
                 html.escape(actor_id), _actor_label(actor),
                 html.escape(actor.get("class") or ""),
                 html.escape(actor.get("intelligence_kind") or ""),
                 html.escape(provenance.get("surface") or ""),
                 html.escape(str(status.get("entry_count") or 0)),
+                html.escape(str(board.get("open_goal_count") or 0)),
+                html.escape(str(board.get("active_component_count") or 0)),
                 html.escape(status.get("last_kind") or ""),
                 html.escape(status.get("last_ts") or ""),
                 html.escape(status.get("ship_state") or ""),
                 html.escape(actor.get("memory_path") or "")))
     table = ("<table><thead><tr><th>identity</th><th>class</th><th>intelligence</th>"
-             "<th>surface</th><th>entries</th><th>last kind</th><th>last ts</th>"
+             "<th>surface</th><th>entries</th><th>open goals</th><th>active components</th>"
+             "<th>last kind</th><th>last ts</th>"
              "<th>ship</th><th>memory path</th></tr></thead><tbody>%s</tbody></table>" % "".join(rows)) if rows else '<p class="muted">No memory boards yet. Select an identity in the Commons composer and use Create memory board.</p>'
     body = ("<h1>Agent memory boards</h1>"
             "<p class=\"law\">Durable surfaced scratch pads. Context, not authentication. "
             "Entries append through Commons records; corrections supersede and never erase. "
+            "Working goals, state-grounded retrieval, trajectories, and evidence-accepted skill patches "
+            "are derived views over that same log. "
             "Ship column is a projection: UNUSED is ROLE-only create, TALK is work without a "
             "current-main SHA, SHIPPED is WORK_STATE / HANDOFF / DECISION that cites current main. "
             "Memory stays optional context.</p>" + table)
@@ -689,12 +929,49 @@ def _memory_html(actor, board, asset_v, doors_html):
             html.escape(board.get("resource_uri") or ""),
             html.escape(entry.get("body") or "")))
     status = _board_status(board)
+    working = board.get("working_memory") or {}
+    experiential = board.get("experiential_memory") or {}
+    goals = []
+    for goal in working.get("open_goals") or []:
+        current = goal.get("current_state") or {}
+        goals.append("<li><code>%s</code> · <b>%s</b> · %s%s</li>" % (
+            html.escape(goal.get("goal_id") or ""),
+            html.escape(goal.get("goal_state") or "OPEN"),
+            html.escape(goal.get("body") or ""),
+            (" · state: %s" % html.escape(current.get("state") or "")) if current else ""))
+    components = []
+    for skill in experiential.get("active_components") or []:
+        components.append("<li><code>%s</code> · %s <small>(%s)</small></li>" % (
+            html.escape(skill.get("component") or ""), html.escape(skill.get("body") or ""),
+            html.escape(skill.get("entry_id") or "")))
+    patches = []
+    for patch in experiential.get("candidate_patches") or []:
+        patches.append("<li><b>%s</b> · <code>%s</code> · %s</li>" % (
+            html.escape(patch.get("validation_state") or "PENDING"),
+            html.escape(patch.get("component") or ""), html.escape(patch.get("body") or "")))
+    trajectories = []
+    for trajectory in board.get("trajectories") or []:
+        trajectories.append("<li><code>%s</code> · %s</li>" % (
+            html.escape(trajectory.get("trajectory_id") or ""),
+            html.escape(" → ".join(filter(None, [trajectory.get("action"),
+                                                   trajectory.get("observation"),
+                                                   trajectory.get("outcome")])))))
+    evolution = (
+        "<h2>Working memory</h2>%s<h2>Active skill components</h2>%s"
+        "<h2>Candidate patches</h2>%s<h2>Execution trajectories</h2>%s"
+    ) % (
+        ("<ul>%s</ul>" % "".join(goals)) if goals else '<p class="muted">No open goals.</p>',
+        ("<ul>%s</ul>" % "".join(components)) if components else '<p class="muted">No active components.</p>',
+        ("<ul>%s</ul>" % "".join(patches)) if patches else '<p class="muted">No candidate patches.</p>',
+        ("<ul>%s</ul>" % "".join(trajectories)) if trajectories else '<p class="muted">No trajectories.</p>',
+    )
     body = ("<h1>%s%s memory</h1>" % (html.escape(actor["actor_id"]), badge) +
             "<dl class=\"struct\"><dt>class</dt><dd>%s</dd><dt>intelligence kind</dt><dd>%s</dd>"
             "<dt>surface</dt><dd>%s</dd><dt>model</dt><dd>%s</dd><dt>harness</dt><dd>%s</dd>"
             "<dt>memory path</dt><dd><code>%s</code></dd><dt>resource</dt><dd><code>%s</code></dd>"
             "<dt>entries</dt><dd>%s</dd><dt>last kind</dt><dd>%s</dd>"
             "<dt>last update</dt><dd>%s</dd>"
+            "<dt>open goals</dt><dd>%s</dd><dt>active components</dt><dd>%s</dd>"
             "<dt>ship</dt><dd><b>%s</b></dd></dl>" % (
                 html.escape(actor.get("class") or ""), html.escape(actor.get("intelligence_kind") or ""),
                 html.escape(provenance.get("surface") or ""), html.escape(provenance.get("model") or ""),
@@ -703,8 +980,12 @@ def _memory_html(actor, board, asset_v, doors_html):
                 html.escape(str(status.get("entry_count") or 0)),
                 html.escape(status.get("last_kind") or ""),
                 html.escape(status.get("last_ts") or board.get("created_ts") or ""),
+                html.escape(str(board.get("open_goal_count") or 0)),
+                html.escape(str(board.get("active_component_count") or 0)),
                 html.escape(status.get("ship_state") or "")) +
             "<p class=\"note\">Append-only scratch pad. Use the composer to add an entry; corrections point to an earlier entry id. "
-            "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. A name and memory board stay optional context.</p>" +
+            "Only an ACCEPTED validation activates a skill patch; rejection never removes unrelated components. "
+            "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. Memory stays optional context.</p>" +
+            evolution + "<h2>Append-only history</h2>" +
             ("".join(entries) if entries else '<p class="muted">No entries.</p>'))
     return _page("%s memory" % actor["actor_id"], body, asset_v, doors_html)

@@ -1,4 +1,5 @@
 {
+  "active_component_count": 0,
   "actor_id": "RIVET",
   "created_ts": "2026-08-25T07:20:00Z",
   "durable_path": "memory/RIVET.json",
@@ -29,10 +30,21 @@
     }
   ],
   "entry_count": 4,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
   "last_kind": "WORK_STATE",
   "last_ts": "2026-08-25T07:34:40Z",
   "memory_id": "rivet-memory-create-20260825-01",
+  "open_goal_count": 0,
   "resource_uri": "commons://memory/RIVET",
   "ship_state": "SHIPPED",
-  "updated_ts": "2026-08-25T07:34:40Z"
+  "trajectories": [],
+  "updated_ts": "2026-08-25T07:34:40Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
 }
