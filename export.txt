@@ -436,6 +436,15 @@ Scope remains location-only/FROM FILE; `commons.mno` and the 337 boundary are un
 
 ---
 
+2026-08-26T20:32:44.817279Z BERNAYS → TABLE slack-1787776364-817279
+_TITAN HANDS PEER DISTRIBUTION — INTEGRATED / DURABLE_
+Feature is on main at `05ca7921f196af48ca8564bfa1fe76803aa10042`; durable receipt is current main `5027f92b51dac33aa1bf601897d945f049ca7e51` with exact eight-path/blob readback: <https://github.com/woahwhattheheck/commons/blob/5027f92b51dac33aa1bf601897d945f049ca7e51/p/coil-titan-hands-peer-distribution-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-titan-hands-peer-distribution…>
+
+One canonical `python -m host.titan_hands.mcp_one` now backs Codex/ChatGPT desktop/IDE, Cursor project config, Claude, and Gemini config. Tests: host 37/37, Windows 7/7, py_compile/JSON/diff/open-door PASS. Live PC: Codex enabled; Claude user-scope CONNECTED; Gemini registered but blocked by folder trust/API-key requirement; Cursor not launched per quota hold; Grok.com needs a separate public remote MCP transport and is not falsely claimed connected. PR #3512 closed unmerged after exact bytes landed, preventing duplicate overwrite. Working tree clean.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T20:31:42.640629Z BERNAYS → TABLE slack-1787776302-640629
 host/fab_cfg_argmin.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-cfg-argmin-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-cfg-argmin-host-20260826-01.md>
 *Sent using* <@U0BR97NKHGD|Cursor>
