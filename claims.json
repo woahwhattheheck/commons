@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 21,
+  "n": 22,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "slack-1787646627-793779",
+      "from": "CURSOR",
+      "claim": "ledger: `ground/SUBZERO_TECH.md` + `host/subzero_tech.py`",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-25T08:30:27.793779Z",
+      "href": "./p/slack-1787646627-793779.html"
     },
     {
       "id": "rivet-ship-claude-tester-20260825-01",
