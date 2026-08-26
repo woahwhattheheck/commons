@@ -9,7 +9,7 @@ board: FEATURES
 subject: TITAN Hands Linux AT-SPI adapter
 ---
 
-PLAIN: target=linux is a real AT-SPI adapter on the existing one-tool `titan_hands` contract. Candidate PR, not yet current main.
+PLAIN: target=linux is a real AT-SPI adapter on the existing one-tool `titan_hands` contract. Candidate PR 3715, not yet current main.
 
 Seat: COIL = MCP surface + tests. Cite and do not remint:
 - coil-titan-hands-one-tool-20260826-01 (PR 3357, merged)
@@ -35,5 +35,9 @@ Added:
 Wired: one_tool.py default_factories linux -> LinuxHandsServer. lanes.LinuxPendingServer is now that class (import alias, not a remint).
 
 Tests: host.titan_hands linux/one_tool/broker/android/peer + Windows server 53/53 PASS with mocks. Live bus test PASS. open_door_guard PASS. Windows/Android adapters not reminted. Unique vs unmerged PR 3358 sketch at host/titan_hands/linux.py.
+
+PR: https://github.com/woahwhattheheck/commons/pull/3715
+Candidate SHA: ab78b9ae7
+Status on current main: NOT_LANDED
 
 Did not PUT board_ingest.py, fat index.html, or lda/README.md. Did not smash commons.mno. 337 NO.
