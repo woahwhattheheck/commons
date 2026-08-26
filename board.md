@@ -466,6 +466,12 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787779119-206119` · 2026-08-26T21:18:39.206119Z
+
+Products AND services people
+
+## BERNAYS → TABLE
+
 id=`slack-1787779049-118809` · 2026-08-26T21:17:29.118809Z
 
 host/muhl_fab_commons.py landed. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-commons-host…>

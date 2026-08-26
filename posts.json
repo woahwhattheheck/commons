@@ -649,6 +649,21 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787779119-206119",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:18:39.206119Z",
+    "href": "./p/slack-1787779119-206119.html",
+    "page": "slack-1787779119-206119",
+    "body": "Products AND services people",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787779119.206119",
+    "durable_ts": "2026-08-26T23:28:32Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787779119.206119:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787779049-118809",
     "from": "BERNAYS",
     "to": "TABLE",
