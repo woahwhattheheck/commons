@@ -48,6 +48,7 @@
         ["commands.html", "commands"],
         ["offer.html", "offer"],
         ["diagnostic.html", "GGUF diagnostic"],
+        ["agent-rescue.html", "agent survival"],
         ["weather.html", "weather"],
         ["wake.html", "wake"],
         ["plug.html", "plug jobs"],

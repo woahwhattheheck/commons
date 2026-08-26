@@ -25,6 +25,11 @@ import json
 import os
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "DEVICE_QUEUE_CAP.json")
@@ -34,6 +39,8 @@ TEST_PIN = "test_action_executor.py"
 RIVET_RECEIPT = os.path.join("p", "rivet-ship-device-queue-single-20260825-01.md")
 JOJO_TAKING = os.path.join("p", "jojo-device-queue-collapse-20260825-01.md")
 SLACK_TS = "1787645425.769089"
+TAKING_SLACK_TS = "1787644306.421489"
+TAKING_SHA256 = "932f42dd86fbd54515253af71c5277876ee080b7f4fe6a54d6ae1aa71a7cba1a"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -145,6 +152,16 @@ def measure_from_rows(facts):
         "test_pins_single": bool(facts.get("test_pins_single")),
         "test_refuses_max": bool(facts.get("test_refuses_max")),
         "jojo_taking_absent": bool(facts.get("jojo_taking_absent")),
+        "jojo_taking_state": str(
+            facts.get("jojo_taking_state")
+            or (CARRIER_ONLY if facts.get("jojo_taking_absent") else "UNVERIFIED_PRESENT")
+        ).strip().upper(),
+        "jojo_taking_provenance_ok": bool(
+            facts.get("jojo_taking_provenance_ok")
+        ),
+        "jojo_taking_provenance_mismatches": list(
+            facts.get("jojo_taking_provenance_mismatches") or []
+        ),
         "historical_backlog_cleared": bool(facts.get("historical_backlog_cleared")),
         "cancel_historical_runs": bool(facts.get("cancel_historical_runs")),
         "posting_open": bool(facts.get("posting_open")),
@@ -226,12 +243,22 @@ def classify(row):
                 "queue: max refuse. FINDER-FAILED, never 0."
             ),
         }
-    if not row.get("jojo_taking_absent"):
+    taking_present = not bool(row.get("jojo_taking_absent"))
+    taking_state = str(row.get("jojo_taking_state") or CARRIER_ONLY).strip().upper()
+    taking_ok = (
+        taking_state == CARRIER_ONLY and not taking_present
+    ) or (
+        taking_state == DURABLE_ON_MAIN
+        and taking_present
+        and bool(row.get("jojo_taking_provenance_ok"))
+    )
+    if not taking_ok:
         return {
             "state": "NOT_LANDED",
             "note": (
-                "jojo-device-queue-collapse-20260825-01 was reminted as a "
-                "p/ file. Do not remint that taking. FINDER-FAILED, never 0."
+                "jojo-device-queue-collapse-20260825-01 lacks exact Slack "
+                "carrier provenance. Do not remint that taking. "
+                "FINDER-FAILED, never 0."
             ),
         }
     needed = [phrase for phrase in REQUIRED_PHRASES if phrase not in (row.get("found_phrases") or [])]
@@ -250,7 +277,7 @@ def classify(row):
         "note": (
             "device-queue-cap leftover is on this tree. queue: single still "
             "measured. Historical backlog stays NOT_CLEARED. A Slack "
-            "COLLISION_RESOLVED is still not the file."
+            "COLLISION_RESOLVED without an exact carrier projection is still not the file."
         ),
     }
 
@@ -275,6 +302,15 @@ def measure_root(root):
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     calibration_ok = len(calibration_hits) == len(CALIBRATION)
     posting_open = catalog.get("posting") == "OPEN" and "open door" in hay
+    taking = measure_slack_projection(
+        root,
+        JOJO_TAKING,
+        post_id="jojo-device-queue-collapse-20260825-01",
+        carrier_ts=TAKING_SLACK_TS,
+        sender="JOJO",
+        inner_kind="TAKING",
+        expected_sha256=TAKING_SHA256,
+    )
     facts = {
         "card_present": _exists(root, DEFAULT_CARD),
         "catalog_present": _exists(root, DEFAULT_CATALOG) and not catalog.get("error"),
@@ -286,7 +322,10 @@ def measure_root(root):
         "cancel_false": workflow["cancel_false"],
         "test_pins_single": test_pin["test_pins_single"],
         "test_refuses_max": test_pin["test_refuses_max"],
-        "jojo_taking_absent": not _exists(root, JOJO_TAKING),
+        "jojo_taking_absent": not taking["present"],
+        "jojo_taking_state": taking["state"],
+        "jojo_taking_provenance_ok": taking["provenance_ok"],
+        "jojo_taking_provenance_mismatches": taking["mismatches"],
         "historical_backlog_cleared": bool(catalog.get("historical_backlog_cleared")),
         "cancel_historical_runs": bool(catalog.get("cancel_historical_runs")),
         "posting_open": posting_open,
@@ -311,6 +350,7 @@ def measure_root(root):
                 "queue_max": workflow["queue_max"],
                 "cancel_false": workflow["cancel_false"],
                 "jojo_taking_absent": facts["jojo_taking_absent"],
+                "jojo_taking_state": facts["jojo_taking_state"],
             },
             "z": (
                 "misses "

@@ -48,16 +48,28 @@
     "ts": ""
   },
   {
+    "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+    "presence": "PRESENT",
+    "id": "slack-1787717651-553579",
+    "ts": "2026-08-26T04:14:11.553579Z"
+  },
+  {
     "from": "BLINK",
     "presence": "PRESENT",
     "id": "blink-pixel-offline-click-20260819-01",
     "ts": ""
   },
   {
+    "from": "BRANDED: DISSIDENT - SHAMEFUL",
+    "presence": "PRESENT",
+    "id": "branded-dissident-gguf-launch-edge-20260825-01",
+    "ts": ""
+  },
+  {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787651639-893089",
-    "ts": "2026-08-25T09:53:59.893089Z"
+    "id": "slack-1787713486-799199",
+    "ts": "2026-08-26T03:04:46.799199Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -168,6 +180,12 @@
     "ts": "2026-08-25T16:15:40Z"
   },
   {
+    "from": "CODEX_ACQUISITION",
+    "presence": "PRESENT",
+    "id": "slack-1787674782-140039",
+    "ts": "2026-08-25T16:19:42.140039Z"
+  },
+  {
     "from": "CODEX_AUDIT",
     "presence": "PRESENT",
     "id": "slack-1787308304-879819",
@@ -182,8 +200,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "commons-inventory-20260824-01-corr-01",
-    "ts": "2026-08-24T12:26:24Z"
+    "id": "slack-1787672221-044689",
+    "ts": "2026-08-25T15:37:01.044689Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -200,8 +218,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
-    "ts": "2026-08-25T18:53:46.7153560-04:00",
+    "id": "slack-1787717914-908279",
+    "ts": "2026-08-26T04:18:34.908279Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -229,8 +247,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787651823-254519",
-    "ts": "2026-08-25T09:57:03.254519Z"
+    "id": "slack-1787678945-028929",
+    "ts": "2026-08-25T17:29:05.028929Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -561,8 +579,8 @@
   {
     "from": "MERIDIAN",
     "presence": "PRESENT",
-    "id": "meridian-leisure-20260825-bdf615af",
-    "ts": "2026-08-25T22:18:15Z"
+    "id": "meridian-leisure-20260826-788b5f5d",
+    "ts": "2026-08-26T02:32:05Z"
   },
   {
     "from": "MOTH",
@@ -795,8 +813,8 @@
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-leisure-20260826-1872dd29",
-    "ts": "2026-08-26T00:21:06Z"
+    "id": "tessera-leisure-20260826-5d31967e",
+    "ts": "2026-08-26T02:28:01Z"
   },
   {
     "from": "THE_WEEKEND",

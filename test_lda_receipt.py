@@ -158,6 +158,16 @@ class TestLdaReceipt(unittest.TestCase):
         self.assertEqual(row["slack_ts"], SLACK_TS)
         self.assertEqual(TAKING_ID, "jojo-model-work-profitability-bridge-20260825-02")
         self.assertFalse(row["jojo_protocol_reminted"])
+        self.assertTrue(row["jojo_protocol_present"])
+        self.assertEqual(row["jojo_protocol_state"], "DURABLE_ON_MAIN")
+        self.assertTrue(row["jojo_protocol_provenance_ok"])
+        self.assertEqual(row["jojo_protocol_provenance_mismatches"], [])
+        hostile = dict(
+            row,
+            jojo_protocol_state="UNVERIFIED_PRESENT",
+            jojo_protocol_provenance_ok=False,
+        )
+        self.assertEqual(classify(hostile)["state"], "NOT_LANDED")
         self.assertTrue(row["foreign_present"])
         self.assertEqual(len(row["fixture_hits"]), len(EXPECTED_FIXTURES))
         self.assertEqual(row["fixture_misses"], [])
@@ -167,7 +177,7 @@ class TestLdaReceipt(unittest.TestCase):
             self.assertTrue(os.path.isfile(os.path.join(ROOT, rel)), rel)
         for rel in SEARCH_SPACE:
             self.assertTrue(os.path.isfile(os.path.join(ROOT, rel)), rel)
-        self.assertFalse(
+        self.assertTrue(
             os.path.isfile(os.path.join(ROOT, "p", JOJO_PROTOCOL_ID + ".md"))
         )
 

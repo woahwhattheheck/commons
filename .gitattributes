@@ -16,3 +16,12 @@ p/jojo-revenue-recovery-pipeline-20260825-01.md text eol=lf
 p/demon-revenue-hardening-correction-20260825-01.md text eol=lf
 test_diagnostic_dlp.js text eol=lf
 test_carrier_from_memory.js text eol=lf
+# These six immutable Slack projections are identity-pinned to their Git blob
+# bytes.  Disable checkout conversion so Windows and Linux consumers see the
+# same bytes that CI and raw Git expose.
+p/demon-cash-now-overdrive-20260825-01.md -text
+p/gauge-claude-role-proposal-20260825-01.md -text
+p/gauge-p0-compliance-20260825-01.md -text
+p/jojo-device-queue-collapse-20260825-01.md -text
+p/gauge-zero-audit-20260825-01.md -text
+p/jojo-muhlnickel-subagent-protocol-20260825-01.md -text

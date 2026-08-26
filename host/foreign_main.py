@@ -35,12 +35,18 @@ import json
 import os
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "FOREIGN_MAIN.json")
 DEFAULT_CARD = os.path.join("ground", "FOREIGN_MAIN.md")
 SLACK_TS = "1787642211.512289"
 JOJO_ID = "jojo-muhlnickel-subagent-protocol-20260825-01"
+JOJO_RECEIPT_SHA256 = "0b72a2bec00ef74add9b67dd57e623ff70ee5d9a7a3ab424dc9558f035cf8f5f"
 FOREIGN_REPO = "woahwhattheheck/LocalDeviceAgent"
 CLAIMED_MAIN = "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8"
 SEARCH_SPACE = (
@@ -191,6 +197,14 @@ def measure_from_rows(facts):
         "card_present": bool(facts.get("card_present")),
         "catalog_present": bool(facts.get("catalog_present")),
         "receipt_present": bool(facts.get("receipt_present")),
+        "receipt_state": str(
+            facts.get("receipt_state")
+            or (DURABLE_ON_MAIN if facts.get("receipt_present") else CARRIER_ONLY)
+        ).strip().upper(),
+        "receipt_provenance_ok": bool(facts.get("receipt_provenance_ok")),
+        "receipt_provenance_mismatches": list(
+            facts.get("receipt_provenance_mismatches") or []
+        ),
         "source_id": str(facts.get("source_id") or JOJO_ID),
         "foreign_repo": str(facts.get("foreign_repo") or FOREIGN_REPO),
         "claimed_main": str(facts.get("claimed_main") or "").lower(),
@@ -255,6 +269,15 @@ def classify(row):
     matched = int(row.get("matched_count") or 0)
     official = str(row.get("official_main") or "")
     want = str(row.get("claimed_main") or "")
+    receipt_present = bool(row.get("receipt_present"))
+    receipt = str(row.get("receipt_state") or CARRIER_ONLY).strip().upper()
+    receipt_ok = (
+        receipt == CARRIER_ONLY and not receipt_present
+    ) or (
+        receipt == DURABLE_ON_MAIN
+        and receipt_present
+        and bool(row.get("receipt_provenance_ok"))
+    )
     if (
         needed
         or not row.get("posting_open")
@@ -266,6 +289,8 @@ def classify(row):
         or matched != claimed
         or not official
         or official != want
+        or str(row.get("source_id") or "") != JOJO_ID
+        or not receipt_ok
     ):
         return {
             "state": "NOT_LANDED",
@@ -273,11 +298,11 @@ def classify(row):
                 "leftover present but incomplete. Missing phrases: "
                 + ", ".join(needed)
                 + ". Need independently matched blobs on official foreign main. "
-                "Do not copy private source. Talk is CLAIMED. FINDER-FAILED, never 0."
+                "Do not copy private source. Commons receipt must be absent or an "
+                "exact Slack carrier projection. Talk is CLAIMED. FINDER-FAILED, never 0."
             ),
             "z": "FINDER-FAILED",
         }
-    receipt = "DURABLE_ON_MAIN" if row.get("receipt_present") else "CARRIER_ONLY"
     return {
         "state": "INTEGRATED",
         "note": (
@@ -315,14 +340,26 @@ def measure_root(root):
     catalog = load_catalog(catalog_text) if catalog_text else {}
     counts = blob_matches(catalog.get("blobs") or [])
     source_id = catalog.get("source_id") or JOJO_ID
-    path = receipt_path(source_id)
+    path = receipt_path(JOJO_ID)
+    receipt = measure_slack_projection(
+        root,
+        path,
+        post_id=JOJO_ID,
+        carrier_ts=SLACK_TS,
+        sender="JOJO",
+        inner_kind="SHIP_RECEIPT",
+        expected_sha256=JOJO_RECEIPT_SHA256,
+    )
     blob = "\n".join([card_text, catalog_text, instrument_text]).lower()
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     facts = {
         "card_present": bool(card_text) and "foreign official main" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
-        "receipt_present": bool(path) and _exists(root, path),
+        "receipt_present": receipt["present"],
+        "receipt_state": receipt["state"],
+        "receipt_provenance_ok": receipt["provenance_ok"],
+        "receipt_provenance_mismatches": receipt["mismatches"],
         "source_id": source_id,
         "foreign_repo": catalog.get("foreign_repo") or FOREIGN_REPO,
         "claimed_main": catalog.get("claimed_main") or CLAIMED_MAIN,

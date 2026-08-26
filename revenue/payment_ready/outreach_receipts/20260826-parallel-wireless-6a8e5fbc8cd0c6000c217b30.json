@@ -1,0 +1,28 @@
+{
+  "schema_version": "gguf-outreach-receipt/v1",
+  "kind": "GGUF_OUTREACH_RECEIPT",
+  "receipt_id": "outreach-parallel-wireless-20260826T033848964Z",
+  "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+  "target_id": "parallel-wireless",
+  "airtable_record_id": "rec2m84ASLg7eKDFd",
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "channel": "EMAIL",
+  "route_url": "https://www.parallelwireless.com/company/contact-us/",
+  "recipient_email": "info@parallelwireless.com",
+  "subject": "Bounded rollback-evidenced GGUF diagnostic",
+  "message_sha256": "04e8d336be9a5f54433cb1b6cf4365ec318ad73be43af6b1d48627e367057ae7",
+  "transport_state": "DELIVERED",
+  "provider_reference": "apollo:emailer_message:6a8e5fbc8cd0c6000c217b30",
+  "sent_at": "2026-08-26T03:38:48.964Z",
+  "observed_at": "2026-08-26T03:38:48.964Z",
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  }
+}

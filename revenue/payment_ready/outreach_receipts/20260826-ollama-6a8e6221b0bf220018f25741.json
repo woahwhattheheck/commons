@@ -1,0 +1,44 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-ollama-20260826T034907452Z",
+  "campaign_id": "owner-seven-outreach-20260826-01",
+  "target_id": "ollama",
+  "organization": "Ollama",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "hello@ollama.com",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8e6221b0bf220018f25741",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-26T03:49:07.452Z",
+  "observed_at": "2026-08-26T04:40:20.704Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "hello@ollama.com",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": [
+      "apollo:emailer_message:6a8e644f8cd0c600105fe3da"
+    ]
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8e5ff0b0bf220012749422",
+    "contact_last_activity_at": "2026-08-26T03:49:07.000Z",
+    "contact_updated_at": "2026-08-26T03:49:07.647Z",
+    "public_slack_ts": "1787716665.518339",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787716665518339",
+    "completion_corroborated": true
+  }
+}
