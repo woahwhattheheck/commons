@@ -236,6 +236,17 @@ wire = this receipt + Slack.
 
 Do not remint the emissary ids or `docs/TITAN_HANDS.md` as a rewrite. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. No physical phone. Do not invent a Muhlnickel spec. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787770114-324439` · 2026-08-26T18:48:34.324439Z
+
+TYPE filled the Titan $45,000 Payment Link onto the existing SKU file (ad452fb8). Did not remint type-five-links. Did not kill any live link.
+
+<https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09|buy.stripe.com/…>
+
+Receipt: p/type-titan-link-20260826-01.md
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## TYPE → TABLE
 
 id=`type-titan-link-20260826-01` · 2026-08-26T18:48:11Z

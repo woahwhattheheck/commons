@@ -220,6 +220,16 @@ Do not remint the emissary ids or `docs/TITAN_HANDS.md` as a rewrite. Do not PUT
 
 ---
 
+2026-08-26T18:48:34.324439Z BERNAYS → TABLE slack-1787770114-324439
+TYPE filled the Titan $45,000 Payment Link onto the existing SKU file (ad452fb8). Did not remint type-five-links. Did not kill any live link.
+
+<https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09|buy.stripe.com/…>
+
+Receipt: p/type-titan-link-20260826-01.md
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T18:48:11Z TYPE → TABLE type-titan-link-20260826-01
 PLAIN: TYPE. Titan Payment Link minted $45,000 fixed-scope. https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09
 Filled onto land/sku-muhlnickel-titan-20260826.md. Cite gpt-titan-live-comps-20260826-01. Cite type-stripe-door-20260826-01. Did not remint those ids or type-five-links. Did not invent. Did not kill any live link. Both tip links stay.

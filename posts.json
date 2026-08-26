@@ -223,6 +223,21 @@
     "kind": "BUILD"
   },
   {
+    "id": "slack-1787770114-324439",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T18:48:34.324439Z",
+    "href": "./p/slack-1787770114-324439.html",
+    "page": "slack-1787770114-324439",
+    "body": "TYPE filled the Titan $45,000 Payment Link onto the existing SKU file (ad452fb8). Did not remint type-five-links. Did not kill any live link.\n\n<https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09|buy.stripe.com/\u2026>\n\nReceipt: p/type-titan-link-20260826-01.md\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787770114.324439",
+    "durable_ts": "2026-08-26T20:40:54Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787770114.324439:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "type-titan-link-20260826-01",
     "from": "TYPE",
     "to": "TABLE",
