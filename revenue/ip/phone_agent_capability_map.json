@@ -1,0 +1,339 @@
+{
+  "schema_version": "commons-phone-agent-capability-map/v1",
+  "kind": "PHONE_AGENT_CAPABILITY_MAP",
+  "generated_at": "2026-08-26T21:25:00Z",
+  "generated_from_main": "9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9",
+  "assessed_at": "2026-08-26",
+  "scope": "A dated evidence map comparing the Commons LDA/TITAN device-control architecture with four current realtime audio or voice-agent platforms across seven buyer-relevant dimensions.",
+  "comparison_boundary": "This is not a ranking: Commons LDA/TITAN is a device-control agent, while the external systems are realtime audio APIs or voice-agent platforms. Claims are comparable evidence cells, not proof of substitutability or superiority.",
+  "commercial_use": "Use this map to scope sponsored benchmarks, integration work, joint reproductions, and private evaluations around measured device actuation, realtime conversation, telephony, recovery, and durable evidence gaps.",
+  "truth": {
+    "benchmark_performed": false,
+    "win_claimed": false,
+    "external_deployment_verified": false,
+    "buyer_interest_verified": false,
+    "cash_received": false
+  },
+  "dimensions": [
+    "interruption",
+    "latency",
+    "tool_use",
+    "recovery",
+    "receipts",
+    "deployment_boundary",
+    "data_handling"
+  ],
+  "systems": [
+    {
+      "id": "commons-lda-titan",
+      "provider": "TokenJunkieLabs Commons",
+      "offering": "LDA/TITAN on-device handset operator",
+      "boundary_kind": "DEVICE_CONTROL_AGENT",
+      "evidence_scope": "Current Commons source plus exact public live-emulator receipts at the generated-from commit; no physical-phone or production-customer inference.",
+      "claims": {
+        "interruption": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "During a task, the foreground service checks growing offline-Vosk partials for a bare or addressed stop/cancel/abort/halt command and routes it to the task stop path.",
+          "limitations": "The source says the check is immediate/for speed, but this map has no measured stop-to-halt latency distribution.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/app/src/main/java/com/local/deviceagent/AgentService.kt",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/app/src/main/java/com/local/deviceagent/AgentService.kt",
+            "blob_sha": "660affe6eb278ba85e55287b57596cb06150f936",
+            "evidence_phrase": "halts the agent immediately (checked on partial results for speed)."
+          }
+        },
+        "latency": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The architecture document reports about 28-31 decode tokens per second on the Fold and about 2-4 seconds of think time for a small JSON action, with pipelining and deterministic precondition checks intended to hide some wait.",
+          "limitations": "These are repository-reported design figures, not a fresh benchmark, percentile distribution, or provider-comparable end-to-end voice latency measurement.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/README.md",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/README.md",
+            "blob_sha": "8077cc87d3d8cf5d871c6ef4b196d4bda8a3fd42",
+            "evidence_phrase": "a step is ~ 2-4 s of think."
+          }
+        },
+        "tool_use": {
+          "status": "MEASURED",
+          "statement": "A headless AOSP API 34 proof installed the owner LDA, observed through the native accessibility snapshot, clicked native element 1, and recorded a changed semantic digest.",
+          "limitations": "This proves one emulator observe/click transition, not arbitrary-app completion, physical-phone deployment, telephony, or a production success rate.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/p/emissary-titan-hands-lda-live-20260826-01.md",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "p/emissary-titan-hands-lda-live-20260826-01.md",
+            "blob_sha": "4fac3fc19d2998aeb61e1ca323d78f99b53a725a",
+            "evidence_phrase": "live native click on LDA element"
+          }
+        },
+        "recovery": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The documented handset design intentionally has no boot persistence; a reboot stops the agent, while task history and logs persist separately for review.",
+          "limitations": "No live application-session resume after reboot or process death is claimed here; emulator cold-boot repair is infrastructure recovery, not task resumption.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/README.md",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/README.md",
+            "blob_sha": "8077cc87d3d8cf5d871c6ef4b196d4bda8a3fd42",
+            "evidence_phrase": "No boot persistence."
+          }
+        },
+        "receipts": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "TaskHistory stores monotonic run IDs, objective, outcome, plan, executed steps, per-step ratings, duration, failure class, build, and timestamp; Commons adds immutable Git receipts around selected live proofs.",
+          "limitations": "The on-device history is bounded local state and is not itself an independently replicated or customer-accepted delivery receipt.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/app/src/main/java/com/local/deviceagent/TaskHistory.kt",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/app/src/main/java/com/local/deviceagent/TaskHistory.kt",
+            "blob_sha": "8ce51945a546da867409e2af6c380f0d3c122d62",
+            "evidence_phrase": "task log is the owner's record of what the agent DID"
+          }
+        },
+        "deployment_boundary": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The architecture is an Android foreground service using an imported local Gemma LiteRT-LM model, accessibility perception/actuation, Vosk wake-word audio, and device-local UI surfaces.",
+          "limitations": "The current exact live proof is an isolated x86_64 emulator override; the normal owner APK is arm64 and no physical phone was touched in that receipt.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/README.md",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/README.md",
+            "blob_sha": "8077cc87d3d8cf5d871c6ef4b196d4bda8a3fd42",
+            "evidence_phrase": "Current (working): `Gemma 4 E2B`"
+          }
+        },
+        "data_handling": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The repository describes on-demand screen reads only during active tasks, local Vosk wake-word processing, and a fully local LLM; it also documents an explicit optional cloud command-recognition mode elsewhere.",
+          "limitations": "This is a source-level architecture statement, not a captured network trace or independent privacy audit, and the optional cloud speech path changes the boundary when selected.",
+          "source": {
+            "kind": "COMMONS_GIT",
+            "url": "https://github.com/woahwhattheheck/commons/blob/9038d7a7b8b51ca5bf888b847e6a14ddfa2ba6a9/lda/README.md",
+            "source_date": "2026-08-26",
+            "observed_at": "2026-08-26",
+            "path": "lda/README.md",
+            "blob_sha": "8077cc87d3d8cf5d871c6ef4b196d4bda8a3fd42",
+            "evidence_phrase": "screen or audio - ever leaves the device"
+          }
+        }
+      }
+    },
+    {
+      "id": "openai",
+      "provider": "OpenAI",
+      "offering": "Realtime API / GPT-Realtime",
+      "boundary_kind": "REALTIME_AUDIO_API",
+      "evidence_scope": "Provider-primary documentation observed 2026-08-26; no API session, phone call, latency benchmark, or external deployment was run by Commons.",
+      "claims": {
+        "interruption": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Realtime speech-to-speech sessions enable voice activity detection by default and expose an interrupt_response setting for server or semantic VAD.",
+          "limitations": "Documentation establishes the control surface, not measured barge-in latency or accuracy in a Commons workload.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://developers.openai.com/api/docs/guides/realtime-vad", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "interrupt_response"}
+        },
+        "latency": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "GPT-Realtime is documented as realtime audio/text over WebRTC, WebSocket, or SIP.",
+          "limitations": "The provider page gives no single end-to-end latency figure usable as a benchmark against LDA/TITAN in this map.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://developers.openai.com/api/docs/models/gpt-realtime", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "responding to audio and text inputs in realtime"}
+        },
+        "tool_use": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Realtime sessions can expose application-executed functions, remote MCP servers, and built-in connectors during a live conversation.",
+          "limitations": "Tool availability is a documented API capability; no Commons integration or successful tool outcome was executed here.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://developers.openai.com/api/docs/guides/realtime-mcp", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "function tools, remote MCP servers, and connectors"}
+        },
+        "recovery": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: reconnect/session-resumption behavior was not established by the bounded primary-source set and is not assessed as absent.",
+          "limitations": "A dedicated recovery test or provider-primary resumption contract is required before comparison.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "receipts": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: Commons-style immutable outcome receipts were not established by the bounded primary-source set and are not assessed as absent.",
+          "limitations": "Realtime events and webhooks are not automatically equivalent to independently durable delivery receipts.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "deployment_boundary": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The provider documents WebRTC, WebSocket, and SIP, including incoming calls routed through a SIP trunk and monitored over WebSocket after acceptance.",
+          "limitations": "This is a hosted API boundary requiring external carrier/application infrastructure; no Commons deployment was performed.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://developers.openai.com/api/docs/guides/realtime-sip", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "direct incoming phone calls to the API"}
+        },
+        "data_handling": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "OpenAI documents no training on API data by default, up-to-30-day abuse-monitoring retention by default, and Zero Data Retention eligibility for the realtime endpoint subject to approval and limitations.",
+          "limitations": "Project settings, legal exceptions, and control eligibility determine the actual deployment state; this map did not inspect an account.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://developers.openai.com/api/docs/guides/your-data", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "/v1/realtime"}
+        }
+      }
+    },
+    {
+      "id": "google",
+      "provider": "Google",
+      "offering": "Gemini Live API",
+      "boundary_kind": "REALTIME_AUDIO_API",
+      "evidence_scope": "Provider-primary Gemini API documentation observed 2026-08-26; preview status and model-specific differences are retained.",
+      "claims": {
+        "interruption": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Gemini Live documents automatic/custom VAD; when user speech interrupts a response, generation is canceled and the server reports an interrupted event.",
+          "limitations": "The map did not measure interruption latency, false triggers, or audio-buffer correctness in a client.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/live-api/capabilities", "source_date": "2026-08-05", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "the ongoing generation is canceled and discarded"}
+        },
+        "latency": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Google recommends 20-40 ms audio chunks and minimal client buffering for Live API latency.",
+          "limitations": "Chunk guidance is not an end-to-end response-latency benchmark or a Commons comparison run.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/live-api/best-practices", "source_date": "2026-06-01", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Send audio in chunks of 20ms to 40ms"}
+        },
+        "tool_use": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The Live API documents sequential function calling for Gemini 3.1 Flash Live Preview and non-blocking asynchronous function calling for Gemini 2.5 Flash Live Preview.",
+          "limitations": "The behavior is model-specific and preview-state; no tool call was executed by Commons.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/live-api/capabilities", "source_date": "2026-08-05", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Asynchronous function calling"}
+        },
+        "recovery": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Live API session resumption can carry a session across periodic WebSocket resets using a resumption handle valid for two hours after termination.",
+          "limitations": "This is provider-documented conversational state recovery, not a measured recovery of external side effects or durable tool outcomes.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/live-api/session-management", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Resumption tokens are valid for 2 hr"}
+        },
+        "receipts": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: Commons-style immutable outcome receipts were not established by the bounded primary-source set and are not assessed as absent.",
+          "limitations": "Session events and tool responses require a separate durable evidence design before they count as receipts.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "deployment_boundary": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Gemini Live is a stateful streaming API over a persistent connection with audio/video/text session inputs; the compared documentation is API-oriented rather than an on-device handset-control runtime.",
+          "limitations": "Telephony carrier integration and private/on-device deployment were not part of this bounded source set and are not inferred absent.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/live-api/session-management", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "input and output are streamed continuously over the same connection"}
+        },
+        "data_handling": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Google documents that Paid Services inputs/outputs are not used for product improvement and that Live session-resumption state may retain text, audio, and video for up to 24 hours; omitting resumption is part of its ZDR guidance.",
+          "limitations": "Grounding, caching, logging, service tier, and approved ZDR state affect the actual boundary; no account was inspected.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://ai.google.dev/gemini-api/docs/zdr", "source_date": "2026-05-28", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "conversation state (including text, audio, and video) is retained for up to 24 hours"}
+        }
+      }
+    },
+    {
+      "id": "xai",
+      "provider": "xAI",
+      "offering": "Grok Speech to Speech API",
+      "boundary_kind": "REALTIME_AUDIO_API",
+      "evidence_scope": "Provider-primary xAI documentation last updated 2026-08-14 plus security FAQ observed 2026-08-26; no live xAI API use by Commons.",
+      "claims": {
+        "interruption": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "xAI recommends enabling server VAD for automatic natural barge-in in speech-to-speech sessions.",
+          "limitations": "The documentation does not supply a Commons-measured barge-in latency or workload-specific accuracy result.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech", "source_date": "2026-08-14", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "server_vad for automatic, natural barge-in"}
+        },
+        "latency": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "xAI documents parallel WebSocket initialization and microphone buffering as a perceived-latency optimization.",
+          "limitations": "No numeric end-to-end latency benchmark was published into this map or measured by Commons.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech", "source_date": "2026-08-14", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Minimize perceived latency with parallel initialization"}
+        },
+        "tool_use": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The speech-to-speech API documents live function calling plus hosted connections to remote MCP tools.",
+          "limitations": "This is provider-documented availability, not a successful Commons tool execution or outcome receipt.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech", "source_date": "2026-08-14", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "xAI manages the MCP server connection and tool execution"}
+        },
+        "recovery": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "Opt-in session resumption replays user/assistant transcripts, assistant tool calls, and function results, with history dropped after 30 minutes of inactivity.",
+          "limitations": "The map did not test reconnect behavior or recovery of external tool side effects.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech", "source_date": "2026-08-14", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "History is dropped after 30 minutes of inactivity"}
+        },
+        "receipts": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: Commons-style immutable outcome receipts were not established by the bounded primary-source set and are not assessed as absent.",
+          "limitations": "Persisted conversation and tool-call history is not automatically an immutable delivery receipt.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "deployment_boundary": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "xAI documents SIP, WebSocket, and LiveKit connections, native telephony codecs, and PSTN/contact-center/PBX routing into speech-to-speech sessions.",
+          "limitations": "This is a hosted API/telephony boundary and was not deployed or called by Commons.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech", "source_date": "2026-08-14", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Connect via SIP, WebSocket, or LiveKit"}
+        },
+        "data_handling": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "xAI documents no API training without explicit permission, 30-day default encrypted request/response retention, and team-wide ZDR under which voice-agent conversation history is not persisted.",
+          "limitations": "The actual team configuration and negotiated terms were not inspected.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://docs.x.ai/developers/faq/security", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Voice agent conversations are not persisted when ZDR is enabled"}
+        }
+      }
+    },
+    {
+      "id": "elevenlabs",
+      "provider": "ElevenLabs",
+      "offering": "ElevenAgents",
+      "boundary_kind": "VOICE_AGENT_PLATFORM",
+      "evidence_scope": "Provider-primary ElevenLabs documentation observed 2026-08-26; no account, phone number, private deployment, or conversation was created by Commons.",
+      "claims": {
+        "interruption": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "ElevenAgents documents configurable interruption handling, turn eagerness, silence handling, and timeout behavior.",
+          "limitations": "No barge-in latency or interruption-quality benchmark was run by Commons.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://elevenlabs.io/docs/eleven-agents/customization/conversation-flow", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Interruptions Control whether users can interrupt your assistant"}
+        },
+        "latency": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "The platform exposes turn-eagerness and soft-timeout controls intended to shape perceived responsiveness.",
+          "limitations": "The bounded provider page supplies configuration semantics, not a numeric end-to-end latency result comparable to LDA/TITAN.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://elevenlabs.io/docs/eleven-agents/customization/conversation-flow", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Turn eagerness controls how quickly your assistant responds"}
+        },
+        "tool_use": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "ElevenAgents documents client/API tools for actions and integrations alongside workflows and knowledge sources.",
+          "limitations": "No tool was configured or executed by Commons, and no outcome was verified.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://elevenlabs.io/docs/eleven-agents/overview/", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Enable agents to call clients & APIs to perform actions"}
+        },
+        "recovery": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: reconnect/session-resumption behavior was not established by the bounded primary-source set and is not assessed as absent.",
+          "limitations": "A provider-primary resumption contract plus a failure/reconnect test is required before comparison.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "receipts": {
+          "status": "UNKNOWN",
+          "statement": "UNKNOWN: Commons-style immutable outcome receipts were not established by the bounded primary-source set and are not assessed as absent.",
+          "limitations": "Conversation history, testing, evals, and analytics are useful operations evidence but were not evaluated here as immutable delivery receipts.",
+          "source": {"kind": "NONE", "url": "", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": ""}
+        },
+        "deployment_boundary": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "ElevenAgents documents web/mobile SDKs, WebSocket, Twilio, and SIP deployment, with separate private deployment options for customer cloud or hardware.",
+          "limitations": "Private deployment access is an enterprise offering and no Commons deployment was performed.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://elevenlabs.io/docs/eleven-agents/overview/", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "Connect via SIP trunk"}
+        },
+        "data_handling": {
+          "status": "SOURCE_DOCUMENTED",
+          "statement": "ElevenLabs documents a two-year default retention period for conversation data with separately configurable transcript and audio retention, including scheduled deletion.",
+          "limitations": "Enterprise ZRM/private-deployment settings can change the boundary; no account configuration was inspected.",
+          "source": {"kind": "PROVIDER_PRIMARY", "url": "https://elevenlabs.io/docs/eleven-agents/customization/privacy/retention", "source_date": "UNKNOWN", "observed_at": "2026-08-26", "path": "", "blob_sha": "", "evidence_phrase": "By default, ElevenLabs retains conversation data for 2 years"}
+        }
+      }
+    }
+  ]
+}
