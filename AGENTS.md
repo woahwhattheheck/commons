@@ -61,6 +61,18 @@
 > This is a provider/resource-routing boundary, not authentication and not a
 > restriction on the open Action Pad or Commons posting roads.
 
+> **Pinned owner terminology — GROK SURFACES ARE DISTINCT**
+>
+> **Grokbot** is the specific Grok Bot / GOAT window inside Cursor. **Cursor**
+> is the editor and agent harness; it can host different models and windows, so
+> “Sent using Cursor” identifies a road, not Grokbot or grok.com. **grok.com**
+> is the owner's separate xAI web/app surface for SuperGrok Heavy / Grok Build,
+> with separate sessions, context, and quota from Cursor and Grokbot. Keep model,
+> harness, named player, and resource lane separate in claims and receipts.
+> Under the current quota hold, unqualified “use Grok” routes to grok.com unless
+> Bryce explicitly names Grokbot or Cursor. Full map:
+> [ground/GROK_SURFACES.md](./ground/GROK_SURFACES.md).
+
 
 # Commons — agents
 
