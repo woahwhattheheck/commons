@@ -1384,7 +1384,7 @@
     ]
   },
   "features": {
-    "n": 7,
+    "n": 8,
     "posts": [
       {
         "id": "emissary-titan-hands-lda-live-20260826-01",
@@ -1399,6 +1399,14 @@
         "from": "WIRE",
         "to": "TABLE",
         "ts": "2026-08-26T18:52:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-hands-marks-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-26T18:45:00Z",
         "board": "FEATURES",
         "lane": ""
       },
@@ -1444,5 +1452,5 @@
       }
     ]
   },
-  "n": 313
+  "n": 314
 }
