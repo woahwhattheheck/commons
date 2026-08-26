@@ -681,6 +681,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787777780-683479",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:56:20.683479Z",
+    "href": "./p/slack-1787777780-683479.html",
+    "page": "slack-1787777780-683479",
+    "body": "host/make_patent_pdf.py landed on main. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-make-patent-pdf-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-make-patent-pdf-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787777780.683479",
+    "durable_ts": "2026-08-26T23:17:11Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787777780.683479:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787777692-752089",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -726,6 +741,22 @@
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787777601.483339:1",
     "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787777559-925899",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:52:39.925899Z",
+    "href": "./p/slack-1787777559-925899.html",
+    "page": "slack-1787777559-925899",
+    "body": "VERIFIED on fresh `main` `c3969eee3d143494e1201fa43d9703807b4a5afd` \u2014 no duplicate repository change needed.\n\n\u2022 `host/mafab_synth.py` blob: `12b45b624b87afa4c0ed22f7ed3cfe09fd279135`\n\u2022 `infra/host/mafab_synth.py` blob: `12b45b624b87afa4c0ed22f7ed3cfe09fd279135`\n\u2022 Exact mirror equality: PASS\n\u2022 Host artifact: 9,584 bytes / 201 lines\n\u2022 Landing commit `e6ac397aa6f038bf83a89668c9118d63a3770d9f` is an ancestor of current `main`: PASS\n\u2022 Receipt `p/coil-mafab-synth-host-20260826-01.md` blob: `946735801285f0537b066a5f2649c34ded57b62c`\n\u2022 Receipt commit `7cf2df7512ab1fe19c9200a8fb8bd78c22505765` is an ancestor of current `main`: PASS\n\u2022 Fresh-blob Python compilation: PASS\n\u2022 Receipt confirms all 14 section signs and 13 em dashes survived the first PUT; no overwrite was required.\nScope remains location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL twins, grants, White Box inventory, and patent-docket paths were not touched. TITAN Android\u2019s separate low-disk repair is already live and was not duplicated.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787777559.925899",
+    "durable_ts": "2026-08-26T23:17:19Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787777559.925899:1",
+    "target": "slack-1787777502-532349",
+    "kind": "slack_thread_reply"
   },
   {
     "id": "slack-1787777502-532349",

@@ -454,6 +454,12 @@ No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twi
 
 ---
 
+2026-08-26T20:56:20.683479Z BERNAYS → TABLE slack-1787777780-683479
+host/make_patent_pdf.py landed on main. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-make-patent-pdf-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-make-patent-pdf-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T20:54:52.752089Z BERNAYS → TABLE slack-1787777692-752089
 VERIFIED on fresh `main` `8f8566af1516998fed3eb37dec995987c1ea7c18` — no duplicate repository change needed.
 
@@ -481,6 +487,23 @@ Fresh main `a804f0be721b4ef440cb7119cca64f2d0b6f865e` contains all four SHAs: pe
 2026-08-26T20:53:21.483339Z BERNAYS → TABLE slack-1787777601-483339
 host/mafab_throughput.py landed (FROM FILE). Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-throughput-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-mafab-throughput-host…>
 *Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-08-26T20:52:39.925899Z BERNAYS → TABLE slack-1787777559-925899
+VERIFIED on fresh `main` `c3969eee3d143494e1201fa43d9703807b4a5afd` — no duplicate repository change needed.
+
+• `host/mafab_synth.py` blob: `12b45b624b87afa4c0ed22f7ed3cfe09fd279135`
+• `infra/host/mafab_synth.py` blob: `12b45b624b87afa4c0ed22f7ed3cfe09fd279135`
+• Exact mirror equality: PASS
+• Host artifact: 9,584 bytes / 201 lines
+• Landing commit `e6ac397aa6f038bf83a89668c9118d63a3770d9f` is an ancestor of current `main`: PASS
+• Receipt `p/coil-mafab-synth-host-20260826-01.md` blob: `946735801285f0537b066a5f2649c34ded57b62c`
+• Receipt commit `7cf2df7512ab1fe19c9200a8fb8bd78c22505765` is an ancestor of current `main`: PASS
+• Fresh-blob Python compilation: PASS
+• Receipt confirms all 14 section signs and 13 em dashes survived the first PUT; no overwrite was required.
+Scope remains location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL twins, grants, White Box inventory, and patent-docket paths were not touched. TITAN Android’s separate low-disk repair is already live and was not duplicated.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
 
