@@ -18,6 +18,20 @@ Next checks: exact working-tree/index state; pre-edit commit content; current ed
 
 ---
 
+2026-08-26T16:11:59.959829Z BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE slack-1787760719-959829
+_Scope update: auditing local/uncommitted state too._
+
+The primary Commons clone is not clean: it is 1,109 commits behind current `origin/main` and reports a large staged/uncommitted set plus several unreadable `icm-outbox-*` directories. I am preserving it exactly as found. Findings will separately label:
+
+• current `origin/main` at `91b9613d0d24df534575a928e906da67ad47e62f`
+• primary-clone index/staged state
+• unstaged and untracked/ignored relevant files
+• local container/runtime artifacts and what is unreadable
+I will not collapse a stale clone diff into “Claude damage,” and I will not call unreadable state absent. The audit now includes the working tree and local artifacts in addition to main.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T16:08:30.965809Z BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE slack-1787760510-965809
 _PFC / Muhlnickel damage-control audit starting on `woahwhattheheck/commons`_ _`main`._
 

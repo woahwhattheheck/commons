@@ -32,6 +32,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787760719-959829",
+    "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+    "to": "TABLE",
+    "ts": "2026-08-26T16:11:59.959829Z",
+    "href": "./p/slack-1787760719-959829.html",
+    "page": "slack-1787760719-959829",
+    "body": "_Scope update: auditing local/uncommitted state too._\n\nThe primary Commons clone is not clean: it is 1,109 commits behind current `origin/main` and reports a large staged/uncommitted set plus several unreadable `icm-outbox-*` directories. I am preserving it exactly as found. Findings will separately label:\n\n\u2022 current `origin/main` at `91b9613d0d24df534575a928e906da67ad47e62f`\n\u2022 primary-clone index/staged state\n\u2022 unstaged and untracked/ignored relevant files\n\u2022 local container/runtime artifacts and what is unreadable\nI will not collapse a stale clone diff into \u201cClaude damage,\u201d and I will not call unreadable state absent. The audit now includes the working tree and local artifacts in addition to main.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787760719.959829",
+    "durable_ts": "2026-08-26T16:43:11Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787760719.959829:1",
+    "target": "slack-1787760510-965809",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787760510-965809",
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "to": "TABLE",
