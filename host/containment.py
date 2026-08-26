@@ -9,7 +9,8 @@ packet path remesasure.
 
 Claude/GAUGE output stays INFORMATIONAL. A miss is
 FINDER-UNVERIFIED. It is never 0. Slack-only ids stay CARRIER_ONLY
-and are not reminted. This leftover does not write titan. It does
+until an exact carrier projection makes them DURABLE_ON_MAIN;
+arbitrary same-ID files remain remints. This leftover does not write titan. It does
 not smash commons.mno. It does not add a gate. It does not dump
 secrets.
 
@@ -31,12 +32,18 @@ import json
 import os
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "CONTAINMENT.json")
 DEFAULT_CARD = os.path.join("ground", "CONTAINMENT.md")
 SLACK_TS = "1787639440.580749"
 SOURCE_ID = "gauge-p0-compliance-20260825-01"
+SOURCE_SHA256 = "345f4e3927a8ae793c7dc47cff2e7378665adb3a3cef6eed2ffe7370121c1483"
 PACKET_PATH = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 QUARANTINED_POST = os.path.join(
     "p", "claudelocal-titan-move-go-20260825-01.md"
@@ -184,6 +191,13 @@ def measure_from_rows(facts):
         "packet": facts.get("packet") or {},
         "quarantined_post_present": bool(facts.get("quarantined_post_present")),
         "source_post_present": bool(facts.get("source_post_present")),
+        "source_post_state": str(
+            facts.get("source_post_state") or CARRIER_ONLY
+        ).strip().upper(),
+        "source_provenance_ok": bool(facts.get("source_provenance_ok")),
+        "source_provenance_mismatches": list(
+            facts.get("source_provenance_mismatches") or []
+        ),
         "remeasurement_owner": str(facts.get("remeasurement_owner") or "").strip(),
         "allowed_remeasurers": list(facts.get("allowed_remeasurers") or []),
         "xyz_required": bool(facts.get("xyz_required")),
@@ -232,6 +246,15 @@ def classify(row):
     claude = str(row.get("claude_output") or "").strip().upper()
     xyz = bool(row.get("xyz_required"))
     packet_ok = bool(row.get("packet_present"))
+    source_present = bool(row.get("source_post_present"))
+    source_state = str(row.get("source_post_state") or CARRIER_ONLY).strip().upper()
+    source_ok = (
+        source_state == CARRIER_ONLY and not source_present
+    ) or (
+        source_state == DURABLE_ON_MAIN
+        and source_present
+        and bool(row.get("source_provenance_ok"))
+    )
     if not card or not catalog:
         return {
             "state": "NOT_LANDED",
@@ -271,6 +294,7 @@ def classify(row):
         or len(routes) < 4
         or not xyz
         or not packet_ok
+        or not source_ok
     ):
         extra = []
         if missing_ids:
@@ -281,6 +305,8 @@ def classify(row):
             extra.append("branch not UNSCANNED")
         if not packet_ok:
             extra.append("packet path FINDER-UNVERIFIED")
+        if not source_ok:
+            extra.append("stand-down source lacks exact Slack carrier provenance")
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -300,7 +326,9 @@ def classify(row):
             "containment leftover is on this tree. Four artifacts contained. "
             "Claude output INFORMATIONAL. Branches UNSCANNED, not clean. "
             "Packet path remeasured. Codex/Grok Build is the non-Claude "
-            "remeasurement owner. A Slack stand-down is still not the file."
+            "remeasurement owner. Source state "
+            + source_state
+            + ". A Slack stand-down without an exact carrier projection is still not the file."
         ),
         "z": "",
     }
@@ -328,6 +356,15 @@ def measure_root(root):
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     packet_text = search_hits.get(PACKET_PATH, "")
+    source = measure_slack_projection(
+        root,
+        os.path.join("p", SOURCE_ID + ".md"),
+        post_id=SOURCE_ID,
+        carrier_ts=SLACK_TS,
+        sender="GAUGE",
+        inner_kind="CONTAINMENT_COMPLIANCE",
+        expected_sha256=SOURCE_SHA256,
+    )
     facts = {
         "card_present": bool(card_text) and "containment_compliance" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
@@ -338,9 +375,10 @@ def measure_root(root):
         "packet_present": bool(packet_text),
         "packet": catalog.get("packet") or {},
         "quarantined_post_present": bool(search_hits.get(QUARANTINED_POST)),
-        "source_post_present": _exists(
-            root, os.path.join("p", SOURCE_ID + ".md")
-        ),
+        "source_post_present": source["present"],
+        "source_post_state": source["state"],
+        "source_provenance_ok": source["provenance_ok"],
+        "source_provenance_mismatches": source["mismatches"],
         "remeasurement_owner": catalog.get("remeasurement_owner") or "",
         "allowed_remeasurers": catalog.get("allowed_remeasurers") or [],
         "xyz_required": bool(catalog.get("xyz_required")),

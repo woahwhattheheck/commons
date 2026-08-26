@@ -140,13 +140,17 @@ class TestCashNow(unittest.TestCase):
         self.assertTrue(row["calibration_ok"], "known-present calibration must hit EXECUTE + Action Pad")
         self.assertEqual(sorted(row["calibration_hits"]), sorted(CALIBRATION))
         self.assertEqual(row["search_space"], list(SEARCH_SPACE))
-        self.assertEqual(row["taking_state"], "CARRIER_ONLY")
-        self.assertFalse(row["taking_present"])
+        self.assertEqual(row["taking_state"], "DURABLE_ON_MAIN")
+        self.assertTrue(row["taking_present"])
+        self.assertTrue(row["taking_provenance_ok"])
+        self.assertEqual(row["taking_provenance_mismatches"], [])
+        hostile = dict(row, taking_state="UNVERIFIED_PRESENT", taking_provenance_ok=False)
+        self.assertEqual(classify(hostile)["state"], "NOT_LANDED")
         self.assertEqual(row["usd_offer_count"], 0)
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         self.assertIn("authorization", row["found_phrases"])
         self.assertIn("settlement", row["found_phrases"])
-        self.assertFalse(os.path.isfile(os.path.join(ROOT, TAKING_PATH)))
+        self.assertTrue(os.path.isfile(os.path.join(ROOT, TAKING_PATH)))
 
 
 if __name__ == "__main__":

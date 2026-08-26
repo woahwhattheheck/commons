@@ -30,6 +30,15 @@ import json
 import os
 import sys
 
+if __package__:
+    from .carrier_projection import (
+        CARRIER_ONLY, DURABLE_ON_MAIN, UNVERIFIED_PRESENT, measure_slack_projection,
+    )
+else:
+    from carrier_projection import (
+        CARRIER_ONLY, DURABLE_ON_MAIN, UNVERIFIED_PRESENT, measure_slack_projection,
+    )
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CARD = os.path.join("ground", "LDA_RECEIPT.md")
@@ -39,6 +48,8 @@ FIXTURE_DIR = os.path.join("ground", "lda_receipt")
 SLACK_TS = "1787646655.408039"
 TAKING_ID = "jojo-model-work-profitability-bridge-20260825-02"
 JOJO_PROTOCOL_ID = "jojo-muhlnickel-subagent-protocol-20260825-01"
+JOJO_PROTOCOL_SLACK_TS = "1787642211.512289"
+JOJO_PROTOCOL_SHA256 = "a718963d07fdf21adaba6069ee0bbf33a17cc85581d6753ede676082445e6a1f"
 PROTOCOL_MAIN = "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8"
 FOREIGN_CARD = os.path.join("ground", "FOREIGN_MAIN.md")
 FOREIGN_CATALOG = os.path.join("ground", "FOREIGN_MAIN.json")
@@ -368,6 +379,17 @@ def measure_from_rows(facts):
         "protocol_main_ok": bool(facts.get("protocol_main_ok")),
         "foreign_present": bool(facts.get("foreign_present")),
         "jojo_protocol_reminted": bool(facts.get("jojo_protocol_reminted")),
+        "jojo_protocol_present": bool(facts.get("jojo_protocol_present")),
+        "jojo_protocol_state": str(
+            facts.get("jojo_protocol_state")
+            or (UNVERIFIED_PRESENT if facts.get("jojo_protocol_present") else CARRIER_ONLY)
+        ).strip().upper(),
+        "jojo_protocol_provenance_ok": bool(
+            facts.get("jojo_protocol_provenance_ok")
+        ),
+        "jojo_protocol_provenance_mismatches": list(
+            facts.get("jojo_protocol_provenance_mismatches") or []
+        ),
         "copied_source": bool(facts.get("copied_source")),
         "host_inference": bool(facts.get("host_inference")),
         "posting_open": bool(facts.get("posting_open")),
@@ -420,13 +442,22 @@ def classify(row):
             ),
             "z": "FINDER-FAILED",
         }
-    if row.get("jojo_protocol_reminted"):
+    protocol_present = bool(row.get("jojo_protocol_present"))
+    protocol_state = str(row.get("jojo_protocol_state") or CARRIER_ONLY).strip().upper()
+    protocol_ok = (
+        protocol_state == CARRIER_ONLY and not protocol_present
+    ) or (
+        protocol_state == DURABLE_ON_MAIN
+        and protocol_present
+        and bool(row.get("jojo_protocol_provenance_ok"))
+    )
+    if row.get("jojo_protocol_reminted") or not protocol_ok:
         return {
             "state": "NOT_LANDED",
             "note": (
                 "p/"
                 + JOJO_PROTOCOL_ID
-                + ".md was reminted. Do not remint that id. "
+                + ".md lacks exact Slack carrier provenance. Do not remint that id. "
                 "FINDER-FAILED, never 0."
             ),
             "z": "FINDER-FAILED",
@@ -491,8 +522,10 @@ def classify(row):
         "note": (
             "LDA receipt-validator leftover is on this tree. Fixtures "
             "classify CARRIER_ONLY / VALID_RECEIPT / NOT_LANDED. JOJO "
-            "protocol id was not reminted. FOREIGN_MAIN stays. A Slack "
-            "profitability handoff is still not the file."
+            "protocol source state is "
+            + protocol_state
+            + ". FOREIGN_MAIN stays. A Slack profitability handoff without "
+            "an exact carrier projection is still not the file."
         ),
         "z": "",
     }
@@ -540,6 +573,15 @@ def measure_root(root):
         and "open door" in hay
         and "unseated" in hay
     )
+    protocol = measure_slack_projection(
+        root,
+        os.path.join("p", JOJO_PROTOCOL_ID + ".md"),
+        post_id=JOJO_PROTOCOL_ID,
+        carrier_ts=JOJO_PROTOCOL_SLACK_TS,
+        sender="JOJO",
+        inner_kind="SHIP_RECEIPT",
+        expected_sha256=JOJO_PROTOCOL_SHA256,
+    )
     facts = {
         "card_present": _exists(root, DEFAULT_CARD),
         "catalog_present": _exists(root, DEFAULT_CATALOG) and not catalog.get("error"),
@@ -549,9 +591,11 @@ def measure_root(root):
         "fixture_misses": fixture_misses,
         "protocol_main_ok": catalog.get("protocol_main") == PROTOCOL_MAIN,
         "foreign_present": _exists(root, FOREIGN_CARD) and _exists(root, FOREIGN_CATALOG),
-        "jojo_protocol_reminted": _exists(
-            root, os.path.join("p", JOJO_PROTOCOL_ID + ".md")
-        ),
+        "jojo_protocol_reminted": protocol["state"] == UNVERIFIED_PRESENT,
+        "jojo_protocol_present": protocol["present"],
+        "jojo_protocol_state": protocol["state"],
+        "jojo_protocol_provenance_ok": protocol["provenance_ok"],
+        "jojo_protocol_provenance_mismatches": protocol["mismatches"],
         "copied_source": bool(catalog.get("copied_source")),
         "host_inference": bool(catalog.get("host_inference")),
         "posting_open": posting_open,

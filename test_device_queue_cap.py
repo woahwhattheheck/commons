@@ -110,7 +110,16 @@ class TestDeviceQueueCap(unittest.TestCase):
         self.assertTrue(row["cancel_false"])
         self.assertTrue(row["test_pins_single"])
         self.assertTrue(row["test_refuses_max"])
-        self.assertTrue(row["jojo_taking_absent"])
+        self.assertFalse(row["jojo_taking_absent"])
+        self.assertEqual(row["jojo_taking_state"], "DURABLE_ON_MAIN")
+        self.assertTrue(row["jojo_taking_provenance_ok"])
+        self.assertEqual(row["jojo_taking_provenance_mismatches"], [])
+        hostile = dict(
+            row,
+            jojo_taking_state="UNVERIFIED_PRESENT",
+            jojo_taking_provenance_ok=False,
+        )
+        self.assertEqual(classify(hostile)["state"], "NOT_LANDED")
         self.assertFalse(row["historical_backlog_cleared"])
         self.assertFalse(row["cancel_historical_runs"])
         self.assertEqual(row["titan"], "NOT_WRITTEN")

@@ -135,7 +135,16 @@ class TestFinderZero(unittest.TestCase):
         self.assertTrue(row["instrument"])
         self.assertTrue(row["card"])
         self.assertTrue(row["catalog_file"])
-        self.assertFalse(row["gauge_post"])
+        self.assertTrue(row["gauge_post"])
+        self.assertEqual(row["gauge_post_state"], "DURABLE_ON_MAIN")
+        self.assertTrue(row["gauge_post_provenance_ok"])
+        self.assertEqual(row["gauge_post_provenance_mismatches"], [])
+        hostile = dict(
+            row,
+            gauge_post_state="UNVERIFIED_PRESENT",
+            gauge_post_provenance_ok=False,
+        )
+        self.assertEqual(classify(hostile)["state"], "NOT_LANDED")
         self.assertTrue(row["calibrated"])
         self.assertEqual(row["find_state"], "FOUND")
         self.assertEqual(row["collision_state"], FINDER_UNVERIFIED)

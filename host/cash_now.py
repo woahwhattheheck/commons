@@ -4,8 +4,8 @@
 Slack 1787639560.086549 (DEMON cash-now taking):
 72-juror cash-now room / first collectable USD / private payout.
 Talk that restates the taking is CLAIMED until this leftover
-measures the card, the rail catalog, bazaar USD=0, the taking
-CARRIER_ONLY, the three stages, and the #needs-bryce form.
+measures the card, the rail catalog, bazaar USD=0, the taking's
+carrier state, the three stages, and the #needs-bryce form.
 Banking setup is not the only blocker. Collectable USD stays
 NOT_LANDED until a priced offer exists.
 
@@ -33,6 +33,11 @@ import os
 import re
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "CASH_NOW.json")
@@ -40,6 +45,7 @@ DEFAULT_CARD = os.path.join("ground", "CASH_NOW.md")
 BAZAAR_PATH = "bazaar.json"
 TAKING_PATH = os.path.join("p", "demon-cash-now-overdrive-20260825-01.md")
 SLACK_TS = "1787639560.086549"
+TAKING_SHA256 = "60daed95b09c7835a2aed7e474b8cc360d58ee42e2dc300b46de2bb945cbfa8f"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -215,13 +221,22 @@ def classify(row):
         needs.get(key)
         for key in ("need", "why_only_bryce", "smallest_action", "evidence", "after")
     )
+    taking_state = str(row.get("taking_state") or CARRIER_ONLY).strip().upper()
+    taking_present = bool(row.get("taking_present"))
+    taking_ok = (
+        taking_state == CARRIER_ONLY and not taking_present
+    ) or (
+        taking_state == DURABLE_ON_MAIN
+        and taking_present
+        and bool(row.get("taking_provenance_ok"))
+    )
     if (
         needed
         or stage_miss
         or not needs_ok
         or row.get("usd_offer_count") != 0
         or str(row.get("bazaar_currency") or "") != "FREE_COLONY_COMPUTE"
-        or str(row.get("taking_state") or "") != "CARRIER_ONLY"
+        or not taking_ok
         or row.get("banking_only_blocker")
         or str(row.get("collectable_usd") or "") != "NOT_LANDED"
         or not row.get("xyz_required")
@@ -247,8 +262,11 @@ def classify(row):
         "state": "INTEGRATED",
         "note": (
             "cash-now leftover is on this tree. Authorization is not settlement "
-            "is not bank-available cash. Bazaar USD offers=0. Taking is CARRIER_ONLY. "
-            "Banking setup is not the only blocker. A Slack taking is still not the file."
+            "is not bank-available cash. Bazaar USD offers=0. Taking state is "
+            + taking_state
+            + ". Banking setup is not the only blocker. Only an exact Slack "
+            "carrier projection is durable; a Slack taking without that projection "
+            "is still not the file, and an arbitrary same-ID file is not durable."
         ),
         "z": "",
     }
@@ -267,8 +285,15 @@ def measure_root(root):
     catalog_text = search_hits.get(DEFAULT_CATALOG, "")
     catalog = load_catalog(catalog_text) if catalog_text else {}
     bazaar = measure_bazaar(search_hits.get(BAZAAR_PATH, ""))
-    taking_present = _exists(root, TAKING_PATH)
-    taking_state = "DURABLE_ON_MAIN" if taking_present else "CARRIER_ONLY"
+    taking = measure_slack_projection(
+        root,
+        TAKING_PATH,
+        post_id="demon-cash-now-overdrive-20260825-01",
+        carrier_ts=SLACK_TS,
+        sender="DEMON",
+        inner_kind="TAKING",
+        expected_sha256=TAKING_SHA256,
+    )
     blob = "\n".join(
         [
             card_text,
@@ -285,8 +310,10 @@ def measure_root(root):
         "stages": catalog.get("stages") or [],
         "rails": catalog.get("rails") or [],
         "needs_bryce": catalog.get("needs_bryce") or {},
-        "taking_state": taking_state,
-        "taking_present": taking_present,
+        "taking_state": taking["state"],
+        "taking_present": taking["present"],
+        "taking_provenance_ok": taking["provenance_ok"],
+        "taking_provenance_mismatches": taking["mismatches"],
         "usd_offer_count": bazaar.get("usd_offer_count"),
         "offer_count": bazaar.get("offer_count"),
         "bazaar_currency": bazaar.get("currency") or catalog.get("bazaar_currency") or "",

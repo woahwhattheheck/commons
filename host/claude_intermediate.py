@@ -10,7 +10,8 @@ and the preserved peer charter.
 Peer leftover ground/CLAUDE_ROLE.md stays. This leftover does not
 overwrite it. Claude output stays INFORMATIONAL. A miss is
 FINDER-UNVERIFIED. It is never 0. Slack-only ids stay CARRIER_ONLY
-and are not reminted. This leftover does not write titan. It does
+until an exact carrier projection makes them DURABLE_ON_MAIN;
+arbitrary same-ID files remain remints. This leftover does not write titan. It does
 not smash commons.mno. It does not add a gate.
 
   python3 host/claude_intermediate.py
@@ -31,6 +32,11 @@ import json
 import os
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "CLAUDE_INTERMEDIATE.json")
@@ -38,6 +44,8 @@ DEFAULT_CARD = os.path.join("ground", "CLAUDE_INTERMEDIATE.md")
 PEER_CHARTER = os.path.join("ground", "CLAUDE_ROLE.md")
 SLACK_TS = "1787640206.633649"
 SOURCE_ID = "gauge-claude-role-proposal-20260825-01"
+SOURCE_SLACK_TS = "1787639959.844249"
+SOURCE_SHA256 = "f6a54e2b525444e825839bbb23d1cc18502d977e327dadb294b9a29a1e957bdc"
 OPERATING_LABEL = "CLAUDE_INTERMEDIATE_UNTRUSTED"
 ADJUDICATOR = "Codex / Grok Build (RIVET)"
 SEARCH_SPACE = (
@@ -180,6 +188,10 @@ def measure_from_rows(facts):
         "xyz_required": bool(facts.get("xyz_required")),
         "source_post_present": bool(facts.get("source_post_present")),
         "source_durable": str(facts.get("source_durable") or "").strip().upper(),
+        "source_provenance_ok": bool(facts.get("source_provenance_ok")),
+        "source_provenance_mismatches": list(
+            facts.get("source_provenance_mismatches") or []
+        ),
         "calibration_ok": bool(facts.get("calibration_ok")),
         "calibration_hits": list(facts.get("calibration_hits") or []),
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
@@ -230,7 +242,14 @@ def classify(row):
     keep_charter = bool(row.get("preserve_peer_charter"))
     charter = bool(row.get("peer_charter_present"))
     source_present = bool(row.get("source_post_present"))
-    source_durable = str(row.get("source_durable") or "").strip().upper()
+    source_durable = str(row.get("source_durable") or CARRIER_ONLY).strip().upper()
+    source_ok = (
+        source_durable == CARRIER_ONLY and not source_present
+    ) or (
+        source_durable == DURABLE_ON_MAIN
+        and source_present
+        and bool(row.get("source_provenance_ok"))
+    )
     if not card or not catalog:
         return {
             "state": "NOT_LANDED",
@@ -272,8 +291,7 @@ def classify(row):
         or not preserve
         or not keep_charter
         or not charter
-        or source_present
-        or source_durable != "CARRIER_ONLY"
+        or not source_ok
     ):
         extra = []
         if missing_ids:
@@ -288,8 +306,8 @@ def classify(row):
             extra.append("door must stay open")
         if not charter or not keep_charter:
             extra.append("peer charter must stay")
-        if source_present:
-            extra.append("do not remint the GAUGE proposal")
+        if not source_ok:
+            extra.append("GAUGE proposal lacks exact Slack carrier provenance")
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -309,7 +327,9 @@ def classify(row):
             "claude-intermediate leftover is on this tree. Six clauses recorded. "
             "P1 HANDS rejected-for-now. P6 amended. Rehab gates OPEN, not a lock. "
             "Peer charter preserved. Label CLAUDE_INTERMEDIATE_UNTRUSTED. "
-            "A Slack ruling is still not the file."
+            "Source state "
+            + source_durable
+            + ". A Slack ruling without an exact carrier projection is still not the file."
         ),
         "z": "",
     }
@@ -336,6 +356,15 @@ def measure_root(root):
     ).lower()
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
+    source = measure_slack_projection(
+        root,
+        os.path.join("p", SOURCE_ID + ".md"),
+        post_id=SOURCE_ID,
+        carrier_ts=SOURCE_SLACK_TS,
+        sender="GAUGE",
+        inner_kind="PROPOSAL",
+        expected_sha256=SOURCE_SHA256,
+    )
     facts = {
         "card_present": bool(card_text)
         and "quarantined intermediate worker" in card_text.lower(),
@@ -352,8 +381,10 @@ def measure_root(root):
         "no_gate": bool(catalog.get("no_gate")),
         "posting_open": bool(catalog.get("posting_open")),
         "xyz_required": bool(catalog.get("xyz_required")),
-        "source_post_present": _exists(root, os.path.join("p", SOURCE_ID + ".md")),
-        "source_durable": catalog.get("source_durable") or "",
+        "source_post_present": source["present"],
+        "source_durable": source["state"],
+        "source_provenance_ok": source["provenance_ok"],
+        "source_provenance_mismatches": source["mismatches"],
         "calibration_ok": len(calibration_hits) == len(CALIBRATION),
         "calibration_hits": calibration_hits,
         "search_space": list(SEARCH_SPACE),

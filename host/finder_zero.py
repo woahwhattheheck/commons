@@ -32,11 +32,17 @@ import os
 import re
 import sys
 
+if __package__:
+    from .carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+else:
+    from carrier_projection import CARRIER_ONLY, DURABLE_ON_MAIN, measure_slack_projection
+
 
 DEFAULT_ROOT = "."
 DEFAULT_CATALOG = os.path.join("ground", "FINDER_ZERO.json")
 SLACK_TS = "1787638031.533189"
 SOURCE_ID = "gauge-zero-audit-20260825-01"
+SOURCE_SHA256 = "37b80965475d13ed410c386635ff7e52c75fd9dc8bc58416fab8fe026a8f7d36"
 FINDER_UNVERIFIED = "FINDER UNVERIFIED"
 BARE_FIND = re.compile(
     r"if\s+find\s*\([^)]*\)\s*:\s*(?:print|return)",
@@ -338,7 +344,16 @@ def measure_tree(root, catalog_text=""):
     instrument = _read(root, os.path.join("host", "finder_zero.py"))
     card = _exists(root, os.path.join("ground", "FINDER_ZERO.md"))
     catalog_file = _exists(root, os.path.join("ground", "FINDER_ZERO.json"))
-    gauge_post = _exists(root, os.path.join("p", "%s.md" % SOURCE_ID))
+    gauge_path = os.path.join("p", "%s.md" % SOURCE_ID)
+    gauge = measure_slack_projection(
+        root,
+        gauge_path,
+        post_id=SOURCE_ID,
+        carrier_ts=SLACK_TS,
+        sender="GAUGE",
+        inner_kind="COORDINATION",
+        expected_sha256=SOURCE_SHA256,
+    )
     facts = {
         "query": "in:#commons after:1787630000 OR FINDER UNVERIFIED Alt-Text Workbench",
         "channel": "#commons",
@@ -348,7 +363,7 @@ def measure_tree(root, catalog_text=""):
         "known_present": [FINDER_UNVERIFIED],
         "search_hits": [],
         "pair_hits": [SOURCE_ID],
-        "process_hits": ["jojo-visual-ci-20260825-01"] if not gauge_post else [],
+        "process_hits": ["jojo-visual-ci-20260825-01"] if not gauge["present"] else [],
         "source": instrument,
         "catalog_defects": catalog.get("defects") or [],
         "source_id": catalog.get("source_id") or SOURCE_ID,
@@ -360,7 +375,10 @@ def measure_tree(root, catalog_text=""):
     row["instrument"] = bool(instrument)
     row["card"] = card
     row["catalog_file"] = catalog_file
-    row["gauge_post"] = gauge_post
+    row["gauge_post"] = gauge["present"]
+    row["gauge_post_state"] = gauge["state"]
+    row["gauge_post_provenance_ok"] = gauge["provenance_ok"]
+    row["gauge_post_provenance_mismatches"] = gauge["mismatches"]
     row["hands_off"] = catalog.get("hands_off") or []
     return row
 
@@ -421,13 +439,31 @@ def classify(row):
                 "name all four defects."
             ),
         }
+    gauge_present = bool(row.get("gauge_post"))
+    gauge_state = str(row.get("gauge_post_state") or CARRIER_ONLY).strip().upper()
+    gauge_ok = (
+        gauge_state == CARRIER_ONLY and not gauge_present
+    ) or (
+        gauge_state == DURABLE_ON_MAIN
+        and gauge_present
+        and bool(row.get("gauge_post_provenance_ok"))
+    )
+    if not gauge_ok:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "gauge-zero-audit source lacks exact Slack carrier provenance. "
+                "Do not treat an arbitrary same-ID file as the source."
+            ),
+        }
     return {
         "state": "INTEGRATED",
         "note": (
             "finder-zero leftover is on this tree. Miss branch is "
             "FINDER UNVERIFIED, never 0. Search-only Slack zero is not "
-            "clearance. GAUGE four defects named. A Slack order is still "
-            "not the file."
+            "clearance. GAUGE four defects named. Source state "
+            + gauge_state
+            + ". A Slack order without an exact carrier projection is still not the file."
         ),
     }
 
