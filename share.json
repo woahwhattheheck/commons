@@ -651,6 +651,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-pfc-master-autofab-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-mafab-meta-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -833,7 +844,7 @@
     "DOOR": 2,
     "SPEC_DADDY": 3,
     "KITE": 2,
-    "COIL": 1
+    "COIL": 2
   },
   "receipts": 8,
   "button": "python host/muhl_tools_once.py --go"

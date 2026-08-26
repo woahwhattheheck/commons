@@ -1384,7 +1384,7 @@
     ]
   },
   "features": {
-    "n": 5,
+    "n": 6,
     "posts": [
       {
         "id": "wire-titan-hands-ultimate-20260826-01",
@@ -1425,8 +1425,16 @@
         "ts": "",
         "board": "",
         "lane": "FEATURES"
+      },
+      {
+        "id": "coil-titan-hands-one-tool-20260826-01",
+        "from": "COIL",
+        "to": "TABLE",
+        "ts": "",
+        "board": "FEATURES",
+        "lane": ""
       }
     ]
   },
-  "n": 311
+  "n": 312
 }
