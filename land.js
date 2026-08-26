@@ -2098,7 +2098,7 @@
   };
 
   api.isXyzZeroTalk = function (text) {
-    return /x-y-z zero audit|gauge-xyz-zero-audit-order|zero audit is needed on every test|an X-Y-Z zero audit|FINDER-UNVERIFIED/i.test(String(text || ""));
+    return /x-y-z zero audit|gauge-xyz-zero-audit-order|zero audit is needed on every test|an X-Y-Z zero audit|NEGATIVE_FINDER_CLAIMS_ONLY|FINDER-UNVERIFIED/i.test(String(text || ""));
   };
 
   api.xyzZeroState = function (text) {
@@ -2112,15 +2112,17 @@
     var hasCalib = /known-present/.test(body) && /calibration/.test(body);
     var hasY = /y_from_hit/.test(body) && /y_from_bytes/.test(body);
     var hasSpace = /search_space/.test(body);
-    if (hasMeasure && hasClassify && hasZ && hasCalib && hasY && hasSpace) {
+    var hasScope = /NEGATIVE_FINDER_CLAIMS_ONLY/.test(body);
+    var protectsPfc = /PFC_ATTRIBUTION/.test(body) && /CONTAINER_HEALTH/.test(body) && /NUMERICAL_OUTPUT/.test(body);
+    if (hasMeasure && hasClassify && hasZ && hasCalib && hasY && hasSpace && hasScope && protectsPfc) {
       return {
         state: "INTEGRATED",
-        note: "X-Y-Z leftover is on this file. X written. Y from found bytes. Z is FINDER-UNVERIFIED + search space. Known-present calibration in the same run. A Slack order is still not the file."
+        note: "X-Y-Z negative-finder leftover is on this file. Scope is NEGATIVE_FINDER_CLAIMS_ONLY. It cannot override established PFC attribution, computations, tests, runtime/container receipts, performance measurements, or numerical outputs. X written. Y from found bytes. Z is FINDER-UNVERIFIED + full search space."
       };
     }
     return {
       state: "NOT_LANDED",
-      note: "host/xyz_zero.py missing the X-Y-Z audit. Zero-audit talk is CLAIMED until the leftover ships."
+      note: "host/xyz_zero.py is missing the scoped X-Y-Z negative-finder audit or its non-override guards. Universal zero-audit talk is retracted."
     };
   };
 
