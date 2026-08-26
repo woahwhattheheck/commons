@@ -18,7 +18,10 @@ From the Commons repository root:
 python -m host.titan_hands.mcp_server
 ```
 
-The MCP tools are:
+The primary MCP tool is `hands`. One call sets `route` and `op`. Default `route` is `computer`.
+`op=catalog` lists live routes versus `ADAPTER_NOT_WRITTEN`. Pixels move only through `op=capture`.
+
+Compatibility aliases still call the same DeltaUI broker:
 
 - `hands_targets`
 - `hands_capabilities`
@@ -26,8 +29,11 @@ The MCP tools are:
 - `hands_act`
 - `hands_capture`
 
-Every tool except `hands_targets` and an untargeted capability catalog accepts `target=windows|android`.
-Windows is the default.
+Every computer-use alias except `hands_targets` and an untargeted capability catalog accepts
+`target=windows|android`. Windows is the default.
+
+Live non-computer routes on `hands`: `file`, `git`, `slack` (`C0BRGMDQB6G` only), `board` (new
+`p/{id}.md` only), `shell`, `web`. Linux AT-SPI is named and returns `ADAPTER_NOT_WRITTEN`.
 
 ## Android target selection
 
@@ -70,7 +76,7 @@ landed, `auto` reports and uses `uiautomator-fallback` rather than claiming a Ko
 
 Codex local clients share MCP configuration. Register this module as a STDIO server with the repository
 root as `cwd`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New Codex
-sessions will receive the five tools directly; an already-running task retains its original tool inventory.
+sessions will receive the primary `hands` tool plus computer-use compatibility aliases; an already-running task retains its original tool inventory.
 
 Official configuration reference: <https://developers.openai.com/codex/mcp/>
 

@@ -39,3 +39,25 @@ stop performing internal layout or composition.
 
 Commons remains the durable coordination and receipt plane. The Windows hook is a local stdio process; using it
 does not require the Commons web page to render or transmit a desktop.
+
+## One model-facing tool
+
+The local MCP server exposes `hands` as the primary tool. One call carries a typed `route` and `op`.
+Computer-use keeps the DeltaUI broker: `route=computer` with `observe` / `act` / `capture` / `done` on
+`target=windows` or `target=android`. Capture stays explicit. Compatibility aliases
+(`hands_observe`, `hands_act`, `hands_capture`, `hands_targets`, `hands_capabilities`) still call that
+same broker so existing computer-use loops keep working.
+
+Additional live routes on the same tool:
+
+- `file` — list/read, and write only when the path does not already exist
+- `git` — status/diff/log, and add/commit of untracked paths only
+- `slack` — `#commons` `C0BRGMDQB6G` only; `TOKEN_MISS` if no bot token is present
+- `board` — new `p/{id}.md` only; existing ids return `REMINT_REFUSED`
+- `shell` — local command at the repository root
+- `web` — HTTP fetch; image bodies are omitted (pixels stay off this path)
+
+Linux AT-SPI is named as the next computer-use adapter. `route=linux` returns `ADAPTER_NOT_WRITTEN` with
+the planned role/action map. It is not shipped and is not a remint of Windows or Android.
+
+Call `hands` with `op=catalog` for the live vs not-written table. Do not smash `commons.mno`.

@@ -7,7 +7,7 @@ These are harness verbs written as Commons doors. Catalog: `commands.json`. Page
 | `/goal` | one objective · `skills/MANUAL.md` |
 | `/offer` | file harness · `offer.html` |
 | `/spawn` | one child, one skill, own from= |
-| `/computer-use` | direct TITAN semantic hands · Windows / headless Android · pixels on demand |
+| `/computer-use` | one TITAN `hands` tool · Windows / headless Android · pixels on demand |
 | `/pull-repo` | fresh `origin/main` · no edit of existing `p/` |
 | `/tools` | one PC job · `muhl_tools_once.py --go` |
 | `/drop` | issue → file · size gate |

@@ -8,15 +8,17 @@ import sys
 from typing import Any, Mapping
 
 from .broker import TitanHandsBroker
+from .runtime import TitanHandsRuntime
 
 
 MCP_PROTOCOL = "2025-03-26"
 SERVER_INSTRUCTIONS = (
-    "Direct local semantic computer use for Windows and Android. Observe before acting. "
-    "Use target=windows or target=android; Windows is the default. Normal observations are "
-    "UIA/UIAutomator deltas and contain no screenshots. Call hands_capture only when pixels "
-    "are actually needed. The server performs requested actions directly and has no internal "
-    "approval dialogue."
+    "One tool: hands. Set route and op. Default route is computer (Windows or Android DeltaUI). "
+    "Observe before acting. Pixels move only through op=capture. Other live routes: file, git, "
+    "slack (#commons C0BRGMDQB6G), board (new p/{id}.md only), shell, web. Linux AT-SPI returns "
+    "ADAPTER_NOT_WRITTEN. hands_observe/act/capture/targets/capabilities remain compatibility "
+    "aliases for computer-use. The server performs requested operations directly and has no "
+    "internal approval dialogue."
 )
 
 TARGET_PROPERTY = {
@@ -61,16 +63,91 @@ ACTION_PROPERTY = {
     },
 }
 
+HANDS_TOOL = {
+    "name": "hands",
+    "description": (
+        "Primary TITAN Hands tool. One call routes computer-use, files, git, Slack #commons, "
+        "board posts, shell, and web fetch. Set route plus op. Default route is computer. "
+        "Call op=catalog for live vs ADAPTER_NOT_WRITTEN. Pixels only when op=capture. "
+        "Linux AT-SPI is named and returns ADAPTER_NOT_WRITTEN."
+    ),
+    "inputSchema": {
+        "type": "object",
+        "required": ["op"],
+        "properties": {
+            "route": {
+                "type": "string",
+                "description": (
+                    "computer (default), file, git, slack, board, shell, web, linux, or catalog. "
+                    "linux returns ADAPTER_NOT_WRITTEN."
+                ),
+            },
+            "op": {
+                "type": "string",
+                "description": (
+                    "computer: observe, act, capture, done, targets, capabilities. "
+                    "file: list, read, write. git: status, diff, log, add, commit. "
+                    "slack: read, post. board: read, post. shell: run. web: fetch. catalog: catalog."
+                ),
+            },
+            "target": TARGET_PROPERTY,
+            "action": ACTION_PROPERTY,
+            "observe_after": {"type": "boolean"},
+            "max_nodes": {"type": "integer", "minimum": 1},
+            "max_depth": {"type": "integer", "minimum": 0},
+            "include_offscreen": {"type": "boolean"},
+            "id": {"type": "string"},
+            "path": {"type": "string"},
+            "paths": {"type": "array", "items": {"type": "string"}},
+            "contents": {"type": "string"},
+            "text": {"type": "string"},
+            "body": {"type": "string"},
+            "message": {"type": "string"},
+            "command": {
+                "description": "Shell string or argv list.",
+                "oneOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}],
+            },
+            "url": {"type": "string"},
+            "from": {"type": "string"},
+            "to": {"type": "string"},
+            "subject": {"type": "string"},
+            "board": {"type": "string"},
+            "lane": {"type": "string"},
+            "kind": {"type": "string"},
+            "channel": {
+                "type": "string",
+                "description": "Slack dest. Only #commons C0BRGMDQB6G is used.",
+            },
+            "thread_ts": {"type": "string"},
+            "timeout": {"type": "number"},
+            "limit": {"type": "integer", "minimum": 1},
+            "count": {"type": "integer", "minimum": 1},
+            "staged": {"type": "boolean"},
+            "method": {"type": "string"},
+        },
+    },
+    "annotations": {"readOnlyHint": False, "destructiveHint": True, "openWorldHint": True},
+}
+
+COMPAT_OPS = {
+    "hands_targets": "targets",
+    "hands_observe": "observe",
+    "hands_act": "act",
+    "hands_capture": "capture",
+    "hands_capabilities": "capabilities",
+}
+
 TOOLS = [
+    HANDS_TOOL,
     {
         "name": "hands_targets",
-        "description": "List the local Windows and Android hands and their live availability.",
+        "description": "Compatibility alias. Prefer hands with op=targets.",
         "inputSchema": {"type": "object", "properties": {}},
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False},
     },
     {
         "name": "hands_observe",
-        "description": "Return a semantic UI delta for Windows or Android; no pixels are captured.",
+        "description": "Compatibility alias. Prefer hands with route=computer, op=observe. No pixels.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -84,7 +161,7 @@ TOOLS = [
     },
     {
         "name": "hands_act",
-        "description": "Perform one direct local semantic/input action and return the resulting UI delta.",
+        "description": "Compatibility alias. Prefer hands with route=computer, op=act.",
         "inputSchema": {
             "type": "object",
             "required": ["action"],
@@ -100,7 +177,7 @@ TOOLS = [
     },
     {
         "name": "hands_capture",
-        "description": "Explicitly capture pixels from the selected Windows or Android surface.",
+        "description": "Compatibility alias. Prefer hands with route=computer, op=capture.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -113,7 +190,7 @@ TOOLS = [
     },
     {
         "name": "hands_capabilities",
-        "description": "Describe one adapter, or list both targets when target is omitted.",
+        "description": "Compatibility alias. Prefer hands with op=capabilities or op=catalog.",
         "inputSchema": {"type": "object", "properties": {"target": TARGET_PROPERTY}},
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False},
     },
@@ -132,16 +209,25 @@ def _tool_result(result: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def dispatch(broker: TitanHandsBroker, message: Mapping[str, Any]) -> dict[str, Any] | None:
+def _runtime(surface: TitanHandsBroker | TitanHandsRuntime) -> TitanHandsRuntime:
+    if isinstance(surface, TitanHandsRuntime):
+        return surface
+    return TitanHandsRuntime(broker=surface)
+
+
+def dispatch(
+    surface: TitanHandsBroker | TitanHandsRuntime, message: Mapping[str, Any]
+) -> dict[str, Any] | None:
     method = message.get("method")
     request_id = message.get("id")
+    runtime = _runtime(surface)
     if method == "notifications/initialized":
         return None
     if method == "initialize":
         result = {
             "protocolVersion": MCP_PROTOCOL,
             "capabilities": {"tools": {"listChanged": False}},
-            "serverInfo": {"name": "titan-hands", "version": "0.2.0"},
+            "serverInfo": {"name": "titan-hands", "version": "0.3.0"},
             "instructions": SERVER_INSTRUCTIONS,
         }
     elif method == "tools/list":
@@ -149,21 +235,17 @@ def dispatch(broker: TitanHandsBroker, message: Mapping[str, Any]) -> dict[str, 
     elif method == "tools/call":
         params = message.get("params") or {}
         name = params.get("name")
-        arguments = params.get("arguments") or {}
-        operations = {
-            "hands_targets": "targets",
-            "hands_observe": "observe",
-            "hands_act": "act",
-            "hands_capture": "capture",
-            "hands_capabilities": "capabilities",
-        }
-        if name not in operations:
+        arguments = dict(params.get("arguments") or {})
+        if name == "hands":
+            result = _tool_result(runtime.handle(arguments))
+        elif name in COMPAT_OPS:
+            result = _tool_result(runtime.handle({"op": COMPAT_OPS[name], **arguments}))
+        else:
             return {
                 "jsonrpc": "2.0",
                 "id": request_id,
                 "error": {"code": -32602, "message": f"unknown tool: {name}"},
             }
-        result = _tool_result(broker.handle({"op": operations[name], **arguments}))
     else:
         return {
             "jsonrpc": "2.0",
@@ -178,14 +260,14 @@ def main() -> int:
         sys.stdin.reconfigure(encoding="utf-8", errors="strict")
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="strict")
-    broker = TitanHandsBroker()
+    runtime = TitanHandsRuntime()
     try:
         for line in sys.stdin:
             if not line.strip():
                 continue
             try:
                 message = json.loads(line)
-                response = dispatch(broker, message)
+                response = dispatch(runtime, message)
             except Exception as exc:
                 response = {
                     "jsonrpc": "2.0",
@@ -196,7 +278,7 @@ def main() -> int:
                 print(json.dumps(response, ensure_ascii=False, separators=(",", ":")), flush=True)
         return 0
     finally:
-        broker.close()
+        runtime.close()
 
 
 if __name__ == "__main__":

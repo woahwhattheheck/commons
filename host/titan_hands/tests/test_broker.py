@@ -39,18 +39,21 @@ class BrokerTests(unittest.TestCase):
         result = self.broker.handle({"op": "targets"})
         self.assertEqual([target["target"] for target in result["targets"]], ["android", "windows"])
 
-    def test_mcp_advertises_instructions_and_five_tools(self):
+    def test_mcp_advertises_one_primary_tool_and_compat_aliases(self):
         initialized = dispatch(
             self.broker, {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}}
         )
-        self.assertIn("semantic", initialized["result"]["instructions"])
+        self.assertIn("One tool: hands", initialized["result"]["instructions"])
         listed = dispatch(self.broker, {"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-        self.assertEqual(len(listed["result"]["tools"]), 5)
+        names = [tool["name"] for tool in listed["result"]["tools"]]
+        self.assertEqual(names[0], "hands")
+        self.assertEqual(len(names), 6)
         tools = {tool["name"]: tool for tool in listed["result"]["tools"]}
         action_schema = tools["hands_act"]["inputSchema"]["properties"]["action"]
         self.assertIn("type", action_schema["required"])
         self.assertIn("file", action_schema["properties"])
         self.assertIn("package", action_schema["properties"])
+        self.assertEqual(tools["hands"]["inputSchema"]["required"], ["op"])
 
 
 if __name__ == "__main__":

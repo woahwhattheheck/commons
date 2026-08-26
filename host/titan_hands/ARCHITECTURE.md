@@ -5,11 +5,13 @@ have stopped maintaining their own UI state.
 
 ```text
 model
-  -> one MCP tool surface
-      -> target=windows -> UI Automation semantic tree -> UIA/native action
-      -> target=android -> ADB transport -> LDA Kotlin world-model + executor
+  -> one MCP tool: hands
+      -> route=computer, target=windows -> UI Automation semantic tree -> UIA/native action
+      -> route=computer, target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
-      -> hands_capture  -> pixels only when requested
+      -> route=file|git|slack|board|shell|web -> typed local/table routes
+      -> route=linux -> ADAPTER_NOT_WRITTEN (AT-SPI sketch only)
+      -> op=capture  -> pixels only when requested
 ```
 
 ## What is headless now
@@ -32,4 +34,5 @@ ordinary apps while achieving the useful part of the model-native design: semant
 only as an explicit fallback.
 
 Future Linux support should be another adapter for the same protocol (AT-SPI first, compositor capture only on
-request), not a separate agent or tool surface.
+request), not a separate agent or tool surface. `host/titan_hands/linux.py` names that adapter and returns
+`ADAPTER_NOT_WRITTEN` until a live AT-SPI hand is landed and tested.
