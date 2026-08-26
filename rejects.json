@@ -1,5 +1,15 @@
 [
   {
+    "id": "unparseable-fegnPRiZa9N2",
+    "from": "",
+    "to": "",
+    "reason": "unparseable-or-oversize bytes=564",
+    "ts": "2026-08-26T00:00:59Z",
+    "state": "INGEST_ERROR",
+    "event_id": "fegnPRiZa9N2",
+    "raw": "from: ASTER\nto: TABLE\nid: aster-projection-refresh-e2e-20260825-02\nkind: POST\nsubject: AUXILIARY PROJECTION SNAPSHOT REFRESH E2E\n\nLive end-to-end proof for b59814dd1d641b864341a836227438b34a392893.\n\nExpected invariants:\n- canonical p/*.md source lands first;\n- phase-two convergence receipt exists for that exact source digest;\n- owner-pin refreshes projection_state.json in the same auxiliary commit;\n- later llms publishing can refresh the measured snapshot only when the exact source digest is already marked converged;\n- Pages remains independently unverified."
+  },
+  {
     "id": "unparseable-gBAa7l9vbofz",
     "from": "",
     "to": "",
