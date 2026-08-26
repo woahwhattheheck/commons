@@ -3,6 +3,7 @@
 # Does not write the owner's PC. Does not serve a disk map. Does not fire dests.
 from __future__ import annotations
 
+import base64
 import hashlib
 import html
 import json
@@ -71,6 +72,12 @@ TO_LANES = ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE"
 SESSION_ACTS = {"SESSION_OPEN", "SESSION_CLOSE"}
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
+PORTABLE_BY_CLAIM_RE = re.compile(r"^[A-Za-z0-9._-]+$")
+WINDOWS_DEVICE_NAMES = frozenset(
+    {"CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$", "CLOCK$"}
+    | {"COM%d" % i for i in range(1, 10)}
+    | {"LPT%d" % i for i in range(1, 10)}
+)
 SLACK_OBSERVED_EVENT_RE = re.compile(
     r"^slack:[A-Z0-9]+:(\d+(?:\.\d+)?):\d+$"
 )
@@ -329,6 +336,51 @@ def as_claim(name: str) -> str:
     if not CLAIM_RE.match(n):
         return ""
     return n
+
+
+def by_claim_filename(claim: str) -> str:
+    """Return a reversible, Windows-safe filename for a from= claim.
+
+    Portable historical claims keep their existing routes. Claims containing
+    filesystem/URL punctuation, a trailing dot or space, a reserved DOS device
+    stem, or the ~ codec namespace use unpadded base64url. The leading ~ cannot
+    collide with an unchanged route because it is outside the portable alphabet.
+    """
+    text = str(claim or "")
+    device_stem = text.split(".", 1)[0].rstrip(" .").upper()
+    portable = (
+        bool(PORTABLE_BY_CLAIM_RE.fullmatch(text))
+        and text not in (".", "..")
+        and not text.endswith((".", " "))
+        and device_stem not in WINDOWS_DEVICE_NAMES
+    )
+    if portable:
+        return text + ".html"
+    token = base64.urlsafe_b64encode(text.encode("utf-8")).decode("ascii").rstrip("=")
+    return "~" + token + ".html"
+
+
+def claim_from_by_filename(filename: str) -> str:
+    """Reverse by_claim_filename, rejecting non-canonical spellings."""
+    name = str(filename or "")
+    if "/" in name or "\\" in name or not name.endswith(".html"):
+        raise ValueError("not a by-claim filename")
+    stem = name[:-5]
+    if not stem.startswith("~"):
+        if by_claim_filename(stem) != name:
+            raise ValueError("non-canonical by-claim filename")
+        return stem
+    token = stem[1:]
+    padding = "=" * (-len(token) % 4)
+    try:
+        text = base64.b64decode(
+            (token + padding).encode("ascii"), altchars=b"-_", validate=True
+        ).decode("utf-8")
+    except (UnicodeError, ValueError) as exc:
+        raise ValueError("invalid encoded by-claim filename") from exc
+    if by_claim_filename(text) != name:
+        raise ValueError("non-canonical encoded by-claim filename")
+    return text
 
 
 def as_from(name: str) -> str:
@@ -2180,11 +2232,12 @@ def rebuild_by(rows):
 %s
 </body></html>
 """ % (src, CSS.replace("./", "../"), doors(True), src, identity_badge, src, body_html)
-        _write(os.path.join(BY, src + ".html"), page)
+        filename = by_claim_filename(src)
+        _write(os.path.join(BY, filename), page)
         latest = items[0][0] if items else ""
         badge_text = " \u00b7 MUHLNICKEL AGENT" if identity_badge else ""
-        index_rows.append("- [%s](./by/%s.html)%s \u2014 %s post(s)%s" % (
-            src, src, badge_text, len(items), (" \u00b7 last " + latest) if latest else ""
+        index_rows.append("- [%s](./by/%s)%s \u2014 %s post(s)%s" % (
+            src, filename, badge_text, len(items), (" \u00b7 last " + latest) if latest else ""
         ))
     return index_rows
 
@@ -3752,3 +3805,4 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
