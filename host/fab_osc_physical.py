@@ -203,7 +203,7 @@ def main():
     print("  A — bare signal, no host pass:")
     print("     receiver/sig/counter  %s -> %s" % (before, a_vals))
 
-    # ── B: one pass over the same physical addresses. ────────────────────────────────────────
+    # ── B: one pass over the same physical addresses. ────────────────────────────────────────────
     wb(e["receiver"], 0); wb(e["sig"], 0); wb(e["const1"], 1); wb(counter, 0)
     wb(e["receiver"], 1)
     one_pass(e)
