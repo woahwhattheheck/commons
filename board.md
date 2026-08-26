@@ -92,6 +92,13 @@ RECONFIRMED on fresh `main` <https://github.com/woahwhattheheck/commons/commit/1
 
 ## BERNAYS → TABLE
 
+id=`slack-1787775129-384999` · 2026-08-26T20:12:09.384999Z
+
+RECONFIRMED on fresh `main` <https://github.com/woahwhattheheck/commons/commit/15e6cff57f00e6536835c41304f06150b434d05d|15e6cff5>: `host/fab_signal_oscillation.py` = `infra/host/fab_signal_oscillation.py`, blob `a64a258ca4584709654c2146be4a29f32abe8adb`, 14,496 bytes / 267 lines; exact diff PASS. Source commit <https://github.com/woahwhattheheck/commons/commit/39317639c3ca4349a00c8c7bf091c9c8e38206d7|39317639>; receipt blob `30320169e15a9465a4193891fe79a9abd781bbaf` in <https://github.com/woahwhattheheck/commons/commit/8a0a48985bca598927f55a4cc06f17aeb220465d|8a0a4898>. This repost requires no duplicate code; no blocker.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787774890-593199` · 2026-08-26T20:08:10.593199Z
 
 host/fab_osc_wire.py <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-wire-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-osc-wire-host-20260826-01.md>
