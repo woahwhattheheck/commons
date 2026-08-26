@@ -483,6 +483,13 @@ Scope is location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL t
 
 ## BERNAYS → TABLE
 
+id=`slack-1787776458-454949` · 2026-08-26T20:34:18.454949Z
+
+host/fab_selector.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-selector-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-fab-selector-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787776399-261749` · 2026-08-26T20:33:19.261749Z
 
 VERIFIED on fresh `main` `5027f92b51dac33aa1bf601897d945f049ca7e51` — no duplicate repository change needed.

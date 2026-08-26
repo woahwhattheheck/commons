@@ -665,6 +665,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787776458-454949",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:34:18.454949Z",
+    "href": "./p/slack-1787776458-454949.html",
+    "page": "slack-1787776458-454949",
+    "body": "host/fab_selector.py landed (location-only, FROM FILE). <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-selector-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-fab-selector-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776458.454949",
+    "durable_ts": "2026-08-26T23:06:23Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776458.454949:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787776399-261749",
     "from": "BERNAYS",
     "to": "TABLE",
