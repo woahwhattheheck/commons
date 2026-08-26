@@ -1,18 +1,22 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "kind": "GGUF_DIAGNOSTIC_PUBLIC_PROSPECTS",
   "offer_id": "gguf-diagnostic-10d-12k",
-  "measured_at": "2026-08-25",
+  "measured_at": "2026-08-26",
   "demand": "UNKNOWN",
   "buyer_authorizations_observed": 0,
-  "contact_sent": false,
+  "contact_sent": true,
+  "distinct_contacts_sent": 7,
+  "provider_transports_observed": 12,
+  "replies_observed": 0,
+  "do_not_resend_all": true,
   "prospect_is_not_buyer": true,
   "method": "Primary public product, documentation, enterprise, and business-contact pages only. Fit is a hypothesis, not demand.",
   "prospects": [
     {
       "rank": 1,
       "organization": "LM Studio",
-      "state": "PROSPECT_NOT_CONTACTED",
+      "state": "CONTACTED_NO_RESPONSE",
       "fit_hypothesis": "LM Studio runs llama.cpp GGUF models and sells enterprise deployment; a reversible GGUF diagnostic may fit evaluation or partner work.",
       "product_evidence_url": "https://lmstudio.ai/docs/app/advanced/import-model",
       "buyer_channel_url": "https://lmstudio.ai/enterprise",
@@ -22,7 +26,7 @@
     {
       "rank": 2,
       "organization": "Ollama",
-      "state": "PROSPECT_NOT_CONTACTED",
+      "state": "CONTACTED_NO_RESPONSE",
       "fit_hypothesis": "Ollama documents GGUF import and offers enterprise deployment planning and support; model diagnostics may fit partner or support-adjacent work.",
       "product_evidence_url": "https://docs.ollama.com/import",
       "buyer_channel_url": "https://ollama.com/pricing",
@@ -32,7 +36,7 @@
     {
       "rank": 3,
       "organization": "Jan",
-      "state": "PROSPECT_NOT_CONTACTED",
+      "state": "CONTACTED_NO_RESPONSE",
       "fit_hypothesis": "Jan publicly supports community GGUF models and publishes a business-inquiry route; a bounded reversible diagnostic may fit model evaluation or partnership work.",
       "product_evidence_url": "https://jan.ai/docs/manage-models",
       "buyer_channel_url": "https://www.jan.ai/support",
@@ -42,12 +46,63 @@
     {
       "rank": 4,
       "organization": "AnythingLLM",
-      "state": "PROSPECT_NOT_CONTACTED",
+      "state": "CONTACTED_NO_RESPONSE",
       "fit_hypothesis": "AnythingLLM offers local-model integrations and enterprise on-premise customization; a GGUF diagnostic may fit customer-specific local-model evaluation.",
       "product_evidence_url": "https://docs.anythingllm.com/",
       "buyer_channel_url": "https://anythingllm.com/cloud",
       "channel": "official enterprise request-quote route",
       "disqualifier": "AnythingLLM may route model behavior to upstream runtimes and may not control a target GGUF; no budget or request was observed."
+    }
+  ],
+  "canonical_transports": [
+    {
+      "organization": "LM Studio",
+      "provider_reference": "apollo:emailer_message:6a8e640456046a000c34514e",
+      "receipt": "outreach_receipts/20260826-lm-studio-6a8e640456046a000c34514e.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Ollama",
+      "provider_reference": "apollo:emailer_message:6a8e6221b0bf220018f25741",
+      "receipt": "outreach_receipts/20260826-ollama-6a8e6221b0bf220018f25741.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Jan",
+      "provider_reference": "apollo:emailer_message:6a8e622206f694001471e868",
+      "receipt": "outreach_receipts/20260826-jan-menlo-6a8e622206f694001471e868.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "AnythingLLM / Mintplex",
+      "provider_reference": "apollo:emailer_message:6a8e640556046a000f481b98",
+      "receipt": "outreach_receipts/20260826-anythingllm-mintplex-6a8e640556046a000f481b98.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Parallel Wireless",
+      "provider_reference": "apollo:emailer_message:6a8e5fbc8cd0c6000c217b30",
+      "receipt": "outreach_receipts/20260826-parallel-wireless-6a8e5fbc8cd0c6000c217b30.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "NextGen Federal",
+      "provider_reference": "apollo:emailer_message:6a8e5fbd06f69400180b0e8a",
+      "receipt": "outreach_receipts/20260826-nextgen-federal-6a8e5fbd06f69400180b0e8a.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Lyceum Technology",
+      "provider_reference": "apollo:emailer_message:6a8e64023bce020018b38a74",
+      "receipt": "outreach_receipts/20260826-lyceum-6a8e64023bce020018b38a74.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
     }
   ],
   "distribution_sequence": [

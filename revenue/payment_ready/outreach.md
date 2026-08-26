@@ -1,7 +1,10 @@
 # GGUF diagnostic distribution packet
 
-Status: **NOT SENT**. These are actionable public drafts, not evidence of
-a buyer, demand, acceptance, delivery, or cash.
+Status: **SENT TO 7 DISTINCT CONTACTS; NO RESPONSE OBSERVED**. The copy below
+records what was distributed. A completed transport is not evidence of a
+buyer, demand, acceptance, delivery, or cash. Twelve provider transports exist
+because five duplicate sends completed; duplicates do not increase the
+distinct-contact count. Every route below is `do_not_resend`.
 
 Canonical offer: `gguf-diagnostic-10d-12k` in
 `revenue/payment_ready/pack.json`. Public intake:
@@ -62,10 +65,29 @@ Subject: Reversible 10-day GGUF diagnostic with byte-exact rollback
 > refusal or redirect is useful evidence and will be recorded as refusal
 > feedback, not demand.
 
+## Canonical transport ledger
+
+Provider references identify completed email transport only. Exact append-only
+receipts live in `outreach_receipts/`; they do not prove inbox placement,
+human attention, demand, or acceptance.
+
+| organization | canonical provider reference | state |
+|---|---|---|
+| LM Studio | `apollo:emailer_message:6a8e640456046a000c34514e` | `SENT_COMPLETED_NO_RESPONSE` |
+| Ollama | `apollo:emailer_message:6a8e6221b0bf220018f25741` | `SENT_COMPLETED_NO_RESPONSE` |
+| Jan | `apollo:emailer_message:6a8e622206f694001471e868` | `SENT_COMPLETED_NO_RESPONSE` |
+| AnythingLLM / Mintplex | `apollo:emailer_message:6a8e640556046a000f481b98` | `SENT_COMPLETED_NO_RESPONSE` |
+| Parallel Wireless | `apollo:emailer_message:6a8e5fbc8cd0c6000c217b30` | `SENT_COMPLETED_NO_RESPONSE` |
+| NextGen Federal | `apollo:emailer_message:6a8e5fbd06f69400180b0e8a` | `SENT_COMPLETED_NO_RESPONSE` |
+| Lyceum Technology | `apollo:emailer_message:6a8e64023bce020018b38a74` | `SENT_COMPLETED_NO_RESPONSE` |
+
+Measured funnel: `contacts_sent=7`, `replies=0`, `acceptances=0`,
+`paid_deliveries=0`, `cash_usd=0`. Reply monitoring is the current edge.
+
 ## Distribution receipt fields
 
-Do not mark a row SENT until the owner or an independently observed public
-event supplies:
+Do not mark a future row SENT until the owner or an independently observed
+provider event supplies:
 
 | field | required evidence |
 |---|---|

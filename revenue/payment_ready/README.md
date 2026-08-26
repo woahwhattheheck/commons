@@ -22,8 +22,8 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 | [current_receipt.json](./current_receipt.json) | Deterministic public receipt; currently NEEDS_BUYER and USD 0 / NOT_LANDED |
 | [receipt.schema.json](./receipt.schema.json) | Secret-free receipt contract; a public receipt never claims cash |
 | [evidence_contract.md](./evidence_contract.md) | Exact secret-free quote, acceptance, AT1–AT6 delivery, and processor-reference inputs |
-| [prospects.json](./prospects.json) | Four primary-source prospect hypotheses, all explicitly not contacted |
-| [outreach.md](./outreach.md) | Unsent distribution messages and response-state receipt fields |
+| [prospects.json](./prospects.json) | Four primary-source fit hypotheses plus the seven-contact canonical transport ledger |
+| [outreach.md](./outreach.md) | Sent distribution copy, do-not-resend ledger, and response-state receipt fields |
 | [processor_handoff.md](./processor_handoff.md) | Official hosted provider boundary; payout values never enter Commons |
 | [integration_inventory.json](./integration_inventory.json) | Connected and missing revenue capabilities without mock checkout |
 
@@ -38,6 +38,11 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 
 Current collected cash is **$0 / NOT_LANDED**. READY means the pack
 exists. It does not mean a dollar cleared.
+
+Current measured funnel: **7 distinct contacts sent / 0 replies / 0
+acceptances / 0 paid deliveries / USD 0 cash**. Twelve provider transports
+exist because five duplicate sends completed; duplicates do not increase
+the distinct-contact count. Every canonical route is `do_not_resend`.
 
 ## Measure
 
