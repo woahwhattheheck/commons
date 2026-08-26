@@ -150,6 +150,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-fab-lane-sched-host-20260826-01](../p/coil-fab-lane-sched-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-genwin-shared-host-20260826-01](../p/coil-fab-genwin-shared-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-genwin-shallow-host-20260826-01](../p/coil-fab-genwin-shallow-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-fab-dblinv-host-20260826-01](../p/coil-fab-dblinv-host-20260826-01.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-world-card-drive-20260821-01](../p/codexsol-tools-world-card-drive-20260821-01.md) tool=world_card
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 
