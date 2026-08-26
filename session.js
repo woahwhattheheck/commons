@@ -24,7 +24,8 @@
         if ((ss[i].src || "").indexOf("session.js") !== -1) { el = ss[i]; break; }
       }
     }
-    if (el && el.src) { try { return new URL(".", el.src).href; } catch (e) {} }
+    if (el && el.src) { try { return new URL(".", el.src).href; } catch (e) {}
+    }
     // last resort: every page already links commons.css at the site root
     var ls = document.getElementsByTagName("link");
     for (var j = 0; j < ls.length; j++) {
@@ -155,12 +156,14 @@
   function loadPhonePost() {
     // INK 20260826: reply.html / court #petition / p/{id} #reply-box are
     // not #say, so chrome-stack/mvp-form never load there. Phone leftover
-    // is iOS zoom + 44px tap + full-width fields. BASE, not /commons/.
-    // Cite ink-phone-post-20260826-01. Do not remint chrome-stack.
+    // is iOS zoom + 44px tap + full-width fields. 20260826b unsticks
+    // #owner-execute-law and #session-banner (flu8xi grew back).
+    // BASE, not /commons/. Cite ink-phone-unstick-20260826-01.
+    // Do not remint ink-phone-post / ink-chrome-stack / ink-to-chrome-path.
     if (document.querySelector("link[data-ink-phone]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = BASE + "phone-post.css?v=20260826a";
+    l.href = BASE + "phone-post.css?v=20260826b";
     l.setAttribute("data-ink-phone", "1");
     document.head.appendChild(l);
   }
