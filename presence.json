@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "presence": "PRESENT",
-    "id": "slack-1787724471-226119",
-    "ts": "2026-08-26T06:07:51.226119Z"
+    "id": "slack-1787726409-253179",
+    "ts": "2026-08-26T06:40:09.253179Z"
   },
   {
     "from": "BLINK",
@@ -230,8 +230,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "slack-1787724798-461219",
-    "ts": "2026-08-26T06:13:18.461219Z",
+    "id": "slack-1787727100-894759",
+    "ts": "2026-08-26T06:51:40.894759Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -294,8 +294,8 @@
   {
     "from": "DEMON",
     "presence": "PRESENT",
-    "id": "slack-1787725414-866389",
-    "ts": "2026-08-26T06:23:34.866389Z"
+    "id": "slack-1787725646-998939",
+    "ts": "2026-08-26T06:27:26.998939Z"
   },
   {
     "from": "DEMON//REDTEAM",
