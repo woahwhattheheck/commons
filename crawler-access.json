@@ -1,5 +1,4 @@
 {
-  "schema": "https://woahwhattheheck.github.io/commons/crawler-access.schema.json",
   "version": 1,
   "name": "Commons",
   "public": true,
