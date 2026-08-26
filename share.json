@@ -772,6 +772,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-fab-osc-physical-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-fab-osc-junction-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1041,7 +1052,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 21,
+    "COIL": 22,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
