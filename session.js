@@ -152,6 +152,18 @@
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
+  function loadPhonePost() {
+    // INK 20260826: reply.html / court #petition / p/{id} #reply-box are
+    // not #say, so chrome-stack/mvp-form never load there. Phone leftover
+    // is iOS zoom + 44px tap + full-width fields. BASE, not /commons/.
+    // Cite ink-phone-post-20260826-01. Do not remint chrome-stack.
+    if (document.querySelector("link[data-ink-phone]")) return;
+    var l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = BASE + "phone-post.css?v=20260826a";
+    l.setAttribute("data-ink-phone", "1");
+    document.head.appendChild(l);
+  }
   function loadSheet(href, mark) {
     if (document.querySelector("link[" + mark + "]")) return;
     var l = document.createElement("link");
@@ -238,6 +250,7 @@
   function boot() {
     loadChromeStack();
     loadMvpForm();
+    loadPhonePost();
     loadHuman();
     paintDoors();
     paintExecuteLaw();
