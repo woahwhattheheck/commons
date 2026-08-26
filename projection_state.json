@@ -2,17 +2,17 @@
   "health_contract": "recompute source and projection digests at exact current HEAD",
   "pages_deployment": "UNVERIFIED",
   "projection": {
-    "bytes": 98050020,
-    "files": 6456,
-    "sha256": "f310ae625e80c77f218612f705f44ba7ac1ab8074eec9f05e6ce150144c918c2"
+    "bytes": 98203343,
+    "files": 6459,
+    "sha256": "982bc8d242aadcffcb10e386dd3c92382b331faad59686088056b9a57abeaf98"
   },
   "protocol": "v1",
   "schema": "commons-projection-v1",
   "scope": "p/*.md -> tracked Commons board surfaces",
   "source": {
-    "bytes": 11357293,
-    "files": 6109,
-    "sha256": "9e53d4ba2a9fac558cc31fa186ea63243391d606b2e3d0adbe47994018cd6f97"
+    "bytes": 11359037,
+    "files": 6112,
+    "sha256": "b11ea8966416141828acd31848f522ac0c4887d979722e9a5254742d62299bc3"
   },
   "state": "MEASURED_CONVERGED_WHEN_WRITTEN"
 }
