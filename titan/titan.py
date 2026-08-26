@@ -60,7 +60,7 @@ def throttle(epochs=40):
     print(f"\n  FULL THROTTLE — training {epochs} epochs continuously in the storage sandbox (resumes prior state).")
     return sandbox(epochs)
 
-# ── LIVE BENCH ────────────────────────────────────────────────────────────────────────────────
+# ── LIVE BENCH ────────────────────────────────────────────────────────────────────────────────────
 # Per-engine grep for the ONE headline line worth showing on the live dashboard. Keyed by filename so
 # it survives any reshuffle of the registry. (regex, "first"|"last"). Engines not listed fall back to a
 # generic scan for a === banner / byte-exact / PASS / accuracy line.
@@ -85,12 +85,12 @@ BENCH_METRIC = {
 }
 BENCH_GENERIC = [r"={2,}.*byte-exact.*={2,}", r"={2,}.*={2,}", r".*byte-exact.*True.*",
                  r".*\bPASS\b.*", r".*accuracy \d+%.*", r".*:\s*True\b.*"]
-BENCH_TIMEOUT = 180  # seconds per engine; the quick set all finish well under this — it is a safety net.
+BENCH_TEMPOUT = 180  # seconds per engine; the quick set all finish well under this — it is a safety net.
 
 def _clean_metric(s):
-    s = s.strip().strip("=").strip().lstrip("\u2605").strip()
+    s = s.strip().strip("=").strip().lstrip("★").strip()
     s = re.sub(r"\s+", " ", s)
-    return (s[:117] + "\u2026") if len(s) > 120 else s
+    return (s[:117] + "…") if len(s) > 120 else s
 
 def _extract_metric(out, fn):
     lines = [ln.rstrip() for ln in out.splitlines() if ln.strip()]
