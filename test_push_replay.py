@@ -33,11 +33,17 @@ def bake(root):
     # stand-in for rebuild(): the bake is a pure projection of p/*.md
     names = sorted(n for n in os.listdir(os.path.join(root, "p")) if n.endswith(".md"))
     write(os.path.join(root, "board.html"), "BAKE:" + ",".join(names) + "\n")
+    saved_root = board_ingest.ROOT
+    try:
+        board_ingest.ROOT = root
+        board_ingest.write_projection_convergence()
+    finally:
+        board_ingest.ROOT = saved_root
 
 
 def main():
     tmp = tempfile.mkdtemp(prefix="commons-replay-")
-    saved = (board_ingest.ROOT, board_ingest.rebuild, board_ingest.push_origin_main)
+    saved = (board_ingest.ROOT, board_ingest.rebuild, board_ingest.push_origin_main, board_ingest._git)
     try:
         origin = os.path.join(tmp, "origin.git")
         ours = os.path.join(tmp, "ours")
@@ -317,9 +323,71 @@ def main():
         run(["git", "clone", "-q", origin, check6], tmp)
         assert os.path.isfile(os.path.join(check6, "p", "i.md")), "durable record lost"
 
+        # Pending-marker CAS regression: race a new source record after our
+        # digest was computed but before the marker push. The stale digest must
+        # not replay over the larger union; the retry refreshes origin and
+        # lands only the union digest.
+        cp7 = os.path.join(tmp, "cp7")
+        racer5 = os.path.join(tmp, "racer5")
+        run(["git", "clone", "-q", origin, cp7], tmp)
+        run(["git", "clone", "-q", origin, racer5], tmp)
+        for cwd in (cp7, racer5):
+            run(["git", "config", "user.email", "w@w"], cwd)
+            run(["git", "config", "user.name", "w"], cwd)
+        board_ingest.ROOT = cp7
+        board_ingest.rebuild = lambda: bake(cp7)
+        write(os.path.join(cp7, "p", "j.md"), "post j\n")
+        bake(cp7)
+        stale_digest = board_ingest.post_source_snapshot()["sha256"]
+
+        real_git = board_ingest._git
+        marker_staged = [False]
+        marker_raced = [False]
+
+        def git_with_pending_race(args, env, timeout=90):
+            if args and args[0] == "add" and any(
+                str(value).startswith("projection/pending/") for value in args
+            ):
+                marker_staged[0] = True
+            if (
+                marker_staged[0]
+                and not marker_raced[0]
+                and args[:3] == ["push", "origin", "HEAD:main"]
+            ):
+                marker_raced[0] = True
+                run(["git", "pull", "-q", "origin", "main"], racer5)
+                write(os.path.join(racer5, "p", "k.md"), "post k\n")
+                run(["git", "add", "--", "p/k.md"], racer5)
+                run(["git", "commit", "-qm", "pending digest racer"], racer5)
+                run(["git", "push", "-q", "origin", "HEAD:main"], racer5)
+            return real_git(args, env, timeout=timeout)
+
+        board_ingest._git = git_with_pending_race
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html", "p"])
+        board_ingest._git = real_git
+        assert st == "pushed", st
+        assert marker_raced[0], "pending marker push was not raced"
+
+        check7 = os.path.join(tmp, "check7")
+        run(["git", "clone", "-q", origin, check7], tmp)
+        board_ingest.ROOT = check7
+        union_digest = board_ingest.post_source_snapshot()["sha256"]
+        assert union_digest != stale_digest, (stale_digest, union_digest)
+        union_pending = os.path.join(
+            check7, "projection", "pending", board_ingest.PROJECTION_PROTOCOL,
+            union_digest + ".json",
+        )
+        stale_pending = os.path.join(
+            check7, "projection", "pending", board_ingest.PROJECTION_PROTOCOL,
+            stale_digest + ".json",
+        )
+        assert os.path.isfile(union_pending), "refreshed union pending marker missing"
+        assert not os.path.exists(stale_pending), "stale pending marker leaked onto main"
+
         print("PUSH REPLAY TEST: ALL PASS")
     finally:
-        board_ingest.ROOT, board_ingest.rebuild, board_ingest.push_origin_main = saved
+        (board_ingest.ROOT, board_ingest.rebuild,
+         board_ingest.push_origin_main, board_ingest._git) = saved
         shutil.rmtree(tmp, ignore_errors=True)
 
 

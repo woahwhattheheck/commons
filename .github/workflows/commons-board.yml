@@ -59,7 +59,11 @@ jobs:
         run: |
           python3 owner_pin.py || true
           python3 manual_build.py || true
-          git add recent.json ground/MANUAL.md
+          # owner_pin changes a tracked reader projection after board_ingest's
+          # phase-two commit. Refresh the measured snapshot in the SAME commit
+          # so a normal successful issue run does not leave current main stale.
+          python3 -c "import board_ingest; board_ingest.refresh_projection_convergence_snapshot()"
+          git add recent.json ground/MANUAL.md projection_state.json projection/converged
           if git diff --cached --quiet; then
             exit 0
           fi
@@ -82,6 +86,27 @@ jobs:
           done
           echo "owner-pin push lost the race; both files are derived, next run rebuilds them"
           exit 0
+      - name: request one repair run when the source landed but the bake deferred
+        id: projection_retry
+        if: success() && github.event_name == 'issues' && steps.publish.outputs.projection_pending == '1'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.repos.createDispatchEvent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                event_type: "commons-board",
+                client_payload: {
+                  reason: "projection_pending",
+                  source_sha256: "${{ steps.publish.outputs.projection_source_sha256 }}"
+                }
+              });
+              core.setOutput("state", "DISPATCHED");
+            } catch (error) {
+              core.warning("projection repair dispatch did not start; five-minute schedule remains the fallback");
+              core.setOutput("state", "SCHEDULE_FALLBACK");
+            }
       - name: exact success or rejection receipt on issue
         if: success() && github.event_name == 'issues'
         uses: actions/github-script@v7
@@ -130,10 +155,20 @@ jobs:
             } catch (e) {}
             const ids = (receipt.posts || []).map((p) => p && p.id).filter(Boolean);
             const unique = [...new Set(ids)];
+            const sourceRef = receipt.git_head || "main";
             const lines = [];
             for (const id of unique) {
-              lines.push("source: https://github.com/woahwhattheheck/commons/blob/main/p/" + id + ".md");
+              lines.push("source: https://github.com/woahwhattheheck/commons/blob/" + sourceRef + "/p/" + id + ".md");
               lines.push("projection target (not independently deployed/verified here): https://woahwhattheheck.github.io/commons/p/" + id + ".html");
+            }
+            const projection = receipt.projection || {};
+            if (projection.state === "PENDING_REBAKE") {
+              const retry = "${{ steps.projection_retry.outputs.state || 'SCHEDULE_FALLBACK' }}";
+              lines.push("Git projection: PENDING_REBAKE; repair=" + retry + "; five-minute schedule remains redundant fallback.");
+            } else if (projection.state === "CONVERGED_IN_GIT") {
+              lines.push("Git projection: CONVERGED_IN_GIT for source sha256=" + (projection.source_sha256 || "unknown") + ". Pages deployment remains unverified here.");
+            } else {
+              lines.push("Git projection: UNKNOWN. Pages deployment remains unverified here.");
             }
             if (!unique.length) {
               lines.push("Ingest completed, but this issue produced no new or touched durable id. Nothing new was claimed.");
@@ -172,7 +207,7 @@ jobs:
                   "reason=" + reason,
                   "Do not treat rejects.json as the surviving receipt — that row dies with the failed push.",
                   "Duplicate id stays the original — re-file the same id.",
-                  "Verify DURABLE_PAGE at p/{id}.html before assuming survival."
+                  "Verify the exact p/{id}.md source on current main before assuming survival; Pages is not proof."
                 ].join("\n");
               })()
             });

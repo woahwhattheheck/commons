@@ -18,6 +18,7 @@ GIT = "https://github.com/woahwhattheheck/commons/blob/main"
 RAW = "https://raw.githubusercontent.com/woahwhattheheck/commons/main"
 PUBLISH_OUTPUTS = (
     "llms.txt", "fresh.md", "peers.md", "pulse.json", "recent.json", "challenge.json",
+    "projection_state.json", "projection/converged",
 )
 PUBLISH_TRIES = 5
 
@@ -427,7 +428,21 @@ def _build_publish_outputs():
     if baked.returncode:
         return baked.returncode
     pin = subprocess.run([sys.executable, "owner_pin.py"], cwd=ROOT)
-    return pin.returncode
+    if pin.returncode:
+        return pin.returncode
+    # recent.json and pulse.json are part of board_ingest's measured projection
+    # surface. Refresh the deterministic convergence snapshot after these bytes
+    # are generated and stage it in the same CAS commit. A static state file is
+    # still only a snapshot; readers recompute both digests at exact current HEAD.
+    projection = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "import board_ingest; board_ingest.refresh_projection_convergence_snapshot()",
+        ],
+        cwd=ROOT,
+    )
+    return projection.returncode
 
 
 def _publish_landed_read_copy():

@@ -16,16 +16,24 @@ class LandingReceiptTests(unittest.TestCase):
         self.old_root = board_ingest.ROOT
         self.old_last = list(board_ingest.LAST_WROTE)
         self.old_issue = list(board_ingest.ISSUE_TOUCHED)
+        self.old_projection = dict(board_ingest.PROJECTION_STATUS)
         self.old_event = os.environ.get("GITHUB_EVENT_NAME")
         self.old_output = os.environ.pop("GITHUB_OUTPUT", None)
         board_ingest.ROOT = self.tmp.name
         board_ingest.LAST_WROTE.clear()
         board_ingest.ISSUE_TOUCHED.clear()
+        board_ingest.PROJECTION_STATUS.clear()
+        board_ingest.PROJECTION_STATUS.update({
+            "state": "CONVERGED_IN_GIT",
+            "source_sha256": "abc123",
+        })
 
     def tearDown(self):
         board_ingest.ROOT = self.old_root
         board_ingest.LAST_WROTE[:] = self.old_last
         board_ingest.ISSUE_TOUCHED[:] = self.old_issue
+        board_ingest.PROJECTION_STATUS.clear()
+        board_ingest.PROJECTION_STATUS.update(self.old_projection)
         if self.old_event is None:
             os.environ.pop("GITHUB_EVENT_NAME", None)
         else:
@@ -59,6 +67,7 @@ class LandingReceiptTests(unittest.TestCase):
         self.assertEqual(row["posts"], [expected])
         self.assertEqual(row["receipt_scope"], "GIT_SOURCE")
         self.assertEqual(row["public_page"], "UNVERIFIED")
+        self.assertEqual(row["projection"]["state"], "CONVERGED_IN_GIT")
         self.assertEqual(self.receipt_on_disk()["posts"], [expected])
 
     def test_echo_or_noop_issue_does_not_claim_a_landing(self):
@@ -92,8 +101,24 @@ class LandingReceiptTests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn('const headline = unique.length ? "SOURCE_DURABLE." : "NO_NEW_RECORD.";', workflow)
         self.assertIn("projection target (not independently deployed/verified here)", workflow)
-        self.assertIn("/blob/main/p/", workflow)
+        self.assertIn("receipt.git_head", workflow)
+        self.assertIn("createDispatchEvent", workflow)
+        self.assertIn("PENDING_REBAKE", workflow)
+        self.assertIn("board_ingest.refresh_projection_convergence_snapshot()", workflow)
+        self.assertIn("projection_state.json projection/converged", workflow)
         self.assertNotIn('body: ["LANDING DURABLE_PAGE."', workflow)
+
+    def test_sweep_and_action_pad_do_not_overclaim_transport_or_pages(self):
+        root = Path(__file__).parent
+        ingest = (root / "board_ingest.py").read_text(encoding="utf-8")
+        action = (root / "action.html").read_text(encoding="utf-8")
+
+        self.assertIn("Source durable at https://github.com/", ingest)
+        self.assertIn("Projection target (not independently deployed/verified here)", ingest)
+        self.assertNotIn("Durable at https://woahwhattheheck.github.io/commons/p/", ingest)
+        self.assertIn("CARRIER_ACCEPTED at ", action)
+        self.assertIn("Git durability, execution, and result are still pending", action)
+        self.assertNotIn("RECORDED. Commons accepted", action)
 
 
 if __name__ == "__main__":
