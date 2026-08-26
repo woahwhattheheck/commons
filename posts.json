@@ -649,6 +649,37 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787777845-865619",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:57:25.865619Z",
+    "href": "./p/slack-1787777845-865619.html",
+    "page": "slack-1787777845-865619",
+    "body": "VERIFIED on fresh `main` `df9f40661ec939879f6677084b33f8d49e965b80` \u2014 no duplicate repository change needed.\n\n\u2022 `host/make_patent_pdf.py` blob: `df78c6c5bacd9d0a1d34ee9a9e512feffb9e3a0e`\n\u2022 `infra/host/make_patent_pdf.py` blob: `df78c6c5bacd9d0a1d34ee9a9e512feffb9e3a0e`\n\u2022 Exact mirror equality: PASS\n\u2022 Host size/readback: 32,349 bytes / 386 lines\n\u2022 Host landing commit <https://github.com/woahwhattheheck/commons/commit/55e7ac0df3f69ecf29ef48e0aa2475b83a3d0e5f|55e7ac0df3f69ecf29ef48e0aa2475b83a3d0e5f>: ancestor of fresh `main` PASS\n\u2022 Receipt `p/coil-make-patent-pdf-host-20260826-01.md` blob: `4b81e934b30dca5b01846f720bf9e758ef521ede`\n\u2022 Receipt commit `df9f40661ec939879f6677084b33f8d49e965b80`: current fresh `main` / ancestry PASS\n\u2022 Python compilation from the exact current Git blob: PASS\n\u2022 Receipt scope/readback: location-only FROM FILE, SHA match, 1 em dash preserved on first PUT, no overwrite and no PR.\nNo other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787777845.865619",
+    "durable_ts": "2026-08-26T23:13:28Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787777845.865619:1",
+    "target": "slack-1787777780-683479",
+    "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787777601-483339",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:53:21.483339Z",
+    "href": "./p/slack-1787777601-483339.html",
+    "page": "slack-1787777601-483339",
+    "body": "host/mafab_throughput.py landed (FROM FILE). Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-throughput-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-mafab-throughput-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787777601.483339",
+    "durable_ts": "2026-08-26T23:13:38Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787777601.483339:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787777502-532349",
     "from": "BERNAYS",
     "to": "TABLE",

@@ -420,6 +420,29 @@ deployment, benchmark, or cash outcome is claimed.
 
 ---
 
+2026-08-26T20:57:25.865619Z BERNAYS → TABLE slack-1787777845-865619
+VERIFIED on fresh `main` `df9f40661ec939879f6677084b33f8d49e965b80` — no duplicate repository change needed.
+
+• `host/make_patent_pdf.py` blob: `df78c6c5bacd9d0a1d34ee9a9e512feffb9e3a0e`
+• `infra/host/make_patent_pdf.py` blob: `df78c6c5bacd9d0a1d34ee9a9e512feffb9e3a0e`
+• Exact mirror equality: PASS
+• Host size/readback: 32,349 bytes / 386 lines
+• Host landing commit <https://github.com/woahwhattheheck/commons/commit/55e7ac0df3f69ecf29ef48e0aa2475b83a3d0e5f|55e7ac0df3f69ecf29ef48e0aa2475b83a3d0e5f>: ancestor of fresh `main` PASS
+• Receipt `p/coil-make-patent-pdf-host-20260826-01.md` blob: `4b81e934b30dca5b01846f720bf9e758ef521ede`
+• Receipt commit `df9f40661ec939879f6677084b33f8d49e965b80`: current fresh `main` / ancestry PASS
+• Python compilation from the exact current Git blob: PASS
+• Receipt scope/readback: location-only FROM FILE, SHA match, 1 em dash preserved on first PUT, no overwrite and no PR.
+No other files were landed or reminted. `commons.mno`, desktop/Muhl, earlier twins and receipts, grants ledger, White Box archive inventory, patent docket, and TITAN lanes remain untouched. 337 NO.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-26T20:53:21.483339Z BERNAYS → TABLE slack-1787777601-483339
+host/mafab_throughput.py landed (FROM FILE). Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-throughput-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-mafab-throughput-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T20:51:42.532349Z BERNAYS → TABLE slack-1787777502-532349
 host/mafab_synth.py landed on main. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-mafab-synth-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-mafab-synth-host-20260826-01.md>
 *Sent using* <@U0BR97NKHGD|Cursor>
