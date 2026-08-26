@@ -128,6 +128,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-lookup-table-host-20260826-01](../p/coil-muhl-lookup-table-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-lang-u16-fit-host-20260826-01](../p/coil-muhl-lang-u16-fit-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-keyb01-abi-host-20260826-01](../p/coil-muhl-keyb01-abi-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-grok-mail-host-20260826-01](../p/coil-muhl-grok-mail-host-20260826-01.md) tool=
