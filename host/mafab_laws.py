@@ -41,3 +41,28 @@ def depth_of(c, outs):
     d = [0] * (base + G)
     for k in range(G): d[base + k] = 1 + max(d[c.ga[k]], d[c.gb[k]])
     return max(d[o] if o >= 2 else 0 for o in outs)
+
+
+# ══════════════════════════════════════════════════════════════════════════════════
+# LAW 1 — THE ADDER IS CHOSEN BY OPERAND COUNT, NEVER BY DEFAULT.   §25C
+#
+# MEASURED (§25C, sum of N sixteen-bit values, identical function, byte-exact both ways):
+#     ripple: entry 66, then +6, +6, +6, +6   — expensive to enter, nearly free to extend
+#     kogge : entry 20, then +18, +18, +14, +16 — cheap to enter, ~2.8x more expensive to extend
+#     N=2 kogge 3.30x better · N=4 1.89x · N=8 1.39x · N=16 1.20x · N=32 1.05x  <- crossover
+# §25C states the consequence verbatim: "THE RULE THE FABRICATOR NEEDS: c.add must switch on operand
+# count — prefix below ~32 operands, ripple at or above. It is unconditionally ripple today, which
+# costs 3.3x DEPTH on every single isolated add in the library."
+# §24 licenses the area cost: kogge is ~2.1x the gates, and "area is not slowness".
+# ⛔ THE RULE IS STRIPPED. §31A retires it in terms: "§25's adder table stops being a rule to
+# hardcode and becomes ONE ENTRY IN A SPACE TO BE SEARCHED... a hardcoded rule is FAR TOO TIMID."
+# The foundry then measured it: `always-kogge` — what this rule selects below 32 operands — scored
+# 35% off optimal across 8 problems and lost to plain ripple. So there is no crossover constant and
+# no chooser. A caller supplies the adder, and the caller gets it from a SEARCH.
+def choose_adder(c, n_operands=None, adder=None):
+    """No policy here. Pass the adder the search selected; there is no default to fall back on,
+    because a default IS the hardcoded rule §31A removed."""
+    if adder is None:
+        raise ValueError("no adder supplied — §31A: the adder is searched, never defaulted. "
+                         "Pass the winner from mafab_adders.family(), or call the search.")
+    return adder
