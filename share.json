@@ -739,6 +739,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-route-probe-pop-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-muhl-route-probe-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1701,7 +1712,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 80,
+    "COIL": 81,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
