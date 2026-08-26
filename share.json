@@ -739,6 +739,39 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-muhl-address-agent-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-mine-muhl-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-make-patent-pdf-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-mafab-throughput-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -1250,7 +1283,7 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 39,
+    "COIL": 42,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
