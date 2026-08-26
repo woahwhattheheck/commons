@@ -165,6 +165,11 @@ PUBLIC_OBJECTIVE:</textarea>
   function compactFieldName(name) {
     return normalizeFieldText(name).toLowerCase().replace(/[^a-z0-9]+/g, "");
   }
+  function decodeJsonUnicodeEscapes(name) {
+    return String(name || "").replace(/\\u([0-9A-Fa-f]{4})/g, function (_match, hex) {
+      return String.fromCharCode(parseInt(hex, 16));
+    });
+  }
   var forbiddenCompactNames = Object.keys(forbiddenNames).reduce(function (result, name) {
     result[compactFieldName(name)] = true;
     return result;
@@ -217,15 +222,62 @@ PUBLIC_OBJECTIVE:</textarea>
     }
     return false;
   }
+  function balancedJsonCandidates(source) {
+    var expectedFor = { "{": "}", "[": "]" };
+    var spans = [];
+    var stack = [];
+    var inString = false;
+    var escaped = false;
+    var text = String(source);
+    for (var index = 0; index < text.length; index += 1) {
+      var character = text[index];
+      if (!stack.length) {
+        if (expectedFor[character]) stack.push({ expected: expectedFor[character], start: index });
+        continue;
+      }
+      if (inString) {
+        if (escaped) {
+          escaped = false;
+        } else if (character === "\\") {
+          escaped = true;
+        } else if (character === '"') {
+          inString = false;
+        }
+        continue;
+      }
+      if (character === '"') {
+        inString = true;
+      } else if (expectedFor[character]) {
+        stack.push({ expected: expectedFor[character], start: index });
+      } else if (character === "}" || character === "]") {
+        if (character !== stack[stack.length - 1].expected) {
+          stack = [];
+          inString = false;
+          escaped = false;
+          continue;
+        }
+        var opened = stack.pop();
+        spans.push({ start: opened.start, end: index });
+        if (spans.length > jsonMaxNodes) return null;
+      }
+    }
+    spans.sort(function (left, right) {
+      return left.start === right.start ? right.end - left.end : left.start - right.start;
+    });
+    var outermost = [];
+    spans.forEach(function (span) {
+      var contained = outermost.some(function (parent) {
+        return parent.start <= span.start && span.end <= parent.end;
+      });
+      if (!contained) outermost.push(span);
+    });
+    return outermost.map(function (span) { return text.slice(span.start, span.end + 1); });
+  }
   function jsonCandidatesHaveForbiddenField(source) {
     var candidates = [source];
-    String(source).split(/\r?\n/).forEach(function (line) {
-      var stripped = line.trim();
-      var objectIndex = stripped.indexOf("{");
-      var arrayIndex = stripped.indexOf("[");
-      var indexes = [objectIndex, arrayIndex].filter(function (index) { return index >= 0; });
-      if (!indexes.length) return;
-      var candidate = stripped.slice(Math.min.apply(Math, indexes));
+    var balanced = balancedJsonCandidates(source);
+    if (balanced === null) return true;
+    balanced.forEach(function (candidate) {
       if (candidates.indexOf(candidate) < 0) candidates.push(candidate);
     });
     for (var index = 0; index < candidates.length; index += 1) {
@@ -264,10 +316,10 @@ PUBLIC_OBJECTIVE:</textarea>
     if (source === null) return true;
     source = normalizeFieldText(source);
     if (jsonCandidatesHaveForbiddenField(source)) return true;
-    var assignment = /(?:^|[\s,{#?&;])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,96})["']?\s*[:=]\s*/g;
+    var assignment = /(?:^|[\s,{#?&;])["']?((?:[A-Za-z]|\\u[0-9A-Fa-f]{4})(?:[A-Za-z0-9_.\[\] -]|\\u[0-9A-Fa-f]{4}){1,96})["']?\s*[:=]\s*/g;
     var match;
     while ((match = assignment.exec(source)) !== null) {
-      if (!forbiddenFieldName(match[1])) continue;
+      if (!forbiddenFieldName(decodeJsonUnicodeEscapes(match[1]))) continue;
       var tail = source.slice(assignment.lastIndex);
       var valueMatch = tail.match(/^(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/);
       if (!valueMatch) continue;

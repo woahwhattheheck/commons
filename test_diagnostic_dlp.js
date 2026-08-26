@@ -149,6 +149,8 @@ const bindingPathPayloads = [
   "?users[0][privateEmail]=hidden",
   "?PrIvAtEeMaIl=hidden",
   "?user%5BprivateEmail%5D=hidden",
+  'payload=\n{\n  "\\u0070rivateEmail": "hidden"\n}',
+  'payload={ "\\u0070rivateEmail": "hidden"',
   JSON.stringify({ "user.private_email": "hidden" }),
   JSON.stringify({ "privateEmail[0]": "hidden" }),
   JSON.stringify({ "users[0][privateEmail]": "hidden" }),
@@ -169,6 +171,7 @@ const safeBindingPayloads = [
   "?public_privateEmail=hidden",
   "?email_address_public_opt_in=false",
   "?awssecretary=public",
+  'payload=\n{\n  "\\u0070ublicObjective": "safe"\n}',
 ];
 for (const payload of safeBindingPayloads) {
   const event = submit(payload);

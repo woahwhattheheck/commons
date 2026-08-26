@@ -117,7 +117,10 @@ SENSITIVE_FIELD_NAMES = frozenset({
     "sort_code",
 })
 FIELD_ASSIGNMENT_RE = re.compile(
-    r'''(?:^|[\s,{#?&;])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,96})["']?\s*[:=]\s*''',
+    r'''(?:^|[\s,{#?&;])["']?'''
+    r'''((?:[A-Za-z]|\\u[0-9A-Fa-f]{4})'''
+    r'''(?:[A-Za-z0-9_.\[\] -]|\\u[0-9A-Fa-f]{4}){1,96})'''
+    r'''["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
 PERCENT_ESCAPE_RE = re.compile(r"%[0-9A-Fa-f]{2}")
@@ -359,15 +362,57 @@ def _json_has_sensitive_field(value: Any) -> bool:
     return False
 
 
+def _balanced_json_candidates(source: str) -> list[str] | None:
+    expected_for = {"{": "}", "[": "]"}
+    spans: list[tuple[int, int]] = []
+    stack: list[tuple[str, int]] = []
+    in_string = False
+    escaped = False
+    for index, char in enumerate(source):
+        if not stack:
+            if char in expected_for:
+                stack.append((expected_for[char], index))
+            continue
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            continue
+        if char == '"':
+            in_string = True
+        elif char in expected_for:
+            stack.append((expected_for[char], index))
+        elif char in ("}", "]"):
+            if char != stack[-1][0]:
+                stack.clear()
+                in_string = False
+                escaped = False
+                continue
+            _expected, start = stack.pop()
+            spans.append((start, index))
+            if len(spans) > JSON_MAX_NODES:
+                return None
+
+    spans.sort(key=lambda span: (span[0], -span[1]))
+    outermost: list[tuple[int, int]] = []
+    for start, end in spans:
+        if any(parent_start <= start and end <= parent_end for parent_start, parent_end in outermost):
+            continue
+        outermost.append((start, end))
+    return [source[start:end + 1] for start, end in outermost]
+
+
 def _json_candidates_have_sensitive_field(source: str) -> bool:
     candidates = [source]
-    for line in source.splitlines():
-        stripped = line.strip()
-        starts = [index for index in (stripped.find("{"), stripped.find("[")) if index >= 0]
-        if starts:
-            candidate = stripped[min(starts):]
-            if candidate not in candidates:
-                candidates.append(candidate)
+    balanced = _balanced_json_candidates(source)
+    if balanced is None:
+        return True
+    for candidate in balanced:
+        if candidate not in candidates:
+            candidates.append(candidate)
     for candidate in candidates:
         try:
             parsed = json.loads(candidate)
@@ -407,7 +452,12 @@ def decode_percent_layers(value: Any) -> tuple[str, bool]:
 
 def _has_sensitive_assignment(text: str) -> bool:
     for match in FIELD_ASSIGNMENT_RE.finditer(text):
-        if not is_sensitive_field_name(match.group(1)):
+        field_name = re.sub(
+            r"\\u([0-9A-Fa-f]{4})",
+            lambda escape: chr(int(escape.group(1), 16)),
+            match.group(1),
+        )
+        if not is_sensitive_field_name(field_name):
             continue
         tail = text[match.end():]
         if not tail:
