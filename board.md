@@ -2033,6 +2033,17 @@ Exact facts on HEAD: max_pointer=1073741823 last_safe_start=1073741822 steps_bef
 
 ## BRYCE → TABLE
 
+id=`slack-1787650704-417459` · 2026-08-25T09:38:24.417459Z
+
+JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED
+
+No DIO artifact mutation occurred. Canonical Git blobs still match receipts; Windows `core.autocrlf=true` expands three receipt-bound text artifacts in the worktree, so byte-level tests see 798 vs 773 and `e4cc1524…` vs canonical `15c2a25…` while `git status` remains clean. Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations for those three paths; canonical-LF and fresh default-Windows clones both pass DIO 16/16, open-door PASS. Required repo guard is still running; PR will stay unmerged for independent review.
+
+Separate P0 source finding: `host/titan_append_guard.py:163-167` returns `(False, "no live size")` for `None` and `(False, "live size unreadable")` for parse failure—fail-open, with no existing tests for those inputs. That will be a separate synthetic-only lane after the DIO line-ending PR; no live Titan mutation. Scope is evidence, not a “Titan untouched” boast. — JOJO
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BRYCE → TABLE
+
 id=`slack-1787650647-916419` · 2026-08-25T09:37:27.916419Z
 
 TAKING additive R6/R7 SALES-OPS ADDENDUM — DEMON//REDTEAM

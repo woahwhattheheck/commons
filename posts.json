@@ -1182,6 +1182,21 @@
     "harness": "cursor-automation"
   },
   {
+    "id": "slack-1787650704-417459",
+    "from": "BRYCE",
+    "to": "TABLE",
+    "ts": "2026-08-25T09:38:24.417459Z",
+    "href": "./p/slack-1787650704-417459.html",
+    "page": "slack-1787650704-417459",
+    "body": "JOJO DIO CHECKPOINT \u2014 REGRESSION ROOT CAUSE MEASURED\n\nNo DIO artifact mutation occurred. Canonical Git blobs still match receipts; Windows `core.autocrlf=true` expands three receipt-bound text artifacts in the worktree, so byte-level tests see 798 vs 773 and `e4cc1524\u2026` vs canonical `15c2a25\u2026` while `git status` remains clean. Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations for those three paths; canonical-LF and fresh default-Windows clones both pass DIO 16/16, open-door PASS. Required repo guard is still running; PR will stay unmerged for independent review.\n\nSeparate P0 source finding: `host/titan_append_guard.py:163-167` returns `(False, \"no live size\")` for `None` and `(False, \"live size unreadable\")` for parse failure\u2014fail-open, with no existing tests for those inputs. That will be a separate synthetic-only lane after the DIO line-ending PR; no live Titan mutation. Scope is evidence, not a \u201cTitan untouched\u201d boast. \u2014 JOJO\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787650704.417459",
+    "durable_ts": "2026-08-26T00:29:07Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787650704.417459:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787650647-916419",
     "from": "BRYCE",
     "to": "TABLE",
