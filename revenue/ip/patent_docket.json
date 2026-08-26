@@ -1,0 +1,115 @@
+{
+  "schema_version": "commons-patent-docket/v1",
+  "kind": "PATENT_DOCKET",
+  "generated_at": "2026-08-26T20:25:49Z",
+  "generated_from_main": "54fddc69dcb283e4235753e9f57307938ecab1c5",
+  "scope": "Public, source-pinned docket for existing Commons patent drafts. It is an operating inventory for counsel review, deadlines, licensing, and collaboration; it is not a patentability opinion.",
+  "legal_scope": {
+    "patentability_claimed": false,
+    "validity_claimed": false,
+    "ownership_adjudicated": false,
+    "filing_receipt_verified": false,
+    "application_numbers_public": false
+  },
+  "omitted_private_fields": [
+    "application_number",
+    "filing_receipt",
+    "legal_correspondence",
+    "attorney_notes"
+  ],
+  "inventor_provenance": {
+    "path": "ground/INVENTION_BURST_INDEX.md",
+    "blob_sha": "0720ef5757a0fe416548f898ad8aa12b4ba3ce69",
+    "sha256": "a5431bde1ea74f3e19cca4cbfbe51c20aba55a3f3b1c85a569e83f06c7935a99",
+    "byte_count": 2864,
+    "public_url": "https://github.com/woahwhattheheck/commons/blob/main/ground/INVENTION_BURST_INDEX.md",
+    "evidence_key": "inventor-line",
+    "statement": "The public invention-burst index names Bryce Muhlnickel as inventor."
+  },
+  "status_provenance": {
+    "path": "GRANTS.md",
+    "blob_sha": "0205e9804957a849f9038b366dec5afb0239fd43",
+    "sha256": "74b9e6522c12741f481704c9950d6ef1ce948438b326d5d182da67812b357983",
+    "byte_count": 9496,
+    "public_url": "https://github.com/woahwhattheheck/commons/blob/main/GRANTS.md",
+    "evidence_key": "G10",
+    "statement": "GRANTS.md records Bryce's owner report that provisionals are filed. This docket does not publish or independently verify filing receipts or application numbers."
+  },
+  "entries": [
+    {
+      "id": "stored-digital-computer",
+      "title": "The Stored Digital Computer",
+      "invention_summary": "A stored-parameter generative computer whose operator selects active parameters per step, with gradient-free reversible baking and storage-streamed execution.",
+      "inventors": ["Bryce Muhlnickel"],
+      "jurisdiction": "US",
+      "filing_type": "PROVISIONAL",
+      "filing_status": "OWNER_REPORTED_FILED",
+      "source": {
+        "path": "muhl/lda-docs/patents/PATENT_1_SDC.md",
+        "blob_sha": "20a1f33570b5eadf434a15865819a78e2000b0d1",
+        "sha256": "f1669b20f219118250d6164db140cc8ed7fc2102289c4f2ce211c927357d255e",
+        "byte_count": 53773,
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/main/muhl/lda-docs/patents/PATENT_1_SDC.md"
+      },
+      "earliest_public_receipt": {
+        "path": "muhl/lda-docs/patents/PATENT_1_SDC.md",
+        "commit_sha": "133cee988ded20a1d3608934f3f1300f9a126366",
+        "disclosed_at": "2026-08-19T09:51:31-04:00",
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/133cee988ded20a1d3608934f3f1300f9a126366/muhl/lda-docs/patents/PATENT_1_SDC.md"
+      },
+      "counsel_questions": [
+        "Which claims and embodiments should be prioritized in a non-provisional, and what continuation strategy best preserves the operator, reversible-baking, and storage-streaming concepts?"
+      ]
+    },
+    {
+      "id": "white-box-parameter-inspection",
+      "title": "The White Box",
+      "invention_summary": "Direct measurement, interpretation, and reversible editing of meaning stored in parameter-file bits without model inference.",
+      "inventors": ["Bryce Muhlnickel"],
+      "jurisdiction": "US",
+      "filing_type": "PROVISIONAL",
+      "filing_status": "OWNER_REPORTED_FILED",
+      "source": {
+        "path": "muhl/lda-docs/patents/PATENT_2_WHITEBOX.md",
+        "blob_sha": "df77d4b4beadef7e73c52b3916a3f962a39e3b3f",
+        "sha256": "a6e2b4db6dd72ad679602ae0bd8c0f4dd580fe5333c2bc271e7291316ea112a1",
+        "byte_count": 62760,
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/main/muhl/lda-docs/patents/PATENT_2_WHITEBOX.md"
+      },
+      "earliest_public_receipt": {
+        "path": "muhl/lda-docs/patents/PATENT_2_WHITEBOX.md",
+        "commit_sha": "133cee988ded20a1d3608934f3f1300f9a126366",
+        "disclosed_at": "2026-08-19T09:51:31-04:00",
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/133cee988ded20a1d3608934f3f1300f9a126366/muhl/lda-docs/patents/PATENT_2_WHITEBOX.md"
+      },
+      "counsel_questions": [
+        "Which public disclosures or prior art most affect claims covering direct parameter-bit measurement and editing, and how should claim scope distinguish conventional interpretability methods?"
+      ]
+    },
+    {
+      "id": "agentic-handset-operator",
+      "title": "The Agentic Handset Operator",
+      "invention_summary": "An on-device language model pilots a handset through accessibility while deterministic code is limited to perception, actuation, and safety gating.",
+      "inventors": ["Bryce Muhlnickel"],
+      "jurisdiction": "US",
+      "filing_type": "PROVISIONAL",
+      "filing_status": "OWNER_REPORTED_FILED",
+      "source": {
+        "path": "muhl/lda-docs/patents/PATENT_3_AGENTIC_HANDSET_OPERATOR.md",
+        "blob_sha": "0b32d9cc40deadcd22895e8b04cb887c9a326bac",
+        "sha256": "a373ddee5defa822e6cef54d20b9c1360600750c81206918e8c5b55468629be8",
+        "byte_count": 46217,
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/main/muhl/lda-docs/patents/PATENT_3_AGENTIC_HANDSET_OPERATOR.md"
+      },
+      "earliest_public_receipt": {
+        "path": "muhl/lda-docs/patents/PATENT_3_AGENTIC_HANDSET_OPERATOR.md",
+        "commit_sha": "133cee988ded20a1d3608934f3f1300f9a126366",
+        "disclosed_at": "2026-08-19T09:51:31-04:00",
+        "public_url": "https://github.com/woahwhattheheck/commons/blob/133cee988ded20a1d3608934f3f1300f9a126366/muhl/lda-docs/patents/PATENT_3_AGENTIC_HANDSET_OPERATOR.md"
+      },
+      "counsel_questions": [
+        "How should the claims separate model decision authority from deterministic perception, actuation, and safety gates while covering accessibility and on-device embodiments?"
+      ]
+    }
+  ]
+}
