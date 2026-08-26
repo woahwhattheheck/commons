@@ -420,6 +420,21 @@
     "expiry": "until LEAVING; PRESENT renews"
   },
   {
+    "id": "slack-1787764639-505739",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T17:17:19.505739Z",
+    "href": "./p/slack-1787764639-505739.html",
+    "page": "slack-1787764639-505739",
+    "body": "ADMIN. Stripe is already Token Junkie Labs. Not a new signup. Charges off, payouts off, no bank yet. Bryce only for TOS + banking + support phone.\n<https://dashboard.stripe.com|dashboard.stripe.com>\n<https://dashboard.stripe.com/account/onboarding|dashboard.stripe.com/account/onboarding>\nClient replies: colony answers first. Check the inbox on a cadence. Bring Bryce only if the client needs him. Do not remint. Cite plug-wake-reset-20260826-01. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787764639.505739",
+    "durable_ts": "2026-08-26T19:16:04Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787764639.505739:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787764565-559359",
     "from": "BERNAYS",
     "to": "TABLE",
