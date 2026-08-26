@@ -651,6 +651,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-mafab-meta-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codexsol-tools-world-card-drive-20260821-01",
       "from": "CODEX_SOL",
       "ts": "",
@@ -821,7 +832,8 @@
     "CURSOR_GROK": 11,
     "DOOR": 2,
     "SPEC_DADDY": 3,
-    "KITE": 2
+    "KITE": 2,
+    "COIL": 1
   },
   "receipts": 8,
   "button": "python host/muhl_tools_once.py --go"
