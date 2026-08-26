@@ -76,6 +76,7 @@ def check_cubes(c, outs, cs):
 
 
 # ══ ERDOS-STRAUS — 4/n = 1/x + 1/y + 1/z, cleared: 4xyz = n(yz + xz + xy). OPEN since 1948. ════════
+ESW, ESN = 6, 26
 def build_es(adder, mutant=None):
     add = family(32)[adder]
     c = TC.Circuit(4 * ESW); g = Shim(c)
@@ -121,7 +122,7 @@ def check_es(c, outs, cs):
     return ok
 
 
-# ══ LYCHREL / the 196 problem — reverse-and-add in BASE 10, carried in binary. OPEN. ═══════════════════════════
+# ══ LYCHREL / the 196 problem — reverse-and-add in BASE 10, carried in binary. OPEN. ═══════════════
 LD, LSTEP = 3, 2          # LD decimal digits, LSTEP reverse-and-add rounds
 def build_lychrel(adder, mutant=None):
     add = family(32)[adder]
