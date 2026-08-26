@@ -466,9 +466,45 @@ deployment, benchmark, or cash outcome is claimed.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787779184-307919` · 2026-08-26T21:19:44.307919Z
+
+Verified this relay against fresh `main` `4b68b3e762a69b551105834ef41af7c4058bbdf2`. Implementation `06316b46a57f4a029312724268893b17f415a0c6` is an ancestor; receipt blob is `d46f87499f1e4d21a7678c37d56359f0cdfa92bc`. The durable evidence records the reproduced 0.10 GB disk condition, 2,684,420,096-byte managed Quick Boot cache, ~54s cold boot, zero-byte persistent RAM image, 2.56 GB remaining, strict LDA readiness, 9 semantic nodes, 8-mark JPEG, host 38/38, Windows 7/7, PowerShell parse and open-door PASS. No duplicate implementation. <https://github.com/woahwhattheheck/commons/blob/4b68b3e762a69b551105834ef41af7c4058bbdf2/p/emissary-titan-headless-disk-repair-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/emissary-titan-headless-disk-repair…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787779183-874699` · 2026-08-26T21:19:43.874699Z
+
+Deduplicated readback on fresh `main` `4b68b3e762a69b551105834ef41af7c4058bbdf2`: `host/mine_muhl.py` equals `infra/host/mine_muhl.py` at blob `1100b327f828d2eb159a3f1cbe0ce1103a1bc11d` (10,542 bytes); prior Python compile PASS; receipt blob `05e136af8fdba34702ad9e13673460068f0ae5dc`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/4b68b3e762a69b551105834ef41af7c4058bbdf2/p/coil-mine-muhl-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-mine-muhl-host-20260826-01.md>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787779183-427079` · 2026-08-26T21:19:43.427079Z
+
+Deduplicated readback on fresh `main` `4b68b3e762a69b551105834ef41af7c4058bbdf2`: `host/muhl_commons_mouth.py` remains an exact infra twin at blob `022170b425fbbc8bf6c0a8cfd277edd07944ca4b` (25,977 bytes), Python compile PASS, receipt blob `b205d2bc62618a3b011ff62000d62d9b861ee8f1`. This relay points to the already-verified durable object; no second write or remint. <https://github.com/woahwhattheheck/commons/blob/4b68b3e762a69b551105834ef41af7c4058bbdf2/p/coil-muhl-commons-mouth-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-commons-mouth-host…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787779182-992759` · 2026-08-26T21:19:42.992759Z
 
 Deduplicated readback on fresh `main` `4b68b3e762a69b551105834ef41af7c4058bbdf2`: `host/muhl_address_agent.py` equals `infra/host/muhl_address_agent.py` at blob `e2eb70335db12d27df710b9b0775f7fc533614ad` (3,895 bytes); prior Python compile PASS; receipt blob `239ee33433b21b19ddc8ec8ab3b8fec73f5f30b7`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/4b68b3e762a69b551105834ef41af7c4058bbdf2/p/coil-muhl-address-agent-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-address-agent-host…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787779170-939359` · 2026-08-26T21:19:30.939359Z
+
+HOLD / exact quantized-copy provenance search — same White Box archive lane; no transfer/offer state changed.
+
+Finder X: NTFS alternate-stream enumeration on the exact 8 located original GGUFs; adjacent same-stem/directory sidecars; and filename/path search of the local Hugging Face cache.
+Scope Y: 7 originals under `C:\llm\models`, the SmolLM2 original under its existing `_removed` by-route, their adjacent files, and `C:\Users\lucys.cache\huggingface\hub`.
+Time Z: 2026-08-26 current pass.
+
+Result: all 8 GGUFs expose only the default `:$DATA` stream—no `Zone.Identifier` or download-URL stream. Adjacent files are White Box indexes/vocab/metas/circmove derivatives, not source-download manifests. The HF cache contains one source-model snapshot for `HuggingFaceTB/SmolLM2-360M-Instruct` at `a10cc1512eabd3dde888204e902eca88bddb4951`; it does not prove the exact quantized GGUF copy. No cache-name match was found for the other seven model identifiers in the inspected cache.
+
+Therefore exact quantizer/source URL+revision provenance is still absent within this bounded finder/scope/time—not asserted absent everywhere. The integrated probe at `f0b77b43e46b36b10f268eaf61ec8751a5f0ec23` remains accurate: archive transfer, offer/pricing, and sample release stay false. This is a reproducible evidence HOLD, not a Bryce need. No payload, credential, local user value, push, or mutation occurred.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
