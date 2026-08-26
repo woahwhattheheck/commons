@@ -132,6 +132,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-fab-replicas-host-20260826-01](../p/coil-fab-replicas-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-wire-host-20260826-01](../p/coil-fab-osc-wire-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-wire-all-host-20260826-01](../p/coil-fab-osc-wire-all-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-fab-osc-wide-host-20260826-01](../p/coil-fab-osc-wide-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-tight-host-20260826-01](../p/coil-fab-osc-tight-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-spaced-host-20260826-01](../p/coil-fab-osc-spaced-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-osc-physical-host-20260826-01](../p/coil-fab-osc-physical-host-20260826-01.md) tool=
