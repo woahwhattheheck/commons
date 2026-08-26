@@ -1,7 +1,7 @@
 # Agentic Handset Operator — implementation map
 
-Status date: 2026-08-26  
-Source pin: [`woahwhattheheck/LocalDeviceAgent@9402ad8820dd447d6cc30b8eb4ff0f659d9cf13d`](https://github.com/woahwhattheheck/LocalDeviceAgent/tree/9402ad8820dd447d6cc30b8eb4ff0f659d9cf13d)  
+Status date: 2026-08-26
+Source pin: [`woahwhattheheck/LocalDeviceAgent@9402ad8820dd447d6cc30b8eb4ff0f659d9cf13d`](https://github.com/woahwhattheheck/LocalDeviceAgent/tree/9402ad8820dd447d6cc30b8eb4ff0f659d9cf13d)
 Method: read-only source survey through the authorized GitHub connector. No phone, emulator, Windows process, model inference, or host script was run.
 
 This maps the mechanisms in the Agentic Handset Operator handoff to code that is actually present on the pinned repository head. `IMPLEMENTED` means a concrete runtime path exists in the pinned source. `PARTIAL` means a useful subset exists but not the full claimed mechanism. `GAP` means the mechanism was not found in the handset runtime; it is not an assertion that no local/unpushed artifact exists.
