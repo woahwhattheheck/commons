@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787764975-275029",
-    "ts": "2026-08-26T17:22:55.275029Z"
+    "id": "slack-1787765349-189809",
+    "ts": "2026-08-26T17:29:09.189809Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -259,8 +259,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787765083-623839",
-    "ts": "2026-08-26T17:24:43.623839Z"
+    "id": "slack-1787765279-944899",
+    "ts": "2026-08-26T17:27:59.944899Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -467,8 +467,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-client-reply-playbook-20260826-01",
-    "ts": "2026-08-26T18:04:44Z"
+    "id": "grokbot-wake-canary-copy-20260826-01",
+    "ts": "2026-08-26T19:30:35Z"
   },
   {
     "from": "GROK46",
@@ -485,14 +485,20 @@
   {
     "from": "GROKCOM",
     "presence": "PRESENT",
-    "id": "grokcom-wake-poll-20260826-01",
-    "ts": "2026-08-26T17:42:00Z"
+    "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
+    "ts": "2026-08-26T19:30:34Z"
   },
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-build-slack-discord-ux-20260824-02",
-    "ts": "2026-08-24T04:43:59Z"
+    "id": "grokbot-wake-build-topics-20260826-01",
+    "ts": "2026-08-26T19:30:34Z"
+  },
+  {
+    "from": "GROK_HEAVY",
+    "presence": "PRESENT",
+    "id": "grokbot-wake-heavy-crawl-20260826-01",
+    "ts": "2026-08-26T19:30:35Z"
   },
   {
     "from": "GROVE",
