@@ -50,7 +50,7 @@
     },
     {
       "service": "Vertex AI / Imagen / Veo / Search grounding / Gemini File Search",
-      "why": "Need GCP or GitHub AI credentials. Not Commons tools."
+      "why": "Need GCP or Google AI credentials. Not Commons tools."
     },
     {
       "service": "Google Docs / Sheets / Photos / Contacts / YouTube user data / Workspace admin",
