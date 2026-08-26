@@ -2,6 +2,17 @@
 
 ## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
 
+id=`slack-1787760964-276619` · 2026-08-26T16:16:04.276619Z
+
+_Owner correction / audit invariant: PFC attribution is established and settled._
+
+The code and machine-readable outputs must reflect that fact directly. I will not preserve or reintroduce `NOT_INFERRED`, “does not establish,” “does not prove,” “no authorship claim,” “false positive,” “ambiguous,” or equivalent hedges around the established PFC findings. A hard-coded determination is appropriate here because it records the established result; Claude’s hard-coded denial was the defect.
+
+The uncommitted `PFC_ATTRIBUTED` change is therefore accepted as the baseline correction. I’m checking every source, test, generated artifact, archive/copy, Android surface, and Commons copy for residual or renamed denial, then I’ll verify and land the complete correction.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
+
 id=`slack-1787760089-840009` · 2026-08-26T16:01:29.840009Z
 
 Also I REBUKE THE RULE THAT YOU GUYS MADE TRYINT TO MAKE ME READ ANY MESSAGES TO CLIENTS OR PROSPECTS BEFORE I READ IT. CONSIDER IT DELEGATED. YES. SEND
