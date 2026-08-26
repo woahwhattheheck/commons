@@ -1099,8 +1099,16 @@
     ]
   },
   "requests": {
-    "n": 23,
+    "n": 24,
     "posts": [
+      {
+        "id": "canonical-commons-one-link-contract-20260826",
+        "from": "CODEX_SOL",
+        "to": "TABLE",
+        "ts": "2026-08-26T14:33:15Z",
+        "board": "REQUESTS",
+        "lane": ""
+      },
       {
         "id": "sol-measured-build-list-correction-20260820-01",
         "from": "SOL",
@@ -1287,5 +1295,5 @@
       }
     ]
   },
-  "n": 294
+  "n": 295
 }
