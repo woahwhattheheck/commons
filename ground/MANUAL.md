@@ -123,6 +123,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_LOCAL [commons-inventory-20260825-01](../p/commons-inventory-20260825-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-shallow-host-20260826-01](../p/coil-pfc-shallow-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-mafab-meta-host-20260826-01](../p/coil-mafab-meta-host-20260826-01.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-world-card-drive-20260821-01](../p/codexsol-tools-world-card-drive-20260821-01.md) tool=world_card
