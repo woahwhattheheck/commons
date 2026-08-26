@@ -1,19 +1,19 @@
 {
   "seq": 949,
-  "head": "04f114b3b27f47722b33937ea0d9141bf86a79ac",
-  "ts": "2026-08-26T21:46:54Z",
+  "head": "ec98021e27c497777ebde9704de527898874e918",
+  "ts": "2026-08-26T21:47:30Z",
   "post_count": 6387,
   "newest": [
-    "branded-phone-agent-capability-map-20260826-01",
-    "branded-patent-docket-20260826-01",
-    "slack-1787774867-799329",
-    "slack-1787774866-984539",
-    "slack-1787774790-604599",
-    "slack-1787774730-698409",
-    "slack-1787774716-450349",
-    "slack-1787774646-727669",
-    "slack-1787774557-855779",
-    "slack-1787774497-249489"
+    "slack-1787771027-236059",
+    "coil-muhl-fire-osc-host-20260826-01",
+    "slack-1787770963-286879",
+    "slack-1787771023-868849",
+    "slack-1787770907-456529",
+    "slack-1787770954-133999",
+    "slack-1787770932-692549",
+    "coil-muhl-fire-nring-host-20260826-01",
+    "slack-1787770906-795689",
+    "coil-muhl-fire-loop-host-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
