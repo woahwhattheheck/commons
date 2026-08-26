@@ -13,10 +13,11 @@ from host.titan_hands.lanes import (
     BrowserServer,
     FilesServer,
     GitServer,
-    LinuxPendingServer,
     ShellServer,
     SlackServer,
 )
+from host.titan_hands.linux_atspi import LinuxHandsServer
+from host.titan_hands.tests.test_linux_atspi import FakeAtspi
 from host.titan_hands_windows.mcp_server import TOOLS as WINDOWS_TOOLS
 
 
@@ -103,7 +104,7 @@ class OneToolTests(unittest.TestCase):
             factories={
                 "windows": lambda: self.windows,
                 "android": lambda: self.android,
-                "linux": LinuxPendingServer,
+                "linux": lambda: LinuxHandsServer(backend=FakeAtspi()),
                 "files": lambda: FilesServer(root=self.tmp),
                 "git": lambda: GitServer(cwd=self.tmp, run=self._git),
                 "slack": lambda: SlackServer(
@@ -208,7 +209,7 @@ class OneToolTests(unittest.TestCase):
         self.assertFalse(contains_pixel_payload(caps))
 
     def test_observe_and_act_do_not_return_pixels(self):
-        for target in ("windows", "android", "files", "git", "slack", "board", "shell", "browser"):
+        for target in ("windows", "android", "linux", "files", "git", "slack", "board", "shell", "browser"):
             observed = self.one.handle({"op": "observe", "target": target})
             self.assertTrue(observed["ok"], msg=target)
             self.assertFalse(contains_pixel_payload(observed), msg=target)
@@ -229,15 +230,19 @@ class OneToolTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         router.close()
 
-    def test_linux_is_named_next_not_a_remint(self):
+    def test_linux_is_atspi_not_a_permanent_stub(self):
         caps = self.one.handle({"op": "capabilities", "target": "linux"})
         self.assertTrue(caps["ok"])
-        self.assertEqual(caps["status"], "named-next")
         self.assertEqual(caps["adapter"], "at-spi")
+        self.assertEqual(caps["status"], "live")
+        self.assertNotEqual(caps.get("status"), "named-next")
         observed = self.one.handle({"op": "observe", "target": "linux"})
-        self.assertEqual(observed["failure_reason"], "ADAPTER_PENDING")
+        self.assertTrue(observed["ok"])
+        self.assertNotEqual(observed.get("failure_reason"), "ADAPTER_PENDING")
+        self.assertFalse(contains_pixel_payload(observed))
         captured = self.one.handle({"op": "capture", "target": "linux"})
-        self.assertEqual(captured["failure_reason"], "ADAPTER_PENDING")
+        self.assertEqual(captured["kind"], "pixel_capture")
+        self.assertTrue(contains_pixel_payload(captured))
 
     def test_unknown_target_and_empty_op_are_typed(self):
         missing = self.one.handle({"op": "observe", "target": "macos"})

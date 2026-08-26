@@ -35,7 +35,8 @@ stop performing internal layout or composition.
   and an on-demand window capture fallback.
 - Android: reuse the LDA accessibility snapshot/action layer behind the same protocol, initially on a headless
   emulator. No physical phone is part of this phase.
-- Linux: map AT-SPI nodes/actions into DeltaUI and run legacy applications under a headless compositor.
+- Linux: AT-SPI adapter at `host/titan_hands/linux_atspi.py` maps nodes/actions into DeltaUI.
+  Compositor capture runs only on explicit `capture`. A missing bus returns `TRANSPORT_UNCONFIGURED`.
 
 Commons remains the durable coordination and receipt plane. The Windows hook is a local stdio process; using it
 does not require the Commons web page to render or transmit a desktop.

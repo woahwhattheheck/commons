@@ -1,8 +1,8 @@
 """Thin Commons lanes that speak the TITAN Hands DeltaUI contract.
 
-Computer-use still lives in the Windows and Android adapters. These lanes add
-files, git, Slack #commons, board posts, shell, browser, and the named-next
-Linux AT-SPI stub. They do not remint those adapters.
+Computer-use lives in the Windows, Android, and Linux AT-SPI adapters. These
+lanes add files, git, Slack #commons, board posts, shell, and browser. They do
+not remint the Windows or Android adapters.
 """
 
 from __future__ import annotations
@@ -17,7 +17,11 @@ from urllib.request import Request, urlopen
 
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
+from host.titan_hands.linux_atspi import LinuxHandsServer
 from host.titan_hands_windows.protocol import PROTOCOL_VERSION, DeltaTracker, ProtocolError, failure
+
+# Historical import name from the one-tool stub. Linux AT-SPI is implemented.
+LinuxPendingServer = LinuxHandsServer
 
 
 SLACK_COMMONS = "C0BRGMDQB6G"
@@ -113,50 +117,6 @@ class _SemanticLane:
             return failure("INVALID_REQUEST", str(exc))
         except Exception as exc:
             return failure("BACKEND_ERROR", str(exc))
-
-
-class LinuxPendingServer(_SemanticLane):
-    """Named next adapter. AT-SPI is not implemented here; Windows/Android stay."""
-
-    platform = "linux"
-    observation = "at-spi-semantic-delta"
-    pixels = PIXELS_ON_DEMAND
-
-    def _capabilities(self) -> dict[str, Any]:
-        return {
-            "ok": True,
-            "protocol": PROTOCOL_VERSION,
-            "kind": "capabilities",
-            "platform": "linux",
-            "adapter": "at-spi",
-            "status": "named-next",
-            "online": False,
-            "observation": self.observation,
-            "pixels": self.pixels,
-            "note": "Linux AT-SPI is the named next adapter. Windows and Android adapters were not reminted.",
-        }
-
-    def _pending(self) -> dict[str, Any]:
-        return failure(
-            "ADAPTER_PENDING",
-            "Linux AT-SPI adapter is named next and is not implemented here; Windows and Android adapters were not reminted",
-            adapter="at-spi",
-            platform="linux",
-        )
-
-    def _snapshot(self, request: Mapping[str, Any]) -> dict[str, Any]:
-        raise LaneError(
-            "ADAPTER_PENDING",
-            "Linux AT-SPI adapter is named next and is not implemented here; Windows and Android adapters were not reminted",
-            adapter="at-spi",
-            platform="linux",
-        )
-
-    def _act(self, action: Mapping[str, Any], request: Mapping[str, Any]) -> dict[str, Any]:
-        return self._pending()
-
-    def _capture(self, request: Mapping[str, Any]) -> dict[str, Any]:
-        return self._pending()
 
 
 class FilesServer(_SemanticLane):
