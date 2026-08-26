@@ -364,6 +364,38 @@ class RevenueRecoveryTests(unittest.TestCase):
         finally:
             temp.cleanup()
 
+    def test_server_rejects_short_bracket_unicode_and_overbudget_assignments(self):
+        hostile = (
+            'x["token"]="hidden"',
+            "x['token']='hidden'",
+            'x="{\\"token\\":\\"hidden\\"}"',
+            'payload={"paſſword":"hidden"}',
+            'payload={"ſecret":"hidden"}',
+            "PUBLIC_CONTACT_URL: "
+            "https://example.com/contact?payload=%7B%22pa%5Cu017f%5Cu017fword%22%3A%22hidden%22%7D",
+            "PUBLIC_CONTACT_URL: https://alice%3Ahidden%0A%40example.com",
+            "PUBLIC_CONTACT_URL: https://alice%3Ahidden%C2%A0%40example.com",
+            "x=[" + ",".join(["null"] * rr.JSON_SCAN_MAX_NODES) + "]",
+        )
+        for value in hostile:
+            with self.subTest(value=value[:96]):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        self.assertEqual(rr.canonical_field_name("paſſword"), "password")
+        self.assertEqual(rr.canonical_field_name("ſecret"), "secret")
+        for value in ('x="reproducibility"', 'x["topic"]="reproducibility"'):
+            with self.subTest(safe_short_binding=value):
+                self.assertFalse(rr.contains_sensitive_value(value))
+                temp, root = self.make_root(self.valid_post(value))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"],
+                        "RECORDED",
+                    )
+                finally:
+                    temp.cleanup()
+
     def test_server_recursively_scans_public_contact_url_query_components(self):
         over_depth = "privateEmail=hidden"
         for _ in range(rr.PERCENT_DECODE_LAYERS + 1):

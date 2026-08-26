@@ -14,6 +14,7 @@ import json
 import re
 import sys
 import tempfile
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -121,12 +122,12 @@ SENSITIVE_FIELD_BY_COMPACT = {
     name.replace("_", ""): name for name in SENSITIVE_FIELD_NAMES
 }
 FIELD_ASSIGNMENT_RE = re.compile(
-    r'''["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*'''
+    r'''["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*'''
     r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
     re.IGNORECASE,
 )
 JSON_ASSIGNMENT_PREFIX_RE = re.compile(
-    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*''',
+    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
 SENSITIVE_PATTERNS = (
@@ -303,11 +304,12 @@ def parse_post(text: str) -> tuple[dict[str, str], dict[str, str]]:
 
 
 def canonical_field_name(name: str) -> str:
-    raw = str(name)
-    folded = re.sub(r"[^a-z0-9]+", "_", raw.lower()).strip("_")
+    raw = unicodedata.normalize("NFKC", str(name))
+    casefolded = raw.casefold()
+    folded = re.sub(r"[^a-z0-9]+", "_", casefolded).strip("_")
     if folded in SENSITIVE_FIELD_NAMES:
         return folded
-    exact = SENSITIVE_FIELD_BY_COMPACT.get(re.sub(r"[^a-z0-9]+", "", raw.lower()))
+    exact = SENSITIVE_FIELD_BY_COMPACT.get(re.sub(r"[^a-z0-9]+", "", casefolded))
     if exact is not None:
         return exact
     value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", raw)
@@ -554,8 +556,18 @@ def _bare_component_has_sensitive_value(source: str, query_depth: int) -> bool:
 
 def _url_query_has_sensitive_value(source: str, query_depth: int) -> bool:
     for match in HTTPS_URL_RE.finditer(source):
+        raw_url = match.group(0)
+        raw_authority = re.split(r"[/?#]", raw_url[len("https://"):], maxsplit=1)[0]
+        decoded_authority, authority_overflow = decode_percent_layers(raw_authority)
+        if authority_overflow:
+            return True
+        if "@" in decoded_authority or any(
+            character.isspace() or ord(character) < 0x20
+            for character in decoded_authority
+        ):
+            return True
         try:
-            parsed = urlsplit(match.group(0))
+            parsed = urlsplit(raw_url)
         except ValueError:
             return True
         if parsed.username is not None or parsed.password is not None:

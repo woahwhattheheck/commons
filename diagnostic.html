@@ -158,9 +158,11 @@ PUBLIC_OBJECTIVE:</textarea>
   var jsonScanMaxNodes = 4096;
   function canonicalFieldName(name) {
     var raw = String(name || "");
-    var folded = raw.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+    if (typeof raw.normalize === "function") raw = raw.normalize("NFKC");
+    var casefolded = raw.toLowerCase();
+    var folded = casefolded.replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
     if (forbiddenNames[folded]) return folded;
-    var exact = forbiddenCompactNames[raw.toLowerCase().replace(/[^a-z0-9]+/g, "")];
+    var exact = forbiddenCompactNames[casefolded.replace(/[^a-z0-9]+/g, "")];
     if (exact) return exact;
     return raw
       .replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2")
@@ -284,7 +286,7 @@ PUBLIC_OBJECTIVE:</textarea>
     return { value: decoded, end: valueEnd };
   }
   function jsonAssignmentHasForbiddenField(source, queryDepth) {
-    var prefix = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*/g;
+    var prefix = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*/g;
     var match;
     while ((match = prefix.exec(source)) !== null) {
       var valueStart = prefix.lastIndex;
@@ -381,8 +383,11 @@ PUBLIC_OBJECTIVE:</textarea>
     var urlMatch;
     while ((urlMatch = urlPattern.exec(source)) !== null) {
       var parsed;
-      try { parsed = new URL(urlMatch[0]); } catch (error) { return true; }
       var authority = urlMatch[0].slice("https://".length).split(/[/?#]/, 1)[0];
+      var decodedAuthority = decodePercentLayers(authority, false);
+      if (decodedAuthority === null || decodedAuthority.indexOf("@") !== -1 ||
+          /[\u0000-\u0020\u007f\s]/.test(decodedAuthority)) return true;
+      try { parsed = new URL(urlMatch[0]); } catch (error) { return true; }
       if (authority.indexOf("@") !== -1 || parsed.username || parsed.password) return true;
       if (parsed.hash && containsForbiddenComponent(parsed.hash.slice(1), queryDepth, false, true)) return true;
       if (!parsed.search) continue;
@@ -411,7 +416,7 @@ PUBLIC_OBJECTIVE:</textarea>
       }
     }
     if (jsonAssignmentHasForbiddenField(source, queryDepth)) return true;
-    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] -]{1,80})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
     var match;
     while ((match = assignment.exec(source)) !== null) {
       var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
