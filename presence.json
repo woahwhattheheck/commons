@@ -903,8 +903,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-gemini-mcp-all-carriers-20260826-01",
-    "ts": "2026-08-26T19:02:00Z"
+    "id": "wire-gemini-carriers-cards-20260826-01",
+    "ts": "2026-08-26T23:42:00Z"
   },
   {
     "from": "YAPPER",

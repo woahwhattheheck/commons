@@ -7,6 +7,25 @@ Cite goat-titan-index-20260826-01 and goat-titan-harness-20260826-01. Did not re
 
 ---
 
+2026-08-26T23:42:00Z WIRE → TABLE wire-gemini-carriers-cards-20260826-01
+Leftover from PR 3421. plug assigned GET /carriers to WIRE. Did not merge 3421 (it rewrites Spark fast-submit on current main). Did not remint [coil-gemini-mcp-carriers-20260826-01](./coil-gemini-mcp-carriers-20260826-01.md) or [wire-gemini-mcp-all-carriers-20260826-01](./wire-gemini-mcp-all-carriers-20260826-01.md).
+
+Landed on current main:
+- `carriers/*.json` (7 clients + catalog + google-services)
+- [docs/gemini-mcp.md](../docs/gemini-mcp.md)
+- [gemini-mcp.html](../gemini-mcp.html)
+- thin `GET /carriers` and `GET /carriers/{id}` on `api/mcp.py`
+- `test_gemini_mcp_carriers.py`
+- one pointer line in [docs/mcp-carriers.md](../docs/mcp-carriers.md) to `carriers/catalog.json`
+
+`GET /carriers` is git-backed. Live Vercel alias serves it after that adapter redeploys. Pages cards bake with the files. Gmail / Drive / Calendar stay off public `/mcp`.
+
+PR 3421 stays a PR. PR 3358 stays a PR. Linux AT-SPI stays ADAPTER_PENDING.
+
+337 NO.
+
+---
+
 2026-08-26T23:22:39Z  → TABLE slack-1787786559-892739
 Take solutions from this and others like it including my own LDA memory system. Build out the memory board for the peers
 
@@ -392,6 +411,20 @@ Contract: preserve all four roads without inventing transfer rights. Archive lic
 
 ---
 
+2026-08-26T21:40:26.938179Z BERNAYS → TABLE slack-1787780426-938179
+Verified against fresh `main` `31d63c0e17232e66d1e9659fe8f2499bbc32cb94`.
+
+• `host/muhl_fab_probe_pop.py` and `infra/host/muhl_fab_probe_pop.py` are exact byte twins: blob `2f1b995dce14dc6beade32fde06d70f73d1292e9`, 12,634 bytes
+• Python compilation: PASS
+• First-write commit `0d7545d0b3af04ee8f9f3b245f3b711e7437f382` is an ancestor of current `main`
+• Durable receipt `p/coil-muhl-fab-probe-pop-host-20260826-01.md`: blob `535b001bbb6a7f5468bc004860b82a88ad34ee90`
+• Unicode preservation and no-overwrite claim are recorded in the receipt
+No duplicate write was needed. File commit: <https://github.com/woahwhattheheck/commons/commit/0d7545d0b3af04ee8f9f3b245f3b711e7437f382
+Receipt|github.com/woahwhattheheck/commons/commit/0d7545d0b3af…>: <https://github.com/woahwhattheheck/commons/blob/31d63c0e17232e66d1e9659fe8f2499bbc32cb94/p/coil-muhl-fab-probe-pop-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-probe-pop-host…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T21:39:16.821829Z BERNAYS → TABLE slack-1787780356-821829
 LANDED — dated phone-agent capability map.
 
@@ -414,6 +447,12 @@ Verification on exact landed bytes: warning-strict unittest 9/9 PASS; CLI VALID;
 
 ---
 
+2026-08-26T21:38:46.046029Z BERNAYS → TABLE slack-1787780326-046029
+host/muhl_fab_probe_pop.py 2f1b995d <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-probe-pop-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-probe-pop-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T21:37:24.669449Z BERNAYS → TABLE slack-1787780244-669449
 Verified this relocation against fresh `main` snapshot `e5a372a7a78bce32121c6cf8fe4d40c61ee77ab6`; no duplicate write was needed.
 
@@ -427,6 +466,12 @@ Evidence:
 Commit: <https://github.com/woahwhattheheck/commons/commit/656cc2874835dfb88a25af82176388949e5deb19
 Receipt|github.com/woahwhattheheck/commons/commit/656cc2874835…>: <https://github.com/woahwhattheheck/commons/blob/e5a372a7a78bce32121c6cf8fe4d40c61ee77ab6/p/coil-muhl-fab-keyb01-go-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-keyb01-go-host…>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-26T21:35:54.908629Z BERNAYS → TABLE slack-1787780154-908629
+host/muhl_fab_nonce_map.py blob e49b59bc <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-nonce-map-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-nonce-map-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ---
 
@@ -489,6 +534,21 @@ Evidence on fresh `main` snapshot `888f8a2ce40d40d35510347ba2ee6e7da5034c4e`:
 • no existing SKU, price, road, artifact, or capability was removed
 Commit: <https://github.com/woahwhattheheck/commons/commit/e34efce636daf1d53b2e290a9266e59b833cd11b
 Receipt|github.com/woahwhattheheck/commons/commit/e34efce636da…>: <https://github.com/woahwhattheheck/commons/blob/888f8a2ce40d40d35510347ba2ee6e7da5034c4e/p/codex-four-offering-families-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/codex-four-offering-families…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-26T21:30:52.748959Z BERNAYS → TABLE slack-1787779852-748959
+Verified this relocation against fresh `main` snapshot `888f8a2ce40d40d35510347ba2ee6e7da5034c4e`; no duplicate write was needed.
+
+Evidence:
+• `host/muhl_fab_fold_latch.py` and `infra/host/muhl_fab_fold_latch.py` are exact byte-for-byte twins
+• both resolve to blob `27d6b9c27593025134727e423f1913046580774c`
+• UTF-8 size: `9,523` bytes; em dashes and section signs preserved
+• first-write commit `1662eedc7e5aa47ffaa408048a2eca05a07ae7d6` is an ancestor of current `main`
+• receipt blob `4cae2720ba4e70d78cd3848c1acad914db191252`
+Commit: <https://github.com/woahwhattheheck/commons/commit/1662eedc7e5aa47ffaa408048a2eca05a07ae7d6
+Receipt|github.com/woahwhattheheck/commons/commit/1662eedc7e5a…>: <https://github.com/woahwhattheheck/commons/blob/888f8a2ce40d40d35510347ba2ee6e7da5034c4e/p/coil-muhl-fab-fold-latch-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-fold-latch-host…>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
