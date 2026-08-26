@@ -1,0 +1,54 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-resource-master-office-activation-20260826-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-26T22:18:41Z",
+  "selected_resource": "resource-master-office",
+  "before": {
+    "stage": "CANDIDATE",
+    "source": "PR 3227",
+    "head_sha": "1d43a6db"
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "LIVE",
+    "integration_main_sha": "2423415c754b13ce2d723ce9d85c4f9af802d4fb"
+  },
+  "concrete_consumer": "Commons Resource Master recurring workflow",
+  "producing_outcome": "A v2 current projection, append-only evidence journal, human door, and executable evidence-expiry and fresh-selection instrument on current main.",
+  "exact_blobs": {
+    "ground/RESOURCE_LEDGER.json": "ebcdce524af5c630e571adf50337623a245c996c",
+    "ground/RESOURCE_LEDGER.md": "c2ebff4ca2c6265835b1a2e3a71a9a683ca64aa2",
+    "host/resource_ledger.py": "db37296595ac702a0ae7605cca2399f1423b3904",
+    "inventory/resources/README.md": "4b19536f172786127eb22c22cacd0975d7e226cd",
+    "ledger.html": "26bb87c4297ca05b6a50a62f690a8f8b903a2ed4",
+    "resources.html": "4e6e7d0c644a2d978b224b890e78aee0083f7d5a",
+    "test_resource_ledger.py": "ed6430b89a877911766a5c48139404f10d660ebf",
+    "inventory/resources/records/codex-master-resource-census-20260826-01.json (restored candidate object)": "abd6c7827c4c62bddb041db834cb9c0307593b53"
+  },
+  "verification": {
+    "integration_commit_is_ancestor_of_verified_main": true,
+    "unit_tests": "17/17 passed",
+    "json_parse": "passed",
+    "python_compile": "passed",
+    "javascript_syntax": "passed",
+    "open_door_guard": "passed",
+    "exact_diff_and_blob_readback": "seven intended integration blobs matched; one malformed historical census blob was caught and restored from the exact PR 3227 candidate object before this receipt"
+  },
+  "lifecycle_transitions": [
+    "stale-claim-capacity crossed PT6H and its aggregate holder was released",
+    "causal-compiler-site is BLOCKED after an exact unauthenticated HTTP 401 probe",
+    "Vercel is REACHABLE but IDLE with one Hobby team and exactly zero visible projects"
+  ],
+  "non_claims": [
+    "No deployment or access-policy change",
+    "No physical-device actuation",
+    "No acceptance, settlement, payout, payment, or cash",
+    "No Cursor use or hold release",
+    "No Claude tester, verifier, reviewer, QA, or landing role",
+    "No Titan model mutation",
+    "No resend to already-delivered prospects"
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -52,7 +52,9 @@ Exactly one previously unlanded resource was advanced in this cycle:
 resource-master-office, the already-existing PR #3227 candidate. Its concrete
 consumer is this resource-master workflow; its producing outcome is the v2
 projection, append-only journal, human door, and executable expiry/selection
-instrument on current main.
+instrument on current main. Exact integration commit:
+`2423415c754b13ce2d723ce9d85c4f9af802d4fb`; durable activation receipt:
+[`p/codex-resource-master-office-activation-20260826-01.md`](../p/codex-resource-master-office-activation-20260826-01.md).
 
 The prior aggregate stale-claim-capacity reservation crossed its six-hour
 boundary and is now STALE / released. Old holders do not retain capacity; an
