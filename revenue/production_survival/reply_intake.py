@@ -304,16 +304,14 @@ def _validate_existing_receipt(
     if existing_obj.get("payload_sha256") != envelope["payload_sha256"]:
         raise CollisionError("same event_ref with a different payload_sha256")
     if existing != blob:
-        raise CollisionError(
-            "same event_ref recorded with a different public receipt"
-        )
+        raise IntakeError("durable receipt bytes diverged from canonical form")
     return existing
 
 
 def _write_complete_temp(directory: Path, target: Path, blob: bytes) -> Path:
     token = secrets.token_hex(8)
     temp = directory / f".{target.name}.{os.getpid()}.{token}.tmp"
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0)
     fd = os.open(temp, flags, 0o644)
     try:
         try:
@@ -358,10 +356,8 @@ def record_envelope(envelope: dict[str, Any], store: Path) -> bytes:
     try:
         temp = _write_complete_temp(store, path, blob)
         _before_exclusive_claim()
-        claimed = _link_no_replace(temp, path)
-        if not claimed:
-            return _validate_existing_receipt(path, envelope, blob)
-        return blob
+        _link_no_replace(temp, path)
+        return _validate_existing_receipt(path, envelope, blob)
     finally:
         if temp is not None:
             _unlink_quietly(temp)

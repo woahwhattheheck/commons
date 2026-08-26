@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -80,6 +81,19 @@ class ReplyIntakeTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.temp.cleanup()
 
+    def _assert_stored_is_canonical_lf(
+        self,
+        envelope: dict[str, str],
+        returned: bytes,
+    ) -> None:
+        path = reply_intake.store_path_for(self.store, envelope["event_ref"])
+        stored = path.read_bytes()
+        canonical = reply_intake.canonical_bytes(json.loads(stored.decode("utf-8")))
+        self.assertEqual(returned, stored)
+        self.assertEqual(stored, canonical)
+        self.assertNotIn(b"\r", stored)
+        self.assertIn(b"\n", stored)
+
     def _record(self, envelope: dict[str, str]) -> bytes:
         return reply_intake.record_envelope(envelope, self.store)
 
@@ -88,6 +102,7 @@ class ReplyIntakeTest(unittest.TestCase):
             with self.subTest(classification=classification):
                 envelope = _envelope(classification)
                 blob = self._record(envelope)
+                self._assert_stored_is_canonical_lf(envelope, blob)
                 receipt = json.loads(blob.decode("utf-8"))
                 reply_intake.validate_receipt(receipt, self.schema)
                 self.assertEqual(receipt["classification"], classification)
@@ -108,8 +123,8 @@ class ReplyIntakeTest(unittest.TestCase):
         first = self._record(envelope)
         second = self._record(dict(envelope))
         self.assertEqual(first, second)
-        path = reply_intake.store_path_for(self.store, envelope["event_ref"])
-        self.assertEqual(first, path.read_bytes())
+        self._assert_stored_is_canonical_lf(envelope, first)
+        self._assert_stored_is_canonical_lf(envelope, second)
         third_store = Path(self.temp.name) / "replay-cli"
         envelope_path = Path(self.temp.name) / "question.json"
         envelope_path.write_bytes(reply_intake.canonical_bytes(envelope))
@@ -272,9 +287,10 @@ class ReplyIntakeTest(unittest.TestCase):
         self.assertEqual(labels, ["CollisionError", "OK"])
         winner = left[1] if left[0] == "OK" else right[1]
         self.assertIsNotNone(winner)
-        stored = reply_intake.store_path_for(self.store, first["event_ref"]).read_bytes()
-        self.assertEqual(winner, stored)
-        receipt = json.loads(stored.decode("utf-8"))
+        if winner is None:
+            self.fail("winner blob missing")
+        self._assert_stored_is_canonical_lf(first, winner)
+        receipt = json.loads(winner.decode("utf-8"))
         self.assertIn(
             receipt["payload_sha256"],
             {first["payload_sha256"], second["payload_sha256"]},
@@ -292,11 +308,50 @@ class ReplyIntakeTest(unittest.TestCase):
         self.assertIsNotNone(left[1])
         self.assertIsNotNone(right[1])
         self.assertEqual(left[1], right[1])
-        stored = reply_intake.store_path_for(
-            self.store, envelope["event_ref"]
-        ).read_bytes()
-        self.assertEqual(left[1], stored)
+        if left[1] is None:
+            self.fail("identical replay blob missing")
+        self._assert_stored_is_canonical_lf(envelope, left[1])
         self._no_temp_leftovers()
+
+    def test_store_bytes_stay_lf_under_windows_text_mode(self) -> None:
+        simulated_binary = 0x8000
+        original_open = os.open
+        original_write = os.write
+        had_binary = hasattr(os, "O_BINARY")
+        original_binary = getattr(os, "O_BINARY", None)
+        fd_flags: dict[int, int] = {}
+
+        def fake_open(path, flags, *args, **kwargs):
+            fd = original_open(path, flags & ~simulated_binary, *args, **kwargs)
+            fd_flags[fd] = flags
+            return fd
+
+        def fake_write(fd, data):
+            payload = bytes(data)
+            if not (fd_flags.get(fd, 0) & simulated_binary):
+                payload = payload.replace(b"\n", b"\r\n")
+            return original_write(fd, payload)
+
+        os.O_BINARY = simulated_binary
+        os.open = fake_open
+        os.write = fake_write
+        try:
+            envelope = _envelope(
+                "QUESTION",
+                event_ref="opaque:windows-text-mode-event-01",
+            )
+            returned = self._record(envelope)
+            self._assert_stored_is_canonical_lf(envelope, returned)
+            replay = self._record(dict(envelope))
+            self.assertEqual(returned, replay)
+            self.assertEqual(returned, reply_intake.canonical_bytes(json.loads(returned.decode("utf-8"))))
+        finally:
+            os.open = original_open
+            os.write = original_write
+            if had_binary:
+                os.O_BINARY = original_binary
+            else:
+                delattr(os, "O_BINARY")
 
 
 if __name__ == "__main__":
