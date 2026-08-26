@@ -13,6 +13,7 @@
     "fallback"
   ],
   "properties": {
+    "$schema": {"type": "string"},
     "schema": {"const": "commons-path-manifest-v1"},
     "schema_version": {"const": 1},
     "participation_effect": {"const": "NONE"},
@@ -38,6 +39,7 @@
           "source": {"type": "string"},
           "symbol": {"type": "string"},
           "producer": {"type": "string"},
+          "path_semantics": {"enum": ["MIXED_STAGING_AND_GENERATED"]},
           "tests": {"type": "array", "items": {"type": "string"}}
         },
         "additionalProperties": false

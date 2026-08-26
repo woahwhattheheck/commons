@@ -18,16 +18,12 @@ import os
 import urllib.error
 import urllib.request
 
-HOSTS = [
-    "https://ntfy.sh",
-    "https://ntfy.envs.net",
-    "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de",
-    "https://ntfy.tedomum.net",
-    "https://ntfy.hostux.net",
-]
-TOPIC = "woahwhattheheck-commons-board"
-HOME = "https://ntfy.sh"
+from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
+
+
+HOSTS = list(NTFY_HOSTS)
+TOPIC = NTFY_TOPIC
+HOME = HOSTS[0]
 SINCE = "24h"
 
 

@@ -7,17 +7,13 @@ import urllib.parse
 from decimal import Decimal, InvalidOperation
 from typing import Any, Callable
 
-from . import ACTION_PAD, DISCORD_API, GITHUB_API, PAGES, REPO, SLACK_CHANNEL, TOPIC
+from relay_manifest import NTFY_HOSTS, NTFY_TOPIC as TOPIC
+
+from . import ACTION_PAD, DISCORD_API, GITHUB_API, PAGES, REPO, SLACK_CHANNEL
 from .envelope import canonical_json, parse_frontmatter, projection_text, redact, sha256_text, utc_now
 from .truth import default_http
 
 
-NTFY_HOSTS = (
-    "https://ntfy.sh",
-    "https://ntfy.envs.net",
-    "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de",
-)
 SLACK_SCAN_MAX_PAGES = 1000
 
 

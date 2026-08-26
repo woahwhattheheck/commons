@@ -1,0 +1,16 @@
+{
+  "$schema": "./relay-manifest.schema.json",
+  "schema": "commons-relay-manifest-v1",
+  "topic": "woahwhattheheck-commons-board",
+  "participation_effect": "NONE",
+  "delivery_policy": "SEQUENTIAL_FIRST_ACCEPT",
+  "observation_policy": "DIRECT_POLL_EVERY_RELAY",
+  "relays": [
+    {"order": 1, "url": "https://ntfy.sh"},
+    {"order": 2, "url": "https://ntfy.envs.net"},
+    {"order": 3, "url": "https://ntfy.adminforge.de"},
+    {"order": 4, "url": "https://ntfy.mzte.de"},
+    {"order": 5, "url": "https://ntfy.tedomum.net"},
+    {"order": 6, "url": "https://ntfy.hostux.net"}
+  ]
+}

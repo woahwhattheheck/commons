@@ -24,6 +24,7 @@ import chunk_board
 import panel as panel_mod
 import memory_board
 import capability_declaration
+from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -86,13 +87,6 @@ SHARE_BAD = re.compile(
     r"inject\s*0x01|pulse\s*78|light\s*7913|notepad\s*titan|"
     r"parallel\s*[2-9]\d{2,}",
     re.I,
-)
-NTFY_TOPIC = "woahwhattheheck-commons-board"
-NTFY_HOSTS = (
-    "https://ntfy.sh",
-    "https://ntfy.envs.net",
-    "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de",
 )
 NTFY = "%s/%s/json?poll=1&since=72h" % (NTFY_HOSTS[0], NTFY_TOPIC)
 LDA_ISSUES = (
@@ -3805,4 +3799,3 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

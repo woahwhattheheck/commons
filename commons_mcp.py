@@ -28,6 +28,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 
 PROTOCOL_VERSION = "2026-07-28"
@@ -46,13 +47,7 @@ REPO = "woahwhattheheck/commons"
 REPO_GIT = "https://github.com/%s.git" % REPO
 RAW_ROOT = "https://raw.githubusercontent.com/%s" % REPO
 GITHUB_API = "https://api.github.com/repos/%s" % REPO
-NTFY_TOPIC = "woahwhattheheck-commons-board"
-NTFY_RELAYS = (
-    "https://ntfy.sh",
-    "https://ntfy.envs.net",
-    "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de",
-)
+NTFY_RELAYS = NTFY_HOSTS
 NTFY_MAX = 3900
 MAX_BODY = 16000
 EMPTY_FIRE_ACTION_PAYLOAD = "possessing the link is authorization"
@@ -1106,6 +1101,7 @@ class CommonsGateway:
             ("orchestration", "jeffersonville/frameworks"): ("orchestration/jeffersonville/frameworks.json", "application/json", 60000, "public"),
             ("orchestration", "jeffersonville/topology"): ("orchestration/jeffersonville/topology.json", "application/json", 60000, "public"),
             ("orchestration", "jeffersonville/adapter-schema"): ("orchestration/jeffersonville/adapter.schema.json", "application/schema+json", 60000, "public"),
+            ("relays", "ntfy"): ("relay-manifest.json", "application/json", 60000, "public"),
         }
         if (key, tail) in mapping:
             path, mime, ttl, scope = mapping[(key, tail)]
@@ -1267,6 +1263,7 @@ RESOURCES = [
     {"uri": "commons://orchestration/jeffersonville/frameworks", "name": "Jeffersonville framework evidence", "description": "Pinned repository observations; every entry is NOT_DEPLOYED.", "mimeType": "application/json"},
     {"uri": "commons://orchestration/jeffersonville/topology", "name": "Jeffersonville reference topology", "description": "Adapter and benchmark plan only; no infrastructure deployment claim.", "mimeType": "application/json"},
     {"uri": "commons://orchestration/jeffersonville/adapter-schema", "name": "Jeffersonville adapter schema", "description": "Permissive descriptive capability metadata.", "mimeType": "application/schema+json"},
+    {"uri": "commons://relays/ntfy", "name": "Commons ntfy relay manifest", "description": "Ordered open relay roads and direct-observation contract.", "mimeType": "application/json"},
     {"uri": APP_URI, "name": "Commons Composer", "description": "Open-door MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
 ]
 

@@ -34,11 +34,34 @@ class PathManifestTests(unittest.TestCase):
             "orchestration/jeffersonville/topology.json": "SCHEMA_AND_CATALOG",
             "host/titan_hands_windows/server.py": "EXECUTABLE_SOURCE",
             "muhl/containers/example.mno": "CORPUS_PAYLOAD",
-            "commerce.html": "SCHEMA_AND_CATALOG",
+            "commerce.html": "PUBLIC_SURFACE",
+            "orchestration.html": "PUBLIC_SURFACE",
+            "architecture/path-manifest.json": "SCHEMA_AND_CATALOG",
+            "architecture/path-manifest.schema.json": "SCHEMA_AND_CATALOG",
+            "architecture/PATHS.md": "PROCEDURE_SOURCE",
         }
         for path, classification in expected.items():
             with self.subTest(path=path):
                 self.assertEqual(self.classifier.classify(path)["classification"], classification)
+
+    def test_typed_files_precede_broad_subsystem_prefixes(self):
+        expected = {
+            "revenue/dio/substrate_receipt.py": ("EXECUTABLE_SOURCE", "code"),
+            "revenue/dio/test_receipt.py": ("EXECUTABLE_SOURCE", "tests"),
+            "revenue/dio/status.html": ("PUBLIC_SURFACE", "web"),
+            "orchestration/jeffersonville/probe.py": ("EXECUTABLE_SOURCE", "code"),
+            "orchestration/jeffersonville/test_probe.py": ("EXECUTABLE_SOURCE", "tests"),
+            "orchestration/jeffersonville/status.html": ("PUBLIC_SURFACE", "web"),
+            "muhl/tools/inspect.py": ("EXECUTABLE_SOURCE", "code"),
+            "muhl/tools/test_inspect.py": ("EXECUTABLE_SOURCE", "tests"),
+            "muhl/public/index.html": ("PUBLIC_SURFACE", "web"),
+            "host/titan_hands/register_codex.ps1": ("EXECUTABLE_SOURCE", "code"),
+        }
+        for path, (classification, subsystem) in expected.items():
+            with self.subTest(path=path):
+                row = self.classifier.classify(path)
+                self.assertEqual(row["classification"], classification)
+                self.assertEqual(row["subsystem"], subsystem)
 
     def test_unknown_path_is_visible_not_silent(self):
         row = self.classifier.classify("novel-format.payload")
@@ -65,10 +88,56 @@ class PathManifestTests(unittest.TestCase):
         self.assertEqual(first["tests"]["nested_count"], 1)
         self.assertEqual(first["unmapped_paths"], ["new.payload"])
         self.assertEqual(first["generator_contracts"][0]["declared_count"], 2)
+        self.assertEqual(first["generator_unmapped_count"], 0)
+
+    def test_mixed_staging_contract_classifies_directories_and_missing_literals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "board_ingest.py").write_text(
+                "ASSET_PATHS = ['p', 'builds', 'panel.json', 'recent.json']\n",
+                encoding="utf-8",
+            )
+            report = path_manifest.build_report(
+                root,
+                self.manifest,
+                paths=["p/one.md", "builds/records/receipt.json", "recent.json"],
+            )
+        contract = report["generator_contracts"][0]
+        targets = {row["path"]: row for row in contract["targets"]}
+        self.assertEqual(contract["path_semantics"], "MIXED_STAGING_AND_GENERATED")
+        self.assertEqual(targets["p"]["target_kind"], "TRACKED_DIRECTORY")
+        self.assertEqual(targets["p"]["classification_path"], "p/one.md")
+        self.assertEqual(targets["p"]["classification"], "CANONICAL_SOURCE")
+        self.assertEqual(targets["builds"]["target_kind"], "TRACKED_DIRECTORY")
+        self.assertEqual(targets["builds"]["classification"], "IMMUTABLE_EVIDENCE")
+        self.assertEqual(targets["panel.json"]["target_kind"], "MISSING_PATH")
+        self.assertEqual(targets["panel.json"]["classification_path"], "panel.json")
+        self.assertEqual(targets["panel.json"]["classification"], "SCHEMA_AND_CATALOG")
+        self.assertEqual(contract["missing_tracked_targets"], ["panel.json"])
+        self.assertEqual(report["generator_unmapped_count"], 0)
+        self.assertEqual(report["generator_unmapped_targets"], [])
+
+    def test_mixed_staging_contract_reports_unmapped_declarations(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "board_ingest.py").write_text("ASSET_PATHS = ['novel.payload']\n", encoding="utf-8")
+            report = path_manifest.build_report(root, self.manifest, paths=[])
+        self.assertEqual(report["generator_unmapped_count"], 1)
+        self.assertEqual(
+            report["generator_unmapped_targets"],
+            [{"contract_id": "board-staging-and-projection-assets", "path": "novel.payload"}],
+        )
+        self.assertEqual(report["generator_contracts"][0]["unmapped_targets"], ["novel.payload"])
+        summary = path_manifest.markdown_summary(report)
+        self.assertIn("Mixed staging/generator targets unmapped: **1**", summary)
+        self.assertIn("Unmapped declarations: `novel.payload`", summary)
 
     def test_schema_and_manifest_are_valid_json(self):
         schema = json.loads((ROOT / "architecture" / "path-manifest.schema.json").read_text(encoding="utf-8"))
         self.assertEqual(schema["properties"]["participation_effect"]["const"], "NONE")
+        self.assertIn("$schema", schema["properties"])
+        self.assertTrue(set(self.manifest).issubset(schema["properties"]))
+        self.assertTrue(set(schema["required"]).issubset(self.manifest))
         self.assertEqual(path_manifest.manifest_digest(self.manifest), path_manifest.manifest_digest(dict(self.manifest)))
 
 

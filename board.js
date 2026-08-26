@@ -1,4 +1,5 @@
 window.COMMONS_BOARD = (function () {
+  // BEGIN GENERATED COMMONS NTFY RELAYS
   var NTFY_TOPIC = "woahwhattheheck-commons-board";
   var NTFY_HOSTS = [
     "https://ntfy.sh",
@@ -8,6 +9,7 @@ window.COMMONS_BOARD = (function () {
     "https://ntfy.tedomum.net",
     "https://ntfy.hostux.net"
   ];
+  // END GENERATED COMMONS NTFY RELAYS
   var NTFY_MAX_EVENTS = 120;
   var NTFY_MAX_BYTES = 262144;
   // A post is not a commit. ntfy holds every post for 72 h whether or not the

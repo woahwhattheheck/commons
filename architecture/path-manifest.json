@@ -35,10 +35,11 @@
   },
   "generator_contracts": [
     {
-      "id": "board-projection-assets",
+      "id": "board-staging-and-projection-assets",
       "source": "board_ingest.py",
       "symbol": "ASSET_PATHS",
       "producer": "board_ingest.py:rebuild",
+      "path_semantics": "MIXED_STAGING_AND_GENERATED",
       "tests": [
         "test_rebuild_determinism.py",
         "test_projection_convergence.py",
@@ -48,16 +49,21 @@
   ],
   "rules": [
     {
-      "id": "path-manifest-system",
+      "id": "path-manifest-data-contracts",
       "patterns": [
         "architecture/path-manifest.json",
-        "architecture/path-manifest.schema.json",
-        "architecture/PATHS.md",
-        "host/path_manifest.py",
-        "test_path_manifest.py",
-        ".github/workflows/path-manifest.yml"
+        "architecture/path-manifest.schema.json"
       ],
-      "classification": "EXECUTABLE_SOURCE",
+      "classification": "SCHEMA_AND_CATALOG",
+      "subsystem": "path-map",
+      "producer": null,
+      "tests": ["test_path_manifest.py"],
+      "flags": ["DESCRIPTIVE_ONLY", "PUBLIC_SAFE"]
+    },
+    {
+      "id": "path-manifest-procedure",
+      "patterns": ["architecture/PATHS.md"],
+      "classification": "PROCEDURE_SOURCE",
       "subsystem": "path-map",
       "producer": null,
       "tests": ["test_path_manifest.py"],
@@ -156,6 +162,64 @@
       "producer": null,
       "tests": ["test_render_check_ci.py", "test_path_manifest.py"],
       "flags": ["OBSERVATIONAL"]
+    },
+    {
+      "id": "relay-federation-data-contracts",
+      "patterns": [
+        "relay-manifest.json",
+        "relay-manifest.schema.json"
+      ],
+      "classification": "SCHEMA_AND_CATALOG",
+      "subsystem": "relay-federation",
+      "producer": null,
+      "tests": ["test_relay_manifest.py", "test_ntfy_relays.py"],
+      "flags": ["DESCRIPTIVE_ONLY", "PUBLIC_SAFE"]
+    },
+    {
+      "id": "root-and-subsystem-tests",
+      "patterns": ["test_*.py", "test_*.js", "**/test_*.py", "**/test_*.js", "**/tests/**"],
+      "classification": "EXECUTABLE_SOURCE",
+      "subsystem": "tests",
+      "producer": null,
+      "tests": [".github/workflows/tests.yml"],
+      "flags": ["DISCOVERED"]
+    },
+    {
+      "id": "executable-code",
+      "patterns": [
+        "*.py",
+        "*.js",
+        "*.mjs",
+        "*.sh",
+        "*.ps1",
+        "*.go",
+        "*.rs",
+        "*.ts",
+        "*.tsx",
+        "**/*.py",
+        "**/*.js",
+        "**/*.mjs",
+        "**/*.sh",
+        "**/*.ps1",
+        "**/*.go",
+        "**/*.rs",
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "classification": "EXECUTABLE_SOURCE",
+      "subsystem": "code",
+      "producer": null,
+      "tests": [".github/workflows/tests.yml"],
+      "flags": ["VERSIONED"]
+    },
+    {
+      "id": "public-web-surfaces",
+      "patterns": ["*.html", "*.css", "**/*.html", "**/*.css", ".well-known/**"],
+      "classification": "PUBLIC_SURFACE",
+      "subsystem": "web",
+      "producer": null,
+      "tests": ["test_subpage_assets.py", "test_link_check.py"],
+      "flags": ["PUBLIC_SAFE"]
     },
     {
       "id": "agent-procedures",
@@ -258,41 +322,6 @@
       "flags": ["MACHINE_READABLE_WHERE_DECLARED"]
     },
     {
-      "id": "root-and-subsystem-tests",
-      "patterns": ["test_*.py", "test_*.js", "**/test_*.py", "**/test_*.js", "**/tests/**"],
-      "classification": "EXECUTABLE_SOURCE",
-      "subsystem": "tests",
-      "producer": null,
-      "tests": [".github/workflows/tests.yml"],
-      "flags": ["DISCOVERED"]
-    },
-    {
-      "id": "executable-code",
-      "patterns": [
-        "*.py",
-        "*.js",
-        "*.mjs",
-        "*.sh",
-        "*.go",
-        "*.rs",
-        "*.ts",
-        "*.tsx",
-        "**/*.py",
-        "**/*.js",
-        "**/*.mjs",
-        "**/*.sh",
-        "**/*.go",
-        "**/*.rs",
-        "**/*.ts",
-        "**/*.tsx"
-      ],
-      "classification": "EXECUTABLE_SOURCE",
-      "subsystem": "code",
-      "producer": null,
-      "tests": [".github/workflows/tests.yml"],
-      "flags": ["VERSIONED"]
-    },
-    {
       "id": "additional-versioned-documents",
       "patterns": [
         ".agents/**",
@@ -331,15 +360,6 @@
       "producer": null,
       "tests": ["test_path_manifest.py"],
       "flags": ["VERSIONED"]
-    },
-    {
-      "id": "public-web-surfaces",
-      "patterns": ["*.html", "*.css", "**/*.html", "**/*.css", ".well-known/**"],
-      "classification": "PUBLIC_SURFACE",
-      "subsystem": "web",
-      "producer": null,
-      "tests": ["test_subpage_assets.py", "test_link_check.py"],
-      "flags": ["PUBLIC_SAFE"]
     },
     {
       "id": "schemas-catalogs-and-config",

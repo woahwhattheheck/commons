@@ -1,7 +1,16 @@
 (function () {
   "use strict";
-  var hosts = ["https://ntfy.sh", "https://ntfy.envs.net", "https://ntfy.adminforge.de", "https://ntfy.mzte.de"];
+  // BEGIN GENERATED COMMONS NTFY RELAYS
   var topic = "woahwhattheheck-commons-board";
+  var hosts = [
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net"
+  ];
+  // END GENERATED COMMONS NTFY RELAYS
   var relayKey = "commons-ntfy-relay-v1", quotaCooldown = 60 * 60 * 1000, failureCooldown = 60 * 1000;
   function relayState() { try { var s = JSON.parse(localStorage.getItem(relayKey) || "{}"); return { active: Number(s.active) || 0, cooldowns: s.cooldowns || {} }; } catch (e) { return { active: 0, cooldowns: {} }; } }
   function saveRelayState(s) { try { localStorage.setItem(relayKey, JSON.stringify(s)); } catch (e) {} }

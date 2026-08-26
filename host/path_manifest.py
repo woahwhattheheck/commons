@@ -163,22 +163,52 @@ def _generator_inventory(root: Path, manifest: dict, classifier: PathClassifier,
         declared = literal_sequence(root / contract["source"], contract["symbol"])
         rows = []
         missing = []
+        unmapped = []
         for item in declared:
-            probe = item if item in paths else item.rstrip("/") + "/__manifest_probe__"
-            row = classifier.classify(probe)
-            rows.append({"path": item, "classification": row["classification"], "rule_id": row["rule_id"]})
-            if item not in paths and not any(path.startswith(item.rstrip("/") + "/") for path in paths):
+            prefix = item.rstrip("/") + "/"
+            descendants = sorted(path for path in paths if path.startswith(prefix))
+            if item in paths:
+                tracked = True
+                target_kind = "TRACKED_FILE"
+                classification_path = item
+            elif descendants:
+                tracked = True
+                target_kind = "TRACKED_DIRECTORY"
+                classification_path = descendants[0]
+            else:
+                tracked = False
+                target_kind = "MISSING_PATH"
+                # Classify a missing literal as declared. Appending a made-up
+                # descendant changes the path type (for example panel.json)
+                # and can create a false UNMAPPED diagnostic.
+                classification_path = item
+            row = classifier.classify(classification_path)
+            target = {
+                "path": item,
+                "tracked": tracked,
+                "target_kind": target_kind,
+                "classification_path": classification_path,
+                "classification": row["classification"],
+                "rule_id": row["rule_id"],
+            }
+            rows.append(target)
+            if not tracked:
                 missing.append(item)
+            if row["classification"] == "UNMAPPED":
+                unmapped.append(item)
         out.append(
             {
                 "id": contract["id"],
                 "source": contract["source"],
                 "symbol": contract["symbol"],
                 "producer": contract["producer"],
+                "path_semantics": contract.get("path_semantics", "UNSPECIFIED"),
                 "tests": list(contract["tests"]),
                 "declared_count": len(declared),
                 "classification_counts": dict(sorted(Counter(row["classification"] for row in rows).items())),
                 "missing_tracked_targets": sorted(missing),
+                "unmapped_count": len(unmapped),
+                "unmapped_targets": sorted(unmapped),
                 "targets": rows,
             }
         )
@@ -197,6 +227,12 @@ def build_report(
     unmapped = [row["path"] for row in rows if row["classification"] == "UNMAPPED"]
     root_tests = [path for path in selected if "/" not in path and re.match(r"^test_.*\.(?:py|js)$", path)]
     nested_tests = [path for path in selected if "/" in path and re.search(r"(?:^|/)test[^/]*\.(?:py|js)$", path)]
+    generator_contracts = _generator_inventory(root, manifest, classifier, set(selected))
+    generator_unmapped_targets = [
+        {"contract_id": item["id"], "path": path}
+        for item in generator_contracts
+        for path in item["unmapped_targets"]
+    ]
     report = {
         "schema": "commons-path-report-v1",
         "manifest_digest": manifest_digest(manifest),
@@ -212,7 +248,9 @@ def build_report(
             "root": root_tests,
             "nested": nested_tests,
         },
-        "generator_contracts": _generator_inventory(root, manifest, classifier, set(selected)),
+        "generator_contracts": generator_contracts,
+        "generator_unmapped_count": len(generator_unmapped_targets),
+        "generator_unmapped_targets": generator_unmapped_targets,
     }
     if include_rows:
         report["paths"] = rows
@@ -226,6 +264,7 @@ def markdown_summary(report: dict) -> str:
         "",
         "- Tracked files: **%d**" % report["tracked_files"],
         "- Unmapped, visibly reported: **%d**" % report["unmapped_count"],
+        "- Mixed staging/generator targets unmapped: **%d**" % report["generator_unmapped_count"],
         "- Tests discovered: **%d root + %d nested**"
         % (report["tests"]["root_count"], report["tests"]["nested_count"]),
         "- Classes: %s" % (counts or "none"),
@@ -233,9 +272,19 @@ def markdown_summary(report: dict) -> str:
     ]
     for item in report["generator_contracts"]:
         lines.append(
-            "- Generator `%s:%s`: **%d targets**, **%d missing tracked targets**"
-            % (item["source"], item["symbol"], item["declared_count"], len(item["missing_tracked_targets"]))
+            "- Mixed staging/generator contract `%s:%s`: **%d targets**, **%d missing tracked**, **%d unmapped**"
+            % (
+                item["source"],
+                item["symbol"],
+                item["declared_count"],
+                len(item["missing_tracked_targets"]),
+                item["unmapped_count"],
+            )
         )
+        if item["missing_tracked_targets"]:
+            lines.append("  - Missing tracked: %s" % ", ".join("`%s`" % path for path in item["missing_tracked_targets"]))
+        if item["unmapped_targets"]:
+            lines.append("  - Unmapped declarations: %s" % ", ".join("`%s`" % path for path in item["unmapped_targets"]))
     if report["unmapped_paths"]:
         lines.extend(["", "First unmapped paths:", ""])
         lines.extend("- `%s`" % path for path in report["unmapped_paths"][:25])
@@ -266,6 +315,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         with args.summary.open("a", encoding="utf-8") as handle:
             handle.write(markdown_summary(report))
     print("PATH MANIFEST: OBSERVED %d tracked files; %d visibly unmapped" % (report["tracked_files"], report["unmapped_count"]))
+    print("PATH MANIFEST: %d mixed staging/generator targets visibly unmapped" % report["generator_unmapped_count"])
     print("PATH MANIFEST: %d root tests; %d nested tests" % (report["tests"]["root_count"], report["tests"]["nested_count"]))
     print("PATH MANIFEST: %s" % report["manifest_digest"])
     return 0

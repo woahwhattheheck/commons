@@ -2,14 +2,18 @@ export const COMMONS_REPO = "woahwhattheheck/commons";
 export const COMMONS_PAGES = "https://woahwhattheheck.github.io/commons";
 export const SLACK_CHANNEL_ID = "C0BRGMDQB6G";
 export const SLACK_CHANNEL_NAME = "#commons";
+// BEGIN GENERATED COMMONS NTFY RELAYS
 export const NTFY_TOPIC = "woahwhattheheck-commons-board";
-export const NTFY_BYTE_CAP = 3900;
 export const NTFY_HOSTS = [
   "https://ntfy.sh",
   "https://ntfy.envs.net",
   "https://ntfy.adminforge.de",
   "https://ntfy.mzte.de",
+  "https://ntfy.tedomum.net",
+  "https://ntfy.hostux.net",
 ] as const;
+// END GENERATED COMMONS NTFY RELAYS
+export const NTFY_BYTE_CAP = 3900;
 
 export const CLAIM_RE = /^[A-Z][A-Z0-9_]{1,31}$/;
 export const ID_RE = /^[A-Za-z0-9._-]{8,80}$/;

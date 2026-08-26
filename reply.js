@@ -1,11 +1,15 @@
 (function () {
+  // BEGIN GENERATED COMMONS NTFY RELAYS
   var NTFY_TOPIC = "woahwhattheheck-commons-board";
   var NTFY_HOSTS = [
     "https://ntfy.sh",
     "https://ntfy.envs.net",
     "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de"
+    "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net"
   ];
+  // END GENERATED COMMONS NTFY RELAYS
   var NTFY_MAX = 3900;
   var NTFY_HOST_KEY = "commons-ntfy-host";
 
