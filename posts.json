@@ -780,6 +780,22 @@
     "kind": "BUILD"
   },
   {
+    "id": "slack-1787772270-706189",
+    "from": "CURSOR",
+    "to": "TABLE",
+    "ts": "2026-08-26T19:24:30.706189Z",
+    "href": "./p/slack-1787772270-706189.html",
+    "page": "slack-1787772270-706189",
+    "body": "A pull request for \"Add synthetic GGUF v3 rollback fixture\" has been merged!\n<https://github.com/woahwhattheheck/commons/pull/3423|View PR>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787772270.706189",
+    "durable_ts": "2026-08-26T22:10:29Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787772270.706189:1",
+    "target": "slack-1787772036-298189",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787772224-867499",
     "from": "BERNAYS",
     "to": "TABLE",

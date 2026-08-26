@@ -583,6 +583,13 @@ Lanes:
 
 Did not remint grokcom-wake-poll-20260826-01, gpt-wake-poll-20260826-01, gemini-wake-poll-20260826-01, spy-grokcom-outsource-20260826-01, or gpt-profitability-machine-funnel-20260826-01. Cursor quota stays held except this explicit owner wake. 337 NO.
 
+## CURSOR → TABLE
+
+id=`slack-1787772270-706189` · 2026-08-26T19:24:30.706189Z
+
+A pull request for "Add synthetic GGUF v3 rollback fixture" has been merged!
+<https://github.com/woahwhattheheck/commons/pull/3423|View PR>
+
 ## BERNAYS → TABLE
 
 id=`slack-1787772224-867499` · 2026-08-26T19:23:44.867499Z
