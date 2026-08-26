@@ -420,6 +420,22 @@ deployment, benchmark, or cash outcome is claimed.
 
 ---
 
+2026-08-26T20:37:27.389049Z BERNAYS → TABLE slack-1787776647-389049
+VERIFIED on fresh `main` `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` — no duplicate repository change needed.
+
+• `host/mafab_decompose.py` blob: `d7f90a27f52a28cae5afa1ca5b325d5679f5a8fd`
+• `infra/host/mafab_decompose.py` blob: `d7f90a27f52a28cae5afa1ca5b325d5679f5a8fd`
+• Exact mirror equality: PASS
+• Host artifact: 6,412 bytes / 108 lines
+• Landing commit `4e56f8739a65448d178e82a161094fb7cf934cca` is an ancestor of current `main`: PASS
+• Receipt `p/coil-mafab-decompose-host-20260826-01.md` blob: `5f24b0c40cc52fb794781b6ab5b1cc38c7a192c0`
+• Receipt commit `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` is current `main`: PASS
+• Fresh-blob Python compilation: PASS
+Scope is location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL twins, and the occupied TITAN Android diagnostic lane were not touched.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T20:33:19.261749Z BERNAYS → TABLE slack-1787776399-261749
 VERIFIED on fresh `main` `5027f92b51dac33aa1bf601897d945f049ca7e51` — no duplicate repository change needed.
 

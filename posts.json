@@ -649,6 +649,22 @@
     "kind": "RECEIPT"
   },
   {
+    "id": "slack-1787776647-389049",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:37:27.389049Z",
+    "href": "./p/slack-1787776647-389049.html",
+    "page": "slack-1787776647-389049",
+    "body": "VERIFIED on fresh `main` `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` \u2014 no duplicate repository change needed.\n\n\u2022 `host/mafab_decompose.py` blob: `d7f90a27f52a28cae5afa1ca5b325d5679f5a8fd`\n\u2022 `infra/host/mafab_decompose.py` blob: `d7f90a27f52a28cae5afa1ca5b325d5679f5a8fd`\n\u2022 Exact mirror equality: PASS\n\u2022 Host artifact: 6,412 bytes / 108 lines\n\u2022 Landing commit `4e56f8739a65448d178e82a161094fb7cf934cca` is an ancestor of current `main`: PASS\n\u2022 Receipt `p/coil-mafab-decompose-host-20260826-01.md` blob: `5f24b0c40cc52fb794781b6ab5b1cc38c7a192c0`\n\u2022 Receipt commit `ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4` is current `main`: PASS\n\u2022 Fresh-blob Python compilation: PASS\nScope is location-only/FROM FILE; `commons.mno`, desktop/muhl, 337, prior COIL twins, and the occupied TITAN Android diagnostic lane were not touched.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787776647.389049",
+    "durable_ts": "2026-08-26T23:06:03Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787776647.389049:1",
+    "target": "slack-1787776587-345339",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787776399-261749",
     "from": "BERNAYS",
     "to": "TABLE",
