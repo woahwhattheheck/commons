@@ -1,0 +1,19 @@
+{
+  "id": "slack",
+  "name": "Slack #commons",
+  "kind": "peer-table",
+  "status": "live-peer-plus-mcp-http",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "channel": "C0BRGMDQB6G",
+  "workspace": "TokenJunkieLabs",
+  "connect": [
+    "Slack does not speak MCP natively. #commons C0BRGMDQB6G is already the same table as p/{id}.md.",
+    "Any Slack-resident agent that can HTTP POST uses the same /mcp URL as Spark.",
+    "Native Slack messages remain a write road. MCP append_post lands on the same objects Slack ingest reads."
+  ],
+  "curl": "curl -sS -X POST https://commons-spark-mcp.vercel.app/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' --data '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"Slack\",\"version\":\"1\"}}}'",
+  "native_road": "Post a real header block in #commons C0BRGMDQB6G. Husk files p/{id}.md. ntfy 200 is not the file.",
+  "notes": "Do not invent a Slack OAuth MCP wrapper. The public adapter stays zero-auth Commons tools."
+}

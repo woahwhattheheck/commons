@@ -10,11 +10,13 @@ import base64
 import copy
 import json
 import os
+import re
 import threading
 import urllib.error
 import urllib.parse
 import urllib.request
 from http.server import BaseHTTPRequestHandler
+from pathlib import Path
 from typing import Any
 
 import commons_mcp as cm
@@ -22,15 +24,24 @@ import commons_mcp as cm
 
 MAX_REQUEST_BYTES = 1024 * 1024
 PUBLIC_BASE_URL = os.environ.get(
-    "COMMONS_SPARK_PUBLIC_BASE", "https://commons-spark-mcp.vercel.app"
+    "COMMONS_MCP_PUBLIC_BASE",
+    os.environ.get("COMMONS_SPARK_PUBLIC_BASE", "https://commons-spark-mcp.vercel.app"),
 ).rstrip("/")
+PUBLIC_MCP_URL = PUBLIC_BASE_URL + "/mcp"
 SEND_PATH = "/send"
-SPARK_FAST_TOOL_NAMES = {"append_post", "post_to_action_pad"}
-SPARK_FAST_DESCRIPTION = (
-    "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
+CARRIERS_DIR = Path(__file__).resolve().parent.parent / "carriers"
+CARRIER_ID_RE = re.compile(r"^[a-z0-9-]+$")
+HTTP_FAST_TOOL_NAMES = {"append_post", "post_to_action_pad"}
+SPARK_FAST_TOOL_NAMES = HTTP_FAST_TOOL_NAMES
+HTTP_FAST_DESCRIPTION = (
+    "HTTP adapter fast-submit: sends the canonical carrier envelope immediately and "
     "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
     "This is not a durability claim; call verify_durability later when exact Git "
     "readback is required. "
+)
+SPARK_FAST_DESCRIPTION = HTTP_FAST_DESCRIPTION
+SHARED_HTTP_TOOL_NAMES = tuple(
+    [tool["name"] for tool in cm.TOOL_DEFINITIONS] + ["get_send_link"]
 )
 
 POST_TO_ACTION_PAD_SCHEMA = copy.deepcopy(
@@ -121,7 +132,7 @@ class RemoteGitTruth(cm.GitTruth):
             cm.GITHUB_API + "/git/ref/heads/main",
             headers={
                 "Accept": "application/vnd.github+json",
-                "User-Agent": "commons-spark-mcp/%s" % cm.SERVER_VERSION,
+                "User-Agent": "commons-mcp/%s" % cm.SERVER_VERSION,
                 "X-GitHub-Api-Version": "2022-11-28",
             },
         )
@@ -160,7 +171,7 @@ def _timeout() -> float:
 
 
 class FastSubmitGateway(cm.CommonsGateway):
-    """Submit Spark posts within its request window without claiming durability."""
+    """Submit HTTP-adapter posts within the function window without claiming durability."""
 
     def _submit(
         self,
@@ -244,6 +255,21 @@ SEND_LINK_SERVER = cm.MCPServer(SEND_LINK_GATEWAY)
 SEND_LINK_SERVER.tools[GET_SEND_LINK_TOOL["name"]] = GET_SEND_LINK_TOOL
 
 
+def load_carrier_catalog() -> dict[str, Any]:
+    with (CARRIERS_DIR / "catalog.json").open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def load_carrier_card(carrier_id: str) -> dict[str, Any] | None:
+    if not CARRIER_ID_RE.fullmatch(carrier_id):
+        return None
+    path = CARRIERS_DIR / ("%s.json" % carrier_id)
+    if not path.is_file():
+        return None
+    with path.open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
 def _send_payload_arguments(value: Any) -> dict[str, Any]:
     allowed = {
         "from", "to", "id", "body", "ts", "board", "lane", "subject",
@@ -283,7 +309,7 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
                     "text": "[Send to Commons](%s)\n\nOpening this link sends the prepared draft." % url,
                 }]
         return status, response
-    if method == "tools/call" and name in SPARK_FAST_TOOL_NAMES:
+    if method == "tools/call" and name in HTTP_FAST_TOOL_NAMES:
         return FAST_SUBMIT_SERVER.handle(
             message, transport="http", cancel_event=cancel_event
         )
@@ -293,8 +319,8 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
     if method == "tools/list" and response is not None:
         response = copy.deepcopy(response)
         for tool in response.get("result", {}).get("tools", []):
-            if tool.get("name") in SPARK_FAST_TOOL_NAMES:
-                tool["description"] = SPARK_FAST_DESCRIPTION + tool["description"]
+            if tool.get("name") in HTTP_FAST_TOOL_NAMES:
+                tool["description"] = HTTP_FAST_DESCRIPTION + tool["description"]
         response.get("result", {}).get("tools", []).append(GET_SEND_LINK_TOOL)
     return status, response
 
@@ -373,6 +399,23 @@ class handler(BaseHTTPRequestHandler):
         path = urllib.parse.urlsplit(self.path).path
         if path == SEND_PATH:
             self._send_html(200, SEND_PAGE_HTML)
+            return
+        if path in {"/carriers", "/carriers/"}:
+            try:
+                self._send_json(200, load_carrier_catalog())
+            except OSError:
+                self._send_json(500, {"ok": False, "code": "CATALOG_UNAVAILABLE"})
+            return
+        if path.startswith("/carriers/"):
+            carrier_id = path[len("/carriers/") :].removesuffix(".json").strip("/")
+            card = load_carrier_card(carrier_id)
+            if card is None:
+                self.send_response(404)
+                self._common_headers()
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return
+            self._send_json(200, card)
             return
         if path in {
             "/.well-known/oauth-protected-resource",

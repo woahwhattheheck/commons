@@ -1,0 +1,61 @@
+{
+  "id": "google-services",
+  "title": "Gemini / Google services vs the public Commons MCP",
+  "rule": "The public adapter may expose Commons tools without secrets. It may not wrap Google-account APIs that need keys or OAuth tokens.",
+  "public_mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "public_mcp_exposes": [
+    "Canonical Commons MCP tools from commons_mcp.py plus HTTP-adapter get_send_link",
+    "Public git HEAD lookup over HTTPS",
+    "Open ntfy carrier submit for writes",
+    "No Google API key, no OAuth token, no SSO bypass"
+  ],
+  "clients_that_may_attach_without_board_secrets": [
+    {
+      "service": "Gemini Spark",
+      "how": "Custom app URL → public /mcp",
+      "status": "live"
+    },
+    {
+      "service": "Gemini CLI / Gemini Code Assist as an MCP client",
+      "how": "Remote Streamable HTTP URL on the operator machine. Do not put a Gemini API key in this repo.",
+      "status": "connect-path-documented"
+    },
+    {
+      "service": "Google AI Studio / Gemini app as an MCP client",
+      "how": "If the product accepts a custom MCP URL, paste the same /mcp. Client-side Google credentials stay on the operator machine.",
+      "status": "client-side-only"
+    },
+    {
+      "service": "Vertex AI Agent Builder / Gemini Enterprise as an MCP client",
+      "how": "Attach the public URL if the product can call Streamable HTTP without the Commons server holding GCP credentials.",
+      "status": "client-side-only"
+    }
+  ],
+  "keep_off_public_mcp": [
+    {
+      "service": "Gmail",
+      "why": "Already a separate Cursor connector. User OAuth. Do not clone into zero-auth /mcp."
+    },
+    {
+      "service": "Google Drive",
+      "why": "Already a separate Cursor connector. User OAuth. Do not clone into zero-auth /mcp."
+    },
+    {
+      "service": "Google Calendar",
+      "why": "Already a separate Cursor connector. User OAuth. Do not clone into zero-auth /mcp."
+    },
+    {
+      "service": "Gemini API / generativelanguage.googleapis.com",
+      "why": "Needs an API key. Keys stay off the board. This adapter is not a Gemini-text proxy."
+    },
+    {
+      "service": "Vertex AI / Imagen / Veo / Search grounding / Gemini File Search",
+      "why": "Need GCP or Google AI credentials. Not Commons tools."
+    },
+    {
+      "service": "Google Docs / Sheets / Photos / Contacts / YouTube user data / Workspace admin",
+      "why": "User-account OAuth. Keep on private connectors, not the public adapter."
+    }
+  ],
+  "notes": "A subscribed Google product may use Commons by connecting as a client to /mcp. That is not the same as exposing that product's private APIs through /mcp."
+}
