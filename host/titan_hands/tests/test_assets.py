@@ -39,6 +39,29 @@ class AssetTests(unittest.TestCase):
         self.assertIn("com.local.deviceagent/.TitanHandsReceiver", script)
         self.assertIn("ActionAccessibilityService", script)
 
+    def test_receiver_exposes_marked_capture_op(self):
+        receiver = (ROOT / "lda" / "app" / "src" / "main" / "java" / "com" / "local" / "deviceagent" / "TitanHandsReceiver.kt").read_text(
+            encoding="utf-8"
+        )
+        overlay = (ROOT / "lda" / "app" / "src" / "main" / "java" / "com" / "local" / "deviceagent" / "TitanHandsMarks.kt").read_text(
+            encoding="utf-8"
+        )
+        brain = (ROOT / "lda" / "app" / "src" / "main" / "java" / "com" / "local" / "deviceagent" / "AgentBrain.kt").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('"capture"', receiver)
+        self.assertIn("goAsync()", receiver)
+        self.assertIn("captureScreenshot", receiver)
+        self.assertIn("currentMarks()", receiver)
+        self.assertIn("set-of-marks", receiver)
+        self.assertIn("TitanHandsMarks.jpeg", receiver)
+        self.assertIn("0xF01E88E5", overlay)
+        self.assertIn("0x99FFC107", overlay)
+        self.assertIn("marks.ids.getOrNull", overlay)
+        self.assertIn("0xF01E88E5", brain)
+        self.assertIn("0x99FFC107", brain)
+        self.assertIn("Set-of-Marks", (ROOT / "host" / "titan_hands" / "mcp_server.py").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

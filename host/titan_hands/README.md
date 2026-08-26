@@ -7,8 +7,10 @@ This broker exposes one MCP surface for two deterministic hands:
   compatibility fallback when the LDA APK/accessibility service is absent.
 
 The ordinary loop transfers no screenshots. Both adapters emit stable semantic nodes and compact
-added/updated/removed deltas; pixels move only through `hands_capture`. The server itself contains no
-confirmation or approval dialogue.
+added/updated/removed deltas; pixels move only through `hands_capture`. On Android with LDA,
+that capture is the owner's Set-of-Marks screenshot (`ActionAccessibilityService.captureScreenshot`
+plus `currentMarks`), not a raw ADB framebuffer. The server itself contains no confirmation or
+approval dialogue.
 
 ## Run
 
