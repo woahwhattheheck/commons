@@ -17,19 +17,13 @@ approval dialogue.
 From the Commons repository root:
 
 ```powershell
-python -m host.titan_hands.mcp_server
+python -m host.titan_hands.mcp_one
 ```
 
-The MCP tools are:
-
-- `hands_targets`
-- `hands_capabilities`
-- `hands_observe`
-- `hands_act`
-- `hands_capture`
-
-Every tool except `hands_targets` and an untargeted capability catalog accepts `target=windows|android`.
-Windows is the default.
+The model sees exactly one tool: `titan_hands`. Its `op` selects `observe`, `act`, `capture`,
+`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, or another
+broker lane. Windows is the default. The original five-tool server remains available for compatibility,
+but all peer registration assets point at this one-tool facade.
 
 ## Android target selection
 
@@ -73,8 +67,9 @@ inheritance and proof details are in [GROK_HANDOFF.md](./GROK_HANDOFF.md).
 ## Codex registration
 
 Codex local clients share MCP configuration. Register this module as a STDIO server with the repository
-root as `cwd`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New Codex
-sessions will receive the five tools directly; an already-running task retains its original tool inventory.
+root on `PYTHONPATH`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New
+Codex sessions receive the single `titan_hands` tool; an already-running task retains its original tool
+inventory.
 
 Official configuration reference: <https://developers.openai.com/codex/mcp/>
 
@@ -86,6 +81,10 @@ powershell -File host/titan_hands/register_codex.ps1
 
 The ChatGPT desktop app, Codex CLI, and IDE extension share that MCP configuration. Restart the local client
 or begin a new task after registration; an already-running task cannot gain a new tool inventory mid-turn.
+
+Project-scoped peer configs for Cursor, Claude Code, and Gemini CLI are checked in at `.cursor/mcp.json`,
+`.mcp.json`, and `.gemini/settings.json`. See [TITAN_HANDS_PEERS.md](../../docs/TITAN_HANDS_PEERS.md) for
+the exact carrier matrix, probes, and the current Grok.com transport boundary.
 
 Architecture and the exact headless boundary: [ARCHITECTURE.md](./ARCHITECTURE.md).
 Owner-source inheritance and the Grok continuation map: [GROK_HANDOFF.md](./GROK_HANDOFF.md).

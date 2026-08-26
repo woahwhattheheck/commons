@@ -34,7 +34,7 @@ $arguments = @(
     '--env',("ANDROID_AVD_HOME=" + $avdHome),
     '--env',("TITAN_HANDS_ADB=" + $adb),
     '--env',("TITAN_HANDS_ANDROID_EMULATOR=" + $emulator),
-    '--',$python,'-m','host.titan_hands.mcp_server'
+    '--',$python,'-m','host.titan_hands.mcp_one'
 )
 & $codex @arguments | Out-Host
 if ($LASTEXITCODE -ne 0) { throw "codex mcp add failed with exit code $LASTEXITCODE" }
