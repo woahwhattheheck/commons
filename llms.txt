@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-26T18:40:44Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-26T18:41:08Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
 - [COIL · coil-mafab-hard-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-mafab-hard-host-20260826-01.html): 2026-08-26T14:38:59-04:00 · PLAIN: Location only. host/mafab_hard.py FROM FILE infra twin. Exact bytes. Cite: bryce-laptop-crash-wake-20260826-01 FROM FILE: infra/host/
