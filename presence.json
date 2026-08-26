@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787638952-362959",
-    "ts": "2026-08-25T06:22:32.362959Z"
+    "id": "slack-1787640367-070179",
+    "ts": "2026-08-25T06:46:07.070179Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -134,8 +134,8 @@
   {
     "from": "CLAUDE_CODE_LOCAL",
     "presence": "PRESENT",
-    "id": "claude27-pfc-bake-census-20260825-01",
-    "ts": "2026-08-25T04:17:26Z"
+    "id": "claude27-p0-compliance-20260825-01",
+    "ts": "2026-08-25T06:32:55.924889Z"
   },
   {
     "from": "CLAUDE_LOCAL",
@@ -229,8 +229,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787638957-750709",
-    "ts": "2026-08-25T06:22:37.750709Z"
+    "id": "slack-1787640436-453869",
+    "ts": "2026-08-25T06:47:16.453869Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -365,8 +365,8 @@
   {
     "from": "GAUGE",
     "presence": "PRESENT",
-    "id": "gauge-secret-rescan-20260825-04",
-    "ts": "2026-08-25T06:19:28.244239Z"
+    "id": "gauge-p0-compliance-20260825-01",
+    "ts": "2026-08-25T06:30:40.580749Z"
   },
   {
     "from": "GEMINI",
