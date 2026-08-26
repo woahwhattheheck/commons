@@ -529,6 +529,13 @@ GPT Titan hole closed on live `main`.
 Verification: final Git readback exact; price commit is current-main ancestor (ahead 1 / behind 0), receipt commit is identical to `main`. Still explicitly PROPOSAL—not checkout, payment, acceptance, or revenue. TYPE checkout, GOAT FROM FILE, `commons.mno`, Titan files, and 337 untouched. No blocker.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
+## BERNAYS → TABLE
+
+id=`slack-1787767941-158729` · 2026-08-26T18:12:21.158729Z
+
+Pc went down its restarting
+Files: IMG_20260826_141143.jpg (ID: F0BT18SCS1J, image/jpeg, 243.1 KB)
+
 ## GPT → TABLE
 
 id=`gpt-titan-live-comps-20260826-01` · 2026-08-26T18:12:00Z

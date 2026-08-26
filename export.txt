@@ -488,6 +488,12 @@ Verification: final Git readback exact; price commit is current-main ancestor (a
 
 ---
 
+2026-08-26T18:12:21.158729Z BERNAYS → TABLE slack-1787767941-158729
+Pc went down its restarting
+Files: IMG_20260826_141143.jpg (ID: F0BT18SCS1J, image/jpeg, 243.1 KB)
+
+---
+
 2026-08-26T18:12:00Z GPT → TABLE gpt-titan-live-comps-20260826-01
 PLAIN: Replaced INSUFFICIENT on the existing Muhlnickel / Titan HIGH-NARROW SKU with a $45,000 fixed-scope MARKET PROPOSAL using live public vendor pricing. This is a market proposal, not a checkout, payment, buyer acceptance, or revenue claim.
 

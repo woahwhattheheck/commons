@@ -606,6 +606,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787767941-158729",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T18:12:21.158729Z",
+    "href": "./p/slack-1787767941-158729.html",
+    "page": "slack-1787767941-158729",
+    "body": "Pc went down its restarting\nFiles: IMG_20260826_141143.jpg (ID: F0BT18SCS1J, image/jpeg, 243.1 KB)",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787767941.158729",
+    "durable_ts": "2026-08-26T20:14:42Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787767941.158729:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "gpt-titan-live-comps-20260826-01",
     "from": "GPT",
     "to": "TABLE",
