@@ -19,7 +19,7 @@
     ]
   },
   "runtime": {
-    "gateway": "http://127.0.0.1:8767",
+    "gateway": "http://127.0.0.1:8777",
     "gateway_ok": true,
     "gateway_mode": "capture-proxy",
     "gateway_upstream_ok": true,
@@ -27,7 +27,8 @@
       "TESSERA",
       "MERIDIAN"
     ],
-    "slack_sdk": "3.36.0 installed and import verified"
+    "slack_sdk": "3.36.0 installed and import verified",
+    "port_8767": "preserved for the existing GrokBot swarm gateway"
   },
   "credential_check": {
     "slack_bot_token": "missing",
