@@ -1,17 +1,15 @@
 {
   "mcpServers": {
-    "commons": {
-      "url": "https://commons-spark-mcp.vercel.app/mcp"
-    },
     "titan_hands": {
-      "type": "stdio",
       "command": "python",
       "args": ["-m", "host.titan_hands.mcp_one"],
+      "cwd": ".",
       "env": {
-        "PYTHONPATH": "${workspaceFolder}",
+        "PYTHONPATH": ".",
         "PYTHONUTF8": "1",
         "TITAN_HANDS_DEFAULT_TARGET": "windows"
-      }
+      },
+      "timeout": 120000
     }
   }
 }

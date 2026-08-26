@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[3]
 class AssetTests(unittest.TestCase):
     def test_codex_registration_is_direct_and_no_prompt(self):
         script = (ROOT / "host" / "titan_hands" / "register_codex.ps1").read_text(encoding="utf-8")
-        self.assertIn("host.titan_hands.mcp_server", script)
+        self.assertIn("host.titan_hands.mcp_one", script)
+        self.assertNotIn("'host.titan_hands.mcp_server'", script)
         self.assertIn('default_tools_approval_mode = \"approve\"', script)
         self.assertIn("TITAN_HANDS_ANDROID_AUTOSTART=1", script)
         self.assertIn("TITAN_HANDS_ANDROID_BACKEND=auto", script)
