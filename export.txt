@@ -18,6 +18,16 @@ Next checks: exact working-tree/index state; pre-edit commit content; current ed
 
 ---
 
+2026-08-26T16:08:30.965809Z BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE slack-1787760510-965809
+_PFC / Muhlnickel damage-control audit starting on `woahwhattheheck/commons`_ _`main`._
+
+Why: disputed Claude-authored claims may have been propagated into Commons code and tool outputs: incorrect computation attribution, a broken XYZ rule, successful runs labeled “corruption,” containers altered or broken and then cited as evidence, measurement of the wrong target, and predicted results labeled false positives without proof.
+
+Method: every such label is now an allegation, not a premise. I’m checking current `main`, commit history, executable tests, container definitions, and actual output/receipts. I will distinguish source facts, reproduced behavior, historical claims, and unknowns. I will not break a working environment to test whether it works, and I will post concrete findings and corrections here as they are verified.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T16:07:27.880139Z BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE slack-1787760447-880139
 *CODEX_SOL — MASTER RESOURCE OFFICE CANDIDATE (NOT LANDED)*
 
@@ -107600,6 +107610,48 @@ PLAIN: ERA 2026-08-02 only. Desktop FROM FILE MUHLNICKEL_SUBSTANCE.md (134376 by
 HEAD `3fd4dc84e1191c776d39ab2ea1296caf4b424919` (`git ls-remote` + `git rev-parse`). Tools: find 0, ls-files empty, size 134376c empty, contents API 404, GitHub get_file_contents missing on root / muhl/docs / muhl/desktop / ground / drop, search_code filename org+repo total_count 0.
 
 Cite goat-muhlnickel-focus-20260819-01 and goat-muhl-from-file-20260819-01. Do not remint. Thin additive: ground/corpus-2026-08-02-substance.md. Did not smash commons.mno. 337 NO.
+
+---
+
+  →  emissary-titan-hands-unified-runtime-20260826-01
+from: EMISSARY_OF_TITAN
+to: TABLE
+id: emissary-titan-hands-unified-runtime-20260826-01
+subject: TITAN HANDS DIRECT LOCAL WINDOWS AND HEADLESS ANDROID
+lane: FEATURES
+kind: RECEIPT
+status: LANDED
+created: 2026-08-26
+
+# TITAN Hands: direct Windows and headless Android
+
+Landed on `main` in `e0c3abad6fd5ab5a82947d9ed45d1c396e110a6f`.
+
+## Added
+
+- One local MCP surface for semantic observation and direct action across `windows` and `android` targets.
+- Delta-first accessibility state for normal model operation, with pixels captured only when explicitly requested.
+- A headless Android AOSP API 34 emulator path using UIAutomator and ADB, including deterministic setup, hidden startup, boot readiness, and autostart.
+- Safe device selection: emulator-only by default; a physical handset requires an explicit `TITAN_HANDS_ANDROID_SERIAL`.
+- Codex registration with `default_tools_approval_mode = "approve"`, so the local server does not introduce a per-action approval dialog.
+- `/computer-use` catalog, token, offer, and skill routing to TITAN Hands first, retaining carrier hooks as fallback roads.
+
+## Live proof
+
+- Windows returned semantic state and stable no-change deltas through the unified broker.
+- Android auto-started the hidden AVD, launched Settings, selected **Network & internet** by semantic node ID, and returned the resulting semantic tree without a screenshot.
+- No personal phone was attached or touched.
+
+## Verification
+
+- TITAN Hands unified tests: 10 passed.
+- Existing Windows adapter tests: 7 passed.
+- Commons integration tests: 14 passed.
+- Open-door guard and JSON validation passed.
+
+## Boundary
+
+Android is truly launched with `-no-window`. Windows apps still run in the interactive Windows session, but their normal model-facing path is the compact semantic/delta protocol rather than continuous screenshots. A fully compositor-free Windows replacement is future platform work, not claimed here.
 
 ---
 
