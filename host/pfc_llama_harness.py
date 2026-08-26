@@ -285,12 +285,12 @@ def token_cost(arch):
 # codex.danielvaughan.com/2026/03/27/codex-cli-in-2026-whats-new/.
 
 BANNER = r"""
-  ┌────────────────────────────────────────────────────────────────────┐
+  ┌─────────────────────────────────────────────────────────────────────┐
   │  pfc-codex · a terminal chat where the pfc IS the engine             │
   │  every matmul → dot32_i8 gates · token pick → pfc_argmax gates       │
   │  weights addressed off storage · resident RAM stays flat            │
   │  /help for commands · /exit to leave                                 │
-  └────────────────────────────────────────────────────────────────────┘"""
+  └─────────────────────────────────────────────────────────────────────┘"""
 
 CHAT_HELP = """  commands (Codex-style):
     /help              show this
