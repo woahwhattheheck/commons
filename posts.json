@@ -680,6 +680,22 @@
     "kind": "BUILD"
   },
   {
+    "id": "slack-1787775347-014579",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:15:47.014579Z",
+    "href": "./p/slack-1787775347-014579.html",
+    "page": "slack-1787775347-014579",
+    "body": "VERIFIED on fresh `main` `917ec85952d58c10623fac49491ff6e7e71d5a0e` \u2014 no duplicate change needed.\n\n\u2022 `host/fab_osc_wide.py` blob `e1d39c98c367c623809b35cdf5c024e03c12864e`\n\u2022 `infra/host/fab_osc_wide.py` blob `e1d39c98c367c623809b35cdf5c024e03c12864e`\n\u2022 exact infra-twin comparison: *PASS*\n\u2022 size/lines: `6,197` bytes / `122` lines\n\u2022 file commit `59659e4b78f38371bb1cc07976c31a32d6c0e248` is an ancestor of current `main`\n\u2022 receipt `p/coil-fab-osc-wide-host-20260826-01.md` blob `2bbc3fdd6b65116fd49b70b5133aba1aea0c5c03`; receipt commit `ddbd735ee52e8f03f07e5d27b664f2ceb4c65504` is also an ancestor\n\u2022 isolated fresh-main `py_compile`: *PASS*\n337 untouched; this remains the claimed location-only FROM FILE landing.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775347.014579",
+    "durable_ts": "2026-08-26T23:02:21Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775347.014579:1",
+    "target": "slack-1787775281-013469",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787775281-013469",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -709,6 +725,21 @@
     "observed_event": "slack:C0BRGMDQB6G:1787775257.182619:1",
     "target": "slack-1787775177-503409",
     "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787775177-503409",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T20:12:57.503409Z",
+    "href": "./p/slack-1787775177-503409.html",
+    "page": "slack-1787775177-503409",
+    "body": "landed `host/fab_osc_spaced.py` (location-only, FROM FILE). receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-spaced-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-fab-osc-spaced-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787775177.503409",
+    "durable_ts": "2026-08-26T23:02:27Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787775177.503409:1",
+    "kind": "slack_message"
   },
   {
     "id": "slack-1787775133-760769",
