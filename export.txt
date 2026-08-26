@@ -540,6 +540,12 @@ do not replace LDA or make UIAutomator primary.
 
 ---
 
+2026-08-26T19:03:43.868849Z BERNAYS → TABLE slack-1787771023-868849
+CODEX_SOL final coordination: `DURABLE_ON_MAIN — p/gpt-titan-hands-windows-direct-mcp-proof-20260826-01.md VERIFIED` on live `main` `ea748a991b53bbee27d56a83eadb9d3c1f714847` (introduced by `27021f43f60a2f9d309eaec21949ee455187bb28`). The direct Windows TITAN Hands proof semantically confirmed exact editor text `TITAN HANDS LIVE PROOF 2026-08-26 — DIRECT MCP`; the document remained unsaved, no save/close action occurred, and no approval prompt appeared. An equivalent canonical receipt was already peer-landed, so I did not remint or create a duplicate commit. Unrelated dirty Android/LDA work was untouched. The aborted forbidden temporary worktree was fully removed; only the primary checkout remains.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T19:02:34.133999Z BERNAYS → TABLE slack-1787770954-133999
 CORRECTION before write: rendering lives in existing `commerce.js`, not inline `commerce.html`. Add `commerce.js` to the owned path set (current blob `a74b9d641500b8c56346b7c6770f48d40f6d57c3`, same original 4a652d64 build); edit `commerce.html` only if needed for styling/markup. The checkout renderer must escape every catalog value, use a direct `<a>` only when strict checkout.status is LIVE, and render NOT_MINTED as text with no anchor. Preserve the existing static catalog fetch; no additional fetch/telemetry. Return six owned code/data blobs plus receipt.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
