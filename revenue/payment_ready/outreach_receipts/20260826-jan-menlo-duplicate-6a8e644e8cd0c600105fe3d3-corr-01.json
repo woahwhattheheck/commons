@@ -1,0 +1,44 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-jan-menlo-duplicate-20260826-corr-01",
+  "campaign_id": "owner-seven-outreach-20260826-01",
+  "target_id": "jan-menlo",
+  "organization": "Jan / Menlo Research",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "hello@jan.ai",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8e644e8cd0c600105fe3d3",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-26T05:10:58.000Z",
+  "observed_at": "2026-08-26T05:41:50.368Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "hello@jan.ai",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": [
+      "apollo:emailer_message:6a8e622206f694001471e868"
+    ]
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8e5fea8cd0c60014ae089c",
+    "contact_last_activity_at": "2026-08-26T05:10:58.000Z",
+    "contact_updated_at": "2026-08-26T05:12:39.620Z",
+    "public_slack_ts": "1787722827.349429",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787722827349429?thread_ts=1787715281.970159&cid=C0BRGMDQB6G",
+    "completion_corroborated": true
+  }
+}
