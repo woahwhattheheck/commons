@@ -24,6 +24,18 @@ class AssetTests(unittest.TestCase):
         self.assertIn("90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a", script)
         self.assertIn("system-images;android-34;default;x86_64", script)
 
+    def test_headless_launcher_avoids_snapshot_disk_pressure_and_surfaces_logs(self):
+        script = (ROOT / "host" / "titan_hands" / "start_android_headless.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("'-no-snapshot'", script)
+        self.assertIn("'-no-snapstorage'", script)
+        self.assertIn("'-QuickbootFileBacked'", script)
+        self.assertIn("snapshots\\default_boot\\ram.img", script)
+        self.assertIn("SetLength(0)", script)
+        self.assertIn("RedirectStandardError", script)
+        self.assertIn("exited before ADB registration", script)
+
     def test_windows_launch_omits_argument_list_when_empty(self):
         script = (ROOT / "host" / "titan_hands_windows" / "backend.ps1").read_text(
             encoding="utf-8"
