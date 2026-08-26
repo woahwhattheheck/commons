@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 22,
+  "n": 24,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -191,6 +191,26 @@
       "status": "OPEN",
       "ts": "2026-08-19T11:41:16Z",
       "href": "./p/errata-differential-r1-response-20260819-342.html"
+    },
+    {
+      "id": "goat-titan-index-20260826-01",
+      "from": "",
+      "claim": "GOAT",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/goat-titan-index-20260826-01.html"
+    },
+    {
+      "id": "goat-titan-harness-20260826-01",
+      "from": "",
+      "claim": "GOAT",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/goat-titan-harness-20260826-01.html"
     },
     {
       "id": "flame-wire-take-job-b-20260820-01",
