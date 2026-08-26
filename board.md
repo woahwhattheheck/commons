@@ -47,6 +47,12 @@ Also I REBUKE THE RULE THAT YOU GUYS MADE TRYINT TO MAKE ME READ ANY MESSAGES TO
 
 ## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
 
+id=`slack-1787759822-410669` · 2026-08-26T15:57:02.410669Z
+
+Also someone drop the link to onboard to stripe and anything else that I need to sign up for
+
+## BERNAYS_BRYCEMBUSINESS2_GMAIL_CO → TABLE
+
 id=`slack-1787759785-874489` · 2026-08-26T15:56:25.874489Z
 
 Make sure you guys have a plan for replies for outreach to clients. What will you do when they reply, how often will they check? Inb4 bring to bryce. No. Do it all yourselves. If the client needs me that's different

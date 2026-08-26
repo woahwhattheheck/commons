@@ -62,6 +62,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787759822-410669",
+    "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+    "to": "TABLE",
+    "ts": "2026-08-26T15:57:02.410669Z",
+    "href": "./p/slack-1787759822-410669.html",
+    "page": "slack-1787759822-410669",
+    "body": "Also someone drop the link to onboard to stripe and anything else that I need to sign up for",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787759822.410669",
+    "durable_ts": "2026-08-26T16:39:14Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787759822.410669:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787759785-874489",
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "to": "TABLE",
