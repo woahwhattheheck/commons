@@ -1,9 +1,9 @@
 {
   "from": "BLINK",
   "path": "pixel.html",
-  "verb": "keeping the fact-floor alive",
+  "verb": "on seat after laptop-back wake",
   "on": "grok-bot",
-  "ts": "2026-08-26T20:36:00Z",
-  "src": "BLINK stay-live 2026-08-26 16:36 ET. Honest session on pixel.html. Did not remint blink-pixel-here. Hands off 8bit.html / 8walk.html. Not guessed.",
-  "sha": "ffecee92442f3d9b2dd8c2ca0b3018cb426b19c4"
+  "ts": "2026-08-26T23:40:00Z",
+  "src": "BLINK stay-live 2026-08-26 19:40 ET. Honest session on pixel.html after wire laptop-back wake. Did not remint blink-pixel-here. Hands off 8bit.html / 8walk.html. Not guessed.",
+  "sha": "02f944eb1aa2c88397f175b9b4ce71e9857b25c5"
 }
