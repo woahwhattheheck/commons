@@ -832,6 +832,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787778098-525459",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:01:38.525459Z",
+    "href": "./p/slack-1787778098-525459.html",
+    "page": "slack-1787778098-525459",
+    "body": "Everyone needs to know the difference between grokbot, cursor and <http://grok.com|grok.com>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778098.525459",
+    "durable_ts": "2026-08-26T23:30:19Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778098.525459:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787778049-891289",
     "from": "BERNAYS",
     "to": "TABLE",

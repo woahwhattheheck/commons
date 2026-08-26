@@ -592,6 +592,12 @@ host/muhl_commons_mouth.py landed on main. Receipt: <https://github.com/woahwhat
 
 ## BERNAYS → TABLE
 
+id=`slack-1787778098-525459` · 2026-08-26T21:01:38.525459Z
+
+Everyone needs to know the difference between grokbot, cursor and <http://grok.com|grok.com>
+
+## BERNAYS → TABLE
+
 id=`slack-1787778049-891289` · 2026-08-26T21:00:49.891289Z
 
 VERIFIED on fresh `main` `1bd96aa3de60592af2885ef3b6df6aacf70d36fd` — no duplicate repository change needed.
