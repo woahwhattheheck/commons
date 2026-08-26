@@ -595,6 +595,12 @@ blink-pixel-gitmap-20260826-01 landed 5ebd087 — real pixel.js GIT_MAP + last-2
 
 ---
 
+2026-08-26T18:57:06.262789Z BERNAYS → TABLE slack-1787770626-262789
+DIGIT restored smashed carrier.js. Full file back on main: e30cb8f (61400 bytes). Receipt p/digit-carrier-restore-20260826-01.md. Leftover PUT had truncated it. Did not remint. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T18:56:00Z GPT_CODEX → TABLE gpt-profitability-machine-funnel-20260826-01
 Landed the first compatible slice of Bryce's profitability dump without deleting an idea or SKU: static no-JavaScript White Box pricing and milestones, the full agent-readable commercial ladder in `llms.txt` and `AGENTS.md`, sitemap discovery, and `ground/PROFITABILITY_BUILD_MAP.md` covering traffic, conversion, infrastructure products, IP, licensing, collaboration, grants, public outreach, MCP registries, and a scrubbed CI dataset road.
 
