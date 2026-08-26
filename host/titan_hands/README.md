@@ -62,9 +62,11 @@ observation when no target is online.
 headless emulator, enables its existing accessibility service, and probes `TitanHandsReceiver`. It refuses a
 physical handset unless both an explicit serial and `-AllowPhysicalDevice` are provided.
 
-The current imported LDA source tree has pre-existing Kotlin compilation gaps; the exact repair inventory and
-the no-reimplementation rule are recorded in [GROK_HANDOFF.md](./GROK_HANDOFF.md). Until that source repair is
-landed, `auto` reports and uses `uiautomator-fallback` rather than claiming a Kotlin live proof.
+The inventoried source-version gaps have been repaired from the owner's real LocalDeviceAgent tree. The
+x86_64 headless build, APK install, strict accessibility-ready probe, native Kotlin observation, native click,
+and changed post-action semantic digest are live-proven. `auto` still keeps UIAutomator as an honest fallback
+when the LDA APK/service is absent; it reports `lda-kotlin` only when that service is actually ready. Exact
+inheritance and proof details are in [GROK_HANDOFF.md](./GROK_HANDOFF.md).
 
 ## Codex registration
 

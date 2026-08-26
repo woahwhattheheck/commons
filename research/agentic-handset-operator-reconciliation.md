@@ -41,8 +41,14 @@ local properties, device state, and untracked work are outside the comparison by
 | source_only | candidate-test | `app/src/test/java/com/local/deviceagent/ScaleBakeNibbleTest.kt` |
 | source_only | candidate-test | `app/src/test/java/com/local/deviceagent/ScreenClassTest.kt` |
 
-## Landing rule
+## Reconciliation outcome
 
-Review semantic diffs individually. Candidate tests and the Android data-extraction resource are the
-smallest safe imports. Do not bulk-copy the source repository or its archive/build directories.
-The physical phone remains outside this work; emulator integration is a later phase.
+The inventoried queue has now been reconciled from the owner's clean `app/` tree at
+`4eab3d2fef8a9d44e202fcc48b874be955368db2`: all 21 semantic differences and all seven source-only
+tests/resources were imported. Nothing outside the listed queue, and no archive, build directory, model,
+local property, or unrelated dirty owner-repository file was copied.
+
+TITAN adds only the receiver transport and the optional `titanHandsAbi=x86_64` build property. The ordinary
+owner build remains arm64-only. The reconciled application compiles and assembles, installs on the headless
+API 34 emulator, binds its accessibility service, emits the native numbered Kotlin screen, executes a native
+Kotlin click, and produces a changed semantic post-action digest. No physical phone was connected or actuated.

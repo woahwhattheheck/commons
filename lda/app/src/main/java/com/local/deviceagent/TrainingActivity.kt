@@ -82,6 +82,13 @@ class TrainingActivity : AppCompatActivity() {
         addBtn("Teach by describing it") { teachByText(currentField()) }
         addBtn("Show me — record my steps") { startDemo(currentField()) }
 
+        // INV-49 imitation read-out: how well the agent currently predicts the owner's demonstrated steps.
+        // Shown only once it's on and at least one demo has been scored — a self-eval, not a control.
+        if (SettingsManager(this).isImitationLearningEnabled()) {
+            val fit = AgentMemory.imitationFit(this); val n = AgentMemory.imitationFitCount(this)
+            if (fit >= 0) caption("Learning you: I currently predict your next step about $fit% of the time (over $n demo${if (n == 1) "" else "s"}). This rises as I learn your habits.")
+        }
+
         header("Skills you've taught me")
         val skills = AgentMemory.skills(this)
         if (skills.isEmpty()) caption("None yet. Teach me one above.")
@@ -152,6 +159,32 @@ class TrainingActivity : AppCompatActivity() {
             render(); return
         }
         toast("Learning from what you showed me…")
+        // INV-49 IMITATION (learn-from-watching): when it's on, ALSO predict how the agent WOULD have done this
+        // from the goal alone and score it against what the owner actually did — the model is legitimately up
+        // here (owner tapped Finish), so this predict pass is §8-safe. Updates the running "how well I model you"
+        // fit and weights the steps the agent DIDN'T anticipate up in the training data (off-device recipe
+        // prefers them). On-device; the durable weight change stays off-device + owner-approved. Independent of
+        // the generalize call below (both use the loaded model).
+        if (SettingsManager(this).isImitationLearningEnabled()) {
+            brain.predictAndScoreDemo(goal, steps) { fit, missed ->
+                runOnUiThread {
+                    if (fit >= 0) {
+                        val ema = AgentMemory.recordImitationFit(this@TrainingActivity, fit)
+                        // Weight the surprising (un-anticipated) steps up in the training data, so an off-device
+                        // recipe learns what the model got wrong about the owner. Gated on data-capture (that's
+                        // where training data lives); the update itself is never on-device (INV-46).
+                        if (SettingsManager(this@TrainingActivity).isDataCaptureEnabled()) {
+                            for (s in missed.take(12)) {
+                                val app = Regex("open the (.+) app").find(s)?.groupValues?.get(1)?.trim() ?: "?"
+                                TrainingData.record(this@TrainingActivity, goal, app, "(owner demonstration)", s, "OWNER_DEMO_SURPRISE")
+                                TrainingData.recordStepScore(this@TrainingActivity, 3, "IMITATE")   // high weight = high-value step
+                            }
+                        }
+                        toast("I'd have predicted $fit% of that (I model you ~$ema% now).")
+                    }
+                }
+            }
+        }
         brain.generalizeDemonstration(goal, steps) { out ->
             runOnUiThread {
                 val name = if (out.isBlank()) null
@@ -227,7 +260,7 @@ class TrainingActivity : AppCompatActivity() {
                 }
                 .setNegativeButton("Describe it") { _, _ ->
                     field?.setText(what); field?.requestFocus()
-                    toast("Filled in above — tweak it, then tap 'Teach by describing'.")
+                    toast("Filled in above — tweak it, then tap ‘Teach by describing’.")
                 }
                 .show()
         }

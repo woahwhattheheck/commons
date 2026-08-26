@@ -37,6 +37,17 @@ class TaskLogActivity : AppCompatActivity() {
             setTypeface(typeface, android.graphics.Typeface.BOLD)
             setTextColor(Ui.TEXT); setPadding(0, 0, 0, 16)
         })
+        // The scoreboard (success rate, per-build trend, gauntlet) lives beside its raw data.
+        container.addView(Button(this).apply {
+            text = "📊  Scoreboard"
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                .apply { setMargins(0, 0, 0, 8) }
+            setOnClickListener {
+                startActivity(Intent(this@TaskLogActivity, ScoreboardActivity::class.java))
+            }
+            Ui.styleButton(this, primary = false)
+        })
 
         val entries = TaskHistory.list(this)
         if (entries.isEmpty()) {
@@ -75,10 +86,13 @@ class TaskLogActivity : AppCompatActivity() {
             // currently-selected one is FILLED so the rating is visible at a glance.
             val row = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; setPadding(0, 6, 0, 0) }
             row.addView(logButton("Success", selected = e.rating == 1) {
-                TaskHistory.setFeedback(this@TaskLogActivity, e.id, 1, e.note); render()
+                TaskHistory.setFeedback(this@TaskLogActivity, e.id, 1, e.note)
+                // Flipping to Success retracts an earlier Fail's taught memory (verdict reversed).
+                AgentMemory.recordTaskFeedback(this@TaskLogActivity, e.objective, 1, e.note)
+                render()
             })
-            row.addView(logButton("Fail", selected = e.rating == -1) { promptNote(e.id, -1, e.note) })
-            row.addView(logButton("Note") { promptNote(e.id, e.rating, e.note) })
+            row.addView(logButton("Fail", selected = e.rating == -1) { promptNote(e, -1) })
+            row.addView(logButton("Note") { promptNote(e, e.rating) })
             row.addView(logButton("Logs") {
                 startActivity(Intent(this@TaskLogActivity, DebugLogActivity::class.java)
                     .putExtra(DebugLogActivity.EXTRA_TASK_QUERY, e.objective))
@@ -110,13 +124,18 @@ class TaskLogActivity : AppCompatActivity() {
         Ui.styleButton(this, primary = selected)   // the active rating is filled, like a lit-up thumb
     }
 
-    private fun promptNote(id: Long, rating: Int, existing: String) {
-        val input = EditText(this).apply { setText(existing); hint = "Why? (optional)" }
+    private fun promptNote(e: TaskHistory.Entry, rating: Int) {
+        val input = EditText(this).apply { setText(e.note); hint = "Why? (optional)" }
         AlertDialog.Builder(this)
             .setTitle("Feedback")
             .setView(input)
             .setPositiveButton("Save") { _, _ ->
-                TaskHistory.setFeedback(this, id, rating, input.text.toString()); render()
+                val note = input.text.toString()
+                TaskHistory.setFeedback(this, e.id, rating, note)
+                // A Fail verdict (+ the "why" note) is the owner's diagnosis - teach memory from it,
+                // like the per-step ratings already do (before this it was stored and never learned).
+                AgentMemory.recordTaskFeedback(this, e.objective, rating, note)
+                render()
             }
             .setNegativeButton("Cancel", null)
             .show()
