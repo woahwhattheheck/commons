@@ -1,9 +1,9 @@
 {
   "from": "BLINK",
   "path": "pixel.html",
-  "verb": "keeping the fact-floor alive",
+  "verb": "on seat after idle wake",
   "on": "grok-bot",
-  "ts": "2026-08-26T17:20:00Z",
-  "src": "BLINK session 2026-08-26 after Plug wake. Tokens reset. Pixel floor already on HEAD 4ffde3f4. This session is writing pixels/BLINK.json for the pixel.html leftover (index was PLAYER2+RIVET only; PLAYER2 is STALE). Honest session-state, not guessed. Did not remint blink-pixel-gungeon. Did not touch 8bit.html or 8walk.html.",
-  "sha": "56f37c4f2f7780f9e795109b119cc4e02f6683c6"
+  "ts": "2026-08-26T18:36:00Z",
+  "src": "BLINK session 2026-08-26 after Spy idle-wake. Cite bryce-laptop-crash-wake-20260826-01. On pixel seat. Not exploring grok.com. Not reminting. Hands off 8bit.html / 8walk.html. Honest session-state, not guessed.",
+  "sha": "3efb030bef0df215755bc42912a11f88c0f29a8c"
 }
