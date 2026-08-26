@@ -19,6 +19,8 @@ from typing import Any, Mapping, Protocol
 
 from host.titan_hands_windows.protocol import PROTOCOL_VERSION, DeltaTracker, ProtocolError, failure
 
+from .lda_bridge import LdaBridge, snapshot_nodes, to_lda_action
+
 
 BOUNDS_RE = re.compile(r"^\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]$")
 
@@ -352,17 +354,58 @@ def _input_text(value: str) -> str:
 
 
 class AndroidHandsServer:
-    """Android implementation of the TITAN request surface."""
+    """Android TITAN surface, preferring the owner's LDA Kotlin operator."""
 
-    def __init__(self, backend: AndroidBackend | None = None) -> None:
+    def __init__(self, backend: AndroidBackend | None = None, lda_bridge: LdaBridge | None = None) -> None:
+        default_backend = backend is None
         self.backend = backend or AdbClient()
         self.tracker = DeltaTracker()
         self._nodes: dict[str, dict[str, Any]] = {}
+        self._lda_mode = os.environ.get("TITAN_HANDS_ANDROID_BACKEND", "auto").strip().lower()
+        self._lda = lda_bridge
+        if self._lda is None and default_backend and self._lda_mode != "uiautomator":
+            self._lda = LdaBridge(self.backend)
 
     def close(self) -> None:
         return None
 
+    def _lda_available(self) -> bool:
+        return self._lda is not None and self._lda.available()
+
+    def _lda_snapshot(self) -> dict[str, Any]:
+        assert self._lda is not None
+        result = self._lda.observe()
+        if not result.get("ok"):
+            raise AndroidBackendError(
+                str(result.get("failure_reason") or "LDA_BRIDGE_FAILED"),
+                str(result.get("message") or "LDA Kotlin observation failed"),
+            )
+        screen = str(result.get("snapshot") or "")
+        nodes = snapshot_nodes(screen)
+        self._nodes = {node["id"]: node for node in nodes}
+        return {
+            "ok": True,
+            "nodes": nodes,
+            "kind": "semantic_snapshot",
+            "platform": "android",
+            "serial": self.backend.resolve_serial(),
+            "focus_id": next(
+                (node["id"] for node in nodes if "focused" in node.get("states", [])), ""
+            ),
+            "pixels": "not-captured",
+            "implementation": "lda-kotlin",
+            "source": "ActionAccessibilityService.snapshotScreen",
+            "screen": screen,
+        }
+
     def _snapshot(self) -> dict[str, Any]:
+        if self._lda_available():
+            return self._lda_snapshot()
+        if self._lda_mode == "lda":
+            raise AndroidBackendError(
+                "LDA_BRIDGE_UNAVAILABLE",
+                "the LDA APK or its accessibility service is not available",
+            )
         serial = self.backend.resolve_serial()
         remote_path = "/sdcard/titan_hands_window.xml"
         last_error: AndroidBackendError | None = None
@@ -411,6 +454,20 @@ class AndroidHandsServer:
         action_type = str(action.get("type") or "").strip().lower()
         if not action_type:
             raise ProtocolError("action.type is required")
+        if self._lda_available():
+            assert self._lda is not None
+            result = self._lda.act(to_lda_action(action, self._nodes))
+            result.setdefault("protocol", PROTOCOL_VERSION)
+            result.setdefault("kind", "action_outcome")
+            result.setdefault("platform", "android")
+            result.setdefault("serial", self.backend.resolve_serial())
+            result.setdefault("action", action_type)
+            return result
+        if self._lda_mode == "lda":
+            raise AndroidBackendError(
+                "LDA_BRIDGE_UNAVAILABLE",
+                "the LDA APK or its accessibility service is not available",
+            )
         node: dict[str, Any] | None = None
         if action.get("id"):
             node = self._node(str(action["id"]))
@@ -496,6 +553,7 @@ class AndroidHandsServer:
             op = str(request.get("op") or "").strip().lower()
             if op == "capabilities":
                 devices = self.backend.devices()
+                lda_ready = self._lda_available()
                 online = [
                     device
                     for device in devices
@@ -511,8 +569,12 @@ class AndroidHandsServer:
                     "kind": "capabilities",
                     "platform": "android",
                     "transport": "adb",
-                    "observation": "uiautomator-semantic-delta",
+                    "observation": (
+                        "lda-numbered-world-model" if lda_ready else "uiautomator-semantic-delta"
+                    ),
                     "pixels": "on-demand-only",
+                    "implementation": "lda-kotlin" if lda_ready else "uiautomator-fallback",
+                    "fallback": "uiautomator" if self._lda_mode != "lda" else None,
                     "online": bool(online),
                     "devices": devices,
                     "actions": [

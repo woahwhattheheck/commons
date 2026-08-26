@@ -62,6 +62,30 @@ class PhysicalOnlyAdb(FakeAdb):
         raise AndroidBackendError("DEVICE_MISS", "no online Android emulator")
 
 
+class FakeLdaBridge:
+    def __init__(self):
+        self.actions = []
+
+    def available(self):
+        return True
+
+    def observe(self):
+        return {
+            "ok": True,
+            "implementation": "lda-kotlin",
+            "snapshot": '[0] "Untitled" field [focused]\nTEXT ON SCREEN: Untitled',
+        }
+
+    def act(self, action):
+        self.actions.append(action)
+        return {
+            "ok": True,
+            "implementation": "lda-kotlin",
+            "result": "CONTINUE",
+            "summary": "typed it",
+        }
+
+
 class AndroidHandsTests(unittest.TestCase):
     def test_parser_produces_semantic_edit_node(self):
         nodes = parse_uiautomator_xml(XML, "emulator-5554")
@@ -95,6 +119,24 @@ class AndroidHandsTests(unittest.TestCase):
         result = AndroidHandsServer(PhysicalOnlyAdb()).handle({"op": "capabilities"})
         self.assertFalse(result["online"])
         self.assertEqual(result["devices"][0]["serial"], "PHONE123")
+
+    def test_lda_kotlin_is_preferred_and_receives_native_set_text(self):
+        lda = FakeLdaBridge()
+        server = AndroidHandsServer(FakeAdb(), lda_bridge=lda)
+        observed = server.handle({"op": "observe"})
+        field = next(node for node in observed["added"] if node["id"] == "lda:0")
+        self.assertEqual(observed["meta"]["implementation"], "lda-kotlin")
+        result = server.handle(
+            {
+                "op": "act",
+                "action": {"type": "type_text", "id": field["id"], "text": "owner build"},
+                "observe_after": False,
+            }
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(
+            lda.actions[-1], {"id": 0, "text": "owner build", "action": "set_text"}
+        )
 
 
 if __name__ == "__main__":

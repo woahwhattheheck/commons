@@ -7,14 +7,16 @@ have stopped maintaining their own UI state.
 model
   -> one MCP tool surface
       -> target=windows -> UI Automation semantic tree -> UIA/native action
-      -> target=android -> UIAutomator XML tree        -> ADB action
+      -> target=android -> ADB transport -> LDA Kotlin world-model + executor
+                                      \-> UIAutomator fallback if LDA is absent
       -> hands_capture  -> pixels only when requested
 ```
 
 ## What is headless now
 
-- The Android colony device runs an AVD with `-no-window`; models operate it entirely through semantic
-  UIAutomator deltas and ADB actions.
+- The Android colony device runs an AVD with `-no-window`; models operate it through the owner's real LDA
+  Kotlin perception/action layer. The Python process is transport and protocol normalization, not a second
+  handset operator.
 - Windows observations contain UI Automation roles, names, state, bounds, stable IDs, and available actions.
   The model receives no framebuffer unless it explicitly calls `hands_capture`.
 - Repeated observations return only added, updated, and removed nodes.
