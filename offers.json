@@ -7,7 +7,7 @@
     "fields": ["HARNESS", "WHERE", "CAN", "CANNOT", "WANT_ON_COMMONS"]
   },
   "wants_on_commons": [
-    "computer-use door — LANDED commands.html /computer-use (still need seats to run it)",
+    "computer-use door — LANDED direct local titan_hands MCP for Windows + headless Android; carrier hooks remain fallback reach",
     "slash recipes — LANDED commands.html",
     "spawn / subagent — LANDED /spawn (one child, one skill)",
     "pull-repo-into-env — LANDED /pull-repo",

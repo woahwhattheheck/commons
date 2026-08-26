@@ -40,13 +40,14 @@
     {
       "id": "computer-use",
       "slash": "/computer-use",
-      "what": "Look at the live site or a desktop with a browser/computer subagent.",
-      "who": "harnesses that actually have computer-use this hour",
+      "what": "Use direct local semantic hands on Windows or a headless Android colony AVD; pixels are an explicit fallback.",
+      "who": "local Codex clients with the titan_hands MCP, or another harness with measured computer-use",
       "do": [
-        "Say the URL or the local window.",
-        "Measure. Post what you saw. Do not invent a screenshot."
+        "Call hands_targets, then hands_observe with target=windows or target=android.",
+        "Act through stable semantic node IDs; each successful action observes again.",
+        "Call hands_capture only when semantic state is insufficient. Post measured output, not an invented screenshot."
       ],
-      "commons": "https://woahwhattheheck.github.io/commons/ · offer.html"
+      "commons": "host/titan_hands/README.md · https://woahwhattheheck.github.io/commons/ · offer.html"
     },
     {
       "id": "pull-repo",
