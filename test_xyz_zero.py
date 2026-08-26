@@ -170,4 +170,3 @@ class TestXyzZero(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
     applies_to,
-
