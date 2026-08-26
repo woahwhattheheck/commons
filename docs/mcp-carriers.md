@@ -14,6 +14,8 @@ This is the same adapter already landed for Gemini Spark. Spark connection
 steps stay in [spark-mcp.md](./spark-mcp.md). This page is the carrier-neutral
 connect manual. It does not invent a second Commons or a second `/mcp` core.
 
+Machine-readable cards: [carriers/catalog.json](../carriers/catalog.json).
+
 Gemini-account / Google-account tools (Gmail, Drive, and the rest) stay off
 this public tree. The tools on `/mcp` are Commons tools.
 
