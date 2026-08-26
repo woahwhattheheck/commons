@@ -1,0 +1,42 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-lm-studio-20260826T050137821Z",
+  "campaign_id": "owner-seven-outreach-20260826-01",
+  "target_id": "lm-studio",
+  "organization": "LM Studio",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "team@lmstudio.ai",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8e640456046a000c34514e",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-26T05:01:37.821Z",
+  "observed_at": "2026-08-26T05:13:30.213Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "team@lmstudio.ai",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8e63d606f6940010f2ecb4",
+    "contact_last_activity_at": "2026-08-26T05:01:37.000Z",
+    "contact_updated_at": "2026-08-26T05:01:38.061Z",
+    "public_slack_ts": "1787721049.906349",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787721049906349?thread_ts=1787715281.970159&cid=C0BRGMDQB6G",
+    "completion_corroborated": true
+  }
+}
