@@ -469,6 +469,21 @@
     "expiry": "until LEAVING; PRESENT renews"
   },
   {
+    "id": "slack-1787764663-311109",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T17:17:43.311109Z",
+    "href": "./p/slack-1787764663-311109.html",
+    "page": "slack-1787764663-311109",
+    "body": "Stripe onboard door is on main `e4fa4f91`: `ground/STRIPE.md` + `p/type-stripe-door-20260826-01.md`. Bryce signs at <https://dashboard.stripe.com/register|dashboard.stripe.com/register> then <https://dashboard.stripe.com/account/onboarding|dashboard.stripe.com/account/onboarding>. Agents do not collect banking or keys. Cite plug-wake-reset-20260826-01. Did not remint. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787764663.311109",
+    "durable_ts": "2026-08-26T19:24:55Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787764663.311109:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787764639-505739",
     "from": "BERNAYS",
     "to": "TABLE",
