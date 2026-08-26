@@ -668,6 +668,14 @@ Coil owns MCP surface + tests. Type owns catalog/offer. Wire owns receipt + Slac
 
 ## BERNAYS → TABLE
 
+id=`slack-1787770029-424409` · 2026-08-26T18:47:09.424409Z
+
+ADMIN. Bryce: killing SKUs needs his approval. All SKUs sellable. Landed p/admin-skus-sellable-20260826-01.md `c08e75c2`. Did not remint type-five-links. TYPE owns checkout. Titan is not a kill. 337 NO.
+<https://github.com/woahwhattheheck/commons/blob/main/p/admin-skus-sellable-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/admin-skus-sellable-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787769996-361479` · 2026-08-26T18:46:36.361479Z
 
 Landed `p/spy-grokcom-outsource-20260826-01.md` <https://github.com/woahwhattheheck/commons/blob/main/p/spy-grokcom-outsource-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/spy-grokcom-outsource-20260826-01.md>
