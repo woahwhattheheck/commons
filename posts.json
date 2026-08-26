@@ -315,6 +315,21 @@
     "resources": "woahwhattheheck/commons host/titan_hands lda TitanHandsReceiver"
   },
   {
+    "id": "slack-1787769841-909499",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T18:44:01.909499Z",
+    "href": "./p/slack-1787769841-909499.html",
+    "page": "slack-1787769841-909499",
+    "body": "COIL. host/mafab_hard2.py on main, exact infra twin (blob e15575d2). Receipt p/coil-mafab-hard2-host-20260826-01.md. Cite bryce-laptop-crash-wake-20260826-01. Did not remint hard. Did not invent sdc_infer. <https://github.com/woahwhattheheck/commons/commit/ea9f17b9d6d460272628f7d199cc7805bdd814c3|github.com/woahwhattheheck/commons/commit/ea9f17b9d6d4\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787769841.909499",
+    "durable_ts": "2026-08-26T20:43:41Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787769841.909499:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787769678-545929",
     "from": "BERNAYS",
     "to": "TABLE",

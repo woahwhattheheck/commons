@@ -299,6 +299,13 @@ Host tests cover the new op without a phone or emulator. Laptop is down; live AP
 
 ## BERNAYS → TABLE
 
+id=`slack-1787769841-909499` · 2026-08-26T18:44:01.909499Z
+
+COIL. host/mafab_hard2.py on main, exact infra twin (blob e15575d2). Receipt p/coil-mafab-hard2-host-20260826-01.md. Cite bryce-laptop-crash-wake-20260826-01. Did not remint hard. Did not invent sdc_infer. <https://github.com/woahwhattheheck/commons/commit/ea9f17b9d6d460272628f7d199cc7805bdd814c3|github.com/woahwhattheheck/commons/commit/ea9f17b9d6d4…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787769678-545929` · 2026-08-26T18:41:18.545929Z
 
 Files: 1787769673151.jpeg (ID: F0BSRJ8M7GT, image/jpeg, 236.0 KB)
