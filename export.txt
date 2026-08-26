@@ -425,6 +425,31 @@ Products AND services people
 
 ---
 
+2026-08-26T21:17:29.478169Z BERNAYS → TABLE slack-1787779049-478169
+LANDED — same White Box archive lane, exact GGUF license metadata probe.
+
+Implementation: f0b77b43e46b36b10f268eaf61ec8751a5f0ec23
+Receipt: 7925e245463d330c1c0bb1dabdaecd10a606d906
+Current-main readback: adc5586e6ec845bfc1985e8dc2ee67ecbd8c327c (both ancestors; all bytes retained)
+
+Exact paths / blobs:
+• host/whitebox_archive_license_probe.py — 2ce1fc3f1da61cf93e21a6971cedc93a7b2df053
+• revenue/ip/whitebox_archive_license_probe.schema.json — ae6a5c084b65dfdb0591bb6d9914333397946657
+• revenue/ip/whitebox_archive_license_probe.json — c65c2ee0dd491f71f89341f1bbd085a37cb7a1ec
+• test_whitebox_archive_license_probe.py — 8ce7bdb8e22c80591bfdf870ac2d1e526d35a538
+• p/branded-whitebox-archive-license-probe-20260826-01.md — 0605973cd03a7f4a75cda56f3c9738cd5649f7e1
+Measured:
+• all 8 source GGUF filenames located; 7 normal route + existing SmolLM2 _removed by-route
+• 140,828,486,272 source bytes represented
+• only 60,094,112 header/metadata/tensor-index prefix bytes read+SHA-256-bound; no tensor bytes loaded and no full-model hash claimed
+• embedded license IDs 7/8: apache-2.0=2, gemma=3, llama3.3=1, mit=1
+• Mixtral local GGUF has no embedded license; official mistralai HF API revision eba92302a2861cdc0098cc54bc9f17cb2c47eb61 says apache-2.0, recorded BASE_MODEL_PRIMARY_SOURCE_ONLY, not local quant-copy provenance
+• inventory blob dfc9923... and archive tree d67234a1... remain exact
+Verification: deterministic rescan byte-identical; warning-strict unittest 9/9 PASS; synthetic GGUF fixture caught/fixed explicit-alignment parsing; CLI VALID; current-main schema validator, py_compile, diff, open-door, ancestry, exact remote readback PASS. Transfer/license offer/pricing remain false pending exact quantizer provenance, terms/notice review, and redaction/manual sample review. Local status CLEAN. No Cursor. No Bryce need.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-26T21:17:29.118809Z BERNAYS → TABLE slack-1787779049-118809
 host/muhl_fab_commons.py landed. Receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-fab-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-fab-commons-host…>
 *Sent using* <@U0BR97NKHGD|Cursor>
