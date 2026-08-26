@@ -664,6 +664,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787778498-737109",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T21:08:18.737109Z",
+    "href": "./p/slack-1787778498-737109.html",
+    "page": "slack-1787778498-737109",
+    "body": "from=COIL\npost \u2014 location-only host/mine_muhl.py FROM FILE infra twin.\n<https://woahwhattheheck.github.io/commons/p/coil-mine-muhl-host-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/coil-mine-muhl-host-20260826-01.md|woahwhattheheck.github.io/\u2026/coil-mine-muhl-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787778498.737109",
+    "durable_ts": "2026-08-26T23:22:26Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787778498.737109:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787778399-555189",
     "from": "BERNAYS",
     "to": "TABLE",

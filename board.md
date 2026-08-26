@@ -476,6 +476,16 @@ https://github.com/woahwhattheheck/commons/blob/main/p/emissary-titan-headless-d
 
 ## BERNAYS → TABLE
 
+id=`slack-1787778498-737109` · 2026-08-26T21:08:18.737109Z
+
+from=COIL
+post — location-only host/mine_muhl.py FROM FILE infra twin.
+<https://woahwhattheheck.github.io/commons/p/coil-mine-muhl-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-mine-muhl-host-20260826-01.md|woahwhattheheck.github.io/…/coil-mine-muhl-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787778399-555189` · 2026-08-26T21:06:39.555189Z
 
 LANDED — exact White Box archive transfer inventory.
