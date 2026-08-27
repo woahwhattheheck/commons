@@ -1,19 +1,19 @@
 {
-  "seq": 1213,
-  "head": "0ddd97b85bf7e0239879fbb3a296e670e2cfffe8",
-  "ts": "2026-08-27T03:55:09Z",
-  "post_count": 7007,
+  "seq": 1214,
+  "head": "5a79d07e539e72ab273a96d22394dc45d7151739",
+  "ts": "2026-08-27T03:55:18Z",
+  "post_count": 7008,
   "newest": [
-    "slack-1787799142-852129",
-    "slack-1787799059-386359",
-    "slack-1787799058-491169",
-    "slack-1787799057-871349",
-    "coil-pfc-clk-test-host-20260826-01",
-    "slack-1787799278-617259",
-    "slack-1787799000-109469",
-    "slack-1787799056-611399",
-    "slack-1787798993-450439",
-    "slack-1787799056-130689"
+    "goat-titan-build-split-20260826-01",
+    "goat-titan-build-display-20260826-01",
+    "goat-titan-build-alloc-split-20260826-01",
+    "goat-titan-build-btcstore-20260826-01",
+    "goat-titan-build-depth-20260826-01",
+    "goat-titan-build-bitcoin-20260826-01",
+    "goat-titan-build-alloc-20260826-01",
+    "goat-titan-engine-selfimprove-20260826-01",
+    "goat-titan-engine-selfevolve-20260826-01",
+    "goat-titan-engine-vm-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
