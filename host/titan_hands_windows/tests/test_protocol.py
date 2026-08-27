@@ -40,6 +40,12 @@ class DeltaTrackerTests(unittest.TestCase):
         b = DeltaTracker().observe({"nodes": [{"id": "x", "states": ["a", "b"]}]})
         self.assertEqual(a["state_digest"], b["state_digest"])
 
+    def test_current_nodes_track_latest_snapshot(self):
+        tracker = DeltaTracker()
+        tracker.observe({"nodes": [{"id": "x", "name": "one"}], "focus_id": "x"})
+        self.assertEqual(tracker.current_nodes()["x"]["name"], "one")
+        self.assertEqual(tracker.current_meta()["focus_id"], "x")
+
     def test_duplicate_ids_are_rejected(self):
         with self.assertRaises(ProtocolError):
             DeltaTracker().observe({"nodes": [{"id": "x"}, {"id": "x"}]})

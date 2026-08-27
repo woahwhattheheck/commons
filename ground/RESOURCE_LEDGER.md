@@ -48,12 +48,19 @@ identity data, or raw model weights.
 
 ## Current activation
 
-Exactly one previously unlanded resource was advanced in this cycle:
-resource-master-office, the already-existing PR #3227 candidate. Its concrete
-consumer is this resource-master workflow; its producing outcome is the v2
-projection, append-only journal, human door, and executable expiry/selection
-instrument on current main. Exact integration commit:
-`2423415c754b13ce2d723ce9d85c4f9af802d4fb`; durable activation receipt:
+Exactly one unheld, unblocked resource was advanced in the 2026-08-27 cycle:
+`public-commerce-road`. Its concrete consumers are existing Commons readers and
+prospective voluntary supporters. The public commerce page now loads exact
+current-main JavaScript and catalog bytes that can render the canonical $5
+one-time and $3 monthly Stripe checkout anchors. It is `PRODUCING` but
+`CONSTRAINED`: the deployed HTML wrapper still differs from current main, two
+source-document HTML subpages remain 404, checkout-open is intent only, and
+cash remains exactly USD 0. Durable receipt:
+[`p/codex-public-commerce-road-activation-20260827-01.md`](../p/codex-public-commerce-road-activation-20260827-01.md).
+
+The preceding cycle advanced `resource-master-office` itself from the existing
+PR #3227 candidate. Exact integration commit
+`2423415c754b13ce2d723ce9d85c4f9af802d4fb`; receipt:
 [`p/codex-resource-master-office-activation-20260826-01.md`](../p/codex-resource-master-office-activation-20260826-01.md).
 
 The prior aggregate stale-claim-capacity reservation crossed its six-hour
@@ -65,6 +72,14 @@ production quota: Vercel exposes one Hobby team and exactly zero visible
 projects, while the Sites connector exposes one owner-role active site but its
 unauthenticated live URL returned HTTP 401. The causal-compiler site is therefore
 BLOCKED, not an open public road; no access policy or deployment was changed.
+
+Fresh aggregate reads still show one Airtable revenue CRM base, one custom-access
+Sites project, one Vercel Hobby team with zero visible projects, one GitHub app
+account, and three enabled automations. Resource Master, Commons Builder, and
+Commons Slack Bridge remain separate scopes. The latest #commons capacity relay
+reports zero free C: bytes and temporarily down Cursor-Grok windows, so the owner
+workstation is `NOT_VERIFIED / BLOCKED`; remote/read-only work is preferred and no
+local file move, delete, device action, or hold release is inferred.
 
 ## Next fresh queue
 

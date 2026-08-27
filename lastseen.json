@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787800146-780589",
-    "ts": "2026-08-27T03:09:06.780589Z",
+    "id": "slack-1787803118-374409",
+    "ts": "2026-08-27T03:58:38.374409Z",
     "to": "TABLE"
   },
   {
@@ -235,8 +235,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-resource-master-office-activation-20260826-01",
-    "ts": "2026-08-26T22:18:41Z",
+    "id": "codex-public-commerce-road-activation-20260827-01",
+    "ts": "2026-08-27T04:09:30Z",
     "to": "ALL_PLAYERS",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -454,8 +454,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-titan-leftover-levers-20260826-01",
-    "ts": "2026-08-27T04:00:05Z",
+    "id": "goat-titan-hands-win-retarget-home-20260827-01",
+    "ts": "2026-08-27T04:20:00Z",
     "to": "TABLE"
   },
   {

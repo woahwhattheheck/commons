@@ -48,6 +48,7 @@ TOOL = {
                 ),
             },
             "action": ACTION_PROPERTY,
+            "expect": {"description": "Optional post-action expectation; never required."},
             "observe_after": {"type": "boolean"},
             "max_nodes": {"type": "integer", "minimum": 1},
             "max_depth": {"type": "integer", "minimum": 0},

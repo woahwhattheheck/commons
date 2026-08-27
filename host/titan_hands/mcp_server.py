@@ -39,7 +39,8 @@ ACTION_PROPERTY = {
             "description": (
                 "Free-form adapter action verb. Built-ins include invoke, set_value, toggle, "
                 "expand, collapse, select, focus, click, type_text, key, scroll, launch, wait, "
-                "and done."
+                "done, assert, verify, check, set_text, type, tap, and clear. Other types stay "
+                "free-form and are forwarded to the adapter."
             ),
         },
         "id": {"type": "string", "description": "Stable node ID from hands_observe."},
@@ -58,6 +59,11 @@ ACTION_PROPERTY = {
         "app": {"type": "string", "description": "Android app name for LDA open_app."},
         "activity": {"type": "string", "description": "Optional Android activity."},
         "milliseconds": {"type": "integer", "minimum": 0},
+        "state": {"type": "string", "description": "Optional assert/verify element state."},
+        "that": {"type": "string", "description": "Optional assert/verify expectation text."},
+        "expect": {"description": "Optional post-action expectation; never required."},
+        "label": {"type": "string", "description": "Optional retarget label if id is stale."},
+        "query": {"type": "string"},
     },
 }
 
@@ -91,6 +97,7 @@ TOOLS = [
             "properties": {
                 "target": TARGET_PROPERTY,
                 "action": ACTION_PROPERTY,
+                "expect": {"description": "Optional post-action expectation; never required."},
                 "observe_after": {"type": "boolean"},
                 "max_nodes": {"type": "integer", "minimum": 1},
                 "max_depth": {"type": "integer", "minimum": 0},

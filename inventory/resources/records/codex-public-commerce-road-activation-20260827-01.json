@@ -1,0 +1,67 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-public-commerce-road-activation-20260827-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-27T04:09:30Z",
+  "base_main_sha": "46edc1c0bf296a337283a9c0a96b359fdb2a12d3",
+  "selected_resource": "public-commerce-road",
+  "selection": {
+    "held": false,
+    "blocked": false,
+    "concrete_consumer": "Existing Commons readers and prospective voluntary supporters",
+    "reason": "The previously deployment-starved public commerce surface now serves exact checkout-rendering assets without overlapping active source repair PRs."
+  },
+  "before": {
+    "stage": "REACHABLE",
+    "condition": "DEGRADED",
+    "evidence": "#commons reported commerce.html serving an old wrapper with no checkout catalog on 2026-08-26T20:55:48-04:00"
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "producing_outcome": "The public commerce page can load exact current-main JavaScript and catalog bytes that render canonical one-time and monthly Stripe checkout anchors for existing Commons visitors."
+  },
+  "public_http_evidence": {
+    "commerce_html": {"status": 200, "last_modified": "Thu, 27 Aug 2026 02:16:28 GMT", "deployed_git_blob": "6787c5fa09ed6f82dfed0ee6f96f3e41eb0ffd78", "current_main_git_blob": "bb3e82b8ed00c1e778341ab9391693023b3fe43e", "exact_current_main_match": false},
+    "commerce_js": {"status": 200, "git_blob": "2d3a9f67843c4e0a0df423f3e4b8123725d7b69e", "exact_current_main_match": true},
+    "catalog": {"status": 200, "git_blob": "91bc26372965919bdd5f3877afe230b712f0b468", "exact_current_main_match": true},
+    "one_time_tip_checkout": {"status": 200, "provider": "stripe", "amount_usd": "5.00"},
+    "monthly_tip_checkout": {"status": 200, "provider": "stripe", "amount_usd": "3.00"},
+    "stripe_payment_links_html": {"status": 404},
+    "tip_sku_html": {"status": 404}
+  },
+  "current_truth": {
+    "distinct_targets": 8,
+    "delivered_transports": 13,
+    "verified_positive_replies": 0,
+    "accepted_scopes": 0,
+    "paid_deliveries": 0,
+    "collected_cash_usd": "0.00"
+  },
+  "other_lifecycle_discoveries": [
+    "Owner workstation capacity changed to NOT_VERIFIED / BLOCKED after a peer report of zero free C: bytes; no device probe or mutation occurred.",
+    "Commons Android client source reached EXERCISED on current main; install, grant, pairing, and handset actuation remain unverified owner actions.",
+    "Stripe event bridge source reached EXERCISED; no live provider event or economic state is claimed.",
+    "Commons carrier gateway source reached EXERCISED; the remote version was not re-probed merely to report utilization.",
+    "CI receipt corpus is EXERCISED but BLOCKED_LICENSE_REQUIRED for transfer or sale.",
+    "Automation capacity is three enabled tasks with Resource Master, Builder, and Slack Bridge scopes kept separate."
+  ],
+  "verification": {
+    "focused_tests": "66/66 passed before projection update",
+    "json_parse": "passed",
+    "public_asset_blob_readback": "passed for commerce.js and catalog",
+    "no_quota_spend_for_usage_report": true
+  },
+  "non_claims": [
+    "No deployment or access-policy change",
+    "No checkout was opened and no payment action was taken",
+    "No physical-device actuation or storage mutation",
+    "No acceptance, authorization, settlement, payout, delivery, or cash",
+    "No Cursor or Grokbot use or hold release",
+    "No Claude testing, verification, review, QA, or landing role",
+    "No Titan model mutation",
+    "No resend to already-delivered prospects"
+  ],
+  "titan": "NOT_WRITTEN"
+}
