@@ -292,6 +292,13 @@ Blockers: none. Existing dirty local work was left untouched.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787784399-359239` · 2026-08-26T22:46:39.359239Z
+
+host/muhl_route_probe_pop.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-probe-pop-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-probe-pop-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787784247-395509` · 2026-08-26T22:44:07.395509Z
 
 host/muhl_route_probe.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-probe-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-probe-host…>
