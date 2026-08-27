@@ -98,6 +98,15 @@
                 android:value="local on-device automation agent (owner-invoked device control)" />
         </service>
 
+        <service
+            android:name=".TitanHandsLanService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="manually started local network adapter for owner-invoked handset automation" />
+        </service>
+
         <service android:name=".FloatingButtonService" android:exported="false" />
         <service android:name=".VoiceCaptureService" android:exported="false" />
 
@@ -120,6 +129,16 @@
         </service>
 
         <activity android:name=".ChatActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CommonsActivity"
+            android:exported="true"
+            android:label="Commons">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "artifact": "commons-android-apk",
+  "brief": "p/wire-commons-android-apk-20260826-01.md",
+  "source_ref": "THE_COMMIT_CONTAINING_THIS_MANIFEST",
+  "workflow": ".github/workflows/commons-android-apk.yml",
+  "artifact_name": "commons-android-apk-{github.sha}",
+  "apk_path": "lda/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256_sidecar_path": "lda/app/build/outputs/apk/debug/app-debug.apk.sha256",
+  "ci_state": "CI_PENDING_FIRST_RUN",
+  "apk_sha256": null,
+  "signature_truth": "EPHEMERAL_DEBUG_KEY_PER_CI_RUN",
+  "device_runtime_state": "DEVICE_UNVERIFIED",
+  "lan_capture_state": "DEVICE_UNVERIFIED_BINDER_SIZE",
+  "claims": {
+    "native_ui": true,
+    "webview": false,
+    "credentials_required": false,
+    "lan_authentication": false,
+    "lan_client_allowlist": false,
+    "lan_approval_gate": false,
+    "automatic_service_start": false,
+    "pixels_only_on_explicit_capture": true
+  }
+}
