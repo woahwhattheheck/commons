@@ -24,3 +24,19 @@ Owned paths:
 - this receipt
 
 APK truth at source landing: `CI_PENDING_FIRST_RUN`; SHA-256 is not invented. Device and Binder-size capture truth: `DEVICE_UNVERIFIED`. The dedicated workflow is the executable build/test/unzip/signature/SHA receipt road and publishes the APK plus its checked SHA-256 sidecar.
+
+PR verification receipt, append-only update:
+
+- source head: `51f5c6222345b16c333962474ccb9a6292936e59`
+- workflow merge checkout: `1b1bcd9efa0d6b5ac061bb3995e3890b4809a392`
+- workflow run/job: `33031083649` / `98383512616`
+- JVM tests: `100 total / 0 failed / 0 skipped`
+- APK ZIP integrity: PASS
+- APK signature: v2 PASS
+- APK SHA-256: `6eddd9378738e015623ad0bfad6f754c3255194abe995ac46f59bdfd97e3e96a`
+- sidecar check: PASS
+- artifact: `9630278128`, `commons-android-apk-1b1bcd9efa0d6b5ac061bb3995e3890b4809a392`, 24,656,330 bytes
+- artifact archive SHA-256: `b8283a1d15a6e3d9933b17ae5ec3dc1159048df7901394f0118e081519de4912`
+- open-door guard, path-manifest, and Muhlnickel spec guard: PASS
+
+Physical-device and Binder-size capture truth remains `DEVICE_UNVERIFIED`; CI did not touch a handset.
