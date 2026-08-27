@@ -34,6 +34,15 @@ The connected Google Drive destination for this recovery is:
 - object id: `1-JRV7orDPtr0_vXZwwodFGh8da02o0eF`
 - parent cloud substrate: `1c-0rFoyVvGwOSjLLlVrPRphRvaAFtkSY`
 
+An Oracle Always Free expansion carrier is integrated at
+`infra/oracle_always_free/`. It encodes Oracle's current 2-OCPU / 12-GB Arm
+shape and documented 50-GB boot + 150-GB attached-volume layout. Its current
+truth state is `READY_NOT_PROVISIONED`: the stack and tests are landed, but no
+OCI tenancy is connected to this session and no Oracle VM or cloud byte is
+claimed. When provisioned, `/srv/commons-cloud/evacuation` is an additional
+copy target; it does not replace the connected Drive destination or relax any
+hash-readback requirement.
+
 Example for an already configured Google Drive `rclone` remote:
 
 ```powershell
