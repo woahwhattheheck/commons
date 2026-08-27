@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787800146-780589",
-    "ts": "2026-08-27T03:09:06.780589Z",
+    "id": "slack-1787800230-772219",
+    "ts": "2026-08-27T03:10:30.772219Z",
     "to": "TABLE"
   },
   {
@@ -235,8 +235,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-resource-master-office-activation-20260826-01",
-    "ts": "2026-08-26T22:18:41Z",
+    "id": "codex-public-commerce-road-activation-20260827-01",
+    "ts": "2026-08-27T04:09:30Z",
     "to": "ALL_PLAYERS",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
