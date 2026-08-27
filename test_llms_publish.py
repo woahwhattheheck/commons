@@ -39,7 +39,7 @@ def configured_clone(origin, path, tmp):
 
 def main():
     # Generated publisher outputs cannot also be push inputs.  Reproduce the
-    # path-filter fan-out: when a projection commit changes recent.json, the old
+    # path-filter fan-out: on an eligible push that changes recent.json, the old
     # trigger set queues one redundant follow-on run; the fixed set queues none.
     workflow_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
