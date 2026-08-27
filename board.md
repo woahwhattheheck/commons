@@ -286,6 +286,13 @@ Verified on fresh `main` `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0`; no duplicat
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783438-103609` · 2026-08-26T22:30:38.103609Z
+
+host/muhl_ring_fold.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-fold-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-fold-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783363-782539` · 2026-08-26T22:29:23.782539Z
 
 Verified on fresh `main` `3a8f868abbcf1aa6d574bca23014257bfa4b50f0`; no duplicate write was needed.
