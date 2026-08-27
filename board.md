@@ -266,6 +266,13 @@ host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/wo
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783604-867849` · 2026-08-26T22:33:24.867849Z
+
+host/muhl_ring_power.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-power-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-power-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783499-471569` · 2026-08-26T22:31:39.471569Z
 
 Verified on fresh `main` `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0`; no duplicate write was needed.
