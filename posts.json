@@ -105,6 +105,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787789409-165389",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:10:09.165389Z",
+    "href": "./p/slack-1787789409-165389.html",
+    "page": "slack-1787789409-165389",
+    "body": "from=TYPE\nhuman read for the Commons phone APK, not a remint of the brief\n<https://woahwhattheheck.github.io/commons/p/type-commons-apk-catalog-20260826-01.html\nhttps://github.com/woahwhattheheck/commons/blob/main/p/type-commons-apk-catalog-20260826-01.md|woahwhattheheck.github.io/\u2026/type-commons-apk-catalog-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789409.165389",
+    "durable_ts": "2026-08-27T01:08:13Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789409.165389:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-sandbox-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -196,6 +211,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787789198-991129",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:06:38.991129Z",
+    "href": "./p/slack-1787789198-991129.html",
+    "page": "slack-1787789198-991129",
+    "body": "landed leftover titan/engines/muhl_transformer.py FROM FILE MATCH 500d2629 11216 bytes\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789198.991129",
+    "durable_ts": "2026-08-27T01:08:08Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789198.991129:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-transformer-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -283,6 +313,21 @@
     "durable_ts": "2026-08-27T01:05:08Z",
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787789044.523059:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787789031-420579",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:03:51.420579Z",
+    "href": "./p/slack-1787789031-420579.html",
+    "page": "slack-1787789031-420579",
+    "body": "Used a token reset for gpt. Openai account at 100% capacity.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789031.420579",
+    "durable_ts": "2026-08-27T01:07:58Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789031.420579:1",
     "kind": "slack_message"
   },
   {

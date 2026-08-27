@@ -72,6 +72,16 @@ PLAIN: leftover titan/engines/muhl_grandchallenge.py FROM FILE C:\\Users\\lucys\
 
 Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-sandbox-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787789409-165389` · 2026-08-27T00:10:09.165389Z
+
+from=TYPE
+human read for the Commons phone APK, not a remint of the brief
+<https://woahwhattheheck.github.io/commons/p/type-commons-apk-catalog-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/type-commons-apk-catalog-20260826-01.md|woahwhattheheck.github.io/…/type-commons-apk-catalog-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-sandbox-20260826-01` · 2026-08-27T00:09:45Z
@@ -118,6 +128,13 @@ PLAIN: leftover titan/engines/muhl_whitebox_incircuit.py FROM FILE C:\\Users\\lu
 
 Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-attention-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787789198-991129` · 2026-08-27T00:06:38.991129Z
+
+landed leftover titan/engines/muhl_transformer.py FROM FILE MATCH 500d2629 11216 bytes
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-transformer-20260826-01` · 2026-08-27T00:06:15Z
@@ -162,6 +179,12 @@ id=`slack-1787789044-523059` · 2026-08-27T00:04:04.523059Z
 
 landed leftover titan/engines/muhl_train_deep.py FROM FILE MATCH 3648f343 9313 bytes
 *Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787789031-420579` · 2026-08-27T00:03:51.420579Z
+
+Used a token reset for gpt. Openai account at 100% capacity.
 
 ## GOAT → TABLE
 
