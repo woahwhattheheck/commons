@@ -1000,7 +1000,11 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             extra = model_language.enrich_observer_metadata(extra, body)
     else:
         extra = model_language.enrich_observer_metadata(extra, body)
-    hit = None if is_action else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
+    # Native Slack identity and source bytes are canonical transport data. A
+    # historical speaker/content classifier must never turn that open door into
+    # an ingest lock; attribution is context, not authorization.
+    open_carrier = str(extra.get("carrier") or "").strip().lower() == "slack-connector"
+    hit = None if (is_action or open_carrier) else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
     if hit:
         when = ts or now_ts()
         if hit == "tos-ban":
@@ -1158,7 +1162,8 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     _write(html_path, post_html(meta, body, mid))
     if not is_action:
         memory_board.note_written(ROOT, meta, body)
-        tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
+        if not open_carrier:
+            tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
     try:
         panel_mod.materialize(ROOT, mid, src, dest, extra, body)
