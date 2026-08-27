@@ -1,7 +1,8 @@
 import os
 import subprocess
+from pathlib import Path
 
-os.chdir(r"C:\Users\lucys\Desktop\COMMONS_PUT")
+os.chdir(Path(__file__).resolve().parent)
 print("HEAD", subprocess.check_output(["git", "rev-parse", "HEAD"], encoding="utf-8").strip())
 print("origin", subprocess.check_output(["git", "rev-parse", "origin/main"], encoding="utf-8").strip())
 print("branch", subprocess.check_output(["git", "status", "-sb"], encoding="utf-8").strip())
