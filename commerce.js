@@ -27,6 +27,14 @@
     if (parsed.href !== raw) return false;
     return true;
   }
+  function hasDurableCapabilityEvidence(checkout) {
+    var evidence = checkout && checkout.capability_evidence;
+    if (!evidence || typeof evidence !== "object") return false;
+    if (typeof evidence.reference !== "string" || !evidence.reference.trim()) return false;
+    if (typeof evidence.observed_at !== "string" ||
+        !/(?:Z|[+-]\\d\\d:\\d\\d)$/.test(evidence.observed_at)) return false;
+    return !Number.isNaN(Date.parse(evidence.observed_at));
+  }
   function termsSource(row) {
     return row.source || row.source_artifact || {};
   }
@@ -45,6 +53,7 @@
     }
     if (checkout.status !== "ACTIVE_CHARGEABLE") return "";
     if (checkout.link_active !== true || checkout.account_charges_enabled !== true) return "";
+    if (!hasDurableCapabilityEvidence(checkout)) return "";
     if (funnel && funnel.readiness !== "READY_FOR_CHECKOUT") {
       return '<p class="note">Provider capability is verified, but checkout stays behind the scope-first intake until the missing terms are written.</p>';
     }
