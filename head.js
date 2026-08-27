@@ -6,6 +6,7 @@ window.COMMONS_HEAD = (function () {
   var REPO = "woahwhattheheck/commons";
   var API = "https://api.github.com/repos/" + REPO + "/";
   var RAW = "https://raw.githubusercontent.com/" + REPO + "/";
+  var JSD_MAIN = "https://cdn.jsdelivr.net/gh/" + REPO + "@main/";
   var SHA_TTL_MS = 60000;
   var SHA_KEY = "commons-lane-head-sha";
   var POSTS_KEY = "commons-head-posts";
@@ -29,6 +30,10 @@ window.COMMONS_HEAD = (function () {
 
   function rawUrl(path, sha) {
     return RAW + sha + "/" + cleanPath(path);
+  }
+
+  function jsdelivrMainUrl(path) {
+    return JSD_MAIN + cleanPath(path);
   }
 
   function pagesUrl(path, bust) {
@@ -95,29 +100,48 @@ window.COMMONS_HEAD = (function () {
     }).catch(function () { return ""; });
   }
 
+  function jsdelivrMainFallback(path, priorStatus) {
+    return fetchOk(jsdelivrMainUrl(path), 15000).then(function (r3) {
+      if (!r3 || !r3.ok) {
+        var err = new Error("mirror " + ((r3 && r3.status) || priorStatus || 0));
+        err.status = (r3 && r3.status) || priorStatus || 0;
+        throw err;
+      }
+      var getHeader = r3.headers && typeof r3.headers.get === "function"
+        ? function (name) { return r3.headers.get(name) || ""; }
+        : function () { return ""; };
+      return {
+        response: r3,
+        via: "jsdelivr-main",
+        sha: "",
+        providerVersion: getHeader("x-jsd-version"),
+        providerVersionType: getHeader("x-jsd-version-type")
+      };
+    });
+  }
+
   function rawFallback(path, pagesStatus) {
     return headSha().then(function (sha) {
       return fetchOk(rawUrl(path, sha), 15000).then(function (r2) {
-        if (!r2 || !r2.ok) {
-          var err = new Error("head " + ((r2 && r2.status) || pagesStatus || 0));
-          err.status = (r2 && r2.status) || pagesStatus || 0;
-          throw err;
-        }
-        return { response: r2, via: "raw", sha: sha };
+        if (r2 && r2.ok) return { response: r2, via: "raw", sha: sha };
+        return jsdelivrMainFallback(path, (r2 && r2.status) || pagesStatus);
+      }, function (err) {
+        return jsdelivrMainFallback(path, (err && err.status) || pagesStatus);
       });
+    }, function (err) {
+      return jsdelivrMainFallback(path, (err && err.status) || pagesStatus);
     });
   }
 
   function fetchPath(path, opts) {
     opts = opts || {};
-    path = cleanPath(path);
-    if (!path) return Promise.reject(new Error("empty path"));
+    path = safePath(path);
+    if (!path) return Promise.reject(new Error("empty or unsafe path"));
     var rel = pagesUrl(path, opts.bust !== false);
     return fetchOk(rel, opts.ms || 15000).then(function (r) {
       if (r && r.ok) return { response: r, via: "pages", sha: "" };
       return rawFallback(path, r && r.status);
-    }).catch(function (err) {
-      if (err && err.status && err.message && String(err.message).indexOf("head ") === 0) throw err;
+    }, function (err) {
       return rawFallback(path, err && err.status);
     });
   }
@@ -515,6 +539,7 @@ window.COMMONS_HEAD = (function () {
     cleanPath: cleanPath,
     safePath: safePath,
     rawUrl: rawUrl,
+    jsdelivrMainUrl: jsdelivrMainUrl,
     pagesUrl: pagesUrl,
     headSha: headSha,
     fetchPath: fetchPath,
