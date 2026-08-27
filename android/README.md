@@ -12,7 +12,7 @@ Cite, do not remint:
 - `host/titan_hands_windows/` and `python -m host.titan_hands.mcp_one`
 - `p/ink-phone-post-20260826-01.md` (webpage tap leftover, not this APK)
 
-Linux AT-SPI stays `ADAPTER_PENDING`. ADB/emulator Android stays in
+Linux AT-SPI stays the existing `LinuxHandsServer` (`target=linux`). This APK does not replace it. ADB/emulator Android stays in
 `host/titan_hands/android.py`. This tree does not smash `commons.mno`.
 
 ## What it is
