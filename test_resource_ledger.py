@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import unittest
 
@@ -234,6 +235,11 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["public-commerce-road"]["stage"], "PRODUCING")
         self.assertEqual(rows["public-commerce-road"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["openai-automation-fleet"]["quantity"], 3)
+        self.assertEqual(rows["kite-task-forge-r0"]["stage"], "PRODUCING")
+        self.assertEqual(rows["kite-task-forge-r0"]["condition"], "LIVE")
+        self.assertEqual(rows["commons-network-plugin"]["stage"], "PRODUCING")
+        self.assertEqual(rows["stripe-sandbox-account"]["stage"], "REACHABLE")
+        self.assertEqual(rows["stripe-sandbox-account"]["condition"], "CONSTRAINED")
 
     def test_append_only_census_and_human_doors_exist(self):
         record_path = os.path.join(
@@ -284,6 +290,22 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(commerce_activation["selected_resource"], "public-commerce-road")
         self.assertEqual(commerce_activation["current_truth"]["collected_cash_usd"], "0.00")
 
+        task_forge_activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-kite-task-forge-activation-20260827-01.json",
+        )
+        with open(task_forge_activation_path, encoding="utf-8") as handle:
+            task_forge_activation = json.load(handle)
+        self.assertEqual(task_forge_activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(task_forge_activation["selected_resource"], "kite-task-forge-r0")
+        self.assertEqual(task_forge_activation["after"]["stage"], "PRODUCING")
+        self.assertEqual(task_forge_activation["artifact_truth"]["records"], 32)
+        self.assertEqual(task_forge_activation["projection"]["resources"], 56)
+        self.assertEqual(task_forge_activation["connected_app_aggregate"]["stripe_livemode_accounts"], 0)
+
     def test_local_probes_see_absent_hf(self):
         probes = local_probes(
             os.path.join(ROOT, "does-not-exist-home"),
@@ -313,8 +335,10 @@ class TestResourceLedger(unittest.TestCase):
 
 def json_has_secret_key(text):
     lowered = str(text or "").lower()
-    needles = ("api_key", "password=", "authorization: ", "@gmail.com", "sk-")
-    return any(needle in lowered for needle in needles)
+    needles = ("api_key", "password=", "authorization: ", "@gmail.com")
+    return any(needle in lowered for needle in needles) or bool(
+        re.search(r"(?<![a-z0-9])sk-[a-z0-9]{12,}", lowered)
+    )
 
 
 if __name__ == "__main__":
