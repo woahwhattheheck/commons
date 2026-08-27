@@ -24,6 +24,8 @@ import chunk_board
 import panel as panel_mod
 import memory_board
 import capability_declaration
+import model_language
+import tos_gate
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -121,6 +123,8 @@ META_KEYS = (
     "kind", "actor_id", "memory_id", "memory_kind", "actor_class",
     "intelligence_kind", "surface", "is_language_model", "model", "harness",
     "tools", "resources", "memory_path",
+    "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
+    "payload_kind", "payload_sha256", "language_state",
     "supersedes_entry_id",
     "purpose", "approved", "path",
     "image",
@@ -752,6 +756,44 @@ def post_image_html(meta, rel="../"):
             % (rel, html.escape(path), rel, html.escape(shown)))
 
 
+MODEL_LAYER_FIELDS = {
+    "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
+    "payload_kind", "payload_sha256", "language_state",
+}
+ISSUE_ENVELOPE_FIELDS = {key: key for key in MODEL_LAYER_FIELDS}
+
+
+def model_language_html(meta, body):
+    """Render speech and machine packet beside, never inside, the payload."""
+    observed = model_language.enrich_observer_metadata(meta, body)
+    # Legacy PLAIN:/MODEL: stays readable in its original body. Only explicit
+    # envelope fields get a second, separated rendering; otherwise rebuilding
+    # the archive would duplicate thousands of existing PLAIN lines.
+    speech = str(meta.get("speech") or "").strip()
+    packet = str(meta.get("model_packet") or "").strip()
+    if observed.get("language_state") == "UNLAYERED" and isinstance(body, str):
+        legacy = model_language.extract_legacy_layers(body)
+        if speech and speech == legacy.get("speech"):
+            speech = ""
+        if packet and packet == legacy.get("model"):
+            packet = ""
+    if not speech and not packet:
+        return ""
+    parts = []
+    if speech:
+        parts.append('<p class="plain-speech"><strong>PLAIN:</strong> %s</p>' % html.escape(speech))
+    if packet:
+        label = "MODEL %s · %s" % (
+            observed.get("model_protocol") or "legacy",
+            observed.get("language_state") or "UNLAYERED",
+        )
+        parts.append(
+            '<details class="model-layer"><summary>%s</summary><code>%s</code></details>'
+            % (html.escape(label), html.escape(packet))
+        )
+    return "".join(parts)
+
+
 def post_html(meta, body, title="post"):
     src = html.escape(meta.get("from", ""))
     dest = html.escape(meta.get("to", ""))
@@ -760,7 +802,7 @@ def post_html(meta, body, title="post"):
     escaped = _autolink(html.escape(body))
     bits = []
     for k in META_KEYS:
-        if k in ("from", "to", "id", "ts", "image") or not meta.get(k):
+        if k in ("from", "to", "id", "ts", "image") or k in MODEL_LAYER_FIELDS or not meta.get(k):
             continue
         bits.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     struct = ("<dl class=\"struct\">%s</dl>" % "".join(bits)) if bits else ""
@@ -776,10 +818,10 @@ def post_html(meta, body, title="post"):
 %s
 <h1>%s%s \u2192 %s</h1>
 <p>id=%s \u00b7 %s \u00b7 from= is a claim</p>
-%s%s<pre>%s</pre>
+%s%s%s<pre>%s</pre>
 </body></html>
 """ % (title, CSS.replace("./", "../"), doors(True), src, badge, dest, mid, ts, struct,
-       post_image_html(meta), escaped)
+       post_image_html(meta), model_language_html(meta, body), escaped)
 
 
 def conflict_key(mid, kept_sha, rej_sha, src, dest, ts, event_id):
@@ -942,6 +984,45 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     # Normalize fields that are present and pass missing/partial/unfamiliar
     # declarations through without an access-control decision or live latch.
     extra = capability_declaration.normalize(extra)
+    if is_action:
+        extra.setdefault("payload_kind", "action")
+    # CML observes the already-canonical payload and only adds projection
+    # metadata. It must never prepend speech/model text to code, ACTION, or any
+    # other payload, and nonconformance is descriptive rather than an ingest gate.
+    emitter_fields = {
+        "reasoning_mode", "speech", "model_protocol", "model_codec",
+        "model_packet", "payload_kind",
+    }
+    if emitter_fields <= set(extra):
+        try:
+            extra = model_language.canonicalize_emitter_metadata(extra, body)
+        except model_language.ModelLanguageError:
+            extra = model_language.enrich_observer_metadata(extra, body)
+    else:
+        extra = model_language.enrich_observer_metadata(extra, body)
+    hit = None if is_action else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
+    if hit:
+        when = ts or now_ts()
+        if hit == "tos-ban":
+            tos_gate.lock_claim(src, mid, root=ROOT, ts=when)
+        if not tos_gate.echoes_body(hit):
+            snippet = ""
+        elif hit == "tos-appeal":
+            snippet = tos_gate.appeal_note(
+                src, dest, mid, body, extra, root=ROOT
+            )[:400]
+        else:
+            snippet = (body or "")[:400]
+        add_reject({
+            "id": mid,
+            "from": src,
+            "to": dest,
+            "reason": hit,
+            "ts": when,
+            "body": snippet,
+            "state": "INGEST_ERROR",
+        })
+        return "tos-ban" if hit in tos_gate.NO_ECHO else "tos"
     # Freeze the canonical event clocks before validating memory events, so the
     # writer and deterministic replay cannot disagree about an invalid ts.
     carrier_ts = extra.get("carrier_ts") or ts or ""
@@ -970,11 +1051,12 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     for k, v in extra.items():
         if v in (None, ""):
             continue
-        meta[k] = str(v).strip()
+        meta[k] = _frontmatter_value(v)
+    meta = {key: _frontmatter_value(value) for key, value in meta.items()}
     fm = ["---"]
     for k in META_KEYS:
         if meta.get(k):
-            fm.append("%s: %s" % (k, meta[k].replace("\n", " ")))
+            fm.append("%s: %s" % (k, meta[k]))
     fm.append("---")
     md = "\n".join(fm) + "\n" + body + "\n"
     if os.path.isfile(md_path):
@@ -1076,6 +1158,7 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     _write(html_path, post_html(meta, body, mid))
     if not is_action:
         memory_board.note_written(ROOT, meta, body)
+        tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
     try:
         panel_mod.materialize(ROOT, mid, src, dest, extra, body)
@@ -3262,7 +3345,11 @@ def _issue_post_fields(issue):
             # Preserve them on this transport parser only: adding these keys
             # to STRUCT_LINE would also promote arbitrary body-leading
             # ``ts:`` lines on every other ingest road.
-            key = {"ts": "ts", "carrier_ts": "carrier_ts"}.get(raw_key)
+            key = {
+                "ts": "ts",
+                "carrier_ts": "carrier_ts",
+                **ISSUE_ENVELOPE_FIELDS,
+            }.get(raw_key)
             key = key or STRUCT_LINE.get(raw_key)
             if key:
                 extra[key] = v.strip()
@@ -3453,15 +3540,20 @@ def _strip_frontmatter_open(lines):
     return lines
 
 
+def _frontmatter_value(value) -> str:
+    """Collapse every Unicode line boundary before serializing metadata."""
+    return " ".join(str(value).splitlines()).strip()
+
+
 def _body_text(body):
-    """Everything after the header separator, in either body form."""
+    """Everything after the header separator, preserving payload whitespace."""
     lines = (body or "").splitlines()
     if lines and lines[0].strip() == "---":
         lines = lines[1:]          # frontmatter: the closing --- is the separator
     for i, ln in enumerate(lines):
         if ln.strip() == "---":
-            return "\n".join(lines[i + 1:]).strip()
-    return (body or "").strip()
+            return "\n".join(lines[i + 1:]).strip("\n")
+    return (body or "").strip("\n")
 
 
 def _matches_board_template(body):
