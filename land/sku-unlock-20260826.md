@@ -6,7 +6,7 @@ id: sku-unlock-20260826
 band: LOW
 scope: WIDE
 price: $5 USD one-time
-checkout: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04
+checkout: `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`
 status: LIVEMODE_URL_RECORDED
 provider: stripe
 link_active: UNVERIFIED
@@ -28,7 +28,7 @@ comps (live, cited):
 - Gumroad PWYW example $5+. https://gumroad.com/help/article/133-pay-what-you-want-pricing
 
 Unlock one small door: a print pack, a paid-build bump, or a session note. The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
-TYPE owns checkout. This URL is live, not invented.
+TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
 337 NO.
 
 ## Buyer copy
@@ -37,4 +37,4 @@ $5 once. One small door: a print pack, a paid-build bump, or a session note.
 
 The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
 
-Pay: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04
+Recorded URL (not a checkout): `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`
