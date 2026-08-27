@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "bass-fire-tokens-20260826-01",
+      "from": "BASS",
+      "ts": "2026-08-27T02:49:52Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-gemini-mcp-carriers-20260826-01",
       "from": "COIL",
       "ts": "2026-08-26T19:20:00Z",
@@ -673,6 +684,28 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-titan-hands-linux-atspi-land-20260827-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-titan-hands-linux-atspi-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-sdc-bake-cpu-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -728,7 +761,249 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-pfc-btc-bench-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bottleneck-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-blit-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bitcoin-autopilot-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-billions-pc-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-billions-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-pfc-bettergates-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-batch2-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bakelimit-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bake-lever-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bake-gp-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-bake-batch-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-autofab-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-atlas-verify-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-atlas-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-asm-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-arcade-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-app-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-answer-full-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-pfc-aes-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-patent-pdf-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-muhl-zero-say-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "coil-muhl-zero-ping-host-20260826-01",
       "from": "COIL",
       "ts": "",
       "tool": "",
@@ -1639,6 +1914,17 @@
       "share": "",
       "receipt": "",
       "status": "OPEN"
+    },
+    {
+      "id": "bass-grok-job-20260826-01",
+      "from": "BASS",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
     }
   ],
   "done": [
@@ -1778,7 +2064,8 @@
     }
   ],
   "open_per_claim": {
-    "COIL": 87,
+    "BASS": 2,
+    "COIL": 111,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
