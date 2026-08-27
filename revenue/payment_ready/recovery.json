@@ -154,8 +154,8 @@
     "bank_available": "NOT_LANDED",
     "collected_cash_usd": 0,
     "contact_sent": true,
-    "distinct_contacts_sent": 7,
-    "provider_transports_observed": 12,
+    "distinct_contacts_sent": 11,
+    "provider_transports_observed": 16,
     "replies_observed": 0
   }
 }

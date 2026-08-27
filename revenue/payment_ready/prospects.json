@@ -2,12 +2,12 @@
   "schema_version": 2,
   "kind": "GGUF_DIAGNOSTIC_PUBLIC_PROSPECTS",
   "offer_id": "gguf-diagnostic-10d-12k",
-  "measured_at": "2026-08-26",
+  "measured_at": "2026-08-27",
   "demand": "UNKNOWN",
   "buyer_authorizations_observed": 0,
   "contact_sent": true,
-  "distinct_contacts_sent": 7,
-  "provider_transports_observed": 12,
+  "distinct_contacts_sent": 11,
+  "provider_transports_observed": 16,
   "replies_observed": 0,
   "do_not_resend_all": true,
   "prospect_is_not_buyer": true,
@@ -101,6 +101,34 @@
       "organization": "Lyceum Technology",
       "provider_reference": "apollo:emailer_message:6a8e64023bce020018b38a74",
       "receipt": "outreach_receipts/20260826-lyceum-6a8e64023bce020018b38a74.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Upvest",
+      "provider_reference": "apollo:emailer_message:6a8ef3350ebff2001074edb3",
+      "receipt": "outreach_receipts/20260826-upvest-6a8ef3350ebff2001074edb3.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Dexmate",
+      "provider_reference": "apollo:emailer_message:6a8f9f8cc46158001490e2f4",
+      "receipt": "outreach_receipts/20260827-dexmate-6a8ef772e426be000cf97772.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Metaforms",
+      "provider_reference": "apollo:emailer_message:6a8f9759437c7d0010ef8788",
+      "receipt": "outreach_receipts/20260827-metaforms-6a8f9759437c7d0010ef8788.json",
+      "state": "SENT_COMPLETED_NO_RESPONSE",
+      "do_not_resend": true
+    },
+    {
+      "organization": "Nextdata",
+      "provider_reference": "apollo:emailer_message:6a8faa92579ff9000cb874e2",
+      "receipt": "outreach_receipts/20260827-nextdata-6a8faa92579ff9000cb874e2.json",
       "state": "SENT_COMPLETED_NO_RESPONSE",
       "do_not_resend": true
     }
