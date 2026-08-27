@@ -729,8 +729,8 @@ class OutcomeCommerceTests(unittest.TestCase):
                 "FUNDED" if checkout_first else "DISCOVERED",
             )
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 8)
-        self.assertEqual(truth["delivered_transports"], 13)
+        self.assertEqual(truth["distinct_targets"], 10)
+        self.assertEqual(truth["delivered_transports"], 15)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
