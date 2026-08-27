@@ -1,0 +1,12 @@
+name = "commons-m2"
+main = "src/index.mjs"
+compatibility_date = "2026-08-18"
+
+# Bind D1 server-side. Do not commit database_id or secrets.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "commons-m2"
+# database_id = "SET_SERVER_SIDE"
+
+# [triggers]
+# crons = ["*/5 * * * *"]
