@@ -29,7 +29,7 @@ The quote remains `$2500`, `QUOTE_DRAFT`, `STRUCTURAL_ONLY`, demand
 `UNKNOWN`, cash `$0 / NOT_LANDED`, legal state `NEEDS_BUYER`. No auth.
 No gate. No login, allowlist, approval, identity, or action tier.
 
-Verification on Windows:
+Candidate-time verification on Windows (historical; not current HEAD CI):
 
 - quote + receipt focused suite: 36/36 PASS
 - both module self-tests: PASS
