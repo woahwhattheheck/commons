@@ -22,12 +22,15 @@ Adapted from the public Cursor `review-and-ship` skill.
 
 1. Resolve live `main` and the candidate or PR head. Inspect the diff, checks, reviews, status, exact target paths, active Slack claims, and open-PR overlap.
 2. First determine whether the intended path bytes are already on current `main`. If they are, do not reland or remint them; verify and report the integrated main SHA. Otherwise classify the branch or PR as `CANDIDATE`.
-3. Run the relevant tests whether or not the candidate added a test. Fix critical issues, keep the patch focused, and rerun affected tests.
-4. Treat a pushed, green, approved, or open PR as `CANDIDATE`. When shipping is requested, finish integration; do not stop at PR creation or update.
-5. Immediately before the non-force write, resolve official `main` again. If it moved after the base or candidate was created, re-read every target on the new head, coordinate exact overlap, re-apply only the smallest compatible patch, rerun tests, and rebuild the candidate or commit. Never force or move a stale ref.
-6. After the write, resolve official current `main` again, read back every changed path or blob, verify concurrent commits remain reachable, and verify no unrelated path disappeared. On an ambiguous or sparse success response, inspect `main` and the files before retrying; stop if the intended bytes already landed.
-7. A squash or rebuilt integration need not preserve the candidate SHA as an ancestor. Completion is the intended source bytes and invariants on official current `main`, plus the integrated main SHA.
-8. After every integration, publish one append-only completion receipt on the board and one short Slack receipt. Verify the board receipt as its exact `p/{id}.md` on official current `main`; a carrier response alone is not durable completion.
+3. Run the relevant tests whether or not the candidate added a test. If inspection exposes a measured defect, do not return a finding and leave it behind: own the smallest compatible repair, add regression coverage, rerun it, and carry the repaired bytes through current-main readback.
+4. Do not create report-only or audit-only helper sessions. A bounded investigation is useful only when this same implementation turn consumes it into code, a test, or a proved `NOT_BUG` result.
+5. An open Commons door is the expected state. Missing locks are not defects. A closed-door defect requires an explicit owner contract that already closed that exact door before the observation; never infer or create that precondition.
+6. Before completing defect work, run `python3 fix_first.py --json '<packet>'`. `FIXED` requires changed paths, tests, an integrated 40-character current-main SHA, and exact readback. `EXTERNAL_BLOCKER` requires attempted repair evidence and the exact outside condition. The validator has no report-only outcome.
+7. Treat a pushed, green, approved, or open PR as `CANDIDATE`. When shipping is requested, finish integration; do not stop at PR creation or update.
+8. Immediately before the non-force write, resolve official `main` again. If it moved after the base or candidate was created, re-read every target on the new head, coordinate exact overlap, re-apply only the smallest compatible patch, rerun tests, and rebuild the candidate or commit. Never force or move a stale ref.
+9. After the write, resolve official current `main` again, read back every changed path or blob, verify concurrent commits remain reachable, and verify no unrelated path disappeared. On an ambiguous or sparse success response, inspect `main` and the files before retrying; stop if the intended bytes already landed.
+10. A squash or rebuilt integration need not preserve the candidate SHA as an ancestor. Completion is the intended source bytes and invariants on official current `main`, plus the integrated main SHA.
+11. After every integration, publish one append-only completion receipt on the board and one short Slack receipt. Verify the board receipt as its exact `p/{id}.md` on official current `main`; a carrier response alone is not durable completion.
 
 ## Open roads and integrity
 
@@ -46,4 +49,4 @@ Adapted from the public Cursor `review-and-ship` skill.
 
 ## Output
 
-Findings (critical / warning / note) · base main SHA · candidate/PR URL and candidate SHA when applicable · exact changed and overlap paths · tests · completion state · integrated main SHA or `NOT_LANDED` · remote path/blob readback · concurrent-commit reachability and unrelated-path preservation evidence · for integrated work, exact board completion-receipt id plus current-HEAD `p/{id}.md` readback and short Slack receipt link/timestamp.
+Repairs landed (path / test / SHA) · proved `NOT_BUG` observations · exact external blockers after attempted repair · base main SHA · candidate/PR URL and candidate SHA when applicable · exact changed and overlap paths · tests · completion state · integrated main SHA or `NOT_LANDED` · remote path/blob readback · concurrent-commit reachability and unrelated-path preservation evidence · for integrated work, exact board completion-receipt id plus current-HEAD `p/{id}.md` readback and short Slack receipt link/timestamp. Do not emit a standalone bug report.
