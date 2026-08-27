@@ -92,6 +92,17 @@ class CollaborationTargetTests(unittest.TestCase):
         with self.assertRaisesRegex(targets.CollaborationTargetError, "immutable URL drift"):
             targets.validate(ROOT, broken, self.schema)
 
+    def test_target_source_and_offer_association_swap_fails_closed(self):
+        broken = copy.deepcopy(self.data)
+        broken["targets"][0]["source"], broken["targets"][1]["source"] = (
+            broken["targets"][1]["source"], broken["targets"][0]["source"]
+        )
+        broken["targets"][0]["mapped_offer_id"], broken["targets"][1]["mapped_offer_id"] = (
+            broken["targets"][1]["mapped_offer_id"], broken["targets"][0]["mapped_offer_id"]
+        )
+        with self.assertRaisesRegex(targets.CollaborationTargetError, "target source/offer association drift"):
+            targets.validate(ROOT, broken, self.schema)
+
     def test_git_blob_sha_matches_git_hash_object_contract(self):
         raw = b"commons collaboration source\n"
         self.assertEqual(targets._git_blob_sha(raw), "48116fa33160f631f0ecb65792646bf39a1f1fea")

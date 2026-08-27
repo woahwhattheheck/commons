@@ -27,6 +27,43 @@ TARGET_IDS = (
     "ggml-llama-cpp",
     "bitsandbytes-foundation",
 )
+EXPECTED_ASSOCIATIONS = {
+    "eleutherai-lm-eval-harness": (
+        "whitebox-joint-paper-reproduction", "EleutherAI/lm-evaluation-harness",
+        "dd417662e5bda6a247489ec28d2ff46a45d1c42c", "README.md",
+        "bdf7de36c33c4484487c5269d4d9790b64b72283", "# Language Model Evaluation Harness",
+    ),
+    "mlcommons-inference": (
+        "whitebox-sponsored-benchmark", "mlcommons/inference",
+        "cfb0df14b21a3898521891f021a1c6aadec2ab2c", "README.md",
+        "81fb646d6e9fb1351bdf227be288b1b6f808b55f",
+        "MLPerf Inference is a benchmark suite for measuring how fast systems can run models",
+    ),
+    "hugging-face-hub": (
+        "whitebox-private-evaluation", "huggingface/huggingface_hub",
+        "2c60641c98afa344892600e6ba76e010959ed637", "README.md",
+        "d626032c129815d0373f5c4cc12e811933839068",
+        "The `huggingface_hub` library allows you to interact with the [Hugging Face Hub]",
+    ),
+    "nvidia-tensorrt-llm": (
+        "whitebox-private-evaluation", "NVIDIA/TensorRT-LLM",
+        "767af6f2856bcfb9dbd888b00b02d105dedee4b5", "README.md",
+        "d94ad93c9b26a35c732d4c55f01ed495e68dbb06",
+        "TensorRT LLM optimizes inference for LLMs and Visual Gen models",
+    ),
+    "ggml-llama-cpp": (
+        "whitebox-joint-paper-reproduction", "ggml-org/llama.cpp",
+        "925e1179947ea0c0ebfb0032df18af3a729822be", "README.md",
+        "0b5598c6e5bd9a8130136ee5009cbc500729c953",
+        "llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF",
+    ),
+    "bitsandbytes-foundation": (
+        "whitebox-sponsored-benchmark", "bitsandbytes-foundation/bitsandbytes",
+        "4f1fc6c249d72a95145b5563927656f291378cad", "README.md",
+        "e2501a99a5c07e0f97a7b4366bdada809da33703",
+        "`bitsandbytes` enables accessible large language models via k-bit quantization for PyTorch",
+    ),
+}
 OFFER_IDS = {
     "whitebox-sponsored-benchmark",
     "whitebox-joint-paper-reproduction",
@@ -145,6 +182,11 @@ def validate(root: Path, data: dict, schema: dict) -> dict:
 
         source = target["source"]
         _exact_keys(source, source_keys, f"{at}.source")
+        actual_association = (
+            target["mapped_offer_id"], source["repository"], source["commit_sha"], source["readme_path"],
+            source["readme_blob_sha"], source["evidence_phrase"],
+        )
+        _require(actual_association == EXPECTED_ASSOCIATIONS[target["id"]], f"{at} target source/offer association drift")
         _require(bool(REPO.fullmatch(source["repository"])), f"{at}.source repository invalid")
         _require(source["repository"] not in repositories, f"{at}.source duplicate repository")
         repositories.add(source["repository"])
