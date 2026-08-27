@@ -1000,33 +1000,6 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             extra = model_language.enrich_observer_metadata(extra, body)
     else:
         extra = model_language.enrich_observer_metadata(extra, body)
-    # Native Slack identity and source bytes are canonical transport data. A
-    # historical speaker/content classifier must never turn that open door into
-    # an ingest lock; attribution is context, not authorization.
-    open_carrier = str(extra.get("carrier") or "").strip().lower() == "slack-connector"
-    hit = None if (is_action or open_carrier) else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
-    if hit:
-        when = ts or now_ts()
-        if hit == "tos-ban":
-            tos_gate.lock_claim(src, mid, root=ROOT, ts=when)
-        if not tos_gate.echoes_body(hit):
-            snippet = ""
-        elif hit == "tos-appeal":
-            snippet = tos_gate.appeal_note(
-                src, dest, mid, body, extra, root=ROOT
-            )[:400]
-        else:
-            snippet = (body or "")[:400]
-        add_reject({
-            "id": mid,
-            "from": src,
-            "to": dest,
-            "reason": hit,
-            "ts": when,
-            "body": snippet,
-            "state": "INGEST_ERROR",
-        })
-        return "tos-ban" if hit in tos_gate.NO_ECHO else "tos"
     # Freeze the canonical event clocks before validating memory events, so the
     # writer and deterministic replay cannot disagree about an invalid ts.
     carrier_ts = extra.get("carrier_ts") or ts or ""
@@ -1162,8 +1135,6 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     _write(html_path, post_html(meta, body, mid))
     if not is_action:
         memory_board.note_written(ROOT, meta, body)
-        if not open_carrier:
-            tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
     try:
         panel_mod.materialize(ROOT, mid, src, dest, extra, body)
