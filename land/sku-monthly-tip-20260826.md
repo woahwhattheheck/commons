@@ -6,8 +6,11 @@ id: sku-monthly-tip-20260826
 band: LOW
 scope: WIDE
 price: $3 USD / month
-checkout: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05
-status: LIVE
+checkout: `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product: prod_V93nQ3gtnZDezi
 price_id: price_1U8lfmATH4EDE7XDdFgt4HHg
 plink: plink_1U8lgFATH4EDE7XDGfz9Ax3S
@@ -23,7 +26,7 @@ comps (live, cited):
 - GitHub Sponsors live $1 / month lowest published tier (creator-set; profile states it is the lowest GitHub allows). https://github.com/sponsors/edent
 
 Recurring thanks. Does not buy a claim or a seat. from= is still a claim you type. Receipt is a new p/{id}.md.
-TYPE owns checkout. This URL is live, not invented.
+TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
 337 NO.
 
 ## Buyer copy
@@ -32,4 +35,4 @@ $3 a month. Recurring thanks. Not a seat.
 
 Does not buy a claim. You still type from=. You can still read and post without it.
 
-Pay: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05
+Recorded URL (not a checkout): `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`

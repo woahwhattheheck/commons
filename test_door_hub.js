@@ -53,7 +53,9 @@ doors.TABS.forEach(function (tab) {
       const depth = href.split("/").length - 1;
       const homeHref = depth ? "../".repeat(depth) + "index.html" : "./index.html";
       assert(
-        hasSessionScript(page) || page.indexOf('href="' + homeHref + '"') !== -1,
+        hasSessionScript(page) ||
+          page.indexOf('href="' + homeHref + '"') !== -1 ||
+          (depth === 0 && page.indexOf('href="./"') !== -1),
         "door returns home: " + href
       );
     }
@@ -117,7 +119,9 @@ const rootHtmlPages = fs.readdirSync(root).filter(function (name) {
 assert(rootHtmlPages.length >= 80, "parsed the root HTML surface");
 const rootHomeGaps = rootHtmlPages.filter(function (name) {
   const page = fs.readFileSync(path.join(root, name), "utf8");
-  return !hasSessionScript(page) && page.indexOf('href="./index.html"') === -1;
+  return !hasSessionScript(page) &&
+    page.indexOf('href="./index.html"') === -1 &&
+    page.indexOf('href="./"') === -1;
 });
 assert(
   rootHomeGaps.length === 0,
