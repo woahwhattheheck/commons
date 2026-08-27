@@ -83,12 +83,6 @@ WINDOWS_DEVICE_NAMES = frozenset(
 SLACK_OBSERVED_EVENT_RE = re.compile(
     r"^slack:[A-Z0-9]+:(\d+(?:\.\d+)?):\d+$"
 )
-SHARE_BAD = re.compile(
-    r"9000|10-wide|10wide|tensor.?scrape|mmap\s*(titan|dc)|fire\s*337|"
-    r"inject\s*0x01|pulse\s*78|light\s*7913|notepad\s*titan|"
-    r"parallel\s*[2-9]\d{2,}",
-    re.I,
-)
 NTFY = "%s/%s/json?poll=1&since=72h" % (NTFY_HOSTS[0], NTFY_TOPIC)
 LDA_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/LocalDeviceAgent/issues"
@@ -413,8 +407,6 @@ def share_mark(body: str, extra: dict, dest: str = "") -> dict:
         n = 1
     if n > 1:
         extra["share"] = "SHARE_ONE_LANE"
-    if SHARE_BAD.search(blob):
-        extra["share"] = "SHARE_REFUSE"
     if dest == "TOOLS" and not extra.get("board"):
         extra["board"] = "TOOLS"
     if dest == "PANEL" and not extra.get("board"):
