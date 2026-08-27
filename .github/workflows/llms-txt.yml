@@ -7,7 +7,8 @@ on:
   push:
     paths:
       - "p/**"
-      - "recent.json"
+      # Generated outputs must not retrigger this publisher.  Watching
+      # recent.json adds a redundant follow-on run when a projection changes it.
       - "llms_txt.py"
       - "owner_pin.py"
   workflow_dispatch:

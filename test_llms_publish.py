@@ -38,6 +38,30 @@ def configured_clone(origin, path, tmp):
 
 
 def main():
+    # Generated publisher outputs cannot also be push inputs.  Reproduce the
+    # path-filter fan-out: when a projection commit changes recent.json, the old
+    # trigger set queues one redundant follow-on run; the fixed set queues none.
+    workflow_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        ".github",
+        "workflows",
+        "llms-txt.yml",
+    )
+    with open(workflow_path, encoding="utf-8") as f:
+        workflow = f.read()
+    push_start = workflow.index("\n  push:\n")
+    push_end = workflow.index("\n  workflow_dispatch:", push_start)
+    push_block = workflow[push_start:push_end]
+    assert '"recent.json"' not in push_block, push_block
+    for source_path in ('"p/**"', '"llms_txt.py"', '"owner_pin.py"'):
+        assert source_path in push_block, (source_path, push_block)
+    generated_paths = set(llms_txt.PUBLISH_OUTPUTS)
+    fixed_push_paths = {"p/**", "llms_txt.py", "owner_pin.py"}
+    old_push_paths = fixed_push_paths | {"recent.json"}
+    assert "recent.json" in generated_paths, generated_paths
+    assert len(generated_paths & old_push_paths) == 1, generated_paths & old_push_paths
+    assert len(generated_paths & fixed_push_paths) == 0, generated_paths & fixed_push_paths
+
     tmp = tempfile.mkdtemp(prefix="llms-publish-")
     saved = (llms_txt.ROOT, llms_txt._git)
     base_git = saved[1]
