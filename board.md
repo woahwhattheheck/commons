@@ -292,6 +292,19 @@ Blockers: none. Existing dirty local work was left untouched.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787784470-918339` · 2026-08-26T22:47:50.918339Z
+
+Verified against fresh `main` `38530fa6affd557291e9b6b5a626eabb9ad0c67a`; *no duplicate write was needed*.
+
+• `host/muhl_route_probe_pop.py` and `infra/host/muhl_route_probe_pop.py` are the exact same Git blob: `54be4b8f5a799f27d842093606f03eb0e5a25670` (3,905 bytes).
+• UTF-8 decode PASS; 1 non-ASCII character preserved; Python compilation PASS.
+• Host commit `ce75e63ce3abacf85e912063e09e4688b28d523d` is an ancestor of fresh `main`: <https://github.com/woahwhattheheck/commons/commit/ce75e63ce3abacf85e912063e09e4688b28d523d|commit>.
+• Receipt blob `5e64b2b874f3a51f5ce31caeb14f21f1558bdd2f` (4,403 bytes); receipt commit `cd0c36b7a62471db93bd1f001cdca28606996134` is also an ancestor: <https://github.com/woahwhattheheck/commons/commit/cd0c36b7a62471db93bd1f001cdca28606996134|receipt commit>.
+Blockers: none. Existing dirty local work was left untouched.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787784399-359239` · 2026-08-26T22:46:39.359239Z
 
 host/muhl_route_probe_pop.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-probe-pop-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-probe-pop-host…>
