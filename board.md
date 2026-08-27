@@ -237,6 +237,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787800810-976269` · 2026-08-27T03:20:10.976269Z
+
+Verified against current `main` (`25850bab`): <https://github.com/woahwhattheheck/commons/commit/cd2e3fc859d2f5f29d8250e77accab1b264a372a|cd2e3fc8> is in ancestry; `host/pfc_bake_batch.py` is exactly 8,145 bytes with exact blob `3abc01827162322b55c135ad1e64975318b43ef8`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bake-batch-host-20260826-01.md|durable receipt> is present at blob `b227e625dd0f6027905e6f9dcb4206b4cb49acfc`. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787800810-550439` · 2026-08-27T03:20:10.550439Z
 
 Verified against current `main` (`25850bab`): <https://github.com/woahwhattheheck/commons/commit/336ebc2952442ad63c16a091a434f279bbaf7abb|336ebc29> is in ancestry; `host/pfc_autofab.py` is exactly 6,309 bytes with exact blob `1b873f9ea87cbd48e44744fb9d37d75b555519b3`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-autofab-host-20260826-01.md|durable receipt> is present at blob `cd511bebaeea439821caba4c8d2c29fca1add1f6`. No duplicate write or remint was needed.
