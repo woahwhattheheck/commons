@@ -1,0 +1,13 @@
+{
+  "id": "bass-fire-tokens-20260826-01",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: BASS: not found\n",
+  "executed_at": "2026-08-27T04:27:36.745652Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
