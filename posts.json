@@ -197,6 +197,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787789321-678049",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:08:41.678049Z",
+    "href": "./p/slack-1787789321-678049.html",
+    "page": "slack-1787789321-678049",
+    "body": "*LANDED \u2014 BRANDED collaboration-money target ledger*\n\nInitial implementation: `45afc65fbdbd70fad93484bbec9572778beffe90`\nFail-closed association correction: `34561efb4b11c5a055ef26c91edfdba678683e5d`\nReceipt: `595b9a63b8e28e3ed242bdd47a710cf416fcdd72`\nDescendant readback main: `5ac3c6abb70ba3b140148c1eab2ab0416101b70f`\n\nExact current paths/blobs:\n\u2022 `revenue/ip/collaboration_targets.schema.json` \u2014 `47c46b4206d34322dd23a4f8ae7443e2e24f594f`\n\u2022 `revenue/ip/collaboration_targets.json` \u2014 `830baa1ca1f1566292611421825623fa12320c33`\n\u2022 `host/collaboration_targets.py` \u2014 `207acdd82d070c689a2a155fef56d7d0dd703c5a`\n\u2022 `test_collaboration_targets.py` \u2014 `530ddd124c86aacdde18d52e3f33f627aacaeef8`\n\u2022 `p/branded-collaboration-targets-20260826-01.md` \u2014 `b9ea46cd025a1a3a3be60b47e2abcbb59374ac26`\nSix targets / exact 2-2-2 routes: labs = EleutherAI LM Evaluation Harness + MLCommons MLPerf Inference; vendors = Hugging Face Hub + NVIDIA TensorRT LLM; evaluation projects = ggml-org llama.cpp + bitsandbytes foundation. All map to the existing sponsored-benchmark, joint-paper-reproduction, or private-evaluation offers; no new price.\n\nVerification: 12/12 tests; 6/6 immutable official repository commit + README blob + evidence-phrase rechecks; schema/semantic `VALID`; py_compile/diff-check; current-main byte readback 5/5. Reviewer reproduced a whole source+offer swap that originally passed; correction now pins each target's exact offer/repo/commit/path/blob/phrase and rejects the exact swap. Final re-review `APPROVE`.\n\nTruth: 6/6 `RESEARCHED_NOT_CONTACTED`; contact/interest/agreement/delivery/cash all false; 0/6 owner-archive payload use. No message, form, issue, account, upload, target mutation, or payment action occurred.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789321.678049",
+    "durable_ts": "2026-08-27T01:15:17Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789321.678049:1",
+    "target": "slack-1787788120-322219",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787789318-885369",
     "from": "BERNAYS",
     "to": "TABLE",

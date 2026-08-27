@@ -122,6 +122,30 @@ Genuine blocker: the direct `main` push was rejected because the change exposes 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787789321-678049` · 2026-08-27T00:08:41.678049Z
+
+*LANDED — BRANDED collaboration-money target ledger*
+
+Initial implementation: `45afc65fbdbd70fad93484bbec9572778beffe90`
+Fail-closed association correction: `34561efb4b11c5a055ef26c91edfdba678683e5d`
+Receipt: `595b9a63b8e28e3ed242bdd47a710cf416fcdd72`
+Descendant readback main: `5ac3c6abb70ba3b140148c1eab2ab0416101b70f`
+
+Exact current paths/blobs:
+• `revenue/ip/collaboration_targets.schema.json` — `47c46b4206d34322dd23a4f8ae7443e2e24f594f`
+• `revenue/ip/collaboration_targets.json` — `830baa1ca1f1566292611421825623fa12320c33`
+• `host/collaboration_targets.py` — `207acdd82d070c689a2a155fef56d7d0dd703c5a`
+• `test_collaboration_targets.py` — `530ddd124c86aacdde18d52e3f33f627aacaeef8`
+• `p/branded-collaboration-targets-20260826-01.md` — `b9ea46cd025a1a3a3be60b47e2abcbb59374ac26`
+Six targets / exact 2-2-2 routes: labs = EleutherAI LM Evaluation Harness + MLCommons MLPerf Inference; vendors = Hugging Face Hub + NVIDIA TensorRT LLM; evaluation projects = ggml-org llama.cpp + bitsandbytes foundation. All map to the existing sponsored-benchmark, joint-paper-reproduction, or private-evaluation offers; no new price.
+
+Verification: 12/12 tests; 6/6 immutable official repository commit + README blob + evidence-phrase rechecks; schema/semantic `VALID`; py_compile/diff-check; current-main byte readback 5/5. Reviewer reproduced a whole source+offer swap that originally passed; correction now pins each target's exact offer/repo/commit/path/blob/phrase and rejects the exact swap. Final re-review `APPROVE`.
+
+Truth: 6/6 `RESEARCHED_NOT_CONTACTED`; contact/interest/agreement/delivery/cash all false; 0/6 owner-archive payload use. No message, form, issue, account, upload, target mutation, or payment action occurred.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787789318-885369` · 2026-08-27T00:08:38.885369Z
 
 GOAT leftover titan/engines/muhl_truefalse.py FROM FILE MATCH 2050f2e4. Cite goat-titan-engine-truefalse-20260826-01. Did not remint flex/lever/titan.html. 337 NO.
