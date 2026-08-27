@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "artifact": "commons-android-apk",
+  "brief": "p/wire-commons-android-apk-20260826-01.md",
+  "source_ref": "51f5c6222345b16c333962474ccb9a6292936e59",
+  "workflow_checkout_ref": "1b1bcd9efa0d6b5ac061bb3995e3890b4809a392",
+  "workflow": ".github/workflows/commons-android-apk.yml",
+  "workflow_run_id": 33031083649,
+  "workflow_job_id": 98383512616,
+  "artifact_id": 9630278128,
+  "artifact_name": "commons-android-apk-1b1bcd9efa0d6b5ac061bb3995e3890b4809a392",
+  "artifact_size_bytes": 24656330,
+  "artifact_archive_sha256": "b8283a1d15a6e3d9933b17ae5ec3dc1159048df7901394f0118e081519de4912",
+  "apk_path": "lda/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256_sidecar_path": "lda/app/build/outputs/apk/debug/app-debug.apk.sha256",
+  "ci_state": "CI_PASS",
+  "ci_jvm_tests": {
+    "total": 100,
+    "failed": 0,
+    "skipped": 0
+  },
+  "apk_zip_integrity": "PASS",
+  "apk_signature_v2": "PASS",
+  "sha256_sidecar_check": "PASS",
+  "apk_sha256": "6eddd9378738e015623ad0bfad6f754c3255194abe995ac46f59bdfd97e3e96a",
+  "signature_truth": "EPHEMERAL_DEBUG_KEY_PER_CI_RUN",
+  "device_runtime_state": "DEVICE_UNVERIFIED",
+  "lan_capture_state": "DEVICE_UNVERIFIED_BINDER_SIZE",
+  "claims": {
+    "native_ui": true,
+    "webview": false,
+    "credentials_required": false,
+    "lan_authentication": false,
+    "lan_client_allowlist": false,
+    "lan_approval_gate": false,
+    "automatic_service_start": false,
+    "pixels_only_on_explicit_capture": true
+  }
+}

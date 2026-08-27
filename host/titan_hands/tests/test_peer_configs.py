@@ -47,7 +47,7 @@ class PeerConfigTests(unittest.TestCase):
                 )
                 self.assertEqual(initialized["result"]["serverInfo"]["name"], "titan-hands-one")
                 listed = dispatch(router, {"jsonrpc": "2.0", "id": index, "method": "tools/list"})
-                self.assertEqual([tool["name"] for tool in listed["result"]["tools"]], ["titan_hands"])
+                self.assertEqual([tool["name"] for tool in listed["result"]["tools"]], ["hands"])
 
 
 if __name__ == "__main__":

@@ -47,6 +47,35 @@ PIXEL_PAYLOAD_KEYS = frozenset(
 )
 PIXEL_LABELS = frozenset({"", "not-captured", "on-demand-only", "never", "none"})
 
+ROUTE_ALIASES = {
+    "file": "files",
+    "files": "files",
+    "web": "browser",
+    "browser": "browser",
+    "git": "git",
+    "slack": "slack",
+    "board": "board",
+    "shell": "shell",
+    "linux": "linux",
+    "windows": "windows",
+    "android": "android",
+    "android-lan": "android-lan",
+}
+
+
+def apply_route_alias(request: Mapping[str, Any]) -> dict[str, Any]:
+    """Map leftover route=/op=catalog calls onto the landed target=/op=targets surface."""
+
+    payload = dict(request)
+    route = str(payload.pop("route", "") or "").strip().lower()
+    op = str(payload.get("op") or "").strip().lower()
+    if op in {"catalog", "routes"} or route in {"catalog", "routes"}:
+        payload["op"] = "targets"
+        return payload
+    if route and route not in {"computer"}:
+        payload.setdefault("target", ROUTE_ALIASES.get(route, route))
+    return payload
+
 
 def contains_pixel_payload(value: Any) -> bool:
     """True when a result carries actual pixel bytes or a capture receipt."""
@@ -146,6 +175,7 @@ class TitanHandsOne:
         try:
             if not isinstance(request, Mapping):
                 raise ProtocolError("request must be an object")
+            request = apply_route_alias(request)
             op = str(request.get("op") or "").strip().lower()
             target_value = request.get("target")
             if op == "targets" or (op == "capabilities" and not target_value):

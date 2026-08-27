@@ -268,12 +268,13 @@
         "integrations/**",
         "discord/**",
         "slack/**",
-        "host/titan_hands_windows/**"
+        "host/titan_hands_windows/**",
+        "host/titan_hands/**"
       ],
       "classification": "EXECUTABLE_SOURCE",
       "subsystem": "execution-adapters",
       "producer": null,
-      "tests": ["test_independent_commons_mcp.py", "test_harness_wake.py", "test_commons_mcp.py"],
+      "tests": ["test_independent_commons_mcp.py", "test_harness_wake.py", "test_commons_mcp.py", "test_titan_hands_ultimate.py"],
       "flags": ["ADAPTER_BOUNDARY", "RECEIPT_EMITTING"]
     },
     {

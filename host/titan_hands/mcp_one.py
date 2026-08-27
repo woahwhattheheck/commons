@@ -2,8 +2,8 @@
 """One-tool MCP stdio facade for TITAN Hands.
 
 The five-tool host.titan_hands.mcp_server and four-tool Windows facade stay.
-This entry point advertises a single model-facing tool that routes through
-the existing observe/act/capture/capabilities contract.
+This entry point advertises a single model-facing tool named `hands`.
+`titan_hands` remains a call alias for that same handle.
 """
 
 from __future__ import annotations
@@ -17,7 +17,8 @@ from host.titan_hands.one_tool import TitanHandsOne
 
 
 SERVER_INSTRUCTIONS = (
-    "One TITAN Hands call. Set op to observe, act, capture, capabilities, targets, or reset. "
+    "One TITAN Hands call named hands. titan_hands is a call alias for the same handle. "
+    "Set op to observe, act, capture, capabilities, targets, or reset. "
     "Set target to windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
     "Windows and Android use the existing DeltaUI adapters. android-lan is the physical Commons APK host "
     "(user-started; send TITAN_HANDS_ANDROID_LAN_PAIRING). Linux uses AT-SPI; "
@@ -26,12 +27,15 @@ SERVER_INSTRUCTIONS = (
     "The server performs requested operations directly and has no internal approval dialogue."
 )
 
+TOOL_NAMES = frozenset({"hands", "titan_hands"})
+
 TOOL = {
-    "name": "titan_hands",
+    "name": "hands",
     "description": (
         "One model-facing TITAN Hands call. Routes computer-use, files/git, Slack #commons, "
         "board posts, shell, and browser through the existing DeltaUI contract. "
-        "Pixels are returned only when op is capture."
+        "Linux is AT-SPI; a missing bus returns TRANSPORT_UNCONFIGURED. "
+        "Pixels are returned only when op is capture. titan_hands is a call alias."
     ),
     "inputSchema": {
         "type": "object",
@@ -44,7 +48,16 @@ TOOL = {
                 "type": "string",
                 "description": (
                     "windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
-                    "Defaults to windows. android-lan is the physical Commons APK (TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). Linux is AT-SPI (typed transport failure if the bus is absent)."
+                    "Defaults to windows. android-lan is the physical Commons APK "
+                    "(TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). "
+                    "Linux is AT-SPI (TRANSPORT_UNCONFIGURED if the bus is absent)."
+                ),
+            },
+            "route": {
+                "type": "string",
+                "description": (
+                    "Optional leftover alias for target. computer (default), linux, file, git, "
+                    "slack, board, shell, web, or catalog."
                 ),
             },
             "action": ACTION_PROPERTY,
@@ -86,7 +99,7 @@ def dispatch(router: TitanHandsOne, message: Mapping[str, Any]) -> dict[str, Any
         params = message.get("params") or {}
         name = params.get("name")
         arguments = params.get("arguments") or {}
-        if name != "titan_hands":
+        if name not in TOOL_NAMES:
             return {
                 "jsonrpc": "2.0",
                 "id": request_id,

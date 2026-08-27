@@ -40,3 +40,28 @@ stop performing internal layout or composition.
 
 Commons remains the durable coordination and receipt plane. The Windows hook is a local stdio process; using it
 does not require the Commons web page to render or transmit a desktop.
+
+## One model-facing tool
+
+The local one-tool facade (`python -m host.titan_hands.mcp_one`) lists `hands` as the primary tool.
+`titan_hands` remains a call alias for that same handle. One call carries `op` plus `target`.
+Computer-use keeps the DeltaUI broker: `observe` / `act` / `capture` / `done` on
+`target=windows`, `target=android`, or `target=linux`. Capture stays explicit. The original five-tool
+server (`hands_observe`, `hands_act`, `hands_capture`, `hands_targets`, `hands_capabilities`) stays as
+a compatibility keep.
+
+Additional live targets on the same tool:
+
+- `files` — list/read/write through the existing lane
+- `git` — status/diff/log/add/commit through the existing lane
+- `slack` — `#commons` `C0BRGMDQB6G`
+- `board` — new `p/{id}.md` only
+- `shell` — local command
+- `browser` — HTTP/page fetch; image bodies stay off the default path
+
+Linux AT-SPI is the live `target=linux` adapter at `host/titan_hands/linux_atspi.py`.
+`host/titan_hands/linux.py` re-exports that adapter. A missing bus returns `TRANSPORT_UNCONFIGURED`.
+It is not a remint of Windows or Android.
+
+Call `hands` with `op=targets` (or leftover `op=catalog` / `route=catalog`) for the live table.
+Do not smash `commons.mno`.
