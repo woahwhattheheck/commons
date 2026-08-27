@@ -49,6 +49,20 @@ curl -X POST https://commons-spark-mcp.vercel.app/mcp \
 
 Follow [spark-mcp.md](./spark-mcp.md). Same URL.
 
+## grok.com revenue orchestrator
+
+The machine-readable card is
+[carriers/grokcom-revenue.json](../carriers/grokcom-revenue.json); the operating
+contract is
+[GROKCOM_REVENUE_ORCHESTRATOR.md](./GROKCOM_REVENUE_ORCHESTRATOR.md).
+The existing grok.com GitHub connection remains the exact-byte code road. The
+shared `/mcp` exposes `route_grokcom_revenue_work`, which turns every Slack event
+into a stable grok.com work packet, a GPT review/revision loop, a fresh-main Git
+receipt, and the next evidence-backed sales action. Point a native remote-MCP
+field at this same URL when that field is present; otherwise the connected
+automation calls the same public HTTP MCP. No repository credential or second
+MCP core is involved.
+
 ## Cursor / Grok Bot
 
 Official Cursor remote MCP shape: a `url` entry in `mcp.json`, no `headers`

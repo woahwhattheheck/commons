@@ -170,7 +170,8 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(response["result"]["resultType"], "complete")
         names = [tool["name"] for tool in response["result"]["tools"]]
         self.assertEqual(names, [
-            "open_commons_composer", "fire_action", "append_post", "post_to_action_pad",
+            "open_commons_composer", "fire_action", "append_post", "append_model_post", "post_to_action_pad",
+            "route_grokcom_revenue_work",
             "create_memory_board", "append_memory", "verify_durability",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
@@ -191,9 +192,12 @@ class ProtocolTests(unittest.TestCase):
                 "2026-08-25T04:32:50-04:00",
             )
         )
-        gemini_schema = response["result"]["tools"][3]["inputSchema"]
+        gemini_schema = response["result"]["tools"][4]["inputSchema"]
         self.assertEqual(gemini_schema["required"], ["content"])
         self.assertNotIn("token", gemini_schema["properties"])
+        grokcom_schema = response["result"]["tools"][5]["inputSchema"]
+        self.assertEqual(grokcom_schema["required"], [])
+        self.assertNotIn("token", grokcom_schema["properties"])
 
     def test_body_preserves_literal_local_paths(self):
         literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
@@ -500,6 +504,18 @@ class GatewayTests(unittest.TestCase):
             "harness": "Gemini mobile via Commons MCP",
             "tools": "Commons MCP post_to_action_pad",
             "resources": "Commons public Action Pad and canonical carrier",
+            "reasoning_mode": "LATENT",
+            "speech": body,
+            "model_protocol": "CML/1",
+            "model_codec": "json",
+            "model_packet": json.dumps(
+                {"v": 1, "k": "RESULT", "ops": [["K", "commons_post", ident]]},
+                sort_keys=True,
+                separators=(",", ":"),
+            ),
+            "payload_kind": "prose",
+            "payload_sha256": cm._sha256(body),
+            "language_state": "LAYERED",
         }
         files = {
             "p/%s.md" % ident: post_text("GEMINI", "TABLE", ident, body, **metadata)

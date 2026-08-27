@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 import model_language
+from integrations.grokcom_revenue import orchestrate as orchestrate_grokcom_revenue
 
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
@@ -772,6 +773,13 @@ class CommonsGateway:
             return existing
         return self._submit(payload, cancel_event=cancel_event)
 
+    def route_grokcom_revenue_work(self, arguments: Any) -> dict[str, Any]:
+        """Build the next open Slack/grok.com/GPT/Git/revenue work packet."""
+        try:
+            return orchestrate_grokcom_revenue(arguments)
+        except ValueError as exc:
+            raise CommonsError("SCHEMA", str(exc)) from exc
+
     def append_model_post(
         self,
         arguments: Any,
@@ -1297,6 +1305,35 @@ TOOL_DEFINITIONS = [
             ["content"],
         ),
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "route_grokcom_revenue_work",
+        "title": "Route Slack Work Through grok.com and Revenue",
+        "description": "Turn every Slack message into an idempotent grok.com build, research, or sales packet; route returned artifacts through GPT checks, fresh-main Git landing, and the next revenue action. No connector credential is accepted or stored, and unverified outreach or cash remains unverified.",
+        "inputSchema": _object_schema(
+            {
+                "stage": {"type": "string", "description": "INTAKE, GROKCOM_RESULT, GPT_REVIEW, GIT_LAND, or SALES_OUTCOME; unknown values remain open intake."},
+                "mode": {"type": "string", "description": "AUTO, BUILD, RESEARCH, SALES, or OPERATE; unknown values use automatic routing."},
+                "event": {
+                    "type": "object",
+                    "properties": {
+                        "event_id": STRING_SCHEMA, "channel": STRING_SCHEMA,
+                        "message_ts": STRING_SCHEMA, "thread_ts": STRING_SCHEMA,
+                        "author": STRING_SCHEMA, "text": BODY_SCHEMA,
+                        "connector_origin": STRING_SCHEMA,
+                    },
+                    "required": [],
+                    "additionalProperties": True,
+                },
+                "artifact": {"type": "object", "additionalProperties": True},
+                "review": {"type": "object", "additionalProperties": True},
+                "landing": {"type": "object", "additionalProperties": True},
+                "revenue": {"type": "object", "additionalProperties": True},
+            },
+            [],
+        ),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
         "_meta": {"ui": {"visibility": ["model", "app"]}},
     },
     {
