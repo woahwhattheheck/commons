@@ -1,19 +1,19 @@
 {
-  "seq": 1166,
-  "head": "aa0a5477d17167b2a023b449d1b4312a9d410cb1",
-  "ts": "2026-08-27T01:21:26Z",
-  "post_count": 6815,
+  "seq": 1167,
+  "head": "593c1f328a2d89ec47797f2632402f89abfa0b32",
+  "ts": "2026-08-27T01:22:14Z",
+  "post_count": 6817,
   "newest": [
     "goat-titan-readme-20260826-01",
     "goat-titan-bat-20260826-01",
     "goat-titan-live-html-20260826-01",
     "latch-commons-apk-door-20260827-01",
     "codex-titan-android-capture-extension-20260826-01",
+    "slack-1787789701-635199",
+    "slack-1787789700-821199",
     "slack-1787789700-434659",
     "slack-1787789700-074269",
-    "slack-1787789699-639659",
-    "slack-1787789699-183799",
-    "slack-1787789698-763179"
+    "slack-1787789699-639659"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
