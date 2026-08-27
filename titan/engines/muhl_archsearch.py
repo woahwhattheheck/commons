@@ -23,25 +23,3 @@ B = 24                                                       # two's-complement 
 NF, NCLS = 9, 3
 
 # ── gate helpers (shared with muhl_neural) ────────────────────────────────────────────────────────
-def cbits(g, val, n):
-    v = val & ((1 << n) - 1)
-    return [g.C1 if (v >> k) & 1 else g.C0 for k in range(n)]
-def sext(bits, n): return bits + [bits[-1]] * (n - len(bits))
-def negate(g, a):
-    s, _ = add_bits(g, [g.NOT(t) for t in a], cbits(g, 1, len(a))); return s
-def const_mul(g, x, w):                                      # x (B-bit, >=0) * signed constant w -> B bits
-    mag = abs(w); acc = cbits(g, 0, B)
-    for t in range(B):
-        if (mag >> t) & 1:
-            sh = ([g.C0] * t + x)[:B]
-            acc, _ = add_bits(g, acc, sh)
-    return negate(g, acc) if w < 0 else acc
-def relu(g, x):
-    sign = x[B - 1]
-    return [g.AND(x[k], g.NOT(sign)) for k in range(B)]
-def lt(g, a, b):                                             # signed a < b
-    d, _ = add_bits(g, sext(a, B + 1), [g.NOT(t) for t in sext(b, B + 1)], g.C1)
-    return d[B]
-
-# ── training (pure Python), parameterized by width H and activation ───────────────────────────────
-def train_PLACEHOLDER_NO
