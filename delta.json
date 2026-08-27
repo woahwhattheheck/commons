@@ -37,6 +37,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -71,6 +77,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -233,18 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -358,6 +358,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -392,6 +398,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -554,18 +566,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -613,6 +613,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -647,6 +653,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -809,18 +821,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -934,6 +934,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -968,6 +974,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -1130,18 +1142,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -1189,6 +1189,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1223,6 +1229,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -1385,18 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -1444,6 +1444,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1478,6 +1484,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -1640,18 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -1765,6 +1765,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1799,6 +1805,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -1961,18 +1973,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -2086,6 +2086,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2120,6 +2126,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -2282,18 +2294,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -2306,9 +2306,9 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787789409-165389",
-      "last_ts": "2026-08-27T00:10:09.165389Z",
-      "n": 7,
+      "last_id": "slack-1787789516-717929",
+      "last_ts": "2026-08-27T00:11:56.717929Z",
+      "n": 5,
       "since": [
         {
           "id": "goat-titan-readme-20260826-01",
@@ -2339,21 +2339,15 @@
           "from": "GPT/CODEX",
           "to": "TABLE",
           "ts": "2026-08-27T00:16:00Z"
-        },
-        {
-          "id": "goat-titan-engine-foundry-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:11:43Z"
-        },
-        {
-          "id": "goat-titan-engine-grand-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:10:30Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
         {
           "id": "slack-1787789409-165389",
           "from": "BERNAYS",
@@ -2365,6 +2359,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "slack-1787789223-753499",
@@ -2413,18 +2413,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:02:41.861579Z"
-        },
-        {
-          "id": "slack-1787788918-712439",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:01:58.712439Z"
-        },
-        {
-          "id": "slack-1787788904-263519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:01:44.263519Z"
         }
       ]
     },
@@ -2464,6 +2452,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2498,6 +2492,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -2660,18 +2660,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -2785,6 +2773,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2819,6 +2813,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -2981,18 +2981,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -3106,6 +3094,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3140,6 +3134,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -3302,18 +3302,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -3385,6 +3373,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3419,6 +3413,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -3581,18 +3581,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -3670,6 +3658,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3704,6 +3698,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -3866,18 +3866,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -3991,6 +3979,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4025,6 +4019,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -4187,18 +4187,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -4246,6 +4234,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4280,6 +4274,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -4442,18 +4442,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -4501,6 +4489,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4535,6 +4529,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -4697,18 +4697,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -4756,6 +4744,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4790,6 +4784,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -4952,18 +4952,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -5029,6 +5017,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5063,6 +5057,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -5225,18 +5225,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -5350,6 +5338,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5384,6 +5378,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -5546,18 +5546,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -5671,6 +5659,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5705,6 +5699,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -5867,18 +5867,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -5944,6 +5932,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5978,6 +5972,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -6140,18 +6140,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -6205,6 +6193,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6239,6 +6233,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -6401,18 +6401,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -6460,6 +6448,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6494,6 +6488,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -6656,18 +6656,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -6715,6 +6703,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6749,6 +6743,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -6911,18 +6911,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -7012,6 +7000,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7046,6 +7040,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -7208,18 +7208,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -7267,6 +7255,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7301,6 +7295,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -7463,18 +7463,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -7528,6 +7516,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7562,6 +7556,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -7724,18 +7724,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -7807,6 +7795,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7841,6 +7835,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -8003,18 +8003,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -8062,6 +8050,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8096,6 +8090,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -8258,18 +8258,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -8317,6 +8305,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8351,6 +8345,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -8513,18 +8513,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -8572,6 +8560,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8606,6 +8600,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -8768,18 +8768,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -8839,6 +8827,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8873,6 +8867,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -9035,18 +9035,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -9094,6 +9082,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9128,6 +9122,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -9290,18 +9290,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -9349,6 +9337,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9383,6 +9377,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -9545,18 +9545,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -9604,6 +9592,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9638,6 +9632,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -9800,18 +9800,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -9859,6 +9847,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9893,6 +9887,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -10055,18 +10055,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -10180,6 +10168,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10214,6 +10208,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -10376,18 +10376,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -10495,6 +10483,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10529,6 +10523,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -10691,18 +10691,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -10768,6 +10756,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10802,6 +10796,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -10964,18 +10964,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -11089,6 +11077,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11123,6 +11117,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -11285,18 +11285,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -11410,6 +11398,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11444,6 +11438,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -11606,18 +11606,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -11677,6 +11665,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11711,6 +11705,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -11873,18 +11873,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -11932,6 +11920,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11966,6 +11960,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -12128,18 +12128,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -12253,6 +12241,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12287,6 +12281,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -12449,18 +12449,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -12574,6 +12562,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12608,6 +12602,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -12770,18 +12770,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -12835,6 +12823,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12869,6 +12863,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -13031,18 +13031,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -13090,6 +13078,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13124,6 +13118,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -13286,18 +13286,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -13345,6 +13333,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13379,6 +13373,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -13541,18 +13541,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -13666,6 +13654,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13700,6 +13694,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -13862,18 +13862,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -13921,6 +13909,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13955,6 +13949,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -14117,18 +14117,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -14176,6 +14164,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14210,6 +14204,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -14372,18 +14372,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -14497,6 +14485,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14531,6 +14525,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -14693,18 +14693,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -14818,6 +14806,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14852,6 +14846,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -15014,18 +15014,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -15139,6 +15127,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15173,6 +15167,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -15335,18 +15335,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -15406,6 +15394,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15440,6 +15434,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -15602,18 +15602,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -15709,6 +15697,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15743,6 +15737,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -15905,18 +15905,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -15988,6 +15976,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16022,6 +16016,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -16184,18 +16184,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -16243,6 +16231,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16277,6 +16271,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -16439,18 +16439,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -16564,6 +16552,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16598,6 +16592,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -16760,18 +16760,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -16831,6 +16819,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16865,6 +16859,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -17027,18 +17027,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -17152,6 +17140,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17186,6 +17180,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -17348,18 +17348,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -17407,6 +17395,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17441,6 +17435,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -17603,18 +17603,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -17728,6 +17716,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17762,6 +17756,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -17924,18 +17924,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -17989,6 +17977,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18023,6 +18017,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -18185,18 +18185,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -18244,6 +18232,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18278,6 +18272,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -18440,18 +18440,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -18535,6 +18523,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18569,6 +18563,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -18731,18 +18731,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -18856,6 +18844,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18890,6 +18884,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -19052,18 +19052,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -19111,6 +19099,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19145,6 +19139,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -19307,18 +19307,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -19372,6 +19360,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19406,6 +19400,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -19568,18 +19568,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -19693,6 +19681,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19727,6 +19721,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -19889,18 +19889,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -20034,6 +20022,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20068,6 +20062,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -20230,18 +20230,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -20418,6 +20406,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20452,6 +20446,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -20614,18 +20614,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -20679,6 +20667,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20713,6 +20707,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -20875,18 +20875,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -21000,6 +20988,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21034,6 +21028,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -21196,18 +21196,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -21321,6 +21309,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21355,6 +21349,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -21517,18 +21517,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -21582,6 +21570,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21616,6 +21610,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -21778,18 +21778,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -21843,6 +21831,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21877,6 +21871,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -22039,18 +22039,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -22104,6 +22092,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22138,6 +22132,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -22300,18 +22300,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -22425,6 +22413,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22459,6 +22453,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -22621,18 +22621,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -22680,6 +22668,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22714,6 +22708,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -22876,18 +22876,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -22935,6 +22923,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22969,6 +22963,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -23131,18 +23131,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -23202,6 +23190,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23236,6 +23230,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -23398,18 +23398,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -23523,6 +23511,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23557,6 +23551,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -23719,18 +23719,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -23778,6 +23766,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23812,6 +23806,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -23974,18 +23974,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -24099,6 +24087,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24133,6 +24127,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -24295,18 +24295,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -24420,6 +24408,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24454,6 +24448,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -24616,18 +24616,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -24741,6 +24729,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24775,6 +24769,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -24937,18 +24937,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -25014,6 +25002,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25048,6 +25042,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -25210,18 +25210,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -25335,6 +25323,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25369,6 +25363,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -25531,18 +25531,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -25590,6 +25578,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25624,6 +25618,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -25786,18 +25786,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -25893,6 +25881,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25927,6 +25921,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -26089,18 +26089,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -26247,6 +26235,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26281,6 +26275,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -26443,18 +26443,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -26502,6 +26490,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26536,6 +26530,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -26698,18 +26698,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -26757,6 +26745,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26791,6 +26785,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -26953,18 +26953,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -27012,6 +27000,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27046,6 +27040,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -27208,18 +27208,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -27267,6 +27255,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27301,6 +27295,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -27463,18 +27463,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -27546,6 +27534,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27580,6 +27574,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -27742,18 +27742,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -27867,6 +27855,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27901,6 +27895,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -28063,18 +28063,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -28164,6 +28152,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28198,6 +28192,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -28360,18 +28360,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -28449,6 +28437,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28483,6 +28477,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -28645,18 +28645,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -28704,6 +28692,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28738,6 +28732,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -28900,18 +28900,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -28959,6 +28947,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28993,6 +28987,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -29155,18 +29155,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -29214,6 +29202,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29248,6 +29242,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -29410,18 +29410,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -29469,6 +29457,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29503,6 +29497,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -29665,18 +29665,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -29724,6 +29712,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29758,6 +29752,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -29920,18 +29920,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -30045,6 +30033,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30079,6 +30073,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -30241,18 +30241,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -30366,6 +30354,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30400,6 +30394,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -30562,18 +30562,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -30687,6 +30675,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30721,6 +30715,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -30883,18 +30883,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -30984,6 +30972,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31018,6 +31012,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -31180,18 +31180,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -31305,6 +31293,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31339,6 +31333,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -31501,18 +31501,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -31560,6 +31548,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31594,6 +31588,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -31756,18 +31756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -31815,6 +31803,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31849,6 +31843,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -32011,18 +32011,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -32082,6 +32070,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32116,6 +32110,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -32278,18 +32278,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -32403,6 +32391,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32437,6 +32431,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -32599,18 +32599,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -32658,6 +32646,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32692,6 +32686,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -32854,18 +32854,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -32925,6 +32913,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32959,6 +32953,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -33121,18 +33121,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -33222,6 +33210,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33256,6 +33250,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -33418,18 +33418,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -33543,6 +33531,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33577,6 +33571,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -33739,18 +33739,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -33864,6 +33852,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33898,6 +33892,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -34060,18 +34060,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -34173,6 +34161,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34207,6 +34201,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -34369,18 +34369,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -34440,6 +34428,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34474,6 +34468,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -34636,18 +34636,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -34761,6 +34749,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34795,6 +34789,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -34957,18 +34957,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -35082,6 +35070,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35116,6 +35110,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -35278,18 +35278,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -35403,6 +35391,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35437,6 +35431,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -35599,18 +35599,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -35664,6 +35652,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35698,6 +35692,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -35860,18 +35860,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -35937,6 +35925,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35971,6 +35965,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -36133,18 +36133,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -36258,6 +36246,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36292,6 +36286,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -36454,18 +36454,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -36513,6 +36501,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36547,6 +36541,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -36709,18 +36709,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -36834,6 +36822,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36868,6 +36862,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -37030,18 +37030,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -37155,6 +37143,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37189,6 +37183,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -37351,18 +37351,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -37476,6 +37464,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37510,6 +37504,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -37672,18 +37672,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -37797,6 +37785,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37831,6 +37825,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -37993,18 +37993,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -38088,6 +38076,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38122,6 +38116,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -38284,18 +38284,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -38409,6 +38397,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38443,6 +38437,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -38605,18 +38605,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -38664,6 +38652,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38698,6 +38692,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -38860,18 +38860,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -38949,6 +38937,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38983,6 +38977,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -39145,18 +39145,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -39270,6 +39258,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39304,6 +39298,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -39466,18 +39466,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -39591,6 +39579,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39625,6 +39619,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -39787,18 +39787,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -39912,6 +39900,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39946,6 +39940,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -40108,18 +40108,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
@@ -40233,6 +40221,12 @@
           "ts": "2026-08-27T00:16:00Z"
         },
         {
+          "id": "slack-1787789516-717929",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:11:56.717929Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40267,6 +40261,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T00:08:24.472809Z"
+        },
+        {
+          "id": "slack-1787789267-746639",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:07:47.746639Z"
         },
         {
           "id": "goat-titan-engine-engineered-20260826-01",
@@ -40429,18 +40429,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "slack-1787788701-192339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:21.192339Z"
-        },
-        {
-          "id": "slack-1787788700-774859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:20.774859Z"
         }
       ],
       "mine": [
