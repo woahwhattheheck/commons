@@ -143,7 +143,7 @@ class TestResourceLedger(unittest.TestCase):
         with open(catalog_path, encoding="utf-8") as handle:
             text = handle.read()
         catalog = load_catalog(text)
-        self.assertEqual(catalog["slack_ts"], "1787637936.134649")
+        self.assertEqual(catalog["slack_ts"], "1787803807.405939")
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
@@ -229,6 +229,11 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["claude"]["condition"], "HELD")
         self.assertIn("not tester/verifier", rows["claude"]["assigned_backlog"].lower())
         self.assertEqual(rows["titan-hands-windows"]["stage"], "EXERCISED")
+        self.assertEqual(rows["owner-workstation"]["capacity"], "NOT_VERIFIED")
+        self.assertEqual(rows["owner-workstation"]["condition"], "BLOCKED")
+        self.assertEqual(rows["public-commerce-road"]["stage"], "PRODUCING")
+        self.assertEqual(rows["public-commerce-road"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 3)
 
     def test_append_only_census_and_human_doors_exist(self):
         record_path = os.path.join(
@@ -265,6 +270,19 @@ class TestResourceLedger(unittest.TestCase):
             activation["after"]["integration_main_sha"],
             "2423415c754b13ce2d723ce9d85c4f9af802d4fb",
         )
+
+        commerce_activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-public-commerce-road-activation-20260827-01.json",
+        )
+        with open(commerce_activation_path, encoding="utf-8") as handle:
+            commerce_activation = json.load(handle)
+        self.assertEqual(commerce_activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(commerce_activation["selected_resource"], "public-commerce-road")
+        self.assertEqual(commerce_activation["current_truth"]["collected_cash_usd"], "0.00")
 
     def test_local_probes_see_absent_hf(self):
         probes = local_probes(
