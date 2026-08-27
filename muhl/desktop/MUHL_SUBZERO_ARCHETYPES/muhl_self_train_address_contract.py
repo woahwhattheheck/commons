@@ -282,26 +282,42 @@ def pointer_space(ptr_bits=None, capacity=None, stride=None, address_mode=None, 
     if step is UNRESOLVED:
         reasons.append("missing_or_malformed_stride")
     pointer_span = (1 << bits) if bits is not UNRESOLVED else UNRESOLVED
-    max_pointer = (pointer_span - 1) if isinstance(pointer_span, int) else UNRESOLVED
+    mode = _mode_text(address_mode)
+    base = (
+        absolute_base
+        if mode == ABSOLUTE
+        and isinstance(absolute_base, int)
+        and not isinstance(absolute_base, bool)
+        and absolute_base >= 0
+        else UNRESOLVED
+    )
+    declared_span = capacity if _valid_positive_int(capacity) else UNRESOLVED
+    if mode == ABSOLUTE and isinstance(base, int) and isinstance(declared_span, int):
+        max_pointer = base + declared_span - 1
+        wrap_span = declared_span
+    else:
+        max_pointer = (pointer_span - 1) if isinstance(pointer_span, int) else UNRESOLVED
+        wrap_span = pointer_span
     last_safe_start = UNRESOLVED
     steps_before_wrap = UNRESOLVED
-    if isinstance(pointer_span, int) and isinstance(step, int):
-        if step > pointer_span:
-            reasons.append("stride_exceeds_pointer_space")
+    if isinstance(wrap_span, int) and isinstance(step, int):
+        if step > wrap_span:
+            reasons.append(
+                "stride_exceeds_declared_capacity"
+                if mode == ABSOLUTE
+                else "stride_exceeds_pointer_space"
+            )
         else:
-            last_safe_start = pointer_span - step
-        steps_before_wrap = pointer_span // math.gcd(step, pointer_span)
-        mode = _mode_text(address_mode)
-        if (
-            mode == ABSOLUTE
-            and isinstance(absolute_base, int)
-            and not isinstance(absolute_base, bool)
-            and absolute_base >= 0
-            and isinstance(last_safe_start, int)
-            and last_safe_start < absolute_base
-        ):
-            reasons.append("absolute_base_no_full_stride")
-    needed = required_bits_for(capacity)
+            last_safe_start = wrap_span - step
+            if mode == ABSOLUTE and isinstance(base, int):
+                last_safe_start += base
+        steps_before_wrap = wrap_span // math.gcd(step, wrap_span)
+    needed_input = (
+        base + declared_span
+        if mode == ABSOLUTE and isinstance(base, int) and isinstance(declared_span, int)
+        else capacity
+    )
+    needed = required_bits_for(needed_input)
     return {
         "max_pointer": max_pointer,
         "last_safe_start": last_safe_start,
@@ -380,7 +396,7 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         status = UNRESOLVED
         reasons.append("missing_or_malformed_address_mode")
     for reason in space.get("reasons") or []:
-        if reason in ("stride_exceeds_pointer_space", "absolute_base_no_full_stride"):
+        if reason in ("stride_exceeds_pointer_space", "stride_exceeds_declared_capacity"):
             if reason not in reasons:
                 reasons.append(reason)
             if status == OK:
@@ -409,6 +425,8 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         "steps_before_wrap": space["steps_before_wrap"],
         "stride": stride,
     }
+    if mode == ABSOLUTE:
+        payload["absolute_base"] = base
     digest = payload_digest(payload)
     return {
         "max_pointer": space["max_pointer"],
@@ -429,7 +447,7 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
     }
 
 
-def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None):
+def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None, absolute_base=None):
     bound = bind_address_facts(
         dests=dests,
         registry=registry,
@@ -438,6 +456,7 @@ def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=
         stride=stride,
         address_mode=address_mode,
         data_start=data_start,
+        absolute_base=absolute_base,
     )
     if space:
         payload = dict(bound["canonical_payload"])
@@ -451,7 +470,7 @@ def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=
     return bound["canonical_payload"]
 
 
-def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None):
+def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None, absolute_base=None):
     payload = canonical_conflict_payload(
         space=space,
         ptr_bits=ptr_bits,
@@ -461,6 +480,7 @@ def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None, stride=Non
         data_start=data_start,
         dests=dests,
         registry=registry,
+        absolute_base=absolute_base,
     )
     return payload_digest(payload)
 
@@ -1452,6 +1472,24 @@ def self_test():
     if odd.get("last_safe_start") == 254:
         return False
     if odd.get("steps_before_wrap") == (256 // 3):
+        return False
+    absolute = bind_address_facts(
+        {
+            "ptr_bits": 4,
+            "intake_capacity": 8,
+            "stride": 3,
+            "address_mode": ABSOLUTE,
+            "absolute_base": 0,
+            "data_start_rel": 1,
+        }
+    )
+    if absolute.get("max_pointer") != 7:
+        return False
+    if absolute.get("last_safe_start") != 5:
+        return False
+    if absolute.get("steps_before_wrap") != 8:
+        return False
+    if (absolute.get("canonical_payload") or {}).get("absolute_base") != 0:
         return False
     tampered = dict(blocked.get("canonical_payload") or {})
     if tampered:

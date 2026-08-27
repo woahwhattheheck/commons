@@ -22,6 +22,7 @@ from muhl_self_train_address_contract import (
     FORBIDDEN_IMPORTS,
     LAST_SAFE_START,
     MAX_POINTER,
+    OK,
     RELATIVE,
     REQUIRED_BITS,
     SEARCH_SPACE,
@@ -585,20 +586,22 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
             address_mode=ABSOLUTE,
             absolute_base=10,
         )
-        self.assertEqual(space["last_safe_start"], 253)
-        self.assertNotEqual(space["last_safe_start"], 254)
+        self.assertEqual(space["max_pointer"], 265)
+        self.assertEqual(space["last_safe_start"], 263)
+        self.assertNotEqual(space["last_safe_start"], 264)
         self.assertEqual(space["steps_before_wrap"], 256)
         self.assertNotEqual(space["steps_before_wrap"], 256 // 3)
         bound = bind_address_facts(dests)
         self.assertEqual(bound["status"], BLOCKED)
         self.assertIn("absolute_base_overflow", bound["reasons"])
-        self.assertEqual(bound["last_safe_start"], 253)
+        self.assertEqual(bound["max_pointer"], 265)
+        self.assertEqual(bound["last_safe_start"], 263)
         self.assertEqual(bound["steps_before_wrap"], 256)
         self.assertEqual(bound["absolute_base"], 10)
         packet = synthetic_packet({"ok": True, "dests": dests})
         row = validate_packet(packet)
         self.assertEqual(row["state"], BLOCKED, row)
-        self.assertEqual(row["last_safe_start"], 253)
+        self.assertEqual(row["last_safe_start"], 263)
         self.assertEqual(row["steps_before_wrap"], 256)
         zero_base = dict(dests)
         zero_base["absolute_base"] = 0
@@ -606,6 +609,64 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         self.assertEqual(aligned["last_safe_start"], 253)
         self.assertEqual(aligned["steps_before_wrap"], 256)
         self.assertEqual(aligned["absolute_base"], 0)
+
+    def test_absolute_base_and_declared_capacity_bound_range_and_hash(self):
+        zero = pointer_space(
+            ptr_bits=4,
+            capacity=8,
+            stride=3,
+            address_mode=ABSOLUTE,
+            absolute_base=0,
+        )
+        self.assertEqual(zero["max_pointer"], 7)
+        self.assertEqual(zero["last_safe_start"], 5)
+        self.assertEqual(zero["steps_before_wrap"], 8)
+        self.assertEqual(zero["required_bits"], 3)
+
+        base10 = {
+            "ptr_bits": 8,
+            "intake_capacity": 8,
+            "stride": 3,
+            "address_mode": ABSOLUTE,
+            "absolute_base": 10,
+            "data_start_rel": 1,
+        }
+        base11 = dict(base10, absolute_base=11)
+        bound10 = bind_address_facts(base10)
+        bound11 = bind_address_facts(base11)
+        self.assertEqual(bound10["status"], OK, bound10)
+        self.assertEqual(bound10["max_pointer"], 17)
+        self.assertEqual(bound10["last_safe_start"], 15)
+        self.assertEqual(bound10["steps_before_wrap"], 8)
+        self.assertEqual(bound10["canonical_payload"]["absolute_base"], 10)
+        self.assertEqual(bound11["max_pointer"], 18)
+        self.assertEqual(bound11["last_safe_start"], 16)
+        self.assertEqual(bound11["canonical_payload"]["absolute_base"], 11)
+        self.assertNotEqual(bound10["canonical_hash"], bound11["canonical_hash"])
+
+        tampered = dict(bound10["canonical_payload"], absolute_base=11)
+        checked = validate_canonical_record(
+            {
+                "canonical_payload": tampered,
+                "canonical_hash": payload_digest(tampered),
+            },
+            dests=base10,
+        )
+        self.assertEqual(checked["state"], "NOT_LANDED", checked)
+
+    def test_absolute_stride_larger_than_declared_capacity_is_blocked(self):
+        dests = {
+            "ptr_bits": 8,
+            "intake_capacity": 8,
+            "stride": 9,
+            "address_mode": ABSOLUTE,
+            "absolute_base": 10,
+            "data_start_rel": 1,
+        }
+        bound = bind_address_facts(dests)
+        self.assertEqual(bound["status"], BLOCKED, bound)
+        self.assertEqual(bound["last_safe_start"], UNRESOLVED)
+        self.assertIn("stride_exceeds_declared_capacity", bound["reasons"])
 
 
 if __name__ == "__main__":

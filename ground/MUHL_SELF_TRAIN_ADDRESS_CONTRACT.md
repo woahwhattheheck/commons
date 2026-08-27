@@ -102,16 +102,23 @@ Full-stride bound and modular cycle, including absolute mode/base:
 
 | Fact | Formula |
 |---|---|
-| `last_safe_start` | `pointer_span - stride` when `stride <= pointer_span` |
-| `steps_before_wrap` | `pointer_span / gcd(stride, pointer_span)` |
+| relative `last_safe_start` | `pointer_span - stride` when `stride <= pointer_span` |
+| absolute `max_pointer` | `absolute_base + capacity - 1` |
+| absolute `last_safe_start` | `absolute_base + capacity - stride` when `stride <= capacity` |
+| `steps_before_wrap` | active range span / `gcd(stride, active range span)` |
 | two-byte 30-bit | still `1073741822` / `536870912` |
 | stride 3 on 8-bit | `last_safe_start=253`, cycle `256`, not `254` / `85` |
 | stride 6 on 8-bit | `last_safe_start=250`, cycle `128`, not floor `42` |
-| absolute + base | same full-stride / modular numbers; overflow stays **BLOCKED** |
+| absolute base 0, capacity 8, stride 3 | `max_pointer=7`, `last_safe_start=5`, cycle `8` |
+| absolute bases 10 vs 11 | distinct bounds and canonical hashes; base is bound in payload |
 
-A stride larger than the pointer space leaves `last_safe_start`
-**UNRESOLVED** (`stride_exceeds_pointer_space`). Floor division is
-not wrap-cycle length. Live allocated offsets stay **UNRESOLVED**.
+A relative stride larger than the pointer space, or an absolute stride
+larger than the declared capacity, leaves `last_safe_start`
+**UNRESOLVED** (`stride_exceeds_pointer_space` or
+`stride_exceeds_declared_capacity`). Pointer-bit representability and
+the declared absolute `[base, base+capacity)` range are both checked;
+one cannot substitute for the other. Floor division is not wrap-cycle
+length. Live allocated offsets stay **UNRESOLVED**.
 
 ## What this leftover is not
 
@@ -141,6 +148,9 @@ exact `max_pointer` / `last_safe_start` / `steps_before_wrap` /
 `required_bits` / `stride` / `address-mode` / `data-start` +
 full-stride bounds + modular cycle + canonical hash + live
 offsets UNRESOLVED + H-006 CANDIDATE or UNRESOLVED.
+Absolute records additionally bind `absolute_base`, declared capacity,
+derived inclusive maximum, and last full-stride start; two bases cannot
+share a canonical hash merely because pointer bits match.
 Missing/malformed facts stay UNRESOLVED. Tampered or re-signed
 records are refused. Non-divisor stride is not two-byte floor.
 Z = missing path / invented live offset `0` / trainer import /
