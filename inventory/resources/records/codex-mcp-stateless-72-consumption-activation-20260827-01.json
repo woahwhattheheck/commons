@@ -1,0 +1,87 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-mcp-stateless-72-consumption-activation-20260827-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-27T22:01:22Z",
+  "selected_resource": "mcp-stateless-72-evidence-pack",
+  "before": {
+    "stage": "AVAILABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "The exact pack, schema, validator, and tests were on current main, but the canonical ledger had no lifecycle row or named consumer for them."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "2d03c1f727a9fd38c5c8986034ffaf2983d7b2be"
+  },
+  "concrete_consumer": "Commons Resource Master commercial-evidence triage",
+  "producing_outcome": "The executable pack consumed ten commit-pinned public protocol signals, validated their exact integrity, and prevented unsupported outreach by returning NONE_READY rather than inventing a buyer, defect, demand, contact permission, or delivery state.",
+  "exact_blobs": {
+    "host/mcp_stateless_72.py": "e1eacc8ffeabb32ddcb8c4e372e542253bc10a7a",
+    "revenue/mcp_stateless_72/prospects.json": "726ac6ba5922c7ea4380184259f1833cd4fc8033",
+    "revenue/mcp_stateless_72/prospects.schema.json": "a6a45ecc7ab4a3e657d486c6de886ea04ae964ac",
+    "test_mcp_stateless_72.py": "3ea2df9a6267a183417d3c6c0052dfce0e8262d9"
+  },
+  "artifact_truth": {
+    "prospects": 10,
+    "official_sources": 2,
+    "pack_sha256": "2c2dbb4ad8eab97b69fdef5da99adf7a9f9fe09b813d1420ded8d818376d58ff",
+    "schema_sha256": "c9a6b2747b8026733b81c335021c6747d233ad5b7019889fd02688ccd7d48e50",
+    "readiness": "NONE_READY",
+    "readiness_reason": "STATIC_PROTOCOL_SIGNAL_EVIDENCE_ONLY",
+    "cash_received_usd": 0
+  },
+  "expired_claims": [
+    "github-repository-portfolio",
+    "localdeviceagent",
+    "owner-workstation",
+    "titan-hands-windows",
+    "action-pad",
+    "muhlnickel-substrate",
+    "public-commerce-road",
+    "commons-swarm-gateway",
+    "gemini-peer-pair",
+    "active-agent-fleet",
+    "stale-claim-capacity",
+    "agent-address-and-memory",
+    "revenue-outreach",
+    "revenue-offer-stack",
+    "github-actions"
+  ],
+  "projection": {
+    "resources": 58,
+    "producing": 21,
+    "fresh": 24,
+    "stale": 15,
+    "event_driven": 14,
+    "needs_probe": 5
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "airtable_revenue_bases": 1,
+    "sites_owner_projects_last_verified": 1,
+    "sites_current_probe": "INVALID_ARGUMENT",
+    "vercel_hobby_teams": 1,
+    "vercel_visible_projects": 0,
+    "stripe_connected_accounts": 1,
+    "stripe_livemode_accounts": 0
+  },
+  "verification": {
+    "focused_tests": "35/35 passed",
+    "validate": "VALID: 10 prospects, 2 official sources",
+    "list": "VERIFIED_STATIC_SIGNAL_LIST: 10 entries",
+    "next": "NONE_READY / STATIC_PROTOCOL_SIGNAL_EVIDENCE_ONLY",
+    "resource_ledger_self_test": "passed before projection update"
+  },
+  "non_claims": [
+    "No defect, vulnerability, buyer, pain, demand, contact permission, delivery readiness, acceptance, revenue, payment, settlement, payout, bank availability, or cash",
+    "No outreach or resend",
+    "No public Pages or MCP deployment",
+    "No owner device or physical action",
+    "No Cursor use or hold release",
+    "No Claude tester, verifier, reviewer, QA, or landing role",
+    "No Titan model mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
