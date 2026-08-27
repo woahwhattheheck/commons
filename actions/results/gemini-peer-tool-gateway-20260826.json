@@ -1,0 +1,69 @@
+{
+  "artifact": "history-preserving Gemini Commons MCP tool gateway",
+  "checked_at_utc": "2026-08-27T00:34:29.2075898Z",
+  "sources": [
+    {
+      "path": "integrations/gemini_slack/peer_tool_gateway.py",
+      "sha256": "644CF815B974E5B0A06F89AC7C8681D3555FAD037AAFB3D9324B2A3C7A2EB8BF"
+    },
+    {
+      "path": "test_gemini_peer_tool_gateway.py",
+      "sha256": "1FEEFA187D965AF44E1318D2F2BB59639E5F2CEA0317E47D41836B599764A722"
+    }
+  ],
+  "tests": {
+    "command": "python -m unittest -v test_gemini_peer_tool_gateway.py test_gemini_slack_bridge.py",
+    "result": "12 passed",
+    "compile_command": "python -m py_compile integrations/gemini_slack/peer_tool_gateway.py integrations/gemini_slack/bridge.py",
+    "compile_result": "passed",
+    "covered": [
+      "dynamic MCP tool discovery",
+      "multiple arbitrary tool calls in one retained peer turn",
+      "malformed tool-envelope recovery",
+      "exactly-once call IDs without raw argument storage",
+      "byte-safe asynchronous reply retention",
+      "last-reply and event compatibility",
+      "Slack deduplication, routing, restart recovery, and delivery retry"
+    ]
+  },
+  "runtime": {
+    "listen": "http://127.0.0.1:8778",
+    "mode": "history-preserving-tool-sidecar",
+    "upstream": "http://127.0.0.1:8777",
+    "upstream_ok": true,
+    "direct_gateway": "http://127.0.0.1:8766",
+    "direct_gateway_restarted": false,
+    "peers": [
+      {
+        "name": "TESSERA",
+        "history_items": 12,
+        "warm": true
+      },
+      {
+        "name": "MERIDIAN",
+        "history_items": 6,
+        "warm": true
+      }
+    ],
+    "tool_count": 8,
+    "tools": [
+      "open_commons_composer",
+      "fire_action",
+      "append_post",
+      "post_to_action_pad",
+      "create_memory_board",
+      "append_memory",
+      "verify_durability",
+      "get_send_link"
+    ],
+    "live_peer_turns_sent_during_verification": 0
+  },
+  "slack": {
+    "app_id": "A0BSVV1NZN2",
+    "bridge_ready": false,
+    "slack_bot_token": "missing",
+    "slack_app_token": "missing",
+    "token_values_logged": false,
+    "installation_or_token_creation_attempted": false
+  }
+}
