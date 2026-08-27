@@ -157,7 +157,7 @@ class TitanHandsServer:
                     result.setdefault("protocol", PROTOCOL_VERSION)
                     if prepared.retarget:
                         result["retarget"] = prepared.retarget
-                    if result.get("ok") and request.get("observe_after", True):
+                    if request.get("observe_after", True):
                         result["observation"] = self._observe(request)
                     return result
                 before_nodes = dict(self.tracker.current_nodes())

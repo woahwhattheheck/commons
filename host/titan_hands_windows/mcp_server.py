@@ -33,7 +33,20 @@ TOOLS = [
             "type": "object",
             "required": ["action"],
             "properties": {
-                "action": {"type": "object"},
+                "action": {
+                    "type": "object",
+                    "properties": {
+                        "type": {"type": "string"},
+                        "id": {"type": "string"},
+                        "name": {"type": "string"},
+                        "label": {"type": "string"},
+                        "text": {"type": "string"},
+                        "value": {"type": "string"},
+                        "state": {"type": "string"},
+                        "that": {"type": "string"},
+                        "expect": {},
+                    },
+                },
                 "expect": {},
                 "observe_after": {"type": "boolean"},
                 "max_nodes": {"type": "integer", "minimum": 1},

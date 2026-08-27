@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import json
 import unittest
 
-from host.titan_hands_windows.mcp_server import dispatch
+from host.titan_hands.mcp_one import TOOL as MCP_ONE_TOOL
+from host.titan_hands.mcp_server import ACTION_PROPERTY, TOOLS as UNIFIED_TOOLS
+from host.titan_hands_windows.mcp_server import TOOLS as WINDOWS_TOOLS, dispatch
 from host.titan_hands_windows.retarget import prepare_action
 from host.titan_hands_windows.server import TitanHandsServer
 
@@ -26,11 +29,13 @@ BACKEND_ACTIONS = [
 
 
 class ScriptedBackend:
-    def __init__(self, nodes, focus_id=""):
+    def __init__(self, nodes, focus_id="", collapse_on_clear=False, sticky_values=None):
         self.nodes = {node["id"]: dict(node) for node in nodes}
         self.focus_id = focus_id
         self.calls = []
         self.closed = False
+        self.collapse_on_clear = collapse_on_clear
+        self.sticky_values = dict(sticky_values or {})
 
     def request(self, message):
         self.calls.append(message)
@@ -63,7 +68,12 @@ class ScriptedBackend:
                     "message": f"element is absent or stale: {node_id}",
                 }
             if action_type == "set_value" and node_id in self.nodes:
-                self.nodes[node_id]["value"] = str(action.get("value") or "")
+                if str(action.get("value") or "") == "" and self.collapse_on_clear:
+                    self.nodes.pop(node_id, None)
+                else:
+                    self.nodes[node_id]["value"] = str(action.get("value") or "")
+                    if node_id in self.sticky_values:
+                        self.nodes[node_id]["value"] = self.sticky_values[node_id]
             if action_type == "invoke" and self.nodes.get(node_id, {}).get("name") == "Idle":
                 self.nodes[node_id]["name"] = "Done"
             return {"ok": True, "kind": "action_outcome", "action": action_type, "id": node_id}
@@ -73,14 +83,14 @@ class ScriptedBackend:
         self.closed = True
 
 
-def _edit(node_id="field", value="", focused=True):
+def _edit(node_id="field", value="", focused=True, name="Search"):
     states = ["enabled", "focusable"]
     if focused:
         states.append("focused")
     return {
         "id": node_id,
         "role": "Edit",
-        "name": "Search",
+        "name": name,
         "value": value,
         "actions": ["set_value", "click"],
         "states": states,
@@ -88,8 +98,13 @@ def _edit(node_id="field", value="", focused=True):
 
 
 class RetargetVerifyTests(unittest.TestCase):
-    def _server(self, nodes, focus_id=""):
-        backend = ScriptedBackend(nodes, focus_id=focus_id)
+    def _server(self, nodes, focus_id="", collapse_on_clear=False, sticky_values=None):
+        backend = ScriptedBackend(
+            nodes,
+            focus_id=focus_id,
+            collapse_on_clear=collapse_on_clear,
+            sticky_values=sticky_values,
+        )
         return TitanHandsServer(backend), backend
 
     def test_stale_id_retargets_by_name(self):
@@ -151,6 +166,50 @@ class RetargetVerifyTests(unittest.TestCase):
         self.assertEqual(result["verification"]["status"], "confirmed")
         server.close()
 
+    def test_explicit_label_beats_focused_editable(self):
+        server, backend = self._server(
+            [
+                _edit("email", focused=True, name="Email"),
+                _edit("search", focused=False, name="Search"),
+            ],
+            focus_id="email",
+        )
+        server.handle({"op": "observe"})
+        result = server.handle(
+            {
+                "op": "act",
+                "action": {
+                    "type": "set_value",
+                    "id": "w_deadbeefdeadbeef",
+                    "name": "Search",
+                    "value": "secret",
+                },
+            }
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["retarget"]["to_id"], "search")
+        self.assertEqual(result["retarget"]["reason"], "label_match")
+        self.assertEqual(backend.calls[-2]["action"]["id"], "search")
+        self.assertEqual(backend.nodes["search"]["value"], "secret")
+        self.assertEqual(backend.nodes["email"].get("value", ""), "")
+        server.close()
+
+    def test_ambiguous_set_value_label_fails_closed(self):
+        server, backend = self._server(
+            [
+                _edit("one", focused=False, name="Search"),
+                _edit("two", focused=False, name="Search"),
+            ]
+        )
+        server.handle({"op": "observe"})
+        result = server.handle(
+            {"op": "act", "action": {"type": "set_value", "name": "Search", "value": "secret"}}
+        )
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["failure_reason"], "TARGET_AMBIGUOUS")
+        self.assertFalse(any(call.get("op") == "action" for call in backend.calls))
+        server.close()
+
     def test_set_value_verifies_landed_text(self):
         server, _backend = self._server([_edit()], focus_id="field")
         server.handle({"op": "observe"})
@@ -187,7 +246,75 @@ class RetargetVerifyTests(unittest.TestCase):
         missing = server.handle(
             {"op": "act", "action": {"type": "assert", "id": "go", "state": "selected"}}
         )
+        self.assertFalse(missing["ok"])
+        self.assertEqual(missing["failure_reason"], "ASSERT_CONTRADICTED")
         self.assertEqual(missing["verification"]["status"], "contradicted")
+        server.close()
+
+    def test_contradicted_assert_is_mcp_error(self):
+        server, backend = self._server(
+            [{"id": "go", "role": "Button", "name": "Go", "actions": ["invoke"], "states": ["enabled"]}]
+        )
+        server.handle({"op": "observe"})
+        message = dispatch(
+            server,
+            {
+                "jsonrpc": "2.0",
+                "id": 7,
+                "method": "tools/call",
+                "params": {
+                    "name": "hands_act",
+                    "arguments": {
+                        "action": {"type": "assert", "id": "go", "state": "selected"},
+                    },
+                },
+            },
+        )
+        self.assertTrue(message["result"]["isError"])
+        body = json.loads(message["result"]["content"][0]["text"])
+        self.assertFalse(body["ok"])
+        self.assertEqual(body["failure_reason"], "ASSERT_CONTRADICTED")
+        self.assertFalse(any(call.get("op") == "action" for call in backend.calls))
+        server.close()
+
+    def test_clear_removed_target_is_unchecked(self):
+        server, _backend = self._server(
+            [_edit("field", value="old")],
+            focus_id="field",
+            collapse_on_clear=True,
+        )
+        server.handle({"op": "observe"})
+        result = server.handle(
+            {"op": "act", "action": {"type": "set_value", "id": "field", "value": ""}}
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["verification"]["status"], "unchecked")
+        self.assertFalse(result["verification"]["ok"])
+        self.assertIn("left the tree", result["verification"]["message"])
+        server.close()
+
+    def test_value_mismatch_not_overwritten_by_expect(self):
+        server, _backend = self._server(
+            [_edit("field", value="old")],
+            focus_id="field",
+            sticky_values={"field": "old"},
+        )
+        server.handle({"op": "observe"})
+        result = server.handle(
+            {
+                "op": "act",
+                "action": {
+                    "type": "set_value",
+                    "id": "field",
+                    "value": "new",
+                    "expect": "text entered in field",
+                },
+            }
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["verification"]["status"], "contradicted")
+        self.assertIn("does not contain 'new'", result["verification"]["message"])
+        self.assertNotIn("✓", result["verification"]["message"])
         server.close()
 
     def test_mystery_type_is_forwarded(self):
@@ -276,6 +403,23 @@ class RetargetVerifyTests(unittest.TestCase):
         names = [tool["name"] for tool in listed["result"]["tools"]]
         self.assertEqual(names, ["hands_observe", "hands_act", "hands_capture", "hands_capabilities"])
         server.close()
+
+    def test_tools_list_advertises_assert_and_expect(self):
+        self.assertIn("state", ACTION_PROPERTY["properties"])
+        self.assertIn("that", ACTION_PROPERTY["properties"])
+        self.assertIn("expect", ACTION_PROPERTY["properties"])
+        self.assertIn("assert", ACTION_PROPERTY["properties"]["type"]["description"])
+        unified_act = next(tool for tool in UNIFIED_TOOLS if tool["name"] == "hands_act")
+        self.assertIn("expect", unified_act["inputSchema"]["properties"])
+        self.assertIs(MCP_ONE_TOOL["inputSchema"]["properties"]["action"], ACTION_PROPERTY)
+        self.assertIn("expect", MCP_ONE_TOOL["inputSchema"]["properties"])
+        windows_act = next(tool for tool in WINDOWS_TOOLS if tool["name"] == "hands_act")
+        win_action = windows_act["inputSchema"]["properties"]["action"]
+        self.assertIn("state", win_action["properties"])
+        self.assertIn("that", win_action["properties"])
+        self.assertIn("expect", win_action["properties"])
+        self.assertIn("expect", windows_act["inputSchema"]["properties"])
+        self.assertNotIn("required", win_action)
 
 
 if __name__ == "__main__":

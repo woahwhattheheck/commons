@@ -278,47 +278,59 @@ def prepare_action(
     label = requested_label(action, action_type)
 
     if action_type in VALUE_TYPES:
-        if node is not None and not is_editable(node):
-            replacement, reason = _pick_editable(nodes, meta)
-            if replacement is None:
-                fields = [item["id"] for item in _editable_nodes(nodes)]
-                prepared.failure = failure(
-                    "ELEMENT_STALE",
-                    f"element {id_text} is not a text field"
-                    + (f" - the field(s) are {', '.join(fields)}; set_value one of those" if fields else " and there is NO text field on this screen"),
-                    asked_id=id_text,
-                    candidates=candidate_list(nodes),
-                )
-                return prepared
-            action["id"] = replacement["id"]
-            node = replacement
-            _note(prepared, "non_field_to_editable", from_id=id_text, to_id=replacement["id"], via=reason)
-        elif node is None:
-            replacement, reason = _pick_editable(nodes, meta)
-            if replacement is None and label:
-                replacement, winners = match_by_label(label, {key: value for key, value in nodes.items() if is_editable(value)})
-                if replacement is None and winners:
+        if not (node is not None and is_editable(node)):
+            editables = {key: value for key, value in nodes.items() if is_editable(value)}
+            if label:
+                matched, winners = match_by_label(label, editables)
+                if matched is None and winners:
                     prepared.failure = failure(
                         "TARGET_AMBIGUOUS",
                         f"multiple fields match {label!r}; name one id instead of guessing",
                         candidates=[{"id": item.get("id"), "name": item.get("name")} for item in winners],
                     )
                     return prepared
-                if replacement is not None:
-                    reason = "label_match"
-            if replacement is None:
-                if not nodes:
+                if matched is not None:
+                    action["id"] = matched["id"]
+                    node = matched
+                    _note(prepared, "label_match", from_id=id_text, to_id=matched["id"], label=label)
+                else:
+                    if not nodes:
+                        return prepared
+                    prepared.failure = failure(
+                        "ELEMENT_STALE",
+                        f"no field matches {label!r}",
+                        asked_id=id_text,
+                        label=label,
+                        candidates=candidate_list(nodes),
+                    )
                     return prepared
-                prepared.failure = failure(
-                    "ELEMENT_STALE",
-                    f"no element {id_text or '<missing>'} and no unambiguous text field",
-                    asked_id=id_text,
-                    candidates=candidate_list(nodes),
+            else:
+                replacement, reason = _pick_editable(nodes, meta)
+                if replacement is None:
+                    if not nodes:
+                        return prepared
+                    fields = [item["id"] for item in _editable_nodes(nodes)]
+                    prepared.failure = failure(
+                        "ELEMENT_STALE",
+                        f"element {id_text or '<missing>'} is not a text field"
+                        + (
+                            f" - the field(s) are {', '.join(fields)}; set_value one of those"
+                            if fields
+                            else " and there is NO text field on this screen"
+                        ),
+                        asked_id=id_text,
+                        candidates=candidate_list(nodes),
+                    )
+                    return prepared
+                action["id"] = replacement["id"]
+                node = replacement
+                _note(
+                    prepared,
+                    "non_field_to_editable" if id_text else reason or "editable_retarget",
+                    from_id=id_text,
+                    to_id=replacement["id"],
+                    via=reason,
                 )
-                return prepared
-            action["id"] = replacement["id"]
-            node = replacement
-            _note(prepared, reason or "editable_retarget", from_id=id_text, to_id=replacement["id"])
 
     elif (id_text and node is None) or (not id_text and label):
         matched, winners = match_by_label(label, nodes) if label else (None, [])
@@ -440,12 +452,12 @@ def verify_after(
         expected = str(action.get("value") if action.get("value") is not None else action.get("text") or "")
         actual = _node_text(after)
         checked.append("value_landed")
-        if expected == "":
-            status = "confirmed" if actual == "" else "contradicted"
-            message = "✓ field is empty" if status == "confirmed" else f"✗ field still holds {actual!r}"
-        elif after is None:
+        if after is None:
             status = "unchecked"
             message = "field left the tree; cannot confirm the value landed"
+        elif expected == "":
+            status = "confirmed" if actual == "" else "contradicted"
+            message = "✓ field is empty" if status == "confirmed" else f"✗ field still holds {actual!r}"
         elif expected.lower() in actual.lower():
             status = "confirmed"
             message = "✓ text IS in the field now"
@@ -469,36 +481,53 @@ def verify_after(
         if expect_id and expect_state:
             actual = _state_matches(after_nodes.get(expect_id), expect_state)
             checked.append("expected_state")
+            structured_status = "unchecked"
+            structured_message = f"can't check {expect_state!r} on {expect_id or 'missing id'}"
             if actual is True:
-                status = "confirmed"
-                message = f"✓ element {expect_id} IS {expect_state}"
+                structured_status = "confirmed"
+                structured_message = f"✓ element {expect_id} IS {expect_state}"
             elif actual is False:
+                structured_status = "contradicted"
+                structured_message = f"✗ element {expect_id} is NOT {expect_state} - adapt, don't assume"
+            if status == "contradicted":
+                pass
+            elif status == "unchecked":
+                status = structured_status
+                message = structured_message
+            elif structured_status == "contradicted":
                 status = "contradicted"
-                message = f"✗ element {expect_id} is NOT {expect_state} - adapt, don't assume"
-            else:
-                status = "unchecked"
-                message = f"can't check {expect_state!r} on {expect_id or 'missing id'}"
+                message = structured_message
     else:
         expect_text = str(expect or "").strip()
 
     if expect_text:
         structural = verify_expectation(expect_text, after_nodes, meta)
         checked.append("expect")
+        expect_status = "unchecked"
+        expect_message = ""
         if structural is None:
             visible = _visible_text(after_nodes)
             keys = WORD_RE.findall(expect_text.lower())
             if keys and sum(1 for key in keys if key in visible) * 2 >= len(keys):
-                status = "confirmed"
-                message = f'✓ looks true - "{expect_text[:80]}" appears on screen'
+                expect_status = "confirmed"
+                expect_message = f'✓ looks true - "{expect_text[:80]}" appears on screen'
             else:
-                status = "contradicted"
-                message = f'✗ can\'t confirm "{expect_text[:80]}" - it does NOT appear here; adapt, don\'t assume it worked'
+                expect_status = "contradicted"
+                expect_message = f'✗ can\'t confirm "{expect_text[:80]}" - it does NOT appear here; adapt, don\'t assume it worked'
         elif structural.startswith("✓"):
-            status = "confirmed"
-            message = structural
+            expect_status = "confirmed"
+            expect_message = structural
         else:
+            expect_status = "contradicted"
+            expect_message = structural
+        if status == "contradicted":
+            pass
+        elif status == "unchecked":
+            status = expect_status
+            message = expect_message
+        elif expect_status == "contradicted":
             status = "contradicted"
-            message = structural
+            message = expect_message
 
     return {
         "kind": "verification",
@@ -536,6 +565,13 @@ def run_assert(
             "checked": ["element_state"],
             "ok": status == "confirmed",
         }
+        if status != "confirmed":
+            result = failure(
+                "ASSERT_CONTRADICTED" if status == "contradicted" else "ASSERT_UNCHECKED",
+                message,
+            )
+            result["verification"] = verification
+            return result
         return {
             "ok": True,
             "protocol": PROTOCOL_VERSION,
@@ -554,6 +590,13 @@ def run_assert(
         expect=that,
         meta=meta,
     )
+    if verification.get("status") != "confirmed":
+        result = failure(
+            "ASSERT_CONTRADICTED" if verification.get("status") == "contradicted" else "ASSERT_UNCHECKED",
+            str(verification.get("message") or ""),
+        )
+        result["verification"] = verification
+        return result
     return {
         "ok": True,
         "protocol": PROTOCOL_VERSION,
