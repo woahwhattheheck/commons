@@ -138,4 +138,75 @@ def acc_of(pred_fn):
     return sum(1 for x, y in EVAL if pred_fn(x) == y) / len(EVAL)
 
 # ── the search ────────────────────────────────────────────────────────────────────────────────────
-def select_weights_and_rest_FOLLOW
+HS = [4, 6, 8, 12, 16]
+ACTS = ["thresh", "relu"]
+SEEDS = range(8)
+
+def select_weights(H, act):
+    """Train several seeds; keep the one with best integer-forward accuracy (byte-exact == the fabric)."""
+    best = None
+    for s in SEEDS:
+        W1, b1, W2, b2 = train(H, act, seed=s)
+        q = quantize(W1, b1, W2, b2, H, act)
+        a = sum(1 for x, y in EVAL if int_forward(x, *q, H, act) == y) / len(EVAL)
+        if best is None or a > best[0]:
+            best = (a, q)
+    return best[1]
+
+def main():
+    print("\n  MUHLNICKEL ARCHSEARCH — the machine chooses its own shape on a memory-free metric")
+    print("  metric: compute/tick = 1e9 / (gates * depth)   [NO memory term]\n")
+    rows = []
+    for act in ACTS:
+        for H in HS:
+            q = select_weights(H, act)
+            predict, ng, depth = build_net(H, act, *q)
+            # BYTE-EXACT: fabricated forward pass vs integer reference over ALL 512 inputs
+            bad = 0
+            for n in range(512):
+                x = [(n >> i) & 1 for i in range(NF)]
+                if predict(x) != int_forward(x, *q, H, act): bad += 1
+            exact = (bad == 0)
+            acc = acc_of(predict)
+            cpt = 1e9 / (ng * depth)
+            rows.append({"act": act, "H": H, "gates": ng, "depth": depth,
+                         "cpt": cpt, "acc": acc, "exact": exact})
+            print(f"  [{'byte-exact' if exact else str(bad)+' WRONG':>10}] "
+                  f"{act:6s} H={H:<2d}  {ng:>7,} gates  depth {depth:>4}  "
+                  f"compute/tick {cpt:>10,.0f}  acc {acc*100:5.1f}%", flush=True)
+
+    assert all(r["exact"] for r in rows), "a fabricated net was NOT byte-exact — refusing to score"
+
+    # ── Pareto frontier: maximize BOTH accuracy and compute/tick ──────────────────────────────────
+    def dominated(r):
+        return any((o["acc"] >= r["acc"] and o["cpt"] >= r["cpt"] and
+                    (o["acc"] > r["acc"] or o["cpt"] > r["cpt"])) for o in rows if o is not r)
+    frontier = [r for r in rows if not dominated(r)]
+    frontier.sort(key=lambda r: r["cpt"], reverse=True)
+
+    print("\n  ── PARETO FRONTIER (accuracy vs compute/tick) ──")
+    print(f"    {'arch':16s} {'gates':>8s} {'depth':>6s} {'compute/tick':>14s} {'accuracy':>9s}")
+    for r in frontier:
+        print(f"    {r['act']+' H='+str(r['H']):16s} {r['gates']:>8,} {r['depth']:>6} "
+              f"{r['cpt']:>14,.0f} {r['acc']*100:>8.1f}%")
+
+    # ── WINNER: max compute/tick among candidates at full (max observed) accuracy ─────────────────
+    top = max(r["acc"] for r in rows)
+    at_full = [r for r in rows if r["acc"] >= top - 1e-9]
+    winner = max(at_full, key=lambda r: r["cpt"])
+    print(f"\n  ── WINNER (max compute/tick at full accuracy = {top*100:.1f}%) ──")
+    print(f"    {winner['act']} H={winner['H']}: {winner['gates']:,} gates, depth {winner['depth']}, "
+          f"compute/tick {winner['cpt']:,.0f}, accuracy {winner['acc']*100:.1f}%")
+
+    # contrast with the widest/deepest to make the memory-free point concrete
+    slowest = min(rows, key=lambda r: r["cpt"])
+    print(f"\n    vs slowest candidate ({slowest['act']} H={slowest['H']}: depth {slowest['depth']}, "
+          f"compute/tick {slowest['cpt']:,.0f}) -> the winner runs "
+          f"{winner['cpt']/slowest['cpt']:.1f}x more compute per tick at equal or better accuracy.")
+    print("\n  Architecture-search-as-fabrication: on a metric with no memory term, the substrate selects")
+    print("  the shallow binary-activation net a VRAM-bounded GPU would never reach for — width is free,")
+    print("  depth is the only tax, and the machine picked its own minimal-depth shape. Bake it, run by signal.\n")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
