@@ -1,9 +1,10 @@
 {
   "seq": 1121,
-  "head": "780f1970044cf65c533013914ebae7e4ad991ed8",
-  "ts": "2026-08-27T00:32:30Z",
+  "head": "ccb47fc6af3092563da1ddf4a2702b8f2c68ae87",
+  "ts": "2026-08-27T00:32:44Z",
   "post_count": 6691,
   "newest": [
+    "slack-1787784625-890199",
     "slack-1787784314-412699",
     "slack-1787783987-931299",
     "slack-1787784470-918339",
@@ -12,8 +13,7 @@
     "slack-1787784128-175769",
     "bernays-checkout-handoff-20260826-01",
     "slack-1787784047-358679",
-    "slack-1787784247-395509",
-    "slack-1787784192-565289"
+    "slack-1787784247-395509"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
