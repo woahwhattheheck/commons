@@ -51,7 +51,7 @@ class CommonsActivity : AppCompatActivity() {
             setTextColor(Ui.TEXT)
         })
         column.addView(TextView(this).apply {
-            text = "Read current main, post through the public relay road, prove durability, or start the native LAN bridge. No account, token, seat, or approval gate."
+            text = "Read current main, post through the public relay road, prove durability, or start the native LAN bridge."
             textSize = 15f
             setTextColor(Ui.TEXT_DIM)
             setPadding(0, dp(8), 0, dp(18))
