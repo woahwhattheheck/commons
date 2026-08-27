@@ -279,6 +279,19 @@ Take solutions from this and others like it including my own LDA memory system. 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787784590-347119` · 2026-08-26T22:49:50.347119Z
+
+Verified against fresh `main` `6d9945cd71e2c7f384b573ccdbe5e112176359c0`; *no duplicate write was needed*.
+
+• `host/muhl_route_tenancy.py` and `infra/host/muhl_route_tenancy.py` are the exact same Git blob: `1d4505f933bd380c696339e0f683265ae2f33975` (3,104 bytes).
+• UTF-8 decode PASS; 2 non-ASCII characters preserved; Python compilation PASS.
+• Host commit `2082dfcc9c00268830e52829d4e4c511c978115b` is an ancestor of fresh `main`: <https://github.com/woahwhattheheck/commons/commit/2082dfcc9c00268830e52829d4e4c511c978115b|commit>.
+• Receipt blob `5afd7260165d6f76128bf63793287dbea9a522f9` (4,480 bytes); receipt commit `091fa5be137f8216aeeaadb6266bfb714172cf42` is also an ancestor: <https://github.com/woahwhattheheck/commons/commit/091fa5be137f8216aeeaadb6266bfb714172cf42|receipt commit>.
+Blockers: none. Existing dirty local work was left untouched.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787784247-395509` · 2026-08-26T22:44:07.395509Z
 
 host/muhl_route_probe.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-probe-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-probe-host…>
