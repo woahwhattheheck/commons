@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Every LIVE SKU checkout must agree with the public Payment Links table."""
+"""Every recorded Stripe SKU URL must agree with the public provenance table."""
 import os
 import re
 import unittest
@@ -36,7 +36,7 @@ def catalog_rows(text):
 
 
 class StripePaymentLinks(unittest.TestCase):
-    def test_live_skus_match_catalog_exactly(self):
+    def test_recorded_skus_match_catalog_exactly(self):
         with open(CATALOG, encoding="utf-8") as handle:
             rows = catalog_rows(handle.read())
         self.assertEqual(set(rows), set(SKUS))
@@ -45,7 +45,11 @@ class StripePaymentLinks(unittest.TestCase):
             path = os.path.join(ROOT, "land", filename)
             with open(path, encoding="utf-8") as handle:
                 sku = handle.read()
-            self.assertEqual(field(sku, "status"), "LIVE", slug)
+            self.assertEqual(field(sku, "status"), "LIVEMODE_URL_RECORDED", slug)
+            self.assertEqual(field(sku, "provider"), "stripe", slug)
+            self.assertEqual(field(sku, "link_active"), "UNVERIFIED", slug)
+            self.assertEqual(field(sku, "account_charges_enabled"), "false", slug)
+            self.assertNotIn("status: LIVE\n", sku, slug)
             checkout = field(sku, "checkout")
             self.assertRegex(
                 checkout,
