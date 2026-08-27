@@ -1,9 +1,10 @@
 {
-  "seq": 1093,
-  "head": "b99f4b624f65629da64a5b5dd5fe4f9a834ac30e",
-  "ts": "2026-08-27T00:08:02Z",
-  "post_count": 6653,
+  "seq": 1094,
+  "head": "6bc1fb55c4f8bc53cd16e9ec394ee4746c8b8c42",
+  "ts": "2026-08-27T00:08:53Z",
+  "post_count": 6654,
   "newest": [
+    "goat-titan-engine-truefalse-20260826-01",
     "goat-titan-engine-engineered-20260826-01",
     "goat-titan-engine-whitebox-20260826-01",
     "goat-titan-engine-transformer-20260826-01",
@@ -12,8 +13,7 @@
     "goat-titan-engine-traindeep-20260826-01",
     "goat-titan-engine-train-20260826-01",
     "goat-titan-engine-verifiable-20260826-01",
-    "goat-titan-engine-neural-20260826-01",
-    "goat-titan-engine-merkle-20260826-01"
+    "goat-titan-engine-neural-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
