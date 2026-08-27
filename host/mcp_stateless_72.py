@@ -325,7 +325,9 @@ def validate(root: Path, pack, schema) -> dict:
         _require(observed == declared, "%s.signals do not match observations" % at)
         _require(prospect["evidence_state"] == "VERIFIED_STATIC_SIGNAL", "%s.evidence_state drifted" % at)
         _require(prospect["owner"] == "COMMONS_ANY_PEER", "%s.owner must remain nonexclusive" % at)
-        _require(_nonempty_text(prospect["analysis"], at + ".analysis").startswith("ANALYSIS: "), "%s.analysis must be labeled" % at)
+        analysis = _nonempty_text(prospect["analysis"], at + ".analysis")
+        _require(analysis.startswith("ANALYSIS: "), "%s.analysis must be labeled" % at)
+        _require(bool(analysis[len("ANALYSIS: ") :].strip()), "%s.analysis must contain non-whitespace analysis" % at)
         _require(isinstance(prospect["nonclaims"], list) and prospect["nonclaims"] == ["No defect, buyer, demand, contact permission, readiness, acceptance, or revenue is inferred."], "%s.nonclaims drifted" % at)
 
     all_ids = [item["id"] for item in sources + prospects]

@@ -220,6 +220,17 @@ class MCPStateless72Tests(unittest.TestCase):
         broken["prospects"][0]["signals"]["legacy_initialize"] = False
         self.assert_invalid(broken, "do not match")
 
+    def test_blank_labeled_analysis_rejects_in_schema_and_runtime(self):
+        from test_outcome_commerce import MiniSchemaValidator, SchemaError
+
+        broken = copy.deepcopy(self.pack)
+        broken["prospects"][0]["analysis"] = "ANALYSIS: "
+        with self.assertRaisesRegex(SchemaError, "does not match"):
+            MiniSchemaValidator(ROOT / "revenue/mcp_stateless_72").validate_file(
+                broken, "prospects.schema.json"
+            )
+        self.assert_invalid(broken, "non-whitespace analysis")
+
     def test_out_of_range_line_rejects(self):
         broken = copy.deepcopy(self.pack)
         broken["prospects"][0]["observations"][0]["line"] = 999999
