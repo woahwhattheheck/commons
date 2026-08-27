@@ -282,23 +282,31 @@ class ToolLoop:
         calls: ToolCallStore,
         *,
         max_steps: int = 16,
+        max_protocol_retries: int = 4,
     ) -> None:
         self.upstream = upstream
         self.catalog = catalog
         self.calls = calls
         self.max_steps = max_steps
+        self.max_protocol_retries = max_protocol_retries
 
     def run(self, request_id: str, peer: str, message: str) -> str:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
         tool_calls = 0
+        protocol_retries = 0
         while True:
             reply = self.upstream.turn(peer, prompt)
             call, had_marker = _parse_call(reply)
             if call is None and not had_marker:
                 return reply
             if call is None:
+                protocol_retries += 1
+                if protocol_retries > self.max_protocol_retries:
+                    raise GatewayError(
+                        f"peer exceeded {self.max_protocol_retries} malformed tool-envelope retries"
+                    )
                 prompt = (
                     "That tool envelope was malformed. Emit exactly one valid JSON object between "
                     f"{CALL_OPEN} and {CALL_CLOSE}, or reply normally without either marker."
@@ -475,18 +483,19 @@ class ToolGateway(ThreadingHTTPServer):
                 work.task_done()
 
     def submit(self, peer: str, message: str) -> QueuedTurn:
-        request_id = uuid.uuid4().hex
-        raw = message.encode("utf-8")
-        self.events.append(
-            request_id=request_id,
-            peer=peer,
-            status="queued",
-            message_bytes=len(raw),
-            message_sha256=hashlib.sha256(raw).hexdigest(),
-        )
-        item = QueuedTurn(request_id, peer, message)
-        self._queue_for(peer).put(item)
-        return item
+        with self._peer_state_lock:
+            request_id = uuid.uuid4().hex
+            raw = message.encode("utf-8")
+            self.events.append(
+                request_id=request_id,
+                peer=peer,
+                status="queued",
+                message_bytes=len(raw),
+                message_sha256=hashlib.sha256(raw).hexdigest(),
+            )
+            item = QueuedTurn(request_id, peer, message)
+            self._queue_for(peer).put(item)
+            return item
 
     def execute(self, request_id: str, peer: str, message: str) -> dict[str, Any]:
         started = time.monotonic()
@@ -636,6 +645,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--call-db", type=Path, default=DEFAULT_CALL_DB)
     parser.add_argument("--cache-ttl", type=float, default=300.0)
     parser.add_argument("--max-tool-steps", type=int, default=16)
+    parser.add_argument("--max-protocol-retries", type=int, default=4)
     return parser
 
 
@@ -645,7 +655,13 @@ def main(argv: list[str] | None = None) -> int:
     catalog = McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl)
     calls = ToolCallStore(args.call_db)
     events = EventStore(args.event_log)
-    loop = ToolLoop(upstream, catalog, calls, max_steps=args.max_tool_steps)
+    loop = ToolLoop(
+        upstream,
+        catalog,
+        calls,
+        max_steps=args.max_tool_steps,
+        max_protocol_retries=args.max_protocol_retries,
+    )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
     print(
         json.dumps(

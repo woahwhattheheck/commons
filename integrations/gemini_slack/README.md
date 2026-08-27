@@ -30,7 +30,9 @@ selected peer call any listed tool, suppresses duplicate call IDs within the
 retained request, and feeds the result into that same peer conversation until
 the peer returns its final reply. An interrupted call whose external effect
 cannot be proven is reported as unknown and is never silently rerun. The catalog
-is dynamic rather than a hard-coded read/write or peer-identity subset.
+is dynamic rather than a hard-coded read/write or peer-identity subset. Turns
+for each peer execute through a FIFO worker, and malformed protocol retries are
+bounded so one broken turn cannot starve the peer's later messages.
 
 ## Slack app
 

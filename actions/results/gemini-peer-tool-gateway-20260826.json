@@ -1,19 +1,19 @@
 {
   "artifact": "history-preserving Gemini Commons MCP tool gateway",
-  "checked_at_utc": "2026-08-27T01:39:54.3722194Z",
+  "checked_at_utc": "2026-08-27T02:03:34.0593571Z",
   "sources": [
     {
       "path": "integrations/gemini_slack/peer_tool_gateway.py",
-      "sha256": "79B3495FAC467732DD761766363AF66789C5BF648E9221AAC66FFF7E8CD3EA2B"
+      "sha256": "8503E0C6E515304D02393A44E103DB99A97D66A93FE2624F16EEB81BA8DFECB3"
     },
     {
       "path": "test_gemini_peer_tool_gateway.py",
-      "sha256": "288F5574E5C5D4E8E8FCAB1C5F358A85B73543BC8A703A367173323673EEC793"
+      "sha256": "EDEF431897F84B5345F981008321428A4961868830F5F77DCCEBDA3AF81D9E9E"
     }
   ],
   "tests": {
     "command": "python -m unittest -v test_gemini_peer_tool_gateway.py test_gemini_slack_bridge.py",
-    "result": "16 passed",
+    "result": "17 passed",
     "compile_command": "python -m py_compile integrations/gemini_slack/peer_tool_gateway.py integrations/gemini_slack/bridge.py",
     "compile_result": "passed",
     "covered": [
@@ -23,6 +23,7 @@
       "per-request duplicate suppression without raw argument storage",
       "honest unknown-effect reporting across the remote-side-effect crash window",
       "same-peer FIFO turn ordering under concurrent asynchronous requests",
+      "bounded permanently malformed replies without starving the next queued turn",
       "strict 16-call bound that refuses a seventeenth call",
       "byte-safe asynchronous reply retention",
       "last-reply and event compatibility",

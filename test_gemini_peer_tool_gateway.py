@@ -157,7 +157,7 @@ class Fixture:
 
 class ToolGatewayTests(unittest.TestCase):
     @staticmethod
-    def wait_for(fixture, request_id):
+    def wait_terminal(fixture, request_id):
         event = None
         for _ in range(100):
             with urllib.request.urlopen(
@@ -165,12 +165,17 @@ class ToolGatewayTests(unittest.TestCase):
                 timeout=2,
             ) as response:
                 event = json.loads(response.read())["event"]
-            if event["status"] == "completed":
+            if event["status"] in {"completed", "error"}:
                 return event
-            if event["status"] == "error":
-                raise AssertionError(event)
             time.sleep(0.02)
         raise AssertionError(f"request {request_id} did not complete: {event}")
+
+    @classmethod
+    def wait_for(cls, fixture, request_id):
+        event = cls.wait_terminal(fixture, request_id)
+        if event["status"] != "completed":
+            raise AssertionError(event)
+        return event
 
     def test_plain_reply_passes_through_and_catalog_is_dynamic(self):
         with Fixture() as fixture:
@@ -264,21 +269,81 @@ class ToolGatewayTests(unittest.TestCase):
             self.assertEqual(response["peer"], "AURORA")
             self.assertEqual(response["reply"], "new peer works")
 
-    def test_same_peer_async_turns_execute_fifo(self):
+    def test_concurrent_same_peer_submissions_execute_fifo(self):
         with Fixture() as fixture:
             UpstreamHandler.replies = ["first reply", "second reply"]
-            first = fixture.post(
-                {"peer": "AURORA", "message": "first message", "async": True}
+            work = fixture.gateway._queue_for("AURORA")
+            original_put = work.put
+            first_put_entered = threading.Event()
+            release_first_put = threading.Event()
+            put_count = []
+            count_lock = threading.Lock()
+
+            def controlled_put(item, *args, **kwargs):
+                with count_lock:
+                    index = len(put_count)
+                    put_count.append(item.request_id)
+                if index == 0:
+                    first_put_entered.set()
+                    release_first_put.wait(timeout=2)
+                return original_put(item, *args, **kwargs)
+
+            work.put = controlled_put
+            accepted = {}
+
+            def submit(label, message):
+                accepted[label] = fixture.post(
+                    {"peer": "AURORA", "message": message, "async": True}
+                )
+
+            first_thread = threading.Thread(
+                target=submit, args=("first", "first message")
             )
-            second = fixture.post(
-                {"peer": "AURORA", "message": "second message", "async": True}
+            second_thread = threading.Thread(
+                target=submit, args=("second", "second message")
             )
+            try:
+                first_thread.start()
+                self.assertTrue(first_put_entered.wait(timeout=2))
+                second_thread.start()
+                time.sleep(0.05)
+                self.assertTrue(second_thread.is_alive())
+            finally:
+                release_first_put.set()
+                first_thread.join(timeout=3)
+                second_thread.join(timeout=3)
+                work.put = original_put
+
+            first = accepted["first"]
+            second = accepted["second"]
             first_event = self.wait_for(fixture, first["request_id"])
             second_event = self.wait_for(fixture, second["request_id"])
             self.assertEqual(first_event["reply"], "first reply")
             self.assertEqual(second_event["reply"], "second reply")
             self.assertIn("MESSAGE:\nfirst message", UpstreamHandler.prompts[0])
             self.assertIn("MESSAGE:\nsecond message", UpstreamHandler.prompts[1])
+
+    def test_permanently_malformed_turn_is_bounded_and_next_turn_runs(self):
+        with Fixture() as fixture:
+            fixture.loop.max_protocol_retries = 2
+            UpstreamHandler.replies = [
+                "<commons_tool_call>{bad}</commons_tool_call>",
+                "<commons_tool_call>{still bad}</commons_tool_call>",
+                "<commons_tool_call>{bad forever}</commons_tool_call>",
+                "later turn completed",
+            ]
+            stuck = fixture.post(
+                {"peer": "AURORA", "message": "malformed forever", "async": True}
+            )
+            later = fixture.post(
+                {"peer": "AURORA", "message": "do not starve", "async": True}
+            )
+            stuck_event = self.wait_terminal(fixture, stuck["request_id"])
+            later_event = self.wait_for(fixture, later["request_id"])
+            self.assertEqual(stuck_event["status"], "error")
+            self.assertIn("exceeded 2 malformed", stuck_event["message"])
+            self.assertEqual(later_event["reply"], "later turn completed")
+            self.assertIn("MESSAGE:\ndo not starve", UpstreamHandler.prompts[-1])
 
     def test_started_call_reports_unknown_effect_without_rerunning(self):
         with Fixture() as fixture:
