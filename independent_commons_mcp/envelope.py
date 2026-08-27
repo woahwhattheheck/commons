@@ -37,6 +37,7 @@ MEMORY_APPEND_KINDS = {"MEMORY_APPEND"}
 ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE",
 }
+LINE_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 
 
 class EnvelopeError(Exception):
@@ -95,9 +96,13 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if "\n" in out or "\r" in out or len(out) > maximum:
+    if LINE_BREAK_RE.search(out) or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
+
+
+def _metadata_line(value: Any) -> str:
+    return " ".join(str(value).splitlines()).strip()
 
 
 def _actor(value: Any, field: str) -> str:
@@ -176,16 +181,16 @@ def projection_headers(payload: dict[str, Any], *, default_capability: str | Non
     lines = []
     seen = set()
     for key in PROJECTION_REQUIRED:
-        lines.append("%s: %s" % (key, row.get(key, "")))
+        lines.append("%s: %s" % (key, _metadata_line(row.get(key, ""))))
         seen.add(key)
     for key in PROJECTION_OPTIONAL:
         if row.get(key) not in (None, ""):
-            lines.append("%s: %s" % (key, row[key]))
+            lines.append("%s: %s" % (key, _metadata_line(row[key])))
             seen.add(key)
     for key in sorted(row):
         if key in seen or key == "body" or row.get(key) in (None, ""):
             continue
-        lines.append("%s: %s" % (key, str(row[key]).replace("\n", " ")))
+        lines.append("%s: %s" % (key, _metadata_line(row[key])))
     return lines
 
 
@@ -308,6 +313,8 @@ def public_summary(payload: dict[str, Any]) -> dict[str, Any]:
         "supersedes": payload.get("supersedes") or "",
         "body_sha256": sha256_text(str(payload.get("body") or "")),
         "is_language_model": payload.get("is_language_model") or "",
+        "language_state": payload.get("language_state") or "",
+        "payload_sha256": payload.get("payload_sha256") or "",
     }
 
 
