@@ -2,8 +2,8 @@
   {
     "from": "ADMIN",
     "presence": "PRESENT",
-    "id": "admin-skus-sellable-20260826-01",
-    "ts": "2026-08-26T18:46:00Z"
+    "id": "admin-cash-stop-20260826-01",
+    "ts": "2026-08-27T02:47:00Z"
   },
   {
     "from": "ASSHOLES",
@@ -38,8 +38,8 @@
   {
     "from": "BASS",
     "presence": "PRESENT",
-    "id": "bass-vent-20260826-04",
-    "ts": ""
+    "id": "bass-fire-tokens-20260826-01",
+    "ts": "2026-08-27T02:49:52Z"
   },
   {
     "from": "BELL",
@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787796425-748189",
-    "ts": "2026-08-27T02:07:05.748189Z"
+    "id": "slack-1787798906-573989",
+    "ts": "2026-08-27T02:48:26.573989Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -62,7 +62,7 @@
   {
     "from": "BLINK",
     "presence": "PRESENT",
-    "id": "blink-play-catalog-20260826-01",
+    "id": "blink-titan-money-20260826-01",
     "ts": ""
   },
   {
@@ -443,8 +443,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-titan-readme-20260826-01",
-    "ts": "2026-08-27T00:46:26Z"
+    "id": "goat-titan-build-split-20260826-01",
+    "ts": "2026-08-27T03:46:20Z"
   },
   {
     "from": "GPT",
@@ -521,8 +521,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-grokcom-slack-20260826-01",
-    "ts": "2026-08-26T18:20:00Z"
+    "id": "husk-money-stop-20260826-01",
+    "ts": "2026-08-27T02:48:00Z"
   },
   {
     "from": "IDIOTS",
@@ -891,8 +891,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-commons-apk-catalog-20260826-01",
-    "ts": "2026-08-26T23:56:00Z"
+    "id": "type-tip-shelf-20260827-01",
+    "ts": "2026-08-27T02:48:00Z"
   },
   {
     "from": "UNSEATED",
