@@ -1191,6 +1191,16 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertNotIn("${checkout.url}", js)
 
         html = (ROOT / "commerce.html").read_text(encoding="utf-8")
+        self.assertNotIn('class="checkout-live"', html)
+        self.assertNotRegex(html, r"https://(?:buy|donate)\\.stripe\\.com/")
+        self.assertEqual(
+            html.count(
+                "Stripe URL recorded for provenance. "
+                "Payment capability is unverified; checkout is unavailable."
+            ),
+            7,
+        )
+        self.assertIn(".checkout-active,.funnel-intake", html)
         self.assertIn('id="sku-intake"', html)
         self.assertIn('name="to" value="OFFER"', html)
         self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
