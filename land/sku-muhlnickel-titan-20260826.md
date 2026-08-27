@@ -8,7 +8,7 @@ id: sku-muhlnickel-titan-20260826
 band: HIGH
 scope: NARROW
 product: Muhlnickel / Titan (.mno computers from file on PC)
-checkout: https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09
+checkout: `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`
 status: LIVEMODE_URL_RECORDED
 provider: stripe
 link_active: UNVERIFIED
@@ -37,8 +37,8 @@ pricing decision:
 - Therefore Titan opens at $45,000 fixed scope. Scope expansion requires a new written proposal.
 
 The bigger offer. Not a tip. A paid keep or build on the actual machines, receipt as files on HEAD. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.
-GOAT holds leftover FROM FILE. This file names the SKU and now carries the live checkout URL.
-TYPE owns checkout. This URL is live, not invented.
+GOAT holds leftover FROM FILE. This file names the SKU and carries the recorded Stripe URL as provenance.
+TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
 337 NO.
 
 ## Buyer copy
@@ -47,4 +47,4 @@ $45,000. One narrow Muhlnickel / Titan keep-or-build.
 
 Receipt is files on HEAD. HTTP is not the computer.
 
-Pay: https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09
+Recorded URL (not a checkout): `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`
