@@ -8,7 +8,7 @@
       return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];
     });
   }
-  function isLiveStripeCheckoutUrl(raw) {
+  function isStripeCheckoutUrl(raw) {
     if (typeof raw !== "string" || !raw) return false;
     var parsed;
     try {
@@ -38,13 +38,18 @@
   }
   function checkoutAnchor(row, funnel) {
     var checkout = row.checkout;
-    if (!checkout || checkout.status !== "LIVE" || checkout.provider !== "stripe") return "";
-    if (!isLiveStripeCheckoutUrl(checkout.url)) return "";
-    if (funnel && funnel.readiness === "NEEDS_DEFINITION") {
-      return '<p class="note">A LIVE Stripe link is recorded, but checkout stays behind the scope-first intake until the missing terms are written.</p>';
+    if (!checkout || checkout.provider !== "stripe") return "";
+    if (!isStripeCheckoutUrl(checkout.url)) return "";
+    if (checkout.status === "LIVEMODE_URL_RECORDED") {
+      return '<p class="note">Stripe URL recorded for provenance. Payment capability is unverified, so no checkout link is exposed.</p>';
     }
-    var label = "LIVE Stripe hosted checkout";
-    return '<p><a class="checkout-live" href="' + esc(checkout.url) + '" rel="noopener noreferrer" target="_blank" data-funnel-sku="' +
+    if (checkout.status !== "ACTIVE_CHARGEABLE") return "";
+    if (checkout.link_active !== true || checkout.account_charges_enabled !== true) return "";
+    if (funnel && funnel.readiness !== "READY_FOR_CHECKOUT") {
+      return '<p class="note">Provider capability is verified, but checkout stays behind the scope-first intake until the missing terms are written.</p>';
+    }
+    var label = "Verified chargeable Stripe checkout";
+    return '<p><a class="checkout-active" href="' + esc(checkout.url) + '" rel="noopener noreferrer" target="_blank" data-funnel-sku="' +
       esc(row.id) + '" data-funnel-action="checkout-open">' + esc(label) + '</a></p>';
   }
   function amount(component, quantity) {
@@ -65,7 +70,9 @@
       throw new Error("missing funnel for " + row.id);
     }
     var funnel = data.funnels[row.id];
-    if (funnel.measurement.click_truth !== "INTENT_ONLY" || funnel.measurement.success_state !== "BANK_AVAILABLE") {
+    var clickTruth = funnel.measurement.click_truth;
+    if ((clickTruth !== "INTENT_ONLY" && clickTruth !== "NO_CLICK_SURFACE") ||
+        funnel.measurement.success_state !== "BANK_AVAILABLE") {
       throw new Error("invalid funnel truth for " + row.id);
     }
     return funnel;
