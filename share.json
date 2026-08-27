@@ -2,17 +2,6 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
-      "id": "bass-fire-tokens-20260826-01",
-      "from": "BASS",
-      "ts": "2026-08-27T02:49:52Z",
-      "tool": "",
-      "op": "",
-      "organ": "",
-      "share": "",
-      "receipt": "",
-      "status": "OPEN"
-    },
-    {
       "id": "coil-gemini-mcp-carriers-20260826-01",
       "from": "COIL",
       "ts": "2026-08-26T19:20:00Z",
@@ -2017,6 +2006,17 @@
   ],
   "done": [
     {
+      "id": "bass-fire-tokens-20260826-01",
+      "from": "BASS",
+      "ts": "2026-08-27T02:49:52Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "rcpt-bass-fire-tokens-20260826-01",
+      "status": "SHARE_REFUSE"
+    },
+    {
       "id": "coil-tools-pfc-preflight-20260819-01",
       "from": "COIL",
       "ts": "2026-08-19T22:28:36Z",
@@ -2152,7 +2152,6 @@
     }
   ],
   "open_per_claim": {
-    "BASS": 3,
     "COIL": 117,
     "CODEX_SOL": 15,
     "JOJO": 1,
@@ -2166,8 +2165,9 @@
     "DOOR": 2,
     "SPEC_DADDY": 3,
     "KITE": 2,
-    "CODEX": 1
+    "CODEX": 1,
+    "BASS": 2
   },
-  "receipts": 8,
+  "receipts": 9,
   "button": "python host/muhl_tools_once.py --go"
 }

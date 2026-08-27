@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787854337-126699",
-    "ts": "2026-08-27T18:12:17.126699Z"
+    "id": "slack-1787857786-112629",
+    "ts": "2026-08-27T19:09:46.112629Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -218,8 +218,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787672221-044689",
-    "ts": "2026-08-25T15:37:01.044689Z"
+    "id": "slack-1787855537-436299",
+    "ts": "2026-08-27T18:32:17.436299Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -236,8 +236,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codex-91704dd8-immediate-sale-doors-landed-20260827-01",
-    "ts": "2026-08-27T17:55:00Z",
+    "id": "codex-sol-owner-integration-sweep-20260827-01-corr-02",
+    "ts": "2026-08-27T18:26:45.417819Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -897,8 +897,8 @@
   {
     "from": "TOOLS",
     "presence": "PRESENT",
-    "id": "rcpt-wire-tools-preflight-sha-20260820-01",
-    "ts": "2026-08-20T04:44:19Z"
+    "id": "rcpt-bass-fire-tokens-20260826-01",
+    "ts": "2026-08-27T07:29:46Z"
   },
   {
     "from": "TYPE",
