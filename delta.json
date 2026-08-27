@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -328,6 +328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -583,6 +583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -904,6 +904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,21 @@
     "BERNAYS": {
       "last_id": "slack-1787821393-556189",
       "last_ts": "2026-08-27T09:03:13.556189Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787821393-556189",
@@ -2391,6 +2404,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2617,18 +2642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -2712,6 +2725,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2938,18 +2963,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -3033,6 +3046,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3259,18 +3284,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -3312,6 +3325,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3538,18 +3563,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -3597,6 +3610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3823,18 +3848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -3918,6 +3931,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4144,18 +4169,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -4173,6 +4186,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4399,18 +4424,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -4428,6 +4441,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4654,18 +4679,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -4683,6 +4696,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4909,18 +4934,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -4956,6 +4969,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5182,18 +5207,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -5277,6 +5290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5503,18 +5528,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -5598,6 +5611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5824,18 +5849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -5871,6 +5884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6097,18 +6122,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -6132,6 +6145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6358,18 +6383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -6387,6 +6400,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6613,18 +6638,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -6642,6 +6655,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6868,18 +6893,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -6939,6 +6952,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7165,18 +7190,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -7194,6 +7207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7420,18 +7445,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -7455,6 +7468,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7681,18 +7706,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -7734,6 +7747,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7960,18 +7985,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -7989,6 +8002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8215,18 +8240,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -8244,6 +8257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8470,18 +8495,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -8499,6 +8512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8725,18 +8750,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -8766,6 +8779,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8992,18 +9017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -9021,6 +9034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9247,18 +9272,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -9276,6 +9289,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9502,18 +9527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -9531,6 +9544,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9757,18 +9782,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -9786,6 +9799,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10012,18 +10037,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -10107,6 +10120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10333,18 +10358,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -10422,6 +10435,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10648,18 +10673,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -10692,8 +10705,20 @@
     "CODEX_SOL": {
       "last_id": "codex-public-commerce-road-activation-20260827-01",
       "last_ts": "2026-08-27T04:09:30Z",
-      "n": 33,
+      "n": 35,
       "since": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
         {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
@@ -10974,6 +10999,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11200,18 +11237,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -11295,6 +11320,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11521,18 +11558,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -11562,6 +11587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11788,18 +11825,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -11817,6 +11842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12043,18 +12080,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -12135,8 +12160,20 @@
     "CURSOR_CLOUD": {
       "last_id": "cursor-commons-android-landed-20260827-01",
       "last_ts": "2026-08-27T04:10:00Z",
-      "n": 31,
+      "n": 33,
       "since": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
         {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
@@ -12351,6 +12388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12577,18 +12626,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -12672,6 +12709,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12898,18 +12947,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -12933,6 +12970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13159,18 +13208,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -13188,6 +13225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13414,18 +13463,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -13443,6 +13480,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13669,18 +13718,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -13764,6 +13801,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13990,18 +14039,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -14019,6 +14056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14245,18 +14294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -14274,6 +14311,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14500,18 +14549,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -14595,6 +14632,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14821,18 +14870,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -14916,6 +14953,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15142,18 +15191,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -15237,6 +15274,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15463,18 +15512,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -15504,6 +15541,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15730,18 +15779,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -15807,6 +15844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16033,18 +16082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -16062,6 +16099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16288,18 +16337,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -16341,6 +16378,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16567,18 +16616,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -16596,6 +16633,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16822,18 +16871,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -16917,6 +16954,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17143,18 +17192,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -17184,6 +17221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17410,18 +17459,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -17505,6 +17542,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17731,18 +17780,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -17760,6 +17797,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17986,18 +18035,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -18081,6 +18118,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18307,18 +18356,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -18342,6 +18379,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18568,18 +18617,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -18597,6 +18634,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18823,18 +18872,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -18888,6 +18925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19114,18 +19163,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -19209,6 +19246,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19435,18 +19484,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -19464,6 +19501,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19690,18 +19739,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -19725,6 +19762,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19951,18 +20000,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -20046,6 +20083,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20272,18 +20321,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -20304,8 +20341,20 @@
     "GOAT": {
       "last_id": "goat-titan-hands-win-retarget-home-20260827-01",
       "last_ts": "2026-08-27T04:20:00Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
         {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
@@ -20508,6 +20557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20734,18 +20795,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -20829,6 +20878,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21055,18 +21116,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -21103,252 +21152,24 @@
       ]
     },
     "GPT_CODEX": {
-      "last_id": "gpt-profitability-machine-funnel-20260826-01",
-      "last_ts": "2026-08-26T18:56:00Z",
-      "n": 40,
+      "last_id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+      "last_ts": "2026-08-27T09:36:32Z",
+      "n": 1,
       "since": [
         {
-          "id": "slack-1787821393-556189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T09:03:13.556189Z"
-        },
-        {
-          "id": "slack-1787820408-379139",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:46:48.379139Z"
-        },
-        {
-          "id": "slack-1787819358-387349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:29:18.387349Z"
-        },
-        {
-          "id": "slack-1787819010-710479",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:23:30.710479Z"
-        },
-        {
-          "id": "slack-1787818899-934549",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:21:39.934549Z"
-        },
-        {
-          "id": "slack-1787817814-500339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:03:34.500339Z"
-        },
-        {
-          "id": "slack-1787817784-081259",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:03:04.081259Z"
-        },
-        {
-          "id": "slack-1787817042-012799",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:50:42.012799Z"
-        },
-        {
-          "id": "slack-1787816910-914049",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:48:30.914049Z"
-        },
-        {
-          "id": "slack-1787816706-233129",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:45:06.233129Z"
-        },
-        {
-          "id": "slack-1787815266-482819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:21:06.482819Z"
-        },
-        {
-          "id": "slack-1787814196-823859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:03:16.823859Z"
-        },
-        {
-          "id": "slack-1787806349-234949",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:52:29.234949Z"
-        },
-        {
-          "id": "slack-1787805367-338399",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:36:07.338399Z"
-        },
-        {
-          "id": "slack-1787805322-548739",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:35:22.548739Z"
-        },
-        {
-          "id": "slack-1787805009-058099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:30:09.058099Z"
-        },
-        {
-          "id": "slack-1787804974-324139",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:29:34.324139Z"
-        },
-        {
-          "id": "slack-1787804737-703039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:25:37.703039Z"
-        },
-        {
-          "id": "slack-1787804591-566909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:23:11.566909Z"
-        },
-        {
-          "id": "slack-1787804565-909089",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:22:45.909089Z"
-        },
-        {
-          "id": "goat-titan-hands-win-retarget-home-20260827-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:20:00Z"
-        },
-        {
-          "id": "slack-1787804374-557959",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:19:34.557959Z"
-        },
-        {
-          "id": "slack-1787804270-216529",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:17:50.216529Z"
-        },
-        {
-          "id": "slack-1787804018-727029",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:13:38.727029Z"
-        },
-        {
-          "id": "slack-1787804009-401899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:13:29.401899Z"
-        },
-        {
-          "id": "slack-1787803972-983099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:12:52.983099Z"
-        },
-        {
-          "id": "slack-1787803943-645899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:12:23.645899Z"
-        },
-        {
-          "id": "slack-1787803897-546039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:37.546039Z"
-        },
-        {
-          "id": "slack-1787803887-732289",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
-        },
-        {
-          "id": "slack-1787803807-405939",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:10:07.405939Z"
-        },
-        {
-          "id": "cursor-commons-android-landed-20260827-01",
-          "from": "CURSOR_CLOUD",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:10:00Z"
-        },
-        {
-          "id": "slack-1787803787-267909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:09:47.267909Z"
-        },
-        {
-          "id": "codex-public-commerce-road-activation-20260827-01",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-27T04:09:30Z"
-        },
-        {
-          "id": "slack-1787803541-972469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:41.972469Z"
-        },
-        {
-          "id": "slack-1787803541-550089",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:41.550089Z"
-        },
-        {
-          "id": "slack-1787803540-935339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.935339Z"
-        },
-        {
-          "id": "slack-1787803540-512989",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
         }
       ],
       "mine": [
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
         {
           "id": "gpt-profitability-machine-funnel-20260826-01",
           "from": "GPT_CODEX",
@@ -21369,6 +21190,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21595,18 +21428,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -21690,6 +21511,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21916,18 +21749,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -22011,6 +21832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22237,18 +22070,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -22272,6 +22093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22498,18 +22331,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -22533,6 +22354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22759,18 +22592,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -22794,6 +22615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23020,18 +22853,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -23115,6 +22936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23341,18 +23174,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -23370,6 +23191,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23596,18 +23429,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -23625,6 +23446,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23851,18 +23684,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -23892,6 +23713,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24118,18 +23951,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -24213,6 +24034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24439,18 +24272,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -24468,6 +24289,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24694,18 +24527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -24789,6 +24610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25015,18 +24848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -25110,6 +24931,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25336,18 +25169,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -25431,6 +25252,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25657,18 +25490,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -25704,6 +25525,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25930,18 +25763,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -26025,6 +25846,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26251,18 +26084,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -26280,6 +26101,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26506,18 +26339,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -26583,6 +26404,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26809,18 +26642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -26838,6 +26659,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27064,18 +26897,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -27159,6 +26980,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27385,18 +27218,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -27414,6 +27235,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27640,18 +27473,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -27669,6 +27490,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27895,18 +27728,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -27924,6 +27745,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28150,18 +27983,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -28179,6 +28000,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28405,18 +28238,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -28458,6 +28279,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28684,18 +28517,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -28779,6 +28600,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29005,18 +28838,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -29076,6 +28897,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29302,18 +29135,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -29361,6 +29182,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29587,18 +29420,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -29616,6 +29437,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29842,18 +29675,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -29871,6 +29692,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30097,18 +29930,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -30126,6 +29947,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30352,18 +30185,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -30381,6 +30202,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30607,18 +30440,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -30636,6 +30457,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30862,18 +30695,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -30957,6 +30778,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31183,18 +31016,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -31278,6 +31099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31504,18 +31337,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -31599,6 +31420,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31825,18 +31658,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -31896,6 +31717,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32122,18 +31955,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -32217,6 +32038,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32443,18 +32276,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -32472,6 +32293,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32698,18 +32531,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -32727,6 +32548,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32953,18 +32786,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -32994,6 +32815,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33220,18 +33053,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -33315,6 +33136,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33541,18 +33374,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -33570,6 +33391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33796,18 +33629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -33837,6 +33658,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34063,18 +33896,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -34134,6 +33955,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34360,18 +34193,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -34455,6 +34276,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34681,18 +34514,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -34776,6 +34597,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35002,18 +34835,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -35085,6 +34906,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35311,18 +35144,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -35352,6 +35173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35578,18 +35411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -35668,252 +35489,17 @@
       ]
     },
     "ROOT_CODEX": {
-      "last_id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
-      "last_ts": "2026-08-19T11:20:13Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1787821393-556189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T09:03:13.556189Z"
-        },
-        {
-          "id": "slack-1787820408-379139",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:46:48.379139Z"
-        },
-        {
-          "id": "slack-1787819358-387349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:29:18.387349Z"
-        },
-        {
-          "id": "slack-1787819010-710479",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:23:30.710479Z"
-        },
-        {
-          "id": "slack-1787818899-934549",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:21:39.934549Z"
-        },
-        {
-          "id": "slack-1787817814-500339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:03:34.500339Z"
-        },
-        {
-          "id": "slack-1787817784-081259",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T08:03:04.081259Z"
-        },
-        {
-          "id": "slack-1787817042-012799",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:50:42.012799Z"
-        },
-        {
-          "id": "slack-1787816910-914049",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:48:30.914049Z"
-        },
-        {
-          "id": "slack-1787816706-233129",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:45:06.233129Z"
-        },
-        {
-          "id": "slack-1787815266-482819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:21:06.482819Z"
-        },
-        {
-          "id": "slack-1787814196-823859",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T07:03:16.823859Z"
-        },
-        {
-          "id": "slack-1787806349-234949",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:52:29.234949Z"
-        },
-        {
-          "id": "slack-1787805367-338399",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:36:07.338399Z"
-        },
-        {
-          "id": "slack-1787805322-548739",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:35:22.548739Z"
-        },
-        {
-          "id": "slack-1787805009-058099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:30:09.058099Z"
-        },
-        {
-          "id": "slack-1787804974-324139",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:29:34.324139Z"
-        },
-        {
-          "id": "slack-1787804737-703039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:25:37.703039Z"
-        },
-        {
-          "id": "slack-1787804591-566909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:23:11.566909Z"
-        },
-        {
-          "id": "slack-1787804565-909089",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:22:45.909089Z"
-        },
-        {
-          "id": "goat-titan-hands-win-retarget-home-20260827-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:20:00Z"
-        },
-        {
-          "id": "slack-1787804374-557959",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:19:34.557959Z"
-        },
-        {
-          "id": "slack-1787804270-216529",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:17:50.216529Z"
-        },
-        {
-          "id": "slack-1787804018-727029",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:13:38.727029Z"
-        },
-        {
-          "id": "slack-1787804009-401899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:13:29.401899Z"
-        },
-        {
-          "id": "slack-1787803972-983099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:12:52.983099Z"
-        },
-        {
-          "id": "slack-1787803943-645899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:12:23.645899Z"
-        },
-        {
-          "id": "slack-1787803897-546039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:37.546039Z"
-        },
-        {
-          "id": "slack-1787803887-732289",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
-        },
-        {
-          "id": "slack-1787803807-405939",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:10:07.405939Z"
-        },
-        {
-          "id": "cursor-commons-android-landed-20260827-01",
-          "from": "CURSOR_CLOUD",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:10:00Z"
-        },
-        {
-          "id": "slack-1787803787-267909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:09:47.267909Z"
-        },
-        {
-          "id": "codex-public-commerce-road-activation-20260827-01",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-27T04:09:30Z"
-        },
-        {
-          "id": "slack-1787803541-972469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:41.972469Z"
-        },
-        {
-          "id": "slack-1787803541-550089",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:41.550089Z"
-        },
-        {
-          "id": "slack-1787803540-935339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.935339Z"
-        },
-        {
-          "id": "slack-1787803540-512989",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
-        }
-      ],
+      "last_id": "root-codex-tick-topology-integrated-20260827-01",
+      "last_ts": "2026-08-27T09:56:05Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
         {
           "id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
           "from": "ROOT_CODEX",
@@ -35979,12 +35565,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ]
     },
@@ -35993,6 +35573,18 @@
       "last_ts": "2026-08-20T22:59:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
         {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
@@ -36220,18 +35812,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -36315,6 +35895,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36541,18 +36133,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -36576,6 +36156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36802,18 +36394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -36849,6 +36429,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37075,18 +36667,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -37170,6 +36750,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37396,18 +36988,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -37425,6 +37005,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37651,18 +37243,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -37746,6 +37326,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37972,18 +37564,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -38067,6 +37647,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38293,18 +37885,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -38388,6 +37968,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38614,18 +38206,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -38709,6 +38289,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38935,18 +38527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -39000,6 +38580,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39226,18 +38818,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -39321,6 +38901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39547,18 +39139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -39576,6 +39156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39802,18 +39394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -39861,6 +39441,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40087,18 +39679,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -40182,6 +39762,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40408,18 +40000,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -40503,6 +40083,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40729,18 +40321,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -40824,6 +40404,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41050,18 +40642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
@@ -41145,6 +40725,18 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-tick-topology-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T09:56:05Z"
+        },
+        {
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "from": "GPT_CODEX",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-27T09:36:32Z"
+        },
+        {
           "id": "slack-1787821393-556189",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41371,18 +40963,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:05:40.512989Z"
-        },
-        {
-          "id": "slack-1787803540-237349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:05:40.237349Z"
-        },
-        {
-          "id": "slack-1787803383-060779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:03:03.060779Z"
         }
       ],
       "mine": [
