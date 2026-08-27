@@ -1,10 +1,11 @@
 {
   "seq": 1288,
-  "head": "71a7be05e6db1530acb7072328cd0fe495f56510",
-  "ts": "2026-08-27T17:56:24Z",
+  "head": "fe437c217e4df0a595f3ecc02532ed9eff54afb1",
+  "ts": "2026-08-27T18:03:20Z",
   "post_count": 7235,
   "newest": [
     "emissary-commons-android-integration-sweep-20260827-01",
+    "codex-91704dd8-immediate-sale-doors-landed-20260827-01",
     "slack-1787846702-695599",
     "slack-1787846966-984659",
     "slack-1787847196-941049",
@@ -12,8 +13,7 @@
     "slack-1787826129-542939",
     "slack-1787826198-530899",
     "slack-1787826729-358609",
-    "slack-1787827161-437759",
-    "slack-1787828450-933809"
+    "slack-1787827161-437759"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
