@@ -32,7 +32,7 @@
     if (!evidence || typeof evidence !== "object") return false;
     if (typeof evidence.reference !== "string" || !evidence.reference.trim()) return false;
     if (typeof evidence.observed_at !== "string" ||
-        !/(?:Z|[+-]\\d\\d:\\d\\d)$/.test(evidence.observed_at)) return false;
+        !/(?:Z|[+-]\d\d:\d\d)$/.test(evidence.observed_at)) return false;
     return !Number.isNaN(Date.parse(evidence.observed_at));
   }
   function termsSource(row) {
