@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       has_pending_device: ${{ steps.device_pending.outputs.has_pending }}
+      ingest_complete: ${{ steps.ingest_complete.outputs.complete }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -217,10 +218,51 @@ jobs:
         if: success()
         name: measure pending device actions after ingest
         run: python3 device_action_state.py preflight --github-output "$GITHUB_OUTPUT"
+      - name: mark successful ingest for reusable device work
+        id: ingest_complete
+        if: success()
+        run: echo "complete=true" >> "$GITHUB_OUTPUT"
+      - name: label template-matching board issue
+        if: always() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            if (!issue || issue.pull_request) return;
+            const body = issue.body || "";
+            let from = null, to = null, id = null, sep = false;
+            for (const ln of body.split("\n")) {
+              if (ln.trim() === "---") { sep = true; break; }
+              const low = ln.toLowerCase().trim();
+              if (low.startsWith("from:")) from = ln.split(":").slice(1).join(":").trim();
+              else if (low.startsWith("to:")) to = ln.split(":").slice(1).join(":").trim();
+              else if (low.startsWith("id:")) id = ln.split(":").slice(1).join(":").trim();
+            }
+            const idOk = id && /^[A-Za-z0-9._-]{8,80}$/.test(id);
+            if (!(sep && from && to && idOk)) return;
+            let lastError = null;
+            for (let attempt = 1; attempt <= 3; attempt += 1) {
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  labels: ["board"],
+                });
+                return;
+              } catch (error) {
+                lastError = error;
+                if (attempt < 3) {
+                  core.warning("board label attempt " + attempt + " failed; retrying");
+                  await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
+                }
+              }
+            }
+            throw lastError;
 
   device:
     needs: ingest
-    if: success() && needs.ingest.outputs.has_pending_device == 'true'
+    if: always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true'
     uses: ./.github/workflows/commons-device-executor.yml
     permissions:
       contents: write

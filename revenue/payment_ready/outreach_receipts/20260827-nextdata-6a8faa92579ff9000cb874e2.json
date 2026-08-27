@@ -1,0 +1,42 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-nextdata-20260827T031013249Z",
+  "campaign_id": "same-day-agent-survival-proof-20260827-01",
+  "target_id": "nextdata",
+  "organization": "Nextdata",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "hello@nextdata.com",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8faa92579ff9000cb874e2",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-27T03:10:13.249Z",
+  "observed_at": "2026-08-27T03:10:57.416Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "hello@nextdata.com",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8faa7c579ff9000cb874a8",
+    "contact_last_activity_at": "2026-08-27T03:10:13.000Z",
+    "contact_updated_at": "2026-08-27T03:10:13.797Z",
+    "public_slack_ts": "1787800257.416659",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787800257416659?thread_ts=1787716842.527029&cid=C0BRGMDQB6G",
+    "completion_corroborated": true
+  }
+}

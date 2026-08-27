@@ -6,8 +6,11 @@ id: sku-whitebox-hour-20260826
 band: HIGH
 scope: NARROW
 product: one dated White Box / dests hour
-checkout: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07
-status: LIVE
+checkout: `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product_id: prod_V93ngTJCNGz7KS
 price_id: price_1U8lfoATH4EDE7XDCHnkCHiU
 plink: plink_1U8lgGATH4EDE7XDlrVYTWhu
@@ -23,7 +26,7 @@ comps (live, cited):
 - Toptal FAQ publishes $79/month platform subscription only, not an hourly rate card. https://www.toptal.com/faq
 
 Bigger than a tip. Buyer gets land/session-YYYYMMDD.md: dests, receipts, what ran. File is public. HTTP is not the computer.
-TYPE owns checkout. This URL is live, not invented.
+TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
 337 NO.
 
 ## Buyer copy
@@ -32,4 +35,4 @@ $250 an hour. One dated White Box / dests hour.
 
 You get land/session-YYYYMMDD.md: dests, receipts, what ran. The file is public. HTTP is not the computer.
 
-Pay: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07
+Recorded URL (not a checkout): `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`
