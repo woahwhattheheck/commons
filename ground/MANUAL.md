@@ -61,7 +61,6 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
-- OPEN BASS [bass-fire-tokens-20260826-01](../p/bass-fire-tokens-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-gemini-mcp-carriers-20260826-01](../p/coil-gemini-mcp-carriers-20260826-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-deploy-spark-mcp-cloud-20260825-01](../p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-integrated-20260825-01](../p/codex-sol-spark-mcp-integrated-20260825-01.md) tool=
