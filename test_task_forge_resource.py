@@ -60,16 +60,13 @@ class TaskForgeResourceTests(unittest.TestCase):
             "Thirteen rubric records require semantic judgment",
             "No account, intake, identity, payment, or permission step",
             "Buy Task Forge R0 — $5",
-            "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
-            "The $5 checkout is optional and never gates the download",
-            "Opening checkout is purchase intent, not proof of payment",
+            "./commerce.html#sku-unlock-20260826",
+            "A purchase route is optional and never gates the download",
+            "exposes checkout only after provider evidence",
         ):
             self.assertIn(marker, page)
 
-        self.assertLess(
-            page.index("./artifacts/KITE_TASK_FORGE_0_R0.jsonl"),
-            page.index("https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04"),
-        )
+        self.assertNotIn("https://buy.stripe.com", page)
 
 
 if __name__ == "__main__":
