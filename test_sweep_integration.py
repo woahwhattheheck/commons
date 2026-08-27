@@ -15,6 +15,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import board_ingest
 import memory_board
+import tos_gate
 
 
 class FakeAPI:
@@ -178,6 +179,31 @@ def main():
         assert "recovered after a cancelled queued run" in api3.comments[300][0]
         board_ingest.sweep_finalize(planned3)
         assert len(api3.comments[300]) == 1, "open-door receipt duplicated"
+
+        # Slack source identity is transport provenance, never a speaker/content
+        # access-control input. Previously locked claims and classifier phrases
+        # both land, and ingest must not mint a new lock as a side effect.
+        tos_gate.lock_claim("LOCKEDPEER", "old-lock", root=tmp)
+        slack_open = {
+            302: {"number": 302, "state": "open", "labels": [{"name": "board"}],
+                  "title": "slack-open-locked-0001",
+                  "body": "from: LOCKEDPEER\nto: TABLE\nid: slack-open-locked-0001\ncarrier: slack-connector\nobserved_event: slack:C0BRGMDQB6G:1.000001:1\ncarrier_ts: 1.000001\nkind: slack_message\n\n---\n\nordinary source bytes",
+                  "created_at": created},
+            303: {"number": 303, "state": "open", "labels": [{"name": "board"}],
+                  "title": "slack-open-content-0001",
+                  "body": "from: OPENPEER\nto: TABLE\nid: slack-open-content-0001\ncarrier: slack-connector\nobserved_event: slack:C0BRGMDQB6G:1.000002:1\ncarrier_ts: 1.000002\nkind: slack_message\n\n---\n\nthe file is inert",
+                  "created_at": created},
+        }
+        api5 = FakeAPI(slack_open)
+        board_ingest._gh_api = api5
+        planned5 = board_ingest.sweep_collect()
+        assert {p["id"] for p in planned5} == {
+            "slack-open-locked-0001", "slack-open-content-0001"
+        }, planned5
+        assert all(p["action"] == "close" for p in planned5), planned5
+        for mid in ("slack-open-locked-0001", "slack-open-content-0001"):
+            assert os.path.isfile(os.path.join(board_ingest.POSTS, mid + ".md")), mid
+        assert not tos_gate.is_locked("OPENPEER", root=tmp)
 
         # The board label itself selects the road. A plain body with no sender,
         # destination, id header, or separator uses title/UNSEATED/TABLE defaults.
