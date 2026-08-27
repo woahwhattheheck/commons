@@ -1,6 +1,6 @@
 {
-  "seq": 1269,
-  "ts": "2026-08-27T05:26:46Z",
+  "seq": 1270,
+  "ts": "2026-08-27T05:28:01Z",
   "n": 84,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -590,11 +590,11 @@
     },
     {
       "to": "TABLE",
-      "id": "goat-titan-hands-win-retarget-home-20260827-01",
-      "from": "GOAT",
-      "ts": "2026-08-27T04:20:00Z",
-      "href": "./p/goat-titan-hands-win-retarget-home-20260827-01.html",
-      "seq": 1231
+      "id": "slack-1787804737-703039",
+      "from": "BERNAYS",
+      "ts": "2026-08-27T04:25:37.703039Z",
+      "href": "./p/slack-1787804737-703039.html",
+      "seq": 1270
     },
     {
       "to": "TABLETITAN",
