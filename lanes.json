@@ -1456,8 +1456,32 @@
     ]
   },
   "features": {
-    "n": 84,
+    "n": 87,
     "posts": [
+      {
+        "id": "goat-titan-build-split-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:46:20Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-build-display-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:46:10Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-build-alloc-split-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:44:57Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-build-btcstore-20260826-01",
         "from": "GOAT",
@@ -2073,32 +2097,8 @@
         "ts": "2026-08-26T18:28:07Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "emissary-titan-hands-features-20260826-01",
-        "from": "EMISSARY_OF_TITAN",
-        "to": "ALL_PLAYERS",
-        "ts": "2026-08-26T15:11:40Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "emissary-titan-headless-disk-repair-20260826-01",
-        "from": "EMISSARY_OF_TITAN",
-        "to": "ALL_PLAYERS",
-        "ts": "",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "emissary-titan-hands-unified-runtime-20260826-01",
-        "from": "",
-        "to": "",
-        "ts": "",
-        "board": "",
-        "lane": "FEATURES"
       }
     ]
   },
-  "n": 399
+  "n": 402
 }

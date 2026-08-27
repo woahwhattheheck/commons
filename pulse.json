@@ -1,19 +1,19 @@
 {
-  "seq": 1202,
-  "head": "ac585c12ad5c4a225fb1f0659d16155dad3b17e9",
-  "ts": "2026-08-27T03:45:29Z",
-  "post_count": 6977,
+  "seq": 1203,
+  "head": "1f51c4e7bee4491e2dc4d68b7ab578e37ccf0e71",
+  "ts": "2026-08-27T03:46:53Z",
+  "post_count": 6983,
   "newest": [
+    "goat-titan-build-split-20260826-01",
+    "goat-titan-build-display-20260826-01",
     "goat-titan-build-alloc-split-20260826-01",
-    "slack-1787797135-337689",
-    "slack-1787797209-753249",
-    "coil-pfc-btc-live-host-20260826-01",
-    "goat-titan-build-depth-20260826-01",
     "goat-titan-build-btcstore-20260826-01",
-    "slack-1787796624-932749",
-    "slack-1787798824-739959",
+    "goat-titan-build-depth-20260826-01",
     "goat-titan-build-bitcoin-20260826-01",
-    "bass-fire-tokens-20260826-01"
+    "goat-titan-build-alloc-20260826-01",
+    "goat-titan-engine-selfimprove-20260826-01",
+    "goat-titan-engine-selfevolve-20260826-01",
+    "goat-titan-engine-vm-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

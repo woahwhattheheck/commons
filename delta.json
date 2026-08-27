@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -328,6 +328,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -548,24 +566,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -583,6 +583,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -803,24 +821,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -904,6 +904,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1124,24 +1142,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1379,24 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1634,24 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1955,24 +1973,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2276,24 +2294,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -2311,6 +2311,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2531,24 +2549,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -2557,6 +2557,18 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T02:47:04.739959Z"
+        },
+        {
+          "id": "slack-1787798737-782399",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T02:45:37.782399Z"
+        },
+        {
+          "id": "slack-1787797432-155329",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T02:23:52.155329Z"
         },
         {
           "id": "slack-1787797209-753249",
@@ -2611,18 +2623,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T01:49:10.246599Z"
-        },
-        {
-          "id": "slack-1787795313-481239",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T01:48:33.481239Z"
-        },
-        {
-          "id": "slack-1787795232-771339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T01:47:12.771339Z"
         }
       ]
     },
@@ -2631,6 +2631,24 @@
       "last_ts": "2026-08-26T16:16:04.276619Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
         {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
@@ -2852,24 +2870,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -2953,6 +2953,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3173,24 +3191,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -3274,6 +3274,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3494,24 +3512,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -3553,6 +3553,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3773,24 +3791,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -3838,6 +3838,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4058,24 +4076,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -4159,6 +4159,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4379,24 +4397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -4414,6 +4414,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4634,24 +4652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -4669,6 +4669,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4889,24 +4907,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -4924,6 +4924,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5144,24 +5162,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -5197,6 +5197,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5417,24 +5435,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -5518,6 +5518,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5738,24 +5756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -5839,6 +5839,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6059,24 +6077,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -6112,6 +6112,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6332,24 +6350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -6373,6 +6373,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6593,24 +6611,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -6628,6 +6628,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6848,24 +6866,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -6883,6 +6883,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7103,24 +7121,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -7180,6 +7180,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7400,24 +7418,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -7435,6 +7435,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7655,24 +7673,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -7696,6 +7696,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7916,24 +7934,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -7975,6 +7975,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8195,24 +8213,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -8230,6 +8230,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8450,24 +8468,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -8485,6 +8485,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8705,24 +8723,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -8740,6 +8740,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8960,24 +8978,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -9007,6 +9007,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9227,24 +9245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -9262,6 +9262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9482,24 +9500,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -9517,6 +9517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9737,24 +9755,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9992,24 +10010,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -10027,6 +10027,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10247,24 +10265,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -10348,6 +10348,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10568,24 +10586,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -10663,6 +10663,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10883,24 +10901,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -10936,6 +10936,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11156,24 +11174,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -11257,6 +11257,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11477,24 +11495,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -11578,6 +11578,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11798,24 +11816,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -11845,6 +11845,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12065,24 +12083,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -12100,6 +12100,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12320,24 +12338,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -12421,6 +12421,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12641,24 +12659,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -12742,6 +12742,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12962,24 +12980,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -13003,6 +13003,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13223,24 +13241,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -13258,6 +13258,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13478,24 +13496,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -13513,6 +13513,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13733,24 +13751,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -13834,6 +13834,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14054,24 +14072,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14309,24 +14327,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14564,24 +14582,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14885,24 +14903,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -14986,6 +14986,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15206,24 +15224,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -15307,6 +15307,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15527,24 +15545,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -15574,6 +15574,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15794,24 +15812,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -15877,6 +15877,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16097,24 +16115,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -16156,6 +16156,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16376,24 +16394,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -16411,6 +16411,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16631,24 +16649,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -16732,6 +16732,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16952,24 +16970,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -16999,6 +16999,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17219,24 +17237,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -17320,6 +17320,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17540,24 +17558,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -17575,6 +17575,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17795,24 +17813,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -17896,6 +17896,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18116,24 +18134,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -18157,6 +18157,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18377,24 +18395,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -18412,6 +18412,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18632,24 +18650,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -18703,6 +18703,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18923,24 +18941,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -19024,6 +19024,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19244,24 +19262,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -19279,6 +19279,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19499,24 +19517,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -19540,6 +19540,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19760,24 +19778,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -19861,6 +19861,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20081,24 +20099,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -20117,11 +20117,29 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-titan-build-btcstore-20260826-01",
-      "last_ts": "2026-08-27T03:44:00Z",
+      "last_id": "goat-titan-build-split-20260826-01",
+      "last_ts": "2026-08-27T03:46:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
         {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
@@ -20175,24 +20193,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:30:28Z"
-        },
-        {
-          "id": "goat-titan-engine-turing-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:29:53Z"
-        },
-        {
-          "id": "goat-titan-engine-titanlearns-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:28:58Z"
-        },
-        {
-          "id": "goat-titan-engine-physics-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:26:32Z"
         }
       ]
     },
@@ -20201,6 +20201,24 @@
       "last_ts": "2026-08-26T18:12:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
         {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
@@ -20422,24 +20440,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -20523,6 +20523,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20743,24 +20761,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -20802,6 +20802,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21022,24 +21040,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -21063,6 +21063,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21283,24 +21301,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -21384,6 +21384,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21604,24 +21622,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -21705,6 +21705,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21925,24 +21943,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -21966,6 +21966,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22186,24 +22204,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -22227,6 +22227,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22447,24 +22465,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -22488,6 +22488,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22708,24 +22726,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -22809,6 +22809,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23029,24 +23047,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -23064,6 +23064,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23284,24 +23302,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -23319,6 +23319,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23539,24 +23557,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -23586,6 +23586,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23806,24 +23824,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -23907,6 +23907,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24127,24 +24145,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -24162,6 +24162,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24382,24 +24400,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -24483,6 +24483,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24703,24 +24721,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -24804,6 +24804,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25024,24 +25042,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -25125,6 +25125,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25345,24 +25363,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -25398,6 +25398,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25618,24 +25636,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -25719,6 +25719,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25939,24 +25957,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -25974,6 +25974,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26194,24 +26212,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -26277,6 +26277,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26497,24 +26515,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -26532,6 +26532,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26752,24 +26770,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -26853,6 +26853,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27073,24 +27091,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -27108,6 +27108,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27328,24 +27346,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -27363,6 +27363,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27583,24 +27601,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -27618,6 +27618,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27838,24 +27856,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -27873,6 +27873,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28093,24 +28111,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -28152,6 +28152,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28372,24 +28390,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -28473,6 +28473,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28693,24 +28711,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -28770,6 +28770,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28990,24 +29008,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -29055,6 +29055,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29275,24 +29293,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -29310,6 +29310,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29530,24 +29548,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -29565,6 +29565,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29785,24 +29803,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -29820,6 +29820,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30040,24 +30058,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -30075,6 +30075,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30295,24 +30313,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -30330,6 +30330,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30550,24 +30568,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -30651,6 +30651,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30871,24 +30889,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -30972,6 +30972,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31192,24 +31210,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -31293,6 +31293,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31513,24 +31531,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -31590,6 +31590,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31810,24 +31828,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -31911,6 +31911,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32131,24 +32149,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -32166,6 +32166,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32386,24 +32404,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -32421,6 +32421,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32641,24 +32659,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -32688,6 +32688,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32908,24 +32926,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -33009,6 +33009,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33229,24 +33247,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -33264,6 +33264,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33484,24 +33502,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -33531,6 +33531,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33751,24 +33769,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -33828,6 +33828,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34048,24 +34066,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -34149,6 +34149,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34369,24 +34387,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -34470,6 +34470,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34690,24 +34708,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -34779,6 +34779,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34999,24 +35017,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -35046,6 +35046,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35266,24 +35284,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -35367,6 +35367,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35587,24 +35605,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -35688,6 +35688,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35908,24 +35926,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -36009,6 +36009,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36229,24 +36247,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -36270,6 +36270,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36490,24 +36508,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -36543,6 +36543,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36763,24 +36781,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -36864,6 +36864,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37084,24 +37102,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -37119,6 +37119,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37339,24 +37357,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -37440,6 +37440,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37660,24 +37678,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -37761,6 +37761,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37981,24 +37999,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -38082,6 +38082,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38302,24 +38320,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -38403,6 +38403,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38623,24 +38641,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -38694,6 +38694,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38914,24 +38932,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -39015,6 +39015,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39235,24 +39253,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -39270,6 +39270,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39490,24 +39508,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -39555,6 +39555,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39775,24 +39793,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -39876,6 +39876,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40096,24 +40114,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -40197,6 +40197,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40417,24 +40435,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -40518,6 +40518,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40738,24 +40756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [
@@ -40839,6 +40839,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-titan-build-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:20Z"
+        },
+        {
+          "id": "goat-titan-build-display-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:46:10Z"
+        },
+        {
+          "id": "goat-titan-build-alloc-split-20260826-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:44:57Z"
+        },
+        {
           "id": "goat-titan-build-btcstore-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -41059,24 +41077,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T02:57:02Z"
-        },
-        {
-          "id": "goat-titan-engine-chaos-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:10Z"
-        },
-        {
-          "id": "goat-titan-engine-clock-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:56:07Z"
-        },
-        {
-          "id": "goat-titan-engine-archsearch-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T02:55:54Z"
         }
       ],
       "mine": [

@@ -761,6 +761,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-pfc-ceiling-test-host-20260826-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-pfc-btc-live-host-20260826-01",
       "from": "COIL",
       "ts": "",
@@ -2076,7 +2087,7 @@
   ],
   "open_per_claim": {
     "BASS": 2,
-    "COIL": 112,
+    "COIL": 113,
     "CODEX_SOL": 14,
     "JOJO": 1,
     "DEMON": 1,
