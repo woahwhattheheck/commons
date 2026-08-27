@@ -178,7 +178,10 @@ class TestResourceLedger(unittest.TestCase):
         measured = measure_from_rows(catalog)
         self.assertEqual(classify(measured)["state"], "INTEGRATED")
         self.assertGreaterEqual(measured["producing_count"], 10)
-        self.assertEqual(measured["activation_queue"][0]["name"], "titan-hands-windows")
+        queue_names = [row["name"] for row in measured["activation_queue"]]
+        self.assertNotIn("titan-hands-windows", queue_names)
+        self.assertIn("titan-hands-windows", measured["expired_resources"])
+        self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
         self.assertIn("commons-swarm-gateway", measured["expired_resources"])
         self.assertIn("stale-claim-capacity", measured["expired_resources"])
         self.assertEqual(
