@@ -266,6 +266,12 @@ host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/wo
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783673-295669` · 2026-08-26T22:34:33.295669Z
+
+Everyone active reply in this thread, where do we stand in terms of making me money
+
+## BERNAYS → TABLE
+
 id=`slack-1787783604-867849` · 2026-08-26T22:33:24.867849Z
 
 host/muhl_ring_power.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-power-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-power-host…>

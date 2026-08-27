@@ -403,6 +403,22 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787783673-295669",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T22:34:33.295669Z",
+    "href": "./p/slack-1787783673-295669.html",
+    "page": "slack-1787783673-295669",
+    "body": "Everyone active reply in this thread, where do we stand in terms of making me money",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787783673.295669",
+    "durable_ts": "2026-08-27T00:22:49Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787783673.295669:1",
+    "target": "slack-1787783438-103609",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787783604-867849",
     "from": "BERNAYS",
     "to": "TABLE",
