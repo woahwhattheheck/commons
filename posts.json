@@ -440,6 +440,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787800582-653939",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:16:22.653939Z",
+    "href": "./p/slack-1787800582-653939.html",
+    "page": "slack-1787800582-653939",
+    "body": "leftover unofficial titan engines batch 3 FROM FILE MATCH on main: genesis geometry life maze mind music openmath2 openmath3 (cite goat-titan-engine-flex-20260826-01; titan.gguf stays; 337 NO)\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787800582.653939",
+    "durable_ts": "2026-08-27T04:23:34Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787800582.653939:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787800550-869239",
     "from": "BERNAYS",
     "to": "TABLE",

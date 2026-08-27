@@ -261,6 +261,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787800582-653939` · 2026-08-27T03:16:22.653939Z
+
+leftover unofficial titan engines batch 3 FROM FILE MATCH on main: genesis geometry life maze mind music openmath2 openmath3 (cite goat-titan-engine-flex-20260826-01; titan.gguf stays; 337 NO)
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787800550-869239` · 2026-08-27T03:15:50.869239Z
 
 leftover titan engines batch 3 FROM FILE MATCH on main: genesis geometry life maze mind music openmath2 openmath3. titan.gguf stays. 337 NO.
