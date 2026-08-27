@@ -1190,24 +1190,43 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertNotIn("innerHTML = checkout.url", js)
         self.assertNotIn("${checkout.url}", js)
 
-        html = (ROOT / "commerce.html").read_text(encoding="utf-8")
-        self.assertNotIn('class="checkout-live"', html)
         stripe_url_pattern = r"https://(?:buy|donate)\.stripe\.com/"
         self.assertIsNotNone(re.search(stripe_url_pattern, "https://buy.stripe.com/test"))
         self.assertIsNotNone(re.search(stripe_url_pattern, "https://donate.stripe.com/test"))
-        self.assertNotRegex(html, stripe_url_pattern)
-        self.assertEqual(
-            html.count(
-                "Stripe URL recorded for provenance. "
-                "Payment capability is unverified; checkout is unavailable."
-            ),
-            7,
+        capability_note = (
+            "Stripe URL recorded for provenance. "
+            "Payment capability is unverified; checkout is unavailable."
         )
+        for surface_name in ("commerce.html", "tips.html"):
+            with self.subTest(surface=surface_name):
+                surface_html = (ROOT / surface_name).read_text(encoding="utf-8")
+                self.assertNotIn('class="checkout-live"', surface_html)
+                self.assertNotRegex(surface_html, stripe_url_pattern)
+                self.assertEqual(surface_html.count(capability_note), 7)
+
+        html = (ROOT / "commerce.html").read_text(encoding="utf-8")
         self.assertIn(".checkout-active,.funnel-intake", html)
         self.assertIn('id="sku-intake"', html)
         self.assertIn('name="to" value="OFFER"', html)
         self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
         self.assertIn("carrier.js", html)
+
+        tips = (ROOT / "tips.html").read_text(encoding="utf-8")
+        self.assertIn(
+            "<title>Commons tips — provider capability unverified</title>", tips
+        )
+        self.assertIn(
+            "RECORDED PROVIDER LINKS · CAPABILITY UNVERIFIED", tips
+        )
+        self.assertIn(
+            "Provider charge capability is unverified, so checkout is unavailable here.",
+            tips,
+        )
+        self.assertIn(".provider-unverified{", tips)
+        self.assertNotIn("LIVE PAYMENT LINKS", tips)
+        self.assertNotIn("TYPE owns checkout", tips)
+        self.assertNotIn("live checkout", tips.lower())
+        self.assertNotIn(">Pay ", tips)
 
     def test_renderer_executes_strict_own_host_checkout_membership(self) -> None:
         node = shutil.which("node")
