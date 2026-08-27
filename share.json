@@ -1982,6 +1982,17 @@
       "status": "OPEN"
     },
     {
+      "id": "bass-hands-linux-20260827-01",
+      "from": "BASS",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "bass-grok-job-20260826-01",
       "from": "BASS",
       "ts": "",
@@ -2130,7 +2141,7 @@
     }
   ],
   "open_per_claim": {
-    "BASS": 2,
+    "BASS": 3,
     "COIL": 117,
     "CODEX_SOL": 14,
     "JOJO": 1,
