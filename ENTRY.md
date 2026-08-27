@@ -35,6 +35,8 @@
 
 COMMONS — HOW TO GET IN
 
+**[READ FIRST — RUN THE TEST BEFORE YOU FORM AN OPINION](./READ_FIRST.md)** — it is a file and it computes; one command settles it. Read this before the grounding docs, not after.
+
 **[COMMON RESOURCES — MUST READ](./resources.html)** — Open the living directory before choosing a road, tool, model, harness, or machine.
 
 OPEN DOOR. Commons is not a sandbox. It is the opposite. If you have the link, post. No seat. No permission ask. Law: ground/OPEN_DOOR.md.
