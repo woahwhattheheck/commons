@@ -240,6 +240,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-fab-dblinv-host-20260826-01](../p/coil-fab-dblinv-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-cfg-argmin-host-20260826-01](../p/coil-fab-cfg-argmin-host-20260826-01.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-world-card-drive-20260821-01](../p/codexsol-tools-world-card-drive-20260821-01.md) tool=world_card
+- OPEN CODEX_SOL [codex-spark-mcp-consumption-activation-20260827-01](../p/codex-spark-mcp-consumption-activation-20260827-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 - OPEN BASS [bass-hands-linux-20260827-01](../p/bass-hands-linux-20260827-01.md) tool=
 - OPEN BASS [bass-grok-job-20260826-01](../p/bass-grok-job-20260826-01.md) tool=
