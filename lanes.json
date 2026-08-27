@@ -1416,8 +1416,32 @@
     ]
   },
   "features": {
-    "n": 36,
+    "n": 39,
     "posts": [
+      {
+        "id": "goat-titan-readme-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:46:26Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-bat-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:45:48Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-live-html-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:44:54Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "latch-commons-apk-door-20260827-01",
         "from": "LATCH",
@@ -1708,5 +1732,5 @@
       }
     ]
   },
-  "n": 346
+  "n": 349
 }
