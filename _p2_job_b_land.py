@@ -86,4 +86,3 @@ if c.returncode != 0:
 st2 = bi.push_origin_main(env, extra_paths=["host", "p"])
 print("PUSH", st2)
 print("HEAD", subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=PUT, capture_output=True, text=True).stdout.strip())
-
