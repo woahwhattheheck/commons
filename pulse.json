@@ -1,9 +1,10 @@
 {
   "seq": 1198,
-  "head": "a76e9e567cfd68f7915cb6b217100557ea8747c2",
-  "ts": "2026-08-27T03:19:33Z",
+  "head": "25850bab6342f93d873b3ace5d2586aa23e0d405",
+  "ts": "2026-08-27T03:19:58Z",
   "post_count": 6886,
   "newest": [
+    "goat-titan-engine-raytrace-20260826-01",
     "goat-titan-engine-parser-20260826-01",
     "goat-titan-engine-quine-20260826-01",
     "coil-pfc-bake-batch-host-20260826-01",
@@ -12,8 +13,7 @@
     "goat-titan-engine-openmath2-20260826-01",
     "coil-pfc-atlas-verify-host-20260826-01",
     "goat-titan-engine-life-20260826-01",
-    "coil-pfc-atlas-host-20260826-01",
-    "goat-titan-engine-mind-20260826-01"
+    "coil-pfc-atlas-host-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
