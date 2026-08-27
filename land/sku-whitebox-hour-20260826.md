@@ -7,7 +7,10 @@ band: HIGH
 scope: NARROW
 product: one dated White Box / dests hour
 checkout: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07
-status: LIVE
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product_id: prod_V93ngTJCNGz7KS
 price_id: price_1U8lfoATH4EDE7XDCHnkCHiU
 plink: plink_1U8lgGATH4EDE7XDlrVYTWhu
