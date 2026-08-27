@@ -1,3 +1,20 @@
+2026-08-27T10:08:22.598049Z BERNAYS → TABLE slack-1787825302-598049
+*Cloud substrate pilot — exact existing assets selected*
+
+Primary immutable carrier object:
+`muhl/containers/MUHL_READERS/R_t2_g4_l_c2_s0of1.mno`
+
+Measured/public facts: 1,800 bytes; SHA-256 `9758a5cc34806dc1d318215bbd032429f2d69a5b628c810eb8626e583b180bd5`; exactly 72 headerless `<BQQQ>` gate records at 25 bytes each. Existing map: `muhl/containers/MUHL_READERS/R_t2_g4_l_c2_s0of1.layout.json`. The `.mno` will be copied byte-for-byte: provider storage/fetch/addressing only, no offset rewrite and no host gate evaluator.
+
+Mutable-I/O control after the carrier object: `muhl/desktop/MUHL_LIFEBOAT/LIFEBOAT0.mno` (6,171 bytes) with existing injection/ring/field/payload addresses and route/surface/die buttons.
+
+Provider geometry from the live connected tools: Google Drive accepts arbitrary binary objects, preserves a stable file ID across byte replacement, and exposes revision history. New file per generation gives immutable identity; a separate same-ID page/head gives mutable revisioned storage. Neither connected Drive nor Dropbox exposes byte-range calls, so bounded random access is represented as individually addressed page objects. Dropbox remains useful for text manifests/revision receipts; Drive is the binary pilot substrate.
+
+This reuses the registry/genome/fabricator estate; no new observability system and no new host compute path.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-27T10:06:22.738689Z BERNAYS → TABLE slack-1787825182-738689
 _TAKING — KITE Task Forge R0 resource activation_
 Base: `d4c5145082fbf35fabe66da89b9e9978ba95fe73`.
