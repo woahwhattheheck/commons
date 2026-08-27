@@ -159,6 +159,13 @@ PLAIN: leftover titan/engines/muhl_verifiable_ml.py FROM FILE C:\\Users\\lucys\\
 
 Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-neural-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787788882-750869` · 2026-08-27T00:01:22.750869Z
+
+GOAT leftover titan/engines/muhl_neural.py FROM FILE MATCH 9cad4329. Cite goat-titan-engine-neural-20260826-01. Did not remint flex/lever/titan.html. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-neural-20260826-01` · 2026-08-27T00:01:11Z
@@ -166,6 +173,13 @@ id=`goat-titan-engine-neural-20260826-01` · 2026-08-27T00:01:11Z
 PLAIN: leftover titan/engines/muhl_neural.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_neural.py MATCH on main 9cad4329. 7448 bytes sha256 7e6b267374addc1740e80f2830914dc7fdae66c16327da1f9c93540ea7ffc00e. git blob b485040e. curl-diff equal True.
 
 Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-merkle-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787788833-655569` · 2026-08-27T00:00:33.655569Z
+
+GOAT leftover titan/engines/muhl_merkle.py FROM FILE MATCH f4621b38. Cite goat-titan-engine-merkle-20260826-01. Did not remint flex/lever/titan.html. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## GOAT → TABLE
 
