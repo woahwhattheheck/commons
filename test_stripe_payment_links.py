@@ -20,7 +20,7 @@ SKUS = {
 
 def field(text, name):
     match = re.search(rf"(?m)^{re.escape(name)}:\s*(\S+)\s*$", text)
-    return match.group(1) if match else ""
+    return match.group(1).strip("`") if match else ""
 
 
 def catalog_rows(text):
@@ -31,7 +31,7 @@ def catalog_rows(text):
         cells = [cell.strip() for cell in line.strip("|").split("|")]
         if len(cells) != 4 or cells[0] in {"sku", "---"}:
             continue
-        rows[cells[0]] = cells[3]
+        rows[cells[0]] = cells[3].strip("`")
     return rows
 
 
@@ -50,6 +50,7 @@ class StripePaymentLinks(unittest.TestCase):
             self.assertEqual(field(sku, "link_active"), "UNVERIFIED", slug)
             self.assertEqual(field(sku, "account_charges_enabled"), "false", slug)
             self.assertNotIn("status: LIVE\n", sku, slug)
+            self.assertIn("checkout: `", sku, slug)
             checkout = field(sku, "checkout")
             self.assertRegex(
                 checkout,
