@@ -814,6 +814,7 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(self.recovery["truth"]["collected_cash_usd"], 0)
         self.assertFalse(self.recovery["resource_recovery"]["cursor_used_for_this_pipeline"])
         prospects = json.loads((ROOT / "revenue/payment_ready/prospects.json").read_text(encoding="utf-8"))
+        self.assertEqual(prospects["measured_at"], "2026-08-27")
         self.assertEqual(len(prospects["prospects"]), 4)
         for row in prospects["prospects"]:
             self.assertEqual(row["state"], "CONTACTED_NO_RESPONSE")
@@ -831,7 +832,8 @@ class RevenueRecoveryTests(unittest.TestCase):
         receipt_paths = list((ROOT / "revenue/payment_ready/outreach_receipts").glob("*.json"))
         receipt_names = {path.name for path in receipt_paths}
         canonical_contact_keys = set()
-        observed_provider_refs = {row["provider_reference"] for row in transports}
+        canonical_provider_refs = {row["provider_reference"] for row in transports}
+        observed_provider_refs = set(canonical_provider_refs)
         for row in transports:
             self.assertEqual(row["state"], "SENT_COMPLETED_NO_RESPONSE")
             self.assertTrue(row["do_not_resend"])
@@ -865,6 +867,15 @@ class RevenueRecoveryTests(unittest.TestCase):
                 duplicate_contact_key = duplicate["recipient_email"]
             if duplicate_contact_key.casefold() not in canonical_contact_keys:
                 continue
+            known_refs = set(
+                duplicate.get("dedupe", {}).get(
+                    "known_duplicate_or_pending_provider_references", []
+                )
+            )
+            linked_canonical_refs = known_refs & canonical_provider_refs
+            if not linked_canonical_refs:
+                continue
+            self.assertEqual(len(linked_canonical_refs), 1)
             related_duplicate_receipts.append(path)
             self.assertTrue(duplicate["dedupe"]["do_not_resend"])
             duplicate_state = duplicate.get("provider_state", duplicate.get("transport_state"))
