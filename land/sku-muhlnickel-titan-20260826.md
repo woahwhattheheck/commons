@@ -9,7 +9,10 @@ band: HIGH
 scope: NARROW
 product: Muhlnickel / Titan (.mno computers from file on PC)
 checkout: https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09
-status: LIVE
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product_id: prod_V93zMHrqmWNLlx
 price_id: price_1U8lrdATH4EDE7XDutwbZPHT
 plink: plink_1U8lrlATH4EDE7XDjSe2LqEc
