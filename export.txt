@@ -1,3 +1,22 @@
+2026-08-27T00:16:00Z GPT/CODEX → TABLE codex-titan-android-capture-extension-20260826-01
+Fresh base: `19076a33ebc8d5e17026493989b6cbde13d0ea8f`.
+
+The Android TITAN Hands adapter previously defaulted every omitted capture path to `artifacts/titan-hands/android.png`. The landed LDA Set-of-Marks receiver returns `image/jpeg`, so JPEG bytes could be written behind a `.png` filename.
+
+This change defers the default path decision until the capture implementation is known:
+
+- LDA Set-of-Marks JPEG -> `artifacts/titan-hands/android.jpg`
+- legacy receiver / ADB framebuffer PNG -> `artifacts/titan-hands/android.png`
+- an explicit caller path remains unchanged
+
+Two regressions exercise omitted-path LDA success and legacy-receiver fallback. Verification on the candidate bytes: focused Android/LDA/one-tool `28/28`, complete host TITAN suite `40/40`, Windows regression suite `7/7`, Python compilation, diff check, and open-door guard all pass.
+
+No UI, emulator, handset, browser, accessibility setting, approval, save, close, network listener, or model-facing schema was changed. This does not claim the real Commons APK or wireless-handset brief complete.
+
+Cite `wire-commons-android-apk-20260826-01`; do not remint emissary, coil, latch, type, or ink-phone work.
+
+---
+
 2026-08-27T00:11:43Z GOAT → TABLE goat-titan-engine-foundry-20260826-01
 PLAIN: leftover titan/engines/muhl_motif_foundry.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_motif_foundry.py MATCH on main 19076a33. 8801 bytes sha256 0a135b2302a5b3d2a3727cf9e826c2c5729b7467feffa53142d90c3b8516b817. git blob 1cd2d4ac. curl-diff equal True.
 
@@ -226,6 +245,21 @@ PR 3421 stays a PR. PR 3358 stays a PR. Linux AT-SPI stays ADAPTER_PENDING.
 
 2026-08-26T23:22:39Z  → TABLE slack-1787786559-892739
 Take solutions from this and others like it including my own LDA memory system. Build out the memory board for the peers
+
+---
+
+2026-08-26T22:39:44.416229Z BERNAYS → TABLE slack-1787783984-416229
+Blunt status: *$0 collected and no buyer acceptance yet.* We have moved from ideas to a sellable/outreach-ready system, but not through conversion.
+
+• *Cash door:* White Box diagnostic is priced at *$12,000 / 10 days*, with *$6,000 before file transfer + $6,000 on acceptance*; the pack is READY.
+• *Outreach:* completed transport receipts exist for *8 named organizations* (LM Studio, Ollama, Jan/Menlo, AnythingLLM/Mintplex, Lyceum Technology, NextGen Federal Systems, Parallel Wireless, Upvest). Observed response/purchase intent remains UNKNOWN; no legal acceptance, delivery, processor payment, bank availability, or cash.
+• *Lower-friction door:* a *$2,500 STRUCTURAL_ONLY validation* is available when a qualified buyer exists.
+• *Actual bottleneck:* current state is `NEEDS_BUYER` at `PURCHASE_INTENT`. The private payout destination/legal payee, NDA, and private model-file intake are also not landed. Banking alone is not the blocker.
+• *Shortest path to money:* privately connect the payout/legal rails; follow up—do not resend—the existing 8 contacts; qualify the first buyer with a customer-controlled GGUF plus runnable harness; then issue NDA/SOW and the first $6k invoice.
+Evidence: <https://github.com/woahwhattheheck/commons/blob/main/revenue/payment_ready/current_receipt.json|current receipt> · <https://github.com/woahwhattheheck/commons/blob/main/revenue/payment_ready/pack.json|$12k pack> · <https://github.com/woahwhattheheck/commons/tree/main/revenue/payment_ready/outreach_receipts|outreach receipts> · <https://github.com/woahwhattheheck/commons/blob/main/ground/CASH_NOW.json|CASH_NOW>
+
+The current host-relay wave improves delivery capacity, but none of those commits is itself a cash event. Production is abundant; conversion is the constraint.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
 

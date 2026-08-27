@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -163,6 +169,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -484,6 +490,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -739,6 +745,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1060,6 +1066,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1315,6 +1321,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1570,6 +1576,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1891,6 +1897,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2212,6 +2218,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -2306,10 +2306,16 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787783848-460539",
-      "last_ts": "2026-08-26T22:37:28.460539Z",
-      "n": 26,
+      "last_id": "slack-1787783984-416229",
+      "last_ts": "2026-08-26T22:39:44.416229Z",
+      "n": 27,
       "since": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
         {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
@@ -2469,6 +2475,12 @@
       ],
       "mine": [
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2533,12 +2545,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:24:38.728019Z"
-        },
-        {
-          "id": "slack-1787783014-108789",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:34.108789Z"
         }
       ]
     },
@@ -2547,6 +2553,12 @@
       "last_ts": "2026-08-26T16:16:04.276619Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
         {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
@@ -2704,6 +2716,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2774,18 +2792,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -2869,6 +2875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3025,6 +3037,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3095,18 +3113,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -3190,6 +3196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3346,6 +3358,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3416,18 +3434,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -3469,6 +3475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3625,6 +3637,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3695,18 +3713,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -3754,6 +3760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3910,6 +3922,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3980,18 +3998,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -4075,6 +4081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4231,6 +4243,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4301,18 +4319,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -4330,6 +4336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4486,6 +4498,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4556,18 +4574,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -4585,6 +4591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4741,6 +4753,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4811,18 +4829,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -4840,6 +4846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4996,6 +5008,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5066,18 +5084,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -5113,6 +5119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5269,6 +5281,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5339,18 +5357,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -5434,6 +5440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5590,6 +5602,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5660,18 +5678,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -5755,6 +5761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5911,6 +5923,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5981,18 +5999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -6028,6 +6034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6184,6 +6196,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6254,18 +6272,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -6289,6 +6295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6445,6 +6457,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6515,18 +6533,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -6544,6 +6550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6700,6 +6712,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6770,18 +6788,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -6799,6 +6805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6955,6 +6967,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7025,18 +7043,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -7096,6 +7102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7252,6 +7264,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7322,18 +7340,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -7351,6 +7357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7507,6 +7519,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7577,18 +7595,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -7612,6 +7618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7768,6 +7780,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7838,18 +7856,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -7891,6 +7897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8047,6 +8059,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8117,18 +8135,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -8146,6 +8152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8302,6 +8314,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8372,18 +8390,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -8401,6 +8407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8557,6 +8569,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8627,18 +8645,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -8656,6 +8662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8812,6 +8824,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8882,18 +8900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -8923,6 +8929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9079,6 +9091,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9149,18 +9167,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -9178,6 +9184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9334,6 +9346,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9404,18 +9422,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -9433,6 +9439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9589,6 +9601,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9659,18 +9677,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -9688,6 +9694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9844,6 +9856,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9914,18 +9932,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -9943,6 +9949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10099,6 +10111,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10169,18 +10187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -10264,6 +10270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10420,6 +10432,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10490,18 +10508,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -10579,6 +10585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10735,6 +10747,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10805,18 +10823,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -10852,6 +10858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11008,6 +11020,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11078,18 +11096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -11173,6 +11179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11329,6 +11341,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11399,18 +11417,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -11494,6 +11500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11650,6 +11662,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11720,18 +11738,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -11761,6 +11767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11917,6 +11929,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11987,18 +12005,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -12016,6 +12022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12172,6 +12184,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12242,18 +12260,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -12337,6 +12343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12493,6 +12505,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12563,18 +12581,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -12658,6 +12664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12814,6 +12826,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12884,18 +12902,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -12919,6 +12925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13075,6 +13087,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13145,18 +13163,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -13174,6 +13180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13330,6 +13342,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13400,18 +13418,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -13429,6 +13435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13585,6 +13597,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13655,18 +13673,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -13750,6 +13756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13906,6 +13918,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13976,18 +13994,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -14005,6 +14011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14161,6 +14173,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14231,18 +14249,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -14260,6 +14266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14416,6 +14428,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14486,18 +14504,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -14581,6 +14587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14737,6 +14749,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14807,18 +14825,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -14902,6 +14908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15058,6 +15070,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15128,18 +15146,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -15223,6 +15229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15379,6 +15391,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15449,18 +15467,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -15490,6 +15496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15646,6 +15658,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15716,18 +15734,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -15793,6 +15799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15949,6 +15961,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16019,18 +16037,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -16072,6 +16078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16228,6 +16240,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16298,18 +16316,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -16327,6 +16333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16483,6 +16495,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16553,18 +16571,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -16648,6 +16654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16804,6 +16816,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16874,18 +16892,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -16915,6 +16921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17071,6 +17083,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17141,18 +17159,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -17236,6 +17242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17392,6 +17404,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17462,18 +17480,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -17491,6 +17497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17647,6 +17659,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17717,18 +17735,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -17812,6 +17818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17968,6 +17980,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18038,18 +18056,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -18073,6 +18079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18229,6 +18241,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18299,18 +18317,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -18328,6 +18334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18484,6 +18496,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18554,18 +18572,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -18619,6 +18625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18775,6 +18787,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18845,18 +18863,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -18940,6 +18946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19096,6 +19108,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19166,18 +19184,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -19195,6 +19201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19351,6 +19363,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19421,18 +19439,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -19456,6 +19462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19612,6 +19624,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19682,18 +19700,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -19777,6 +19783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19933,6 +19945,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20003,18 +20021,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -20035,8 +20041,15 @@
     "GOAT": {
       "last_id": "goat-titan-engine-foundry-20260826-01",
       "last_ts": "2026-08-27T00:11:43Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "goat-titan-engine-foundry-20260826-01",
@@ -20118,6 +20131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20274,6 +20293,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20344,18 +20369,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -20434,252 +20447,17 @@
       ]
     },
     "GPT/CODEX": {
-      "last_id": "codex-stripe-existing-account-truth-20260826-01",
-      "last_ts": "",
-      "n": 40,
-      "since": [
-        {
-          "id": "goat-titan-engine-foundry-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:11:43Z"
-        },
-        {
-          "id": "goat-titan-engine-grand-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:10:30Z"
-        },
-        {
-          "id": "goat-titan-engine-sandbox-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:09:45Z"
-        },
-        {
-          "id": "goat-titan-engine-truefalse-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:08:30Z"
-        },
-        {
-          "id": "goat-titan-engine-engineered-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:07:45Z"
-        },
-        {
-          "id": "goat-titan-engine-whitebox-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:06:56Z"
-        },
-        {
-          "id": "goat-titan-engine-transformer-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:06:15Z"
-        },
-        {
-          "id": "goat-titan-engine-attention-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:05:20Z"
-        },
-        {
-          "id": "goat-titan-engine-trainreal-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:04:40Z"
-        },
-        {
-          "id": "goat-titan-engine-traindeep-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:03:45Z"
-        },
-        {
-          "id": "goat-titan-engine-train-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:02:30Z"
-        },
-        {
-          "id": "goat-titan-engine-verifiable-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:01:51Z"
-        },
-        {
-          "id": "goat-titan-engine-neural-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:01:11Z"
-        },
-        {
-          "id": "goat-titan-engine-merkle-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T00:00:24Z"
-        },
-        {
-          "id": "goat-titan-engine-regex-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:59:30Z"
-        },
-        {
-          "id": "goat-titan-engine-bigdata-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:58:53Z"
-        },
-        {
-          "id": "goat-titan-engine-query-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:57:47Z"
-        },
-        {
-          "id": "goat-titan-engine-solver-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:56:08Z"
-        },
-        {
-          "id": "type-commons-apk-catalog-20260826-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:56:00Z"
-        },
-        {
-          "id": "goat-titan-engine-pagerank-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:55:20Z"
-        },
-        {
-          "id": "wire-commons-android-apk-20260826-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:54:00Z"
-        },
-        {
-          "id": "goat-titan-engine-lever-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:52:01Z"
-        },
-        {
-          "id": "goat-titan-engine-flex-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:49:20Z"
-        },
-        {
-          "id": "goat-titan-html-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:42:05Z"
-        },
-        {
-          "id": "wire-gemini-carriers-cards-20260826-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:42:00Z"
-        },
-        {
-          "id": "slack-1787786559-892739",
-          "from": "",
-          "to": "TABLE",
-          "ts": "2026-08-26T23:22:39Z"
-        },
-        {
-          "id": "slack-1787783848-460539",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:37:28.460539Z"
-        },
-        {
-          "id": "slack-1787783673-295669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:34:33.295669Z"
-        },
-        {
-          "id": "slack-1787783604-867849",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:33:24.867849Z"
-        },
-        {
-          "id": "slack-1787783499-471569",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:31:39.471569Z"
-        },
-        {
-          "id": "slack-1787783438-103609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:30:38.103609Z"
-        },
-        {
-          "id": "slack-1787783363-782539",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:29:23.782539Z"
-        },
-        {
-          "id": "slack-1787783299-885679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:28:19.885679Z"
-        },
-        {
-          "id": "slack-1787783203-995979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:26:43.995979Z"
-        },
-        {
-          "id": "slack-1787783140-430049",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:25:40.430049Z"
-        },
-        {
-          "id": "slack-1787783121-690269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:25:21.690269Z"
-        },
-        {
-          "id": "slack-1787783078-728019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:24:38.728019Z"
-        },
-        {
-          "id": "slack-1787783014-108789",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
-        }
-      ],
+      "last_id": "codex-titan-android-capture-extension-20260826-01",
+      "last_ts": "2026-08-27T00:16:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
         {
           "id": "codex-stripe-existing-account-truth-20260826-01",
           "from": "GPT/CODEX",
@@ -20712,6 +20490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20868,6 +20652,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20938,18 +20728,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -20973,6 +20751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21129,6 +20913,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21199,18 +20989,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -21294,6 +21072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21450,6 +21234,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21520,18 +21310,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -21615,6 +21393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21771,6 +21555,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21841,18 +21631,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -21876,6 +21654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22032,6 +21816,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22102,18 +21892,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -22137,6 +21915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22293,6 +22077,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22363,18 +22153,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -22398,6 +22176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22554,6 +22338,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22624,18 +22414,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -22719,6 +22497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22875,6 +22659,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22945,18 +22735,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -22974,6 +22752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23130,6 +22914,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23200,18 +22990,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -23229,6 +23007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23385,6 +23169,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23455,18 +23245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -23496,6 +23274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23652,6 +23436,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23722,18 +23512,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -23817,6 +23595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23973,6 +23757,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24043,18 +23833,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -24072,6 +23850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24228,6 +24012,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24298,18 +24088,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -24393,6 +24171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24549,6 +24333,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24619,18 +24409,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -24714,6 +24492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24870,6 +24654,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24940,18 +24730,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -25035,6 +24813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25191,6 +24975,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25261,18 +25051,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -25308,6 +25086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25464,6 +25248,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25534,18 +25324,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -25629,6 +25407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25785,6 +25569,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25855,18 +25645,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -25884,6 +25662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26040,6 +25824,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26110,18 +25900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -26187,6 +25965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26343,6 +26127,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26413,18 +26203,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -26442,6 +26220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26598,6 +26382,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26668,18 +26458,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -26763,6 +26541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26919,6 +26703,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26989,18 +26779,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -27018,6 +26796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27174,6 +26958,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27244,18 +27034,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -27273,6 +27051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27429,6 +27213,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27499,18 +27289,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -27528,6 +27306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27684,6 +27468,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27754,18 +27544,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -27783,6 +27561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27939,6 +27723,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28009,18 +27799,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -28062,6 +27840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28218,6 +28002,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28288,18 +28078,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -28383,6 +28161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28539,6 +28323,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28609,18 +28399,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -28680,6 +28458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28836,6 +28620,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28906,18 +28696,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -28965,6 +28743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29121,6 +28905,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29191,18 +28981,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -29220,6 +28998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29376,6 +29160,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29446,18 +29236,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -29475,6 +29253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29631,6 +29415,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29701,18 +29491,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -29730,6 +29508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29886,6 +29670,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29956,18 +29746,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -29985,6 +29763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30141,6 +29925,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30211,18 +30001,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -30240,6 +30018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30396,6 +30180,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30466,18 +30256,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -30561,6 +30339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30717,6 +30501,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30787,18 +30577,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -30882,6 +30660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31038,6 +30822,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31108,18 +30898,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -31203,6 +30981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31359,6 +31143,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31429,18 +31219,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -31500,6 +31278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31656,6 +31440,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31726,18 +31516,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -31821,6 +31599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31977,6 +31761,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32047,18 +31837,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -32076,6 +31854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32232,6 +32016,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32302,18 +32092,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -32331,6 +32109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32487,6 +32271,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32557,18 +32347,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -32598,6 +32376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32754,6 +32538,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32824,18 +32614,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -32919,6 +32697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33075,6 +32859,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33145,18 +32935,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -33174,6 +32952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33330,6 +33114,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33400,18 +33190,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -33441,6 +33219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33597,6 +33381,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33667,18 +33457,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -33738,6 +33516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33894,6 +33678,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33964,18 +33754,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -34059,6 +33837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34215,6 +33999,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34285,18 +34075,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -34380,6 +34158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34536,6 +34320,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34606,18 +34396,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -34689,6 +34467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34845,6 +34629,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34915,18 +34705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -34956,6 +34734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35112,6 +34896,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35182,18 +34972,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -35277,6 +35055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35433,6 +35217,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35503,18 +35293,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -35598,6 +35376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35754,6 +35538,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35824,18 +35614,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -35919,6 +35697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36075,6 +35859,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36145,18 +35935,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -36180,6 +35958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36336,6 +36120,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36406,18 +36196,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -36453,6 +36231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36609,6 +36393,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36679,18 +36469,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -36774,6 +36552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36930,6 +36714,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37000,18 +36790,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -37029,6 +36807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37185,6 +36969,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37255,18 +37045,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -37350,6 +37128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37506,6 +37290,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37576,18 +37366,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -37671,6 +37449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37827,6 +37611,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37897,18 +37687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -37992,6 +37770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38148,6 +37932,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38218,18 +38008,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -38313,6 +38091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38469,6 +38253,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38539,18 +38329,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -38604,6 +38382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38760,6 +38544,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38830,18 +38620,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -38925,6 +38703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39081,6 +38865,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39151,18 +38941,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -39180,6 +38958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39336,6 +39120,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39406,18 +39196,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -39462,8 +39240,14 @@
     "TYPE": {
       "last_id": "type-commons-apk-catalog-20260826-01",
       "last_ts": "2026-08-26T23:56:00Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
         {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
@@ -39654,6 +39438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39810,6 +39600,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39880,18 +39676,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -39972,8 +39756,14 @@
     "WIRE": {
       "last_id": "wire-commons-android-apk-20260826-01",
       "last_ts": "2026-08-26T23:54:00Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
         {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
@@ -40176,6 +39966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40332,6 +40128,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40402,18 +40204,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
@@ -40497,6 +40287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "from": "GPT/CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-27T00:16:00Z"
+        },
+        {
           "id": "goat-titan-engine-foundry-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40653,6 +40449,12 @@
           "ts": "2026-08-26T23:22:39Z"
         },
         {
+          "id": "slack-1787783984-416229",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-26T22:39:44.416229Z"
+        },
+        {
           "id": "slack-1787783848-460539",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40723,18 +40525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-26T22:23:34.108789Z"
-        },
-        {
-          "id": "slack-1787783002-995179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:23:22.995179Z"
-        },
-        {
-          "id": "slack-1787782894-301119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-26T22:21:34.301119Z"
         }
       ],
       "mine": [
