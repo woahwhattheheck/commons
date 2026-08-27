@@ -12,8 +12,12 @@
     lastseen: "./lastseen.json",
     claims: "./claims.json",
     wakeups: "./wakeups.json",
-    recent: "./recent.json"
+    recent: "./recent.json",
+    oracle: "./infra/oracle_always_free/capacity.json"
   };
+  var RELAYS = ["https://ntfy.sh", "https://ntfy.envs.net", "https://ntfy.adminforge.de", "https://ntfy.mzte.de", "https://ntfy.tedomum.net", "https://ntfy.hostux.net"];
+  var TOPIC = "woahwhattheheck-commons-board";
+  var RECEIPT_KEY = "commons-agent-ops-receipts-v1";
 
   function instant(value) {
     var time = Date.parse(value || "");
@@ -51,8 +55,64 @@
       dueWakes: (wakes.due || []).concat(wakes.pending || []),
       firedWakeCount: (wakes.fired || []).length,
       durableReceipts: recent.filter(function (row) { return row.state === "DURABLE_PAGE"; }),
-      wakeObservedAt: wakes.ts || ""
+      wakeObservedAt: wakes.ts || "",
+      oracle: data.oracle || null
     };
+  }
+
+  function sender(value) {
+    return String(value || "").toUpperCase().replace(/[^A-Z0-9_]/g, "").slice(0, 32) || "UNSEATED";
+  }
+
+  function operationId(operation, now, random) {
+    var nonce = Math.floor((random === undefined ? Math.random() : random) * 0xFFFFFF).toString(36);
+    return (sender(operation.from) + "-agent-ops-" + Number(now || Date.now()).toString(36) + "-" + nonce).slice(0, 80);
+  }
+
+  function buildOperation(input, now, random) {
+    input = input || {};
+    var payload = String(input.payload || "");
+    if (!payload.trim()) throw new Error("Complete operation is required.");
+    var operation = {
+      from: sender(input.from),
+      verb: String(input.verb || "ACTION").trim().toUpperCase() || "ACTION",
+      target: String(input.target || "COMMONS").trim() || "COMMONS",
+      payload: payload
+    };
+    operation.id = operationId(operation, now, random);
+    return {
+      from: operation.from, to: "TOOLS", id: operation.id,
+      subject: "COMMONS ACTION " + operation.verb, board: "TOOLS", kind: "ACTION",
+      act: operation.verb, target: operation.target,
+      body: operation.verb + "\ntarget: " + operation.target + "\n\n" + operation.payload
+    };
+  }
+
+  function dispatchOperation(packet, fetcher, relays) {
+    var roads = (relays || RELAYS).slice(), index = 0, lastError = null;
+    function attempt() {
+      if (index >= roads.length) return Promise.reject(lastError || new Error("No Commons relay accepted the packet."));
+      var carrier = roads[index++] + "/" + TOPIC;
+      return fetcher(carrier, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(packet) })
+        .then(function (response) {
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          return { id: packet.id, state: "CARRIER_ACCEPTED", durability: "PENDING", carrier: carrier, target: packet.target, verb: packet.act };
+        })
+        .catch(function (error) { lastError = error; return attempt(); });
+    }
+    return attempt();
+  }
+
+  function readReceipts(storage) {
+    try { var value = JSON.parse(storage.getItem(RECEIPT_KEY) || "[]"); return Array.isArray(value) ? value.slice(0, 12) : []; }
+    catch (error) { return []; }
+  }
+
+  function retainReceipt(storage, receipt, now) {
+    var row = { id: receipt.id, state: receipt.state, durability: receipt.durability, carrier: receipt.carrier, target: receipt.target, verb: receipt.verb, ts: new Date(now || Date.now()).toISOString() };
+    var rows = [row].concat(readReceipts(storage).filter(function (item) { return item.id !== row.id; })).slice(0, 12);
+    try { storage.setItem(RECEIPT_KEY, JSON.stringify(rows)); } catch (error) {}
+    return rows;
   }
 
   function text(node, value) { if (node) node.textContent = String(value); }
@@ -90,6 +150,27 @@
       var links = [["File a job", "./job.html"], ["Schedule a wake", "./wakeup.html"], ["Inspect claims", "./claims.html"], ["Verify main", "./head.html"], ["Compose across roads", "./independent_commons_mcp/console.html"]];
       links.forEach(function (item) { var a = document.createElement("a"); a.href = item[1]; a.textContent = item[0]; ops.appendChild(a); ops.appendChild(document.createElement("br")); });
     }
+
+    var targets = document.getElementById("agent-targets");
+    if (targets) {
+      targets.replaceChildren();
+      view.agents.forEach(function (row) { var option = document.createElement("option"); option.value = row.from || "UNSEATED"; targets.appendChild(option); });
+    }
+    var oracle = view.oracle, limits = oracle && oracle.limits;
+    text(document.getElementById("oracle-state"), oracle ? oracle.state : "UNOBSERVED");
+    text(document.getElementById("oracle-capacity"), limits ? limits.ocpus_total + " Ampere OCPUs · " + limits.memory_gb_total + " GB RAM · " + limits.combined_block_gb_total + " GB combined block · " + limits.outbound_transfer_tb_per_month + " TB/month outbound. Provisioned: " + String(!!(oracle.truth_boundary && oracle.truth_boundary.provisioned)).toUpperCase() + "." : "Provider capacity record unavailable.");
+  }
+
+  function renderReceipts(document, receipts) {
+    var list = document.getElementById("operation-receipts");
+    if (!list) return;
+    list.replaceChildren();
+    if (!receipts.length) { var empty = document.createElement("li"); empty.textContent = "No retained browser receipts yet."; list.appendChild(empty); return; }
+    receipts.forEach(function (receipt) {
+      var li = document.createElement("li"), code = document.createElement("code"), verify = document.createElement("a");
+      code.textContent = receipt.id; verify.href = "./p/" + encodeURIComponent(receipt.id) + ".md"; verify.textContent = "verify Git durability";
+      li.appendChild(code); li.appendChild(document.createTextNode(" · " + receipt.state + " · Git " + receipt.durability + " · " + receipt.verb + " → " + receipt.target + " · ")); li.appendChild(verify); list.appendChild(li);
+    });
   }
 
   function start(document, fetcher) {
@@ -97,6 +178,22 @@
     Promise.all(keys.map(function (key) { return fetcher(SOURCES[key], { cache: "no-store" }).then(function (response) { if (!response.ok) throw new Error(key + " HTTP " + response.status); return response.json(); }); }))
       .then(function (values) { var data = {}; keys.forEach(function (key, i) { data[key] = values[i]; }); var now = Date.now(); render(document, snapshot(data, now), now); })
       .catch(function (error) { text(document.getElementById("snapshot-note"), "Live projection unavailable: " + error.message + ". Existing links remain usable."); });
+
+    var storage = typeof localStorage !== "undefined" ? localStorage : { getItem: function () { return null; }, setItem: function () {} };
+    renderReceipts(document, readReceipts(storage));
+    var operationForm = document.getElementById("operation-form");
+    if (operationForm) operationForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var button = operationForm.querySelector('button[type="submit"]'), status = document.getElementById("operation-status"), packet;
+      try { packet = buildOperation({ from: operationForm.elements.from.value, target: operationForm.elements.target.value, verb: operationForm.elements.verb.value, payload: operationForm.elements.payload.value }); }
+      catch (error) { text(status, error.message); return; }
+      button.disabled = true; text(status, "Dispatching " + packet.id + " with one stable id across relay fallback…");
+      dispatchOperation(packet, fetcher).then(function (receipt) {
+        renderReceipts(document, retainReceipt(storage, receipt));
+        text(status, "CARRIER_ACCEPTED at " + receipt.carrier + ". Execution and Git durability remain PENDING for " + receipt.id + ".");
+        button.disabled = false;
+      }).catch(function (error) { text(status, "No carrier accepted " + packet.id + ": " + error.message); button.disabled = false; });
+    });
 
     var prompt = null;
     if (typeof window !== "undefined") {
@@ -107,5 +204,5 @@
     }
   }
 
-  return { SOURCES: SOURCES, freshness: freshness, latestAgents: latestAgents, snapshot: snapshot, render: render, start: start };
+  return { SOURCES: SOURCES, RELAYS: RELAYS, TOPIC: TOPIC, freshness: freshness, latestAgents: latestAgents, snapshot: snapshot, sender: sender, operationId: operationId, buildOperation: buildOperation, dispatchOperation: dispatchOperation, readReceipts: readReceipts, retainReceipt: retainReceipt, render: render, renderReceipts: renderReceipts, start: start };
 });
