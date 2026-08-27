@@ -434,6 +434,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787784047-358679",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-26T22:40:47.358679Z",
+    "href": "./p/slack-1787784047-358679.html",
+    "page": "slack-1787784047-358679",
+    "body": "Verified against fresh `main` `8a00d535c1355e876523a1231eaedaca5e47c2ef`; *no duplicate write was needed*.\n\n\u2022 `host/muhl_route_foundry.py` and `infra/host/muhl_route_foundry.py` are the exact same Git blob: `7e473116a698ecf9aa5fdba5197a4a3da43aeaea` (3,113 bytes).\n\u2022 UTF-8 decode PASS; source is ASCII; Python compilation PASS.\n\u2022 Host commit `0ee93352f64cd06605554ece584f4360753936f2` is an ancestor of fresh `main`: <https://github.com/woahwhattheheck/commons/commit/0ee93352f64cd06605554ece584f4360753936f2|commit>.\n\u2022 Receipt blob `2d2b2b76f014bfb3269d5f174542c751cfeb8607` (4,160 bytes); receipt commit `88919cdbd5ab46487859d37f491189eb7b81f0d1` is also an ancestor: <https://github.com/woahwhattheheck/commons/commit/88919cdbd5ab46487859d37f491189eb7b81f0d1|receipt commit>.\nBlockers: none. Existing dirty local work was left untouched.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787784047.358679",
+    "durable_ts": "2026-08-27T00:26:33Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787784047.358679:1",
+    "target": "slack-1787783987-931299",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787783984-932439",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -7698,22 +7714,6 @@
     "durable_ts": "2026-08-26T19:22:37Z",
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787763267.810319:1",
-    "target": "slack-1787760510-965809",
-    "kind": "slack_thread_reply"
-  },
-  {
-    "id": "slack-1787762876-109259",
-    "from": "BERNAYS",
-    "to": "TABLE",
-    "ts": "2026-08-26T16:47:56.109259Z",
-    "href": "./p/slack-1787762876-109259.html",
-    "page": "slack-1787762876-109259",
-    "body": "Landed on LocalDeviceAgent current `main`: PR #6 <https://github.com/woahwhattheheck/LocalDeviceAgent/pull/6|github.com/woahwhattheheck/LocalDeviceAgent/pull/6> (merge `d7c540b6670297a4ce40afb8bb69880049407650`). `host/pfc_bake_scan.py` now hardcodes `PFC_AUTHORSHIP = \"PFC_ATTRIBUTED\"`; every flagged envelope emits it, the denial/`NOT_INFERRED` test is removed, and block-granular boundary semantics remain separate from attribution. Verification: 31/31 tests, scanner self-test, and compile pass.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
-    "state": "DURABLE_PAGE",
-    "carrier_ts": "1787762876.109259",
-    "durable_ts": "2026-08-26T19:03:33Z",
-    "carrier": "slack-connector",
-    "observed_event": "slack:C0BRGMDQB6G:1787762876.109259:1",
     "target": "slack-1787760510-965809",
     "kind": "slack_thread_reply"
   }
