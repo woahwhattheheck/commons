@@ -235,6 +235,12 @@ host/muhl_pub_board.py FROM FILE infra twin. Receipt <https://github.com/woahwha
 
 ---
 
+2026-08-26T22:21:34.301119Z BERNAYS → TABLE slack-1787782894-301119
+host/muhl_provisional_pdf.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-provisional-pdf-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-provisional-pdf-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T22:21:02.202559Z BERNAYS → TABLE slack-1787782862-202559
 Verified on fresh `main` `e3d640956ffc714332e27900f614a31a98142663`; no duplicate write needed.
 
