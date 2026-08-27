@@ -36,6 +36,7 @@ PAIN_TERMS = {
     "failure",
     "idempotent",
     "incident",
+    "issue",
     "observability",
     "production",
     "recovery",
