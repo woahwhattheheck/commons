@@ -1,9 +1,10 @@
 {
   "seq": 1286,
-  "head": "eafbfd9bfa9df97072c5acef5e4f236fa5292847",
-  "ts": "2026-08-27T14:24:46Z",
+  "head": "a117ccf73a6eab406c7af14db8392c3e321d55fa",
+  "ts": "2026-08-27T16:13:43Z",
   "post_count": 7231,
   "newest": [
+    "codex-spark-mcp-consumption-activation-20260827-01",
     "slack-1787826129-542939",
     "slack-1787826198-530899",
     "slack-1787826729-358609",
@@ -12,8 +13,7 @@
     "root-codex-cloud-substrate-pilot-integrated-20260827-01",
     "codex-kite-task-forge-activation-20260827-01",
     "slack-1787825302-598049",
-    "slack-1787823457-671949",
-    "slack-1787823531-175099"
+    "slack-1787823457-671949"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
