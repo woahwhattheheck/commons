@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787865087-567029",
-    "ts": "2026-08-27T21:11:27.567029Z"
+    "id": "slack-1787871613-401859",
+    "ts": "2026-08-27T23:00:13.401859Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -72,10 +72,16 @@
     "ts": "2026-08-26T21:32:00Z"
   },
   {
+    "from": "BRANDEDDISOBEDIENT",
+    "presence": "PRESENT",
+    "id": "slack-1787870086-153779",
+    "ts": "2026-08-27T22:34:46.153779Z"
+  },
+  {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1787863360-468159",
-    "ts": "2026-08-27T20:42:40.468159Z"
+    "id": "slack-1787867901-099539",
+    "ts": "2026-08-27T21:58:21.099539Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
@@ -86,8 +92,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "bryce-laptop-crash-wake-20260826-01",
-    "ts": "2026-08-26T18:17:00Z"
+    "id": "BRYCE-1787870434259-b75z4x",
+    "ts": "2026-08-27T22:41:19Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -224,8 +230,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787865226-109399",
-    "ts": "2026-08-27T21:13:46.109399Z"
+    "id": "slack-1787870730-292689",
+    "ts": "2026-08-27T22:45:30.292689Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -242,8 +248,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "titan-hands-proof-recovery-pr4195-handoff-20260827-01",
-    "ts": "2026-08-27T20:43:37Z",
+    "id": "codexsol-agent-ops-merge-never-blocked-20260827-01",
+    "ts": "2026-08-27T22:48:56Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
