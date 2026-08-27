@@ -5,32 +5,87 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import java.io.ByteArrayOutputStream
+import java.security.MessageDigest
 
 /**
- * TITAN transport overlay for the LDA's optional marked screenshot.
+ * TITAN Set-of-Marks renderer and same-generation binder.
  *
  * This is not a second executor. Perception still comes from
  * [ActionAccessibilityService.captureScreenshot] plus [ActionAccessibilityService.currentMarks].
- * The overlay copies the owner's [AgentBrain] Set-of-Marks / labeled-grid drawing so
- * `hands_capture` can return that same visual instead of a raw ADB framebuffer.
+ * Numbering uses [GridSpec] plus the real `[N]` ids in [ScreenMarks.ids].
  *
- * Constants and badge placement match AgentBrain.drawMarks / drawGrid / downscale / toJpegBytes
- * (640px JPEG-60, real `[N]` ids, de-collided badges). drawLastTap is omitted: that marker is
- * on-device loop state, not part of an off-device capture request.
+ * [AgentBrain.toJpegBytes] delegates marks/grid/downscale to [overlay]. drawLastTap stays on
+ * AgentBrain: that marker is on-device loop state, not part of an off-device capture.
  */
 object TitanHandsMarks {
-    fun jpeg(bmp: Bitmap, marks: ScreenMarks, maxPx: Int = 640, quality: Int = 60): ByteArray {
-        val small = downscale(bmp, maxPx)
-        val hasMarks = marks.boxes.isNotEmpty()
-        val gridded = drawGrid(small, faint = hasMarks)
-        var ready = gridded
-        if (hasMarks) ready = drawMarks(ready, marks)
+    const val DEFAULT_MAX_PX = 640
+    const val DEFAULT_JPEG_QUALITY = 60
+    const val JPEG_MIME = "image/jpeg"
+    const val JPEG_FORMAT = "jpeg"
+    const val JPEG_SUFFIX = ".jpg"
+    const val GENERATION_MISMATCH_REASON = "SCREEN_GENERATION_MISMATCH"
+
+    fun jpeg(
+        bmp: Bitmap,
+        marks: ScreenMarks,
+        maxPx: Int = DEFAULT_MAX_PX,
+        quality: Int = DEFAULT_JPEG_QUALITY,
+    ): ByteArray {
+        val ready = overlay(bmp, marks, maxPx)
         val out = ByteArrayOutputStream()
         ready.compress(Bitmap.CompressFormat.JPEG, quality, out)
         if (ready !== bmp) try { ready.recycle() } catch (_: Exception) {}
-        if (gridded !== ready && gridded !== bmp) try { gridded.recycle() } catch (_: Exception) {}
-        if (small !== gridded && small !== ready && small !== bmp) try { small.recycle() } catch (_: Exception) {}
         return out.toByteArray()
+    }
+
+    fun overlay(bmp: Bitmap, marks: ScreenMarks?, maxPx: Int = DEFAULT_MAX_PX): Bitmap {
+        val small = downscale(bmp, maxPx)
+        val hasMarks = marks != null && marks.boxes.isNotEmpty()
+        val gridded = drawGrid(small, faint = hasMarks)
+        val ready = if (hasMarks) drawMarks(gridded, marks!!) else gridded
+        if (small !== gridded && small !== ready && small !== bmp) try { small.recycle() } catch (_: Exception) {}
+        if (gridded !== ready && gridded !== bmp) try { gridded.recycle() } catch (_: Exception) {}
+        return ready
+    }
+
+    fun generationToken(snapshot: String, marks: ScreenMarks): String =
+        generationToken(
+            snapshot,
+            marks.ids,
+            marks.boxes.map { intArrayOf(it.left, it.top, it.right, it.bottom) },
+            marks.screenW,
+            marks.screenH,
+        )
+
+    fun generationToken(
+        snapshot: String,
+        markIds: List<Int>,
+        boxCells: List<IntArray>,
+        screenW: Int,
+        screenH: Int,
+    ): String {
+        val material = buildString {
+            append("som-generation-v1\n")
+            append(snapshot)
+            append('\n')
+            append(markIds.joinToString(","))
+            append('\n')
+            append(screenW)
+            append('x')
+            append(screenH)
+            append('\n')
+            for (box in boxCells) {
+                append(box.joinToString(","))
+                append(';')
+            }
+        }
+        val digest = MessageDigest.getInstance("SHA-256").digest(material.toByteArray(Charsets.UTF_8))
+        return digest.joinToString("") { b -> "%02x".format(b) }
+    }
+
+    fun sameGenerationOrNull(before: String, after: String): String? {
+        if (before.isEmpty() || after.isEmpty() || before != after) return null
+        return before
     }
 
     private fun drawMarks(src: Bitmap, marks: ScreenMarks): Bitmap {
@@ -117,7 +172,7 @@ object TitanHandsMarks {
         return bmp
     }
 
-    private fun downscale(bmp: Bitmap, max: Int = 640): Bitmap {
+    private fun downscale(bmp: Bitmap, max: Int = DEFAULT_MAX_PX): Bitmap {
         val w = bmp.width; val h = bmp.height
         if (w <= max && h <= max) return bmp
         val s = max.toFloat() / maxOf(w, h)
