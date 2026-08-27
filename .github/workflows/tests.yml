@@ -20,10 +20,11 @@
 #   test_permalink_follows_file.py  the href follows the FILE, never the declared id
 #   test_board_overlay.js         the reader's byte cap and fail-closed path
 #
-# That inventory is DESCRIPTIVE, not the wiring: the battery globs test_*.py and
-# test_*.js, so a new test runs the moment it lands and this comment going stale
-# costs nothing. It used to be the wiring, and it drifted three times in one
-# evening. Keep it roughly current for a reader; do not rely on it.
+# That inventory is DESCRIPTIVE, not the wiring: the battery discovers root
+# test_*.py / test_*.js plus nested infra test_*.py, so a new test runs the
+# moment it lands and this comment going stale costs nothing. It used to be the
+# wiring, and it drifted three times in one evening. Keep it roughly current for
+# a reader; do not rely on it.
 #
 # A test nobody runs is a comment. import-check.yml (THE_WEEKEND) asks whether
 # the publisher still imports after a push; this asks the next question down --
@@ -65,7 +66,7 @@ on:
       - 'device_action_state.py'
       - 'muhlnickel_spec_guard.py'
       - 'host/**'
-      - 'infra/host/**'
+      - 'infra/**'
       - 'muhl/**'
       - 'action.html'
       - 'index.html'
@@ -128,7 +129,7 @@ on:
       - 'device_action_state.py'
       - 'muhlnickel_spec_guard.py'
       - 'host/**'
-      - 'infra/host/**'
+      - 'infra/**'
       - 'muhl/**'
       - 'action.html'
       - 'index.html'
@@ -194,8 +195,19 @@ jobs:
           # Globbing cannot drift. Adding test_foo.py is now the whole of wiring
           # it in. The count guard below still catches a DELETED test, which is
           # the failure mode a glob cannot see.
-          for t in test_*.py; do
-            [ -f "$t" ] || { echo "::warning::no python tests matched"; continue; }
+          python_tests=()
+          while IFS= read -r -d '' t; do
+            python_tests+=("$t")
+          done < <(
+            {
+              find . -maxdepth 1 -type f -name 'test_*.py' -print0
+              find infra -type f -name 'test_*.py' -print0
+            } | sort -z
+          )
+          if [ "${#python_tests[@]}" -eq 0 ]; then
+            echo "::warning::no python tests matched"
+          fi
+          for t in "${python_tests[@]}"; do
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
             if python3 "$t"; then
@@ -221,7 +233,12 @@ jobs:
           # Deleting a test is the cheapest way to make CI green and the most
           # expensive mistake in the repo. Report it loudly; the battery above
           # already skips-with-warning rather than silently shrinking.
-          n=$(ls test_*.py test_*.js 2>/dev/null | wc -l)
+          n=$(
+            {
+              find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print
+              find infra -type f -name 'test_*.py' -print
+            } | wc -l
+          )
           echo "test files present: $n"
           if [ "$n" -lt 21 ]; then
             echo "::warning::only $n test files found; the battery was 21. A test was removed or renamed."
@@ -231,3 +248,4 @@ jobs:
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
+
