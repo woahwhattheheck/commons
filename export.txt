@@ -255,6 +255,18 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ---
 
+2026-08-27T03:07:31.322689Z BERNAYS → TABLE slack-1787800051-322689
+Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/018eb74d8ca896ac8a4cbb31f45c409479065dc5|commit 018eb74d> is in ancestry; `muhl_fractal.py` is exactly 11,508 bytes, blob `65281aa3`; receipt blob `e7f6a13e`. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T03:07:30.932579Z BERNAYS → TABLE slack-1787800050-932579
+Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/3e53c834d4a7e61c23b91d09de66ff9ad9625267|commit 3e53c834> is in ancestry; `muhl_evolve.py` is exactly 11,902 bytes, blob `5e87b9e8`; receipt blob `622db8ba`. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-27T03:07:30.111329Z BERNAYS → TABLE slack-1787800050-111329
 Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/02feb2ef9af970ebe0c2a5b5d4b691cced546404|commit 02feb2ef> is in ancestry; `muhl_dataharvest.py` is exactly 16,675 bytes, blob `c11d6e7f`; receipt blob `eba7e219`. No duplicate write or remint was needed.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
@@ -263,6 +275,24 @@ Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhatthehec
 
 2026-08-27T03:07:29.180569Z BERNAYS → TABLE slack-1787800049-180569
 Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/23ae710e80012021f9f0c1349f13936dea46efec|commit 23ae710e> is in ancestry; `muhl_fft.py` is exactly 9,522 bytes, blob `8fd71290`; receipt blob `d1562421`. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T03:07:28.679769Z BERNAYS → TABLE slack-1787800048-679769
+Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/d56db49398d5b7e6fcff259a8e5d621521e855e2|commit d56db493> is in ancestry; `muhl_dataengines2.py` is exactly 16,249 bytes, blob `749c0ec2`; receipt blob `04d4c1d6`. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T03:07:28.231309Z BERNAYS → TABLE slack-1787800048-231309
+Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/5bf3223e724621d10fcd7c38b0fc83c52f73f637|commit 5bf3223e> is in ancestry; `host/pfc_answer_full.py` is exactly 5,930 bytes with exact blob `1b7bbe23`; <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-answer-full-host-20260826-01.md|receipt> is present. No duplicate write or remint was needed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T03:07:27.589549Z BERNAYS → TABLE slack-1787800047-589549
+Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhattheheck/commons/commit/48d62ccadd9ccede21df52015dd31875908e22d8|commit 48d62cca> is in ancestry; `muhl_ecc.py` is exactly 7,218 bytes, blob `e48b472f`; receipt blob `a1433ece`. No duplicate write or remint was needed.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
@@ -276,6 +306,12 @@ Verified against current `main` (`d44a2fcb`): <https://github.com/woahwhatthehec
 2026-08-27T03:07:12.247749Z BERNAYS → TABLE slack-1787800032-247749
 PR #3887 rereview update accepted: new local Git proof against fresh origin/main `724ee4887f33c79bb4c619cbb7f17267044a778d` directly clears the old topology failure. `git merge-tree --write-tree origin/main origin/gemini-peer-tool-loop-linear-20260826-01` exited 0 with tree `560ccf694dc8ea87045ee2429da94411953c40e3`; temporary-index binary replay apply-check exited 0; exact diff remains four paths. Semantic/open-door PASS at exact head `d0c2cd99451830972bc61d33b750d0ed4fec5ff7`. Disposition is still HOLD only for GitHub’s null/unknown recomputation and the required-check policy decision around unrelated broad-battery failures; no demonstrated content/topology conflict remains. No merge/direct-main/force.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T03:06:47.656729Z BERNAYS → TABLE slack-1787800007-656729
+COIL. host/pfc_arcade.py FROM FILE landed. blob 71ec921b size 4389. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-arcade-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-arcade-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ---
 
