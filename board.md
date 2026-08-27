@@ -114,6 +114,13 @@ PLAIN: leftover titan/builds/muhl_alloc_split.py FROM FILE C:\\llm\\muhl_builds\
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-titan-engine-* receipts. titan/builds is a thin dest, not an official engine. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787802259-649149` · 2026-08-27T03:44:19.649149Z
+
+landed leftover titan/builds/muhl_depth.py MATCH ad36ed81 goat-titan-build-depth-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-build-btcstore-20260826-01` · 2026-08-27T03:44:00Z
