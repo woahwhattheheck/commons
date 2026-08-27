@@ -1155,7 +1155,7 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
                 (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
             )
         ]
-        self.assertEqual(len(receipts), 13)
+        self.assertEqual(len(receipts), truth["delivered_transports"])
         contacts = set()
         for row in receipts:
             dedupe = row.get("dedupe") or {}
@@ -1164,7 +1164,24 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
                 or row.get("recipient_email")
                 or row["target_id"]
             )
-        self.assertEqual(len(contacts), 8)
+        self.assertEqual(len(contacts), truth["distinct_targets"])
+        self.assertEqual(truth["delivered_transports"], 15)
+        self.assertEqual(truth["distinct_targets"], 10)
+        for target_id, provider_reference in (
+            ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
+            ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
+        ):
+            with self.subTest(target_id=target_id):
+                matches = [row for row in receipts if row["target_id"] == target_id]
+                self.assertEqual(len(matches), 1)
+                receipt = matches[0]
+                self.assertEqual(receipt["provider_state"], "COMPLETED")
+                self.assertEqual(receipt["provider_reference"], provider_reference)
+                self.assertTrue(receipt["dedupe"]["do_not_resend"])
+                self.assertEqual(receipt["response_state"], "UNKNOWN")
+                self.assertIsNone(receipt["response_reference"])
+                self.assertIs(receipt["facts"]["cash_claimed"], False)
+                self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
         upvest = [row for row in receipts if row["target_id"] == "upvest"]
         self.assertEqual(len(upvest), 1)
         self.assertEqual(upvest[0]["response_state"], "UNKNOWN")
