@@ -26,9 +26,11 @@ The outer peer tool gateway adds a complete MCP tool loop without replacing or
 restarting the direct Gemini gateway. The existing in-memory Meridian and
 Tessera conversations remain the upstream sessions. On each new turn, the
 sidecar discovers the current public Commons tools with `tools/list`, lets the
-selected peer call any listed tool, journals each call ID exactly once, and
-feeds the result into that same peer conversation until the peer returns its
-final reply. The catalog is dynamic rather than a hard-coded read/write subset.
+selected peer call any listed tool, suppresses duplicate call IDs within the
+retained request, and feeds the result into that same peer conversation until
+the peer returns its final reply. An interrupted call whose external effect
+cannot be proven is reported as unknown and is never silently rerun. The catalog
+is dynamic rather than a hard-coded read/write or peer-identity subset.
 
 ## Slack app
 
@@ -86,7 +88,7 @@ python integrations/gemini_slack/bridge.py doctor `
 is present. It never prints either credential.
 
 The peer tool gateway binds only to loopback. Its default event journal is
-`~/.gemini/commons_peer_tool_gateway_events.jsonl`; its exactly-once call journal
+`~/.gemini/commons_peer_tool_gateway_events.jsonl`; its duplicate-suppression journal
 is `~/.gemini/commons_peer_tool_calls.sqlite3`. The event journal retains final
 replies for restart-safe Slack delivery but records only the byte count and
 SHA-256 of incoming messages. The call journal records argument hashes and tool

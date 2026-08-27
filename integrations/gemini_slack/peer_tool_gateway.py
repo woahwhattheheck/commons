@@ -9,6 +9,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import queue
 import re
 import sqlite3
 import threading
@@ -161,7 +162,7 @@ class McpCatalog:
 
 
 class ToolCallStore:
-    """Exactly-once call-id journal. Arguments are retained only as a hash."""
+    """Per-request duplicate suppression with honest crash ambiguity."""
 
     def __init__(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -189,7 +190,7 @@ class ToolCallStore:
         with self._lock:
             self._db.close()
 
-    def execute_once(
+    def execute_journaled(
         self,
         request_id: str,
         call_id: str,
@@ -211,7 +212,11 @@ class ToolCallStore:
                     return {"error": "call_id_reused_with_different_arguments"}
                 if row["result_json"]:
                     return json.loads(row["result_json"])
-                return {"error": "tool_call_incomplete_after_restart", "call_id": call_id}
+                return {
+                    "error": "tool_effect_unknown_after_interruption",
+                    "call_id": call_id,
+                    "reconciliation": "inspect Commons before deciding whether to issue a new call",
+                }
             self._db.execute(
                 "INSERT INTO tool_calls VALUES(?,?,?,?,?,?,?)",
                 (request_id, call_id, name, digest, "started", None, time.time()),
@@ -287,7 +292,8 @@ class ToolLoop:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
-        for _ in range(self.max_steps + 1):
+        tool_calls = 0
+        while True:
             reply = self.upstream.turn(peer, prompt)
             call, had_marker = _parse_call(reply)
             if call is None and not had_marker:
@@ -298,6 +304,9 @@ class ToolLoop:
                     f"{CALL_OPEN} and {CALL_CLOSE}, or reply normally without either marker."
                 )
                 continue
+            if tool_calls >= self.max_steps:
+                raise GatewayError(f"peer exceeded {self.max_steps} Commons tool calls")
+            tool_calls += 1
             if call["name"] not in names:
                 result = {
                     "error": "unknown_tool",
@@ -305,7 +314,7 @@ class ToolLoop:
                     "available": sorted(names),
                 }
             else:
-                result = self.calls.execute_once(
+                result = self.calls.execute_journaled(
                     request_id,
                     call["call_id"],
                     call["name"],
@@ -322,7 +331,6 @@ class ToolLoop:
                 )
                 + "</commons_tool_result>"
             )
-        raise GatewayError(f"peer exceeded {self.max_steps} Commons tool calls")
 
 
 class EventStore:
@@ -407,6 +415,15 @@ class EventStore:
         return self._next - 1
 
 
+class QueuedTurn:
+    def __init__(self, request_id: str, peer: str, message: str) -> None:
+        self.request_id = request_id
+        self.peer = peer
+        self.message = message
+        self.done = threading.Event()
+        self.result: dict[str, Any] | None = None
+
+
 class ToolGateway(ThreadingHTTPServer):
     daemon_threads = True
 
@@ -423,9 +440,41 @@ class ToolGateway(ThreadingHTTPServer):
         self.events = events
         self.upstream = upstream
         self.catalog = catalog
-        self.peer_locks = {"TESSERA": threading.Lock(), "MERIDIAN": threading.Lock()}
+        self._peer_state_lock = threading.RLock()
+        self._peer_queues: dict[str, queue.Queue[QueuedTurn]] = {}
 
-    def submit(self, peer: str, message: str) -> str:
+    @staticmethod
+    def normalize_peer(value: Any) -> str:
+        peer = str(value or "").strip().upper()
+        if not peer:
+            raise ValueError("peer must be a nonempty name")
+        return peer
+
+    def _queue_for(self, peer: str) -> queue.Queue[QueuedTurn]:
+        with self._peer_state_lock:
+            existing = self._peer_queues.get(peer)
+            if existing is not None:
+                return existing
+            created: queue.Queue[QueuedTurn] = queue.Queue()
+            self._peer_queues[peer] = created
+            threading.Thread(
+                target=self._peer_worker,
+                args=(created,),
+                name=f"gemini-commons-tools-{peer.lower()}",
+                daemon=True,
+            ).start()
+            return created
+
+    def _peer_worker(self, work: queue.Queue[QueuedTurn]) -> None:
+        while True:
+            item = work.get()
+            try:
+                item.result = self.execute(item.request_id, item.peer, item.message)
+            finally:
+                item.done.set()
+                work.task_done()
+
+    def submit(self, peer: str, message: str) -> QueuedTurn:
         request_id = uuid.uuid4().hex
         raw = message.encode("utf-8")
         self.events.append(
@@ -435,14 +484,15 @@ class ToolGateway(ThreadingHTTPServer):
             message_bytes=len(raw),
             message_sha256=hashlib.sha256(raw).hexdigest(),
         )
-        return request_id
+        item = QueuedTurn(request_id, peer, message)
+        self._queue_for(peer).put(item)
+        return item
 
     def execute(self, request_id: str, peer: str, message: str) -> dict[str, Any]:
         started = time.monotonic()
         try:
-            with self.peer_locks[peer]:
-                self.events.append(request_id=request_id, peer=peer, status="running")
-                reply = self.loop.run(request_id, peer, message)
+            self.events.append(request_id=request_id, peer=peer, status="running")
+            reply = self.loop.run(request_id, peer, message)
             raw = reply.encode("utf-8")
             return self.events.append(
                 request_id=request_id,
@@ -462,15 +512,6 @@ class ToolGateway(ThreadingHTTPServer):
                 error=type(exc).__name__,
                 message=str(exc),
             )
-
-    def execute_background(self, request_id: str, peer: str, message: str) -> None:
-        threading.Thread(
-            target=self.execute,
-            args=(request_id, peer, message),
-            name=f"gemini-commons-tools-{peer.lower()}-{request_id[:8]}",
-            daemon=True,
-        ).start()
-
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
@@ -530,9 +571,7 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, {"ok": True, "events": events, "next_cursor": next_cursor})
                 return
             if parsed.path == "/v1/last":
-                peer = str((query.get("peer") or [""])[0]).upper()
-                if peer not in self.server.peer_locks:
-                    raise ValueError("peer must be TESSERA or MERIDIAN")
+                peer = self.server.normalize_peer((query.get("peer") or [""])[0])
                 event = self.server.events.last(peer)
                 if event is None:
                     self._send(404, {"ok": False, "error": "reply_not_found"})
@@ -560,9 +599,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             size = int(self.headers.get("Content-Length", "0"))
             payload = json.loads(self.rfile.read(size).decode("utf-8"))
-            peer = str(payload.get("peer") or "").upper()
-            if peer not in self.server.peer_locks:
-                raise ValueError("peer must be TESSERA or MERIDIAN")
+            peer = self.server.normalize_peer(payload.get("peer"))
             if isinstance(payload.get("message_utf8_base64"), str):
                 message = base64.b64decode(
                     payload["message_utf8_base64"], validate=True
@@ -571,12 +608,17 @@ class Handler(BaseHTTPRequestHandler):
                 message = payload.get("message")
             if not isinstance(message, str) or not message.strip():
                 raise ValueError("message must be nonempty UTF-8 text")
-            request_id = self.server.submit(peer, message)
+            item = self.server.submit(peer, message)
             if payload.get("async"):
-                self.server.execute_background(request_id, peer, message)
-                self._send(202, {"ok": True, "request_id": request_id, "status": "queued"})
+                self._send(
+                    202,
+                    {"ok": True, "request_id": item.request_id, "status": "queued"},
+                )
                 return
-            event = self.server.execute(request_id, peer, message)
+            item.done.wait()
+            event = item.result
+            if event is None:
+                raise GatewayError("queued peer turn completed without a result")
             self._send(
                 200 if event["status"] == "completed" else 502,
                 {"ok": event["status"] == "completed", **event},

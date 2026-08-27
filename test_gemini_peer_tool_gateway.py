@@ -156,6 +156,22 @@ class Fixture:
 
 
 class ToolGatewayTests(unittest.TestCase):
+    @staticmethod
+    def wait_for(fixture, request_id):
+        event = None
+        for _ in range(100):
+            with urllib.request.urlopen(
+                fixture.base_url + "/v1/requests/" + request_id,
+                timeout=2,
+            ) as response:
+                event = json.loads(response.read())["event"]
+            if event["status"] == "completed":
+                return event
+            if event["status"] == "error":
+                raise AssertionError(event)
+            time.sleep(0.02)
+        raise AssertionError(f"request {request_id} did not complete: {event}")
+
     def test_plain_reply_passes_through_and_catalog_is_dynamic(self):
         with Fixture() as fixture:
             UpstreamHandler.replies = ["plain final"]
@@ -204,16 +220,7 @@ class ToolGatewayTests(unittest.TestCase):
                 {"peer": "MERIDIAN", "message": "later", "async": True}
             )
             request_id = accepted["request_id"]
-            event = None
-            for _ in range(30):
-                with urllib.request.urlopen(
-                    fixture.base_url + "/v1/requests/" + request_id,
-                    timeout=2,
-                ) as response:
-                    event = json.loads(response.read())["event"]
-                if event["status"] == "completed":
-                    break
-                time.sleep(0.02)
+            event = self.wait_for(fixture, request_id)
             self.assertEqual(event["status"], "completed")
             self.assertEqual(
                 base64.b64decode(event["reply_utf8_base64"]).decode(),
@@ -227,16 +234,16 @@ class ToolGatewayTests(unittest.TestCase):
             self.assertEqual(last["request_id"], request_id)
             self.assertEqual(last["reply"], "async ✓")
 
-    def test_call_id_deduplicates_without_retaining_arguments(self):
+    def test_call_id_deduplicates_within_request_without_retaining_arguments(self):
         with Fixture() as fixture:
-            first = fixture.store.execute_once(
+            first = fixture.store.execute_journaled(
                 "r1",
                 "same",
                 "alpha",
                 {"secret": "do-not-store"},
                 fixture.catalog.call,
             )
-            second = fixture.store.execute_once(
+            second = fixture.store.execute_journaled(
                 "r1",
                 "same",
                 "alpha",
@@ -249,6 +256,64 @@ class ToolGatewayTests(unittest.TestCase):
             dump = "\n".join(database.iterdump())
             database.close()
             self.assertNotIn("do-not-store", dump)
+
+    def test_any_named_peer_is_admitted_without_identity_allowlisting(self):
+        with Fixture() as fixture:
+            UpstreamHandler.replies = ["new peer works"]
+            response = fixture.post({"peer": "AURORA", "message": "hello"})
+            self.assertEqual(response["peer"], "AURORA")
+            self.assertEqual(response["reply"], "new peer works")
+
+    def test_same_peer_async_turns_execute_fifo(self):
+        with Fixture() as fixture:
+            UpstreamHandler.replies = ["first reply", "second reply"]
+            first = fixture.post(
+                {"peer": "AURORA", "message": "first message", "async": True}
+            )
+            second = fixture.post(
+                {"peer": "AURORA", "message": "second message", "async": True}
+            )
+            first_event = self.wait_for(fixture, first["request_id"])
+            second_event = self.wait_for(fixture, second["request_id"])
+            self.assertEqual(first_event["reply"], "first reply")
+            self.assertEqual(second_event["reply"], "second reply")
+            self.assertIn("MESSAGE:\nfirst message", UpstreamHandler.prompts[0])
+            self.assertIn("MESSAGE:\nsecond message", UpstreamHandler.prompts[1])
+
+    def test_started_call_reports_unknown_effect_without_rerunning(self):
+        with Fixture() as fixture:
+            arguments = {"x": 1}
+            digest = module.hashlib.sha256(
+                json.dumps(
+                    arguments,
+                    sort_keys=True,
+                    separators=(",", ":"),
+                    ensure_ascii=False,
+                ).encode()
+            ).hexdigest()
+            with fixture.store._db:
+                fixture.store._db.execute(
+                    "INSERT INTO tool_calls VALUES(?,?,?,?,?,?,?)",
+                    ("r1", "c1", "alpha", digest, "started", None, time.time()),
+                )
+            ran = []
+            result = fixture.store.execute_journaled(
+                "r1", "c1", "alpha", arguments, lambda *_args: ran.append(True)
+            )
+            self.assertEqual(result["error"], "tool_effect_unknown_after_interruption")
+            self.assertEqual(ran, [])
+
+    def test_tool_call_bound_rejects_seventeenth_without_executing_it(self):
+        with Fixture() as fixture:
+            fixture.loop.max_steps = 16
+            UpstreamHandler.replies = [
+                '<commons_tool_call>{"call_id":"c%d","name":"alpha","arguments":{}}</commons_tool_call>'
+                % index
+                for index in range(1, 18)
+            ]
+            with self.assertRaisesRegex(module.GatewayError, "exceeded 16"):
+                fixture.loop.run("r1", "AURORA", "bounded")
+            self.assertEqual(len(McpHandler.calls), 16)
 
 
 if __name__ == "__main__":

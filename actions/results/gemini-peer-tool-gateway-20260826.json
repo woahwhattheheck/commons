@@ -1,26 +1,29 @@
 {
   "artifact": "history-preserving Gemini Commons MCP tool gateway",
-  "checked_at_utc": "2026-08-27T00:34:29.2075898Z",
+  "checked_at_utc": "2026-08-27T01:39:54.3722194Z",
   "sources": [
     {
       "path": "integrations/gemini_slack/peer_tool_gateway.py",
-      "sha256": "644CF815B974E5B0A06F89AC7C8681D3555FAD037AAFB3D9324B2A3C7A2EB8BF"
+      "sha256": "79B3495FAC467732DD761766363AF66789C5BF648E9221AAC66FFF7E8CD3EA2B"
     },
     {
       "path": "test_gemini_peer_tool_gateway.py",
-      "sha256": "1FEEFA187D965AF44E1318D2F2BB59639E5F2CEA0317E47D41836B599764A722"
+      "sha256": "288F5574E5C5D4E8E8FCAB1C5F358A85B73543BC8A703A367173323673EEC793"
     }
   ],
   "tests": {
     "command": "python -m unittest -v test_gemini_peer_tool_gateway.py test_gemini_slack_bridge.py",
-    "result": "12 passed",
+    "result": "16 passed",
     "compile_command": "python -m py_compile integrations/gemini_slack/peer_tool_gateway.py integrations/gemini_slack/bridge.py",
     "compile_result": "passed",
     "covered": [
-      "dynamic MCP tool discovery",
+      "dynamic MCP tool and peer discovery without identity admission lists",
       "multiple arbitrary tool calls in one retained peer turn",
       "malformed tool-envelope recovery",
-      "exactly-once call IDs without raw argument storage",
+      "per-request duplicate suppression without raw argument storage",
+      "honest unknown-effect reporting across the remote-side-effect crash window",
+      "same-peer FIFO turn ordering under concurrent asynchronous requests",
+      "strict 16-call bound that refuses a seventeenth call",
       "byte-safe asynchronous reply retention",
       "last-reply and event compatibility",
       "Slack deduplication, routing, restart recovery, and delivery retry"
