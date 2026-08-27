@@ -83,12 +83,10 @@ class BoardIssueFanoutTests(unittest.TestCase):
             r"        required: true\n        type: number$",
         )
 
-    def test_issue_runs_keep_distinct_groups_and_are_never_cancelled(self):
-        self.assertIn(
-            "group: commons-board-ingest-${{ github.event_name }}-"
-            "${{ github.event.issue.number || 'poll' }}",
-            self.commons,
-        )
+    def test_issue_runs_preserve_lossless_current_main_concurrency(self):
+        self.assertIn("'carrier: slack-connector'", self.commons)
+        self.assertIn("&& 'slack-batch' || github.event_name", self.commons)
+        self.assertIn("&& 'queue' || github.event.issue.number || 'poll'", self.commons)
         self.assertIn("cancel-in-progress: false", self.commons)
 
     def test_label_failure_keeps_completed_ingest_and_device_eligible(self):

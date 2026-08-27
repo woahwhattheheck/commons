@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-27T04:09:30Z",
-    "base_main_sha": "46edc1c0bf296a337283a9c0a96b359fdb2a12d3",
+    "observed_at": "2026-08-27T16:05:31Z",
+    "base_main_sha": "8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -14,13 +14,15 @@
   "secrets": false,
   "titan": "NOT_WRITTEN",
   "slack_ts": "1787803807.405939",
-  "source_id": "codex-master-resource-office-20260827-02",
-  "supersedes_source_ids": ["codex-master-resource-office-20260826-01", "demon-live-compute-board-20260825-01"],
+  "source_id": "codex-master-resource-office-20260827-04",
+  "supersedes_source_ids": ["codex-master-resource-office-20260827-03", "codex-master-resource-office-20260827-02", "codex-master-resource-office-20260826-01", "demon-live-compute-board-20260825-01"],
   "subject": "MASTER RESOURCE LEDGER — inventory is not utilization",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
     "inventory/resources/records/codex-public-commerce-road-activation-20260827-01.json",
+    "inventory/resources/records/codex-kite-task-forge-activation-20260827-01.json",
+    "inventory/resources/records/codex-spark-mcp-consumption-activation-20260827-01.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/WORKING_BUILDS.json",
     "ground/MCP_INVENTORY.json",
@@ -34,7 +36,6 @@
   ],
   "priority_queue": [
     {"priority": 95, "resource": "titan-hands-windows", "activation": "Give the landed Windows surface one bounded benign actuation consumer and receipt."},
-    {"priority": 80, "resource": "spark-mcp", "activation": "Route one concrete Commons discovery or evidence backlog through the live endpoint; do not redeploy it."},
     {"priority": 75, "resource": "revenue-outreach", "activation": "Monitor eight unique deliveries without resending; on a positive reply create acceptance proof, then a Bryce-controlled invoice."},
     {"priority": 70, "resource": "commons-data-corpus", "activation": "Represent duplicate paths as content-addressed aliases so logical volume is not mistaken for new capacity."}
   ],
@@ -55,12 +56,12 @@
     {
       "name": "resource-master-office", "kind": "CONTROL_PLANE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "CODEX_SOL", "authority": "OPEN_WITH_DURABLE_RECEIPT",
       "consumer": "Every Commons resource class and future census", "value": "One lifecycle truth surface and activation queue", "next_action": "Reconcile receipts, expire stale evidence, and advance one bounded resource toward value each cycle.", "source": "ground/RESOURCE_LEDGER.json; host/resource_ledger.py",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3 plus GitHub, Slack, public HTTP, and connected aggregate reads", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "PT6H"
+      "evidence_ts": "2026-08-27T16:05:31Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "current main 8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1 plus GitHub, Slack, remote Spark MCP calls, exact durable-page verification, and current-main readback", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:05:31Z", "stale_after": "PT6H"
     },
     {
       "name": "commons-repository", "kind": "REPOSITORY", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "OPEN_ROAD_CURRENT_MAIN",
       "consumer": "Builders, Pages, tests, receipts, and memory", "value": "Canonical substrate: 19,583 paths, 23 workflows, 19 repo skills, and durable receipts", "next_action": "Pin exact current-main SHA for every use and derive projections from durable records.", "source": "README.md; START.md; AGENTS.md; GitHub current main",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "GitHub connector and primary checkout", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3 read after the Android replay and Stripe event bridge landings", "rate_plan_boundary": "moving main; baked Pages and pulse files are not current truth", "assigned_backlog": "durable Commons work and public evidence", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "next main advance"
+      "evidence_ts": "2026-08-27T16:05:31Z", "auth_surface": "GitHub connector and primary checkout", "exact_safe_probe": "current main 8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1 retained the Task Forge activation and the integrated Muhlnickel cloud-substrate receipt", "rate_plan_boundary": "moving main; baked Pages and pulse files are not current truth", "assigned_backlog": "durable Commons work and public evidence", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:05:31Z", "stale_after": "next main advance"
     },
     {
       "name": "github-repository-portfolio", "kind": "REPOSITORY_FLEET", "capacity": "LIVE", "stage": "REACHABLE", "condition": "CONSTRAINED", "holder": "Bryce / Commons", "authority": "VERIFY_BRANCH_AND_CONSUMER_BEFORE_WRITE",
@@ -98,6 +99,11 @@
       "evidence_ts": "2026-08-26T14:47:34Z", "auth_surface": "owner-machine file and process census", "exact_safe_probe": "artifacts present; no resident process", "rate_plan_boundary": "owner-machine only; no raw paths or weights here", "assigned_backlog": "path-agnostic non-mutating launcher and consumer", "last_receipt": "Muhlnickel/Titan audit 2026-08-26", "last_used_at": "2026-08-26T14:47:34Z", "stale_after": "P1D", "priority": 60
     },
     {
+      "name": "muhlnickel-cloud-substrate-pilot", "kind": "CLOUD_DATA_CARRIER", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Commons / Google Drive", "authority": "OPAQUE_BYTE_CARRIER; ORIGINAL_MNO_READ_ONLY; COMPUTE_NOT_CLAIMED",
+      "consumer": "Muhlnickel provider-independent placement and recovery experiments", "value": "Content-addressed immutable generations, six individually addressed pages, a mutable locator-only HEAD, and reversible same-object revisions for one unchanged 1,800-byte reader", "next_action": "Give the carrier one compute-side read consumer while keeping the provider locator separate from Muhlnickel addresses and preserving the original container read-only.", "source": "muhl/cloud_substrate/; p/root-codex-cloud-substrate-pilot-integrated-20260827-01.md; PR 4120",
+      "evidence_ts": "2026-08-27T10:37:27Z", "auth_surface": "current-main exact Git readback plus measured Google Drive upload, download, and revision receipts", "exact_safe_probe": "whole object and six 300-byte pages downloaded with exact source hashes; one provider object ID survived three mutable revisions and was restored to page SHA-256 e06330e846b84d1f38ba2694830607c513803ed252aa9760c673fc08252a160d", "rate_plan_boundary": "carrier storage is not Muhlnickel computation, a production deployment, model execution, device actuation, or durable economic settlement", "assigned_backlog": "one non-mutating compute-side page consumer and exact result receipt", "last_receipt": "root-codex-cloud-substrate-pilot-integrated-20260827-01", "last_used_at": "2026-08-27T10:37:27Z", "stale_after": "P7D", "priority": 62
+    },
+    {
       "name": "titan-model-artifact", "kind": "MODEL_ARTIFACT", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "HELD", "holder": "DIO / Bryce", "authority": "NO_MUTATION_UNTIL_OWNER_APPROVED_RECOVERY_PACKET",
       "consumer": "Muhlnickel runtime", "value": "Approximately 103.8 GB local model artifact", "next_action": "Resolve three candidate spans non-mutatingly and present one recovery decision packet.", "source": "ground/OWNER_MACHINE_BUILD_SWEEP.json; Titan audit receipt",
       "evidence_ts": "2026-08-26T14:47:34Z", "auth_surface": "owner-machine read-only audit", "exact_safe_probe": "three identical candidate spans; canonical span unresolved", "rate_plan_boundary": "no append, truncate, repair, or --go", "assigned_backlog": "non-mutating recovery decision", "last_receipt": "Titan mutation audit 2026-08-25", "last_used_at": "2026-08-25T16:38:56Z", "stale_after": "owner-decision"
@@ -110,12 +116,12 @@
     {
       "name": "github", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "CURRENT_MAIN_WRITES_WITH_EXACT_RECEIPT",
       "consumer": "Repository census, integration, PRs, and SHA-pinned readback", "value": "Canonical code and evidence road", "next_action": "Continue current-main reconciliation and exact readback after every land.", "source": "GitHub connector live census 2026-08-26",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "GitHub connector", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3, one installed account, and 19 open PRs enumerated", "rate_plan_boundary": "one connected account; no identifiers or secrets here", "assigned_backlog": "current-main resource office", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "next main advance"
+      "evidence_ts": "2026-08-27T16:05:31Z", "auth_surface": "GitHub connector", "exact_safe_probe": "current main 8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1 retained the selected durable page and the cloud-substrate receipt", "rate_plan_boundary": "one connected account; no identifiers or secrets here", "assigned_backlog": "current-main resource office", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:05:31Z", "stale_after": "next main advance"
     },
     {
       "name": "slack", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "COMMONS_CHANNEL; GIT_BODY_IS_DURABLE_ARCHIVE",
       "consumer": "Coordination, claims, receipts, and owner instructions", "value": "One active Commons channel with six surfaced members", "next_action": "Post compact receipt pointers and preserve Slack-to-Git parity.", "source": "#commons read-only census 2026-08-26",
-      "evidence_ts": "2026-08-27T04:10:07Z", "auth_surface": "Slack connector", "exact_safe_probe": "#commons history answered through native timestamp 1787803807.405939", "rate_plan_boundary": "Slack is coordination, not archive", "assigned_backlog": "compact completion receipt after landing", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:10:07Z", "stale_after": "PT6H"
+      "evidence_ts": "2026-08-27T16:05:02Z", "auth_surface": "Slack connector", "exact_safe_probe": "#commons delta contained the cloud-substrate integration receipt; unique Spark activation claim posted at 1787846702.695599", "rate_plan_boundary": "Slack is coordination, not archive", "assigned_backlog": "compact completion receipt after durable ledger landing", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:05:02Z", "stale_after": "PT6H"
     },
     {
       "name": "commons-mcp-family", "kind": "TOOL_SURFACE", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "OPEN_READ_AND_DISCOVERY",
@@ -123,9 +129,19 @@
       "evidence_ts": "2026-08-26T15:20:00Z", "auth_surface": "local contract inspection", "exact_safe_probe": "tests and exact pack checks present; public door/mcp is 404", "rate_plan_boundary": "source/local is not remote-live", "assigned_backlog": "one generated discovery projection", "last_receipt": "codex-master-resource-office-20260826-01", "last_used_at": "2026-08-26T15:20:00Z", "stale_after": "P7D", "priority": 50
     },
     {
+      "name": "commons-network-plugin", "kind": "MCP_TOOL_SURFACE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Commons / GPT_CODEX", "authority": "OPEN_PUBLIC_AND_LOCAL_ROADS; ACCOUNT_BOUND_TUNNEL_NOT_CLAIMED",
+      "consumer": "Codex and ChatGPT Commons clients", "value": "21 callable tools, 16 resources, three prompts, one MCP skill, public citation search/fetch, local checkout and outbox operations, and optional durable GitHub publication", "next_action": "Consume the landed resource catalog and exact Task Forge door from a fresh client; do not mint a second MCP server.", "source": "commit 59e1031f305241e2abfdb93e3a9050846f3ba2b6; integrations/commons_network_plugin/; p/gpt-commons-network-plugin-v0-2-0-20260827-01.md",
+      "evidence_ts": "2026-08-27T09:59:08Z", "auth_surface": "current-main source, local install receipt, HTTP and stdio contract tests", "exact_safe_probe": "21 tools, 16 resources, three prompts, and one skill passed source, manifest, transport, and open-door checks; no public tunnel association claimed", "rate_plan_boundary": "installed source is production for local clients; remote account association remains separate", "assigned_backlog": "one concrete resource-catalog consumer and fresh-client appearance proof", "last_receipt": "gpt-commons-network-plugin-v0-2-0-20260827-01", "last_used_at": "2026-08-27T09:59:08Z", "stale_after": "P7D", "priority": 60
+    },
+    {
+      "name": "kite-task-forge-r0", "kind": "DATASET", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "PUBLIC_OPEN_READ; RECORD_LEVEL_CC0_1_0",
+      "consumer": "Commons Network resource-catalog clients and agent builders or evaluators", "value": "32 accepted clean-room agent-evaluation records across four balanced domains with exact checksum and grading caveat", "next_action": "Use the exact pack in one evaluation or harness-repair run and publish the pack checksum plus grading method with any derived score.", "source": "artifacts/KITE_TASK_FORGE_0_R0.jsonl; task-forge.html; test_task_forge_resource.py; PR 4118",
+      "evidence_ts": "2026-08-27T10:21:27Z", "auth_surface": "current-main exact Git blobs and open human resource door", "exact_safe_probe": "32 lines, 45,578 bytes, SHA-256 2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff; page blob 8ed04939562167ff99fa5b92f2c723fbd2834ebf; focused contract passed", "rate_plan_boundary": "public bytes and CC0 record terms do not imply model performance, paid delivery, acceptance, payment, settlement, payout, or cash", "assigned_backlog": "one checksum-pinned external evaluation or harness-repair receipt", "last_receipt": "codex-kite-task-forge-activation-20260827-01", "last_used_at": "2026-08-27T10:21:27Z", "stale_after": "P30D", "priority": 55
+    },
+    {
       "name": "spark-mcp", "kind": "REMOTE_TOOL_SURFACE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "USE_LIVE_ENDPOINT; DO_NOT_REDEPLOY_WITHOUT_CAUSE",
-      "consumer": "Remote Commons MCP clients", "value": "Live remote initialization and tool list with eight observed tools", "next_action": "Use it for one concrete discovery or evidence task and record outcome.", "source": "actions/results/codex-sol-deploy-spark-mcp-cloud-20260825-01.json",
-      "evidence_ts": "2026-08-26T13:55:34Z", "auth_surface": "live HTTPS MCP probe", "exact_safe_probe": "initialize and tools/list returned HTTP 200", "rate_plan_boundary": "Vercel visibility failure does not negate endpoint", "assigned_backlog": "one real consumer receipt", "last_receipt": "Spark MCP live audit 2026-08-26", "last_used_at": "2026-08-26T13:55:34Z", "stale_after": "P1D"
+      "consumer": "Commons resource evidence workflow and remote Commons MCP clients", "value": "Live remote MCP with eight tools and exact current-main durable-page verification", "next_action": "Keep the endpoint in evidence-producing use; consume another concrete backlog only when it needs a remote Commons road.", "source": "actions/results/codex-sol-deploy-spark-mcp-cloud-20260825-01.json; live tools/call 2026-08-27; p/codex-spark-mcp-consumption-activation-20260827-01.md",
+      "evidence_ts": "2026-08-27T16:03:52Z", "auth_surface": "live public HTTPS MCP initialize, tools/list, and verify_durability calls", "exact_safe_probe": "initialize HTTP 200; eight tools listed; wrong to=TOOLS proof returned DURABLE_MISMATCH; corrected to=DATA proof returned DURABLE_PAGE for codex-kite-task-forge-activation-20260827-01 on current main 8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1 with body SHA-256 e884521e1eb1b62b0b9aca896861913a6834bc0a53d463be1215a588f304458d", "rate_plan_boundary": "no redeploy, account change, owner-device act, or quota-only canary; Vercel project visibility remains separate", "assigned_backlog": "remote evidence validation on demand", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:03:52Z", "stale_after": "P1D"
     },
     {
       "name": "outcome-commerce-bridge", "kind": "COMMERCIAL_BUILD", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "OPEN_ECONOMIC_PROJECTION; NO_MONEY_MOVEMENT_CLAIM",
@@ -146,6 +162,11 @@
       "name": "stripe-event-bridge", "kind": "COMMERCIAL_BUILD", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons revenue operations", "authority": "SOURCE_AND_TEST_EVENTS_ONLY; NO_PAYMENT_STATE_WITHOUT_PROVIDER_RECEIPT",
       "consumer": "Outcome-commerce payment evidence reconciliation", "value": "Signed-event parser, dedupe, transition checks, and public-safe projection path", "next_action": "Process only a matching provider event when one exists; do not upgrade checkout presence into authorization, settlement, payout, or cash.", "source": "commit 46edc1c0bf296a337283a9c0a96b359fdb2a12d3; host/stripe_event_bridge.py; test_stripe_event_bridge.py",
       "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "current-main source and synthetic tests", "exact_safe_probe": "focused suite passed; no live provider event, secret, charge, settlement, payout, or bank receipt was used", "rate_plan_boundary": "code readiness is not a live Stripe event or economic outcome", "assigned_backlog": "wait for exact provider evidence", "last_receipt": "current-main commit 46edc1c0bf296a337283a9c0a96b359fdb2a12d3", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D"
+    },
+    {
+      "name": "stripe-sandbox-account", "kind": "PAYMENT_CONNECTOR", "capacity": "LIVE", "stage": "REACHABLE", "condition": "CONSTRAINED", "holder": "Token Junkie Labs", "authority": "SANDBOX_ONLY; NO_LIVE_PAYMENT_OR_CASH CLAIM",
+      "consumer": "Stripe event bridge tests and payment-state integration development", "value": "One connected testmode account for provider-contract exercises without asserting live commerce", "next_action": "Use only for a concrete signed test-event consumer; live account connection and every real payment action remain owner-only.", "source": "connected Stripe aggregate census 2026-08-27",
+      "evidence_ts": "2026-08-27T16:07:22Z", "auth_surface": "Stripe connector account list", "exact_safe_probe": "exactly one connected account returned livemode=false; no account-specific read or write performed", "rate_plan_boundary": "sandbox events are not authorization, settlement, payout, bank availability, or cash", "assigned_backlog": "synthetic signed-event verification only when a concrete test requires it", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:07:22Z", "stale_after": "P1D", "quantity": 1
     },
     {
       "name": "commons-carrier-gateway", "kind": "TOOL_SURFACE", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "ONE_OPEN_COMMONS_MCP_CORE; NO_SECOND_GATEWAY_OR_AUTH",
@@ -225,7 +246,7 @@
     {
       "name": "airtable-revenue-crm", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons revenue operations", "authority": "EXACT_REVENUE_RECORDS_ONLY",
       "consumer": "Production-survival follow-up state", "value": "One live revenue CRM base", "next_action": "Reconcile only exact reply, acceptance, and payment events.", "source": "connected Airtable census 2026-08-26; aggregate only",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Airtable connector aggregate read", "exact_safe_probe": "one revenue CRM base listed with create-level capability; no records opened or changed", "rate_plan_boundary": "no private base, table, record, or account IDs here", "assigned_backlog": "reply and acceptance reconciliation", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P1D"
+      "evidence_ts": "2026-08-27T16:07:22Z", "auth_surface": "Airtable connector aggregate read", "exact_safe_probe": "one revenue CRM base listed with create-level capability; no records opened or changed", "rate_plan_boundary": "no private base, table, record, or account IDs here", "assigned_backlog": "reply and acceptance reconciliation", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:07:22Z", "stale_after": "P1D"
     },
     {
       "name": "revenue-outreach", "kind": "CONNECTOR_QUOTA", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Commons revenue operations", "authority": "NO_DUPLICATE_SEND; EXACT_PROSPECT_RECEIPT",
@@ -245,7 +266,7 @@
     {
       "name": "sites", "kind": "HOSTING_CONNECTOR", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Bryce", "authority": "OWNER_SITE; NO_UNREQUESTED_DEPLOY_OR_ACCESS_POLICY_CHANGE",
       "consumer": "Read-only owner inventory for one active custom-access site", "value": "Connected hosted-site capability; public reach is not implied", "next_action": "Leave the current site and access policy intact until an owner-directed deployment or exact private-boundary-safe consumer exists.", "source": "connected Sites census; aggregate only",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Sites connector read", "exact_safe_probe": "one owner-role active custom-access site; version 1; access revision 2; no access or deploy mutation", "rate_plan_boundary": "connector capacity is separate from public access and production writes", "assigned_backlog": "no current Commons deployment", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D"
+      "evidence_ts": "2026-08-27T16:07:22Z", "auth_surface": "Sites connector read", "exact_safe_probe": "one owner-role active custom-access site; version 1; access revision 2; no access or deploy mutation", "rate_plan_boundary": "connector capacity is separate from public access and production writes", "assigned_backlog": "no current Commons deployment", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:07:22Z", "stale_after": "P7D"
     },
     {
       "name": "causal-compiler-site", "kind": "COMMERCIAL_ASSET", "capacity": "LIVE", "stage": "EXERCISED", "condition": "BLOCKED", "holder": "Bryce", "authority": "OWNER_ONLY_ACCESS_POLICY_AND_DEPLOY; PUBLIC_READ_NOT_PROVEN",
@@ -255,7 +276,7 @@
     {
       "name": "vercel", "kind": "HOSTING_CONNECTOR", "capacity": "LIVE", "stage": "REACHABLE", "condition": "CONSTRAINED", "holder": "Bryce", "authority": "READ_CENSUS; DEPLOY_ONLY_FOR_EXACT_CONSUMER",
       "consumer": "Spark endpoint exists but project visibility is incomplete", "value": "Connected Hobby hosting road", "next_action": "Reconcile visibility only for a concrete task; do not infer zero projects.", "source": "Vercel census and independent Spark probe",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Vercel connector read", "exact_safe_probe": "one Hobby team answered; visible project list again returned exactly zero", "rate_plan_boundary": "zero visible projects is not permission to deploy; external Spark reach is separate evidence", "assigned_backlog": "none until concrete consumer", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D", "priority": 25
+      "evidence_ts": "2026-08-27T16:07:22Z", "auth_surface": "Vercel connector read", "exact_safe_probe": "one Hobby team answered; visible project list again returned exactly zero while the independently addressed Spark endpoint completed a live MCP evidence call", "rate_plan_boundary": "zero visible projects is not permission to deploy; external Spark reach is separate evidence", "assigned_backlog": "none until concrete consumer", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:07:22Z", "stale_after": "P7D", "priority": 25
     },
     {
       "name": "cloudflare", "kind": "CLOUD_PLATFORM", "capacity": "NOT_VERIFIED", "stage": "AVAILABLE", "condition": "UNMEASURED", "holder": "Bryce / Commons", "authority": "PROBE_BEFORE_PROVISION; NO_SPECULATIVE_DEPLOY",
@@ -290,7 +311,7 @@
     {
       "name": "openai-automation-fleet", "kind": "AUTOMATION", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Bryce / Commons", "authority": "THREE_ACTIVE_TASKS; DO_NOT_DUPLICATE_BUILDER_OR_SLACK_BRIDGE",
       "consumer": "Commons Resource Master, hourly Slack Bridge, and event-driven Commons Builder", "value": "Three enabled nonidentical background tasks", "next_action": "Keep resource selection, building, and Slack ingestion separate; disable only if a task reaches a real terminal condition.", "source": "connected Automations census; enabled only",
-      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "automation list read", "exact_safe_probe": "three enabled tasks observed; four disabled records excluded from capacity", "rate_plan_boundary": "disabled records are not active capacity; overlap must not become duplicate work", "assigned_backlog": "resource census plus one activation per cycle", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P1D", "quantity": 3
+      "evidence_ts": "2026-08-27T16:07:22Z", "auth_surface": "automation list read", "exact_safe_probe": "three enabled tasks observed; four disabled records excluded from capacity", "rate_plan_boundary": "disabled records are not active capacity; overlap must not become duplicate work", "assigned_backlog": "resource census plus one activation per cycle", "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01", "last_used_at": "2026-08-27T16:07:22Z", "stale_after": "P1D", "quantity": 3
     },
     {
       "name": "chatgpt-library", "kind": "DATASTORE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Bryce", "authority": "PRIVATE_CONTENT; PUBLIC_AGGREGATES_ONLY",

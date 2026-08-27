@@ -11,12 +11,14 @@ permissions:
   contents: write
   issues: write
 concurrency:
-  # THE_WEEKEND patch (weekend-076): per-event groups so issue runs cannot
-  # cancel the ntfy poller (or each other). Measured 2026-08-19: one shared
-  # group, 30 consecutive runs, 0 success, 17 cancelled, 12 failed.
-  # HUSK 2026-08-19: schedule still preempted its own 255s ntfy window.
-  # cancel-in-progress false: in-flight poller finishes; next tick queues.
-  group: commons-board-ingest-${{ github.event_name }}-${{ github.event.issue.number || 'poll' }}
+  # Connector bursts used to allocate one full rebuild + carrier poll per
+  # Slack event.  Hundreds of distinct issue-number groups then raced the same
+  # main ref, while an observer mistook normal queue time for a dead publisher.
+  # Coalesce only slack-connector issue runs.  The running and newest pending
+  # run both sweep the complete labelled issue queue, so a cancelled pending
+  # run owns no unique source bytes. Ordinary issue events keep their distinct
+  # groups, and schedule/dispatch retain their own recovery groups.
+  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:
   ingest:

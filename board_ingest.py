@@ -94,7 +94,13 @@ LDA_ISSUES = (
     "?state=all&sort=updated&direction=desc&per_page=20"
 )
 MAX_BODY = 16000
+# Public carrier intake stays bounded because each host request can block and
+# old carrier mail is replayable on the next tick.  The GitHub issue recovery
+# road is different: a Slack bridge burst is already a finite, paged queue and
+# leaving most of it for later is what produced hour-long false "publisher is
+# broken" reports.  Drain a whole ordinary burst in one coalesced writer run.
 MAX_NEW = 40
+MAX_SWEEP_NEW = 500
 ACTS = {
     "GRANT", "DENY",
     "ASSIGN_ROLE", "ASSIGN_RESOURCE",
@@ -3520,8 +3526,8 @@ SWEEP_MAX_PAGES = 10
 
 
 def _gh_api_paged(url, per_page=100, max_pages=SWEEP_MAX_PAGES):
-    # Read-only listing walk: &page=N until a short page. MAX_NEW still caps
-    # writes per run, so widening the reach never widens what one run touches.
+    # Read-only listing walk: &page=N until a short page. MAX_SWEEP_NEW still
+    # caps writes per run, so widening the reach stays finite.
     items = []
     for page in range(1, max_pages + 1):
         got = _gh_api(url + "&page=%d" % page)
@@ -3582,7 +3588,7 @@ def _sweep_receipt_state(num):
 # stay open (newest closed board issue #372, yesterday; current ~#995) and fill the
 # 50-slot query window, which at ~2 issues/min is a ~25 minute horizon. Miss it and
 # the post is unrecoverable.
-# The sweep is the conservative side: MAX_NEW=40 per run, 60s receipt deadline,
+# The sweep is the conservative side: MAX_SWEEP_NEW per run, 60s receipt deadline,
 # Non-board issues stay untouched, board-labeled issues land with optional
 # metadata, conflicts remain visible, receipts carry an idempotency marker, and
 # phase 2 runs only after the push succeeded.
@@ -3594,10 +3600,15 @@ def sweep_collect():
     # tree, stamping carrier_ts from the ISSUE's created_at — never sweep time —
     # and collect planned receipts. No comment or close happens here: durability
     # does not exist until the push succeeds, so no receipt may claim it yet.
-    # Runs only on schedule/dispatch (the issues event handles its own payload).
+    # The immediate issue event still handles its own payload first.  It also
+    # sweeps the labelled queue so one surviving run can consume every event in
+    # a coalesced Slack burst; cancelled pending runs therefore carry no unique
+    # state.  Schedule and dispatch remain redundant recovery roads.
     if not SWEEP_ENABLED:
         return []
-    if os.environ.get("GITHUB_EVENT_NAME") not in ("schedule", "workflow_dispatch"):
+    if os.environ.get("GITHUB_EVENT_NAME") not in (
+        "issues", "schedule", "workflow_dispatch", "repository_dispatch"
+    ):
         return []
     try:
         issues = _gh_api_paged(COMMONS_ISSUES)
@@ -3608,7 +3619,7 @@ def sweep_collect():
     planned = []
     n = 0
     for issue in issues:
-        if n >= MAX_NEW:
+        if n >= MAX_SWEEP_NEW:
             break
         if not isinstance(issue, dict) or issue.get("pull_request"):
             continue
@@ -3775,14 +3786,21 @@ def ingest_lda_issues():
 
 
 def _ingest_and_maybe_publish(publish):
-    n = ingest_ntfy()
+    event_name = os.environ.get("GITHUB_EVENT_NAME")
+    # An issue webhook already carries the complete source event.  Polling
+    # every public carrier before reading it made each Slack burst allocate one
+    # slow read-only runner per issue, then sent all of those full rebuilds into
+    # the same moving-main push race.  Issue runs now write their payload and
+    # drain the labelled issue queue.  Scheduled/dispatch runs own carrier
+    # polling, so no carrier road is removed.
+    n = 0 if event_name == "issues" else ingest_ntfy()
     # LDA issue poll UNAVAILABLE: unauthenticated API 404 (private repo).
     # Commons GITHUB_TOKEN is not a grant on LocalDeviceAgent. Do not add a PAT.
-    if os.environ.get("GITHUB_EVENT_NAME") == "issues":
+    if event_name == "issues":
         n += ingest_github_event()
     # Sweep repaired per INQUISITOR orders 026/028 (freeze ad569522 lifted by
     # this repair): phase 1 writes recovered posts with issue-created_at
-    # provenance, gated A/B/C, schedule/dispatch only; phase 2 receipts/closes
+    # provenance on issue/schedule/dispatch roads; phase 2 receipts/closes
     # run strictly AFTER a successful push, so no receipt can ever claim a
     # durability that does not exist. Swept ids stay out of LAST_WROTE so the
     # triggering issue's own receipt never lists unrelated posts.

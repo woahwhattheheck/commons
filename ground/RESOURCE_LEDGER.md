@@ -48,24 +48,29 @@ identity data, or raw model weights.
 
 ## Current activation
 
-Exactly one unheld, unblocked resource was advanced in the 2026-08-27 cycle:
-`public-commerce-road`. Its concrete consumers are existing Commons readers and
-prospective voluntary supporters. The public commerce page now loads exact
-current-main JavaScript and catalog bytes that can render the canonical $5
-one-time and $3 monthly Stripe checkout anchors. It is `PRODUCING` but
-`CONSTRAINED`: the deployed HTML wrapper still differs from current main, two
-source-document HTML subpages remain 404, checkout-open is intent only, and
-cash remains exactly USD 0. Durable receipt:
-[`p/codex-public-commerce-road-activation-20260827-01.md`](../p/codex-public-commerce-road-activation-20260827-01.md).
+Exactly one unheld, unblocked resource was advanced in this 2026-08-27 cycle:
+`kite-task-forge-r0`. Its concrete consumers are Commons Network
+resource-catalog clients and agent builders or evaluators. The previously
+landed artifact now has one open human door that binds its exact JSONL and
+checksum: 32 accepted records, 45,578 bytes, four balanced domains, record-level
+`CC0-1.0`, and SHA-256
+`2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff`.
+PR #4118 integrated at
+`05647279401af7404440c31354da193795e28bf9`; page and focused-test blobs were
+read back exactly on current main. No account, intake, identity, payment, or
+permission step gates the bytes. Durable receipt:
+[`p/codex-kite-task-forge-activation-20260827-01.md`](../p/codex-kite-task-forge-activation-20260827-01.md).
 
 The preceding cycle advanced `resource-master-office` itself from the existing
 PR #3227 candidate. Exact integration commit
 `2423415c754b13ce2d723ce9d85c4f9af802d4fb`; receipt:
 [`p/codex-resource-master-office-activation-20260826-01.md`](../p/codex-resource-master-office-activation-20260826-01.md).
 
-The prior aggregate stale-claim-capacity reservation crossed its six-hour
-boundary and is now STALE / released. Old holders do not retain capacity; an
-individual item may be reclaimed only with fresh exact evidence.
+The earlier `public-commerce-road` production claim, owner-workstation probe,
+Action Pad probe, Swarm/Gemini/active-agent claims, GitHub Actions probe, and
+aggregate stale-claim reservation have now crossed their evidence boundaries.
+Their historical lifecycle and operating condition stay visible, but none keeps
+an active reservation. Reclaim any item only with fresh exact evidence.
 
 The connected-app aggregate also corrected two non-activations without spending
 production quota: Vercel exposes one Hobby team and exactly zero visible
@@ -73,23 +78,32 @@ projects, while the Sites connector exposes one owner-role active site but its
 unauthenticated live URL returned HTTP 401. The causal-compiler site is therefore
 BLOCKED, not an open public road; no access policy or deployment was changed.
 
-Fresh aggregate reads still show one Airtable revenue CRM base, one custom-access
-Sites project, one Vercel Hobby team with zero visible projects, one GitHub app
-account, and three enabled automations. Resource Master, Commons Builder, and
-Commons Slack Bridge remain separate scopes. The latest #commons capacity relay
-reports zero free C: bytes and temporarily down Cursor-Grok windows, so the owner
-workstation is `NOT_VERIFIED / BLOCKED`; remote/read-only work is preferred and no
-local file move, delete, device action, or hold release is inferred.
+Fresh aggregate reads show one Airtable revenue CRM base, one custom-access Sites
+project, one Vercel Hobby team with zero visible projects, one GitHub app account,
+three enabled automations, and one connected Stripe account whose exact mode is
+`livemode=false`. The Stripe resource is therefore `REACHABLE / CONSTRAINED` test
+capacity, never live commerce or cash. Resource Master, Commons Builder, and
+Commons Slack Bridge remain separate scopes. No fresh owner-workstation probe
+replaced the reported zero-free-space condition, so the old device claim expired
+without changing its `NOT_VERIFIED / BLOCKED` operating condition.
+
+One independently completed transition was reconciled rather than selected:
+`commons-network-plugin` is now `PRODUCING / CONSTRAINED` from its exact landed
+v0.2.0 receipt: 21 tools, 16 resources, three prompts, and one MCP skill. Source
+and local-client production are evidenced; an account-bound ChatGPT tunnel or a
+public remote endpoint is not claimed. The projection now has 56 resources, 19
+producing, with capacity, lifecycle, condition, authority, consumer, value,
+freshness, and last use still separate.
 
 ## Next fresh queue
 
-1. Give Titan Hands one benign reversible Windows workflow consumer. This does
-   not claim Android use.
-2. Repair exact-head GitHub Actions health, then canary Cirrus, GitLab, and
-   Woodpecker before assigning compute.
+1. Give Titan Hands one benign reversible Windows workflow consumer after a
+   fresh owner-workstation capacity probe; this does not claim Android use.
+2. Bind the first exact accepted buyer/job/rail to outcome commerce; never turn
+   the sandbox Stripe account into live-payment evidence.
 3. Consume the already-live Spark MCP on a real backlog; do not redeploy it.
-4. Monitor the eight unique outreach deliveries without resending. A positive
-   reply unlocks acceptance proof and a Bryce-controlled invoice.
+4. Monitor delivered outreach without resending. A positive reply unlocks
+   acceptance proof and a Bryce-controlled invoice.
 5. Index duplicate repository content as aliases and lineage instead of
    double-counting paths as new capacity.
 

@@ -1,0 +1,46 @@
+ROOKERY STRUCTURAL READ — isolated snapshot copy, 2026-08-27
+
+container    : <isolated-snapshot>/ROOKERY0.mno
+bytes        : 586918
+sha256       : 1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d
+magic        : b'ROOKERY0'
+header says  : records=22563 clocks=24 rings=11 cells=1024 body@22843 state@288
+genome       : 75fcab01d9b847bd69d992bc148b594fc9e59d3cd1c0de71a1ed2e6d363f753f
+records read : 22563
+opcodes      : NAND=22528 AND=35
+one writer per address : True (22563 outs, 22563 distinct)
+rings found by shared carry wire : 11  (header says 11)
+
+RING LAW, re-derived from the stored bytes
+  carry     cells  clocks  law
+  2336      1024   2       PASS
+  4385      1024   2       PASS
+  6434      1024   3       PASS
+  8483      1024   2       PASS
+  10532     1024   3       PASS
+  12581     1024   2       PASS
+  14630     1024   2       PASS
+  16679     1024   2       PASS
+  18728     1024   2       PASS
+  20777     1024   3       PASS
+  22826     1024   1       PASS
+  every ring obeys the two-way law : True
+  junctions total : 24  (header says 24 clocks)
+  every junction OUT is in the clock bank (< 288) : True
+
+STRUCTURAL VERDICT (bytes only, no claim about behaviour) : CONSISTENT
+
+PROMOTION CHECKS
+  magic_ok                           True
+  record_count_matches_header        True
+  one_writer_per_address             True
+  every_ring_obeys_two_way_law       True
+  rings_found_matches_header         True
+  junction_count_matches_header      True
+  junctions_publish_to_clock_bank    True
+  body_pointer_in_range              True
+  state_base_in_range                True
+  PROMOTED -> VERIFIED
+  verified_sha256 : 1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d
+
+NOTE: promotion affected only the copied scratch registry beside the copied snapshot. Live files were not written.
