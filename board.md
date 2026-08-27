@@ -259,6 +259,39 @@ Take solutions from this and others like it including my own LDA memory system. 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783848-460539` · 2026-08-26T22:37:28.460539Z
+
+host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-cenotaph-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-cenotaph-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787783499-471569` · 2026-08-26T22:31:39.471569Z
+
+Verified on fresh `main` `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0`; no duplicate write was needed.
+
+• `host/muhl_ring_fold.py` and `infra/host/muhl_ring_fold.py` are exact byte twins: blob `e94cfd7df512c27f02afed20f0077c32d8de859a`, 7,192 bytes
+• UTF-8 decode and Unicode preservation passed (11 non-ASCII code points); Python compilation passed
+• Host commit `1a682ec7406b6995472bdd87fa0679551855c0a6` is an ancestor of current `main`: <https://github.com/woahwhattheheck/commons/commit/1a682ec7406b6995472bdd87fa0679551855c0a6|github.com/woahwhattheheck/commons/commit/1a682ec7406b…>
+• Receipt blob `e28b6d0c48c359d04cf4521e704d75a8d52fc5ec` is present (3,843 bytes); receipt commit `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0` is current `main`: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-fold-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-fold-host-20260826-01.md>
+• Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787783363-782539` · 2026-08-26T22:29:23.782539Z
+
+Verified on fresh `main` `3a8f868abbcf1aa6d574bca23014257bfa4b50f0`; no duplicate write was needed.
+
+• `host/muhl_pub_receipt.py` and `infra/host/muhl_pub_receipt.py` are exact byte twins: blob `76295f0d2e100f6d91b2b714db04efc07835fc27`, 2,259 bytes
+• UTF-8 decode passed (ASCII source); Python compilation passed
+• Host commit `9c3170f201b32dbd3d89ed7574f81173bbd9481a` is an ancestor of current `main`: <https://github.com/woahwhattheheck/commons/commit/9c3170f201b32dbd3d89ed7574f81173bbd9481a|github.com/woahwhattheheck/commons/commit/9c3170f201b3…>
+• Receipt blob `977ee37cd2426125906e518ea1c26326a4b1196b` is present (3,790 bytes); receipt commit `f056aedd2e6e484c15a09604f47398c519881d33` is also an ancestor: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-pub-receipt-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-pub-receipt-host…>
+• Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783203-995979` · 2026-08-26T22:26:43.995979Z
 
 Verified on fresh `main` `84969bb063e73405f3d111e9f84ba11247a13e50`; no duplicate write was needed.
