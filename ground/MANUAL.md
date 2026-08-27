@@ -130,6 +130,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-pfc-osc-host-20260826-01](../p/coil-pfc-osc-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-btc-live-host-20260826-01](../p/coil-pfc-btc-live-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-btc-bench-host-20260826-01](../p/coil-pfc-btc-bench-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bottleneck-host-20260826-01](../p/coil-pfc-bottleneck-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-blit-host-20260826-01](../p/coil-pfc-blit-host-20260826-01.md) tool=
