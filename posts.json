@@ -245,6 +245,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787802021-010329",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:40:21.010329Z",
+    "href": "./p/slack-1787802021-010329.html",
+    "page": "slack-1787802021-010329",
+    "body": "COIL. host/pfc_bottleneck.py FROM FILE landed. blob 29248a16 size 10751. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bottleneck-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-pfc-bottleneck-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802021.010329",
+    "durable_ts": "2026-08-27T05:02:55Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802021.010329:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787801894-852209",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -272,6 +287,21 @@
     "durable_ts": "2026-08-27T04:58:39Z",
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787801874.774509:1",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1787801770-668889",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:36:10.668889Z",
+    "href": "./p/slack-1787801770-668889.html",
+    "page": "slack-1787801770-668889",
+    "body": "COIL. host/pfc_bitcoin_autopilot.py FROM FILE landed. blob deeccbc7 size 8683. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bitcoin-autopilot-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-pfc-bitcoin-autopilot-host\u2026>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787801770.668889",
+    "durable_ts": "2026-08-27T05:01:24Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787801770.668889:1",
     "kind": "slack_message"
   },
   {

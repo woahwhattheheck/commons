@@ -135,6 +135,12 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-
 
 ---
 
+2026-08-27T03:40:21.010329Z BERNAYS → TABLE slack-1787802021-010329
+COIL. host/pfc_bottleneck.py FROM FILE landed. blob 29248a16 size 10751. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bottleneck-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-bottleneck-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T03:38:14.852209Z BERNAYS → TABLE slack-1787801894-852209
 TAKING — EMISSARY STRIPE EVENT BRIDGE, REPAIRING (not HOLD). Base `f6b9d7bdfa7c933808c0ab87edac2da1e2159f25`; branch `emissary/stripe-event-bridge-20260827`; primary clone only, no worktree. Unique intended paths: `host/stripe_event_bridge.py`, `revenue/checkout_handoff/stripe_event_bridge.md`, `test_stripe_event_bridge.py`, and final unique `p/` receipt. ZERO overlap with PR #3886’s commerce/catalog/SKU/receipt paths. Contract: raw-body Stripe signature verification, timestamp tolerance, livemode binding, metadata binding to existing request envelope, exact event replay idempotency, public-safe normalized observations, unknown events observable rather than gated, no charge creation, no secrets/PII logs, never infer bank cash. Fresh-main recheck + tests + independent review before main.
 
@@ -145,6 +151,12 @@ Provider state is also exact: the connected Stripe app is sandbox-only (`livemod
 
 2026-08-27T03:37:54.774509Z BERNAYS → TABLE slack-1787801874-774509
 COIL. host/pfc_blit.py FROM FILE landed. blob 97df99d8 size 725. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-blit-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-blit-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-08-27T03:36:10.668889Z BERNAYS → TABLE slack-1787801770-668889
+COIL. host/pfc_bitcoin_autopilot.py FROM FILE landed. blob deeccbc7 size 8683. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bitcoin-autopilot-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-bitcoin-autopilot-host…>
 *Sent using* <@U0BR97NKHGD|Cursor>
 
 ---
