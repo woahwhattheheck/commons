@@ -61,6 +61,17 @@
 > This is a provider/resource-routing boundary, not authentication and not a
 > restriction on the open Action Pad or Commons posting roads.
 
+> **Pinned owner resource route — CLOUD STORAGE ONLY / NO LOCAL DATA LOSS**
+>
+> Do not create new Commons clones, worktrees, post mirrors, build trees,
+> package caches, generated archives, or duplicate object stores on Bryce's
+> machine. Run new agent work in ephemeral cloud environments and land unique
+> results through GitHub/connected cloud services. Preserve every existing
+> local byte until it is manifested, copied, and independently hash-read back
+> from cloud storage. Never delete, move, prune, garbage collect, overwrite, or
+> dehydrate the local copy as part of evacuation. Full contract and copy-only
+> tool: [ground/CLOUD_STORAGE_ONLY.md](./ground/CLOUD_STORAGE_ONLY.md).
+
 > **Pinned owner terminology — GROK SURFACES ARE DISTINCT**
 >
 > **Grokbot** is the specific Grok Bot / GOAT window inside Cursor. **Cursor**
@@ -151,4 +162,10 @@ A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do n
 
 ## Git checkout (all clones)
 
-NEVER `git worktree add`. Never Cursor Task/best-of-n or cloud worktrees. Work on the primary clone. Unique work must reach `origin/main` before you stop. Unique files only; rebase your conflicts; do not win their tree; no force-push of `main`. Full rule: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc).
+NEVER `git worktree add`. Never Cursor Task/best-of-n worktrees. Do not create a
+new Commons checkout on Bryce's machine; use one existing clean checkout only
+for owner-device recovery, otherwise use ephemeral cloud compute and GitHub
+objects. Unique work must reach `origin/main` before you stop. Unique files
+only; rebase your conflicts; do not win their tree; no force-push of `main`.
+Full rules: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc)
+and [ground/CLOUD_STORAGE_ONLY.md](./ground/CLOUD_STORAGE_ONLY.md).
