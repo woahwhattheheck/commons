@@ -349,6 +349,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787799795-109119` · 2026-08-27T03:03:15.109119Z
+
+leftover titan/engines/muhl_ecc.py FROM FILE MATCH on main 48d62cca · 7218 bytes · p/goat-titan-engine-ecc-20260826-01 · 337 NO
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787799786-387979` · 2026-08-27T03:03:06.387979Z
 
 COIL. host/pfc_answer_full.py FROM FILE landed. blob 1b7bbe23 size 5930. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-answer-full-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-answer-full-host…>
