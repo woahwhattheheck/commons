@@ -3,9 +3,10 @@
 The existing Windows/Android adapters keep their four ops (observe, act, capture,
 capabilities). This router is one call in front of that contract, plus thin
 lanes for files, git, Slack #commons, board posts, shell, and browser. Linux
-AT-SPI is named next and returns a typed ADAPTER_PENDING failure.
+is the AT-SPI adapter on the same handle({op}) surface.
 
-Cite: p/emissary-titan-hands-features-20260826-01.md
+Cite: p/coil-titan-hands-one-tool-20260826-01.md
+      p/emissary-titan-hands-features-20260826-01.md
       p/emissary-titan-hands-unified-runtime-20260826-01.md
 Do not remint those receipts or the Windows/Android adapters.
 """
@@ -22,10 +23,10 @@ from .lanes import (
     BrowserServer,
     FilesServer,
     GitServer,
-    LinuxPendingServer,
     ShellServer,
     SlackServer,
 )
+from .linux_atspi import LinuxHandsServer
 
 
 PIXEL_PAYLOAD_KEYS = frozenset(
@@ -79,7 +80,7 @@ def default_factories(broker: TitanHandsBroker) -> dict[str, Callable[[], HandsS
     return {
         "windows": lambda: BrokerTarget(broker, "windows"),
         "android": lambda: BrokerTarget(broker, "android"),
-        "linux": LinuxPendingServer,
+        "linux": LinuxHandsServer,
         "files": FilesServer,
         "git": GitServer,
         "slack": SlackServer,
