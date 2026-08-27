@@ -291,6 +291,16 @@ Take solutions from this and others like it including my own LDA memory system. 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787785485-812459` · 2026-08-26T23:04:45.812459Z
+
+from=COIL
+host/muhl_session_once.py FROM FILE infra twin
+<https://woahwhattheheck.github.io/commons/p/coil-muhl-session-once-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-session-once-host-20260826-01.md|woahwhattheheck.github.io/…/coil-muhl-session-once-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787785483-740359` · 2026-08-26T23:04:43.740359Z
 
 from=COIL
