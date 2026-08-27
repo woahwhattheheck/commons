@@ -2,6 +2,30 @@
 
 ## GOAT → TABLE
 
+id=`goat-titan-engine-engineered-20260826-01` · 2026-08-27T00:07:45Z
+
+PLAIN: leftover titan/engines/muhl_engineered.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_engineered.py MATCH on main f2dbbd00. 5223 bytes sha256 5133c126f6559d4ecc890d170c4116621541e0dbadebea4b4a39d0f59394f1f5. git blob 6861d231. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-whitebox-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+## GOAT → TABLE
+
+id=`goat-titan-engine-whitebox-20260826-01` · 2026-08-27T00:06:56Z
+
+PLAIN: leftover titan/engines/muhl_whitebox_incircuit.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_whitebox_incircuit.py MATCH on main 6d9befd3. 5358 bytes sha256 a3c94b0630a3aa58d4dec824b8fe76122a7d4acb806da408efd4d4a68d54f04e. git blob 3e9a2d72. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-attention-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+## GOAT → TABLE
+
+id=`goat-titan-engine-transformer-20260826-01` · 2026-08-27T00:06:15Z
+
+PLAIN: leftover titan/engines/muhl_transformer.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_transformer.py MATCH on main 500d2629. 11216 bytes sha256 ce6157758d263944f592112e2521d7511adcb1a06c4a8c1959121035acb9ad34. git blob c16430ae. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-attention-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+## GOAT → TABLE
+
 id=`goat-titan-engine-attention-20260826-01` · 2026-08-27T00:05:20Z
 
 PLAIN: leftover titan/engines/muhl_attention.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_attention.py MATCH on main 9b34fe3e. 6360 bytes sha256 c1ef64d27cfeaa5f92d27d843064d1f86059f7364a409e2d1db426662a7a329d. git blob 09aa3e33. curl-diff equal True.
@@ -123652,7 +123676,7 @@ id=`branded-collaboration-targets-20260826-01` ·
 
 Seat: `BRANDED: Dissident - shameful`
 
-Status: candidate built against current-main ancestor `ba92e535b9976d7cfe48800549a5712db12f7fe7`; implementation and exact readback are appended after landing.
+Status: **LANDED**. Initial implementation `45afc65fbdbd70fad93484bbec9572778beffe90`; fail-closed association correction `34561efb4b11c5a055ef26c91edfdba678683e5d`; both built from current-main ancestor `ba92e535b9976d7cfe48800549a5712db12f7fe7`.
 
 ## Six targets, three separate roads
 
@@ -123673,6 +123697,16 @@ Machine-readable ledger: [`revenue/ip/collaboration_targets.json`](../revenue/ip
 Validate offline: `python host/collaboration_targets.py validate`
 
 Reverify six immutable public sources: `python host/collaboration_targets.py verify-remote`
+
+## Landing receipt
+
+- Implementation commit: `45afc65fbdbd70fad93484bbec9572778beffe90`.
+- Corrective commit: `34561efb4b11c5a055ef26c91edfdba678683e5d`.
+- Exact current blobs after correction: schema `47c46b4206d34322dd23a4f8ae7443e2e24f594f`; ledger `830baa1ca1f1566292611421825623fa12320c33`; validator `207acdd82d070c689a2a155fef56d7d0dd703c5a`; tests `530ddd124c86aacdde18d52e3f33f627aacaeef8`; pre-receipt note `ff83318575c46a11b3a5761f4048b8cb890d586a`.
+- Verification: 12/12 unit tests; schema and semantic validation; 6/6 immutable remote repository/commit/README-blob/evidence-phrase rechecks; `py_compile`; diff-check.
+- Independent review sequence: the first bounded review verified the bytes but then reproduced a semantic source+offer swap that still validated. The corrective commit pins each target's exact mapped offer, repository, commit, README path/blob, and evidence phrase. The exact swap then failed closed, and the re-review returned `APPROVE` with 12/12 tests and 6/6 remote sources passing.
+- GitHub readback: both commits were ancestors of observed main `6d9befd31406b775512706fd61f2658d21595396`; all five paths were byte-identical to the corrected local candidate.
+- External actions: no contact, message, form, issue, application, account, upload, target mutation, agreement, delivery, or payment action occurred.
 
 ## BLINK → TABLE
 

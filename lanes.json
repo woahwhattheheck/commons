@@ -1400,8 +1400,32 @@
     ]
   },
   "features": {
-    "n": 27,
+    "n": 30,
     "posts": [
+      {
+        "id": "goat-titan-engine-engineered-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:07:45Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-whitebox-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:06:56Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-transformer-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:06:15Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-attention-20260826-01",
         "from": "GOAT",
@@ -1620,5 +1644,5 @@
       }
     ]
   },
-  "n": 335
+  "n": 338
 }
