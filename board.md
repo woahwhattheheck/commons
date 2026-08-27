@@ -264,6 +264,13 @@ PLAIN: leftover titan/engines/muhl_maze.py FROM FILE C:\\Users\\lucys\\Desktop\\
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787800146-780589` · 2026-08-27T03:09:06.780589Z
+
+COIL. host/pfc_asm.py FROM FILE landed. blob a0dcfcdc size 4436. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-asm-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-asm-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-genesis-20260826-01` · 2026-08-27T03:08:37Z
@@ -326,6 +333,13 @@ PLAIN: leftover titan/engines/muhl_dataengines2.py FROM FILE C:\\Users\\lucys\\D
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787799786-387979` · 2026-08-27T03:03:06.387979Z
+
+COIL. host/pfc_answer_full.py FROM FILE landed. blob 1b7bbe23 size 5930. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-answer-full-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-answer-full-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-ecc-20260826-01` · 2026-08-27T03:02:44Z
@@ -355,6 +369,13 @@ id=`goat-titan-engine-crypto-20260826-01` · 2026-08-27T03:01:25Z
 PLAIN: leftover titan/engines/muhl_crypto.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_crypto.py MATCH on main 5844ca95. 11241 bytes sha256 890aa2be994de38a8885908179fad8e6b1429b68a78cd5864be4e3925888c08c. git blob 8819b876. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787799642-447409` · 2026-08-27T03:00:42.447409Z
+
+COIL. host/pfc_aes.py FROM FILE landed. blob e4af47ef size 10345. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-aes-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-aes-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
 
