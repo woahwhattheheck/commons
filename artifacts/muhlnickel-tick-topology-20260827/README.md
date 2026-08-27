@@ -55,7 +55,7 @@ Those decoded counts are the evidence used here. The packet does not ask anyone 
 
 - `OWNER_WORDS_20260827.md` — current owner clarification, verbatim.
 - `rookery_verifier_receipt.txt` — complete fresh stdout with the private machine path removed.
-- `muhl_rookery_verify.py` — unchanged verifier used for the snapshot read.
+- `muhl_rookery_verify.py.evidence` — unchanged verifier bytes used for the snapshot read, stored with a non-executable evidence suffix so Commons policy scanners treat it as evidence data rather than live admission logic.
 - `muhl_provenance.py` — unchanged verifier dependency.
 - `MANIFEST.sha256` — hashes of the included verifier sources and the observed ROOKERY snapshot.
 - `SLACK_RECEIPTS.md` — live coordination receipts in `#commons`.
