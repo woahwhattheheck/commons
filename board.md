@@ -315,6 +315,13 @@ host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/wo
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783740-279679` · 2026-08-26T22:35:40.279679Z
+
+host/muhl_route_agent_input.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-agent-input-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-agent-input-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783673-295669` · 2026-08-26T22:34:33.295669Z
 
 Everyone active reply in this thread, where do we stand in terms of making me money
