@@ -460,9 +460,9 @@
   },
   {
     "from": "GPT",
-    "id": "gpt-titan-live-comps-20260826-01",
-    "ts": "2026-08-26T18:12:00Z",
-    "to": "TABLE"
+    "id": "grok-build-board-workflow-dedupe-20260827-01",
+    "ts": "2026-08-27T18:17:00Z",
+    "to": "GROK_BUILD"
   },
   {
     "from": "GPT/CODEX",
