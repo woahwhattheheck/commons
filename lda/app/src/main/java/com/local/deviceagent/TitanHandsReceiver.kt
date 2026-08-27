@@ -20,12 +20,19 @@ import org.json.JSONObject
  * quotes, spaces, and Unicode. The receiver does not listen to accessibility events. Normal
  * observations stay the compact numbered LDA screen representation. An explicit capture/marks
  * operation returns the LDA Set-of-Marks screenshot rather than a raw ADB framebuffer.
+ *
+ * The exported receiver's android:permission is [ADB_SENDER_PERMISSION] (`android.permission.DUMP`),
+ * the platform permission in SDK android-34 `android.Manifest.permission.DUMP`. ADB shell already
+ * holds DUMP, so `adb shell am broadcast` keeps working. This is an Android component boundary,
+ * never Commons authentication, identity, role, tier, allowlist, or approval.
  */
 class TitanHandsReceiver : BroadcastReceiver() {
 
     companion object {
         const val ACTION = "com.local.deviceagent.TITAN_HANDS"
         const val BRIDGE_VERSION = "lda-titan-hands/1"
+        const val ADB_SENDER_PERMISSION = "android.permission.DUMP"
+        const val GENERATION_MISMATCH_REASON = TitanHandsMarks.GENERATION_MISMATCH_REASON
     }
 
     override fun onReceive(context: Context, intent: Intent?) {
@@ -75,6 +82,7 @@ class TitanHandsReceiver : BroadcastReceiver() {
         .put("capture", "ActionAccessibilityService.captureScreenshot")
         .put("marks", "ActionAccessibilityService.currentMarks")
         .put("visual", "set-of-marks")
+        .put("adb_sender_permission", ADB_SENDER_PERMISSION)
 
     private fun observe(): JSONObject {
         val service = ActionAccessibilityService.instance
@@ -130,17 +138,35 @@ class TitanHandsReceiver : BroadcastReceiver() {
             return
         }
         // Populate lastRenderedIds first so currentMarks badges match the numbered [N] list.
-        val snapshot = service.snapshotScreen()
-        val marks = service.currentMarks()
+        val snapshotBefore = service.snapshotScreen()
+        val marksBefore = service.currentMarks()
+        val generationBefore = TitanHandsMarks.generationToken(snapshotBefore, marksBefore)
         service.captureScreenshot { bmp ->
             try {
                 if (bmp == null) {
                     done(failure("CAPTURE_FAILED", "LDA screenshot returned null"))
                     return@captureScreenshot
                 }
-                val jpeg = TitanHandsMarks.jpeg(bmp, marks)
+                val snapshotAfter = service.snapshotScreen()
+                val marksAfter = service.currentMarks()
+                val generationAfter = TitanHandsMarks.generationToken(snapshotAfter, marksAfter)
+                val generation = TitanHandsMarks.sameGenerationOrNull(generationBefore, generationAfter)
+                if (generation == null) {
+                    recycleCapture(bmp)
+                    done(
+                        failure(
+                            GENERATION_MISMATCH_REASON,
+                            "semantics/marks changed around screenshot; pixels were not paired with a different generation",
+                        )
+                    )
+                    return@captureScreenshot
+                }
+                // Tokens match, so marksAfter equals marksBefore. Overlay the pre-capture marks on
+                // the screenshot taken before snapshotAfter; do not invent a later pairing.
+                val jpeg = TitanHandsMarks.jpeg(bmp, marksBefore)
+                recycleCapture(bmp)
                 val ids = JSONArray()
-                for (id in marks.ids) ids.put(id)
+                for (id in marksBefore.ids) ids.put(id)
                 done(
                     JSONObject()
                         .put("ok", true)
@@ -152,17 +178,25 @@ class TitanHandsReceiver : BroadcastReceiver() {
                         .put("pixels", "lda-marked-screenshot")
                         .put("source", "ActionAccessibilityService.captureScreenshot")
                         .put("marks_source", "ActionAccessibilityService.currentMarks")
-                        .put("mime", "image/jpeg")
+                        .put("mime", TitanHandsMarks.JPEG_MIME)
+                        .put("format", TitanHandsMarks.JPEG_FORMAT)
+                        .put("suffix", TitanHandsMarks.JPEG_SUFFIX)
+                        .put("generation", generation)
                         .put("image_b64", Base64.encodeToString(jpeg, Base64.NO_WRAP))
                         .put("mark_ids", ids)
-                        .put("screen_w", marks.screenW)
-                        .put("screen_h", marks.screenH)
-                        .put("snapshot", snapshot)
+                        .put("screen_w", marksBefore.screenW)
+                        .put("screen_h", marksBefore.screenH)
+                        .put("snapshot", snapshotBefore)
                 )
             } catch (t: Throwable) {
+                recycleCapture(bmp)
                 done(failure("BRIDGE_ERROR", t.message ?: t.javaClass.simpleName))
             }
         }
+    }
+
+    private fun recycleCapture(bmp: android.graphics.Bitmap?) {
+        if (bmp != null && !bmp.isRecycled) try { bmp.recycle() } catch (_: Exception) {}
     }
 
     private fun failure(reason: String, message: String): JSONObject = JSONObject()

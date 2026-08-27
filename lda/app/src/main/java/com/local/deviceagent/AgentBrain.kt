@@ -3,7 +3,6 @@ package com.local.deviceagent
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import com.google.ai.edge.litertlm.Backend
 import com.google.ai.edge.litertlm.Content
@@ -2131,29 +2130,23 @@ class AgentBrain(private val context: Context) {
     }
 
     private fun toJpegBytes(bmp: Bitmap, grid: Boolean, marks: ScreenMarks? = null,
-                            maxPx: Int = 640, quality: Int = 60): ByteArray {
+                            maxPx: Int = TitanHandsMarks.DEFAULT_MAX_PX,
+                            quality: Int = TitanHandsMarks.DEFAULT_JPEG_QUALITY): ByteArray {
         val out = ByteArrayOutputStream()
         // Smaller + lighter image = fewer vision tokens = faster inference and
         // less GPU contention (keeps video/foreground smoother during a think).
         // maxPx/quality default to the normal overview; the #9/#17 degrade path passes smaller
         // values to fit a screen whose full grab was too heavy WITHOUT dropping vision entirely.
-        val small = downscale(bmp, maxPx)
-        // NEVER BLIND: ALWAYS lay down a labeled coordinate grid so the model has a reference for any
-        // point on screen - prominent on a bare canvas/game, faint underneath when there are element
-        // marks. Then draw the numbered element marks on top (tree screens). So the model can always
-        // tap a numbered element OR name a labeled grid cell, and never has to guess raw pixels.
-        val hasMarks = marks != null && marks.boxes.isNotEmpty()
-        val gridded = drawGrid(small, faint = hasMarks)
-        var ready = gridded
-        if (hasMarks) ready = drawMarks(ready, marks!!)
-        ready = drawLastTap(ready)   // show where the agent JUST acted, so it can see cause/effect
+        // Marks/grid/downscale live in TitanHandsMarks.overlay (one algorithm for owner loop + TITAN).
+        // Canonical badge/outline colors: 0xF01E88E5 / 0x99FFC107.
+        val overlaid = TitanHandsMarks.overlay(bmp, marks, maxPx)
+        val ready = drawLastTap(overlaid)
         ready.compress(Bitmap.CompressFormat.JPEG, quality, out)   // was hardcoded 60 - the lean/shrink rungs' lower quality was ignored
         // Recycle the per-encode intermediates NOW - peak bitmap memory is during the encode, exactly when
         // RAM is tightest. Guard with !== so we NEVER recycle the caller's original bmp (reused for the
         // pixel-hash and possibly re-encoded at another rung) or double-recycle an in-place stage.
         if (ready !== bmp) try { ready.recycle() } catch (_: Exception) {}
-        if (gridded !== ready && gridded !== bmp) try { gridded.recycle() } catch (_: Exception) {}
-        if (small !== gridded && small !== ready && small !== bmp) try { small.recycle() } catch (_: Exception) {}
+        if (overlaid !== ready && overlaid !== bmp) try { overlaid.recycle() } catch (_: Exception) {}
         return out.toByteArray()
     }
 
@@ -2178,116 +2171,6 @@ class AgentBrain(private val context: Context) {
         c.drawCircle(x, y, r, ring)
         c.drawCircle(x, y, r * 0.28f, dot)
         return bmp
-    }
-
-    /** Set-of-Marks overlay: draw each interactive element's id number ON the element in the
-     *  screenshot (a faint box + a numbered badge), matching the `[N]` ids in the element list.
-     *  The model then taps a number it can SEE instead of guessing an id or raw pixels - the
-     *  single biggest grounding win for accessibility-tree screens (AppAgent / Mobile-Agent /
-     *  Set-of-Mark prompting). Bounds are in screen pixels, scaled to the downscaled bitmap. */
-    private fun drawMarks(src: Bitmap, marks: ScreenMarks): Bitmap {
-        if (marks.screenW <= 0 || marks.screenH <= 0) return src
-        val bmp = src.copy(Bitmap.Config.ARGB_8888, true) ?: return src
-        val c = Canvas(bmp)
-        val sx = bmp.width.toFloat() / marks.screenW
-        val sy = bmp.height.toFloat() / marks.screenH
-        val ts = maxOf(11f, bmp.height / 42f)
-        val label = Paint().apply {
-            color = Color.WHITE; textSize = ts; isFakeBoldText = true; isAntiAlias = true
-        }
-        val badge = Paint().apply { color = 0xF01E88E5.toInt(); isAntiAlias = true }
-        val outline = Paint().apply {
-            color = 0x99FFC107.toInt(); style = Paint.Style.STROKE
-            strokeWidth = maxOf(1.5f, bmp.width / 320f); isAntiAlias = true
-        }
-        // Grounding win (improvement engine): the old code stamped every badge at the element's TOP-LEFT with ZERO
-        // cross-badge awareness, so on a dense launcher/toolbar/list adjacent badges STACKED unreadably and a corner
-        // badge visually sat over a NEIGHBOR (the tap lands at the element CENTER, not its corner). Now: (1) draw the
-        // densest/smallest elements FIRST so they claim the clear spots; (2) CENTER the badge on a comfortably-big
-        // element (aligns the read number with the tap-point), corner a tiny one; (3) DE-COLLIDE — try a small anchor
-        // set and pick the first that doesn't overlap a placed badge (least-overlap otherwise). The faint outline
-        // stays as the number->element fallback. Pure drawing on the just-confirmed shot — no change to ids/[N]/actions.
-        val placed = ArrayList<android.graphics.RectF>()
-        val order = marks.boxes.indices.sortedBy { marks.boxes[it].width().toLong() * marks.boxes[it].height() }
-        for (i in order) {
-            val r = marks.boxes[i]
-            val left = (r.left * sx).coerceIn(0f, bmp.width.toFloat())
-            val top = (r.top * sy).coerceIn(0f, bmp.height.toFloat())
-            val right = (r.right * sx).coerceIn(0f, bmp.width.toFloat())
-            val bottom = (r.bottom * sy).coerceIn(0f, bmp.height.toFloat())
-            if (right - left < 1f || bottom - top < 1f) continue
-            c.drawRect(left, top, right, bottom, outline)
-            val s = (marks.ids.getOrNull(i) ?: i).toString()   // REAL [N] id (marks.ids), not the loop position
-            val tw = label.measureText(s)
-            val bw = tw + ts * 0.6f; val bh = ts * 1.25f
-            val big = (right - left) > bw * 2f && (bottom - top) > bh * 2f
-            val anchors = if (big)
-                listOf((left + right) / 2f - bw / 2f to (top + bottom) / 2f - bh / 2f,   // center a big element on its tap-point
-                    left to top, right - bw to top, left to bottom - bh, right - bw to bottom - bh)
-            else
-                listOf(left to top, right - bw to top, left to bottom - bh, right - bw to bottom - bh,
-                    left - bw to top, right to top)                                       // tiny: also try just outside
-            var bx = left; var by = top; var best = Int.MAX_VALUE
-            for ((ax, ay) in anchors) {
-                val cx = ax.coerceIn(0f, bmp.width - bw); val cy = ay.coerceIn(0f, bmp.height - bh)
-                val cand = android.graphics.RectF(cx, cy, cx + bw, cy + bh)
-                val overlap = placed.count { android.graphics.RectF.intersects(it, cand) }
-                if (overlap < best) { best = overlap; bx = cx; by = cy }
-                if (overlap == 0) break
-            }
-            placed.add(android.graphics.RectF(bx, by, bx + bw, by + bh))
-            c.drawRoundRect(bx, by, bx + bw, by + bh, ts * 0.3f, ts * 0.3f, badge)
-            c.drawText(s, bx + ts * 0.3f, by + ts, label)
-        }
-        return bmp
-    }
-
-    /** Overlay a labeled reference grid (columns A.., rows 1..) on a canvas/game screenshot
-     *  so the model can tap a CELL ("C4") via tap_grid instead of guessing raw pixels. Only
-     *  used when the screen exposes no usable elements. Mapping MUST match GridSpec/tap_grid. */
-    private fun drawGrid(src: Bitmap, faint: Boolean = false): Bitmap {
-        val bmp = src.copy(Bitmap.Config.ARGB_8888, true) ?: return src
-        val c = Canvas(bmp)
-        val w = bmp.width.toFloat(); val h = bmp.height.toFloat()
-        val cols = GridSpec.COLS; val rows = GridSpec.ROWS
-        // Faint = a secondary reference under the element marks (don't drown the content); prominent =
-        // the PRIMARY reference on a bare canvas/game. Labels always go in the margins (top row +
-        // left column) with a shadow so they stay legible over any background.
-        val gridPaint = Paint().apply {
-            color = if (faint) 0x33FF5252.toInt() else 0x88FF1744.toInt()
-            strokeWidth = maxOf(1f, w / (if (faint) 520f else 360f)); isAntiAlias = true
-        }
-        val ts = h / (if (faint) 44f else 38f)
-        val label = Paint().apply {
-            color = Color.WHITE; textSize = ts; isFakeBoldText = true; isAntiAlias = true
-            setShadowLayer(ts * 0.35f, 0f, 0f, Color.BLACK)
-        }
-        val box = Paint().apply { color = if (faint) 0x66000000.toInt() else 0xCCD50000.toInt() }
-        for (i in 1 until cols) { val x = w * i / cols; c.drawLine(x, 0f, x, h, gridPaint) }
-        for (j in 1 until rows) { val y = h * j / rows; c.drawLine(0f, y, w, y, gridPaint) }
-        // Column letters across the top, row numbers down the left (battleship style).
-        for (i in 0 until cols) {
-            val cx = w * (i + 0.5f) / cols
-            val s = ('A' + i).toString()
-            val tw = label.measureText(s)
-            c.drawRect(cx - tw, 1f, cx + tw, 1f + ts * 1.3f, box)
-            c.drawText(s, cx - tw / 2, 1f + ts, label)
-        }
-        for (j in 0 until rows) {
-            val cy = h * (j + 0.5f) / rows
-            val s = (j + 1).toString()
-            val tw = label.measureText(s)
-            c.drawRect(1f, cy - ts * 0.7f, 1f + tw * 1.6f, cy + ts * 0.6f, box)
-            c.drawText(s, 3f, cy + ts * 0.35f, label)
-        }
-        return bmp
-    }
-
-    private fun downscale(bmp: Bitmap, max: Int = 640): Bitmap {
-        val w = bmp.width; val h = bmp.height
-        if (w <= max && h <= max) return bmp
-        val s = max.toFloat() / maxOf(w, h)
-        return Bitmap.createScaledBitmap(bmp, (w * s).toInt(), (h * s).toInt(), true)
     }
 
     /** Minimal, self-contained prompt for the drawing canvas. Small enough to never overflow, and it
