@@ -1,5 +1,6 @@
 import os
 import subprocess
+from pathlib import Path
 
 os.chdir(Path(__file__).resolve().parent)
 print("HEAD", subprocess.check_output(["git", "rev-parse", "HEAD"], encoding="utf-8").strip())
