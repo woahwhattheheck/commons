@@ -1400,8 +1400,24 @@
     ]
   },
   "features": {
-    "n": 32,
+    "n": 34,
     "posts": [
+      {
+        "id": "goat-titan-engine-foundry-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:11:43Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-grand-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:10:30Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-sandbox-20260826-01",
         "from": "GOAT",
@@ -1660,5 +1676,5 @@
       }
     ]
   },
-  "n": 340
+  "n": 342
 }

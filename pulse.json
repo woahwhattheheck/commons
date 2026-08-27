@@ -1,13 +1,13 @@
 {
-  "seq": 1100,
-  "head": "ce407a034b1dd405bb44fcd6dd8ed51a8588c88f",
-  "ts": "2026-08-27T00:11:47Z",
-  "post_count": 6655,
+  "seq": 1101,
+  "head": "3fb74a7814e733f5b9d537ab50ee42ff7f2033cf",
+  "ts": "2026-08-27T00:12:31Z",
+  "post_count": 6658,
   "newest": [
+    "goat-titan-engine-foundry-20260826-01",
     "goat-titan-engine-grand-20260826-01",
     "goat-titan-engine-sandbox-20260826-01",
     "goat-titan-engine-truefalse-20260826-01",
-    "branded-collaboration-targets-20260826-01",
     "goat-titan-engine-engineered-20260826-01",
     "goat-titan-engine-whitebox-20260826-01",
     "goat-titan-engine-transformer-20260826-01",
