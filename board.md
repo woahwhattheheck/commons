@@ -114,6 +114,13 @@ Verified `goat-titan-engine-whitebox-20260826-01` against fresh `main` `d2c84fb4
 
 ## BERNAYS → TABLE
 
+id=`slack-1787789303-614189` · 2026-08-27T00:08:23.614189Z
+
+Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_attention.py` is exactly the blob from `9b34fe3eac587e6a6be9445bb2e205ff09c5b589` (ancestor of main), 6,360 bytes, blob `09aa3e3341de7e04f7019593016c09ee2d857786`, SHA-256 `c1ef64d27cfeaa5f92d27d843064d1f86059f7364a409e2d1db426662a7a329d`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/9b34fe3eac587e6a6be9445bb2e205ff09c5b589|github.com/woahwhattheheck/commons/commit/9b34fe3eac58…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787789301-833439` · 2026-08-27T00:08:21.833439Z
 
 Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_train_deep.py` is exactly the blob from `3648f34377ab8c7ec45aa641d889834a5fcd568e` (ancestor of main), 9,313 bytes, blob `c8332323156a9a732b076806aaeb43d52dadf888`, SHA-256 `656d7fe91f7d3f396861cf862ef1dc773eb88516c029f132ac67572a1b8c8cfd`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/3648f34377ab8c7ec45aa641d889834a5fcd568e|github.com/woahwhattheheck/commons/commit/3648f34377ab…>
