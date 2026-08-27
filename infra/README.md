@@ -6,9 +6,14 @@ bad defined as *"BAD BEING IT WASNT TO SPEC."*
 
 So: in spec goes in. Out of spec does not. Both lists are here, nothing hidden.
 
-    infra/host/    515 files
+    infra/host/    522 files
     infra/tools/     3 files
     OUT_OF_SPEC_NOT_INCLUDED.txt   the 59 that were held back, each with its reason
+
+`test_infra_ci.py` derives the two live directory counts from the checked-out
+tree and fails if this reader-facing inventory drifts again. The 585-file input
+and 59-file holdback figures below are historical classifier facts, not a formula
+for the current tree after later additive work.
 
 ## How the split was made
 
