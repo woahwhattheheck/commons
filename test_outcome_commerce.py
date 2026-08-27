@@ -684,6 +684,130 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertTrue(any("path is invalid" in item for item in errors), errors)
 
+    def test_one_canonical_funnel_covers_every_listing(self) -> None:
+        listings = self.catalog["listings"]
+        listing_ids = [row["id"] for row in listings]
+        funnels = self.catalog["funnels"]
+        self.assertEqual(set(funnels), set(listing_ids))
+        self.assertEqual(
+            self.catalog["funnel_stage_order"],
+            [
+                "DISCOVERED", "QUALIFIED", "QUOTED", "FUNDED", "RUNNING",
+                "SUBMITTED", "ACCEPTED", "SETTLED", "BANK_AVAILABLE",
+            ],
+        )
+        self.assertEqual(
+            sorted(row["priority"] for row in funnels.values()),
+            list(range(1, 16)),
+        )
+        ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
+        self.assertEqual(ordered[:3], [
+            "sku-tip-20260826",
+            "same-day-agent-survival-proof",
+            "sku-monthly-tip-20260826",
+        ])
+        by_id = {row["id"]: row for row in listings}
+        for listing_id, funnel in funnels.items():
+            live = by_id[listing_id].get("checkout", {}).get("status") == "LIVE"
+            self.assertEqual(
+                funnel["conversion"]["mode"],
+                "LIVE_STRIPE_LINK" if live else "CUSTOMER_SPECIFIC_INVOICE",
+            )
+            self.assertEqual(funnel["conversion"]["state_after"], "FUNDED")
+            self.assertEqual(funnel["measurement"]["click_truth"], "INTENT_ONLY")
+            self.assertEqual(funnel["measurement"]["success_state"], "BANK_AVAILABLE")
+
+            self.assertTrue(set(funnel["next_offer"]).issubset(set(listing_ids)))
+            self.assertTrue(funnel["acquisition"]["route"].endswith("#" + listing_id))
+            checkout_first = live and funnel["readiness"] == "READY_FOR_CHECKOUT"
+            self.assertEqual(
+                funnel["measurement"]["dom_action"],
+                "checkout-open" if checkout_first else "qualification-open",
+            )
+            self.assertEqual(
+                funnel["measurement"]["first_evidence_state"],
+                "FUNDED" if checkout_first else "DISCOVERED",
+            )
+        truth = self.catalog["funnel_truth"]
+        self.assertEqual(truth["distinct_targets"], 8)
+        self.assertEqual(truth["delivered_transports"], 13)
+        self.assertEqual(truth["verified_positive_replies"], 0)
+        self.assertEqual(truth["accepted_scopes"], 0)
+        self.assertEqual(truth["paid_deliveries"], 0)
+        self.assertEqual(truth["collected_cash_usd"], "0.00")
+        self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
+        self.assertIn("p/slack-1787769698-642529.md", truth["source"])
+
+    def test_canonical_catalog_requires_the_complete_funnel_triad(self) -> None:
+        candidate = copy.deepcopy(self.catalog)
+        for field in ("funnel_stage_order", "funnel_truth", "funnels"):
+            candidate.pop(field)
+        errors = outcome_commerce.catalog_errors(candidate, root=ROOT, check_sources=False)
+        self.assertTrue(any("are required" in item for item in errors), errors)
+
+    def test_funnel_refunds_preserve_canonical_buyer_terms(self) -> None:
+        offers = json.loads(
+            (ROOT / "revenue" / "human_outcomes" / "offers.json").read_text(encoding="utf-8")
+        )
+        for offer in offers["offers"]:
+            self.assertEqual(
+                self.catalog["funnels"][offer["id"]]["fulfillment"]["refund"],
+                offer["refund"],
+            )
+        survival = json.loads(
+            (ROOT / "revenue" / "production_survival" / "offer.json").read_text(encoding="utf-8")
+        )
+        refund = self.catalog["funnels"]["same-day-agent-survival-proof"]["fulfillment"]["refund"]
+        for sentence in survival["entry_offer"]["refund"].split(". "):
+            self.assertIn(sentence.rstrip("."), refund)
+        self.assertIn("one free next-business-day repair attempt", refund)
+
+    def test_host_rejects_incomplete_or_false_funnel_contracts(self) -> None:
+        def errors_for(mutator):
+            catalog = copy.deepcopy(self.catalog)
+            mutator(catalog)
+            return outcome_commerce.catalog_errors(catalog, root=ROOT, check_sources=False)
+
+        errors = errors_for(lambda catalog: catalog["funnels"].pop("sku-tip-20260826"))
+        self.assertTrue(any("exactly match listing ids" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"]["measurement"].__setitem__(
+                "click_truth", "FUNDED"
+            )
+        )
+        self.assertTrue(any("click_truth" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["same-day-agent-survival-proof"]["conversion"].__setitem__(
+                "mode", "LIVE_STRIPE_LINK"
+            )
+        )
+        self.assertTrue(any("checkout state" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"].__setitem__(
+                "priority", 2
+            )
+        )
+        self.assertTrue(any("unique sequence" in item for item in errors), errors)
+
+        errors = errors_for(lambda catalog: catalog.pop("funnels"))
+        self.assertTrue(any("must appear together" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"].__setitem__("next_offer", 7)
+        )
+        self.assertTrue(any("next_offer must be an array" in item for item in errors), errors)
+
+        catalog = copy.deepcopy(self.catalog)
+        for field in ("funnel_stage_order", "funnel_truth", "funnels"):
+            catalog.pop(field)
+        errors = outcome_commerce.canonical_catalog_errors(
+            catalog, root=ROOT, check_sources=False
+        )
+        self.assertTrue(any("canonical catalog missing" in item for item in errors), errors)
+
     def test_fifteen_unique_listings_preserve_frozen_eight(self) -> None:
         listings = self.catalog["listings"]
         ids = [row["id"] for row in listings]
@@ -904,12 +1028,19 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertIn("isLiveStripeCheckoutUrl(checkout.url)", js)
         self.assertIn('rel="noopener noreferrer"', js)
         self.assertIn("LIVE Stripe hosted checkout", js)
+        self.assertIn("checkout stays behind the scope-first intake", js)
+        self.assertIn('funnel.readiness === "NEEDS_DEFINITION"', js)
         self.assertIn("function esc(", js)
         self.assertIn("esc(row.name)", js)
         self.assertIn("esc(row.state)", js)
         self.assertIn("esc(row.routes.human)", js)
         self.assertIn("esc(row.routes.machine)", js)
         self.assertIn("esc(checkout.url)", js)
+        self.assertIn("function funnelFor", js)
+        self.assertIn("data-funnel-sku", js)
+        self.assertIn("data-funnel-action", js)
+        self.assertIn("INTENT_ONLY", js)
+        self.assertIn("BANK_AVAILABLE", js)
         self.assertIn("parsed.protocol !== \"https:\"", js)
         self.assertIn("parsed.username", js)
         self.assertIn("parsed.search", js)
@@ -920,6 +1051,8 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertIn('["fixed", "subscription", "milestone", "license"]', js)
         self.assertEqual(js.count("fetch("), 1)
         self.assertIn("./revenue/outcome_commerce/catalog.json", js)
+        self.assertIn("PUBLIC_CONTACT_URL", js)
+        self.assertIn("PUBLIC_CONTACT_URL", (ROOT / "commerce.html").read_text(encoding="utf-8"))
         for surface in (
             "sendBeacon",
             "XMLHttpRequest",
@@ -932,6 +1065,12 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertNotIn(surface, js)
         self.assertNotIn("innerHTML = checkout.url", js)
         self.assertNotIn("${checkout.url}", js)
+
+        html = (ROOT / "commerce.html").read_text(encoding="utf-8")
+        self.assertIn('id="sku-intake"', html)
+        self.assertIn('name="to" value="OFFER"', html)
+        self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
+        self.assertIn("carrier.js", html)
 
     def test_renderer_executes_strict_own_host_checkout_membership(self) -> None:
         node = shutil.which("node")
@@ -996,6 +1135,9 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
     def test_live_checkout_does_not_claim_cash_and_funnel_stays_zero(self) -> None:
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
         catalog_text = (COMMERCE / "catalog.json").read_text(encoding="utf-8")
+        truth = self.catalog["funnel_truth"]
+        self.assertEqual(truth["collected_cash_usd"], "0.00")
+        self.assertEqual(truth["accepted_scopes"], 0)
         for token in (
             "buyer accepted",
             "payment received",
