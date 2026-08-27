@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -176,6 +177,7 @@ class AndroidHandsTests(unittest.TestCase):
             result = AndroidHandsServer(adb).handle({"op": "capture", "path": path})
             self.assertTrue(result["ok"])
             self.assertEqual(result["visual"], "adb-framebuffer")
+            self.assertEqual(result["mime"], "image/png")
             self.assertIn(("exec_out", ("screencap", "-p")), adb.calls)
             self.assertEqual(Path(result["pixel_ref"]).read_bytes(), b"PNG")
 
@@ -196,6 +198,37 @@ class AndroidHandsTests(unittest.TestCase):
             self.assertNotIn("snapshot", result)
             self.assertEqual(Path(result["pixel_ref"]).read_bytes(), MARKED_JPEG)
         self.assertFalse(any(call[0] == "exec_out" and call[1][:1] == ("screencap",) for call in adb.calls))
+
+    def test_default_lda_capture_path_matches_jpeg_mime(self):
+        previous_cwd = Path.cwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                os.chdir(tmp)
+                result = AndroidHandsServer(FakeAdb(), lda_bridge=FakeLdaBridge()).handle(
+                    {"op": "capture"}
+                )
+            finally:
+                os.chdir(previous_cwd)
+            self.assertTrue(result["ok"])
+            self.assertEqual(result["mime"], "image/jpeg")
+            self.assertEqual(Path(result["pixel_ref"]).suffix, ".jpg")
+            self.assertEqual(Path(result["pixel_ref"]).read_bytes(), MARKED_JPEG)
+
+    def test_default_old_receiver_fallback_path_matches_png_bytes(self):
+        previous_cwd = Path.cwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                os.chdir(tmp)
+                result = AndroidHandsServer(FakeAdb(), lda_bridge=UnknownCaptureLda()).handle(
+                    {"op": "capture"}
+                )
+            finally:
+                os.chdir(previous_cwd)
+            self.assertTrue(result["ok"])
+            self.assertEqual(result["fallback"], "adb-screencap")
+            self.assertEqual(result["mime"], "image/png")
+            self.assertEqual(Path(result["pixel_ref"]).suffix, ".png")
+            self.assertEqual(Path(result["pixel_ref"]).read_bytes(), b"PNG")
 
     def test_lda_capabilities_advertise_set_of_marks_capture(self):
         result = AndroidHandsServer(FakeAdb(), lda_bridge=FakeLdaBridge()).handle({"op": "capabilities"})

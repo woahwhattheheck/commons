@@ -398,7 +398,7 @@ class AndroidHandsServer:
             "screen": screen,
         }
 
-    def _lda_capture(self, output: Path) -> dict[str, Any]:
+    def _lda_capture(self, output: Path | None) -> dict[str, Any]:
         assert self._lda is not None
         capture = getattr(self._lda, "capture", None)
         if not callable(capture):
@@ -412,6 +412,7 @@ class AndroidHandsServer:
         if not result.get("ok"):
             reason = str(result.get("failure_reason") or "LDA_BRIDGE_FAILED")
             if reason == "UNKNOWN_OPERATION" and self._lda_mode != "lda":
+                output = output or Path("artifacts/titan-hands/android.png").resolve()
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_bytes(self.backend.exec_out("screencap", "-p", timeout=30))
                 return {
@@ -420,6 +421,7 @@ class AndroidHandsServer:
                     "kind": "pixel_capture",
                     "platform": "android",
                     "visual": "adb-framebuffer",
+                    "mime": "image/png",
                     "pixel_ref": str(output),
                     "serial": self.backend.resolve_serial(),
                     "fallback": "adb-screencap",
@@ -429,6 +431,7 @@ class AndroidHandsServer:
                 reason,
                 str(result.get("message") or "LDA Kotlin marked capture failed"),
             )
+        output = output or Path("artifacts/titan-hands/android.jpg").resolve()
         try:
             normalized = write_marked_image(result, output)
         except LdaBridgeError as exc:
@@ -650,9 +653,11 @@ class AndroidHandsServer:
                     result["observation"] = self.tracker.observe(self._snapshot())
                 return result
             if op == "capture":
-                output = Path(str(request.get("path") or "artifacts/titan-hands/android.png")).resolve()
+                requested_path = request.get("path")
+                output = Path(str(requested_path)).resolve() if requested_path else None
                 if self._lda_available():
                     return self._lda_capture(output)
+                output = output or Path("artifacts/titan-hands/android.png").resolve()
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_bytes(self.backend.exec_out("screencap", "-p", timeout=30))
                 return {
@@ -661,6 +666,7 @@ class AndroidHandsServer:
                     "kind": "pixel_capture",
                     "platform": "android",
                     "visual": "adb-framebuffer",
+                    "mime": "image/png",
                     "pixel_ref": str(output),
                     "serial": self.backend.resolve_serial(),
                 }
