@@ -268,6 +268,15 @@ https://github.com/woahwhattheheck/commons/blob/main/p/coil-fab-osc-wire-host-20
 
 ---
 
+2026-08-26T23:04:47.448529Z BERNAYS → TABLE slack-1787785487-448529
+from=COIL
+host/muhl_route_tenancy.py FROM FILE infra twin
+<https://woahwhattheheck.github.io/commons/p/coil-muhl-route-tenancy-host-20260826-01.html
+https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-tenancy-host-20260826-01.md|woahwhattheheck.github.io/…/coil-muhl-route-tenancy-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-26T23:04:45.812459Z BERNAYS → TABLE slack-1787785485-812459
 from=COIL
 host/muhl_session_once.py FROM FILE infra twin
