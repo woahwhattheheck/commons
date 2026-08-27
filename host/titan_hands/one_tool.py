@@ -2,18 +2,21 @@
 
 The existing Windows/Android adapters keep their four ops (observe, act, capture,
 capabilities). This router is one call in front of that contract, plus thin
-lanes for files, git, Slack #commons, board posts, shell, and browser. Linux
-AT-SPI is named next and returns a typed ADAPTER_PENDING failure.
+lanes for files, git, Slack #commons, board posts, shell, browser, and
+the physical android-lan phone host. Linux AT-SPI is named next and
+returns a typed ADAPTER_PENDING failure.
 
 Cite: p/emissary-titan-hands-features-20260826-01.md
       p/emissary-titan-hands-unified-runtime-20260826-01.md
-Do not remint those receipts or the Windows/Android adapters.
+      p/wire-commons-android-apk-20260826-01.md
+Do not remint those receipts or the Windows/ADB Android adapters.
 """
 
 from __future__ import annotations
 
 from typing import Any, Callable, Mapping
 
+from host.commons_android.lan_client import LanAndroidServer
 from host.titan_hands_windows.protocol import PROTOCOL_VERSION, ProtocolError, failure
 
 from .broker import HandsServer, TitanHandsBroker
@@ -30,6 +33,8 @@ from .lanes import (
 
 PIXEL_PAYLOAD_KEYS = frozenset(
     {
+        "image_png_b64",
+        "image_b64",
         "pixel_ref",
         "screenshot",
         "image_png",
@@ -79,6 +84,7 @@ def default_factories(broker: TitanHandsBroker) -> dict[str, Callable[[], HandsS
     return {
         "windows": lambda: BrokerTarget(broker, "windows"),
         "android": lambda: BrokerTarget(broker, "android"),
+        "android-lan": LanAndroidServer,
         "linux": LinuxPendingServer,
         "files": FilesServer,
         "git": GitServer,

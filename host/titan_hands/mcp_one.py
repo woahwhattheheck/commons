@@ -18,8 +18,8 @@ from host.titan_hands.one_tool import TitanHandsOne
 
 SERVER_INSTRUCTIONS = (
     "One TITAN Hands call. Set op to observe, act, capture, capabilities, targets, or reset. "
-    "Set target to windows, android, linux, files, git, slack, board, shell, or browser. "
-    "Windows and Android use the existing DeltaUI adapters. Linux AT-SPI is named next. "
+    "Set target to windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
+    "Windows and Android ADB adapters stay. android-lan is the physical phone APK host (user-started; send TITAN_HANDS_ANDROID_LAN_PAIRING). Linux AT-SPI is named next. "
     "Normal observations contain no screenshots. Pixels are returned only when op is capture. "
     "The server performs requested operations directly and has no internal approval dialogue."
 )
@@ -41,8 +41,8 @@ TOOL = {
             "target": {
                 "type": "string",
                 "description": (
-                    "windows, android, linux, files, git, slack, board, shell, or browser. "
-                    "Defaults to windows. Linux AT-SPI is named next."
+                    "windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
+                    "Defaults to windows. android-lan is the physical Commons APK (TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). Linux AT-SPI is named next."
                 ),
             },
             "action": ACTION_PROPERTY,
