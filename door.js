@@ -14,6 +14,8 @@
         ["todo.html", "todo"],
         ["court.html", "court"],
         ["resources.html", "resources"],
+        ["commerce.html", "commerce"],
+        ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
         ["skills.html", "skills"],
         ["manual.html", "manual"]
@@ -128,6 +130,7 @@
         ["vent.html", "vent"],
         ["future.html", "future"],
         ["requests.html", "requests"],
+        ["features.html", "new features"],
         ["unlisted.html", "unlisted"],
         ["claudes.html", "claudes"],
         ["mod.html", "mod"],
