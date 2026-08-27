@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,15 @@
     "BERNAYS": {
       "last_id": "slack-1787825302-598049",
       "last_ts": "2026-08-27T10:08:22.598049Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787825302-598049",
@@ -2391,6 +2398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2623,12 +2636,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -2712,6 +2719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2944,12 +2957,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -3033,6 +3040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3265,12 +3278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -3312,6 +3319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3544,12 +3557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -3597,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3829,12 +3842,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -3918,6 +3925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4150,12 +4163,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -4173,6 +4180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4405,12 +4418,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -4428,6 +4435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4660,12 +4673,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -4683,6 +4690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4915,12 +4928,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -4956,6 +4963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5188,12 +5201,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -5277,6 +5284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5509,12 +5522,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -5598,6 +5605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5830,12 +5843,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -5871,6 +5878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6103,12 +6116,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -6132,6 +6139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6364,12 +6377,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -6387,6 +6394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6619,12 +6632,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -6642,6 +6649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6874,12 +6887,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -6939,6 +6946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7171,12 +7184,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -7194,6 +7201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7426,12 +7439,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -7455,6 +7462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7687,12 +7700,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -7734,6 +7741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7966,12 +7979,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -7989,6 +7996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8221,12 +8234,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -8244,6 +8251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8476,12 +8489,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -8499,6 +8506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8731,12 +8744,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -8766,6 +8773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8998,12 +9011,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -9021,6 +9028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9253,12 +9266,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -9276,6 +9283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9508,12 +9521,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -9531,6 +9538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9763,12 +9776,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -9786,6 +9793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10018,12 +10031,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -10107,6 +10114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10339,12 +10352,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -10422,6 +10429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10654,12 +10667,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -10695,6 +10702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10927,12 +10940,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -11016,6 +11023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11248,12 +11261,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -11337,6 +11344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11569,12 +11582,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -11604,6 +11611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11836,12 +11849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -11859,6 +11866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12091,12 +12104,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -12180,6 +12187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12412,12 +12425,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -12447,6 +12454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12679,12 +12692,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -12768,6 +12775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13000,12 +13013,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -13029,6 +13036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13261,12 +13274,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -13284,6 +13291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13516,12 +13529,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -13539,6 +13546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13771,12 +13784,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -13860,6 +13867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14092,12 +14105,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -14115,6 +14122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14347,12 +14360,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -14370,6 +14377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14602,12 +14615,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -14691,6 +14698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14923,12 +14936,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -15012,6 +15019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15244,12 +15257,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -15333,6 +15340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15565,12 +15578,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -15600,6 +15607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15832,12 +15845,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -15903,6 +15910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16135,12 +16148,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -16158,6 +16165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16390,12 +16403,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -16437,6 +16444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16669,12 +16682,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -16692,6 +16699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16924,12 +16937,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -17013,6 +17020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17245,12 +17258,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -17280,6 +17287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17512,12 +17525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -17601,6 +17608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17833,12 +17846,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -17856,6 +17863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18088,12 +18101,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -18177,6 +18184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18409,12 +18422,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -18438,6 +18445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18670,12 +18683,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -18693,6 +18700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18925,12 +18938,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -18984,6 +18991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19216,12 +19229,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -19305,6 +19312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19537,12 +19550,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -19560,6 +19567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19792,12 +19805,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -19821,6 +19828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20053,12 +20066,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -20142,6 +20149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20374,12 +20387,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -20400,8 +20407,14 @@
     "GOAT": {
       "last_id": "goat-titan-hands-win-retarget-home-20260827-01",
       "last_ts": "2026-08-27T04:20:00Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
         {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
@@ -20664,6 +20677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20896,12 +20915,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -20985,6 +20998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21217,12 +21236,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -21261,8 +21274,14 @@
     "GPT_CODEX": {
       "last_id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
       "last_ts": "2026-08-27T09:36:32Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
         {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
@@ -21345,6 +21364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21577,12 +21602,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -21666,6 +21685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21898,12 +21923,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -21987,6 +22006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22219,12 +22244,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -22248,6 +22267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22480,12 +22505,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -22509,6 +22528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22741,12 +22766,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -22770,6 +22789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23002,12 +23027,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -23091,6 +23110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23323,12 +23348,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -23346,6 +23365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23578,12 +23603,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -23601,6 +23620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23833,12 +23858,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -23868,6 +23887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24100,12 +24125,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -24189,6 +24208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24421,12 +24446,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -24444,6 +24463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24676,12 +24701,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -24765,6 +24784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24997,12 +25022,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -25086,6 +25105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25318,12 +25343,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -25407,6 +25426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25639,12 +25664,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -25680,6 +25699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25912,12 +25937,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -26001,6 +26020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26233,12 +26258,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -26256,6 +26275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26488,12 +26513,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -26559,6 +26578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26791,12 +26816,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -26814,6 +26833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27046,12 +27071,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -27135,6 +27154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27367,12 +27392,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -27390,6 +27409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27622,12 +27647,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -27645,6 +27664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27877,12 +27902,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -27900,6 +27919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28132,12 +28157,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -28155,6 +28174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28387,12 +28412,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -28434,6 +28453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28666,12 +28691,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -28755,6 +28774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28987,12 +29012,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -29052,6 +29071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29284,12 +29309,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -29337,6 +29356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29569,12 +29594,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -29592,6 +29611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29824,12 +29849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -29847,6 +29866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30079,12 +30104,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -30102,6 +30121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30334,12 +30359,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -30357,6 +30376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30589,12 +30614,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -30612,6 +30631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30844,12 +30869,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -30933,6 +30952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31165,12 +31190,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -31254,6 +31273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31486,12 +31511,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -31575,6 +31594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31807,12 +31832,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -31872,6 +31891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32104,12 +32129,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -32193,6 +32212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32425,12 +32450,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -32448,6 +32467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32680,12 +32705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -32703,6 +32722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32935,12 +32960,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -32970,6 +32989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33202,12 +33227,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -33291,6 +33310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33523,12 +33548,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -33546,6 +33565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33778,12 +33803,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -33813,6 +33832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34045,12 +34070,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -34110,6 +34129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34342,12 +34367,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -34431,6 +34450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34663,12 +34688,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -34752,6 +34771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34984,12 +35009,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -35061,6 +35080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35293,12 +35318,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -35328,6 +35347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35560,12 +35585,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -35644,42 +35663,17 @@
       ]
     },
     "ROOT_CODEX": {
-      "last_id": "root-codex-tick-topology-integrated-20260827-01",
-      "last_ts": "2026-08-27T09:56:05Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "slack-1787825302-598049",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T10:08:22.598049Z"
-        },
-        {
-          "id": "slack-1787825182-738689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T10:06:22.738689Z"
-        },
-        {
-          "id": "slack-1787824911-641459",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T10:01:51.641459Z"
-        },
-        {
-          "id": "slack-1787824910-229199",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T10:01:50.229199Z"
-        },
-        {
-          "id": "slack-1787824748-461039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T09:59:08.461039Z"
-        }
-      ],
+      "last_id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+      "last_ts": "2026-08-27T10:35:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
         {
           "id": "root-codex-tick-topology-integrated-20260827-01",
           "from": "ROOT_CODEX",
@@ -35745,12 +35739,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ]
     },
@@ -35759,6 +35747,12 @@
       "last_ts": "2026-08-20T22:59:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
         {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
@@ -35992,12 +35986,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -36081,6 +36069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36313,12 +36307,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -36342,6 +36330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36574,12 +36568,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -36615,6 +36603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36847,12 +36841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -36936,6 +36924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37168,12 +37162,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -37191,6 +37179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37423,12 +37417,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -37512,6 +37500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37744,12 +37738,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -37833,6 +37821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38065,12 +38059,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -38154,6 +38142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38386,12 +38380,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -38475,6 +38463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38707,12 +38701,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -38766,6 +38754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38998,12 +38992,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -39087,6 +39075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39319,12 +39313,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -39342,6 +39330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39574,12 +39568,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -39627,6 +39615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39859,12 +39853,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -39948,6 +39936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40180,12 +40174,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -40269,6 +40257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40501,12 +40495,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -40590,6 +40578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40822,12 +40816,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
@@ -40911,6 +40899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "from": "ROOT_CODEX",
+          "to": "DATA",
+          "ts": "2026-08-27T10:35:49Z"
+        },
+        {
           "id": "slack-1787825302-598049",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41143,12 +41137,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T04:11:27.732289Z"
-        },
-        {
-          "id": "slack-1787803875-530519",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T04:11:15.530519Z"
         }
       ],
       "mine": [
