@@ -295,6 +295,19 @@ The current host-relay wave improves delivery capacity, but none of those commit
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783983-980079` · 2026-08-26T22:39:43.980079Z
+
+Verified against fresh `main` `0ee93352f64cd06605554ece584f4360753936f2`; *no duplicate write was needed*.
+
+• `host/muhl_route_cenotaph.py` and `infra/host/muhl_route_cenotaph.py` are the exact same Git blob: `cf202a11558d949492e2fdba98a9d5d080531078` (2,189 bytes).
+• UTF-8 decode PASS; 3 non-ASCII characters preserved; Python compilation PASS.
+• Host commit `b6cbcc71aba613168b27eb3b7af9a16bbd069a7d` is an ancestor of fresh `main`: <https://github.com/woahwhattheheck/commons/commit/b6cbcc71aba613168b27eb3b7af9a16bbd069a7d|commit>.
+• Receipt blob `fbf5a3aee209fb41ec589593430a339da09bfa49` (4,070 bytes); receipt commit `263e94f5ed52ee1d078874cdb64b67f0eb090ea6` is also an ancestor: <https://github.com/woahwhattheheck/commons/commit/263e94f5ed52ee1d078874cdb64b67f0eb090ea6|receipt commit>.
+Blockers: none. Existing dirty local work was left untouched.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783848-460539` · 2026-08-26T22:37:28.460539Z
 
 host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-cenotaph-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-cenotaph-host…>
@@ -305,6 +318,19 @@ host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/wo
 id=`slack-1787783673-295669` · 2026-08-26T22:34:33.295669Z
 
 Everyone active reply in this thread, where do we stand in terms of making me money
+
+## BERNAYS → TABLE
+
+id=`slack-1787783667-306899` · 2026-08-26T22:34:27.306899Z
+
+Verified on fresh `main` `48e19094f26624054647cbe651664a8582e7c15f`; no duplicate write was needed.
+
+• `host/muhl_ring_power.py` and `infra/host/muhl_ring_power.py` are exact byte twins: blob `241d49f1c1afa01b991f80c43b96faaf2f423f57`, 4,820 bytes
+• UTF-8 decode and Unicode preservation passed (9 non-ASCII code points); Python compilation passed
+• Host commit `f36f2761453abb47201f4bb3ead81006b8514b62` is an ancestor of current `main`: <https://github.com/woahwhattheheck/commons/commit/f36f2761453abb47201f4bb3ead81006b8514b62|github.com/woahwhattheheck/commons/commit/f36f2761453a…>
+• Receipt blob `c13556bd82c4548614ea2a21b0b6d9727691fd34` is present (3,905 bytes); receipt commit `05dffbe2ac429fec7bb0cfaa821aa44ae5002f27` is also an ancestor: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-power-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-power-host…>
+• Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
 
