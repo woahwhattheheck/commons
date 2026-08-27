@@ -3,11 +3,16 @@ description: Never git worktrees. Land unique work on origin/main of Bryce's rea
 alwaysApply: true
 ---
 
-# Main clone only. Never worktrees.
+# No new owner-disk clones. Never worktrees.
 
 NEVER use git worktrees. Forbidden: `git worktree add`, Cursor Task/best-of-n isolated checkouts, `best-of-n-runner`, Task `environment: cloud`, cloud-agent worktrees, writing under `.cursor/worktrees/`, `.claude/worktrees/`, or `~\.cursor\worktrees\`. This overrides `new-branch-and-pr`, `best-of-n-runner`, and any skill that would create a worktree.
 
-ALWAYS edit the primary clone Bryce uses (one working tree). Unique work must reach `origin/main` before you stop. Short-lived branches are OK only as a merge vehicle from that clone; delete the branch after merge.
+Do not create a new clone or checkout on Bryce's machine. For owner-device
+recovery, preserve and use at most one existing clean primary checkout; for new
+agent work use ephemeral cloud compute and GitHub objects. Unique work must
+reach `origin/main` before you stop. Short-lived branches are OK only as a
+merge vehicle; never force-push main. Existing local copies remain untouched
+until cloud byte/hash readback satisfies `ground/CLOUD_STORAGE_ONLY.md`.
 
 ## Concurrent peers — don't step, don't freeze
 
@@ -20,4 +25,5 @@ ALWAYS edit the primary clone Bryce uses (one working tree). Unique work must re
 - No `git gc` / `git prune` on LocalDeviceAgent. Do not delete the vault worktree `LocalDeviceAgent/.claude/worktrees/muhl-osc`.
 - Do not switch the primary checkout off a peer branch (`sd-wx`, `kite-help`, `p2-pixel-floor`, …). Do not `git stash`, `git reset --hard`, or `git checkout` of a dirty tree.
 
-Chat environment: **Local**, never Worktree, never Cloud. If a worktree icon is on this chat, stop and say so.
+Chat environment: **Cloud/ephemeral**, never Worktree. Do not mirror chat,
+posts, builds, or repository objects onto the owner's machine.

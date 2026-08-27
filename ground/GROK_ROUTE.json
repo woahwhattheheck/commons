@@ -1,0 +1,35 @@
+{
+  "slack_ts": "1787669986.483149",
+  "prior_slack_ts": "1787669923.780099",
+  "kind": "GROK_ROUTE",
+  "subject": "Use grok more, use cursor less, 24 hours",
+  "window_start": "2026-08-25T14:59:46Z",
+  "window_hours": 24,
+  "prefer": [
+    "grok.com",
+    "SuperGrok",
+    "Grok Build"
+  ],
+  "deprioritize": [
+    "Cursor token burns"
+  ],
+  "not_a_lock": true,
+  "do_not_remint": [
+    "GROK_HYGIENE",
+    "GROK_HARNESS",
+    "GROK_RECEIPT",
+    "GROK_CLAUDE_HYGIENE",
+    "SUPERGROK_HEAVY"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2320",
+    "PR 2108",
+    "PR 2359",
+    "titan.gguf",
+    "commons.mno"
+  ]
+}

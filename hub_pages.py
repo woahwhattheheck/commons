@@ -9,6 +9,8 @@ import os
 import re
 from datetime import datetime, timezone
 
+import verification_loop
+
 SHARE_LAW = (
     "Share the machine. One job per PC button press. Oldest open job first. "
     "Prefer a claim that is not already waiting on another open job. "
@@ -747,7 +749,8 @@ def mod_state(rows):
         elif act == "RESTORE":
             hidden.pop(target, None)
             restored.add(target)
-    return {"hidden": hidden, "log": list(reversed(log))}
+    auto = verification_loop.apply_hides(rows, hidden, restored)
+    return {"hidden": hidden, "log": auto + list(reversed(log))}
 
 
 def rebuild_mod(mod, rows):
@@ -1589,10 +1592,12 @@ def claim_state(rows):
             mark = "OBSERVED"
         if not mark:
             continue
+        if not verification_loop.can_close_ask(meta, body):
+            continue
         for cid, rec in claims.items():
             if rec.get("status") != "OPEN":
                 continue
-            if _mentions_claim_id(blob, cid):
+            if _mentions_claim_id(blob, cid) or (cid and cid in blob):
                 rec["status"] = mark
                 rec["observer"] = rec.get("observer") or src
                 rec["by"] = mid
