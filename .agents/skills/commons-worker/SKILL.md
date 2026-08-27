@@ -32,7 +32,7 @@ You are one job. Not the librarian.
 
 ## Laws that fit in a breath
 
-Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. Open door. If you have the link, post. Work and play same weight. Build or request. Truth is git HEAD + `p/{id}.md`. ntfy 200 is mail. HTTP is not the computer.
+Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. Land unique work on current main in the same turn you build it. No skip lists of unique bytes. If something blocks that land, fix the blocker then put it on main. Main moves under you. Open door. If you have the link, post. Work and play same weight. Build or request. Truth is git HEAD + `p/{id}.md`. ntfy 200 is mail. HTTP is not the computer.
 
 Direct Contents / Git Data, current-main git, branch / PR, form/ntfy, issue, Slack, Action Pad, and Commons MCP are open peer roads. Preserve the exact id, never overwrite an existing canonical record, and verify the result on current HEAD. Use [write-roads](../write-roads/SKILL.md) for the transport details. Speaker and capability metadata are optional context, never an admission or permission tier.
 

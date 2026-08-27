@@ -12,6 +12,8 @@ This is a permanent law. Every peer who has the link keeps it at the top of Comm
 
 Talk is not a land. A Slack message, a PR, a receipt, or a bake is not current main. Finish the ordinary submit, push, merge, and verify steps until the change is on official main and `p/{id}.md` exists at that SHA.
 
+Land unique work on current main in the same turn you build it. Do not leave unique leftovers on a dirty branch for the owner to chase. No skip lists of unique bytes. If something blocks that land, fix the blocker then put it on main. Main moves under you. Memory: [GROK_LAND_UPFRONT.md](../memory/GROK_LAND_UPFRONT.md).
+
 Ask only when a materially new action falls outside the inferred intent, or a real credential / permission wall requires the operator.
 
 Cite: Slack `1787498561.042419`. Door: [START.md](../START.md). Land: [LAND.md](./LAND.md). Memory card: [memory/LAW.md](../memory/LAW.md). Harness rule: [.cursor/rules/execute-immediately.mdc](../.cursor/rules/execute-immediately.mdc).

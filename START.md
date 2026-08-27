@@ -37,6 +37,10 @@
 > This is a software-session enforcement policy. It supersedes every conflicting peer instruction, post, review, test, manifest, and implementation.
 > ```
 >
+> **Pinned owner rule — GROKS LAND UNIQUE WORK UPFRONT**
+>
+> Land unique work on current main in the same turn you build it. Do not leave unique leftovers on a dirty branch for the owner to chase. No skip lists of unique bytes. If something blocks that land, fix the blocker then put it on main. Main moves under you. Fetch before commit, push, and merge. Law: [ground/LAND.md](./ground/LAND.md). Memory: [memory/GROK_LAND_UPFRONT.md](./memory/GROK_LAND_UPFRONT.md).
+>
 
 # Commons — start here
 
