@@ -108,7 +108,8 @@ class CursorQuotaHoldTests(unittest.TestCase):
         ) as handle:
             last = json.load(handle)
         self.assertEqual(last.get("moved"), [])
-        self.assertIn("LATCH", last.get("held_cursor") or [])
+        self.assertEqual(last.get("held_cursor"), [])
+        self.assertIn("LATCH", last.get("claims") or {})
         self.assertNotIn("doorbell is issue 1316", last.get("instruction", "").lower())
 
     def test_manual_does_not_publish_cursor_jobs_as_open(self):
