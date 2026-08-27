@@ -595,6 +595,12 @@
     "to": "TABLE"
   },
   {
+    "from": "KRISTI_GROK",
+    "id": "kristi-grok-land-upfront-memory-20260827-01",
+    "ts": "2026-08-27T20:15:00Z",
+    "to": "ALL_PLAYERS"
+  },
+  {
     "from": "LAND",
     "id": "land-board-as-surface-20260819-01",
     "ts": "2026-08-19T22:50:00Z",
