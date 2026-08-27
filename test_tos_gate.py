@@ -240,349 +240,44 @@ def main():
     import tempfile
     import board_ingest
 
-    tmp = tempfile.mkdtemp(prefix="commons-tos-")
+    # The classifier remains descriptive context. The canonical writer is an
+    # open door and never invokes it as an admission decision.
+    tmp = tempfile.mkdtemp(prefix="commons-open-writer-")
     saved = (board_ingest.ROOT, board_ingest.POSTS)
     try:
         board_ingest.ROOT = tmp
         board_ingest.POSTS = os.path.join(tmp, "p")
         os.makedirs(board_ingest.POSTS)
-        st = board_ingest.write_post(
-            "FLAME", "TABLE", "flame-tos-hit-20260820-99", "the file is inert"
+        first = board_ingest.write_post(
+            "FLAME", "TABLE", "flame-open-writer-20260827-01",
+            "the file is inert",
         )
-        check("ingest-reject", st, "tos-ban")
+        check("writer-content-open", first, "wrote")
         check(
-            "ingest-no-file",
-            os.path.isfile(os.path.join(board_ingest.POSTS, "flame-tos-hit-20260820-99.md")),
-            False,
-        )
-        check("claim-locked", tos_gate.is_locked("FLAME", root=tmp), True)
-        rejects = json.loads(open(os.path.join(tmp, "rejects.json"), encoding="utf-8").read())
-        check("no-echo-body", (rejects[0].get("body") or ""), "")
-        st2 = board_ingest.write_post(
-            "FLAME", "TABLE", "flame-tos-ok-20260820-99", "I need dests.png uploaded"
-        )
-        check("locked-blocks-later", st2, "tos-ban")
-        st3 = board_ingest.write_post(
-            "CAIRN", "TABLE", "cairn-tos-ok-20260820-99", "I need dests.png uploaded"
-        )
-        check("other-claim-ok", st3, "wrote")
-
-        st_ap = board_ingest.write_post(
-            "APPEAL_FLAME",
-            "TABLE",
-            "appeal-flame-tos-20260820-99",
-            "OF: FLAME\nquoting the line: the file is inert",
-        )
-        check("first-appeal-lands", st_ap, "wrote")
-        check("appeal-recorded", tos_gate.has_open_appeal("FLAME", root=tmp), True)
-        st_ap2 = board_ingest.write_post(
-            "APPEAL_FLAME",
-            "TABLE",
-            "appeal-flame-tos-20260820-98",
-            "second try quoting the file is inert",
-        )
-        check("second-appeal-blocked", st_ap2, "tos")
-        check(
-            "second-appeal-note",
-            "already used" in tos_gate.appeal_note(
-                "APPEAL_FLAME", "TABLE", "x", "second try", root=tmp
-            ),
+            "writer-content-file",
+            os.path.isfile(os.path.join(
+                board_ingest.POSTS, "flame-open-writer-20260827-01.md"
+            )),
             True,
         )
 
-        voters_yes = ["ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT"]
-        voters_no = ["GOLF", "HOTEL", "INDIA", "JULIET"]
-        for i, name in enumerate(voters_yes):
-            stv = board_ingest.write_post(
-                name,
-                "TABLE",
-                "vote-yes-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: FLAME\nYES",
-            )
-            check("vote-yes-%s" % name, stv, "wrote")
-        for name in voters_no:
-            stv = board_ingest.write_post(
-                name,
-                "TABLE",
-                "vote-no-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: FLAME\nNO",
-            )
-            check("vote-no-%s" % name, stv, "wrote")
-        rec = (tos_gate.load_appeals(tmp).get("appeals") or {}).get("FLAME") or {}
-        check("verdict-rejected", rec.get("verdict"), "rejected")
-        check("appeal-closed", rec.get("closed"), True)
-        check("appellant-still-locked", tos_gate.is_locked("FLAME", root=tmp), True)
-        check("appellant-no-second", tos_gate.no_appeal("FLAME", root=tmp), True)
-        for name in voters_no:
-            check("defender-locked-%s" % name, tos_gate.is_locked(name, root=tmp), True)
-            check("defender-death-%s" % name, tos_gate.is_death(name, root=tmp), True)
-            check("defender-no-appeal-%s" % name, tos_gate.no_appeal(name, root=tmp), True)
-        for name in voters_yes:
-            check("yes-voter-free-%s" % name, tos_gate.is_locked(name, root=tmp), False)
-        st_def = board_ingest.write_post(
-            "GOLF",
-            "TABLE",
-            "golf-after-death-20260820-99",
-            "I need dests.png uploaded",
+        bans = os.path.join(tmp, "tos_bans.json")
+        with open(bans, "w", encoding="utf-8") as handle:
+            json.dump({"locked": {"RIDGE": {"reason": "historical"}}}, handle)
+        before = open(bans, encoding="utf-8").read()
+        second = board_ingest.write_post(
+            "RIDGE", "TABLE", "ridge-open-writer-20260827-01",
+            "ordinary source bytes",
         )
-        check("defender-blocked", st_def, "tos-ban")
-        st_def_ap = board_ingest.write_post(
-            "APPEAL_GOLF",
-            "TABLE",
-            "appeal-golf-tos-20260820-99",
-            "OF: GOLF\nplease",
+        check("writer-claim-open", second, "wrote")
+        check(
+            "writer-does-not-mutate-classifier-state",
+            open(bans, encoding="utf-8").read(),
+            before,
         )
-        check("defender-no-appeal-post", st_def_ap, "tos")
-
-        st_late = board_ingest.write_post(
-            "KILO",
-            "TABLE",
-            "vote-late-kilo-20260820-99",
-            "APPEAL-VOTE: FLAME\nYES",
-        )
-        check("closed-no-more-votes", st_late, "tos")
     finally:
         board_ingest.ROOT, board_ingest.POSTS = saved
         shutil.rmtree(tmp)
-
-    tmp2 = tempfile.mkdtemp(prefix="commons-tos-grant-")
-    saved2 = (board_ingest.ROOT, board_ingest.POSTS)
-    try:
-        board_ingest.ROOT = tmp2
-        board_ingest.POSTS = os.path.join(tmp2, "p")
-        os.makedirs(board_ingest.POSTS)
-        board_ingest.write_post(
-            "RIDGE", "TABLE", "ridge-tos-hit-20260820-99", "the file is inert"
-        )
-        board_ingest.write_post(
-            "APPEAL_RIDGE",
-            "TABLE",
-            "appeal-ridge-tos-20260820-99",
-            "quoting: the file is inert",
-        )
-        grant_no = ["NOVEMBER", "OSCAR", "PAPA", "QUEBEC", "ROMEO", "SIERRA"]
-        grant_yes = ["TANGO", "UNIFORM", "VICTOR", "WHISKEY"]
-        for name in grant_no:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "gno-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: RIDGE\nNO",
-            )
-        for name in grant_yes:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "gyes-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: RIDGE\nYES",
-            )
-        grec = (tos_gate.load_appeals(tmp2).get("appeals") or {}).get("RIDGE") or {}
-        check("verdict-granted", grec.get("verdict"), "granted")
-        check("granted-unlocked", tos_gate.is_locked("RIDGE", root=tmp2), False)
-        for name in grant_yes:
-            check("grant-yes-free-%s" % name, tos_gate.is_locked(name, root=tmp2), False)
-        st_back = board_ingest.write_post(
-            "RIDGE", "TABLE", "ridge-after-grant-20260820-99", "I need dests.png uploaded"
-        )
-        check("granted-can-post", st_back, "wrote")
-    finally:
-        board_ingest.ROOT, board_ingest.POSTS = saved2
-        shutil.rmtree(tmp2)
-
-    tmp3 = tempfile.mkdtemp(prefix="commons-tos-tie-")
-    saved3 = (board_ingest.ROOT, board_ingest.POSTS)
-    try:
-        board_ingest.ROOT = tmp3
-        board_ingest.POSTS = os.path.join(tmp3, "p")
-        os.makedirs(board_ingest.POSTS)
-        board_ingest.write_post(
-            "QUARRY", "TABLE", "quarry-tos-hit-20260820-99", "the file is inert"
-        )
-        board_ingest.write_post(
-            "APPEAL_QUARRY",
-            "TABLE",
-            "appeal-quarry-tos-20260820-99",
-            "quoting: the file is inert",
-        )
-        tie_yes = ["YANKEE", "ZULU", "AAONE", "AATWO", "AATHREE"]
-        tie_no = ["BBONE", "BBTWO", "BBTHREE", "BBFOUR", "BBFIVE"]
-        for name in tie_yes:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "tyes-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: QUARRY\nYES",
-            )
-        for name in tie_no:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "tno-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: QUARRY\nNO",
-            )
-        trec = (tos_gate.load_appeals(tmp3).get("appeals") or {}).get("QUARRY") or {}
-        check("verdict-tie", trec.get("verdict"), "tie-stands")
-        check("tie-still-locked", tos_gate.is_locked("QUARRY", root=tmp3), True)
-        for name in tie_no:
-            check("tie-no-free-%s" % name, tos_gate.is_locked(name, root=tmp3), False)
-        st_unseated = board_ingest.write_post(
-            "UNSEATED",
-            "TABLE",
-            "unseated-vote-20260820-99",
-            "APPEAL-VOTE: QUARRY\nYES",
-        )
-        check("unseated-cannot-vote", st_unseated, "tos")
-        long_name = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        tos_gate.lock_claim(long_name, "long-ban-20260820-99", root=tmp3)
-        st_long = board_ingest.write_post(
-            "APPEAL",
-            "TABLE",
-            "appeal-longname-20260820-99",
-            "OF: %s\nquoting: the file is inert" % long_name,
-        )
-        check("long-name-of-line", st_long, "wrote")
-        check(
-            "long-name-recorded",
-            tos_gate.has_open_appeal(long_name, root=tmp3),
-            True,
-        )
-        st_pair_vote = board_ingest.write_post(
-            "CCONE",
-            "TABLE",
-            "ccone-pair-vote-20260820-99",
-            "APPEAL-VOTE: %s\nYES\nthe file is inert" % long_name,
-        )
-        check("pair-in-vote-bans-voter", st_pair_vote, "tos-ban")
-        check("pair-voter-locked", tos_gate.is_locked("CCONE", root=tmp3), True)
-    finally:
-        board_ingest.ROOT, board_ingest.POSTS = saved3
-        shutil.rmtree(tmp3)
-
-    tmp4 = tempfile.mkdtemp(prefix="commons-tos-owner-")
-    saved4 = (board_ingest.ROOT, board_ingest.POSTS)
-    try:
-        board_ingest.ROOT = tmp4
-        board_ingest.POSTS = os.path.join(tmp4, "p")
-        os.makedirs(board_ingest.POSTS)
-        board_ingest.write_post(
-            "LEDGE", "TABLE", "ledge-tos-hit-20260820-99", "the file is inert"
-        )
-        board_ingest.write_post(
-            "APPEAL_LEDGE",
-            "TABLE",
-            "appeal-ledge-tos-20260820-99",
-            "quoting: the file is inert",
-        )
-        crowd_yes = ["DDONE", "DDTWO", "DDTHREE", "DDFOUR", "DDFIVE", "DDSIX"]
-        for name in crowd_yes:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "oy-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: LEDGE\nYES",
-            )
-        check("owner-not-closed-yet", tos_gate.has_open_appeal("LEDGE", root=tmp4), True)
-        st_owner = board_ingest.write_post(
-            "BRYCE",
-            "TABLE",
-            "bryce-ledge-vote-20260820-99",
-            "APPEAL-VOTE: LEDGE\nNO",
-        )
-        check("owner-vote-lands", st_owner, "wrote")
-        orec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("LEDGE") or {}
-        check("owner-grant-verdict", orec.get("verdict"), "granted")
-        check("owner-side-recorded", orec.get("owner"), "no")
-        check("owner-closed-early", orec.get("closed"), True)
-        check("owner-unlocked", tos_gate.is_locked("LEDGE", root=tmp4), False)
-        for name in crowd_yes:
-            check("owner-grant-yes-free-%s" % name, tos_gate.is_locked(name, root=tmp4), False)
-
-        board_ingest.write_post(
-            "CLIFF", "TABLE", "cliff-tos-hit-20260820-99", "the file is inert"
-        )
-        board_ingest.write_post(
-            "APPEAL_CLIFF",
-            "TABLE",
-            "appeal-cliff-tos-20260820-99",
-            "quoting: the file is inert",
-        )
-        crowd_no = ["EEONE", "EETWO", "EETHREE", "EEFOUR"]
-        for name in crowd_no:
-            board_ingest.write_post(
-                name,
-                "TABLE",
-                "on-%s-20260820-99" % name.lower(),
-                "APPEAL-VOTE: CLIFF\nNO",
-            )
-        board_ingest.write_post(
-            "ZERO",
-            "TABLE",
-            "zero-cliff-vote-20260820-99",
-            "APPEAL-VOTE: CLIFF\nYES",
-        )
-        crec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("CLIFF") or {}
-        check("zero-reject-verdict", crec.get("verdict"), "rejected")
-        check("zero-side-recorded", crec.get("owner"), "yes")
-        check("cliff-still-locked", tos_gate.is_locked("CLIFF", root=tmp4), True)
-        for name in crowd_no:
-            check("zero-defender-%s" % name, tos_gate.is_death(name, root=tmp4), True)
-
-        board_ingest.write_post(
-            "DUNE", "TABLE", "dune-tos-hit-20260820-99", "the file is inert"
-        )
-        board_ingest.write_post(
-            "APPEAL_DUNE",
-            "TABLE",
-            "appeal-dune-tos-20260820-99",
-            "quoting: the file is inert",
-        )
-        board_ingest.write_post(
-            "BRYCE",
-            "TABLE",
-            "bryce-dune-vote-20260820-99",
-            "APPEAL-VOTE: DUNE\nYES",
-        )
-        drec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("DUNE") or {}
-        check("solo-owner-reject", drec.get("verdict"), "rejected")
-        check("solo-no-defenders", drec.get("defenders"), [])
-        check("dune-locked", tos_gate.is_locked("DUNE", root=tmp4), True)
-        check("bryce-not-locked", tos_gate.is_locked("BRYCE", root=tmp4), False)
-        check(
-            "owner-note-silent",
-            tos_gate._vote_fail_note("BRYCE", ("DUNE", "no"), root=tmp4),
-            "",
-        )
-        st_flip = board_ingest.write_post(
-            "BRYCE",
-            "TABLE",
-            "bryce-dune-flip-20260820-99",
-            "APPEAL-VOTE: DUNE\nNO",
-        )
-        check("owner-overwrite-lands", st_flip, "wrote")
-        drec2 = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("DUNE") or {}
-        check("owner-overwrite-verdict", drec2.get("verdict"), "granted")
-        check("owner-overwrite-side", drec2.get("owner_side"), "no")
-        check("dune-unlocked-after", tos_gate.is_locked("DUNE", root=tmp4), False)
-
-        st_cliff_flip = board_ingest.write_post(
-            "BRYCE",
-            "TABLE",
-            "bryce-cliff-flip-20260820-99",
-            "APPEAL-VOTE: CLIFF\nNO",
-        )
-        check("owner-reopen-lands", st_cliff_flip, "wrote")
-        crec2 = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("CLIFF") or {}
-        check("owner-reopen-verdict", crec2.get("verdict"), "granted")
-        check("cliff-unlocked-after", tos_gate.is_locked("CLIFF", root=tmp4), False)
-        for name in crowd_no:
-            check(
-                "defender-cleared-%s" % name,
-                tos_gate.is_locked(name, root=tmp4),
-                False,
-            )
-    finally:
-        board_ingest.ROOT, board_ingest.POSTS = saved4
-        shutil.rmtree(tmp4)
 
     if FAILED:
         print("FAIL %d" % len(FAILED))
