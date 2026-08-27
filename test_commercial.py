@@ -101,18 +101,40 @@ class CommercialOfferTests(unittest.TestCase):
             html,
         )
         self.assertIn(
-            'if (form.querySelector("#compose-attach")) return false;',
-            read("carrier.js"),
+            'if (form.querySelector("#compose-attach")) return;',
+            read("session.js"),
         )
         from_field = re.search(r'<input name="from"[^>]*>', html)
         self.assertIsNotNone(from_field)
         self.assertNotIn("required", from_field.group(0))
 
-    def test_html_does_not_duplicate_canonical_numbers(self) -> None:
-        self.assertNotIn("$30,000", self.html)
-        self.assertNotIn("$15,000", self.html)
-        self.assertNotIn("$100,000", self.html)
-        self.assertNotIn("$175,000", self.html)
+    def test_exact_offer_is_visible_without_javascript(self) -> None:
+        for exact in (
+            "$30,000 fixed · 30 calendar days · one customer-owned GGUF model family",
+            "$15,000 on NDA and SOW signing",
+            "$15,000 on delivery of the agreed pilot package",
+            "$100,000 to $175,000",
+            "$2,500 same-day proof",
+            "$15,000 five-day recovery",
+            "tokenjunkielabs@gmail.com",
+        ):
+            self.assertIn(exact, self.html)
+
+    def test_agent_index_carries_the_same_ladder(self) -> None:
+        source = read("llms_txt.py")
+        baked = read("llms.txt")
+        for exact in (
+            "## Commercial",
+            "$2,500 same-day crash-resume proof",
+            "$15,000 five-day recovery sprint",
+            "$12,000 GGUF diagnostic",
+            "$30,000 White Box pilot",
+            "$45,000 Muhlnickel / Titan keep-or-build",
+            "tokenjunkielabs@gmail.com",
+            "All SKUs remain sellable",
+        ):
+            self.assertIn(exact, source)
+            self.assertIn(exact, baked)
 
 
 if __name__ == "__main__":

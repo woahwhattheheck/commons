@@ -25,6 +25,8 @@ class DebugLogActivity : AppCompatActivity() {
     companion object {
         // Optional extra: open the log already filtered to the task whose objective contains this.
         const val EXTRA_TASK_QUERY = "task_query"
+        // Optional extra: open with this tag preselected (e.g. "think" for the one-tap thought view).
+        const val EXTRA_TAG = "tag"
     }
 
     private lateinit var logView: TextView
@@ -40,6 +42,7 @@ class DebugLogActivity : AppCompatActivity() {
     // Archived past-build lines are read from disk ONCE (here) so render()-per-keystroke stays in memory.
     private var oldLinesCache: List<String> = emptyList()
     private var pendingTaskQuery: String? = null
+    private var pendingTag: String? = null
 
     // Per-task segments parsed from the boundary markers: label -> lines.
     private var tasks: List<Pair<String, List<String>>> = emptyList()
@@ -51,6 +54,7 @@ class DebugLogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         title = "Debug log"
         pendingTaskQuery = intent.getStringExtra(EXTRA_TASK_QUERY)?.takeIf { it.isNotBlank() }
+        pendingTag = intent.getStringExtra(EXTRA_TAG)?.takeIf { it.isNotBlank() }
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -68,6 +72,7 @@ class DebugLogActivity : AppCompatActivity() {
             }
         })
         buttons.addView(Button(this).apply { text = "Share"; setOnClickListener { shareLog() } })
+        buttons.addView(Button(this).apply { text = "Bundle"; setOnClickListener { exportBundle() } })
         buttons.addView(Button(this).apply { text = "Clear"; setOnClickListener { AgentLog.clear(); reload() } })
         root.addView(buttons)
 
@@ -166,7 +171,17 @@ class DebugLogActivity : AppCompatActivity() {
         val tagLabels = mutableListOf("All tags"); tagLabels.addAll(tagList)
         val keepTag = tagPicker.selectedItemPosition.takeIf { it in tagLabels.indices } ?: 0
         tagPicker.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tagLabels)
-        tagPicker.setSelection(keepTag)
+        // Deep-link tag preselect (the one-tap thought view). If the tag never got logged (e.g. a
+        // run with no [think] lines) fall back to searching it, so the viewer still says "nothing"
+        // honestly instead of silently showing everything.
+        val t = pendingTag
+        if (t != null) {
+            pendingTag = null
+            val hit = tagList.indexOfFirst { it.equals(t, ignoreCase = true) }
+            if (hit >= 0) tagPicker.setSelection(hit + 1) else search.setText("[$t]")
+        } else {
+            tagPicker.setSelection(keepTag)
+        }
 
         render(true) // fresh data: jump to the latest lines
     }
@@ -237,6 +252,28 @@ class DebugLogActivity : AppCompatActivity() {
                 }, "Share agent log"))
         } catch (e: Exception) {
             Toast.makeText(this, "Share failed: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    /** DEBUG MODE: zip the full rich bundle (per-step prompts + raw outputs + screenshots + the tag log) and
+     *  share it — the one-tap "give me everything" export. The same bundle is also pullable via
+     *  `adb pull ${DebugCapture.path()}` on a dedicated debug device. */
+    private fun exportBundle() {
+        val z = DebugCapture.exportZip(this)
+        if (z == null) {
+            Toast.makeText(this, "No debug bundle yet — turn on Debug mode (Settings) and run a task.", Toast.LENGTH_LONG).show()
+            return
+        }
+        try {
+            val uri = androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", z)
+            startActivity(android.content.Intent.createChooser(
+                android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                    type = "application/zip"
+                    putExtra(android.content.Intent.EXTRA_STREAM, uri)
+                    addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }, "Export debug bundle"))
+        } catch (e: Exception) {
+            Toast.makeText(this, "Bundle saved at ${DebugCapture.path(this)} (share failed: ${e.message})", Toast.LENGTH_LONG).show()
         }
     }
 }

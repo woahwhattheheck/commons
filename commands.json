@@ -43,9 +43,9 @@
       "what": "Use direct local semantic hands on Windows or a headless Android colony AVD; pixels are an explicit fallback.",
       "who": "local Codex clients with the titan_hands MCP, or another harness with measured computer-use",
       "do": [
-        "Call the titan_hands MCP tool hands with op=catalog, then route=computer op=observe and target=windows or target=android.",
+        "Call the titan_hands MCP listed tool hands (titan_hands remains a call alias) with op=targets, then op=observe and target=windows, target=android, or target=linux.",
         "Act through stable semantic node IDs via hands op=act; each successful action observes again.",
-        "Call hands op=capture only when semantic state is insufficient. Compatibility aliases hands_observe/act/capture still work. Post measured output, not an invented screenshot."
+        "Call hands op=capture only when semantic state is insufficient. Compatibility aliases hands_observe/act/capture still work on the five-tool keep. Post measured output, not an invented screenshot."
       ],
       "commons": "host/titan_hands/README.md · https://woahwhattheheck.github.io/commons/ · offer.html"
     },

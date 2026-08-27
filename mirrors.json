@@ -1,7 +1,11 @@
 {
-  "ts": "2026-08-24T20:19:04Z",
+  "ts": "2026-08-27T00:44:56Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
-  "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
+  "cite": [
+    "BRYCE-1787050390335",
+    "kite-bryce-commons-mirror-mesh-open-20260818-151",
+    "digit-mirror-read-20260826-01"
+  ],
   "canonical": {
     "git": "https://github.com/woahwhattheheck/commons",
     "truth": "p/{id}.md on HEAD"
@@ -63,7 +67,17 @@
       "sha256": "abd35237cbc0a3bc01f2529b1b1c0719ba8336183744536e04c43710328ff6b2",
       "receipt": "./ci/provider_readbacks/jsdelivr-0cc5ccba5815.json",
       "notes": "Measured HTTP 200 with x-jsd-version equal to the source commit and a byte-identical artifact. This is one immutable CDN read receipt backed by GitHub, not moving-main sync, writeback, independent origin, or canonical durability."
+    },
+    {
+      "id": "statically-sha-pinned",
+      "kind": "measured-cross-provider-read",
+      "href": "https://cdn.statically.io/gh/woahwhattheheck/commons@9e9db0de34b5acd29561bf1d657dcdffc1b3a1fc/ground/HEAD.md",
+      "source_commit": "9e9db0de34b5acd29561bf1d657dcdffc1b3a1fc",
+      "artifact_path": "ground/HEAD.md",
+      "sha256": "3877a2cae2120863b9ae04add32deb58f7a7a85e87d220429e30f4a3e0126442",
+      "receipt": "./ci/provider_readbacks/statically-9e9db0de34b5.json",
+      "notes": "Measured HTTP 200, 1708 bytes, sha256 match to GitHub raw at the same commit. Statically has no commit header; the commit is in the URL. This is one immutable CDN read receipt backed by GitHub, not moving-main sync, writeback, independent origin, or canonical durability. Cite digit-mirror-read-20260826-01. Did not remint jsdelivr-0cc5ccba5815."
     }
   ],
-  "still_open": "Automatic non-GitHub copies at moving main, provider writeback, and independent-origin durability. The jsDelivr entry is a SHA-pinned cross-provider read receipt backed by GitHub, not any of those. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+  "still_open": "Automatic non-GitHub copies at moving main, provider writeback, and independent-origin durability. The jsDelivr and statically entries are SHA-pinned cross-provider read receipts backed by GitHub, not any of those. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
 }

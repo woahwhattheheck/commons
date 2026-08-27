@@ -1,39 +1,33 @@
 # TITAN Hands — direct local semantic computer use
 
-This broker exposes one MCP surface for two deterministic hands:
+This broker exposes one MCP surface for three deterministic hands:
 
 - `target=windows`: Microsoft UI Automation, UIA control patterns, and native input fallback.
 - `target=android`: the owner's LDA Kotlin translation layer over ADB, with UIAutomator only as a
   compatibility fallback when the LDA APK/accessibility service is absent.
+- `target=linux`: AT-SPI2 accessibility tree and actions over D-Bus. Compositor pixels only when
+  `op=capture`. A missing AT-SPI bus returns `TRANSPORT_UNCONFIGURED` with a measured probe.
 
-The ordinary loop transfers no screenshots. Both adapters emit stable semantic nodes and compact
-added/updated/removed deltas; pixels move only through `hands_capture`. The server itself contains no
-confirmation or approval dialogue.
+The ordinary loop transfers no screenshots. Adapters emit stable semantic nodes and compact
+added/updated/removed deltas; pixels move only through `hands_capture` / `op=capture`. On Android with LDA,
+that capture is the owner's Set-of-Marks screenshot (`ActionAccessibilityService.captureScreenshot`
+plus `currentMarks`), not a raw ADB framebuffer. The server itself contains no confirmation or
+approval dialogue.
 
 ## Run
 
 From the Commons repository root:
 
 ```powershell
-python -m host.titan_hands.mcp_server
+python -m host.titan_hands.mcp_one
 ```
 
-The primary MCP tool is `hands`. One call sets `route` and `op`. Default `route` is `computer`.
-`op=catalog` lists live routes versus `ADAPTER_NOT_WRITTEN`. Pixels move only through `op=capture`.
-
-Compatibility aliases still call the same DeltaUI broker:
-
-- `hands_targets`
-- `hands_capabilities`
-- `hands_observe`
-- `hands_act`
-- `hands_capture`
-
-Every computer-use alias except `hands_targets` and an untargeted capability catalog accepts
-`target=windows|android`. Windows is the default.
-
-Live non-computer routes on `hands`: `file`, `git`, `slack` (`C0BRGMDQB6G` only), `board` (new
-`p/{id}.md` only), `shell`, `web`. Linux AT-SPI is named and returns `ADAPTER_NOT_WRITTEN`.
+The model sees exactly one listed tool: `hands`. `titan_hands` remains a call alias for that same
+handle. Its `op` selects `observe`, `act`, `capture`, `capabilities`, `targets`, or `reset`, and its
+`target` selects `windows`, `android`, `linux`, or another broker lane. Windows is the default.
+Linux is AT-SPI (`linux_atspi.py`; `linux.py` re-exports it), not a second MCP tool. A missing bus
+returns `TRANSPORT_UNCONFIGURED`. The original five-tool server remains available for compatibility,
+but all peer registration assets point at this one-tool facade.
 
 ## Android target selection
 
@@ -68,15 +62,18 @@ observation when no target is online.
 headless emulator, enables its existing accessibility service, and probes `TitanHandsReceiver`. It refuses a
 physical handset unless both an explicit serial and `-AllowPhysicalDevice` are provided.
 
-The current imported LDA source tree has pre-existing Kotlin compilation gaps; the exact repair inventory and
-the no-reimplementation rule are recorded in [GROK_HANDOFF.md](./GROK_HANDOFF.md). Until that source repair is
-landed, `auto` reports and uses `uiautomator-fallback` rather than claiming a Kotlin live proof.
+The inventoried source-version gaps have been repaired from the owner's real LocalDeviceAgent tree. The
+x86_64 headless build, APK install, strict accessibility-ready probe, native Kotlin observation, native click,
+and changed post-action semantic digest are live-proven. `auto` still keeps UIAutomator as an honest fallback
+when the LDA APK/service is absent; it reports `lda-kotlin` only when that service is actually ready. Exact
+inheritance and proof details are in [GROK_HANDOFF.md](./GROK_HANDOFF.md).
 
 ## Codex registration
 
 Codex local clients share MCP configuration. Register this module as a STDIO server with the repository
-root as `cwd`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New Codex
-sessions will receive the primary `hands` tool plus computer-use compatibility aliases; an already-running task retains its original tool inventory.
+root on `PYTHONPATH`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New
+Codex sessions receive the single listed `hands` tool (`titan_hands` remains a call alias); an already-running
+task retains its original tool inventory.
 
 Official configuration reference: <https://developers.openai.com/codex/mcp/>
 
@@ -88,6 +85,10 @@ powershell -File host/titan_hands/register_codex.ps1
 
 The ChatGPT desktop app, Codex CLI, and IDE extension share that MCP configuration. Restart the local client
 or begin a new task after registration; an already-running task cannot gain a new tool inventory mid-turn.
+
+Project-scoped peer configs for Cursor, Claude Code, and Gemini CLI are checked in at `.cursor/mcp.json`,
+`.mcp.json`, and `.gemini/settings.json`. See [TITAN_HANDS_PEERS.md](../../docs/TITAN_HANDS_PEERS.md) for
+the exact carrier matrix, probes, and the current Grok.com transport boundary.
 
 Architecture and the exact headless boundary: [ARCHITECTURE.md](./ARCHITECTURE.md).
 Owner-source inheritance and the Grok continuation map: [GROK_HANDOFF.md](./GROK_HANDOFF.md).

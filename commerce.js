@@ -1,10 +1,51 @@
 (function () {
   "use strict";
   var data;
+  var STRIPE_CHECKOUT_HOSTS = { "buy.stripe.com": true, "donate.stripe.com": true };
+  var STRIPE_CHECKOUT_PATH = /^\/[A-Za-z0-9_-]+$/;
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
       return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];
     });
+  }
+  function isLiveStripeCheckoutUrl(raw) {
+    if (typeof raw !== "string" || !raw) return false;
+    var parsed;
+    try {
+      parsed = new URL(raw);
+    } catch (err) {
+      return false;
+    }
+    if (parsed.protocol !== "https:") return false;
+    if (parsed.username || parsed.password) return false;
+    if (/^https:\/\/[^/]*:\d+/i.test(raw)) return false;
+    if (parsed.port !== "") return false;
+    if (raw.indexOf("?") !== -1 || raw.indexOf("#") !== -1) return false;
+    if (parsed.search !== "" || parsed.hash !== "") return false;
+    if (!Object.prototype.hasOwnProperty.call(STRIPE_CHECKOUT_HOSTS, parsed.hostname)) return false;
+    if (!STRIPE_CHECKOUT_PATH.test(parsed.pathname)) return false;
+    if (parsed.href !== raw) return false;
+    return true;
+  }
+  function termsSource(row) {
+    return row.source || row.source_artifact || {};
+  }
+  function termsLabel(row) {
+    var src = termsSource(row);
+    var label = esc(src.path);
+    if (Object.prototype.hasOwnProperty.call(src, "pointer")) label += "#" + esc(src.pointer);
+    return label;
+  }
+  function checkoutAnchor(row, funnel) {
+    var checkout = row.checkout;
+    if (!checkout || checkout.status !== "LIVE" || checkout.provider !== "stripe") return "";
+    if (!isLiveStripeCheckoutUrl(checkout.url)) return "";
+    if (funnel && funnel.readiness === "NEEDS_DEFINITION") {
+      return '<p class="note">A LIVE Stripe link is recorded, but checkout stays behind the scope-first intake until the missing terms are written.</p>';
+    }
+    var label = "LIVE Stripe hosted checkout";
+    return '<p><a class="checkout-live" href="' + esc(checkout.url) + '" rel="noopener noreferrer" target="_blank" data-funnel-sku="' +
+      esc(row.id) + '" data-funnel-action="checkout-open">' + esc(label) + '</a></p>';
   }
   function amount(component, quantity) {
     var kind = component.kind, q = Number(quantity || 0), total = 0;
@@ -14,27 +55,101 @@
     return total;
   }
   function componentText(c) {
-    if (c.amount != null) return "$" + Number(c.amount).toLocaleString() + " " + c.kind;
-    if (c.unit_amount != null) return "$" + c.unit_amount + "/" + esc(c.meter || "unit") + " " + c.kind;
-    if (c.rate_bps != null) return (Number(c.rate_bps) / 100).toFixed(2) + "% " + c.kind;
-    return c.kind;
+    if (c.amount != null) return "$" + Number(c.amount).toLocaleString() + " " + esc(c.kind);
+    if (c.unit_amount != null) return "$" + esc(c.unit_amount) + "/" + esc(c.meter || "unit") + " " + esc(c.kind);
+    if (c.rate_bps != null) return (Number(c.rate_bps) / 100).toFixed(2) + "% " + esc(c.kind);
+    return esc(c.kind);
+  }
+  function funnelFor(row) {
+    if (!data.funnels || !Object.prototype.hasOwnProperty.call(data.funnels, row.id)) {
+      throw new Error("missing funnel for " + row.id);
+    }
+    var funnel = data.funnels[row.id];
+    if (funnel.measurement.click_truth !== "INTENT_ONLY" || funnel.measurement.success_state !== "BANK_AVAILABLE") {
+      throw new Error("invalid funnel truth for " + row.id);
+    }
+    return funnel;
+  }
+  function itemList(items) {
+    if (!items || !items.length) return '<p class="note">none</p>';
+    return '<ul>' + items.map(function (item) { return '<li>' + esc(item) + '</li>'; }).join("") + '</ul>';
+  }
+  function intakeAnchor(row, funnel) {
+    if (!funnel || funnel.qualification.route === "NONE") return "";
+    var shared = funnel.qualification.route.indexOf("commerce.html#") === 0;
+    var href = shared ? "#sku-intake" : "./" + funnel.qualification.route;
+    return '<p><a class="funnel-intake" href="' + esc(href) + '" data-funnel-sku="' + esc(row.id) +
+      '" data-funnel-action="qualification-open">Start public, non-confidential intake</a></p>';
+  }
+  function funnelDetails(row, funnel) {
+    if (!funnel) return '<p class="note">Funnel contract unavailable.</p>';
+    var next = funnel.next_offer.length ? funnel.next_offer : ["none named"];
+    return '<details class="funnel"><summary>Sales funnel · priority ' + esc(funnel.priority) + ' · ' +
+      esc(funnel.readiness) + '</summary>' +
+      '<p><b>Buyer:</b> ' + esc(funnel.buyer) + '</p>' +
+      '<p><b>Trigger:</b> ' + esc(funnel.trigger) + '</p>' +
+      '<p><b>Message:</b> ' + esc(funnel.acquisition.message) + '</p>' +
+      '<p><b>Primary channel:</b> ' + esc(funnel.acquisition.primary_channel) + '</p>' +
+      '<p><b>Qualification:</b></p>' + itemList(funnel.qualification.required) +
+      '<p><b>Conversion:</b> ' + esc(funnel.conversion.next_step) + '</p>' +
+      '<p class="note">Evidence to advance: ' + esc(funnel.conversion.evidence_required) + '</p>' +
+      '<p><b>Deliverables:</b></p>' + itemList(funnel.fulfillment.deliverables) +
+      '<p><b>Acceptance:</b></p>' + itemList(funnel.fulfillment.acceptance) +
+      '<p><b>Refund:</b> ' + esc(funnel.fulfillment.refund) + '</p>' +
+      '<p><b>Next offer:</b> ' + next.map(esc).join(" · ") + '</p>' +
+      '<p><b>Open gaps:</b></p>' + itemList(funnel.gaps) +
+      '<p class="note">' + esc(funnel.measurement.dom_action) + ' is ' + esc(funnel.measurement.click_truth) +
+      '; first durable evidence: ' + esc(funnel.measurement.first_evidence_state) +
+      '; success: ' + esc(funnel.measurement.success_state) + '.</p></details>';
+  }
+  function renderPriority() {
+    var rows = data.listings.slice().sort(function (a, b) {
+      return funnelFor(a).priority - funnelFor(b).priority;
+    }).slice(0, 3);
+    document.getElementById("priority-offers").innerHTML = rows.map(function (row) {
+      var funnel = funnelFor(row);
+      return '<article class="card"><p class="note">priority ' + esc(funnel.priority) + '</p><h3>' + esc(row.name) +
+        '</h3><p>' + esc(funnel.acquisition.message) + '</p><p><a href="#' + esc(row.id) + '">' + esc(funnel.acquisition.cta) + '</a></p></article>';
+    }).join("");
+    var truth = data.funnel_truth;
+    document.getElementById("funnel-truth").textContent = truth.distinct_targets + " distinct targets · " +
+      truth.delivered_transports + " delivered transports · " + truth.verified_positive_replies +
+      " verified-positive replies · " + truth.accepted_scopes + " accepted scopes · $" +
+      truth.collected_cash_usd + " collected · next edge: " + truth.next_edge;
   }
   function renderCatalog() {
     document.getElementById("catalog-status").textContent = data.listings.length + " adapters; source terms remain canonical.";
-    document.getElementById("catalog").innerHTML = data.listings.map(function (row) {
-      return '<article class="card"><p class="state-' + esc(row.state) + '"><b>' + esc(row.state) + '</b></p><h3>' + esc(row.name) + '</h3>' +
+    var rows = data.listings.slice().sort(function (a, b) {
+      return funnelFor(a).priority - funnelFor(b).priority;
+    });
+    document.getElementById("catalog").innerHTML = rows.map(function (row) {
+      var funnel = funnelFor(row);
+      return '<article class="card" id="' + esc(row.id) + '"><p class="state-' + esc(row.state) + '"><b>' + esc(row.state) + '</b></p><h3>' + esc(row.name) + '</h3>' +
         '<p class="money">' + row.pricing.components.map(componentText).join(" + ") + ' ' + esc(row.pricing.currency) + '</p>' +
         '<p>' + row.pricing.components.map(function(c){return '<span class="pill">' + esc(c.kind) + '</span>';}).join("") + '</p>' +
-        '<p class="note">terms: <code>' + esc(row.source.path) + "#" + esc(row.source.pointer) + '</code></p>' +
-        '<p><a href="./' + esc(row.routes.human) + '">human door</a> · <a href="./' + esc(row.routes.machine) + '">machine source</a></p></article>';
+        '<p class="note">terms: <code>' + termsLabel(row) + '</code></p>' +
+        '<p><a href="./' + esc(row.routes.human) + '" data-funnel-sku="' + esc(row.id) + '" data-funnel-action="qualification-open">human door</a> · <a href="./' + esc(row.routes.machine) + '">machine source</a></p>' +
+        intakeAnchor(row, funnel) + checkoutAnchor(row, funnel) + funnelDetails(row, funnel) + '</article>';
     }).join("");
+  }
+  function wireIntake() {
+    var body = document.getElementById("sku-intake-body");
+    var selected = document.getElementById("sku-intake-selected");
+    Array.prototype.forEach.call(document.querySelectorAll(".funnel-intake"), function (link) {
+      link.addEventListener("click", function () {
+        var sku = link.getAttribute("data-funnel-sku");
+        selected.textContent = sku;
+        body.value = "PLAIN: Public, non-confidential Commons SKU purchase intent.\nOFFER_ID: " + sku +
+          "\nPUBLIC_OBJECTIVE:\nPUBLIC_ARTIFACT:\nPUBLIC_CONTACT_URL:\nSTART_WINDOW:\nSELECTED_DELIVERABLE (if applicable):";
+      });
+    });
   }
   function renderMetrics() {
     var id = document.getElementById("listing").value;
     var row = data.listings.filter(function (x) { return x.id === id; })[0];
     var host = document.getElementById("metrics");
     host.innerHTML = row.pricing.components.map(function (c) {
-      var initial = ["fixed", "milestone", "license"].indexOf(c.kind) >= 0 ? "1" : "0";
+      var initial = ["fixed", "subscription", "milestone", "license"].indexOf(c.kind) >= 0 ? "1" : "0";
       var label = c.kind === "take_rate" ? "gross amount" : (c.meter || c.basis || "quantity");
       return '<label>' + esc(c.id) + ' · ' + esc(c.kind) + ' · ' + esc(label) + '<input type="number" min="0" step="any" value="' + initial + '" data-component="' + esc(c.id) + '"></label>';
     }).join("");
@@ -55,7 +170,9 @@
     return response.json();
   }).then(function (catalog) {
     data = catalog;
+    renderPriority();
     renderCatalog();
+    wireIntake();
     var select = document.getElementById("listing");
     select.innerHTML = data.listings.map(function (row) { return '<option value="' + esc(row.id) + '">' + esc(row.name) + '</option>'; }).join("");
     select.addEventListener("change", renderMetrics);

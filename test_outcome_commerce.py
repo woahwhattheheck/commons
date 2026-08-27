@@ -5,16 +5,122 @@ from __future__ import annotations
 import copy
 from datetime import datetime
 from decimal import Decimal
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
 import re
+import shutil
+import subprocess
+import sys
 import unittest
 
 
 ROOT = Path(__file__).resolve().parent
 COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
+FROZEN_EIGHT_SHA256 = "bea09853202464ee37b4540de30c13bc56252c9967c871d3a786e27e7dcc8469"
+FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
+LIVE_STRIPE_SKUS = (
+    {
+        "id": "sku-tip-20260826",
+        "path": "land/sku-tip-20260826.md",
+        "blob_sha": "18d367ea5267698297ed243b872848cd2b97551e",
+        "kind": "fixed",
+        "amount_field": "amount",
+        "amount": "5.00",
+        "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+        "markers": (
+            "price: $5 USD one-time",
+            "status: LIVE",
+            "checkout: https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+        ),
+    },
+    {
+        "id": "sku-seat-20260826",
+        "path": "land/sku-seat-20260826.md",
+        "blob_sha": "32d4183396a0ed9e430c7d9052e6d0735c9c5869",
+        "kind": "subscription",
+        "amount_field": "amount",
+        "amount": "5.00",
+        "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+        "markers": (
+            "price: $5 USD / month",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+        ),
+    },
+    {
+        "id": "sku-unlock-20260826",
+        "path": "land/sku-unlock-20260826.md",
+        "blob_sha": "23167b56d258adc2bf98abf66635ce75f9e1cd83",
+        "kind": "fixed",
+        "amount_field": "amount",
+        "amount": "5.00",
+        "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+        "markers": (
+            "price: $5 USD one-time",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+        ),
+    },
+    {
+        "id": "sku-monthly-tip-20260826",
+        "path": "land/sku-monthly-tip-20260826.md",
+        "blob_sha": "df35eff357e31d917955f447e4dd566e008c8ca9",
+        "kind": "subscription",
+        "amount_field": "amount",
+        "amount": "3.00",
+        "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+        "markers": (
+            "price: $3 USD / month",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+        ),
+    },
+    {
+        "id": "sku-boost-20260826",
+        "path": "land/sku-boost-20260826.md",
+        "blob_sha": "d398d07cc5db84c520d1c7cdac9230698755e2c5",
+        "kind": "subscription",
+        "amount_field": "amount",
+        "amount": "4.99",
+        "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+        "markers": (
+            "price: $4.99 USD / month",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+        ),
+    },
+    {
+        "id": "sku-whitebox-hour-20260826",
+        "path": "land/sku-whitebox-hour-20260826.md",
+        "blob_sha": "9747d2e203b1be96940d224914ca0b59335fe37e",
+        "kind": "usage",
+        "amount_field": "unit_amount",
+        "amount": "250.00",
+        "url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+        "markers": (
+            "MARKET PROPOSAL: $250 USD / hour",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+        ),
+    },
+    {
+        "id": "sku-muhlnickel-titan-20260826",
+        "path": "land/sku-muhlnickel-titan-20260826.md",
+        "blob_sha": "df2c209c07cb00883db2936a1c9b712d5343e115",
+        "kind": "fixed",
+        "amount_field": "amount",
+        "amount": "45000.00",
+        "url": "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
+        "markers": (
+            "MARKET PROPOSAL: $45,000 fixed-scope build",
+            "status: LIVE",
+            "checkout: https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
+        ),
+    },
+)
 
 _SPEC = importlib.util.spec_from_file_location(
     "commons_outcome_commerce", ROOT / "host" / "outcome_commerce.py"
@@ -198,6 +304,12 @@ def read_json(path: Path):
 
 def canonical(value) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def git_hash_object(path: Path) -> str:
+    return subprocess.check_output(
+        ["git", "hash-object", str(path)], cwd=ROOT, text=True
+    ).strip()
 
 
 def resolve_pointer(value, pointer: str):
@@ -493,6 +605,584 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertEqual({row["currency"] for row in offers}, {"FREE_COLONY_COMPUTE"})
         self.assertTrue(all(Decimal(str(row["price"])) == Decimal("0") for row in offers))
         self.assertFalse(any(row["currency"] == "USD" for row in offers))
+
+    def test_host_validate_and_draft_schema_accept_the_live_sku_catalog(self) -> None:
+        self.validator.validate_file(self.catalog, "catalog.schema.json")
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "host" / "outcome_commerce.py"), "validate"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("OK 15 listings", proc.stdout)
+        self.assertIn("CHARGEABLE != AUTHORIZATION != SETTLEMENT != PAYOUT != BANK_AVAILABLE", proc.stdout)
+
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "host" / "outcome_commerce.py"), "catalog"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        for spec in LIVE_STRIPE_SKUS:
+            self.assertIn("source %s@%s" % (spec["path"], spec["blob_sha"]), proc.stdout)
+
+    def test_host_rejects_unverified_checkout_and_source_artifact_claims(self) -> None:
+        def errors_for(mutator):
+            catalog = copy.deepcopy(self.catalog)
+            listing = next(
+                row for row in catalog["listings"] if row["id"] == "sku-tip-20260826"
+            )
+            mutator(listing)
+            return outcome_commerce.catalog_errors(catalog, root=ROOT, check_sources=True)
+
+        errors = errors_for(
+            lambda row: row.__setitem__(
+                "checkout",
+                {
+                    "status": "LIVE",
+                    "provider": "paypal",
+                    "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                },
+            )
+        )
+        self.assertTrue(any("provider must be stripe" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda row: row["checkout"].__setitem__(
+                "url", "https://buy.stripe.com.evil.com/abcDEF123456"
+            )
+        )
+        self.assertTrue(any("url is invalid" in item for item in errors), errors)
+
+        def invent_artifact(row):
+            row["source_artifact"] = {
+                "path": "land/does-not-exist.md",
+                "blob_sha": "0" * 40,
+                "terms_authority": "source",
+            }
+
+        errors = errors_for(invent_artifact)
+        self.assertTrue(any("source artifact missing" in item for item in errors), errors)
+
+        def remove_source(row):
+            del row["source_artifact"]
+
+        errors = errors_for(remove_source)
+        self.assertTrue(any("exactly one" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda row: row["source_artifact"].__setitem__("blob_sha", "0" * 40 + "\n")
+        )
+        self.assertTrue(any("blob_sha is invalid" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda row: row["source_artifact"].__setitem__("path", "\0")
+        )
+        self.assertTrue(any("path is invalid" in item for item in errors), errors)
+
+    def test_one_canonical_funnel_covers_every_listing(self) -> None:
+        listings = self.catalog["listings"]
+        listing_ids = [row["id"] for row in listings]
+        funnels = self.catalog["funnels"]
+        self.assertEqual(set(funnels), set(listing_ids))
+        self.assertEqual(
+            self.catalog["funnel_stage_order"],
+            [
+                "DISCOVERED", "QUALIFIED", "QUOTED", "FUNDED", "RUNNING",
+                "SUBMITTED", "ACCEPTED", "SETTLED", "BANK_AVAILABLE",
+            ],
+        )
+        self.assertEqual(
+            sorted(row["priority"] for row in funnels.values()),
+            list(range(1, 16)),
+        )
+        ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
+        self.assertEqual(ordered[:3], [
+            "sku-tip-20260826",
+            "same-day-agent-survival-proof",
+            "sku-monthly-tip-20260826",
+        ])
+        by_id = {row["id"]: row for row in listings}
+        for listing_id, funnel in funnels.items():
+            live = by_id[listing_id].get("checkout", {}).get("status") == "LIVE"
+            self.assertEqual(
+                funnel["conversion"]["mode"],
+                "LIVE_STRIPE_LINK" if live else "CUSTOMER_SPECIFIC_INVOICE",
+            )
+            self.assertEqual(funnel["conversion"]["state_after"], "FUNDED")
+            self.assertEqual(funnel["measurement"]["click_truth"], "INTENT_ONLY")
+            self.assertEqual(funnel["measurement"]["success_state"], "BANK_AVAILABLE")
+
+            self.assertTrue(set(funnel["next_offer"]).issubset(set(listing_ids)))
+            self.assertTrue(funnel["acquisition"]["route"].endswith("#" + listing_id))
+            checkout_first = live and funnel["readiness"] == "READY_FOR_CHECKOUT"
+            self.assertEqual(
+                funnel["measurement"]["dom_action"],
+                "checkout-open" if checkout_first else "qualification-open",
+            )
+            self.assertEqual(
+                funnel["measurement"]["first_evidence_state"],
+                "FUNDED" if checkout_first else "DISCOVERED",
+            )
+        truth = self.catalog["funnel_truth"]
+        self.assertEqual(truth["distinct_targets"], 8)
+        self.assertEqual(truth["delivered_transports"], 13)
+        self.assertEqual(truth["verified_positive_replies"], 0)
+        self.assertEqual(truth["accepted_scopes"], 0)
+        self.assertEqual(truth["paid_deliveries"], 0)
+        self.assertEqual(truth["collected_cash_usd"], "0.00")
+        self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
+        self.assertIn("p/slack-1787769698-642529.md", truth["source"])
+
+    def test_canonical_catalog_requires_the_complete_funnel_triad(self) -> None:
+        candidate = copy.deepcopy(self.catalog)
+        for field in ("funnel_stage_order", "funnel_truth", "funnels"):
+            candidate.pop(field)
+        errors = outcome_commerce.catalog_errors(candidate, root=ROOT, check_sources=False)
+        self.assertTrue(any("are required" in item for item in errors), errors)
+
+    def test_funnel_refunds_preserve_canonical_buyer_terms(self) -> None:
+        offers = json.loads(
+            (ROOT / "revenue" / "human_outcomes" / "offers.json").read_text(encoding="utf-8")
+        )
+        for offer in offers["offers"]:
+            self.assertEqual(
+                self.catalog["funnels"][offer["id"]]["fulfillment"]["refund"],
+                offer["refund"],
+            )
+        survival = json.loads(
+            (ROOT / "revenue" / "production_survival" / "offer.json").read_text(encoding="utf-8")
+        )
+        refund = self.catalog["funnels"]["same-day-agent-survival-proof"]["fulfillment"]["refund"]
+        for sentence in survival["entry_offer"]["refund"].split(". "):
+            self.assertIn(sentence.rstrip("."), refund)
+        self.assertIn("one free next-business-day repair attempt", refund)
+
+    def test_host_rejects_incomplete_or_false_funnel_contracts(self) -> None:
+        def errors_for(mutator):
+            catalog = copy.deepcopy(self.catalog)
+            mutator(catalog)
+            return outcome_commerce.catalog_errors(catalog, root=ROOT, check_sources=False)
+
+        errors = errors_for(lambda catalog: catalog["funnels"].pop("sku-tip-20260826"))
+        self.assertTrue(any("exactly match listing ids" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"]["measurement"].__setitem__(
+                "click_truth", "FUNDED"
+            )
+        )
+        self.assertTrue(any("click_truth" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["same-day-agent-survival-proof"]["conversion"].__setitem__(
+                "mode", "LIVE_STRIPE_LINK"
+            )
+        )
+        self.assertTrue(any("checkout state" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"].__setitem__(
+                "priority", 2
+            )
+        )
+        self.assertTrue(any("unique sequence" in item for item in errors), errors)
+
+        errors = errors_for(lambda catalog: catalog.pop("funnels"))
+        self.assertTrue(any("must appear together" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda catalog: catalog["funnels"]["sku-tip-20260826"].__setitem__("next_offer", 7)
+        )
+        self.assertTrue(any("next_offer must be an array" in item for item in errors), errors)
+
+        catalog = copy.deepcopy(self.catalog)
+        for field in ("funnel_stage_order", "funnel_truth", "funnels"):
+            catalog.pop(field)
+        errors = outcome_commerce.canonical_catalog_errors(
+            catalog, root=ROOT, check_sources=False
+        )
+        self.assertTrue(any("canonical catalog missing" in item for item in errors), errors)
+
+    def test_fifteen_unique_listings_preserve_frozen_eight(self) -> None:
+        listings = self.catalog["listings"]
+        ids = [row["id"] for row in listings]
+        self.assertEqual(len(listings), 15)
+        self.assertEqual(len(set(ids)), 15)
+        self.assertEqual(
+            hashlib.sha256(canonical(listings[:8]).encode("utf-8")).hexdigest(),
+            FROZEN_EIGHT_SHA256,
+        )
+        for row in listings[:8]:
+            self.assertIn("source", row)
+            self.assertNotIn("source_artifact", row)
+            self.assertNotIn("checkout", row)
+        self.assertEqual(
+            hashlib.sha256(
+                canonical(self.catalog["integration_sources"][:-1]).encode("utf-8")
+            ).hexdigest(),
+            FROZEN_SOURCE_ADAPTERS_SHA256,
+        )
+        self.assertEqual(
+            self.catalog["integration_sources"][-1],
+            "land/stripe-payment-links-20260826.md",
+        )
+        manifest = read_json(COMMERCE / "manifest.json")
+        self.assertEqual(
+            hashlib.sha256(
+                canonical(manifest["source_adapters"][:-1]).encode("utf-8")
+            ).hexdigest(),
+            FROZEN_SOURCE_ADAPTERS_SHA256,
+        )
+        self.assertEqual(
+            manifest["source_adapters"][-1],
+            "land/stripe-payment-links-20260826.md",
+        )
+
+    def test_seven_live_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
+        by_id = {row["id"]: row for row in self.catalog["listings"]}
+        live = [row for row in self.catalog["listings"] if "checkout" in row]
+        artifacts = [row for row in self.catalog["listings"] if "source_artifact" in row]
+        self.assertEqual(len(live), 7)
+        self.assertEqual(len(artifacts), 7)
+        self.assertEqual([row["id"] for row in live], [row["id"] for row in LIVE_STRIPE_SKUS])
+        for spec in LIVE_STRIPE_SKUS:
+            row = by_id[spec["id"]]
+            self.assertNotIn("source", row)
+            artifact = row["source_artifact"]
+            self.assertEqual(artifact["path"], spec["path"])
+            self.assertEqual(artifact["blob_sha"], spec["blob_sha"])
+            self.assertEqual(artifact["terms_authority"], "source")
+            path = ROOT / spec["path"]
+            self.assertTrue(path.is_file(), spec["path"])
+            self.assertEqual(git_hash_object(path), spec["blob_sha"])
+            text = path.read_text(encoding="utf-8")
+            for marker in spec["markers"]:
+                self.assertIn(marker, text)
+            component = row["pricing"]["components"][0]
+            self.assertEqual(component["kind"], spec["kind"])
+            self.assertEqual(component[spec["amount_field"]], spec["amount"])
+            self.assertEqual(row["pricing"]["currency"], "USD")
+            self.assertEqual(row["routes"]["human"], "commerce.html")
+            self.assertEqual(row["routes"]["machine"], spec["path"])
+            checkout = row["checkout"]
+            self.assertEqual(checkout, {
+                "status": "LIVE",
+                "provider": "stripe",
+                "url": spec["url"],
+            })
+
+    def test_live_subscription_quotes_default_to_one_cycle(self) -> None:
+        expected = {
+            "sku-seat-20260826": "5.00",
+            "sku-monthly-tip-20260826": "3.00",
+            "sku-boost-20260826": "4.99",
+        }
+        for listing_id, amount in expected.items():
+            with self.subTest(listing_id=listing_id):
+                quote = outcome_commerce.quote(self.catalog, listing_id, {})
+                self.assertEqual(quote["gross_amount"], amount)
+                self.assertEqual(quote["net_amount"], amount)
+                self.assertEqual(quote["line_items"][0]["amount"], amount)
+
+    def _reject_checkout(self, checkout) -> None:
+        catalog = copy.deepcopy(self.catalog)
+        listing = next(row for row in catalog["listings"] if row["id"] == "sku-tip-20260826")
+        listing["checkout"] = checkout
+        with self.assertRaises(SchemaError):
+            self.validator.validate_file(catalog, "catalog.schema.json")
+
+    def test_schema_rejects_invalid_checkout_objects_and_urls(self) -> None:
+        valid = "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08"
+        self._reject_checkout("LIVE")
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "not-a-url",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "http://buy.stripe.com/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://user:pass@buy.stripe.com/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid + "?x=1",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid + "#frag",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid + "?",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid + "#",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid + "\n",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://buy.stripe.com:8443/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://buy.stripe.com.evil.com/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://buy.stripes.com/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://constructor/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": "https://__proto__/abcDEF123456",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "stripe",
+            "url": valid,
+            "note": "extra",
+        })
+        self._reject_checkout({
+            "status": "LIVE",
+            "provider": "paypal",
+            "url": valid,
+        })
+        self._reject_checkout({
+            "status": "live",
+            "provider": "stripe",
+            "url": valid,
+        })
+        self._reject_checkout({
+            "status": "NOT_MINTED",
+            "url": valid,
+        })
+        self._reject_checkout({
+            "status": "NOT_MINTED",
+            "provider": "stripe",
+            "url": valid,
+        })
+        self._reject_checkout({"status": "PENDING\n"})
+
+    def test_listing_requires_exactly_one_source_form(self) -> None:
+        catalog = copy.deepcopy(self.catalog)
+        listing = catalog["listings"][0]
+        listing["source_artifact"] = {
+            "path": "land/sku-tip-20260826.md",
+            "blob_sha": "18d367ea5267698297ed243b872848cd2b97551e",
+            "terms_authority": "source",
+        }
+        with self.assertRaises(SchemaError):
+            self.validator.validate_file(catalog, "catalog.schema.json")
+        del listing["source"]
+        del listing["source_artifact"]
+        with self.assertRaises(SchemaError):
+            self.validator.validate_file(catalog, "catalog.schema.json")
+
+        catalog = copy.deepcopy(self.catalog)
+        listing = next(row for row in catalog["listings"] if "source_artifact" in row)
+        listing["source_artifact"]["blob_sha"] += "\n"
+        with self.assertRaises(SchemaError):
+            self.validator.validate_file(catalog, "catalog.schema.json")
+        for hostile in ("\0", "../private.txt", "C:/private.txt", "/private.txt"):
+            catalog = copy.deepcopy(self.catalog)
+            listing = next(row for row in catalog["listings"] if "source_artifact" in row)
+            listing["source_artifact"]["path"] = hostile
+            with self.assertRaises(SchemaError):
+                self.validator.validate_file(catalog, "catalog.schema.json")
+
+    def test_renderer_validates_live_stripe_urls_and_escapes_without_new_network(self) -> None:
+        js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        self.assertIn("function isLiveStripeCheckoutUrl", js)
+        self.assertIn("function termsSource", js)
+        self.assertIn("row.source || row.source_artifact", js)
+        self.assertIn('checkout.status !== "LIVE"', js)
+        self.assertIn('checkout.provider !== "stripe"', js)
+        self.assertIn("isLiveStripeCheckoutUrl(checkout.url)", js)
+        self.assertIn('rel="noopener noreferrer"', js)
+        self.assertIn("LIVE Stripe hosted checkout", js)
+        self.assertIn("checkout stays behind the scope-first intake", js)
+        self.assertIn('funnel.readiness === "NEEDS_DEFINITION"', js)
+        self.assertIn("function esc(", js)
+        self.assertIn("esc(row.name)", js)
+        self.assertIn("esc(row.state)", js)
+        self.assertIn("esc(row.routes.human)", js)
+        self.assertIn("esc(row.routes.machine)", js)
+        self.assertIn("esc(checkout.url)", js)
+        self.assertIn("function funnelFor", js)
+        self.assertIn("data-funnel-sku", js)
+        self.assertIn("data-funnel-action", js)
+        self.assertIn("INTENT_ONLY", js)
+        self.assertIn("BANK_AVAILABLE", js)
+        self.assertIn("parsed.protocol !== \"https:\"", js)
+        self.assertIn("parsed.username", js)
+        self.assertIn("parsed.search", js)
+        self.assertIn("parsed.hash", js)
+        self.assertIn('buy.stripe.com', js)
+        self.assertIn('donate.stripe.com', js)
+        self.assertIn("parsed.port", js)
+        self.assertIn('["fixed", "subscription", "milestone", "license"]', js)
+        self.assertEqual(js.count("fetch("), 1)
+        self.assertIn("./revenue/outcome_commerce/catalog.json", js)
+        self.assertIn("PUBLIC_CONTACT_URL", js)
+        self.assertIn("PUBLIC_CONTACT_URL", (ROOT / "commerce.html").read_text(encoding="utf-8"))
+        for surface in (
+            "sendBeacon",
+            "XMLHttpRequest",
+            "WebSocket",
+            "EventSource",
+            "navigator.sendBeacon",
+            "localStorage",
+            "sessionStorage",
+        ):
+            self.assertNotIn(surface, js)
+        self.assertNotIn("innerHTML = checkout.url", js)
+        self.assertNotIn("${checkout.url}", js)
+
+        html = (ROOT / "commerce.html").read_text(encoding="utf-8")
+        self.assertIn('id="sku-intake"', html)
+        self.assertIn('name="to" value="OFFER"', html)
+        self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
+        self.assertIn("carrier.js", html)
+
+    def test_renderer_executes_strict_own_host_checkout_membership(self) -> None:
+        node = shutil.which("node")
+        self.assertIsNotNone(node, "Node.js is required to execute the production checkout validator")
+        js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        instrumented = js.replace(
+            "function isLiveStripeCheckoutUrl(raw)",
+            "globalThis.isLiveStripeCheckoutUrl = function isLiveStripeCheckoutUrl(raw)",
+            1,
+        )
+        harness = """
+globalThis.fetch = function () { return new Promise(function () {}); };
+%s
+var urls = [
+  "https://buy.stripe.com/abcDEF123456",
+  "https://donate.stripe.com/abcDEF123456",
+  "https://constructor/abcDEF123456",
+  "https://__proto__/abcDEF123456",
+  "https://buy.stripe.com.evil.com/abcDEF123456",
+  "https://buy.stripe.com/abcDEF123456?",
+  "https://buy.stripe.com/abcDEF123456#",
+  "https://buy.stripe.com/abcDEF123456?#"
+];
+process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)));
+""" % instrumented
+        proc = subprocess.run(
+            [node, "-e", harness],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertEqual(
+            json.loads(proc.stdout),
+            [True, True, False, False, False, False, False, False],
+        )
+
+    def test_commerce_surfaces_add_no_admission_gate(self) -> None:
+        js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        schema = (COMMERCE / "catalog.schema.json").read_text(encoding="utf-8")
+        catalog_text = (COMMERCE / "catalog.json").read_text(encoding="utf-8")
+        manifest = (COMMERCE / "manifest.json").read_text(encoding="utf-8")
+        blob = "\n".join((js, schema, catalog_text, manifest)).lower()
+        self.assertIn("parsed.username || parsed.password", js)
+        self.assertNotIn("login", blob)
+        self.assertNotIn("signup", blob)
+        self.assertNotIn("api-key", blob)
+        self.assertNotIn("apikey", blob)
+        self.assertNotIn("oauth", blob)
+        self.assertNotIn("allowlist", blob)
+        self.assertNotIn("admission gate", blob)
+        self.assertNotIn("identity gate", blob)
+        self.assertNotIn("role gate", blob)
+        self.assertNotIn("tier gate", blob)
+        self.assertNotIn("approval workflow", blob)
+        self.assertNotIn("protected path", blob)
+        self.assertNotIn("protected-path", blob)
+        self.assertNotIn("protected action", blob)
+        self.assertNotIn("protected-action", blob)
+
+    def test_live_checkout_does_not_claim_cash_and_funnel_stays_zero(self) -> None:
+        js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        catalog_text = (COMMERCE / "catalog.json").read_text(encoding="utf-8")
+        truth = self.catalog["funnel_truth"]
+        self.assertEqual(truth["collected_cash_usd"], "0.00")
+        self.assertEqual(truth["accepted_scopes"], 0)
+        for token in (
+            "buyer accepted",
+            "payment received",
+            "settled cash",
+            "payout complete",
+            "bank available cash",
+            "charge captured",
+        ):
+            self.assertNotIn(token, js.lower())
+            self.assertNotIn(token, catalog_text.lower())
+        self.assertIn("settled, paid out, or bank-available", js)
+        receipts = [
+            read_json(path)
+            for path in sorted(
+                (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
+            )
+        ]
+        self.assertEqual(len(receipts), 13)
+        contacts = set()
+        for row in receipts:
+            dedupe = row.get("dedupe") or {}
+            contacts.add(
+                dedupe.get("distinct_contact_key")
+                or row.get("recipient_email")
+                or row["target_id"]
+            )
+        self.assertEqual(len(contacts), 8)
+        upvest = [row for row in receipts if row["target_id"] == "upvest"]
+        self.assertEqual(len(upvest), 1)
+        self.assertEqual(upvest[0]["response_state"], "UNKNOWN")
+        self.assertIsNone(upvest[0]["response_reference"])
+        self.assertEqual(
+            {row["response_state"] for row in receipts},
+            {"UNKNOWN"},
+        )
+        self.assertTrue(all(row["facts"]["legal_acceptance"] == "NOT_LANDED" for row in receipts))
+        self.assertTrue(all(row["facts"]["cash_claimed"] is False for row in receipts))
+        self.assertTrue(all(row["facts"]["collected_cash_usd"] == 0 for row in receipts))
+        self.assertTrue(
+            all(row["facts"]["buyer_authorization"] == "UNKNOWN" for row in receipts)
+        )
+        current = read_json(ROOT / "revenue" / "payment_ready" / "current_receipt.json")
+        self.assertEqual(current["facts"]["collected_cash_usd"], 0)
+        self.assertEqual(current["facts"]["delivery"], "NOT_LANDED")
+        self.assertIs(current["cash_claimed"], False)
 
 
 if __name__ == "__main__":

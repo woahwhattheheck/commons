@@ -31,6 +31,28 @@ The CLI is standard-library-only, uses `Decimal`, deduplicates exact event IDs,
 refuses conflicting duplicates and mixed-currency statements, applies explicit
 reversals and prepaid credits, and never claims payment.
 
+## Per-SKU sales funnels
+
+The canonical `catalog.json` also carries one `funnels` entry for every listing.
+It does not create a second offer catalog or replace source terms. Each entry
+binds the intended buyer and trigger to acquisition copy, public qualification,
+checkout or buyer-specific invoice, fulfillment, acceptance, refund truth,
+next offer, and unresolved gaps. Priorities are a complete unique sequence, so
+the web page can present a first-cash queue without deleting or hiding a SKU.
+
+The funnel chain is:
+
+```text
+DISCOVERED -> QUALIFIED -> QUOTED -> FUNDED -> RUNNING -> SUBMITTED
+           -> ACCEPTED -> SETTLED -> BANK_AVAILABLE
+```
+
+`data-funnel-sku` and `data-funnel-action` attributes make browser CTAs
+machine-identifiable without adding telemetry. A click remains `INTENT_ONLY`.
+No durable state advances until its named evidence exists, and only
+`BANK_AVAILABLE` closes the cash loop. `funnel_truth` is a dated observation,
+not a counter that silently changes when a checkout opens.
+
 `event.schema.json` is the canonical DIO-linked commercial transition envelope.
 It preserves `correlation_id`, chains predecessor events, and binds retries to a
 stable `idempotency_key`. A crash after an external call enters

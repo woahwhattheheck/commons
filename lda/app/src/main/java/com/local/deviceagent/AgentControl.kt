@@ -20,16 +20,20 @@ object AgentControl {
         s.setPassiveLearningEnabled(true)
         ActionAccessibilityService.instance?.setPassiveLearning(true)
         s.setAgentEnabled(false)                                   // no tasks / no wake-word listening
+        ActionAccessibilityService.instance?.haltInjection()       // KILL-SWITCH: halt injection SYNCHRONOUSLY here,
+        // not later in the async onDestroy — the loop must not keep dispatching during the wind-down (ghost inputs).
         c.stopService(Intent(c, FloatingButtonService::class.java))
         c.stopService(Intent(c, AgentService::class.java))         // onDestroy releases the model
         AgentLog.log("power", "SLEEP — active agent off, model released, passive learning on")
     }
 
     fun emergencyStop(c: Context) {
+        GauntletRunner.stop(c, "emergency stop")   // never let the benchmark relaunch tasks after a kill
         val s = SettingsManager(c)
         s.setPassiveLearningEnabled(false)
         ActionAccessibilityService.instance?.setPassiveLearning(false)
         s.setAgentEnabled(false)
+        ActionAccessibilityService.instance?.haltInjection()       // KILL-SWITCH: synchronous input halt before teardown
         c.stopService(Intent(c, FloatingButtonService::class.java))
         c.stopService(Intent(c, AgentService::class.java))
         AgentLog.log("power", "EMERGENCY STOP — everything off, model shut down")

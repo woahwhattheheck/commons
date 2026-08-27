@@ -1,0 +1,229 @@
+{
+  "schema_version": "commons-whitebox-archive-license-probe/v1",
+  "probe_date": "2026-08-26",
+  "inventory_binding": {
+    "inventory_path": "revenue/ip/whitebox_archive_inventory.json",
+    "inventory_blob_sha": "dfc9923c290837151454b086df1af25aed724330",
+    "archive_tree_sha256": "d67234a1e0d69dba621f4073ecfbaf77db298134d3bd516fba30fc2062467bc9"
+  },
+  "scope": {
+    "source_location_class": "OWNER_LOCAL_GGUF_MODELS",
+    "source_absolute_paths_published": false,
+    "model_tensor_bytes_loaded": false,
+    "full_model_sha256_computed": false,
+    "measured_region": "GGUF_HEADER_METADATA_TENSOR_INDEX_PREFIX"
+  },
+  "summary": {
+    "expected_models": 8,
+    "located_models": 8,
+    "embedded_license_present": 7,
+    "embedded_license_missing": 1,
+    "embedded_license_counts": [
+      {
+        "license_id": "apache-2.0",
+        "models": 2
+      },
+      {
+        "license_id": "gemma",
+        "models": 3
+      },
+      {
+        "license_id": "llama3.3",
+        "models": 1
+      },
+      {
+        "license_id": "mit",
+        "models": 1
+      }
+    ],
+    "metadata_prefix_total_bytes": 60094112
+  },
+  "records": [
+    {
+      "archive_group": "Llama-3.3-70B-Instruct-Q4_K_M",
+      "source_filename": "Llama-3.3-70B-Instruct-Q4_K_M.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 42520398816,
+      "metadata_prefix_bytes": 7867104,
+      "metadata_prefix_sha256": "bdda1105ac741f57d1b95813a9427e66d8bfe8d5d8983d17b5d5676be49bdcb7",
+      "general_name": "Llama 3.3 70B Instruct",
+      "general_basename": "Llama-3.3",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "llama3.3",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [
+        "https://huggingface.co/meta-llama/Llama-3.1-70B"
+      ],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "SmolLM2-360M-Instruct-Q8_0",
+      "source_filename": "SmolLM2-360M-Instruct-Q8_0.gguf",
+      "source_relative_route": "MODELS_ROOT_REMOVED_BY_ROUTE",
+      "gguf_version": 3,
+      "file_size_bytes": 386405280,
+      "metadata_prefix_bytes": 1787040,
+      "metadata_prefix_sha256": "001dbb882d0da1db352258266f0d3580709d6f9a8d60fe47c1e4a7bc3cc351f2",
+      "general_name": "Smollm2 360M 8k Lc100K Mix1 Ep2",
+      "general_basename": "smollm2",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "apache-2.0",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "gemma-4-26B-A4B-it-qat-UD-Q4_K_XL",
+      "source_filename": "gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 14249045120,
+      "metadata_prefix_bytes": 15822016,
+      "metadata_prefix_sha256": "536ac1fcf5090adae0a7cc434b5ed01e9247e9bd1c7660022d7489599ca0ed41",
+      "general_name": "Gemma-4 26B-A4B IT (smart Q4_0, QAT-lossless)",
+      "general_basename": "gemma-4-26B-A4B-it",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "gemma",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "gemma-4-31B-it-qat-UD-Q4_K_XL",
+      "source_filename": "gemma-4-31B-it-qat-UD-Q4_K_XL.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 17287668064,
+      "metadata_prefix_bytes": 15831520,
+      "metadata_prefix_sha256": "c14a06d11eca82ebd38768243ecb069357efff7c6183c47d84925f1a2ed78962",
+      "general_name": "Gemma-4 31B IT (smart Q4_0, QAT-lossless)",
+      "general_basename": "gemma-4-31B-it",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "gemma",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "google_gemma-3-27b-it-Q4_K_M",
+      "source_filename": "google_gemma-3-27b-it-Q4_K_M.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 16546404992,
+      "metadata_prefix_bytes": 6561408,
+      "metadata_prefix_sha256": "bf1483da6ade1049cadfc303863893a985be7297988ba3fc8570be38226242d5",
+      "general_name": "Gemma 3 27b It",
+      "general_basename": "gemma-3",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "gemma",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [
+        "https://huggingface.co/google/gemma-3-27b-pt"
+      ],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M",
+      "source_filename": "mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 14338915533,
+      "metadata_prefix_bytes": 7889024,
+      "metadata_prefix_sha256": "d4b7a547dd9e28725bc8a3e0fcbb04e63a5bdbf92a460604292d37976c3d82da",
+      "general_name": "Mistral Small 3.2 24B Instruct 2506",
+      "general_basename": "Mistral-Small-3.2",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "apache-2.0",
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [
+        "https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Base-2503"
+      ],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "mixtral-8x7b-instruct-v0.1.Q4_K_M",
+      "source_filename": "mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 26446533651,
+      "metadata_prefix_bytes": 780224,
+      "metadata_prefix_sha256": "2a8dd8a3192544908f2d39282191e6a9473b5ff4652d2d4fd7c97e88c302b97e",
+      "general_name": "mistralai_mixtral-8x7b-instruct-v0.1",
+      "general_basename": null,
+      "embedded_license": {
+        "status": "NOT_EMBEDDED",
+        "license_id": null,
+        "license_link": null
+      },
+      "embedded_base_model_repositories": [],
+      "external_base_model_evidence": [
+        {
+          "provider": "HUGGING_FACE_MODEL_API",
+          "repository_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+          "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+          "license_id": "apache-2.0",
+          "retrieved_date": "2026-08-26",
+          "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1/tree/eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+          "scope": "BASE_MODEL_PRIMARY_SOURCE_ONLY"
+        }
+      ],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    },
+    {
+      "archive_group": "phi-4-Q4_K_M",
+      "source_filename": "phi-4-Q4_K_M.gguf",
+      "source_relative_route": "MODELS_ROOT",
+      "gguf_version": 3,
+      "file_size_bytes": 9053114816,
+      "metadata_prefix_bytes": 3555776,
+      "metadata_prefix_sha256": "52d6c6698d76f15d7aeca87ceff52bdbc7118f3b17a5c5476166d8283ebcf7d1",
+      "general_name": "Phi 4",
+      "general_basename": "phi",
+      "embedded_license": {
+        "status": "PRESENT",
+        "license_id": "mit",
+        "license_link": "https://huggingface.co/microsoft/phi-4/resolve/main/LICENSE"
+      },
+      "embedded_base_model_repositories": [],
+      "external_base_model_evidence": [],
+      "quantized_copy_source_verified": false,
+      "transfer_cleared": false
+    }
+  ],
+  "commercial_readiness": {
+    "transfer_cleared": false,
+    "archive_license_offer_ready": false,
+    "pricing_ready": false,
+    "remaining_evidence": [
+      "EXACT_QUANTIZED_COPY_SOURCE_PROVENANCE",
+      "UPSTREAM_TERMS_AND_NOTICE_REVIEW",
+      "ARCHIVE_REDACTION_AND_MANUAL_SAMPLE_REVIEW"
+    ]
+  }
+}

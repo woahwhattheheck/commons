@@ -7,9 +7,12 @@ import unittest
 from pathlib import Path
 
 from host.titan_hands.broker import TitanHandsBroker
-from host.titan_hands.mcp_server import dispatch
+from host.titan_hands.linux_atspi import LinuxBackendError, LinuxHandsServer, UnconfiguredAtspi
+from host.titan_hands.mcp_one import dispatch as dispatch_one
+from host.titan_hands.one_tool import TitanHandsOne
 from host.titan_hands.routes import HandsRoutes
 from host.titan_hands.runtime import TitanHandsRuntime
+from host.titan_hands.tests.test_linux_atspi import FakeAtspi
 
 
 class FakeServer:
@@ -78,31 +81,41 @@ class RuntimeTests(unittest.TestCase):
                 factories={"windows": lambda: self.windows, "android": lambda: self.android}
             ),
             routes=HandsRoutes(repo_root=self.root, http=self.http, environ={}),
+            linux=LinuxHandsServer(backend=FakeAtspi()),
         )
 
     def tearDown(self):
         self.runtime.close()
         self.tmp.cleanup()
 
-    def test_primary_tool_is_hands_and_compat_aliases_remain(self):
-        listed = dispatch(self.runtime, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
+    def test_primary_tool_is_hands_and_titan_hands_alias_still_calls(self):
+        router = TitanHandsOne(factories={"windows": lambda: self.windows})
+        self.addCleanup(router.close)
+        listed = dispatch_one(router, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
         names = [tool["name"] for tool in listed["result"]["tools"]]
-        self.assertEqual(names[0], "hands")
-        for alias in (
-            "hands_targets",
-            "hands_observe",
-            "hands_act",
-            "hands_capture",
-            "hands_capabilities",
-        ):
-            self.assertIn(alias, names)
+        self.assertEqual(names, ["hands"])
+        called = dispatch_one(
+            router,
+            {
+                "jsonrpc": "2.0",
+                "id": 2,
+                "method": "tools/call",
+                "params": {"name": "titan_hands", "arguments": {"op": "observe", "target": "windows"}},
+            },
+        )
+        payload = json.loads(called["result"]["content"][0]["text"])
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["platform"], "windows")
 
-    def test_hands_catalog_marks_linux_not_written(self):
+    def test_hands_catalog_marks_linux_live_atspi(self):
         result = self.runtime.handle({"op": "catalog"})
         self.assertTrue(result["ok"])
         routes = {row["route"]: row for row in result["routes"]}
         self.assertEqual(routes["computer"]["status"], "LIVE")
-        self.assertEqual(routes["linux"]["status"], "ADAPTER_NOT_WRITTEN")
+        self.assertEqual(routes["linux"]["status"], "LIVE")
+        self.assertEqual(routes["linux"]["adapter"], "AT-SPI")
+        self.assertEqual(routes["linux"]["missing_bus"], "TRANSPORT_UNCONFIGURED")
+        self.assertNotEqual(routes["linux"]["status"], "ADAPTER_NOT_WRITTEN")
         self.assertEqual(routes["slack"]["channel"], "C0BRGMDQB6G")
 
     def test_computer_observe_and_act_still_route_through_deltaui(self):
@@ -117,13 +130,15 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(self.windows.calls[-1]["op"], "act")
 
     def test_compat_observe_alias_still_works(self):
-        called = dispatch(
-            self.runtime,
+        router = TitanHandsOne(factories={"windows": lambda: self.windows})
+        self.addCleanup(router.close)
+        called = dispatch_one(
+            router,
             {
                 "jsonrpc": "2.0",
                 "id": 9,
                 "method": "tools/call",
-                "params": {"name": "hands_observe", "arguments": {"target": "windows"}},
+                "params": {"name": "hands", "arguments": {"op": "observe", "target": "windows"}},
             },
         )
         payload = json.loads(called["result"]["content"][0]["text"])
@@ -131,11 +146,32 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(payload["platform"], "windows")
         self.assertFalse(called["result"]["isError"])
 
-    def test_linux_is_named_and_not_pretend_live(self):
+    def test_linux_atspi_is_live_and_missing_bus_is_transport(self):
         result = self.runtime.handle({"route": "linux", "op": "observe"})
-        self.assertFalse(result["ok"])
-        self.assertEqual(result["failure_reason"], "ADAPTER_NOT_WRITTEN")
-        self.assertEqual(result["evidence"]["sketch"]["observation"], "at-spi2 accessibility tree")
+        self.assertTrue(result["ok"])
+        self.assertNotEqual(result.get("failure_reason"), "ADAPTER_NOT_WRITTEN")
+        self.assertEqual(result.get("kind"), "observation_delta")
+        missing = TitanHandsRuntime(
+            broker=TitanHandsBroker(
+                factories={"windows": lambda: self.windows, "android": lambda: self.android}
+            ),
+            routes=HandsRoutes(repo_root=self.root, http=self.http, environ={}),
+            linux=LinuxHandsServer(
+                backend=UnconfiguredAtspi(
+                    LinuxBackendError(
+                        "TRANSPORT_UNCONFIGURED",
+                        "AT-SPI bus is not usable: no session bus",
+                        dbus_python=True,
+                        session_bus=False,
+                        a11y_address="",
+                    )
+                )
+            ),
+        )
+        self.addCleanup(missing.close)
+        probed = missing.handle({"route": "linux", "op": "observe"})
+        self.assertFalse(probed["ok"])
+        self.assertEqual(probed["failure_reason"], "TRANSPORT_UNCONFIGURED")
 
     def test_file_write_is_additive_only(self):
         created = self.runtime.handle(

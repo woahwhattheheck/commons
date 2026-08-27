@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
     <uses-permission android:name="android.permission.BIND_CALL_SCREENING_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Read-only network state so the agent knows it's offline (Part A: don't burn steps web-searching with no
+         network). Never used to gate anything that leaves the device; the agent is fully functional offline. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <!-- The service starts as SPECIAL_USE on a fresh install (before RECORD_AUDIO is granted), then
+         promotes to the microphone type once the mic is granted - so launch never needs the mic grant. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- So the foreground-service / Stop notification is visible on Android 13+ (it was silently
+         suppressed before; missing it never crashed, but the owner couldn't see the Stop control). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Lets the agent's set_alarm deep-link (#4) hand the Clock app a pre-filled alarm. Normal-level
          permission, auto-granted; without it ACTION_SET_ALARM throws and falls back to the GUI path. -->
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <!-- SHIZUKU: lets ShellInput ask the running Shizuku service for the shell uid it uses to inject inputs
+         accessibility can't dispatch (the owner-approved backup actuator). Harmless if Shizuku isn't installed. -->
+    <uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
 
     <queries>
         <intent>
@@ -51,7 +64,8 @@
 
     <application
         android:name=".AgentApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:label="Local Agent"
         android:supportsRtl="true"
         android:theme="@style/Theme.LocalAgent">
@@ -74,8 +88,15 @@
 
         <service
             android:name=".AgentService"
-            android:foregroundServiceType="microphone"
-            android:exported="false" />
+            android:foregroundServiceType="microphone|specialUse"
+            android:exported="false">
+            <!-- specialUse subtype: the FGS runs to hold the on-device model + (once granted) the mic for
+                 owner-invoked automation tasks. Declared so the service can start as specialUse on a fresh
+                 install before RECORD_AUDIO exists, then promote to microphone. -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="local on-device automation agent (owner-invoked device control)" />
+        </service>
 
         <service android:name=".FloatingButtonService" android:exported="false" />
         <service android:name=".VoiceCaptureService" android:exported="false" />
@@ -110,9 +131,12 @@
         <activity android:name=".SettingsActivity" android:exported="false" />
         <activity android:name=".DebugLogActivity" android:exported="false" />
         <activity android:name=".TaskLogActivity" android:exported="false" />
+        <activity android:name=".ScoreboardActivity" android:exported="false" />
         <activity android:name=".TaskDetailActivity" android:exported="false" />
         <activity android:name=".MemoryActivity" android:exported="false" />
         <activity android:name=".TrainingActivity" android:exported="false" />
+        <activity android:name=".CalibrationActivity" android:exported="false" />
+        <activity android:name=".BakingActivity" android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -123,11 +147,35 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <!-- SHIZUKU provider: hands the app Shizuku's binder on start so ShellInput can inject inputs via the
+             shell uid. Inert (available()=false) if Shizuku isn't installed/started. exported+permission per the
+             Shizuku spec; the exported-provider lint is expected (tools:ignore) — the permission gates access. -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
+            tools:ignore="ExportedContentProvider" />
         <activity
             android:name=".AuthGateActivity"
             android:exported="false"
             android:excludeFromRecents="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- DEBUG-ONLY diagnostic trigger (07-11): `adb shell am broadcast -a com.local.deviceagent.DIAG` runs the full
+             read-only diagnostic dump ([diag] block) so the owner / a tethered session can measure everything in one shot.
+             exported so adb's shell uid can reach it; DiagReceiver.onReceive is DEBUGGABLE-GATED (inert in release), and
+             it runs ONLY read-only measurements (no task, no phone driving, no account access) — §3-safe. -->
+        <receiver
+            android:name=".DiagReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.local.deviceagent.DIAG" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>

@@ -25,6 +25,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
@@ -42,6 +43,14 @@ ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CURRENCY_RE = re.compile(r"^[A-Z][A-Z0-9._-]{1,31}$")
 DECIMAL_RE = re.compile(r"^-?(?:0|[1-9][0-9]*)(?:\.[0-9]{1,8})?$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+BLOB_SHA_RE = re.compile(r"[0-9a-f]{40}\Z")
+ARTIFACT_PATH_RE = re.compile(
+    r"(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\.\.(?:/|$))[A-Za-z0-9._/-]+\Z"
+)
+CHECKOUT_STATUS_RE = re.compile(r"(?!LIVE\Z)[A-Za-z0-9._-]+\Z")
+STRIPE_CHECKOUT_RE = re.compile(
+    r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+\Z"
+)
 KINDS = {
     "fixed",
     "subscription",
@@ -68,6 +77,13 @@ JOB_STATES = {
     "DISCOVERED", "QUALIFIED", "QUOTED", "FUNDED", "RUNNING", "SUBMITTED",
     "ACCEPTED", "REJECTED", "SETTLED", "BANK_AVAILABLE", "EXPIRED",
     "REFUNDED", "UNKNOWN_EFFECT",
+}
+FUNNEL_STAGE_ORDER = (
+    "DISCOVERED", "QUALIFIED", "QUOTED", "FUNDED", "RUNNING", "SUBMITTED",
+    "ACCEPTED", "SETTLED", "BANK_AVAILABLE",
+)
+FUNNEL_READINESS = {
+    "READY_FOR_CHECKOUT", "READY_FOR_QUALIFICATION", "NEEDS_DEFINITION",
 }
 ALLOWED_JOB_TRANSITIONS = {
     None: {"DISCOVERED"},
@@ -237,6 +253,151 @@ def _component_errors(component: Any, prefix: str) -> list[str]:
     return errors
 
 
+def _string_list_errors(value: Any, field: str) -> list[str]:
+    if not isinstance(value, list):
+        return [field + " must be an array"]
+    errors = []
+    if len(value) != len({_canonical(item) for item in value}):
+        errors.append(field + " must not contain duplicates")
+    for index, item in enumerate(value):
+        if not isinstance(item, str) or not item.strip():
+            errors.append("%s[%d] must be a non-empty string" % (field, index))
+    return errors
+
+
+def _funnel_errors(catalog: dict[str, Any], listings: list[dict[str, Any]]) -> list[str]:
+    errors: list[str] = []
+    present = {key for key in ("funnel_stage_order", "funnel_truth", "funnels") if key in catalog}
+    if not present:
+        return ["funnel_stage_order, funnel_truth, and funnels are required"]
+    if present != {"funnel_stage_order", "funnel_truth", "funnels"}:
+        return ["funnel_stage_order, funnel_truth, and funnels must appear together"]
+    stages = catalog["funnel_stage_order"]
+    if not isinstance(stages, list) or tuple(stages) != FUNNEL_STAGE_ORDER:
+        errors.append("funnel_stage_order must match the canonical job state chain")
+
+    truth = catalog["funnel_truth"]
+    truth_fields = {
+        "as_of", "source", "distinct_targets", "delivered_transports",
+        "unclassified_response_signals", "verified_positive_replies",
+        "accepted_scopes", "paid_deliveries", "collected_cash_usd", "next_edge",
+    }
+    if not isinstance(truth, dict) or set(truth) != truth_fields:
+        errors.append("funnel_truth fields are invalid")
+    else:
+        try:
+            _timestamp(truth["as_of"], "funnel_truth.as_of")
+            _decimal(truth["collected_cash_usd"], "funnel_truth.collected_cash_usd")
+        except CommerceError as exc:
+            errors.append(str(exc))
+        if not isinstance(truth["source"], str) or not truth["source"].strip():
+            errors.append("funnel_truth.source must be a non-empty string")
+        for field in (
+            "distinct_targets", "delivered_transports", "unclassified_response_signals",
+            "verified_positive_replies", "accepted_scopes", "paid_deliveries",
+        ):
+            if not isinstance(truth[field], int) or isinstance(truth[field], bool) or truth[field] < 0:
+                errors.append("funnel_truth.%s must be a non-negative integer" % field)
+        if truth["next_edge"] != "QUALIFIED_BUYER":
+            errors.append("funnel_truth.next_edge must be QUALIFIED_BUYER")
+
+    funnels = catalog["funnels"]
+    if not isinstance(funnels, dict):
+        return errors + ["funnels must be an object"]
+    listing_by_id = {row.get("id"): row for row in listings if isinstance(row, dict)}
+    if set(funnels) != set(listing_by_id):
+        errors.append("funnels keys must exactly match listing ids")
+    priorities: list[int] = []
+    funnel_fields = {
+        "priority", "readiness", "buyer", "trigger", "acquisition", "qualification",
+        "conversion", "fulfillment", "measurement", "next_offer", "gaps",
+    }
+    nested_fields = {
+        "acquisition": {"primary_channel", "alternate_channels", "message", "route", "cta"},
+        "qualification": {"route", "required", "state_after"},
+        "conversion": {"mode", "status", "next_step", "state_after", "evidence_required"},
+        "fulfillment": {"deliverables", "acceptance", "refund"},
+        "measurement": {"dom_action", "click_truth", "first_evidence_state", "success_state"},
+    }
+    for listing_id, funnel in funnels.items():
+        prefix = "funnels.%s" % listing_id
+        if not isinstance(funnel, dict) or set(funnel) != funnel_fields:
+            errors.append(prefix + " fields are invalid")
+            continue
+        priority = funnel["priority"]
+        if not isinstance(priority, int) or isinstance(priority, bool) or priority < 1:
+            errors.append(prefix + ".priority must be a positive integer")
+        else:
+            priorities.append(priority)
+        if funnel["readiness"] not in FUNNEL_READINESS:
+            errors.append(prefix + ".readiness is invalid")
+        for field in ("buyer", "trigger"):
+            if not isinstance(funnel[field], str) or not funnel[field].strip():
+                errors.append(prefix + "." + field + " must be a non-empty string")
+        for section, fields in nested_fields.items():
+            value = funnel[section]
+            if not isinstance(value, dict) or set(value) != fields:
+                errors.append(prefix + "." + section + " fields are invalid")
+        if any(not isinstance(funnel[name], dict) for name in nested_fields):
+            continue
+        acquisition = funnel["acquisition"]
+        for field in ("primary_channel", "message", "route", "cta"):
+            if not isinstance(acquisition[field], str) or not acquisition[field].strip():
+                errors.append(prefix + ".acquisition." + field + " must be a non-empty string")
+        errors.extend(_string_list_errors(acquisition["alternate_channels"], prefix + ".acquisition.alternate_channels"))
+
+        qualification = funnel["qualification"]
+        if not isinstance(qualification["route"], str) or not qualification["route"].strip():
+            errors.append(prefix + ".qualification.route must be a non-empty string")
+        errors.extend(_string_list_errors(qualification["required"], prefix + ".qualification.required"))
+        if qualification["state_after"] != "QUALIFIED":
+            errors.append(prefix + ".qualification.state_after must be QUALIFIED")
+
+        conversion = funnel["conversion"]
+        listing = listing_by_id.get(listing_id, {})
+        live_checkout = isinstance(listing.get("checkout"), dict) and listing["checkout"].get("status") == "LIVE"
+        expected_mode = "LIVE_STRIPE_LINK" if live_checkout else "CUSTOMER_SPECIFIC_INVOICE"
+        expected_status = "LIVE" if live_checkout else "NOT_ISSUED"
+        if conversion["mode"] != expected_mode or conversion["status"] != expected_status:
+            errors.append(prefix + ".conversion must match the listing checkout state")
+        if conversion["state_after"] != "FUNDED":
+            errors.append(prefix + ".conversion.state_after must be FUNDED")
+        for field in ("next_step", "evidence_required"):
+            if not isinstance(conversion[field], str) or not conversion[field].strip():
+                errors.append(prefix + ".conversion." + field + " must be a non-empty string")
+
+        fulfillment = funnel["fulfillment"]
+        errors.extend(_string_list_errors(fulfillment["deliverables"], prefix + ".fulfillment.deliverables"))
+        errors.extend(_string_list_errors(fulfillment["acceptance"], prefix + ".fulfillment.acceptance"))
+        if not isinstance(fulfillment["refund"], str) or not fulfillment["refund"].strip():
+            errors.append(prefix + ".fulfillment.refund must be a non-empty string")
+
+        measurement = funnel["measurement"]
+        checkout_first = live_checkout and funnel["readiness"] == "READY_FOR_CHECKOUT"
+        expected_action = "checkout-open" if checkout_first else "qualification-open"
+        expected_first = "FUNDED" if checkout_first else "DISCOVERED"
+        if measurement["dom_action"] != expected_action:
+            errors.append(prefix + ".measurement.dom_action does not match conversion mode")
+        if measurement["click_truth"] != "INTENT_ONLY":
+            errors.append(prefix + ".measurement.click_truth must be INTENT_ONLY")
+        if measurement["first_evidence_state"] != expected_first:
+            errors.append(prefix + ".measurement.first_evidence_state does not match conversion mode")
+        if measurement["success_state"] != "BANK_AVAILABLE":
+            errors.append(prefix + ".measurement.success_state must be BANK_AVAILABLE")
+
+        errors.extend(_string_list_errors(funnel["next_offer"], prefix + ".next_offer"))
+        if isinstance(funnel["next_offer"], list):
+            for next_id in funnel["next_offer"]:
+                if next_id not in listing_by_id:
+                    errors.append(prefix + ".next_offer contains unknown listing " + str(next_id))
+        errors.extend(_string_list_errors(funnel["gaps"], prefix + ".gaps"))
+        if funnel["readiness"] == "NEEDS_DEFINITION" and not funnel["gaps"]:
+            errors.append(prefix + ".gaps must name the missing definition")
+    if sorted(priorities) != list(range(1, len(listings) + 1)):
+        errors.append("funnel priorities must be the unique sequence 1..%d" % len(listings))
+    return errors
+
+
 def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: bool = True) -> list[str]:
     errors: list[str] = []
     if not isinstance(catalog, dict):
@@ -280,6 +441,9 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                         errors.append("duplicate component id %s in %s" % (component["id"], listing.get("id")))
                     component_ids.add(component["id"])
         source = listing.get("source")
+        source_artifact = listing.get("source_artifact")
+        if (source is None) == (source_artifact is None):
+            errors.append(prefix + " requires exactly one of source or source_artifact")
         if source is not None:
             if not isinstance(source, dict) or not source.get("path") or "pointer" not in source:
                 errors.append(prefix + ".source requires path and pointer")
@@ -299,6 +463,100 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                                 errors.append("source offer id mismatch for %s: %r" % (listing.get("id"), actual))
                     except (CommerceError, OSError, json.JSONDecodeError) as exc:
                         errors.append("source read failed for %s: %s" % (source["path"], exc))
+        if source_artifact is not None:
+            if not isinstance(source_artifact, dict):
+                errors.append(prefix + ".source_artifact must be an object")
+            elif set(source_artifact) != {"path", "blob_sha", "terms_authority"}:
+                errors.append(prefix + ".source_artifact has invalid fields")
+            else:
+                artifact_path = source_artifact.get("path")
+                blob_sha = source_artifact.get("blob_sha")
+                if (
+                    not isinstance(artifact_path, str)
+                    or not ARTIFACT_PATH_RE.fullmatch(artifact_path)
+                ):
+                    errors.append(prefix + ".source_artifact.path is invalid")
+                if not isinstance(blob_sha, str) or not BLOB_SHA_RE.fullmatch(blob_sha):
+                    errors.append(prefix + ".source_artifact.blob_sha is invalid")
+                if source_artifact.get("terms_authority") != "source":
+                    errors.append(prefix + ".source_artifact.terms_authority must be source")
+                if (
+                    check_sources
+                    and root is not None
+                    and isinstance(artifact_path, str)
+                    and ARTIFACT_PATH_RE.fullmatch(artifact_path)
+                    and isinstance(blob_sha, str)
+                    and BLOB_SHA_RE.fullmatch(blob_sha)
+                ):
+                    try:
+                        resolved_root = root.resolve()
+                        resolved_path = (resolved_root / artifact_path).resolve()
+                    except (OSError, ValueError) as exc:
+                        errors.append(
+                            "source artifact path failed for %s: %s" % (artifact_path, exc)
+                        )
+                        continue
+                    try:
+                        resolved_path.relative_to(resolved_root)
+                    except ValueError:
+                        errors.append("source artifact escapes root: %s" % artifact_path)
+                    else:
+                        if not resolved_path.is_file():
+                            errors.append("source artifact missing: %s" % artifact_path)
+                        else:
+                            try:
+                                actual = subprocess.run(
+                                    ["git", "hash-object", str(resolved_path)],
+                                    cwd=resolved_root,
+                                    capture_output=True,
+                                    text=True,
+                                    check=True,
+                                ).stdout.strip()
+                            except (OSError, subprocess.CalledProcessError) as exc:
+                                errors.append(
+                                    "source artifact hash failed for %s: %s"
+                                    % (artifact_path, exc)
+                                )
+                            else:
+                                if actual != blob_sha:
+                                    errors.append(
+                                        "source artifact blob mismatch for %s: %s"
+                                        % (listing.get("id"), actual)
+                                    )
+        checkout = listing.get("checkout")
+        if checkout is not None:
+            if not isinstance(checkout, dict):
+                errors.append(prefix + ".checkout must be an object")
+            elif checkout.get("status") == "LIVE":
+                if set(checkout) != {"status", "provider", "url"}:
+                    errors.append(prefix + ".checkout LIVE fields are invalid")
+                if checkout.get("provider") != "stripe":
+                    errors.append(prefix + ".checkout LIVE provider must be stripe")
+                url = checkout.get("url")
+                if not isinstance(url, str) or not STRIPE_CHECKOUT_RE.fullmatch(url):
+                    errors.append(prefix + ".checkout LIVE url is invalid")
+            else:
+                status = checkout.get("status")
+                if set(checkout) != {"status"}:
+                    errors.append(prefix + ".checkout non-LIVE fields are invalid")
+                if not isinstance(status, str) or not CHECKOUT_STATUS_RE.fullmatch(status):
+                    errors.append(prefix + ".checkout non-LIVE status is invalid")
+    errors.extend(_funnel_errors(catalog, listings))
+    return errors
+
+
+def canonical_catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: bool = True) -> list[str]:
+    """Validate the live canonical catalog, including its per-SKU funnel contract.
+
+    catalog.schema.json intentionally remains reusable by synthetic quote and
+    statement fixtures. The live catalog has the stricter all-SKU requirement.
+    """
+    errors = catalog_errors(catalog, root=root, check_sources=check_sources)
+    if isinstance(catalog, dict):
+        required = {"funnel_stage_order", "funnel_truth", "funnels"}
+        missing = sorted(required - set(catalog))
+        if missing:
+            errors.append("canonical catalog missing funnel fields: " + ", ".join(missing))
     return errors
 
 
@@ -361,7 +619,11 @@ def quote(catalog: dict[str, Any], listing_id: str, metrics: dict[str, Decimal])
         raise CommerceError("metrics name unknown components: %s" % ", ".join(unknown))
     lines = []
     for component in listing["pricing"]["components"]:
-        default = Decimal("1") if component["kind"] in {"fixed", "milestone", "license"} else Decimal("0")
+        default = (
+            Decimal("1")
+            if component["kind"] in {"fixed", "subscription", "milestone", "license"}
+            else Decimal("0")
+        )
         lines.append(_line_for_component(component, metrics.get(component["id"], default)))
     total = sum((_decimal(row["amount"], "line amount") for row in lines), Decimal("0"))
     digest = _sha256_text(_canonical({"listing_id": listing_id, "metrics": {k: str(v) for k, v in sorted(metrics.items())}}))
@@ -801,7 +1063,7 @@ def _write_or_print(value: Any, path: str | None) -> None:
 
 def cmd_validate(args: argparse.Namespace) -> int:
     catalog = _catalog(args.catalog)
-    errors = catalog_errors(catalog, root=ROOT, check_sources=not args.no_source_check)
+    errors = canonical_catalog_errors(catalog, root=ROOT, check_sources=not args.no_source_check)
     if errors:
         for error in errors:
             print("INVALID " + error)
@@ -818,6 +1080,14 @@ def cmd_catalog(args: argparse.Namespace) -> int:
         print("%s  %-15s %-9s %s" % (listing["id"], listing.get("state", "UNMEASURED"), listing["pricing"]["currency"], kinds))
         if listing.get("source"):
             print("  source %s#%s" % (listing["source"]["path"], listing["source"]["pointer"]))
+        elif listing.get("source_artifact"):
+            print(
+                "  source %s@%s"
+                % (
+                    listing["source_artifact"]["path"],
+                    listing["source_artifact"]["blob_sha"],
+                )
+            )
     return 0
 
 

@@ -7,7 +7,8 @@ on:
   push:
     paths:
       - "p/**"
-      - "recent.json"
+      # Generated outputs must not retrigger this publisher.  On an eligible
+      # push, watching recent.json adds a redundant run when it changes.
       - "llms_txt.py"
       - "owner_pin.py"
   workflow_dispatch:

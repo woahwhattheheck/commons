@@ -47,6 +47,22 @@ class TaskDetailActivity : AppCompatActivity() {
         container.addView(label(e.objective.ifBlank { "(no objective)" }, Ui.TEXT, 20f, bold = true))
         container.addView(label("${e.outcome} · ${DateUtils.getRelativeTimeSpanString(e.time)}", Ui.TEXT_DIM, 12f))
 
+        // One-tap "why did it do that": open the debug log pre-filtered to THIS task's [think]
+        // lines (the owner's requested spot-check view - the reasoning was always logged, but
+        // reaching it meant hand-picking the task and tag in the log viewer).
+        container.addView(Button(this).apply {
+            text = "See its reasoning"
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                .apply { setMargins(0, 12, 0, 0) }
+            setOnClickListener {
+                startActivity(android.content.Intent(this@TaskDetailActivity, DebugLogActivity::class.java)
+                    .putExtra(DebugLogActivity.EXTRA_TASK_QUERY, e.objective)
+                    .putExtra(DebugLogActivity.EXTRA_TAG, "think"))
+            }
+            Ui.styleButton(this, primary = false)
+        })
+
         // The plan the agent wrote for itself (read-only context for rating the steps).
         if (e.plan.isNotBlank()) {
             container.addView(label("Plan", Ui.TEXT, 16f, bold = true, topPad = 28))
@@ -75,11 +91,28 @@ class TaskDetailActivity : AppCompatActivity() {
         }
     }
 
-    /** Persist the per-step rating AND teach memory from it, then refresh the screen. */
+    /** Persist the per-step rating, teach memory from it, AND bank it as a weight-bake reference, then refresh. */
     private fun rate(e: TaskHistory.Entry, index: Int, rating: Int) {
         val step = TaskHistory.setStepRating(this, e.id, index, rating)
         // rating 0 = the owner toggled it back off; don't write a memory for "un-rated".
         if (rating != 0 && step != null) AgentMemory.recordStepFeedback(this, e.objective, step, rating)
+        // P0 GRADER → BAKE: an owner ✓/✗ on the EXECUTED step is direct, high-quality training signal — bank it as a
+        // ReferenceStore win (pos) / contrast (neg), the owner's label overriding the agent's auto M-label. Needs the
+        // step's structured fields (op / sig / prompt / action / clause) from ExecStepStore, keyed to this run's id.
+        // Only steps that ran a real operator with a captured prompt become references (DIRECT/summary-only steps
+        // still feed the memory lesson above); injection-immune — the label is the owner's, never on-screen text.
+        if (rating != 0) try {
+            val sm = SettingsManager(this)
+            if (sm.isReferenceCaptureEnabled()) {
+                val (fp, steps) = ExecStepStore.forRun(this, e.id)
+                val s = steps.getOrNull(index)
+                if (s != null && s.op.isNotBlank() && s.op != ReasoningOperators.DIRECT && s.prompt.isNotBlank()) {
+                    val fingerprint = fp.ifBlank { ModelStore.activeFingerprint(this, sm) }
+                    ReferenceStore.record(this, s.op, fingerprint, s.sig, s.prompt, s.action,
+                        rating, s.clause, pos = rating > 0)
+                }
+            }
+        } catch (_: Throwable) {}
         render()
     }
 

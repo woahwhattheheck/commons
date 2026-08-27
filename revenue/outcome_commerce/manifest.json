@@ -107,6 +107,7 @@
     "revenue/production_survival/offer.json",
     "revenue/subzero_buyers/pack.json",
     "revenue/subzero_gtm/architecture.json",
-    "revenue/expert_networks/"
+    "revenue/expert_networks/",
+    "land/stripe-payment-links-20260826.md"
   ]
 }

@@ -1,75 +1,52 @@
-"""Linux AT-SPI adapter sketch.
+"""Linux AT-SPI adapter re-export.
 
-This module names the next computer-use hand. It is not shipped. Calls return
-ADAPTER_NOT_WRITTEN instead of pretending AT-SPI observation or actuation works.
-Windows UI Automation and Android (LDA Kotlin, UIAutomator fallback) remain the
-live computer-use adapters.
+The live hand is `linux_atspi.LinuxHandsServer` (PR 3715 on main). This module
+keeps the leftover `linux.py` import path without pretending the adapter is
+unwritten. Missing bus or libraries return TRANSPORT_UNCONFIGURED.
+
+Cite: p/coil-titan-hands-linux-atspi-20260826-01.md
+Do not remint that receipt. Do not undo the AT-SPI adapter.
 """
 
 from __future__ import annotations
 
 from typing import Any, Mapping
 
-from host.titan_hands_windows.protocol import PROTOCOL_VERSION, failure
-
+from host.titan_hands.linux_atspi import LINUX_ACTIONS, LinuxHandsServer, ROLE_MAP
 
 ATSPI_SKETCH = {
     "platform": "linux",
-    "status": "ADAPTER_NOT_WRITTEN",
+    "status": "live",
+    "adapter": "at-spi",
     "observation": "at-spi2 accessibility tree",
     "actuation": "AT-SPI actions plus toolkit patterns",
     "pixels": "explicit compositor capture only",
-    "headless": "legacy apps under a headless compositor, when that compositor exists",
+    "missing_bus": "TRANSPORT_UNCONFIGURED",
     "delta": "same DeltaUI added/updated/removed contract as Windows and Android",
-    "role_map": {
-        "frame": "Window",
-        "push button": "Button",
-        "entry": "TextBox",
-        "text": "Text",
-        "check box": "CheckBox",
-        "radio button": "RadioButton",
-        "combo box": "ComboBox",
-        "menu item": "MenuItem",
-        "scroll pane": "ScrollView",
-        "slider": "Slider",
-        "tab": "Tab",
-        "link": "Hyperlink",
-    },
-    "action_map": {
-        "click": "AccessibleAction click / press",
-        "invoke": "AccessibleAction activate",
-        "set_value": "AccessibleText / AccessibleEditableText / AccessibleValue",
-        "toggle": "AccessibleAction toggle / AccessibleState checked",
-        "select": "AccessibleSelection",
-        "focus": "AccessibleComponent grab-focus",
-        "scroll": "AccessibleAction scroll / AccessibleComponent",
-        "key": "synthetic key after focus",
-        "launch": "desktop file or argv, then AT-SPI observe",
-        "wait": "local sleep",
-        "capture": "compositor screenshot of the named window, never the default path",
-        "done": "no-op receipt",
-    },
-    "not_shipped": [
-        "no AT-SPI bus connection",
-        "no compositor capture",
-        "no live node IDs",
-        "no pretend success",
-    ],
+    "role_map": dict(ROLE_MAP),
+    "action_map": {name: name for name in LINUX_ACTIONS},
 }
 
 
 def linux_capabilities() -> dict[str, Any]:
-    return failure(
-        "ADAPTER_NOT_WRITTEN",
-        "Linux AT-SPI is named as the next adapter and is not shipped. "
-        "Windows and Android remain the live computer-use hands.",
-        platform="linux",
-        sketch=ATSPI_SKETCH,
-    )
+    server = LinuxHandsServer()
+    try:
+        return server.handle({"op": "capabilities"})
+    finally:
+        server.close()
 
 
 def handle_linux(request: Mapping[str, Any]) -> dict[str, Any]:
-    del request
-    result = linux_capabilities()
-    result["protocol"] = PROTOCOL_VERSION
-    return result
+    server = LinuxHandsServer()
+    try:
+        return server.handle(request)
+    finally:
+        server.close()
+
+
+__all__ = [
+    "ATSPI_SKETCH",
+    "LinuxHandsServer",
+    "handle_linux",
+    "linux_capabilities",
+]

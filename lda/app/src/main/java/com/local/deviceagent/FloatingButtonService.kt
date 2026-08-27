@@ -49,6 +49,24 @@ class FloatingButtonService : Service() {
             val self = instance ?: return
             self.ui.post { self.setOverlayHidden(isPermissionUi) }
         }
+
+        /** NEVER-SLEEP: turn the overlay's FLAG_KEEP_SCREEN_ON on/off live (the keep-awake tick calls this — ON while
+         *  safe, OFF at the device-safety floor so a critical battery can still let the screen sleep). Main-thread. */
+        fun keepScreenOn(on: Boolean) {
+            val self = instance ?: return
+            self.ui.post { self.setKeepScreenOn(on) }
+        }
+    }
+
+    private fun setKeepScreenOn(on: Boolean) {
+        val f = if (on) params.flags or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                else params.flags and WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON.inv()
+        if (f == params.flags) return
+        params.flags = f
+        try {
+            if (::floatingView.isInitialized && floatingView.isAttachedToWindow)
+                windowManager.updateViewLayout(floatingView, params)
+        } catch (_: Exception) {}
     }
 
     private fun setOverlayHidden(hidden: Boolean) {
@@ -141,6 +159,13 @@ class FloatingButtonService : Service() {
         params.gravity = Gravity.TOP or Gravity.START
         params.x = resources.displayMetrics.widthPixels - 160
         params.y = 300
+        // NEVER-SLEEP (owner): the always-present STOP overlay carries FLAG_KEEP_SCREEN_ON while keep_awake is on,
+        // so the screen never turns off and the device never suspends. Set here (base context is attached in
+        // onCreate, unlike the field initializer). The keep-awake tick toggles it off at the battery/thermal floor.
+        try {
+            if (SettingsManager(this).isKeepAwakeEnabled())
+                params.flags = params.flags or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+        } catch (_: Exception) {}
 
         var downRawX = 0f
         var downRawY = 0f
@@ -234,13 +259,16 @@ class FloatingButtonService : Service() {
             setBackgroundColor(0xF0101010.toInt())
             setPadding(8, 8, 8, 8)
             addView(item("⌨  Text chat") { dismissMenu(); openChat() })
+            // Run a one-off command from an on-screen field, no app to open (same box as the button's
+            // long-press, surfaced in the menu so it's discoverable). The overlay works from ANY app.
+            addView(item("⚡  Run command") { dismissMenu(); showCommandBox() })
             addView(item("🎙  Verbal input") { dismissMenu(); send(AgentService.ACTION_LISTEN_NOW) })
             addView(item("💬  Conversation") { dismissMenu(); send(AgentService.ACTION_CONVERSATION) })
             addView(item("🎓  Train") { dismissMenu(); showTrainBox() })
         }
         val screenH = resources.displayMetrics.heightPixels
         val screenW = resources.displayMetrics.widthPixels
-        val menuEstH = 620   // ~4 items; used to decide above/below so it never runs off-screen
+        val menuEstH = 775   // ~5 items; used to decide above/below so it never runs off-screen
         // Place the menu BELOW the button if it fits, otherwise ABOVE it - and never overlapping
         // the button (so the button can't get trapped underneath the menu and become un-tappable).
         val below = params.y + 170

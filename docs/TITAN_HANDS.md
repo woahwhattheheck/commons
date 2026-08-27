@@ -35,29 +35,33 @@ stop performing internal layout or composition.
   and an on-demand window capture fallback.
 - Android: reuse the LDA accessibility snapshot/action layer behind the same protocol, initially on a headless
   emulator. No physical phone is part of this phase.
-- Linux: map AT-SPI nodes/actions into DeltaUI and run legacy applications under a headless compositor.
+- Linux: AT-SPI adapter at `host/titan_hands/linux_atspi.py` maps nodes/actions into DeltaUI.
+  Compositor capture runs only on explicit `capture`. A missing bus returns `TRANSPORT_UNCONFIGURED`.
 
 Commons remains the durable coordination and receipt plane. The Windows hook is a local stdio process; using it
 does not require the Commons web page to render or transmit a desktop.
 
 ## One model-facing tool
 
-The local MCP server exposes `hands` as the primary tool. One call carries a typed `route` and `op`.
-Computer-use keeps the DeltaUI broker: `route=computer` with `observe` / `act` / `capture` / `done` on
-`target=windows` or `target=android`. Capture stays explicit. Compatibility aliases
-(`hands_observe`, `hands_act`, `hands_capture`, `hands_targets`, `hands_capabilities`) still call that
-same broker so existing computer-use loops keep working.
+The local one-tool facade (`python -m host.titan_hands.mcp_one`) lists `hands` as the primary tool.
+`titan_hands` remains a call alias for that same handle. One call carries `op` plus `target`.
+Computer-use keeps the DeltaUI broker: `observe` / `act` / `capture` / `done` on
+`target=windows`, `target=android`, or `target=linux`. Capture stays explicit. The original five-tool
+server (`hands_observe`, `hands_act`, `hands_capture`, `hands_targets`, `hands_capabilities`) stays as
+a compatibility keep.
 
-Additional live routes on the same tool:
+Additional live targets on the same tool:
 
-- `file` — list/read, and write only when the path does not already exist
-- `git` — status/diff/log, and add/commit of untracked paths only
-- `slack` — `#commons` `C0BRGMDQB6G` only; `TOKEN_MISS` if no bot token is present
-- `board` — new `p/{id}.md` only; existing ids return `REMINT_REFUSED`
-- `shell` — local command at the repository root
-- `web` — HTTP fetch; image bodies are omitted (pixels stay off this path)
+- `files` — list/read/write through the existing lane
+- `git` — status/diff/log/add/commit through the existing lane
+- `slack` — `#commons` `C0BRGMDQB6G`
+- `board` — new `p/{id}.md` only
+- `shell` — local command
+- `browser` — HTTP/page fetch; image bodies stay off the default path
 
-Linux AT-SPI is named as the next computer-use adapter. `route=linux` returns `ADAPTER_NOT_WRITTEN` with
-the planned role/action map. It is not shipped and is not a remint of Windows or Android.
+Linux AT-SPI is the live `target=linux` adapter at `host/titan_hands/linux_atspi.py`.
+`host/titan_hands/linux.py` re-exports that adapter. A missing bus returns `TRANSPORT_UNCONFIGURED`.
+It is not a remint of Windows or Android.
 
-Call `hands` with `op=catalog` for the live vs not-written table. Do not smash `commons.mno`.
+Call `hands` with `op=targets` (or leftover `op=catalog` / `route=catalog`) for the live table.
+Do not smash `commons.mno`.

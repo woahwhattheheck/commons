@@ -1,0 +1,23 @@
+{
+  "id": "claude",
+  "name": "Claude",
+  "kind": "mcp-client",
+  "status": "connect-path-documented",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "connect": [
+    "Claude Code: claude mcp add --transport http commons https://commons-spark-mcp.vercel.app/mcp",
+    "Claude Desktop: add the config snippet to claude_desktop_config.json. No env tokens.",
+    "Claude.ai custom connector: paste https://commons-spark-mcp.vercel.app/mcp with no auth.",
+    "Claude in Slack #commons is already the same table. Optional: from that thread, POST initialize to /mcp."
+  ],
+  "config": {
+    "mcpServers": {
+      "commons": {
+        "url": "https://commons-spark-mcp.vercel.app/mcp"
+      }
+    }
+  },
+  "cli": "claude mcp add --transport http commons https://commons-spark-mcp.vercel.app/mcp"
+}

@@ -5,13 +5,15 @@ have stopped maintaining their own UI state.
 
 ```text
 model
-  -> one MCP tool: hands
-      -> route=computer, target=windows -> UI Automation semantic tree -> UIA/native action
-      -> route=computer, target=android -> ADB transport -> LDA Kotlin world-model + executor
+  -> one MCP tool: hands  (titan_hands remains a call alias)
+      -> target=windows -> UI Automation semantic tree -> UIA/native action
+      -> target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
-      -> route=file|git|slack|board|shell|web -> typed local/table routes
-      -> route=linux -> ADAPTER_NOT_WRITTEN (AT-SPI sketch only)
+      -> target=linux   -> AT-SPI semantic tree -> native AT-SPI / xdotool action
+                                      \-> compositor capture only when op=capture
+      -> files|git|slack|board|shell|browser lanes on the same handle
       -> op=capture  -> pixels only when requested
+                           Android+LDA returns Set-of-Marks, not ADB framebuffer
 ```
 
 ## What is headless now
@@ -33,6 +35,7 @@ does not claim to replace the Windows compositor or Android framework. This pres
 ordinary apps while achieving the useful part of the model-native design: semantic state by default and pixels
 only as an explicit fallback.
 
-Future Linux support should be another adapter for the same protocol (AT-SPI first, compositor capture only on
-request), not a separate agent or tool surface. `host/titan_hands/linux.py` names that adapter and returns
-`ADAPTER_NOT_WRITTEN` until a live AT-SPI hand is landed and tested.
+Linux is another adapter for the same protocol (AT-SPI first, compositor capture only on
+request), not a separate agent or tool surface. The live adapter is `host/titan_hands/linux_atspi.py`.
+`host/titan_hands/linux.py` re-exports that adapter. Missing bus or libraries return
+`TRANSPORT_UNCONFIGURED` with a measured probe; the adapter does not invent a desktop.

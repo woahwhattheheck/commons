@@ -17,6 +17,12 @@ import java.io.File
  * objective approximate the model's input; the action is the label; the result is the reward signal -
  * enough to build an eval set and a first supervised-fine-tune. The owner can later opt to capture the
  * full prompt / screenshots for richer training.
+ *
+ * REWARD ENRICHMENT (the plan's "make the JSONL weightable" step): when the operator layer is on, a step
+ * also carries the model-chosen operator ("op"), and the NEXT step tops up a { stepScore, m, op } sentinel
+ * with the metric M (progress - cost) that only becomes knowable after the following screen is seen. The
+ * task-end marker carries the failure class + step count. All fields are OPTIONAL and additive - a reader
+ * that ignores them still sees today's { obj, app, screen, action, result } / { taskEnd, obj, success }.
  */
 object TrainingData {
     private const val FILE = "training_data.jsonl"
@@ -26,9 +32,11 @@ object TrainingData {
     fun file(c: Context): File = File(c.filesDir, FILE)
 
     /** Append one decided step. Best-effort and fully guarded - a capture failure must NEVER disturb the
-     *  agent loop. Tiny synchronous append (well under the per-step decision time). */
+     *  agent loop. Tiny synchronous append (well under the per-step decision time). `op` is the model-chosen
+     *  reasoning operator for this step ("" when the operator layer is off / DIRECT) - emitted only when
+     *  present so baseline captures are byte-identical to before. */
     @Synchronized
-    fun record(c: Context, objective: String, app: String, screen: String, action: String, result: String) {
+    fun record(c: Context, objective: String, app: String, screen: String, action: String, result: String, op: String = "") {
         try {
             val o = JSONObject()
                 .put("obj", objective.take(200))
@@ -36,19 +44,38 @@ object TrainingData {
                 .put("screen", screen.take(SCREEN_CAP))
                 .put("action", action.take(400))
                 .put("result", result)
+            if (op.isNotBlank() && op != "DIRECT") o.put("op", op.take(24))
             val f = file(c)
             f.appendText(o.toString() + "\n")
             if (f.length() > MAX_BYTES) trim(f)
         } catch (_: Throwable) {}
     }
 
-    /** Mark the end of a task with its outcome, so the converter can keep only steps from SUCCESSFUL
-     *  tasks (the clean positive examples) while the raw file still retains everything for analysis. */
+    /** Top up the PRECEDING step with its realized reward once the next screen reveals it: M = progress -
+     *  cost (ReasoningOperators.computeM). Its own sentinel line so the append-only file stays intact; the
+     *  converter pairs it to the step line just above it (the operator path scores step N at the top of
+     *  step N+1, so this always lands right after step N's line and before step N+1's). Only fires when the
+     *  operator layer is on, so it's absent from baseline captures. */
     @Synchronized
-    fun recordTaskEnd(c: Context, objective: String, success: Boolean) {
+    fun recordStepScore(c: Context, m: Int, op: String) {
         try {
-            file(c).appendText(JSONObject().put("taskEnd", true)
-                .put("obj", objective.take(200)).put("success", success).toString() + "\n")
+            file(c).appendText(JSONObject().put("stepScore", true)
+                .put("m", m).put("op", op.take(24)).toString() + "\n")
+        } catch (_: Throwable) {}
+    }
+
+    /** Mark the end of a task with its outcome, so the converter can keep only steps from SUCCESSFUL
+     *  tasks (the clean positive examples) while the raw file still retains everything for analysis.
+     *  `fclass` (the failure taxonomy) + `steps` let the converter weight/segment by HOW a task failed,
+     *  not just pass/fail - both optional, so an older reader is unaffected. */
+    @Synchronized
+    fun recordTaskEnd(c: Context, objective: String, success: Boolean, failureClass: String = "", steps: Int = 0) {
+        try {
+            val o = JSONObject().put("taskEnd", true)
+                .put("obj", objective.take(200)).put("success", success)
+            if (failureClass.isNotBlank()) o.put("fclass", failureClass.take(40))
+            if (steps > 0) o.put("steps", steps)
+            file(c).appendText(o.toString() + "\n")
         } catch (_: Throwable) {}
     }
 

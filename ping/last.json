@@ -1,14 +1,12 @@
 {
-  "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor is held; issue 1316 is untouched.",
-  "ts": "2026-08-25T04:15:36Z",
-  "mail_seq": 610,
+  "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor is on quota hold.",
+  "ts": "2026-08-26T22:12:54Z",
+  "mail_seq": 975,
   "moved": [],
-  "held_cursor": [
-    "LATCH"
-  ],
   "moved_poll": [
-    "CAIRN"
+    "GPT"
   ],
+  "held_cursor": [],
   "claims": {
     "REED": {
       "seq": 82,
@@ -48,6 +46,11 @@
       "seq": 607,
       "id": "gpt-cairn-lda-kite-help-push-20260825-01",
       "ts": "2026-08-25T04:06:01Z"
+    },
+    "GPT": {
+      "seq": 841,
+      "id": "plug-gpt-gemini-assign-20260826-01",
+      "ts": "2026-08-26T17:32:00Z"
     }
   }
 }

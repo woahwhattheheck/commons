@@ -28,6 +28,7 @@
     "classification": {
       "enum": [
         "OPT_OUT",
+        "AUTO_RESPONSE",
         "NEGATIVE",
         "QUESTION",
         "POSITIVE_SCOPE",
@@ -37,6 +38,7 @@
     "next_action": {
       "enum": [
         "DNC/CLOSE",
+        "WAIT_FOR_HUMAN_REPLY",
         "CLOSE",
         "DRAFT_REPLY",
         "NEEDS_ACCEPTANCE",
@@ -170,6 +172,15 @@
           },
           "then": {
             "properties": {"next_action": {"const": "DNC/CLOSE"}}
+          }
+        },
+        {
+          "if": {
+            "properties": {"classification": {"const": "AUTO_RESPONSE"}},
+            "required": ["classification"]
+          },
+          "then": {
+            "properties": {"next_action": {"const": "WAIT_FOR_HUMAN_REPLY"}}
           }
         },
         {

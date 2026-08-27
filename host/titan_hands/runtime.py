@@ -1,20 +1,22 @@
-"""One model-facing TITAN Hands dispatcher.
+"""Leftover `route`/`op` surface over the landed one-tool dispatcher.
 
-Computer-use keeps the landed DeltaUI broker (Windows + Android). Additional
-routes share the same typed-failure envelope. Linux AT-SPI is catalogued and
-returns ADAPTER_NOT_WRITTEN.
+Computer-use stays on TitanHandsBroker (Windows + Android). Linux AT-SPI uses
+LinuxHandsServer from linux_atspi.py. file/git/slack/board/shell/web keep the
+leftover HandsRoutes additive guards. The model-facing MCP tool is `hands` on
+mcp_one; this module is not a second MCP server.
+
+Cite: p/plug-stop-prove-20260820-01.md — build the leftover, do not MATCH-for-its-own-sake.
 """
 
 from __future__ import annotations
 
 from typing import Any, Mapping
 
+from host.titan_hands.broker import TitanHandsBroker
+from host.titan_hands.linux import ATSPI_SKETCH
+from host.titan_hands.linux_atspi import LinuxHandsServer
+from host.titan_hands.routes import COMMONS_SLACK_CHANNEL, HandsRoutes
 from host.titan_hands_windows.protocol import PROTOCOL_VERSION, ProtocolError, failure
-
-from .broker import TitanHandsBroker
-from .linux import ATSPI_SKETCH, handle_linux
-from .routes import COMMONS_SLACK_CHANNEL, HandsRoutes
-
 
 COMPUTER_OPS = {
     "observe",
@@ -74,27 +76,33 @@ ROUTE_STATUS = (
     },
     {
         "route": "linux",
-        "status": "ADAPTER_NOT_WRITTEN",
+        "status": "LIVE",
         "ops": ["observe", "act", "capture", "capabilities"],
         "adapter": "AT-SPI",
+        "missing_bus": "TRANSPORT_UNCONFIGURED",
         "sketch": ATSPI_SKETCH,
     },
 )
 
 
 class TitanHandsRuntime:
-    """Primary `hands` surface. DeltaUI computer-use is unchanged underneath."""
+    """Leftover `route` surface. DeltaUI computer-use and AT-SPI stay underneath."""
 
     def __init__(
         self,
         broker: TitanHandsBroker | None = None,
         routes: HandsRoutes | None = None,
+        linux: LinuxHandsServer | None = None,
     ) -> None:
         self.broker = broker or TitanHandsBroker()
         self.routes = routes or HandsRoutes()
+        self.linux = linux or LinuxHandsServer()
 
     def close(self) -> None:
         self.broker.close()
+        closer = getattr(self.linux, "close", None)
+        if callable(closer):
+            closer()
 
     def catalog(self) -> dict[str, Any]:
         return {
@@ -109,6 +117,7 @@ class TitanHandsRuntime:
                 "hands_capture",
                 "hands_capabilities",
             ],
+            "call_alias": "titan_hands",
             "default_route": "computer",
             "pixels": "explicit capture only",
             "routes": list(ROUTE_STATUS),
@@ -140,7 +149,7 @@ class TitanHandsRuntime:
                 result.setdefault("route", "computer")
                 return result
             if route == "linux":
-                result = handle_linux(payload)
+                result = self.linux.handle(payload)
                 result.setdefault("route", "linux")
                 return result
             result = self.routes.handle(route, payload)

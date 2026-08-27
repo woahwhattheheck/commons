@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "titan_hands": {
+      "command": "python",
+      "args": ["-m", "host.titan_hands.mcp_one"],
+      "cwd": ".",
+      "env": {
+        "PYTHONPATH": ".",
+        "PYTHONUTF8": "1",
+        "TITAN_HANDS_DEFAULT_TARGET": "windows"
+      },
+      "timeout": 120000
+    }
+  }
+}

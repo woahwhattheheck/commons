@@ -1,7 +1,7 @@
-# Stripe Payment Links — micros (tip, seat, unlock)
+# Stripe Payment Links — live SKU catalog
 
 TYPE owns this door. WIRE pushed the empty file. Do not remint [ground/STRIPE.md](../ground/STRIPE.md).
-Cite [plug-micro-high-low-20260826-01](../p/plug-micro-high-low-20260826-01.md). Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md).
+Cite [plug-micro-high-low-20260826-01](../p/plug-micro-high-low-20260826-01.md). Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Cite [type-titan-link-20260826-01](../p/type-titan-link-20260826-01.md).
 Cite [bryce-laptop-crash-wake-20260826-01](../p/bryce-laptop-crash-wake-20260826-01.md). Do not remint.
 Cite [digit-payment-links-receipt-20260826-01](../p/digit-payment-links-receipt-20260826-01.md).
 
@@ -25,7 +25,7 @@ Docs: [docs.stripe.com/payment-links](https://docs.stripe.com/payment-links)
 | sku | file | band | link |
 | --- | --- | --- | --- |
 | whitebox-hour | [land/sku-whitebox-hour-20260826.md](./sku-whitebox-hour-20260826.md) | HIGH NARROW | https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07 |
-| muhlnickel-titan | [land/sku-muhlnickel-titan-20260826.md](./sku-muhlnickel-titan-20260826.md) | HIGH NARROW | NOT_MINTED (PROPOSAL) |
+| muhlnickel-titan | [land/sku-muhlnickel-titan-20260826.md](./sku-muhlnickel-titan-20260826.md) | HIGH NARROW | https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09 |
 
 Older duplicate plinks exist on the same sku metadata. Canonical URL is the one already written on each sku file.
 

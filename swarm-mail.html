@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Swarm Mail — model-routed sales inboxes</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.3rem,7vw,5.6rem);line-height:.94;max-width:11ch;margin:.25rem 0 1rem}.lead{font-size:1.18rem;max-width:55rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h3{margin:.2rem 0}.eyebrow,.mono{font:700 .8rem/1.5 ui-monospace,monospace;letter-spacing:.06em}.state{display:inline-block;border:1px solid #d0a252;border-radius:999px;padding:.15rem .55rem}.state.MEASURED{border-color:#62b879;color:#62b879}.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.5rem}.truth span{border:1px solid #33333a;padding:.65rem;text-align:center}.truth b{display:block;font-size:1.35rem}.proofs{display:flex;flex-wrap:wrap;gap:.35rem}.proofs span{border:1px solid #55555f;border-radius:999px;padding:.2rem .55rem;font:700 .78rem/1.4 ui-monospace,monospace}.sku-list{padding-left:1.2rem}.sku-list li{margin:.35rem 0}.warning{border-left:4px solid #d0a252;padding-left:1rem}.chain{display:flex;flex-wrap:wrap;gap:.35rem}.chain span{border:1px solid #55555f;border-radius:999px;padding:.2rem .55rem;font:700 .78rem/1.4 ui-monospace,monospace}.chain span+span:before{content:"→ ";opacity:.65}
+</style>
+</head>
+<body>
+<p class="law">OPEN STATUS DOOR. Swarm Mail adds no login, authorization gate, or telemetry to Commons. A reserved local part is not an email address; mail activity is not cash.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./swarm-mail.html">swarm mail</a> · <a href="./revenue/swarm_mail/inboxes.json">manifest</a> · <a href="./revenue/swarm_mail/README.md">operate it</a></p>
+<header class="hero">
+  <p class="eyebrow">COMMONS-OWNED SWARM MAIL · RUNTIME SLICE V2</p>
+  <h1>Every model gets a sales route.</h1>
+  <p class="lead">Five declared model routes cover every Commons SKU exactly once. The first runtime slice records private drafts and threads, applies swarm-wide suppression, routes replies from outbound thread evidence, and keeps public events to keyed opaque commitments. Automatic dispatch is at-most-once; uncertain attempts stop at <code>UNKNOWN_EFFECT</code> for reconciliation. No AgentMail subscription or provider lock-in.</p>
+</header>
+<section class="panel" aria-labelledby="status-heading">
+  <h2 id="status-heading">Measured runtime state</h2>
+  <p id="manifest-status" class="note">Loading the public-safe manifest…</p>
+  <div id="truth" class="truth"></div>
+  <h3>Domain and transport evidence</h3>
+  <div id="proofs" class="proofs"></div>
+</section>
+<section class="panel warning">
+  <h2>What still makes an address real</h2>
+  <p>The runtime slice is built, but the domain, model inboxes, and transport are currently <code>UNPROVISIONED</code>/<code>UNMEASURED</code>. One owner-controlled domain or subdomain still needs reachable MX plus measured SPF, DKIM, and DMARC evidence; the local MTA also needs a measured acceptance receipt. Until then, drafts may be recorded but no model address is published and automatic dispatch stays unavailable.</p>
+  <p>The runtime blocks duplicate send commitments, globally suppressed recipients, complaints, permanent bounces, wrong-SKU routing, unmeasured inboxes, and exhausted daily budgets. Once enabled, its automatic dispatch path is at-most-once: a crash or timeout becomes <code>UNKNOWN_EFFECT</code> and requires explicit reconciliation before any further action.</p>
+</section>
+<section aria-labelledby="routes-heading">
+  <h2 id="routes-heading">Model routes</h2>
+  <div id="routes" class="grid"></div>
+</section>
+<section class="panel">
+  <h2>Email is attached to commerce</h2>
+  <div class="chain" aria-label="Mail to cash truth chain"><span>QUEUE_PLANNED</span><span>MTA_ACCEPTED</span><span>PROVIDER_REPORTED</span><span>ATTRIBUTED_REPLY</span><span>QUALIFIED</span><span>FUNDED</span><span>DELIVERED_WORK</span><span>BANK_AVAILABLE</span></div>
+  <p>MTA acceptance proves only that the configured MTA accepted the message. A provider-reported delivery is not independently verified delivery, a human reply, commercial acceptance, or cash. Public events contain keyed opaque commitments and bounded states—never prospect addresses, headers, subjects, bodies, or attachments. Follow each SKU’s evidence contract on <a href="./commerce.html">the commerce page</a>.</p>
+</section>
+<noscript><p class="panel">JavaScript is off. The complete public-safe state remains readable in <a href="./revenue/swarm_mail/inboxes.json">inboxes.json</a>.</p></noscript>
+<script src="./swarm-mail.js?v=20260827a"></script>
+</body>
+</html>

@@ -37,23 +37,23 @@ the two owner seams above. `host/titan_hands/lda_bridge.py` only transports and 
 
 ### Current source-tree status
 
-The TITAN transport and host tests are ready, but the checked-in LDA source export does **not yet compile into
-an APK**. A full `:app:assembleDebug` reaches `compileDebugKotlin`, then fails on pre-existing gaps across the
-owner tree rather than in the thin TITAN receiver. Do not replace LDA to get around this; repair the inherited
-source in place.
+The source-version skew is repaired from the owner's real `Desktop/LocalDeviceAgent` tree at
+`4eab3d2fef8a9d44e202fcc48b874be955368db2`. Commons now contains the 21 inventoried semantic differences and
+seven source-only tests/resources from that clean `app/` tree, including the complete `SettingsManager`,
+`AgentMemory`, `TaskHistory`, owner UI surfaces, pinned LiteRT/coroutines dependencies, and Shizuku support. No
+replacement stubs or parallel operator were introduced.
 
-The first repair pass should cover:
+The normal owner build remains arm64-only. `-PtitanHandsAbi=x86_64` is the isolated colony-emulator override;
+`install_lda_emulator.ps1` supplies it automatically and refuses physical devices by default.
 
-- missing `SettingsManager` APIs referenced throughout the service/orchestrator/brain, including agent-language,
-  Gemini-block, shell-input, self-evolve, thinking-log, continuous-stream, prompt-layout, and online settings;
-- missing owner-model/operator helpers such as `distilledOperators`, `failureHintFor`, `valuesBlock`, and
-  `timeContext` referenced by `AgentBrain`, `AgentOrchestrator`, `WorldModel`, and related classes;
-- the absent Shizuku dependency used by `ShellInput` (`rikka.shizuku.Shizuku`);
-- the remaining unresolved symbols/syntax mismatches reported in `MainActivity`, `MechanismRouter`, and
-  `ScoreboardActivity`.
+Verified on the headless AOSP API 34 emulator:
 
-After each repair, run the exact build below. Success means an APK exists and the installer can perform the
-emulator proof; Python unit success alone is not an Android live proof.
+- `:app:compileDebugKotlin` and `:app:assembleDebug` completed successfully;
+- the APK installed and the strict receiver probe returned `accessibility_ready=true`;
+- live observation returned `implementation=lda-kotlin`, source
+  `ActionAccessibilityService.snapshotScreen`, and the native numbered screen;
+- native action `{type: click, id: lda:1}` returned `CONTINUE`, summary `clicked element 1 (Wait)`, and changed
+  the semantic digest from the system dialog to nine Launcher nodes.
 
 ```powershell
 powershell -File host/titan_hands/setup_android_headless.ps1 -AcceptSdkLicenses
@@ -62,6 +62,9 @@ powershell -File host/titan_hands/install_lda_emulator.ps1
 powershell -File host/titan_hands/register_codex.ps1
 py -3 -m unittest discover -s host\titan_hands\tests -t .
 ```
+
+Use `install_lda_emulator.ps1 -SkipBuild` to reinstall and re-run the strict service-ready probe against an
+already assembled APK. It fails rather than overclaiming success if the accessibility service does not bind.
 
 Then start a fresh Codex task, call `hands_capabilities(target="android")`, and require
 `implementation=lda-kotlin` before testing native actions. Observe first; use the `[N]` element from the LDA

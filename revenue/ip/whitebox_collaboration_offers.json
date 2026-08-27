@@ -1,0 +1,127 @@
+{
+  "schema_version": "commons-whitebox-collaboration-offers/v1",
+  "kind": "WHITEBOX_COLLABORATION_OFFERS",
+  "generated_at": "2026-08-26T18:00:00Z",
+  "generated_from_main": "0a4620b406199f8f9eb6b1a9b5cab4c375e8f779",
+  "assessed_at": "2026-08-26",
+  "scope": "Four non-replacing White Box collaboration roads plus the existing live advisory-hour entry route.",
+  "commercial_boundary": "Executable service offers use customer-owned or independently cleared assets. The owner archive is inventory evidence only and no archive payload is offered or transferred until exact quantized-copy provenance, applicable terms, notices, redaction, and a transfer review are complete.",
+  "truth": {
+    "buyer_interest_verified": false,
+    "agreement_signed": false,
+    "delivery_completed": false,
+    "cash_received": false,
+    "archive_transfer_cleared": false
+  },
+  "sources": [
+    {
+      "id": "diagnostic-page",
+      "path": "diagnostic.html",
+      "blob_sha": "795fe278570c679f9f728e66d0390681d532edf6",
+      "evidence_phrase": "Fixed fee</dt><dd id=\"fee\">$12,000 USD</dd>"
+    },
+    {
+      "id": "commercial-page",
+      "path": "commercial.html",
+      "blob_sha": "ad5c9228d9b3f1218f0b5a93cc64fcefce4e97f4",
+      "evidence_phrase": "$30,000 fixed · 30 calendar days · one customer-owned GGUF model family"
+    },
+    {
+      "id": "whitebox-hour-sku",
+      "path": "land/sku-whitebox-hour-20260826.md",
+      "blob_sha": "9747d2e203b1be96940d224914ca0b59335fe37e",
+      "evidence_phrase": "MARKET PROPOSAL: $250 USD / hour"
+    },
+    {
+      "id": "archive-inventory",
+      "path": "revenue/ip/whitebox_archive_inventory.json",
+      "blob_sha": "dfc9923c290837151454b086df1af25aed724330",
+      "evidence_phrase": "\"source_model_download_receipts_verified\": false"
+    },
+    {
+      "id": "archive-license-probe",
+      "path": "revenue/ip/whitebox_archive_license_probe.json",
+      "blob_sha": "c65c2ee0dd491f71f89341f1bbd085a37cb7a1ec",
+      "evidence_phrase": "\"quantized_copy_source_verified\": false"
+    },
+    {
+      "id": "offering-families",
+      "path": "revenue/OFFERING_FAMILIES.md",
+      "blob_sha": "a0fca0860c67c936796f5000b5cf9b9cbc260a91",
+      "evidence_phrase": "products, services, expertise, and data"
+    }
+  ],
+  "entry_routes": [
+    {
+      "id": "whitebox-advisory-hour",
+      "family": "EXPERTISE",
+      "status": "LIVE_CHECKOUT",
+      "price": {"known": true, "amount_usd": 250, "basis": "HOURLY"},
+      "checkout_url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+      "source_ids": ["whitebox-hour-sku"],
+      "uses_owner_archive_payload": false
+    }
+  ],
+  "offers": [
+    {
+      "id": "whitebox-archive-license",
+      "name": "White Box archive license",
+      "family": "DATA",
+      "state": "BLOCKED_EVIDENCE_REQUIRED",
+      "price": {"known": false, "amount_usd": null, "basis": "UNKNOWN"},
+      "duration_days": null,
+      "asset_boundary": "OWNER_ARCHIVE",
+      "deliverable": "A separately scoped, rights-cleared archive license with an exact manifest, notices, redaction record, and transfer receipt.",
+      "customer_supplies": "A named permitted use and recipient boundary after Commons completes the evidence and transfer review.",
+      "source_ids": ["archive-inventory", "archive-license-probe", "offering-families"],
+      "uses_owner_archive_payload": false,
+      "transfer_payload": false,
+      "blocker": "Exact quantized-copy source provenance, applicable terms, notices, redaction, sample review, and transfer clearance remain unresolved."
+    },
+    {
+      "id": "whitebox-sponsored-benchmark",
+      "name": "Sponsored GGUF benchmark and diagnostic",
+      "family": "SERVICES",
+      "state": "AVAILABLE_CUSTOMER_OWNED_ASSET",
+      "price": {"known": true, "amount_usd": 12000, "basis": "FIXED"},
+      "duration_days": 10,
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "deliverable": "Reproducible baseline, diagnostic report, ablation result, bounded intervention, rollback path, and AT1–AT6 evidence.",
+      "customer_supplies": "A customer-controlled GGUF and an evaluation harness.",
+      "source_ids": ["diagnostic-page", "offering-families"],
+      "uses_owner_archive_payload": false,
+      "transfer_payload": false,
+      "blocker": ""
+    },
+    {
+      "id": "whitebox-joint-paper-reproduction",
+      "name": "Joint-paper reproduction",
+      "family": "EXPERTISE",
+      "state": "SCOPING_AVAILABLE",
+      "price": {"known": false, "amount_usd": null, "basis": "CUSTOM_UNKNOWN"},
+      "duration_days": null,
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "deliverable": "A scoped reproduction plan, methods record, benchmark evidence, and publication-ready reproducibility packet.",
+      "customer_supplies": "A paper or experiment target and customer-owned, public-cleared, or independently licensed inputs.",
+      "source_ids": ["archive-inventory", "archive-license-probe", "offering-families"],
+      "uses_owner_archive_payload": false,
+      "transfer_payload": false,
+      "blocker": "Price and duration require a named paper, experiment target, compute boundary, and cleared inputs."
+    },
+    {
+      "id": "whitebox-private-evaluation",
+      "name": "Private White Box evaluation pilot",
+      "family": "SERVICES",
+      "state": "AVAILABLE_CUSTOMER_OWNED_ASSET",
+      "price": {"known": true, "amount_usd": 30000, "basis": "FIXED"},
+      "duration_days": 30,
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "deliverable": "A private evaluation engagement on one customer-owned GGUF model family with agreed reports, results, and rollback evidence.",
+      "customer_supplies": "One customer-owned GGUF model family and the agreed private evaluation inputs.",
+      "source_ids": ["commercial-page", "offering-families"],
+      "uses_owner_archive_payload": false,
+      "transfer_payload": false,
+      "blocker": ""
+    }
+  ]
+}

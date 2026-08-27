@@ -17,6 +17,7 @@ import reply_intake
 
 ROUTES = (
     ("OPT_OUT", "DNC/CLOSE"),
+    ("AUTO_RESPONSE", "WAIT_FOR_HUMAN_REPLY"),
     ("NEGATIVE", "CLOSE"),
     ("QUESTION", "DRAFT_REPLY"),
     ("POSITIVE_SCOPE", "NEEDS_ACCEPTANCE"),
@@ -97,7 +98,7 @@ class ReplyIntakeTest(unittest.TestCase):
     def _record(self, envelope: dict[str, str]) -> bytes:
         return reply_intake.record_envelope(envelope, self.store)
 
-    def test_five_route_fixtures_pass(self) -> None:
+    def test_six_route_fixtures_pass(self) -> None:
         for classification, next_action in ROUTES:
             with self.subTest(classification=classification):
                 envelope = _envelope(classification)

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""host/resource_ledger.py — cache is not capacity.
+"""host/resource_ledger.py — master resource lifecycle; cache is not capacity.
 
 Slack 1787637936.134649 (DEMON live compute/connector board):
 use live surfaces, do not count cache as capacity, keep a ledger
 with evidence timestamp, auth surface, exact safe probe, rate/plan
 boundary, assigned backlog, and last receipt.
 
-A Slack utilization report is CLAIMED. Missing instrument is
+A Slack utilization report is CLAIMED. This v2 instrument extends the original
+connector board to people, devices, repositories, builds, subscriptions,
+models, agents, tools, data, roads, and commercial assets. Missing instrument is
 NOT_LANDED. Calling cache "connected" as capacity is NOT_LANDED.
 Hugging Face without a token or CLI is NOT_VERIFIED, not live.
 Vercel production deploy is a write; this leftover refuses it.
@@ -19,6 +21,7 @@ titan: NOT_WRITTEN.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import os
 import shutil
@@ -36,6 +39,43 @@ REQUIRED_FIELDS = (
     "last_receipt",
 )
 CAPACITY_STATES = ("LIVE", "CACHE", "NOT_VERIFIED", "UNMEASURED", "FORBIDDEN")
+RESOURCE_STAGES = (
+    "DECLARED",
+    "AVAILABLE",
+    "REACHABLE",
+    "ASSIGNED",
+    "EXERCISED",
+    "PRODUCING",
+)
+RESOURCE_CONDITIONS = (
+    "LIVE",
+    "IDLE",
+    "HELD",
+    "BLOCKED",
+    "CONSTRAINED",
+    "DEGRADED",
+    "DORMANT",
+    "STALE",
+    "ACTIVE_UNKNOWN",
+    "SUPERSEDED",
+    "ARCHIVED",
+    "DEAD",
+    "UNMEASURED",
+)
+RESOURCE_FRESHNESS_STATES = ("FRESH", "STALE", "EVENT_DRIVEN", "NEEDS_PROBE", "UNMEASURED")
+V2_REQUIRED_FIELDS = (
+    "kind",
+    "stage",
+    "condition",
+    "consumer",
+    "value",
+    "next_action",
+    "source",
+    "holder",
+    "authority",
+    "last_used_at",
+    "stale_after",
+)
 TESTER_AUTHORITY_NEEDLES = (
     "tester",
     "verifier",
@@ -74,9 +114,21 @@ def load_catalog(text):
         row["capacity"] = str(item.get("capacity") or "").strip().upper()
         row["cache_counted"] = bool(item.get("cache_counted"))
         row["tester_authority"] = bool(item.get("tester_authority"))
+        for field in V2_REQUIRED_FIELDS:
+            row[field] = str(item.get(field) or "").strip()
+        row["kind"] = row["kind"].upper()
+        row["stage"] = row["stage"].upper()
+        row["condition"] = row["condition"].upper()
+        row["quantity"] = item.get("quantity")
+        row["links"] = list(item.get("links") or [])
+        row["priority"] = int(item.get("priority") or 0)
         surfaces.append(row)
     return {
         "surfaces": surfaces,
+        "schema": str(data.get("schema") or "commons-resource-ledger/v1").strip(),
+        "snapshot": data.get("snapshot") or {},
+        "stage_order": list(data.get("stage_order") or RESOURCE_STAGES),
+        "priority_queue": list(data.get("priority_queue") or []),
         "slack_ts": str(data.get("slack_ts") or "").strip(),
         "source_id": str(data.get("source_id") or "").strip(),
         "cache_as_capacity": bool(data.get("cache_as_capacity")),
@@ -85,6 +137,46 @@ def load_catalog(text):
         "hands_off": list(data.get("hands_off") or []),
         "titan": str(data.get("titan") or "NOT_WRITTEN").strip() or "NOT_WRITTEN",
     }
+
+
+def parse_utc(value):
+    """Parse the ledger's public UTC timestamps; invalid input stays unknown."""
+    text = str(value or "").strip()
+    if not text or text.lower() == "unknown":
+        return None
+    try:
+        parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=dt.timezone.utc)
+    return parsed.astimezone(dt.timezone.utc)
+
+
+def parse_duration(value):
+    """Parse the bounded ISO-8601 durations used by this ledger (PnD/PTnH)."""
+    text = str(value or "").strip().upper()
+    if text.startswith("PT") and text.endswith("H") and text[2:-1].isdigit():
+        return dt.timedelta(hours=int(text[2:-1]))
+    if text.startswith("P") and text.endswith("D") and text[1:-1].isdigit():
+        return dt.timedelta(days=int(text[1:-1]))
+    return None
+
+
+def evidence_freshness(row, observed_at):
+    """Measure evidence age without rewriting capacity or operating condition."""
+    evidence_at = parse_utc((row or {}).get("evidence_ts"))
+    boundary = str((row or {}).get("stale_after") or "").strip()
+    duration = parse_duration(boundary)
+    if duration:
+        now = parse_utc(observed_at)
+        if evidence_at is None or now is None:
+            return "UNMEASURED"
+        return "STALE" if now > evidence_at + duration else "FRESH"
+    lowered = boundary.lower()
+    if not boundary or lowered in ("unknown", "probe-before-use", "resolve-before-new-reservation"):
+        return "NEEDS_PROBE"
+    return "EVENT_DRIVEN"
 
 
 def local_probes(home, which=shutil.which):
@@ -113,77 +205,87 @@ def classify_surface(row, probes=None):
     name = str(row.get("name") or "").strip().lower()
     capacity = str(row.get("capacity") or "").strip().upper()
     missing = [field for field in REQUIRED_FIELDS if not str(row.get(field) or "").strip()]
-    if name == "claude":
+    meta = {
+        "kind": str(row.get("kind") or "UNCLASSIFIED").strip().upper(),
+        "stage": str(row.get("stage") or "").strip().upper(),
+        "condition": str(row.get("condition") or "UNMEASURED").strip().upper(),
+        "consumer": str(row.get("consumer") or "").strip(),
+        "value": str(row.get("value") or "").strip(),
+        "next_action": str(row.get("next_action") or "").strip(),
+        "source": str(row.get("source") or "").strip(),
+        "holder": str(row.get("holder") or "").strip(),
+        "authority": str(row.get("authority") or "").strip(),
+        "evidence_ts": str(row.get("evidence_ts") or "").strip(),
+        "last_used_at": str(row.get("last_used_at") or "").strip(),
+        "stale_after": str(row.get("stale_after") or "").strip(),
+        "quantity": row.get("quantity"),
+        "priority": int(row.get("priority") or 0),
+    }
+
+    def result(measured_capacity, note, tester_authority=False):
+        return {
+            "name": name,
+            "capacity": measured_capacity,
+            "missing_fields": missing,
+            "tester_authority": tester_authority,
+            "note": note,
+            **meta,
+        }
+
+    if name.startswith("claude"):
         backlog = str(row.get("assigned_backlog") or "").lower()
         informational = "informational" in backlog
         tester = any(needle in backlog for needle in TESTER_AUTHORITY_NEEDLES)
         if tester and not informational:
-            return {
-                "name": name,
-                "capacity": "UNMEASURED",
-                "missing_fields": missing,
-                "tester_authority": True,
-                "note": (
+            return result(
+                "UNMEASURED",
+                (
                     "Claude assigned_backlog still grants tester/verifier/"
                     "review authority. Informational evidence only. "
                     "Route verification to local/GHA/Codex; route Grok analysis "
                     "to SuperGrok Heavy / Grok Build. Cursor is on quota hold."
                 ),
-            }
-        return {
-            "name": name,
-            "capacity": capacity if capacity in CAPACITY_STATES else "UNMEASURED",
-            "missing_fields": missing,
-            "tester_authority": False,
-            "note": (
+                tester_authority=True,
+            )
+        return result(
+            capacity if capacity in CAPACITY_STATES else "UNMEASURED",
+            (
                 "claude is informational only; not tester/verifier/QA. "
                 "Prior Claude verdicts this window stay UNVERIFIED."
             ),
-        }
+        )
     if name == "huggingface":
         if probes.get("hf_token_files") or probes.get("hf_cli"):
             pass
         elif capacity == "LIVE" or row.get("cache_counted"):
-            return {
-                "name": name,
-                "capacity": "NOT_VERIFIED",
-                "missing_fields": missing,
-                "note": "huggingface specifically is NOT verified. No token file and no CLI here. Cache is not capacity.",
-            }
-        return {
-            "name": name,
-            "capacity": "NOT_VERIFIED",
-            "missing_fields": missing,
-            "note": "huggingface specifically is NOT verified. Do not call cache connected.",
-        }
+            return result(
+                "NOT_VERIFIED",
+                "huggingface specifically is NOT verified. No token file and no CLI here. Cache is not capacity.",
+            )
+        return result(
+            "NOT_VERIFIED",
+            "huggingface specifically is NOT verified. Do not call cache connected.",
+        )
     if name == "vercel" and row.get("production_write"):
-        return {
-            "name": name,
-            "capacity": "FORBIDDEN",
-            "missing_fields": missing,
-            "note": "vercel deploy is a production write. Refused without exact scope.",
-        }
+        return result(
+            "FORBIDDEN",
+            "vercel deploy is a production write. Refused without exact scope.",
+        )
     if capacity not in CAPACITY_STATES:
-        return {
-            "name": name,
-            "capacity": "UNMEASURED",
-            "missing_fields": missing,
-            "note": "%s has no measured capacity. Absence was not stillness." % (name or "surface"),
-        }
+        return result(
+            "UNMEASURED",
+            "%s has no measured capacity. Absence was not stillness." % (name or "surface"),
+        )
     if row.get("cache_counted") or capacity == "CACHE":
-        return {
-            "name": name,
-            "capacity": "CACHE",
-            "missing_fields": missing,
-            "note": "%s is cache, not capacity. Do not count it as live." % (name or "surface"),
-        }
-    return {
-        "name": name,
-        "capacity": capacity,
-        "missing_fields": missing,
-        "note": "%s recorded as %s. Required ledger fields must stay filled."
+        return result(
+            "CACHE",
+            "%s is cache, not capacity. Do not count it as live." % (name or "surface"),
+        )
+    return result(
+        capacity,
+        "%s recorded as %s. Required ledger fields must stay filled."
         % (name or "surface", capacity),
-    }
+    )
 
 
 def measure_from_rows(facts):
@@ -199,6 +301,57 @@ def measure_from_rows(facts):
     missing_fields = any(row.get("missing_fields") for row in surfaces if row["capacity"] == "LIVE")
     hf_live = "huggingface" in live
     tester_authority = any(row.get("tester_authority") for row in surfaces)
+    schema = str(facts.get("schema") or "commons-resource-ledger/v1")
+    is_v2 = schema.endswith("/v2")
+    v2_missing = []
+    invalid_stages = []
+    invalid_conditions = []
+    stage_counts = {stage: 0 for stage in RESOURCE_STAGES}
+    kind_counts = {}
+    activation_queue = []
+    expired_resources = []
+    freshness_counts = {state: 0 for state in RESOURCE_FRESHNESS_STATES}
+    observed_at = (facts.get("snapshot") or {}).get("observed_at")
+    for raw, measured in zip(facts.get("surfaces") or [], surfaces):
+        freshness = evidence_freshness(raw, observed_at)
+        measured["evidence_freshness"] = freshness
+        measured["claim_active"] = freshness != "STALE"
+        freshness_counts[freshness] += 1
+        if freshness == "STALE":
+            expired_resources.append(measured["name"])
+        if is_v2:
+            missing = [field for field in V2_REQUIRED_FIELDS if not str(raw.get(field) or "").strip()]
+            if missing:
+                v2_missing.append({"name": measured["name"], "fields": missing})
+        stage = measured.get("stage") or ""
+        condition = measured.get("condition") or "UNMEASURED"
+        kind = measured.get("kind") or "UNCLASSIFIED"
+        if stage in stage_counts:
+            stage_counts[stage] += 1
+        elif is_v2:
+            invalid_stages.append(measured["name"])
+        if condition not in RESOURCE_CONDITIONS and is_v2:
+            invalid_conditions.append(measured["name"])
+        kind_counts[kind] = kind_counts.get(kind, 0) + 1
+        if (
+            stage in ("REACHABLE", "ASSIGNED", "EXERCISED")
+            and condition in ("LIVE", "IDLE", "CONSTRAINED", "DEGRADED", "DORMANT")
+            and measured.get("next_action")
+            and freshness in ("FRESH", "EVENT_DRIVEN")
+        ):
+            activation_queue.append(
+                {
+                    "name": measured["name"],
+                    "stage": stage,
+                    "condition": condition,
+                    "next_action": measured["next_action"],
+                    "consumer": measured.get("consumer") or "",
+                    "value": measured.get("value") or "",
+                    "priority": int(raw.get("priority") or 0),
+                    "evidence_freshness": freshness,
+                }
+            )
+    activation_queue.sort(key=lambda item: (-item["priority"], item["name"]))
     return {
         "measured": True,
         "surfaces": surfaces,
@@ -221,6 +374,17 @@ def measure_from_rows(facts):
         },
         "titan": "NOT_WRITTEN",
         "claude_tester_authority": tester_authority,
+        "schema": schema,
+        "v2_missing": v2_missing,
+        "invalid_stages": invalid_stages,
+        "invalid_conditions": invalid_conditions,
+        "stage_counts": stage_counts,
+        "kind_counts": kind_counts,
+        "activation_queue": activation_queue,
+        "expired_resources": expired_resources,
+        "freshness_counts": freshness_counts,
+        "producing_count": stage_counts["PRODUCING"],
+        "resource_count": len(surfaces),
     }
 
 
@@ -271,6 +435,14 @@ def classify(row):
                 "last_receipt."
             ),
         }
+    if row.get("v2_missing") or row.get("invalid_stages") or row.get("invalid_conditions"):
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "v2 resources need kind/stage/condition/consumer/value/next_action/source "
+                "and known lifecycle values."
+            ),
+        }
     if not row.get("live"):
         return {
             "state": "CANDIDATE",
@@ -287,12 +459,12 @@ def classify(row):
 
 
 def catalog_from_row(row):
-    """Public receipt catalog. Names and states only. No secrets."""
+    """Public receipt summary. Names and states only. No secrets."""
     row = row or {}
     return {
         "slack_ts": SLACK_TS,
-        "source_id": "demon-live-compute-board-20260825-01",
-        "subject": "LIVE COMPUTE/CONNECTOR BOARD — cache is not capacity",
+        "source_id": "codex-master-resource-office-20260826-01",
+        "subject": "MASTER RESOURCE LEDGER — inventory is not utilization",
         "cache_as_capacity": False,
         "production_write": False,
         "secrets": False,
@@ -301,6 +473,9 @@ def catalog_from_row(row):
         "cache": list(row.get("cache") or []),
         "not_verified": list(row.get("not_verified") or []),
         "probes": row.get("probes") or {},
+        "stage_counts": row.get("stage_counts") or {},
+        "kind_counts": row.get("kind_counts") or {},
+        "activation_queue": row.get("activation_queue") or [],
         "hands_off": [
             "vercel production deploy",
             "financial/messaging/account writes",
@@ -326,6 +501,8 @@ def measure_root(root, home=None):
     measured = measure_from_rows(
         {
             "surfaces": catalog.get("surfaces") or [],
+            "schema": catalog.get("schema") or "commons-resource-ledger/v1",
+            "snapshot": catalog.get("snapshot") or {},
             "probes": probes,
             "cache_as_capacity": catalog.get("cache_as_capacity"),
             "production_write": catalog.get("production_write"),
@@ -372,6 +549,13 @@ def main(argv=None):
         "live": measured["live"],
         "cache": measured["cache"],
         "not_verified": measured["not_verified"],
+        "resource_count": measured["resource_count"],
+        "producing_count": measured["producing_count"],
+        "stage_counts": measured["stage_counts"],
+        "kind_counts": measured["kind_counts"],
+        "activation_queue": measured["activation_queue"],
+        "expired_resources": measured["expired_resources"],
+        "freshness_counts": measured["freshness_counts"],
         "probes": measured["probes"],
         "titan": measured["titan"],
         "secrets": False,
