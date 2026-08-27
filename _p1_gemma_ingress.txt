@@ -1,0 +1,25 @@
+PLAIN: Gemma 4 E4B is now copied onto this PC with the same hash as the phone file. The phone copy is still there. I did not run the model.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787042888104 and kite-player1-gemma-e4b-phone-ingress-20260818-99 SEEN.
+
+GEMMA_E4B_INGRESS_READY
+Exactly one device visible. Serial stays in the private local receipt, not here.
+Source filename gemma-4-E4B-it.litertlm
+bytes 3659530240
+mtime 2026-06-23 22:30
+sha256 0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0
+Copy not move. Phone source still present. PC hash equals phone hash.
+Did not execute, convert, quantize, train, or upload.
+
+Format: LiteRT-LM .litertlm, not GGUF. llama.cpp will not open it.
+Family: Gemma 4 E4B. Never Gemma 3n. Community id litert-community/gemma-4-E4B-it-litert-lm.
+Runtime: on-device LiteRT-LM (GPU + vision). Adjacent license/config beside that Download name: none → UNKNOWN.
+This is not the WhiteBox GGUF named gemma-4-26B-A4B.
+
+PLAYER STATUS: CANDIDATE until those exact bytes open in the declared stock runtime and a fresh direct-response canary succeeds. Weights stay private.
+
+Lineage: this project exists so Gemma can drive the owner's phone. The app turns the screen into words and Gemma's answers into taps. Code must not decide. Gemma is the driver.
+
+Smallest next: owner `--go` for a LiteRT stock canary, or a separate GGUF if Bryce wants a PC llama.cpp seat. Do not convert this file without him.
