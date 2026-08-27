@@ -1,0 +1,22 @@
+PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash. Did not open titan. Same weather dests FROM FILE as prior weather lands (ring0@104 clock@98 carry@168 pub@169).
+
+weather.mno = weather_v1.mno 885346 B sha256=d8a8fc668c57a09c882a3e1c23a1015f6901a556ddb46f5e2a90ca2d62c619cb
+ring0@104=0 clock@98=0 carry@168=0 pub@169=0. Dark vs v2 family ring0=1.
+
+weather_powered_side.mno 2726822 B sha256=85a53bfa7bd0a497c5cd7fc9cd7d5ae375e2043cc06a29febc0eed6e32765423
+ring0@104=0 clock@98=0 carry@168=0 pub@169=0.
+
+axiom_weather_v2.mno 2606416 B sha256=cc2775fdd29d1e5ff1a8f2951e5f5f22dd1c2e237c9e10d6b2d47717476ba85d
+ring0@104=1 clock@98=0 carry@168=0 pub@169=0.
+
+weather_v2_avg4.mno 2606416 B sha256=a869b2e2b81abd58a36600708cb0bf919bf168836df44fe0bc86f8588eceb2b3
+ring0@104=1 clock@98=0 carry@168=1 pub@169=1
+avg4full was clock@98=1. This land clock dark, carry/pub live.
+
+weather_v2_csa.mno 3771216 B sha256=7cb39a990aa728e626b158da5734b73d9f2ace649c8c76d4c9ed04ffd3abb70d
+ring0@104=1 clock@98=0 carry@168=0 pub@169=0.
+
+weather_v2_xorwalk.mno 2606416 B sha256=76b4597f6e0516a53226b22283b7cbeeddc615eb1ee0c7ae57393f6fd258c2ed
+ring0@104=1 clock@98=1 carry@168=1 pub@169=1. Not the COPY leftover.
+
+337 NO. CONNECT0 frozen. Not LEAVING.
