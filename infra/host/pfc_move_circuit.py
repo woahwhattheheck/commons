@@ -47,7 +47,7 @@ def _circuit_len(mm, off):
 
 
 def scan(path):
-    """every TITANCIR circuit: which tensor it's in, its byte range, the row range it corrupts (row-aligned)."""
+    """every TITANCIR circuit: which tensor it's in, its byte range, and its occupied row range."""
     r = gguf.GGUFReader(path)
     tinfo = [(t.name, int(t.data_offset), int(t.data.nbytes), t.tensor_type, [int(s) for s in t.shape]) for t in r.tensors]
     f = open(path, "rb"); mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
@@ -59,8 +59,8 @@ def scan(path):
         if owner:
             nm, o, b, qt, sh = owner
             n_in = int(sh[0]); rb = _rowbytes(qt, n_in)      # gguf shape[0] = n_in (row length in elements)
-            r0 = (pos - o) // rb                              # first corrupted row (row-aligned floor)
-            r1 = (pos + length - 1 - o) // rb                 # last corrupted row (row-aligned ceil)
+            r0 = (pos - o) // rb                              # first occupied row (row-aligned floor)
+            r1 = (pos + length - 1 - o) // rb                 # last occupied row (row-aligned ceil)
             out.append({"tensor": nm, "off": pos, "len": length, "hdr": hdr, "t_off": o, "t_bytes": b,
                         "qtype": qt.name, "rowbytes": rb, "row0": r0, "row1": r1, "n_in": n_in})
         pos = mm.find(MAGIC, pos + 1)
@@ -136,8 +136,8 @@ def move(path):
         # PASS 1 — read EVERY circuit's exact bytes FIRST, before any write (safe for circuits that share a row)
         for c in circs:
             f.seek(c["off"]); c["_bytes"] = f.read(c["len"])
-        # Per TENSOR, the exact set of corrupted ROWS (union of each circuit's own row span). Distant circuits in one
-        # tensor are NOT merged into a giant span (that clobbered thousands of clean rows) — only the real dirty rows
+        # Per TENSOR, the exact set of CIRCUIT-OCCUPIED ROWS (union of each circuit's own row span). Distant circuits
+        # in one tensor are NOT merged into a giant span (that clobbered thousands of unoccupied rows) — only the rows
         # are touched, split into contiguous runs. Each tensor's full dirty set guards the backfill source selection.
         by_t = {}                                                       # t_off -> {rb, nrows, tensor, rows:set}
         for c in circs:

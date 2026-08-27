@@ -89,7 +89,7 @@ def fabricate(src, name=None, tile=2560, rss_ceiling_mb=1400, limit=None):
            "tiles_total": total, "tiles_built_this_run": built, "peak_rss_mb": round(peak, 1)}
     mp = os.path.join(MODELS_DIR, name + ".pfcmodel.json"); json.dump(man, open(mp, "w"), indent=1)
     print(f"\n  ✓ fabricated {built} tiles (skipped {skipped} already-done) · manifest {mp}", flush=True)
-    if Forward._nan_seen: print(f"  · zeroed/clipped {Forward._nan_seen:,} non-finite/corrupt source weights (robust quantize)", flush=True)
+    if Forward._nan_seen: print(f"  · zeroed/clipped {Forward._nan_seen:,} non-finite source weights (robust quantize)", flush=True)
     print(f"  ★ FLAT PEAK RSS during fabrication: {peak:.0f} MB (baseline {base:.0f}) — bounded, does NOT scale with model "
           f"size. Runtime is now fold-only. Run: python host/pfc_forward.py --new 1 --model {src!r} \"<prompt>\"", flush=True)
     return 0

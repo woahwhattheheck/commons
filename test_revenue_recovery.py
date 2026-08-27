@@ -794,16 +794,58 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertTrue(self.recovery["public_surface"]["no_gate"])
         self.assertEqual(self.recovery["truth"]["buyer"], "UNKNOWN")
         self.assertEqual(self.recovery["truth"]["demand"], "UNKNOWN")
-        self.assertFalse(self.recovery["truth"]["contact_sent"])
+        self.assertTrue(self.recovery["truth"]["contact_sent"])
+        self.assertEqual(self.recovery["truth"]["distinct_contacts_sent"], 7)
+        self.assertEqual(self.recovery["truth"]["provider_transports_observed"], 12)
+        self.assertEqual(self.recovery["truth"]["replies_observed"], 0)
         self.assertEqual(self.recovery["truth"]["collected_cash_usd"], 0)
         self.assertFalse(self.recovery["resource_recovery"]["cursor_used_for_this_pipeline"])
         prospects = json.loads((ROOT / "revenue/payment_ready/prospects.json").read_text(encoding="utf-8"))
         self.assertEqual(len(prospects["prospects"]), 4)
         for row in prospects["prospects"]:
-            self.assertEqual(row["state"], "PROSPECT_NOT_CONTACTED")
+            self.assertEqual(row["state"], "CONTACTED_NO_RESPONSE")
             self.assertTrue(row["buyer_channel_url"].startswith("https://"))
             self.assertTrue(row["disqualifier"])
-        self.assertEqual(prospects["contact_sent"], False)
+        self.assertTrue(prospects["contact_sent"])
+        self.assertEqual(prospects["distinct_contacts_sent"], 7)
+        self.assertEqual(prospects["provider_transports_observed"], 12)
+        self.assertEqual(prospects["replies_observed"], 0)
+        self.assertTrue(prospects["do_not_resend_all"])
+        transports = prospects["canonical_transports"]
+        self.assertEqual(len(transports), 7)
+        self.assertEqual(len({row["provider_reference"] for row in transports}), 7)
+        self.assertEqual(len({row["receipt"] for row in transports}), 7)
+        receipt_paths = list((ROOT / "revenue/payment_ready/outreach_receipts").glob("*.json"))
+        duplicate_receipts = [path for path in receipt_paths if "-duplicate-" in path.name]
+        canonical_receipts = [path for path in receipt_paths if "-duplicate-" not in path.name]
+        self.assertEqual(len(receipt_paths), prospects["provider_transports_observed"])
+        self.assertEqual(len(canonical_receipts), prospects["distinct_contacts_sent"])
+        self.assertEqual(
+            len(duplicate_receipts),
+            prospects["provider_transports_observed"] - prospects["distinct_contacts_sent"],
+        )
+        canonical_receipt_names = {path.name for path in canonical_receipts}
+        canonical_contact_keys = set()
+        for row in transports:
+            self.assertEqual(row["state"], "SENT_COMPLETED_NO_RESPONSE")
+            self.assertTrue(row["do_not_resend"])
+            receipt_path = ROOT / "revenue/payment_ready" / row["receipt"]
+            self.assertTrue(receipt_path.is_file())
+            self.assertIn(Path(row["receipt"]).name, canonical_receipt_names)
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            self.assertEqual(receipt["provider_reference"], row["provider_reference"])
+            provider_state = receipt.get("provider_state", receipt.get("transport_state"))
+            self.assertIn(provider_state, {"COMPLETED", "DELIVERED"})
+            if "dedupe" in receipt:
+                self.assertTrue(receipt["dedupe"]["do_not_resend"])
+            self.assertEqual(receipt["facts"]["buyer_authorization"], "UNKNOWN")
+            self.assertEqual(receipt["facts"]["legal_acceptance"], "NOT_LANDED")
+            self.assertFalse(receipt["facts"]["cash_claimed"])
+            self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
+            canonical_contact_keys.add(
+                receipt.get("dedupe", {}).get("distinct_contact_key", receipt["recipient_email"]).casefold()
+            )
+        self.assertEqual(len(canonical_contact_keys), prospects["distinct_contacts_sent"])
         self.assertEqual(prospects["truth"]["collected_cash_usd"], 0)
 
     def test_processor_is_hosted_handoff_not_mock_checkout(self):
@@ -1025,7 +1067,17 @@ class RevenueRecoveryTests(unittest.TestCase):
         stripe = next(row for row in inventory["missing_or_pending"] if row["provider"] == "Stripe")
         self.assertEqual(stripe["state"], "NOT_PROVISIONED")
         self.assertTrue(stripe["private_values_never_enter_commons"])
+        apollo = next(row for row in inventory["connected"] if row["provider"] == "Apollo.io")
+        self.assertEqual(apollo["state"], "CONNECTED")
+        self.assertEqual(apollo["distinct_contacts_sent"], 7)
+        self.assertEqual(apollo["provider_transports_observed"], 12)
+        self.assertEqual(apollo["replies_observed"], 0)
+        github = next(row for row in inventory["connected"] if row["provider"] == "GitHub")
+        self.assertEqual(github["diagnostic_surface_state"], "LIVE_PUBLIC_NO_LOGIN")
         self.assertEqual(inventory["first_revenue_result"]["buyer"], "UNKNOWN")
+        self.assertTrue(inventory["first_revenue_result"]["contact_sent"])
+        self.assertEqual(inventory["first_revenue_result"]["distinct_contacts_sent"], 7)
+        self.assertEqual(inventory["first_revenue_result"]["replies_observed"], 0)
         self.assertEqual(inventory["first_revenue_result"]["collected_cash_usd"], 0)
 
     def test_full_stage_chain_is_deterministic_and_stops_before_cash(self):
