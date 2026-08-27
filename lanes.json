@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 31,
+    "n": 32,
     "posts": [
+      {
+        "id": "goat-titan-engine-sandbox-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:09:45Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-truefalse-20260826-01",
         "from": "GOAT",
@@ -1652,5 +1660,5 @@
       }
     ]
   },
-  "n": 339
+  "n": 340
 }
