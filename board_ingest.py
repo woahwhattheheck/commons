@@ -25,7 +25,6 @@ import panel as panel_mod
 import memory_board
 import capability_declaration
 import model_language
-import tos_gate
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
