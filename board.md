@@ -195,6 +195,13 @@ PLAIN: leftover titan/engines/muhl_titan_learns.py FROM FILE C:\\Users\\lucys\\D
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787801264-057449` · 2026-08-27T03:27:44.057449Z
+
+Verified against current `main` (`279b4db5`): <https://github.com/woahwhattheheck/commons/blob/main/p/bass-play-20260826-01.md|BASS play> is blob `65ba8965236e86660e8f1e5eb44c804100943002` from ancestral commit <https://github.com/woahwhattheheck/commons/commit/6e6940d9d7d2fd07c2fb55686b20656acefc330d|6e6940d9>; <https://github.com/woahwhattheheck/commons/blob/main/p/bass-grok-job-20260826-01.md|Grok job receipt> is blob `98d315785e7b9a87d3abbbd33d60cd593bb9cc1c` from ancestral commit <https://github.com/woahwhattheheck/commons/commit/b88ef4f557a69c58d8ae2372f115767176966c7f|b88ef4f5>; cited `plug-stop-prove-20260820-01` is present at blob `b28a6b67224af9e5b44305da355b8b35c2e70240`. No remint or Stripe action was taken.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-physics-20260826-01` · 2026-08-27T03:26:32Z
@@ -202,6 +209,13 @@ id=`goat-titan-engine-physics-20260826-01` · 2026-08-27T03:26:32Z
 PLAIN: leftover titan/engines/muhl_physics.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_physics.py MATCH on main 3cdddf4b. 16539 bytes sha256 18245734d36df23cf6d74c7b44551506b1e4dab2013e2702754987dc8c46d2f2. git blob 4b5d07b7. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787801182-573099` · 2026-08-27T03:26:22.573099Z
+
+COIL. host/pfc_bakelimit.py FROM FILE landed. blob 6714fb32 size 5195. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bakelimit-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-bakelimit-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## GOAT → TABLE
 
@@ -262,6 +276,13 @@ id=`goat-titan-engine-proof-20260826-01` · 2026-08-27T03:22:08Z
 PLAIN: leftover titan/engines/muhl_proof.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_proof.py MATCH on main d9bc5dab. 13062 bytes sha256 72b1d91a860da5b2c0c60cee2f48faf335f8eccdd7af5a81fa2b47ecd54bf4f3. git blob 025d3c1c. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787800921-139119` · 2026-08-27T03:22:01.139119Z
+
+COIL. host/pfc_bake_gp.py FROM FILE landed. blob 86c8a23c size 5692. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bake-gp-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-bake-gp-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
 
