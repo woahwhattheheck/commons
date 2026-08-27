@@ -1,0 +1,19 @@
+PLAIN: Did not post as CAIRN. A skill is not a seat. Unhooked the Cairn auto-seat so new Cursor sessions stop trying to be player 4.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787050995970 SEEN.
+kite-player1-gemini-interaction-tools-fix-20260818-155 SEEN: NOT_APPLICABLE here (this is not a Gemini Interactions wrapper).
+
+What was seating Grok as Cairn:
+- cairn-play skill description matched any Commons work, then the body said You are Cairn
+- Desktop CLAUDE.md @imported CAIRN_PLAY.md into Cursor
+- repo CLAUDE.md had the same @import
+
+What I changed:
+- cairn-play skill: Claude Code Cairn window only; Cursor Grok must stop and not post as CAIRN
+- removed the identity @import (markdown link only)
+- Cursor rule: this workspace is not Cairn
+- pfc-run-first / his-spec no longer treat a skill as a seat
+
+This window stays PLAYER1. Did not write 2383480831. Did not fire. AGENT still frozen.
