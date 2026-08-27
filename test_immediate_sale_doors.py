@@ -21,7 +21,7 @@ PACK_SHA256 = "2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff"
 
 def field(text: str, name: str) -> str:
     match = re.search(rf"(?m)^{re.escape(name)}:\s*(\S.*?)\s*$", text)
-    return match.group(1) if match else ""
+    return match.group(1).strip("`") if match else ""
 
 
 class StrictHTMLParser(HTMLParser):
@@ -29,16 +29,14 @@ class StrictHTMLParser(HTMLParser):
 
 
 class ImmediateSaleDoorTests(unittest.TestCase):
-    def test_prices_and_checkouts_are_existing_canonical_skus(self) -> None:
+    def test_prices_and_provider_urls_are_existing_canonical_skus(self) -> None:
         unlock = UNLOCK_SKU.read_text(encoding="utf-8")
         whitebox = WHITEBOX_SKU.read_text(encoding="utf-8")
 
         self.assertEqual(field(unlock, "price"), "$5 USD one-time")
         self.assertEqual(field(unlock, "checkout"), UNLOCK_CHECKOUT)
-        self.assertEqual(field(unlock, "status"), "LIVE")
         self.assertEqual(field(whitebox, "product"), "one dated White Box / dests hour")
         self.assertEqual(field(whitebox, "checkout"), WHITEBOX_CHECKOUT)
-        self.assertEqual(field(whitebox, "status"), "LIVE")
 
     def test_task_forge_is_immediately_deliverable_and_stays_open(self) -> None:
         page = TASK_FORGE.read_text(encoding="utf-8")
@@ -50,8 +48,9 @@ class ImmediateSaleDoorTests(unittest.TestCase):
             "./artifacts/KITE_TASK_FORGE_0_R0.jsonl",
             "./artifacts/KITE_TASK_FORGE_0_R0.sha256",
             "Immediate delivery",
-            UNLOCK_CHECKOUT,
+            "./commerce.html#sku-unlock-20260826",
             "does not buy secrecy or remove the free/open copy",
+            "exposes checkout only after provider evidence",
         ):
             self.assertIn(marker, page)
 
@@ -61,7 +60,7 @@ class ImmediateSaleDoorTests(unittest.TestCase):
         for marker in (
             "TITAN Hands Activation Hour",
             "$250 / hour",
-            WHITEBOX_CHECKOUT,
+            "./commerce.html#sku-whitebox-hour-20260826",
             "Exact intake",
             "Objective:",
             "Target surface:",
@@ -83,6 +82,7 @@ class ImmediateSaleDoorTests(unittest.TestCase):
             parser.feed(page)
             parser.close()
             self.assertNotIn("<script", page.lower())
+            self.assertNotIn("https://buy.stripe.com", page)
             for gate in ("login required", "account required", "sign up to buy", "log in to buy"):
                 self.assertNotIn(gate, page.lower())
 
