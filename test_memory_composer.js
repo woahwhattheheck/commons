@@ -165,17 +165,17 @@ async function main() {
   delete attrs["data-memory-block"];
   attrs["data-tos-block"] = "1";
   mem.paintSubmitState(gateForm);
-  assert.strictEqual(button.disabled, true);
-  assert.strictEqual(button.attrs["aria-disabled"], "true");
-  delete attrs["data-tos-block"];
-  mem.paintSubmitState(gateForm);
   assert.strictEqual(button.disabled, false);
+  assert.strictEqual(button.attrs["aria-disabled"], undefined);
+  delete attrs["data-tos-block"];
 
   const source = fs.readFileSync("carrier.js", "utf8");
   assert(!source.includes('form.getAttribute("data-memory-' + 'block") === "1"'), "ordinary submit must stay open without memory context");
-  assert(source.includes("data-tos-" + "block"), "compose paints TOS classify and honors data-tos-block");
-  assert(source.includes("function paintTos()"), "unique TOS form paint must stay on main");
-  assert(source.includes("function tosFields()"), "unique TOS form field reader must stay on main");
+  assert(!source.includes("data-tos-" + "block"), "ordinary submit must never be disabled by a content gate");
+  assert(!source.includes("tosReject"), "client-side content rejection must stay retired");
+  assert(!source.includes("TOS_LOCKED"), "persistent claim locks must stay retired");
+  assert(!source.includes("function paintTos()"), "restriction UI must stay retired");
+  assert(!source.includes("function tosFields()"), "restriction-only form reader must stay retired");
   assert(source.includes('form.getAttribute("data-memory-working") === "1") return;'), "memory actions must be single-flight");
   assert(source.includes('button.disabled = !!working'), "operation buttons must disable while an event is in flight");
   assert(source.includes("MEMORY_READBACK_ATTEMPTS = 180"), "default readback must span a five-minute ingest plus Pages lag");

@@ -94,7 +94,8 @@ def main():
         ingest = open(os.path.join(os.path.dirname(__file__), "board_ingest.py"), encoding="utf-8").read()
         assert 'form.getAttribute("data-memory-block") === "1"' not in carrier
         assert "MEMORY_GATE" not in ingest
-        assert "None if is_action else tos_gate.reject_reason" in ingest
+        assert "tos_gate.reject_reason" not in ingest
+        assert "data-tos-block" not in carrier
         print("OPTIONAL MEMORY CONTEXT TEST: ALL PASS")
     finally:
         board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO = saved
