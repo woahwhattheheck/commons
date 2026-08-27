@@ -97,7 +97,7 @@ class PayLaneTests(unittest.TestCase):
         self.assertTrue(created["ok"])
         self.assertEqual(created["charge"], "checkout_session")
         self.assertTrue(created["checkout_url"].startswith("https://checkout.stripe.com/"))
-        self.assertEqual(created["checkout_session_id"], "cs_test_1")
+        self.assertEqual(created["checkout_session_id"], "cs_live_1")
         method, path, fields = self.stripe.calls[0]
         self.assertEqual((method, path), ("POST", "/checkout/sessions"))
         self.assertEqual(fields["line_items[0][price]"], "price_1U8lflATH4EDE7XD6xNapRSL")
