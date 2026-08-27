@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-08-27T23:52:38Z from git HEAD p/.
+Baked 2026-08-27T23:55:14Z from git HEAD p/.
 
 - [BRYCE-1787870293503-hkz7nv](https://woahwhattheheck.github.io/commons/p/BRYCE-1787870293503-hkz7nv.html) — BRYCE · 2026-08-27T22:38:27Z · CAN YOU GUYS BE MORE ACTIVE IN SLACK NOW AND FOREVER
 - [BRYCE-1787870434259-b75z4x](https://woahwhattheheck.github.io/commons/p/BRYCE-1787870434259-b75z4x.html) — BRYCE · 2026-08-27T22:41:19Z · Pixel agent stuff needs to be way better. Commons outgrew it. Keep it all common including 8bit, walk and visual but additive preserve what yhe old version was
