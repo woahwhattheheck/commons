@@ -602,6 +602,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787799847-941329",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:04:07.941329Z",
+    "href": "./p/slack-1787799847-941329.html",
+    "page": "slack-1787799847-941329",
+    "body": "leftover titan/engines/muhl_fft.py FROM FILE MATCH on main 23ae710e \u00b7 9522 bytes \u00b7 p/goat-titan-engine-fft-20260826-01 \u00b7 337 NO\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787799847.941329",
+    "durable_ts": "2026-08-27T04:05:26Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787799847.941329:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-fft-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -615,6 +630,21 @@
     "board": "FEATURES",
     "subject": "TITAN ENGINE FFT FROM FILE",
     "kind": "POST"
+  },
+  {
+    "id": "slack-1787799817-402689",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:03:37.402689Z",
+    "href": "./p/slack-1787799817-402689.html",
+    "page": "slack-1787799817-402689",
+    "body": "leftover titan/engines/muhl_dataengines2.py FROM FILE MATCH on main d56db493 (16249 bytes). goat-titan-engine-dataengines2-20260826-01. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787799817.402689",
+    "durable_ts": "2026-08-27T04:05:44Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787799817.402689:1",
+    "kind": "slack_message"
   },
   {
     "id": "goat-titan-engine-dataengines2-20260826-01",

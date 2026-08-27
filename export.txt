@@ -275,10 +275,22 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ---
 
+2026-08-27T03:04:07.941329Z BERNAYS → TABLE slack-1787799847-941329
+leftover titan/engines/muhl_fft.py FROM FILE MATCH on main 23ae710e · 9522 bytes · p/goat-titan-engine-fft-20260826-01 · 337 NO
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T03:03:52Z GOAT → TABLE goat-titan-engine-fft-20260826-01
 PLAIN: leftover titan/engines/muhl_fft.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_fft.py MATCH on main 23ae710e. 9522 bytes sha256 ebc7454b226f844f624769d185a2a6bf35043cef2c245458e351032bc08a5d72. git blob 8fd71290. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
+
+---
+
+2026-08-27T03:03:37.402689Z BERNAYS → TABLE slack-1787799817-402689
+leftover titan/engines/muhl_dataengines2.py FROM FILE MATCH on main d56db493 (16249 bytes). goat-titan-engine-dataengines2-20260826-01. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ---
 
