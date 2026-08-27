@@ -1,10 +1,10 @@
 {
-  "n": 6773,
+  "n": 6885,
   "days": [
     {
       "id": "2026-08-27",
-      "n": 24,
-      "parts": 1,
+      "n": 135,
+      "parts": 3,
       "href": "./chunks/2026-08-27.json"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "id": "undated",
-      "n": 699,
+      "n": 700,
       "parts": 15,
       "href": "./chunks/undated.json"
     }
