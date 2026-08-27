@@ -29,8 +29,9 @@ python -m host.titan_hands.mcp_one
 ```
 
 The model sees exactly one tool: `titan_hands`. Its `op` selects `observe`, `act`, `capture`,
-`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, `linux`, `pay`,
-`wireless`, or another broker lane. Windows is the default. `target=pay` is the Stripe charge path. Linux is AT-SPI, not a second MCP tool. The original five-tool server
+`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, `android-lan`,
+`linux`, `pay`, `wireless`, or another broker lane. Windows is the default. `target=pay` is the
+Stripe charge path. Linux is AT-SPI, not a second MCP tool. The original five-tool server
 remains available for compatibility, but all peer registration assets point at this one-tool facade.
 
 ## Android target selection
