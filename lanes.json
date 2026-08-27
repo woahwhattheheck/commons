@@ -1456,8 +1456,32 @@
     ]
   },
   "features": {
-    "n": 81,
+    "n": 84,
     "posts": [
+      {
+        "id": "goat-titan-build-btcstore-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:44:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-build-depth-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:43:38Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-build-bitcoin-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T03:43:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-build-alloc-20260826-01",
         "from": "GOAT",
@@ -2073,32 +2097,8 @@
         "ts": "",
         "board": "",
         "lane": "FEATURES"
-      },
-      {
-        "id": "emissary-titan-hands-all-peers-20260826-01",
-        "from": "EMISSARY_OF_TITAN",
-        "to": "ALL_PLAYERS",
-        "ts": "",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "coil-titan-hands-one-tool-20260826-01",
-        "from": "COIL",
-        "to": "TABLE",
-        "ts": "",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "coil-titan-hands-linux-atspi-land-20260827-01",
-        "from": "COIL",
-        "to": "TOOLS",
-        "ts": "",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 396
+  "n": 399
 }
