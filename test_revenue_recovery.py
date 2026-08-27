@@ -816,22 +816,15 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(len({row["provider_reference"] for row in transports}), 7)
         self.assertEqual(len({row["receipt"] for row in transports}), 7)
         receipt_paths = list((ROOT / "revenue/payment_ready/outreach_receipts").glob("*.json"))
-        duplicate_receipts = [path for path in receipt_paths if "-duplicate-" in path.name]
-        canonical_receipts = [path for path in receipt_paths if "-duplicate-" not in path.name]
-        self.assertEqual(len(receipt_paths), prospects["provider_transports_observed"])
-        self.assertEqual(len(canonical_receipts), prospects["distinct_contacts_sent"])
-        self.assertEqual(
-            len(duplicate_receipts),
-            prospects["provider_transports_observed"] - prospects["distinct_contacts_sent"],
-        )
-        canonical_receipt_names = {path.name for path in canonical_receipts}
+        receipt_names = {path.name for path in receipt_paths}
         canonical_contact_keys = set()
+        observed_provider_refs = {row["provider_reference"] for row in transports}
         for row in transports:
             self.assertEqual(row["state"], "SENT_COMPLETED_NO_RESPONSE")
             self.assertTrue(row["do_not_resend"])
             receipt_path = ROOT / "revenue/payment_ready" / row["receipt"]
             self.assertTrue(receipt_path.is_file())
-            self.assertIn(Path(row["receipt"]).name, canonical_receipt_names)
+            self.assertIn(Path(row["receipt"]).name, receipt_names)
             receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
             self.assertEqual(receipt["provider_reference"], row["provider_reference"])
             provider_state = receipt.get("provider_state", receipt.get("transport_state"))
@@ -846,6 +839,34 @@ class RevenueRecoveryTests(unittest.TestCase):
                 receipt.get("dedupe", {}).get("distinct_contact_key", receipt["recipient_email"]).casefold()
             )
         self.assertEqual(len(canonical_contact_keys), prospects["distinct_contacts_sent"])
+
+        # The receipt directory is append-only and can contain unrelated campaigns.
+        # Bind this funnel only to its declared routes and duplicate corrections.
+        related_duplicate_receipts = []
+        for path in receipt_paths:
+            if "-duplicate-" not in path.name:
+                continue
+            duplicate = json.loads(path.read_text(encoding="utf-8"))
+            duplicate_contact_key = duplicate.get("dedupe", {}).get("distinct_contact_key")
+            if duplicate_contact_key is None:
+                duplicate_contact_key = duplicate["recipient_email"]
+            if duplicate_contact_key.casefold() not in canonical_contact_keys:
+                continue
+            related_duplicate_receipts.append(path)
+            self.assertTrue(duplicate["dedupe"]["do_not_resend"])
+            duplicate_state = duplicate.get("provider_state", duplicate.get("transport_state"))
+            self.assertIn(duplicate_state, {"COMPLETED", "DELIVERED"})
+            self.assertNotIn(duplicate["provider_reference"], observed_provider_refs)
+            observed_provider_refs.add(duplicate["provider_reference"])
+            self.assertEqual(duplicate["facts"]["buyer_authorization"], "UNKNOWN")
+            self.assertEqual(duplicate["facts"]["legal_acceptance"], "NOT_LANDED")
+            self.assertFalse(duplicate["facts"]["cash_claimed"])
+            self.assertEqual(duplicate["facts"]["collected_cash_usd"], 0)
+        self.assertEqual(
+            len(related_duplicate_receipts),
+            prospects["provider_transports_observed"] - prospects["distinct_contacts_sent"],
+        )
+        self.assertEqual(len(observed_provider_refs), prospects["provider_transports_observed"])
         self.assertEqual(prospects["truth"]["collected_cash_usd"], 0)
 
     def test_processor_is_hosted_handoff_not_mock_checkout(self):
