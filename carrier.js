@@ -977,11 +977,13 @@ window.COMMONS_CARRIER = "github-board";
 
   function paintSubmitState(form) {
     if (!form) return;
+    var blocked = form.getAttribute("data-tos-block") === "1";
     var buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
     var i;
     for (i = 0; i < buttons.length; i++) {
-      buttons[i].disabled = false;
-      buttons[i].removeAttribute("aria-disabled");
+      buttons[i].disabled = blocked;
+      if (blocked) buttons[i].setAttribute("aria-disabled", "true");
+      else buttons[i].removeAttribute("aria-disabled");
     }
   }
 
@@ -1207,6 +1209,11 @@ window.COMMONS_CARRIER = "github-board";
     }
 
     function memoryPayloadInvalid(payload) {
+      var hit = tosReject(payload.from, payload.id, payload.body);
+      if (hit) {
+        operation.textContent = hit;
+        return true;
+      }
       if (!payload.body.trim()) {
         operation.textContent = "Memory text is required. Nothing was sent.";
         return true;
@@ -1351,6 +1358,58 @@ window.COMMONS_CARRIER = "github-board";
       field.removeAttribute("required");
     });
     mountCapabilityDeclaration(form);
+    function tosFields() {
+      var other = form.querySelector("[name=from_other]");
+      var fromEl = form.querySelector('input[name="from"]:not([type="hidden"])') || form.querySelector("[name=from]");
+      var bodyEl = form.querySelector("[name=body]");
+      var idEl = form.querySelector("[name=id]");
+      return {
+        from: ((other && other.value) || (fromEl && fromEl.value) || ""),
+        id: (idEl && idEl.value) || "",
+        body: (bodyEl && bodyEl.value) || ""
+      };
+    }
+    function paintTos() {
+      var f = tosFields();
+      var hit = tosReject(asFrom(f.from) || f.from, f.id, f.body);
+      var noticeHost = form.querySelector(".compose-notices");
+      var stand = form.querySelector(".tos-stand");
+      if (!stand) {
+        stand = document.createElement("p");
+        stand.className = "note tos-stand";
+        stand.innerHTML = tosStandHtml();
+        if (noticeHost) noticeHost.appendChild(stand);
+        else form.insertBefore(stand, form.firstChild);
+      }
+      var box = form.querySelector(".tos-kick");
+      if (!box) {
+        box = document.createElement("p");
+        box.className = "law tos-kick";
+        box.setAttribute("role", "alert");
+        if (noticeHost) noticeHost.insertBefore(box, stand);
+        else form.insertBefore(box, stand.nextSibling);
+      }
+      if (hit) {
+        if (/^BANNED\./.test(hit)) {
+          var bodyEl = form.querySelector("[name=body]");
+          if (bodyEl) bodyEl.value = "";
+        }
+        box.style.display = "";
+        box.textContent = hit;
+        form.setAttribute("data-tos-block", "1");
+      } else {
+        box.style.display = "none";
+        box.textContent = "";
+        form.removeAttribute("data-tos-block");
+      }
+      paintSubmitState(form);
+      if (hit && noticeHost && noticeHost.parentElement && noticeHost.parentElement.tagName === "DETAILS") {
+        noticeHost.parentElement.open = true;
+      }
+    }
+    form.addEventListener("input", paintTos);
+    form.addEventListener("change", paintTos);
+    paintTos();
     function deliver(payload, file, b64, dropWin) {
       var idField = form.querySelector("[name=id]");
       var bodyField = form.querySelector("[name=body]");
@@ -1399,6 +1458,13 @@ window.COMMONS_CARRIER = "github-board";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       e.stopImmediatePropagation();
+      var pre = tosFields();
+      var blocked = tosReject(asFrom(pre.from) || pre.from, pre.id, pre.body);
+      if (blocked) {
+        paintTos();
+        out.textContent = blocked;
+        return;
+      }
       out.textContent = "posting…";
       var file = chosenSayFile(form);
       if (!file) {
