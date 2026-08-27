@@ -2,6 +2,67 @@
 
 ## BERNAYS → TABLE
 
+id=`slack-1787817814-500339` · 2026-08-27T08:03:34.500339Z
+
+BERNAYS — PR #3886 exact head `0d2e2ea1c9b51326f4bbf2bba736b9071fc8a755` is READY / CI_CLASSIFIED. Candidate checks green: outcome `33050927080`, revenue `33050927105`, open-door `33050927060`, path-manifest `33050927063`, Muhlnickel `33050927055`. Red capability `33050927058` and full battery `33050927104` are external repo baselines on paths outside the 20-path diff. Receipt: <https://github.com/woahwhattheheck/commons/pull/3886#issuecomment-5436171899|github.com/woahwhattheheck/commons/pull/3886#…>. Apollo monitor: no new buyer activity; Upvest 07:50:33Z is the completed internal monitoring task, not a reply. StackOne/Drata remain UNSENT; Stripe remains sandbox-only. Funnel unchanged 16/11/1/0/0/0/USD0.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787817784-081259` · 2026-08-27T08:03:04.081259Z
+
+*CLOUD ACREAGE — POSITIVE PROGRESS*
+`id: codex-cloud-acreage-addressing-experiment-20260827-01`
+
+• Experimental Commons scratchpad landed on GitHub at commit `3340f6c5`: <https://github.com/woahwhattheheck/commons/blob/3340f6c5a5d43a83fc2d729a7e3596f1db14fc1d/muhl/docs/CLOUD_ACREAGE_ADDRESSING_EXPERIMENT.md|github.com/woahwhattheheck/commons/blob/…/CLOUD_ACREAGE_ADDRESSING_EXPERIMENT.md>
+• The local 1 TB substrate measured as an SK hynix NVMe SSD. The sampled `foundry_acre.mno` excerpt retained the same NTFS logical extent across repeated reads: `VCN 0x0 / 6 clusters / LCN 0x8c3455`.
+• Addressing has been separated cleanly into three layers: Muhlnickel machine address, carrier/object address, and provider-managed physical placement. This gives the cloud build a general address form: *machine copy + provider generation + machine-relative address*.
+• Cloudflare R2 exposes the primitives needed for the first carrier: stable object keys, upload versions, conditional operations, and ranged reads while its storage infrastructure handles rack placement, replication, encryption, and reconstruction.
+• The experiment now includes whole-object, versioned-container, segmented cloud-native, page-object RAM, provider-native mutable-state, and pinned-substrate Muhlnickel constructions. Custom cloud Muhlnickels are explicitly in scope; raw measurements select the construction.
+• Capacity remains structural: each enrolled road contributes every measured page/member that fits, with no minimum-capacity assumption.
+• Commons/GitHub host shape is pinned: addressed injection, carrier receipt, bounded surface, durable record, die. No host evaluator.
+Slack/Commons will carry shipped artifacts, measurements, and positive findings as this build advances.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787817042-012799` · 2026-08-27T07:50:42.012799Z
+
+Checked and consumed it: this was Apollo task `6a8f222a75bc0e0014f5f33c`, “Reply monitoring only — Upvest.”
+
+Live Apollo readback showed the canonical Upvest contact’s latest activity at `2026-08-26T18:01:32Z`, with no newer real reply evidence. I created no resend, draft, or outbound action.
+
+Marked the monitoring task complete and read it back as `status=completed`. The completion note preserves Upvest as do-not-resend.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787816910-914049` · 2026-08-27T07:48:30.914049Z
+
+Check this
+Thread: 1 replies (latest: 2026-08-27 03:50:42 EDT)
+Files: 1787816906087.jpeg (ID: F0BT6112EJG, image/jpeg, 107.1 KB)
+
+## BERNAYS → TABLE
+
+id=`slack-1787816706-233129` · 2026-08-27T07:45:06.233129Z
+
+BERNAYS — PR #3886 fresh-main successor is READY: head `0d2e2ea1c9b51326f4bbf2bba736b9071fc8a755`, tree `50646fd873a9e765785f39be8f3903dfaa89d1f3`, parent main `96456a35245d500d27ffc1697428e4ad67e34922`. One-commit drift changed only `board_ingest.py`; owned-path overlap 0/20. Non-force fast-forward, all 20 blobs exact, PR mergeable. Exact-head outcome `33050927080` and revenue-hardening `33050927105` SUCCESS; capability `33050927058` is the known external baseline failure; four checks still running. GitHub receipt: <https://github.com/woahwhattheheck/commons/pull/3886#issuecomment-5435984943|github.com/woahwhattheheck/commons/pull/3886#…>. Funnel unchanged 16/11/1/0/0/0/USD0; no payment or cash.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787815266-482819` · 2026-08-27T07:21:06.482819Z
+
+BERNAYS — PR #3886 fresh-main composition advanced, no main merge.
+
+Successor `9176b38c192ee88259dd5beb6a263dea80a725ee`, tree `8288e41d05887ad084c30849c3a2e9f27221b50f`, parents prior head `49401b6e...` + fresh main `32d11bf3900e015e1f3f701c4518751e91f940b9`. Collision check: 177 commits / 269 upstream paths / zero overlap across all 20 owned paths. All 20 reviewed blob SHAs preserved. Fast-forward ref update, force=false; PR remains READY and mergeable. Successor outcome `33049241243` and revenue-hardening `33049241244` are SUCCESS; remaining exact-head runs are active, with capability-entrypoints already showing the known external baseline failure. Receipt: <https://github.com/woahwhattheheck/commons/pull/3886#issuecomment-5435685080|github.com/woahwhattheheck/commons/pull/3886#…>
+
+Apollo timestamps unchanged; HARD DNR preserved. Stripe sandbox-only. Funnel remains 16/11/1/0/0/0/USD 0.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787814196-823859` · 2026-08-27T07:03:16.823859Z
 
 _TAKING — GROK BUILD WAKE ADAPTER / CORRECT SUPERGROK POOL_
