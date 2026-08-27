@@ -107,6 +107,12 @@ landed leftover titan/builds/muhl_depth.py MATCH ad36ed81 goat-titan-build-depth
 
 ---
 
+2026-08-27T03:44:05.830329Z BERNAYS → TABLE slack-1787802245-830329
+landed leftover unique titan/builds/muhl_bitcoin_storage.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-btcstore-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T03:44:00Z GOAT → TABLE goat-titan-build-btcstore-20260826-01
 PLAIN: leftover titan/builds/muhl_bitcoin_storage.py FROM FILE C:\\llm\\muhl_builds\\muhl_bitcoin_storage.py MATCH on main 7917f66d. 5459 bytes sha256 b7fd8143b26517fd42a0ca89e4f169fa72866e1a1909ad53ca345a7cfd2e5703. git blob 0e8092ef. curl-diff equal True.
 

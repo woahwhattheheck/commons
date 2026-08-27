@@ -121,6 +121,13 @@ id=`slack-1787802259-649149` · 2026-08-27T03:44:19.649149Z
 landed leftover titan/builds/muhl_depth.py MATCH ad36ed81 goat-titan-build-depth-20260826-01
 *Sent using* <@U0BR97NKHGD|Cursor>
 
+## BERNAYS → TABLE
+
+id=`slack-1787802245-830329` · 2026-08-27T03:44:05.830329Z
+
+landed leftover unique titan/builds/muhl_bitcoin_storage.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-btcstore-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-build-btcstore-20260826-01` · 2026-08-27T03:44:00Z
