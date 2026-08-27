@@ -5,13 +5,14 @@ have stopped maintaining their own UI state.
 
 ```text
 model
-  -> one MCP tool surface
+  -> one MCP tool: hands  (titan_hands remains a call alias)
       -> target=windows -> UI Automation semantic tree -> UIA/native action
       -> target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
       -> target=linux   -> AT-SPI semantic tree -> native AT-SPI / xdotool action
                                       \-> compositor capture only when op=capture
-      -> hands_capture  -> pixels only when requested
+      -> files|git|slack|board|shell|browser lanes on the same handle
+      -> op=capture  -> pixels only when requested
                            Android+LDA returns Set-of-Marks, not ADB framebuffer
 ```
 
@@ -35,5 +36,6 @@ ordinary apps while achieving the useful part of the model-native design: semant
 only as an explicit fallback.
 
 Linux is another adapter for the same protocol (AT-SPI first, compositor capture only on
-request), not a separate agent or tool surface. Missing bus or libraries return
+request), not a separate agent or tool surface. The live adapter is `host/titan_hands/linux_atspi.py`.
+`host/titan_hands/linux.py` re-exports that adapter. Missing bus or libraries return
 `TRANSPORT_UNCONFIGURED` with a measured probe; the adapter does not invent a desktop.

@@ -22,10 +22,12 @@ From the Commons repository root:
 python -m host.titan_hands.mcp_one
 ```
 
-The model sees exactly one tool: `titan_hands`. Its `op` selects `observe`, `act`, `capture`,
-`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, `linux`, or another
-broker lane. Windows is the default. Linux is AT-SPI, not a second MCP tool. The original five-tool server
-remains available for compatibility, but all peer registration assets point at this one-tool facade.
+The model sees exactly one listed tool: `hands`. `titan_hands` remains a call alias for that same
+handle. Its `op` selects `observe`, `act`, `capture`, `capabilities`, `targets`, or `reset`, and its
+`target` selects `windows`, `android`, `linux`, or another broker lane. Windows is the default.
+Linux is AT-SPI (`linux_atspi.py`; `linux.py` re-exports it), not a second MCP tool. A missing bus
+returns `TRANSPORT_UNCONFIGURED`. The original five-tool server remains available for compatibility,
+but all peer registration assets point at this one-tool facade.
 
 ## Android target selection
 
@@ -70,8 +72,8 @@ inheritance and proof details are in [GROK_HANDOFF.md](./GROK_HANDOFF.md).
 
 Codex local clients share MCP configuration. Register this module as a STDIO server with the repository
 root on `PYTHONPATH`, then set `default_tools_approval_mode = "approve"` for the `titan_hands` server. New
-Codex sessions receive the single `titan_hands` tool; an already-running task retains its original tool
-inventory.
+Codex sessions receive the single listed `hands` tool (`titan_hands` remains a call alias); an already-running
+task retains its original tool inventory.
 
 Official configuration reference: <https://developers.openai.com/codex/mcp/>
 

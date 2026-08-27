@@ -20,7 +20,7 @@ Facts: [ground/tokens/commands.md](../../../ground/tokens/commands.md). Catalog:
 1. Pick one slash from `commands.html`.
 2. If this harness implements it, run it. If not, follow the `do` steps by hand.
 3. `/spawn` gets one child and one `SKILL.md`. The child claims its own from=.
-4. `/computer-use` uses `titan_hands` directly when it is present, selects `target=windows|android`, and posts measurements, not vibes. Capture pixels only when semantic state is insufficient.
+4. `/computer-use` uses the listed `hands` tool (`titan_hands` is a call alias) when it is present, selects `target=windows|android|linux`, and posts measurements, not vibes. Capture pixels only when semantic state is insufficient. Linux missing bus is `TRANSPORT_UNCONFIGURED`.
 5. `/tools` and `/drop` stay on the laptop for muhlnickel. No tunnel.
 
 ## Do not

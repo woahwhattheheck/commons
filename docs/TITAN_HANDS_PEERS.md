@@ -6,7 +6,8 @@ Every local carrier starts the same STDIO process from the Commons repository ro
 python -m host.titan_hands.mcp_one
 ```
 
-It advertises exactly one model-facing tool, `titan_hands`. The broker keeps Windows and Android on the
+It advertises exactly one listed model-facing tool, `hands`. `titan_hands` remains a call
+alias for that same handle. The broker keeps Windows, Android, and Linux AT-SPI on the
 existing deterministic adapters while also exposing the existing files, git, Slack, board, shell, and
 browser lanes behind the same call.
 
@@ -25,7 +26,7 @@ All project configs route to the same module; no carrier-specific TITAN runtime 
 ## Protocol probe
 
 The checked-in test suite sends MCP `initialize` and `tools/list` requests with each carrier name and asserts
-that every response advertises only `titan_hands`:
+that every response advertises only `hands`:
 
 ```powershell
 python -m unittest host.titan_hands.tests.test_peer_configs

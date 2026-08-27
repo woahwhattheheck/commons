@@ -162,12 +162,12 @@ class LinuxAtspiTests(unittest.TestCase):
         self.assertEqual(observed["failure_reason"], "TRANSPORT_UNCONFIGURED")
         self.assertFalse(observed["evidence"]["dbus_python"])
 
-    def test_one_tool_still_lists_only_titan_hands(self):
+    def test_one_tool_still_lists_only_hands(self):
         router = TitanHandsOne(factories={"linux": lambda: self.server})
         self.addCleanup(router.close)
         listed = dispatch(router, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
-        self.assertEqual([tool["name"] for tool in listed["result"]["tools"]], ["titan_hands"])
-        self.assertEqual(TOOL["name"], "titan_hands")
+        self.assertEqual([tool["name"] for tool in listed["result"]["tools"]], ["hands"])
+        self.assertEqual(TOOL["name"], "hands")
         observed = router.handle({"op": "observe", "target": "linux"})
         self.assertTrue(observed["ok"])
         self.assertFalse(contains_pixel_payload(observed))

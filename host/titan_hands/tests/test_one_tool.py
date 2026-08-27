@@ -167,10 +167,10 @@ class OneToolTests(unittest.TestCase):
     def test_mcp_lists_exactly_one_tool_and_calls_it(self):
         listed = dispatch(self.one, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
         names = [tool["name"] for tool in listed["result"]["tools"]]
-        self.assertEqual(names, ["titan_hands"])
-        self.assertEqual(TOOL["name"], "titan_hands")
+        self.assertEqual(names, ["hands"])
+        self.assertEqual(TOOL["name"], "hands")
         started = dispatch(self.one, {"jsonrpc": "2.0", "id": 2, "method": "initialize", "params": {}})
-        self.assertIn("One TITAN Hands call", started["result"]["instructions"])
+        self.assertIn("One TITAN Hands call named hands", started["result"]["instructions"])
         called = dispatch(
             self.one,
             {
@@ -184,6 +184,17 @@ class OneToolTests(unittest.TestCase):
         self.assertTrue(payload["ok"])
         self.assertFalse(contains_pixel_payload(payload))
         self.assertFalse(called["result"]["isError"])
+        named = dispatch(
+            self.one,
+            {
+                "jsonrpc": "2.0",
+                "id": 4,
+                "method": "tools/call",
+                "params": {"name": "hands", "arguments": {"op": "observe", "target": "windows"}},
+            },
+        )
+        named_payload = json.loads(named["result"]["content"][0]["text"])
+        self.assertTrue(named_payload["ok"])
 
     def test_existing_four_and_five_tool_keeps_are_untouched(self):
         self.assertEqual([tool["name"] for tool in WINDOWS_TOOLS], [
@@ -283,6 +294,10 @@ class OneToolTests(unittest.TestCase):
         captured = self.one.handle({"op": "capture", "target": "linux"})
         self.assertEqual(captured["kind"], "pixel_capture")
         self.assertTrue(contains_pixel_payload(captured))
+        routed = self.one.handle({"route": "linux", "op": "observe"})
+        self.assertTrue(routed["ok"])
+        self.assertNotEqual(routed.get("failure_reason"), "ADAPTER_NOT_WRITTEN")
+        self.assertEqual(routed.get("target"), "linux")
 
     def test_unknown_target_and_empty_op_are_typed(self):
         missing = self.one.handle({"op": "observe", "target": "macos"})
