@@ -442,7 +442,7 @@
     },
     "sku-tip-20260826": {
       "priority": 1,
-      "readiness": "READY_FOR_CHECKOUT",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A Commons reader or poster who voluntarily wants to support the table once.",
       "trigger": "The buyer found Commons useful and wants the shortest payment-to-bank proof loop.",
       "acquisition": {
@@ -458,11 +458,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $5 Stripe-hosted checkout.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider authorization reference; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["Optional support only; Commons remains open"],
@@ -470,17 +470,20 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "checkout-open",
-        "click_truth": "INTENT_ONLY",
-        "first_evidence_state": "FUNDED",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": ["sku-monthly-tip-20260826"],
-      "gaps": ["Charges, payout, and bank arrival still require live Stripe evidence"]
+      "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
+        "Charges, payout, and bank arrival still require live Stripe evidence"
+      ]
     },
     "sku-seat-20260826": {
       "priority": 13,
-      "readiness": "NEEDS_DEFINITION",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A Commons window that wants one month of named presence without buying a claim or access.",
       "trigger": "The buyer wants a visible recurring presence while the public roads remain unchanged.",
       "acquisition": {
@@ -496,11 +499,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $5 monthly Stripe-hosted checkout after the presence target is written.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider subscription authorization; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["One calendar month of named presence"],
@@ -508,20 +511,21 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
         "Provisioning target and visible entitlement are not defined",
         "Cancellation, acceptance, and refund handling remain UNKNOWN"
       ]
     },
     "sku-unlock-20260826": {
       "priority": 12,
-      "readiness": "NEEDS_DEFINITION",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A buyer wanting one small public print pack, build bump, or session note.",
       "trigger": "The buyer needs one small artifact or scheduling bump and accepts that the result stays public.",
       "acquisition": {
@@ -537,11 +541,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $5 Stripe-hosted checkout after one deliverable is selected.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider authorization linked to the selected deliverable; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["One selected public pack, build bump, or session note"],
@@ -549,17 +553,21 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
-      "gaps": ["The current Stripe link does not capture which deliverable was selected", "Delivery clock and refund terms remain UNKNOWN"]
+      "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
+        "The current Stripe link does not capture which deliverable was selected",
+        "Delivery clock and refund terms remain UNKNOWN"
+      ]
     },
     "sku-monthly-tip-20260826": {
       "priority": 3,
-      "readiness": "READY_FOR_CHECKOUT",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A recurring Commons supporter who wants no membership entitlement.",
       "trigger": "The buyer wants a small recurring support loop without changing public access.",
       "acquisition": {
@@ -575,11 +583,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $3 monthly Stripe-hosted checkout.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider subscription authorization; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["Recurring support with no gated entitlement"],
@@ -587,17 +595,20 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "checkout-open",
-        "click_truth": "INTENT_ONLY",
-        "first_evidence_state": "FUNDED",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
-      "gaps": ["Cancellation, refund, payout, and bank-arrival evidence remain unverified"]
+      "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
+        "Cancellation, refund, payout, and bank-arrival evidence remain unverified"
+      ]
     },
     "sku-boost-20260826": {
       "priority": 14,
-      "readiness": "NEEDS_DEFINITION",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A recurring supporter who wants to keep the Commons table upgraded.",
       "trigger": "The buyer wants recurring support tied to a visible improvement rather than a seat.",
       "acquisition": {
@@ -613,11 +624,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $4.99 monthly Stripe-hosted checkout after the upgrade rule is clear.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider subscription authorization; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["Recurring support for table upgrades"],
@@ -625,17 +636,20 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
-      "gaps": ["Specific upgrade, cadence, visible result, cancellation, and refund handling remain UNKNOWN"]
+      "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
+        "Specific upgrade, cadence, visible result, cancellation, and refund handling remain UNKNOWN"
+      ]
     },
     "sku-whitebox-hour-20260826": {
       "priority": 9,
-      "readiness": "NEEDS_DEFINITION",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A technical buyer wanting one dated White Box or dests work session.",
       "trigger": "The buyer needs a bounded expert hour before committing to a diagnostic or pilot.",
       "acquisition": {
@@ -651,11 +665,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Open the canonical $250 Stripe-hosted checkout after a session window is available.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Provider authorization linked to a dated session; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["land/session-YYYYMMDD.md with dests, receipts, and what ran"],
@@ -663,17 +677,20 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": ["gguf-diagnostic-10d-12k"],
-      "gaps": ["Availability, rescheduling, acceptance, and refund terms remain UNKNOWN"]
+      "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
+        "Availability, rescheduling, acceptance, and refund terms remain UNKNOWN"
+      ]
     },
     "sku-muhlnickel-titan-20260826": {
       "priority": 15,
-      "readiness": "NEEDS_DEFINITION",
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "An organization seeking one narrow actual-machine Muhlnickel or Titan keep-or-build engagement.",
       "trigger": "A scoped machine outcome cannot be met by a proof, sprint, hour, diagnostic, or White Box pilot.",
       "acquisition": {
@@ -695,11 +712,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "LIVE_STRIPE_LINK",
-        "status": "LIVE",
-        "next_step": "Use the canonical $45,000 Stripe-hosted checkout only after the narrow written scope is accepted.",
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Verify link active=true and provider account charges_enabled=true before exposing checkout.",
         "state_after": "FUNDED",
-        "evidence_required": "Accepted written scope plus provider authorization; opening checkout is not funding."
+        "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
         "deliverables": ["One narrow actual-machine keep-or-build engagement", "Receipt files on current main"],
@@ -707,13 +724,14 @@
         "refund": "UNKNOWN"
       },
       "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
+        "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
         "Buyer class, exact scope, deliverables, clock, capacity, acceptance, support, and refund terms remain UNKNOWN",
         "No buyer or accepted scope is evidenced"
       ]
@@ -1005,7 +1023,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-tip-20260826.md",
-        "blob_sha": "18d367ea5267698297ed243b872848cd2b97551e",
+        "blob_sha": "55415ee581eb46acf5e948381ab64c0069d770d4",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1029,9 +1047,11 @@
         "machine": "land/sku-tip-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08"
+        "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1040,7 +1060,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-seat-20260826.md",
-        "blob_sha": "32d4183396a0ed9e430c7d9052e6d0735c9c5869",
+        "blob_sha": "322e228da4703c7a6c8eb8f3b09067e4cd4444f7",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1064,9 +1084,11 @@
         "machine": "land/sku-seat-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03"
+        "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1075,7 +1097,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-unlock-20260826.md",
-        "blob_sha": "23167b56d258adc2bf98abf66635ce75f9e1cd83",
+        "blob_sha": "74710594dd216926c38ce8990d46b56a7d016195",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1099,9 +1121,11 @@
         "machine": "land/sku-unlock-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04"
+        "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1110,7 +1134,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-monthly-tip-20260826.md",
-        "blob_sha": "df35eff357e31d917955f447e4dd566e008c8ca9",
+        "blob_sha": "3c7dc75584e89e069672e3f36cdd0a7c0efee04b",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1134,9 +1158,11 @@
         "machine": "land/sku-monthly-tip-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05"
+        "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1145,7 +1171,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-boost-20260826.md",
-        "blob_sha": "d398d07cc5db84c520d1c7cdac9230698755e2c5",
+        "blob_sha": "99dc925025bc1726d5f65580e5deb86b1c73a410",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1169,9 +1195,11 @@
         "machine": "land/sku-boost-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06"
+        "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1180,7 +1208,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-whitebox-hour-20260826.md",
-        "blob_sha": "9747d2e203b1be96940d224914ca0b59335fe37e",
+        "blob_sha": "81e5493b8ef2fb6ea1c22f6ddcea5b67937d5c43",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1205,9 +1233,11 @@
         "machine": "land/sku-whitebox-hour-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
+        "url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     },
     {
@@ -1216,7 +1246,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-muhlnickel-titan-20260826.md",
-        "blob_sha": "df2c209c07cb00883db2936a1c9b712d5343e115",
+        "blob_sha": "24f269a4e81bbb605b00a9bda9a11380c987f028",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1240,9 +1270,11 @@
         "machine": "land/sku-muhlnickel-titan-20260826.md"
       },
       "checkout": {
-        "status": "LIVE",
+        "status": "LIVEMODE_URL_RECORDED",
         "provider": "stripe",
-        "url": "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09"
+        "url": "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     }
   ]
