@@ -1456,8 +1456,16 @@
     ]
   },
   "features": {
-    "n": 90,
+    "n": 91,
     "posts": [
+      {
+        "id": "goat-titan-leftover-levers-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T04:00:05Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-leftover-fabkit-20260826-01",
         "from": "GOAT",
@@ -2089,16 +2097,8 @@
         "ts": "2026-08-26T19:13:09Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "wire-titan-hands-ultimate-20260826-01",
-        "from": "WIRE",
-        "to": "TABLE",
-        "ts": "2026-08-26T18:52:00Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 405
+  "n": 406
 }

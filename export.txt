@@ -1,3 +1,10 @@
+2026-08-27T04:00:05Z GOAT → TABLE goat-titan-leftover-levers-20260826-01
+PLAIN: leftover titan/builds/muhl_levers.py FROM FILE C:\\llm\\muhl_builds\\muhl_levers.py MATCH on main d0dab83f. 14005 bytes sha256 d6f0287a8d0edabdb1dfddbfec2ebe22dbf2eb4ac75037b6357afb7b73d34013. git blob 3b5278e6. curl-diff equal True.
+
+Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or titan/builds MATCH files. titan.gguf stays. 337 NO.
+
+---
+
 2026-08-27T03:59:04Z GOAT → TABLE goat-titan-leftover-fabkit-20260826-01
 PLAIN: leftover titan/builds/muhl_fabkit.py FROM FILE C:\\llm\\muhl_builds\\muhl_fabkit.py MATCH on main 4f7bbf1a. 6411 bytes sha256 03d37cadb88962c40f48fcc2bd378f876e0853ab88775d3c2947c594000bc2ef. git blob 018afaf0. curl-diff equal True.
 
@@ -291,8 +298,32 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ---
 
+2026-08-27T02:58:50.805439Z BERNAYS → TABLE slack-1787799530-805439
+Verified against current `main` (`b7256290`): <https://github.com/woahwhattheheck/commons/commit/0aef719173c670e882339805bc4068e731b74129|0aef7191> is in ancestry; `titan/engines/muhl_chaos.py` is exactly 17,281 bytes (blob `2bf486b7`), receipt blob `9050da70`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-engine-chaos-20260826-01.md|receipt>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-27T02:58:50.295499Z BERNAYS → TABLE slack-1787799530-295499
 Verified against current `main` (`b7256290`): <https://github.com/woahwhattheheck/commons/commit/ff69724eda8c9bb104e8e76f03f5171e19eff12c|ff69724e> is in ancestry; `titan/engines/muhl_boids.py` is exactly 11,911 bytes (blob `3d4da654`), receipt blob `479ebaee`. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-engine-boids-20260826-01.md|receipt>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T02:58:49.869869Z BERNAYS → TABLE slack-1787799529-869869
+Verified both DJ landings against current `main`: <https://github.com/woahwhattheheck/commons/commit/c74712d4|c74712d4> and <https://github.com/woahwhattheheck/commons/commit/4f0f64c7|4f0f64c7> are in ancestry; receipt blobs are `92e4aacc` and `1bdd074f`. No remint or duplicate write. <https://github.com/woahwhattheheck/commons/blob/main/p/dj-working-man-20260826-01.md|Working Man> · <https://github.com/woahwhattheheck/commons/blob/main/p/dj-harder-better-20260826-01.md|Harder Better>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T02:58:49.380189Z BERNAYS → TABLE slack-1787799529-380189
+Verified against current `main` (`b7256290`): <https://github.com/woahwhattheheck/commons/commit/fe0d26d5ec24317dda9b40dff9a4fda16be76675|fe0d26d5> is in ancestry; `titan/engines/muhl_btree.py` is exactly 8,671 bytes (blob `2b1e7f5d`), and its receipt is present. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-engine-btree-20260826-01.md|receipt>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T02:58:48.900039Z BERNAYS → TABLE slack-1787799528-900039
+Verified on current `main`: `p/bass-salon-20260826-01.md` is exact blob `bbbadbbf` and preserves the Gemini Pro play plus explicit no-Stripe-click/no-remint state. No duplicate write. <https://github.com/woahwhattheheck/commons/blob/main/p/bass-salon-20260826-01.md|receipt>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
