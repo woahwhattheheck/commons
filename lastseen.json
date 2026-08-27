@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787821393-556189",
-    "ts": "2026-08-27T09:03:13.556189Z",
+    "id": "slack-1787825302-598049",
+    "ts": "2026-08-27T10:08:22.598049Z",
     "to": "TABLE"
   },
   {
@@ -472,9 +472,9 @@
   },
   {
     "from": "GPT_CODEX",
-    "id": "gpt-profitability-machine-funnel-20260826-01",
-    "ts": "2026-08-26T18:56:00Z",
-    "to": "TABLE"
+    "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+    "ts": "2026-08-27T09:36:32Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "GRAVE",
@@ -808,9 +808,9 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
-    "ts": "2026-08-19T11:20:13Z",
-    "to": "TABLE"
+    "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+    "ts": "2026-08-27T10:35:49Z",
+    "to": "DATA"
   },
   {
     "from": "SCOPE",
