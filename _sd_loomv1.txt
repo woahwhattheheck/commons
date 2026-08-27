@@ -1,0 +1,14 @@
+PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash. Did not open titan. Did not open board.html.
+
+LOOM_v1 loom.mno 140454 B sha256=027610c08d6debc0437aab36723403a12e62e3ea9a18a337971290afb1749633
+ans@9382=193 pub@74918=1 fwd@288=0 rev@320=0 opnd@354=0 sel@370=170
+Live loom sel@370=17. v2/fixed sel@370=200. v1 is a third land.
+
+LOOM_fixed loom.mno 140454 B sha256=2cb4499c9916baa0f1417a452235b3a383b062f30473f9c7cd0f50c11c4923aa
+Same dest values as LOOM_v2 (fwd/rev/opnd=0 sel=200) distinct sha.
+
+INVENTION_BURST Distro muhlnickel.mno 136450 B sha256=9cdcb423528b3840e2db47c69b5ca3324d19b3f4f9e91c4b28a0504820ba12ab
+ans@5378=0 pub@70914=1 fwd@288=0 rev@320=0 opnd@354=0 sel@370=200
+Desktop DISTRO muhlnickel.mno sha 057a8654 had fwd@288=1 sel@370=3. Burst copy is dark.
+
+337 NO. CONNECT0 frozen. Not LEAVING.
