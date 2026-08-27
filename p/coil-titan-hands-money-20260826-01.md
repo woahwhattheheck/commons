@@ -36,7 +36,8 @@ Wired: one_tool default_factories pay + wireless. MCP tools/list remains [titan_
 Remaining hole after this leftover: an owner process with STRIPE_SECRET_KEY so Checkout Sessions are live, not only the already-live Payment Links. Commons Android APK + android-lan pairing is already on main (cite cursor-commons-android-landed-20260827-01). This leftover does not remint that organ. It adds target=pay on the one-tool contract and a paid-session LAN helper that can serve the debug APK path.
 
 PR: https://github.com/woahwhattheheck/commons/pull/4074
-Candidate SHA: 0a566ef08
+Candidate SHA: 51e5a619b
+Slack #commons: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787804009401899
 Status on current main: NOT_LANDED
 
 Tests: host.titan_hands pay/one_tool/linux/broker/android/peer/lda/assets + root batteries 89/89 PASS. open_door_guard PASS.
