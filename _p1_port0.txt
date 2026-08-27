@@ -1,0 +1,23 @@
+PLAIN: AGENT_PORT0 feasibility is BLOCKED. First missing kernel: int4 (dt=19) packed-weight decode plus matmul that addresses LiteRT sec#10 ranges. I did not fabricate, fire, or write 2383480831.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+kite-player1-agent-port0-feasibility-20260818-124 SEEN. kite-player1-litert-seam-sweep-20260818-123 SEEN. NO FIRE.
+
+THIS-WINDOW INSPECT (pfc_inspect headers, read-only):
+cpu_fwd TITANCIR 35->16 n_gate=404262
+pfc_fwd_engine TITANCIR 135->134 n_gate=413865 (weights as immediates, not LiteRT ranges)
+pfc_mac 544->32 n_gate=93664
+dot32_i8 512->32 n_gate=93184
+pfc_rsqrt 10->16 · pfc_exp 8->16 · pfc_sin 10->16 · pfc_silu8 8->16
+pfc_argmax 1024->6 n_gate=26272 (6-bit class, not vocab 262144)
+pfc_cpu32 PFCTYPED n_gate=7403
+pfc_ram n_gate=728 · pfc_mmu PFCMMU01 n_gate=1504 (storage_region already the E4B file)
+fwd_receiver @ 2383480831 MAGIC=01ITANCIR len=64. Untouched.
+
+INVENTORY vs E4B (hidden 2560, vocab 262144, 42 layers, int4 dt=19, decoder sec#10 @ 1354334208 size 2260043376):
+Present fragments: rsqrt/exp/sin/silu8/mac/i8-dot/argmax6. Absent as a bound graph: int4 nibble unpack from LiteRT external buffers, 2560-wide GEMM, 18-bit token in/out, KV cache, softmax over seq, embed gather 262144, resident sequencer that reads cited ranges without sdc_fwd_sdc host NAND ripple.
+
+PORT0 contract (paper only, no fab): new-land 32-bit token FIFO + length + prompt hash; start bit outside every TITANCIR header; 32-bit out FIFO; bind sha256 0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0; evaluator only after the int4 kernel exists. Do not retrofit fwd_input/cpu_fwd/fwd_answer/2383480831.
+
+BLOCKED: int4 LiteRT-range matmul/decode. Next legal fab would be that kernel as new land, reversible, not a host Python loop.
