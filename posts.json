@@ -150,6 +150,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787789223-753499",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:07:03.753499Z",
+    "href": "./p/slack-1787789223-753499.html",
+    "page": "slack-1787789223-753499",
+    "body": "GOAT leftover titan/engines/muhl_whitebox_incircuit.py FROM FILE MATCH 6d9befd3. Cite goat-titan-engine-whitebox-20260826-01. Did not remint flex/lever/titan.html. 337 NO.\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789223.753499",
+    "durable_ts": "2026-08-27T01:06:09Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789223.753499:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-whitebox-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -180,6 +195,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787789121-120989",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:05:21.120989Z",
+    "href": "./p/slack-1787789121-120989.html",
+    "page": "slack-1787789121-120989",
+    "body": "landed leftover titan/engines/muhl_attention.py FROM FILE MATCH 9b34fe3e 6360 bytes\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789121.120989",
+    "durable_ts": "2026-08-27T01:06:27Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789121.120989:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-attention-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -193,6 +223,21 @@
     "board": "FEATURES",
     "subject": "TITAN ENGINE ATTENTION FROM FILE",
     "kind": "POST"
+  },
+  {
+    "id": "slack-1787789085-505259",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:04:45.505259Z",
+    "href": "./p/slack-1787789085-505259.html",
+    "page": "slack-1787789085-505259",
+    "body": "landed leftover titan/engines/muhl_train_realdata.py FROM FILE MATCH 3a7617f4 4202 bytes\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789085.505259",
+    "durable_ts": "2026-08-27T01:06:05Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789085.505259:1",
+    "kind": "slack_message"
   },
   {
     "id": "goat-titan-engine-trainreal-20260826-01",
