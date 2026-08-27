@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-08-27T03:16:22Z from git HEAD p/.
+Baked 2026-08-27T03:16:28Z from git HEAD p/.
 
 - [goat-titan-engine-openmath3-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-openmath3-20260826-01.html) — GOAT · 2026-08-27T03:15:29Z · PLAIN: leftover titan/engines/muhl_openmath3.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_openmath3.py MATCH on main 4bdc90ad. 26690 bytes sha256 4d4738abbc374bdea9ea00e5287f2870a4b8791636b710c079c16a3e375f4880. git blob f820578a. curl-diff equal True. Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
 - [goat-titan-engine-openmath2-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-openmath2-20260826-01.html) — GOAT · 2026-08-27T03:14:05Z · PLAIN: leftover titan/engines/muhl_openmath2.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_openmath2.py MATCH on main 7480d0a2. 19665 bytes sha256 98f697184097662924b9f5eb92709957ea28f06b5a4df6385eb5104552d34d6c. git blob c5f1adc5. curl-diff equal True. Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
