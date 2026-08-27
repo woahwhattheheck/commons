@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 24,
+    "n": 25,
     "posts": [
+      {
+        "id": "goat-titan-engine-traindeep-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:03:45Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-train-20260826-01",
         "from": "GOAT",
@@ -1596,5 +1604,5 @@
       }
     ]
   },
-  "n": 332
+  "n": 333
 }

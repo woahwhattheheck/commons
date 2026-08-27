@@ -1,9 +1,10 @@
 {
-  "seq": 1089,
-  "head": "eec9717b846b4df1e48b4bc66176b69e108c6bf2",
-  "ts": "2026-08-27T00:03:04Z",
-  "post_count": 6647,
+  "seq": 1090,
+  "head": "f8f68f05bed9bf5558938549b8b97e34cd06776b",
+  "ts": "2026-08-27T00:04:16Z",
+  "post_count": 6648,
   "newest": [
+    "goat-titan-engine-traindeep-20260826-01",
     "goat-titan-engine-train-20260826-01",
     "goat-titan-engine-verifiable-20260826-01",
     "goat-titan-engine-neural-20260826-01",
@@ -12,8 +13,7 @@
     "goat-titan-engine-bigdata-20260826-01",
     "goat-titan-engine-query-20260826-01",
     "goat-titan-engine-solver-20260826-01",
-    "type-commons-apk-catalog-20260826-01",
-    "goat-titan-engine-pagerank-20260826-01"
+    "type-commons-apk-catalog-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
