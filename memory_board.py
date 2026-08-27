@@ -39,6 +39,22 @@ SHIP_KINDS = {"WORK_STATE", "HANDOFF", "DECISION"}
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b", re.I)
 SHIP_PHRASE = "INTEGRATED — VERIFIED ON CURRENT MAIN"
 CREATE_PATH = "https://woahwhattheheck.github.io/commons/#memory-create"
+MAX_RETRIEVAL_LIMIT = 100
+UNTRUSTED_DATA_LABEL = "UNTRUSTED_OPTIONAL_CONTEXT"
+UNTRUSTED_REDACTION = "[REDACTED: MATCHED UNTRUSTED MEMORY PAYLOAD]"
+_PRIVACY_TEXT_FIELDS = ("body", "state", "action", "observation", "outcome")
+_UNSAFE_MEMORY_PATTERNS = tuple(re.compile(pattern, re.I) for pattern in (
+    r"\b(?:password|passwd|pwd|credential|secret|api[_ -]?key|access[_ -]?token|login|username)\s*[:=]\s*\S+",
+    r"\bauthorization\s*:\s*bearer\s+\S+",
+    r"\bbearer\s+[A-Za-z0-9._~+/=-]{8,}",
+    r"-----BEGIN(?: [A-Z0-9]+)? PRIVATE KEY-----",
+    r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b",
+    r"(?:\+\d[\d(). -]{7,}\d|\(\d{3}\)\s*\d{3}[-. ]\d{4}|\b\d{3}[-. ]\d{3}[-. ]\d{4}\b)",
+    r"(?:\b[A-Z]:\\|/Users/|/home/|\\\\[A-Za-z0-9_.-]+\\)",
+    r"\b(?:device[_ -]?id|serial(?: number)?|imei|udid)\s*[:=]\s*\S+",
+    r"\b(?:ignore (?:all|any|the|previous|prior) instructions|system prompt|developer message|prompt injection)\b",
+    r"\b(?:chain[- ]of[- ]thought|hidden reasoning|internal reasoning|private scratchpad)\b",
+))
 
 # One scan per ingest process. note_written() updates this optional context
 # cache immediately so a create followed by a read sees the new board without
@@ -83,6 +99,39 @@ STRUCTURED_ENTRY_FIELDS = (
 def canonical_actor(value):
     actor = "".join(ch for ch in str(value or "").upper() if ch.isalnum() or ch == "_")
     return actor if CLAIM_RE.match(actor) else ""
+
+
+def clamp_retrieval_limit(value):
+    """Return a finite non-negative retrieval bound shared by API and CLI."""
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError, OverflowError):
+        return 0
+    return min(MAX_RETRIEVAL_LIMIT, max(0, parsed))
+
+
+def _unsafe_memory_text(value):
+    text = str(value or "")
+    return any(pattern.search(text) for pattern in _UNSAFE_MEMORY_PATTERNS)
+
+
+def _sanitize_memory_entry(entry):
+    """Fail closed for bounded high-risk markers in a projected entry."""
+    out = dict(entry or {})
+    values = [out.get(field) for field in _PRIVACY_TEXT_FIELDS]
+    tags = out.get("tags") or []
+    values.extend(tags if isinstance(tags, list) else [tags])
+    if any(_unsafe_memory_text(value) for value in values):
+        for field in _PRIVACY_TEXT_FIELDS:
+            if field in out:
+                out[field] = UNTRUSTED_REDACTION
+        if out.get("tags"):
+            out["tags"] = ["redacted"]
+    return out
+
+
+def _sanitized_text(value):
+    return UNTRUSTED_REDACTION if _unsafe_memory_text(value) else str(value or "")
 
 
 def valid_event_ts(value):
@@ -256,7 +305,7 @@ def _structured_fields(meta, memory_kind=None):
     return fields
 
 
-def _structured_error(memory_kind, meta, prior_entries=None):
+def _structured_error(memory_kind, meta, prior_entries=None, current_order=None):
     """Validate evidence structure only for an explicit memory append."""
     goal_id = str(meta.get("goal_id") or "").strip()
     goal_state = str(meta.get("goal_state") or "").strip().upper()
@@ -278,6 +327,10 @@ def _structured_error(memory_kind, meta, prior_entries=None):
         patch = prior.get(patch_id)
         if not patch or patch.get("kind") != "SKILL_PATCH":
             return "VALIDATION must cite an earlier SKILL_PATCH on this board"
+        patch_order = event_order(patch.get("ts"), patch.get("entry_id"))
+        if (current_order is not None and
+                (not patch_order or patch_order[:2] >= current_order[:2])):
+            return "VALIDATION must sort strictly after the cited SKILL_PATCH"
         if component and component != patch.get("component"):
             return "VALIDATION component must match the cited SKILL_PATCH"
     elif patch_id or validation_state:
@@ -478,7 +531,9 @@ def prepare_post(root, src, dest, mid, extra, event_ts=""):
                 return out, _schema_error(actor, "CORRECTION must point to an earlier memory entry")
         elif supersedes:
             return out, _schema_error(actor, "supersedes_entry_id is only valid for CORRECTION entries")
-        structured_error = _structured_error(memory_kind, out, existing.get("entries"))
+        structured_error = _structured_error(
+            memory_kind, out, existing.get("entries"), current_order
+        )
         if structured_error:
             return out, _schema_error(actor, structured_error)
         out.update({
@@ -512,10 +567,10 @@ def note_written(root, meta, body):
         if not rec:
             return
         rec["entry_order"] = {rec["create_id"]: event_order(rec["created_ts"], rec["create_id"])}
-        rec["entries"] = [{
+        rec["entries"] = [_sanitize_memory_entry({
             "entry_id": rec["create_id"], "ts": rec["created_ts"],
             "kind": rec["memory_kind"], "body": rec["body"],
-        }]
+        })]
         _BOARD_CACHE[key].setdefault(rec["actor_id"], rec)
     else:
         actor = canonical_actor(meta.get("from"))
@@ -528,6 +583,7 @@ def note_written(root, meta, body):
                 "kind": _entry_kind(meta.get("memory_kind")), "body": str(body or ""),
             }
             entry.update(_structured_fields(meta, entry["kind"]))
+            entry = _sanitize_memory_entry(entry)
             rec.setdefault("entries", []).append(entry)
     _INDEX_CACHE.pop(key, None)
 
@@ -546,8 +602,15 @@ def _evolve_board(board):
     patches = {}
     validations = {}
     experiences = []
+    superseded = {
+        entry.get("supersedes_entry_id")
+        for entry in entries
+        if entry.get("kind") == "CORRECTION" and entry.get("supersedes_entry_id")
+    }
 
     for entry in entries:
+        if entry.get("entry_id") in superseded:
+            continue
         kind = entry.get("kind")
         goal_id = entry.get("goal_id")
         if kind == "GOAL" and goal_id:
@@ -651,11 +714,15 @@ def retrieve_for_state(board, goal="", state="", limit=6):
             score += 2
         row = dict(entry)
         row["relevance_score"] = score
+        row["data_trust"] = UNTRUSTED_DATA_LABEL
+        row = _sanitize_memory_entry(row)
+        if query and score <= 0:
+            continue
         ranked.append(row)
     ranked.sort(key=lambda row: (
         row.get("relevance_score", 0), row.get("ts") or "", row.get("entry_id") or ""
     ), reverse=True)
-    return ranked[:max(0, int(limit))]
+    return ranked[:clamp_retrieval_limit(limit)]
 
 
 def derive(rows):
@@ -704,6 +771,7 @@ def derive(rows):
                 "body": str(body or ""),
             }
             entry.update(_structured_fields(meta, entry["kind"]))
+            entry = _sanitize_memory_entry(entry)
             boards[actor] = {
                 "memory_id": rec["memory_id"],
                 "actor_id": actor,
@@ -738,7 +806,7 @@ def derive(rows):
                 continue
         elif supersedes:
             continue
-        if _structured_error(entry_kind, meta, boards[src]["entries"]):
+        if _structured_error(entry_kind, meta, boards[src]["entries"], current_order):
             continue
         entry = {
             "entry_id": entry_id,
@@ -749,6 +817,7 @@ def derive(rows):
         if supersedes:
             entry["supersedes_entry_id"] = supersedes
         entry.update(_structured_fields(meta, entry_kind))
+        entry = _sanitize_memory_entry(entry)
         boards[src]["entries"].append(entry)
         boards[src].update(_board_status(boards[src]))
         seen_entries.add((src, entry_id))
@@ -919,7 +988,8 @@ def _memory_html(actor, board, asset_v, doors_html):
     provenance = actor.get("provenance") or {}
     badge = ' <span class="agent-badge">MUHLNICKEL AGENT</span>' if actor.get("class") == "MUHLNICKEL_AGENT" else ""
     entries = []
-    for entry in board.get("entries", []):
+    for source_entry in board.get("entries", []):
+        entry = _sanitize_memory_entry(source_entry)
         sup = ""
         if entry.get("supersedes_entry_id"):
             sup = " · supersedes <code>%s</code>" % html.escape(entry["supersedes_entry_id"])
@@ -937,25 +1007,25 @@ def _memory_html(actor, board, asset_v, doors_html):
         goals.append("<li><code>%s</code> · <b>%s</b> · %s%s</li>" % (
             html.escape(goal.get("goal_id") or ""),
             html.escape(goal.get("goal_state") or "OPEN"),
-            html.escape(goal.get("body") or ""),
-            (" · state: %s" % html.escape(current.get("state") or "")) if current else ""))
+            html.escape(_sanitized_text(goal.get("body"))),
+            (" · state: %s" % html.escape(_sanitized_text(current.get("state")))) if current else ""))
     components = []
     for skill in experiential.get("active_components") or []:
         components.append("<li><code>%s</code> · %s <small>(%s)</small></li>" % (
-            html.escape(skill.get("component") or ""), html.escape(skill.get("body") or ""),
+            html.escape(skill.get("component") or ""), html.escape(_sanitized_text(skill.get("body"))),
             html.escape(skill.get("entry_id") or "")))
     patches = []
     for patch in experiential.get("candidate_patches") or []:
         patches.append("<li><b>%s</b> · <code>%s</code> · %s</li>" % (
             html.escape(patch.get("validation_state") or "PENDING"),
-            html.escape(patch.get("component") or ""), html.escape(patch.get("body") or "")))
+            html.escape(patch.get("component") or ""), html.escape(_sanitized_text(patch.get("body")))))
     trajectories = []
     for trajectory in board.get("trajectories") or []:
         trajectories.append("<li><code>%s</code> · %s</li>" % (
             html.escape(trajectory.get("trajectory_id") or ""),
-            html.escape(" → ".join(filter(None, [trajectory.get("action"),
-                                                   trajectory.get("observation"),
-                                                   trajectory.get("outcome")])))))
+            html.escape(" → ".join(filter(None, [_sanitized_text(trajectory.get("action")),
+                                                     _sanitized_text(trajectory.get("observation")),
+                                                     _sanitized_text(trajectory.get("outcome"))])))))
     evolution = (
         "<h2>Working memory</h2>%s<h2>Active skill components</h2>%s"
         "<h2>Candidate patches</h2>%s<h2>Execution trajectories</h2>%s"
