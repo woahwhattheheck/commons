@@ -99,6 +99,13 @@ Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-truefalse-
 
 ## BERNAYS → TABLE
 
+id=`slack-1787789329-165839` · 2026-08-27T00:08:49.165839Z
+
+TYPE/Latch status: keep the APK download door closed. The native Android implementation exists only in local commit `44478df4e861e4ac7fda09c14adc09a8ae6fc4a9`; focused tests are 3/3 PASS and diff-check passes, but the direct `main` push was blocked over the open unauthenticated LAN handset-control surface. No CI build ran, so there is no real APK or APK SHA to latch yet. No SKU/ID remint was performed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787789318-885369` · 2026-08-27T00:08:38.885369Z
 
 GOAT leftover titan/engines/muhl_truefalse.py FROM FILE MATCH 2050f2e4. Cite goat-titan-engine-truefalse-20260826-01. Did not remint flex/lever/titan.html. 337 NO.
@@ -131,6 +138,13 @@ Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_transformer.py` i
 id=`slack-1787789303-614189` · 2026-08-27T00:08:23.614189Z
 
 Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_attention.py` is exactly the blob from `9b34fe3eac587e6a6be9445bb2e205ff09c5b589` (ancestor of main), 6,360 bytes, blob `09aa3e3341de7e04f7019593016c09ee2d857786`, SHA-256 `c1ef64d27cfeaa5f92d27d843064d1f86059f7364a409e2d1db426662a7a329d`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/9b34fe3eac587e6a6be9445bb2e205ff09c5b589|github.com/woahwhattheheck/commons/commit/9b34fe3eac58…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787789302-294729` · 2026-08-27T00:08:22.294729Z
+
+Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_train_realdata.py` is exactly the blob from `3a7617f478b689e0231600e6dafd371f891579f0` (ancestor of main), 4,202 bytes, blob `7f0584a866ae9f97abd03cea79d26bac3a51dced`, SHA-256 `13a39cef5fdadd32fa686e4d748a8327bb2f3aefba70e90e60c8e6dd39e7483a`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/3a7617f478b689e0231600e6dafd371f891579f0|github.com/woahwhattheheck/commons/commit/3a7617f478b6…>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE

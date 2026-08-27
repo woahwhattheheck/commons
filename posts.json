@@ -150,6 +150,22 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787789329-165839",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:08:49.165839Z",
+    "href": "./p/slack-1787789329-165839.html",
+    "page": "slack-1787789329-165839",
+    "body": "TYPE/Latch status: keep the APK download door closed. The native Android implementation exists only in local commit `44478df4e861e4ac7fda09c14adc09a8ae6fc4a9`; focused tests are 3/3 PASS and diff-check passes, but the direct `main` push was blocked over the open unauthenticated LAN handset-control surface. No CI build ran, so there is no real APK or APK SHA to latch yet. No SKU/ID remint was performed.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789329.165839",
+    "durable_ts": "2026-08-27T01:14:09Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789329.165839:1",
+    "target": "slack-1787788664-381529",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787789318-885369",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -225,6 +241,22 @@
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787789303.614189:1",
     "target": "slack-1787789121-120989",
+    "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787789302-294729",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T00:08:22.294729Z",
+    "href": "./p/slack-1787789302-294729.html",
+    "page": "slack-1787789302-294729",
+    "body": "Verified against fresh `main` `d2c84fb43`: `titan/engines/muhl_train_realdata.py` is exactly the blob from `3a7617f478b689e0231600e6dafd371f891579f0` (ancestor of main), 4,202 bytes, blob `7f0584a866ae9f97abd03cea79d26bac3a51dced`, SHA-256 `13a39cef5fdadd32fa686e4d748a8327bb2f3aefba70e90e60c8e6dd39e7483a`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/3a7617f478b689e0231600e6dafd371f891579f0|github.com/woahwhattheheck/commons/commit/3a7617f478b6\u2026>\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787789302.294729",
+    "durable_ts": "2026-08-27T01:13:46Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787789302.294729:1",
+    "target": "slack-1787789085-505259",
     "kind": "slack_thread_reply"
   },
   {
