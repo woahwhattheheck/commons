@@ -155,35 +155,49 @@
         "terms_authority": {"const": "source"}
       }
     },
-    "checkout_live_stripe": {
+    "checkout_active_chargeable": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "provider", "url"],
+      "required": ["status", "provider", "url", "link_active", "account_charges_enabled"],
       "properties": {
-        "status": {"const": "LIVE"},
+        "status": {"const": "ACTIVE_CHARGEABLE"},
         "provider": {"const": "stripe"},
         "url": {
           "type": "string",
           "pattern": "^https://(buy|donate)\\.stripe\\.com/[A-Za-z0-9_-]+(?![\\s\\S])"
-        }
+        },
+        "link_active": {"const": true},
+        "account_charges_enabled": {"const": true}
       }
     },
-    "checkout_non_live": {
+    "checkout_livemode_url_recorded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "provider", "url", "link_active", "account_charges_enabled"],
+      "properties": {
+        "status": {"const": "LIVEMODE_URL_RECORDED"},
+        "provider": {"const": "stripe"},
+        "url": {
+          "type": "string",
+          "pattern": "^https://(buy|donate)\\.stripe\\.com/[A-Za-z0-9_-]+(?![\\s\\S])"
+        },
+        "link_active": {"const": "UNVERIFIED"},
+        "account_charges_enabled": {"const": false}
+      }
+    },
+    "checkout_not_minted": {
       "type": "object",
       "additionalProperties": false,
       "required": ["status"],
       "properties": {
-        "status": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "^(?!LIVE$)[A-Za-z0-9._-]+(?![\\s\\S])"
-        }
+        "status": {"const": "NOT_MINTED"}
       }
     },
     "checkout": {
       "oneOf": [
-        {"$ref": "#/$defs/checkout_live_stripe"},
-        {"$ref": "#/$defs/checkout_non_live"}
+        {"$ref": "#/$defs/checkout_active_chargeable"},
+        {"$ref": "#/$defs/checkout_livemode_url_recorded"},
+        {"$ref": "#/$defs/checkout_not_minted"}
       ]
     },
     "string_list": {
@@ -246,8 +260,8 @@
       "additionalProperties": false,
       "required": ["mode", "status", "next_step", "state_after", "evidence_required"],
       "properties": {
-        "mode": {"enum": ["LIVE_STRIPE_LINK", "CUSTOMER_SPECIFIC_INVOICE"]},
-        "status": {"enum": ["LIVE", "NOT_ISSUED"]},
+        "mode": {"enum": ["ACTIVE_STRIPE_LINK", "RECORDED_STRIPE_LINK", "CUSTOMER_SPECIFIC_INVOICE"]},
+        "status": {"enum": ["ACTIVE_CHARGEABLE", "CAPABILITY_UNVERIFIED", "NOT_ISSUED"]},
         "next_step": {"type": "string", "minLength": 1},
         "state_after": {"const": "FUNDED"},
         "evidence_required": {"type": "string", "minLength": 1}
@@ -268,8 +282,8 @@
       "additionalProperties": false,
       "required": ["dom_action", "click_truth", "first_evidence_state", "success_state"],
       "properties": {
-        "dom_action": {"enum": ["checkout-open", "qualification-open"]},
-        "click_truth": {"const": "INTENT_ONLY"},
+        "dom_action": {"enum": ["checkout-open", "provider-capability-unverified", "qualification-open"]},
+        "click_truth": {"enum": ["INTENT_ONLY", "NO_CLICK_SURFACE"]},
         "first_evidence_state": {"enum": ["DISCOVERED", "FUNDED"]},
         "success_state": {"const": "BANK_AVAILABLE"}
       }
@@ -293,7 +307,7 @@
       "properties": {
         "priority": {"type": "integer", "minimum": 1},
         "readiness": {
-          "enum": ["READY_FOR_CHECKOUT", "READY_FOR_QUALIFICATION", "NEEDS_DEFINITION"]
+          "enum": ["READY_FOR_CHECKOUT", "READY_FOR_QUALIFICATION", "NEEDS_DEFINITION", "BLOCKED_PROVIDER_CAPABILITY"]
         },
         "buyer": {"type": "string", "minLength": 1},
         "trigger": {"type": "string", "minLength": 1},
