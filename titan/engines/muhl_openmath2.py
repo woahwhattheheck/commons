@@ -378,7 +378,7 @@ def beal_fermat_nearmisses(base_max=60, exp_max=5, cap=200000):
     print(f"[Beal/Fermat]  what fell out -> {len(hits)} exact a^x+b^y=c^z solutions "
           f"(x,y,z>=3) found; coprime (Beal-counterexample) solutions: "
           f"{len(coprime_hits)} (Beal predicts 0). Tightest near-misses (|diff|<=2): "
-          f"{ [ (f'{a}^{x}+{b}^{y}={t}, off {d} from {cb}^{ce}') for (d,a,x,b,y,cb,ce,t,cz) in near[:4] ]}")
+          f"{[ (f'{a}^{x}+{b}^{y}={t}, off {d} from {cb}^{ce}') for (d,a,x,b,y,cb,ce,t,cz) in near[:4] ]}")
 
 
 # ----------------------------------------------------------------------------
