@@ -19,7 +19,8 @@ Seat: COIL = one-tool money hook + tests. Cite and do not remint:
 - coil-titan-hands-linux-atspi-20260826-01 (PR 3715 merged 0bf36938)
 - land/stripe-payment-links-20260826.md and the seven LIVE SKU files
 - wire-commons-android-apk-20260826-01
-- PR 3812 (sideload Commons APK + LAN host is that organ; not reminted)
+- cursor-commons-android-landed-20260827-01 (PR 3812 APK + android-lan on main; they did not charge Stripe)
+- host/stripe_event_bridge.py (PR 4068 webhook verify; not a titan_hands checkout create)
 
 Hypothesis: a thin Stripe checkout + paid-session handle on the existing titan_hands broker is enough. Verified against current main. Live Payment Links already take money. Checkout Sessions are created only when STRIPE_SECRET_KEY is set. A missing key is PAY_UNCONFIGURED with a measured probe (live link URLs + key_present=false). No charge is minted in that state. Did not invent a second MCP tool.
 
@@ -32,7 +33,7 @@ Added:
 
 Wired: one_tool default_factories pay + wireless. MCP tools/list remains [titan_hands]. Pixels never on pay/wireless. Local windows/android/linux and Commons lanes stay open. Wireless bind measures a paid Checkout Session when the secret is present; unpaid is PAY_UNPAID.
 
-Remaining hole (named, not reminted): sideloadable Commons Android APK + phone wireless host. LDA Kotlin path and TitanHandsReceiver stay on main. PR 3812 is the APK organ. This leftover only adds the debug-APK recipe and a LAN helper that serves the APK path once built.
+Remaining hole after this leftover: an owner process with STRIPE_SECRET_KEY so Checkout Sessions are live, not only the already-live Payment Links. Commons Android APK + android-lan pairing is already on main (cite cursor-commons-android-landed-20260827-01). This leftover does not remint that organ. It adds target=pay on the one-tool contract and a paid-session LAN helper that can serve the debug APK path.
 
 Tests: host.titan_hands pay/one_tool/linux/broker/android/peer/lda 56/56 PASS. test_titan_hands_pay 14/14 PASS.
 
