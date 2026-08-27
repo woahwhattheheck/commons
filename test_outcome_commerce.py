@@ -937,6 +937,12 @@ class OutcomeCommerceTests(unittest.TestCase):
                 "provider-capability-unverified",
             )
             self.assertEqual(funnel["measurement"]["click_truth"], "NO_CLICK_SURFACE")
+            cta = funnel["acquisition"]["cta"]
+            self.assertEqual(cta, "Review provider-capability evidence gap")
+            self.assertFalse(
+                any(token in cta.lower() for token in ("checkout", "pay", "open")),
+                cta,
+            )
 
     def test_recorded_subscription_quotes_default_to_one_cycle(self) -> None:
         expected = {
