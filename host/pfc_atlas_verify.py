@@ -92,21 +92,21 @@ def main():
 
     print("  [1/4] 32-bit CPU: synthesize + run a program on its gates ...", flush=True)
     r = run_cpu32_program(); verified.append(r)
-    print(f"        {'\u2713' if r['pass'] else '\u2717'} {r['result']}  ({r['gates']:,} gates)", flush=True)
+    print(f"        {'✓' if r['pass'] else '✗'} {r['result']}  ({r['gates']:,} gates)", flush=True)
 
     for game in ("life", "brain"):
         print(f"  [2/4] {game}: run the baked cellular-automaton netlist ...", flush=True)
         r = verify_game(game); verified.append(r)
-        print(f"        {'\u2713' if r['pass'] else '\u2717'} {r['result']}", flush=True)
+        print(f"        {'✓' if r['pass'] else '✗'} {r['result']}", flush=True)
 
     print("  [3/4] NAND forge library ...", flush=True)
     r = verify_forge(); verified.append(r)
-    print(f"        {'\u2713' if r['pass'] else '\u2717'} {r['result']}", flush=True)
+    print(f"        {'✓' if r['pass'] else '✗'} {r['result']}", flush=True)
 
     print("  [4/4] big catalogued computers — header-confirm present ...", flush=True)
     for name in ("aes128", "cpu_fwd", "pfc_full_miner", "alu32", "mul16"):
         r = header_present(name, reg); verified.append(r)
-        print(f"        {'\u2713' if r['pass'] else '\u2717'} {name}: {r['result']}", flush=True)
+        print(f"        {'✓' if r['pass'] else '✗'} {name}: {r['result']}", flush=True)
 
     npass = sum(1 for v in verified if v["pass"])
     print(f"\n  {npass}/{len(verified)} verifications passed.", flush=True)
