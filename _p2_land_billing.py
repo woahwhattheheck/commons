@@ -39,4 +39,3 @@ print("n9b7o4 in index", "n9b7o4" in idx)
 yml = open(os.path.join(".github", "workflows", "commons-board.yml"), encoding="utf-8").read()
 print("poll loop gone", "deadline=" not in yml and "sleep 20" not in yml)
 print("one-shot comment", "1zu94b" in yml)
-
