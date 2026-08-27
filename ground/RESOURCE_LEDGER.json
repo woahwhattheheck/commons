@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-26T22:18:41Z",
-    "base_main_sha": "2423415c754b13ce2d723ce9d85c4f9af802d4fb",
+    "observed_at": "2026-08-27T04:09:30Z",
+    "base_main_sha": "46edc1c0bf296a337283a9c0a96b359fdb2a12d3",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -13,13 +13,14 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1787637936.134649",
-  "source_id": "codex-master-resource-office-20260826-01",
-  "supersedes_source_ids": ["demon-live-compute-board-20260825-01"],
+  "slack_ts": "1787803807.405939",
+  "source_id": "codex-master-resource-office-20260827-02",
+  "supersedes_source_ids": ["codex-master-resource-office-20260826-01", "demon-live-compute-board-20260825-01"],
   "subject": "MASTER RESOURCE LEDGER — inventory is not utilization",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
+    "inventory/resources/records/codex-public-commerce-road-activation-20260827-01.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/WORKING_BUILDS.json",
     "ground/MCP_INVENTORY.json",
@@ -54,12 +55,12 @@
     {
       "name": "resource-master-office", "kind": "CONTROL_PLANE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "CODEX_SOL", "authority": "OPEN_WITH_DURABLE_RECEIPT",
       "consumer": "Every Commons resource class and future census", "value": "One lifecycle truth surface and activation queue", "next_action": "Reconcile receipts, expire stale evidence, and advance one bounded resource toward value each cycle.", "source": "ground/RESOURCE_LEDGER.json; host/resource_ledger.py",
-      "evidence_ts": "2026-08-26T22:18:41Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "commit 2423415c754b13ce2d723ce9d85c4f9af802d4fb is an ancestor of verified main; seven intended blobs matched and the malformed census blob was restored from PR 3227 object abd6c7827c4c62bddb041db834cb9c0307593b53", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "codex-resource-master-office-activation-20260826-01", "last_used_at": "2026-08-26T22:18:41Z", "stale_after": "PT6H"
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Commons current-main workflow", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3 plus GitHub, Slack, public HTTP, and connected aggregate reads", "rate_plan_boundary": "do not burn a call merely to report utilization", "assigned_backlog": "inventory, reconcile, allocate, measure, release", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "PT6H"
     },
     {
       "name": "commons-repository", "kind": "REPOSITORY", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "OPEN_ROAD_CURRENT_MAIN",
       "consumer": "Builders, Pages, tests, receipts, and memory", "value": "Canonical substrate: 19,583 paths, 23 workflows, 19 repo skills, and durable receipts", "next_action": "Pin exact current-main SHA for every use and derive projections from durable records.", "source": "README.md; START.md; AGENTS.md; GitHub current main",
-      "evidence_ts": "2026-08-26T22:07:53Z", "auth_surface": "GitHub connector and local checkout", "exact_safe_probe": "read current main b05325869245185dc8cdb934710bf8cf801fd0d5 before integration", "rate_plan_boundary": "moving main; baked Pages and pulse files are not current truth", "assigned_backlog": "durable Commons work and public evidence", "last_receipt": "resource-master exact-main reconciliation 2026-08-26", "last_used_at": "2026-08-26T22:07:53Z", "stale_after": "next main advance"
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "GitHub connector and primary checkout", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3 read after the Android replay and Stripe event bridge landings", "rate_plan_boundary": "moving main; baked Pages and pulse files are not current truth", "assigned_backlog": "durable Commons work and public evidence", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "next main advance"
     },
     {
       "name": "github-repository-portfolio", "kind": "REPOSITORY_FLEET", "capacity": "LIVE", "stage": "REACHABLE", "condition": "CONSTRAINED", "holder": "Bryce / Commons", "authority": "VERIFY_BRANCH_AND_CONSUMER_BEFORE_WRITE",
@@ -72,9 +73,9 @@
       "evidence_ts": "2026-08-26T15:01:00Z", "auth_surface": "GitHub read-only repository census", "exact_safe_probe": "read main 9402ad8820dd447d6cc30b8eb4ff0f659d9cf13d", "rate_plan_boundary": "no stale direct injector and no private paths in public ledger", "assigned_backlog": "close Android reservations with exact device evidence", "last_receipt": "LocalDeviceAgent audit 2026-08-26", "last_used_at": "2026-08-26T15:01:00Z", "stale_after": "P1D", "priority": 70
     },
     {
-      "name": "owner-workstation", "kind": "DEVICE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Bryce", "authority": "OWNER_MACHINE; BENIGN_BOUNDED_ACTIONS_ONLY",
-      "consumer": "Swarm Gateway, Gemini peers, Titan Hands, local models, and builds", "value": "Primary physical compute and desktop execution edge", "next_action": "Keep one safe health canary per resident service and route mutation through receipts.", "source": "verified owner-machine checkpoints 2026-08-26",
-      "evidence_ts": "2026-08-26T15:13:38Z", "auth_surface": "owner-machine live checkpoint", "exact_safe_probe": "Swarm Gateway health plus Titan Hands read-only UIA snapshot", "rate_plan_boundary": "physical device state and owner attention are scarce", "assigned_backlog": "named-peer proof and one benign Titan Hands workflow", "last_receipt": "p/emissary-titan-hands-features-20260826-01.md", "last_used_at": "2026-08-26T15:13:38Z", "stale_after": "PT6H"
+      "name": "owner-workstation", "kind": "DEVICE", "capacity": "NOT_VERIFIED", "stage": "PRODUCING", "condition": "BLOCKED", "holder": "Bryce", "authority": "OWNER_MACHINE; OWNER_ONLY_STORAGE_AND_PHYSICAL_ACTIONS",
+      "consumer": "Swarm Gateway, Gemini peers, Titan Hands, local models, and builds", "value": "Primary physical compute and desktop execution edge", "next_action": "Use remote/read-only work; move or delete nothing until Bryce recovers storage or an exact owner-scoped relocation receipt exists.", "source": "#commons storage-pressure report 1787803807.405939; historical owner-machine checkpoints",
+      "evidence_ts": "2026-08-27T04:10:07Z", "auth_surface": "peer report of owner-machine state; no device actuation", "exact_safe_probe": "reported C: free bytes = 0; not independently actuated or re-probed by this workflow", "rate_plan_boundary": "physical storage, files, device state, and owner attention are owner-controlled", "assigned_backlog": "remote/read-only work only while storage is blocked", "last_receipt": "#commons 1787803807.405939", "last_used_at": "2026-08-26T15:13:38Z", "stale_after": "PT1H"
     },
     {
       "name": "owner-handset", "kind": "DEVICE", "capacity": "UNMEASURED", "stage": "AVAILABLE", "condition": "BLOCKED", "holder": "Bryce", "authority": "OWNER_DEVICE; RESERVED_ACTION_REQUIRED",
@@ -109,12 +110,12 @@
     {
       "name": "github", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "CURRENT_MAIN_WRITES_WITH_EXACT_RECEIPT",
       "consumer": "Repository census, integration, PRs, and SHA-pinned readback", "value": "Canonical code and evidence road", "next_action": "Continue current-main reconciliation and exact readback after every land.", "source": "GitHub connector live census 2026-08-26",
-      "evidence_ts": "2026-08-26T22:07:53Z", "auth_surface": "GitHub connector", "exact_safe_probe": "current main b05325869245185dc8cdb934710bf8cf801fd0d5 and PR 3227 read; app installation answered", "rate_plan_boundary": "one connected account; no identifiers or secrets here", "assigned_backlog": "current-main resource office", "last_receipt": "resource-master exact-main reconciliation 2026-08-26", "last_used_at": "2026-08-26T22:07:53Z", "stale_after": "next main advance"
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "GitHub connector", "exact_safe_probe": "current main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3, one installed account, and 19 open PRs enumerated", "rate_plan_boundary": "one connected account; no identifiers or secrets here", "assigned_backlog": "current-main resource office", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "next main advance"
     },
     {
       "name": "slack", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "COMMONS_CHANNEL; GIT_BODY_IS_DURABLE_ARCHIVE",
       "consumer": "Coordination, claims, receipts, and owner instructions", "value": "One active Commons channel with six surfaced members", "next_action": "Post compact receipt pointers and preserve Slack-to-Git parity.", "source": "#commons read-only census 2026-08-26",
-      "evidence_ts": "2026-08-26T22:00:00Z", "auth_surface": "Slack connector", "exact_safe_probe": "TokenJunkieLabs workspace and #commons history answered through the 2026-08-26T21:55:02Z message", "rate_plan_boundary": "Slack is coordination, not archive", "assigned_backlog": "completion receipt after landing", "last_receipt": "resource-master #commons reconciliation 2026-08-26", "last_used_at": "2026-08-26T22:00:00Z", "stale_after": "PT6H"
+      "evidence_ts": "2026-08-27T04:10:07Z", "auth_surface": "Slack connector", "exact_safe_probe": "#commons history answered through native timestamp 1787803807.405939", "rate_plan_boundary": "Slack is coordination, not archive", "assigned_backlog": "compact completion receipt after landing", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:10:07Z", "stale_after": "PT6H"
     },
     {
       "name": "commons-mcp-family", "kind": "TOOL_SURFACE", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "OPEN_READ_AND_DISCOVERY",
@@ -130,6 +131,31 @@
       "name": "outcome-commerce-bridge", "kind": "COMMERCIAL_BUILD", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "OPEN_ECONOMIC_PROJECTION; NO_MONEY_MOVEMENT_CLAIM",
       "consumer": "Offers, paid actions, outcome receipts, customer jobs, settlement records, outreach, licensing, and expert-network operations", "value": "One deterministic economic language, idempotent event stream, statements, and replay-safe DIO commercial lifecycle", "next_action": "Bind the first real accepted job, buyer, and rail; project only evidenced events and keep economic states distinct.", "source": "ground/COMMERCE.md; revenue/outcome_commerce/; host/outcome_commerce.py",
       "evidence_ts": "2026-08-26T15:50:40Z", "auth_surface": "current-main source, tests, human door, MCP resources, and workflow", "exact_safe_probe": "python3 -m unittest -v test_outcome_commerce.py", "rate_plan_boundary": "statements do not move money; uncertain effects block blind retry", "assigned_backlog": "reconcile exact revenue events without upgrading $0 transport into cash", "last_receipt": "commit 4a652d64e15153a4521eefda2814f634069eeda2", "last_used_at": "2026-08-26T15:50:40Z", "stale_after": "P7D", "priority": 72
+    },
+    {
+      "name": "public-commerce-road", "kind": "PUBLIC_ROAD", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Commons", "authority": "PUBLIC_OPEN_READ; CHECKOUT_PAYMENT_AND_ACCOUNT_ACTIONS_REMAIN_OWNER_OR_BUYER_ONLY",
+      "consumer": "Existing Commons readers and prospective voluntary supporters", "value": "Public commerce catalog can render canonical $5 one-time and $3 monthly Stripe checkout anchors", "next_action": "Preserve the exact URLs and funnel truth; wait for provider evidence before advancing any funding, settlement, payout, or cash state.", "source": "public commerce.html, commerce.js, and revenue/outcome_commerce/catalog.json probes; main 46edc1c0bf296a337283a9c0a96b359fdb2a12d3",
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "unauthenticated public HTTP read only", "exact_safe_probe": "commerce.html HTTP 200; deployed commerce.js blob 2d3a9f67843c4e0a0df423f3e4b8123725d7b69e and catalog blob 91bc26372965919bdd5f3877afe230b712f0b468 matched main; both canonical Stripe URLs returned HTTP 200", "rate_plan_boundary": "deployed HTML wrapper lags main and SKU HTML subpages return 404; checkout-open is intent only; cash remains USD 0", "assigned_backlog": "public checkout discovery and later provider-evidence reconciliation", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "PT6H"
+    },
+    {
+      "name": "commons-android-client", "kind": "BUILD", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "SOURCE_AND_OFFLINE_TESTS_ONLY; OWNER_HANDSET_ACTION_REQUIRED_FOR_DEVICE_PROOF",
+      "consumer": "Future Android Commons reader/poster and Titan Hands LAN client", "value": "Native Android project, LAN client, accessibility host, pairing model, workflow, and host adapter", "next_action": "Wait for recovered owner storage and an owner-performed install/grant/pair action; do not claim handset execution from source or release presence.", "source": "commit d2bf5ecb6da27d7d2a3f9555ca2da25fe10190ef; android/; host/commons_android/",
+      "evidence_ts": "2026-08-27T04:08:08Z", "auth_surface": "current-main source and offline tests", "exact_safe_probe": "66 focused Python tests across Android, Stripe, carrier, CI corpus, and resource ledger passed; no Android device was touched", "rate_plan_boundary": "source/build road is not installed, granted, paired, or actuated handset capacity", "assigned_backlog": "owner-only physical install/grant/pair later", "last_receipt": "p/cursor-commons-android-sideload-20260826-01.md (candidate provenance) plus current-main replay", "last_used_at": "unknown", "stale_after": "device-receipt-required"
+    },
+    {
+      "name": "stripe-event-bridge", "kind": "COMMERCIAL_BUILD", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons revenue operations", "authority": "SOURCE_AND_TEST_EVENTS_ONLY; NO_PAYMENT_STATE_WITHOUT_PROVIDER_RECEIPT",
+      "consumer": "Outcome-commerce payment evidence reconciliation", "value": "Signed-event parser, dedupe, transition checks, and public-safe projection path", "next_action": "Process only a matching provider event when one exists; do not upgrade checkout presence into authorization, settlement, payout, or cash.", "source": "commit 46edc1c0bf296a337283a9c0a96b359fdb2a12d3; host/stripe_event_bridge.py; test_stripe_event_bridge.py",
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "current-main source and synthetic tests", "exact_safe_probe": "focused suite passed; no live provider event, secret, charge, settlement, payout, or bank receipt was used", "rate_plan_boundary": "code readiness is not a live Stripe event or economic outcome", "assigned_backlog": "wait for exact provider evidence", "last_receipt": "current-main commit 46edc1c0bf296a337283a9c0a96b359fdb2a12d3", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D"
+    },
+    {
+      "name": "commons-carrier-gateway", "kind": "TOOL_SURFACE", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Commons", "authority": "ONE_OPEN_COMMONS_MCP_CORE; NO_SECOND_GATEWAY_OR_AUTH",
+      "consumer": "Gemini, ChatGPT, Slack, ntfy, git, and other MCP-speaking carriers", "value": "History-preserving carrier cards and one shared Commons MCP contract", "next_action": "Use the shared endpoint for a concrete carrier task; do not redeploy or mint a second core merely to consume capacity.", "source": "commit de6a31d32a86c0a219cdde729803af2147b0dd39; docs/gemini-mcp.md; carriers/; api/mcp.py",
+      "evidence_ts": "2026-08-26T23:22:44Z", "auth_surface": "current-main source and prior live MCP receipt", "exact_safe_probe": "source/tests present; live endpoint version was previously observed lagging main and was not re-probed just for utilization", "rate_plan_boundary": "carrier declaration is not current remote capacity; Gmail and Drive stay off the public tree", "assigned_backlog": "one nonduplicate concrete carrier consumer", "last_receipt": "wire-gemini-mcp-all-carriers-20260826-01", "last_used_at": "2026-08-26T23:22:44Z", "stale_after": "P1D"
+    },
+    {
+      "name": "ci-receipt-corpus", "kind": "DATASET", "capacity": "LIVE", "stage": "EXERCISED", "condition": "BLOCKED", "holder": "Commons", "authority": "PUBLIC_READ; NO_TRANSFER_OR_REUSE CLAIM WITHOUT LICENSE",
+      "consumer": "Future technical evidence products and buyer-facing reliability analysis", "value": "Nine curated secret-scrubbed CI receipts with schema and validator", "next_action": "Resolve dataset licensing before any release, delivery, sale, or buyer claim.", "source": "commit 5b394618cf8fcaa9f0a4c284298896efb7fe5f00; revenue/data/ci_receipt_corpus.json; host/ci_receipt_corpus.py",
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "current-main public files and focused tests", "exact_safe_probe": "catalog blob ca36320b8d3e39270aada6717f6897911df8c423 matched current main and focused validator tests passed", "rate_plan_boundary": "BLOCKED_LICENSE_REQUIRED; public source is not transferable commercial inventory", "assigned_backlog": "license decision only", "last_receipt": "branded-ci-receipt-corpus-20260826-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P30D"
     },
     {
       "name": "jeffersonville-orchestration-catalog", "kind": "REFERENCE_CATALOG", "capacity": "LIVE", "stage": "EXERCISED", "condition": "DORMANT", "holder": "Commons", "authority": "REFERENCE_AND_BENCHMARK_ONLY; NOT_DEPLOYED",
@@ -182,14 +208,14 @@
       "evidence_ts": "2026-08-26T15:41:28Z", "auth_surface": "active Codex Work session", "exact_safe_probe": "repository, browser, Library, connectors, and subagents answered", "rate_plan_boundary": "owner reports ample quota; numeric remainder unmeasured", "assigned_backlog": "resource office implementation and integration", "last_receipt": "codex-master-resource-office-20260826-01", "last_used_at": "2026-08-26T15:41:28Z", "stale_after": "end of active session"
     },
     {
-      "name": "supergrok-heavy", "kind": "SUBSCRIPTION", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "UNMEASURED", "holder": "Bryce / Grok coordinators", "authority": "ANALYSIS_AND_GROK_BUILD; DISTINCT_FROM_CURSOR_HOLD",
-      "consumer": "Existing Grok coordinators", "value": "High-volume analysis/build capacity with prior usage receipts", "next_action": "Reconcile owner-reported reset with direct probe, then assign only unique work.", "source": "ground/SUPERGROK_HEAVY.json; Grok audit 2026-08-26",
-      "evidence_ts": "2026-08-26T14:59:41Z", "auth_surface": "owner bulletin plus historical direct receipts", "exact_safe_probe": "historical usage measured; reset not independently quantified", "rate_plan_boundary": "distinct from Cursor Grok", "assigned_backlog": "do not remint coordinator work", "last_receipt": "Grok Heavy audit 2026-08-26", "last_used_at": "2026-08-26T13:37:15Z", "stale_after": "probe-before-new-assignment", "priority": 40
+      "name": "supergrok-heavy", "kind": "SUBSCRIPTION", "capacity": "NOT_VERIFIED", "stage": "EXERCISED", "condition": "ACTIVE_UNKNOWN", "holder": "Bryce / Grok coordinators", "authority": "ANALYSIS_AND_GROK_BUILD; DISTINCT_FROM_CURSOR_HOLD",
+      "consumer": "Existing grok.com Heavy and Build sessions", "value": "High-volume analysis/build capacity with prior usage receipts", "next_action": "Route only bounded nonduplicate analysis through already-open grok.com sessions; do not infer numeric quota.", "source": "ground/SUPERGROK_HEAVY.json; #commons owner-capacity relay 1787803540.237349",
+      "evidence_ts": "2026-08-27T04:05:40Z", "auth_surface": "owner-capacity relay plus historical direct receipts", "exact_safe_probe": "reported online; numeric capacity and current session completion not independently probed", "rate_plan_boundary": "distinct from Cursor Grok, Grokbot, and Cursor; no quota burn for census", "assigned_backlog": "bounded unique Grok analysis already routed by peers", "last_receipt": "#commons 1787803540.237349", "last_used_at": "2026-08-26T13:37:15Z", "stale_after": "probe-before-new-assignment", "priority": 40
     },
     {
       "name": "cursor-ultra", "kind": "SUBSCRIPTION", "capacity": "CACHE", "stage": "EXERCISED", "condition": "HELD", "holder": "Bryce", "authority": "OWNER_HELD_UNTIL_EXPLICIT_FRESH_RELEASE",
       "consumer": "No current consumer", "value": "IDE-agent and cached connector capacity preserved for later", "next_action": "Do nothing until explicit release for a named task; reset is not permission.", "source": "ground/CURSOR_QUOTA_HOLD.json; #commons hold receipt",
-      "evidence_ts": "2026-08-26T15:31:38Z", "auth_surface": "cached inventory and explicit hold", "exact_safe_probe": "hold remains latest unambiguous rule", "rate_plan_boundary": "cached is not live; monthly quota protected", "assigned_backlog": "none while held", "last_receipt": "Cursor hold receipt 2026-08-25", "last_used_at": "2026-08-25T16:29:35Z", "stale_after": "next explicit owner release"
+      "evidence_ts": "2026-08-27T04:05:40Z", "auth_surface": "cached inventory, explicit hold, and owner-capacity relay", "exact_safe_probe": "hold remains latest rule and Cursor-Grok windows are reported temporarily down", "rate_plan_boundary": "cached is not live; monthly quota protected; no wake or reassignment", "assigned_backlog": "none while held and offline", "last_receipt": "#commons 1787803540.237349", "last_used_at": "2026-08-25T16:29:35Z", "stale_after": "next explicit owner release"
     },
     {
       "name": "claude", "kind": "SUBSCRIPTION", "capacity": "UNMEASURED", "stage": "AVAILABLE", "condition": "HELD", "holder": "Bryce", "authority": "SUSPENDED_PENDING_OWNER_CLARIFICATION; NEVER_TESTER_VERIFIER_REVIEWER_OR_LANDER",
@@ -199,7 +225,7 @@
     {
       "name": "airtable-revenue-crm", "kind": "CONNECTOR", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons revenue operations", "authority": "EXACT_REVENUE_RECORDS_ONLY",
       "consumer": "Production-survival follow-up state", "value": "One live revenue CRM base", "next_action": "Reconcile only exact reply, acceptance, and payment events.", "source": "connected Airtable census 2026-08-26; aggregate only",
-      "evidence_ts": "2026-08-26T15:25:00Z", "auth_surface": "Airtable connector read", "exact_safe_probe": "one revenue CRM base listed", "rate_plan_boundary": "no private base, table, record, or account IDs here", "assigned_backlog": "reply and acceptance reconciliation", "last_receipt": "production-survival outreach receipt 2026-08-26", "last_used_at": "2026-08-26T14:09:00Z", "stale_after": "P1D"
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Airtable connector aggregate read", "exact_safe_probe": "one revenue CRM base listed with create-level capability; no records opened or changed", "rate_plan_boundary": "no private base, table, record, or account IDs here", "assigned_backlog": "reply and acceptance reconciliation", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P1D"
     },
     {
       "name": "revenue-outreach", "kind": "CONNECTOR_QUOTA", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Commons revenue operations", "authority": "NO_DUPLICATE_SEND; EXACT_PROSPECT_RECEIPT",
@@ -219,7 +245,7 @@
     {
       "name": "sites", "kind": "HOSTING_CONNECTOR", "capacity": "LIVE", "stage": "EXERCISED", "condition": "CONSTRAINED", "holder": "Bryce", "authority": "OWNER_SITE; NO_UNREQUESTED_DEPLOY_OR_ACCESS_POLICY_CHANGE",
       "consumer": "Read-only owner inventory for one active custom-access site", "value": "Connected hosted-site capability; public reach is not implied", "next_action": "Leave the current site and access policy intact until an owner-directed deployment or exact private-boundary-safe consumer exists.", "source": "connected Sites census; aggregate only",
-      "evidence_ts": "2026-08-26T22:07:53Z", "auth_surface": "Sites connector read", "exact_safe_probe": "one owner-role active site; version 1; live URL present", "rate_plan_boundary": "connector capacity is separate from public access and production writes", "assigned_backlog": "no current Commons deployment", "last_receipt": "resource-master connected-app aggregate probe 2026-08-26", "last_used_at": "2026-08-26T22:03:00Z", "stale_after": "P7D"
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Sites connector read", "exact_safe_probe": "one owner-role active custom-access site; version 1; access revision 2; no access or deploy mutation", "rate_plan_boundary": "connector capacity is separate from public access and production writes", "assigned_backlog": "no current Commons deployment", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D"
     },
     {
       "name": "causal-compiler-site", "kind": "COMMERCIAL_ASSET", "capacity": "LIVE", "stage": "EXERCISED", "condition": "BLOCKED", "holder": "Bryce", "authority": "OWNER_ONLY_ACCESS_POLICY_AND_DEPLOY; PUBLIC_READ_NOT_PROVEN",
@@ -229,7 +255,7 @@
     {
       "name": "vercel", "kind": "HOSTING_CONNECTOR", "capacity": "LIVE", "stage": "REACHABLE", "condition": "CONSTRAINED", "holder": "Bryce", "authority": "READ_CENSUS; DEPLOY_ONLY_FOR_EXACT_CONSUMER",
       "consumer": "Spark endpoint exists but project visibility is incomplete", "value": "Connected Hobby hosting road", "next_action": "Reconcile visibility only for a concrete task; do not infer zero projects.", "source": "Vercel census and independent Spark probe",
-      "evidence_ts": "2026-08-26T22:07:53Z", "auth_surface": "Vercel connector read", "exact_safe_probe": "Hobby team answered; visible project list returned exactly zero", "rate_plan_boundary": "zero visible projects is not permission to deploy; external Spark reach is separate evidence", "assigned_backlog": "none until concrete consumer", "last_receipt": "resource-master connected-app aggregate probe 2026-08-26", "last_used_at": "2026-08-26T22:03:00Z", "stale_after": "P7D", "priority": 25
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "Vercel connector read", "exact_safe_probe": "one Hobby team answered; visible project list again returned exactly zero", "rate_plan_boundary": "zero visible projects is not permission to deploy; external Spark reach is separate evidence", "assigned_backlog": "none until concrete consumer", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P7D", "priority": 25
     },
     {
       "name": "cloudflare", "kind": "CLOUD_PLATFORM", "capacity": "NOT_VERIFIED", "stage": "AVAILABLE", "condition": "UNMEASURED", "holder": "Bryce / Commons", "authority": "PROBE_BEFORE_PROVISION; NO_SPECULATIVE_DEPLOY",
@@ -262,9 +288,9 @@
       "evidence_ts": "2026-08-26T15:02:10Z", "auth_surface": "repository doctor and process census", "exact_safe_probe": "doctor DARK; no live edge", "rate_plan_boundary": "no bot, webhook, channel, or token assumed", "assigned_backlog": "terminalize frozen patch", "last_receipt": "infra audit 2026-08-26", "last_used_at": "unknown", "stale_after": "terminalize-current-claim"
     },
     {
-      "name": "openai-automation-fleet", "kind": "AUTOMATION", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Bryce / Commons", "authority": "TWO_ACTIVE_TASKS; DO_NOT_DUPLICATE_SCOPE",
-      "consumer": "Hourly Slack bridge and event-driven Commons Builder", "value": "Two enabled background tasks", "next_action": "Add non-overlapping resource-master cycle and reconcile against existing tasks.", "source": "connected Automations census; enabled only",
-      "evidence_ts": "2026-08-26T15:25:00Z", "auth_surface": "automation list read", "exact_safe_probe": "two enabled tasks observed", "rate_plan_boundary": "disabled records are not active capacity", "assigned_backlog": "resource census plus one activation per cycle", "last_receipt": "codex-master-resource-office-20260826-01", "last_used_at": "2026-08-26T15:25:00Z", "stale_after": "P1D", "quantity": 2
+      "name": "openai-automation-fleet", "kind": "AUTOMATION", "capacity": "LIVE", "stage": "PRODUCING", "condition": "CONSTRAINED", "holder": "Bryce / Commons", "authority": "THREE_ACTIVE_TASKS; DO_NOT_DUPLICATE_BUILDER_OR_SLACK_BRIDGE",
+      "consumer": "Commons Resource Master, hourly Slack Bridge, and event-driven Commons Builder", "value": "Three enabled nonidentical background tasks", "next_action": "Keep resource selection, building, and Slack ingestion separate; disable only if a task reaches a real terminal condition.", "source": "connected Automations census; enabled only",
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "automation list read", "exact_safe_probe": "three enabled tasks observed; four disabled records excluded from capacity", "rate_plan_boundary": "disabled records are not active capacity; overlap must not become duplicate work", "assigned_backlog": "resource census plus one activation per cycle", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "P1D", "quantity": 3
     },
     {
       "name": "chatgpt-library", "kind": "DATASTORE", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Bryce", "authority": "PRIVATE_CONTENT; PUBLIC_AGGREGATES_ONLY",
@@ -284,7 +310,7 @@
     {
       "name": "public-commons-audience", "kind": "CHANNEL", "capacity": "LIVE", "stage": "PRODUCING", "condition": "LIVE", "holder": "Commons", "authority": "PUBLIC_READ; NO_ADMISSION_GATE",
       "consumer": "Humans, agents, search engines, and external builders", "value": "88 live primary doors plus Pages, raw Git, jsDelivr, README, resource, and offer surfaces", "next_action": "Link the master ledger from resources.html and verify live after landing.", "source": "live Pages audit; reach.json; mirrors.json",
-      "evidence_ts": "2026-08-26T15:31:38Z", "auth_surface": "public browser and reach maps", "exact_safe_probe": "all 88 unique primary door URLs returned HTTP 200", "rate_plan_boundary": "Pages can lag main; SHA-pin durable claims", "assigned_backlog": "publish and verify v2 ledger door", "last_receipt": "codex-master-resource-office-20260826-01", "last_used_at": "2026-08-26T15:31:38Z", "stale_after": "next main advance", "quantity": 88
+      "evidence_ts": "2026-08-27T04:09:30Z", "auth_surface": "public HTTP and reach maps", "exact_safe_probe": "commerce.html, commerce.js, and catalog answered HTTP 200; JS and catalog bytes matched current main", "rate_plan_boundary": "Pages can lag main; SHA-pin durable claims", "assigned_backlog": "keep public doors measurable without treating traffic as cash", "last_receipt": "codex-public-commerce-road-activation-20260827-01", "last_used_at": "2026-08-27T04:09:30Z", "stale_after": "next main advance", "quantity": 88
     }
   ]
 }
