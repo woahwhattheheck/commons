@@ -1197,7 +1197,7 @@ class OutcomeCommerceTests(unittest.TestCase):
             "Stripe URL recorded for provenance. "
             "Payment capability is unverified; checkout is unavailable."
         )
-        for surface_name in ("commerce.html", "tips.html"):
+        for surface_name in ("commerce.html", "tips.html", "pay.html"):
             with self.subTest(surface=surface_name):
                 surface_html = (ROOT / surface_name).read_text(encoding="utf-8")
                 self.assertNotIn('class="checkout-live"', surface_html)
@@ -1227,6 +1227,24 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertNotIn("TYPE owns checkout", tips)
         self.assertNotIn("live checkout", tips.lower())
         self.assertNotIn(">Pay ", tips)
+
+        pay = (ROOT / "pay.html").read_text(encoding="utf-8")
+        self.assertIn(
+            "<title>Commons provider links — capability unverified</title>", pay
+        )
+        self.assertIn("<h1>Provider capability</h1>", pay)
+        self.assertIn(
+            "Seven Stripe URLs remain recorded in the cited SKU sources for provenance.",
+            pay,
+        )
+        self.assertIn(
+            "Provider charge capability is unverified, so checkout is unavailable here.",
+            pay,
+        )
+        self.assertIn(".provider-unverified{", pay)
+        self.assertNotIn("live Stripe URLs", pay)
+        self.assertNotIn("<h1>Pay</h1>", pay)
+        self.assertNotIn(">Pay ", pay)
 
     def test_renderer_executes_strict_own_host_checkout_membership(self) -> None:
         node = shutil.which("node")
