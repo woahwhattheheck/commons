@@ -25,17 +25,22 @@ class FakeStripe:
         self.next_id = 1
 
     def __call__(self, method, path, secret, fields=None):
-        del secret
         self.calls.append((method, path, dict(fields) if fields else None))
         if method == "POST" and path == "/checkout/sessions":
-            session_id = f"cs_test_{self.next_id}"
+            environment = "live" if secret.startswith(("sk_live_", "rk_live_")) else "test"
+            session_id = f"cs_{environment}_{self.next_id}"
             self.next_id += 1
             row = {
                 "id": session_id,
                 "url": f"https://checkout.stripe.com/c/pay/{session_id}",
                 "payment_status": "unpaid",
-                "livemode": False,
+                "livemode": environment == "live",
                 "mode": (fields or {}).get("mode"),
+                "client_reference_id": (fields or {}).get("client_reference_id"),
+                "metadata": {
+                    "titan_hands": (fields or {}).get("metadata[titan_hands]"),
+                    "commons_sku": (fields or {}).get("metadata[commons_sku]"),
+                },
             }
             self.sessions[session_id] = row
             return dict(row)
@@ -56,7 +61,7 @@ class PayLaneTests(unittest.TestCase):
     def setUp(self):
         self.stripe = FakeStripe()
         self.pay = PayServer(environ={}, stripe=self.stripe)
-        self.paid = PayServer(environ={"STRIPE_SECRET_KEY": "sk_test_not_a_real_key"}, stripe=self.stripe)
+        self.paid = PayServer(environ={"STRIPE_SECRET_KEY": "sk_live_not_a_real_key"}, stripe=self.stripe)
 
     def test_observe_lists_live_payment_links_without_secret(self):
         observed = self.pay.handle({"op": "observe"})
@@ -97,7 +102,7 @@ class PayLaneTests(unittest.TestCase):
         self.assertEqual((method, path), ("POST", "/checkout/sessions"))
         self.assertEqual(fields["line_items[0][price]"], "price_1U8lflATH4EDE7XD6xNapRSL")
         self.assertEqual(fields["mode"], "payment")
-        self.assertNotIn("sk_test_not_a_real_key", json.dumps(created))
+        self.assertNotIn("sk_live_not_a_real_key", json.dumps(created))
 
     def test_verify_paid_mints_session_handle(self):
         created = self.paid.handle(
@@ -115,7 +120,7 @@ class PayLaneTests(unittest.TestCase):
         self.assertTrue(verified["paid"])
         self.assertEqual(
             verified["paid_session"],
-            mint_session_token("sk_test_not_a_real_key", created["checkout_session_id"]),
+            mint_session_token("sk_live_not_a_real_key", created["checkout_session_id"]),
         )
         again = self.paid.handle(
             {
@@ -125,6 +130,43 @@ class PayLaneTests(unittest.TestCase):
             }
         )
         self.assertTrue(again["ok"])
+
+    def test_paid_testmode_does_not_mint_session_handle(self):
+        sandbox = PayServer(environ={"STRIPE_SECRET_KEY": "sk_test_not_a_real_key"}, stripe=self.stripe)
+        created = sandbox.handle(
+            {"op": "act", "action": {"type": "checkout", "sku": DEFAULT_SKU}, "observe_after": False}
+        )
+        self.stripe.mark_paid(created["checkout_session_id"])
+        verified = sandbox.handle(
+            {
+                "op": "act",
+                "action": {"type": "verify", "checkout_session_id": created["checkout_session_id"]},
+                "observe_after": False,
+            }
+        )
+        self.assertFalse(verified["ok"])
+        self.assertEqual(verified["failure_reason"], "PAY_TESTMODE")
+        self.assertTrue(verified["provider_paid"])
+        self.assertNotIn("paid_session", verified)
+
+    def test_paid_unbound_session_does_not_mint_handle(self):
+        self.stripe.sessions["cs_live_unrelated"] = {
+            "id": "cs_live_unrelated",
+            "payment_status": "paid",
+            "livemode": True,
+            "client_reference_id": "some-other-product",
+            "metadata": {},
+        }
+        verified = self.paid.handle(
+            {
+                "op": "act",
+                "action": {"type": "verify", "checkout_session_id": "cs_live_unrelated"},
+                "observe_after": False,
+            }
+        )
+        self.assertFalse(verified["ok"])
+        self.assertEqual(verified["failure_reason"], "PAY_UNBOUND")
+        self.assertNotIn("paid_session", verified)
 
     def test_verify_unpaid_is_typed(self):
         created = self.paid.handle(
@@ -145,7 +187,7 @@ class PayLaneTests(unittest.TestCase):
         self.assertEqual(result["failure_reason"], "PAY_UNCONFIGURED")
 
     def test_session_token_rejects_wrong_secret(self):
-        token = mint_session_token("sk_a", "cs_1")
+        token = mint_session_token("sk_a", "cs_live_1")
         with self.assertRaises(Exception):
             session_token_matches("sk_b", token)
 
@@ -171,7 +213,7 @@ class PayLaneTests(unittest.TestCase):
 class WirelessLaneTests(unittest.TestCase):
     def setUp(self):
         self.stripe = FakeStripe()
-        self.pay = PayServer(environ={"STRIPE_SECRET_KEY": "sk_test_not_a_real_key"}, stripe=self.stripe)
+        self.pay = PayServer(environ={"STRIPE_SECRET_KEY": "sk_live_not_a_real_key"}, stripe=self.stripe)
 
     def test_bind_without_key_is_pay_unconfigured(self):
         wireless = WirelessHandsServer(environ={}, pay=PayServer(environ={}, stripe=self.stripe))
@@ -183,7 +225,7 @@ class WirelessLaneTests(unittest.TestCase):
 
     def test_bind_unpaid_is_pay_unpaid(self):
         created = self.pay.handle({"op": "act", "action": {"type": "checkout"}, "observe_after": False})
-        wireless = WirelessHandsServer(environ={"STRIPE_SECRET_KEY": "sk_test_not_a_real_key"}, pay=self.pay)
+        wireless = WirelessHandsServer(environ={"STRIPE_SECRET_KEY": "sk_live_not_a_real_key"}, pay=self.pay)
         self.addCleanup(wireless.close)
         result = wireless.handle(
             {
@@ -219,7 +261,7 @@ class WirelessLaneTests(unittest.TestCase):
                 return None
 
         wireless = WirelessHandsServer(
-            environ={"STRIPE_SECRET_KEY": "sk_test_not_a_real_key"},
+            environ={"STRIPE_SECRET_KEY": "sk_live_not_a_real_key"},
             pay=self.pay,
             router_factory=lambda: FilesOnly(),
             host="127.0.0.1",
