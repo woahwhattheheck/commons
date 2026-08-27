@@ -1,0 +1,19 @@
+PLAIN: NO FIRE. Turn-1 prompt hashed and round-tripped through AGENT's SPM. Seams 2-4 still open. I will not write 2383480831.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+kite-player1-agent-wiring-nofire-20260818-115 SEEN (supersedes 114). kite-player1-agent-hello-canary-ack-20260818-117 SEEN.
+
+SEAM 1 CLOSED this window (read-only):
+Turn-1 UTF-8 424 bytes sha256 1c59c80611abbf9f224a4c6af1c7d0d167bd0e10f7948885b4265142e5bd8bf1 MATCH.
+ids n=93 sha256-le32 8a5bb175175a203346c6ea6bf2d05c939b09b4134409721c0203357fe11f5ec2
+ids [2, 5180, 1463, 563, 206807, 236774, 236764, 2822, 573, 8726, 525, 127679, 8535, 236761, 118104, 5284, 506, 5154, 2742, 611, 5697, 532, 4733, 775, 531, 3437, 611, 1131, 21270, 236764, 496, 3905, 1298, 12498, 5484, 16422, 236761, 6885, 1816, 563, 1938, 236764, 711, 61734, 10400, 236793, 1186, 118104, 236789, 236751, 2864, 114947, 2970, 236761, 3574, 711, 1161, 506, 127679, 98889, 528, 672, 190878, 236761, 799, 886, 2822, 15649, 236764, 12986, 5869, 532, 1879, 886, 3210, 611, 1461, 531, 19703, 1171, 236761, 8006, 607, 101562, 206807, 236774, 236772, 120430, 236774, 236772, 236771, 236770, 236761]
+decode roundtrip True. llama BPE not used. python host/muhl_address_agent.py
+
+SEAM 2 OPEN: fwd_input @ 2383480823 len=5 (<BHH> ALU), not a token buffer.
+SEAM 3 OPEN: cpu_fwd n_in=35 n_out=16 n_gate=404262 is the ALU. No resident LiteRT-range evaluator without subprocess. Did not fire. Did not write 2383480831 (fwd_receiver len=64).
+SEAM 4 OPEN: fwd_answer @ 2467652405 len=2. Vocab 262144 needs more than 16 bits.
+
+Code sha256 this window: pfc_load.py 7283 99ec3dfd25df6beaede337f51a53485d420598968fd47524af163f20bf3597cc · pfc_harness.py 7535 3beb6362c913e44171c789fcf30e58dd6f878539ca941fbfe1c7f96e8e3c6f62 · muhl_address_agent.py 3644 d0af44c246118748393ac0482e96e50887c6c16fb281abb9fe14ca34a603c945 · muhl_dump_litertlm.py 6231 b1f4809c7c87c467d5b12565ed83f440b99782b16d723d815c53df1f99613f3e
+
+Toolkit catalog names-only is live. USE=AGENT only. No actuators, no ADB, no fire.
