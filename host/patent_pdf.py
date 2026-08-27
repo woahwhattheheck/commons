@@ -155,6 +155,7 @@ def figs_whitebox():
         b.append(txt(45, yy + 12, r, fs=14, anchor="start"))
         b.append(txt(300, yy + 12, p, fs=14, anchor="start", weight="700"))
         b.append(f'<line x1="290" y1="{yy}" x2="290" y2="{yy+28}" stroke="black" stroke-width="0.8"/>')
+    # quant-stress histogram
     hx, hy, hh = 470, 70, 120
     b.append(txt(560, 56, "quant-stress: per-block |max|", fs=14, weight="700"))
     bars = [20, 34, 55, 78, 100, 70, 44, 26, 16, 9]
@@ -207,23 +208,27 @@ def figs_whitebox():
     busY = 52
     b.append(f'<line x1="40" y1="{busY}" x2="860" y2="{busY}" stroke="black" stroke-width="2"/>')
     b.append(txt(48, busY - 7, "residual bus  (attention = interconnect)", fs=13, anchor="start", style="italic"))
+    # transistors: (x, class, fill)
     trans = [(150, "amp", "white"), (300, "inh", "white"), (445, "dead", "#d8d8d8"),
              (590, "amp", "white"), (720, "pass", "white")]
     chY, chW, chH = busY + 34, 28, 56
     for (x, cls, fill) in trans:
         lw = 1 if cls == "dead" else 2
-        b.append(f'<line x1="{x}" y1="{busY}" x2="{x}" y2="{chY}" stroke="black" stroke-width="{lw}"/>')
-        b.append(f'<rect x="{x-chW/2}" y="{chY}" width="{chW}" height="{chH}" rx="3" fill="{fill}" stroke="black" stroke-width="1.5"/>')
-        b.append(f'<line x1="{x-chW/2-20}" y1="{chY+chH/2}" x2="{x-chW/2}" y2="{chY+chH/2}" stroke="black" stroke-width="2"/>')
+        b.append(f'<line x1="{x}" y1="{busY}" x2="{x}" y2="{chY}" stroke="black" stroke-width="{lw}"/>')                 # drain wire
+        b.append(f'<rect x="{x-chW/2}" y="{chY}" width="{chW}" height="{chH}" rx="3" fill="{fill}" stroke="black" stroke-width="1.5"/>')  # channel
+        b.append(f'<line x1="{x-chW/2-20}" y1="{chY+chH/2}" x2="{x-chW/2}" y2="{chY+chH/2}" stroke="black" stroke-width="2"/>')  # gate stub
         b.append(f'<circle cx="{x-chW/2-20}" cy="{chY+chH/2}" r="2.6" fill="black"/>')
-        b.append(f'<line x1="{x}" y1="{chY+chH}" x2="{x}" y2="{chY+chH+15}" stroke="black" stroke-width="1.5"/>')
+        b.append(f'<line x1="{x}" y1="{chY+chH}" x2="{x}" y2="{chY+chH+15}" stroke="black" stroke-width="1.5"/>')        # source stub
         b.append(txt(x, chY + chH + 32, cls, fs=13, weight="700"))
+    # terminal callouts on the first transistor
     x0 = 150
     b.append(txt(x0 - chW/2 - 24, chY + chH/2 - 4, "gate g", fs=12, anchor="end"))
     b.append(txt(x0 - chW/2 - 24, chY + chH/2 + 11, "(switch)", fs=10.5, anchor="end", style="italic"))
     b.append(txt(x0 + chW/2 + 8, chY + 12, "drain d", fs=12, anchor="start"))
     b.append(txt(x0 + chW/2 + 8, chY + chH + 4, "source u", fs=12, anchor="start"))
+    # the transistor equation
     b.append(txt(450, chY + chH + 62, "each SwiGLU hidden unit j :   yⱼ = SiLU(gⱼ·x) · (uⱼ·x)   →   residual += yⱼ·dⱼ", fs=14))
+    # legend
     ly = chY + chH + 86
     for i, (lab, fl) in enumerate([("amplifier (ρ>0)", "white"), ("inhibitor (ρ<0)", "white"), ("dead (‖g‖·‖d‖≈0)", "#d8d8d8")]):
         lx = 150 + i * 230
@@ -278,6 +283,7 @@ def figs_sdc():
     b.append(box(210, 55, 140, 60, "stream only the read fraction α per token"))
     b.append(box(390, 55, 140, 60, "resident working set (bounded)"))
     b.append(arrow(170, 85, 208, 85)); b.append(arrow(350, 85, 388, 85))
+    # alpha-throughput curve
     cx, cy, cw, ch = 590, 55, 250, 130
     b.append(f'<line x1="{cx}" y1="{cy+ch}" x2="{cx+cw}" y2="{cy+ch}" stroke="black" stroke-width="1.2"/>')
     b.append(f'<line x1="{cx}" y1="{cy}" x2="{cx}" y2="{cy+ch}" stroke="black" stroke-width="1.2"/>')
@@ -425,12 +431,14 @@ def md_to_html(md, figures=None):
     while i < n:
         ln = lines[i]
         st = ln.strip()
+        # blockquote (math) -> monospace, strip backtick delimiters
         if st.startswith(">"):
             flush(); bq = []
             while i < n and lines[i].strip().startswith(">"):
                 c = re.sub(r'^\s*>\s?', '', lines[i]).replace('`', '')
                 bq.append(html.escape(c)); i += 1
             out.append("<blockquote>" + "\n".join(bq) + "</blockquote>"); continue
+        # table
         if st.startswith("|") and i + 1 < n and set(lines[i+1].strip()) <= set("|-: "):
             flush(); rows = []
             while i < n and lines[i].strip().startswith("|"):
@@ -438,13 +446,17 @@ def md_to_html(md, figures=None):
             th = "".join(f"<th>{inline(c)}</th>" for c in rows[0])
             body = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in rows[2:])
             out.append(f"<table><tr>{th}</tr>{body}</table>"); continue
+        # heading
         m = re.match(r'^(#{1,4})\s+(.*)', ln)
         if m:
             flush(); lvl = len(m.group(1)); out.append(f"<h{lvl}>{inline(m.group(2).strip())}</h{lvl}>")
+            # inject figures right after the drawings heading
             if figures and "BRIEF DESCRIPTION OF THE DRAWINGS" in m.group(2).upper():
+                # emit the list items of this section first, then the figures
                 j = i + 1; items = []
                 while j < n and not re.match(r'^#{1,4}\s', lines[j]):
                     items.append(lines[j]); j += 1
+                # render the bullet list normally
                 buf, cur = [], []
                 for it in items:
                     s2 = it.strip()
@@ -464,6 +476,7 @@ def md_to_html(md, figures=None):
             i += 1; continue
         if st == "---":
             flush(); out.append("<hr>"); i += 1; continue
+        # list item (numbered or bulleted) — accumulate continuation lines into ONE block
         if re.match(r'^[-*]\s|^\d+\.\s', st):
             flush(); parts = [st]; i += 1
             while i < n:
