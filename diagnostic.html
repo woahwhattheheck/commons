@@ -285,8 +285,61 @@ PUBLIC_OBJECTIVE:</textarea>
     }
     return { value: decoded, end: valueEnd };
   }
+  function assignmentPathHasForbiddenField(name) {
+    var source = String(name || "").trim();
+    if (!source || forbiddenFieldName(source)) return true;
+    var index = 0;
+    while (index < source.length) {
+      if (source.charAt(index) === "[") {
+        index += 1;
+        while (/\s/.test(source.charAt(index))) index += 1;
+        if (index >= source.length) return true;
+        var bracketValue;
+        if (source.charAt(index) === '"' || source.charAt(index) === "'") {
+          var quoted = decodedQuotedAssignment(source, index);
+          if (!quoted) return true;
+          bracketValue = quoted.value;
+          index = quoted.end;
+          while (/\s/.test(source.charAt(index))) index += 1;
+          if (source.charAt(index) !== "]") return true;
+        } else {
+          var bracketStart = index;
+          while (index < source.length && source.charAt(index) !== "]") {
+            if (source.charAt(index) === "[" || source.charAt(index) === "\\" ||
+                source.charAt(index) === '"' || source.charAt(index) === "'") return true;
+            index += 1;
+          }
+          if (index >= source.length) return true;
+          bracketValue = source.slice(bracketStart, index).trim();
+          if (!bracketValue) return true;
+        }
+        if (forbiddenFieldName(bracketValue)) return true;
+        index += 1;
+        while (/\s/.test(source.charAt(index))) index += 1;
+        if (index < source.length && source.charAt(index) !== "." && source.charAt(index) !== "[") return true;
+        if (source.charAt(index) === ".") {
+          index += 1;
+          if (index >= source.length) return true;
+        }
+        continue;
+      }
+      var segmentStart = index;
+      while (index < source.length && source.charAt(index) !== "." && source.charAt(index) !== "[") {
+        var character = source.charAt(index);
+        if (character === "]" || character === "\\" || character === '"' || character === "'") return true;
+        index += 1;
+      }
+      var segment = source.slice(segmentStart, index).trim();
+      if (!segment || forbiddenFieldName(segment)) return true;
+      if (source.charAt(index) === ".") {
+        index += 1;
+        if (index >= source.length) return true;
+      }
+    }
+    return false;
+  }
   function jsonAssignmentHasForbiddenField(source, queryDepth) {
-    var prefix = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*/g;
+    var prefix = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*/g;
     var match;
     while ((match = prefix.exec(source)) !== null) {
       var valueStart = prefix.lastIndex;
@@ -400,6 +453,9 @@ PUBLIC_OBJECTIVE:</textarea>
     queryDepth = queryDepth || 0;
     var source = decodePercentLayers(rawSource);
     if (source === null) return true;
+    var assignmentSource = source;
+    if (typeof assignmentSource.normalize === "function") assignmentSource = assignmentSource.normalize("NFKC");
+    assignmentSource = assignmentSource.toLowerCase().replace(/\u00df/g, "ss");
     var parsedJson;
     var parsedJsonOk = false;
     try {
@@ -415,12 +471,12 @@ PUBLIC_OBJECTIVE:</textarea>
         return true;
       }
     }
-    if (jsonAssignmentHasForbiddenField(source, queryDepth)) return true;
-    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+    if (jsonAssignmentHasForbiddenField(assignmentSource, queryDepth)) return true;
+    var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
     var match;
-    while ((match = assignment.exec(source)) !== null) {
+    while ((match = assignment.exec(assignmentSource)) !== null) {
       var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
-      if (forbiddenFieldName(match[1]) && String(value || "").trim()) return true;
+      if (assignmentPathHasForbiddenField(match[1]) && String(value || "").trim()) return true;
       if (/^[\[{]/.test(String(value || "").replace(/^\s+/, ""))) continue;
       var isUrlScheme = /^(?:https?)$/i.test(match[1]) && String(value || "").indexOf("//") === 0;
       if (String(value || "").trim() && !isUrlScheme) {

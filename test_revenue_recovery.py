@@ -368,6 +368,12 @@ class RevenueRecoveryTests(unittest.TestCase):
         hostile = (
             'x["token"]="hidden"',
             "x['token']='hidden'",
+            r'root["to\u006ben"]="hidden"',
+            'root["topic]=reproducibility',
+            r'root["to\ken"]="hidden"',
+            "paßword=hidden",
+            "paſſword=hidden",
+            "ſecret=hidden",
             'x="{\\"token\\":\\"hidden\\"}"',
             'payload={"paſſword":"hidden"}',
             'payload={"paßword":"hidden"}',
@@ -388,7 +394,14 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(rr.canonical_field_name("paſſword"), "password")
         self.assertEqual(rr.canonical_field_name("paßword"), "password")
         self.assertEqual(rr.canonical_field_name("ſecret"), "secret")
-        for value in ('x="reproducibility"', 'x["topic"]="reproducibility"'):
+        for value in (
+            'x="reproducibility"',
+            'x["topic"]="reproducibility"',
+            r'root["to\u0070ic"]="reproducibility"',
+            "paßage=public",
+            "ſtatus=ready",
+            "topic=straße",
+        ):
             with self.subTest(safe_short_binding=value):
                 self.assertFalse(rr.contains_sensitive_value(value))
                 temp, root = self.make_root(self.valid_post(value))
