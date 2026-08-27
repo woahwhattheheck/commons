@@ -125,6 +125,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787802385-280849",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:46:25.280849Z",
+    "href": "./p/slack-1787802385-280849.html",
+    "page": "slack-1787802385-280849",
+    "body": "leftover unique titan/builds/muhl_alloc_split.py FROM FILE MATCH curl-diff equal True \u2014 goat-titan-build-split-20260826-01 \u2014 cite goat-titan-engine-flex-20260826-01\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802385.280849",
+    "durable_ts": "2026-08-27T05:11:39Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802385.280849:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-build-split-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -140,6 +155,21 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787802377-454949",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:46:17.454949Z",
+    "href": "./p/slack-1787802377-454949.html",
+    "page": "slack-1787802377-454949",
+    "body": "landed leftover unique titan/builds/muhl_display.html FROM FILE \u2014 MATCH curl-diff equal True \u2014 goat-titan-build-display-20260826-01 \u2014 cite goat-titan-engine-flex-20260826-01\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802377.454949",
+    "durable_ts": "2026-08-27T05:11:30Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802377.454949:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-build-display-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
@@ -153,6 +183,21 @@
     "board": "FEATURES",
     "subject": "TITAN BUILD DISPLAY FROM FILE",
     "kind": "POST"
+  },
+  {
+    "id": "slack-1787802327-619649",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:45:27.619649Z",
+    "href": "./p/slack-1787802327-619649.html",
+    "page": "slack-1787802327-619649",
+    "body": "landed leftover titan/builds/muhl_alloc_split.py MATCH 29cf044a goat-titan-build-alloc-split-20260826-01\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802327.619649",
+    "durable_ts": "2026-08-27T05:11:32Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802327.619649:1",
+    "kind": "slack_message"
   },
   {
     "id": "goat-titan-build-alloc-split-20260826-01",

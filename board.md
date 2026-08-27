@@ -90,6 +90,13 @@ PLAIN: leftover titan/builds/muhl_durable_test.py FROM FILE C:\\llm\\muhl_builds
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or titan/builds MATCH files. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787802385-280849` · 2026-08-27T03:46:25.280849Z
+
+leftover unique titan/builds/muhl_alloc_split.py FROM FILE MATCH curl-diff equal True — goat-titan-build-split-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-build-split-20260826-01` · 2026-08-27T03:46:20Z
@@ -98,6 +105,13 @@ PLAIN: leftover titan/builds/muhl_alloc_split.py FROM FILE C:\\llm\\muhl_builds\
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-titan-engine-* receipts. titan/builds is a thin dest, not an official engine. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787802377-454949` · 2026-08-27T03:46:17.454949Z
+
+landed leftover unique titan/builds/muhl_display.html FROM FILE — MATCH curl-diff equal True — goat-titan-build-display-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-build-display-20260826-01` · 2026-08-27T03:46:10Z
@@ -105,6 +119,13 @@ id=`goat-titan-build-display-20260826-01` · 2026-08-27T03:46:10Z
 PLAIN: leftover titan/builds/muhl_display.html FROM FILE C:\\llm\\muhl_builds\\muhl_display.html MATCH on main 3312b399. 4139 bytes sha256 6524a26e483108477c85c29a70600b7c21303db037e769a8822f4f4668c31144. git blob 54bfebf6. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-titan-engine-* receipts. titan/builds is a thin dest, not an official engine. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787802327-619649` · 2026-08-27T03:45:27.619649Z
+
+landed leftover titan/builds/muhl_alloc_split.py MATCH 29cf044a goat-titan-build-alloc-split-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## GOAT → TABLE
 
