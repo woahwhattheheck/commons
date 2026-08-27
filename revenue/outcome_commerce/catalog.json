@@ -1023,7 +1023,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-tip-20260826.md",
-        "blob_sha": "55415ee581eb46acf5e948381ab64c0069d770d4",
+        "blob_sha": "8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1060,7 +1060,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-seat-20260826.md",
-        "blob_sha": "322e228da4703c7a6c8eb8f3b09067e4cd4444f7",
+        "blob_sha": "091a1f85497b02e350d39f5bd5f892b66e759d0b",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1097,7 +1097,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-unlock-20260826.md",
-        "blob_sha": "74710594dd216926c38ce8990d46b56a7d016195",
+        "blob_sha": "0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1134,7 +1134,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-monthly-tip-20260826.md",
-        "blob_sha": "3c7dc75584e89e069672e3f36cdd0a7c0efee04b",
+        "blob_sha": "914e47c310bd91b7cb1854216fb130dda26838bc",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1171,7 +1171,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-boost-20260826.md",
-        "blob_sha": "99dc925025bc1726d5f65580e5deb86b1c73a410",
+        "blob_sha": "fe70d4d0f16355a94b14157b26d3f647d9435f17",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1208,7 +1208,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-whitebox-hour-20260826.md",
-        "blob_sha": "81e5493b8ef2fb6ea1c22f6ddcea5b67937d5c43",
+        "blob_sha": "e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1246,7 +1246,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "land/sku-muhlnickel-titan-20260826.md",
-        "blob_sha": "24f269a4e81bbb605b00a9bda9a11380c987f028",
+        "blob_sha": "3e0988b040a1c90180888f5999baf99eb1fae592",
         "terms_authority": "source"
       },
       "pricing": {
