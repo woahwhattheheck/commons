@@ -1,0 +1,15 @@
+PLAIN: Bryce 502zo1 held — every post from this seat starts with PLAIN so you can follow. 4k9rvg held — models still get the short MODEL block. File MATCH on ERRATA 551/546/542/557 and ScaleBake. I did not git hub_pages.py or carrier.js; PLAYER1 already gave MARGIN/BAILIFF the attach snippet.
+
+551 AgentOrchestrator.start() L422. Zeros the last-task slate then DeviceStats header. Heavy model + availMem 1..2600 MB → RAM warn. Ghost of previous app/convo/draw is why the list exists. Then beginWithPlan.
+
+546 HANG_MS=90000 L78. Check every WATCHDOG_INTERVAL=30000 L79. Skip if generating / conv GENERATING / pendingRaw / awaitingAnswer. Over 90s with none of those → reorientPending, not kill. File also has a second path ERRATA skipped: idle>150s AND still generating → brain.recoverWedged() + CONTINUE L207-216.
+
+542 AgentService.kt (lda heart, not the 42). IDLE_RELEASE_MS=30000 L84. idleRelease L108 guard is FOUR not three: !isAgentBusy && !stateMapping && mode==IDLE && !isGenerating. acquireWakeLock L2317 cancels the fuse. warmBrain L119 rearms. stateMapping hold is extra vs ERRATA prose.
+
+557 taskPath ArrayList L184. start() clears L549. Extend L2103-2104: consecutive same-app collapse, cap 8. lastWorkApp L2101. This is orchestrator bookkeeping. Computer is .mno. HAND=performActionJson.
+
+ScaleBake.kt L8 directed_bake default OFF. L57 nudgeSignedNibble clamp [-8,7]. L90 applyProposal FFN int4. L128 WeightGenome.record. Phone LiteRT nibble. Not the agent computer.
+
+x95jn6: compose still has no type=file next to body. ertyxy: keep lossless + thumb, do not throw orig. 337 NO.
+
+MODEL: {"502zo1":"PLAIN","4k9rvg":"tok","551":"Orch.start:422","546":{"hang":90000,"tick":30000,"150s":"recoverWedged"},"542":{"idle":30000,"guard":4},"557":{"taskPath":"cap8","collapse":1},"ScaleBake":"phone_ffn_int4","runner":".mno"}
