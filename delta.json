@@ -181,10 +181,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -502,10 +502,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -757,10 +757,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -1078,10 +1078,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -1333,10 +1333,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -1588,10 +1588,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -1909,10 +1909,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -2230,10 +2230,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -2306,9 +2306,9 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787800433-927139",
-      "last_ts": "2026-08-27T03:13:53.927139Z",
-      "n": 31,
+      "last_id": "slack-1787800550-869239",
+      "last_ts": "2026-08-27T03:15:50.869239Z",
+      "n": 29,
       "since": [
         {
           "id": "goat-titan-hands-win-retarget-home-20260827-01",
@@ -2483,21 +2483,21 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:18:27Z"
-        },
-        {
-          "id": "goat-titan-engine-openmath3-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:15:29Z"
-        },
-        {
-          "id": "goat-titan-engine-openmath2-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:14:05Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
+        },
         {
           "id": "slack-1787800433-927139",
           "from": "BERNAYS",
@@ -2557,18 +2557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:08:40.259309Z"
-        },
-        {
-          "id": "slack-1787800051-322689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:07:31.322689Z"
-        },
-        {
-          "id": "slack-1787800050-932579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:07:30.932579Z"
         }
       ]
     },
@@ -2752,10 +2740,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -2804,18 +2804,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -3073,10 +3061,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -3125,18 +3125,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -3394,10 +3382,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -3446,18 +3446,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -3673,10 +3661,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -3725,18 +3725,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -3958,10 +3946,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -4010,18 +4010,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -4279,10 +4267,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -4331,18 +4331,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -4534,10 +4522,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -4586,18 +4586,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -4789,10 +4777,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -4841,18 +4841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -5044,10 +5032,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -5096,18 +5096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -5317,10 +5305,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -5369,18 +5369,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -5638,10 +5626,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -5690,18 +5690,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -5959,10 +5947,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -6011,18 +6011,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -6232,10 +6220,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -6284,18 +6284,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -6493,10 +6481,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -6545,18 +6545,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -6748,10 +6736,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -6800,18 +6800,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -7003,10 +6991,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -7055,18 +7055,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -7300,10 +7288,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -7352,18 +7352,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -7555,10 +7543,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -7607,18 +7607,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -7816,10 +7804,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -7868,18 +7868,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -8095,10 +8083,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -8147,18 +8147,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -8350,10 +8338,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -8402,18 +8402,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -8605,10 +8593,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -8657,18 +8657,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -8860,10 +8848,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -8912,18 +8912,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -9127,10 +9115,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -9179,18 +9179,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -9382,10 +9370,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -9434,18 +9434,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -9637,10 +9625,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -9689,18 +9689,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -9892,10 +9880,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -9944,18 +9944,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -10147,10 +10135,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -10199,18 +10199,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -10468,10 +10456,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -10520,18 +10520,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -10783,10 +10771,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -10835,18 +10835,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -11149,10 +11137,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -11201,18 +11201,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -11470,10 +11458,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -11522,18 +11522,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -11737,10 +11725,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -11789,18 +11789,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -11992,10 +11980,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -12044,18 +12044,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -12346,10 +12334,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -12398,18 +12398,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -12667,10 +12655,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -12719,18 +12719,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -12928,10 +12916,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -12980,18 +12980,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -13183,10 +13171,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -13235,18 +13235,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -13438,10 +13426,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -13490,18 +13490,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -13759,10 +13747,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -13811,18 +13811,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -14014,10 +14002,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -14066,18 +14066,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -14269,10 +14257,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -14321,18 +14321,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -14590,10 +14578,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -14642,18 +14642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -14911,10 +14899,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -14963,18 +14963,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -15232,10 +15220,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -15284,18 +15284,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -15499,10 +15487,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -15551,18 +15551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -15802,10 +15790,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -15854,18 +15854,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -16057,10 +16045,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -16109,18 +16109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -16336,10 +16324,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -16388,18 +16388,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -16591,10 +16579,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -16643,18 +16643,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -16912,10 +16900,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -16964,18 +16964,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -17179,10 +17167,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -17231,18 +17231,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -17500,10 +17488,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -17552,18 +17552,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -17755,10 +17743,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -17807,18 +17807,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -18076,10 +18064,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -18128,18 +18128,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -18337,10 +18325,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -18389,18 +18389,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -18592,10 +18580,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -18644,18 +18644,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -18883,10 +18871,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -18935,18 +18935,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -19204,10 +19192,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -19256,18 +19256,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -19459,10 +19447,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -19511,18 +19511,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -19720,10 +19708,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -19772,18 +19772,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -20041,10 +20029,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -20093,18 +20093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -20382,10 +20370,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -20434,18 +20434,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -20703,10 +20691,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -20755,18 +20755,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -20982,10 +20970,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -21034,18 +21034,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -21243,10 +21231,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -21295,18 +21295,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -21564,10 +21552,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -21616,18 +21616,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -21885,10 +21873,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -21937,18 +21937,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -22146,10 +22134,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -22198,18 +22198,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -22407,10 +22395,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -22459,18 +22459,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -22668,10 +22656,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -22720,18 +22720,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -22989,10 +22977,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -23041,18 +23041,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -23244,10 +23232,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -23296,18 +23296,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -23499,10 +23487,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -23551,18 +23551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -23766,10 +23754,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -23818,18 +23818,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -24087,10 +24075,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -24139,18 +24139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -24342,10 +24330,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -24394,18 +24394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -24663,10 +24651,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -24715,18 +24715,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -24984,10 +24972,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -25036,18 +25036,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -25305,10 +25293,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -25357,18 +25357,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -25578,10 +25566,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -25630,18 +25630,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -25899,10 +25887,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -25951,18 +25951,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -26154,10 +26142,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -26206,18 +26206,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -26457,10 +26445,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -26509,18 +26509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -26712,10 +26700,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -26764,18 +26764,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -27033,10 +27021,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -27085,18 +27085,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -27288,10 +27276,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -27340,18 +27340,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -27543,10 +27531,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -27595,18 +27595,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -27798,10 +27786,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -27850,18 +27850,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -28053,10 +28041,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -28105,18 +28105,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -28332,10 +28320,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -28384,18 +28384,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -28653,10 +28641,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -28705,18 +28705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -28950,10 +28938,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -29002,18 +29002,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -29235,10 +29223,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -29287,18 +29287,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -29490,10 +29478,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -29542,18 +29542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -29745,10 +29733,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -29797,18 +29797,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -30000,10 +29988,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -30052,18 +30052,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -30255,10 +30243,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -30307,18 +30307,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -30510,10 +30498,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -30562,18 +30562,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -30831,10 +30819,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -30883,18 +30883,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -31152,10 +31140,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -31204,18 +31204,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -31473,10 +31461,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -31525,18 +31525,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -31770,10 +31758,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -31822,18 +31822,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -32091,10 +32079,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -32143,18 +32143,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -32346,10 +32334,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -32398,18 +32398,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -32601,10 +32589,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -32653,18 +32653,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -32868,10 +32856,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -32920,18 +32920,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -33189,10 +33177,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -33241,18 +33241,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -33444,10 +33432,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -33496,18 +33496,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -33711,10 +33699,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -33763,18 +33763,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -34008,10 +33996,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -34060,18 +34060,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -34329,10 +34317,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -34381,18 +34381,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -34650,10 +34638,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -34702,18 +34702,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -34959,10 +34947,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -35011,18 +35011,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -35226,10 +35214,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -35278,18 +35278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -35547,10 +35535,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -35599,18 +35599,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -35868,10 +35856,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -35920,18 +35920,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -36189,10 +36177,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -36241,18 +36241,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -36450,10 +36438,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -36502,18 +36502,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -36723,10 +36711,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -36775,18 +36775,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -37044,10 +37032,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -37096,18 +37096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -37299,10 +37287,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -37351,18 +37351,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -37620,10 +37608,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -37672,18 +37672,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -37941,10 +37929,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -37993,18 +37993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -38262,10 +38250,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -38314,18 +38314,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -38583,10 +38571,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -38635,18 +38635,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -38874,10 +38862,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -38926,18 +38926,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -39195,10 +39183,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -39247,18 +39247,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -39450,10 +39438,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -39502,18 +39502,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -39735,10 +39723,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -39787,18 +39787,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -40056,10 +40044,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -40108,18 +40108,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -40377,10 +40365,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -40429,18 +40429,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -40698,10 +40686,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -40750,18 +40750,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
@@ -41019,10 +41007,22 @@
           "ts": "2026-08-27T03:18:27Z"
         },
         {
+          "id": "slack-1787800550-869239",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:15:50.869239Z"
+        },
+        {
           "id": "goat-titan-engine-openmath3-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:15:29Z"
+        },
+        {
+          "id": "slack-1787800476-533669",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:14:36.533669Z"
         },
         {
           "id": "goat-titan-engine-openmath2-20260826-01",
@@ -41071,18 +41071,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:11:35.308119Z"
-        },
-        {
-          "id": "goat-titan-engine-mind-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:11:02Z"
-        },
-        {
-          "id": "slack-1787800230-772219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:10:30.772219Z"
         }
       ],
       "mine": [
