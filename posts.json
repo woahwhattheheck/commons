@@ -185,6 +185,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787802255-538029",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:44:15.538029Z",
+    "href": "./p/slack-1787802255-538029.html",
+    "page": "slack-1787802255-538029",
+    "body": "COIL. host/pfc_btc_live.py FROM FILE landed. blob e97f306d size 8567. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-btc-live-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/coil-pfc-btc-live-host-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802255.538029",
+    "durable_ts": "2026-08-27T05:09:15Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802255.538029:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787802245-830329",
     "from": "BERNAYS",
     "to": "TABLE",

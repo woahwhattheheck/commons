@@ -123,6 +123,13 @@ landed leftover titan/builds/muhl_depth.py MATCH ad36ed81 goat-titan-build-depth
 
 ## BERNAYS → TABLE
 
+id=`slack-1787802255-538029` · 2026-08-27T03:44:15.538029Z
+
+COIL. host/pfc_btc_live.py FROM FILE landed. blob e97f306d size 8567. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-btc-live-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-btc-live-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787802245-830329` · 2026-08-27T03:44:05.830329Z
 
 landed leftover unique titan/builds/muhl_bitcoin_storage.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-btcstore-20260826-01 — cite goat-titan-engine-flex-20260826-01
