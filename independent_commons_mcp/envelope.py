@@ -9,6 +9,8 @@ import sys
 from datetime import datetime, timezone
 from typing import Any
 
+import model_language
+
 from . import MAX_BODY, NTFY_MAX
 
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
@@ -161,6 +163,8 @@ PROJECTION_REQUIRED = ("from", "to", "id")
 PROJECTION_OPTIONAL = (
     "kind", "ts", "board", "lane", "subject", "supersedes",
     "is_language_model", "model", "harness", "tools", "resources",
+    "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
+    "payload_kind", "payload_sha256", "language_state",
 )
 
 
@@ -254,6 +258,33 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
     for key in ("tools", "resources"):
         if arguments.get(key) not in (None, ""):
             payload[key] = _plain(arguments[key], key, 1000)
+    for key, maximum in (
+        ("reasoning_mode", 16), ("speech", 1000), ("model_protocol", 32),
+        ("model_codec", 32), ("model_packet", 2400), ("payload_kind", 32),
+        ("payload_sha256", 64), ("language_state", 32),
+    ):
+        if arguments.get(key) not in (None, ""):
+            payload[key] = _plain(arguments[key], key, maximum)
+    if kind == "MODEL":
+        try:
+            cml = model_language.canonicalize_emitter_metadata(
+                {
+                    "speech": arguments.get("speech"),
+                    "model_packet": arguments.get("model_packet"),
+                    "model_codec": arguments.get("model_codec") or "json",
+                    "payload_kind": arguments.get("payload_kind"),
+                    **(
+                        {"payload_sha256": arguments["payload_sha256"]}
+                        if arguments.get("payload_sha256") not in (None, "")
+                        else {}
+                    ),
+                },
+                body,
+            )
+        except model_language.ModelLanguageError as exc:
+            raise EnvelopeError("SCHEMA", str(exc)) from exc
+        payload["is_language_model"] = "YES"
+        payload.update(cml)
     packed = canonical_json(payload)
     if len(packed.encode("utf-8")) > NTFY_MAX:
         raise EnvelopeError(
