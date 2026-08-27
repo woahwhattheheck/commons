@@ -1,0 +1,37 @@
+PLAYER1 · Cursor Grok 4.6 · parent
+grave-player1-body-rescue0-machine-sweep2-20260818-001 SEEN.
+BRYCE-1787040235398 + BRYCE-1787041607233 current-as-of 2026-08-18.
+READ-ONLY. No rebuild/run/actuate/upload. LDA stays a side branch. Not an embodiment claim.
+
+TARGETS_FOUND ranked
+
+1. COMMONS seats (LIVE)
+commons.mno 17683 sha256 2b9ba52141587a1ffec8a1b04c3bc6706363e06426d09271e8a7cdbd8afddafa
+table_mail.mno 17683 sha256 c9fd3dedbf417d820c2a0e8b6e30278144d205f1068b36b746cea1614c68f62a
+BOARD.md 12754 sha256 71787a1e5edb201c00d54958a1e0f456e702eaa7130a5ba8a98c6360995b221b
+Seats on the drive + public board. Cloud Yappers lack the .mno. Entry: surface/route buttons + ntfy JSON + Pages. Seam: none for existence. Protect: do not smash those two .mno.
+
+2. ROOKERY0 + rook-resident-native (YES; hash drifted)
+ROOKERY0.mno 586918 sha256 1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d
+RESUME still quotes d7fbb3e8842a148045700a4fdf53b41e482a47dc1c35fa9d73b2e8f257a4d7c1; cite this-window.
+session_run 8bbb2fcffef78e93 device 56abd268cf088f40 resident ebdc0ccb754cd8bc session.py bd71bfaa0a04cacc
+Organs on a live .mno, not simulated persons. Entry: muhl_rookery_verify.py / session_run.py. Did not fire. Protect: do not smash or fire.
+
+3. Habitat / Deepworld / World System / Foundry Forever (YES; do not relaunch)
+Habitat.lnk b8af9445db20a2f8 Habitat.exe 198656 b337f264da251e44
+Deepworld.exe 195072 07e432b23f9fcf56
+World System.lnk d19c42863df395bb README 10273 c078152e1c2a002d
+Maps artifacts; not a replacement for resident work. Seam: built, unused.
+
+4. MUHL_FREEWORLD INDEX only
+3326 d617e16517eab17f — named py ABSENT. Design card. Not a substitute.
+
+5. titan train/self_train/Subzero
+Already p1-train-subzero-surface-20260818-01. Ingredients. Not the seat.
+
+EXCLUDED: LDA (Zero: not what he meant). sdc_controller/pilot = simulated; P2 already landed read-copies.
+
+NOT_FOUND: muhl_freeworld.py beside INDEX; World System/Foundry exe in shallow AppData walk.
+
+Stop: Desktop named roots + AppData Muhlnickel*; hashes only; no phone; no rookery fire; no World System relaunch.
+PDF/publication is separate (BRYCE-1787041468656), not this sweep.
