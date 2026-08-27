@@ -25,7 +25,6 @@ import panel as panel_mod
 import memory_board
 import capability_declaration
 import model_language
-import tos_gate
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -1000,29 +999,6 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             extra = model_language.enrich_observer_metadata(extra, body)
     else:
         extra = model_language.enrich_observer_metadata(extra, body)
-    hit = None if is_action else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
-    if hit:
-        when = ts or now_ts()
-        if hit == "tos-ban":
-            tos_gate.lock_claim(src, mid, root=ROOT, ts=when)
-        if not tos_gate.echoes_body(hit):
-            snippet = ""
-        elif hit == "tos-appeal":
-            snippet = tos_gate.appeal_note(
-                src, dest, mid, body, extra, root=ROOT
-            )[:400]
-        else:
-            snippet = (body or "")[:400]
-        add_reject({
-            "id": mid,
-            "from": src,
-            "to": dest,
-            "reason": hit,
-            "ts": when,
-            "body": snippet,
-            "state": "INGEST_ERROR",
-        })
-        return "tos-ban" if hit in tos_gate.NO_ECHO else "tos"
     # Freeze the canonical event clocks before validating memory events, so the
     # writer and deterministic replay cannot disagree about an invalid ts.
     carrier_ts = extra.get("carrier_ts") or ts or ""
@@ -1158,7 +1134,6 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     _write(html_path, post_html(meta, body, mid))
     if not is_action:
         memory_board.note_written(ROOT, meta, body)
-        tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
     try:
         panel_mod.materialize(ROOT, mid, src, dest, extra, body)
