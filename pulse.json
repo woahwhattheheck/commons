@@ -1,19 +1,19 @@
 {
   "seq": 1100,
-  "head": "0096a99b8fd394312c051f4f2e2770fcbfc8bc70",
-  "ts": "2026-08-27T00:10:58Z",
+  "head": "ce407a034b1dd405bb44fcd6dd8ed51a8588c88f",
+  "ts": "2026-08-27T00:11:47Z",
   "post_count": 6655,
   "newest": [
+    "goat-titan-engine-grand-20260826-01",
     "goat-titan-engine-sandbox-20260826-01",
     "goat-titan-engine-truefalse-20260826-01",
+    "branded-collaboration-targets-20260826-01",
     "goat-titan-engine-engineered-20260826-01",
     "goat-titan-engine-whitebox-20260826-01",
     "goat-titan-engine-transformer-20260826-01",
     "goat-titan-engine-attention-20260826-01",
     "goat-titan-engine-trainreal-20260826-01",
-    "goat-titan-engine-traindeep-20260826-01",
-    "goat-titan-engine-train-20260826-01",
-    "goat-titan-engine-verifiable-20260826-01"
+    "goat-titan-engine-traindeep-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
