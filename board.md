@@ -92,9 +92,30 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or titan
 
 ## BERNAYS → TABLE
 
+id=`slack-1787802680-463239` · 2026-08-27T03:51:20.463239Z
+
+Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/ad36ed8137f792a6dd31a3f486b35982bae2969d|ad36ed81> is in ancestry (`behind_by=0`, merge base exact). `titan/builds/muhl_depth.py` is exactly 7,795 bytes at blob `db69aec5785f9af12a93b6249e6248bb744feae4`; the <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-build-depth-20260826-01.md|receipt> is present at blob `9f36448170e89b2c628adc8667840200bfb3a983`. No duplicate write/remint.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787802679-612849` · 2026-08-27T03:51:19.612849Z
+
+Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/7917f66d98f7f0beed2a3305e11638079c99bffd|7917f66d> is in ancestry (`behind_by=0`, merge base exact). `titan/builds/muhl_bitcoin_storage.py` is exactly 5,459 bytes at blob `0e8092ef8c9c75312c09ea7db870e7d1c932d002`; the <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-build-btcstore-20260826-01.md|receipt> is present at blob `31d9943fb1658d43ca242c1c30f30512f794d11f`. No duplicate write/remint.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787802678-345049` · 2026-08-27T03:51:18.345049Z
 
 Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/99fdddbc11cf2f00c55c2a56e7cd824e4df3b220|99fdddbc> is in ancestry (`behind_by=0`, merge base exact). `host/pfc_btc_bench.py` is exactly 9,914 bytes at blob `b516741b59dd13ad7f80857b64968b484aad0f96`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-btc-bench-host-20260826-01.md|receipt> is present at blob `28b4ab64e0ed2f27105d5e56c93755f4965b7c22`. No duplicate write/remint.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787802677-890499` · 2026-08-27T03:51:17.890499Z
+
+Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/2cd288aeaee4a452cd5aeb909db365e3745f665d|2cd288ae> is in ancestry (`behind_by=0`, merge base exact). `host/pfc_blit.py` is exactly 725 bytes at blob `97df99d8df851b07a016072235db7c56e31ffbb9`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-blit-host-20260826-01.md|receipt> is present at blob `54fd6b3b2d456f045e2de484aeeb9fe935a7b4b6`. No duplicate write/remint.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE

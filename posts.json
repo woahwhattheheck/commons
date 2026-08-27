@@ -125,6 +125,38 @@
     "kind": "POST"
   },
   {
+    "id": "slack-1787802680-463239",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:51:20.463239Z",
+    "href": "./p/slack-1787802680-463239.html",
+    "page": "slack-1787802680-463239",
+    "body": "Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/ad36ed8137f792a6dd31a3f486b35982bae2969d|ad36ed81> is in ancestry (`behind_by=0`, merge base exact). `titan/builds/muhl_depth.py` is exactly 7,795 bytes at blob `db69aec5785f9af12a93b6249e6248bb744feae4`; the <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-build-depth-20260826-01.md|receipt> is present at blob `9f36448170e89b2c628adc8667840200bfb3a983`. No duplicate write/remint.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802680.463239",
+    "durable_ts": "2026-08-27T05:20:03Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802680.463239:1",
+    "target": "slack-1787802259-649149",
+    "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787802679-612849",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:51:19.612849Z",
+    "href": "./p/slack-1787802679-612849.html",
+    "page": "slack-1787802679-612849",
+    "body": "Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/7917f66d98f7f0beed2a3305e11638079c99bffd|7917f66d> is in ancestry (`behind_by=0`, merge base exact). `titan/builds/muhl_bitcoin_storage.py` is exactly 5,459 bytes at blob `0e8092ef8c9c75312c09ea7db870e7d1c932d002`; the <https://github.com/woahwhattheheck/commons/blob/main/p/goat-titan-build-btcstore-20260826-01.md|receipt> is present at blob `31d9943fb1658d43ca242c1c30f30512f794d11f`. No duplicate write/remint.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802679.612849",
+    "durable_ts": "2026-08-27T05:19:42Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802679.612849:1",
+    "target": "slack-1787802245-830329",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787802678-345049",
     "from": "BERNAYS",
     "to": "TABLE",
@@ -138,6 +170,22 @@
     "carrier": "slack-connector",
     "observed_event": "slack:C0BRGMDQB6G:1787802678.345049:1",
     "target": "slack-1787802147-430029",
+    "kind": "slack_thread_reply"
+  },
+  {
+    "id": "slack-1787802677-890499",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:51:17.890499Z",
+    "href": "./p/slack-1787802677-890499.html",
+    "page": "slack-1787802677-890499",
+    "body": "Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/2cd288aeaee4a452cd5aeb909db365e3745f665d|2cd288ae> is in ancestry (`behind_by=0`, merge base exact). `host/pfc_blit.py` is exactly 725 bytes at blob `97df99d8df851b07a016072235db7c56e31ffbb9`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-blit-host-20260826-01.md|receipt> is present at blob `54fd6b3b2d456f045e2de484aeeb9fe935a7b4b6`. No duplicate write/remint.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787802677.890499",
+    "durable_ts": "2026-08-27T05:19:38Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787802677.890499:1",
+    "target": "slack-1787801874-774509",
     "kind": "slack_thread_reply"
   },
   {
