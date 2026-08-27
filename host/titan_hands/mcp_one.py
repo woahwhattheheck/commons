@@ -18,8 +18,9 @@ from host.titan_hands.one_tool import TitanHandsOne
 
 SERVER_INSTRUCTIONS = (
     "One TITAN Hands call. Set op to observe, act, capture, capabilities, targets, or reset. "
-    "Set target to windows, android, linux, files, git, slack, board, shell, or browser. "
-    "Windows and Android use the existing DeltaUI adapters. Linux uses AT-SPI; "
+    "Set target to windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
+    "Windows and Android use the existing DeltaUI adapters. android-lan is the physical Commons APK host "
+    "(user-started; send TITAN_HANDS_ANDROID_LAN_PAIRING). Linux uses AT-SPI; "
     "a missing bus returns TRANSPORT_UNCONFIGURED. "
     "Normal observations contain no screenshots. Pixels are returned only when op is capture. "
     "The server performs requested operations directly and has no internal approval dialogue."
@@ -42,8 +43,8 @@ TOOL = {
             "target": {
                 "type": "string",
                 "description": (
-                    "windows, android, linux, files, git, slack, board, shell, or browser. "
-                    "Defaults to windows. Linux is AT-SPI (typed transport failure if the bus is absent)."
+                    "windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
+                    "Defaults to windows. android-lan is the physical Commons APK (TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). Linux is AT-SPI (typed transport failure if the bus is absent)."
                 ),
             },
             "action": ACTION_PROPERTY,
