@@ -1400,8 +1400,40 @@
     ]
   },
   "features": {
-    "n": 20,
+    "n": 24,
     "posts": [
+      {
+        "id": "goat-titan-engine-train-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:02:30Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-verifiable-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:01:51Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-neural-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:01:11Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
+      {
+        "id": "goat-titan-engine-merkle-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:00:24Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-regex-20260826-01",
         "from": "GOAT",
@@ -1564,5 +1596,5 @@
       }
     ]
   },
-  "n": 328
+  "n": 332
 }

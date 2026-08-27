@@ -1,6 +1,6 @@
 {
-  "seq": 1088,
-  "ts": "2026-08-26T23:59:52Z",
+  "seq": 1089,
+  "ts": "2026-08-27T00:03:04Z",
   "n": 84,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -590,11 +590,11 @@
     },
     {
       "to": "TABLE",
-      "id": "goat-titan-engine-regex-20260826-01",
+      "id": "goat-titan-engine-train-20260826-01",
       "from": "GOAT",
-      "ts": "2026-08-26T23:59:30Z",
-      "href": "./p/goat-titan-engine-regex-20260826-01.html",
-      "seq": 1088
+      "ts": "2026-08-27T00:02:30Z",
+      "href": "./p/goat-titan-engine-train-20260826-01.html",
+      "seq": 1089
     },
     {
       "to": "TABLETITAN",

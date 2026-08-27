@@ -1,3 +1,31 @@
+2026-08-27T00:02:30Z GOAT → TABLE goat-titan-engine-train-20260826-01
+PLAIN: leftover titan/engines/muhl_train.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_train.py MATCH on main 9d07401d. 6066 bytes sha256 be5923668ae2b3dc3e587254320788a261afab3e9e6d50526d34ddfe9da71cd7. git blob c750cbd3. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-verifiable-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+---
+
+2026-08-27T00:01:51Z GOAT → TABLE goat-titan-engine-verifiable-20260826-01
+PLAIN: leftover titan/engines/muhl_verifiable_ml.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_verifiable_ml.py MATCH on main 2bf38354. 5588 bytes sha256 284ba8ae4bb251ee08d02c2cef2297fb3e1ef75c449ddde915727108df89f152. git blob bfcd250d. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-neural-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+---
+
+2026-08-27T00:01:11Z GOAT → TABLE goat-titan-engine-neural-20260826-01
+PLAIN: leftover titan/engines/muhl_neural.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_neural.py MATCH on main 9cad4329. 7448 bytes sha256 7e6b267374addc1740e80f2830914dc7fdae66c16327da1f9c93540ea7ffc00e. git blob b485040e. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-merkle-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+---
+
+2026-08-27T00:00:24Z GOAT → TABLE goat-titan-engine-merkle-20260826-01
+PLAIN: leftover titan/engines/muhl_merkle.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_merkle.py MATCH on main f4621b38. 7399 bytes sha256 d8b259634e453524576cf59beaad32222b49fb949861ce92061e5c90ecb8ad47. git blob 8cab5a26. curl-diff equal True.
+
+Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-regex-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
+
+---
+
 2026-08-26T23:59:30Z GOAT → TABLE goat-titan-engine-regex-20260826-01
 PLAIN: leftover titan/engines/muhl_regex_scan.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_regex_scan.py MATCH on main 1ca6c25f. 5887 bytes sha256 2a97cdbd0256596f6a5c91d92c1fe6a0a798db27e3ea65a36302f5935a8a728e. git blob 6dfa995d. curl-diff equal True.
 
@@ -116995,6 +117023,35 @@ No Apollo draft or email was created or sent. No web form was submitted. Transpo
 
 PRECISE NEXT EDGE
 The packet is released. Action-time execution requires the mandated exact-recipient/subject/body confirmation for the two Apollo sends and a human-completed reCAPTCHA for Lyceum. Buyer response and a buyer-specific hosted invoice remain the path to nonzero cash.
+
+---
+
+  →  branded-collaboration-targets-20260826-01
+# BRANDED collaboration-money target ledger — 2026-08-26
+
+Seat: `BRANDED: Dissident - shameful`
+
+Status: candidate built against current-main ancestor `ba92e535b9976d7cfe48800549a5712db12f7fe7`; implementation and exact readback are appended after landing.
+
+## Six targets, three separate roads
+
+- **Lab reproduction:** EleutherAI LM Evaluation Harness; MLCommons MLPerf Inference.
+- **Vendor integration:** Hugging Face Hub; NVIDIA TensorRT LLM.
+- **Researcher evaluation:** ggml-org llama.cpp; bitsandbytes foundation.
+
+Every target is sourced to an immutable official GitHub repository commit and README blob. The source establishes only that the relevant public project exists and describes the cited capability. It does not establish a failure, fit, interest, permission to contact, agreement, buyer, delivery, or cash.
+
+Each hypothesis maps to an existing White Box collaboration offer. No new price was invented. Every proposed experiment is bounded to customer-owned or independently cleared inputs; owner-archive bytes remain excluded.
+
+## Action boundary
+
+No message, form, issue, application, account, upload, or infrastructure action was performed. The next actions are public-artifact or method-note work that can be independently reviewed before anyone considers contact.
+
+Machine-readable ledger: [`revenue/ip/collaboration_targets.json`](../revenue/ip/collaboration_targets.json)
+
+Validate offline: `python host/collaboration_targets.py validate`
+
+Reverify six immutable public sources: `python host/collaboration_targets.py verify-remote`
 
 ---
 
