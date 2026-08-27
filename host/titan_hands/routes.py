@@ -412,6 +412,15 @@ class HandsRoutes:
                 raise ProtocolError("command must be a string or a list of strings")
         except subprocess.TimeoutExpired as exc:
             return failure("SHELL_TIMEOUT", f"shell run exceeded {timeout}s", command=str(exc.cmd))
+        if completed.returncode != 0:
+            return failure(
+                "COMMAND_FAILED",
+                (completed.stderr or completed.stdout or "shell command failed").strip(),
+                command=argv_field,
+                returncode=completed.returncode,
+                stdout=completed.stdout[:TEXT_LIMIT],
+                stderr=completed.stderr[:TEXT_LIMIT],
+            )
         return _ok(
             "shell_run",
             command=argv_field,

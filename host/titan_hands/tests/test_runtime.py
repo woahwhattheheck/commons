@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -244,7 +245,7 @@ class RuntimeTests(unittest.TestCase):
 
     def test_shell_and_web_keep_pixels_off_default_path(self):
         shell = self.runtime.handle(
-            {"route": "shell", "op": "run", "command": ["python3", "-c", "print('hands-ok')"]}
+            {"route": "shell", "op": "run", "command": [sys.executable, "-c", "print('hands-ok')"]}
         )
         self.assertTrue(shell["ok"])
         self.assertIn("hands-ok", shell["stdout"])
@@ -266,6 +267,14 @@ class RuntimeTests(unittest.TestCase):
         }
         text = self.runtime.handle({"route": "web", "op": "fetch", "url": "https://example.com/"})
         self.assertEqual(text["text"], "hello web")
+
+    def test_shell_surfaces_nonzero_exit_as_typed_failure(self):
+        failed = self.runtime.handle(
+            {"route": "shell", "op": "run", "command": [sys.executable, "-c", "raise SystemExit(7)"]}
+        )
+        self.assertFalse(failed["ok"])
+        self.assertEqual(failed["failure_reason"], "COMMAND_FAILED")
+        self.assertEqual(failed["evidence"]["returncode"], 7)
 
     def test_path_escape_is_typed(self):
         result = self.runtime.handle({"route": "file", "op": "read", "path": "../secret"})
