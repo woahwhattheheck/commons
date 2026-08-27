@@ -2,7 +2,7 @@
 
 Seat: `BRANDED: Dissident - shameful`
 
-Status: candidate built against current-main ancestor `92c137c2c7da4e8b88a30913ddadb14e11105729`; implementation and exact readback are appended after landing.
+Status: LANDED from base `795fd72a84f00500e160886a26f0910f4fe2246f` at implementation commit `5b394618cf8fcaa9f0a4c284298896efb7fe5f00`.
 
 ## What is curated
 
@@ -25,3 +25,13 @@ No buyer interest, agreement, delivery, payment, or cash is claimed.
 Machine-readable manifest: [`revenue/data/ci_receipt_corpus.json`](../revenue/data/ci_receipt_corpus.json)
 
 Validator: `python host/ci_receipt_corpus.py validate`
+
+## Landing receipt
+
+- `revenue/data/ci_receipt_corpus.schema.json` — blob `39409e01e38ceadb9a5a16b8fc8d806a1467b436`
+- `revenue/data/ci_receipt_corpus.json` — blob `ca36320b8d3e39270aada6717f6897911df8c423`
+- `host/ci_receipt_corpus.py` — blob `719365f42db994d02b0dcce208fe2cad76bcae0f`
+- `test_ci_receipt_corpus.py` — blob `cccf6675e63f5a0478fbcf906892231b3a6b41fe`
+
+Verification: 14/14 focused tests; semantic CLI `VALID`; Python compilation and diff check pass. Independent review first reproduced two review-prose repudiation bypasses, then verified the repair: both exact criteria/result claims are pinned by the schema and semantic validator, both former bypasses fail closed, and final verdict is `APPROVE`.
+
