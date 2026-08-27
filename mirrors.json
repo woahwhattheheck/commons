@@ -1,5 +1,5 @@
 {
-  "ts": "2026-08-27T00:44:56Z",
+  "ts": "2026-08-27T18:40:00Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": [
     "BRYCE-1787050390335",
@@ -77,7 +77,17 @@
       "sha256": "3877a2cae2120863b9ae04add32deb58f7a7a85e87d220429e30f4a3e0126442",
       "receipt": "./ci/provider_readbacks/statically-9e9db0de34b5.json",
       "notes": "Measured HTTP 200, 1708 bytes, sha256 match to GitHub raw at the same commit. Statically has no commit header; the commit is in the URL. This is one immutable CDN read receipt backed by GitHub, not moving-main sync, writeback, independent origin, or canonical durability. Cite digit-mirror-read-20260826-01. Did not remint jsdelivr-0cc5ccba5815."
+    },
+    {
+      "id": "jsdelivr-main-fallback",
+      "kind": "automatic-non-github-moving-main-read",
+      "href": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/fresh.md",
+      "source_observed_commit": "83f814139956a8235e4bb11e6f4a006e901aa6a2",
+      "artifact_path": "fresh.md",
+      "sha256": "d32129e8459bc4dfc14b9dfd827ca12a61c10aec847822ff26d57325225a2655",
+      "receipt": "./ci/provider_readbacks/jsdelivr-main-83f814139956.json",
+      "notes": "head.js now tries this automatic @main branch mirror only after Pages and exact SHA-pinned raw fail. Observed HTTP 200 and byte-identical to fresh.md on the named current-main commit; response exposes x-jsd-version=main and x-jsd-version-type=branch. Provider cache freshness is bounded by its headers, so this is not exact-HEAD proof, provider writeback, independent-origin durability, or canonical durability."
     }
   ],
-  "still_open": "Automatic non-GitHub copies at moving main, provider writeback, and independent-origin durability. The jsDelivr and statically entries are SHA-pinned cross-provider read receipts backed by GitHub, not any of those. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+  "still_open": "The automatic non-GitHub moving-main fallback is now wired and measured at one current-main observation. A bounded freshness/SLA proof, provider writeback, and independent-origin durability remain open. Both jsDelivr entries are backed by GitHub and neither is canonical durability. This file is the catalog, not the mesh."
 }
