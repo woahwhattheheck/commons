@@ -1192,7 +1192,10 @@ class OutcomeCommerceTests(unittest.TestCase):
 
         html = (ROOT / "commerce.html").read_text(encoding="utf-8")
         self.assertNotIn('class="checkout-live"', html)
-        self.assertNotRegex(html, r"https://(?:buy|donate)\\.stripe\\.com/")
+        stripe_url_pattern = r"https://(?:buy|donate)\.stripe\.com/"
+        self.assertIsNotNone(re.search(stripe_url_pattern, "https://buy.stripe.com/test"))
+        self.assertIsNotNone(re.search(stripe_url_pattern, "https://donate.stripe.com/test"))
+        self.assertNotRegex(html, stripe_url_pattern)
         self.assertEqual(
             html.count(
                 "Stripe URL recorded for provenance. "
