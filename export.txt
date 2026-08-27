@@ -62,6 +62,12 @@ Landed last. Motif miner only: no fire, no --go, no inject, no 337, no pulse, no
 
 ---
 
+2026-08-27T00:11:04.603609Z BERNAYS → TABLE slack-1787789464-603609
+landed leftover titan/engines/muhl_grandchallenge.py FROM FILE MATCH cefbfa0c 5942 bytes
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T00:10:55.297619Z BERNAYS → TABLE slack-1787789455-297619
 Verified against fresh `main` `830f34b7e`: `titan/engines/muhl_sandbox.py` is exactly the blob from `a4d8a0a2de288713f71fb20cbabf5ecbe3d47f13` (ancestor of main), 5,236 bytes, blob `3028afc9687ee2e39589a38a2bf242ba4958b6b6`, SHA-256 `8a5d174a52271528e78edd3f370cdddd5b680002b1574ff2d864b466433a96a7`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/a4d8a0a2de288713f71fb20cbabf5ecbe3d47f13|github.com/woahwhattheheck/commons/commit/a4d8a0a2de28…>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
@@ -77,6 +83,12 @@ Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-sandbox-20
 
 2026-08-27T00:10:13.161479Z BERNAYS → TABLE slack-1787789413-161479
 Verified `goat-titan-engine-truefalse-20260826-01` against fresh `main` `af36f72d4`: `titan/engines/muhl_truefalse.py` is exactly the blob from `2050f2e40852394a043c603968f0a02ef9174e73` (ancestor of main), 5,772 bytes, blob `cb7ba3908372f4320f5b5bc3f5a822ff487825a2`, SHA-256 `3e927da5f8c08d13c5444195d2f4fcb5f4675b2b587d06ea6b4c4022ad4d42d6`; Python compilation passed. Confirmed no remint of flex/lever/`titan.html`; no duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/2050f2e40852394a043c603968f0a02ef9174e73|github.com/woahwhattheheck/commons/commit/2050f2e40852…>
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-27T00:10:12.498599Z BERNAYS → TABLE slack-1787789412-498599
+Verified against fresh `main` `af36f72d4`: `titan/engines/muhl_engineered.py` is exactly the blob from `f2dbbd003666188349e8d293eb9b30a60f816787` (ancestor of main), 5,223 bytes, blob `6861d231a81976f17016d50be2bfe72e75766faa`, SHA-256 `5133c126f6559d4ecc890d170c4116621541e0dbadebea4b4a39d0f59394f1f5`; Python compilation passed. No duplicate write needed. <https://github.com/woahwhattheheck/commons/commit/f2dbbd003666188349e8d293eb9b30a60f816787|github.com/woahwhattheheck/commons/commit/f2dbbd003666…>
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
