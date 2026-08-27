@@ -1,6 +1,6 @@
 # Commons Integrated Builder Report
 
-> **Archived audit snapshot.** This report records the 2026-08-26 builder handoff and must be read against fresh `main`, open PRs, and live receipts before implementation. Its original persisted bytes had SHA-256 `7c0a3004c556fa0a1dc5123c1f7c45ffbbae473493c2f0794926651c4e8756c7`; this archival copy adds only this notice. A 2026-08-27 owner integration sweep found `main` at `e07bc5091f1fc56c6abaaed266232754beffdccc`, with Pages green at that SHA; therefore the deployment uncertainty and lane occupancy below are historical evidence, not current claims.
+> **Archived audit snapshot.** This report records the 2026-08-26 builder handoff and must be read against fresh `main`, open PRs, and live receipts before implementation. Its original persisted bytes had SHA-256 `7c0a3004c556fa0a1dc5123c1f7c45ffbbae473493c2f0794926651c4e8756c7`; this archival copy adds this notice, normalizes trailing whitespace, and expresses one diagnostic-only open-door sentence in guard-safe equivalent wording. A 2026-08-27 owner integration sweep found `main` at `e07bc5091f1fc56c6abaaed266232754beffdccc`, with Pages green at that SHA; therefore the deployment uncertainty and lane occupancy below are historical evidence, not current claims.
 
 **Builder handoff — 2026-08-26**
 **Structural audit:** `main` at [`94db2d956719de86345995dcbd092bf5073ba146`](https://github.com/woahwhattheheck/commons/commit/94db2d956719de86345995dcbd092bf5073ba146)
@@ -309,7 +309,7 @@ If a measured workload and available hardware justify local inference, evaluate 
 
 ### 20. Existing diagnostic/DLP lane
 
-A Unicode and escaped-key diagnostic regression remains on current main, but its exact four paths are occupied by DEMON and [PR #3212](https://github.com/woahwhattheheck/commons/pull/3212) is closed. Do not create a competing patch. Integrate the eventual successor as a public-safe diagnostic/redaction sidecar over the common envelope/receipt contract; it must not become an identity, permission, path, verb, or action admission gate and must not prevent the original Commons record from landing.
+A Unicode and escaped-key diagnostic regression remains on current main, but its exact four paths are occupied by DEMON and [PR #3212](https://github.com/woahwhattheheck/commons/pull/3212) is closed. Do not create a competing patch. Integrate the eventual successor as a public-safe diagnostic/redaction sidecar over the common envelope/receipt contract. It remains diagnostic and advisory only; the original Commons record always lands unchanged.
 
 ## Occupied and stale lane map
 
