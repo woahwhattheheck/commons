@@ -1,0 +1,84 @@
+# Commons Android APK — assembleDebug for the physical one-stop + LAN Hands host.
+#
+# Path-filtered so ordinary board posts do not spend a runner.
+# Does not wipe repo-wide artifacts. working-directory is android/.
+# titan: NOT_WRITTEN. No auth. No gate.
+name: commons-android
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'android/**'
+      - 'host/commons_android/**'
+      - '.github/workflows/commons-android.yml'
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'host/commons_android/**'
+      - '.github/workflows/commons-android.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+          cache-read-only: false
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: ensure debug keystore
+        run: |
+          set -eu
+          if [ ! -f app/debug.keystore ]; then
+            keytool -genkeypair -keystore app/debug.keystore -alias androiddebugkey \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass android -keypass android \
+              -dname "CN=Commons Android Debug,O=Commons,C=US"
+          fi
+
+      - name: assembleDebug
+        run: ./gradlew assembleDebug --build-cache
+
+      - name: unit tests
+        run: ./gradlew testDebugUnitTest --build-cache
+
+      - name: APK sha256
+        run: |
+          set -eu
+          apk=app/build/outputs/apk/debug/app-debug.apk
+          test -f "$apk"
+          sha256sum "$apk"
+          python3 - <<'PY'
+          import hashlib, os
+          path = "app/build/outputs/apk/debug/app-debug.apk"
+          digest = hashlib.sha256(open(path, "rb").read()).hexdigest()
+          print("apk_path=" + path)
+          print("apk_sha256=" + digest)
+          print("apk_bytes=" + str(os.path.getsize(path)))
+          PY
+
+      - name: upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: commons-android-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

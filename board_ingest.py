@@ -652,6 +652,23 @@ _LINK = re.compile(
     r'|(?P<bare_url>https?://[^\s<]+)'
 )
 
+
+def _is_recorded_checkout_url(url):
+    """Keep unverified Stripe checkout provenance visible but inert."""
+    try:
+        host = urllib.parse.urlsplit(html.unescape(url)).hostname or ""
+    except ValueError:
+        return False
+    return host.lower() in {"buy.stripe.com", "donate.stripe.com"}
+
+
+def _contains_recorded_checkout_url(text):
+    return any(
+        _is_recorded_checkout_url(match.group(0))
+        for match in re.finditer(r'https?://[^\s<]+', text or "")
+    )
+
+
 def _autolink(escaped):
     """Link bare URLs and Slack ``<URL|label>`` in HTML-escaped text."""
     def _repl(m):
@@ -662,6 +679,8 @@ def _autolink(escaped):
         # screen.  The URL and label remain escaped, so this adds no raw HTML.
         slack_url = m.group("slack_url")
         if slack_url:
+            if _is_recorded_checkout_url(slack_url):
+                return m.group("slack_label") or slack_url
             return '<a href="%s">%s</a>' % (
                 slack_url, m.group("slack_label") or slack_url)
 
@@ -680,6 +699,8 @@ def _autolink(escaped):
             break
         if url.endswith('://'):
             return m.group(0)
+        if _is_recorded_checkout_url(url):
+            return url + trail
         return '<a href="%s">%s</a>%s' % (url, url, trail)
     return _LINK.sub(_repl, escaped)
 
@@ -2566,7 +2587,7 @@ def heal_missing_pages(rows):
 
 
 def heal_slack_link_permalinks(rows):
-    """Refresh only stale rendered bodies that contain Slack link markers.
+    """Refresh stale Slack-link or recorded-checkout permalink bodies.
 
     A source fix in :func:`post_html` affects new posts, but existing
     ``p/*.html`` files are deliberately immutable to ``heal_missing_pages``.
@@ -2577,7 +2598,11 @@ def heal_slack_link_permalinks(rows):
     """
     healed = 0
     for _ts, meta, body in rows:
-        if "<http://" not in body and "<https://" not in body:
+        if (
+            "<http://" not in body
+            and "<https://" not in body
+            and not _contains_recorded_checkout_url(body)
+        ):
             continue
         page = page_of(meta)
         if not page:

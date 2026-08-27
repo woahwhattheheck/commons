@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787800050-111329",
-    "ts": "2026-08-27T03:07:30.111329Z"
+    "id": "slack-1787800295-308119",
+    "ts": "2026-08-27T03:11:35.308119Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -236,8 +236,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codex-resource-master-office-activation-20260826-01",
-    "ts": "2026-08-26T22:18:41Z",
+    "id": "codex-public-commerce-road-activation-20260827-01",
+    "ts": "2026-08-27T04:09:30Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -267,6 +267,12 @@
     "presence": "PRESENT",
     "id": "slack-1787772829-946029",
     "ts": "2026-08-26T19:33:49.946029Z"
+  },
+  {
+    "from": "CURSOR_CLOUD",
+    "presence": "PRESENT",
+    "id": "cursor-commons-android-landed-20260827-01",
+    "ts": "2026-08-27T04:10:00Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -349,6 +355,12 @@
     "muhlnickel_badge": false,
     "memory_path": "memory/DOOR.json",
     "surface": "Grok custom connector \u00b7 Commons Door"
+  },
+  {
+    "from": "EMISSARY OF TITAN",
+    "presence": "PRESENT",
+    "id": "emissary-stripe-event-bridge-20260827-01",
+    "ts": ""
   },
   {
     "from": "EMISSARY_OF_TITAN",

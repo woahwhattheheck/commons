@@ -23,6 +23,11 @@ CASES = [
     'Claims <@U123> and <mailto:a@example.test|Mail> stay text.',
     'Safe <https://example.test/safe|R&D "review"> label.',
     "Invalid https://. remains text.",
+    "Recorded https://buy.stripe.com/tip and https://donate.stripe.com/monthly.",
+    "Slack <https://buy.stripe.com/tip|Tip> / <https://donate.stripe.com/monthly|Monthly>.",
+    "Unlabelled <https://buy.stripe.com/plain>.",
+    "Lookalike https://buy.stripe.com.evil.test/path.",
+    "Userinfo https://buy.stripe.com@evil.test/path.",
 ]
 
 
@@ -48,7 +53,7 @@ if (process.argv[2] === "COMMONS_BOARD") {
   );
 } else {
   source = source.replace(
-    "return {\n    parsePost: parsePost,",
+    /return \{\r?\n    parsePost: parsePost,/,
     "return {\n    linkify: linkify,\n    parsePost: parsePost,"
   );
 }
@@ -119,6 +124,35 @@ class SlackLinkRenderTests(unittest.TestCase):
         self.assertEqual(javascript_render("board.js", "COMMONS_BOARD"), expected)
         self.assertEqual(javascript_render("lane-head.js", "COMMONS_LANE_HEAD"), expected)
 
+    def test_recorded_checkout_urls_remain_visible_but_inert(self):
+        bare = python_render(CASES[8])
+        self.assertIn("https://buy.stripe.com/tip", bare)
+        self.assertIn("https://donate.stripe.com/monthly", bare)
+        self.assertNotIn('<a href="https://buy.stripe.com/', bare)
+        self.assertNotIn('<a href="https://donate.stripe.com/', bare)
+
+        slack = python_render(CASES[9])
+        self.assertEqual(slack, "Slack Tip / Monthly.")
+        self.assertNotIn("<a ", slack)
+
+        unlabelled = python_render(CASES[10])
+        self.assertEqual(unlabelled, "Unlabelled https://buy.stripe.com/plain.")
+        self.assertNotIn("<a ", unlabelled)
+
+        lookalike = python_render(CASES[11])
+        self.assertIn(
+            '<a href="https://buy.stripe.com.evil.test/path">'
+            "https://buy.stripe.com.evil.test/path</a>.",
+            lookalike,
+        )
+
+        userinfo = python_render(CASES[12])
+        self.assertIn(
+            '<a href="https://buy.stripe.com@evil.test/path">'
+            "https://buy.stripe.com@evil.test/path</a>.",
+            userinfo,
+        )
+
     def test_existing_permalink_body_heals_without_touching_record_or_chrome(self):
         body = "Receipt <https://example.test/pr|View> and <https://example.test/raw>."
         with tempfile.TemporaryDirectory() as tmp:
@@ -155,6 +189,42 @@ class SlackLinkRenderTests(unittest.TestCase):
             self.assertIn('<a href="https://example.test/raw">https://example.test/raw</a>', rendered)
             self.assertEqual(hashlib.sha256(md.read_bytes()).hexdigest(), before_md)
             self.assertEqual(unrelated.read_bytes(), unrelated_before)
+
+    def test_bare_recorded_checkout_permalink_heals_without_touching_source(self):
+        body = "Recorded `https://buy.stripe.com/proof`."
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp) / "p"
+            posts.mkdir()
+            md = posts / "stripe-fixture.md"
+            page = posts / "stripe-fixture.html"
+            md.write_text(
+                "---\nfrom: GPT\nto: TABLE\nid: stripe-fixture\n---\n" + body + "\n",
+                encoding="utf-8",
+            )
+            prefix = "<html><main><pre>"
+            suffix = "</pre></main><footer>keep me</footer></html>\n"
+            old_body = (
+                "Recorded `<a href=\"https://buy.stripe.com/proof\">"
+                "https://buy.stripe.com/proof</a>`."
+            )
+            page.write_text(prefix + old_body + suffix, encoding="utf-8")
+            before_md = hashlib.sha256(md.read_bytes()).hexdigest()
+
+            old_posts = board_ingest.POSTS
+            board_ingest.POSTS = str(posts)
+            try:
+                rows = [("", {"id": "stripe-fixture", "page": "stripe-fixture"}, body)]
+                self.assertEqual(board_ingest.heal_slack_link_permalinks(rows), 1)
+                self.assertEqual(board_ingest.heal_slack_link_permalinks(rows), 0)
+            finally:
+                board_ingest.POSTS = old_posts
+
+            rendered = page.read_text(encoding="utf-8")
+            self.assertTrue(rendered.startswith(prefix))
+            self.assertTrue(rendered.endswith(suffix))
+            self.assertIn("`https://buy.stripe.com/proof`", rendered)
+            self.assertNotIn('<a href="https://buy.stripe.com/', rendered)
+            self.assertEqual(hashlib.sha256(md.read_bytes()).hexdigest(), before_md)
 
 
 if __name__ == "__main__":

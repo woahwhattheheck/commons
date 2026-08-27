@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from host.titan_hands.mcp_one import TOOL, dispatch
-from host.titan_hands.mcp_server import TOOLS as UNIFIED_TOOLS
+from host.titan_hands.mcp_server import ACTION_PROPERTY, TOOLS as UNIFIED_TOOLS
 from host.titan_hands.one_tool import TitanHandsOne, contains_pixel_payload
 from host.titan_hands.lanes import (
     BoardServer,
@@ -204,6 +204,46 @@ class OneToolTests(unittest.TestCase):
             "hands_capabilities",
         ])
         self.assertEqual(len(UNIFIED_TOOLS), 5)
+
+    def test_tools_list_advertises_assert_and_expect(self):
+        listed = dispatch(self.one, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
+        tool = listed["result"]["tools"][0]
+        props = tool["inputSchema"]["properties"]
+        self.assertIn("expect", props)
+        action_props = props["action"]["properties"]
+        self.assertIn("state", action_props)
+        self.assertIn("that", action_props)
+        self.assertIn("expect", action_props)
+        self.assertIn("assert", action_props["type"]["description"])
+        unified_act = next(item for item in UNIFIED_TOOLS if item["name"] == "hands_act")
+        self.assertIn("expect", unified_act["inputSchema"]["properties"])
+        windows_act = next(item for item in WINDOWS_TOOLS if item["name"] == "hands_act")
+        self.assertIn("expect", windows_act["inputSchema"]["properties"])
+        self.assertIn("state", windows_act["inputSchema"]["properties"]["action"]["properties"])
+        self.assertIs(TOOL["inputSchema"]["properties"]["action"], ACTION_PROPERTY)
+
+    def test_expect_is_forwarded_on_act(self):
+        seen = []
+
+        class CaptureComputer(FakeComputer):
+            def handle(self, request):
+                seen.append(dict(request))
+                return super().handle(request)
+
+        router = TitanHandsOne(
+            factories={"windows": lambda: CaptureComputer("windows")},
+            default_target="windows",
+        )
+        result = router.handle(
+            {
+                "op": "act",
+                "action": {"type": "invoke", "id": "b"},
+                "expect": "Done",
+            }
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(seen[-1].get("expect"), "Done")
+        router.close()
 
     def test_four_ops_cover_computer_use(self):
         observed = self.one.handle({"op": "observe", "target": "windows"})
