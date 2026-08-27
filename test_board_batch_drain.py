@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+"""Slack issue bursts coalesce, skip carrier polling, and drain in one run."""
+
+import os
+from pathlib import Path
+import unittest
+from unittest import mock
+
+import board_ingest
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+class BoardBatchDrainTest(unittest.TestCase):
+    def test_workflow_coalesces_only_slack_connector_issue_runs(self):
+        raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
+        self.assertIn("contains(github.event.issue.body, 'carrier: slack-connector')", raw)
+        self.assertIn("commons-board-ingest-${{", raw)
+        self.assertIn("'slack-batch'", raw)
+        self.assertIn("cancel-in-progress: false", raw)
+
+    def test_issue_run_does_not_poll_public_carriers(self):
+        old = os.environ.get("GITHUB_EVENT_NAME")
+        os.environ["GITHUB_EVENT_NAME"] = "issues"
+        try:
+            with mock.patch.object(board_ingest, "ingest_ntfy", side_effect=AssertionError("carrier poll")), \
+                 mock.patch.object(board_ingest, "ingest_github_event", return_value=1), \
+                 mock.patch.object(board_ingest, "sweep_collect", return_value=[]), \
+                 mock.patch.object(board_ingest, "rebuild"), \
+                 mock.patch.object(board_ingest, "list_posts", return_value=[]):
+                self.assertEqual(board_ingest._ingest_and_maybe_publish(False), 0)
+        finally:
+            if old is None:
+                os.environ.pop("GITHUB_EVENT_NAME", None)
+            else:
+                os.environ["GITHUB_EVENT_NAME"] = old
+
+    def test_one_issue_run_drains_more_than_old_forty_record_cap(self):
+        old = os.environ.get("GITHUB_EVENT_NAME")
+        os.environ["GITHUB_EVENT_NAME"] = "issues"
+        issues = [
+            {
+                "number": n,
+                "title": "batch-%04d" % n,
+                "body": "batch body %d" % n,
+                "labels": [{"name": "board"}],
+                "created_at": "2026-08-27T00:00:00Z",
+            }
+            for n in range(120)
+        ]
+        wrote = []
+
+        def fake_write(_src, _dest, mid, _text, **_kwargs):
+            wrote.append(mid)
+            return "wrote"
+
+        try:
+            with mock.patch.object(board_ingest, "_gh_api_paged", return_value=issues), \
+                 mock.patch.object(board_ingest, "write_post", side_effect=fake_write):
+                planned = board_ingest.sweep_collect()
+        finally:
+            if old is None:
+                os.environ.pop("GITHUB_EVENT_NAME", None)
+            else:
+                os.environ["GITHUB_EVENT_NAME"] = old
+
+        self.assertGreaterEqual(board_ingest.MAX_SWEEP_NEW, 120)
+        self.assertEqual(len(wrote), 120)
+        self.assertEqual(len(planned), 120)
+
+
+if __name__ == "__main__":
+    unittest.main()

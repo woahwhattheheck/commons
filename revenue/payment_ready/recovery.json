@@ -153,6 +153,9 @@
     "processor_payment": "NOT_LANDED",
     "bank_available": "NOT_LANDED",
     "collected_cash_usd": 0,
-    "contact_sent": false
+    "contact_sent": true,
+    "distinct_contacts_sent": 7,
+    "provider_transports_observed": 12,
+    "replies_observed": 0
   }
 }

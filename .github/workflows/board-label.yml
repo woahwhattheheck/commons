@@ -1,12 +1,13 @@
-# INQUISITOR order 025 companion: tags template-matching issues "board" the
-# moment they open. Deliberately NO concurrency group — the ingest workflow's
-# group cancels queued runs during bursts, and a cancelled run is exactly when
-# the sweep needs the label to recover the post. Non-matching issues are left
-# untouched, so the sweep's label gate keeps unrelated project issues safe.
+# Manual recovery for template-matching issues. Automatic opened-event labeling
+# runs once inside commons-board so each issue creates one workflow, not two.
 name: board-label
 on:
-  issues:
-    types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Existing issue number to inspect and label
+        required: true
+        type: number
 permissions:
   issues: write
 jobs:
@@ -16,7 +17,17 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
-            const issue = context.payload.issue;
+            const issueNumber = Number(context.payload.inputs && context.payload.inputs.issue_number);
+            if (!Number.isInteger(issueNumber) || issueNumber < 1) {
+              core.setFailed("valid issue_number input required");
+              return;
+            }
+            const response = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+            });
+            const issue = response.data;
             if (!issue || issue.pull_request) return;
             const body = issue.body || "";
             let from = null, to = null, id = null, sep = false;
@@ -29,9 +40,22 @@ jobs:
             }
             const idOk = id && /^[A-Za-z0-9._-]{8,80}$/.test(id);
             if (!(sep && from && to && idOk)) return;
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issue.number,
-              labels: ["board"],
-            });
+            let lastError = null;
+            for (let attempt = 1; attempt <= 3; attempt += 1) {
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  labels: ["board"],
+                });
+                return;
+              } catch (error) {
+                lastError = error;
+                if (attempt < 3) {
+                  core.warning("board label attempt " + attempt + " failed; retrying");
+                  await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
+                }
+              }
+            }
+            throw lastError;

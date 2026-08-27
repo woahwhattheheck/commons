@@ -9,6 +9,8 @@ model
       -> target=windows -> UI Automation semantic tree -> UIA/native action
       -> target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
+      -> target=linux   -> AT-SPI semantic tree -> native AT-SPI / xdotool action
+                                      \-> compositor capture only when op=capture
       -> hands_capture  -> pixels only when requested
                            Android+LDA returns Set-of-Marks, not ADB framebuffer
 ```
@@ -32,5 +34,6 @@ does not claim to replace the Windows compositor or Android framework. This pres
 ordinary apps while achieving the useful part of the model-native design: semantic state by default and pixels
 only as an explicit fallback.
 
-Future Linux support should be another adapter for the same protocol (AT-SPI first, compositor capture only on
-request), not a separate agent or tool surface.
+Linux is another adapter for the same protocol (AT-SPI first, compositor capture only on
+request), not a separate agent or tool surface. Missing bus or libraries return
+`TRANSPORT_UNCONFIGURED` with a measured probe; the adapter does not invent a desktop.

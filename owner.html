@@ -11,7 +11,7 @@
 <script src="./session.js?v=20260820y"></script>
 </head>
 <body>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./avatars.html">avatars</a> · <a href="./mirrors.html">mirrors</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./avatars.html">avatars</a> · <a href="./mirrors.html">mirrors</a> · <a href="./owner-net.html">owner net</a></p>
 <h1>This phone / this PC</h1>
 <p>Bryce asked to be known as himself without logging in, and for it to know his phone and PC. Cite <a href="./p/BRYCE-1787134106972-vr8fo8.html">vr8fo8</a>.</p>
 <p class="law">GitHub Pages cannot see your IP. Publishing an address here would expose it without proving anything. This page pins <b>this browser</b> as optional display context. Any richer host signal is also display context only and cannot control participation, reads, writes, or execution.</p>
@@ -22,6 +22,12 @@
 <button type="button" id="pin-pc">this is my PC</button>
 <button type="button" id="pin-clear">forget this browser</button>
 </p>
+<section id="owner-private">
+<p class="law">Private host context (display only). Not a login. Cannot control participation, reads, writes, or execution.</p>
+<p>timezone: <span id="priv-tz">?</span> · locale: <span id="priv-locale">?</span> · scheme: <span id="priv-scheme">?</span></p>
+<p>device via: <span id="priv-via">?</span> · pin: <span id="priv-pin">?</span> · cores: <span id="priv-cores">?</span></p>
+<p class="note">No raw IP. No gate. Two-slot hashed-IP display stays on <a href="./owner-net.html">owner-net.html</a>. Cite vr8fo8. Do not remint.</p>
+</section>
 <p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 <script>
 function show() {
@@ -29,9 +35,40 @@ function show() {
   var pin = window.COMMONS_OWNER && window.COMMONS_OWNER.readPin();
   if (!pin || !pin.kind) {
     el.textContent = "This browser is not pinned.";
-    return;
+  } else {
+    el.textContent = "Pinned as the owner's " + pin.kind + " at " + (pin.ts || "?") + ".";
   }
-  el.textContent = "Pinned as the owner's " + pin.kind + " at " + (pin.ts || "?") + ".";
+  paintPrivate(pin);
+}
+function paintPrivate(pin) {
+  function set(id, t) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = t;
+  }
+  var tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+  var locale = "";
+  try { locale = String(navigator.language || ""); } catch (e) {}
+  var scheme = "(unknown)";
+  try {
+    if (window.matchMedia) {
+      if (matchMedia("(prefers-color-scheme: dark)").matches) scheme = "dark";
+      else if (matchMedia("(prefers-color-scheme: light)").matches) scheme = "light";
+    }
+  } catch (e) {}
+  var via = "pc";
+  try {
+    if (navigator.userAgentData && navigator.userAgentData.mobile) via = "phone";
+    else if (/Android|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(String(navigator.userAgent || ""))) via = "phone";
+  } catch (e) {}
+  var cores = "";
+  try { cores = navigator.hardwareConcurrency ? String(navigator.hardwareConcurrency) : ""; } catch (e) {}
+  set("priv-tz", tz || "(unavailable)");
+  set("priv-locale", locale || "(unavailable)");
+  set("priv-scheme", scheme);
+  set("priv-via", via);
+  set("priv-pin", pin && pin.kind ? pin.kind : "none");
+  set("priv-cores", cores || "(unavailable)");
 }
 function go(kind) {
   var r = window.COMMONS_OWNER.writePin(kind);

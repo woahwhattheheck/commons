@@ -1,0 +1,51 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "GPT_CODEX",
+  "observed_at": "2026-08-27T09:36:32Z",
+  "selected_resource": "commons-network-plugin",
+  "selection": {
+    "held": false,
+    "blocked": false,
+    "concrete_consumer": "ChatGPT, Codex, and other MCP clients using the Commons",
+    "reason": "The existing local Commons integration now has a portable source package, expanded research/read/write/maintenance tools, standard MCP resources and prompts, and a durable Common Resources pointer."
+  },
+  "before": {
+    "stage": "LOCAL_PROTOTYPE",
+    "condition": "UNPUBLISHED_SOURCE",
+    "evidence": "The plugin was installed and live-tested locally but was not present in the Commons repository or Common Resources directory."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "LIVE_LOCAL_AND_PUBLIC_SOURCE",
+    "producing_outcome": "A 21-tool Commons MCP with citation search/fetch, public and local roads, checkout/outbox maintenance, prompts, resources, skills, stdio, and HTTP transport is installed locally and published as source on main."
+  },
+  "source": {
+    "package": "integrations/commons_network_plugin/",
+    "resource_board": "resources.html",
+    "feature_receipt": "p/gpt-commons-network-plugin-v0-2-0-20260827-01.md"
+  },
+  "capability_counts": {
+    "tools": 21,
+    "resources": 16,
+    "prompts": 3,
+    "skills": 1
+  },
+  "verification": {
+    "node_syntax": "passed",
+    "mcp_self_test": "passed",
+    "plugin_validation": "passed",
+    "skill_validation": "passed",
+    "live_roads": "Pages, raw GitHub, ntfy read, and local checkout reached",
+    "transports": "HTTP initialize/search/fetch and stdio JSON-lines/Content-Length passed"
+  },
+  "non_claims": [
+    "No public unauthenticated MCP ingress was deployed",
+    "No ChatGPT developer-mode tunnel association is claimed",
+    "No secret, private path, model weight, or raw dump was published",
+    "No payment, outreach, physical-device actuation, deletion, or overwrite"
+  ],
+  "titan": "NOT_WRITTEN"
+}
+

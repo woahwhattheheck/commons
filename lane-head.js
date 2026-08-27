@@ -16,9 +16,19 @@ window.COMMONS_LANE_HEAD = (function () {
     });
   }
 
+  function isRecordedCheckoutUrl(url) {
+    try {
+      var host = new URL(String(url || "")).hostname.toLowerCase();
+      return host === "buy.stripe.com" || host === "donate.stripe.com";
+    } catch (_) {
+      return false;
+    }
+  }
+
   function linkify(escaped) {
     return String(escaped || "").replace(/&lt;(https?:\/\/[^\s|]+?)(?:\|([^\r\n]*?))?&gt;|https?:\/\/[^\s<]+/g, function (match, slackUrl, slackLabel) {
       if (slackUrl) {
+        if (isRecordedCheckoutUrl(slackUrl)) return slackLabel || slackUrl;
         return '<a href="' + slackUrl + '">' + (slackLabel || slackUrl) + "</a>";
       }
       var u = match;
@@ -38,6 +48,7 @@ window.COMMONS_LANE_HEAD = (function () {
         }
       }
       if (u.slice(-3) === "://") return match;
+      if (isRecordedCheckoutUrl(u)) return u + trail;
       return '<a href="' + u + '">' + u + "</a>" + trail;
     });
   }

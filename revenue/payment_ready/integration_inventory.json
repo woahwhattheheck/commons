@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "kind": "REVENUE_RECOVERY_INTEGRATION_INVENTORY",
-  "measured_at": "2026-08-25",
+  "measured_at": "2026-08-26",
   "zero_cursor": true,
   "pipeline_blockers": [
     "A real accepted buyer is not yet evidenced.",
@@ -13,7 +13,7 @@
       "provider": "GitHub",
       "state": "CONNECTED",
       "public_base": "https://woahwhattheheck.github.io/commons/",
-      "diagnostic_surface_state": "PENDING_REVIEW_AND_MERGE",
+      "diagnostic_surface_state": "LIVE_PUBLIC_NO_LOGIN",
       "required_for_pipeline": true
     },
     {
@@ -21,6 +21,16 @@
       "provider": "Slack",
       "state": "CONNECTED",
       "required_for_pipeline": false
+    },
+    {
+      "capability": "lead_intelligence_and_email_transport",
+      "provider": "Apollo.io",
+      "state": "CONNECTED",
+      "distinct_contacts_sent": 7,
+      "provider_transports_observed": 12,
+      "replies_observed": 0,
+      "required_for_pipeline": false,
+      "receipt_directory": "revenue/payment_ready/outreach_receipts"
     },
     {
       "capability": "optional_deployment",
@@ -32,14 +42,6 @@
     }
   ],
   "missing_or_pending": [
-    {
-      "capability": "lead_intelligence",
-      "provider": "Apollo.io",
-      "plugin_id": "apollo@openai-curated-remote",
-      "state": "AVAILABLE_NOT_CONNECTED",
-      "required_for_pipeline": false,
-      "fallback": "Primary-source prospect ledger in prospects.json"
-    },
     {
       "capability": "crm_ledger",
       "provider": "Airtable",
@@ -61,7 +63,10 @@
     "public_offer_artifact": "diagnostic.html",
     "public_receipt": "revenue/payment_ready/current_receipt.json",
     "purchase_intent": "NEEDS_BUYER",
-    "contact_sent": false,
+    "contact_sent": true,
+    "distinct_contacts_sent": 7,
+    "provider_transports_observed": 12,
+    "replies_observed": 0,
     "buyer": "UNKNOWN",
     "collected_cash_usd": 0,
     "cash_state": "NOT_LANDED"

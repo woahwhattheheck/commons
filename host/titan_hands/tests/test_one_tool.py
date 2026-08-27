@@ -6,17 +6,18 @@ import unittest
 from pathlib import Path
 
 from host.titan_hands.mcp_one import TOOL, dispatch
-from host.titan_hands.mcp_server import TOOLS as UNIFIED_TOOLS
+from host.titan_hands.mcp_server import ACTION_PROPERTY, TOOLS as UNIFIED_TOOLS
 from host.titan_hands.one_tool import TitanHandsOne, contains_pixel_payload
 from host.titan_hands.lanes import (
     BoardServer,
     BrowserServer,
     FilesServer,
     GitServer,
-    LinuxPendingServer,
     ShellServer,
     SlackServer,
 )
+from host.titan_hands.linux_atspi import LinuxHandsServer
+from host.titan_hands.tests.test_linux_atspi import FakeAtspi
 from host.titan_hands_windows.mcp_server import TOOLS as WINDOWS_TOOLS
 
 
@@ -103,7 +104,7 @@ class OneToolTests(unittest.TestCase):
             factories={
                 "windows": lambda: self.windows,
                 "android": lambda: self.android,
-                "linux": LinuxPendingServer,
+                "linux": lambda: LinuxHandsServer(backend=FakeAtspi()),
                 "files": lambda: FilesServer(root=self.tmp),
                 "git": lambda: GitServer(cwd=self.tmp, run=self._git),
                 "slack": lambda: SlackServer(
@@ -193,6 +194,46 @@ class OneToolTests(unittest.TestCase):
         ])
         self.assertEqual(len(UNIFIED_TOOLS), 5)
 
+    def test_tools_list_advertises_assert_and_expect(self):
+        listed = dispatch(self.one, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
+        tool = listed["result"]["tools"][0]
+        props = tool["inputSchema"]["properties"]
+        self.assertIn("expect", props)
+        action_props = props["action"]["properties"]
+        self.assertIn("state", action_props)
+        self.assertIn("that", action_props)
+        self.assertIn("expect", action_props)
+        self.assertIn("assert", action_props["type"]["description"])
+        unified_act = next(item for item in UNIFIED_TOOLS if item["name"] == "hands_act")
+        self.assertIn("expect", unified_act["inputSchema"]["properties"])
+        windows_act = next(item for item in WINDOWS_TOOLS if item["name"] == "hands_act")
+        self.assertIn("expect", windows_act["inputSchema"]["properties"])
+        self.assertIn("state", windows_act["inputSchema"]["properties"]["action"]["properties"])
+        self.assertIs(TOOL["inputSchema"]["properties"]["action"], ACTION_PROPERTY)
+
+    def test_expect_is_forwarded_on_act(self):
+        seen = []
+
+        class CaptureComputer(FakeComputer):
+            def handle(self, request):
+                seen.append(dict(request))
+                return super().handle(request)
+
+        router = TitanHandsOne(
+            factories={"windows": lambda: CaptureComputer("windows")},
+            default_target="windows",
+        )
+        result = router.handle(
+            {
+                "op": "act",
+                "action": {"type": "invoke", "id": "b"},
+                "expect": "Done",
+            }
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(seen[-1].get("expect"), "Done")
+        router.close()
+
     def test_four_ops_cover_computer_use(self):
         observed = self.one.handle({"op": "observe", "target": "windows"})
         self.assertEqual(observed["added"][0]["name"], "Idle")
@@ -208,7 +249,7 @@ class OneToolTests(unittest.TestCase):
         self.assertFalse(contains_pixel_payload(caps))
 
     def test_observe_and_act_do_not_return_pixels(self):
-        for target in ("windows", "android", "files", "git", "slack", "board", "shell", "browser"):
+        for target in ("windows", "android", "linux", "files", "git", "slack", "board", "shell", "browser"):
             observed = self.one.handle({"op": "observe", "target": target})
             self.assertTrue(observed["ok"], msg=target)
             self.assertFalse(contains_pixel_payload(observed), msg=target)
@@ -229,15 +270,19 @@ class OneToolTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         router.close()
 
-    def test_linux_is_named_next_not_a_remint(self):
+    def test_linux_is_atspi_not_a_permanent_stub(self):
         caps = self.one.handle({"op": "capabilities", "target": "linux"})
         self.assertTrue(caps["ok"])
-        self.assertEqual(caps["status"], "named-next")
         self.assertEqual(caps["adapter"], "at-spi")
+        self.assertEqual(caps["status"], "live")
+        self.assertNotEqual(caps.get("status"), "named-next")
         observed = self.one.handle({"op": "observe", "target": "linux"})
-        self.assertEqual(observed["failure_reason"], "ADAPTER_PENDING")
+        self.assertTrue(observed["ok"])
+        self.assertNotEqual(observed.get("failure_reason"), "ADAPTER_PENDING")
+        self.assertFalse(contains_pixel_payload(observed))
         captured = self.one.handle({"op": "capture", "target": "linux"})
-        self.assertEqual(captured["failure_reason"], "ADAPTER_PENDING")
+        self.assertEqual(captured["kind"], "pixel_capture")
+        self.assertTrue(contains_pixel_payload(captured))
 
     def test_unknown_target_and_empty_op_are_typed(self):
         missing = self.one.handle({"op": "observe", "target": "macos"})

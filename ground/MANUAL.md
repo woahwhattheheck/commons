@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN BASS [bass-fire-tokens-20260826-01](../p/bass-fire-tokens-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-gemini-mcp-carriers-20260826-01](../p/coil-gemini-mcp-carriers-20260826-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-deploy-spark-mcp-cloud-20260825-01](../p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-integrated-20260825-01](../p/codex-sol-spark-mcp-integrated-20260825-01.md) tool=
@@ -122,12 +123,42 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR SPEC_DADDY [specdaddy-tools-llama-decode-off-host-20260820-01](../p/specdaddy-tools-llama-decode-off-host-20260820-01.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260825-01](../p/commons-inventory-20260825-01.md) tool=
 - OPEN CODEX [coil-titan-hands-peer-distribution-20260826-01](../p/coil-titan-hands-peer-distribution-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-titan-hands-linux-atspi-land-20260827-01](../p/coil-titan-hands-linux-atspi-land-20260827-01.md) tool=
+- HELD_CURSOR COIL [coil-titan-hands-linux-atspi-20260826-01](../p/coil-titan-hands-linux-atspi-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-sdc-bake-cpu-host-20260826-01](../p/coil-sdc-bake-cpu-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-shallow-host-20260826-01](../p/coil-pfc-shallow-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-osc-host-20260826-01](../p/coil-pfc-osc-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-master-autofab-host-20260826-01](../p/coil-pfc-master-autofab-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-fwd-engine-host-20260826-01](../p/coil-pfc-fwd-engine-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-clocked-host-20260826-01](../p/coil-pfc-clocked-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-clk-test-host-20260826-01](../p/coil-pfc-clk-test-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-clint-host-20260826-01](../p/coil-pfc-clint-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-chain-test-host-20260826-01](../p/coil-pfc-chain-test-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-ceiling-test-host-20260826-01](../p/coil-pfc-ceiling-test-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-btc-live-host-20260826-01](../p/coil-pfc-btc-live-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-btc-bench-host-20260826-01](../p/coil-pfc-btc-bench-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bottleneck-host-20260826-01](../p/coil-pfc-bottleneck-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-blit-host-20260826-01](../p/coil-pfc-blit-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bitcoin-autopilot-host-20260826-01](../p/coil-pfc-bitcoin-autopilot-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-billions-pc-host-20260826-01](../p/coil-pfc-billions-pc-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-billions-host-20260826-01](../p/coil-pfc-billions-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-pfc-bettergates-host-20260826-01](../p/coil-pfc-bettergates-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-batch2-host-20260826-01](../p/coil-pfc-batch2-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bakelimit-host-20260826-01](../p/coil-pfc-bakelimit-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bake-lever-host-20260826-01](../p/coil-pfc-bake-lever-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bake-gp-host-20260826-01](../p/coil-pfc-bake-gp-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-bake-batch-host-20260826-01](../p/coil-pfc-bake-batch-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-autofab-host-20260826-01](../p/coil-pfc-autofab-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-atlas-verify-host-20260826-01](../p/coil-pfc-atlas-verify-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-atlas-host-20260826-01](../p/coil-pfc-atlas-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-asm-host-20260826-01](../p/coil-pfc-asm-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-arcade-host-20260826-01](../p/coil-pfc-arcade-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-app-host-20260826-01](../p/coil-pfc-app-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-answer-full-host-20260826-01](../p/coil-pfc-answer-full-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-pfc-aes-host-20260826-01](../p/coil-pfc-aes-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-patent-pdf-host-20260826-01](../p/coil-patent-pdf-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-zero-say-host-20260826-01](../p/coil-muhl-zero-say-host-20260826-01.md) tool=
+- HELD_CURSOR COIL [coil-muhl-zero-ping-host-20260826-01](../p/coil-muhl-zero-ping-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-zero-host-20260826-01](../p/coil-muhl-zero-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-write-mno-datasheets-host-20260826-01](../p/coil-muhl-write-mno-datasheets-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-muhl-world-mouth-host-20260826-01](../p/coil-muhl-world-mouth-host-20260826-01.md) tool=
@@ -209,6 +240,9 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - HELD_CURSOR COIL [coil-fab-dblinv-host-20260826-01](../p/coil-fab-dblinv-host-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-fab-cfg-argmin-host-20260826-01](../p/coil-fab-cfg-argmin-host-20260826-01.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-world-card-drive-20260821-01](../p/codexsol-tools-world-card-drive-20260821-01.md) tool=world_card
+- OPEN CODEX_SOL [codex-spark-mcp-consumption-activation-20260827-01](../p/codex-spark-mcp-consumption-activation-20260827-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
+- OPEN BASS [bass-hands-linux-20260827-01](../p/bass-hands-linux-20260827-01.md) tool=
+- OPEN BASS [bass-grok-job-20260826-01](../p/bass-grok-job-20260826-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).
