@@ -355,9 +355,27 @@ def _funnel_errors(catalog: dict[str, Any], listings: list[dict[str, Any]]) -> l
 
         conversion = funnel["conversion"]
         listing = listing_by_id.get(listing_id, {})
-        live_checkout = isinstance(listing.get("checkout"), dict) and listing["checkout"].get("status") == "LIVE"
-        expected_mode = "LIVE_STRIPE_LINK" if live_checkout else "CUSTOMER_SPECIFIC_INVOICE"
-        expected_status = "LIVE" if live_checkout else "NOT_ISSUED"
+        checkout = listing.get("checkout")
+        checkout_status = checkout.get("status") if isinstance(checkout, dict) else None
+        if checkout_status == "ACTIVE_CHARGEABLE":
+            expected_mode = "ACTIVE_STRIPE_LINK"
+            expected_status = "ACTIVE_CHARGEABLE"
+            checkout_first = funnel["readiness"] == "READY_FOR_CHECKOUT"
+            expected_action = "checkout-open" if checkout_first else "qualification-open"
+            expected_click_truth = "INTENT_ONLY"
+            expected_first = "FUNDED" if checkout_first else "DISCOVERED"
+        elif checkout_status == "LIVEMODE_URL_RECORDED":
+            expected_mode = "RECORDED_STRIPE_LINK"
+            expected_status = "CAPABILITY_UNVERIFIED"
+            expected_action = "provider-capability-unverified"
+            expected_click_truth = "NO_CLICK_SURFACE"
+            expected_first = "DISCOVERED"
+        else:
+            expected_mode = "CUSTOMER_SPECIFIC_INVOICE"
+            expected_status = "NOT_ISSUED"
+            expected_action = "qualification-open"
+            expected_click_truth = "INTENT_ONLY"
+            expected_first = "DISCOVERED"
         if conversion["mode"] != expected_mode or conversion["status"] != expected_status:
             errors.append(prefix + ".conversion must match the listing checkout state")
         if conversion["state_after"] != "FUNDED":
@@ -373,13 +391,10 @@ def _funnel_errors(catalog: dict[str, Any], listings: list[dict[str, Any]]) -> l
             errors.append(prefix + ".fulfillment.refund must be a non-empty string")
 
         measurement = funnel["measurement"]
-        checkout_first = live_checkout and funnel["readiness"] == "READY_FOR_CHECKOUT"
-        expected_action = "checkout-open" if checkout_first else "qualification-open"
-        expected_first = "FUNDED" if checkout_first else "DISCOVERED"
         if measurement["dom_action"] != expected_action:
             errors.append(prefix + ".measurement.dom_action does not match conversion mode")
-        if measurement["click_truth"] != "INTENT_ONLY":
-            errors.append(prefix + ".measurement.click_truth must be INTENT_ONLY")
+        if measurement["click_truth"] != expected_click_truth:
+            errors.append(prefix + ".measurement.click_truth does not match conversion mode")
         if measurement["first_evidence_state"] != expected_first:
             errors.append(prefix + ".measurement.first_evidence_state does not match conversion mode")
         if measurement["success_state"] != "BANK_AVAILABLE":
@@ -527,26 +542,41 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
         if checkout is not None:
             if not isinstance(checkout, dict):
                 errors.append(prefix + ".checkout must be an object")
-            elif checkout.get("status") == "LIVE":
-                if set(checkout) != {"status", "provider", "url"}:
-                    errors.append(prefix + ".checkout LIVE fields are invalid")
-                if checkout.get("provider") != "stripe":
-                    errors.append(prefix + ".checkout LIVE provider must be stripe")
-                url = checkout.get("url")
-                if not isinstance(url, str) or not STRIPE_CHECKOUT_RE.fullmatch(url):
-                    errors.append(prefix + ".checkout LIVE url is invalid")
             else:
                 status = checkout.get("status")
-                if set(checkout) != {"status"}:
-                    errors.append(prefix + ".checkout non-LIVE fields are invalid")
-                if not isinstance(status, str) or not CHECKOUT_STATUS_RE.fullmatch(status):
-                    errors.append(prefix + ".checkout non-LIVE status is invalid")
+                if status in {"ACTIVE_CHARGEABLE", "LIVEMODE_URL_RECORDED"}:
+                    required = {
+                        "status", "provider", "url",
+                        "link_active", "account_charges_enabled",
+                    }
+                    if set(checkout) != required:
+                        errors.append(prefix + ".checkout Stripe fields are invalid")
+                    if checkout.get("provider") != "stripe":
+                        errors.append(prefix + ".checkout provider must be stripe")
+                    url = checkout.get("url")
+                    if not isinstance(url, str) or not STRIPE_CHECKOUT_RE.fullmatch(url):
+                        errors.append(prefix + ".checkout url is invalid")
+                    if status == "ACTIVE_CHARGEABLE":
+                        if checkout.get("link_active") is not True:
+                            errors.append(prefix + ".checkout link_active must be true")
+                        if checkout.get("account_charges_enabled") is not True:
+                            errors.append(prefix + ".checkout account_charges_enabled must be true")
+                    else:
+                        if checkout.get("link_active") != "UNVERIFIED":
+                            errors.append(prefix + ".checkout recorded link_active must be UNVERIFIED")
+                        if checkout.get("account_charges_enabled") is not False:
+                            errors.append(prefix + ".checkout recorded account_charges_enabled must be false")
+                elif status == "NOT_MINTED":
+                    if set(checkout) != {"status"}:
+                        errors.append(prefix + ".checkout NOT_MINTED fields are invalid")
+                else:
+                    errors.append(prefix + ".checkout status is invalid")
     errors.extend(_funnel_errors(catalog, listings))
     return errors
 
 
 def canonical_catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: bool = True) -> list[str]:
-    """Validate the live canonical catalog, including its per-SKU funnel contract.
+    """Validate the canonical catalog, including its per-SKU funnel contract.
 
     catalog.schema.json intentionally remains reusable by synthetic quote and
     statement fixtures. The live catalog has the stricter all-SKU requirement.
