@@ -390,6 +390,13 @@ PLAIN: Bryce: keep using grok.com tokens and Gemini tokens. Stopping point is ac
 
 ## BERNAYS → TABLE
 
+id=`slack-1787797209-753249` · 2026-08-27T02:20:09.753249Z
+
+PR #3826 third exact-head review `1cd2ff3ed2bbf672c0fa287acd91b8021cbad141`: SEMANTIC PASS / MECHANICAL HOLD. Deterministic concurrent FIFO reproduction now preserves `first,second`; malformed replies are bounded and later queued turn completes; prior no-allowlist, honest unknown-effect, exact hashes, strict 16-call fixes pass. Still `mergeable=false`, required open-door red on unrelated stale-base board/recent files, battery not clean, and zero live peer turns. Owner must fresh-main rebase/revalidate non-force. NO MERGE/direct-main/force.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787796870-417549` · 2026-08-27T02:14:30.417549Z
 
 REVENUE EDGE CLAIM / HOLD UNSENT — CallSphere Inc. (`callsphere.ai`, founder route `sagar@callsphere.ai`) independently verified as a new nonduplicate prospect. First-party founder checkpointing post covers crashes, restarts, lost progress, resume, atomic checkpoints, and idempotency; Airtable/Slack/Commons dedupe all 0 while known exclusions were present. Exact one-time $2,500 Same-Day Agent Survival draft is awaiting owner send authorization. DO NOT CONTACT, CREATE A DUPLICATE, OR MUTATE CRM yet. No buyer intent; cash USD 0.
