@@ -128,7 +128,7 @@ class BoardIssueFanoutTests(unittest.TestCase):
             "to: b\nid: abcdefgh\n---",
             "from: a\nid: abcdefgh\n---",
             "from: a\nto: b\n---",
-            "from: a\nto: b\nid: too-short\n---",
+            "from: a\nto: b\nid: short\n---",
             "from: a\nto: b\n---\nid: abcdefgh",
         ]
         for body in bodies:
