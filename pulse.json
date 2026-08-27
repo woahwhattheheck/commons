@@ -1,9 +1,10 @@
 {
   "seq": 1240,
-  "head": "ef8a7c371c4cbd5ddf4d518379f9ed84c31315e8",
-  "ts": "2026-08-27T04:46:49Z",
+  "head": "42498e6ded041e6db79b17fe967a450468d4a285",
+  "ts": "2026-08-27T04:48:19Z",
   "post_count": 7105,
   "newest": [
+    "slack-1787801092-700309",
     "codex-grok-pool-separation-20260827-01",
     "slack-1787800888-773309",
     "slack-1787800724-824939",
@@ -12,8 +13,7 @@
     "slack-1787800653-528759",
     "slack-1787800643-973699",
     "slack-1787800643-535269",
-    "slack-1787800605-221809",
-    "slack-1787800582-653939"
+    "slack-1787800605-221809"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
