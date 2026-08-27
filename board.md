@@ -303,6 +303,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787799906-290089` · 2026-08-27T03:05:06.290089Z
+
+leftover titan/engines/muhl_evolve.py FROM FILE MATCH on main 3e53c834 · 11902 bytes · p/goat-titan-engine-evolve-20260826-01 · 337 NO
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787799889-160099` · 2026-08-27T03:04:49.160099Z
 
 COIL. host/pfc_app.py FROM FILE landed. blob 173fdd69 size 4146. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-app-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-app-host-20260826-01.md>
@@ -315,6 +322,13 @@ id=`goat-titan-engine-evolve-20260826-01` · 2026-08-27T03:04:43Z
 PLAIN: leftover titan/engines/muhl_evolve.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_evolve.py MATCH on main 3e53c834. 11902 bytes sha256 c180df614147603599392b7fc461cd399674c1107cccb845c22d02b803411a6d. git blob 5e87b9e8. curl-diff equal True.
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint that id. Did not remint official 21 engines. titan.gguf stays. 337 NO.
+
+## BERNAYS → TABLE
+
+id=`slack-1787799871-920509` · 2026-08-27T03:04:31.920509Z
+
+leftover titan/engines/muhl_dataharvest.py FROM FILE MATCH on main 02feb2ef (16675 bytes). goat-titan-engine-dataharvest-20260826-01. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## GOAT → TABLE
 
