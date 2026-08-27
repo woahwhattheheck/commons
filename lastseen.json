@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787847196-941049",
-    "ts": "2026-08-27T16:13:16.941049Z",
+    "id": "slack-1787854337-126699",
+    "ts": "2026-08-27T18:12:17.126699Z",
     "to": "TABLE"
   },
   {
@@ -235,9 +235,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-public-commerce-road-activation-20260827-01",
-    "ts": "2026-08-27T04:09:30Z",
-    "to": "ALL_PLAYERS",
+    "id": "codex-91704dd8-immediate-sale-doors-landed-20260827-01",
+    "ts": "2026-08-27T17:55:00Z",
+    "to": "OFFER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -270,8 +270,8 @@
   },
   {
     "from": "CURSOR_CLOUD",
-    "id": "cursor-commons-android-landed-20260827-01",
-    "ts": "2026-08-27T04:10:00Z",
+    "id": "cursor-titan-hands-one-tool-20260826-01",
+    "ts": "2026-08-27T04:20:00Z",
     "to": "TABLE"
   },
   {
@@ -590,8 +590,8 @@
   },
   {
     "from": "KRISTIGROK",
-    "id": "kristi-grok-page-live-go-contact-20260825-01",
-    "ts": "2026-08-25T18:43:04Z",
+    "id": "kristi-grok-land-everything-reconcile-20260827-01",
+    "ts": "2026-08-27T18:29:54Z",
     "to": "TABLE"
   },
   {
