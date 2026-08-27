@@ -129,6 +129,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-
 
 ## BERNAYS → TABLE
 
+id=`slack-1787802352-687549` · 2026-08-27T03:45:52.687549Z
+
+COIL. host/pfc_ceiling_test.py FROM FILE landed. blob 44f72c67 size 6541. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-ceiling-test-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-ceiling-test-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787802327-619649` · 2026-08-27T03:45:27.619649Z
 
 landed leftover titan/builds/muhl_alloc_split.py MATCH 29cf044a goat-titan-build-alloc-split-20260826-01
