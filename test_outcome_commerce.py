@@ -776,8 +776,8 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
             self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 10)
-        self.assertEqual(truth["delivered_transports"], 15)
+        self.assertEqual(truth["distinct_targets"], 11)
+        self.assertEqual(truth["delivered_transports"], 16)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -1371,11 +1371,12 @@ process.stdout.write(JSON.stringify([
                 or row["target_id"]
             )
         self.assertEqual(len(contacts), truth["distinct_targets"])
-        self.assertEqual(truth["delivered_transports"], 15)
-        self.assertEqual(truth["distinct_targets"], 10)
+        self.assertEqual(truth["delivered_transports"], 16)
+        self.assertEqual(truth["distinct_targets"], 11)
         for target_id, provider_reference in (
             ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
             ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
+            ("nextdata", "apollo:emailer_message:6a8faa92579ff9000cb874e2"),
         ):
             with self.subTest(target_id=target_id):
                 matches = [row for row in receipts if row["target_id"] == target_id]
