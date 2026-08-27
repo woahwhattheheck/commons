@@ -7,7 +7,10 @@ band: LOW
 scope: WIDE
 price: $5 USD one-time
 checkout: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04
-status: LIVE
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product: prod_V93nM541nt0tKv
 price_id: price_1U8lflATH4EDE7XD6xNapRSL
 plink: plink_1U8lgEATH4EDE7XDB4w8xZu5
