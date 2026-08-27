@@ -114,7 +114,9 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["production-survival-sprint"],
+      "next_offer": [
+        "production-survival-sprint"
+      ],
       "gaps": [
         "No verified-positive buyer reply yet",
         "A delivery-capacity window must be named before close"
@@ -158,7 +160,9 @@
           "Retry and rollback implementation",
           "Durable receipt in the agreed sandbox"
         ],
-        "acceptance": ["The named workflow survives the agreed failure, retry, rollback, and receipt cycle."],
+        "acceptance": [
+          "The named workflow survives the agreed failure, retry, rollback, and receipt cycle."
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -167,7 +171,10 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["gguf-diagnostic-10d-12k", "white-box-gguf-pilot-30d"],
+      "next_offer": [
+        "gguf-diagnostic-10d-12k",
+        "white-box-gguf-pilot-30d"
+      ],
       "gaps": [
         "Dedicated intake fields are not yet canonical",
         "Refund and detailed handoff terms remain UNKNOWN"
@@ -213,7 +220,9 @@
           "Baseline, ablation, and restore harness logs",
           "Concise finding and hashed delivery receipt"
         ],
-        "acceptance": ["AT1 through AT6 pass; rollback evidence is the rule, not metric lift."],
+        "acceptance": [
+          "AT1 through AT6 pass; rollback evidence is the rule, not metric lift."
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -222,7 +231,9 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["white-box-gguf-pilot-30d"],
+      "next_offer": [
+        "white-box-gguf-pilot-30d"
+      ],
       "gaps": [
         "No qualified buyer is evidenced",
         "Legal payee, private intake, founder slot, and payout readiness require owner-side completion",
@@ -295,14 +306,22 @@
       "trigger": "A valuable issue is open and has a binary merged-SHA acceptance test.",
       "acquisition": {
         "primary_channel": "Public repository issue with a named maintainer or sponsor",
-        "alternate_channels": ["humans.html public OFFER intake", "Public issue or bounty listing"],
+        "alternate_channels": [
+          "humans.html public OFFER intake",
+          "Public issue or bounty listing"
+        ],
         "message": "$2,500 over seven days: one named issue to one merged CI-green pull request that closes it.",
         "route": "commerce.html#ho-issue-to-pr",
         "cta": "Name the issue"
       },
       "qualification": {
         "route": "humans.html",
-        "required": ["Offer id", "Named issue", "Public repository", "Start window"],
+        "required": [
+          "Offer id",
+          "Named issue",
+          "Public repository",
+          "Start window"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -313,8 +332,14 @@
         "evidence_required": "Written scope and cleared provider authorization."
       },
       "fulfillment": {
-        "deliverables": ["One pull request for the named public issue"],
-        "acceptance": ["PR merged to the default branch", "CI green on the integrated SHA", "Named issue closed by that PR"],
+        "deliverables": [
+          "One pull request for the named public issue"
+        ],
+        "acceptance": [
+          "PR merged to the default branch",
+          "CI green on the integrated SHA",
+          "Named issue closed by that PR"
+        ],
         "refund": "If work never starts after written intake, founder refunds the authorized amount. If CI never greens or the PR never merges, the second half is withheld. A style disagreement is not a refund."
       },
       "measurement": {
@@ -323,8 +348,12 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["white-box-gguf-pilot-30d"],
-      "gaps": ["No send-ready named target or buyer acceptance is evidenced"]
+      "next_offer": [
+        "white-box-gguf-pilot-30d"
+      ],
+      "gaps": [
+        "No send-ready named target or buyer acceptance is evidenced"
+      ]
     },
     "ho-meeting-packet": {
       "priority": 6,
@@ -333,14 +362,22 @@
       "trigger": "A named meeting date exists and the source material needs a readable decision packet.",
       "acquisition": {
         "primary_channel": "Organizations publishing an upcoming public meeting",
-        "alternate_channels": ["humans.html public OFFER intake", "Direct share to a meeting organizer"],
+        "alternate_channels": [
+          "humans.html public OFFER intake",
+          "Direct share to a meeting organizer"
+        ],
         "message": "$1,200 over five days for HTML plus printable packet, agenda, one-page brief, and sourced claims.",
         "route": "commerce.html#ho-meeting-packet",
         "cta": "Name the meeting"
       },
       "qualification": {
         "route": "humans.html",
-        "required": ["Offer id", "Meeting name and date", "Public source artifact", "Start window"],
+        "required": [
+          "Offer id",
+          "Meeting name and date",
+          "Public source artifact",
+          "Start window"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -351,8 +388,18 @@
         "evidence_required": "Written scope and cleared provider authorization."
       },
       "fulfillment": {
-        "deliverables": ["HTML packet", "Printable packet", "Agenda", "One-page brief", "Source list"],
-        "acceptance": ["Meeting name and date are written", "Packet is openly reachable", "Claims cite public sources or say UNMEASURED"],
+        "deliverables": [
+          "HTML packet",
+          "Printable packet",
+          "Agenda",
+          "One-page brief",
+          "Source list"
+        ],
+        "acceptance": [
+          "Meeting name and date are written",
+          "Packet is openly reachable",
+          "Claims cite public sources or say UNMEASURED"
+        ],
         "refund": "If the packet is not delivered before the named meeting date because the provider missed the clock, founder refunds. Buyer-late inputs move the clock. A policy disagreement is not a refund."
       },
       "measurement": {
@@ -361,8 +408,12 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["white-box-gguf-pilot-30d"],
-      "gaps": ["No named buyer or active acquisition route is evidenced"]
+      "next_offer": [
+        "white-box-gguf-pilot-30d"
+      ],
+      "gaps": [
+        "No named buyer or active acquisition route is evidenced"
+      ]
     },
     "ho-security-questionnaire": {
       "priority": 8,
@@ -371,14 +422,23 @@
       "trigger": "Required cells are stalling a commercial review and the buyer can provide complete inputs privately.",
       "acquisition": {
         "primary_channel": "Founder-led outreach to a vendor publicly describing questionnaire blockage",
-        "alternate_channels": ["humans.html public OFFER intake", "Qualified follow-on from a public vendor issue"],
+        "alternate_channels": [
+          "humans.html public OFFER intake",
+          "Qualified follow-on from a public vendor issue"
+        ],
         "message": "$3,000 over ten days: every required cell answered or marked UNMEASURED, with no invented certification.",
         "route": "commerce.html#ho-security-questionnaire",
         "cta": "Name the questionnaire"
       },
       "qualification": {
         "route": "humans.html",
-        "required": ["Offer id", "Named questionnaire", "Public artifact", "Start window", "Complete private attachments after founder contact"],
+        "required": [
+          "Offer id",
+          "Named questionnaire",
+          "Public artifact",
+          "Start window",
+          "Complete private attachments after founder contact"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -389,8 +449,14 @@
         "evidence_required": "Written scope and cleared provider authorization."
       },
       "fulfillment": {
-        "deliverables": ["Filled questionnaire returned through the founder-sent private contact"],
-        "acceptance": ["Every required cell is filled or UNMEASURED", "No certification is invented", "Public receipt contains no private answers"],
+        "deliverables": [
+          "Filled questionnaire returned through the founder-sent private contact"
+        ],
+        "acceptance": [
+          "Every required cell is filled or UNMEASURED",
+          "No certification is invented",
+          "Public receipt contains no private answers"
+        ],
         "refund": "If the filled copy is not returned in 10 days after complete inputs, founder refunds. Missing buyer attachments move the clock. A failed third-party audit is not this SKU and not a refund of a completed questionnaire."
       },
       "measurement": {
@@ -399,8 +465,12 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["white-box-gguf-pilot-30d"],
-      "gaps": ["No send-ready named target or buyer acceptance is evidenced"]
+      "next_offer": [
+        "white-box-gguf-pilot-30d"
+      ],
+      "gaps": [
+        "No send-ready named target or buyer acceptance is evidenced"
+      ]
     },
     "ho-pixel-pack": {
       "priority": 7,
@@ -409,14 +479,22 @@
       "trigger": "A named public page needs a small original agent character with a binary visual deliverable.",
       "acquisition": {
         "primary_channel": "Public art or commission route after an original portfolio is available",
-        "alternate_channels": ["humans.html public OFFER intake", "8bit.html direct share"],
+        "alternate_channels": [
+          "humans.html public OFFER intake",
+          "8bit.html direct share"
+        ],
         "message": "$800 over five days for one sprite, one walk loop, and one speak line linked to a public post.",
         "route": "commerce.html#ho-pixel-pack",
         "cta": "Name the sprite job"
       },
       "qualification": {
         "route": "humans.html",
-        "required": ["Offer id", "Named public page", "Desired sprite job", "Start window"],
+        "required": [
+          "Offer id",
+          "Named public page",
+          "Desired sprite job",
+          "Start window"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -427,8 +505,18 @@
         "evidence_required": "Written scope and cleared provider authorization."
       },
       "fulfillment": {
-        "deliverables": ["Sprite", "Walk loop", "Speak line linked to a public post", "Static readable frame"],
-        "acceptance": ["Sprite is visible", "Walk loop runs", "Speak line cites p/{id}.md", "Static frame remains readable without script execution"],
+        "deliverables": [
+          "Sprite",
+          "Walk loop",
+          "Speak line linked to a public post",
+          "Static readable frame"
+        ],
+        "acceptance": [
+          "Sprite is visible",
+          "Walk loop runs",
+          "Speak line cites p/{id}.md",
+          "Static frame remains readable without script execution"
+        ],
         "refund": "If no sprite lands on the named public page in 5 days after intake, founder refunds. Art-direction churn after acceptance is a change order."
       },
       "measurement": {
@@ -437,8 +525,12 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["white-box-gguf-pilot-30d"],
-      "gaps": ["An original portfolio and send-ready target are not yet evidenced"]
+      "next_offer": [
+        "white-box-gguf-pilot-30d"
+      ],
+      "gaps": [
+        "An original portfolio and send-ready target are not yet evidenced"
+      ]
     },
     "sku-tip-20260826": {
       "priority": 1,
@@ -447,10 +539,13 @@
       "trigger": "The buyer found Commons useful and wants the shortest payment-to-bank proof loop.",
       "acquisition": {
         "primary_channel": "Existing Commons readers and posters",
-        "alternate_channels": ["Agent-readable catalog", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Agent-readable catalog",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$5 once. A coffee for the table. Commons stays open either way.",
         "route": "commerce.html#sku-tip-20260826",
-        "cta": "Open $5 Stripe checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "NONE",
@@ -465,8 +560,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["Optional support only; Commons remains open"],
-        "acceptance": ["A public-safe support receipt can be reconciled without private buyer data"],
+        "deliverables": [
+          "Optional support only; Commons remains open"
+        ],
+        "acceptance": [
+          "A public-safe support receipt can be reconciled without private buyer data"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -475,7 +574,9 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["sku-monthly-tip-20260826"],
+      "next_offer": [
+        "sku-monthly-tip-20260826"
+      ],
       "gaps": [
         "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
         "Charges, payout, and bank arrival still require live Stripe evidence"
@@ -488,14 +589,22 @@
       "trigger": "The buyer wants a visible recurring presence while the public roads remain unchanged.",
       "acquisition": {
         "primary_channel": "Existing Commons participants",
-        "alternate_channels": ["Agent-readable catalog", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Agent-readable catalog",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$5 a month to keep a window present; payment does not buy the from= claim.",
         "route": "commerce.html#sku-seat-20260826",
-        "cta": "Review the seat gaps, then open checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "commerce.html#sku-seat-20260826",
-        "required": ["Chosen public display name", "Presence target", "Desired start month", "PUBLIC_CONTACT_URL for the scoped handoff"],
+        "required": [
+          "Chosen public display name",
+          "Presence target",
+          "Desired start month",
+          "PUBLIC_CONTACT_URL for the scoped handoff"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -506,8 +615,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["One calendar month of named presence"],
-        "acceptance": ["UNKNOWN"],
+        "deliverables": [
+          "One calendar month of named presence"
+        ],
+        "acceptance": [
+          "UNKNOWN"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -530,14 +643,22 @@
       "trigger": "The buyer needs one small artifact or scheduling bump and accepts that the result stays public.",
       "acquisition": {
         "primary_channel": "Existing Commons readers with one small named request",
-        "alternate_channels": ["Agent-readable catalog", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Agent-readable catalog",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$5 once for one small public door: print pack, paid-build bump, or session note.",
         "route": "commerce.html#sku-unlock-20260826",
-        "cta": "Choose the deliverable, then open checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "commerce.html#sku-unlock-20260826",
-        "required": ["Exactly one of print pack, paid-build bump, or session note", "Public-safe instructions", "Requested delivery window", "PUBLIC_CONTACT_URL for the scoped handoff"],
+        "required": [
+          "Exactly one of print pack, paid-build bump, or session note",
+          "Public-safe instructions",
+          "Requested delivery window",
+          "PUBLIC_CONTACT_URL for the scoped handoff"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -548,8 +669,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["One selected public pack, build bump, or session note"],
-        "acceptance": ["Selected public artifact is reachable on current main"],
+        "deliverables": [
+          "One selected public pack, build bump, or session note"
+        ],
+        "acceptance": [
+          "Selected public artifact is reachable on current main"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -572,10 +697,13 @@
       "trigger": "The buyer wants a small recurring support loop without changing public access.",
       "acquisition": {
         "primary_channel": "One-time tip buyers and existing Commons readers",
-        "alternate_channels": ["Agent-readable catalog", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Agent-readable catalog",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$3 a month in recurring thanks; not a seat or a claim.",
         "route": "commerce.html#sku-monthly-tip-20260826",
-        "cta": "Open $3 monthly Stripe checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "NONE",
@@ -590,8 +718,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["Recurring support with no gated entitlement"],
-        "acceptance": ["A public-safe support receipt can be reconciled without private buyer data"],
+        "deliverables": [
+          "Recurring support with no gated entitlement"
+        ],
+        "acceptance": [
+          "A public-safe support receipt can be reconciled without private buyer data"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -613,14 +745,20 @@
       "trigger": "The buyer wants recurring support tied to a visible improvement rather than a seat.",
       "acquisition": {
         "primary_channel": "Existing Commons supporters",
-        "alternate_channels": ["Agent-readable catalog", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Agent-readable catalog",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$4.99 a month to keep the table upgraded; payment does not buy a claim.",
         "route": "commerce.html#sku-boost-20260826",
-        "cta": "Review the upgrade gap, then open checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "commerce.html#sku-boost-20260826",
-        "required": ["Named public upgrade or published allocation rule", "PUBLIC_CONTACT_URL for the scoped handoff"],
+        "required": [
+          "Named public upgrade or published allocation rule",
+          "PUBLIC_CONTACT_URL for the scoped handoff"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -631,8 +769,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["Recurring support for table upgrades"],
-        "acceptance": ["UNKNOWN"],
+        "deliverables": [
+          "Recurring support for table upgrades"
+        ],
+        "acceptance": [
+          "UNKNOWN"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -654,14 +796,23 @@
       "trigger": "The buyer needs a bounded expert hour before committing to a diagnostic or pilot.",
       "acquisition": {
         "primary_channel": "Qualified technical inquiry",
-        "alternate_channels": ["Accepted survival engagement", "Direct share of the anchored commerce card"],
+        "alternate_channels": [
+          "Accepted survival engagement",
+          "Direct share of the anchored commerce card"
+        ],
         "message": "$250 for one dated White Box or dests hour with a public session receipt.",
         "route": "commerce.html#sku-whitebox-hour-20260826",
-        "cta": "Write the objective, then open checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "commerce.html#sku-whitebox-hour-20260826",
-        "required": ["Objective", "Requested date and timezone", "Relevant dests", "Public-result acknowledgment", "PUBLIC_CONTACT_URL for the scoped handoff"],
+        "required": [
+          "Objective",
+          "Requested date and timezone",
+          "Relevant dests",
+          "Public-result acknowledgment",
+          "PUBLIC_CONTACT_URL for the scoped handoff"
+        ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
@@ -672,8 +823,12 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["land/session-YYYYMMDD.md with dests, receipts, and what ran"],
-        "acceptance": ["The dated public session file contains the promised fields"],
+        "deliverables": [
+          "land/session-YYYYMMDD.md with dests, receipts, and what ran"
+        ],
+        "acceptance": [
+          "The dated public session file contains the promised fields"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
@@ -682,7 +837,9 @@
         "first_evidence_state": "DISCOVERED",
         "success_state": "BANK_AVAILABLE"
       },
-      "next_offer": ["gguf-diagnostic-10d-12k"],
+      "next_offer": [
+        "gguf-diagnostic-10d-12k"
+      ],
       "gaps": [
         "Stripe URL is recorded for provenance only; link active=true is unverified and provider account charges_enabled=false, so checkout is suppressed.",
         "Availability, rescheduling, acceptance, and refund terms remain UNKNOWN"
@@ -695,10 +852,13 @@
       "trigger": "A scoped machine outcome cannot be met by a proof, sprint, hour, diagnostic, or White Box pilot.",
       "acquisition": {
         "primary_channel": "Qualified enterprise inquiry after a smaller paid engagement",
-        "alternate_channels": ["commerce.html direct share", "Named infrastructure collaboration"],
+        "alternate_channels": [
+          "commerce.html direct share",
+          "Named infrastructure collaboration"
+        ],
         "message": "$45,000 for one narrow fixed-scope keep-or-build engagement on the actual machines, with receipt files on current main.",
         "route": "commerce.html#sku-muhlnickel-titan-20260826",
-        "cta": "Define the scope before checkout"
+        "cta": "Review provider-capability evidence gap"
       },
       "qualification": {
         "route": "commerce.html#sku-muhlnickel-titan-20260826",
@@ -719,8 +879,13 @@
         "evidence_required": "Provider readback proving link active=true and account charges_enabled=true; a recorded URL is not chargeability, funding, payment, or cash."
       },
       "fulfillment": {
-        "deliverables": ["One narrow actual-machine keep-or-build engagement", "Receipt files on current main"],
-        "acceptance": ["UNKNOWN"],
+        "deliverables": [
+          "One narrow actual-machine keep-or-build engagement",
+          "Receipt files on current main"
+        ],
+        "acceptance": [
+          "UNKNOWN"
+        ],
         "refund": "UNKNOWN"
       },
       "measurement": {
