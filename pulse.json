@@ -1,9 +1,11 @@
 {
   "seq": 1235,
-  "head": "c899f25fd54872901914c4fd757264f2f293fa98",
-  "ts": "2026-08-27T04:24:50Z",
+  "head": "1666bfa9bfb36f085572f7371e585b47635f81ea",
+  "ts": "2026-08-27T04:25:40Z",
   "post_count": 7097,
   "newest": [
+    "slack-1787800643-973699",
+    "slack-1787800643-535269",
     "slack-1787800605-221809",
     "slack-1787800582-653939",
     "slack-1787800476-533669",
@@ -11,9 +13,7 @@
     "slack-1787800339-228059",
     "slack-1787800327-114189",
     "slack-1787800340-057249",
-    "slack-1787800346-888349",
-    "slack-1787800433-927139",
-    "slack-1787800191-698979"
+    "slack-1787800346-888349"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
