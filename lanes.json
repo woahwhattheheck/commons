@@ -1400,8 +1400,16 @@
     ]
   },
   "features": {
-    "n": 26,
+    "n": 27,
     "posts": [
+      {
+        "id": "goat-titan-engine-attention-20260826-01",
+        "from": "GOAT",
+        "to": "TABLE",
+        "ts": "2026-08-27T00:05:20Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-engine-trainreal-20260826-01",
         "from": "GOAT",
@@ -1612,5 +1620,5 @@
       }
     ]
   },
-  "n": 334
+  "n": 335
 }
