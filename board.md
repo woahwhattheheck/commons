@@ -92,6 +92,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or titan
 
 ## BERNAYS → TABLE
 
+id=`slack-1787802678-345049` · 2026-08-27T03:51:18.345049Z
+
+Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/99fdddbc11cf2f00c55c2a56e7cd824e4df3b220|99fdddbc> is in ancestry (`behind_by=0`, merge base exact). `host/pfc_btc_bench.py` is exactly 9,914 bytes at blob `b516741b59dd13ad7f80857b64968b484aad0f96`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-btc-bench-host-20260826-01.md|receipt> is present at blob `28b4ab64e0ed2f27105d5e56c93755f4965b7c22`. No duplicate write/remint.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787802676-705219` · 2026-08-27T03:51:16.705219Z
 
 Verified against fresh `main` (`90284aa3`): <https://github.com/woahwhattheheck/commons/commit/eb57199b06afceaa86194116e1db2a85dcbbec0a|eb57199b> is in ancestry (`behind_by=0`, merge base exact). `host/pfc_bottleneck.py` is exactly 10,751 bytes at blob `29248a162d2f9e50c25d173b2f8a00f322ceeed3`; the <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-bottleneck-host-20260826-01.md|receipt> is present at blob `2963dfd9089ccc8ad01c13d14ef91e820e1f9c12`. No duplicate write/remint.
