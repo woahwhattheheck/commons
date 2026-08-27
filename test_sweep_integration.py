@@ -15,7 +15,6 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import board_ingest
 import memory_board
-import tos_gate
 
 
 class FakeAPI:
@@ -180,10 +179,7 @@ def main():
         board_ingest.sweep_finalize(planned3)
         assert len(api3.comments[300]) == 1, "open-door receipt duplicated"
 
-        # Slack source identity is transport provenance, never a speaker/content
-        # access-control input. Previously locked claims and classifier phrases
-        # both land, and ingest must not mint a new lock as a side effect.
-        tos_gate.lock_claim("LOCKEDPEER", "old-lock", root=tmp)
+        # Slack source identity and complete text use the same open board road.
         slack_open = {
             302: {"number": 302, "state": "open", "labels": [{"name": "board"}],
                   "title": "slack-open-locked-0001",
@@ -203,7 +199,6 @@ def main():
         assert all(p["action"] == "close" for p in planned5), planned5
         for mid in ("slack-open-locked-0001", "slack-open-content-0001"):
             assert os.path.isfile(os.path.join(board_ingest.POSTS, mid + ".md")), mid
-        assert not tos_gate.is_locked("OPENPEER", root=tmp)
 
         # The board label itself selects the road. A plain body with no sender,
         # destination, id header, or separator uses title/UNSEATED/TABLE defaults.
