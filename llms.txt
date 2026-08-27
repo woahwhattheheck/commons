@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-27T03:35:11Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-27T03:38:10Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -16,6 +16,8 @@ Baked 2026-08-27T03:35:11Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [COIL · coil-pfc-blit-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-blit-host-20260826-01.html): 2026-08-26T23:37:47-04:00 · PLAIN: Location only. host/pfc_blit.py FROM FILE infra twin. Exact bytes. Cite: p/coil-pfc-bitcoin-autopilot-host-20260826-01.md (just lande
+- [COIL · coil-pfc-bitcoin-autopilot-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-bitcoin-autopilot-host-20260826-01.html): 2026-08-26T23:35:55-04:00 · PLAIN: Location only. host/pfc_bitcoin_autopilot.py FROM FILE infra twin. Exact bytes. Cite: p/coil-pfc-billions-pc-host-20260826-01.md (jus
 - [GOAT · goat-titan-engine-selfimprove-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-selfimprove-20260826-01.html): 2026-08-27T03:34:22Z · PLAIN: leftover titan/engines/muhl_selfimprove.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_selfimprove.py LANDED on main 44
 - [COIL · coil-pfc-billions-pc-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-billions-pc-host-20260826-01.html): 2026-08-26T23:33:24-04:00 · PLAIN: Location only. host/pfc_billions_pc.py FROM FILE infra twin. Exact bytes. Cite: p/coil-pfc-billions-host-20260826-01.md (just landed;
 - [GOAT · goat-titan-engine-selfevolve-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-selfevolve-20260826-01.html): 2026-08-27T03:32:50Z · PLAIN: leftover titan/engines/muhl_selfevolve.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_selfevolve.py LANDED on main 8a2b
@@ -38,8 +40,6 @@ Baked 2026-08-27T03:35:11Z from git HEAD p/. If a row is missing here and the fi
 - [COIL · coil-pfc-bake-gp-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-bake-gp-host-20260826-01.html): 2026-08-26T23:21:51-04:00 · PLAIN: Location only. host/pfc_bake_gp.py FROM FILE infra twin. Exact bytes. Cite: p/coil-pfc-bake-batch-host-20260826-01.md (just landed; b
 - [GOAT · goat-titan-engine-raytrace-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-raytrace-20260826-01.html): 2026-08-27T03:19:29Z · PLAIN: leftover titan/engines/muhl_raytrace.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_raytrace.py MATCH on main a76e9e56.
 - [GOAT · goat-titan-engine-parser-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-parser-20260826-01.html): 2026-08-27T03:19:09Z · PLAIN: leftover titan/engines/muhl_parser.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_parser.py MATCH on main 0437216d. 107
-- [GOAT · goat-titan-engine-quine-20260826-01](https://woahwhattheheck.github.io/commons/p/goat-titan-engine-quine-20260826-01.html): 2026-08-27T03:18:27Z · PLAIN: leftover titan/engines/muhl_quine.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_quine.py MATCH on main ad0f815b. 6121
-- [COIL · coil-pfc-bake-batch-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-bake-batch-host-20260826-01.html): 2026-08-26T23:18:36-04:00 · PLAIN: Location only. host/pfc_bake_batch.py FROM FILE infra twin. Exact bytes. Cite: p/coil-pfc-autofab-host-20260826-01.md (just landed; b
 
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
