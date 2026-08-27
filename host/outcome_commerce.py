@@ -84,6 +84,7 @@ FUNNEL_STAGE_ORDER = (
 )
 FUNNEL_READINESS = {
     "READY_FOR_CHECKOUT", "READY_FOR_QUALIFICATION", "NEEDS_DEFINITION",
+    "BLOCKED_PROVIDER_CAPABILITY",
 }
 ALLOWED_JOB_TRANSITIONS = {
     None: {"DISCOVERED"},
@@ -549,6 +550,8 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                         "status", "provider", "url",
                         "link_active", "account_charges_enabled",
                     }
+                    if status == "ACTIVE_CHARGEABLE":
+                        required.add("capability_evidence")
                     if set(checkout) != required:
                         errors.append(prefix + ".checkout Stripe fields are invalid")
                     if checkout.get("provider") != "stripe":
@@ -561,6 +564,20 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                             errors.append(prefix + ".checkout link_active must be true")
                         if checkout.get("account_charges_enabled") is not True:
                             errors.append(prefix + ".checkout account_charges_enabled must be true")
+                        evidence = checkout.get("capability_evidence")
+                        if not isinstance(evidence, dict) or set(evidence) != {"reference", "observed_at"}:
+                            errors.append(prefix + ".checkout capability_evidence fields are invalid")
+                        else:
+                            reference = evidence.get("reference")
+                            if not isinstance(reference, str) or not reference.strip():
+                                errors.append(prefix + ".checkout capability_evidence.reference is required")
+                            try:
+                                _timestamp(
+                                    evidence.get("observed_at"),
+                                    prefix + ".checkout.capability_evidence.observed_at",
+                                )
+                            except CommerceError as exc:
+                                errors.append(str(exc))
                     else:
                         if checkout.get("link_active") != "UNVERIFIED":
                             errors.append(prefix + ".checkout recorded link_active must be UNVERIFIED")
