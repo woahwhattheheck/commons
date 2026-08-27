@@ -158,7 +158,14 @@
     "checkout_active_chargeable": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "provider", "url", "link_active", "account_charges_enabled"],
+      "required": [
+        "status",
+        "provider",
+        "url",
+        "link_active",
+        "account_charges_enabled",
+        "capability_evidence"
+      ],
       "properties": {
         "status": {"const": "ACTIVE_CHARGEABLE"},
         "provider": {"const": "stripe"},
@@ -167,7 +174,16 @@
           "pattern": "^https://(buy|donate)\\.stripe\\.com/[A-Za-z0-9_-]+(?![\\s\\S])"
         },
         "link_active": {"const": true},
-        "account_charges_enabled": {"const": true}
+        "account_charges_enabled": {"const": true},
+        "capability_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reference", "observed_at"],
+          "properties": {
+            "reference": {"type": "string", "pattern": "\\S"},
+            "observed_at": {"type": "string", "format": "date-time"}
+          }
+        }
       }
     },
     "checkout_livemode_url_recorded": {
