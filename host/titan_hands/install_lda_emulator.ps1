@@ -56,7 +56,21 @@ if ($LASTEXITCODE -ne 0) { throw "LDA APK install failed with exit code $LASTEXI
 
 $enabled = (& $adb -s $Serial shell settings get secure enabled_accessibility_services).Trim()
 $parts = @($enabled.Split(':') | Where-Object { $_ -and $_ -ne 'null' })
-if ($service -notin $parts) { $parts += $service }
+# A package update stops the app but can leave the service name in secure settings. Writing the
+# identical list does not make Android rebind it, so cycle only this service while preserving every
+# other accessibility service on the target.
+if ($service -in $parts) {
+    $others = @($parts | Where-Object { $_ -ne $service })
+    if ($others.Count -gt 0) {
+        & $adb -s $Serial shell settings put secure enabled_accessibility_services ($others -join ':')
+    } else {
+        & $adb -s $Serial shell settings delete secure enabled_accessibility_services | Out-Null
+    }
+    if ($LASTEXITCODE -ne 0) { throw 'Could not cycle the existing LDA accessibility service' }
+    Start-Sleep -Milliseconds 500
+    $parts = $others
+}
+$parts += $service
 & $adb -s $Serial shell settings put secure enabled_accessibility_services ($parts -join ':')
 if ($LASTEXITCODE -ne 0) { throw 'Could not enable the LDA accessibility service' }
 & $adb -s $Serial shell settings put secure accessibility_enabled 1
