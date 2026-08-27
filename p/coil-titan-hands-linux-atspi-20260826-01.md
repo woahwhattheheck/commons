@@ -37,7 +37,8 @@ Wired: one_tool.py default_factories linux -> LinuxHandsServer. lanes.LinuxPendi
 Tests: host.titan_hands linux/one_tool/broker/android/peer + Windows server 53/53 PASS with mocks. Live bus test PASS. open_door_guard PASS. Windows/Android adapters not reminted. Unique vs unmerged PR 3358 sketch at host/titan_hands/linux.py.
 
 PR: https://github.com/woahwhattheheck/commons/pull/3715
-Candidate SHA: ab78b9ae7
+Candidate SHA: 084cfcf95
+Slack #commons: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787788785680159
 Status on current main: NOT_LANDED
 
 Did not PUT board_ingest.py, fat index.html, or lda/README.md. Did not smash commons.mno. 337 NO.
