@@ -394,6 +394,12 @@ for (const assignment of [quotedOverDepthJsonAssignment, quotedOverNodeJsonAssig
 for (const assignment of [
   'x["token"]="hidden"',
   "x['token']='hidden'",
+  String.raw`root["to\u006ben"]="hidden"`,
+  'root["topic]=reproducibility',
+  String.raw`root["to\ken"]="hidden"`,
+  "paßword=hidden",
+  "paſſword=hidden",
+  "ſecret=hidden",
   'x="{\\"token\\":\\"hidden\\"}"',
   'payload={"paſſword":"hidden"}',
   'payload={"paßword":"hidden"}',
@@ -412,7 +418,14 @@ for (const assignment of [
   }
 }
 
-for (const assignment of ['x="reproducibility"', 'x["topic"]="reproducibility"']) {
+for (const assignment of [
+  'x="reproducibility"',
+  'x["topic"]="reproducibility"',
+  String.raw`root["to\u0070ic"]="reproducibility"`,
+  "paßage=public",
+  "ſtatus=ready",
+  "topic=straße",
+]) {
   for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
     const event = submit(candidate);
     assert.strictEqual(event.prevented, false, `safe short binding was prevented: ${assignment}`);

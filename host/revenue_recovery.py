@@ -122,12 +122,12 @@ SENSITIVE_FIELD_BY_COMPACT = {
     name.replace("_", ""): name for name in SENSITIVE_FIELD_NAMES
 }
 FIELD_ASSIGNMENT_RE = re.compile(
-    r'''["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*'''
+    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*'''
     r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
     re.IGNORECASE,
 )
 JSON_ASSIGNMENT_PREFIX_RE = re.compile(
-    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'-]{0,80})["']?\s*[:=]\s*''',
+    r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
 SENSITIVE_PATTERNS = (
@@ -439,6 +439,67 @@ def _decode_quoted_assignment(source: str, value_start: int) -> tuple[str | None
     return "".join(decoded_characters), value_end
 
 
+def _assignment_path_has_sensitive_field(name: str) -> bool:
+    """Scan one bounded assignment path; malformed bracket quoting fails closed."""
+    source = str(name).strip()
+    if not source or is_sensitive_field_name(source):
+        return True
+    index = 0
+    while index < len(source):
+        if source[index] == "[":
+            index += 1
+            while index < len(source) and source[index].isspace():
+                index += 1
+            if index >= len(source):
+                return True
+            if source[index] in "\"'":
+                bracket_value, value_end = _decode_quoted_assignment(source, index)
+                if bracket_value is None or value_end is None:
+                    return True
+                index = value_end
+                while index < len(source) and source[index].isspace():
+                    index += 1
+                if index >= len(source) or source[index] != "]":
+                    return True
+            else:
+                bracket_start = index
+                while index < len(source) and source[index] != "]":
+                    if source[index] in "[\\\"'":
+                        return True
+                    index += 1
+                if index >= len(source):
+                    return True
+                bracket_value = source[bracket_start:index].strip()
+                if not bracket_value:
+                    return True
+            if is_sensitive_field_name(bracket_value):
+                return True
+            index += 1
+            while index < len(source) and source[index].isspace():
+                index += 1
+            if index < len(source) and source[index] not in ".[":
+                return True
+            if index < len(source) and source[index] == ".":
+                index += 1
+                if index >= len(source):
+                    return True
+            continue
+
+        segment_start = index
+        while index < len(source) and source[index] not in ".[":
+            if source[index] in "]\\\"'":
+                return True
+            index += 1
+        segment = source[segment_start:index].strip()
+        if not segment or is_sensitive_field_name(segment):
+            return True
+        if index < len(source) and source[index] == ".":
+            index += 1
+            if index >= len(source):
+                return True
+    return False
+
+
 def _json_assignment_has_sensitive_value(source: str, query_depth: int) -> bool:
     """Scan complete structured/quoted assignment values and fail closed."""
     for match in JSON_ASSIGNMENT_PREFIX_RE.finditer(source):
@@ -589,13 +650,14 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
     source, decoding_overflow = decode_percent_layers(raw_source)
     if decoding_overflow:
         return True
+    assignment_source = unicodedata.normalize("NFKC", source).casefold()
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
         return True
-    if _json_assignment_has_sensitive_value(source, query_depth):
+    if _json_assignment_has_sensitive_value(assignment_source, query_depth):
         return True
-    for match in FIELD_ASSIGNMENT_RE.finditer(source):
+    for match in FIELD_ASSIGNMENT_RE.finditer(assignment_source):
         value = match.group(2) if match.group(2) is not None else match.group(3)
-        if is_sensitive_field_name(match.group(1)) and str(value or "").strip():
+        if _assignment_path_has_sensitive_field(match.group(1)) and str(value or "").strip():
             return True
         if str(value or "").lstrip().startswith(("[", "{")):
             continue
