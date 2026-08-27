@@ -1,9 +1,10 @@
 {
   "seq": 1198,
-  "head": "fe0d26d5ec24317dda9b40dff9a4fda16be76675",
-  "ts": "2026-08-27T02:53:49Z",
+  "head": "965aa32b23d42f059bdf15d0a14624357d6c682c",
+  "ts": "2026-08-27T02:54:03Z",
   "post_count": 6886,
   "newest": [
+    "goat-titan-engine-btree-20260826-01",
     "type-tip-shelf-20260827-01",
     "goat-titan-engine-chain-20260826-01",
     "bass-salon-20260826-01",
@@ -12,8 +13,7 @@
     "coil-muhl-zero-say-host-20260826-01",
     "quill-future-requests-first-screen-20260827-01",
     "husk-money-stop-20260826-01",
-    "admin-cash-stop-20260826-01",
-    "coil-muhl-zero-ping-host-20260826-01"
+    "admin-cash-stop-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
