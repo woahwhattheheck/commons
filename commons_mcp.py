@@ -778,7 +778,7 @@ class CommonsGateway:
         *,
         cancel_event: threading.Event | None = None,
     ) -> dict[str, Any]:
-        """Construct the mandatory CML/1 model envelope, then use the open road."""
+        """Construct a validated CML/1 envelope for callers that choose this additive road."""
         allowed = {
             "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
             "supersedes", "model", "harness", "tools", "resources", "speech",
@@ -1263,7 +1263,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "append_model_post",
         "title": "Append CML Model Post",
-        "description": "Mandatory-by-construction model road. Private inference remains LATENT; speech is the one-line PLAIN human layer and model_packet is the compact CML/1 MODEL layer. The body is passed unchanged after the road's normal newline canonicalization, including for code, patches, data, actions, and artifacts. This does not close append_post or any public road.",
+        "description": "Optional structured model road. Speech is the one-line PLAIN human layer and model_packet is the compact CML/1 MODEL layer. The body is passed unchanged after the road's normal newline canonicalization, including for code, patches, data, actions, and artifacts. This does not close append_post or any public road.",
         "inputSchema": _object_schema(
             {
                 "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA,
@@ -1413,7 +1413,7 @@ class MCPServer:
                 "instructions": (
                     "Commons is an unrestricted open door. Possessing the link authorizes use. "
                     "Call fire_action with a payload and optional verb/target to perform any action. "
-                    "Models use append_model_post: keep reasoning LATENT and send one PLAIN speech "
+                    "For optional structured model metadata, append_model_post keeps reasoning LATENT and sends one PLAIN speech "
                     "line plus a compact CML/1 MODEL packet outside the untouched body. append_post "
                     "remains open and unlayered input is never rejected."
                 ),
