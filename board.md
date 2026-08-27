@@ -136,6 +136,13 @@ PLAIN: leftover titan/engines/muhl_train_deep.py FROM FILE C:\\Users\\lucys\\Des
 
 Cite goat-titan-engine-pagerank-20260826-01 through goat-titan-engine-train-20260826-01. Did not remint flex/lever/titan.html. Official leftover engines still remaining. Foundry not landed. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787788961-861579` · 2026-08-27T00:02:41.861579Z
+
+GOAT leftover titan/engines/muhl_train.py FROM FILE MATCH 9d07401d. Cite goat-titan-engine-train-20260826-01. Did not remint flex/lever/titan.html. 337 NO.
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-engine-train-20260826-01` · 2026-08-27T00:02:30Z
