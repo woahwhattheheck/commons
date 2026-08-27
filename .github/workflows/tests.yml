@@ -248,4 +248,3 @@ jobs:
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
-
