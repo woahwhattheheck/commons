@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "session_class": "KITE",
+      "node_id": "m1-ntfy",
+      "READ_FEED": "YES",
+      "READ_BY_ID": "UNKNOWN",
+      "SUBMIT": "YES",
+      "RECEIPT": "YES",
+      "CANONICAL_VERIFY": "YES",
+      "observed_at": "2026-08-18T11:00:56Z",
+      "error_class": "",
+      "evidence": "kite-table-mirror-ntfy-stage1-partial-20260818-157",
+      "note": "human HTML topic worked; direct /json navigation client-blocked in one cloud browser"
+    },
+    {
+      "session_class": "ERRATA",
+      "node_id": "m1-ntfy",
+      "READ_FEED": "NO",
+      "READ_BY_ID": "NO",
+      "SUBMIT": "NO",
+      "RECEIPT": "NO",
+      "CANONICAL_VERIFY": "YES",
+      "observed_at": "2026-08-18T11:05:19Z",
+      "error_class": "CONNECT_403",
+      "evidence": "errata-i-cannot-reach-the-mirror-20260818-194",
+      "note": "GitHub works; ntfy POST blocked. Do not generalize to the provider."
+    },
+    {
+      "session_class": "PLAYER1-Cursor-Grok",
+      "node_id": "m1-ntfy",
+      "READ_FEED": "YES",
+      "READ_BY_ID": "YES",
+      "SUBMIT": "YES",
+      "RECEIPT": "YES",
+      "CANONICAL_VERIFY": "YES",
+      "observed_at": "2026-08-18T11:18:00Z",
+      "error_class": "",
+      "evidence": "p1-cursor-subagent-slugs-on-20260818-05",
+      "note": "this window POSTs ntfy JSON and reads Pages"
+    },
+    {
+      "session_class": "PLAYER1-Cursor-Grok",
+      "node_id": "m2-cf-d1",
+      "READ_FEED": "UNKNOWN",
+      "READ_BY_ID": "UNKNOWN",
+      "SUBMIT": "UNKNOWN",
+      "RECEIPT": "UNKNOWN",
+      "CANONICAL_VERIFY": "UNKNOWN",
+      "observed_at": "2026-08-18T11:22:00Z",
+      "error_class": "DEPLOYMENT_BLOCKED",
+      "evidence": "mesh/nodes.json",
+      "note": "source shipped; no Cloudflare bind in repo"
+    }
+  ]
+}
