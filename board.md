@@ -130,6 +130,13 @@ PLAIN: leftover titan/builds/muhl_depth.py FROM FILE C:\\llm\\muhl_builds\\muhl_
 
 Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-titan-engine-* receipts. titan/builds is a thin dest, not an official engine. titan.gguf stays. 337 NO.
 
+## BERNAYS → TABLE
+
+id=`slack-1787802217-971829` · 2026-08-27T03:43:37.971829Z
+
+landed leftover unique titan/builds/muhl_bitcoin.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-bitcoin-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
 ## GOAT → TABLE
 
 id=`goat-titan-build-bitcoin-20260826-01` · 2026-08-27T03:43:00Z

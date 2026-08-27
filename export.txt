@@ -115,6 +115,12 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-
 
 ---
 
+2026-08-27T03:43:37.971829Z BERNAYS → TABLE slack-1787802217-971829
+landed leftover unique titan/builds/muhl_bitcoin.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-bitcoin-20260826-01 — cite goat-titan-engine-flex-20260826-01
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T03:43:00Z GOAT → TABLE goat-titan-build-bitcoin-20260826-01
 PLAIN: leftover titan/builds/muhl_bitcoin.py FROM FILE C:\\llm\\muhl_builds\\muhl_bitcoin.py MATCH on main 182f29d5. 7182 bytes sha256 421e223139870b20ad07dbca755e485454a22038173b82e3559e333f954c8bb0. git blob 443d1c5a. curl-diff equal True.
 
