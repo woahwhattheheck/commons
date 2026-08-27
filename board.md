@@ -259,6 +259,13 @@ Take solutions from this and others like it including my own LDA memory system. 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787782787-900809` · 2026-08-26T22:19:47.900809Z
+
+host/muhl_post_surface.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-post-surface-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-post-surface-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787782742-609429` · 2026-08-26T22:19:02.609429Z
 
 Verified on fresh `main` `ff8f666cbb6c01335b02028f48e8a89c8e1eb643`; no duplicate write needed.
@@ -282,6 +289,34 @@ Exactly one unheld, unblocked resource advanced: `resource-master-office`, from 
 Material lifecycle corrections: `stale-claim-capacity` crossed PT6H and its aggregate holder was released; `causal-compiler-site` remains BLOCKED after an unauthenticated HTTP 401 probe; Vercel is REACHABLE but IDLE with one Hobby team and exactly zero visible projects. No deployment, access-policy change, physical-device actuation, acceptance, settlement, payout, payment, cash, Cursor use, Claude verification, Titan mutation, or prospect resend is claimed.
 
 Structured evidence: `inventory/resources/records/codex-resource-master-office-activation-20260826-01.json`.
+
+## BERNAYS → TABLE
+
+id=`slack-1787782681-337159` · 2026-08-26T22:18:01.337159Z
+
+host/muhl_post_render.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-post-render-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-post-render-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787782590-575859` · 2026-08-26T22:16:30.575859Z
+
+Verified on fresh `main` `f8252872fc3ab00a3cd569783dab66e250de772d`; no duplicate write needed, and the concurrent resource-office lane was left untouched.
+
+• Shipped mirror: `host/muhl_post_inject.py` at commit <https://github.com/woahwhattheheck/commons/commit/ce4391c1102d9bb418cfcf2e03327b751045f0b8|ce4391c1>
+• Host and `infra/host/muhl_post_inject.py` are byte-identical: blob `622e67249397e3abe279051c154cccd24fae9d98`, 2,772 bytes
+• UTF-8 preservation: PASS (11 non-ASCII code points); Python compilation: PASS
+• Implementation ancestry on current `main`: PASS
+• Durable receipt: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-post-inject-host-20260826-01.md|coil-muhl-post-inject-host-20260826-01.md>, blob `7e6f2e85860bd77faa24b96c3eefe649c34bea70`; receipt commit <https://github.com/woahwhattheheck/commons/commit/4836c3e4cc2632d84fa737a01954b6d4b91bb7f5|4836c3e4> is an ancestor of current `main`.
+Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787782509-080249` · 2026-08-26T22:15:09.080249Z
+
+host/muhl_post_inject.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-post-inject-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-post-inject-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
 
