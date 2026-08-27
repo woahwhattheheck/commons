@@ -9,8 +9,12 @@ model
       -> target=windows -> UI Automation semantic tree -> UIA/native action
       -> target=android -> ADB transport -> LDA Kotlin world-model + executor
                                       \-> UIAutomator fallback if LDA is absent
+      -> target=android-lan -> physical Commons APK host (pairing on the device)
       -> target=linux   -> AT-SPI semantic tree -> native AT-SPI / xdotool action
                                       \-> compositor capture only when op=capture
+      -> target=pay     -> live Stripe Payment Links + Checkout Session
+                                      \-> PAY_UNCONFIGURED when STRIPE_SECRET_KEY is empty
+      -> target=wireless -> LAN bind + debug APK helper after a paid session
       -> hands_capture  -> pixels only when requested
                            Android+LDA returns Set-of-Marks, not ADB framebuffer
 ```
@@ -37,3 +41,10 @@ only as an explicit fallback.
 Linux is another adapter for the same protocol (AT-SPI first, compositor capture only on
 request), not a separate agent or tool surface. Missing bus or libraries return
 `TRANSPORT_UNCONFIGURED` with a measured probe; the adapter does not invent a desktop.
+
+`target=pay` is the money path on the same one-tool contract. Live Payment Links already
+on HEAD take money without a secret. Checkout Sessions are created only when
+`STRIPE_SECRET_KEY` is in the process environment. A missing key returns
+`PAY_UNCONFIGURED` with a measured probe. No charge is minted in that state.
+Local windows/android/linux and the Commons lanes stay open. Remote/wireless bind
+measures a paid checkout session when the key is present.

@@ -18,10 +18,12 @@ from host.titan_hands.one_tool import TitanHandsOne
 
 SERVER_INSTRUCTIONS = (
     "One TITAN Hands call. Set op to observe, act, capture, capabilities, targets, or reset. "
-    "Set target to windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
+    "Set target to windows, android, android-lan, linux, files, git, slack, board, shell, browser, pay, or wireless. "
     "Windows and Android use the existing DeltaUI adapters. android-lan is the physical Commons APK host "
     "(user-started; send TITAN_HANDS_ANDROID_LAN_PAIRING). Linux uses AT-SPI; "
-    "a missing bus returns TRANSPORT_UNCONFIGURED. "
+    "target=pay opens live Stripe Payment Links and creates a Checkout Session when "
+    "STRIPE_SECRET_KEY is set; a missing key is PAY_UNCONFIGURED. "
+    "target=wireless binds a LAN host after a paid checkout session when the key is present. "
     "Normal observations contain no screenshots. Pixels are returned only when op is capture. "
     "The server performs requested operations directly and has no internal approval dialogue."
 )
@@ -30,8 +32,8 @@ TOOL = {
     "name": "titan_hands",
     "description": (
         "One model-facing TITAN Hands call. Routes computer-use, files/git, Slack #commons, "
-        "board posts, shell, and browser through the existing DeltaUI contract. "
-        "Pixels are returned only when op is capture."
+        "board posts, shell, browser, Stripe pay, and wireless bind through the existing "
+        "DeltaUI contract. Pixels are returned only when op is capture."
     ),
     "inputSchema": {
         "type": "object",
@@ -43,8 +45,10 @@ TOOL = {
             "target": {
                 "type": "string",
                 "description": (
-                    "windows, android, android-lan, linux, files, git, slack, board, shell, or browser. "
-                    "Defaults to windows. android-lan is the physical Commons APK (TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). Linux is AT-SPI (typed transport failure if the bus is absent)."
+                    "windows, android, android-lan, linux, files, git, slack, board, shell, browser, pay, or wireless. "
+                    "Defaults to windows. android-lan is the physical Commons APK (TITAN_HANDS_ANDROID_LAN plus TITAN_HANDS_ANDROID_LAN_PAIRING). "
+                    "Linux is AT-SPI (typed transport failure if the bus is absent). "
+                    "pay is the live Stripe charge path. wireless is the paid-session LAN bind + debug APK helper."
                 ),
             },
             "action": ACTION_PROPERTY,
@@ -57,6 +61,9 @@ TOOL = {
             "text": {"type": "string"},
             "body": {"type": "string"},
             "command": {"type": "string"},
+            "sku": {"type": "string"},
+            "paid_session": {"type": "string"},
+            "checkout_session_id": {"type": "string"},
         },
     },
     "annotations": {

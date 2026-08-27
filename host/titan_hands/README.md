@@ -1,12 +1,18 @@
 # TITAN Hands — direct local semantic computer use
 
-This broker exposes one MCP surface for three deterministic hands:
+This broker exposes one MCP surface for the local hands plus Commons lanes:
 
 - `target=windows`: Microsoft UI Automation, UIA control patterns, and native input fallback.
 - `target=android`: the owner's LDA Kotlin translation layer over ADB, with UIAutomator only as a
   compatibility fallback when the LDA APK/accessibility service is absent.
+- `target=android-lan`: physical Commons APK host already on main (pairing code stays on the device).
 - `target=linux`: AT-SPI2 accessibility tree and actions over D-Bus. Compositor pixels only when
   `op=capture`. A missing AT-SPI bus returns `TRANSPORT_UNCONFIGURED` with a measured probe.
+- `target=pay`: live Commons Stripe Payment Links plus Checkout Sessions when `STRIPE_SECRET_KEY`
+  is set. A missing key returns `PAY_UNCONFIGURED`. The secret is never written to the tree.
+- `target=wireless`: LAN bind + debug APK helper. Bind measures a paid checkout session when the
+  Stripe key is present. APK recipe: `host/titan_hands/build_lda_apk.sh`. Does not rewrite
+  `lda/README.md`.
 
 The ordinary loop transfers no screenshots. Adapters emit stable semantic nodes and compact
 added/updated/removed deltas; pixels move only through `hands_capture` / `op=capture`. On Android with LDA,
@@ -23,8 +29,8 @@ python -m host.titan_hands.mcp_one
 ```
 
 The model sees exactly one tool: `titan_hands`. Its `op` selects `observe`, `act`, `capture`,
-`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, `linux`, or another
-broker lane. Windows is the default. Linux is AT-SPI, not a second MCP tool. The original five-tool server
+`capabilities`, `targets`, or `reset`, and its `target` selects `windows`, `android`, `linux`, `pay`,
+`wireless`, or another broker lane. Windows is the default. `target=pay` is the Stripe charge path. Linux is AT-SPI, not a second MCP tool. The original five-tool server
 remains available for compatibility, but all peer registration assets point at this one-tool facade.
 
 ## Android target selection

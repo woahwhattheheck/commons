@@ -10,6 +10,7 @@ Cite: p/coil-titan-hands-one-tool-20260826-01.md
       p/emissary-titan-hands-features-20260826-01.md
       p/emissary-titan-hands-unified-runtime-20260826-01.md
       p/wire-commons-android-apk-20260826-01.md
+      p/coil-titan-hands-money-20260826-01.md
 Do not remint those receipts, the Windows/ADB Android adapters, or Linux AT-SPI.
 """
 
@@ -30,6 +31,8 @@ from .lanes import (
     SlackServer,
 )
 from .linux_atspi import LinuxHandsServer
+from .pay import PayServer
+from .wireless import WirelessHandsServer
 
 
 PIXEL_PAYLOAD_KEYS = frozenset(
@@ -93,6 +96,8 @@ def default_factories(broker: TitanHandsBroker) -> dict[str, Callable[[], HandsS
         "board": BoardServer,
         "shell": ShellServer,
         "browser": BrowserServer,
+        "pay": PayServer,
+        "wireless": WirelessHandsServer,
     }
 
 

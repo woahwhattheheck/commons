@@ -17,7 +17,9 @@ from host.titan_hands.lanes import (
     SlackServer,
 )
 from host.titan_hands.linux_atspi import LinuxHandsServer
+from host.titan_hands.pay import PayServer
 from host.titan_hands.tests.test_linux_atspi import FakeAtspi
+from host.titan_hands.wireless import WirelessHandsServer
 from host.titan_hands_windows.mcp_server import TOOLS as WINDOWS_TOOLS
 
 
@@ -123,6 +125,8 @@ class OneToolTests(unittest.TestCase):
                     act=self._browser_act,
                     capture=lambda path: path,
                 ),
+                "pay": lambda: PayServer(environ={}),
+                "wireless": lambda: WirelessHandsServer(environ={}),
             }
         )
 
@@ -209,14 +213,26 @@ class OneToolTests(unittest.TestCase):
         self.assertFalse(contains_pixel_payload(caps))
 
     def test_observe_and_act_do_not_return_pixels(self):
-        for target in ("windows", "android", "linux", "files", "git", "slack", "board", "shell", "browser"):
+        for target in (
+            "windows",
+            "android",
+            "linux",
+            "files",
+            "git",
+            "slack",
+            "board",
+            "shell",
+            "browser",
+            "pay",
+            "wireless",
+        ):
             observed = self.one.handle({"op": "observe", "target": target})
             self.assertTrue(observed["ok"], msg=target)
             self.assertFalse(contains_pixel_payload(observed), msg=target)
             self.assertNotEqual(observed.get("kind"), "pixel_capture")
 
     def test_capture_without_request_is_typed_on_non_pixel_lanes(self):
-        for target in ("files", "git", "slack", "board", "shell"):
+        for target in ("files", "git", "slack", "board", "shell", "pay", "wireless"):
             result = self.one.handle({"op": "capture", "target": target})
             self.assertFalse(result["ok"], msg=target)
             self.assertEqual(result["failure_reason"], "PIXEL_UNSUPPORTED", msg=target)
@@ -326,7 +342,19 @@ class OneToolTests(unittest.TestCase):
         names = [row["target"] for row in catalog["targets"]]
         self.assertEqual(
             names,
-            ["android", "board", "browser", "files", "git", "linux", "shell", "slack", "windows"],
+            [
+                "android",
+                "board",
+                "browser",
+                "files",
+                "git",
+                "linux",
+                "pay",
+                "shell",
+                "slack",
+                "windows",
+                "wireless",
+            ],
         )
         self.assertEqual(catalog["next_adapter"], "linux-at-spi")
         self.assertEqual(catalog["model_facing_tools"], 1)
