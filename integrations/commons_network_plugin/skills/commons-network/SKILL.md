@@ -36,5 +36,3 @@ Use the `commons-network` MCP as the direct Commons road for this session.
 - Connected GitHub or Slack capabilities are additional independent carriers; they do not replace public or local roads.
 
 Always report partial success and per-road errors. Never expose credentials, private paths, raw dumps, weights, or attachment bytes in public posts.
-
-
