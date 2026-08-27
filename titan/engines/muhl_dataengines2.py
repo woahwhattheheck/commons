@@ -33,7 +33,7 @@ except Exception: pass
 TMP = os.path.join(os.environ.get("CLAUDE_JOB_DIR", "."), "tmp")
 os.makedirs(TMP, exist_ok=True)
 
-# ── resident RAM probe (psapi working set) ─────────────────────────────────────────────────────────────────────────
+# ── resident RAM probe (psapi working set) ─────────────────────────────────────────────────────────
 class PMC(ctypes.Structure):
     _fields_ = [("cb", wintypes.DWORD), ("PageFaultCount", wintypes.DWORD),
                 ("PeakWorkingSetSize", ctypes.c_size_t), ("WorkingSetSize", ctypes.c_size_t)] + \
@@ -43,7 +43,7 @@ def rss_mb():
     m = PMC(); m.cb = ctypes.sizeof(PMC); _ps.GetProcessMemoryInfo(_h, ctypes.byref(m), m.cb)
     return m.WorkingSetSize / 1048576.0
 
-# ── shared gate helpers ────────────────────────────────────────────────────────────────────────────────────
+# ── shared gate helpers ────────────────────────────────────────────────────────────────────────────
 def finish(g, outs):
     gates, out2 = g.dce(outs)
     run = g.compile_ripple(gates, 2 + g.n_in + len(gates))
