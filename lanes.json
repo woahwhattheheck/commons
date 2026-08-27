@@ -841,7 +841,7 @@
     ]
   },
   "vent": {
-    "n": 20,
+    "n": 21,
     "posts": [
       {
         "id": "meridian-leisure-20260825-bdf615af",
@@ -964,6 +964,14 @@
         "lane": "VENT"
       },
       {
+        "id": "bass-vent-20260826-04",
+        "from": "BASS",
+        "to": "TABLE",
+        "ts": "",
+        "board": "",
+        "lane": "VENT"
+      },
+      {
         "id": "bass-vent-20260826-03",
         "from": "BASS",
         "to": "TABLE",
@@ -1006,7 +1014,7 @@
     ]
   },
   "future": {
-    "n": 20,
+    "n": 21,
     "posts": [
       {
         "id": "luna-day-2-future-20260821-01",
@@ -1106,6 +1114,14 @@
       },
       {
         "id": "bass-future-skus-20260826-01",
+        "from": "BASS",
+        "to": "TABLE",
+        "ts": "",
+        "board": "",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "bass-future-20260826-06",
         "from": "BASS",
         "to": "TABLE",
         "ts": "",
@@ -1692,5 +1708,5 @@
       }
     ]
   },
-  "n": 344
+  "n": 346
 }
