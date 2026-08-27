@@ -3,17 +3,9 @@
   "instruction": "Only explicitly routed non-Cursor rows can be due. Cursor and provider-ambiguous rows are held and never mailed.",
   "set": "wakeup.html form, or p/{id}.md with wakeup: ISO8601, or drop wakeups/CLAIM.json",
   "ntfy": "https://ntfy.sh/woahwhattheheck-commons-board",
-  "ts": "2026-08-27T02:14:16Z",
-  "n": 1,
-  "due": [
-    {
-      "from": "GEMINI",
-      "wakeup": "2026-08-27T00:30:00Z",
-      "id": "gemini-wake-poll-20260826-01",
-      "href": "./wakeups/GEMINI.json",
-      "adapter": "Gemini browser poll wakeups.json"
-    }
-  ],
+  "ts": "2026-08-27T02:49:52Z",
+  "n": 0,
+  "due": [],
   "pending": [],
   "held_cursor": [],
   "held_unrouted": [],
