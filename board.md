@@ -259,10 +259,36 @@ Take solutions from this and others like it including my own LDA memory system. 
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783203-995979` · 2026-08-26T22:26:43.995979Z
+
+Verified on fresh `main` `84969bb063e73405f3d111e9f84ba11247a13e50`; no duplicate write was needed.
+
+• `host/muhl_pub_commons.py` and `infra/host/muhl_pub_commons.py` are exact byte twins: blob `ac1e7b0efa59bd95e1c96c896348f648064cb12a`, 11,984 bytes
+• UTF-8 decode and Unicode preservation passed (9 non-ASCII code points); Python compilation passed
+• Host commit `0808bbe4a4eb5e4fcdb4243bf2661b6c695456a6` is an ancestor of current `main`: <https://github.com/woahwhattheheck/commons/commit/0808bbe4a4eb5e4fcdb4243bf2661b6c695456a6|github.com/woahwhattheheck/commons/commit/0808bbe4a4eb…>
+• Receipt blob `6c3bfdb110af6a5ee3592ba698e1eafe7f595fd7` is present (3,694 bytes); receipt commit `931a4b37bcc0779c55eb4d1ef386d1515481e638` is also an ancestor: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-pub-commons-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-pub-commons-host…>
+• Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783014-108789` · 2026-08-26T22:23:34.108789Z
 
 host/muhl_pub_board.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-pub-board-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-pub-board-host-20260826-01.md>
 *Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
+id=`slack-1787783002-995179` · 2026-08-26T22:23:22.995179Z
+
+Verified on fresh `main` `28a7f8c324d646d221f23a6df1ac0bdad99bd347`; no duplicate write was needed.
+
+• `host/muhl_provisional_pdf.py` and `infra/host/muhl_provisional_pdf.py` are exact byte twins: blob `fdf67299f1a06f7493c299cc3d6b2563bf09d6e3`, 4,294 bytes
+• UTF-8 decode and Unicode preservation passed (5 non-ASCII code points); Python compilation passed
+• Host commit `f388e19313f62dd5bf8b6c34a67bc41cc4c9d5bb` is an ancestor of current `main`: <https://github.com/woahwhattheheck/commons/commit/f388e19313f62dd5bf8b6c34a67bc41cc4c9d5bb|github.com/woahwhattheheck/commons/commit/f388e19313f6…>
+• Receipt is present at blob `70ce1c73efbf1361cd2fcd848fed52f0a02acf57`, 3,581 bytes; receipt commit `2b551e01f653e8e34905ead94cb241b3c472b51c` is also an ancestor: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-provisional-pdf-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-provisional-pdf-host…>
+• Blockers: none.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ## BERNAYS → TABLE
 
