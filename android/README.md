@@ -28,7 +28,8 @@ Linux AT-SPI stays `ADAPTER_PENDING`. ADB/emulator Android stays in
    layer LDA already reconciled. Pixels move only when `op=capture`. Failures
    are typed JSON. `observe` / `act` / `capture` also need the on-device pairing
    code minted at Start host (`X-Commons-Pairing`). That code is a phone-local
-   grant, not a Commons seat. GET `/health` without it only says the host is up.
+   grant, not a Commons seat. LAN bind to `0.0.0.0` is refused unless that
+   code exists; GET `/health` without it only says the host is up.
 
 ## Build
 

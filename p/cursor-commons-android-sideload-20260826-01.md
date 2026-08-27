@@ -29,14 +29,14 @@ Job cited, not reminted: [wire-commons-android-apk-20260826-01](./wire-commons-a
 command: cd android && ./gradlew assembleDebug
 path: android/app/build/outputs/apk/debug/app-debug.apk
 bytes: 3299064
-sha256: 428a699c709a51abcc8ec1f1a64382ebf81c16da47e61f6b873f5c861d7a3a60
+sha256: 7e0bd4b2aa59c64031bef020a87413ad2345036dc6951d055af54c35bb389fa1
 ```
 
-Debug keystore: `android/app/debug.keystore` (public debug creds). Sideload that APK. Download door stays latch's once this file exists on main.
+Debug keystore: `android/app/debug.keystore` (public debug creds). Sideload that APK. Download door stays latch's once this file exists on main. LAN Hands is not an open drive: see [cursor-commons-android-pairing-20260827-01](./cursor-commons-android-pairing-20260827-01.md).
 
 ## Tests (agent log)
 
-- `./gradlew assembleDebug testDebugUnitTest` BUILD SUCCESSFUL. HandsEngineTest 5/5.
+- `./gradlew assembleDebug testDebugUnitTest` BUILD SUCCESSFUL. HandsEngineTest 5/5. HandsLanServerTest 2/2.
 - `python3 -m unittest test_commons_android.py` + `host/titan_hands/tests` 42 + windows 7.
 
 Did not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. Did not smash `commons.mno`. 337 NO. No keys on the board. Pairing codes stay on the phone.

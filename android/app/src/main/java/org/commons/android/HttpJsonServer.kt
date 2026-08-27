@@ -17,15 +17,23 @@ class HttpJsonServer(
     private val health: () -> JSONObject,
     private val publicHealth: () -> JSONObject,
     private val expectedPairing: () -> String,
+    private val bindHost: String = "127.0.0.1",
 ) {
     private val running = AtomicBoolean(false)
     private val pool = Executors.newCachedThreadPool()
     @Volatile private var server: ServerSocket? = null
+    @Volatile var boundPort: Int = port
+        private set
 
     fun start() {
+        val loopback = bindHost == "127.0.0.1" || bindHost == "::1" || bindHost == "localhost"
+        if (!loopback && expectedPairing().isBlank()) {
+            throw IllegalStateException("non-loopback Hands bind needs an on-device pairing code")
+        }
         if (!running.compareAndSet(false, true)) return
-        val socket = ServerSocket(port, 50, InetAddress.getByName("0.0.0.0"))
+        val socket = ServerSocket(port, 50, InetAddress.getByName(bindHost))
         server = socket
+        boundPort = socket.localPort
         pool.execute {
             while (running.get()) {
                 try {
@@ -79,13 +87,14 @@ class HttpJsonServer(
                     }
                     method == "POST" && (path == "/" || path == "/titan_hands") -> {
                         val text = String(body, StandardCharsets.UTF_8).trim()
-                        if (text.isEmpty()) {
-                            failure("INVALID_REQUEST", "empty body")
-                        } else {
-                            val json = JSONObject(text)
-                            val presented = Pairing.presented(headers, rawPath, json)
-                            json.remove("pairing")
-                            Pairing.check(expectedPairing(), presented) ?: handler(json)
+                        val json = if (text.isEmpty()) JSONObject() else JSONObject(text)
+                        val presented = Pairing.presented(headers, rawPath, json)
+                        json.remove("pairing")
+                        val gate = Pairing.check(expectedPairing(), presented)
+                        when {
+                            gate != null -> gate
+                            text.isEmpty() -> failure("INVALID_REQUEST", "empty body")
+                            else -> handler(json)
                         }
                     }
                     else -> failure("UNKNOWN_OPERATION", "no handler for $method $path")

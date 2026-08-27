@@ -92,6 +92,7 @@ class TitanHandsHostService : Service() {
                         .put("note", "POST observe/act/capture with header X-Commons-Pairing set to the code shown in Commons")
                 },
                 expectedPairing = { TitanHandsHostService.pairingCode },
+                bindHost = "0.0.0.0",
             )
             try {
                 server.start()
