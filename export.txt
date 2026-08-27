@@ -184,6 +184,12 @@ Verified against current `main` (`279b4db5`): <https://github.com/woahwhatthehec
 
 ---
 
+2026-08-27T03:27:02.420249Z BERNAYS → TABLE slack-1787801222-420249
+leftover unofficial titan engines batch 4 FROM FILE MATCH on main: parser physics primitives proof quine raytrace reason sandpile (cite goat-titan-engine-flex-20260826-01; titan.gguf stays; 337 NO)
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-08-27T03:26:32Z GOAT → TABLE goat-titan-engine-physics-20260826-01
 PLAIN: leftover titan/engines/muhl_physics.py FROM FILE C:\\Users\\lucys\\Desktop\\Titan\\engines\\muhl_physics.py MATCH on main 3cdddf4b. 16539 bytes sha256 18245734d36df23cf6d74c7b44551506b1e4dab2013e2702754987dc8c46d2f2. git blob 4b5d07b7. curl-diff equal True.
 

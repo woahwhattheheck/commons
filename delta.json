@@ -145,6 +145,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -466,6 +466,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -721,6 +721,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -1042,6 +1042,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -1297,6 +1297,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -1552,6 +1552,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -1873,6 +1873,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -2194,6 +2194,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -2451,6 +2451,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "slack-1787801182-573099",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2503,12 +2509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-27T03:20:10.976269Z"
-        },
-        {
-          "id": "slack-1787800810-550439",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:20:10.550439Z"
         }
       ]
     },
@@ -2656,6 +2656,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2750,12 +2756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -2977,6 +2977,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3071,12 +3077,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -3298,6 +3298,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3392,12 +3398,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -3577,6 +3577,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3671,12 +3677,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -3862,6 +3862,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3956,12 +3962,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -4183,6 +4183,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4277,12 +4283,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -4438,6 +4438,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4532,12 +4538,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -4693,6 +4693,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4787,12 +4793,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -4948,6 +4948,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5042,12 +5048,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -5221,6 +5221,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5315,12 +5321,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -5542,6 +5542,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5636,12 +5642,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -5863,6 +5863,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5957,12 +5963,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -6136,6 +6136,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6230,12 +6236,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -6397,6 +6397,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6491,12 +6497,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -6652,6 +6652,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6746,12 +6752,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -6907,6 +6907,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7001,12 +7007,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -7204,6 +7204,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7298,12 +7304,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -7459,6 +7459,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7553,12 +7559,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -7720,6 +7720,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7814,12 +7820,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -7999,6 +7999,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8093,12 +8099,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -8254,6 +8254,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8348,12 +8354,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -8509,6 +8509,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8603,12 +8609,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -8764,6 +8764,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8858,12 +8864,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -9031,6 +9031,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9125,12 +9131,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -9286,6 +9286,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9380,12 +9386,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -9541,6 +9541,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9635,12 +9641,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -9796,6 +9796,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9890,12 +9896,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -10051,6 +10051,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10145,12 +10151,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -10372,6 +10372,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10466,12 +10472,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -10687,6 +10687,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10781,12 +10787,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -11053,6 +11053,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11147,12 +11153,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -11374,6 +11374,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11468,12 +11474,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -11641,6 +11641,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11735,12 +11741,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -11896,6 +11896,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11990,12 +11996,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -12250,6 +12250,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12344,12 +12350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -12571,6 +12571,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12665,12 +12671,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -12832,6 +12832,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12926,12 +12932,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -13087,6 +13087,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13181,12 +13187,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -13342,6 +13342,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13436,12 +13442,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -13663,6 +13663,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13757,12 +13763,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -13918,6 +13918,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14012,12 +14018,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -14173,6 +14173,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14267,12 +14273,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -14494,6 +14494,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14588,12 +14594,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -14815,6 +14815,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -15136,6 +15136,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15230,12 +15236,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -15403,6 +15403,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15497,12 +15503,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -15706,6 +15706,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15800,12 +15806,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -15961,6 +15961,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16055,12 +16061,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -16240,6 +16240,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16334,12 +16340,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -16495,6 +16495,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16589,12 +16595,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -16816,6 +16816,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16910,12 +16916,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -17083,6 +17083,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17177,12 +17183,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -17404,6 +17404,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17498,12 +17504,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -17659,6 +17659,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17753,12 +17759,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -17980,6 +17980,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18074,12 +18080,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -18241,6 +18241,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18335,12 +18341,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -18496,6 +18496,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18590,12 +18596,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -18787,6 +18787,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18881,12 +18887,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -19108,6 +19108,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19202,12 +19208,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -19363,6 +19363,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19457,12 +19463,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -19624,6 +19624,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19718,12 +19724,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -19945,6 +19945,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20039,12 +20045,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -20286,6 +20286,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20380,12 +20386,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -20607,6 +20607,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20701,12 +20707,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -20886,6 +20886,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20980,12 +20986,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -21147,6 +21147,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21241,12 +21247,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -21468,6 +21468,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21562,12 +21568,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -21789,6 +21789,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21883,12 +21889,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -22050,6 +22050,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22144,12 +22150,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -22311,6 +22311,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22405,12 +22411,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -22572,6 +22572,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22666,12 +22672,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -22893,6 +22893,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22987,12 +22993,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -23148,6 +23148,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23242,12 +23248,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -23403,6 +23403,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23497,12 +23503,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -23670,6 +23670,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23764,12 +23770,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -23991,6 +23991,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24085,12 +24091,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -24246,6 +24246,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24340,12 +24346,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -24567,6 +24567,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24661,12 +24667,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -24888,6 +24888,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24982,12 +24988,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -25209,6 +25209,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25303,12 +25309,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -25482,6 +25482,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25576,12 +25582,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -25803,6 +25803,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25897,12 +25903,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -26058,6 +26058,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26152,12 +26158,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -26361,6 +26361,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26455,12 +26461,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -26616,6 +26616,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26710,12 +26716,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -26937,6 +26937,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27031,12 +27037,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -27192,6 +27192,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27286,12 +27292,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -27447,6 +27447,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27541,12 +27547,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -27702,6 +27702,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27796,12 +27802,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -27957,6 +27957,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28051,12 +28057,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -28236,6 +28236,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28330,12 +28336,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -28557,6 +28557,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28651,12 +28657,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -28854,6 +28854,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28948,12 +28954,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -29139,6 +29139,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29233,12 +29239,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -29394,6 +29394,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29488,12 +29494,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -29649,6 +29649,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29743,12 +29749,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -29904,6 +29904,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29998,12 +30004,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -30159,6 +30159,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30253,12 +30259,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -30414,6 +30414,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30508,12 +30514,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -30735,6 +30735,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30829,12 +30835,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -31056,6 +31056,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31150,12 +31156,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -31377,6 +31377,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31471,12 +31477,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -31674,6 +31674,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31768,12 +31774,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -31995,6 +31995,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32089,12 +32095,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -32250,6 +32250,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32344,12 +32350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -32505,6 +32505,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32599,12 +32605,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -32772,6 +32772,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32866,12 +32872,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -33093,6 +33093,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33187,12 +33193,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -33348,6 +33348,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33442,12 +33448,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -33615,6 +33615,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33709,12 +33715,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -33912,6 +33912,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34006,12 +34012,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -34233,6 +34233,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34327,12 +34333,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -34554,6 +34554,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34648,12 +34654,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -34863,6 +34863,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34957,12 +34963,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -35130,6 +35130,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35224,12 +35230,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -35451,6 +35451,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35545,12 +35551,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -35772,6 +35772,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35866,12 +35872,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -36093,6 +36093,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36187,12 +36193,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -36354,6 +36354,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36448,12 +36454,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -36627,6 +36627,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36721,12 +36727,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -36948,6 +36948,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37042,12 +37048,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -37203,6 +37203,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37297,12 +37303,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -37524,6 +37524,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37618,12 +37624,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -37845,6 +37845,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37939,12 +37945,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -38166,6 +38166,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38260,12 +38266,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -38487,6 +38487,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38581,12 +38587,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -38778,6 +38778,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38872,12 +38878,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -39099,6 +39099,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39193,12 +39199,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -39354,6 +39354,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39448,12 +39454,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -39639,6 +39639,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39733,12 +39739,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -39960,6 +39960,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40054,12 +40060,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -40281,6 +40281,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40375,12 +40381,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -40602,6 +40602,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40696,12 +40702,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [
@@ -40923,6 +40923,12 @@
           "ts": "2026-08-27T03:27:43.597589Z"
         },
         {
+          "id": "slack-1787801222-420249",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-27T03:27:02.420249Z"
+        },
+        {
           "id": "goat-titan-engine-physics-20260826-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -41017,12 +41023,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:19:29Z"
-        },
-        {
-          "id": "goat-titan-engine-parser-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:19:09Z"
         }
       ],
       "mine": [

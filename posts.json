@@ -352,6 +352,21 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787801222-420249",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T03:27:02.420249Z",
+    "href": "./p/slack-1787801222-420249.html",
+    "page": "slack-1787801222-420249",
+    "body": "leftover unofficial titan engines batch 4 FROM FILE MATCH on main: parser physics primitives proof quine raytrace reason sandpile (cite goat-titan-engine-flex-20260826-01; titan.gguf stays; 337 NO)\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787801222.420249",
+    "durable_ts": "2026-08-27T04:53:30Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787801222.420249:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "goat-titan-engine-physics-20260826-01",
     "from": "GOAT",
     "to": "TABLE",
