@@ -299,6 +299,13 @@ Verified on fresh `main` `3a8f868abbcf1aa6d574bca23014257bfa4b50f0`; no duplicat
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783299-885679` · 2026-08-26T22:28:19.885679Z
+
+host/muhl_pub_receipt.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-pub-receipt-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-pub-receipt-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787783203-995979` · 2026-08-26T22:26:43.995979Z
 
 Verified on fresh `main` `84969bb063e73405f3d111e9f84ba11247a13e50`; no duplicate write was needed.
