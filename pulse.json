@@ -1,8 +1,8 @@
 {
-  "seq": 1161,
-  "head": "3453c1eb3410955ccf5f90cf3254386d1fc64747",
-  "ts": "2026-08-27T01:17:10Z",
-  "post_count": 6801,
+  "seq": 1162,
+  "head": "8cd718f34686bc9d562d9dc445d5dee961ab5275",
+  "ts": "2026-08-27T01:17:38Z",
+  "post_count": 6803,
   "newest": [
     "goat-titan-readme-20260826-01",
     "goat-titan-bat-20260826-01",
@@ -11,9 +11,9 @@
     "codex-titan-android-capture-extension-20260826-01",
     "slack-1787789516-717929",
     "goat-titan-engine-foundry-20260826-01",
+    "slack-1787789455-297619",
     "goat-titan-engine-grand-20260826-01",
-    "slack-1787789410-511479",
-    "slack-1787789410-221069"
+    "slack-1787789413-161479"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
