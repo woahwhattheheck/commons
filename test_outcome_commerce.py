@@ -21,103 +21,124 @@ COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
 FROZEN_EIGHT_SHA256 = "bea09853202464ee37b4540de30c13bc56252c9967c871d3a786e27e7dcc8469"
 FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
-LIVE_STRIPE_SKUS = (
+RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-tip-20260826",
         "path": "land/sku-tip-20260826.md",
-        "blob_sha": "18d367ea5267698297ed243b872848cd2b97551e",
+        "blob_sha": "8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "5.00",
         "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
         "markers": (
             "price: $5 USD one-time",
-            "status: LIVE",
-            "checkout: https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08`",
         ),
     },
     {
         "id": "sku-seat-20260826",
         "path": "land/sku-seat-20260826.md",
-        "blob_sha": "32d4183396a0ed9e430c7d9052e6d0735c9c5869",
+        "blob_sha": "091a1f85497b02e350d39f5bd5f892b66e759d0b",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "5.00",
         "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
         "markers": (
             "price: $5 USD / month",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03`",
         ),
     },
     {
         "id": "sku-unlock-20260826",
         "path": "land/sku-unlock-20260826.md",
-        "blob_sha": "23167b56d258adc2bf98abf66635ce75f9e1cd83",
+        "blob_sha": "0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "5.00",
         "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
         "markers": (
             "price: $5 USD one-time",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`",
         ),
     },
     {
         "id": "sku-monthly-tip-20260826",
         "path": "land/sku-monthly-tip-20260826.md",
-        "blob_sha": "df35eff357e31d917955f447e4dd566e008c8ca9",
+        "blob_sha": "914e47c310bd91b7cb1854216fb130dda26838bc",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "3.00",
         "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
         "markers": (
             "price: $3 USD / month",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`",
         ),
     },
     {
         "id": "sku-boost-20260826",
         "path": "land/sku-boost-20260826.md",
-        "blob_sha": "d398d07cc5db84c520d1c7cdac9230698755e2c5",
+        "blob_sha": "fe70d4d0f16355a94b14157b26d3f647d9435f17",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "4.99",
         "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
         "markers": (
             "price: $4.99 USD / month",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/3cIfZgacRezDfT39h043S06`",
         ),
     },
     {
         "id": "sku-whitebox-hour-20260826",
         "path": "land/sku-whitebox-hour-20260826.md",
-        "blob_sha": "9747d2e203b1be96940d224914ca0b59335fe37e",
+        "blob_sha": "e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
         "kind": "usage",
         "amount_field": "unit_amount",
         "amount": "250.00",
         "url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
         "markers": (
             "MARKET PROPOSAL: $250 USD / hour",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`",
         ),
     },
     {
         "id": "sku-muhlnickel-titan-20260826",
         "path": "land/sku-muhlnickel-titan-20260826.md",
-        "blob_sha": "df2c209c07cb00883db2936a1c9b712d5343e115",
+        "blob_sha": "3e0988b040a1c90180888f5999baf99eb1fae592",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "45000.00",
         "url": "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
         "markers": (
             "MARKET PROPOSAL: $45,000 fixed-scope build",
-            "status: LIVE",
-            "checkout: https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
+            "status: LIVEMODE_URL_RECORDED",
+            "provider: stripe",
+            "link_active: UNVERIFIED",
+            "account_charges_enabled: false",
+            "checkout: `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`",
         ),
     },
 )
@@ -606,7 +627,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertTrue(all(Decimal(str(row["price"])) == Decimal("0") for row in offers))
         self.assertFalse(any(row["currency"] == "USD" for row in offers))
 
-    def test_host_validate_and_draft_schema_accept_the_live_sku_catalog(self) -> None:
+    def test_host_validate_and_draft_schema_accept_the_recorded_sku_catalog(self) -> None:
         self.validator.validate_file(self.catalog, "catalog.schema.json")
         proc = subprocess.run(
             [sys.executable, str(ROOT / "host" / "outcome_commerce.py"), "validate"],
@@ -627,7 +648,7 @@ class OutcomeCommerceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        for spec in LIVE_STRIPE_SKUS:
+        for spec in RECORDED_STRIPE_SKUS:
             self.assertIn("source %s@%s" % (spec["path"], spec["blob_sha"]), proc.stdout)
 
     def test_host_rejects_unverified_checkout_and_source_artifact_claims(self) -> None:
@@ -643,9 +664,11 @@ class OutcomeCommerceTests(unittest.TestCase):
             lambda row: row.__setitem__(
                 "checkout",
                 {
-                    "status": "LIVE",
+                    "status": "LIVEMODE_URL_RECORDED",
                     "provider": "paypal",
                     "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                    "link_active": "UNVERIFIED",
+                    "account_charges_enabled": False,
                 },
             )
         )
@@ -657,6 +680,20 @@ class OutcomeCommerceTests(unittest.TestCase):
             )
         )
         self.assertTrue(any("url is invalid" in item for item in errors), errors)
+
+        errors = errors_for(
+            lambda row: row.__setitem__(
+                "checkout",
+                {
+                    "status": "ACTIVE_CHARGEABLE",
+                    "provider": "stripe",
+                    "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                },
+            )
+        )
+        self.assertTrue(any("capability_evidence" in item for item in errors), errors)
 
         def invent_artifact(row):
             row["source_artifact"] = {
@@ -708,29 +745,39 @@ class OutcomeCommerceTests(unittest.TestCase):
         ])
         by_id = {row["id"]: row for row in listings}
         for listing_id, funnel in funnels.items():
-            live = by_id[listing_id].get("checkout", {}).get("status") == "LIVE"
-            self.assertEqual(
-                funnel["conversion"]["mode"],
-                "LIVE_STRIPE_LINK" if live else "CUSTOMER_SPECIFIC_INVOICE",
-            )
-            self.assertEqual(funnel["conversion"]["state_after"], "FUNDED")
-            self.assertEqual(funnel["measurement"]["click_truth"], "INTENT_ONLY")
-            self.assertEqual(funnel["measurement"]["success_state"], "BANK_AVAILABLE")
+            checkout_status = by_id[listing_id].get("checkout", {}).get("status")
+            if checkout_status == "ACTIVE_CHARGEABLE":
+                expected_mode = "ACTIVE_STRIPE_LINK"
+                expected_status = "ACTIVE_CHARGEABLE"
+                checkout_first = funnel["readiness"] == "READY_FOR_CHECKOUT"
+                expected_action = "checkout-open" if checkout_first else "qualification-open"
+                expected_click_truth = "INTENT_ONLY"
+                expected_first = "FUNDED" if checkout_first else "DISCOVERED"
+            elif checkout_status == "LIVEMODE_URL_RECORDED":
+                expected_mode = "RECORDED_STRIPE_LINK"
+                expected_status = "CAPABILITY_UNVERIFIED"
+                expected_action = "provider-capability-unverified"
+                expected_click_truth = "NO_CLICK_SURFACE"
+                expected_first = "DISCOVERED"
+            else:
+                expected_mode = "CUSTOMER_SPECIFIC_INVOICE"
+                expected_status = "NOT_ISSUED"
+                expected_action = "qualification-open"
+                expected_click_truth = "INTENT_ONLY"
+                expected_first = "DISCOVERED"
 
+            self.assertEqual(funnel["conversion"]["mode"], expected_mode)
+            self.assertEqual(funnel["conversion"]["status"], expected_status)
+            self.assertEqual(funnel["conversion"]["state_after"], "FUNDED")
+            self.assertEqual(funnel["measurement"]["click_truth"], expected_click_truth)
+            self.assertEqual(funnel["measurement"]["success_state"], "BANK_AVAILABLE")
             self.assertTrue(set(funnel["next_offer"]).issubset(set(listing_ids)))
             self.assertTrue(funnel["acquisition"]["route"].endswith("#" + listing_id))
-            checkout_first = live and funnel["readiness"] == "READY_FOR_CHECKOUT"
-            self.assertEqual(
-                funnel["measurement"]["dom_action"],
-                "checkout-open" if checkout_first else "qualification-open",
-            )
-            self.assertEqual(
-                funnel["measurement"]["first_evidence_state"],
-                "FUNDED" if checkout_first else "DISCOVERED",
-            )
+            self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
+            self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 8)
-        self.assertEqual(truth["delivered_transports"], 13)
+        self.assertEqual(truth["distinct_targets"], 11)
+        self.assertEqual(truth["delivered_transports"], 16)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -780,7 +827,7 @@ class OutcomeCommerceTests(unittest.TestCase):
 
         errors = errors_for(
             lambda catalog: catalog["funnels"]["same-day-agent-survival-proof"]["conversion"].__setitem__(
-                "mode", "LIVE_STRIPE_LINK"
+                "mode", "ACTIVE_STRIPE_LINK"
             )
         )
         self.assertTrue(any("checkout state" in item for item in errors), errors)
@@ -843,14 +890,17 @@ class OutcomeCommerceTests(unittest.TestCase):
             "land/stripe-payment-links-20260826.md",
         )
 
-    def test_seven_live_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
+    def test_seven_recorded_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
-        live = [row for row in self.catalog["listings"] if "checkout" in row]
+        recorded = [row for row in self.catalog["listings"] if "checkout" in row]
         artifacts = [row for row in self.catalog["listings"] if "source_artifact" in row]
-        self.assertEqual(len(live), 7)
+        self.assertEqual(len(recorded), 7)
         self.assertEqual(len(artifacts), 7)
-        self.assertEqual([row["id"] for row in live], [row["id"] for row in LIVE_STRIPE_SKUS])
-        for spec in LIVE_STRIPE_SKUS:
+        self.assertEqual(
+            [row["id"] for row in recorded],
+            [row["id"] for row in RECORDED_STRIPE_SKUS],
+        )
+        for spec in RECORDED_STRIPE_SKUS:
             row = by_id[spec["id"]]
             self.assertNotIn("source", row)
             artifact = row["source_artifact"]
@@ -863,20 +913,38 @@ class OutcomeCommerceTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             for marker in spec["markers"]:
                 self.assertIn(marker, text)
+            self.assertIn("Recorded URL (not a checkout): `%s`" % spec["url"], text)
+            self.assertNotIn("Pay: " + spec["url"], text)
             component = row["pricing"]["components"][0]
             self.assertEqual(component["kind"], spec["kind"])
             self.assertEqual(component[spec["amount_field"]], spec["amount"])
             self.assertEqual(row["pricing"]["currency"], "USD")
             self.assertEqual(row["routes"]["human"], "commerce.html")
             self.assertEqual(row["routes"]["machine"], spec["path"])
-            checkout = row["checkout"]
-            self.assertEqual(checkout, {
-                "status": "LIVE",
+            self.assertEqual(row["checkout"], {
+                "status": "LIVEMODE_URL_RECORDED",
                 "provider": "stripe",
                 "url": spec["url"],
+                "link_active": "UNVERIFIED",
+                "account_charges_enabled": False,
             })
+            funnel = self.catalog["funnels"][spec["id"]]
+            self.assertEqual(funnel["readiness"], "BLOCKED_PROVIDER_CAPABILITY")
+            self.assertEqual(funnel["conversion"]["mode"], "RECORDED_STRIPE_LINK")
+            self.assertEqual(funnel["conversion"]["status"], "CAPABILITY_UNVERIFIED")
+            self.assertEqual(
+                funnel["measurement"]["dom_action"],
+                "provider-capability-unverified",
+            )
+            self.assertEqual(funnel["measurement"]["click_truth"], "NO_CLICK_SURFACE")
+            cta = funnel["acquisition"]["cta"]
+            self.assertEqual(cta, "Review provider-capability evidence gap")
+            self.assertFalse(
+                any(token in cta.lower() for token in ("checkout", "pay", "open")),
+                cta,
+            )
 
-    def test_live_subscription_quotes_default_to_one_cycle(self) -> None:
+    def test_recorded_subscription_quotes_default_to_one_cycle(self) -> None:
         expected = {
             "sku-seat-20260826": "5.00",
             "sku-monthly-tip-20260826": "3.00",
@@ -896,107 +964,153 @@ class OutcomeCommerceTests(unittest.TestCase):
         with self.assertRaises(SchemaError):
             self.validator.validate_file(catalog, "catalog.schema.json")
 
-    def test_schema_rejects_invalid_checkout_objects_and_urls(self) -> None:
+    def test_schema_requires_durable_evidence_for_chargeable_checkout(self) -> None:
         valid = "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08"
-        self._reject_checkout("LIVE")
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "not-a-url",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "http://buy.stripe.com/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://user:pass@buy.stripe.com/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": valid + "?x=1",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": valid + "#frag",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": valid + "?",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": valid + "#",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": valid + "\n",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://buy.stripe.com:8443/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://buy.stripe.com.evil.com/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://buy.stripes.com/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://constructor/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "stripe",
-            "url": "https://__proto__/abcDEF123456",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
+        evidence = {
+            "reference": "stripe:payment_link:plink_verified_0001",
+            "observed_at": "2026-08-27T03:00:00Z",
+        }
+        catalog = copy.deepcopy(self.catalog)
+        listing = next(row for row in catalog["listings"] if row["id"] == "sku-tip-20260826")
+        listing["checkout"] = {
+            "status": "ACTIVE_CHARGEABLE",
             "provider": "stripe",
             "url": valid,
-            "note": "extra",
-        })
-        self._reject_checkout({
-            "status": "LIVE",
-            "provider": "paypal",
-            "url": valid,
-        })
-        self._reject_checkout({
-            "status": "live",
-            "provider": "stripe",
-            "url": valid,
-        })
-        self._reject_checkout({
-            "status": "NOT_MINTED",
-            "url": valid,
-        })
-        self._reject_checkout({
-            "status": "NOT_MINTED",
-            "provider": "stripe",
-            "url": valid,
-        })
-        self._reject_checkout({"status": "PENDING\n"})
+            "link_active": True,
+            "account_charges_enabled": True,
+            "capability_evidence": evidence,
+        }
+        self.validator.validate_file(catalog, "catalog.schema.json")
+
+        self._reject_checkout("ACTIVE_CHARGEABLE")
+        invalid_urls = (
+            "not-a-url",
+            "http://buy.stripe.com/abcDEF123456",
+            "https://user:pass@buy.stripe.com/abcDEF123456",
+            valid + "?x=1",
+            valid + "#frag",
+            valid + "?",
+            valid + "#",
+            valid + "\n",
+            "https://buy.stripe.com:8443/abcDEF123456",
+            "https://buy.stripe.com.evil.com/abcDEF123456",
+            "https://buy.stripes.com/abcDEF123456",
+            "https://constructor/abcDEF123456",
+            "https://__proto__/abcDEF123456",
+        )
+        for url in invalid_urls:
+            with self.subTest(url=url):
+                self._reject_checkout({
+                    "status": "ACTIVE_CHARGEABLE",
+                    "provider": "stripe",
+                    "url": url,
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                    "capability_evidence": copy.deepcopy(evidence),
+                })
+        for checkout in (
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": False,
+                "account_charges_enabled": True,
+                "capability_evidence": copy.deepcopy(evidence),
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": False,
+                "capability_evidence": copy.deepcopy(evidence),
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": True,
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": True,
+                "capability_evidence": {
+                    "reference": " ",
+                    "observed_at": "2026-08-27T03:00:00Z",
+                },
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": True,
+                "capability_evidence": {
+                    "reference": "stripe:payment_link:plink_verified_0001",
+                    "observed_at": "not-a-timestamp",
+                },
+            },
+            {
+                "status": "LIVEMODE_URL_RECORDED",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": False,
+            },
+            {
+                "status": "LIVEMODE_URL_RECORDED",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": "UNVERIFIED",
+                "account_charges_enabled": True,
+            },
+            {
+                "status": "LIVEMODE_URL_RECORDED",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": "UNVERIFIED",
+            },
+            {
+                "status": "LIVEMODE_URL_RECORDED",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": "UNVERIFIED",
+                "account_charges_enabled": False,
+                "capability_evidence": copy.deepcopy(evidence),
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "paypal",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": True,
+                "capability_evidence": copy.deepcopy(evidence),
+            },
+            {
+                "status": "ACTIVE_CHARGEABLE",
+                "provider": "stripe",
+                "url": valid,
+                "link_active": True,
+                "account_charges_enabled": True,
+                "capability_evidence": copy.deepcopy(evidence),
+                "note": "extra",
+            },
+            {"status": "NOT_MINTED", "url": valid},
+            {"status": "NOT_MINTED", "provider": "stripe", "url": valid},
+            {"status": "PENDING\n"},
+        ):
+            self._reject_checkout(checkout)
 
     def test_listing_requires_exactly_one_source_form(self) -> None:
         catalog = copy.deepcopy(self.catalog)
         listing = catalog["listings"][0]
         listing["source_artifact"] = {
             "path": "land/sku-tip-20260826.md",
-            "blob_sha": "18d367ea5267698297ed243b872848cd2b97551e",
+            "blob_sha": "8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
             "terms_authority": "source",
         }
         with self.assertRaises(SchemaError):
@@ -1018,18 +1132,27 @@ class OutcomeCommerceTests(unittest.TestCase):
             with self.assertRaises(SchemaError):
                 self.validator.validate_file(catalog, "catalog.schema.json")
 
-    def test_renderer_validates_live_stripe_urls_and_escapes_without_new_network(self) -> None:
+    def test_renderer_suppresses_recorded_urls_and_escapes_without_new_network(self) -> None:
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
-        self.assertIn("function isLiveStripeCheckoutUrl", js)
+        self.assertIn("function isStripeCheckoutUrl", js)
+        self.assertIn("function hasDurableCapabilityEvidence", js)
+        self.assertIn("checkout.capability_evidence", js)
+        self.assertIn("evidence.reference", js)
+        self.assertIn("evidence.observed_at", js)
         self.assertIn("function termsSource", js)
         self.assertIn("row.source || row.source_artifact", js)
-        self.assertIn('checkout.status !== "LIVE"', js)
+        self.assertIn('checkout.status === "LIVEMODE_URL_RECORDED"', js)
+        self.assertIn('checkout.status !== "ACTIVE_CHARGEABLE"', js)
+        self.assertIn("checkout.link_active !== true", js)
+        self.assertIn("checkout.account_charges_enabled !== true", js)
         self.assertIn('checkout.provider !== "stripe"', js)
-        self.assertIn("isLiveStripeCheckoutUrl(checkout.url)", js)
+        self.assertIn("isStripeCheckoutUrl(checkout.url)", js)
         self.assertIn('rel="noopener noreferrer"', js)
-        self.assertIn("LIVE Stripe hosted checkout", js)
-        self.assertIn("checkout stays behind the scope-first intake", js)
-        self.assertIn('funnel.readiness === "NEEDS_DEFINITION"', js)
+        self.assertIn("Payment capability is unverified", js)
+        self.assertIn("Verified chargeable Stripe checkout", js)
+        self.assertIn("checkout-active", js)
+        self.assertNotIn("checkout-live", js)
+        self.assertNotIn("LIVE Stripe", js)
         self.assertIn("function esc(", js)
         self.assertIn("esc(row.name)", js)
         self.assertIn("esc(row.state)", js)
@@ -1040,8 +1163,9 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertIn("data-funnel-sku", js)
         self.assertIn("data-funnel-action", js)
         self.assertIn("INTENT_ONLY", js)
+        self.assertIn("NO_CLICK_SURFACE", js)
         self.assertIn("BANK_AVAILABLE", js)
-        self.assertIn("parsed.protocol !== \"https:\"", js)
+        self.assertIn('parsed.protocol !== "https:"', js)
         self.assertIn("parsed.username", js)
         self.assertIn("parsed.search", js)
         self.assertIn("parsed.hash", js)
@@ -1066,19 +1190,69 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertNotIn("innerHTML = checkout.url", js)
         self.assertNotIn("${checkout.url}", js)
 
+        stripe_url_pattern = r"https://(?:buy|donate)\.stripe\.com/"
+        self.assertIsNotNone(re.search(stripe_url_pattern, "https://buy.stripe.com/test"))
+        self.assertIsNotNone(re.search(stripe_url_pattern, "https://donate.stripe.com/test"))
+        capability_note = (
+            "Stripe URL recorded for provenance. "
+            "Payment capability is unverified; checkout is unavailable."
+        )
+        for surface_name in ("commerce.html", "tips.html", "pay.html"):
+            with self.subTest(surface=surface_name):
+                surface_html = (ROOT / surface_name).read_text(encoding="utf-8")
+                self.assertNotIn('class="checkout-live"', surface_html)
+                self.assertNotRegex(surface_html, stripe_url_pattern)
+                self.assertEqual(surface_html.count(capability_note), 7)
+
         html = (ROOT / "commerce.html").read_text(encoding="utf-8")
+        self.assertIn(".checkout-active,.funnel-intake", html)
         self.assertIn('id="sku-intake"', html)
         self.assertIn('name="to" value="OFFER"', html)
         self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
         self.assertIn("carrier.js", html)
+
+        tips = (ROOT / "tips.html").read_text(encoding="utf-8")
+        self.assertIn(
+            "<title>Commons tips — provider capability unverified</title>", tips
+        )
+        self.assertIn(
+            "RECORDED PROVIDER LINKS · CAPABILITY UNVERIFIED", tips
+        )
+        self.assertIn(
+            "Provider charge capability is unverified, so checkout is unavailable here.",
+            tips,
+        )
+        self.assertIn(".provider-unverified{", tips)
+        self.assertNotIn("LIVE PAYMENT LINKS", tips)
+        self.assertNotIn("TYPE owns checkout", tips)
+        self.assertNotIn("live checkout", tips.lower())
+        self.assertNotIn(">Pay ", tips)
+
+        pay = (ROOT / "pay.html").read_text(encoding="utf-8")
+        self.assertIn(
+            "<title>Commons provider links — capability unverified</title>", pay
+        )
+        self.assertIn("<h1>Provider capability</h1>", pay)
+        self.assertIn(
+            "Seven Stripe URLs remain recorded in the cited SKU sources for provenance.",
+            pay,
+        )
+        self.assertIn(
+            "Provider charge capability is unverified, so checkout is unavailable here.",
+            pay,
+        )
+        self.assertIn(".provider-unverified{", pay)
+        self.assertNotIn("live Stripe URLs", pay)
+        self.assertNotIn("<h1>Pay</h1>", pay)
+        self.assertNotIn(">Pay ", pay)
 
     def test_renderer_executes_strict_own_host_checkout_membership(self) -> None:
         node = shutil.which("node")
         self.assertIsNotNone(node, "Node.js is required to execute the production checkout validator")
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
         instrumented = js.replace(
-            "function isLiveStripeCheckoutUrl(raw)",
-            "globalThis.isLiveStripeCheckoutUrl = function isLiveStripeCheckoutUrl(raw)",
+            "function isStripeCheckoutUrl(raw)",
+            "globalThis.isStripeCheckoutUrl = function isStripeCheckoutUrl(raw)",
             1,
         )
         harness = """
@@ -1094,7 +1268,7 @@ var urls = [
   "https://buy.stripe.com/abcDEF123456#",
   "https://buy.stripe.com/abcDEF123456?#"
 ];
-process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)));
+process.stdout.write(JSON.stringify(urls.map(globalThis.isStripeCheckoutUrl)));
 """ % instrumented
         proc = subprocess.run(
             [node, "-e", harness],
@@ -1108,6 +1282,88 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
             json.loads(proc.stdout),
             [True, True, False, False, False, False, False, False],
         )
+
+    def test_renderer_executes_strict_checkout_state_and_evidence_gate(self) -> None:
+        node = shutil.which("node")
+        self.assertIsNotNone(node, "Node.js is required to execute the checkout state gate")
+        js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        instrumented = js.replace(
+            "function checkoutAnchor(row, funnel)",
+            "globalThis.checkoutAnchor = function checkoutAnchor(row, funnel)",
+            1,
+        )
+        harness = """
+globalThis.fetch = function () { return new Promise(function () {}); };
+%s
+var url = "https://buy.stripe.com/abcDEF123456";
+var ready = {readiness: "READY_FOR_CHECKOUT"};
+var recorded = {
+  id: "recorded",
+  checkout: {
+    status: "LIVEMODE_URL_RECORDED",
+    provider: "stripe",
+    url: url,
+    link_active: "UNVERIFIED",
+    account_charges_enabled: false
+  }
+};
+var noEvidence = {
+  id: "no-evidence",
+  checkout: {
+    status: "ACTIVE_CHARGEABLE",
+    provider: "stripe",
+    url: url,
+    link_active: true,
+    account_charges_enabled: true
+  }
+};
+var badEvidence = {
+  id: "bad-evidence",
+  checkout: {
+    status: "ACTIVE_CHARGEABLE",
+    provider: "stripe",
+    url: url,
+    link_active: true,
+    account_charges_enabled: true,
+    capability_evidence: {reference: "stripe:test", observed_at: "not-a-time"}
+  }
+};
+var verified = {
+  id: "verified",
+  checkout: {
+    status: "ACTIVE_CHARGEABLE",
+    provider: "stripe",
+    url: url,
+    link_active: true,
+    account_charges_enabled: true,
+    capability_evidence: {
+      reference: "stripe:payment_link:plink_verified_0001",
+      observed_at: "2026-08-27T03:00:00Z"
+    }
+  }
+};
+process.stdout.write(JSON.stringify([
+  globalThis.checkoutAnchor(recorded, ready),
+  globalThis.checkoutAnchor(noEvidence, ready),
+  globalThis.checkoutAnchor(badEvidence, ready),
+  globalThis.checkoutAnchor(verified, ready)
+]));
+""" % instrumented
+        proc = subprocess.run(
+            [node, "-e", harness],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        rendered = json.loads(proc.stdout)
+        self.assertIn("capability is unverified", rendered[0])
+        self.assertNotIn("<a ", rendered[0])
+        self.assertEqual(rendered[1], "")
+        self.assertEqual(rendered[2], "")
+        self.assertIn('class="checkout-active"', rendered[3])
+        self.assertIn('href="' + "https://buy.stripe.com/abcDEF123456" + '"', rendered[3])
 
     def test_commerce_surfaces_add_no_admission_gate(self) -> None:
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
@@ -1132,7 +1388,7 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
         self.assertNotIn("protected action", blob)
         self.assertNotIn("protected-action", blob)
 
-    def test_live_checkout_does_not_claim_cash_and_funnel_stays_zero(self) -> None:
+    def test_recorded_checkout_does_not_claim_cash_and_funnel_stays_zero(self) -> None:
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
         catalog_text = (COMMERCE / "catalog.json").read_text(encoding="utf-8")
         truth = self.catalog["funnel_truth"]
@@ -1155,7 +1411,7 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
                 (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
             )
         ]
-        self.assertEqual(len(receipts), 13)
+        self.assertEqual(len(receipts), truth["delivered_transports"])
         contacts = set()
         for row in receipts:
             dedupe = row.get("dedupe") or {}
@@ -1164,7 +1420,25 @@ process.stdout.write(JSON.stringify(urls.map(globalThis.isLiveStripeCheckoutUrl)
                 or row.get("recipient_email")
                 or row["target_id"]
             )
-        self.assertEqual(len(contacts), 8)
+        self.assertEqual(len(contacts), truth["distinct_targets"])
+        self.assertEqual(truth["delivered_transports"], 16)
+        self.assertEqual(truth["distinct_targets"], 11)
+        for target_id, provider_reference in (
+            ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
+            ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
+            ("nextdata", "apollo:emailer_message:6a8faa92579ff9000cb874e2"),
+        ):
+            with self.subTest(target_id=target_id):
+                matches = [row for row in receipts if row["target_id"] == target_id]
+                self.assertEqual(len(matches), 1)
+                receipt = matches[0]
+                self.assertEqual(receipt["provider_state"], "COMPLETED")
+                self.assertEqual(receipt["provider_reference"], provider_reference)
+                self.assertTrue(receipt["dedupe"]["do_not_resend"])
+                self.assertEqual(receipt["response_state"], "UNKNOWN")
+                self.assertIsNone(receipt["response_reference"])
+                self.assertIs(receipt["facts"]["cash_claimed"], False)
+                self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
         upvest = [row for row in receipts if row["target_id"] == "upvest"]
         self.assertEqual(len(upvest), 1)
         self.assertEqual(upvest[0]["response_state"], "UNKNOWN")
