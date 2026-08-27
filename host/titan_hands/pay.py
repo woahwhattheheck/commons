@@ -46,6 +46,7 @@ SKU_FILES = {
     "muhlnickel-titan": "land/sku-muhlnickel-titan-20260826.md",
 }
 CHECKOUT_RE = re.compile(r"^https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9]+$")
+CHECKOUT_SESSION_RE = re.compile(r"^cs_(?:test|live)_[A-Za-z0-9]+$")
 PRICE_MONTH_RE = re.compile(r"month", re.I)
 
 
@@ -126,7 +127,6 @@ def measure_pay_transport(
     return {
         "env_name": "STRIPE_SECRET_KEY",
         "stripe_secret_key": bool(key),
-        "key_prefix": (key[:7] + "…") if len(key) >= 7 else "",
         "stripe_api": STRIPE_API,
         "live_sku_count": len(skus),
         "live_payment_links": links,
@@ -220,6 +220,31 @@ def session_token_matches(secret: str, token: str) -> str:
     if not hmac.compare_digest(expected, token):
         raise LaneError("PAY_UNPAID", "paid_session does not match this STRIPE_SECRET_KEY")
     return session_id
+
+
+def secret_livemode(secret: str) -> bool | None:
+    """Infer the Stripe environment without exposing any secret bytes."""
+
+    if secret.startswith(("sk_live_", "rk_live_")):
+        return True
+    if secret.startswith(("sk_test_", "rk_test_")):
+        return False
+    return None
+
+
+def session_binding(retrieved: Mapping[str, Any]) -> tuple[bool, str]:
+    """Require a Checkout Session minted by this lane, not any paid account session."""
+
+    metadata = retrieved.get("metadata")
+    if not isinstance(metadata, Mapping):
+        return False, ""
+    sku = str(metadata.get("commons_sku") or "").strip().lower()
+    bound = (
+        str(metadata.get("titan_hands") or "") == "paid_session"
+        and str(retrieved.get("client_reference_id") or "") == "titan-hands-paid-session"
+        and sku in SKU_FILES
+    )
+    return bound, sku
 
 
 class PayServer(_SemanticLane):
@@ -424,9 +449,34 @@ class PayServer(_SemanticLane):
             session_id = session_token_matches(secret, token)
         if not session_id:
             raise ProtocolError("verify needs checkout_session_id or paid_session")
+        if not CHECKOUT_SESSION_RE.fullmatch(session_id):
+            return failure(
+                "PAY_UNBOUND",
+                "checkout_session_id is not a Stripe Checkout Session id",
+                checkout_session_id=session_id,
+            )
         retrieved = self.stripe("GET", f"/checkout/sessions/{session_id}", secret, None)
         payment_status = str(retrieved.get("payment_status") or "")
-        paid = payment_status == "paid"
+        livemode = bool(retrieved.get("livemode"))
+        bound, sku = session_binding(retrieved)
+        if not bound:
+            return failure(
+                "PAY_UNBOUND",
+                "Stripe Checkout Session is not bound to the titan_hands paid-session contract",
+                checkout_session_id=session_id,
+                payment_status=payment_status,
+                livemode=livemode,
+            )
+        expected_livemode = secret_livemode(secret)
+        if expected_livemode is not None and livemode != expected_livemode:
+            return failure(
+                "PAY_UNBOUND",
+                "Stripe Checkout Session livemode does not match this process key",
+                checkout_session_id=session_id,
+                livemode=livemode,
+            )
+        provider_paid = payment_status == "paid"
+        paid = provider_paid and livemode
         result = {
             "ok": paid,
             "protocol": PROTOCOL_VERSION,
@@ -435,10 +485,22 @@ class PayServer(_SemanticLane):
             "action": "verify",
             "checkout_session_id": session_id,
             "payment_status": payment_status,
-            "livemode": bool(retrieved.get("livemode")),
+            "livemode": livemode,
             "provider": "stripe",
+            "sku": sku,
+            "provider_paid": provider_paid,
             "paid": paid,
         }
+        if provider_paid and not livemode:
+            result["failure_reason"] = "PAY_TESTMODE"
+            result["message"] = "Stripe confirms payment only in test mode; no paid-session handle was minted"
+            result["evidence"] = {
+                "checkout_session_id": session_id,
+                "payment_status": payment_status,
+                "livemode": False,
+                "sku": sku,
+            }
+            return result
         if paid:
             result["paid_session"] = mint_session_token(secret, session_id)
             return result
