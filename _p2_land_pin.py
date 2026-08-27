@@ -36,4 +36,3 @@ print("orient OWNER", "\nOWNER\n" in orient or '"OWNER' in orient)
 if "OWNER" in orient:
     i = orient.find("OWNER")
     print(orient[i : i + 180].replace("\\n", "\n"))
-
