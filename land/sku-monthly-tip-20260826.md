@@ -7,7 +7,10 @@ band: LOW
 scope: WIDE
 price: $3 USD / month
 checkout: https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05
-status: LIVE
+status: LIVEMODE_URL_RECORDED
+provider: stripe
+link_active: UNVERIFIED
+account_charges_enabled: false
 product: prod_V93nQ3gtnZDezi
 price_id: price_1U8lfmATH4EDE7XDdFgt4HHg
 plink: plink_1U8lgFATH4EDE7XDGfz9Ax3S
