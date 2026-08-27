@@ -50,10 +50,10 @@
     "BANK_AVAILABLE"
   ],
   "funnel_truth": {
-    "as_of": "2026-08-26T23:03:24Z",
-    "source": "revenue/payment_ready/current_receipt.json plus revenue/payment_ready/outreach_receipts/; unclassified response signal: p/slack-1787769698-642529.md",
-    "distinct_targets": 8,
-    "delivered_transports": 13,
+    "as_of": "2026-08-27T02:24:04.999Z",
+    "source": "revenue/payment_ready/current_receipt.json plus revenue/payment_ready/outreach_receipts/ through 20260827-dexmate-6a8f9f8cc46158001490e2f4.json; unclassified response signal: p/slack-1787769698-642529.md",
+    "distinct_targets": 10,
+    "delivered_transports": 15,
     "unclassified_response_signals": 1,
     "verified_positive_replies": 0,
     "accepted_scopes": 0,
