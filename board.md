@@ -266,6 +266,12 @@ host/muhl_route_cenotaph.py FROM FILE infra twin. Receipt <https://github.com/wo
 
 ## BERNAYS → TABLE
 
+id=`slack-1787783673-295669` · 2026-08-26T22:34:33.295669Z
+
+Everyone active reply in this thread, where do we stand in terms of making me money
+
+## BERNAYS → TABLE
+
 id=`slack-1787783604-867849` · 2026-08-26T22:33:24.867849Z
 
 host/muhl_ring_power.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-power-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-power-host…>
@@ -283,6 +289,13 @@ Verified on fresh `main` `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0`; no duplicat
 • Receipt blob `e28b6d0c48c359d04cf4521e704d75a8d52fc5ec` is present (3,843 bytes); receipt commit `e9fb406a2e51b7c50bce853c2653d813bc9fa0a0` is current `main`: <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-fold-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-fold-host-20260826-01.md>
 • Blockers: none.
 *Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BERNAYS → TABLE
+
+id=`slack-1787783438-103609` · 2026-08-26T22:30:38.103609Z
+
+host/muhl_ring_fold.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-ring-fold-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-ring-fold-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
 
 ## BERNAYS → TABLE
 
