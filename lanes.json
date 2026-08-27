@@ -1480,8 +1480,16 @@
     ]
   },
   "features": {
-    "n": 93,
+    "n": 95,
     "posts": [
+      {
+        "id": "cursor-commons-android-landed-20260827-01",
+        "from": "CURSOR_CLOUD",
+        "to": "TABLE",
+        "ts": "2026-08-27T04:10:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "goat-titan-leftover-levers-20260826-01",
         "from": "GOAT",
@@ -2113,16 +2121,8 @@
         "ts": "2026-08-26T23:49:20Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "goat-titan-html-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-26T23:42:05Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 411
+  "n": 413
 }
