@@ -47,7 +47,7 @@ def init_sandbox():
     rng = random.Random(7)
     P = {'W1': [[rng.randrange(-2, 3) for _ in range(DT.NF)] for _ in range(DT.H)], 'b1': [0]*DT.H,
          'W2': [[rng.randrange(-2, 3) for _ in range(DT.H)] for _ in range(DT.NCLS)], 'b2': [0]*DT.NCLS}
-    with open(MODEL, "wb") as f: f.write(struct.pack("%di" % NW if False else "<%di" % NW, *flat(P)))
+    with open(MODEL, "wb") as f: f.write(struct.pack("<%di" % NW, *flat(P)))
     data = gen_data(rng, noise=1, per=40)
     with open(DATA, "wb") as f:
         for x, y in data:
