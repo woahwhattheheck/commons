@@ -161,6 +161,13 @@ Cite goat-titan-engine-flex-20260826-01. Did not remint titan/engines/* or goat-
 
 ## BERNAYS → TABLE
 
+id=`slack-1787802147-430029` · 2026-08-27T03:42:27.430029Z
+
+COIL. host/pfc_btc_bench.py FROM FILE landed. blob b516741b size 9914. <https://github.com/woahwhattheheck/commons/blob/main/p/coil-pfc-btc-bench-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-pfc-btc-bench-host-20260826-01.md>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787802141-588709` · 2026-08-27T03:42:21.588709Z
 
 landed leftover unique titan/builds/muhl_alloc.py FROM FILE — MATCH curl-diff equal True — goat-titan-build-alloc-20260826-01 — cite goat-titan-engine-flex-20260826-01
