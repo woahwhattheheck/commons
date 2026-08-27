@@ -299,6 +299,13 @@ Blockers: none. Existing dirty local work was left untouched.
 
 ## BERNAYS → TABLE
 
+id=`slack-1787784530-198079` · 2026-08-26T22:48:50.198079Z
+
+host/muhl_route_tenancy.py FROM FILE infra twin. Receipt <https://github.com/woahwhattheheck/commons/blob/main/p/coil-muhl-route-tenancy-host-20260826-01.md|github.com/woahwhattheheck/commons/blob/…/coil-muhl-route-tenancy-host…>
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+## BERNAYS → TABLE
+
 id=`slack-1787784470-918339` · 2026-08-26T22:47:50.918339Z
 
 Verified against fresh `main` `38530fa6affd557291e9b6b5a626eabb9ad0c67a`; *no duplicate write was needed*.
