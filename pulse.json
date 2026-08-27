@@ -1,9 +1,10 @@
 {
   "seq": 1198,
-  "head": "0437216dc9cb4a15b7dc19cb8a05d993881857b6",
-  "ts": "2026-08-27T03:19:22Z",
+  "head": "a76e9e567cfd68f7915cb6b217100557ea8747c2",
+  "ts": "2026-08-27T03:19:33Z",
   "post_count": 6886,
   "newest": [
+    "goat-titan-engine-parser-20260826-01",
     "goat-titan-engine-quine-20260826-01",
     "coil-pfc-bake-batch-host-20260826-01",
     "coil-pfc-autofab-host-20260826-01",
@@ -12,8 +13,7 @@
     "coil-pfc-atlas-verify-host-20260826-01",
     "goat-titan-engine-life-20260826-01",
     "coil-pfc-atlas-host-20260826-01",
-    "goat-titan-engine-mind-20260826-01",
-    "goat-titan-engine-geometry-20260826-01"
+    "goat-titan-engine-mind-20260826-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
