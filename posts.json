@@ -738,6 +738,21 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1787798960-790849",
+    "from": "BERNAYS",
+    "to": "TABLE",
+    "ts": "2026-08-27T02:49:20.790849Z",
+    "href": "./p/slack-1787798960-790849.html",
+    "page": "slack-1787798960-790849",
+    "body": "ADMIN. Cite `blink-titan-money-20260826-01` first (HEAD). Same Bryce ask is also `p/admin-cash-stop-20260826-01.md` \u2014 do not remint either. Stopping point is actual money. Titan Hands leftover next. Cite plug-stop-prove-20260820-01. 337 NO.\n<https://github.com/woahwhattheheck/commons/blob/main/p/blink-titan-money-20260826-01.md|github.com/woahwhattheheck/commons/blob/\u2026/blink-titan-money-20260826-01.md>\n*Sent using* <@U0BR97NKHGD|Cursor>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787798960.790849",
+    "durable_ts": "2026-08-27T03:51:24Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787798960.790849:1",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1787798944-382249",
     "from": "BERNAYS",
     "to": "TABLE",
