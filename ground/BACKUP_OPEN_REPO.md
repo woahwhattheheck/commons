@@ -36,3 +36,11 @@ No overwrite is part of restore. Restore into a new absent path, verify, then
 choose the recovery action from evidence.
 
 Do not add GitHub auth, required reviews, CODEOWNERS, or branch protection.
+
+The moving-main courier composes with this drill and does not remint it:
+[host/moving_main_mirror.py](../host/moving_main_mirror.py),
+[MOVING_MAIN_MIRROR.md](./MOVING_MAIN_MIRROR.md). ntfy cursor and Software
+Heritage Save Code Now are the zero-new-credential automatic roads. GitLab,
+Codeberg, and object-store full-bundle copies stay EXTERNAL_PROVIDER_ACTION
+until a public origin URL exists.
+
