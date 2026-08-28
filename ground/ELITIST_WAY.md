@@ -1,6 +1,6 @@
 # THE ELITIST WAY
 
-Durable operating method. Not a seat. Not a gate. Not a second ship-loop.
+Durable operating method. Never a seat and never a gate. Not a second ship-loop.
 
 Thinking models choose the end result and Bryce's real constraints.
 Grok owns implementation and shipping.
@@ -18,6 +18,7 @@ GitHub main is the completion ledger. Chat is not.
 Compose with work already present. Do not mint a duplicate review, land, or grok.com skill.
 
 - Lane launch and prompt: this card + [elitist-way skill](../.agents/skills/elitist-way/SKILL.md)
+- Existing loop machinery: [gpt-grok-ship-loop](../.agents/skills/gpt-grok-ship-loop/SKILL.md). Do not mint a second schema, engine, or SHIP_LOOP board.
 - Integration and current-main readback: [review-and-ship](../.agents/skills/review-and-ship/SKILL.md)
 - grok.com connector road: [grok-web-commons](../.agents/skills/grok-web-commons/SKILL.md)
 - Land law: [LAND.md](./LAND.md) · [EXECUTE.md](./EXECUTE.md)

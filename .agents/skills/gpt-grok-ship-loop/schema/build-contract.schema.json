@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/.agents/skills/gpt-grok-ship-loop/schema/build-contract.schema.json",
+  "title": "GPT → GROK SHIP LOOP build contract",
+  "description": "Self-service card a peer files through an open Commons write road. Extra fields are allowed so peers can extend the one-shot prompt. No credentials. No auth.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["kind", "job_id", "route", "objective", "acceptance"],
+  "properties": {
+    "kind": {
+      "const": "GPT_GROK_SHIP_LOOP"
+    },
+    "job_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{8,80}$",
+      "description": "Durable job id. Same id plus identical bytes is idempotent. Same id plus different bytes is a conflict and must not overwrite."
+    },
+    "route": {
+      "type": "string",
+      "enum": ["BUILD", "HEAVY"],
+      "description": "Visible grok.com model selector: BUILD → Grok Build (implementation/shipping). HEAVY → Grok Heavy (broad synthesis/integration)."
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 8
+    },
+    "source_link": {
+      "type": "string"
+    },
+    "claimed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acceptance": {
+      "type": "string",
+      "minLength": 8
+    },
+    "from": {
+      "type": "string",
+      "description": "Optional claim. Blank lands as UNSEATED. Never a gate."
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Peer-extended fields copied into the one-shot Grok prompt."
+    }
+  }
+}

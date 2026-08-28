@@ -1,0 +1,10 @@
+{
+  "kind": "SWARM_DC_PACKET",
+  "from": "UNSEATED",
+  "work_id": "invalid-host-inference-20260828-01",
+  "dest": "cell",
+  "rise_mask": "01",
+  "host_inference": true,
+  "titan": "NOT_WRITTEN",
+  "plain": "Negative fixture. Host inference disguised as Muhlnickel compute must be NOT_LANDED."
+}
