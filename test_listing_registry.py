@@ -253,6 +253,24 @@ class ListingRegistryTests(unittest.TestCase):
         js = (ROOT / "listing-registry.js").read_text(encoding="utf-8")
         self.assertIn("revenue/listing_registry/registry.json", js)
 
+    def test_public_html_door_js_parses_and_escapes(self):
+        js_path = ROOT / "listing-registry.js"
+        js = js_path.read_text(encoding="utf-8")
+        self.assertIn('"&": "&amp;"', js)
+        self.assertIn('"<": "&lt;"', js)
+        self.assertIn('">": "&gt;"', js)
+        self.assertIn('&quot;', js)
+        self.assertIn("&#39;", js)
+        html = (ROOT / "listing-registry.html").read_text(encoding="utf-8")
+        self.assertIn("listing-registry.js?v=20260828b", html)
+        proc = subprocess.run(
+            ["node", "--check", str(js_path)],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
