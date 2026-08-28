@@ -69,13 +69,18 @@ ENV_FILE_VAR = "COMMONS_GROK_SLACK_ENV_FILE"
 STATE_DB_VAR = "COMMONS_GROK_SLACK_STATE_DB"
 HEALTH_BIND_VAR = "COMMONS_GROK_SLACK_HEALTH_BIND"
 DEFAULT_HEALTH_BIND = "127.0.0.1:8788"
+SLACK_APP_ID = "A0BTJMFPTT6"
 HOST_PACK_FILES = (
     "Dockerfile",
     "compose.yml",
     "commons-grok-slack.service",
+    "commons-grok-slack-handoff.service",
     "run.sh",
+    "run-handoff.sh",
+    "run-handoff.ps1",
     "env.example",
     "canary.py",
+    "handoff.py",
 )
 SECRET_SCAN_FILES = HOST_PACK_FILES + (
     "README.md",
@@ -503,6 +508,10 @@ def local_health_report(
         "host_pack": pack,
         "host_pack_complete": all(pack.values()),
         "github_token_required": False,
+        "slack_app_id": SLACK_APP_ID,
+        "handoff_bind": "127.0.0.1:8789",
+        "gemini_handoff_bind": "127.0.0.1:8780",
+        "gemini_isolated": True,
     }
     try:
         factory = store_factory or BridgeStore
@@ -1885,6 +1894,16 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     files = [args.env_file] if getattr(args, "env_file", None) else None
     load_runtime_env(files=files)
+    try:
+        import importlib.util
+        handoff_path = Path(__file__).resolve().parent / "handoff.py"
+        spec = importlib.util.spec_from_file_location("commons_grok_slack_handoff", handoff_path)
+        if spec is not None and spec.loader is not None:
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            module.inject_vault_into(os.environ)
+    except Exception:
+        pass
     args = resolve_args(args)
     try:
         if args.command == "doctor":
