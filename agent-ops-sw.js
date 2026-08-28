@@ -6,6 +6,6 @@ self.addEventListener("activate", function (event) { event.waitUntil(caches.keys
 self.addEventListener("fetch", function (event) {
   var url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
-  if (/\/(lastseen|claims|wakeups|recent)\.json$/.test(url.pathname)) { event.respondWith(fetch(event.request, { cache: "no-store" })); return; }
+  if (/\/(lastseen|claims|wakeups|recent|agent-ops-checkout)\.json$/.test(url.pathname)) { event.respondWith(fetch(event.request, { cache: "no-store" })); return; }
   event.respondWith(fetch(event.request).catch(function () { return caches.match(event.request); }));
 });
