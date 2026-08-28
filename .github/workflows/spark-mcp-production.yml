@@ -7,6 +7,7 @@
 # * or /* (runs 33218271833 and 33219467177 uploaded 7 root files and
 # dropped api/mcp.py). Stage the runtime graph with
 # stage_spark_mcp_bundle.py and deploy that directory. Hobby cap 5000.
+# relay-manifest.json is required at import (run 33219920058 500ed without it).
 #
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are

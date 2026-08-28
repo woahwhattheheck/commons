@@ -5,6 +5,10 @@ Vercel CLI 56.1.0 does not honor directory un-ignores in .vercelignore after
 a catch-all deny. Runs 33218271833 and 33219467177 each uploaded 7 root files
 and failed: api/mcp.py did not match any Serverless Function. Copy the runtime
 graph into a small directory and deploy from there instead of the whole repo.
+
+relay_manifest.py loads relay-manifest.json at import. Omitting that file
+makes api/mcp.py raise FileNotFoundError and Vercel returns
+FUNCTION_INVOCATION_FAILED (run 33219920058 after #5175 staged 45 files).
 """
 from __future__ import annotations
 
@@ -22,7 +26,7 @@ RUNTIME_FILES = (
     "commons_mcp_app.html",
     "model_language.py",
     "relay_manifest.py",
-    "relay-manifest.json",  # imported at module load; missing => FUNCTION_INVOCATION_FAILED
+    "relay-manifest.json",
     "owner_enroll.py",
     "owner_net.py",
     "host/observatory.py",
@@ -77,6 +81,7 @@ def main(argv: list[str] | None = None) -> int:
     copied = stage_bundle(Path(args.src), Path(args.dst))
     print("staged", len(copied), "files")
     print("includes_api_mcp", "api/mcp.py" in copied)
+    print("includes_relay_manifest_json", "relay-manifest.json" in copied)
     return 0
 
 

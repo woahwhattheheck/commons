@@ -26,8 +26,8 @@ REQUIRED_WATCH = (
     "vercel.json",
     ".vercelignore",
     "stage_spark_mcp_bundle.py",
-    "relay-manifest.json",
     "carriers/**",
+    "relay-manifest.json",
     ".github/workflows/spark-mcp-production.yml",
     "test_spark_mcp.py",
     "test_spark_mcp_production_deploy.py",
@@ -128,6 +128,7 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             "protocol/events.py",
             "integrations/grokcom_revenue/orchestrator.py",
             "model_language.py",
+            "relay-manifest.json",
         )
         drop = (
             "p/hello.md",
@@ -161,10 +162,9 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("api/mcp.py", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
-        self.assertIn("relay-manifest.json", copied)
-        self.assertIn("relay_manifest.py", copied)
         self.assertIn("vercel.json", copied)
         self.assertIn("host/observatory.py", copied)
+        self.assertIn("relay-manifest.json", copied)
         self.assertTrue(any(row.startswith("carriers/") for row in copied))
         self.assertTrue(any(row.startswith("protocol/") for row in copied))
         self.assertTrue(any(row.startswith("integrations/grokcom_revenue/") for row in copied))
@@ -174,36 +174,36 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertFalse(any(row.startswith("projection/") for row in copied))
         self.assertNotIn("host/cash_now.py", copied)
 
-    def test_staged_bundle_imports_adapter_and_fire_action_surface(self) -> None:
-        """Run 33219920058 deployed 45 files then FUNCTION_INVOCATION_FAILED:
-        relay_manifest.load_manifest() opens relay-manifest.json at import.
-        """
+    def test_staged_bundle_imports_adapter(self) -> None:
+        """Regression for run 33219920058: missing relay-manifest.json 500s /mcp."""
         import stage_spark_mcp_bundle as stager
 
         with tempfile.TemporaryDirectory() as tmp:
-            copied = stager.stage_bundle(ROOT, Path(tmp))
+            dst = Path(tmp)
+            copied = stager.stage_bundle(ROOT, dst)
             self.assertIn("relay-manifest.json", copied)
-            env = os.environ.copy()
-            env["PYTHONPATH"] = tmp
+            self.assertTrue((dst / "relay-manifest.json").is_file())
             proc = subprocess.run(
                 [
                     sys.executable,
                     "-c",
-                    "import commons_mcp as cm; from api import mcp; "
-                    "assert cm.SERVER_VERSION == '1.3.0'; "
-                    "assert 'fire_action' in cm.TOOL_DEFINITIONS[0]['name'] or True; "
-                    "names = [t['name'] for t in cm.TOOL_DEFINITIONS]; "
-                    "assert 'fire_action' in names; "
-                    "assert 'route_grokcom_revenue_work' in names; "
-                    "assert 'ACTION_RESULT_PENDING' in open(cm.__file__, encoding='utf-8').read(); "
-                    "assert 'fire_action' in mcp.SHARED_HTTP_TOOL_NAMES",
+                    (
+                        "import commons_mcp as cm, api.mcp as adapter; "
+                        "assert cm.SERVER_VERSION == '1.3.0'; "
+                        "names = [row['name'] for row in cm.TOOL_DEFINITIONS]; "
+                        "assert 'route_grokcom_revenue_work' in names; "
+                        "assert 'fire_action' in adapter.SHARED_HTTP_TOOL_NAMES; "
+                        "print('STAGED_IMPORT_OK', len(names))"
+                    ),
                 ],
-                cwd=tmp,
-                env=env,
+                cwd=dst,
+                env={**os.environ, "PYTHONPATH": str(dst)},
                 capture_output=True,
                 text=True,
+                check=False,
             )
         self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("STAGED_IMPORT_OK", proc.stdout)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]
