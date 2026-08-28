@@ -109,5 +109,20 @@
     "url": "mailto:tokenjunkielabs@gmail.com",
     "label": "Email Token Junkie Labs",
     "note": "If Stripe capability later fails closed, public surfaces hide Stripe URLs and keep this contact. Owner-private PayPal wallet and Stripe hosted invoices stay inside official provider UIs. No PayPal.me, ACH, or bank destination is published."
+  },
+  "registry": "revenue/payment_capability/registry.json",
+  "settlement_destination": {
+    "kind": "stripe_external_account",
+    "status": "verified",
+    "currency": "usd",
+    "bank_name": "THE BANCORP BANK",
+    "last4": "7243",
+    "country": "US",
+    "payout_methods": [
+      "standard"
+    ],
+    "schedule_interval": "daily",
+    "delay_days": 2,
+    "note": "Verified Stripe external account. Routing numbers and full account numbers are not stored."
   }
 }

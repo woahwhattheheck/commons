@@ -35,10 +35,11 @@ python3 host/checkout_capability.py --self-test
 python3 -m unittest -v test_checkout_capability.py test_stripe_payment_links.py test_outcome_commerce.py
 ```
 
-Human doors: [pay.html](../pay.html) · [commerce.html](../commerce.html) · [tips.html](../tips.html)
+Human doors: [pay.html](../pay.html) · [commerce.html](../commerce.html) · [tips.html](../tips.html) · [payment-capability.html](../payment-capability.html)
 Machine: [revenue/checkout_capability/snapshot.json](../revenue/checkout_capability/snapshot.json)
+Registry: [revenue/payment_capability/registry.json](../revenue/payment_capability/registry.json)
 Catalog: [revenue/outcome_commerce/catalog.json](../revenue/outcome_commerce/catalog.json)
 
-Cite [ground/STRIPE.md](./STRIPE.md). Cite [ground/COMMERCE.md](./COMMERCE.md).
+Cite [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md). Cite [ground/STRIPE.md](./STRIPE.md). Cite [ground/COMMERCE.md](./COMMERCE.md).
 Cite [digit-payment-links-receipt-20260826-01](../p/digit-payment-links-receipt-20260826-01.md).
 Do not remint those ids. Open door stays. 337 NO.

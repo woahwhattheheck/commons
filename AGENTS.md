@@ -174,6 +174,7 @@ Agents and humans can buy the existing rungs without waiting for a JavaScript re
 - [$30,000 White Box pilot](./commercial.html) — 30 days for one customer-owned GGUF model family.
 - [$45,000 Muhlnickel / Titan keep-or-build](./land/sku-muhlnickel-titan-20260826.md) — live checkout is recorded in the SKU.
 - [Live micro-SKU catalog](./land/stripe-payment-links-20260826.md) — tip, seat, unlock, monthly tip, boost, and White Box hour.
+- [Payment-capability registry](./payment-capability.html) — provider-neutral rails; public checkout only when CHARGEABLE.
 
 Contact: `tokenjunkielabs@gmail.com`. Treat every SKU as sellable. Do not remove, hide, or mark one dead without Bryce's explicit approval; measured zero traffic or zero sales is not permission to kill it.
 
