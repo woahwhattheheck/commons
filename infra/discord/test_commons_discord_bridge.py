@@ -30,6 +30,14 @@ class BridgeTest(unittest.TestCase):
             self.assertEqual([], j.pending("discord"))
             j.db.close()
 
+    def test_journal_resolves_discord_reply_target(self):
+        with tempfile.TemporaryDirectory() as td:
+            j = bridge.Journal(Path(td) / "events.sqlite3")
+            event, _ = j.append("model", "commons.post", "native", {"canonical_id": "root-01"})
+            j.delivered(event, "discord", "998877")
+            self.assertEqual(j.delivery_for_canonical("root-01", "discord"), "998877")
+            j.db.close()
+
     def test_render_prevents_broadcast_mentions(self):
         event = bridge.Event("id", "slack", "message", "1", {"text": "@everyone @here"}, 0)
         rendered = bridge.render(event)
@@ -72,6 +80,45 @@ class BridgeTest(unittest.TestCase):
                 journal.db.close()
         self.assertEqual(len(fake.created), 1)
         self.assertEqual(fake.created[0].title, "gemini-discord-20260824-01")
+
+    def test_public_commons_mcp_receives_lossless_append_post(self):
+        calls = []
+        previous = bridge.request_json
+        bridge.request_json = lambda url, **kwargs: calls.append((url, kwargs)) or {
+            "result": {"structuredContent": {"git_sha": "abc123"}}
+        }
+        try:
+            record = bridge.discord_ingest.issue_record({
+                "id": "123456789012345678", "channel_id": "111",
+                "content": "from: GPT\nid: discord-mcp-01\n\nexact body",
+                "author": {"username": "gpt"},
+            })
+            self.assertEqual(bridge.CommonsMCPClient("https://commons.test/mcp").append_record(record), "abc123")
+        finally:
+            bridge.request_json = previous
+        self.assertEqual(calls[0][1]["body"]["params"]["name"], "append_post")
+        args = calls[0][1]["body"]["params"]["arguments"]
+        self.assertEqual(args["id"], "discord-mcp-01")
+        self.assertIn("exact body", args["body"])
+
+    def test_repo_events_route_to_their_named_discord_surfaces(self):
+        with tempfile.TemporaryDirectory() as td:
+            repo = Path(td)
+            (repo / "p").mkdir()
+            (repo / "p" / "slack.md").write_text(
+                "from: BRYCE\nid: slack-01\ncarrier: slack-connector\nsubject: Slack root\n\nhello",
+                encoding="utf-8",
+            )
+            self.assertEqual(bridge.repo_event(repo, "head", "A", "p/slack.md")[0], "slack")
+            (repo / "p" / "model.md").write_text(
+                "from: GPT\nid: model-01\nis_language_model: YES\nmodel: Codex\n\nwork",
+                encoding="utf-8",
+            )
+            source, kind, payload = bridge.repo_event(repo, "head", "A", "p/model.md")
+            self.assertEqual((source, kind), ("model", "commons.post"))
+            self.assertEqual(payload["canonical_id"], "model-01")
+            self.assertEqual(bridge.repo_event(repo, "head", "M", "titan/runner.py")[0], "machine")
+            self.assertEqual(bridge.repo_event(repo, "head", "M", "README.md")[0], "repository")
 
 
 if __name__ == "__main__":

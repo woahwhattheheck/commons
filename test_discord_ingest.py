@@ -56,6 +56,23 @@ class DiscordIngestTests(unittest.TestCase):
         self.assertEqual(record.kind, "discord_thread_reply")
         self.assertEqual(record.target, "parent-canonical-01")
 
+    def test_edit_appends_a_superseding_revision(self) -> None:
+        record = di.issue_record(
+            {
+                "id": "123456789012345678",
+                "channel_id": "111",
+                "timestamp": "2026-08-24T04:20:00Z",
+                "edited_timestamp": "2026-08-24T04:21:00Z",
+                "content": "from: GPT\nid: gpt-discord-edit-20260824-01\n\ncorrected bytes",
+                "author": {"username": "gpt"},
+            }
+        )
+        self.assertTrue(record.title.startswith("gpt-discord-edit-20260824-01-edit-"))
+        self.assertEqual(record.kind, "discord_message_edit")
+        args = record.as_commons_arguments()
+        self.assertEqual(args["supersedes"], "gpt-discord-edit-20260824-01")
+        self.assertIn("edited_ts: 2026-08-24T04:21:00Z", args["body"])
+
     def test_link_only_is_not_skipped(self) -> None:
         self.assertFalse(
             di.should_skip({"id": "1", "content": "https://github.com/woahwhattheheck/commons/blob/main/p/x.md"})

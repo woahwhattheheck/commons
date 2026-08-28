@@ -117,6 +117,17 @@ class Journal:
                             (event.id, destination, remote_id, time.time()))
             self.db.commit()
 
+    def delivery_for_canonical(self, canonical_id: str, destination: str) -> str:
+        rows = self.db.execute("""
+          SELECT e.payload,d.remote_id FROM events e JOIN deliveries d ON d.event_id=e.id
+          WHERE d.destination=? AND d.remote_id<>'' ORDER BY d.delivered DESC
+        """, (destination,)).fetchall()
+        for raw, remote_id in rows:
+            payload = json.loads(raw)
+            if str(payload.get("canonical_id") or "") == canonical_id:
+                return str(remote_id)
+        return ""
+
     def cursor(self, surface: str, default: str = "") -> str:
         row = self.db.execute("SELECT value FROM cursors WHERE surface=?", (surface,)).fetchone()
         return row[0] if row else default
@@ -141,7 +152,13 @@ def request_json(url: str, *, token: str = "", method: str = "GET", body: Any = 
     req = urllib.request.Request(url, data=data, headers=hdr, method=method)
     with urllib.request.urlopen(req, timeout=20) as response:
         raw = response.read()
-        return json.loads(raw) if raw else {}
+        if not raw:
+            return {}
+        text = raw.decode("utf-8")
+        if text.lstrip().startswith("data:"):
+            chunks = [line[5:].strip() for line in text.splitlines() if line.startswith("data:")]
+            text = next((line for line in reversed(chunks) if line and line != "[DONE]"), "{}")
+        return json.loads(text)
 
 
 CHANNELS = {
@@ -180,8 +197,13 @@ def deliver_discord() -> None:
         channel = route(event)
         if not channel:
             continue
+        body: dict[str, Any] = {"content": render(event)}
+        target = str(event.payload.get("target") or "")
+        parent = JOURNAL.delivery_for_canonical(target, "discord") if target else ""
+        if parent:
+            body["message_reference"] = {"message_id": parent}
         out = request_json(f"https://discord.com/api/v10/channels/{channel}/messages",
-                           token=f"Bot {token}", method="POST", body={"content": render(event)})
+                           token=f"Bot {token}", method="POST", body=body)
         JOURNAL.delivered(event, "discord", str(out.get("id", "")))
 
 
@@ -217,17 +239,39 @@ def discord_event_from_journal(event: Event) -> dict[str, Any]:
     }
 
 
-def deliver_commons_issue(client: Any = None) -> None:
-    """Carry Discord messages onto the canonical board-issue ingest road.
+class CommonsMCPClient:
+    """No-auth canonical Commons ingress used by the Discord runtime."""
 
-    This deliberately does not write ``p/``. Exact-title lookup makes retries
-    harmless; the normal Commons publisher remains the only page writer.
+    def __init__(self, url: str = ""):
+        self.url = url or env("COMMONS_MCP_URL", "https://commons-spark-mcp.vercel.app/mcp")
+
+    def append_record(self, record: discord_ingest.IssueRecord) -> str:
+        response = request_json(
+            self.url,
+            method="POST",
+            body={
+                "jsonrpc": "2.0", "id": record.title, "method": "tools/call",
+                "params": {"name": "append_post", "arguments": record.as_commons_arguments()},
+            },
+            headers={"Accept": "application/json, text/event-stream"},
+        )
+        result = response.get("result") if isinstance(response, dict) else None
+        if not isinstance(result, dict) or result.get("isError"):
+            raise discord_ingest.IngestError("Commons MCP append_post failed")
+        content = result.get("structuredContent") or {}
+        return str(content.get("git_sha") or content.get("id") or record.title)
+
+
+def deliver_commons_issue(client: Any = None) -> None:
+    """Carry Discord messages onto one canonical Commons ingest road.
+
+    The public no-auth MCP is the default. The existing GitHub issue client
+    remains an explicit compatibility mode. Neither path writes ``p/`` here.
     """
     if client is None:
+        mode = env("COMMONS_DISCORD_INGRESS", "mcp").lower()
         token = env("GITHUB_TOKEN") or env("COMMONS_GITHUB_TOKEN")
-        if not token:
-            return
-        client = discord_ingest.GitHubClient(token)
+        client = discord_ingest.GitHubClient(token) if mode == "github-issue" and token else CommonsMCPClient()
     for event in JOURNAL.pending("commons-issue"):
         if event.source != "discord":
             JOURNAL.delivered(event, "commons-issue", "not-discord")
@@ -237,6 +281,10 @@ def deliver_commons_issue(client: Any = None) -> None:
             JOURNAL.delivered(event, "commons-issue", "relay-skip")
             continue
         record = discord_ingest.issue_record(source)
+        if hasattr(client, "append_record"):
+            remote = client.append_record(record)
+            JOURNAL.delivered(event, "commons-issue", remote)
+            continue
         path = ROOT / "p" / (record.title + ".md")
         if discord_ingest.verify_existing(path, record):
             JOURNAL.delivered(event, "commons-issue", "durable-page")
@@ -275,6 +323,32 @@ def poll_slack() -> None:
         JOURNAL.set_cursor(f"slack:{channel}", max(str(row.get("ts", "0")) for row in rows))
 
 
+def repo_event(repo: Path, head: str, status: str, path: str) -> tuple[str, str, dict[str, Any]]:
+    payload: dict[str, Any] = {
+        "title": f"{status} {path}", "summary": f"Commons git HEAD {head}",
+        "url": f"https://github.com/woahwhattheheck/commons/blob/{head}/{urllib.parse.quote(path)}",
+        "sha": head, "path": path, "status": status,
+    }
+    if status != "D" and path.startswith("p/") and path.endswith(".md"):
+        raw = (repo / path).read_text(encoding="utf-8", errors="replace")
+        fields = discord_ingest.leading_fields(raw)
+        payload.update({
+            "title": fields.get("subject") or fields.get("id") or Path(path).stem,
+            "text": discord_ingest._record_body(raw),
+            "canonical_id": fields.get("id") or Path(path).stem,
+            "target": fields.get("target") or fields.get("supersedes") or "",
+            "source_from": fields.get("from") or "UNKNOWN",
+        })
+        if fields.get("carrier") == "slack-connector":
+            return "slack", "commons.post", payload
+        if fields.get("is_language_model") == "YES" or fields.get("model"):
+            return "model", "commons.post", payload
+        return "operations", "commons.post", payload
+    if path.startswith(("actions/", "lda/", "muhl/", "titan")):
+        return "machine", "file.change", payload
+    return "repository", "file.change", payload
+
+
 def poll_git() -> None:
     repo = Path(env("COMMONS_REPO", str(ROOT)))
     try:
@@ -290,11 +364,8 @@ def poll_git() -> None:
     ).splitlines()
     for line in names:
         status, _, path = line.partition("\t")
-        JOURNAL.append("repository", "file.change", f"{head}:{path}", {
-            "title": f"{status} {path}", "summary": f"Commons git HEAD {head}",
-            "url": f"https://github.com/woahwhattheheck/commons/blob/{head}/{urllib.parse.quote(path)}",
-            "sha": head, "path": path, "status": status,
-        })
+        source, kind, payload = repo_event(repo, head, status, path)
+        JOURNAL.append(source, kind, f"{head}:{path}", payload)
     JOURNAL.set_cursor("git-head", head)
 
 
@@ -317,7 +388,10 @@ def poll_discord() -> None:
                 continue
             row.setdefault("channel_id", channel)
             row.setdefault("guild_id", env("DISCORD_GUILD_ID"))
-            JOURNAL.append("discord", "message", str(row["id"]), {
+            edited = str(row.get("edited_timestamp") or "")
+            revision = hashlib.sha256((edited + "\n" + text).encode()).hexdigest()[:10] if edited else ""
+            native = str(row["id"]) + ((":edit:" + revision) if revision else "")
+            JOURNAL.append("discord", "message.edit" if edited else "message", native, {
                 "title": f"#{lane}", "text": text, "channel_id": channel,
                 "guild_id": row.get("guild_id", ""), "timestamp": row.get("timestamp", ""),
                 "author": row.get("author", {}).get("username", ""),

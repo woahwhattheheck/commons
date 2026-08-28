@@ -62,9 +62,8 @@ def doctor() -> dict[str, Any]:
     token = _present("DISCORD_BOT_TOKEN", "COMMONS_DISCORD_BOT_TOKEN")
     webhook = _present("DISCORD_WEBHOOK_URL", "COMMONS_DISCORD_WEBHOOK_URL")
     channel = _present("COMMONS_DISCORD_CHANNEL")
-    github = _present("GITHUB_TOKEN")
     outbound_ready = webhook or (token and channel)
-    inbound_ready = token and github
+    inbound_ready = token
     outbound_missing: list[str] = []
     if not webhook and not token:
         outbound_missing.append("DISCORD_BOT_TOKEN or DISCORD_WEBHOOK_URL")
@@ -73,8 +72,6 @@ def doctor() -> dict[str, Any]:
     inbound_missing = []
     if not token:
         inbound_missing.append("DISCORD_BOT_TOKEN")
-    if not github:
-        inbound_missing.append("GITHUB_TOKEN")
     channel_names = sorted(
         key for key, value in os.environ.items()
         if key.startswith("DISCORD_CHANNEL_") and value.strip()
@@ -95,7 +92,7 @@ def doctor() -> dict[str, Any]:
         "discord_to_commons": _lane(
             inbound_ready,
             inbound_missing,
-            "Discord API -> canonical board issue",
+            "Discord API -> public Commons MCP append_post",
         ),
         "topology": {
             "guild_configured": _present("DISCORD_GUILD_ID"),

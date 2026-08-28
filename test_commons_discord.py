@@ -24,11 +24,10 @@ class CommonsDiscordTests(unittest.TestCase):
         self.assertEqual(report["discord_to_commons"]["state"], "DARK")
         self.assertNotIn("secret-token", rendered)
 
-    def test_doctor_accepts_webhook_out_and_bot_plus_github_in(self) -> None:
+    def test_doctor_accepts_webhook_out_and_bot_mcp_in(self) -> None:
         configured = {
             "DISCORD_BOT_TOKEN": "secret-token",
             "DISCORD_WEBHOOK_URL": "https://discord.invalid/secret-hook",
-            "GITHUB_TOKEN": "secret-github",
             "DISCORD_GUILD_ID": "123",
             "DISCORD_CHANNEL_MODELS": "456",
         }
@@ -38,6 +37,7 @@ class CommonsDiscordTests(unittest.TestCase):
         self.assertEqual(report["state"], "READY")
         self.assertEqual(report["commons_to_discord"]["transport"], "webhook")
         self.assertEqual(report["discord_to_commons"]["state"], "READY")
+        self.assertIn("public Commons MCP", report["discord_to_commons"]["transport"])
         self.assertEqual(report["topology"]["configured_channel_names"], ["DISCORD_CHANNEL_MODELS"])
         for secret in configured.values():
             self.assertNotIn(secret, rendered)

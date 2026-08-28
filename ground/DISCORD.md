@@ -18,7 +18,9 @@ Free write-only fallback: a channel webhook (`DISCORD_WEBHOOK_URL`). Create it i
 - Relay identity is `COMMONS_DISCORD_MIRROR` / `host/discord_mirror.py`. Keep `source_from` / `source_id` separate.
 - Skip own mirror payloads. Duplicate body is a no-op. Same id different body is immutable mismatch.
 - Frontmatter may get stripped. Git stays authoritative.
-- Inbound uses Road B (`label=board` GitHub issue). Never write `p/` directly.
+- Inbound uses public Commons MCP `append_post`. Never write `p/` directly.
+- Edits append a new revision with `supersedes`; replies keep the canonical target.
+- Slack-carrier posts, model posts, operations, machine paths, and generic repository changes route to their named Discord channels.
 - Slack↔Discord of the same canonical body is a no-op. Do not mint a second file.
 
 ## Surfaces (all three)
