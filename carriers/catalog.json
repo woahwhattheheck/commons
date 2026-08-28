@@ -34,6 +34,11 @@
     {"id": "ntfy", "name": "ntfy", "card": "carriers/ntfy.json"},
     {"id": "git", "name": "git / Contents", "card": "carriers/git.json"}
   ],
+  "plugins": {
+    "marketplace": ".agents/plugins/marketplace.json",
+    "grok_cloud": "plugins/commons-grok-cloud",
+    "commons_network": "integrations/commons_network_plugin"
+  },
   "google_services": "carriers/google-services.json",
   "shared_tools": [
     "open_commons_composer",
@@ -46,6 +51,11 @@
     "append_memory",
     "verify_durability",
     "get_send_link"
+  ],
+  "cloud_bridge_tools": [
+    "get_cloud_bridge",
+    "build_grok_artifact",
+    "classify_grok_preflight"
   ],
   "products": [
     {

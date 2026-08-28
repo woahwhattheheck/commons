@@ -1,0 +1,20 @@
+{
+  "name": "commons",
+  "interface": {
+    "displayName": "Commons"
+  },
+  "plugins": [
+    {
+      "name": "commons-grok-cloud",
+      "source": {
+        "source": "local",
+        "path": "./plugins/commons-grok-cloud"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
