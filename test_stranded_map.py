@@ -3,8 +3,10 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
+import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 from stranded_map import (
     LATER_SIZE,
     PACKET_SIZE,
+    PRODUCTION_CANARY_ID,
     classify,
     load_catalog,
     measure_from_rows,
@@ -165,6 +168,32 @@ class TestStrandedMap(unittest.TestCase):
             }
         )
         self.assertEqual(measured["wake"], "CANDIDATE")
+
+    def test_unscoped_executor_job_does_not_demote_canonical_canaries(self):
+        catalog_path = os.path.join(ROOT, "ground", "STRANDED_MAP.json")
+        with open(catalog_path, encoding="utf-8") as handle:
+            catalog_text = handle.read()
+        with tempfile.TemporaryDirectory() as root:
+            folder = os.path.join(root, "wake_jobs")
+            os.makedirs(folder)
+            for job_id, status in (
+                ("rivet-watchdog-canary-20260825-01", "DONE"),
+                (PRODUCTION_CANARY_ID, "DONE"),
+                ("grok-community-evidence-portable-20260828", "LEASED"),
+            ):
+                with open(
+                    os.path.join(folder, job_id + ".json"), "w", encoding="utf-8"
+                ) as handle:
+                    json.dump({"job_id": job_id, "status": status}, handle)
+            row = measure_tree(root, catalog_text)
+        ids = [item["job_id"] for item in row["wake_jobs"]]
+        self.assertEqual(row["wake_job_json"], 2)
+        self.assertEqual(
+            sorted(ids),
+            ["rivet-watchdog-canary-20260825-01", PRODUCTION_CANARY_ID],
+        )
+        self.assertEqual(row["wake"], "VERIFIED")
+        self.assertNotIn("grok-community-evidence-portable-20260828", ids)
 
     def test_missing_titan_size_is_not_landed(self):
         measured = measure_from_rows({"lda_android": True, "gh_android": False})

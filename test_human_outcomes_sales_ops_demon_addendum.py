@@ -31,11 +31,11 @@ PEER_BLOBS = {
     "revenue/human_outcomes/sales_ops/invoice_template.md": "9a727d12fed5aa039a10c938efb46287b38ac917",
     "revenue/human_outcomes/sales_ops/outreach.json": "a67a0c97f9f4bf96a868964cf54eab00a06d4612",
     "revenue/human_outcomes/sales_ops/targets.json": "3e484fafcb9a619eb04c254e44073370f2674a83",
-    "test_human_outcomes_sales_ops.py": "506b13adb16beb5132b760a538076bf34b2661c6",
+    "test_human_outcomes_sales_ops.py": "58aaa7229202f23634818a886ff19c6d86155314",
     "p/demon-human-outcomes-sales-ops-20260825-01.md": "fe19cfb7e57c4932d3db5f161166a91814a037f9",
 }
 CATALOG_BLOBS = {
-    "humans.html": "f0b250d6b6eb83f0b8b914f7720d9d84f20645e4",
+    "humans.html": "024b77587e926e965a5ecc3f06ee7d2dd99b4dda",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
     "revenue/human_outcomes/README.md": "66c64b6eba9b7aba035223940676bb134590a660",
     "revenue/human_outcomes/fulfillment.md": "fbaf8be09bc4bc544ea470670f3eb6435ebc5838",

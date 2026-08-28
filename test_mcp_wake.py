@@ -188,6 +188,29 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(row["wake_jobs"], [])
         self.assertEqual(row["wake"], "EMPTY")
 
+    def test_unscoped_executor_job_does_not_demote_canonical_canaries(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder = os.path.join(root, "wake_jobs")
+            os.makedirs(folder)
+            for job_id, status in (
+                ("rivet-watchdog-canary-20260825-01", "DONE"),
+                (PRODUCTION_CANARY_ID, "DONE"),
+                ("grok-community-evidence-portable-20260828", "LEASED"),
+            ):
+                with open(
+                    os.path.join(folder, job_id + ".json"), "w", encoding="utf-8"
+                ) as handle:
+                    json.dump({"job_id": job_id, "status": status}, handle)
+            row = measure_root(root)
+        ids = [item["job_id"] for item in row["wake_jobs"]]
+        self.assertEqual(row["wake_job_json"], 2)
+        self.assertEqual(
+            sorted(ids),
+            ["rivet-watchdog-canary-20260825-01", PRODUCTION_CANARY_ID],
+        )
+        self.assertEqual(row["wake"], "VERIFIED")
+        self.assertNotIn("grok-community-evidence-portable-20260828", ids)
+
     def test_real_job_tick_does_not_invoke_or_write_repo(self):
         job = verify_job()
         self.assertTrue(job["ok"])

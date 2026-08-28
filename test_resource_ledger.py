@@ -144,7 +144,7 @@ class TestResourceLedger(unittest.TestCase):
         with open(catalog_path, encoding="utf-8") as handle:
             text = handle.read()
         catalog = load_catalog(text)
-        self.assertEqual(catalog["slack_ts"], "1787803807.405939")
+        self.assertEqual(catalog["slack_ts"], "1787911777.379739")
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
