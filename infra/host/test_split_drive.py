@@ -24,7 +24,12 @@ no network, and reproducible to the byte by anyone re-running this.
 import hashlib, json, math, mmap, os, struct, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, "C:/llm/sdc_sandbox")
 sys.stdout.reconfigure(encoding="utf-8")
-import sdc_cc as CC
+try:
+    import sdc_cc as CC
+except ModuleNotFoundError as exc:
+    if exc.name != "sdc_cc":
+        raise
+    CC = None
 from pfc_speed import analyze
 
 TITAN = "C:/llm/models/titan.gguf"; REG = "C:/llm/models/titan_circuits.json"
@@ -175,6 +180,10 @@ def main():
 
 
 if __name__ == "__main__":
+    if CC is None:
+        print("SKIP infra/host/test_split_drive.py — sdc_cc is owner-PC-only "
+              "(expected at C:/llm/sdc_sandbox); hosted CI cannot drive Titan.")
+        raise SystemExit(0)
     import pfc_preflight as PF
     PF.gate(os.path.abspath(__file__))
     raise SystemExit(main())
