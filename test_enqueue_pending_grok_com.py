@@ -13,6 +13,7 @@ import action_executor as ae
 import enqueue_pending_grok_com as enqueue
 
 WORKFLOW = Path(__file__).resolve().parent / ".github/workflows/job-watchdog.yml"
+BOARD_WORKFLOW = Path(__file__).resolve().parent / ".github/workflows/commons-board.yml"
 
 
 class EnqueuePendingGrokComTests(unittest.TestCase):
@@ -72,6 +73,17 @@ class EnqueuePendingGrokComTests(unittest.TestCase):
         )
         _checkout, _sep, after_checkout = text.partition("uses: actions/checkout@v4")
         self.assertIn("fetch-depth: 0", after_checkout.split("name:", 1)[0])
+
+    def test_commons_board_queues_pending_grok_com_after_ingest(self):
+        text = BOARD_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("enqueue_pending_grok_com.py", text)
+        self.assertIn("board_ingest.py --publish", text)
+        self.assertGreater(
+            text.find("enqueue_pending_grok_com.py"),
+            text.find("board_ingest.py --publish"),
+        )
+        self.assertNotIn("git push --force", text)
+        self.assertNotIn("git push -f", text)
 
 
 if __name__ == "__main__":

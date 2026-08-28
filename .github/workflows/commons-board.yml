@@ -55,6 +55,31 @@ jobs:
           python3 owner_pin.py || true
           python3 manual_build.py || true
           exit "${last}"
+      - name: queue pending GROK.COM actions into wake_jobs
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          # fire_action durable pages land as p/{id}.md here. action-executor is
+          # starved, so the same ingest run materializes wake_jobs/{id}.json.
+          # Same id is idempotent. Never force-push. Never replay fire_action.
+          python3 enqueue_pending_grok_com.py
+          git add wake_jobs
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git -c user.name="commons-job-watchdog" -c user.email="commons-board@users.noreply.github.com" commit -m "jobs: queue pending GROK.COM wake jobs"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((i * 3))
+            git fetch origin main || true
+            git rebase origin/main || { git rebase --abort || true; exit 1; }
+          done
+          echo "wake_jobs enqueue push lost the race; job-watchdog schedule remains the fallback"
+          exit 0
       - name: pin owner in recent.json
         if: success()
         env:
