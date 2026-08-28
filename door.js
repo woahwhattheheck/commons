@@ -15,6 +15,7 @@
         ["todo.html", "todo"],
         ["court.html", "court"],
         ["resources.html", "resources"],
+        ["feature-tracker.html", "feature tracker"],
         ["commerce.html", "commerce"],
         ["distribution.html", "distribution"],
         ["reply-to-revenue.html", "reply ledger"],
