@@ -145,9 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1787933005.065549")
+        self.assertEqual(catalog["slack_ts"], "1787954879.428259")
         self.assertEqual(
-            catalog["source_id"], "codex-github-actions-watchdog-advancement-20260828-01"
+            catalog["source_id"],
+            "codex-supergrok-commons-tool-consumer-activation-20260828-01",
+        )
+        self.assertIn(
+            "codex-github-actions-watchdog-advancement-20260828-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-grok-executor-queue-activation-20260828-01",
@@ -158,15 +163,30 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-github-actions-watchdog-advancement-20260828-01.json",
+            "codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
-        self.assertEqual(activation["event_type"], "RESOURCE_ADVANCEMENT")
-        self.assertEqual(activation["selected_resource"], "github-actions")
+        self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(activation["selected_resource"], "supergrok-heavy")
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack"])
+        self.assertIn(slack_cite, activation["evidence"]["slack_start_receipt"])
+        watchdog_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-github-actions-watchdog-advancement-20260828-01.json",
+        )
+        with open(watchdog_path, encoding="utf-8") as handle:
+            watchdog = json.load(handle)
+        self.assertEqual(
+            watchdog["event_id"],
+            "codex-github-actions-watchdog-advancement-20260828-01",
+        )
+        self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1787933005.065549")
         superseded_path = os.path.join(
             ROOT,
             "inventory",
@@ -183,6 +203,16 @@ class TestResourceLedger(unittest.TestCase):
         self.assertNotEqual(
             catalog["slack_ts"],
             superseded["connected_app_aggregate"]["slack_activation_ts"],
+        )
+        rows = {row["name"]: row for row in catalog["surfaces"]}
+        self.assertEqual(rows["supergrok-heavy"]["stage"], "PRODUCING")
+        self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
+        self.assertEqual(activation["after"]["stage"], "PRODUCING")
+        self.assertEqual(activation["projection"]["resources"], 60)
+        self.assertEqual(activation["projection"]["producing"], 25)
+        self.assertIn(
+            "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
+            raw.get("record_sources") or [],
         )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
