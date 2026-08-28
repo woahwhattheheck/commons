@@ -251,8 +251,8 @@
         },
         {
           "path": "resources.html",
-          "sha256": "4a23a824dc09af37ab100dd6b425c4e56b621b0a042b9f8489f84a95c29694b4",
-          "bytes": 10053
+          "sha256": "e7b81f68e90b900f53f41df78c5cc44dcf3e38af28b5f2ae0468a80d319559ac",
+          "bytes": 10314
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
