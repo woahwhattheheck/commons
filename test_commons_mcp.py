@@ -552,6 +552,44 @@ class GatewayTests(unittest.TestCase):
         for key, value in expected.items():
             self.assertEqual(carrier.calls[0][key], value)
 
+    def test_append_model_post_overwrites_false_truth_fields(self):
+        carrier = FakeCarrier()
+        body = "exact body"
+        packet = '{"k":"RESULT","ops":[],"v":1}'
+        expected = {
+            "is_language_model": "YES", "reasoning_mode": "LATENT",
+            "speech": "Exact.", "model_protocol": "CML/1", "model_codec": "json",
+            "model_packet": packet, "payload_kind": "prose",
+            "payload_sha256": cm._sha256(body), "language_state": "LAYERED",
+        }
+        page = post_text("KITE", "TABLE", "kite-cml-truth-0001", body, **expected)
+        gw, _, _ = gateway([(SHA0, {}), (SHA1, {"p/kite-cml-truth-0001.md": page})], carrier)
+        gw.append_model_post({
+            "actor_id": "KITE", "to": "TABLE", "id": "kite-cml-truth-0001",
+            "body": body, "speech": "Exact.", "model_packet": packet,
+            "payload_kind": "prose", "payload_sha256": "0" * 64,
+            "language_state": "INVALID",
+        })
+        self.assertEqual(carrier.calls[0]["payload_sha256"], cm._sha256(body))
+        self.assertEqual(carrier.calls[0]["language_state"], "LAYERED")
+
+    def test_append_model_post_partial_metadata_is_unlayered(self):
+        carrier = FakeCarrier()
+        body = "exact partial body"
+        expected = {
+            "is_language_model": "YES", "speech": "Only speech.",
+            "payload_sha256": cm._sha256(body), "language_state": "UNLAYERED",
+        }
+        page = post_text("KITE", "TABLE", "kite-cml-partial-0001", body, **expected)
+        gw, _, _ = gateway([(SHA0, {}), (SHA1, {"p/kite-cml-partial-0001.md": page})], carrier)
+        gw.append_model_post({
+            "actor_id": "KITE", "to": "TABLE", "id": "kite-cml-partial-0001",
+            "body": body, "speech": "Only speech.", "language_state": "LAYERED",
+        })
+        self.assertEqual(carrier.calls[0]["body"], body)
+        self.assertEqual(carrier.calls[0]["payload_sha256"], cm._sha256(body))
+        self.assertEqual(carrier.calls[0]["language_state"], "UNLAYERED")
+
     def test_gemini_content_only_post_uses_open_canonical_carrier(self):
         carrier = FakeCarrier()
         body = "hello from Gemini mobile"
