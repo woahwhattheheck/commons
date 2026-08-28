@@ -6,9 +6,7 @@ window.COMMONS_AVATAR = (function () {
   var PREFIX = "commons-avatar-";
 
   function claimOf(name) {
-    var n = String(name || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
-    if (!/^[A-Z][A-Z0-9_]{1,31}$/.test(n)) return "";
-    return n;
+    return String(name || "").trim().toUpperCase() || "UNSEATED";
   }
 
   function hashClaim(name) {
@@ -62,7 +60,6 @@ window.COMMONS_AVATAR = (function () {
 
   function saveFace(name, mark, hue) {
     var s = claimOf(name);
-    if (!s) return { ok: false, error: "from is required" };
     if (!MARKS[mark]) return { ok: false, error: "unknown mark" };
     var n = parseInt(hue, 10);
     if (isNaN(n)) return { ok: false, error: "hue must be a number" };
