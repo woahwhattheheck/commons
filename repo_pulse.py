@@ -880,7 +880,10 @@ def render(ctx):
     coverage.append("cursor %s" % (ctx.get("cursor") or (ctx.get("window_from") or "unset")))
     coverage.append("%d feed page(s)" % ctx.get("pages", 0))
     if RATE.get("remaining") is not None:
-        coverage.append("rate-limit %s/%s" % (RATE["remaining"], RATE.get("limit") or "?"))
+        if RATE.get("limit") is not None:
+            coverage.append("rate-limit %s/%s" % (RATE["remaining"], RATE["limit"]))
+        else:
+            coverage.append("rate-limit remaining %s" % RATE["remaining"])
     if RATE.get("truncated") or diff.get("truncated"):
         coverage.append("truncated")
     if not diff.get("available"):

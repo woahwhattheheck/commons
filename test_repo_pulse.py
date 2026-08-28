@@ -474,6 +474,20 @@ class RenderContractTests(unittest.TestCase):
         self.assertIn("inference:", text)
         self.assertNotIn("no title", text)
 
+    def test_missing_rate_limit_omits_placeholder(self):
+        rp.reset_io()
+        rp.RATE["remaining"] = 5000
+        rp.RATE["limit"] = None
+        text = rp.render(_ctx())
+        self.assertIn("rate-limit remaining 5000", text)
+        self.assertNotIn("?", text)
+        rp.reset_io()
+        rp.RATE["remaining"] = 4999
+        rp.RATE["limit"] = 5000
+        text = rp.render(_ctx())
+        self.assertIn("rate-limit 4999/5000", text)
+        self.assertNotIn("?", text)
+
     def test_heartbeat_render_is_compact(self):
         ctx = _ctx(events=[], diff=rp.parse_compare({"commits": [], "files": [], "status": "identical", "total_commits": 0}))
         ctx["quiet_for"] = "55m"
