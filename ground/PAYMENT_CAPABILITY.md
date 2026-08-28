@@ -35,7 +35,7 @@ Square signup, Stripe invoice dashboard) plus
 ```bash
 python3 host/payment_capability.py
 python3 host/payment_capability.py --self-test
-python3 -m unittest -v test_payment_capability.py test_checkout_capability.py
+python3 -m unittest -v test_payment_capability.py test_payment_capability_door_hub.py test_payment_capability_hub_pages.py test_payment_capability_compose.py test_checkout_capability.py
 ```
 
 Human door: [payment-capability.html](../payment-capability.html) ·

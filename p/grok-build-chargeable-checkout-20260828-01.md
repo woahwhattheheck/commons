@@ -29,4 +29,3 @@ Tests: test_checkout_capability.py 6 OK; test_stripe_payment_links.py 1 OK; test
 Composed with grok-distribution-layer-20260828-01 (did not remint): stripe-payment-links is no longer BLOCKED_CHARGES_DISABLED. Catalog-proven SKUs are NOT_LISTED recorded rails, not marketplace LIVE. Distribution still never submits. Fail-closed if payouts_enabled drops.
 
 No auth. Open door stays. 337 NO.
-

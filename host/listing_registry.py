@@ -124,6 +124,10 @@ DOES_NOT_REPLACE = [
     "ground/RESOURCE_LEDGER.json",
     "features.html",
     "revenue/production_survival/marketplaces.md",
+    "payment-capability.html",
+    "host/payment_capability.py",
+    "revenue/payment_capability/registry.json",
+    "ground/PAYMENT_CAPABILITY.md",
 ]
 
 
@@ -289,7 +293,27 @@ def products(catalog: dict[str, Any], mcp: dict[str, Any], root: Path | None = N
     return list(catalog["listings"]) + [mcp_product(mcp, root)]
 
 
-def checkout_for(offer_id: str, listing: dict[str, Any], checkout: dict[str, Any]) -> dict[str, Any]:
+def payment_capability_public_stripe(root: Path | None = None) -> bool:
+    """Public Stripe storefront is CHARGEABLE only when the provider-neutral registry says so."""
+    path = (root or ROOT) / "revenue" / "payment_capability" / "registry.json"
+    if not path.is_file():
+        return False
+    data = _load_json(path)
+    for rail in data.get("rails") or []:
+        if not isinstance(rail, dict):
+            continue
+        if rail.get("id") != "stripe-livemode-acct_1U6HI9ATH4EDE7XD":
+            continue
+        return (
+            rail.get("capability_state") == "CHARGEABLE"
+            and rail.get("charges_enabled") is True
+            and rail.get("payouts_enabled") is True
+            and rail.get("public_presentation") == "EXPOSE"
+        )
+    return False
+
+
+def checkout_for(offer_id: str, listing: dict[str, Any], checkout: dict[str, Any], root: Path | None = None) -> dict[str, Any]:
     if offer_id == MCP_PRODUCT_ID:
         return {
             "state": "NOT_A_PRICED_SKU",
@@ -314,6 +338,7 @@ def checkout_for(offer_id: str, listing: dict[str, Any], checkout: dict[str, Any
         and (rail or {}).get("link_active") is True
         and isinstance(url, str)
         and url.startswith("https://")
+        and payment_capability_public_stripe(root)
     )
     exposure = (rail or {}).get("exposure")
     if proven and exposure == "CHECKOUT_FIRST":
@@ -493,6 +518,13 @@ def evidence_packet(product: dict[str, Any], surface: dict[str, Any], root: Path
             "path": "revenue/checkout_capability/snapshot.json",
             "blob_sha": blob_sha("revenue/checkout_capability/snapshot.json", root),
         })
+    cap = (root or ROOT) / "revenue" / "payment_capability" / "registry.json"
+    if cap.is_file():
+        refs.append({
+            "kind": "payment_capability",
+            "path": "revenue/payment_capability/registry.json",
+            "blob_sha": blob_sha("revenue/payment_capability/registry.json", root),
+        })
     refs.append({
         "kind": "profitability_bind",
         "path": "ground/PROFITABILITY_BUILD_MAP.md",
@@ -641,7 +673,7 @@ def build_listing(
     if published == "EXTERNAL_LIVE":
         raise ListingRegistryError("refusing invented EXTERNAL_LIVE status")
     url = listing_url(surface, product, published)
-    charge = checkout_for(pid, product, checkout)
+    charge = checkout_for(pid, product, checkout, root)
     amount = None
     currency = "USD"
     if pid != MCP_PRODUCT_ID:

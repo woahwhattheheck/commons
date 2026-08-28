@@ -19,6 +19,8 @@
     "builds.html": "permit SOP",
     "ledger.html": "resource census",
     "feature-tracker.html": "shipped-state tracker. Source vs live. Not unfinished now.",
+    "listing-registry.html": "canonical listing drafts. Not unfinished now.",
+    "payment-capability.html": "payment rails. Not unfinished now.",
     "ground/MANUAL.md": "tools catalog plus old OPEN board jobs. Not reconciled now-work."
   },
   "historical_directives": [
