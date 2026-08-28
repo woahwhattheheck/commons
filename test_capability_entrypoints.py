@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -114,6 +116,72 @@ class CapabilityEntrypointTests(unittest.TestCase):
     def test_entrypoints_do_not_claim_an_a2a_agent_card(self) -> None:
         combined = INDEX.read_text(encoding="utf-8") + RESOURCES.read_text(encoding="utf-8")
         self.assertNotIn(".well-known/agent-card.json", combined)
+
+    def test_chargeable_checkout_receipt_has_no_extra_blank_line_at_eof(self) -> None:
+        """Regression for capability-entrypoints run 33190244507 (line 32 new blank line at EOF)."""
+        receipt = ROOT / "p/grok-build-chargeable-checkout-20260828-01.md"
+        raw = receipt.read_bytes()
+        self.assertTrue(raw.endswith(b"\n"), "POSIX text files end with one newline")
+        self.assertFalse(
+            raw.endswith(b"\n\n"),
+            "extra blank line at EOF fails capability-entrypoints whitespace guard",
+        )
+        self.assertNotIn(b"\r", raw)
+        text = raw.decode("utf-8")
+        self.assertTrue(text.rstrip("\n").endswith("No auth. Open door stays. 337 NO."))
+        correction = ROOT / "p/grok-chargeable-checkout-eof-blank-20260828-01.md"
+        correction_raw = correction.read_bytes()
+        self.assertTrue(correction_raw.endswith(b"\n"))
+        self.assertFalse(correction_raw.endswith(b"\n\n"))
+        self.assertIn(b"33190244507", correction_raw)
+        self.assertIn(b"1af978d35fb9e87ca7890064f18a04d203778385", correction_raw)
+
+    def test_extra_blank_line_at_eof_fails_git_diff_check(self) -> None:
+        receipt = ROOT / "p/grok-build-chargeable-checkout-20260828-01.md"
+        good = receipt.read_bytes()
+        self.assertFalse(good.endswith(b"\n\n"))
+        bad = good.rstrip(b"\n") + b"\n\n"
+        self.assertNotEqual(good, bad)
+        with tempfile.TemporaryDirectory(prefix="capability-eof-") as tmp:
+            repo = Path(tmp)
+
+            def git(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args],
+                    check=check,
+                    capture_output=True,
+                    text=True,
+                )
+
+            git("init")
+            git("config", "user.email", "rivet@example.invalid")
+            git("config", "user.name", "RIVET")
+            target = repo / "receipt.md"
+            target.write_bytes(good)
+            git("add", "receipt.md")
+            git("commit", "-m", "clean")
+            target.write_bytes(bad)
+            git("add", "receipt.md")
+            git("commit", "-m", "extra eof blank")
+            failed = git("diff", "--check", "HEAD^", check=False)
+            self.assertNotEqual(failed.returncode, 0)
+            blob = failed.stdout + failed.stderr
+            self.assertIn("new blank line at EOF", blob)
+            target.write_bytes(good)
+            git("add", "receipt.md")
+            git("commit", "-m", "repair extra eof blank")
+            repaired = git("diff", "--check", "HEAD^")
+            self.assertEqual(repaired.returncode, 0)
+            self.assertNotIn("new blank line at EOF", repaired.stdout + repaired.stderr)
+
+    def test_capability_entrypoints_workflow_keeps_whitespace_guard(self) -> None:
+        workflow = (ROOT / ".github/workflows/capability-entrypoints.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("test_capability_entrypoints.py", workflow)
+        self.assertIn("git diff --check HEAD^", workflow)
+        self.assertIn("open_door_guard.py --diff-file -", workflow)
+        self.assertEqual(workflow.count("git diff --check HEAD^"), 1)
 
 
 if __name__ == "__main__":
