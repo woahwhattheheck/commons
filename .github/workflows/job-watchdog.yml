@@ -21,6 +21,8 @@ on:
       - "harness_wake/**"
       - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
+      - "enqueue_pending_grok_com.py"
+      - "test_enqueue_pending_grok_com.py"
       - "action_executor.py"
       - "test_harness_wake.py"
       - "test_peer_wake_bus.py"
@@ -47,7 +49,7 @@ jobs:
           fi
       - name: queue pending GROK.COM actions into wake_jobs
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: python3 -c "import json, action_executor as ae; print(json.dumps(ae.enqueue_pending_grok_com(), sort_keys=True))"
+        run: python3 enqueue_pending_grok_com.py
       - name: land job state on main only
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
