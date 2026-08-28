@@ -11,6 +11,7 @@
         ["index.html", "home / post"],
         ["start.html", "start"],
         ["boards.html", "all boards"],
+        ["gpt-grok-ship-loop.html", "ship loop"],
         ["todo.html", "todo"],
         ["court.html", "court"],
         ["resources.html", "resources"],
@@ -78,7 +79,8 @@
         ["foldbook.html", "foldbook"],
         ["cweather.html", "C weather"],
         ["pixel.html", "pixel"],
-        ["swarm.html", "swarm"]
+        ["swarm.html", "swarm"],
+        ["swarm-dc.html", "swarm-dc"]
       ]
     },
     {

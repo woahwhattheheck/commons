@@ -71,6 +71,8 @@ class GptGrokShipLoopTests(unittest.TestCase):
         cls.start = (ROOT / "START.md").read_text(encoding="utf-8")
         cls.resources = (ROOT / "resources.html").read_text(encoding="utf-8")
         cls.pick = (ROOT / "ground" / "PICK.md").read_text(encoding="utf-8")
+        cls.door = (ROOT / "door.js").read_text(encoding="utf-8")
+        cls.index = (ROOT / "index.html").read_text(encoding="utf-8")
         cls.owned = "\n".join(
             [
                 cls.skill,
@@ -301,6 +303,8 @@ class GptGrokShipLoopTests(unittest.TestCase):
         self.assertIn("gpt-grok-ship-loop.html", self.resources)
         self.assertIn("gpt-grok-ship-loop.html", self.pick)
         self.assertIn("HIGH-PRODUCTIVITY BUILD LOOP", self.board)
+        self.assertIn('["gpt-grok-ship-loop.html", "ship loop"]', self.door)
+        self.assertIn('href="./gpt-grok-ship-loop.html">ship loop</a>', self.index)
 
     def test_mint_job_id_and_frontmatter(self):
         job_id = self.eng.mint_job_id("GPT Grok Ship Loop", "20260828", 1)
