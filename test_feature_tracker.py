@@ -217,10 +217,24 @@ def test_live_tree_shape_and_golden():
     by_id = {row["id"]: row for row in proj.get("features") or []}
     check("listing-registry row", "listing-registry-20260828-01" in by_id, sorted(by_id))
     check("payment-capability row", "payment-capability-20260828-01" in by_id, sorted(by_id))
+    check(
+        "payment-capability-hub-failover row",
+        "payment-capability-hub-failover-20260828-02" in by_id,
+        sorted(by_id),
+    )
     if "listing-registry-20260828-01" in by_id:
         check("listing live unmeasured", by_id["listing-registry-20260828-01"]["live_status"] == "UNMEASURED")
     if "payment-capability-20260828-01" in by_id:
         check("payment live unmeasured", by_id["payment-capability-20260828-01"]["live_status"] == "UNMEASURED")
+    if "payment-capability-hub-failover-20260828-02" in by_id:
+        check(
+            "hub-failover live unmeasured",
+            by_id["payment-capability-hub-failover-20260828-02"]["live_status"] == "UNMEASURED",
+        )
+        check(
+            "hub-failover tested",
+            by_id["payment-capability-hub-failover-20260828-02"]["test_status"] == "TESTED",
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))

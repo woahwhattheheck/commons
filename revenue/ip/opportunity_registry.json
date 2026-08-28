@@ -241,12 +241,12 @@
       "receipts": [
         {
           "path": "ground/FEATURES.md",
-          "sha256": "29fd6db18590a3bfdf8ba8df851008146baed92002d716cb05437409a5e427ed",
-          "bytes": 800
+          "sha256": "5312db472d2b9c39c08f73cbee69d645f74453596eefa6aa2e0021f5cf5a0418",
+          "bytes": 946
         },
         {
           "path": "features.html",
-          "sha256": "1fb846b094674c00825ea9cdc2a218bf85d2e9b4e49b2759b9bf65282eafe4df",
+          "sha256": "6b3bf25a49b2eb29946f9e284393bc35f8a810365d6c6d81a85bf45bf8777d32",
           "bytes": 10160
         },
         {
@@ -256,8 +256,8 @@
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "51b2b16d9b0fc361ac3f60a49c9f0e44ee25646efa3ea0c3c40212393450ea46",
-          "bytes": 74978
+          "sha256": "7353421716adc008d5c3551adc3437ee4e575230e4d55a6f111607af674cdcac",
+          "bytes": 76717
         },
         {
           "path": "host/resource_ledger.py",
