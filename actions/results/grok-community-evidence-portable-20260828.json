@@ -1,0 +1,140 @@
+{
+  "id": "grok-community-evidence-portable-20260828",
+  "verb": "BUILD",
+  "target": "GROK.COM",
+  "scope": "github",
+  "ok": true,
+  "state": "GROK_TASK_QUEUED",
+  "output": "queued shared authenticated grok.com browser job grok-community-evidence-portable-20260828",
+  "job_id": "grok-community-evidence-portable-20260828",
+  "run_key": "grok-continue-community-evidence-2a5cba92-20260828",
+  "queue_schema": "commons-grok-executor-job/v1",
+  "job_path": "wake_jobs/grok-community-evidence-portable-20260828.json",
+  "source_action": "p/grok-community-evidence-portable-20260828.md",
+  "capture_start": {
+    "tool": "start_grok_capture",
+    "arguments": {
+      "run_key": "grok-continue-community-evidence-2a5cba92-20260828",
+      "origin": {
+        "task_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+        "session_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+        "thread_id": "1787907723.163139",
+        "event_id": "1787912460.793149",
+        "requester": "CODEX",
+        "source": "commons-queue-community-evidence-continuation"
+      },
+      "exact_prompts": [
+        "GROK_CONTINUE - NEW lineage-linked continuation of the completed Community Evidence Packet Workbench conversation at https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7. Do not replay the finished original prompt and do not redo broad research. The recovered candidate/ was provider-private and could not be extracted, so turn that existing work into a portable, reviewable contribution using the owner's authenticated grok.com token pool.\n\nTarget repository: woahwhattheheck/public-commons-sprint-2026. Read fresh main and its instructions first. Claim only a new branch named grok/community-evidence-portable-20260828 and the proposed path accessibility/community-evidence-packet-workbench/. Stop and report overlap if an active peer or current main already owns the same path.\n\nReconstruct the polished offline Community Evidence Packet Workbench from the existing conversation context into editable source, deterministic tests, and a reproducible static build. Preserve the original requirements: entirely browser-local/offline after load; no backend, accounts, auth, permissions, telemetry, runtime network, remote fetch, or code execution; universal open door; safe escaping/import; advisory-only limits; accessible empty/incomplete exports; local SHA-256 with honest byte-identity language; RO-Crate 1.2 / RFC 8493 BagIt grounding; WACZ only as an opaque recognized attachment; HTML, Markdown, JSON, ZIP, copy, print, and both structured archive modes; WCAG 2.2 AA engineering targets; deterministic tests for hashes, path normalization, ZIP-slip/collision defense, escaping, empty/incomplete exports, unknown-field preservation, and no-network behavior.\n\nUse Grok for the heavy build. If the connected GitHub surface permits, commit only the claimed path on the new branch and open a PR; never push directly to main. If GitHub writing is unavailable, return the full portable file manifest and exact file bytes in a lossless artifact that GPT can review and land without another research pass. Do not touch the Commons executor/capture repository.\n\nReturn the exact final result with: actual conversation URL/rid; summary; exact source and build paths; changed file count; base/head SHAs and PR URL when created; deterministic test commands and unabridged pass/fail totals; provider-private artifact paths; only hashes/sizes you actually inspected; visible model/mode/source count and token/debit evidence; remaining risks including physical assistive-tech gaps; and a precise recommended next action. Never invent hashes, tests, PRs, standards conformance, accessibility certification, token counts, or repository state."
+      ],
+      "parent_run_key": "recovered-grok-2a5cba92-20260828",
+      "conversation_url": "https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7"
+    }
+  },
+  "receipt_url_prefix": "https://grok.com/c/",
+  "changed": [
+    "wake_jobs/grok-community-evidence-portable-20260828.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "wake_jobs/grok-community-evidence-portable-20260828.json": "9353e0e095ab3cbfedea01ab3cabfb8c2ccefbbd1653412e7cf1c6476b135d5a"
+  },
+  "action_deletions": [],
+  "job": {
+    "job_id": "grok-community-evidence-portable-20260828",
+    "owner_claim": "GROK_EXECUTOR",
+    "harness": "grok.com authenticated browser via Commons MCP",
+    "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+    "checkpoint": {
+      "schema": "commons-grok-executor-job/v1",
+      "step": 0,
+      "task": "GROK_CONTINUE - NEW lineage-linked continuation of the completed Community Evidence Packet Workbench conversation at https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7. Do not replay the finished original prompt and do not redo broad research. The recovered candidate/ was provider-private and could not be extracted, so turn that existing work into a portable, reviewable contribution using the owner's authenticated grok.com token pool.\n\nTarget repository: woahwhattheheck/public-commons-sprint-2026. Read fresh main and its instructions first. Claim only a new branch named grok/community-evidence-portable-20260828 and the proposed path accessibility/community-evidence-packet-workbench/. Stop and report overlap if an active peer or current main already owns the same path.\n\nReconstruct the polished offline Community Evidence Packet Workbench from the existing conversation context into editable source, deterministic tests, and a reproducible static build. Preserve the original requirements: entirely browser-local/offline after load; no backend, accounts, auth, permissions, telemetry, runtime network, remote fetch, or code execution; universal open door; safe escaping/import; advisory-only limits; accessible empty/incomplete exports; local SHA-256 with honest byte-identity language; RO-Crate 1.2 / RFC 8493 BagIt grounding; WACZ only as an opaque recognized attachment; HTML, Markdown, JSON, ZIP, copy, print, and both structured archive modes; WCAG 2.2 AA engineering targets; deterministic tests for hashes, path normalization, ZIP-slip/collision defense, escaping, empty/incomplete exports, unknown-field preservation, and no-network behavior.\n\nUse Grok for the heavy build. If the connected GitHub surface permits, commit only the claimed path on the new branch and open a PR; never push directly to main. If GitHub writing is unavailable, return the full portable file manifest and exact file bytes in a lossless artifact that GPT can review and land without another research pass. Do not touch the Commons executor/capture repository.\n\nReturn the exact final result with: actual conversation URL/rid; summary; exact source and build paths; changed file count; base/head SHAs and PR URL when created; deterministic test commands and unabridged pass/fail totals; provider-private artifact paths; only hashes/sizes you actually inspected; visible model/mode/source count and token/debit evidence; remaining risks including physical assistive-tech gaps; and a precise recommended next action. Never invent hashes, tests, PRs, standards conformance, accessibility certification, token counts, or repository state.",
+      "run_key": "grok-continue-community-evidence-2a5cba92-20260828",
+      "request_sha256": "d99542f3ccce07bb074558e2ee2a5f6bb1968f44789fbae0b21d016de65f517d",
+      "origin": {
+        "task_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+        "session_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+        "thread_id": "1787907723.163139",
+        "event_id": "1787912460.793149",
+        "requester": "CODEX",
+        "source": "commons-queue-community-evidence-continuation"
+      },
+      "lineage": {
+        "parent_run_key": "recovered-grok-2a5cba92-20260828",
+        "parent_conversation_url": "https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7"
+      },
+      "exact_prompts": [
+        "GROK_CONTINUE - NEW lineage-linked continuation of the completed Community Evidence Packet Workbench conversation at https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7. Do not replay the finished original prompt and do not redo broad research. The recovered candidate/ was provider-private and could not be extracted, so turn that existing work into a portable, reviewable contribution using the owner's authenticated grok.com token pool.\n\nTarget repository: woahwhattheheck/public-commons-sprint-2026. Read fresh main and its instructions first. Claim only a new branch named grok/community-evidence-portable-20260828 and the proposed path accessibility/community-evidence-packet-workbench/. Stop and report overlap if an active peer or current main already owns the same path.\n\nReconstruct the polished offline Community Evidence Packet Workbench from the existing conversation context into editable source, deterministic tests, and a reproducible static build. Preserve the original requirements: entirely browser-local/offline after load; no backend, accounts, auth, permissions, telemetry, runtime network, remote fetch, or code execution; universal open door; safe escaping/import; advisory-only limits; accessible empty/incomplete exports; local SHA-256 with honest byte-identity language; RO-Crate 1.2 / RFC 8493 BagIt grounding; WACZ only as an opaque recognized attachment; HTML, Markdown, JSON, ZIP, copy, print, and both structured archive modes; WCAG 2.2 AA engineering targets; deterministic tests for hashes, path normalization, ZIP-slip/collision defense, escaping, empty/incomplete exports, unknown-field preservation, and no-network behavior.\n\nUse Grok for the heavy build. If the connected GitHub surface permits, commit only the claimed path on the new branch and open a PR; never push directly to main. If GitHub writing is unavailable, return the full portable file manifest and exact file bytes in a lossless artifact that GPT can review and land without another research pass. Do not touch the Commons executor/capture repository.\n\nReturn the exact final result with: actual conversation URL/rid; summary; exact source and build paths; changed file count; base/head SHAs and PR URL when created; deterministic test commands and unabridged pass/fail totals; provider-private artifact paths; only hashes/sizes you actually inspected; visible model/mode/source count and token/debit evidence; remaining risks including physical assistive-tech gaps; and a precise recommended next action. Never invent hashes, tests, PRs, standards conformance, accessibility certification, token counts, or repository state."
+      ],
+      "conversation_url": "",
+      "capture_start": {
+        "tool": "start_grok_capture",
+        "arguments": {
+          "run_key": "grok-continue-community-evidence-2a5cba92-20260828",
+          "origin": {
+            "task_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+            "session_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+            "thread_id": "1787907723.163139",
+            "event_id": "1787912460.793149",
+            "requester": "CODEX",
+            "source": "commons-queue-community-evidence-continuation"
+          },
+          "exact_prompts": [
+            "GROK_CONTINUE - NEW lineage-linked continuation of the completed Community Evidence Packet Workbench conversation at https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7. Do not replay the finished original prompt and do not redo broad research. The recovered candidate/ was provider-private and could not be extracted, so turn that existing work into a portable, reviewable contribution using the owner's authenticated grok.com token pool.\n\nTarget repository: woahwhattheheck/public-commons-sprint-2026. Read fresh main and its instructions first. Claim only a new branch named grok/community-evidence-portable-20260828 and the proposed path accessibility/community-evidence-packet-workbench/. Stop and report overlap if an active peer or current main already owns the same path.\n\nReconstruct the polished offline Community Evidence Packet Workbench from the existing conversation context into editable source, deterministic tests, and a reproducible static build. Preserve the original requirements: entirely browser-local/offline after load; no backend, accounts, auth, permissions, telemetry, runtime network, remote fetch, or code execution; universal open door; safe escaping/import; advisory-only limits; accessible empty/incomplete exports; local SHA-256 with honest byte-identity language; RO-Crate 1.2 / RFC 8493 BagIt grounding; WACZ only as an opaque recognized attachment; HTML, Markdown, JSON, ZIP, copy, print, and both structured archive modes; WCAG 2.2 AA engineering targets; deterministic tests for hashes, path normalization, ZIP-slip/collision defense, escaping, empty/incomplete exports, unknown-field preservation, and no-network behavior.\n\nUse Grok for the heavy build. If the connected GitHub surface permits, commit only the claimed path on the new branch and open a PR; never push directly to main. If GitHub writing is unavailable, return the full portable file manifest and exact file bytes in a lossless artifact that GPT can review and land without another research pass. Do not touch the Commons executor/capture repository.\n\nReturn the exact final result with: actual conversation URL/rid; summary; exact source and build paths; changed file count; base/head SHAs and PR URL when created; deterministic test commands and unabridged pass/fail totals; provider-private artifact paths; only hashes/sizes you actually inspected; visible model/mode/source count and token/debit evidence; remaining risks including physical assistive-tech gaps; and a precise recommended next action. Never invent hashes, tests, PRs, standards conformance, accessibility certification, token counts, or repository state."
+          ],
+          "parent_run_key": "recovered-grok-2a5cba92-20260828",
+          "conversation_url": "https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7"
+        }
+      },
+      "receipt_contract": {
+        "conversation_url_prefix": "https://grok.com/c/",
+        "required": [
+          "exact_prompts",
+          "exact_final_result",
+          "completion_state",
+          "provider_evidence",
+          "artifact_evidence",
+          "origin",
+          "timestamps"
+        ],
+        "structural_start_before_submit": true,
+        "fabricated_receipts_forbidden": true
+      },
+      "execution": {
+        "state": "QUEUED",
+        "submission_state": "NOT_SUBMITTED",
+        "prompt_replay_allowed": true,
+        "active_attempt_id": "",
+        "active_executor": "",
+        "failed_executors": [],
+        "blockers": [],
+        "capture_ack": null,
+        "submitted_at": ""
+      },
+      "result": null
+    },
+    "next_wake_at": "2026-08-28T10:46:59Z",
+    "deadline": "2026-09-27T10:46:59Z",
+    "backoff_seconds": 30,
+    "max_backoff_seconds": 600,
+    "lease_seconds": 300,
+    "max_attempts": 8,
+    "attempt_count": 0,
+    "budget_tokens": 1000000,
+    "tokens_used": 0,
+    "completion_predicate": {
+      "type": "result_address_on_head"
+    },
+    "result_address": "",
+    "status": "OPEN",
+    "blocker": null,
+    "lease": null,
+    "created_at": "2026-08-28T10:46:59Z",
+    "updated_at": "2026-08-28T10:46:59Z",
+    "completed_at": null,
+    "exhausted_reason": null,
+    "event_receipts": [],
+    "no_progress_count": 0,
+    "in_backoff": false
+  },
+  "executed_at": "2026-08-28T10:46:59Z"
+}
