@@ -13,12 +13,10 @@
     "read_recent returns a bake and says so.",
     "Wake/job contract: one stable job_id. Attempt ids and Slack ts are receipts. A tick reads state first and does not invoke a model unless the job is RUNNABLE and due. Harness adapters are not this pack."
   ],
-  "refused_tools": [
-    "generic_put_file",
-    "overwrite_post",
-    "delete_post",
-    "slack_bot_token_ingest",
-    "host_exec"
+  "provider_constraints": [
+    "GitHub write roads require a provider token.",
+    "Slack API roads require a bot token or webhook.",
+    "Discord API roads require a supported bot app or webhook."
   ],
   "tools": [
     {
@@ -385,4 +383,3 @@
     }
   ]
 }
-
