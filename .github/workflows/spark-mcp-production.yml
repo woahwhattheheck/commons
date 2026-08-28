@@ -3,10 +3,13 @@
 # no-click road after VERCEL_TEAM_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID
 # exist. VERCEL_TOKEN (project-scoped newer format) is rejected by Vercel CLI
 # 56.x/59.x; deploy auth is the team-scoped CLI-compatible secret only.
-# .vercelignore allowlists the MCP runtime graph so Hobby api-upload-free
-# (5000 files) cannot upload muhl/projection/board corpus. Deny with /*
-# not bare *: Vercel CLI 56 treated * as every depth and dropped api/mcp.py
-# (run 33218271833, 7 deployment files).
+#
+# Hobby api-upload-free caps uploads at 5000 files. .vercelignore allowlists
+# cannot put api/mcp.py on Vercel CLI 56: bare * and root /* both uploaded
+# exactly 7 root files (runs 33218271833 and 33219467177) and failed with
+# "api/mcp.py doesn't match any Serverless Functions". Production therefore
+# copies the MCP runtime graph into a staging directory and deploys that
+# tree. Do not copy .vercelignore into the staging directory.
 #
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are
@@ -112,23 +115,71 @@ jobs:
         run: |
           set -euo pipefail
           npm install --global vercel@56.1.0
-          mkdir -p .vercel
-          if [ -n "${VERCEL_ORG_ID}" ] && [ -n "${VERCEL_PROJECT_ID}" ]; then
-            python3 - <<'PY'
-          import json, os, pathlib
-          pathlib.Path(".vercel").mkdir(exist_ok=True)
-          pathlib.Path(".vercel/project.json").write_text(
-              json.dumps({
-                  "orgId": os.environ["VERCEL_ORG_ID"],
-                  "projectId": os.environ["VERCEL_PROJECT_ID"],
-              }),
-              encoding="utf-8",
+          STAGE="$(mktemp -d)"
+          export STAGE
+          python3 - <<'PY'
+          import json, os, pathlib, shutil
+
+          root = pathlib.Path(".").resolve()
+          stage = pathlib.Path(os.environ["STAGE"])
+          files = [
+              "api/mcp.py",
+              "api/owner_context.py",
+              "commons_mcp.py",
+              "commons_mcp_app.html",
+              "model_language.py",
+              "relay_manifest.py",
+              "owner_enroll.py",
+              "owner_net.py",
+              "vercel.json",
+              "host/observatory.py",
+              "host/owner_context.py",
+              "integrations/grokcom_revenue/__init__.py",
+              "integrations/grokcom_revenue/orchestrator.py",
+              "protocol/__init__.py",
+              "protocol/emit.py",
+              "protocol/events.py",
+              "protocol/projector.py",
+              "protocol/schema.py",
+          ]
+          files.extend(
+              sorted(
+                  "carriers/" + path.name
+                  for path in (root / "carriers").glob("*.json")
+              )
           )
+          missing = [rel for rel in files if not (root / rel).is_file()]
+          if missing:
+              raise SystemExit("missing MCP runtime files: " + ", ".join(missing))
+          if len(files) >= 5000:
+              raise SystemExit("staged file count exceeds Hobby api-upload-free cap")
+          for rel in files:
+              dst = stage / rel
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(root / rel, dst)
+          # do not copy .vercelignore into the staging directory
+          org = os.environ.get("VERCEL_ORG_ID") or ""
+          project = os.environ.get("VERCEL_PROJECT_ID") or ""
+          if org and project:
+              vercel_dir = stage / ".vercel"
+              vercel_dir.mkdir(exist_ok=True)
+              (vercel_dir / "project.json").write_text(
+                  json.dumps({"orgId": org, "projectId": project}),
+                  encoding="utf-8",
+              )
+          print("staged", len(files), "files under", stage)
           PY
-          else
-            vercel link --yes --token="${VERCEL_TOKEN}" --project "${VERCEL_PROJECT_NAME}" --scope "${VERCEL_SCOPE}"
+          if [ ! -f "${STAGE}/api/mcp.py" ] || [ ! -f "${STAGE}/vercel.json" ]; then
+            echo "staging failed: api/mcp.py or vercel.json missing" >&2
+            exit 1
           fi
-          vercel deploy --prod --yes --token="${VERCEL_TOKEN}" | tee /tmp/vercel-deploy.log
+          if [ ! -f "${STAGE}/.vercel/project.json" ]; then
+            vercel link --yes --token="${VERCEL_TOKEN}" --project "${VERCEL_PROJECT_NAME}" --scope "${VERCEL_SCOPE}" --cwd "${STAGE}"
+          fi
+          (
+            cd "$STAGE"
+            vercel deploy --prod --yes --token="${VERCEL_TOKEN}"
+          ) | tee /tmp/vercel-deploy.log
           {
             echo "## spark-mcp-production deployed"
             echo

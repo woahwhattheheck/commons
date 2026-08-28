@@ -30,6 +30,26 @@ REQUIRED_WATCH = (
 )
 CORPUS_PATHS = ("p/**", "llms.txt", "posts.json", "board.md", "chunks/**")
 SECRET_NAMES = ("VERCEL_TEAM_TOKEN", "VERCEL_ORG_ID", "VERCEL_PROJECT_ID")
+STAGED_RUNTIME = (
+    "api/mcp.py",
+    "api/owner_context.py",
+    "commons_mcp.py",
+    "commons_mcp_app.html",
+    "model_language.py",
+    "relay_manifest.py",
+    "owner_enroll.py",
+    "owner_net.py",
+    "vercel.json",
+    "host/observatory.py",
+    "host/owner_context.py",
+    "integrations/grokcom_revenue/__init__.py",
+    "integrations/grokcom_revenue/orchestrator.py",
+    "protocol/__init__.py",
+    "protocol/emit.py",
+    "protocol/events.py",
+    "protocol/projector.py",
+    "protocol/schema.py",
+)
 
 
 def _path_block(text: str, event: str) -> str:
@@ -83,6 +103,19 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("commons_mcp.py", text)
         self.assertIn("vercel.json", text)
 
+    def test_workflow_stages_runtime_graph_without_vercelignore(self) -> None:
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn('STAGE="$(mktemp -d)"', text)
+        self.assertIn("do not copy .vercelignore into the staging directory", text)
+        self.assertIn('cd "$STAGE"', text)
+        self.assertIn("vercel deploy --prod --yes --token=\"${VERCEL_TOKEN}\"", text)
+        self.assertIn("33219467177", text)
+        self.assertIn("7 root files", text)
+        for path in STAGED_RUNTIME:
+            self.assertIn('"%s"' % path, text)
+        self.assertIn('shutil.copy2(root / rel, dst)', text)
+        self.assertNotIn('copy2(root / ".vercelignore"', text)
+
     def test_vercelignore_excludes_board_corpus(self) -> None:
         text = VERCELIGNORE.read_text(encoding="utf-8")
         lines = [
@@ -96,8 +129,8 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertNotIn("api/mcp.py", lines)
         self.assertNotIn("carriers", lines)
         # Hobby api-upload-free is 5000 files. Allowlist the runtime graph.
-        # Bare * is the Vercel CLI 56.1.0 bug: every-depth match dropped
-        # directory un-ignores (run 33218271833 uploaded 7 files, no api/mcp.py).
+        # Bare * and /* still dropped directory un-ignores on Vercel CLI 56.1.0
+        # (runs 33218271833 / 33219467177 uploaded 7 files, no api/mcp.py).
         self.assertIn("/*", lines)
         self.assertNotIn("*", lines)
         self.assertIn("!commons_mcp.py", lines)
@@ -112,10 +145,12 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("api-upload-free", text)
         self.assertIn("5000", text)
         self.assertIn("33218271833", text)
+        self.assertIn("33219467177", text)
         self.assertIn("7 root files", text)
+        self.assertIn("stages the runtime graph", text)
 
     def test_vercelignore_keeps_api_mcp_and_drops_corpus_via_git_matcher(self) -> None:
-        """Regression for run 33218271833: api/mcp.py must survive the allowlist."""
+        """Git matcher still keeps api/mcp.py. Vercel CLI 56 did not."""
         text = VERCELIGNORE.read_text(encoding="utf-8")
         keep = (
             "api/mcp.py",

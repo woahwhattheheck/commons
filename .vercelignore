@@ -3,10 +3,11 @@
 # Hobby upload cap is 5000 files (api-upload-free). Deny root entries, then
 # allow only the runtime graph. A denylist of p/chunks still left 9k+ files
 # (muhl, projection, infra, ground, host) and production deploy failed.
-# Bare * matches every filename at every depth on Vercel CLI 56.1.0, so
-# directory un-ignores never applied: run 33218271833 uploaded 7 root files
-# and failed with api/mcp.py not matching any Serverless Function.
-# /* ignores only root entries; nested files under un-ignored dirs stay in.
+# Bare * and root /* both failed on Vercel CLI 56.1.0: nested un-ignores
+# never applied (runs 33218271833 and 33219467177 uploaded 7 root files,
+# api/mcp.py missing). Production deploy stages the runtime graph instead
+# and does not copy this file into that directory. Keep the allowlist as
+# the local/root-deploy contract and the bound git-matcher test.
 /*
 !api/
 !api/**
