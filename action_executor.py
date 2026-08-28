@@ -17,7 +17,7 @@ import shlex
 import subprocess
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -29,6 +29,7 @@ DEVICE_TARGETS = {"BRYCE-PC", "BRYCE_PHONE", "BRYCE-PHONE", "CURRENT-DEVICE", "D
 MAX_ACTION_VERB_CHARS = 160
 MAX_DEVICE_TARGET_CHARS = 1024
 WRITER_OK = {"wrote", "exists", "unchanged"}
+GROK_COM_HARNESS = "grok.com authenticated browser via Commons MCP"
 
 
 def _load_board_ingest():
@@ -84,6 +85,94 @@ def parse_record(path: Path) -> dict | None:
 def is_device_target(target: str) -> bool:
     up = target.strip().upper()
     return up in DEVICE_TARGETS or up.startswith("DEVICE:") or up.startswith("BRYCE-PC:")
+
+
+def is_grok_com_target(target: str) -> bool:
+    """Recognize the browser carrier address, not a repository directory."""
+    normalized = target.strip().upper().rstrip("/")
+    return normalized in {"GROK.COM", "HTTPS://GROK.COM", "HTTP://GROK.COM"}
+
+
+def _job_owner(meta: dict) -> str:
+    """Carry the sender into the existing uppercase Commons job claim field."""
+    owner = re.sub(r"[^A-Z0-9_]", "_", str(meta.get("from") or "UNSEATED").upper())[:32]
+    return owner if re.fullmatch(r"[A-Z][A-Z0-9_]{1,31}", owner) else "UNSEATED"
+
+
+def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict:
+    """Route a GROK.COM action into the durable wake/job road.
+
+    The GitHub executor cannot own an authenticated browser session.  Its job
+    is to preserve the exact task once, wake the owning grok.com harness, and
+    require that harness to return a real conversation URL plus a durable
+    Commons result page.  This deliberately does not treat prose as shell.
+    """
+    task = payload.strip()
+    if not task:
+        raise ValueError("GROK.COM task payload must be non-empty")
+
+    from independent_commons_mcp.jobs import JobStore
+
+    before = working_state()
+    now = datetime.now(timezone.utc).replace(microsecond=0)
+    source_action = "p/%s.md" % ident
+    store = JobStore(ROOT / "wake_jobs")
+    queued = store.upsert({
+        "job_id": ident,
+        "owner_claim": _job_owner(meta),
+        "harness": GROK_COM_HARNESS,
+        "objective": (
+            "Execute grok.com task %s from checkpoint.task and return its verified receipt."
+            % ident
+        ),
+        "checkpoint": {
+            "step": 0,
+            "task": task,
+            "verb": verb,
+            "source_action": source_action,
+            "receipt_contract": {
+                "conversation_url_prefix": "https://grok.com/c/",
+                "required": [
+                    "exact_prompt",
+                    "result_summary",
+                    "conversation_url",
+                    "token_receipt_when_available",
+                    "changed_paths_and_git_sha_when_code_changed",
+                    "durable_commons_result_address",
+                ],
+                "fabricated_receipts_forbidden": True,
+            },
+        },
+        "next_wake_at": now.isoformat().replace("+00:00", "Z"),
+        "deadline": (now + timedelta(days=30)).isoformat().replace("+00:00", "Z"),
+        "backoff_seconds": 60,
+        "max_backoff_seconds": 3600,
+        "lease_seconds": 1800,
+        "max_attempts": 64,
+        "budget_tokens": 1000000,
+        "completion_predicate": {"type": "result_address_on_head"},
+    })
+    changed, outputs, deletions = collect_action_outputs(before)
+    job_path = "wake_jobs/%s.json" % ident
+    return {
+        "id": ident,
+        "verb": verb,
+        "target": "GROK.COM",
+        "scope": "github",
+        "ok": True,
+        "state": "GROK_TASK_QUEUED",
+        "output": "queued authenticated grok.com browser job %s" % ident,
+        "job_id": ident,
+        "job_path": job_path,
+        "source_action": source_action,
+        "receipt_url_prefix": "https://grok.com/c/",
+        "changed": changed,
+        "canonical_records": {},
+        "action_outputs": outputs,
+        "action_deletions": deletions,
+        "job": queued.get("job"),
+        "executed_at": now.isoformat().replace("+00:00", "Z"),
+    }
 
 
 def resolve_target(target: str) -> Path:
@@ -404,6 +493,8 @@ def execute(rec: dict, scope: str) -> dict:
     action_outputs: dict[str, str] = {}
     action_deletions: list[str] = []
     output = ""
+    if scope == "github" and is_grok_com_target(target) and verb not in {"POST", "REPLY"}:
+        return queue_grok_com_task(meta, verb, payload, ident)
     if verb == "POST":
         if scope != "github":
             raise ValueError("POST is a canonical Commons writer verb and runs in github scope")
