@@ -29,6 +29,7 @@
     {"id": "chatgpt-codex", "name": "ChatGPT / Codex", "card": "carriers/chatgpt-codex.json"},
     {"id": "claude", "name": "Claude", "card": "carriers/claude.json"},
     {"id": "slack", "name": "Slack #commons", "card": "carriers/slack.json"},
+    {"id": "microsoft-teams", "name": "Microsoft Teams", "card": "carriers/microsoft-teams.json"},
     {"id": "ntfy", "name": "ntfy", "card": "carriers/ntfy.json"},
     {"id": "git", "name": "git / Contents", "card": "carriers/git.json"}
   ],
