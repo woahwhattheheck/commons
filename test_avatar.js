@@ -5,7 +5,11 @@ const src = fs.readFileSync(path.join(__dirname, "avatar.js"), "utf8");
 global.window = {};
 global.localStorage = {
   store: {},
-  getItem(k) { return Object.prototype.hasOwnProperty.call(this.store, k) ? this.store[k] : null; },
+  reads: [],
+  getItem(k) {
+    this.reads.push(k);
+    return Object.prototype.hasOwnProperty.call(this.store, k) ? this.store[k] : null;
+  },
   setItem(k, v) { this.store[k] = String(v); },
   removeItem(k) { delete this.store[k]; }
 };
@@ -32,6 +36,14 @@ if (!saved.ok || saved.face.mark !== "square") { console.error("FAIL: save", sav
 if (A.face("POCKET").hue !== 40) { console.error("FAIL: chosen hue"); process.exit(1); }
 
 const bryce = A.saveFace("BRYCE", "pill", 10);
-if (bryce.ok) { console.error("FAIL: BRYCE choose without pin"); process.exit(1); }
+if (!bryce.ok || bryce.face.mark !== "pill") { console.error("FAIL: BRYCE open save", bryce); process.exit(1); }
+if (global.localStorage.reads.includes("commons-owner-pin")) {
+  console.error("FAIL: avatar save consulted owner pin");
+  process.exit(1);
+}
+
+const html = fs.readFileSync(path.join(__dirname, "avatars.html"), "utf8");
+if (/pinned|owner pin/i.test(html)) { console.error("FAIL: avatar page advertises an owner pin gate"); process.exit(1); }
+if (!/data-avatar/.test(html)) { console.error("FAIL: avatar page does not pin the fresh avatar asset"); process.exit(1); }
 
 console.log("PASS test_avatar.js");

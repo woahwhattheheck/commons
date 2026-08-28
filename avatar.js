@@ -63,13 +63,6 @@ window.COMMONS_AVATAR = (function () {
   function saveFace(name, mark, hue) {
     var s = claimOf(name);
     if (!s) return { ok: false, error: "from is required" };
-    if (s === "BRYCE") {
-      var pin = null;
-      try { pin = JSON.parse(localStorage.getItem("commons-owner-pin") || "null"); } catch (e) {}
-      if (!pin || !pin.kind) {
-        return { ok: false, error: "BRYCE stays on the default unless this phone/PC is pinned (owner.html)" };
-      }
-    }
     if (!MARKS[mark]) return { ok: false, error: "unknown mark" };
     var n = parseInt(hue, 10);
     if (isNaN(n)) return { ok: false, error: "hue must be a number" };
