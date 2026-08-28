@@ -289,6 +289,7 @@ class GrokExecutorQueue:
         lease_id: str,
         executor_id: str,
         now: str,
+        require_executor_claim: bool = True,
     ) -> None:
         lease = job.get("lease") or {}
         until = parse_ts(str(lease.get("until") or ""))
@@ -303,7 +304,7 @@ class GrokExecutorQueue:
             job.get("status") != "LEASED"
             or lease.get("lease_id") != lease_id
             or lease.get("holder") != executor_id
-            or not claims
+            or (require_executor_claim and not claims)
             or until is None
             or now_dt is None
             or now_dt >= until
@@ -349,7 +350,12 @@ class GrokExecutorQueue:
         with self.store._transaction():
             job = self.store._get_unlocked(job_id)
             self._require_live(
-                job, attempt_id=attempt_id, lease_id=lease_id, executor_id=executor, now=at
+                job,
+                attempt_id=attempt_id,
+                lease_id=lease_id,
+                executor_id=executor,
+                now=at,
+                require_executor_claim=False,
             )
             checkpoint = _copy(_queue_checkpoint(job))
             execution = _execution(checkpoint)
