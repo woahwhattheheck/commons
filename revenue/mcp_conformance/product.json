@@ -39,11 +39,11 @@
     }
   ],
   "runner": {
-    "path": "mcp_conformance.py",
+    "path": "host/mcp_conformance.py",
     "dependencies": "Python 3 standard library only",
     "default_mode": "read-only discovery",
     "optional_mode": "caller-explicit arbitrary tools/call with response body hashed by default",
-    "example": "python mcp_conformance.py https://example.com/mcp --output receipt.json",
+    "example": "python host/mcp_conformance.py https://example.com/mcp --output receipt.json",
     "exact_commons_parity": [
       "open_commons_composer",
       "fire_action",
@@ -80,7 +80,7 @@
     "the final receipt SHA-256 recomputes from canonical unsigned JSON"
   ],
   "source_paths": [
-    "mcp_conformance.py",
+    "host/mcp_conformance.py",
     "test_mcp_conformance.py",
     "mcp-conformance.html",
     "carriers/catalog.json"

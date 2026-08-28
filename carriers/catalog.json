@@ -50,7 +50,7 @@
       "name": "MCP Conformance Receipt",
       "page": "mcp-conformance.html",
       "card": "revenue/mcp_conformance/product.json",
-      "runner": "mcp_conformance.py",
+      "runner": "host/mcp_conformance.py",
       "state": "PUBLIC_OFFER",
       "payment_state": "NOT_CONNECTED"
     }

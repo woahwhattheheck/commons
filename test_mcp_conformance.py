@@ -8,7 +8,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import threading
 import unittest
 
-import mcp_conformance
+from host import mcp_conformance
 
 
 class _Handler(BaseHTTPRequestHandler):
