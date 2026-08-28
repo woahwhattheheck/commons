@@ -20,7 +20,7 @@ Adapted from the public Cursor `review-and-ship` skill.
 
 ## Workflow
 
-1. Resolve live `main` and the candidate or PR head. Inspect the diff, checks, reviews, status, exact target paths, active Slack claims, and open-PR overlap.
+1. Resolve live `main` and the candidate or PR head. Inspect the diff, checks, reviews, status, exact target paths, active Slack claims, and open-PR overlap. Classify overlap with [sprint-integration](../sprint-integration/SKILL.md): merge is the default; parallel branches are not collisions; `CONFLICT` only when the same effective code disagrees semantically. Busy main, stale base, and unrelated checks are not stops.
 2. First determine whether the intended path bytes are already on current `main`. If they are, do not reland or remint them; verify and report the integrated main SHA. Otherwise classify the branch or PR as `CANDIDATE`.
 3. Run the relevant tests whether or not the candidate added a test. If inspection exposes a measured defect, do not return a finding and leave it behind: own the smallest compatible repair, add regression coverage, rerun it, and carry the repaired bytes through current-main readback.
 4. Do not create report-only or audit-only helper sessions. A bounded investigation is useful only when this same implementation turn consumes it into code, a test, or a proved `NOT_BUG` result.

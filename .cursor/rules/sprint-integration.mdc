@@ -1,0 +1,8 @@
+---
+description: Commons sprint integration — merge is the default
+alwaysApply: true
+---
+
+Merge is the default. Parallel branches are not collisions. Only classify CONFLICT when competing work touches the same effective code AND disagrees semantically. If paths differ, merge. If the same paths are byte-identical or semantically compatible, dedupe/compose and merge. Busy main, stale base, or unrelated checks are not stopping conditions.
+
+Verdicts: CLEAR_TO_MERGE, DEDUPED, COMPOSE_AND_MERGE, CONFLICT. Evidence: base/head SHAs, overlapping paths, blob hashes, rule ids. Checker: host/sprint_integration.py. Policy: ground/SPRINT_INTEGRATION.json. Law: ground/SPRINT_INTEGRATION.md. The Slack pulse teaches this rule. No auth. No gate. No branch lock.
