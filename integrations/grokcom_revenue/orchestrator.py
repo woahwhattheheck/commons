@@ -14,9 +14,9 @@ import re
 from typing import Any
 
 
-SCHEMA_VERSION = "grokcom-revenue-orchestrator/v1"
+SCHEMA_VERSION = "grokcom-revenue-orchestrator/v2"
 CONNECTOR_ORIGIN = "COMMONS_GROKCOM_REVENUE"
-STAGES = frozenset({"INTAKE", "GROKCOM_RESULT", "GPT_REVIEW", "GIT_LAND", "SALES_OUTCOME"})
+STAGES = frozenset({"INTAKE", "GROKCOM_RESULT", "GPT_REVIEW", "GROK_CONTINUE", "GIT_LAND", "SALES_OUTCOME"})
 MODES = frozenset({"AUTO", "BUILD", "RESEARCH", "SALES", "OPERATE"})
 REVIEW_CHECKS = (
     "artifact_readback",
@@ -199,7 +199,8 @@ def _review_packet(task_id: str, artifact: dict[str, Any]) -> dict[str, Any]:
         "required_checks": list(REVIEW_CHECKS),
         "instructions": (
             "Read the exact candidate bytes and independently run proportionate tests. "
-            "Return APPROVE or REVISE plus per-check booleans and precise repair requests. "
+            "Return APPROVE, REVISE, or CONTINUE plus per-check booleans and precise repair requests. "
+            "CONTINUE means one new lineage-linked Grok prompt for real unfinished work; never replay a finished prompt. "
             "An approval is not a merge receipt."
         ),
     }
@@ -208,8 +209,8 @@ def _review_packet(task_id: str, artifact: dict[str, Any]) -> dict[str, Any]:
 def _review_decision(value: Any) -> tuple[str, dict[str, bool], list[str]]:
     row = _object(value, "review")
     decision = _string(row.get("decision") or "REVISE", "review.decision", maximum=16).upper()
-    if decision not in {"APPROVE", "REVISE"}:
-        raise ValueError("review.decision must be APPROVE or REVISE")
+    if decision not in {"APPROVE", "REVISE", "CONTINUE"}:
+        raise ValueError("review.decision must be APPROVE, REVISE, or CONTINUE")
     checks_input = _object(row.get("checks"), "review.checks")
     checks = {name: checks_input.get(name) is True for name in REVIEW_CHECKS}
     issues = row.get("issues") or []
@@ -221,6 +222,70 @@ def _review_decision(value: Any) -> tuple[str, dict[str, bool], list[str]]:
         decision = "REVISE"
     return decision, checks, [issue.strip() for issue in issues]
 
+
+
+def _continuation_packet(
+    task_id: str,
+    event: dict[str, str],
+    artifact: dict[str, Any],
+    review: dict[str, Any],
+    issues: list[str],
+) -> dict[str, Any]:
+    parent_run_key = _string(
+        artifact.get("run_key") or f"{task_id}-run-1",
+        "artifact.run_key",
+        required=True,
+        maximum=512,
+    )
+    parent_url = _string(
+        artifact.get("conversation_url"),
+        "artifact.conversation_url",
+        required=True,
+        maximum=2_000,
+    )
+    supplied = _string(review.get("continuation_prompt"), "review.continuation_prompt")
+    prompt = supplied or (
+        "Continue the existing work without replaying any finished prompt. "
+        "Repair or finish exactly these independently reviewed items: "
+        + ("; ".join(issues) if issues else "the unfinished work named in the captured artifact")
+        + ". Return new exact bytes, artifact paths and exposed hashes/sizes, visible model/usage evidence, and rerun deterministic tests."
+    )
+    prior_prompts = artifact.get("exact_prompts") or []
+    if not isinstance(prior_prompts, list) or not all(isinstance(item, str) for item in prior_prompts):
+        raise ValueError("artifact.exact_prompts must be a string array when present")
+    if prompt in prior_prompts:
+        raise ValueError("continuation_prompt must be new; finished prompts are never replayed")
+    run_key = "grok-continue-" + _digest({
+        "parent_run_key": parent_run_key,
+        "parent_conversation_url": parent_url,
+        "prompt": prompt,
+    })[:32]
+    return {
+        "surface": "grok.com",
+        "state": "GROK_CONTINUE",
+        "run_key": run_key,
+        "parent_run_key": parent_run_key,
+        "parent_conversation_url": parent_url,
+        "prompt": prompt,
+        "no_replay": True,
+        "capture_start": {
+            "tool": "start_grok_capture",
+            "arguments": {
+                "run_key": run_key,
+                "origin": {
+                    "task_id": task_id,
+                    "session_id": event["event_id"],
+                    "thread_id": event["thread_ts"],
+                    "source": "commons-grokcom-revenue",
+                    "event_id": event["event_id"],
+                },
+                "parent_run_key": parent_run_key,
+                "conversation_url": parent_url,
+                "exact_prompts": [prompt],
+            },
+        },
+        "return_stage": "GROKCOM_RESULT",
+    }
 
 def _landing(value: Any) -> dict[str, Any]:
     row = _object(value, "landing")
@@ -282,13 +347,30 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
         response.update({"state": "ECHO_PROCESSED", "next": "NO_POST", "slack_reply": ""})
         return response
     if stage == "INTAKE":
+        prompt = _grok_prompt(task_id, mode, event, sales)
+        run_key = f"{task_id}-run-1"
         response.update({
             "state": "GROKCOM_WORK",
-            "next": "SEND_TO_GROKCOM",
-            "slack_reply": f"CLAIMED {task_id} | grok.com {mode.lower()} | GPT review follows the artifact receipt.",
+            "next": "WRITE_CAPTURE_START_THEN_SEND_TO_GROKCOM_ONCE",
+            "slack_reply": f"CLAIMED {task_id} | grok.com {mode.lower()} | structural START precedes one submission; GPT review follows capture.",
             "grokcom": {
                 "surface": "grok.com",
-                "prompt": _grok_prompt(task_id, mode, event, sales),
+                "run_key": run_key,
+                "prompt": prompt,
+                "capture_start": {
+                    "tool": "start_grok_capture",
+                    "arguments": {
+                        "run_key": run_key,
+                        "origin": {
+                            "task_id": task_id,
+                            "session_id": event["event_id"],
+                            "thread_id": event["thread_ts"],
+                            "source": "commons-grokcom-revenue",
+                            "event_id": event["event_id"],
+                        },
+                        "exact_prompts": [prompt],
+                    },
+                },
                 "return_stage": "GROKCOM_RESULT",
                 "commons_mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
             },
@@ -309,16 +391,14 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
         if not artifact:
             raise ValueError("GPT_REVIEW requires the exact artifact manifest reviewed by GPT")
         decision, checks, issues = _review_decision(args.get("review"))
-        if decision == "REVISE":
+        if decision in {"REVISE", "CONTINUE"}:
+            review_input = _object(args.get("review"), "review")
+            continuation = _continuation_packet(task_id, event, artifact, review_input, issues)
             response.update({
-                "state": "GROKCOM_REVISION",
-                "next": "SEND_TWEAKS_TO_GROKCOM",
-                "slack_reply": f"REVISE {task_id} | GPT found {len(issues)} precise repair item(s) | returned to grok.com.",
-                "grokcom": {
-                    "surface": "grok.com",
-                    "prompt": "Revise work packet %s. Repair exactly: %s. Return new exact bytes and rerun tests." % (task_id, "; ".join(issues) or "the failed review checks"),
-                    "return_stage": "GROKCOM_RESULT",
-                },
+                "state": "GROK_CONTINUE",
+                "next": "START_LINEAGE_LINKED_GROK_CAPTURE",
+                "slack_reply": f"CONTINUE {task_id} | GPT found real unfinished work | one new lineage-linked Grok prompt queued.",
+                "grokcom": continuation,
                 "review": {"decision": decision, "checks": checks, "issues": issues},
                 "artifact": artifact,
             })
