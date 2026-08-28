@@ -3,6 +3,8 @@
 # no-click road after VERCEL_TEAM_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID
 # exist. VERCEL_TOKEN (project-scoped newer format) is rejected by Vercel CLI
 # 56.x/59.x; deploy auth is the team-scoped CLI-compatible secret only.
+# .vercelignore allowlists the MCP runtime graph so Hobby api-upload-free
+# (5000 files) cannot upload muhl/projection/board corpus.
 #
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are

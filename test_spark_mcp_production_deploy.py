@@ -82,9 +82,10 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("vercel.json", text)
 
     def test_vercelignore_excludes_board_corpus(self) -> None:
+        text = VERCELIGNORE.read_text(encoding="utf-8")
         lines = [
             row.strip()
-            for row in VERCELIGNORE.read_text(encoding="utf-8").splitlines()
+            for row in text.splitlines()
             if row.strip() and not row.lstrip().startswith("#")
         ]
         for name in ("p", "chunks", "posts.json"):
@@ -92,6 +93,18 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertNotIn("commons_mcp.py", lines)
         self.assertNotIn("api/mcp.py", lines)
         self.assertNotIn("carriers", lines)
+        # Hobby api-upload-free is 5000 files. Allowlist the runtime graph.
+        self.assertIn("*", lines)
+        self.assertIn("!commons_mcp.py", lines)
+        self.assertIn("!commons_mcp_app.html", lines)
+        self.assertIn("!api/", lines)
+        self.assertIn("!carriers/", lines)
+        self.assertIn("!protocol/", lines)
+        self.assertIn("!integrations/grokcom_revenue/", lines)
+        self.assertIn("!host/observatory.py", lines)
+        self.assertIn("!vercel.json", lines)
+        self.assertIn("api-upload-free", text)
+        self.assertIn("5000", text)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]
