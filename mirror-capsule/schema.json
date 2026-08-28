@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/mirror-capsule/schema.json",
+  "title": "Commons portable mirror capsule manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "source_sha",
+    "canonical",
+    "claim_boundary",
+    "selection",
+    "entries",
+    "entry_count",
+    "byte_count",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "commons-mirror-capsule-v1"},
+    "source_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "canonical": {"const": false},
+    "claim_boundary": {
+      "type": "object",
+      "required": [
+        "portable_snapshot",
+        "canonical",
+        "moving_main_sync",
+        "provider_writeback",
+        "independent_origin",
+        "canonical_durability",
+        "live_hosting",
+        "reachable_is_not_canonical"
+      ],
+      "properties": {
+        "portable_snapshot": {"const": true},
+        "canonical": {"const": false},
+        "moving_main_sync": {"const": false},
+        "provider_writeback": {"const": false},
+        "independent_origin": {"const": false},
+        "canonical_durability": {"const": false},
+        "live_hosting": {"const": false},
+        "reachable_is_not_canonical": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "selection": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "bytes", "sha256", "source_sha", "media_type"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "source_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "media_type": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "entry_count": {"type": "integer", "minimum": 0},
+    "byte_count": {"type": "integer", "minimum": 0},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}
