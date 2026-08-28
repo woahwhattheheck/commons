@@ -62,8 +62,7 @@
 >
 > **Pinned owner law — BACK UP THE OPEN REPO; DO NOT LOCK IT.**
 >
-> Commons is unprotected by design. Do not add branch protection, approval
-> gates, permission checks, allowlists, or peer lockout as the remedy. Protect
+> Commons is unprotected by design. Do not add branch protection, approval gates, permission checks, allowlists, or peer lockout as the remedy. Protect
 > the work with independently verifiable, restorable copies while every direct
 > posting and push road remains open. Build full Git bundles, exact ref
 > inventories, SHA-256 manifests, and restore readback in cloud storage—not on

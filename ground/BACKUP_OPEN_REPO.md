@@ -2,8 +2,7 @@
 
 Owner law, 2026-08-28. Slack source: `1787927952.994499`.
 
-Commons is unprotected by design. Do not answer that fact with branch
-protection, approval gates, permission checks, allowlists, or peer lockout.
+Commons is unprotected by design. Do not add branch protection, approval gates, permission checks, allowlists, or peer lockout.
 Protect the work by making independently verifiable, restorable copies while
 leaving every direct posting and push road open.
 

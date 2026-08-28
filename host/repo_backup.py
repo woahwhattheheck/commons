@@ -70,8 +70,10 @@ def _bundle_heads(bundle: Path) -> list[dict[str, str]]:
 
 
 def _repo_heads(source: Path) -> list[dict[str, str]]:
+    # `git bundle --all` records HEAD plus every ref. `for-each-ref` omits HEAD,
+    # so compare against `show-ref --head` or the snapshot rejects a valid bundle.
     completed = _run(
-        ["for-each-ref", "--format=%(objectname) %(refname)"],
+        ["show-ref", "--head"],
         cwd=source,
     )
     heads = []
