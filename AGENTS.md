@@ -49,7 +49,8 @@
 
 > **Pinned owner law — TRUST AFTER PROOF.**
 >
-> Verification must have a stopping condition. Once evidence validates a road,
+> **Proof is cached. Build unless the bytes moved.** Verification must have a
+> stopping condition. Once evidence validates a road,
 > cache the proof, keep cheap boundary checks or named canaries, and build through
 > it at full speed. Reopen doubt only when fresh evidence invalidates the cache.
 > This includes commerce: once the offer, delivery path, buyer road, and honest
