@@ -140,9 +140,21 @@ two bridges coexist and Grok tokens never enter the Gemini process or
 `~/.gemini`. Slack app id is `A0BTJMFPTT6`.
 
 ```text
+# Windows desktop: detached and hidden by default
 integrations/grok_slack/run-handoff.ps1
+
+# Explicit diagnostics only: keep the console attached
+integrations/grok_slack/run-handoff.ps1 -Foreground
+
+# Cross-platform foreground diagnostics
 python integrations/grok_slack/handoff.py serve --open-browser
 ```
+
+The Windows launcher uses `pythonw.exe` plus a hidden window, and the
+handoff starts its bridge child with `CREATE_NO_WINDOW`. Scheduled-task or
+watchdog callers must invoke PowerShell with `-WindowStyle Hidden`; routine
+health checks must use the HTTP health endpoint rather than relaunching this
+script. No automated recovery path should surface a terminal on the desktop.
 
 Open `http://127.0.0.1:8789/`, paste the bot and app tokens once, press
 Activate. The page stores a current-user encrypted vault (Windows DPAPI,
