@@ -17,6 +17,14 @@ two-hour queue on a stale checkout. Compose landed in #5124. Unique
 leftover: refresh onto current main before the tick so queued runs do
 not replay hours-old job files. Cite:
 woahwhattheheck/commons:job-watchdog:e9c3e87a70bfe135747ee5b41d647b5ad1e72551:land job state on main only
+
+Run 33206968416 on SHA a231d7ec6711b5ae5a40efed06847fdf6d245cda then
+failed the same land step after the same two-hour queue, with the same
+four paths plus content on grok-slack-e2e-proof-20260828-05.json.
+Refresh and compose were already on main; GitHub still executed the
+pre-repair workflow YAML bound to the triggering SHA. Unique leftover:
+cancel redundant main ticks so those snapshots never land. Cite:
+woahwhattheheck/commons:job-watchdog:a231d7ec6711b5ae5a40efed06847fdf6d245cda:land job state on main only
 """
 from __future__ import annotations
 
@@ -71,12 +79,36 @@ hint: Disable this message with "git config set advice.mergeConflict false"
 Could not apply 30ae5bc52... # jobs: watchdog tick (no model)
 """
 
+# Exact rebase stderr from https://github.com/woahwhattheheck/commons/actions/runs/33206968416
+RUN_33206968416_REBASE = """\
+Auto-merging wake_jobs/grkrev-0d3057ebbe56903f6c3076b9.json
+CONFLICT (add/add): Merge conflict in wake_jobs/grkrev-0d3057ebbe56903f6c3076b9.json
+Auto-merging wake_jobs/grkrev-6d23f7078fd691bad2a983f8.json
+CONFLICT (add/add): Merge conflict in wake_jobs/grkrev-6d23f7078fd691bad2a983f8.json
+Auto-merging wake_jobs/grkrev-ced8dfd809c45f0ef23f9606.json
+CONFLICT (add/add): Merge conflict in wake_jobs/grkrev-ced8dfd809c45f0ef23f9606.json
+Auto-merging wake_jobs/grok-community-evidence-portable-20260828.json
+CONFLICT (content): Merge conflict in wake_jobs/grok-community-evidence-portable-20260828.json
+Auto-merging wake_jobs/grok-slack-e2e-proof-20260828-05.json
+CONFLICT (content): Merge conflict in wake_jobs/grok-slack-e2e-proof-20260828-05.json
+
+Rebasing (1/1)
+error: could not apply e122fc235... jobs: watchdog tick (no model)
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply e122fc235... # jobs: watchdog tick (no model)
+"""
+
 GRKREV_PATHS = (
     "wake_jobs/grkrev-0d3057ebbe56903f6c3076b9.json",
     "wake_jobs/grkrev-6d23f7078fd691bad2a983f8.json",
     "wake_jobs/grkrev-ced8dfd809c45f0ef23f9606.json",
 )
 EVIDENCE_PATH = "wake_jobs/grok-community-evidence-portable-20260828.json"
+SLACK_E2E_PATH = "wake_jobs/grok-slack-e2e-proof-20260828-05.json"
 
 
 def _job(*, job_id: str, updated_at: str, receipts: list, attempt_count: int = 0, status: str = "OPEN") -> dict:
@@ -173,6 +205,11 @@ class JobWatchdogLandTests(unittest.TestCase):
         self.assertIn("name: refresh onto current main", text)
         self.assertIn("git fetch origin main", text)
         self.assertIn("git reset --hard origin/main", text)
+        self.assertIn("concurrency:", text)
+        conc = text.split("concurrency:", 1)[1].split("jobs:", 1)[0]
+        self.assertIn("cancel-in-progress:", conc)
+        self.assertIn("github.ref", conc)
+        self.assertIn("pull_request", conc)
         self.assertNotIn("--force", text)
         land_step = text.split("name: land job state on main only", 1)[1]
         self.assertNotIn("git pull --rebase origin main", land_step)
@@ -362,6 +399,66 @@ class JobWatchdogLandTests(unittest.TestCase):
         evidence = json.loads((Path(tmp) / EVIDENCE_PATH).read_text(encoding="utf-8"))
         self.assertEqual(evidence["attempt_count"], 5)
         self.assertEqual(len(evidence["event_receipts"]), 2)
+
+    def test_run_33206968416_five_file_compose_lands(self):
+        tmp = tempfile.mkdtemp()
+        stages = {}
+        unmerged = list(GRKREV_PATHS) + [EVIDENCE_PATH, SLACK_E2E_PATH]
+        for path in GRKREV_PATHS:
+            ident = Path(path).stem
+            body = _dump(_job(job_id=ident, updated_at="2026-08-28T20:40:47Z", receipts=[]))
+            stages[path] = (body, body)
+        ours = _dump(_job(
+            job_id="grok-community-evidence-portable-20260828",
+            updated_at="2026-08-28T16:51:35Z",
+            attempt_count=4,
+            receipts=[{"attempt_id": "a04", "event": "wake", "ts": "2026-08-28T16:51:35Z"}],
+        ))
+        theirs = _dump(_job(
+            job_id="grok-community-evidence-portable-20260828",
+            updated_at="2026-08-28T21:22:29Z",
+            attempt_count=5,
+            receipts=[
+                {"attempt_id": "a04", "event": "wake", "ts": "2026-08-28T16:51:35Z"},
+                {"attempt_id": "a05", "event": "wake", "ts": "2026-08-28T21:22:29Z"},
+            ],
+        ))
+        stages[EVIDENCE_PATH] = (ours, theirs)
+        slack_ours = _dump(_job(
+            job_id="grok-slack-e2e-proof-20260828-05",
+            updated_at="2026-08-28T19:25:34Z",
+            attempt_count=0,
+            receipts=[],
+        ))
+        slack_theirs = _dump(_job(
+            job_id="grok-slack-e2e-proof-20260828-05",
+            updated_at="2026-08-28T22:22:22Z",
+            attempt_count=1,
+            receipts=[{"attempt_id": "grok-slack-e2e-proof-20260828-05-a01", "event": "wake", "ts": "2026-08-28T22:22:22Z"}],
+        ))
+        stages[SLACK_E2E_PATH] = (slack_ours, slack_theirs)
+        git = FakeGit(
+            push_results=[(1, RUN_33186268839_STDERR), (0, "")],
+            rebase_code=1,
+            continue_code=0,
+            unmerged=unmerged,
+            stages=stages,
+            rebase_stderr=RUN_33206968416_REBASE,
+        )
+        result = land(cwd=tmp, run=git, sleep=git.sleep)
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["state"], "LANDED")
+        self.assertEqual(result["attempts"], 2)
+        self.assertEqual(result["resolve"]["state"], "COMPOSED")
+        self.assertEqual(git.added_paths, unmerged)
+        self.assertIn(["git", "rebase", "--continue"], git.calls)
+        self.assertNotIn(["git", "rebase", "--abort"], git.calls)
+        joined = " ".join(" ".join(cmd) for cmd in git.calls)
+        self.assertNotIn("--force", joined)
+        slack = json.loads((Path(tmp) / SLACK_E2E_PATH).read_text(encoding="utf-8"))
+        self.assertEqual(slack["attempt_count"], 1)
+        self.assertEqual(len(slack["event_receipts"]), 1)
+        self.assertIn("CONFLICT (content): Merge conflict in " + SLACK_E2E_PATH, RUN_33206968416_REBASE)
 
     def test_semantic_split_still_aborts(self):
         tmp = tempfile.mkdtemp()
