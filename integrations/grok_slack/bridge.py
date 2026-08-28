@@ -20,6 +20,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
@@ -60,6 +61,27 @@ POST_SUBMIT_PHASES = frozenset({
     "DELIVERY_UNKNOWN", "FIRE_ACTION_UNKNOWN",
 })
 SECRET_ENV = ("SLACK_BOT_TOKEN", "SLACK_APP_TOKEN")
+OPTIONAL_SECRET_ENV = ("GITHUB_TOKEN", "GH_TOKEN")
+TOKEN_VALUE_RE = re.compile(r"(?:xox[baprs]|xapp)-[A-Za-z0-9-]{8,}")
+ENV_FILE_VAR = "COMMONS_GROK_SLACK_ENV_FILE"
+STATE_DB_VAR = "COMMONS_GROK_SLACK_STATE_DB"
+HEALTH_BIND_VAR = "COMMONS_GROK_SLACK_HEALTH_BIND"
+DEFAULT_HEALTH_BIND = "127.0.0.1:8788"
+HOST_PACK_FILES = (
+    "Dockerfile",
+    "compose.yml",
+    "commons-grok-slack.service",
+    "run.sh",
+    "env.example",
+    "canary.py",
+)
+SECRET_SCAN_FILES = HOST_PACK_FILES + (
+    "README.md",
+    "app_manifest.yaml",
+    "bridge.py",
+    "requirements.txt",
+    "__init__.py",
+)
 RETRY_BUDGET = 4
 POLL_BUDGET = 12
 
@@ -227,6 +249,238 @@ def is_edit_or_delete(event: dict[str, Any]) -> bool:
 def credential_presence(env: dict[str, str] | None = None) -> dict[str, str]:
     source = env if env is not None else os.environ
     return {name: ("present" if source.get(name) else "missing") for name in SECRET_ENV}
+
+
+def github_token_presence(env: dict[str, str] | None = None) -> str:
+    source = env if env is not None else os.environ
+    return "present" if source.get("GITHUB_TOKEN") or source.get("GH_TOKEN") else "missing"
+
+
+def integration_root() -> Path:
+    return Path(__file__).resolve().parent
+
+
+def default_state_db_path(env: dict[str, str] | None = None) -> Path:
+    source = env if env is not None else os.environ
+    raw = source.get(STATE_DB_VAR)
+    if raw:
+        return Path(raw)
+    return DEFAULT_STATE_DB
+
+
+def default_health_bind(env: dict[str, str] | None = None) -> str:
+    source = env if env is not None else os.environ
+    return source.get(HEALTH_BIND_VAR) or DEFAULT_HEALTH_BIND
+
+
+def candidate_env_files(env: dict[str, str] | None = None) -> list[Path]:
+    source = env if env is not None else os.environ
+    files: list[Path] = []
+    override = source.get(ENV_FILE_VAR)
+    if override:
+        files.append(Path(override))
+    root = integration_root()
+    files.append(root / ".env.local")
+    files.append(root / ".env")
+    deduped: list[Path] = []
+    seen: set[str] = set()
+    for path in files:
+        key = str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(path)
+    return deduped
+
+
+def parse_env_file(path: Path) -> dict[str, str]:
+    """Parse KEY=VALUE lines. Never include values in raised messages."""
+    parsed: dict[str, str] = {}
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise BridgeError("env file unreadable") from exc
+    for line in raw.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or "=" not in stripped:
+            continue
+        if stripped.startswith("export "):
+            stripped = stripped[7:].strip()
+        key, value = stripped.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        if key:
+            parsed[key] = value
+    return parsed
+
+
+def load_runtime_env(
+    env: dict[str, str] | None = None,
+    files: list[Path] | None = None,
+) -> dict[str, Any]:
+    """Inject gitignored env files into the process map. Process env wins.
+
+    Connector infrastructure, not a Commons admission gate. Values are never
+    returned or logged.
+    """
+    source = env if env is not None else os.environ
+    loaded: list[str] = []
+    keys_set: list[str] = []
+    for path in files if files is not None else candidate_env_files(source):
+        if not path.is_file():
+            continue
+        parsed = parse_env_file(path)
+        for key, value in parsed.items():
+            if not value or source.get(key):
+                continue
+            source[key] = value
+            keys_set.append(key)
+        loaded.append(path.name)
+    return {
+        "files_loaded": loaded,
+        "keys_set": keys_set,
+        "secrets_printed": False,
+    }
+
+
+def host_pack_presence(root: Path | None = None) -> dict[str, bool]:
+    base = root or integration_root()
+    return {name: (base / name).is_file() for name in HOST_PACK_FILES}
+
+
+def scan_secrets_in_config(root: Path | None = None) -> dict[str, Any]:
+    """Scan committed host-pack files for Slack token prefixes. Report names, never values."""
+    base = root or integration_root()
+    hits: list[str] = []
+    for name in SECRET_SCAN_FILES:
+        path = base / name
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if TOKEN_VALUE_RE.search(text):
+            hits.append(name)
+    return {"secrets_in_config": bool(hits), "files": hits}
+
+
+def parse_bind(value: str) -> tuple[str, int] | None:
+    text = (value or "").strip()
+    if not text or text.casefold() in {"off", "none", "disable", "disabled"}:
+        return None
+    if ":" not in text:
+        raise BridgeError("health bind must be host:port or off")
+    host, port_text = text.rsplit(":", 1)
+    try:
+        port = int(port_text)
+    except ValueError as exc:
+        raise BridgeError("health bind port is not an integer") from exc
+    return (host or "127.0.0.1", port)
+
+
+class HealthServer:
+    """Loopback liveness JSON. Socket Mode stays outbound-only."""
+
+    def __init__(self, bind: str, snapshot: Callable[[], dict[str, Any]]) -> None:
+        self.bind = bind
+        self.snapshot = snapshot
+        self.server: ThreadingHTTPServer | None = None
+        self.thread: threading.Thread | None = None
+        parsed = parse_bind(bind)
+        if parsed is None:
+            return
+        host, port = parsed
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(inner_self) -> None:  # type: ignore[no-untyped-def]
+                path = inner_self.path.split("?", 1)[0]
+                if path not in {"/", "/health", "/ready"}:
+                    inner_self.send_response(404)
+                    inner_self.end_headers()
+                    return
+                body = json.dumps(snapshot(), sort_keys=True).encode("utf-8")
+                inner_self.send_response(200)
+                inner_self.send_header("Content-Type", "application/json; charset=utf-8")
+                inner_self.send_header("Content-Length", str(len(body)))
+                inner_self.end_headers()
+                inner_self.wfile.write(body)
+
+            def log_message(inner_self, _format: str, *_args: Any) -> None:  # type: ignore[no-untyped-def]
+                return
+
+        self.server = ThreadingHTTPServer((host, port), Handler)
+
+    @property
+    def url(self) -> str:
+        if self.server is None:
+            return ""
+        host, port = self.server.server_address[:2]
+        display = "127.0.0.1" if host in {"0.0.0.0", ""} else str(host)
+        return f"http://{display}:{port}/health"
+
+    def start(self) -> None:
+        if self.server is None:
+            return
+        self.thread = threading.Thread(target=self.server.serve_forever, name="grok-slack-health", daemon=True)
+        self.thread.start()
+
+    def stop(self) -> None:
+        if self.server is not None:
+            self.server.shutdown()
+            self.server.server_close()
+        if self.thread is not None:
+            self.thread.join(timeout=2.0)
+
+
+def probe_health_url(url: str, *, opener: Callable[..., Any] | None = None) -> dict[str, Any]:
+    fetch = opener or urlopen
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "commons-grok-slack-health"})
+    with fetch(request, timeout=3) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def local_health_report(
+    args: argparse.Namespace,
+    *,
+    env: dict[str, str] | None = None,
+    store_factory: Callable[[Path], "BridgeStore"] | None = None,
+    root: Path | None = None,
+) -> dict[str, Any]:
+    source = env if env is not None else os.environ
+    presence = credential_presence(source)
+    missing = presence["SLACK_BOT_TOKEN"] == "missing" or presence["SLACK_APP_TOKEN"] == "missing"
+    scan = scan_secrets_in_config(root)
+    pack = host_pack_presence(root)
+    report: dict[str, Any] = {
+        "schema": SCHEMA,
+        "state": "RUNTIME_UNCONFIGURED" if missing else "NOT_READY",
+        "live": False,
+        "ready": False,
+        "slack_bot_token": presence["SLACK_BOT_TOKEN"],
+        "slack_app_token": presence["SLACK_APP_TOKEN"],
+        "github_token": github_token_presence(source),
+        "state_db": {"path": str(getattr(args, "state_db", default_state_db_path(source))), "usable": False},
+        "secrets_in_config": scan["secrets_in_config"],
+        "secret_scan_files": scan["files"],
+        "socket_mode": True,
+        "dm_scope": False,
+        "final_delivery_owner": FINAL_DELIVERY_OWNER,
+        "health_bind": str(getattr(args, "health_bind", default_health_bind(source)) or DEFAULT_HEALTH_BIND),
+        "host_pack": pack,
+        "host_pack_complete": all(pack.values()),
+        "github_token_required": False,
+    }
+    try:
+        factory = store_factory or BridgeStore
+        store = factory(Path(report["state_db"]["path"]))
+        store.close()
+        report["state_db"]["usable"] = True
+    except Exception as exc:
+        report["state_db"]["error"] = type(exc).__name__
+    return report
 
 
 class BridgeStore:
@@ -584,10 +838,14 @@ class GitHubReadback:
         repo: str = DEFAULT_GITHUB_REPO,
         *,
         opener: Callable[..., Any] | None = None,
+        token: str | None = None,
     ) -> None:
         self.owner = owner
         self.repo = repo
         self._opener = opener or urlopen
+        if token is None:
+            token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
+        self.token = token
 
     def current_main_sha(self) -> str:
         payload = self._get(f"/repos/{self.owner}/{self.repo}/commits/main")
@@ -605,6 +863,8 @@ class GitHubReadback:
             return base64.b64decode(content)
         if isinstance(payload.get("download_url"), str):
             request = Request(payload["download_url"], headers={"Accept": "application/octet-stream", "User-Agent": "commons-grok-slack-connector"})
+            if self.token:
+                request.add_header("Authorization", "Bearer " + self.token)
             with self._opener(request, timeout=30) as response:
                 return response.read()
         raise BridgeError("github path unavailable")
@@ -615,6 +875,8 @@ class GitHubReadback:
             from urllib.parse import urlencode
             url += "?" + urlencode(query)
         request = Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "commons-grok-slack-connector"})
+        if self.token:
+            request.add_header("Authorization", "Bearer " + self.token)
         try:
             with self._opener(request, timeout=30) as response:
                 return json.loads(response.read().decode("utf-8"))
@@ -1277,33 +1539,11 @@ def doctor(
     mcp: Any | None = None,
     github: Any | None = None,
     store_factory: Callable[[Path], BridgeStore] | None = None,
+    root: Path | None = None,
 ) -> tuple[int, dict[str, Any]]:
-    source = env if env is not None else os.environ
-    presence = credential_presence(source)
-    report: dict[str, Any] = {
-        "schema": SCHEMA,
-        "state": "NOT_READY",
-        "slack_bot_token": presence["SLACK_BOT_TOKEN"],
-        "slack_app_token": presence["SLACK_APP_TOKEN"],
-        "state_db": {"path": str(args.state_db), "usable": False},
-        "mcp": {"url": getattr(args, "mcp_url", DEFAULT_MCP_URL), "initialize": False},
-        "github_readback": {"ok": False},
-        "secrets_in_config": False,
-        "socket_mode": True,
-        "dm_scope": False,
-        "final_delivery_owner": FINAL_DELIVERY_OWNER,
-        "ready": False,
-    }
-    missing = presence["SLACK_BOT_TOKEN"] == "missing" or presence["SLACK_APP_TOKEN"] == "missing"
-    if missing:
-        report["state"] = "RUNTIME_UNCONFIGURED"
-    try:
-        factory = store_factory or BridgeStore
-        store = factory(Path(args.state_db))
-        store.close()
-        report["state_db"]["usable"] = True
-    except Exception as exc:
-        report["state_db"]["error"] = type(exc).__name__
+    report = local_health_report(args, env=env, store_factory=store_factory, root=root)
+    report["mcp"] = {"url": getattr(args, "mcp_url", DEFAULT_MCP_URL), "initialize": False}
+    report["github_readback"] = {"ok": False}
     client = mcp or CommonsMcpClient(getattr(args, "mcp_url", DEFAULT_MCP_URL))
     try:
         client.initialize()
@@ -1324,6 +1564,7 @@ def doctor(
         report["github_readback"] = {"ok": True, "main_sha": sha}
     except Exception as exc:
         report["github_readback"] = {"ok": False, "error": type(exc).__name__}
+    missing = report["slack_bot_token"] == "missing" or report["slack_app_token"] == "missing"
     mcp_ok = bool(report["mcp"].get("initialize") and report["mcp"].get("has_route_grokcom_revenue_work") and report["mcp"].get("has_fire_action"))
     ready = (
         not missing
@@ -1335,22 +1576,83 @@ def doctor(
     report["ready"] = ready
     if ready:
         report["state"] = "READY"
-    elif not missing:
+    elif missing:
+        report["state"] = "RUNTIME_UNCONFIGURED"
+    else:
         report["state"] = "NOT_READY"
     return (0 if ready else 2, report)
 
 
+def health(
+    args: argparse.Namespace,
+    *,
+    env: dict[str, str] | None = None,
+    store_factory: Callable[[Path], BridgeStore] | None = None,
+    root: Path | None = None,
+    opener: Callable[..., Any] | None = None,
+) -> tuple[int, dict[str, Any]]:
+    report = local_health_report(args, env=env, store_factory=store_factory, root=root)
+    probe_url = str(getattr(args, "probe", "") or "")
+    if probe_url:
+        try:
+            live = probe_health_url(probe_url, opener=opener)
+            report["probe"] = {"ok": True, "url": probe_url, "state": live.get("state")}
+            report["live"] = bool(live.get("live"))
+            if live.get("state"):
+                report["state"] = live.get("state")
+            blob = json.dumps(live)
+            if TOKEN_VALUE_RE.search(blob):
+                report["probe"] = {"ok": False, "error": "secret_in_probe"}
+                report["live"] = False
+        except Exception as exc:
+            report["probe"] = {"ok": False, "url": probe_url, "error": type(exc).__name__}
+            report["live"] = False
+    missing = report["slack_bot_token"] == "missing" or report["slack_app_token"] == "missing"
+    healthy = (
+        report["state_db"]["usable"]
+        and not report["secrets_in_config"]
+        and (not probe_url or report.get("live"))
+    )
+    if missing:
+        report["state"] = "RUNTIME_UNCONFIGURED"
+        return (2, report)
+    if healthy and report.get("live"):
+        report["state"] = "READY"
+        report["ready"] = True
+        return (0, report)
+    report["state"] = "NOT_READY"
+    return (2, report)
+
+
 def serve(args: argparse.Namespace) -> int:
     presence = credential_presence()
+    scan = scan_secrets_in_config()
+    if scan["secrets_in_config"]:
+        print(json.dumps({"state": "SECRETS_IN_CONFIG", "files": scan["files"]}, sort_keys=True))
+        return 2
+    health_bind = str(getattr(args, "health_bind", None) or default_health_bind())
+    live_state = {
+        "schema": SCHEMA,
+        "live": False,
+        "state": "STARTING",
+        "ready": False,
+        "final_delivery_owner": FINAL_DELIVERY_OWNER,
+        "state_db": str(args.state_db),
+        "socket_mode": True,
+    }
+    health_server = HealthServer(health_bind, lambda: dict(live_state))
+    health_server.start()
     if presence["SLACK_BOT_TOKEN"] == "missing" or presence["SLACK_APP_TOKEN"] == "missing":
         payload = {"state": "RUNTIME_UNCONFIGURED", "slack_bot_token": presence["SLACK_BOT_TOKEN"], "slack_app_token": presence["SLACK_APP_TOKEN"]}
         print(json.dumps(payload, sort_keys=True))
+        health_server.stop()
         return 2
     try:
         from slack_sdk import WebClient
         from slack_sdk.socket_mode import SocketModeClient
         from slack_sdk.socket_mode.response import SocketModeResponse
     except ImportError as exc:
+        health_server.stop()
         raise BridgeError("install integrations/grok_slack/requirements.txt first") from exc
     bot_token = os.environ.get("SLACK_BOT_TOKEN")
     app_token = os.environ.get("SLACK_APP_TOKEN")
@@ -1362,7 +1664,7 @@ def serve(args: argparse.Namespace) -> int:
     bot_user_id = identity.get("user_id")
     sink = SlackTransport(web_client, store)
     bridge = GrokSlackBridge(store, mcp, github, sink, bot_user_id=str(bot_user_id) if bot_user_id else None)
-    bridge.recover_pending()
+    recovered = bridge.recover_pending()
     executor = ThreadPoolExecutor(max_workers=args.workers, thread_name_prefix="grok-slack")
     socket_client = SocketModeClient(app_token=app_token, web_client=web_client)
     recovery_stop = threading.Event()
@@ -1387,39 +1689,80 @@ def serve(args: argparse.Namespace) -> int:
     recovery_thread = threading.Thread(target=recover_loop, name="grok-slack-recovery", daemon=True)
     recovery_thread.start()
     socket_client.connect()
-    print(json.dumps({"ready": True, "state_db": str(args.state_db), "delivery_owner": FINAL_DELIVERY_OWNER}))
+    live_state.update({
+        "live": True,
+        "state": "SERVING",
+        "ready": True,
+        "recovered": recovered,
+        "health_url": health_server.url,
+    })
+    print(json.dumps({
+        "ready": True,
+        "state_db": str(args.state_db),
+        "delivery_owner": FINAL_DELIVERY_OWNER,
+        "health_url": health_server.url,
+        "recovered": recovered,
+    }, sort_keys=True))
     try:
         threading.Event().wait()
     except KeyboardInterrupt:
         return 0
     finally:
+        live_state.update({"live": False, "state": "STOPPING", "ready": False})
         recovery_stop.set()
         recovery_thread.join(timeout=max(2.0, args.recovery_interval + 1))
         socket_client.disconnect()
         executor.shutdown(wait=True, cancel_futures=False)
+        health_server.stop()
         store.close()
     return 0
 
 
+def resolve_args(args: argparse.Namespace) -> argparse.Namespace:
+    if getattr(args, "state_db", None) is None:
+        args.state_db = default_state_db_path()
+    if not getattr(args, "health_bind", None):
+        args.health_bind = default_health_bind()
+    return args
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("serve", "doctor"), nargs="?", default="serve")
-    parser.add_argument("--json", action="store_true", help="doctor prints JSON (always on for doctor)")
-    parser.add_argument("--state-db", type=Path, default=DEFAULT_STATE_DB)
+    parser.add_argument("command", choices=("serve", "doctor", "health", "canary"), nargs="?", default="serve")
+    parser.add_argument("--json", action="store_true", help="doctor/health prints JSON (always on for those commands)")
+    parser.add_argument("--state-db", type=Path, default=None)
     parser.add_argument("--mcp-url", default=DEFAULT_MCP_URL)
     parser.add_argument("--delivery-deadline", type=float, default=900.0)
     parser.add_argument("--recovery-interval", type=float, default=15.0)
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--health-bind", default=None, help="loopback host:port for /health, or off")
+    parser.add_argument("--probe", default="", help="health command HTTP probe URL")
+    parser.add_argument("--env-file", type=Path, default=None, help="gitignored KEY=VALUE file; values never printed")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    files = [args.env_file] if getattr(args, "env_file", None) else None
+    load_runtime_env(files=files)
+    args = resolve_args(args)
     try:
         if args.command == "doctor":
             code, report = doctor(args)
             print(json.dumps(report, indent=2, sort_keys=True))
             return code
+        if args.command == "health":
+            code, report = health(args)
+            print(json.dumps(report, indent=2, sort_keys=True))
+            return code
+        if args.command == "canary":
+            repo_root = str(Path(__file__).resolve().parents[2])
+            if repo_root not in sys.path:
+                sys.path.insert(0, repo_root)
+            from integrations.grok_slack.canary import run as run_canary
+            report = run_canary()
+            print(json.dumps(report, indent=2, sort_keys=True))
+            return 0 if report.get("ok") else 1
         return serve(args)
     except RuntimeUnconfigured:
         print(json.dumps({"state": "RUNTIME_UNCONFIGURED"}, sort_keys=True))

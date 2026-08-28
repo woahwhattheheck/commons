@@ -90,8 +90,41 @@ Slack content.
 ## Always-on host
 
 Run `bridge.py serve` as a long-lived process on a host-neutral VM or
-container (systemd, Fly, Railway, a small VPS). GitHub Actions is not an
-always-on Socket Mode host. Bryce's desktop is not required to stay alive.
+container (systemd, Docker/Compose, Fly, Railway, a small VPS). GitHub
+Actions is not an always-on Socket Mode host. Bryce's desktop is not
+required to stay alive.
+
+Repository-controlled host pack (no tokens in git):
+
+```text
+integrations/grok_slack/env.example
+integrations/grok_slack/run.sh
+integrations/grok_slack/Dockerfile
+integrations/grok_slack/compose.yml
+integrations/grok_slack/commons-grok-slack.service
+```
+
+```text
+python integrations/grok_slack/bridge.py health --json
+python integrations/grok_slack/bridge.py canary
+python integrations/grok_slack/canary.py
+```
+
+`health` is cheap liveness (credentials present/missing, state DB, secret
+scan, optional loopback probe). `doctor` is full readiness including public
+MCP and SHA-pinned GitHub readback. `serve` binds loopback `/health` at
+`127.0.0.1:8788` by default (`COMMONS_GROK_SLACK_HEALTH_BIND` or `--health-bind off`).
+Socket Mode stays outbound; no public inbound webhook.
+
+Copy `env.example` to a gitignored `.env.local`, systemd `EnvironmentFile`,
+or container `env_file`. Process environment wins. Doctor reports
+present/missing, never values. `GITHUB_TOKEN` is optional connector
+infrastructure for Contents rate limits and is not a Commons admission gate.
+
+`run.sh` and the systemd unit refuse to restart-loop on
+`RUNTIME_UNCONFIGURED` (exit 2). Inject tokens, then start. SQLite lives on
+a durable volume (`COMMONS_GROK_SLACK_STATE_DB`); `serve` runs
+`recover_pending` before consuming new work and on a recovery interval.
 
 ## Idempotency
 
