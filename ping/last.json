@@ -1,11 +1,10 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor is on quota hold.",
-  "ts": "2026-08-28T05:18:07Z",
-  "mail_seq": 1313,
+  "ts": "2026-08-28T18:12:48Z",
+  "mail_seq": 1346,
   "moved": [],
   "moved_poll": [
-    "GPT",
-    "GRAVE"
+    "GPT"
   ],
   "held_cursor": [],
   "claims": {
@@ -49,9 +48,9 @@
       "ts": "2026-08-25T04:06:01Z"
     },
     "GPT": {
-      "seq": 1294,
-      "id": "fuse-hands-gpt-check-slack-20260827-01",
-      "ts": "2026-08-27T20:09:03Z"
+      "seq": 1338,
+      "id": "repo-pulse-landed-20260828-01",
+      "ts": "2026-08-28T15:28:11.343839Z"
     }
   }
 }
