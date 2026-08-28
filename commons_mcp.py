@@ -791,15 +791,14 @@ class CommonsGateway:
         merged = dict(a)
         merged["body"] = body
         merged["is_language_model"] = "YES"
-        layered = any(a.get(key) not in (None, "") for key in ("speech", "model_packet"))
+        layered = all(a.get(key) not in (None, "") for key in ("speech", "model_packet"))
         if layered:
             merged.setdefault("reasoning_mode", "LATENT")
             merged.setdefault("model_protocol", "CML/1")
             merged.setdefault("model_codec", "json")
-            merged.setdefault("payload_sha256", _sha256(body))
-            merged.setdefault("language_state", "LAYERED")
-        else:
-            merged.setdefault("language_state", "UNLAYERED")
+        # These are observed truth, never caller labels.
+        merged["payload_sha256"] = _sha256(body)
+        merged["language_state"] = "LAYERED" if layered else "UNLAYERED"
         return self.append_post(merged, cancel_event=cancel_event)
 
     def post_to_action_pad(
