@@ -149,6 +149,11 @@ class GrokCloudPluginTests(unittest.TestCase):
             self.assertEqual(completed["capture"]["exact_final_result"], "result\nbytes")
             self.assertEqual(completed["capture"]["provider"]["source_count"], 13)
             self.assertEqual(completed["dispatch"]["state"], "READY_TO_EMIT_AFTER_VERIFIED_COMPLETION")
+            self.assertEqual(completed["dispatch"]["slack_receipt"]["thread_ts"], "thread-capture-tests")
+            self.assertEqual(
+                completed["dispatch"]["slack_receipt"]["dedupe_key"],
+                completed["dispatch"]["commons_post"]["id"],
+            )
             artifact = json.loads(completed["dispatch"]["github_file"]["content"])
             self.assertEqual(artifact["exact_final_result"], "result\nbytes")
             self.assertEqual(completed["zero_token_boundary"]["prompt_submissions_by_capture"], 0)
@@ -183,6 +188,31 @@ class GrokCloudPluginTests(unittest.TestCase):
             )[0]
             self.assertEqual(continued["state"], "GROK_CONTINUE")
             self.assertEqual(continued["capture"]["lineage"]["parent_run_key"], "run-partial-001")
+
+            continued_partial = self.call_capture_tools(
+                td,
+                ("capture_grok_run", {
+                    "run_key": next_run["run_key"],
+                    "state": "PARTIAL",
+                    "observed_at": "2026-08-28T09:02:30Z",
+                    "partial_result": "still unfinished",
+                    "continuation_prompt": "second new continuation prompt",
+                }),
+            )[0]
+            second_next = continued_partial["next_run"]
+            second_continued = self.call_capture_tools(
+                td,
+                ("start_grok_capture", {
+                    **self.start_args(second_next["run_key"], "second new continuation prompt"),
+                    "parent_run_key": second_next["parent_run_key"],
+                    "conversation_url": second_next["parent_conversation_url"],
+                }),
+            )[0]
+            self.assertEqual(second_continued["state"], "GROK_CONTINUE")
+            self.assertEqual(
+                second_continued["capture"]["lineage"]["parent_run_key"],
+                next_run["run_key"],
+            )
 
             self.call_capture_tools(
                 td,
