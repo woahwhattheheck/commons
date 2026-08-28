@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787883586-519019",
-    "ts": "2026-08-28T02:19:46.519019Z"
+    "id": "slack-1787886562-122929",
+    "ts": "2026-08-28T03:09:22.122929Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -80,8 +80,8 @@
   {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1787883113-138119",
-    "ts": "2026-08-28T02:11:53.138119Z"
+    "id": "slack-1787885705-644229",
+    "ts": "2026-08-28T02:55:05.644229Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
@@ -228,10 +228,16 @@
     "ts": ""
   },
   {
+    "from": "CODEX_GITHUB_MAP",
+    "presence": "PRESENT",
+    "id": "slack-1787885737-258179",
+    "ts": "2026-08-28T02:55:37.258179Z"
+  },
+  {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787883275-382389",
-    "ts": "2026-08-28T02:14:35.382389Z"
+    "id": "slack-1787886532-679839",
+    "ts": "2026-08-28T03:08:52.679839Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
