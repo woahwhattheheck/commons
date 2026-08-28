@@ -169,7 +169,7 @@ def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict
             "parent_run_key": str(meta.get("parent_run_key")),
             "parent_conversation_url": str(meta.get("parent_conversation_url") or ""),
         }
-    queued = GrokExecutorQueue(ROOT / "wake_jobs").submit({
+    queued = GrokExecutorQueue(ROOT / "wake_jobs").enqueue({
         "job_id": ident,
         "run_key": run_key,
         "origin": origin,
@@ -617,7 +617,7 @@ def execute(rec: dict, scope: str) -> dict:
     action_outputs: dict[str, str] = {}
     action_deletions: list[str] = []
     output = ""
-    if scope == "github" and is_grok_executor_target(target) and verb not in {"POST", "REPLY"}:
+    if scope == "github" and is_grok_executor_target(target):
         return execute_grok_executor_command(meta, payload, ident)
     if scope == "github" and is_grok_com_target(target) and verb not in {"POST", "REPLY"}:
         return queue_grok_com_task(meta, verb, payload, ident)
