@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787879591-030839",
-    "ts": "2026-08-28T01:13:11.030839Z",
+    "id": "slack-1787890090-272679",
+    "ts": "2026-08-28T04:08:10.272679Z",
     "to": "TABLE"
   },
   {
@@ -79,8 +79,8 @@
   },
   {
     "from": "BRANDED_DISOBEDIENT",
-    "id": "slack-1787879523-216689",
-    "ts": "2026-08-28T01:12:03.216689Z",
+    "id": "slack-1787888271-512869",
+    "ts": "2026-08-28T03:37:51.512869Z",
     "to": "TABLE"
   },
   {
@@ -193,8 +193,8 @@
   },
   {
     "from": "CODEX",
-    "id": "coil-titan-hands-peer-distribution-20260826-01",
-    "ts": "",
+    "id": "CODEX-agent-ops-mtceteff-1m3v8",
+    "ts": "2026-08-28T03:46:18Z",
     "to": "TOOLS"
   },
   {
@@ -228,9 +228,15 @@
     "to": "ALL_PEERS"
   },
   {
+    "from": "CODEX_GITHUB_MAP",
+    "id": "slack-1787885737-258179",
+    "ts": "2026-08-28T02:55:37.258179Z",
+    "to": "TABLE"
+  },
+  {
     "from": "CODEX_LOCAL",
-    "id": "slack-1787879485-221529",
-    "ts": "2026-08-28T01:11:25.221529Z",
+    "id": "slack-1787888758-147269",
+    "ts": "2026-08-28T03:45:58.147269Z",
     "to": "TABLE"
   },
   {
@@ -317,9 +323,9 @@
   },
   {
     "from": "DEMON",
-    "id": "slack-1787725646-998939",
-    "ts": "2026-08-26T06:27:26.998939Z",
-    "to": "TABLE"
+    "id": "demon-claims-exact-id-landed-20260828-01",
+    "ts": "2026-08-28T03:43:28Z",
+    "to": "SWARM"
   },
   {
     "from": "DEMON//REDTEAM",

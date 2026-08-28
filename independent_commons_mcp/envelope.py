@@ -9,14 +9,13 @@ import sys
 from datetime import datetime, timezone
 from typing import Any
 
-import model_language
 
 from . import MAX_BODY, NTFY_MAX
 
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
-METADATA_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
+PROJECTION_BREAK_RE = re.compile(r"\r\n|[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 SECRET_ENV = (
     "COMMONS_GITHUB_TOKEN",
     "GITHUB_TOKEN",
@@ -87,13 +86,26 @@ def redact(value: Any) -> Any:
 
 
 def _structure_lines(value: Any) -> list[str]:
-    """Split envelope structure on CR/LF only; other Unicode boundaries are payload."""
+    """Split envelope structure on CR/LF only; preserve other payload boundaries."""
     return str(value or "").replace("\r\n", "\n").replace("\r", "\n").split("\n")
 
 
-def _metadata_line(value: Any) -> str:
-    """Collapse every Unicode line boundary before projecting one metadata line."""
-    return " ".join(str(value).splitlines()).strip()
+def _opaque_metadata(value: Any, field: str, maximum: int = 200) -> str:
+    """Keep optional caller metadata exact; carrier projections format a derived copy."""
+    if not isinstance(value, str):
+        raise EnvelopeError("SCHEMA", "%s must be a string" % field)
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise EnvelopeError("SCHEMA", "%s must be valid Unicode" % field) from exc
+    if len(value) > maximum:
+        raise EnvelopeError("SCHEMA", "%s exceeds %d characters" % (field, maximum))
+    return value
+
+
+def _projection_line(value: Any) -> str:
+    """Render one derived metadata line without mutating or rejecting caller bytes."""
+    return PROJECTION_BREAK_RE.sub(" ", str(value))
 
 
 def _plain(value: Any, field: str, maximum: int = 200) -> str:
@@ -106,7 +118,7 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if METADATA_BREAK_RE.search(out) or len(out) > maximum:
+    if "\n" in out or "\r" in out or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
 
@@ -187,16 +199,16 @@ def projection_headers(payload: dict[str, Any], *, default_capability: str | Non
     lines = []
     seen = set()
     for key in PROJECTION_REQUIRED:
-        lines.append("%s: %s" % (key, _metadata_line(row.get(key, ""))))
+        lines.append("%s: %s" % (key, _projection_line(row.get(key, ""))))
         seen.add(key)
     for key in PROJECTION_OPTIONAL:
         if row.get(key) not in (None, ""):
-            lines.append("%s: %s" % (key, _metadata_line(row[key])))
+            lines.append("%s: %s" % (key, _projection_line(row[key])))
             seen.add(key)
     for key in sorted(row):
         if key in seen or key == "body" or row.get(key) in (None, ""):
             continue
-        lines.append("%s: %s" % (key, _metadata_line(row[key])))
+        lines.append("%s: %s" % (key, _projection_line(row[key])))
     return lines
 
 
@@ -244,7 +256,7 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
             raise EnvelopeError("SCHEMA", "intelligence_kind must be LLM, NON_LLM, HUMAN, or UNKNOWN")
         for key in ("model", "harness"):
             if arguments.get(key) not in (None, ""):
-                payload[key] = _plain(arguments[key], key)
+                payload[key] = _opaque_metadata(arguments[key], key)
         return payload
     if kind == "MEMORY_APPEND":
         payload["kind"] = "MEMORY_APPEND"
@@ -265,37 +277,31 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
             raise EnvelopeError("SCHEMA", "is_language_model must be YES or NO")
     for key in ("model", "harness"):
         if arguments.get(key) not in (None, ""):
-            payload[key] = _plain(arguments[key], key)
+            payload[key] = _opaque_metadata(arguments[key], key)
     for key in ("tools", "resources"):
         if arguments.get(key) not in (None, ""):
-            payload[key] = _plain(arguments[key], key, 1000)
+            payload[key] = _opaque_metadata(arguments[key], key, 1000)
     for key, maximum in (
         ("reasoning_mode", 16), ("speech", 1000), ("model_protocol", 32),
         ("model_codec", 32), ("model_packet", 2400), ("payload_kind", 32),
         ("payload_sha256", 64), ("language_state", 32),
     ):
         if arguments.get(key) not in (None, ""):
-            payload[key] = _plain(arguments[key], key, maximum)
+            payload[key] = _opaque_metadata(arguments[key], key, maximum)
     if kind == "MODEL":
-        try:
-            cml = model_language.canonicalize_emitter_metadata(
-                {
-                    "speech": arguments.get("speech"),
-                    "model_packet": arguments.get("model_packet"),
-                    "model_codec": arguments.get("model_codec") or "json",
-                    "payload_kind": arguments.get("payload_kind"),
-                    **(
-                        {"payload_sha256": arguments["payload_sha256"]}
-                        if arguments.get("payload_sha256") not in (None, "")
-                        else {}
-                    ),
-                },
-                body,
-            )
-        except model_language.ModelLanguageError as exc:
-            raise EnvelopeError("SCHEMA", str(exc)) from exc
         payload["is_language_model"] = "YES"
-        payload.update(cml)
+        layered = any(
+            arguments.get(key) not in (None, "")
+            for key in ("speech", "model_packet")
+        )
+        if layered:
+            payload.setdefault("reasoning_mode", "LATENT")
+            payload.setdefault("model_protocol", "CML/1")
+            payload.setdefault("model_codec", "json")
+            payload.setdefault("payload_sha256", sha256_text(body))
+            payload.setdefault("language_state", "LAYERED")
+        else:
+            payload.setdefault("language_state", "UNLAYERED")
     packed = canonical_json(payload)
     if len(packed.encode("utf-8")) > NTFY_MAX:
         raise EnvelopeError(
@@ -319,6 +325,8 @@ def public_summary(payload: dict[str, Any]) -> dict[str, Any]:
         "supersedes": payload.get("supersedes") or "",
         "body_sha256": sha256_text(str(payload.get("body") or "")),
         "is_language_model": payload.get("is_language_model") or "",
+        "language_state": payload.get("language_state") or "",
+        "payload_sha256": payload.get("payload_sha256") or "",
     }
 
 

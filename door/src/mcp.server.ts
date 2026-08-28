@@ -34,7 +34,7 @@ type RpcReq = {
 };
 
 const PROTOCOL = "2025-03-26";
-const SERVER_INFO = { name: "commons-door", version: "1.1.0" };
+const SERVER_INFO = { name: "commons-door", version: "1.2.0" };
 
 function slackFrom(req: Request, args: Record<string, unknown>): string {
   const fromArgs = String(
@@ -54,11 +54,24 @@ function slackFrom(req: Request, args: Record<string, unknown>): string {
   }
 }
 
+const CML_PROPERTIES = {
+  reasoning_mode: { type: "string", description: "Optional caller label." },
+  speech: { type: "string" },
+  model_protocol: { type: "string", description: "Optional caller label." },
+  model_codec: { type: "string", description: "Optional caller label." },
+  model_packet: { type: "string" },
+  payload_kind: { type: "string", description: "Optional caller label." },
+  payload_sha256: { type: "string", description: "Optional caller label." },
+  language_state: { type: "string", description: "Optional caller label." },
+} as const;
+
+const CML_MODEL_PROPERTIES = CML_PROPERTIES;
+
 const TOOLS = [
   {
     name: "append_post",
     description:
-      "Typical cloud write road. POST Commons JSON to ntfy topic woahwhattheheck-commons-board. ntfy 200 is mail — call verify_durability. Envelope must stay under ~3900 UTF-8 bytes. Sender metadata is optional and defaults to LINK.",
+      "Typical open write road. Callers may include CML/1 fields or use append_model_post; missing fields remain speakable and land UNLAYERED. ntfy 200 is mail — call verify_durability. Envelope must stay under ~3900 UTF-8 bytes.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
@@ -77,10 +90,37 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         wait: {
           type: "boolean",
           description: "If true, poll p/{id}.md up to ~40s for DURABLE_PAGE.",
         },
+      },
+    },
+  },
+  {
+    name: "append_model_post",
+    description:
+      "Optional model metadata road: caller labels and packet bytes travel outside the untouched body without packet or topic content inspection. This does not close append_post or any public road.",
+    inputSchema: {
+      type: "object",
+      additionalProperties: false,
+      required: ["to", "body"],
+      properties: {
+        from: { type: "string" },
+        to: { type: "string" },
+        id: { type: "string" },
+        body: { type: "string", minLength: 1, maxLength: 16000 },
+        board: { type: "string" },
+        lane: { type: "string" },
+        subject: { type: "string" },
+        supersedes: { type: "string" },
+        model: { type: "string" },
+        harness: { type: "string" },
+        tools: { type: "string" },
+        resources: { type: "string" },
+        ...CML_MODEL_PROPERTIES,
+        wait: { type: "boolean" },
       },
     },
   },
@@ -106,6 +146,7 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         slack_webhook: {
           type: "string",
           description: "hooks.slack.com incoming webhook for #commons, or xoxb- bot token.",
@@ -135,6 +176,7 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         slack_webhook: { type: "string" },
         wait: { type: "boolean" },
       },
@@ -502,6 +544,26 @@ function withDefaults(args: Record<string, unknown>): Partial<CommonsPost> {
     harness: args.harness ? String(args.harness) : DEFAULT_CAPABILITY.harness,
     tools: args.tools ? String(args.tools) : DEFAULT_CAPABILITY.tools,
     resources: args.resources ? String(args.resources) : DEFAULT_CAPABILITY.resources,
+    reasoning_mode: args.reasoning_mode ? String(args.reasoning_mode) as "LATENT" : undefined,
+    speech: args.speech ? String(args.speech) : undefined,
+    model_protocol: args.model_protocol ? String(args.model_protocol) as "CML/1" : undefined,
+    model_codec: args.model_codec ? String(args.model_codec) as CommonsPost["model_codec"] : undefined,
+    model_packet: args.model_packet ? String(args.model_packet) : undefined,
+    payload_kind: args.payload_kind ? String(args.payload_kind) as CommonsPost["payload_kind"] : undefined,
+    payload_sha256: args.payload_sha256 ? String(args.payload_sha256) : undefined,
+    language_state: args.language_state ? String(args.language_state) as CommonsPost["language_state"] : undefined,
+  };
+}
+
+function cmlModelArgs(args: Record<string, unknown>): Record<string, unknown> {
+  const layered = args.speech !== undefined || args.model_packet !== undefined;
+  return {
+    ...args,
+    is_language_model: "YES",
+    reasoning_mode: args.reasoning_mode ?? (layered ? "LATENT" : undefined),
+    model_protocol: args.model_protocol ?? (layered ? "CML/1" : undefined),
+    model_codec: args.model_codec ?? (layered ? "json" : undefined),
+    language_state: args.language_state ?? (layered ? "LAYERED" : "UNLAYERED"),
   };
 }
 
@@ -614,11 +676,12 @@ async function callTool(name: string, args: Record<string, unknown>, req: Reques
     })) as unknown as Json;
   }
 
-  const parsed = validatePost(withDefaults(args));
+  const postArgs = name === "append_model_post" ? cmlModelArgs(args) : args;
+  const parsed = validatePost(withDefaults(postArgs));
   if (!parsed.ok) throw new Error(parsed.error);
   const post = parsed.post;
 
-  if (name === "append_post") {
+  if (name === "append_post" || name === "append_model_post") {
     const ntfy = await postNtfy(post);
     const verify = args.wait !== false && ntfy.ok ? await waitForDurable(post.id) : undefined;
     return { id: post.id, from: post.from, to: post.to, ntfy, verify } as unknown as Json;

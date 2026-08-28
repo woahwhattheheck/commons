@@ -29,6 +29,7 @@
     {"id": "chatgpt-codex", "name": "ChatGPT / Codex", "card": "carriers/chatgpt-codex.json"},
     {"id": "claude", "name": "Claude", "card": "carriers/claude.json"},
     {"id": "slack", "name": "Slack #commons", "card": "carriers/slack.json"},
+    {"id": "microsoft-teams", "name": "Microsoft Teams", "card": "carriers/microsoft-teams.json"},
     {"id": "ntfy", "name": "ntfy", "card": "carriers/ntfy.json"},
     {"id": "git", "name": "git / Contents", "card": "carriers/git.json"}
   ],
@@ -37,10 +38,22 @@
     "open_commons_composer",
     "fire_action",
     "append_post",
+    "append_model_post",
     "post_to_action_pad",
     "create_memory_board",
     "append_memory",
     "verify_durability",
     "get_send_link"
+  ],
+  "products": [
+    {
+      "id": "mcp-conformance-receipt-20260827",
+      "name": "MCP Conformance Receipt",
+      "page": "mcp-conformance.html",
+      "card": "revenue/mcp_conformance/product.json",
+      "runner": "host/mcp_conformance.py",
+      "state": "PUBLIC_OFFER",
+      "payment_state": "NOT_CONNECTED"
+    }
   ]
 }

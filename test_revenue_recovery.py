@@ -808,8 +808,8 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(self.recovery["truth"]["buyer"], "UNKNOWN")
         self.assertEqual(self.recovery["truth"]["demand"], "UNKNOWN")
         self.assertTrue(self.recovery["truth"]["contact_sent"])
-        self.assertEqual(self.recovery["truth"]["distinct_contacts_sent"], 11)
-        self.assertEqual(self.recovery["truth"]["provider_transports_observed"], 16)
+        self.assertEqual(self.recovery["truth"]["distinct_contacts_sent"], 7)
+        self.assertEqual(self.recovery["truth"]["provider_transports_observed"], 12)
         self.assertEqual(self.recovery["truth"]["replies_observed"], 0)
         self.assertEqual(self.recovery["truth"]["collected_cash_usd"], 0)
         self.assertFalse(self.recovery["resource_recovery"]["cursor_used_for_this_pipeline"])
@@ -821,14 +821,14 @@ class RevenueRecoveryTests(unittest.TestCase):
             self.assertTrue(row["buyer_channel_url"].startswith("https://"))
             self.assertTrue(row["disqualifier"])
         self.assertTrue(prospects["contact_sent"])
-        self.assertEqual(prospects["distinct_contacts_sent"], 11)
-        self.assertEqual(prospects["provider_transports_observed"], 16)
+        self.assertEqual(prospects["distinct_contacts_sent"], 7)
+        self.assertEqual(prospects["provider_transports_observed"], 12)
         self.assertEqual(prospects["replies_observed"], 0)
         self.assertTrue(prospects["do_not_resend_all"])
         transports = prospects["canonical_transports"]
-        self.assertEqual(len(transports), 11)
-        self.assertEqual(len({row["provider_reference"] for row in transports}), 11)
-        self.assertEqual(len({row["receipt"] for row in transports}), 11)
+        self.assertEqual(len(transports), 7)
+        self.assertEqual(len({row["provider_reference"] for row in transports}), 7)
+        self.assertEqual(len({row["receipt"] for row in transports}), 7)
         receipt_paths = list((ROOT / "revenue/payment_ready/outreach_receipts").glob("*.json"))
         receipt_names = {path.name for path in receipt_paths}
         canonical_contact_keys = set()
@@ -840,6 +840,12 @@ class RevenueRecoveryTests(unittest.TestCase):
             self.assertTrue(receipt_path.is_file())
             self.assertIn(Path(row["receipt"]).name, receipt_names)
             receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            campaign_id = receipt.get("campaign_id", "")
+            self.assertFalse(campaign_id.startswith("same-day-agent-survival-proof-"))
+            self.assertTrue(
+                campaign_id == "owner-seven-outreach-20260826-01"
+                or receipt.get("offer_id") == prospects["offer_id"]
+            )
             self.assertEqual(receipt["provider_reference"], row["provider_reference"])
             provider_state = receipt.get("provider_state", receipt.get("transport_state"))
             self.assertIn(provider_state, {"COMPLETED", "DELIVERED"})
