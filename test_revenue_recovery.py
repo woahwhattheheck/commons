@@ -362,6 +362,8 @@ class RevenueRecoveryTests(unittest.TestCase):
             "?user%5BprivateEmail%5D=hidden",
             'payload=\n{\n  "\\u0070rivateEmail": "hidden"\n}',
             'payload={ "\\u0070rivateEmail": "hidden"',
+            'privateEmail=""customerEmail=hidden',
+            'publicObjective=""customerEmail=hidden',
         )
         for value in blocked_assignments:
             with self.subTest(blocked=value):
@@ -385,6 +387,8 @@ class RevenueRecoveryTests(unittest.TestCase):
             "?email_address_public_opt_in=false",
             "?awssecretary=public",
             'payload=\n{\n  "\\u0070ublicObjective": "safe"\n}',
+            'privateEmail=""',
+            'publicObjective="customerEmail=hidden"',
         )
         for value in safe_assignments:
             with self.subTest(safe=value):

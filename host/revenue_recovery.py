@@ -123,6 +123,13 @@ FIELD_ASSIGNMENT_RE = re.compile(
     r'''["']?\s*[:=]\s*''',
     re.IGNORECASE,
 )
+FIELD_ASSIGNMENT_START_RE = re.compile(
+    r'''^["']?'''
+    r'''((?:[A-Za-z]|\\u[0-9A-Fa-f]{4})'''
+    r'''(?:[A-Za-z0-9_.\[\] -]|\\u[0-9A-Fa-f]{4}){1,96})'''
+    r'''["']?\s*[:=]\s*''',
+    re.IGNORECASE,
+)
 PERCENT_ESCAPE_RE = re.compile(r"%[0-9A-Fa-f]{2}")
 HTTPS_TOKEN_RE = re.compile(r"\bhttps://[^\s]+", re.IGNORECASE)
 HTTPS_USERINFO_RE = re.compile(r"\bhttps://[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE)
@@ -451,26 +458,42 @@ def decode_percent_layers(value: Any) -> tuple[str, bool]:
 
 
 def _has_sensitive_assignment(text: str) -> bool:
+    # A closing quote is also a parser boundary for a malformed glued
+    # assignment (for example: publicObjective=""customerEmail=hidden).
+    # Scan the suffix from that boundary as a fresh fragment so assignment-like
+    # text *inside* the quoted value remains data, while a field after it cannot
+    # hide behind the regex prefix requirement.
+    visited = 0
     for match in FIELD_ASSIGNMENT_RE.finditer(text):
-        field_name = re.sub(
-            r"\\u([0-9A-Fa-f]{4})",
-            lambda escape: chr(int(escape.group(1), 16)),
-            match.group(1),
-        )
-        if not is_sensitive_field_name(field_name):
-            continue
-        tail = text[match.end():]
-        if not tail:
-            continue
-        if tail[0] in ('"', "'"):
-            quote = tail[0]
-            closing = tail.find(quote, 1)
-            value = tail[1:] if closing < 0 else tail[1:closing]
-        else:
-            value_match = re.match(r"[^\s,}\r\n]+", tail)
-            value = value_match.group(0) if value_match else ""
-        if value.strip():
-            return True
+        fragment = text
+        while match:
+            visited += 1
+            if visited > JSON_MAX_NODES:
+                return True
+            field_name = re.sub(
+                r"\\u([0-9A-Fa-f]{4})",
+                lambda escape: chr(int(escape.group(1), 16)),
+                match.group(1),
+            )
+            tail = fragment[match.end():]
+            if not tail:
+                break
+            if tail[0] in ('"', "'"):
+                quote = tail[0]
+                closing = tail.find(quote, 1)
+                value = tail[1:] if closing < 0 else tail[1:closing]
+                glued = tail[closing + 1:] if closing >= 0 else ""
+            else:
+                value_match = re.match(r"[^\s,}\r\n]+", tail)
+                value = value_match.group(0) if value_match else ""
+                glued = ""
+            if is_sensitive_field_name(field_name) and value.strip():
+                return True
+            # Standard whitespace/comma/etc. boundaries are found by the outer
+            # regex. Only continue manually when a new assignment begins
+            # immediately after the closing quote.
+            match = FIELD_ASSIGNMENT_START_RE.match(glued)
+            fragment = glued
     return False
 
 
