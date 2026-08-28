@@ -195,23 +195,86 @@ def platform_protector(material: bytes | None = None) -> Protector:
     return PosixUserProtector(material=material)
 
 
-def _crypt_protect_data(plaintext: bytes) -> bytes:
+def _cdata_from_bytes(data: bytes):
+    """Copy ciphertext including embedded NUL bytes.
+
+    DPAPI blobs are binary and routinely contain 0x00. ctypes.create_string_buffer
+    plus .value assignment is a C-string path and is not used here, so a vault
+    written by the localhost handoff can be unprotect()'d in another process.
+    """
+    import ctypes
+
+    n = len(data)
+    if n <= 0:
+        return (ctypes.c_ubyte * 1)(), 0
+    buf = (ctypes.c_ubyte * n).from_buffer_copy(data)
+    return buf, n
+
+
+def _bytes_from_cdata(ptr: object, length: int) -> bytes:
+    import ctypes
+
+    if ptr is None or length <= 0:
+        return b""
+    return ctypes.string_at(ptr, length)
+
+
+def _win_crypt32():
     import ctypes
     from ctypes import wintypes
 
     class DATA_BLOB(ctypes.Structure):
-        _fields_ = [("cbData", wintypes.DWORD), ("pbData", ctypes.POINTER(ctypes.c_byte))]
+        _fields_ = [
+            ("cbData", wintypes.DWORD),
+            ("pbData", ctypes.POINTER(ctypes.c_ubyte)),
+        ]
 
-    crypt32 = ctypes.windll.crypt32  # type: ignore[attr-defined]
-    kernel32 = ctypes.windll.kernel32  # type: ignore[attr-defined]
+    crypt32 = ctypes.WinDLL("crypt32", use_last_error=True)
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    crypt32.CryptProtectData.restype = wintypes.BOOL
+    crypt32.CryptProtectData.argtypes = [
+        ctypes.POINTER(DATA_BLOB),
+        wintypes.LPCWSTR,
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.c_void_p,
+        ctypes.c_void_p,
+        wintypes.DWORD,
+        ctypes.POINTER(DATA_BLOB),
+    ]
+    crypt32.CryptUnprotectData.restype = wintypes.BOOL
+    crypt32.CryptUnprotectData.argtypes = [
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.POINTER(wintypes.LPWSTR),
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.c_void_p,
+        ctypes.c_void_p,
+        wintypes.DWORD,
+        ctypes.POINTER(DATA_BLOB),
+    ]
+    kernel32.LocalFree.restype = ctypes.c_void_p
+    kernel32.LocalFree.argtypes = [ctypes.c_void_p]
+    return crypt32, kernel32, DATA_BLOB
+
+
+def _local_free(kernel32: object, pb_data: object) -> None:
+    import ctypes
+
+    if not pb_data:
+        return
+    kernel32.LocalFree(ctypes.cast(pb_data, ctypes.c_void_p))  # type: ignore[union-attr]
+
+
+def _crypt_protect_data(plaintext: bytes) -> bytes:
+    import ctypes
+
+    crypt32, kernel32, DATA_BLOB = _win_crypt32()
     CRYPTPROTECT_UI_FORBIDDEN = 0x01
-    in_buf = ctypes.create_string_buffer(plaintext, len(plaintext))
-    inbound = DATA_BLOB(len(plaintext), ctypes.cast(in_buf, ctypes.POINTER(ctypes.c_byte)))
+    buf, n = _cdata_from_bytes(plaintext)
+    inbound = DATA_BLOB(n, ctypes.cast(buf, ctypes.POINTER(ctypes.c_ubyte)))
     outbound = DATA_BLOB()
-    description = ctypes.c_wchar_p("commons-grok-slack")
     ok = crypt32.CryptProtectData(
         ctypes.byref(inbound),
-        description,
+        "commons-grok-slack",
         None,
         None,
         None,
@@ -221,39 +284,49 @@ def _crypt_protect_data(plaintext: bytes) -> bytes:
     if not ok:
         raise VaultError("vault protect failed")
     try:
-        return ctypes.string_at(outbound.pbData, outbound.cbData)
+        return _bytes_from_cdata(outbound.pbData, outbound.cbData)
     finally:
-        kernel32.LocalFree(outbound.pbData)
+        _local_free(kernel32, outbound.pbData)
 
 
 def _crypt_unprotect_data(blob: bytes) -> bytes:
+    """Decrypt a current-user DPAPI blob. Tries UI_FORBIDDEN then flags=0.
+
+    Existing CGSVAULT1W files are left untouched. Never unlinks the vault.
+    """
     import ctypes
-    from ctypes import wintypes
 
-    class DATA_BLOB(ctypes.Structure):
-        _fields_ = [("cbData", wintypes.DWORD), ("pbData", ctypes.POINTER(ctypes.c_byte))]
-
-    crypt32 = ctypes.windll.crypt32  # type: ignore[attr-defined]
-    kernel32 = ctypes.windll.kernel32  # type: ignore[attr-defined]
+    crypt32, kernel32, DATA_BLOB = _win_crypt32()
     CRYPTPROTECT_UI_FORBIDDEN = 0x01
-    in_buf = ctypes.create_string_buffer(blob, len(blob))
-    inbound = DATA_BLOB(len(blob), ctypes.cast(in_buf, ctypes.POINTER(ctypes.c_byte)))
-    outbound = DATA_BLOB()
-    ok = crypt32.CryptUnprotectData(
-        ctypes.byref(inbound),
-        None,
-        None,
-        None,
-        None,
-        CRYPTPROTECT_UI_FORBIDDEN,
-        ctypes.byref(outbound),
-    )
-    if not ok:
-        raise VaultError("vault unreadable")
-    try:
-        return ctypes.string_at(outbound.pbData, outbound.cbData)
-    finally:
-        kernel32.LocalFree(outbound.pbData)
+    buf, n = _cdata_from_bytes(blob)
+    inbound = DATA_BLOB(n, ctypes.cast(buf, ctypes.POINTER(ctypes.c_ubyte)))
+    for flags in (CRYPTPROTECT_UI_FORBIDDEN, 0):
+        outbound = DATA_BLOB()
+        ok = crypt32.CryptUnprotectData(
+            ctypes.byref(inbound),
+            None,
+            None,
+            None,
+            None,
+            flags,
+            ctypes.byref(outbound),
+        )
+        if not ok:
+            continue
+        try:
+            return _bytes_from_cdata(outbound.pbData, outbound.cbData)
+        finally:
+            _local_free(kernel32, outbound.pbData)
+    raise VaultError("vault unreadable")
+
+
+def protector_for_kind(kind: bytes, *, protector: Protector | None = None) -> Protector:
+    if protector is not None:
+        return protector
+    if kind == KIND_WIN:
+        return WinDpapiProtector()
+    return PosixUserProtector()
+
 
 
 def _looks_like_bot(value: str) -> bool:
@@ -304,6 +377,19 @@ def write_vault(
             os.fchmod(fd, 0o600)
     finally:
         os.close(fd)
+    if hasattr(os, "chmod"):
+        os.chmod(tmp, 0o600)
+    try:
+        loaded = read_vault(tmp, protector=worker)
+        if not hmac.compare_digest(loaded["bot_token"], bot_token) or not hmac.compare_digest(loaded["app_token"], app_token):
+            raise VaultError("vault unreadable")
+    except VaultError:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        # Existing ciphertext at `path` is left untouched. Never unlink the live vault.
+        raise
     os.replace(tmp, path)
     if hasattr(os, "chmod"):
         os.chmod(path, 0o600)
@@ -314,6 +400,7 @@ def write_vault(
         "protector": worker.name,
         "slack_app_id": app_id,
         "secrets_printed": False,
+        "verified": True,
     }
 
 
@@ -324,12 +411,13 @@ def read_vault(path: Path, *, protector: Protector | None = None) -> dict[str, s
         raise VaultError("vault unreadable") from exc
     if not raw.startswith(MAGIC) or len(raw) < len(MAGIC) + 2:
         raise VaultError("vault unreadable")
+    kind = raw[len(MAGIC) : len(MAGIC) + 1]
     blob = raw[len(MAGIC) + 1 :]
-    worker = protector or platform_protector()
+    worker = protector_for_kind(kind, protector=protector)
     try:
         inner = worker.unprotect(blob)
         payload = json.loads(inner.decode("utf-8"))
-    except (VaultError, ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+    except (VaultError, OSError, ValueError, UnicodeDecodeError, json.JSONDecodeError, AttributeError) as exc:
         raise VaultError("vault unreadable") from exc
     bot = payload.get("bot_token")
     app = payload.get("app_token")

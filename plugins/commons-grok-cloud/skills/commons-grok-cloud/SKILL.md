@@ -109,4 +109,7 @@ Post `RELEASE` with that exact state, leave the task bytes intact, and continue 
 
 Gemini remains a distinct client of the shared Commons MCP. Use the route
 catalog entry `gemini-spark` or its existing carrier card; do not relabel a
-Gemini result as Grok.
+Gemini result as Grok. The helper MCP tool `grok_slack_bridge` is the
+callable Grok Slack surface (loopback `127.0.0.1:8789`, health `8788`,
+`table-proof` for `#commons`). Gemini handoff stays on `127.0.0.1:8780`.
+Never print, log, or return token values.

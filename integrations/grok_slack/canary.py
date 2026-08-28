@@ -142,6 +142,57 @@ def run() -> dict[str, Any]:
             ))
             blob_parts.append(status_blob)
 
+        handoff_src = (handoff_root / "handoff.py").read_text(encoding="utf-8")
+        checks.append(_check(
+            "dpapi_from_buffer_copy",
+            "from_buffer_copy" in handoff_src and "WinDLL" in handoff_src,
+        ))
+        checks.append(_check(
+            "dpapi_not_cstring_buffer",
+            "create_string_buffer(blob" not in handoff_src
+            and "create_string_buffer(plaintext" not in handoff_src,
+        ))
+        checks.append(_check(
+            "write_vault_verifies_tmp_before_replace",
+            "read_vault(tmp, protector=worker)" in handoff_src
+            and "Existing ciphertext at `path` is left untouched" in handoff_src,
+        ))
+        bridge_src = (handoff_root / "bridge.py").read_text(encoding="utf-8")
+        checks.append(_check(
+            "table_proof_command",
+            "table-proof" in bridge_src and "TABLE_PROOF_CITE" in bridge_src,
+        ))
+        with tempfile.TemporaryDirectory() as keep_dir:
+            keep_path = Path(keep_dir) / "grok_slack.vault"
+            existing = grok_handoff.MAGIC + grok_handoff.KIND_WIN + b"\x01\x00keep-me\x00blob"
+            keep_path.write_bytes(existing)
+
+            class BoomProtector(grok_handoff.Protector):
+                name = "boom"
+
+                def protect(self, plaintext: bytes) -> bytes:
+                    del plaintext
+                    return b"\x00new-ciphertext"
+
+                def unprotect(self, blob: bytes) -> bytes:
+                    del blob
+                    raise grok_handoff.VaultError("vault unreadable")
+
+            boom_failed = False
+            try:
+                grok_handoff.write_vault(
+                    keep_path,
+                    "xoxb" + "-injected-not-printed",
+                    "xapp" + "-injected-not-printed",
+                    protector=BoomProtector(),
+                )
+            except grok_handoff.VaultError:
+                boom_failed = True
+            checks.append(_check(
+                "failed_write_preserves_existing_vault",
+                boom_failed and keep_path.read_bytes() == existing,
+            ))
+
         health_code, health_report = bridge.health(args, env={}, root=bridge.integration_root())
         encoded_health = json.dumps(health_report)
         blob_parts.append(encoded_health)

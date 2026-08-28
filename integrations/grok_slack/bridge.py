@@ -1773,6 +1773,126 @@ def health(
     return (2, report)
 
 
+
+SLACK_API = "https://slack.com/api"
+TABLE_PROOF_CITE = "grok-slack-dpapi-cross-process-20260828-01"
+PROOF_RECEIPT_TEXT = (
+    "Grok Slack DPAPI cross-process vault read is landed. "
+    "Cite grok-slack-dpapi-cross-process-20260828-01. "
+    "App A0BTJMFPTT6. Gemini stays on 8780. No token values."
+)
+
+
+def _redact_blob(value: Any) -> Any:
+    blob = json.dumps(value)
+    redacted = TOKEN_VALUE_RE.sub("[redacted]", blob)
+    return json.loads(redacted)
+
+
+def slack_web_call(
+    method: str,
+    token: str,
+    payload: dict[str, Any] | None = None,
+    *,
+    opener: Callable[..., Any] | None = None,
+) -> dict[str, Any]:
+    """POST a Slack Web API method. Token never appears in returned JSON."""
+    if not token:
+        raise RuntimeUnconfigured("missing Slack token")
+    body = json.dumps(payload or {}, separators=(",", ":")).encode("utf-8")
+    request = Request(
+        f"{SLACK_API}/{method}",
+        data=body,
+        method="POST",
+        headers={
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json; charset=utf-8",
+            "Accept": "application/json",
+            "User-Agent": "commons-grok-slack-bridge",
+        },
+    )
+    fetch = opener or urlopen
+    try:
+        with fetch(request, timeout=20) as response:
+            raw = response.read().decode("utf-8")
+    except HTTPError as exc:
+        raise BridgeError(f"slack HTTP {exc.code}") from exc
+    except (URLError, TimeoutError, OSError) as exc:
+        raise BridgeError("slack unavailable") from exc
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise BridgeError("slack unreadable") from exc
+    if not isinstance(parsed, dict):
+        raise BridgeError("slack unreadable")
+    return _redact_blob(parsed)
+
+
+def table_proof(
+    args: argparse.Namespace,
+    *,
+    env: dict[str, str] | None = None,
+    opener: Callable[..., Any] | None = None,
+    post_receipt: bool | None = None,
+) -> tuple[int, dict[str, Any]]:
+    """Read-only #commons history plus a harmless receipt. Never prints secrets."""
+    source = env if env is not None else os.environ
+    health_code, health_report = health(args, env=source, opener=opener)
+    report: dict[str, Any] = {
+        "schema": "commons-grok-slack-table-proof/v1",
+        "cite": TABLE_PROOF_CITE,
+        "slack_app_id": SLACK_APP_ID,
+        "channel": DEFAULT_CHANNEL,
+        "health_code": health_code,
+        "health_state": health_report.get("state"),
+        "slack_bot_token": health_report.get("slack_bot_token"),
+        "slack_app_token": health_report.get("slack_app_token"),
+        "gemini_isolated": True,
+        "gemini_handoff_bind": "127.0.0.1:8780",
+        "handoff_bind": "127.0.0.1:8789",
+        "secrets_printed": False,
+        "read_only_history": False,
+        "receipt_posted": False,
+        "auth": "none",
+        "final_delivery_owner": FINAL_DELIVERY_OWNER,
+    }
+    bot = source.get("SLACK_BOT_TOKEN") or ""
+    if health_report.get("slack_bot_token") != "present" or not bot:
+        report["state"] = "RUNTIME_UNCONFIGURED"
+        return (2, report)
+    identity = slack_web_call("auth.test", bot, {}, opener=opener)
+    report["auth_test_ok"] = bool(identity.get("ok"))
+    report["team_present"] = bool(identity.get("team") or identity.get("team_id"))
+    history = slack_web_call(
+        "conversations.history",
+        bot,
+        {"channel": DEFAULT_CHANNEL, "limit": 5},
+        opener=opener,
+    )
+    messages = history.get("messages") if isinstance(history.get("messages"), list) else []
+    report["read_only_history"] = bool(history.get("ok"))
+    report["history_count"] = len(messages)
+    if messages and isinstance(messages[0], dict):
+        report["latest_ts_present"] = bool(messages[0].get("ts"))
+    want_post = bool(post_receipt) if post_receipt is not None else bool(getattr(args, "post_receipt", True))
+    if want_post:
+        posted = slack_web_call(
+            "chat.postMessage",
+            bot,
+            {"channel": DEFAULT_CHANNEL, "text": PROOF_RECEIPT_TEXT, "unfurl_links": False, "unfurl_media": False},
+            opener=opener,
+        )
+        report["receipt_posted"] = bool(posted.get("ok"))
+        report["receipt_ts_present"] = bool(posted.get("ts"))
+    encoded = json.dumps(report)
+    if TOKEN_VALUE_RE.search(encoded) or (bot and bot in encoded):
+        raise BridgeError("secret_in_table_proof")
+    ok = bool(report.get("auth_test_ok") and report.get("read_only_history") and (not want_post or report.get("receipt_posted")))
+    report["ok"] = ok
+    report["state"] = "PROOF_OK" if ok else "NOT_READY"
+    return (0 if ok else 2, report)
+
+
 def serve(args: argparse.Namespace) -> int:
     presence = credential_presence()
     scan = scan_secrets_in_config()
@@ -1877,7 +1997,7 @@ def resolve_args(args: argparse.Namespace) -> argparse.Namespace:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("serve", "doctor", "health", "canary"), nargs="?", default="serve")
+    parser.add_argument("command", choices=("serve", "doctor", "health", "canary", "table-proof"), nargs="?", default="serve")
     parser.add_argument("--json", action="store_true", help="doctor/health prints JSON (always on for those commands)")
     parser.add_argument("--state-db", type=Path, default=None)
     parser.add_argument("--mcp-url", default=DEFAULT_MCP_URL)
@@ -1887,6 +2007,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--health-bind", default=None, help="loopback host:port for /health, or off")
     parser.add_argument("--probe", default="", help="health command HTTP probe URL")
     parser.add_argument("--env-file", type=Path, default=None, help="gitignored KEY=VALUE file; values never printed")
+    parser.add_argument("--post-receipt", dest="post_receipt", action="store_true", default=True)
+    parser.add_argument("--no-post-receipt", dest="post_receipt", action="store_false")
     return parser
 
 
@@ -1922,6 +2044,10 @@ def main(argv: list[str] | None = None) -> int:
             report = run_canary()
             print(json.dumps(report, indent=2, sort_keys=True))
             return 0 if report.get("ok") else 1
+        if args.command == "table-proof":
+            code, report = table_proof(args)
+            print(json.dumps(report, indent=2, sort_keys=True))
+            return code
         return serve(args)
     except RuntimeUnconfigured:
         print(json.dumps({"state": "RUNTIME_UNCONFIGURED"}, sort_keys=True))
