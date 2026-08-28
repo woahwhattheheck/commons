@@ -186,7 +186,8 @@ class LiveMirrorTests(unittest.TestCase):
         original_push = live_mirror._push
 
         def fake_push(git_dir: str, url: str, refspec: str):
-            if refspec.endswith(":refs/heads/main") and refspec.startswith(second):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":refs/heads/main") and spec.startswith(second):
                 class Fake:
                     returncode = 1
                     stdout = b""
@@ -212,6 +213,94 @@ class LiveMirrorTests(unittest.TestCase):
         self.assertEqual(shown, "name: v1")
         shown_readme = git(src, "show", f"{grafted['pushed_sha']}:readme.md")
         self.assertEqual(shown_readme, "two")
+
+    def test_grafted_push_force_updates_diverged_dest(self) -> None:
+        """A second graft is not a fast-forward of the first grafted dest commit."""
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        commit_tree(
+            src,
+            {
+                "readme.md": "one\n",
+                ".github/workflows/board-label.yml": "name: v1\n",
+            },
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        first = git(src, "rev-parse", "HEAD")
+        commit_tree(
+            src,
+            {
+                "readme.md": "two\n",
+                ".github/workflows/board-label.yml": "name: v2\n",
+            },
+            "second",
+        )
+        second = git(src, "rev-parse", "HEAD")
+        original_push = live_mirror._push
+
+        def block_exact(block_sha: str):
+            def fake_push(git_dir: str, url: str, refspec: str):
+                spec = refspec[1:] if refspec.startswith("+") else refspec
+                if spec.endswith(":refs/heads/main") and spec.startswith(block_sha):
+                    class Fake:
+                        returncode = 1
+                        stdout = b""
+                        stderr = FAILED_PUSH.encode("utf-8")
+
+                    return Fake()
+                return original_push(git_dir, url, refspec)
+
+            return fake_push
+
+        live_mirror._push = block_exact(second)  # type: ignore[method-assign]
+        try:
+            first_graft = live_mirror.push_mirror(
+                str(src / ".git"),
+                second,
+                str(dest),
+                dst_ref=first,
+            )
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(first_graft["state"], "GRAFTED")
+        dest_after = git(dest, "rev-parse", "refs/heads/main")
+        self.assertEqual(dest_after, first_graft["pushed_sha"])
+
+        commit_tree(
+            src,
+            {
+                "readme.md": "three\n",
+                ".github/workflows/board-label.yml": "name: v3\n",
+            },
+            "third",
+        )
+        third = git(src, "rev-parse", "HEAD")
+        live_mirror._push = block_exact(third)  # type: ignore[method-assign]
+        try:
+            second_graft = live_mirror.push_mirror(
+                str(src / ".git"),
+                third,
+                str(dest),
+                dst_ref=dest_after,
+            )
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(second_graft["state"], "GRAFTED")
+        self.assertEqual(git(dest, "rev-parse", "refs/heads/main"), second_graft["pushed_sha"])
+        self.assertEqual(
+            git(dest, "show", f"{second_graft['pushed_sha']}:readme.md"),
+            "three",
+        )
+        self.assertEqual(
+            git(dest, "show", f"{second_graft['pushed_sha']}:.github/workflows/board-label.yml"),
+            "name: v1",
+        )
+        self.assertEqual(
+            git(dest, "rev-parse", live_mirror.SOURCE_REF),
+            third,
+        )
 
     def test_cli_classify_and_plan(self) -> None:
         tool = ROOT / "host" / "live_mirror.py"

@@ -233,8 +233,14 @@ def commit_graft(
     return sha
 
 
+def _force_refspec(refspec: str) -> str:
+    """Force-update dest refs. Grafted backup main is not an ancestor of later source SHAs."""
+    return refspec if refspec.startswith("+") else f"+{refspec}"
+
+
 def _push(git_dir: str, dest_url: str, refspec: str) -> subprocess.CompletedProcess[bytes]:
-    return _run(["push", dest_url, refspec], git_dir=git_dir, check=False)
+    # Same contract as the measured live-mirror job: `git push --force`.
+    return _run(["push", dest_url, _force_refspec(refspec)], git_dir=git_dir, check=False)
 
 
 def push_mirror(
