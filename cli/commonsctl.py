@@ -179,3 +179,13 @@ def load_body_arg(raw: str | None, path: str | None) -> str:
     if raw is None:
         raise CtlError(STATE_MALFORMED, "body is required", code="SCHEMA", exit_code=4)
     return raw
+
+
+import ctl_client as _ctl_client
+
+Client = _ctl_client.Client
+run = _ctl_client.run
+main = _ctl_client.main
+
+if __name__ == "__main__":
+    raise SystemExit(main())
