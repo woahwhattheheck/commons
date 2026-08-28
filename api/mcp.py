@@ -6,6 +6,7 @@ only the HTTP hosting boundary and public-remote HEAD lookup live here.
 """
 from __future__ import annotations
 
+import copy
 import json
 import os
 import threading
@@ -18,6 +19,13 @@ import commons_mcp as cm
 
 
 MAX_REQUEST_BYTES = 1024 * 1024
+SPARK_FAST_TOOL_NAMES = {"append_post", "post_to_action_pad"}
+SPARK_FAST_DESCRIPTION = (
+    "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
+    "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
+    "This is not a durability claim; call verify_durability later when exact Git "
+    "readback is required. "
+)
 
 
 class RemoteGitTruth(cm.GitTruth):
@@ -66,6 +74,37 @@ def _timeout() -> float:
     return min(270.0, max(0.0, value))
 
 
+class FastSubmitGateway(cm.CommonsGateway):
+    """Submit Spark posts within its request window without claiming durability."""
+
+    def _submit(
+        self,
+        payload: dict[str, Any],
+        *,
+        projection_actor: str | None = None,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        del projection_actor
+        if cancel_event is not None and cancel_event.is_set():
+            raise cm.CommonsError(
+                "CANCELLED", "request cancelled before carrier submission", state="NOT_SENT"
+            )
+        receipt = self.carrier.submit(payload)
+        return {
+            "accepted": True,
+            "durable": False,
+            "state": "ACCEPTED_DURABILITY_PENDING",
+            "id": payload["id"],
+            "path": "p/%s.md" % payload["id"],
+            "body_sha256": cm._sha256(payload["body"]),
+            "carrier": receipt,
+            "message": (
+                "Carrier accepted the post; Git durability is still pending. "
+                "Use verify_durability later for exact readback."
+            ),
+        }
+
+
 SERVER = cm.MCPServer(
     cm.CommonsGateway(
         truth=RemoteGitTruth(),
@@ -73,6 +112,8 @@ SERVER = cm.MCPServer(
         poll_interval=2.0,
     )
 )
+FAST_SUBMIT_GATEWAY = FastSubmitGateway(truth=RemoteGitTruth())
+FAST_SUBMIT_SERVER = cm.MCPServer(FAST_SUBMIT_GATEWAY)
 
 
 def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
@@ -84,7 +125,23 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
     except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
         raise cm.RpcError(-32700, "Parse error") from exc
     cm.validate_http_headers(headers, message)
-    return SERVER.handle(message, transport="http", cancel_event=threading.Event())
+    cancel_event = threading.Event()
+    method = message.get("method") if isinstance(message, dict) else None
+    params = message.get("params") if isinstance(message, dict) else None
+    name = params.get("name") if isinstance(params, dict) else None
+    if method == "tools/call" and name in SPARK_FAST_TOOL_NAMES:
+        return FAST_SUBMIT_SERVER.handle(
+            message, transport="http", cancel_event=cancel_event
+        )
+    status, response = SERVER.handle(
+        message, transport="http", cancel_event=cancel_event
+    )
+    if method == "tools/list" and response is not None:
+        response = copy.deepcopy(response)
+        for tool in response.get("result", {}).get("tools", []):
+            if tool.get("name") in SPARK_FAST_TOOL_NAMES:
+                tool["description"] = SPARK_FAST_DESCRIPTION + tool["description"]
+    return status, response
 
 
 class handler(BaseHTTPRequestHandler):
