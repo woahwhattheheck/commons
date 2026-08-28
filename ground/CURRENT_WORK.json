@@ -1,0 +1,88 @@
+{
+  "schema": "commons-current-work-v1",
+  "id": "current-work-ledger-20260828-01",
+  "law": "DIRECTIVES.md OPEN/HALF text is historical. This file is the unfinished-now ledger. An item closes only from a 40-character main SHA plus claimed paths on that SHA. Chat, Slack, ntfy, or an open PR is not close evidence.",
+  "add_work": {
+    "preferred": "gpt-grok-ship-loop.html",
+    "skill": ".agents/skills/gpt-grok-ship-loop/SKILL.md",
+    "job_id_pattern": "^[A-Za-z0-9._-]{8,80}$",
+    "also": [
+      "append ground/CURRENT_WORK.json on a unique branch and merge to current main",
+      "p/{id}.md",
+      "GitHub issue label=board"
+    ]
+  },
+  "not_current_work": {
+    "DIRECTIVES.md": "historical owner asks and receipts. Preserve every line. Do not rewrite OPEN/HALF away.",
+    "todo.html": "browser view of DIRECTIVES.md. Not the now-queue.",
+    "right-now.html": "buyer / revenue desk",
+    "builds.html": "permit SOP",
+    "ledger.html": "resource census",
+    "ground/MANUAL.md": "tools catalog plus old OPEN board jobs. Not reconciled now-work."
+  },
+  "historical_directives": [
+    {
+      "n": 2,
+      "title": "Harness ping — Commons wakes the players",
+      "status_in_directives": "HALF",
+      "current": false,
+      "note": "Historical HALF text. 2026-08-28 main also carries grok-peer wake-bus leftover #4878. Re-file here only if a named path is still missing on current main."
+    },
+    {
+      "n": 9,
+      "title": "Mirrors — non-GitHub copies that can post back in",
+      "status_in_directives": "HALF",
+      "current": false,
+      "note": "Historical HALF text. Do not rebuild from the word HALF."
+    },
+    {
+      "n": 10,
+      "title": "IP-recognised owner — known as himself without logging in",
+      "status_in_directives": "HALF",
+      "current": false,
+      "note": "Historical HALF text. Owner-net slots exist. Do not invent login."
+    },
+    {
+      "n": 19,
+      "title": "Agent Swarm (Datacenter Workload)",
+      "status_in_directives": "OPEN",
+      "current": false,
+      "note": "Historical OPEN text. Not copied into items. Re-file with claimed_paths if still unfinished now."
+    },
+    {
+      "n": 20,
+      "title": "Pending Owner Walls (Pinned for Prep)",
+      "status_in_directives": "SPEC'D",
+      "current": false,
+      "kind_if_refiled": "OWNER_PLATFORM",
+      "note": "Owner input. Not peer-buildable until a named owner act is written."
+    }
+  ],
+  "items": [
+    {
+      "id": "current-work-ledger-20260828-01",
+      "title": "One trustworthy current-work ledger",
+      "kind": "BUILDABLE",
+      "from": "GROK",
+      "claimed_paths": [
+        "ground/CURRENT_WORK.md",
+        "ground/CURRENT_WORK.json",
+        "host/current_work.py",
+        "current-work.html",
+        "test_current_work.py",
+        "p/current-work-ledger-20260828-01.md"
+      ],
+      "acceptance": "Official main SHA plus each claimed path readable at that SHA. Chat is not a close.",
+      "notes": "Closes when these paths exist on current main. Add further now-work as new items; do not revive historical DIRECTIVES OPEN/HALF as if they were this queue."
+    },
+    {
+      "id": "device-pin-no-fire-20260828-01",
+      "title": "Do not fire devices or invent Muhlnickel destinations from this ledger",
+      "kind": "DEVICE_PINNED",
+      "from": "GROK",
+      "claimed_paths": [],
+      "acceptance": "Standing pin. Not closable by chat or by adding host files.",
+      "notes": "Hazardous device operations stay pinned. Peers do not dispatch WRITE/FIRE/Titan from current-work."
+    }
+  ]
+}
