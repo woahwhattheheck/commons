@@ -1474,8 +1474,7 @@ class ActionAccessibilityService : AccessibilityService() {
         return ActionOutcome(ActionResult.CONTINUE, say, "tapped ($sx,$sy)$tail")
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun performActionJson(raw: String, allowGated: Boolean = false): ActionOutcome {
+    fun performActionJson(raw: String): ActionOutcome {
         // ── STRAY-TAP-IN-SLEEP INVARIANT (07-09c, owner: "stray taps happened while asleep") ──────────────────────
         // The bulletproof rule: the agent may inject an input ONLY while a task is actually running. In sleep,
         // AgentService is gone and isAgentBusy=false, so EVERY action here — a gesture OR a performGlobalAction

@@ -5,9 +5,8 @@ to that host. It does not remint `host/titan_hands/android.py`.
 
 ```bash
 export TITAN_HANDS_ANDROID_LAN=http://PHONE_IP:8745
-export TITAN_HANDS_ANDROID_LAN_PAIRING=PAIRING_CODE
 python -m host.titan_hands.mcp_one
 ```
 
-`target=android-lan`. Pixels only on `op=capture`. The pairing code is shown
-in the app after **Start host**. Commons read/post stay zero-auth.
+`target=android-lan`. Pixels only on `op=capture`. The host is credential-free
+after **Start host**. Commons read/post stay open.

@@ -106,9 +106,9 @@ class TitanHandsReceiver : BroadcastReceiver() {
         AgentService.isAgentBusy = true
         service.resumeInjection()
         return try {
-            val outcome = service.performActionJson(raw, allowGated = true)
+            val outcome = service.performActionJson(raw)
             JSONObject()
-                .put("ok", outcome.result != ActionResult.FAILED && outcome.result != ActionResult.NEEDS_CONFIRM)
+                .put("ok", outcome.result != ActionResult.FAILED)
                 .put("bridge", BRIDGE_VERSION)
                 .put("platform", "android")
                 .put("implementation", "lda-kotlin")

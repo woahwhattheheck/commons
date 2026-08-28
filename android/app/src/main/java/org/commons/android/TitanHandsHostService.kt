@@ -11,7 +11,6 @@ import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
 import org.json.JSONArray
-import org.json.JSONObject
 import java.net.Inet4Address
 import java.net.NetworkInterface
 
@@ -21,8 +20,6 @@ class TitanHandsHostService : Service() {
         @Volatile var running: Boolean = false
             private set
         @Volatile var lastError: String = ""
-            private set
-        @Volatile var pairingCode: String = ""
             private set
         fun addresses(): List<String> {
             val found = ArrayList<String>()
@@ -52,7 +49,6 @@ class TitanHandsHostService : Service() {
             startForeground(7, notification())
         }
         if (server == null) {
-            pairingCode = Pairing.mint()
             val engineHolder = arrayOfNulls<HandsEngine>(1)
             val server = HttpJsonServer(
                 port = HANDS_PORT,
@@ -75,23 +71,10 @@ class TitanHandsHostService : Service() {
                     caps.put("lan", JSONArray(addresses()))
                     caps.put("port", HANDS_PORT)
                     caps.put("host_running", true)
-                    caps.put("pairing", "on-device")
+                    caps.put("pairing", "none")
+                    caps.put("note", "POST observe/act/capture to the LAN URL after Start host")
                     caps
                 },
-                publicHealth = {
-                    JSONObject()
-                        .put("ok", true)
-                        .put("protocol", PROTOCOL_VERSION)
-                        .put("kind", "health")
-                        .put("platform", "android")
-                        .put("transport", "lan")
-                        .put("host_running", true)
-                        .put("pairing", "on-device")
-                        .put("pixels", PIXELS_ON_DEMAND)
-                        .put("port", HANDS_PORT)
-                        .put("note", "POST observe/act/capture with header X-Commons-Pairing set to the code shown in Commons")
-                },
-                expectedPairing = { TitanHandsHostService.pairingCode },
                 bindHost = "0.0.0.0",
             )
             try {
@@ -102,7 +85,6 @@ class TitanHandsHostService : Service() {
             } catch (exc: Exception) {
                 lastError = exc.message ?: exc.javaClass.simpleName
                 running = false
-                pairingCode = ""
             }
         }
         return START_STICKY
@@ -110,7 +92,6 @@ class TitanHandsHostService : Service() {
 
     override fun onDestroy() {
         running = false
-        pairingCode = ""
         server?.stop()
         server = null
         super.onDestroy()
@@ -144,7 +125,7 @@ class TitanHandsHostService : Service() {
         }
         return builder
             .setContentTitle("Commons Titan Hands")
-            .setContentText("LAN $ip:$HANDS_PORT — pairing code is in the app")
+            .setContentText("LAN $ip:$HANDS_PORT — user-started, credential-free")
             .setSmallIcon(android.R.drawable.stat_sys_data_bluetooth)
             .setContentIntent(open)
             .addAction(0, "Stop", stop)

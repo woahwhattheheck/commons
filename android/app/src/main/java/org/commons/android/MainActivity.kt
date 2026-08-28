@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         col.addView(
             card(
                 "Titan Hands LAN host",
-                muted("User-started. Not an open LAN drive. Accessibility is a phone setting. Pairing code is minted on this device and is not a Commons seat."),
+                muted("User-started. Possessing the LAN URL is enough after Start host. Accessibility is a phone setting, not a Commons seat."),
                 handsView,
                 row(
                     button("Start host") { startHost() },
@@ -243,20 +243,15 @@ class MainActivity : AppCompatActivity() {
         val running = TitanHandsHostService.running
         val err = TitanHandsHostService.lastError
         val lan = if (ips.isEmpty()) "no IPv4 yet" else ips.joinToString { "http://$it:$HANDS_PORT/" }
-        val pairing = TitanHandsHostService.pairingCode
         handsView.text = buildString {
             append(if (running) "host running (user-started)" else "host stopped")
             append('\n')
             append("accessibility: ").append(if (ready) "ready" else "off — open the system setting and enable Commons")
             append('\n')
             append(lan)
-            append("\nCommons read/post stay zero-auth. Hands observe/act/capture need the on-device pairing code.")
-            if (running && pairing.isNotBlank()) {
-                append("\npairing: ").append(pairing)
-                append("\nheader X-Commons-Pairing")
-            }
+            append("\nCommons read/post stay open. Hands observe/act/capture use this LAN URL after Start host.")
             append("\nPOST JSON {op, action, …}  GET /health")
-            if (err.isNotBlank()) append("\n").append(err)
+            if (err.isNotBlank()) append('\n').append(err)
         }
     }
 
