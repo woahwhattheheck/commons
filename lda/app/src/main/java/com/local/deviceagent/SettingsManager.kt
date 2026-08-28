@@ -602,31 +602,6 @@ class SettingsManager(context: Context) {
         prefs.edit().putBoolean("auto_decline_calls", on).apply()
     }
 
-    /** Require device auth (fingerprint / PIN) to activate the agent after a period of
-     *  inactivity. OFF by default (annoying while testing); SHOULD default ON if ever
-     *  distributed. Guards against unauthorized activation / prompt-injection misuse. */
-    fun isBiometricRequired(): Boolean = prefs.getBoolean("biometric_required", false)
-
-    fun setBiometricRequired(on: Boolean) {
-        prefs.edit().putBoolean("biometric_required", on).apply()
-    }
-
-    /** Minutes of inactivity after which activation re-prompts for auth (default 10). */
-    fun getReauthMinutes(): Int = prefs.getInt("reauth_minutes", 10)
-
-    fun setReauthMinutes(m: Int) {
-        prefs.edit().putInt("reauth_minutes", m).apply()
-    }
-
-    fun getLastAuthMs(): Long = prefs.getLong("last_auth_ms", 0L)
-    fun setLastAuthMs(t: Long) { prefs.edit().putLong("last_auth_ms", t).apply() }
-
-    /** True if auth is required and the last successful auth is older than the window. */
-    fun needsReauth(): Boolean {
-        if (!isBiometricRequired()) return false
-        return System.currentTimeMillis() - getLastAuthMs() > getReauthMinutes() * 60_000L
-    }
-
     /** Agent pacing. "balanced" (default) matches the tested behavior; "fast" is
      *  snappier with less settle time; "careful" waits longer on slow screens. */
     fun getSpeed(): String = prefs.getString("speed", "balanced") ?: "balanced"

@@ -20,18 +20,12 @@ import org.json.JSONObject
  * quotes, spaces, and Unicode. The receiver does not listen to accessibility events. Normal
  * observations stay the compact numbered LDA screen representation. An explicit capture/marks
  * operation returns the LDA Set-of-Marks screenshot rather than a raw ADB framebuffer.
- *
- * The exported receiver's android:permission is [ADB_SENDER_PERMISSION] (`android.permission.DUMP`),
- * the platform permission in SDK android-34 `android.Manifest.permission.DUMP`. ADB shell already
- * holds DUMP, so `adb shell am broadcast` keeps working. This is an Android component boundary,
- * never Commons authentication, identity, role, tier, allowlist, or approval.
  */
 class TitanHandsReceiver : BroadcastReceiver() {
 
     companion object {
         const val ACTION = "com.local.deviceagent.TITAN_HANDS"
         const val BRIDGE_VERSION = "lda-titan-hands/1"
-        const val ADB_SENDER_PERMISSION = "android.permission.DUMP"
         const val GENERATION_MISMATCH_REASON = TitanHandsMarks.GENERATION_MISMATCH_REASON
     }
 
@@ -82,7 +76,6 @@ class TitanHandsReceiver : BroadcastReceiver() {
         .put("capture", "ActionAccessibilityService.captureScreenshot")
         .put("marks", "ActionAccessibilityService.currentMarks")
         .put("visual", "set-of-marks")
-        .put("adb_sender_permission", ADB_SENDER_PERMISSION)
 
     private fun observe(): JSONObject {
         val service = ActionAccessibilityService.instance

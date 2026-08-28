@@ -20,8 +20,8 @@ import android.content.pm.ApplicationInfo
  *
  * SAFETY (§3): gated to DEBUGGABLE builds only (inert in a release APK). The diagnostic is read-only (no task, no phone
  * driving, no account access). The SETFLAG A/B toggle can flip ONLY the WHITELISTED non-safety feature flags below — it
- * can NEVER touch a §3 SAFETY flag (block_gemini / risky_actions / self_protect / policy_memory / shell_input / biometric
- * / code-exec), so an external broadcast can't weaken the safety posture. The debuggable gate is the outer guard.
+ * can NEVER touch a §3 SAFETY flag (block_gemini / risky_actions / self_protect / policy_memory / shell_input /
+ * code-exec), so an external broadcast can't weaken the safety posture. The debuggable gate is the outer guard.
  */
 class DiagReceiver : BroadcastReceiver() {
     // A/B-safe feature flags an adb SETFLAG may toggle. NON-safety only — the §3 safety flags are deliberately absent so
@@ -200,7 +200,7 @@ class DiagReceiver : BroadcastReceiver() {
         //   adb shell am broadcast -a com.local.deviceagent.DIAG -n com.local.deviceagent/.DiagReceiver --es task "open the clock app"
         // SAFETY: this is the SAME entry the chat UI uses (ACTION_RUN_COMMAND) — the task runs through the orchestrator and
         // EVERY §3 executor safety gate (unsafe ACTIONs blocked, payment/install confirmations, kill switches, the
-        // battery/thermal floor, activation re-auth if enabled). It touches NO §3 safety flag, and it is DEBUGGABLE-only
+        // battery/thermal floor). It touches NO §3 safety flag, and it is DEBUGGABLE-only
         // (the outer guard above). Starting the service IN-PROCESS here bypasses ONLY the service's export restriction
         // (adb can't start the non-exported service directly) — never a safety gate. Unlike obs/lab, this DOES drive the
         // phone, by design; keep the dedicated device's blast radius contained (wifi off) while testing.

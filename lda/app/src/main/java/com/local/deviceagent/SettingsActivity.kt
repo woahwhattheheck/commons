@@ -463,19 +463,6 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun buildSecurity() {
         sectionHeader("Security & privacy")
-        toggle(
-            "Require fingerprint / PIN to activate",
-            settings.isBiometricRequired()
-        ) { settings.setBiometricRequired(it) }
-        caption("Off by default while testing. When on, activating the agent after a period of inactivity asks for your device unlock first - prevents someone else (or a malicious prompt) from driving your phone. If you ever share this app, leave this ON.")
-
-        caption("Re-ask after this much inactivity.")
-        val mins = listOf(1, 5, 10, 30, 60)
-        val labels = mins.map { if (it == 60) "1 hour" else "$it min" }
-        spinner(labels, mins.indexOf(settings.getReauthMinutes()).coerceAtLeast(0)) { pos ->
-            settings.setReauthMinutes(mins[pos])
-        }
-
         toggleWithWarning(
             "Let the agent use its own app",
             settings.isSelfInteractionAllowed(),

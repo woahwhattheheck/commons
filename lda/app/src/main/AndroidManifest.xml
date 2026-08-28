@@ -112,15 +112,10 @@
 
         <!-- Direct ADB transport for TITAN Hands. The receiver contains no second executor: it
              delegates perception and action to ActionAccessibilityService, preserving the LDA's
-             numbered world-model and its full Kotlin translation layer.
-             android:permission is the platform DUMP sender boundary (SDK android-34
-             android.Manifest.permission.DUMP). ADB shell already holds DUMP, so the existing
-             `adb shell am broadcast` contract stays open. This is not Commons authentication,
-             identity, role, tier, allowlist, or approval. -->
+             numbered world-model and its full Kotlin translation layer. -->
         <receiver
             android:name=".TitanHandsReceiver"
-            android:exported="true"
-            android:permission="android.permission.DUMP">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.local.deviceagent.TITAN_HANDS" />
             </intent-filter>
@@ -185,12 +180,6 @@
             android:exported="true"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
             tools:ignore="ExportedContentProvider" />
-        <activity
-            android:name=".AuthGateActivity"
-            android:exported="false"
-            android:excludeFromRecents="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <!-- DEBUG-ONLY diagnostic trigger (07-11): `adb shell am broadcast -a com.local.deviceagent.DIAG` runs the full
              read-only diagnostic dump ([diag] block) so the owner / a tethered session can measure everything in one shot.
              exported so adb's shell uid can reach it; DiagReceiver.onReceive is DEBUGGABLE-GATED (inert in release), and

@@ -1577,15 +1577,15 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
             ACTION_STOP -> { stopSelf(); return START_NOT_STICKY }
             ACTION_STOP_TASK -> stopCurrentTask()
             ACTION_RESUME -> goIdle()
-            ACTION_LISTEN_NOW -> { if (!gateActivation(ACTION_LISTEN_NOW, null)) onListenNow() }
+            ACTION_LISTEN_NOW -> onListenNow()
             ACTION_CONVERSATION -> {
                 // Like verbal input, but the spoken command runs as a continuous back-and-forth.
                 pendingContinuous = true
-                if (!gateActivation(ACTION_LISTEN_NOW, null)) onListenNow()
+                onListenNow()
             }
             ACTION_RUN_COMMAND -> {
                 val cmd = intent.getStringExtra(EXTRA_COMMAND).orEmpty()
-                if (cmd.isNotBlank() && !gateActivation(ACTION_RUN_COMMAND, cmd)) {
+                if (cmd.isNotBlank()) {
                     taskFromChat = intent.getBooleanExtra(EXTRA_FROM_CHAT, false)
                     taskResumeRequested = intent.getBooleanExtra(EXTRA_RESUME, false)
                     runCommand(cmd)
@@ -1593,8 +1593,8 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
             }
             ACTION_TRAIN_START -> startTraining(intent.getStringExtra(EXTRA_GOAL).orEmpty())
             ACTION_TRAIN_FINISH -> finishTraining()
-            ACTION_LEARN_MODE -> { if (!gateActivation(ACTION_LEARN_MODE, null)) startLearnMode() }
-            ACTION_AUTO_MODE -> { if (!gateActivation(ACTION_AUTO_MODE, null)) toggleAutoMode() }
+            ACTION_LEARN_MODE -> startLearnMode()
+            ACTION_AUTO_MODE -> toggleAutoMode()
             ACTION_STATEMAP -> runStateMapStep(intent.getStringExtra(EXTRA_STEP).orEmpty(), intent.getStringExtra(EXTRA_OP).orEmpty())
         }
         startKeepAwake()   // NEVER-SLEEP: hold the device awake whenever the service is up + keep_awake is on
@@ -1884,19 +1884,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
             catch (e: Throwable) { AgentLog.log("dream", "dream beat error: ${e.message}") }
             finally { handler.post { then() } }
         }
-    }
-
-    /** If the owner requires auth and the inactivity window lapsed, bounce activation
-     *  through [AuthGateActivity] (which re-dispatches on success). Returns true if it
-     *  intercepted (caller should stop). No-op when the security toggle is off. */
-    private fun gateActivation(action: String, command: String?): Boolean {
-        if (!settings.needsReauth()) return false
-        val i = Intent(this, AuthGateActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            .putExtra(AuthGateActivity.EXTRA_PENDING_ACTION, action)
-        command?.let { i.putExtra(AuthGateActivity.EXTRA_PENDING_COMMAND, it) }
-        try { startActivity(i) } catch (_: Exception) { return false }
-        return true
     }
 
     // --- Vosk voice pipeline ----------------------------------------------
@@ -2193,8 +2180,8 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
     }
 
     private fun goIdle() {
-        // Clear a stale conversation flag: if an ACTION_CONVERSATION set pendingContinuous but the activation was
-        // then abandoned (reauth cancelled / capture timed out), returning to idle must not leak continuous
+        // Clear a stale conversation flag: if an ACTION_CONVERSATION set pendingContinuous but capture timed out,
+        // returning to idle must not leak continuous
         // (never-auto-stop) mode onto the NEXT unrelated command. The legit path consumes it at task start, never here.
         pendingContinuous = false
         handler.removeCallbacks(captureTimeout)
