@@ -9,6 +9,9 @@ services:
       context: ../..
       dockerfile: integrations/grok_slack/Dockerfile
     restart: unless-stopped
+    env_file:
+      - path: .env.local
+        required: false
     environment:
       COMMONS_GROK_SLACK_STATE_DB: /var/lib/commons/grok_slack.sqlite3
       COMMONS_GROK_SLACK_HEALTH_BIND: 127.0.0.1:8788
