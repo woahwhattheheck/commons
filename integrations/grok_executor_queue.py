@@ -655,14 +655,16 @@ class GrokExecutorQueue:
                 "provider_tokens_spent_by_failed_attempt": 0 if pre_submit else "OBSERVE_VISIBLE_EVIDENCE",
             })
             if pre_submit:
+                capture_started = submitted_state == "CAPTURE_STARTED"
                 execution.update({
                     "state": "QUEUED",
-                    "submission_state": "NOT_SUBMITTED",
+                    "submission_state": "CAPTURE_STARTED" if capture_started else "NOT_SUBMITTED",
                     "prompt_replay_allowed": True,
-                    "capture_ack": None,
                     "active_attempt_id": "",
                     "active_executor": "",
                 })
+                if not capture_started:
+                    execution["capture_ack"] = None
                 action = "FAILOVER_TO_ANOTHER_HEALTHY_EXECUTOR"
             else:
                 execution.update({
