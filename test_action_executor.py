@@ -61,6 +61,41 @@ class ActionExecutorTests(unittest.TestCase):
         self.assertTrue(ae.is_device_target("bryce-pc"))
         self.assertTrue(ae.is_device_target("device:phone"))
         self.assertFalse(ae.is_device_target("repo"))
+        self.assertTrue(ae.is_grok_com_target("GROK.COM"))
+        self.assertTrue(ae.is_grok_com_target("https://grok.com/"))
+        self.assertFalse(ae.is_grok_com_target("repo"))
+
+    def test_grok_com_build_queues_durable_browser_job_instead_of_shell(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            rec = {
+                "meta": {"id": "codex-grok-task-0001", "from": "CODEX"},
+                "verb": "BUILD",
+                "target": "GROK.COM",
+                "payload": "Review current main, build the requested change, and return receipts.",
+            }
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "execute_shell_payload") as shell,
+            ):
+                result = ae.execute(rec, "github")
+            shell.assert_not_called()
+            self.assertTrue(result["ok"], result)
+            self.assertEqual(result["state"], "GROK_TASK_QUEUED")
+            self.assertEqual(result["job_id"], "codex-grok-task-0001")
+            job_path = root / "wake_jobs" / "codex-grok-task-0001.json"
+            self.assertTrue(job_path.is_file())
+            job = json.loads(job_path.read_text(encoding="utf-8"))
+            self.assertEqual(job["harness"], ae.GROK_COM_HARNESS)
+            self.assertEqual(job["checkpoint"]["task"], rec["payload"])
+            self.assertEqual(
+                job["checkpoint"]["receipt_contract"]["conversation_url_prefix"],
+                "https://grok.com/c/",
+            )
+            self.assertEqual(job["completion_predicate"], {"type": "result_address_on_head"})
+            self.assertEqual(result["changed"], ["wake_jobs/codex-grok-task-0001.json"])
+            self.assertIn("wake_jobs/codex-grok-task-0001.json", result["action_outputs"])
 
     def test_device_pending_runs_in_bulk_and_can_optionally_filter_id(self):
         with tempfile.TemporaryDirectory() as td:
