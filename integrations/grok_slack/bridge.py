@@ -96,6 +96,62 @@ SECRET_SCAN_FILES = HOST_PACK_FILES + (
 )
 RETRY_BUDGET = 4
 POLL_BUDGET = 12
+_GIT_SECRET_RE = re.compile(
+    r"(?:ghp_|ghu_|gho_|ghs_|github_pat_|xox[baprs]-|xapp-)[A-Za-z0-9._-]{8,}"
+)
+_GIT_USERINFO_RE = re.compile(r"://[^/\s:@]+:[^/\s@]+@")
+_GIT_STRIP_ENV = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+)
+_GIT_OBJECT_RE = re.compile(r"^[0-9a-f]{40}$")
+
+
+def git_detail(text: str) -> str:
+    """Keep git stderr observable without leaking credentials."""
+    cleaned = _GIT_SECRET_RE.sub("***", text or "")
+    cleaned = TOKEN_VALUE_RE.sub("***", cleaned)
+    cleaned = _GIT_USERINFO_RE.sub("://***@", cleaned)
+    return " ".join(cleaned.split())[:180]
+
+
+def git_env(extra: dict[str, str] | None = None) -> dict[str, str]:
+    env = os.environ.copy()
+    for name in _GIT_STRIP_ENV:
+        env.pop(name, None)
+    env["GIT_TERMINAL_PROMPT"] = "0"
+    if extra:
+        env.update(extra)
+    return env
+
+
+def run_git(
+    args: list[str],
+    *,
+    cwd: str | Path,
+    env: dict[str, str] | None = None,
+    stdin: bytes | None = None,
+    timeout: int = 60,
+) -> subprocess.CompletedProcess[bytes]:
+    return subprocess.run(
+        ["git", *args],
+        cwd=str(cwd),
+        env=git_env(env),
+        input=stdin,
+        capture_output=True,
+        timeout=timeout,
+    )
+
+
+def git_stdout(completed: subprocess.CompletedProcess[bytes]) -> str:
+    return (completed.stdout or b"").decode("utf-8", "replace").strip()
+
+
+def git_stderr(completed: subprocess.CompletedProcess[bytes]) -> str:
+    return git_detail((completed.stderr or b"").decode("utf-8", "replace"))
 
 
 class BridgeError(RuntimeError):
@@ -1435,6 +1491,7 @@ class GrokSlackBridge:
         clock: Callable[[], float] | None = None,
         executor_slack: Any | None = None,
         grok_provider: Any | None = None,
+        git_root: str | Path | None = None,
     ) -> None:
         self.store = store
         self.mcp = mcp
@@ -1446,6 +1503,7 @@ class GrokSlackBridge:
         self.clock = clock or time.time
         self.executor_slack = executor_slack
         self.grok_provider = grok_provider
+        self.git_root = Path(git_root) if git_root is not None else None
         self.ack_log: list[str] = []
         self.work_log: list[str] = []
         self.delivery_owner = FINAL_DELIVERY_OWNER
@@ -1700,6 +1758,37 @@ class GrokSlackBridge:
                 found[path] = blob
         return found
 
+    def _inspect_addressable_via_git(self, job_id: str) -> dict[str, bytes]:
+        """Read p+wake_jobs from origin/main without a GitHub token."""
+        if not job_id:
+            return {}
+        if self.git_root is None and not isinstance(self.github, GitHubReadback):
+            return {}
+        found: dict[str, bytes] = {}
+        try:
+            root = self._materialize_git_root()
+            if root is None:
+                return {}
+            rels = ("p/%s.md" % job_id, "wake_jobs/%s.json" % job_id)
+            self._git(
+                ["fetch", "origin", "+refs/heads/main:refs/remotes/origin/main"],
+                cwd=root,
+                timeout=90,
+            )
+            parent_run = self._git(["rev-parse", "--verify", "refs/remotes/origin/main"], cwd=root, timeout=30)
+            parent = git_stdout(parent_run)
+            if parent_run.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(parent):
+                return {}
+            for path in rels:
+                blob = self._git(["cat-file", "-p", "%s:%s" % (parent, path)], cwd=root, timeout=30)
+                if blob.returncode == 0 and blob.stdout:
+                    found[path] = blob.stdout
+            if len(found) == 2:
+                return found
+        except Exception as exc:
+            self._note_materialize("git_inspect_exception", "%s %s" % (type(exc).__name__, exc))
+        return {}
+
     def _inspect_job(self, job_id: str) -> dict[str, Any] | None:
         if not job_id:
             return None
@@ -1726,31 +1815,81 @@ class GrokSlackBridge:
             return False
         return bool(blob)
 
-    def _materialize_durable_action(self, job_id: str, arguments: dict[str, Any]) -> bool:
+    def _note_materialize(self, code: str, detail: str = "") -> None:
+        text = "materialize:" + code
+        if detail:
+            text += ":" + git_detail(str(detail))
+        self.work_log.append(text[:240])
+
+    def _git(
+        self,
+        args: list[str],
+        *,
+        cwd: str | Path,
+        env: dict[str, str] | None = None,
+        stdin: bytes | None = None,
+        timeout: int = 60,
+    ) -> subprocess.CompletedProcess[bytes]:
+        return run_git(args, cwd=cwd, env=env, stdin=stdin, timeout=timeout)
+
+    def _materialize_git_root(self) -> Path | None:
+        raw = self.git_root
+        if raw is None:
+            raw = Path(__file__).resolve().parents[2]
+        root = Path(raw)
+        if not (root / "action_executor.py").is_file():
+            return None
+        try:
+            probe = self._git(["rev-parse", "--is-inside-work-tree"], cwd=root, timeout=30)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+        if probe.returncode != 0 or git_stdout(probe) != "true":
+            return None
+        return root
+
+    def _materialize_blobs_map(self, job_id: str, page: str, job_blob: bytes) -> dict[str, bytes]:
+        page_bytes = page.encode("utf-8") if isinstance(page, str) else page
+        return {
+            "p/%s.md" % job_id: page_bytes,
+            "wake_jobs/%s.json" % job_id: job_blob,
+        }
+
+    def _materialize_durable_action(self, job_id: str, arguments: dict[str, Any]) -> dict[str, bytes] | None:
         """Persist p/{id}.md + wake_jobs/{id}.json when public fire_action did not.
 
         Public Spark MCP still posts ntfy and waits for GitHub ingest. When that
         ingest is starved, the requester Slack event has no addressable blob.
         Same id is idempotent. Never remints. Never force-push. Never secrets.
+        A silent exception is a failure: every exit records work_log reason.
         """
-        if not job_id or self._inspect_addressable_action(job_id):
-            return bool(job_id) and bool(self._inspect_addressable_action(job_id))
+        if not job_id:
+            self._note_materialize("missing_job_id")
+            return None
+        existing = self._inspect_addressable_action(job_id)
+        if existing:
+            return existing
         page, job_blob = self._build_materialize_blobs(job_id, arguments)
         if not page or not job_blob:
-            return False
-        if isinstance(self.github, GitHubReadback):
+            if not any(str(item).startswith("materialize:") for item in self.work_log):
+                self._note_materialize("blob_empty")
+            return None
+        landed = self._materialize_blobs_map(job_id, page, job_blob)
+        use_git = isinstance(self.github, GitHubReadback) or self.git_root is not None
+        if use_git:
             if self._materialize_via_git_checkout(job_id, page, job_blob):
-                return True
+                return landed
         put = getattr(self.github, "put", None)
         if callable(put):
             try:
                 put("p/%s.md" % job_id, page)
                 put("wake_jobs/%s.json" % job_id, job_blob)
                 self.work_log.append("github:materialize_wake_job")
-                return True
-            except Exception:
-                pass
-        return False
+                return landed
+            except Exception as exc:
+                self._note_materialize("put_exception", "%s %s" % (type(exc).__name__, exc))
+        else:
+            self._note_materialize("put_unavailable")
+        return None
 
     def _build_materialize_blobs(
         self, job_id: str, arguments: dict[str, Any]
@@ -1776,6 +1915,7 @@ class GrokSlackBridge:
             elif isinstance(arguments.get("body"), str) and str(arguments.get("body")).strip():
                 text = str(arguments.get("body")).strip()
             if not text:
+                self._note_materialize("blob_no_prompt")
                 return "", None
             exact_prompts = [text]
         origin = decoded.get("origin") if isinstance(decoded, dict) else None
@@ -1806,11 +1946,13 @@ class GrokSlackBridge:
                 if not job_path.is_file():
                     job = queued.get("job") if isinstance(queued, dict) else None
                     if not isinstance(job, dict):
+                        self._note_materialize("blob_queue_job_missing")
                         return "", None
                     job_blob = json.dumps(job, ensure_ascii=False, indent=2).encode("utf-8")
                 else:
                     job_blob = job_path.read_bytes()
-        except Exception:
+        except Exception as exc:
+            self._note_materialize("blob_exception", "%s %s" % (type(exc).__name__, exc))
             return "", None
         verb = str(arguments.get("verb") or arguments.get("act") or "BUILD").strip().upper() or "BUILD"
         target = str(arguments.get("target") or "GROK.COM").strip() or "GROK.COM"
@@ -1839,62 +1981,127 @@ class GrokSlackBridge:
         return page, job_blob
 
     def _materialize_via_git_checkout(self, job_id: str, page: str, job_blob: bytes) -> bool:
-        root = Path(__file__).resolve().parents[2]
-        if not (root / ".git").is_dir() or not (root / "action_executor.py").is_file():
-            return False
-        page_path = root / "p" / ("%s.md" % job_id)
-        job_path = root / "wake_jobs" / ("%s.json" % job_id)
-        rel_page = "p/%s.md" % job_id
-        rel_job = "wake_jobs/%s.json" % job_id
+        """Atomic same-commit write of p+wake_jobs via isolated index. Never force.
+
+        Does not mutate the live working tree or require HEAD==main. If origin/main
+        moves, fetch and retry a new commit-tree parent. Existing git credentials
+        are inherited; values are never printed. Every failure is logged.
+        """
+        last_reason = "git_untried"
         try:
-            branch = subprocess.run(
-                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-                cwd=root,
-                capture_output=True,
-                text=True,
-                timeout=30,
-            )
-            if branch.returncode != 0 or branch.stdout.strip() != "main":
+            root = self._materialize_git_root()
+            if root is None:
+                self._note_materialize("git_root_missing")
                 return False
-            page_path.parent.mkdir(parents=True, exist_ok=True)
-            job_path.parent.mkdir(parents=True, exist_ok=True)
-            if not page_path.is_file():
-                page_path.write_text(page, encoding="utf-8")
-            if not job_path.is_file():
-                job_path.write_bytes(job_blob)
-            subprocess.run(["git", "add", "--", rel_page, rel_job], cwd=root, check=True, capture_output=True, timeout=60)
-            cached = subprocess.run(
-                ["git", "diff", "--cached", "--name-only"],
-                cwd=root,
-                capture_output=True,
-                text=True,
-                timeout=30,
-            )
-            names = {line.strip() for line in cached.stdout.splitlines() if line.strip()}
-            if names - {rel_page, rel_job}:
-                subprocess.run(["git", "reset", "HEAD", "--", rel_page, rel_job], cwd=root, capture_output=True, timeout=30)
-                return False
-            if not names:
-                return True
-            subprocess.run(
-                ["git", "-c", "user.name=commons-grok-slack", "-c", "user.email=commons-grok-slack@users.noreply.github.com",
-                 "commit", "-m", "jobs: materialize GROK.COM wake job %s" % job_id],
-                cwd=root, check=True, capture_output=True, timeout=60,
-            )
+            rel_page = "p/%s.md" % job_id
+            rel_job = "wake_jobs/%s.json" % job_id
+            page_bytes = page.encode("utf-8") if isinstance(page, str) else page
             for attempt in range(1, 6):
-                push = subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=root, capture_output=True, timeout=90)
-                if push.returncode == 0:
-                    self.work_log.append("git:materialize_wake_job")
-                    return True
-                subprocess.run(["git", "fetch", "origin", "main"], cwd=root, capture_output=True, timeout=60)
-                rebase = subprocess.run(["git", "rebase", "origin/main"], cwd=root, capture_output=True, timeout=60)
-                if rebase.returncode != 0:
-                    subprocess.run(["git", "rebase", "--abort"], cwd=root, capture_output=True, timeout=30)
-                    return False
-                time.sleep(attempt * 2)
-        except Exception:
+                if attempt > 1:
+                    self.sleeper(attempt)
+                try:
+                    fetch = self._git(
+                        ["fetch", "origin", "+refs/heads/main:refs/remotes/origin/main"],
+                        cwd=root,
+                        timeout=90,
+                    )
+                    if fetch.returncode != 0:
+                        last_reason = "git_fetch:" + git_stderr(fetch)
+                    parent_run = self._git(
+                        ["rev-parse", "--verify", "refs/remotes/origin/main"],
+                        cwd=root,
+                        timeout=30,
+                    )
+                    if parent_run.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(git_stdout(parent_run)):
+                        parent_run = self._git(["rev-parse", "--verify", "HEAD"], cwd=root, timeout=30)
+                    parent = git_stdout(parent_run)
+                    if parent_run.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(parent):
+                        last_reason = "git_parent_missing:" + git_stderr(parent_run)
+                        self._note_materialize("git_parent_missing", git_stderr(parent_run))
+                        continue
+                    page_at = self._git(["cat-file", "-e", "%s:%s" % (parent, rel_page)], cwd=root, timeout=30)
+                    job_at = self._git(["cat-file", "-e", "%s:%s" % (parent, rel_job)], cwd=root, timeout=30)
+                    if page_at.returncode == 0 and job_at.returncode == 0:
+                        self.work_log.append("git:materialize_wake_job")
+                        self._note_materialize("git_already_on_parent")
+                        return True
+                    with tempfile.TemporaryDirectory(prefix="commons-mat-") as td:
+                        index = str(Path(td) / "index")
+                        env = {"GIT_INDEX_FILE": index}
+                        read = self._git(["read-tree", parent], cwd=root, env=env, timeout=60)
+                        if read.returncode != 0:
+                            last_reason = "git_read_tree:" + git_stderr(read)
+                            self._note_materialize("git_read_tree", git_stderr(read))
+                            continue
+                        page_obj = self._git(["hash-object", "-w", "--stdin"], cwd=root, stdin=page_bytes, timeout=30)
+                        job_obj = self._git(["hash-object", "-w", "--stdin"], cwd=root, stdin=job_blob, timeout=30)
+                        page_sha = git_stdout(page_obj)
+                        job_sha = git_stdout(job_obj)
+                        if page_obj.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(page_sha):
+                            last_reason = "git_hash_page:" + git_stderr(page_obj)
+                            self._note_materialize("git_hash_object", git_stderr(page_obj))
+                            continue
+                        if job_obj.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(job_sha):
+                            last_reason = "git_hash_job:" + git_stderr(job_obj)
+                            self._note_materialize("git_hash_object", git_stderr(job_obj))
+                            continue
+                        cached = True
+                        for sha, path in ((page_sha, rel_page), (job_sha, rel_job)):
+                            upd = self._git(
+                                ["update-index", "--add", "--cacheinfo", "100644,%s,%s" % (sha, path)],
+                                cwd=root,
+                                env=env,
+                                timeout=30,
+                            )
+                            if upd.returncode != 0:
+                                last_reason = "git_update_index:" + git_stderr(upd)
+                                self._note_materialize("git_update_index", git_stderr(upd))
+                                cached = False
+                                break
+                        if not cached:
+                            continue
+                        tree = self._git(["write-tree"], cwd=root, env=env, timeout=30)
+                        tree_sha = git_stdout(tree)
+                        if tree.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(tree_sha):
+                            last_reason = "git_write_tree:" + git_stderr(tree)
+                            self._note_materialize("git_write_tree", git_stderr(tree))
+                            continue
+                        commit = self._git(
+                            [
+                                "-c", "user.name=commons-grok-slack",
+                                "-c", "user.email=commons-grok-slack@users.noreply.github.com",
+                                "-c", "commit.gpgsign=false",
+                                "commit-tree", tree_sha, "-p", parent,
+                                "-m", "jobs: materialize GROK.COM wake job %s" % job_id,
+                            ],
+                            cwd=root,
+                            timeout=30,
+                        )
+                        commit_sha = git_stdout(commit)
+                        if commit.returncode != 0 or not _GIT_OBJECT_RE.fullmatch(commit_sha):
+                            last_reason = "git_commit_tree:" + git_stderr(commit)
+                            self._note_materialize("git_commit_tree", git_stderr(commit))
+                            continue
+                        push = self._git(
+                            ["push", "--porcelain", "origin", "%s:refs/heads/main" % commit_sha],
+                            cwd=root,
+                            timeout=90,
+                        )
+                        if push.returncode == 0:
+                            self.work_log.append("git:materialize_wake_job")
+                            self._note_materialize("git_push_ok", commit_sha)
+                            return True
+                        last_reason = "git_push:" + git_stderr(push)
+                        self._note_materialize("git_push_rejected", git_stderr(push) or git_stdout(push))
+                except Exception as exc:
+                    last_reason = "git_exception:%s %s" % (type(exc).__name__, exc)
+                    self._note_materialize("git_exception", "%s %s" % (type(exc).__name__, exc))
+                    continue
+            self._note_materialize("git_exhausted", last_reason)
             return False
-        return False
+        except Exception as exc:
+            self._note_materialize("git_exception", "%s %s" % (type(exc).__name__, exc))
+            return False
 
     def _observe_and_deliver(
         self,
@@ -1920,12 +2127,28 @@ class GrokSlackBridge:
             self.sleeper(min(2 ** attempt, 8) if attempt else 0)
         if job is None or not _job_is_terminal(job):
             if not addressable:
-                executor_job = (packet.get("grokcom") or {}).get("executor_job") or {}
-                fire_args = executor_job.get("arguments") if isinstance(executor_job, dict) else {}
-                if isinstance(fire_args, dict) and job_id:
-                    if self._materialize_durable_action(job_id, fire_args):
-                        addressable = self._inspect_addressable_action(job_id, extra_paths)
-                        job = self._inspect_job(job_id)
+                git_found = self._inspect_addressable_via_git(job_id)
+                if git_found:
+                    addressable = git_found
+                else:
+                    executor_job = (packet.get("grokcom") or {}).get("executor_job") or {}
+                    fire_args = executor_job.get("arguments") if isinstance(executor_job, dict) else {}
+                    if isinstance(fire_args, dict) and job_id:
+                        landed = self._materialize_durable_action(job_id, fire_args)
+                        if landed:
+                            addressable = dict(landed)
+                            inspected = self._inspect_job(job_id)
+                            if isinstance(inspected, dict):
+                                job = inspected
+                            elif job is None:
+                                raw = landed.get("wake_jobs/%s.json" % job_id)
+                                if raw:
+                                    try:
+                                        parsed = json.loads(raw.decode("utf-8"))
+                                    except (UnicodeError, json.JSONDecodeError):
+                                        parsed = None
+                                    if isinstance(parsed, dict):
+                                        job = parsed
             if job is None or not _job_is_terminal(job):
                 if addressable:
                     return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
