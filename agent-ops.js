@@ -13,7 +13,8 @@
     claims: "./claims.json",
     wakeups: "./wakeups.json",
     recent: "./recent.json",
-    oracle: "./infra/oracle_always_free/capacity.json"
+    oracle: "./infra/oracle_always_free/capacity.json",
+    checkout: "./agent-ops-checkout.json"
   };
   var RELAYS = ["https://ntfy.sh", "https://ntfy.envs.net", "https://ntfy.adminforge.de", "https://ntfy.mzte.de", "https://ntfy.tedomum.net", "https://ntfy.hostux.net"];
   var TOPIC = "woahwhattheheck-commons-board";
@@ -56,7 +57,30 @@
       firedWakeCount: (wakes.fired || []).length,
       durableReceipts: recent.filter(function (row) { return row.state === "DURABLE_PAGE"; }),
       wakeObservedAt: wakes.ts || "",
-      oracle: data.oracle || null
+      oracle: data.oracle || null,
+      checkout: data.checkout || null
+    };
+  }
+
+  function checkoutState(catalog, sku) {
+    var provider = catalog && catalog.provider || {};
+    var offers = catalog && catalog.offers || {};
+    var offer = offers[sku] || {};
+    var link = offer.link || {};
+    var url = String(link.url || "");
+    var stripeUrl = /^https:\/\/(?:buy|donate)\.stripe\.com\/[A-Za-z0-9]+$/.test(url);
+    var chargeable = provider.name === "stripe" && provider.livemode === true && provider.account_charges_enabled === true && link.status === "ACTIVE" && link.active === true && stripeUrl;
+    var reason = "Checkout state unavailable.";
+    if (catalog && provider.livemode !== true) reason = "Stripe live account is not connected.";
+    else if (provider.account_charges_enabled !== true) reason = "Stripe live charges are not enabled.";
+    else if (link.status !== "ACTIVE" || link.active !== true || !stripeUrl) reason = "Checkout " + String(link.status || "NOT_MINTED") + ".";
+    else reason = "Chargeable Stripe checkout active.";
+    return {
+      chargeable: chargeable,
+      reason: reason,
+      url: chargeable ? url : "",
+      fallbackUrl: String(offer.fallback_url || ""),
+      fallbackLabel: String(offer.fallback_label || "Contact sales")
     };
   }
 
@@ -159,6 +183,21 @@
     var oracle = view.oracle, limits = oracle && oracle.limits;
     text(document.getElementById("oracle-state"), oracle ? oracle.state : "UNOBSERVED");
     text(document.getElementById("oracle-capacity"), limits ? limits.ocpus_total + " Ampere OCPUs · " + limits.memory_gb_total + " GB RAM · " + limits.combined_block_gb_total + " GB combined block · " + limits.outbound_transfer_tb_per_month + " TB/month outbound. Provisioned: " + String(!!(oracle.truth_boundary && oracle.truth_boundary.provisioned)).toUpperCase() + "." : "Provider capacity record unavailable.");
+
+    var checkoutStates = ["operator", "foundry"].map(function (sku) {
+      var state = checkoutState(view.checkout, sku);
+      var cta = document.getElementById(sku + "-cta");
+      var label = document.getElementById(sku + "-payment-state");
+      if (cta) {
+        cta.href = state.chargeable ? state.url : state.fallbackUrl;
+        cta.textContent = state.chargeable ? "Buy " + sku + " now" : state.fallbackLabel;
+        cta.dataset.checkoutState = state.chargeable ? "CHARGEABLE" : "CONTACT_ONLY";
+      }
+      text(label, state.chargeable ? "provider-verified checkout" : state.reason);
+      return state;
+    });
+    var liveCount = checkoutStates.filter(function (state) { return state.chargeable; }).length;
+    text(document.getElementById("checkout-truth"), liveCount ? liveCount + " provider-verified checkout route" + (liveCount === 1 ? " is" : "s are") + " active. A click is not payment; cash remains separately measured." : "No provider-verified checkout route is active. Contact is the current intake road; no purchase or buyer is claimed.");
   }
 
   function renderReceipts(document, receipts) {
@@ -204,5 +243,5 @@
     }
   }
 
-  return { SOURCES: SOURCES, RELAYS: RELAYS, TOPIC: TOPIC, freshness: freshness, latestAgents: latestAgents, snapshot: snapshot, sender: sender, operationId: operationId, buildOperation: buildOperation, dispatchOperation: dispatchOperation, readReceipts: readReceipts, retainReceipt: retainReceipt, render: render, renderReceipts: renderReceipts, start: start };
+  return { SOURCES: SOURCES, RELAYS: RELAYS, TOPIC: TOPIC, freshness: freshness, latestAgents: latestAgents, snapshot: snapshot, checkoutState: checkoutState, sender: sender, operationId: operationId, buildOperation: buildOperation, dispatchOperation: dispatchOperation, readReceipts: readReceipts, retainReceipt: retainReceipt, render: render, renderReceipts: renderReceipts, start: start };
 });
