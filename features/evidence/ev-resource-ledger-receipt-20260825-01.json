@@ -1,0 +1,10 @@
+{
+  "feature_id": "rivet-ship-resource-ledger-20260825-01",
+  "from": "GROK",
+  "id": "ev-resource-ledger-receipt-20260825-01",
+  "kind": "RECEIPT",
+  "note": "Named resource-ledger receipt id. LIVE is not claimed by this row.",
+  "receipt": "rivet-ship-resource-ledger-20260825-01",
+  "recorded_at": "2026-08-25T00:00:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

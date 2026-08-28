@@ -1,0 +1,26 @@
+{
+  "added": "2026-08-28",
+  "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "gpt-grok-ship-loop.html"
+  ],
+  "dependencies": [],
+  "id": "gpt-grok-ship-loop-20260828-01",
+  "name": "GPT to GROK ship loop",
+  "next_gap": "Cite the ship-loop skill and tests as test_paths once those paths are named in this registry.",
+  "owner_subsystem": "ship-loop",
+  "public_entrypoint": "gpt-grok-ship-loop.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "gpt-grok-ship-loop.html",
+    "current-work.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": []
+}

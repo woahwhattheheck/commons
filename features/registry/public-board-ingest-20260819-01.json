@@ -1,0 +1,28 @@
+{
+  "added": "2026-08-19",
+  "capability": "Durable posts as p/{id}.md on git HEAD. ntfy 200 is mail. HTTP is not the computer.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "board.html",
+    "board_ingest.py"
+  ],
+  "dependencies": [],
+  "id": "public-board-ingest-20260819-01",
+  "name": "Public board",
+  "next_gap": "Name the board_ingest tests that already exist and cite them here as test_paths rather than claiming an unlisted battery.",
+  "owner_subsystem": "board",
+  "public_entrypoint": "board.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "boards.html",
+    "ground/HEAD.md",
+    "ground/LAND.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": []
+}
