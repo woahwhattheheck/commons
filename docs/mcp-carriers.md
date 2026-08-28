@@ -63,6 +63,16 @@ field at this same URL when that field is present; otherwise the connected
 automation calls the same public HTTP MCP. No repository credential or second
 MCP core is involved.
 
+## grok.com Slack connector
+
+The machine-readable card is
+[carriers/grokcom-slack.json](../carriers/grokcom-slack.json). Slack transport
+and recovery live in
+[integrations/grok_slack/](../integrations/grok_slack/). The connector calls this
+same public `/mcp` for `route_grokcom_revenue_work` and `fire_action`. It does
+not add Slack OAuth, a second MCP core, or a second Grok queue. Direct messages
+are omitted: current main has no measured private Grok execution road.
+
 ## Cursor / Grok Bot
 
 Official Cursor remote MCP shape: a `url` entry in `mcp.json`, no `headers`
