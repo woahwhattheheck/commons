@@ -67,6 +67,18 @@
       "inbound_count": 0,
       "lane": "NO_RESPONSE",
       "next_action": "MONITOR_NO_RESEND",
+      "organization": "Langfuse GmbH",
+      "prospect_key": "langfuse",
+      "receipt_count": 1,
+      "resend": false
+    },
+    {
+      "cash_usd": 0,
+      "handoff": null,
+      "hard_dnr": true,
+      "inbound_count": 0,
+      "lane": "NO_RESPONSE",
+      "next_action": "MONITOR_NO_RESEND",
       "organization": "LM Studio",
       "prospect_key": "lm-studio",
       "receipt_count": 1,
@@ -208,11 +220,11 @@
   "schema_version": "commons-reply-to-revenue/v1",
   "stages": [
     {
-      "count": 11,
+      "count": 12,
       "id": "SENT_COMPLETED"
     },
     {
-      "count": 11,
+      "count": 12,
       "id": "HARD_DNR"
     },
     {
@@ -247,14 +259,14 @@
   "surfaces": [],
   "truth": {
     "auto_acks": 4,
-    "canonical_receipts": 16,
+    "canonical_receipts": 17,
     "cash_usd": 0,
-    "distinct_contacts": 11,
-    "hard_dnr_contacts": 11,
+    "distinct_contacts": 12,
+    "hard_dnr_contacts": 12,
     "human_positive": 0,
     "human_question": 0,
     "inbound_recorded": 4,
-    "no_response": 9,
+    "no_response": 10,
     "payment_evidence": 0,
     "resends": 0,
     "scope_acceptances": 0,

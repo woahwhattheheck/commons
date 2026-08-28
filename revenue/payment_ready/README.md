@@ -39,10 +39,10 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 Current collected cash is **$0 / NOT_LANDED**. READY means the pack
 exists. It does not mean a dollar cleared.
 
-Current measured funnel: **7 distinct contacts sent / 0 replies / 0
-acceptances / 0 paid deliveries / USD 0 cash**. Twelve provider transports
-exist because five duplicate sends completed; duplicates do not increase
-the distinct-contact count. Every canonical route is `do_not_resend`.
+Current measured funnel: **12 distinct contacts sent / 12 HARD DNR / 17
+receipts / 0 replies / 0 acceptances / 0 paid deliveries / transport_actions 0
+/ USD 0 cash**. Duplicate provider transports do not increase the
+distinct-contact count. Every canonical route is `do_not_resend`.
 
 ## Measure
 
