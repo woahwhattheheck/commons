@@ -89,10 +89,22 @@ class ActionExecutorTests(unittest.TestCase):
             job = json.loads(job_path.read_text(encoding="utf-8"))
             self.assertEqual(job["harness"], ae.GROK_COM_HARNESS)
             self.assertEqual(job["checkpoint"]["task"], rec["payload"])
+            self.assertEqual(job["checkpoint"]["schema"], "commons-grok-executor-job/v1")
+            self.assertEqual(job["checkpoint"]["run_key"], "grok-action-codex-grok-task-0001")
+            self.assertEqual(job["checkpoint"]["origin"]["requester"], "CODEX")
+            self.assertEqual(job["checkpoint"]["execution"]["submission_state"], "NOT_SUBMITTED")
+            self.assertTrue(
+                job["checkpoint"]["receipt_contract"]["structural_start_before_submit"]
+            )
+            self.assertEqual(
+                job["checkpoint"]["capture_start"]["tool"],
+                "start_grok_capture",
+            )
             self.assertEqual(
                 job["checkpoint"]["receipt_contract"]["conversation_url_prefix"],
                 "https://grok.com/c/",
             )
+            self.assertEqual(result["queue_schema"], "commons-grok-executor-job/v1")
             self.assertEqual(job["completion_predicate"], {"type": "result_address_on_head"})
             self.assertEqual(result["changed"], ["wake_jobs/codex-grok-task-0001.json"])
             self.assertIn("wake_jobs/codex-grok-task-0001.json", result["action_outputs"])
