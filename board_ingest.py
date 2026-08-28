@@ -1586,7 +1586,7 @@ def _record_paths(env):
     # land them concurrently without a single conflict. Modified files are not
     # append-only and ride with the bake instead.
     out = _git(["status", "--porcelain", "-z", "--",
-                "p", "conflicts", "builds/records", "land", "artifacts", "COMMANDS"], env)
+                "p", "wake_jobs", "conflicts", "builds/records", "land", "artifacts", "COMMANDS"], env)
     paths = []
     for entry in filter(None, (out.stdout or "").split("\0")):
         code, name = entry[:2], entry[3:]
@@ -3900,6 +3900,26 @@ def ingest_lda_issues():
     return n
 
 
+
+def materialize_pending_grok_com_jobs() -> list[str]:
+    """Queue GROK.COM ACTION pages into wake_jobs before the record commit.
+
+    commons-action-executor is starved, so a landed p/{id}.md otherwise never
+    becomes the addressable grok.com execution record in the same ingest.
+    Never invokes a model. Failures here must not block the ACTION page land.
+    """
+    try:
+        import enqueue_pending_grok_com as enqueue
+        report = enqueue.enqueue_pending_grok_com()
+    except Exception as exc:
+        print("grok.com wake_jobs enqueue skipped: %s" % type(exc).__name__, flush=True)
+        return []
+    queued = [str(item) for item in (report.get("queued") or [])]
+    if queued:
+        print("queued grok.com wake_jobs=%s" % ",".join(queued), flush=True)
+    return queued
+
+
 def _ingest_and_maybe_publish(publish):
     event_name = os.environ.get("GITHUB_EVENT_NAME")
     # An issue webhook already carries the complete source event.  Polling
@@ -3924,6 +3944,7 @@ def _ingest_and_maybe_publish(publish):
     swept_wrote = LAST_WROTE[mark:]
     del LAST_WROTE[mark:]
     n += len(swept_wrote)
+    materialize_pending_grok_com_jobs()
     rebuild()
     print("board ingest new=%s posts=%s swept=%s" % (n, len(list_posts()), len(planned)))
     if not publish:

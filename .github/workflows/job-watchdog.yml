@@ -12,12 +12,15 @@ on:
       - main
     paths:
       - "wake_jobs/**"
+      - "p/**"
       - "harness_wake/**"
       - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
+      - "enqueue_pending_grok_com.py"
   pull_request:
     paths:
       - "wake_jobs/**"
+      - "p/**"
       - "harness_wake/**"
       - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
