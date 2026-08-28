@@ -783,8 +783,8 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
             self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 11)
-        self.assertEqual(truth["delivered_transports"], 16)
+        self.assertEqual(truth["distinct_targets"], 12)
+        self.assertEqual(truth["delivered_transports"], 17)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -1441,6 +1441,12 @@ process.stdout.write(JSON.stringify([
             )
         ]
         self.assertEqual(len(receipts), truth["delivered_transports"])
+        latest_receipt = max(
+            path.name
+            for path in (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
+        )
+        self.assertIn(latest_receipt, truth["source"])
+        self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
         contacts = set()
         for row in receipts:
             dedupe = row.get("dedupe") or {}
@@ -1450,12 +1456,13 @@ process.stdout.write(JSON.stringify([
                 or row["target_id"]
             )
         self.assertEqual(len(contacts), truth["distinct_targets"])
-        self.assertEqual(truth["delivered_transports"], 16)
-        self.assertEqual(truth["distinct_targets"], 11)
+        self.assertEqual(truth["delivered_transports"], 17)
+        self.assertEqual(truth["distinct_targets"], 12)
         for target_id, provider_reference in (
             ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
             ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
             ("nextdata", "apollo:emailer_message:6a8faa92579ff9000cb874e2"),
+            ("langfuse", "gmail:message:1a0496451e052b9d"),
         ):
             with self.subTest(target_id=target_id):
                 matches = [row for row in receipts if row["target_id"] == target_id]
@@ -1486,6 +1493,41 @@ process.stdout.write(JSON.stringify([
         self.assertEqual(current["facts"]["collected_cash_usd"], 0)
         self.assertEqual(current["facts"]["delivery"], "NOT_LANDED")
         self.assertIs(current["cash_claimed"], False)
+
+    def test_langfuse_hard_dnr_zero_cash_advances_funnel_truth(self) -> None:
+        """#4969 receipt must advance catalog funnel_truth; do not leave 16/11 pins."""
+        truth = self.catalog["funnel_truth"]
+        receipts = sorted(
+            (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
+        )
+        self.assertEqual(len(receipts), 17)
+        self.assertEqual(truth["delivered_transports"], 17)
+        self.assertEqual(truth["distinct_targets"], 12)
+        self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
+        self.assertEqual(truth["collected_cash_usd"], "0.00")
+        self.assertEqual(truth["accepted_scopes"], 0)
+        self.assertEqual(truth["paid_deliveries"], 0)
+        self.assertEqual(truth["verified_positive_replies"], 0)
+        row = read_json(
+            ROOT
+            / "revenue"
+            / "payment_ready"
+            / "outreach_receipts"
+            / "20260828-langfuse-1a0496451e052b9d.json"
+        )
+        self.assertEqual(row["target_id"], "langfuse")
+        self.assertEqual(row["provider"], "GMAIL")
+        self.assertEqual(row["provider_state"], "COMPLETED")
+        self.assertEqual(row["provider_reference"], "gmail:message:1a0496451e052b9d")
+        self.assertTrue(row["dedupe"]["do_not_resend"])
+        self.assertEqual(row["dedupe"]["distinct_contact_key"], "contact@langfuse.com")
+        self.assertEqual(row["response_state"], "UNKNOWN")
+        self.assertIsNone(row["response_reference"])
+        self.assertIs(row["facts"]["cash_claimed"], False)
+        self.assertEqual(row["facts"]["collected_cash_usd"], 0)
+        self.assertEqual(row["facts"]["legal_acceptance"], "NOT_LANDED")
+        self.assertEqual(row["facts"]["buyer_authorization"], "UNKNOWN")
+
 
 
 if __name__ == "__main__":
