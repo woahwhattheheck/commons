@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-"""host/feature_tracker.py — evidence-derived shipped-state tracker.
+"""host/feature_tracker.py — evidence-derived feature tracker.
 
-Status is derived from registry + evidence + the measured tree.
-Chat, Slack, ntfy 200, an open PR, Pages, and claimed_status never promote.
+Append-only registry: features/registry/{id}.json
+Append-only evidence: features/evidence/{id}.json
+Projection: feature-tracker.json + feature-tracker.html
+
+Status is derived from git/tree/receipt evidence. Author prose, chat,
+Slack, ntfy 200, an open PR, and a claimed_status field never promote
+SOURCE_BUILT, TESTED, or LIVE. Source and live stay separate. Pages is a bake.
 
   python3 host/feature_tracker.py
   python3 host/feature_tracker.py --root .
   python3 host/feature_tracker.py --write
   python3 host/feature_tracker.py --self-test
-
-Law: ground/FEATURE_TRACKER.md
-Do not remint features.html. That door is the FEATURES board lane.
 """
 from __future__ import annotations
 
 import argparse
-import hashlib
 import html
 import json
 import os
@@ -23,16 +24,29 @@ import re
 import subprocess
 import sys
 
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
 
-DEFAULT_ROOT = "."
+try:
+    import hub_pages
+except ImportError:
+    hub_pages = None
+
+
+SCHEMA_FEATURE = "commons-feature-v1"
+SCHEMA_EVIDENCE = "commons-feature-evidence-v1"
+SCHEMA_PROJECTION = "commons-feature-tracker-v1"
+SCHEMA = SCHEMA_FEATURE
+EVIDENCE_SCHEMA = SCHEMA_EVIDENCE
 REGISTRY_DIR = os.path.join("features", "registry")
 EVIDENCE_DIR = os.path.join("features", "evidence")
-JSON_OUT = "feature-tracker.json"
 HTML_OUT = "feature-tracker.html"
-SCHEMA = "commons-feature-v1"
-EVIDENCE_SCHEMA = "commons-feature-evidence-v1"
+JSON_OUT = "feature-tracker.json"
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+BLOB_RE = re.compile(r"^[0-9a-f]{40,64}$")
+
 EVIDENCE_KINDS = (
     "SOURCE_PATHS",
     "TEST_PATHS",
@@ -42,14 +56,40 @@ EVIDENCE_KINDS = (
     "RECEIPT",
     "SUPERSEDE",
 )
-STATUSES = ("PLANNED", "SOURCE_BUILT", "TESTED", "LIVE", "DEGRADED", "SUPERSEDED")
-CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=20260823f">'
-VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1">'
-RELATED_KEYS = ("boards", "current_work", "profitability", "resources")
+
+SOURCE_STATUSES = ("PLANNED", "SOURCE_BUILT", "DEGRADED")
+TEST_STATUSES = ("UNTESTED", "TESTED", "DEGRADED")
+LIVE_STATUSES = ("UNMEASURED", "LIVE", "DEGRADED")
+ROLLUPS = ("PLANNED", "SOURCE_BUILT", "TESTED", "LIVE", "DEGRADED", "SUPERSEDED")
+ROLLUP_SORT = ("LIVE", "TESTED", "SOURCE_BUILT", "DEGRADED", "PLANNED", "SUPERSEDED")
+
+FEATURE_REQUIRED = (
+    "schema",
+    "id",
+    "name",
+    "capability",
+    "owner_subsystem",
+    "carrier",
+    "claimed_paths",
+    "test_paths",
+    "public_entrypoint",
+    "dependencies",
+    "resource_links",
+    "next_gap",
+)
+
+NOT_THIS = {
+    "features.html": "FEATURES board lane. Landed-feature posts. Not the tracker.",
+    "feature-requests.html": "request door. Not shipped-state.",
+    "current-work.html": "unfinished-now ledger. Not shipped-state.",
+    "todo.html": "DIRECTIVES.md view. Historical.",
+    "builds.html": "permit SOP.",
+    "ledger.html": "resource census.",
+    "right-now.html": "buyer / revenue desk.",
+}
 
 
-def _read(root, rel):
-    path = os.path.join(root, rel)
+def _read(path):
     try:
         with open(path, encoding="utf-8") as handle:
             return handle.read()
@@ -57,128 +97,36 @@ def _read(root, rel):
         return ""
 
 
+def _load_json_file(path):
+    text = _read(path)
+    if not text.strip():
+        return None, ["unreadable or empty"]
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        return None, ["not JSON: %s" % exc]
+    if not isinstance(data, dict):
+        return None, ["not an object"]
+    return data, []
+
+
+def _sorted_json(data):
+    return json.dumps(data, sort_keys=True, indent=2) + "\n"
+
+
 def _list_json(root, rel):
-    directory = os.path.join(root, rel)
-    if not os.path.isdir(directory):
+    folder = os.path.join(root, rel)
+    if not os.path.isdir(folder):
         return []
-    names = [name for name in os.listdir(directory) if name.endswith(".json")]
+    names = [n for n in os.listdir(folder) if n.endswith(".json") and not n.startswith(".")]
     names.sort()
     return names
 
 
-def _canonical(obj):
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"))
-
-
-def _blob(text):
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def validate_feature(row, filename=""):
-    problems = []
-    if not isinstance(row, dict):
-        return ["feature is not an object"]
-    if row.get("schema") != SCHEMA:
-        problems.append("schema must be %s" % SCHEMA)
-    feature_id = str(row.get("id") or "")
-    if not ID_RE.match(feature_id):
-        problems.append("id must match %s" % ID_RE.pattern)
-    elif filename and filename != "%s.json" % feature_id:
-        problems.append("filename must equal {id}.json")
-    name = str(row.get("name") or "")
-    if len(name) < 4:
-        problems.append("name too short")
-    for field in ("capability", "carrier", "owner_subsystem", "public_entrypoint", "next_gap"):
-        if not str(row.get(field) or "").strip():
-            problems.append("missing field: %s" % field)
-    for field in ("claimed_paths", "test_paths", "dependencies", "resource_links"):
-        value = row.get(field)
-        if value is None:
-            continue
-        if not isinstance(value, list) or any(not isinstance(item, str) or not item for item in value):
-            problems.append("%s must be a list of nonempty strings" % field)
-    related = row.get("related")
-    if related is not None:
-        if not isinstance(related, dict):
-            problems.append("related must be an object")
-        else:
-            for key, value in related.items():
-                if not isinstance(value, bool):
-                    problems.append("related.%s must be boolean" % key)
-    return problems
-
-
-def validate_evidence(row, filename=""):
-    problems = []
-    if not isinstance(row, dict):
-        return ["evidence is not an object"]
-    if row.get("schema") != EVIDENCE_SCHEMA:
-        problems.append("schema must be %s" % EVIDENCE_SCHEMA)
-    evidence_id = str(row.get("id") or "")
-    if not ID_RE.match(evidence_id):
-        problems.append("id must match %s" % ID_RE.pattern)
-    elif filename and filename != "%s.json" % evidence_id:
-        problems.append("filename must equal {id}.json")
-    feature_id = str(row.get("feature_id") or "")
-    if not ID_RE.match(feature_id):
-        problems.append("feature_id must match %s" % ID_RE.pattern)
-    kind = row.get("kind")
-    if kind not in EVIDENCE_KINDS:
-        problems.append("kind not in enum")
-    if kind == "LIVE_MEASUREMENT":
-        url = str(row.get("url") or row.get("public_url") or "").strip()
-        sha = str(row.get("sha") or row.get("main_sha") or "").strip()
-        if not (url.startswith("http://") or url.startswith("https://")):
-            problems.append("LIVE_MEASUREMENT needs a public URL")
-        if not SHA_RE.match(sha):
-            problems.append("LIVE_MEASUREMENT needs a 40-character SHA")
-    if kind == "SUPERSEDE" and not str(row.get("superseded_by") or row.get("replacement") or "").strip():
-        problems.append("SUPERSEDE needs superseded_by")
-    return problems
-
-
-def _load_named_dir(root, rel, validate):
-    rows = []
-    seen = {}
-    conflicts = []
-    for name in _list_json(root, rel):
-        raw = _read(root, os.path.join(rel, name))
-        try:
-            data = json.loads(raw or "")
-        except ValueError:
-            rows.append({"_file": name, "_invalid": ["not JSON"], "id": name[:-5]})
-            continue
-        if not isinstance(data, dict):
-            rows.append({"_file": name, "_invalid": ["not an object"], "id": name[:-5]})
-            continue
-        problems = validate(data, name)
-        item = dict(data)
-        item["_file"] = name
-        item["_blob"] = _blob(_canonical({k: v for k, v in data.items()}))
-        if problems:
-            item["_invalid"] = problems
-        item_id = str(item.get("id") or name[:-5])
-        prior = seen.get(item_id)
-        if prior is None:
-            seen[item_id] = item
-            rows.append(item)
-        elif prior.get("_blob") == item.get("_blob"):
-            continue
-        else:
-            conflicts.append("CONFLICT same id different bytes: %s" % item_id)
-            item["_invalid"] = list(item.get("_invalid") or []) + [
-                "CONFLICT same id different bytes: %s" % item_id
-            ]
-            rows.append(item)
-    return rows, conflicts
-
-
-def load_registry(root):
-    return _load_named_dir(root, REGISTRY_DIR, validate_feature)
-
-
-def load_evidence(root):
-    return _load_named_dir(root, EVIDENCE_DIR, validate_evidence)
+def path_exists(root, rel):
+    if not isinstance(rel, str) or not rel or rel.startswith("/") or ".." in rel.split("/"):
+        return False
+    return os.path.isfile(os.path.join(root, rel)) or os.path.isdir(os.path.join(root, rel))
 
 
 def git_names(root):
@@ -201,7 +149,7 @@ def git_names(root):
 
 
 def exists_on_tree(root, rel, names=None):
-    if not rel or not isinstance(rel, str):
+    if not isinstance(rel, str) or not rel or rel.startswith("/") or ".." in rel.split("/"):
         return False
     if os.path.exists(os.path.join(root, rel)):
         return True
@@ -213,278 +161,663 @@ def exists_on_tree(root, rel, names=None):
     return any(name.startswith(prefix) for name in names)
 
 
-def _live_ok(row):
-    if not isinstance(row, dict) or row.get("kind") != "LIVE_MEASUREMENT":
-        return False
-    if row.get("_invalid"):
-        return False
-    url = str(row.get("url") or row.get("public_url") or "").strip()
-    sha = str(row.get("sha") or row.get("main_sha") or "").strip()
-    return (url.startswith("http://") or url.startswith("https://")) and bool(SHA_RE.match(sha))
+def validate_feature(rec, filename=""):
+    problems = []
+    if not isinstance(rec, dict):
+        return ["feature is not an object"]
+    if rec.get("schema") != SCHEMA_FEATURE:
+        problems.append("schema must be %s" % SCHEMA_FEATURE)
+    for field in FEATURE_REQUIRED:
+        if field not in rec:
+            problems.append("missing field: %s" % field)
+    feat_id = str(rec.get("id") or "")
+    if not ID_RE.match(feat_id):
+        problems.append("id must match %s" % ID_RE.pattern)
+    elif filename and filename != feat_id + ".json":
+        problems.append("filename must equal id.json")
+    if len(str(rec.get("name") or "")) < 4:
+        problems.append("name too short")
+    if len(str(rec.get("capability") or "")) < 8:
+        problems.append("capability too short")
+    if len(str(rec.get("owner_subsystem") or "")) < 2:
+        problems.append("owner_subsystem too short")
+    if len(str(rec.get("carrier") or "")) < 2:
+        problems.append("carrier too short")
+    if len(str(rec.get("next_gap") or "")) < 8:
+        problems.append("next_gap too short")
+    for key in ("claimed_paths", "test_paths", "dependencies", "resource_links"):
+        val = rec.get(key)
+        if val is None:
+            continue
+        if not isinstance(val, list) or any(not isinstance(p, str) or not p for p in val):
+            problems.append("%s must be a list of nonempty strings" % key)
+    entry = rec.get("public_entrypoint")
+    if entry is not None and not isinstance(entry, str):
+        problems.append("public_entrypoint must be a string")
+    related = rec.get("related")
+    if related is not None and not isinstance(related, dict):
+        problems.append("related must be an object")
+    return problems
 
 
-def derive_status(feature, evidence_rows, root, names=None):
-    """Derive shipped state. claimed_status / chat never promote."""
-    feature = feature if isinstance(feature, dict) else {}
-    evidence_rows = [row for row in (evidence_rows or []) if isinstance(row, dict)]
+def validate_evidence(rec, filename=""):
+    problems = []
+    if not isinstance(rec, dict):
+        return ["evidence is not an object"]
+    if rec.get("schema") != SCHEMA_EVIDENCE:
+        problems.append("schema must be %s" % SCHEMA_EVIDENCE)
+    evid_id = str(rec.get("id") or "")
+    if not ID_RE.match(evid_id):
+        problems.append("id must match %s" % ID_RE.pattern)
+    elif filename and filename != evid_id + ".json":
+        problems.append("filename must equal id.json")
+    feat_id = str(rec.get("feature_id") or "")
+    if not ID_RE.match(feat_id):
+        problems.append("feature_id must match %s" % ID_RE.pattern)
+    kind = rec.get("kind")
+    if kind not in EVIDENCE_KINDS:
+        problems.append("kind not in enum")
+    if rec.get("sha") and not SHA_RE.match(str(rec.get("sha") or "")):
+        problems.append("sha must be 40 hex or omitted")
+    if rec.get("blob") and not BLOB_RE.match(str(rec.get("blob") or "")):
+        problems.append("blob must be 40-64 hex or omitted")
+    if kind == "LIVE_MEASUREMENT":
+        if not rec.get("url"):
+            problems.append("LIVE_MEASUREMENT needs url")
+        if not SHA_RE.match(str(rec.get("sha") or "")):
+            problems.append("LIVE_MEASUREMENT needs 40-hex sha")
+    if kind == "SUPERSEDE" and not ID_RE.match(str(rec.get("superseded_by") or rec.get("replaces") or "")):
+        problems.append("SUPERSEDE needs superseded_by id")
+    for key in ("paths",):
+        val = rec.get(key)
+        if val is None:
+            continue
+        if not isinstance(val, list) or any(not isinstance(p, str) or not p for p in val):
+            problems.append("%s must be a list of nonempty strings" % key)
+    return problems
+
+
+def load_registry(root):
+    features = []
+    seen = {}
+    conflicts = []
+    invalid = []
+    for name in _list_json(root, REGISTRY_DIR):
+        path = os.path.join(root, REGISTRY_DIR, name)
+        rec, errs = _load_json_file(path)
+        if rec is None:
+            invalid.append({"_file": name, "_invalid": errs})
+            continue
+        rec = dict(rec)
+        rec["_file"] = name
+        probs = validate_feature(rec, name)
+        feat_id = str(rec.get("id") or "")
+        blob = json.dumps({k: rec[k] for k in rec if not str(k).startswith("_")}, sort_keys=True, separators=(",", ":"))
+        if feat_id in seen:
+            if seen[feat_id] != blob:
+                conflicts.append("CONFLICT same id different bytes: %s" % feat_id)
+                rec["_invalid"] = (rec.get("_invalid") or []) + ["CONFLICT same id different bytes"]
+            else:
+                rec["_invalid"] = (rec.get("_invalid") or []) + ["duplicate identical id ignored"]
+        else:
+            seen[feat_id] = blob
+        if probs:
+            rec["_invalid"] = (rec.get("_invalid") or []) + probs
+        if rec.get("_invalid"):
+            invalid.append(rec)
+        features.append(rec)
+    evidence = []
+    evid_seen = {}
+    for name in _list_json(root, EVIDENCE_DIR):
+        path = os.path.join(root, EVIDENCE_DIR, name)
+        rec, errs = _load_json_file(path)
+        if rec is None:
+            invalid.append({"_file": name, "_invalid": errs, "_kind": "evidence"})
+            continue
+        rec = dict(rec)
+        rec["_file"] = name
+        probs = validate_evidence(rec, name)
+        evid_id = str(rec.get("id") or "")
+        blob = json.dumps({k: rec[k] for k in rec if not str(k).startswith("_")}, sort_keys=True, separators=(",", ":"))
+        if evid_id in evid_seen:
+            if evid_seen[evid_id] != blob:
+                conflicts.append("CONFLICT same evidence id different bytes: %s" % evid_id)
+                rec["_invalid"] = (rec.get("_invalid") or []) + ["CONFLICT same id different bytes"]
+            else:
+                rec["_invalid"] = (rec.get("_invalid") or []) + ["duplicate identical id ignored"]
+        else:
+            evid_seen[evid_id] = blob
+        if probs:
+            rec["_invalid"] = (rec.get("_invalid") or []) + probs
+        evidence.append(rec)
+        if rec.get("_invalid"):
+            invalid.append(rec)
+    return features, evidence, conflicts, invalid
+
+
+def _valid_features(features):
+    out = []
+    seen = set()
+    for rec in features:
+        if rec.get("_invalid"):
+            continue
+        feat_id = rec.get("id")
+        if feat_id in seen:
+            continue
+        seen.add(feat_id)
+        out.append(rec)
+    out.sort(key=lambda r: str(r.get("id") or ""))
+    return out
+
+
+def _evidence_for(feature_id, evidence):
+    rows = []
+    for rec in evidence:
+        if rec.get("_invalid"):
+            continue
+        if rec.get("feature_id") == feature_id:
+            rows.append(rec)
+    rows.sort(key=lambda r: (str(r.get("recorded_at") or ""), str(r.get("id") or "")))
+    return rows
+
+
+def _chat_noise(snapshot):
+    snapshot = snapshot or {}
+    return bool(
+        snapshot.get("chat_text")
+        or snapshot.get("chat_said_done")
+        or snapshot.get("assistant_message")
+        or snapshot.get("slack_text")
+        or snapshot.get("ntfy_200")
+        or snapshot.get("open_prs")
+        or snapshot.get("claimed_status")
+    )
+
+
+def derive_feature(feature, evidence, root, snapshot=None):
+    snapshot = snapshot or {}
+    feat_id = str(feature.get("id") or "")
     claimed = [p for p in (feature.get("claimed_paths") or []) if isinstance(p, str) and p]
     tests = [p for p in (feature.get("test_paths") or []) if isinstance(p, str) and p]
-    superseded_by = str(feature.get("superseded_by") or "").strip()
-    for row in evidence_rows:
-        if row.get("kind") == "SUPERSEDE" and not row.get("_invalid"):
-            superseded_by = str(row.get("superseded_by") or row.get("replacement") or superseded_by).strip()
-    source_ok = bool(claimed) and all(exists_on_tree(root, path, names) for path in claimed)
-    test_ok = source_ok and bool(tests) and all(exists_on_tree(root, path, names) for path in tests)
-    live_rows = [row for row in evidence_rows if row.get("kind") == "LIVE_MEASUREMENT"]
-    live_ok = source_ok and any(_live_ok(row) for row in live_rows)
+    names = snapshot.get("git_names")
+    if names is None:
+        names = git_names(root)
+    tree = snapshot.get("tree_paths")
+    if not isinstance(tree, dict):
+        tree = {}
+        for path in claimed + tests + [feature.get("public_entrypoint") or ""]:
+            if path:
+                tree[path] = exists_on_tree(root, path, names)
 
-    source_evidence_paths = []
-    test_evidence_paths = []
-    for row in evidence_rows:
-        if row.get("_invalid"):
+    ev = _evidence_for(feat_id, evidence)
+    superseded_by = str(feature.get("superseded_by") or "")
+    for row in ev:
+        if row.get("kind") == "SUPERSEDE":
+            superseded_by = str(row.get("superseded_by") or row.get("replaces") or superseded_by)
+
+    if claimed:
+        present = [p for p in claimed if tree.get(p)]
+        missing = [p for p in claimed if not tree.get(p)]
+        if missing and present:
+            source = "DEGRADED"
+        elif missing:
+            source = "DEGRADED"
+        else:
+            source = "SOURCE_BUILT"
+    else:
+        source = "PLANNED"
+        present = []
+        missing = []
+
+    if tests:
+        test_missing = [p for p in tests if not tree.get(p)]
+        test_status = "TESTED" if not test_missing else "DEGRADED"
+    else:
+        test_missing = []
+        test_status = "UNTESTED"
+
+    live_ok = []
+    for row in ev:
+        if row.get("kind") != "LIVE_MEASUREMENT":
             continue
-        if row.get("kind") == "SOURCE_PATHS":
-            source_evidence_paths.extend(p for p in (row.get("paths") or []) if isinstance(p, str) and p)
-        if row.get("kind") == "TEST_PATHS":
-            test_evidence_paths.extend(p for p in (row.get("paths") or []) if isinstance(p, str) and p)
+        if SHA_RE.match(str(row.get("sha") or "")) and row.get("url"):
+            live_ok.append(row)
+    if live_ok and source == "SOURCE_BUILT":
+        live = "LIVE"
+    elif live_ok:
+        live = "DEGRADED"
+    else:
+        live = "UNMEASURED"
 
-    degraded = False
-    if claimed and not source_ok and (source_evidence_paths or any(row.get("kind") == "GIT_SHA" for row in evidence_rows)):
-        degraded = True
-    if source_evidence_paths and any(not exists_on_tree(root, path, names) for path in source_evidence_paths):
-        degraded = True
-    if tests and source_ok and not test_ok and test_evidence_paths:
-        degraded = True
-    if live_rows and source_ok and not live_ok:
-        degraded = True
+    shas = [str(row.get("sha")) for row in ev if SHA_RE.match(str(row.get("sha") or ""))]
+    blobs = []
+    for row in ev:
+        if row.get("kind") == "BLOB" and row.get("blob"):
+            blobs.append("%s:%s" % (row.get("path") or "", row.get("blob")))
+        elif row.get("blob"):
+            blobs.append(str(row.get("blob")))
+    receipts = [str(row.get("receipt") or row.get("id")) for row in ev if row.get("kind") == "RECEIPT" or row.get("receipt")]
 
-    status = "PLANNED"
-    if not claimed:
-        status = "PLANNED"
-    elif source_ok:
-        status = "SOURCE_BUILT"
-        if test_ok:
-            status = "TESTED"
-        if live_ok:
-            status = "LIVE"
-    if degraded:
-        status = "DEGRADED"
+    last = str(feature.get("added") or "")
+    for row in ev:
+        ts = str(row.get("recorded_at") or "")
+        if ts > last:
+            last = ts
+
     if superseded_by:
-        status = "SUPERSEDED"
+        rollup = "SUPERSEDED"
+    elif live == "DEGRADED" or source == "DEGRADED" or test_status == "DEGRADED":
+        rollup = "DEGRADED"
+    elif live == "LIVE":
+        rollup = "LIVE"
+    elif test_status == "TESTED":
+        rollup = "TESTED"
+    elif source == "SOURCE_BUILT":
+        rollup = "SOURCE_BUILT"
+    else:
+        rollup = "PLANNED"
+
+    author_claim = feature.get("claimed_status")
     return {
-        "status": status,
-        "source_built": bool(source_ok),
-        "tested": bool(test_ok),
-        "live": bool(live_ok),
-        "degraded": bool(degraded),
+        "id": feat_id,
+        "name": feature.get("name"),
+        "capability": feature.get("capability"),
+        "owner_subsystem": feature.get("owner_subsystem"),
+        "carrier": feature.get("carrier"),
+        "rollup": rollup,
+        "source_status": source,
+        "test_status": test_status,
+        "live_status": live,
+        "claimed_paths": claimed,
+        "claimed_paths_present": present,
+        "claimed_paths_missing": missing,
+        "test_paths": tests,
+        "test_paths_missing": test_missing,
+        "public_entrypoint": feature.get("public_entrypoint") or "",
+        "dependencies": list(feature.get("dependencies") or []),
+        "resource_links": list(feature.get("resource_links") or []),
+        "related": feature.get("related") if isinstance(feature.get("related"), dict) else {},
+        "next_gap": feature.get("next_gap"),
+        "last_change": last,
+        "main_sha": shas[-1] if shas else "",
+        "blob_proof": blobs,
+        "receipts": receipts,
+        "evidence_ids": [str(row.get("id")) for row in ev],
         "superseded_by": superseded_by,
-        "claimed_status_ignored": feature.get("claimed_status"),
+        "author_claim_ignored": author_claim if author_claim else "",
+        "chat_ignored": _chat_noise(snapshot),
+        "file": feature.get("_file"),
     }
 
 
-def project(root):
-    features, feature_conflicts = load_registry(root)
-    evidence, evidence_conflicts = load_evidence(root)
-    problems = list(feature_conflicts) + list(evidence_conflicts)
-    by_feature = {}
-    for row in evidence:
-        fid = str(row.get("feature_id") or "")
-        by_feature.setdefault(fid, []).append(row)
-    names = git_names(root)
-    items = []
-    for feature in features:
-        fid = str(feature.get("id") or "")
-        derived = derive_status(feature, by_feature.get(fid) or [], root, names)
-        if feature.get("_invalid"):
-            problems.extend("%s: %s" % (fid, p) for p in feature["_invalid"])
-        public = {k: v for k, v in feature.items() if not str(k).startswith("_")}
-        items.append({
-            "id": fid,
-            "name": feature.get("name"),
-            "capability": feature.get("capability"),
-            "carrier": feature.get("carrier"),
-            "owner_subsystem": feature.get("owner_subsystem"),
-            "public_entrypoint": feature.get("public_entrypoint"),
-            "claimed_paths": list(feature.get("claimed_paths") or []),
-            "test_paths": list(feature.get("test_paths") or []),
-            "next_gap": feature.get("next_gap"),
-            "related": feature.get("related") or {},
-            "resource_links": list(feature.get("resource_links") or []),
-            "invalid": list(feature.get("_invalid") or []),
-            "evidence_ids": [str(row.get("id") or "") for row in by_feature.get(fid) or []],
-            **derived,
-            "registry": public,
-        })
-    items.sort(key=lambda row: str(row.get("id") or ""))
-    counts = {status: 0 for status in STATUSES}
-    for item in items:
-        counts[item["status"]] = counts.get(item["status"], 0) + 1
+def project(root, snapshot=None):
+    snapshot = dict(snapshot or {})
+    if "git_names" not in snapshot:
+        snapshot["git_names"] = git_names(root)
+    features, evidence, conflicts, invalid = load_registry(root)
+    rows = [derive_feature(feat, evidence, root, snapshot) for feat in _valid_features(features)]
+    order = {key: idx for idx, key in enumerate(ROLLUP_SORT)}
+    rows.sort(key=lambda row: (order.get(row["rollup"], 99), str(row.get("id") or "")))
+    counts = {key: 0 for key in ROLLUPS}
+    for row in rows:
+        counts[row["rollup"]] = counts.get(row["rollup"], 0) + 1
+    problems = list(conflicts)
+    for rec in invalid:
+        for item in rec.get("_invalid") or []:
+            problems.append("%s: %s" % (rec.get("_file") or rec.get("id") or "record", item))
     return {
-        "schema": "commons-feature-tracker-v1",
-        "note": (
-            "Descriptive projection of features/registry/ + features/evidence/. "
-            "Status is derived. Chat, Slack, ntfy, Pages, claimed_status, and HTTP "
-            "never promote LIVE. features.html stays the FEATURES board lane."
+        "schema": SCHEMA_PROJECTION,
+        "law": (
+            "Status is derived from exact Git/tree/receipt evidence. "
+            "Source-built is not live. Chat, Slack, ntfy, open PRs, and "
+            "claimed_status never promote a feature. HTTP/Pages is a bake."
         ),
-        "statuses": list(STATUSES),
-        "n_features": len(items),
-        "n_evidence": len(evidence),
-        "n_invalid": sum(1 for row in items if row.get("invalid")),
+        "not_this": NOT_THIS,
         "counts": counts,
+        "n_features": len(rows),
+        "n_invalid": len(invalid),
         "problems": problems,
-        "features": items,
+        "features": rows,
+        "add_feature": {
+            "id_pattern": ID_RE.pattern,
+            "registry": "features/registry/{id}.json",
+            "evidence": "features/evidence/{id}.json",
+            "same_id_same_bytes": "idempotent",
+            "same_id_different_bytes": "CONFLICT — never overwrite; add evidence or a new id",
+            "generate": "python3 host/feature_tracker.py --write",
+            "proof": "python3 test_feature_tracker.py",
+        },
     }
 
 
 def render_html(projection):
-    rows = []
-    for item in projection.get("features") or []:
-        status = str(item.get("status") or "")
-        source = "yes" if item.get("source_built") else "no"
-        live = "yes" if item.get("live") else "no"
-        tested = "yes" if item.get("tested") else "no"
-        entry = str(item.get("public_entrypoint") or "")
-        entry_html = html.escape(entry)
-        if entry.endswith(".html") or entry.endswith(".md"):
-            entry_html = '<a href="./%s">%s</a>' % (html.escape(entry), html.escape(entry))
-        rows.append(
-            "<tr class=\"st-%s\"><td><code>%s</code></td><td>%s</td><td class=\"status\">%s</td>"
-            "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
+    css_tag = hub_pages.CSS_TAG if hub_pages is not None else '<link rel="stylesheet" href="./commons.css?v=20260823f">'
+    viewport = hub_pages.VIEWPORT if hub_pages is not None else '<meta name="viewport" content="width=device-width, initial-scale=1">'
+    counts = projection.get("counts") or {}
+    count_bits = " · ".join("%s %s" % (counts.get(k, 0), k) for k in ROLLUPS)
+    subsystems = sorted({str(r.get("owner_subsystem") or "") for r in projection.get("features") or [] if r.get("owner_subsystem")})
+    carriers = sorted({str(r.get("carrier") or "") for r in projection.get("features") or [] if r.get("carrier")})
+    sub_opts = "\n".join('<option value="%s">%s</option>' % (html.escape(s, quote=True), html.escape(s)) for s in subsystems)
+    car_opts = "\n".join('<option value="%s">%s</option>' % (html.escape(s, quote=True), html.escape(s)) for s in carriers)
+    st_opts = "\n".join('<option value="%s">%s</option>' % (s, s) for s in ROLLUPS)
+    src_opts = "\n".join('<option value="%s">%s</option>' % (s, s) for s in SOURCE_STATUSES)
+    live_opts = "\n".join('<option value="%s">%s</option>' % (s, s) for s in LIVE_STATUSES)
+
+    def cell(label, value, extra=""):
+        return "<td data-label=\"%s\"%s>%s</td>" % (html.escape(label, quote=True), extra, value)
+
+    rows_html = []
+    for row in projection.get("features") or []:
+        hay = " ".join(
+            str(row.get(k) or "")
+            for k in ("id", "name", "capability", "owner_subsystem", "carrier", "rollup", "next_gap", "public_entrypoint")
+        ).lower()
+        sha = html.escape(str(row.get("main_sha") or "—"))
+        blobs = html.escape(", ".join(row.get("blob_proof") or []) or "—")
+        tests = "TESTED" if row.get("test_status") == "TESTED" else html.escape(str(row.get("test_status") or ""))
+        entry = str(row.get("public_entrypoint") or "")
+        if entry:
+            entry_html = '<a href="./%s">%s</a>' % (html.escape(entry, quote=True), html.escape(entry))
+        else:
+            entry_html = "—"
+        deps = html.escape(", ".join(row.get("dependencies") or []) or "—")
+        resources = []
+        for link in row.get("resource_links") or []:
+            resources.append('<a href="./%s">%s</a>' % (html.escape(link, quote=True), html.escape(link)))
+        res_html = ", ".join(resources) or "—"
+        related = row.get("related") or {}
+        rel_bits = []
+        if related.get("current_work"):
+            rel_bits.append('<a href="./current-work.html">current-work</a>')
+        if related.get("resources"):
+            rel_bits.append('<a href="./resources.html">resources</a>')
+        if related.get("profitability"):
+            rel_bits.append('<a href="./ground/PROFITABILITY_BUILD_MAP.md">profitability</a>')
+        if related.get("boards"):
+            rel_bits.append('<a href="./boards.html">boards</a>')
+        if rel_bits:
+            res_html = res_html + " · " + " ".join(rel_bits)
+        proof = "sha %s<br>blob %s" % (sha, blobs)
+        if row.get("receipts"):
+            recs = []
+            for rec in row.get("receipts"):
+                recs.append('<a href="./p/%s.md">%s</a>' % (html.escape(str(rec), quote=True), html.escape(str(rec))))
+            proof += "<br>" + ", ".join(recs)
+        claim = row.get("author_claim_ignored")
+        claim_note = ""
+        if claim:
+            claim_note = '<div class="note">author claim ignored: %s</div>' % html.escape(str(claim))
+        rows_html.append(
+            '<tr data-status="%s" data-source="%s" data-live="%s" data-sub="%s" data-carrier="%s" data-hay="%s">'
+            "%s%s%s%s%s%s%s%s%s%s%s%s%s</tr>"
             % (
-                html.escape(status),
-                html.escape(str(item.get("id") or "")),
-                html.escape(str(item.get("name") or "")),
-                html.escape(status),
-                source,
-                tested,
-                live,
-                entry_html,
-                html.escape(str(item.get("next_gap") or "")),
+                html.escape(str(row.get("rollup") or ""), quote=True),
+                html.escape(str(row.get("source_status") or ""), quote=True),
+                html.escape(str(row.get("live_status") or ""), quote=True),
+                html.escape(str(row.get("owner_subsystem") or ""), quote=True),
+                html.escape(str(row.get("carrier") or ""), quote=True),
+                html.escape(hay, quote=True),
+                cell("feature", "<b>%s</b><div class=\"note\">%s</div>%s" % (html.escape(str(row.get("name") or "")), html.escape(str(row.get("id") or "")), claim_note)),
+                cell("capability", html.escape(str(row.get("capability") or ""))),
+                cell("owner / carrier", "%s / %s" % (html.escape(str(row.get("owner_subsystem") or "")), html.escape(str(row.get("carrier") or "")))),
+                cell("status", '<span class="s-%s">%s</span>' % (html.escape(str(row.get("rollup") or "").lower(), quote=True), html.escape(str(row.get("rollup") or "")))),
+                cell("source", html.escape(str(row.get("source_status") or ""))),
+                cell("tests", tests),
+                cell("live", html.escape(str(row.get("live_status") or ""))),
+                cell("SHA / blob / proof", proof),
+                cell("entrypoint", entry_html),
+                cell("deps", deps),
+                cell("resources", res_html),
+                cell("last change", html.escape(str(row.get("last_change") or "—"))),
+                cell("next gap", html.escape(str(row.get("next_gap") or ""))),
             )
         )
-    body = "\n".join(rows) if rows else '<tr><td colspan="8">no registry rows</td></tr>'
-    counts = projection.get("counts") or {}
-    count_line = " · ".join("%s %s" % (counts.get(status, 0), status) for status in STATUSES)
+
+    body_rows = "\n".join(rows_html) if rows_html else '<tr><td colspan="13">no valid feature records</td></tr>'
+    problems = projection.get("problems") or []
+    problem_html = ""
+    if problems:
+        problem_html = '<p class="law">Projection problems (shape only, records kept): %s</p>' % html.escape("; ".join(problems))
+
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
 %s
 <meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
 <title>Commons feature tracker</title>
 %s
+<style>
+.s-planned{color:#6b6b6b}
+.s-source_built{color:#2f6f9f}
+.s-tested{color:#2b7a4b}
+.s-live{color:#1b6b3a;font-weight:700}
+.s-degraded{color:#a45b12}
+.s-superseded{color:#6b6b6b;text-decoration:line-through}
+#ft-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0;align-items:end}
+#ft-controls label{display:flex;flex-direction:column;font-size:.85em;gap:.2rem}
+#ft-controls input,#ft-controls select{min-height:2.5rem;min-width:8rem}
+#ft-table{width:100%%;border-collapse:collapse}
+#ft-table th,#ft-table td{text-align:left;vertical-align:top;padding:.4rem .45rem;border-bottom:1px solid #ccc}
+#ft-table th{font-size:.8em;text-transform:uppercase;letter-spacing:.03em}
+@media (max-width:720px){
+  #ft-table, #ft-table thead, #ft-table tbody, #ft-table th, #ft-table td, #ft-table tr{display:block}
+  #ft-table thead{position:absolute;left:-9999px}
+  #ft-table tr{border:1px solid #ccc;margin:0 0 .8rem;padding:.5rem}
+  #ft-table td{border:0;padding:.15rem 0}
+  #ft-table td:before{content:attr(data-label);display:block;font-size:.75em;font-weight:700;letter-spacing:.03em;text-transform:uppercase;opacity:.7}
+}
+</style>
 </head><body>
-<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Once evidence validates a path, stop re-litigating it: build through it at full speed and reopen doubt only when a named boundary check or new evidence invalidates the cache. <strong>Commerce is included:</strong> when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./features.html">FEATURES lane</a> · <a href="./current-work.html">current work</a> · <a href="./ledger.html">resource ledger</a> · <a href="./boards.html">boards</a></p>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">On Trust.</a> Proof is cached. Source-built is not live. Chat is not evidence.</section>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./current-work.html">current work</a> · <a href="./resources.html">resources</a> · <a href="./boards.html">boards</a> · <a href="./ground/PROFITABILITY_BUILD_MAP.md">profitability</a> · <a href="./commercial.html">commercial</a> · <a href="./features.html">FEATURES lane</a> · <a href="./todo.html">todo</a> · <a href="./builds.html">builds</a> · <a href="./ledger.html">resource ledger</a> · <a href="./feature-tracker.json">machine JSON</a></p>
 <h1>Feature tracker</h1>
-<p class="law">Shipped-state tracker. Status is derived from git-visible registry, evidence, and the measured tree. <b>Source and live stay separate columns.</b> Chat, Slack, ntfy 200, an open PR, Pages, <code>claimed_status</code>, and HTTP never promote LIVE.</p>
-<p>Law: <a href="./ground/FEATURE_TRACKER.md">ground/FEATURE_TRACKER.md</a>. Machine: <a href="./feature-tracker.json">feature-tracker.json</a>. Instrument: <code>python3 host/feature_tracker.py --write</code>. Proof: <code>python3 test_feature_tracker.py</code>. Registry: <a href="./features/README.md">features/registry/</a>.</p>
-<p class="note"><a href="./features.html">features.html</a> is the FEATURES board lane. Do not remint it. This page is a different object.</p>
-<p class="note">%s · %s features · HTTP is a bake.</p>
-<table>
-<thead><tr><th>id</th><th>name</th><th>status</th><th>source</th><th>tested</th><th>live</th><th>door</th><th>next gap</th></tr></thead>
+<p class="law">Derived from exact Git/tree/receipt evidence. Never from prose. <a href="./features.html">features.html</a> is the FEATURES board lane — do not remint it. This page is the shipped-state tracker. Law: <a href="./ground/FEATURE_TRACKER.md">ground/FEATURE_TRACKER.md</a>. Instrument: <code>python3 host/feature_tracker.py --write</code>. Proof: <code>python3 test_feature_tracker.py</code>.</p>
+<p>Two columns of truth: <b>source</b> (paths on the tree / cited SHA) and <b>live</b> (only a LIVE_MEASUREMENT evidence row with a 40-character SHA and URL). Pages, pulse, ntfy 200, Slack, chat, and <code>claimed_status</code> do not promote LIVE. HTTP is not the computer.</p>
+<p class="note">%s · %s valid · %s invalid</p>
+%s
+<div id="ft-controls">
+<label>search <input id="ft-q" type="search" placeholder="name, id, capability"></label>
+<label>status <select id="ft-st"><option value="">all</option>%s</select></label>
+<label>source <select id="ft-src"><option value="">all</option>%s</select></label>
+<label>live <select id="ft-lv"><option value="">all</option>%s</select></label>
+<label>subsystem <select id="ft-sub"><option value="">all</option>%s</select></label>
+<label>carrier <select id="ft-car"><option value="">all</option>%s</select></label>
+</div>
+<p id="ft-empty" class="note" hidden>no rows match</p>
+<table id="ft-table">
+<thead><tr><th>feature</th><th>capability</th><th>owner / carrier</th><th>status</th><th>source</th><th>tests</th><th>live</th><th>SHA / blob / proof</th><th>entrypoint</th><th>deps</th><th>resources</th><th>last change</th><th>next gap</th></tr></thead>
 <tbody>
 %s
 </tbody>
 </table>
-<p>Add a feature: mint id <code>^[A-Za-z0-9._-]{8,80}$</code>, write one new <code>features/registry/{id}.json</code>, optionally write evidence, run the instrument, unique branch, merge not force. Same id + same bytes is idempotent. Same id + different bytes is CONFLICT. No auth. No secrets.</p>
-<p>LIVE requires a <code>LIVE_MEASUREMENT</code> evidence row with a public URL and a 40-character SHA. After merge, cite the Pages URL against the official main SHA. Do not fabricate LIVE.</p>
+<h2>Add a shipped feature</h2>
+<p>Every carrier adds its own. Mint a unique id matching <code>^[A-Za-z0-9._-]{8,80}$</code>. Write a new file <code>features/registry/{id}.json</code>. Do not overwrite. Same id + same bytes is idempotent; same id + different bytes is CONFLICT — add <code>features/evidence/{id}.json</code> instead. Run <code>python3 host/feature_tracker.py --write</code> and <code>python3 test_feature_tracker.py</code>. Unique branch, merge, not force. No auth, no secrets, no generated-history rewrite.</p>
+<p class="note">LIVE requires a LIVE_MEASUREMENT evidence record with url + 40-hex sha. Listing a public HTML path only proves a source door.</p>
+<script>
+(function(){
+  var q = document.getElementById('ft-q');
+  var st = document.getElementById('ft-st');
+  var src = document.getElementById('ft-src');
+  var lv = document.getElementById('ft-lv');
+  var sub = document.getElementById('ft-sub');
+  var car = document.getElementById('ft-car');
+  var empty = document.getElementById('ft-empty');
+  function apply(){
+    var query = (q && q.value || '').toLowerCase();
+    var status = st && st.value || '';
+    var source = src && src.value || '';
+    var live = lv && lv.value || '';
+    var subsystem = sub && sub.value || '';
+    var carrier = car && car.value || '';
+    var rows = document.querySelectorAll('#ft-table tbody tr');
+    var shown = 0;
+    for (var i = 0; i < rows.length; i++){
+      var tr = rows[i];
+      var hay = tr.getAttribute('data-hay') || '';
+      var ok = (!query || hay.indexOf(query) !== -1)
+        && (!status || tr.getAttribute('data-status') === status)
+        && (!source || tr.getAttribute('data-source') === source)
+        && (!live || tr.getAttribute('data-live') === live)
+        && (!subsystem || tr.getAttribute('data-sub') === subsystem)
+        && (!carrier || tr.getAttribute('data-carrier') === carrier);
+      tr.hidden = !ok;
+      if (ok) shown++;
+    }
+    if (empty) empty.hidden = shown !== 0;
+  }
+  [q, st, src, lv, sub, car].forEach(function(el){ if (el) el.addEventListener('input', apply); });
+})();
+</script>
 </body></html>
-""" % (VIEWPORT, CSS_TAG, html.escape(count_line), projection.get("n_features") or 0, body)
+""" % (
+        viewport,
+        css_tag,
+        html.escape(count_bits),
+        projection.get("n_features", 0),
+        projection.get("n_invalid", 0),
+        problem_html,
+        st_opts,
+        src_opts,
+        live_opts,
+        sub_opts,
+        car_opts,
+        body_rows,
+    )
 
 
-def _file_hashes(root, rel):
-    directory = os.path.join(root, rel)
-    out = {}
-    if not os.path.isdir(directory):
-        return out
-    for name in _list_json(root, rel):
-        path = os.path.join(directory, name)
-        with open(path, "rb") as handle:
-            out[name] = hashlib.sha256(handle.read()).hexdigest()
-    return out
-
-
-def write_projection(root, write=None):
-    """Write derived doors. Never mutates registry or evidence files."""
-    before_reg = _file_hashes(root, REGISTRY_DIR)
-    before_ev = _file_hashes(root, EVIDENCE_DIR)
-    projection = project(root)
-    json_text = json.dumps(projection, indent=2, sort_keys=True) + "\n"
-    html_text = render_html(projection)
-    writer = write
-    if writer is None:
-        def writer(path, text):
-            with open(path, "w", encoding="utf-8") as handle:
-                handle.write(text)
-    writer(os.path.join(root, JSON_OUT), json_text)
-    writer(os.path.join(root, HTML_OUT), html_text)
-    after_reg = _file_hashes(root, REGISTRY_DIR)
-    after_ev = _file_hashes(root, EVIDENCE_DIR)
-    if before_reg != after_reg or before_ev != after_ev:
-        raise RuntimeError("projection mutated registry or evidence")
-    return projection
+def write_projection(root, projection):
+    json_path = os.path.join(root, JSON_OUT)
+    html_path = os.path.join(root, HTML_OUT)
+    with open(json_path, "w", encoding="utf-8") as handle:
+        handle.write(_sorted_json(projection))
+    with open(html_path, "w", encoding="utf-8") as handle:
+        handle.write(render_html(projection))
+    return json_path, html_path
 
 
 def self_test():
-    sample = {
-        "schema": SCHEMA,
-        "id": "sample-feature-20260828-01",
-        "name": "Sample feature",
-        "capability": "A sample row for the instrument self-test.",
-        "carrier": "GROK",
-        "owner_subsystem": "feature-tracker",
-        "public_entrypoint": "feature-tracker.html",
-        "next_gap": "none",
-        "claimed_paths": ["ground/FEATURE_TRACKER.md"],
-        "test_paths": ["test_feature_tracker.py"],
-        "claimed_status": "LIVE",
-    }
-    assert validate_feature(sample, "sample-feature-20260828-01.json") == []
-    planned = derive_status(
-        {"id": "planned-feature-20260828-01", "claimed_paths": [], "claimed_status": "LIVE"},
-        [{"kind": "LIVE_MEASUREMENT", "url": "https://example.invalid", "sha": "a" * 40}],
-        ".",
-    )
-    assert planned["status"] == "PLANNED"
-    assert planned["live"] is False
-    chatter = derive_status(
-        sample,
-        [{"kind": "RECEIPT", "id": "ev-chat-20260828-01", "ntfy_200": True, "slack": "done"}],
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))) or ".",
-    )
-    assert chatter["claimed_status_ignored"] == "LIVE"
-    live_row = {
-        "schema": EVIDENCE_SCHEMA,
-        "id": "ev-live-sample-20260828-01",
-        "feature_id": "sample-feature-20260828-01",
-        "kind": "LIVE_MEASUREMENT",
-        "url": "https://woahwhattheheck.github.io/commons/feature-tracker.html",
-        "sha": "b" * 40,
-    }
-    assert validate_evidence(live_row, "ev-live-sample-20260828-01.json") == []
-    bad_live = dict(live_row)
-    bad_live["sha"] = "abc"
-    assert any("40-character SHA" in p for p in validate_evidence(bad_live, "ev-live-sample-20260828-01.json"))
-    print("self-test ok")
-    return 0
+    import tempfile
+    import shutil
+
+    tmp = tempfile.mkdtemp(prefix="commons-ft-")
+    try:
+        os.makedirs(os.path.join(tmp, REGISTRY_DIR))
+        os.makedirs(os.path.join(tmp, EVIDENCE_DIR))
+        os.makedirs(os.path.join(tmp, "host"))
+        with open(os.path.join(tmp, "host", "ok.py"), "w", encoding="utf-8") as handle:
+            handle.write("# ok\n")
+        with open(os.path.join(tmp, "door.html"), "w", encoding="utf-8") as handle:
+            handle.write("<!doctype html><title>door</title>\n")
+        with open(os.path.join(tmp, "test_ok.py"), "w", encoding="utf-8") as handle:
+            handle.write("print('ok')\n")
+        planned = {
+            "schema": SCHEMA_FEATURE,
+            "id": "planned-feature-20260828-01",
+            "name": "Only planned",
+            "capability": "A design with no source paths yet.",
+            "owner_subsystem": "future",
+            "carrier": "GROK",
+            "claimed_paths": [],
+            "test_paths": [],
+            "public_entrypoint": "",
+            "dependencies": [],
+            "resource_links": [],
+            "next_gap": "Add claimed_paths after the first land.",
+        }
+        built = {
+            "schema": SCHEMA_FEATURE,
+            "id": "built-feature-20260828-01",
+            "name": "Source built door",
+            "capability": "A public door with tests on the tree.",
+            "owner_subsystem": "doors",
+            "carrier": "GROK",
+            "claimed_paths": ["host/ok.py", "door.html"],
+            "test_paths": ["test_ok.py"],
+            "public_entrypoint": "door.html",
+            "dependencies": [],
+            "resource_links": ["door.html"],
+            "related": {"boards": True},
+            "next_gap": "Measure live Pages against a 40-character SHA.",
+            "claimed_status": "LIVE",
+        }
+        missing = {
+            "schema": SCHEMA_FEATURE,
+            "id": "missing-feature-20260828-01",
+            "name": "Claimed missing",
+            "capability": "Claims a path that is not on the tree.",
+            "owner_subsystem": "doors",
+            "carrier": "GROK",
+            "claimed_paths": ["no-such-file.py"],
+            "test_paths": [],
+            "public_entrypoint": "",
+            "dependencies": [],
+            "resource_links": [],
+            "next_gap": "Land the claimed path or drop the claim.",
+        }
+        for rec in (planned, built, missing):
+            with open(os.path.join(tmp, REGISTRY_DIR, rec["id"] + ".json"), "w", encoding="utf-8") as handle:
+                handle.write(_sorted_json(rec))
+        proj = project(tmp, {"chat_said_done": True, "ntfy_200": True, "slack_text": "LIVE", "open_prs": [1]})
+        by_id = {row["id"]: row for row in proj["features"]}
+        assert by_id["planned-feature-20260828-01"]["rollup"] == "PLANNED"
+        assert by_id["built-feature-20260828-01"]["source_status"] == "SOURCE_BUILT"
+        assert by_id["built-feature-20260828-01"]["test_status"] == "TESTED"
+        assert by_id["built-feature-20260828-01"]["live_status"] == "UNMEASURED"
+        assert by_id["built-feature-20260828-01"]["rollup"] == "TESTED"
+        assert by_id["built-feature-20260828-01"]["author_claim_ignored"] == "LIVE"
+        assert by_id["built-feature-20260828-01"]["chat_ignored"] is True
+        assert by_id["missing-feature-20260828-01"]["source_status"] == "DEGRADED"
+        live_ev = {
+            "schema": SCHEMA_EVIDENCE,
+            "id": "ev-built-live-20260828-01",
+            "feature_id": "built-feature-20260828-01",
+            "kind": "LIVE_MEASUREMENT",
+            "sha": "a" * 40,
+            "url": "https://example.invalid/door.html",
+            "recorded_at": "2026-08-28T16:00:00Z",
+        }
+        with open(os.path.join(tmp, EVIDENCE_DIR, live_ev["id"] + ".json"), "w", encoding="utf-8") as handle:
+            handle.write(_sorted_json(live_ev))
+        live_proj = project(tmp)
+        live_row = {row["id"]: row for row in live_proj["features"]}["built-feature-20260828-01"]
+        assert live_row["live_status"] == "LIVE"
+        assert live_row["rollup"] == "LIVE"
+        assert live_row["main_sha"] == "a" * 40
+        write_projection(tmp, live_proj)
+        page = _read(os.path.join(tmp, HTML_OUT))
+        assert "Feature tracker" in page
+        assert "ft-q" in page
+        assert "author claim ignored" in page
+        assert "authentication" not in page.lower() or "no auth" in page.lower()
+        machine = json.loads(_read(os.path.join(tmp, JSON_OUT)))
+        again = project(tmp)
+        assert _sorted_json(machine) == _sorted_json(again)
+        print("self-test ok")
+        return 0
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Evidence-derived shipped-state tracker")
-    parser.add_argument("--root", default=DEFAULT_ROOT)
-    parser.add_argument("--write", action="store_true", help="write feature-tracker.json and feature-tracker.html")
+    parser = argparse.ArgumentParser(description="Evidence-derived feature tracker")
+    parser.add_argument("--root", default=".")
+    parser.add_argument("--write", action="store_true")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
     if args.self_test:
         return self_test()
+    out = project(args.root)
     if args.write:
-        projection = write_projection(args.root)
-    else:
-        projection = project(args.root)
-        json.dump(projection, sys.stdout, indent=2, sort_keys=True)
-        sys.stdout.write("\n")
-    return 1 if projection.get("problems") else 0
+        write_projection(args.root, out)
+        # Projection files may themselves be claimed_paths. Rebuild once so
+        # SOURCE_BUILT includes the files this instrument just wrote.
+        out = project(args.root)
+        write_projection(args.root, out)
+    json.dump(out, sys.stdout, indent=2, sort_keys=True)
+    sys.stdout.write("\n")
+    return 1 if out.get("problems") else 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
