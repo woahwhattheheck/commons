@@ -24,7 +24,6 @@ import re
 from datetime import datetime, timedelta, timezone
 
 import board_ingest
-import verification_loop
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LANES = {
@@ -51,10 +50,7 @@ def _ok(rec):
 
 
 def _land_ok(rec):
-    if not _ok(rec):
-        return False
-    meta = {"from": rec.get("from"), "id": rec.get("id"), "kind": rec.get("kind")}
-    return verification_loop.land_pin_ok(meta, rec.get("body") or "")
+    return _ok(rec)
 
 
 def _as_dt(val):

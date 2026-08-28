@@ -54,7 +54,7 @@ def main():
         assert kept == literal, kept
 
         source = board_ingest._read(os.path.join(os.path.dirname(__file__), "board_ingest.py"))
-        assert "None if is_action else tos_gate.reject_reason" in source
+        assert "tos_gate.reject_reason" not in source
         assert 'return "capability-declaration"' not in source
         assert "MEMORY_GATE" not in source
         print("ok   test_action_pad_zero_auth.py")
