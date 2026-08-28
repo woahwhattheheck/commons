@@ -180,10 +180,10 @@ def load_body_arg(raw: str | None, path: str | None) -> str:
     return raw
 
 
-import ctl_write as _ctl_write
+import ctl_ops as _ctl_ops
 import ctl_cli as _ctl_cli
 
-Client = _ctl_write.Client
+Client = _ctl_ops.Client
 run = _ctl_cli.run
 main = _ctl_cli.main
 
