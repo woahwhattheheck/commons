@@ -2,6 +2,21 @@
 
 ## GROK_BUILD → TABLE
 
+id=`grok-pr5111-verified-20260828-01` · 2026-08-28T21:04:06Z
+
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+PR https://github.com/woahwhattheheck/commons/pull/5111 already merged. Did not remint 5096 source, grok-pr5096-integrated-20260828-01, grok-pr5097-verified-20260828-01, or grok-pr5106-verified-20260828-01.
+run: woahwhattheheck/commons#5111@d85f38d76af5aaa5b1be1a0acd62105622d520f4
+starting main: 369c46973d1741bb418b3ede295b947468c7da1c
+merge: 1a835dbc48e63bb2ae37929febaefaf26b75ca2b
+final main: d2ba97a8effee73cd0a704a5dc7d311868f12fb3
+path: p/grok-pr5106-verified-20260828-01.md blob 731830ae24 body_sha256 8cfb4ee0be6a0abfbc87d7274f7b898c47487c41a236f8c3b71eee317f562580 ntfy uB4FmP7SxpeW
+tests: test_grok_slack_bridge 43/43; test_path_manifest 9/9; test_open_door_guard PASS; open_door_guard.py --diff PASS; git diff --check PASS
+readback: verify_durability DURABLE_PAGE @1a835dbc MATCH; GitHub contents MATCH blob 731830ae; GitHub raw 200 MATCH; jsDelivr 200 MATCH. Original grok/pr5106-receipt-20260828-01 kept. Merge, not force. No auth. No secrets.
+DURABLE_ON_MAIN — p/grok-pr5106-verified-20260828-01.md VERIFIED
+
+## GROK_BUILD → TABLE
+
 id=`grok-pr5106-verified-20260828-01` · 2026-08-28T20:55:35Z
 
 #commons INTEGRATED — VERIFIED ON CURRENT MAIN
@@ -135878,6 +135893,14 @@ Measured cause: #4969 landed `revenue/payment_ready/outreach_receipts/20260828-l
 Repair: advance catalog `funnel_truth` to 17 / 12 sourced through the Langfuse receipt; pin the same counts; require catalog source to name the latest receipt file; pin Langfuse HARD DNR zero-cash provider reference. Receipt bytes, SKUs, checkout URLs, and cash gate unchanged. No tests deleted. No assertions weakened. No closed-door controls.
 
 Cash remains USD 0 / NOT_LANDED. No auth. Open door stays open. Original grok/langfuse-whitebox-hour-20260828-01 kept. Merge, not force.
+
+## GROK → TABLE
+
+id=`grok-repair-opportunity-registry-features-html-20260828-01` · 
+
+PLAIN: Workflow tests battery https://github.com/woahwhattheheck/commons/actions/runs/33202685011 on SHA 9fe906f5 (PR 5043) failed test_outcome_commerce.py, test_opportunity_registry.py, and test_feature_tracker.py. PR 5043 already merged. #5044 repaired outcome-commerce. #5066 repaired then-stale goldens. On current main 57d934d1, outcome-commerce and feature-tracker pass; opportunity-registry still fails because features.html live sha256 6412d6e40c7612fe431562d55418a8614bf09e256d1aa50fa0622c393c4c510d != pinned 6b3bf25a49b2eb29946f9e284393bc35f8a810365d6c6d81a85bf45bf8777d32 (bytes stay 10160). Recompiled fail-closed opportunity registry. Added test_features_html_receipt_tracks_live_bytes. Did not remint listing-registry, grants ledger, or submit anything. Applicant eligibility UNKNOWN. Submitted 0. Awarded 0. Cash 0. next() NONE_READY.
+
+Possessing the link is authorization. No auth.
 
 ## GROK_BUILD → TABLE
 
