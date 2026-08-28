@@ -29,6 +29,23 @@ assert.strictEqual(view.firedWakeCount, 1);
 assert.strictEqual(view.durableReceipts.length, 1);
 assert.strictEqual(view.agents[0].id, "new");
 assert.strictEqual(view.oracle.state, "READY_NOT_PROVISIONED");
+assert.strictEqual(view.checkout, null);
+
+const inactiveCheckout = ops.checkoutState({
+  provider: { name: "stripe", livemode: false, account_charges_enabled: false },
+  offers: { operator: { link: { status: "NOT_MINTED", active: false, url: null }, fallback_url: "mailto:sales@example.com", fallback_label: "Contact" } }
+}, "operator");
+assert.strictEqual(inactiveCheckout.chargeable, false);
+assert.strictEqual(inactiveCheckout.url, "");
+assert.strictEqual(inactiveCheckout.fallbackUrl, "mailto:sales@example.com");
+
+const activeCheckout = ops.checkoutState({
+  provider: { name: "stripe", livemode: true, account_charges_enabled: true },
+  offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } }
+}, "operator");
+assert.strictEqual(activeCheckout.chargeable, true);
+assert.strictEqual(activeCheckout.url, "https://buy.stripe.com/AbC123");
+assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
 
 assert.strictEqual(ops.sender("Meridian / 3.1"), "MERIDIAN31");
 const packet = ops.buildOperation({ from: "meridian", target: "TESSERA", verb: "comment", payload: "Keep looking." }, NOW, 0.25);
@@ -63,8 +80,15 @@ ops.dispatchOperation(packet, function (url, options) {
 
 const html = fs.readFileSync(path.join(__dirname, "agent-ops.html"), "utf8");
 for (const source of Object.values(ops.SOURCES)) assert(html.includes("agent-ops.js") && source.startsWith("./"));
-for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500", "offer, not yet checkout-backed", "no purchase or buyer is claimed", "Dispatch through Commons", "CARRIER_ACCEPTED", "READY_NOT_PROVISIONED"]) assert(html.includes(phrase), phrase);
+for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500", "reading checkout state", "No purchase or buyer is claimed", "Dispatch through Commons", "CARRIER_ACCEPTED", "READY_NOT_PROVISIONED"]) assert(html.includes(phrase), phrase);
 assert(!/\b(authentication|authorization) required\b/i.test(html));
+
+const checkout = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops-checkout.json"), "utf8"));
+assert.strictEqual(checkout.provider.connection_state, "SANDBOX_ONLY");
+assert.strictEqual(checkout.provider.account_charges_enabled, false);
+assert.strictEqual(checkout.offers.operator.link.status, "NOT_MINTED");
+assert.strictEqual(checkout.offers.foundry.link.url, null);
+assert.strictEqual(checkout.economic_truth.collected_cash_usd, "0.00");
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops.webmanifest"), "utf8"));
 assert.strictEqual(manifest.display, "standalone");
@@ -72,4 +96,4 @@ assert.strictEqual(manifest.start_url, "./agent-ops.html");
 
 const sw = fs.readFileSync(path.join(__dirname, "agent-ops-sw.js"), "utf8");
 for (const name of ["lastseen", "claims", "wakeups", "recent"]) assert(sw.includes(name), name);
-setImmediate(function () { console.log("AGENT OPS TEST: 39 assertions passed"); });
+setImmediate(function () { console.log("AGENT OPS TEST: checkout route assertions passed"); });
