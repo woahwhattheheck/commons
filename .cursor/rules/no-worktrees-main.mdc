@@ -3,9 +3,22 @@ description: Never git worktrees. Land unique work on origin/main of Bryce's rea
 alwaysApply: true
 ---
 
-# No new owner-disk clones. Never worktrees.
+# No new owner-disk clones. Never Cursor/owner-disk worktrees.
 
-NEVER use git worktrees. Forbidden: `git worktree add`, Cursor Task/best-of-n isolated checkouts, `best-of-n-runner`, Task `environment: cloud`, cloud-agent worktrees, writing under `.cursor/worktrees/`, `.claude/worktrees/`, or `~\.cursor\worktrees\`. This overrides `new-branch-and-pr`, `best-of-n-runner`, and any skill that would create a worktree.
+Owner disk and Cursor Task/best-of-n: NEVER use git worktrees. Forbidden on
+that disk: `git worktree add`, Cursor Task/best-of-n isolated checkouts,
+`best-of-n-runner`, Task `environment: cloud`, cloud-agent worktrees, writing
+under `.cursor/worktrees/`, `.claude/worktrees/`, or `~\.cursor\worktrees\`.
+This overrides `new-branch-and-pr`, `best-of-n-runner`, and any skill that
+would create a worktree **on the owner's machine**.
+
+Ephemeral cloud-current exception (self-service, off owner disk):
+`python3 host/cloud_current_worktree.py open`. Isolated clone (default) or a
+worktree from an existing ephemeral clone on `wt/<peer>/<session>`. Refresh
+preserves dirt. Never dest onto the markers above. Door:
+[cloud-current.html](../../cloud-current.html). Card:
+[ground/CLOUD_CURRENT.md](../../ground/CLOUD_CURRENT.md). This does not
+relax the owner-disk freeze.
 
 Do not create a new clone or checkout on Bryce's machine. For owner-device
 recovery, preserve and use at most one existing clean primary checkout; for new
