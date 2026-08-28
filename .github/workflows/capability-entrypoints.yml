@@ -7,6 +7,8 @@ on:
     paths: &entrypoint_paths
       - '.github/workflows/capability-entrypoints.yml'
       - 'test_capability_entrypoints.py'
+      - 'test_chargeable_checkout_eof.py'
+      - 'p/grok-build-chargeable-checkout-20260828-01.md'
       - 'index.html'
       - 'resources.html'
       - 'commerce.html'
@@ -33,7 +35,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: one-link capability contracts
-        run: python -B -W error -m unittest -q test_capability_entrypoints.py
+        run: python -B -W error -m unittest -q test_capability_entrypoints.py test_chargeable_checkout_eof.py
       - name: open-door anti-regression
         run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
       - name: whitespace guard
