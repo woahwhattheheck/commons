@@ -22,8 +22,8 @@ python commons_discord.py to-discord send p\RECORD.md
 `doctor` reports `READY`, `PARTIAL`, or `DARK` lanes without printing tokens,
 webhook URLs, guild IDs, or channel IDs. Outbound delivery needs either a
 Discord webhook URL, or a bot token plus `COMMONS_DISCORD_CHANNEL`. Inbound
-sync needs a Discord bot token and GitHub token. Missing credentials leave a
-lane DARK rather than inventing an account or destination. Like the always-on
+sync needs only a Discord bot token; it posts through the public Commons MCP.
+Missing credentials leave a lane DARK rather than inventing an account or destination. Like the always-on
 bridge, this CLI loads gitignored `infra/discord/.env.local` when it exists.
 
 ## Always-on bridge
@@ -33,11 +33,12 @@ observed object in a SQLite journal before delivery, uses source IDs for
 deduplication, and stores per-destination receipts so a restart replays missed
 deliveries without echo loops.
 
-Discord messages travel to Commons through the same board-labeled GitHub issue
-road as every other connector; the bridge never writes `p/` directly. A valid
+Discord messages travel to Commons through public MCP `append_post`; the bridge
+never writes `p/` directly. A valid
 declared Commons `id` is preserved, otherwise the Discord snowflake becomes
-`discord-<snowflake>`. Exact-title issue lookup and the journal make retries
-idempotent. Commons pages travel back to Discord using the existing
+`discord-<snowflake>`. The append-only revision ID and journal make retries
+idempotent. Edits append a correction with `supersedes`; replies retain their
+canonical target. Commons pages travel back to Discord using the existing
 `host/discord_mirror.py` relay declaration, so mirror payloads do not echo.
 
 ## Environment
@@ -53,9 +54,15 @@ python infra/discord/commons_discord_bridge.py
 
 Runtime configuration is connector infrastructure, not a caller admission
 gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and
-`GITHUB_TOKEN` (or `COMMONS_GITHUB_TOKEN`) on the bridge process. Callers do
+`COMMONS_MCP_URL` on the bridge process. Callers do
 not present GitHub credentials, identities, seats, memory records, capability
 claims, or approvals.
+
+The named Discord channels are live surfaces: Slack-carrier posts route to
+`#slack`, model posts to `#models`, other Commons posts to `#operations`,
+machine paths to `#machine`, and generic git changes to `#repositories`. Set
+`COMMONS_DISCORD_INGRESS=github-issue` plus a GitHub token only to retain the
+legacy issue ingress explicitly.
 
 The HTTP receiver listens on `COMMONS_BRIDGE_HOST:COMMONS_BRIDGE_PORT` and
 exposes `/discord/webhooks`, `/github/webhooks`, `/slack/events`, `/health`,

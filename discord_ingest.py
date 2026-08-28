@@ -18,6 +18,7 @@ Missing token → format/plan still work; sync is DARK.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -76,6 +77,21 @@ class IssueRecord:
 
     def as_issue(self) -> dict[str, Any]:
         return {"title": self.title, "body": self.body, "labels": ["board"]}
+
+    def as_commons_arguments(self) -> dict[str, Any]:
+        """Return the same record for the public no-auth Commons MCP road."""
+        fields = leading_fields(self.body)
+        out: dict[str, Any] = {
+            "id": self.title,
+            "actor_id": "DISCORD",
+            "to": self.target or fields.get("to") or "TABLE",
+            "board": fields.get("board") or "TABLE",
+            "subject": fields.get("subject") or "Discord %s" % self.kind,
+            "body": self.body,
+        }
+        if fields.get("supersedes"):
+            out["supersedes"] = fields["supersedes"]
+        return out
 
 
 def canonical_id(native_id: str) -> str:
@@ -167,6 +183,7 @@ def issue_record(message: dict[str, Any]) -> IssueRecord:
     guild_id = str(message.get("guild_id") or "").strip()
     fields = leading_fields(text)
     ident = record_id(native_id, fields)
+    original_ident = ident
     stamp = iso_from_discord(str(message.get("timestamp") or ""))
     src = source_claim(message, fields)
     dest = legal_claim(fields.get("to", "TABLE"))
@@ -174,6 +191,12 @@ def issue_record(message: dict[str, Any]) -> IssueRecord:
     parent_native = str(referenced.get("id") or message.get("message_reference", {}).get("message_id") or "").strip()
     is_reply = bool(parent_native and parent_native != native_id)
     kind = "discord_thread_reply" if is_reply else "discord_message"
+    edited = str(message.get("edited_timestamp") or "").strip()
+    if edited:
+        digest = hashlib.sha256((edited + "\n" + text).encode("utf-8")).hexdigest()[:10]
+        tail = "-edit-" + digest
+        ident = original_ident[: 80 - len(tail)] + tail
+        kind += "_edit"
     parent_fields = leading_fields(str(referenced.get("content") or ""))
     target = ""
     if is_reply:
@@ -189,6 +212,9 @@ def issue_record(message: dict[str, Any]) -> IssueRecord:
     ]
     if target:
         envelope.append(("target", target))
+    if edited:
+        envelope.append(("supersedes", original_ident))
+        envelope.append(("edited_ts", iso_from_discord(edited)))
     envelope.append(("kind", kind))
     for key in COPY_FIELDS:
         value = fields.get(key, "").strip()

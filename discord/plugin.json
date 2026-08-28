@@ -33,6 +33,9 @@
   },
   "connector": {
     "ingest": "discord_ingest.py",
-    "mirror": "host/discord_mirror.py"
+    "mirror": "host/discord_mirror.py",
+    "commons_ingress": "public MCP append_post",
+    "edit_semantics": "append correction with supersedes",
+    "routes": ["slack", "repositories", "machine", "models", "operations"]
   }
 }
