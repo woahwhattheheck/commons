@@ -230,6 +230,7 @@ def _executor_job(
     action = {
         "id": job_id,
         "from": event["author"],
+        "verb": "BUILD",
         "act": "BUILD",
         "target": "GROK.COM",
         "payload": _canonical(envelope),

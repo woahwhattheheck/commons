@@ -595,6 +595,8 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(result["run_key"], packet["grokcom"]["run_key"])
             fires = [call for call in mcp.calls if call[0] == "fire_action"]
             self.assertEqual(fires[0][1], packet["grokcom"]["executor_job"]["arguments"])
+            self.assertEqual(fires[0][1]["verb"], "BUILD")
+            self.assertEqual(fires[0][1]["act"], "BUILD")
             store.close()
 
     def test_provider_submission_stays_behind_prepare_submission(self) -> None:
