@@ -316,16 +316,32 @@ PUBLIC_OBJECTIVE:</textarea>
     if (source === null) return true;
     source = normalizeFieldText(source);
     if (jsonCandidatesHaveForbiddenField(source)) return true;
+    var visited = 0;
     var assignment = /(?:^|[\s,{#?&;])["']?((?:[A-Za-z]|\\u[0-9A-Fa-f]{4})(?:[A-Za-z0-9_.\[\] -]|\\u[0-9A-Fa-f]{4}){1,96})["']?\s*[:=]\s*/g;
     var match;
     while ((match = assignment.exec(source)) !== null) {
-      if (!forbiddenFieldName(decodeJsonUnicodeEscapes(match[1]))) continue;
-      var tail = source.slice(assignment.lastIndex);
-      var valueMatch = tail.match(/^(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/);
-      if (!valueMatch) continue;
-      var value = typeof valueMatch[1] === "string" ? valueMatch[1]
-        : (typeof valueMatch[2] === "string" ? valueMatch[2] : valueMatch[3]);
-      if (String(value || "").trim()) return true;
+      var fragment = source;
+      var matchEnd = assignment.lastIndex;
+      while (match) {
+        visited += 1;
+        if (visited > jsonMaxNodes) return true;
+        var tail = fragment.slice(matchEnd);
+        var value = "";
+        var glued = "";
+        if (tail.charAt(0) === '"' || tail.charAt(0) === "'") {
+          var quote = tail.charAt(0);
+          var closing = tail.indexOf(quote, 1);
+          value = closing < 0 ? tail.slice(1) : tail.slice(1, closing);
+          glued = closing < 0 ? "" : tail.slice(closing + 1);
+        } else {
+          var valueMatch = tail.match(/^[^\s,}\r\n]+/);
+          value = valueMatch ? valueMatch[0] : "";
+        }
+        if (forbiddenFieldName(decodeJsonUnicodeEscapes(match[1])) && String(value || "").trim()) return true;
+        match = glued.match(/^["']?((?:[A-Za-z]|\\u[0-9A-Fa-f]{4})(?:[A-Za-z0-9_.\[\] -]|\\u[0-9A-Fa-f]{4}){1,96})["']?\s*[:=]\s*/);
+        fragment = glued;
+        matchEnd = match ? match[0].length : 0;
+      }
     }
     var urls = source.match(/\bhttps:\/\/[^\s]+/gi) || [];
     for (var urlIndex = 0; urlIndex < urls.length; urlIndex += 1) {
