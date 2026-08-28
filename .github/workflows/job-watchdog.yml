@@ -35,6 +35,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   # Stale queued ticks bind the triggering SHA's workflow YAML
   # (run 33206968416 on a231d7ec). Refresh (#5129) cannot rewrite
@@ -55,6 +56,11 @@ jobs:
           set -e
           git fetch origin main
           git reset --hard origin/main
+      - name: cancel stale sibling ticks
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 -m harness_wake.cancel_stale
       - name: cheap tick, never a model
         run: |
           set -e
