@@ -23,6 +23,7 @@ REQUIRED_WATCH = (
     "commons_mcp.py",
     "vercel.json",
     ".vercelignore",
+    "stage_spark_mcp_bundle.py",
     "carriers/**",
     ".github/workflows/spark-mcp-production.yml",
     "test_spark_mcp.py",
@@ -63,6 +64,9 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'", text)
         self.assertNotIn("chat.postMessage", text)
         self.assertNotIn("SLACK_BOT_TOKEN", text)
+        self.assertIn("stage_spark_mcp_bundle.py", text)
+        self.assertIn("cd \"${STAGE}\"", text)
+        self.assertIn("vercel deploy --prod", text)
 
     def test_workflow_uses_named_vercel_secrets_without_values(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")
@@ -90,32 +94,25 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             for row in text.splitlines()
             if row.strip() and not row.lstrip().startswith("#")
         ]
-        for name in ("p", "chunks", "posts.json"):
+        for name in ("p", "chunks", "posts.json", "muhl", "projection", "infra", "ground"):
             self.assertIn(name, lines)
         self.assertNotIn("commons_mcp.py", lines)
         self.assertNotIn("api/mcp.py", lines)
         self.assertNotIn("carriers", lines)
-        # Hobby api-upload-free is 5000 files. Allowlist the runtime graph.
-        # Bare * is the Vercel CLI 56.1.0 bug: every-depth match dropped
-        # directory un-ignores (run 33218271833 uploaded 7 files, no api/mcp.py).
-        self.assertIn("/*", lines)
+        # Catch-all * / /* made Vercel CLI 56 upload 7 root files and drop
+        # api/mcp.py (runs 33218271833 and 33219467177). Production stages
+        # the runtime graph instead of relying on directory un-ignores.
         self.assertNotIn("*", lines)
-        self.assertIn("!commons_mcp.py", lines)
-        self.assertIn("!commons_mcp_app.html", lines)
-        self.assertIn("!api/", lines)
-        self.assertIn("!carriers/", lines)
-        self.assertIn("!protocol/", lines)
-        self.assertIn("!integrations/grokcom_revenue/", lines)
-        self.assertIn("!host/observatory.py", lines)
-        self.assertIn("host/*", lines)
-        self.assertIn("!vercel.json", lines)
+        self.assertNotIn("/*", lines)
+        self.assertNotIn("!api/", lines)
+        self.assertIn("stage_spark_mcp_bundle.py", text)
         self.assertIn("api-upload-free", text)
         self.assertIn("5000", text)
         self.assertIn("33218271833", text)
-        self.assertIn("7 root files", text)
+        self.assertIn("33219467177", text)
 
     def test_vercelignore_keeps_api_mcp_and_drops_corpus_via_git_matcher(self) -> None:
-        """Regression for run 33218271833: api/mcp.py must survive the allowlist."""
+        """Root-deploy belt still keeps api/mcp.py after the catch-all bug."""
         text = VERCELIGNORE.read_text(encoding="utf-8")
         keep = (
             "api/mcp.py",
@@ -137,8 +134,6 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             "projection/x.py",
             "infra/x.py",
             "ground/LAND.md",
-            "host/cash_now.py",
-            "host/commons_android/foo.py",
         )
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -154,6 +149,25 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             for rel in drop:
                 proc = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
                 self.assertEqual(proc.returncode, 0, "should drop %s" % rel)
+
+    def test_stage_bundle_includes_api_mcp_under_hobby_cap(self) -> None:
+        import stage_spark_mcp_bundle as stager
+
+        with tempfile.TemporaryDirectory() as tmp:
+            copied = stager.stage_bundle(ROOT, Path(tmp))
+        self.assertIn("api/mcp.py", copied)
+        self.assertIn("api/owner_context.py", copied)
+        self.assertIn("commons_mcp.py", copied)
+        self.assertIn("vercel.json", copied)
+        self.assertIn("host/observatory.py", copied)
+        self.assertTrue(any(row.startswith("carriers/") for row in copied))
+        self.assertTrue(any(row.startswith("protocol/") for row in copied))
+        self.assertTrue(any(row.startswith("integrations/grokcom_revenue/") for row in copied))
+        self.assertLess(len(copied), stager.HOBBY_UPLOAD_CAP)
+        self.assertFalse(any(row == "p" or row.startswith("p/") for row in copied))
+        self.assertFalse(any(row.startswith("muhl/") for row in copied))
+        self.assertFalse(any(row.startswith("projection/") for row in copied))
+        self.assertNotIn("host/cash_now.py", copied)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]
