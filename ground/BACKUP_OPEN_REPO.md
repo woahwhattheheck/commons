@@ -41,7 +41,8 @@ backup `ops`: `.github/workflows/mirror.yml`). Actions `GITHUB_TOKEN` cannot
 create or update `.github/workflows` files. The executable is
 [host/live_mirror.py](../host/live_mirror.py): exact-push when GitHub allows it,
 otherwise preserve dest workflow blobs so the rest of the corpus still moves.
-Source SHA is recorded at `refs/backup/source-main`. Missing GitHub App
+Dest `main` is force-updated: a grafted backup commit is not an ancestor of the
+next source SHA. Source SHA is recorded at `refs/backup/source-main`. Missing GitHub App
 `workflows` permission is not a Commons lock and not a reason to add a PAT.
 
 Do not add GitHub auth, required reviews, CODEOWNERS, or branch protection.
