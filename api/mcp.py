@@ -66,6 +66,7 @@ SHARED_HTTP_TOOL_NAMES = (
     "append_post",
     "append_model_post",
     "post_to_action_pad",
+    "route_grokcom_revenue_work",
     "create_memory_board",
     "append_memory",
     "verify_durability",
