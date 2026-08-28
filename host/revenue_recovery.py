@@ -126,6 +126,15 @@ FIELD_ASSIGNMENT_RE = re.compile(
     r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
     re.IGNORECASE,
 )
+# Start-anchored so a field glued to a closing quote
+# (publicObjective=""customerEmail=hidden) cannot hide behind the prefix
+# boundary required by FIELD_ASSIGNMENT_RE.
+FIELD_ASSIGNMENT_START_RE = re.compile(
+    r'''["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*'''
+    r'''(?:["']([^"'\r\n]*)["']|([^\s,}\r\n]+))''',
+    re.IGNORECASE,
+)
+
 JSON_ASSIGNMENT_PREFIX_RE = re.compile(
     r'''(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*''',
     re.IGNORECASE,
@@ -655,20 +664,33 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
         return True
     if _json_assignment_has_sensitive_value(assignment_source, query_depth):
         return True
+    visited = 0
     for match in FIELD_ASSIGNMENT_RE.finditer(assignment_source):
-        value = match.group(2) if match.group(2) is not None else match.group(3)
-        if _assignment_path_has_sensitive_field(match.group(1)) and str(value or "").strip():
-            return True
-        if str(value or "").lstrip().startswith(("[", "{")):
-            continue
-        is_url_scheme = canonical_field_name(match.group(1)) in {"http", "https"} and str(
-            value or ""
-        ).startswith("//")
-        if str(value or "").strip() and not is_url_scheme:
-            if query_depth >= PERCENT_DECODE_LAYERS:
+        current = match
+        glued_source = assignment_source
+        while current:
+            visited += 1
+            if visited > JSON_SCAN_MAX_NODES:
                 return True
-            if _contains_sensitive_value(str(value), query_depth + 1):
+            value = current.group(2) if current.group(2) is not None else current.group(3)
+            if _assignment_path_has_sensitive_field(current.group(1)) and str(value or "").strip():
                 return True
+            if str(value or "").lstrip().startswith(("[", "{")):
+                break
+            is_url_scheme = canonical_field_name(current.group(1)) in {"http", "https"} and str(
+                value or ""
+            ).startswith("//")
+            if str(value or "").strip() and not is_url_scheme:
+                if query_depth >= PERCENT_DECODE_LAYERS:
+                    return True
+                if _contains_sensitive_value(str(value), query_depth + 1):
+                    return True
+            # A closing quote is a parser boundary. Scan any assignment glued
+            # immediately after it (publicObjective=""customerEmail=hidden).
+            if current.group(2) is None:
+                break
+            glued_source = glued_source[current.end():]
+            current = FIELD_ASSIGNMENT_START_RE.match(glued_source)
     try:
         parsed_json = json.loads(source)
     except json.JSONDecodeError:

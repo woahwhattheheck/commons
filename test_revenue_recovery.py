@@ -413,6 +413,34 @@ class RevenueRecoveryTests(unittest.TestCase):
                 finally:
                     temp.cleanup()
 
+    def test_server_rejects_glued_assignment_after_quoted_value(self):
+        blocked = (
+            'privateEmail=""customerEmail=hidden',
+            'publicObjective=""customerEmail=hidden',
+            "privateEmail=''customerEmail=hidden",
+            "publicObjective=''customerEmail=hidden",
+        )
+        for value in blocked:
+            with self.subTest(blocked=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        safe = (
+            'privateEmail=""',
+            "privateEmail=''",
+        )
+        for value in safe:
+            with self.subTest(safe=value):
+                self.assertFalse(rr.contains_sensitive_value(value))
+                temp, root = self.make_root(self.valid_post(value))
+                try:
+                    self.assertEqual(
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"],
+                        "RECORDED",
+                    )
+                finally:
+                    temp.cleanup()
+
     def test_server_recursively_scans_public_contact_url_query_components(self):
         over_depth = "privateEmail=hidden"
         for _ in range(rr.PERCENT_DECODE_LAYERS + 1):

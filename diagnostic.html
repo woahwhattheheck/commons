@@ -473,15 +473,31 @@ PUBLIC_OBJECTIVE:</textarea>
     }
     if (jsonAssignmentHasForbiddenField(assignmentSource, queryDepth)) return true;
     var assignment = /(?:^|[\s,{])["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/g;
+    var assignmentStart = /^["']?([A-Za-z][A-Za-z0-9_.\[\] "'\\-]{0,80}?)["']?\s*[:=]\s*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,}\r\n]+))/;
     var match;
+    var visited = 0;
     while ((match = assignment.exec(assignmentSource)) !== null) {
-      var value = typeof match[2] === "string" ? match[2] : (typeof match[3] === "string" ? match[3] : match[4]);
-      if (assignmentPathHasForbiddenField(match[1]) && String(value || "").trim()) return true;
-      if (/^[\[{]/.test(String(value || "").replace(/^\s+/, ""))) continue;
-      var isUrlScheme = /^(?:https?)$/i.test(match[1]) && String(value || "").indexOf("//") === 0;
-      if (String(value || "").trim() && !isUrlScheme) {
-        if (queryDepth >= 4) return true;
-        if (containsForbiddenAssignment(value, queryDepth + 1)) return true;
+      var current = match;
+      var gluedSource = assignmentSource;
+      var matchEnd = assignment.lastIndex;
+      while (current) {
+        visited += 1;
+        if (visited > jsonScanMaxNodes) return true;
+        var value = typeof current[2] === "string" ? current[2] : (typeof current[3] === "string" ? current[3] : current[4]);
+        if (assignmentPathHasForbiddenField(current[1]) && String(value || "").trim()) return true;
+        if (/^[\[{]/.test(String(value || "").replace(/^\s+/, ""))) break;
+        var isUrlScheme = /^(?:https?)$/i.test(current[1]) && String(value || "").indexOf("//") === 0;
+        if (String(value || "").trim() && !isUrlScheme) {
+          if (queryDepth >= 4) return true;
+          if (containsForbiddenAssignment(value, queryDepth + 1)) return true;
+        }
+        // A closing quote is a parser boundary. Scan any assignment glued
+        // immediately after it (publicObjective=""customerEmail=hidden).
+        var quoted = typeof current[2] === "string" || typeof current[3] === "string";
+        if (!quoted) break;
+        gluedSource = gluedSource.slice(matchEnd);
+        current = gluedSource.match(assignmentStart);
+        matchEnd = current ? current[0].length : 0;
       }
     }
     if (containsForbiddenQuery(rawSource, queryDepth)) return true;

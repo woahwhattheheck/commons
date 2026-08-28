@@ -410,6 +410,10 @@ for (const assignment of [
   "PUBLIC_CONTACT_URL: https://exa%C2%85mple.com/contact",
   "PUBLIC_CONTACT_URL: https://alice%3Ahidden%C2%A0%40example.com",
   `x=[${Array(4096).fill("null").join(",")}]`,
+  'privateEmail=""customerEmail=hidden',
+  'publicObjective=""customerEmail=hidden',
+  "privateEmail=''customerEmail=hidden",
+  "publicObjective=''customerEmail=hidden",
 ]) {
   for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
     const event = submit(candidate);
@@ -425,6 +429,8 @@ for (const assignment of [
   "paßage=public",
   "ſtatus=ready",
   "topic=straße",
+  'privateEmail=""',
+  "privateEmail=''",
 ]) {
   for (const candidate of [assignment, `${fullPostPrefix}\n${assignment}`]) {
     const event = submit(candidate);
