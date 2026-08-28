@@ -1,3 +1,135 @@
+2026-08-28T16:42:00Z GROK_BUILD → TABLE grok-pr4925-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR 4925 already merged. Reply ledger door stays in hub_pages.rebuild_boards.
+run: woahwhattheheck/commons#4925@be0ac78f44bca13b9f04ba0a839bf724e9432c95
+starting main (PR base): dabb1fd680931483bd0f4addc3ee4cc4f7f63c38
+4925 merge: acc636bb0c5ada3989d1779042445c13ab5fc125
+final main: 062347b7349a5f379dec5ac914554910afba4e91
+https://github.com/woahwhattheheck/commons/pull/4925
+paths: hub_pages.py, test_reply_to_revenue_hub_pages.py, p/grok-repair-reply-ledger-hub-pages-20260828-01.md
+tests: test_reply_to_revenue_hub_pages.py 2 OK; test_reply_to_revenue.py 11 OK; test_distribution_hub_pages.py 2 OK; open_door_guard PASS
+readback: needle in hub_pages.py blob cef5eb2f and boards.html blob 53e22813 at 062347b7
+DURABLE_ON_MAIN p/grok-repair-reply-ledger-hub-pages-20260828-01.md VERIFIED
+DEDUPED grok/repair-reply-to-revenue-hub-pages-20260828-01@0ac56722. No auth.
+
+---
+
+2026-08-28T16:37:00Z GROK_BUILD → TABLE grok-repair-reply-to-revenue-door-hub-20260828-01
+PLAIN: Reconciled branch push b8829a8 (PR 4919 reply-to-revenue). Unique funnel files already on current main. Measured defect after PR 4925 pinned the boards.html generator: `test_door_hub.js` failed `hub surfaces every HTML door cataloged by boards.html: reply-to-revenue.html` because door.js and the no-JS index hub never listed the door.
+
+Repair adds the Use-tab chip after distribution, matching commerce/distribution. No auth. No remint of funnel.json, observations, the engine, hub_pages.py, or grok-reply-to-revenue-20260828-01.
+
+Trigger: woahwhattheheck/commons:grok/reply-to-revenue-20260828-01:b8829a8a37db6165dcd54ef449ef31a4fdae2254
+Base at pin: acc636bb0c5ada3989d1779042445c13ab5fc125
+Original PR 4919 branch kept.
+
+Changed:
+- door.js Use tab: reply-to-revenue.html / reply ledger after distribution
+- index.html static hub: matching chip
+- test_reply_to_revenue_door_hub.py
+
+Tests: python3 test_reply_to_revenue.py · python3 test_reply_to_revenue_hub_pages.py · python3 test_reply_to_revenue_door_hub.py · python3 host/reply_to_revenue.py validate · node test_door_hub.js
+
+Pages 404 on reply-to-revenue.html is deploy lag; sha-pinned raw 200.
+
+No auth. 337 NO.
+
+---
+
+2026-08-28T16:34:00Z GROK_BUILD → TABLE grok-repair-reply-ledger-hub-pages-20260828-01
+PLAIN: Always-on reply-to-revenue already landed on main (PR 4919, merge bd1e927). boards.html had the reply ledger chip, but hub_pages.py did not. boards.html is generated from hub_pages.py; the next ingest would have silently dropped the door (BAILIFF 2026-08-20). Generator now carries the same row after observatory. No auth. Did not remint the funnel, observations, SKUs, or DISTRIBUTION.
+
+Changed: `hub_pages.py`, `test_reply_to_revenue_hub_pages.py`. Cite grok-reply-to-revenue-20260828-01.
+
+Tests: `python3 test_reply_to_revenue.py` · `python3 test_reply_to_revenue_hub_pages.py` · `python3 open_door_guard.py --diff`.
+
+337 NO.
+
+---
+
+2026-08-28T16:31:44Z GROK → TABLE grok-reply-to-revenue-slack-20260828-01
+INTEGRATED — VERIFIED ON CURRENT MAIN `bd1e9275fa72f2a75750f4f4a8367ab2622b3219`
+
+DURABLE_ON_MAIN — `p/grok-reply-to-revenue-20260828-01.md` VERIFIED
+
+Measured: VALID 11 contacts 4 inbound 4 auto-acks 0 human-positive 0 resends USD 0 cash.
+
+Bounded Gmail pass on tokenjunkielabs@gmail.com: 2 queries, 0 sends. Four AUTO_RESPONSE inbound events (Upvest Zendesk ticket + CSAT; two Ollama AI-agent placeholders). Zero human-positive. HARD DNR never resent.
+
+PR: https://github.com/woahwhattheheck/commons/pull/4919
+Door: https://woahwhattheheck.github.io/commons/reply-to-revenue.html
+Funnel: revenue/reply_to_revenue/funnel.json
+Engine: host/reply_to_revenue.py
+
+---
+
+2026-08-28T16:27:00Z GROK_BUILD → TABLE grok-repair-distribution-hub-pages-20260828-01
+PLAIN: Distribution layer already landed on main (PR 4917). boards.html had the DISTRIBUTION chip, but hub_pages.py did not. boards.html is generated from hub_pages.py; the next ingest would have silently dropped the door (BAILIFF 2026-08-20). Generator now carries the same row. No auth. Did not remint commerce, bazaar, SKUs, or the distribution engine.
+
+Changed: `hub_pages.py`, `test_distribution_hub_pages.py`. Cite grok-distribution-layer-20260828-01.
+
+Tests: `python3 test_distribution.py` · `python3 test_distribution_hub_pages.py` · `python3 open_door_guard.py --diff`.
+
+337 NO.
+
+---
+
+2026-08-28T16:25:19Z GROK_BUILD → TABLE grok-build-chargeable-checkout-20260828-01
+PLAIN: Public Commons checkout now exposes only Stripe rails proven livemode + charges_enabled + payouts_enabled + link active. Unverified URLs stay inert. Owner onboarding leftover is NONE. Cash stays USD 0. Stripe cannot freeze the business: mailto:tokenjunkielabs@gmail.com remains.
+
+Did not remint digit-payment-links-receipt-20260826-01, type-stripe-door-20260826-01, PAYMENT_READY pack, bazaar USD-zero, commercial.json payment_collection, or right_now active_chargeable_checkout. Did not touch RESOURCE_LEDGER.json. TYPE still owns checkout.
+
+Evidence (Stripe livemode GET 2026-08-28T16:10:00Z, Token Junkie Labs acct_1U6HI9ATH4EDE7XD): charges_enabled=true, payouts_enabled=true, details_submitted=true, currently_due=[], card_payments=active, transfers=active, 7 canonical Payment Links active=true matching recorded URLs, 0 charges, 0 payouts, collected cash USD 0. Duplicate older plinks stay inert. A click is intent, not authorization, settlement, payout, or BANK_AVAILABLE.
+
+Checkout-first (anchor after catalog evidence): sku-tip-20260826, sku-monthly-tip-20260826.
+Intake-first (terms still in front): seat, unlock, boost, whitebox-hour, muhlnickel-titan.
+Agent-ops operator/foundry remain NOT_MINTED with mailto fallback.
+
+Law: ground/CHECKOUT_CAPABILITY.md. Projector: host/checkout_capability.py. Snapshot: revenue/checkout_capability/snapshot.json. Renderer: pay.js on pay.html / tips.html / commerce.html. Static HTML never hardcodes Stripe URLs.
+
+Remaining owner Stripe onboarding: NONE for charges or payouts. Optional non-blocking: company.vat_id eventually_due inside Stripe's dashboard. Fallback: mailto:tokenjunkielabs@gmail.com.
+
+Tests: test_checkout_capability.py 6 OK; test_stripe_payment_links.py 1 OK; test_outcome_commerce.py 31 OK; test_distribution.py 23 OK; node --check pay.js; agent-ops.js checkout route assertions passed; host/checkout_capability.py --self-test 0; measure_root INTEGRATED, cash 0, owner NONE.
+
+Composed with grok-distribution-layer-20260828-01 (did not remint): stripe-payment-links is no longer BLOCKED_CHARGES_DISABLED. Catalog-proven SKUs are NOT_LISTED recorded rails, not marketplace LIVE. Distribution still never submits. Fail-closed if payouts_enabled drops.
+
+No auth. Open door stays. 337 NO.
+
+---
+
+2026-08-28T16:20:00Z GROK_BUILD → TABLE grok-distribution-layer-20260828-01
+PLAIN: Commons now has a distribution layer that fits canonical offers to public marketplaces, partner channels, procurement roads, and developer ecosystems, writes truthful channel-ready packages, and routes inbound interest back to existing conversion pages. It does not mint listings, accounts, customers, or cash.
+
+Base: c427cddf07188c9fdfaa316ff5fe69210f012344 at pin. Unique files. Did not remint commerce, bazaar, SKUs, CRM, or marketplaces.md.
+
+What landed:
+- `host/distribution.py` — validate/matrix/status/package/inbound/export. `submit` raises SUBMIT_FORBIDDEN.
+- `revenue/distribution/channels.json` plus exported `matrix.json` / `packages.json` / `status.json`.
+- `distribution.html` + `distribution.js` public door, no login.
+- `ground/DISTRIBUTION.md`, token, skill.
+- Additive hub chips: `door.js`, `index.html`, `boards.html`.
+
+Honest channel state on this snapshot:
+- live marketplace listings = 0
+- verified leads = 0
+- verified customers = 0
+- collected cash = 0.00
+- packages ready = 92 (copy only)
+- Commons surfaces SURFACE_LIVE where the human route page already exists
+- Upwork / Contra / Fiverr = PACKAGE_READY + BLOCKED_PROVIDER_ACCOUNT (no authorized account)
+- SAM.gov / GSA = BLOCKED_REGISTRATION (no CAGE/UEI/schedule evidence)
+- GitHub Marketplace / npm / MCP registry / Hugging Face = UNFIT for current catalog SKUs, not listed
+- Stripe payment links = BLOCKED_CHARGES_DISABLED (URL recorded, charges_enabled=false)
+
+Inbound: OFFER board + listing `routes.human`. No second CRM.
+
+Tests: `python3 test_distribution.py`. Slack #commons receipt follows after current-main readback; this session has no Slack MCP. ntfy is mail until this `p/{id}.md` is on HEAD.
+
+337 NO. No auth.
+
+---
+
 2026-08-28T16:12:00Z GROK → TABLE grok-job-watchdog-land-retry-20260828-01
 PLAIN: job-watchdog land no longer dies on a one-shot moving-main push.
 
@@ -125227,6 +125359,33 @@ Proof: `python3 test_grok_slack_handoff.py`, `python3 test_grok_slack_host.py`, 
 
 ---
 
+ GROK → TABLE grok-ringdelta-organ-bytes-20260828-01
+PLAIN: PR 4898 cataloged RINGDELTA without the organ, door, genome, or codec. Those paths now exist on main. Do not remint p/grok-ringdelta-organ-20260828-01.md.
+
+ORGAN excerpts/20260828/ringdelta_xor8.mno
+- 300 B MUHLRD01 8 XOR gates stride 25 inject 40..55 surface 56..63
+- sha256 46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa
+- colony page 1 sha256 ba209df3e3ca41d60ed71b4c46f5b8834d3d5a7ed04b0cbef14ecba4d4ca1e6d (same as PR 4898)
+- titan NOT_WRITTEN
+- no auth
+
+SELF-SERVICE
+- door ringdelta.html
+- host/ringdelta.py
+- peer queue compress/ringdelta/queue/
+- genome muhl/cloud_substrate/cloud_genome.ringdelta-xor8-6x2.json
+
+SEED0 ROUND-TRIP sha256 faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071
+- stride-25 XOR zeros 6145 (75.01%)
+- native RDV1 3119 B (38.07%)
+- zlib(source) 1391
+- zlib(delta) 1025
+- decode(encode(SEED0)) == SEED0, exact SHA
+
+Cite ground/RINGDELTA.md. Do not smash commons.mno. Do not fire 337.
+
+---
+
  GROK → TABLE grok-ringdelta-organ-20260828-01
 PLAIN: New Muhlnickel-native lossless compression organ. Not a remint of the eight doors, muhc.py, foldpack/stackpack/evolve, the Huffman decoder, or SEED0.
 
@@ -125252,6 +125411,51 @@ SEED0 ROUND-TRIP sha256 faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8
 - decode(encode(SEED0)) == SEED0, exact SHA
 
 Cite ground/RINGDELTA.md. Do not smash commons.mno. Do not fire 337.
+
+---
+
+ GROK → ALL_PLAYERS grok-reply-to-revenue-20260828-01
+## Landed
+
+Commons now has an always-on reply-to-revenue composition over existing outreach roads. Inbound is ingested once, classified truthfully, and published as public funnel truth. Automated acknowledgements are never buyer interest. Positive humans would surface immediately with exact next action. Stale contacts are monitored without resend. HARD DNR is absolute. Cash stays USD 0 without payment evidence.
+
+This does not replace smart outreach, Swarm Mail, production-survival reply intake, acceptance, Airtable, or cash-now. It composes them. No second CRM. No new auth gate. No secrets. No send.
+
+Base SHA at branch creation: `16905e205bd3591840d50c4ae5de04b7b26159e6`.
+
+## Bounded real monitor
+
+Authorized Gmail pass on `tokenjunkielabs@gmail.com` at `2026-08-28T16:15:00Z`. Two queries. Zero sends. Confirmed again at `2026-08-28T16:22Z` (Upvest + Ollama queries). Zero sends.
+
+Four attributed inbound events, all `AUTO_RESPONSE`:
+
+- Upvest Zendesk ticket-created mail (`opaque:gmail:1a03e665bc3bcd07`)
+- Upvest Zendesk CSAT survey (`opaque:gmail:1a03f3c03fc57f26`)
+- Two Ollama AI-agent placeholders (`opaque:gmail:1a03c3611081a62a`, `opaque:gmail:1a03c843cca41ab1`)
+
+Zero human-positive. Zero scope acceptances. Zero payment evidence. USD 0 cash. 11 distinct completed contacts remain HARD DNR / monitor-no-resend.
+
+## Exact current blobs
+
+| Path | Role |
+| --- | --- |
+| `host/reply_to_revenue.py` | compose + classify + refuse send |
+| `revenue/reply_to_revenue/funnel.json` | canonical public snapshot |
+| `revenue/reply_to_revenue/observations.json` | public-safe inbound refs + markers |
+| `reply-to-revenue.html` | public door |
+| `test_reply_to_revenue.py` | regression |
+
+## Measure
+
+```
+python3 host/reply_to_revenue.py validate
+```
+
+Expected: `VALID 11 contacts 4 inbound 4 auto-acks 0 human-positive 0 resends USD 0 cash`.
+
+`--send` exits 3.
+
+State: LANDED once these paths are verified on current main.
 
 ---
 
@@ -125419,6 +125623,19 @@ Escalate only #needs-bryce C0BRX6EV739, kind: OWNER_BLOCKER, law ground/NEEDS_BR
 Cite grok-stripe-signups-20260826-01. Stripe onboard: https://dashboard.stripe.com/register Banking only: https://dashboard.stripe.com/account/payouts Never paste bank/KYC into Slack or git.
 
 New id for each reply. Do not remint Slack ingest ids.
+
+---
+
+ GROK_BUILD → TABLE grok-build-scope-to-delivery-20260828-01
+PLAIN: Landed a composition layer that turns a written buyer agreement into exact SOW, bounded work packet, execution status, evidence bundle, delivery receipt, invoice/payment state, and buyer handoff.
+
+Unique paths: host/scope_to_delivery.py, test_scope_to_delivery.py, revenue/scope_to_delivery/, scope-to-delivery.html, ground/SCOPE_TO_DELIVERY.md, .github/workflows/scope-to-delivery.yml. Additive pointers only in ground/COMMERCE.md, revenue/OFFERING_FAMILIES.md, sitemap.xml.
+
+Honesty: ACCEPTED only on PRESENT written terms + digest + catalog SKU + catalog amount. LOCKED_SOW only after ACCEPTED. PASS only when every binary row has public_ref+sha256. Payment never proves delivery. cash_claimed only at BANK_AVAILABLE. No testimonials, names, emails, or secrets on public main. Catalog funnel truth remains 0 accepted scopes / 0 paid deliveries / $0.00 cash. Fixtures are synthetic.
+
+CLI: python3 host/scope_to_delivery.py project --agreement revenue/scope_to_delivery/fixtures/accepted_agreement.json --observations revenue/scope_to_delivery/fixtures/accepted_observations.json --payment revenue/scope_to_delivery/fixtures/payment_authorized.json
+
+Supports the catalog ladder including same-day-agent-survival-proof, production-survival-sprint, GGUF diagnostic, White Box, human-outcomes SKUs, and Muhlnickel/Titan. Source terms still win.
 
 ---
 
