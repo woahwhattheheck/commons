@@ -16,7 +16,40 @@ from typing import Any
 
 
 SCHEMA_VERSION = "commons-open-repo-backup/v1"
+DRILL_SCHEMA_VERSION = "commons-open-repo-backup-drill/v1"
+ALLOWED_STORAGE = frozenset({"github-actions-artifact"})
+ARTIFACT_RETENTION_DAYS = 90
+DEFAULT_ARTIFACT_NAME = "commons-open-repo-backup"
 SHA_RE = re.compile(r"^[0-9a-f]{40,64}$")
+
+DRILL_FIELDS = frozenset(
+    {
+        "schema_version",
+        "state",
+        "created_at",
+        "storage",
+        "retention_days",
+        "artifact_name",
+        "github_outage_protection",
+        "same_repo_copy",
+        "owner_disk",
+        "secrets_present",
+        "independent_of_git_objects",
+        "independent_of_owner_disk",
+        "github_hosted",
+        "head_sha",
+        "bundle",
+        "bundle_sha256",
+        "ref_count",
+        "restored_head_sha",
+        "bare",
+        "run_id",
+        "run_attempt",
+        "repository",
+        "ref",
+        "sha",
+    }
+)
 
 
 class BackupError(RuntimeError):
@@ -54,6 +87,19 @@ def _sha256(path: Path) -> str:
 
 def _utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def _write_exclusive_json(path: Path, payload: dict[str, Any]) -> None:
+    text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+    try:
+        fd = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+    except OSError as error:
+        raise BackupError(f"refusing to overwrite {path}: {error}") from error
+    try:
+        os.write(fd, text.encode("utf-8"))
+        os.fsync(fd)
+    finally:
+        os.close(fd)
 
 
 def _bundle_heads(bundle: Path) -> list[dict[str, str]]:
@@ -113,17 +159,7 @@ def snapshot(source: Path, output_dir: Path) -> Path:
         "source": str(source),
     }
     manifest_path = bundle.with_suffix(".manifest.json")
-    payload = json.dumps(manifest, indent=2, sort_keys=True) + "\n"
-    fd = os.open(
-        str(manifest_path),
-        os.O_WRONLY | os.O_CREAT | os.O_EXCL,
-        0o644,
-    )
-    try:
-        os.write(fd, payload.encode("utf-8"))
-        os.fsync(fd)
-    finally:
-        os.close(fd)
+    _write_exclusive_json(manifest_path, manifest)
     return manifest_path
 
 
@@ -202,6 +238,119 @@ def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, 
     return receipt
 
 
+def github_run_fields() -> dict[str, str]:
+    return {
+        "run_id": os.environ.get("GITHUB_RUN_ID", ""),
+        "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT", ""),
+        "repository": os.environ.get("GITHUB_REPOSITORY", ""),
+        "ref": os.environ.get("GITHUB_REF", ""),
+        "sha": os.environ.get("GITHUB_SHA", ""),
+    }
+
+
+def make_drill_receipt(
+    *,
+    storage: str,
+    retention_days: int,
+    artifact_name: str,
+    restore_receipt: dict[str, Any],
+    run: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    """Build the exclusive CI drill receipt.
+
+    Forced flags cannot be overridden: github_outage_protection, same_repo_copy,
+    owner_disk, and secrets_present are always False. Storage must be the
+    measured GitHub Actions artifact store. This function will not mint S3,
+    GCS, Drive, or Oracle receipts.
+    """
+    if storage not in ALLOWED_STORAGE:
+        raise BackupError(
+            f"storage {storage!r} is not a measured independent store; "
+            "do not mint an unmeasured provider receipt"
+        )
+    if retention_days != ARTIFACT_RETENTION_DAYS:
+        raise BackupError(
+            f"retention_days must be {ARTIFACT_RETENTION_DAYS} for github-actions-artifact"
+        )
+    if not artifact_name or Path(artifact_name).name != artifact_name:
+        raise BackupError("artifact name must be a bare filename")
+    if restore_receipt.get("state") != "RESTORED":
+        raise BackupError("drill receipt requires a RESTORED readback")
+    required_restore = ("head_sha", "bundle", "bundle_sha256", "refs", "restored_head_sha")
+    missing = [key for key in required_restore if key not in restore_receipt]
+    if missing:
+        raise BackupError(f"restore receipt missing {missing}")
+    if restore_receipt["restored_head_sha"] != restore_receipt["head_sha"]:
+        raise BackupError("restore readback HEAD does not match manifest")
+    run = github_run_fields() if run is None else run
+    receipt = {
+        "schema_version": DRILL_SCHEMA_VERSION,
+        "state": "DRILLED",
+        "created_at": _utc_now(),
+        "storage": "github-actions-artifact",
+        "retention_days": ARTIFACT_RETENTION_DAYS,
+        "artifact_name": artifact_name,
+        "github_outage_protection": False,
+        "same_repo_copy": False,
+        "owner_disk": False,
+        "secrets_present": False,
+        "independent_of_git_objects": True,
+        "independent_of_owner_disk": True,
+        "github_hosted": True,
+        "head_sha": restore_receipt["head_sha"],
+        "bundle": Path(str(restore_receipt["bundle"])).name,
+        "bundle_sha256": restore_receipt["bundle_sha256"],
+        "ref_count": restore_receipt["refs"],
+        "restored_head_sha": restore_receipt["restored_head_sha"],
+        "bare": bool(restore_receipt.get("bare")),
+        "run_id": str(run.get("run_id", "")),
+        "run_attempt": str(run.get("run_attempt", "")),
+        "repository": str(run.get("repository", "")),
+        "ref": str(run.get("ref", "")),
+        "sha": str(run.get("sha", "")),
+    }
+    # Re-force so a mutated restore_receipt or run dict cannot mint a false claim.
+    receipt["github_outage_protection"] = False
+    receipt["same_repo_copy"] = False
+    receipt["owner_disk"] = False
+    receipt["secrets_present"] = False
+    receipt["storage"] = "github-actions-artifact"
+    receipt["retention_days"] = ARTIFACT_RETENTION_DAYS
+    if set(receipt) != DRILL_FIELDS:
+        raise BackupError("drill receipt fields drifted")
+    return receipt
+
+
+def drill(
+    source: Path,
+    output_dir: Path,
+    restore_dir: Path,
+    *,
+    storage: str,
+    retention_days: int,
+    artifact_name: str = DEFAULT_ARTIFACT_NAME,
+    bare: bool = True,
+    run: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    manifest_path = snapshot(source, output_dir)
+    restored = restore(manifest_path, restore_dir, bare=bare)
+    receipt = make_drill_receipt(
+        storage=storage,
+        retention_days=retention_days,
+        artifact_name=artifact_name,
+        restore_receipt=restored,
+        run=run,
+    )
+    receipt_path = output_dir.resolve() / "drill-receipt.json"
+    _write_exclusive_json(receipt_path, receipt)
+    return {
+        **receipt,
+        "manifest": str(manifest_path),
+        "receipt": str(receipt_path),
+        "target": restored["target"],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -214,12 +363,30 @@ def main() -> int:
     recover.add_argument("manifest", type=Path)
     recover.add_argument("target", type=Path)
     recover.add_argument("--bare", action="store_true")
+    exercise = commands.add_parser("drill")
+    exercise.add_argument("--source", type=Path, default=Path.cwd())
+    exercise.add_argument("--output-dir", type=Path, required=True)
+    exercise.add_argument("--restore-dir", type=Path, required=True)
+    exercise.add_argument("--bare", action="store_true")
+    exercise.add_argument("--storage", required=True)
+    exercise.add_argument("--retention-days", type=int, required=True)
+    exercise.add_argument("--artifact-name", default=DEFAULT_ARTIFACT_NAME)
     args = parser.parse_args()
     try:
         if args.command == "snapshot":
             output = {"state": "SNAPSHOT", "manifest": str(snapshot(args.source, args.output_dir))}
         elif args.command == "verify":
             output = verify(args.manifest)
+        elif args.command == "drill":
+            output = drill(
+                args.source,
+                args.output_dir,
+                args.restore_dir,
+                storage=args.storage,
+                retention_days=args.retention_days,
+                artifact_name=args.artifact_name,
+                bare=args.bare,
+            )
         else:
             output = restore(args.manifest, args.target, args.bare)
         print(json.dumps(output, sort_keys=True))

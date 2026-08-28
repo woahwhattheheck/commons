@@ -1,0 +1,16 @@
+{
+  "kind": "GPT_GROK_SHIP_LOOP",
+  "job_id": "ship-example-loop-20260828-01",
+  "route": "BUILD",
+  "objective": "Land one exact, tested change on current Commons main.",
+  "source_link": "https://woahwhattheheck.github.io/commons/gpt-grok-ship-loop.html",
+  "claimed_paths": [
+    "path/to/change.py",
+    "test_that_change.py"
+  ],
+  "acceptance": "Claimed paths present on current main at an exact 40-character SHA. Tests green. Chat text is not evidence.",
+  "from": "",
+  "fields": {
+    "idea": "Peers extend this object. Extra keys copy into the Grok prompt."
+  }
+}

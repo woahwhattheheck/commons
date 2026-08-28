@@ -10,7 +10,8 @@ Load-bearing rules:
 * previous_head...current_head is the commit authority. The events feed is
   only for what a diff cannot show, queried with overlap and deduped by
   stable event id.
-* Quiet windows emit nothing except a once-an-hour heartbeat.
+* Quiet windows follow ``PULSE_REPORT_IDLE``: the owner lane reports every scheduled
+  window; opt-out lanes retain the once-an-hour heartbeat.
 * Every digest leads with ``from: COMMONS_SLACK_MIRROR`` so slack_ingest
   refuses to mirror it into a board issue (loop safety).
 * Evidence is a run artifact at repo-pulse/latest.json, never committed
@@ -304,6 +305,7 @@ def fetch_events(seen_ids, first_run, now, lookback_min=5, max_pages=3, overlap_
             break
         all_ids.extend(str(e.get("id")) for e in batch if e.get("id") is not None)
         page_all_seen = True
+        page_reached_horizon = False
         for event in batch:
             eid = str(event.get("id")) if event.get("id") is not None else None
             if not eid:
@@ -313,9 +315,13 @@ def fetch_events(seen_ids, first_run, now, lookback_min=5, max_pages=3, overlap_
             page_all_seen = False
             created = parse_iso(event.get("created_at")) or now
             if first_run and created <= horizon:
+                # The public event feed is newest-first. Once a first-run page
+                # crosses the bounded bootstrap horizon, older pages cannot add
+                # eligible events and must not be reported as feed exhaustion.
+                page_reached_horizon = True
                 continue
             fresh.append(event)
-        if page_all_seen or len(batch) < 100:
+        if page_all_seen or (first_run and page_reached_horizon) or len(batch) < 100:
             break
         if page == max_pages:
             exhausted = not page_all_seen
@@ -639,7 +645,7 @@ def window_changed(events, diff, gaps, health, settings):
 
 
 def decide_post(changed, last_post_at, now, heartbeat_min=60, report_idle=False):
-    """Contract: emit nothing on no change except a quiet hourly heartbeat."""
+    """Post every quiet window when requested; otherwise keep an hourly heartbeat."""
     if changed:
         return True, "changed"
     if report_idle:

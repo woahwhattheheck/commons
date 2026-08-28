@@ -9,7 +9,7 @@
 # emits. slack_ingest.should_skip() refuses that claim, so the digest cannot
 # create a board issue that becomes the next digest, forever.
 #
-# Quiet windows emit nothing except a once-an-hour heartbeat.
+# Owner contract: every scheduled quiet window is data and posts one compact line.
 # Until SLACK_WEBHOOK_URL exists the digest goes to the job summary instead
 # of failing, so the schedule can be live before the credential is.
 name: repo-pulse
@@ -73,7 +73,7 @@ jobs:
           SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID }}
           PULSE_STATE: .pulse-state.json
           PULSE_EVIDENCE: repo-pulse/latest.json
-          PULSE_REPORT_IDLE: "false"
+          PULSE_REPORT_IDLE: "true"
           PULSE_IDLE_HEARTBEAT_MINUTES: "60"
           PULSE_MAX_COMMIT_LINES: "8"
           PULSE_FALLBACK_MINUTES: "5"

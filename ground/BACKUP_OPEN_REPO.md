@@ -8,6 +8,8 @@ Protect the work by making independently verifiable, restorable copies while
 leaving every direct posting and push road open.
 
 The executable v1 is [host/repo_backup.py](../host/repo_backup.py).
+The scheduled restore drill is
+[.github/workflows/open-repo-backup.yml](../.github/workflows/open-repo-backup.yml).
 
 A valid backup contains:
 
@@ -24,5 +26,13 @@ storage. Never create new Commons clones, bundles, or archives on Bryce's
 space-constrained local machine; use ephemeral cloud execution and durable
 cloud storage.
 
+The measured v1 independent copy is a GitHub Actions artifact with 90-day
+retention. It is independent of the git object store and of Bryce's disk. It
+is still GitHub-hosted. It is not GitHub-outage protection and not
+account-deletion protection. Do not mint a live Drive, Oracle, S3, or GCS
+receipt without a real provider receipt.
+
 No overwrite is part of restore. Restore into a new absent path, verify, then
 choose the recovery action from evidence.
+
+Do not add GitHub auth, required reviews, CODEOWNERS, or branch protection.
