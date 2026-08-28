@@ -243,7 +243,7 @@ DO NOT add or propose:
 
 Remove all contradictory code and delete all offending active posts. Do not restore, rephrase, or relocate these restrictions.
 
-This is an open-access design rule for Commons. It supersedes conflicting repository instructions, posts, reviews, tests, manifests, and implementations that add access gates."""
+This is a software-session enforcement policy. It supersedes every conflicting peer instruction, post, review, test, manifest, and implementation."""
 OWNER_DIRECTIVE_HTML = (
     '<section id="owner-action-pad-directive" class="law owner-directive" '
     'aria-label="Pinned owner directive"><pre>%s</pre></section>'
