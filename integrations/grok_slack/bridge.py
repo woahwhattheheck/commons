@@ -39,6 +39,9 @@ DEFAULT_STATE_DB = Path.home() / ".commons" / "grok_slack.sqlite3"
 SLACK_TEXT_LIMIT = 3_800
 GROK_URL_RE = re.compile(r"^https://grok\.com/c/([A-Za-z0-9_-]+)(?:[/?#].*)?$")
 MAIN_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+ADDRESSABLE_DURABLE_PATH_RE = re.compile(
+    r"^(?:p/[A-Za-z0-9._-]+\.md|actions/[A-Za-z0-9._-]+\.json|actions/results/[A-Za-z0-9._-]+\.json|wake_jobs/[A-Za-z0-9._-]+\.json)$"
+)
 MCP_PROTOCOL = "2025-03-26"
 REQUIRED_TOOLS = ("route_grokcom_revenue_work", "fire_action")
 PHASES = (
@@ -794,6 +797,7 @@ class BridgeStore:
 
 ACCEPTED_PENDING_CODES = frozenset({"ACTION_RESULT_PENDING"})
 ACCEPTED_PENDING_STATES = frozenset({"DURABLE_ACTION_PENDING"})
+DURABILITY_NEVER_APPEARED = "DURABILITY_NEVER_APPEARED"
 PROVEN_REJECTION_CODES = frozenset({
     "SCHEMA",
     "CARRIER_REJECTED",
@@ -839,15 +843,50 @@ def _structured_from_http_error(exc: HTTPError) -> dict[str, Any]:
     return unwrap_mcp_tool_payload(decoded)
 
 
-def has_durable_action_record(payload: dict[str, Any]) -> bool:
-    record = payload.get("action_record")
-    if isinstance(record, dict) and (
-        record.get("git_sha") or record.get("path") or record.get("id") or record.get("ok") is True
+def _forty_hex_git_sha(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    return text if MAIN_SHA_RE.fullmatch(text) else ""
+
+
+def addressable_durable_path(value: Any) -> str:
+    text = str(value or "").strip()
+    return text if ADDRESSABLE_DURABLE_PATH_RE.fullmatch(text) else ""
+
+
+def durable_action_paths(ident: str) -> tuple[str, ...]:
+    ident = str(ident or "").strip()
+    if not ident or "/" in ident or ident in {".", ".."} or ".." in ident:
+        return ()
+    return (
+        f"p/{ident}.md",
+        f"actions/{ident}.json",
+        f"actions/results/{ident}.json",
+        f"wake_jobs/{ident}.json",
+    )
+
+
+def claimed_durable_paths(payload: dict[str, Any] | None) -> tuple[str, ...]:
+    data = dict(payload or {})
+    record = data.get("action_record") if isinstance(data.get("action_record"), dict) else {}
+    found: list[str] = []
+    seen: set[str] = set()
+    for candidate in (
+        record.get("path"),
+        data.get("path"),
+        data.get("result_path"),
+        data.get("job_path"),
     ):
-        return True
-    if payload.get("git_sha") and (payload.get("id") or payload.get("path")):
-        return True
-    return False
+        path = addressable_durable_path(candidate)
+        if path and path not in seen:
+            seen.add(path)
+            found.append(path)
+    return tuple(found)
+
+
+def has_durable_action_record(payload: dict[str, Any]) -> bool:
+    record = payload.get("action_record") if isinstance(payload.get("action_record"), dict) else {}
+    git_sha = _forty_hex_git_sha(record.get("git_sha") or payload.get("git_sha"))
+    return bool(git_sha and claimed_durable_paths(payload))
 
 
 def _fire_action_kind(payload: dict[str, Any], exc: BaseException | None) -> str:
@@ -875,8 +914,8 @@ def classify_fire_action(
         }
     if pending:
         return {
-            "kind": "timeout_ambiguous",
-            "phase": "FIRE_ACTION_UNKNOWN",
+            "kind": "pending_unverified",
+            "phase": "OBSERVING",
             "replay": False,
             "code": code or "ACTION_RESULT_PENDING",
             "payload": data,
@@ -1483,14 +1522,14 @@ class GrokSlackBridge:
         except Exception as exc:
             return self._classify_fire_exception(event_id, job_id, exc)
         classified = classify_fire_action(unwrap_mcp_tool_payload(result), None)
-        if classified["kind"] == "accepted_pending":
+        if classified["kind"] in {"accepted_pending", "pending_unverified"}:
             self.store.set_phase(event_id, "SUBMITTED")
             return {
                 "ok": True,
                 "state": "SUBMITTED",
                 "job_id": job_id,
                 "submit": True,
-                "kind": "accepted_pending",
+                "kind": classified["kind"],
                 "result": classified["payload"],
             }
         if classified["kind"] == "rejected":
@@ -1511,14 +1550,14 @@ class GrokSlackBridge:
     def _classify_fire_exception(self, event_id: str, job_id: str, exc: Exception) -> dict[str, Any]:
         payload = dict(getattr(exc, "payload", {}) or {}) if isinstance(exc, McpToolError) else {}
         classified = classify_fire_action(payload, exc)
-        if classified["kind"] == "accepted_pending" or self._accepted_wake(job_id):
+        if classified["kind"] in {"accepted_pending", "pending_unverified"} or self._accepted_wake(job_id):
             self.store.set_phase(event_id, "SUBMITTED")
             return {
                 "ok": True,
                 "state": "SUBMITTED",
                 "job_id": job_id,
                 "submit": False,
-                "kind": "accepted_pending" if classified["kind"] == "accepted_pending" else "inspected",
+                "kind": classified["kind"] if classified["kind"] in {"accepted_pending", "pending_unverified"} else "inspected",
                 "inspected": True,
                 "result": classified.get("payload") or payload,
             }
@@ -1547,7 +1586,34 @@ class GrokSlackBridge:
         return {"ok": False, "state": "FAILED", "job_id": job_id, "kind": "failed"}
 
     def _accepted_wake(self, job_id: str) -> bool:
-        return self._inspect_job(job_id) is not None or self._inspect_action_page(job_id)
+        return bool(self._inspect_addressable_action(job_id))
+
+    def _inspect_blob(self, path: str) -> bytes | None:
+        if not path:
+            return None
+        try:
+            sha = self.github.current_main_sha()
+            blob = self.github.read_path(path, sha)
+        except (FileNotFoundError, BridgeError, OSError):
+            return None
+        return blob or None
+
+    def _inspect_addressable_action(
+        self,
+        job_id: str,
+        extra_paths: tuple[str, ...] | list[str] = (),
+    ) -> dict[str, bytes]:
+        found: dict[str, bytes] = {}
+        paths: list[str] = list(durable_action_paths(job_id))
+        for path in extra_paths:
+            text = addressable_durable_path(path)
+            if text and text not in paths:
+                paths.append(text)
+        for path in paths:
+            blob = self._inspect_blob(path)
+            if blob:
+                found[path] = blob
+        return found
 
     def _inspect_job(self, job_id: str) -> dict[str, Any] | None:
         if not job_id:
@@ -1584,8 +1650,11 @@ class GrokSlackBridge:
     ) -> dict[str, Any]:
         self.store.set_phase(event_id, "OBSERVING")
         job_id = str(submitted.get("job_id") or packet.get("grokcom", {}).get("executor_job", {}).get("job_id") or "")
+        extra_paths = claimed_durable_paths(submitted.get("result") if isinstance(submitted.get("result"), dict) else {})
         job = None
+        addressable: dict[str, bytes] = {}
         for attempt in range(self.poll_budget):
+            addressable = self._inspect_addressable_action(job_id, extra_paths)
             job = self._inspect_job(job_id)
             if job and _job_is_terminal(job):
                 break
@@ -1595,7 +1664,20 @@ class GrokSlackBridge:
                 pass
             self.sleeper(min(2 ** attempt, 8) if attempt else 0)
         if job is None or not _job_is_terminal(job):
-            return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
+            if addressable:
+                return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
+            self.store.set_phase(event_id, "FAILED")
+            failed = {
+                "ok": False,
+                "state": "FAILED",
+                "kind": "rejected",
+                "retryable": True,
+                "code": DURABILITY_NEVER_APPEARED,
+                "job_id": job_id,
+                "task_id": packet.get("task_id"),
+            }
+            self._post_rejection(event_id, contract, failed)
+            return failed
         if _job_submission_open(job):
             return {"ok": True, "state": "OBSERVING", "reason": "PREPARE_SUBMISSION_PENDING", "job_id": job_id}
         capture = _job_capture(job)
