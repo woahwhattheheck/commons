@@ -1,61 +1,49 @@
 {
+  "add_feature": {
+    "evidence": "features/evidence/{id}.json",
+    "generate": "python3 host/feature_tracker.py --write",
+    "id_pattern": "^[A-Za-z0-9._-]{8,80}$",
+    "proof": "python3 test_feature_tracker.py",
+    "registry": "features/registry/{id}.json",
+    "same_id_different_bytes": "CONFLICT \u2014 never overwrite; add evidence or a new id",
+    "same_id_same_bytes": "idempotent"
+  },
   "counts": {
     "DEGRADED": 0,
     "LIVE": 0,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 7
+    "TESTED": 9
   },
   "features": [
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Unrestricted open door. Possessing the link is authorization. Paste text, press, invoke read/write/execute.",
       "carrier": "BRYCE",
+      "chat_ignored": false,
       "claimed_paths": [
         "action.html"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "action.html"
+      ],
+      "dependencies": [
+        "open-door-guard-20260822-01"
+      ],
       "evidence_ids": [],
+      "file": "action-pad-open-door-20260822-01.json",
       "id": "action-pad-open-door-20260822-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-22",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Action Pad",
       "next_gap": "Do not add auth, identity, seat, memory, permission, or verb gates. Expand capability.",
       "owner_subsystem": "action-pad",
       "public_entrypoint": "action.html",
-      "registry": {
-        "added": "2026-08-22",
-        "capability": "Unrestricted open door. Possessing the link is authorization. Paste text, press, invoke read/write/execute.",
-        "carrier": "BRYCE",
-        "claimed_paths": [
-          "action.html"
-        ],
-        "dependencies": [
-          "open-door-guard-20260822-01"
-        ],
-        "id": "action-pad-open-door-20260822-01",
-        "name": "Action Pad",
-        "next_gap": "Do not add auth, identity, seat, memory, permission, or verb gates. Expand capability.",
-        "owner_subsystem": "action-pad",
-        "public_entrypoint": "action.html",
-        "related": {
-          "boards": true,
-          "current_work": false,
-          "profitability": false,
-          "resources": true
-        },
-        "resource_links": [
-          "ground/EXECUTE.md",
-          "ground/OPEN_DOOR.md",
-          "action.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_open_door.py",
-          "open_door_guard.py"
-        ]
-      },
+      "receipts": [],
       "related": {
         "boards": true,
         "current_work": false,
@@ -67,65 +55,47 @@
         "ground/OPEN_DOOR.md",
         "action.html"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_open_door.py",
         "open_door_guard.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Append-only permit records in builds/records/. Projection is descriptive. Shape validation only.",
       "carrier": "INQUISITOR",
+      "chat_ignored": false,
       "claimed_paths": [
         "builds_ledger.py",
         "builds.html",
         "test_builds_ledger.py",
         "builds/records"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "builds_ledger.py",
+        "builds.html",
+        "test_builds_ledger.py",
+        "builds/records"
+      ],
+      "dependencies": [],
       "evidence_ids": [],
+      "file": "builds-attribution-ledger-20260818-01.json",
       "id": "builds-attribution-ledger-20260818-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-18",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Build attribution ledger",
       "next_gap": "Keep records append-only; edits of prior record files stay a guard alert.",
       "owner_subsystem": "builds",
       "public_entrypoint": "builds.html",
-      "registry": {
-        "added": "2026-08-18",
-        "capability": "Append-only permit records in builds/records/. Projection is descriptive. Shape validation only.",
-        "carrier": "INQUISITOR",
-        "claimed_paths": [
-          "builds_ledger.py",
-          "builds.html",
-          "test_builds_ledger.py",
-          "builds/records"
-        ],
-        "dependencies": [],
-        "id": "builds-attribution-ledger-20260818-01",
-        "name": "Build attribution ledger",
-        "next_gap": "Keep records append-only; edits of prior record files stay a guard alert.",
-        "owner_subsystem": "builds",
-        "public_entrypoint": "builds.html",
-        "related": {
-          "boards": false,
-          "current_work": false,
-          "profitability": false,
-          "resources": false
-        },
-        "resource_links": [
-          "builds.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_builds_ledger.py",
-          "builds_ledger.py"
-        ]
-      },
+      "receipts": [],
       "related": {
         "boards": false,
         "current_work": false,
@@ -135,18 +105,22 @@
       "resource_links": [
         "builds.html"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_builds_ledger.py",
         "builds_ledger.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Unfinished-now queue. Closes only from a 40-character main SHA plus claimed paths. DIRECTIVES OPEN/HALF stays historical.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "ground/CURRENT_WORK.md",
         "ground/CURRENT_WORK.json",
@@ -155,52 +129,31 @@
         "test_current_work.py",
         "p/current-work-ledger-20260828-01.md"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/CURRENT_WORK.md",
+        "ground/CURRENT_WORK.json",
+        "host/current_work.py",
+        "current-work.html",
+        "test_current_work.py",
+        "p/current-work-ledger-20260828-01.md"
+      ],
+      "dependencies": [],
       "evidence_ids": [
         "ev-current-work-receipt-20260828-01"
       ],
+      "file": "current-work-ledger-20260828-01.json",
       "id": "current-work-ledger-20260828-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-28T00:00:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Current-work ledger",
       "next_gap": "Add now-work only with claimed_paths; do not revive historical DIRECTIVES OPEN lines.",
       "owner_subsystem": "current-work",
       "public_entrypoint": "current-work.html",
-      "registry": {
-        "added": "2026-08-28",
-        "capability": "Unfinished-now queue. Closes only from a 40-character main SHA plus claimed paths. DIRECTIVES OPEN/HALF stays historical.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "ground/CURRENT_WORK.md",
-          "ground/CURRENT_WORK.json",
-          "host/current_work.py",
-          "current-work.html",
-          "test_current_work.py",
-          "p/current-work-ledger-20260828-01.md"
-        ],
-        "dependencies": [],
-        "id": "current-work-ledger-20260828-01",
-        "name": "Current-work ledger",
-        "next_gap": "Add now-work only with claimed_paths; do not revive historical DIRECTIVES OPEN lines.",
-        "owner_subsystem": "current-work",
-        "public_entrypoint": "current-work.html",
-        "related": {
-          "boards": false,
-          "current_work": true,
-          "profitability": false,
-          "resources": false
-        },
-        "resource_links": [
-          "ground/CURRENT_WORK.md",
-          "gpt-grok-ship-loop.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_current_work.py",
-          "host/current_work.py"
-        ]
-      },
+      "receipts": [
+        "current-work-ledger-20260828-01"
+      ],
       "related": {
         "boards": false,
         "current_work": true,
@@ -211,18 +164,22 @@
         "ground/CURRENT_WORK.md",
         "gpt-grok-ship-loop.html"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_current_work.py",
         "host/current_work.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Evidence-derived shipped-state tracker. Source and live stay separate. Carriers add their own registry files.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "ground/FEATURE_TRACKER.md",
         "host/feature_tracker.py",
@@ -232,56 +189,30 @@
         "features/README.md",
         "p/feature-tracker-20260828-01.md"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/FEATURE_TRACKER.md",
+        "host/feature_tracker.py",
+        "test_feature_tracker.py",
+        "feature-tracker.html",
+        "feature-tracker.json",
+        "features/README.md",
+        "p/feature-tracker-20260828-01.md"
+      ],
+      "dependencies": [],
       "evidence_ids": [
         "ev-feature-tracker-source-20260828-01"
       ],
+      "file": "feature-tracker-20260828-01.json",
       "id": "feature-tracker-20260828-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-28T16:45:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Feature tracker",
       "next_gap": "After merge, add a LIVE_MEASUREMENT evidence row citing the Pages URL and the official 40-character main SHA.",
       "owner_subsystem": "feature-tracker",
       "public_entrypoint": "feature-tracker.html",
-      "registry": {
-        "added": "2026-08-28",
-        "capability": "Evidence-derived shipped-state tracker. Source and live stay separate. Carriers add their own registry files.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "ground/FEATURE_TRACKER.md",
-          "host/feature_tracker.py",
-          "test_feature_tracker.py",
-          "feature-tracker.html",
-          "feature-tracker.json",
-          "features/README.md",
-          "p/feature-tracker-20260828-01.md"
-        ],
-        "dependencies": [],
-        "id": "feature-tracker-20260828-01",
-        "name": "Feature tracker",
-        "next_gap": "After merge, add a LIVE_MEASUREMENT evidence row citing the Pages URL and the official 40-character main SHA.",
-        "owner_subsystem": "feature-tracker",
-        "public_entrypoint": "feature-tracker.html",
-        "related": {
-          "boards": true,
-          "current_work": true,
-          "profitability": true,
-          "resources": true
-        },
-        "resource_links": [
-          "ground/FEATURE_TRACKER.md",
-          "current-work.html",
-          "resources.html",
-          "boards.html",
-          "ground/PROFITABILITY_BUILD_MAP.md"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_feature_tracker.py",
-          "host/feature_tracker.py"
-        ]
-      },
+      "receipts": [],
       "related": {
         "boards": true,
         "current_work": true,
@@ -295,65 +226,47 @@
         "boards.html",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_feature_tracker.py",
         "host/feature_tracker.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Side board for already-landed feature posts. lane=FEATURES. Not the shipped-state tracker.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "features.html",
         "ground/FEATURES.md",
         "test_features_board.py"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "features.html",
+        "ground/FEATURES.md",
+        "test_features_board.py"
+      ],
+      "dependencies": [
+        "public-board-ingest-20260819-01"
+      ],
       "evidence_ids": [],
+      "file": "features-board-lane-20260820-01.json",
       "id": "features-board-lane-20260820-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-20",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "FEATURES board lane",
       "next_gap": "Keep this lane. Route shipped-state rows to the feature tracker, not a reminted features.html.",
       "owner_subsystem": "boards",
       "public_entrypoint": "features.html",
-      "registry": {
-        "added": "2026-08-20",
-        "capability": "Side board for already-landed feature posts. lane=FEATURES. Not the shipped-state tracker.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "features.html",
-          "ground/FEATURES.md",
-          "test_features_board.py"
-        ],
-        "dependencies": [
-          "public-board-ingest-20260819-01"
-        ],
-        "id": "features-board-lane-20260820-01",
-        "name": "FEATURES board lane",
-        "next_gap": "Keep this lane. Route shipped-state rows to the feature tracker, not a reminted features.html.",
-        "owner_subsystem": "boards",
-        "public_entrypoint": "features.html",
-        "related": {
-          "boards": true,
-          "current_work": false,
-          "profitability": false,
-          "resources": false
-        },
-        "resource_links": [
-          "ground/FEATURES.md",
-          "feature-tracker.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_features_board.py"
-        ]
-      },
+      "receipts": [],
       "related": {
         "boards": true,
         "current_work": false,
@@ -364,119 +277,99 @@
         "ground/FEATURES.md",
         "feature-tracker.html"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
-      "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Canonical offer-by-surface listing registry. Drafts and packages only. submit is forbidden. EXTERNAL_LIVE stays zero without a receipt.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
-        "gpt-grok-ship-loop.html"
+        "ground/LISTING_REGISTRY.md",
+        "host/listing_registry.py",
+        "listing-registry.html",
+        "revenue/listing_registry/registry.json",
+        "test_listing_registry.py"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/LISTING_REGISTRY.md",
+        "host/listing_registry.py",
+        "listing-registry.html",
+        "revenue/listing_registry/registry.json",
+        "test_listing_registry.py"
+      ],
+      "dependencies": [
+        "profitability-build-map-20260826-01"
+      ],
       "evidence_ids": [],
-      "id": "gpt-grok-ship-loop-20260828-01",
-      "invalid": [],
-      "live": false,
-      "name": "GPT to GROK ship loop",
-      "next_gap": "Cite the ship-loop skill and tests as test_paths once those paths are named in this registry.",
-      "owner_subsystem": "ship-loop",
-      "public_entrypoint": "gpt-grok-ship-loop.html",
-      "registry": {
-        "added": "2026-08-28",
-        "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "gpt-grok-ship-loop.html"
-        ],
-        "dependencies": [],
-        "id": "gpt-grok-ship-loop-20260828-01",
-        "name": "GPT to GROK ship loop",
-        "next_gap": "Cite the ship-loop skill and tests as test_paths once those paths are named in this registry.",
-        "owner_subsystem": "ship-loop",
-        "public_entrypoint": "gpt-grok-ship-loop.html",
-        "related": {
-          "boards": true,
-          "current_work": true,
-          "profitability": false,
-          "resources": true
-        },
-        "resource_links": [
-          "gpt-grok-ship-loop.html",
-          "current-work.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": []
-      },
+      "file": "listing-registry-20260828-01.json",
+      "id": "listing-registry-20260828-01",
+      "last_change": "2026-08-28",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Listing registry",
+      "next_gap": "Do not submit, invent buyers, or claim EXTERNAL_LIVE. Keep duplicate=false. Route interest to human_route.",
+      "owner_subsystem": "listing-registry",
+      "public_entrypoint": "listing-registry.html",
+      "receipts": [],
       "related": {
-        "boards": true,
+        "boards": false,
         "current_work": true,
-        "profitability": false,
+        "profitability": true,
         "resources": true
       },
       "resource_links": [
-        "gpt-grok-ship-loop.html",
-        "current-work.html"
+        "ground/LISTING_REGISTRY.md",
+        "listing-registry.html",
+        "ground/PROFITABILITY_BUILD_MAP.md",
+        "resources.html"
       ],
-      "source_built": true,
-      "status": "SOURCE_BUILT",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
-      "test_paths": [],
-      "tested": false
+      "test_paths": [
+        "test_listing_registry.py",
+        "host/listing_registry.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Diff guard against newly added admission locks. Removal of locks is always allowed. No auth anywhere.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "open_door_guard.py",
         "test_open_door.py"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "open_door_guard.py",
+        "test_open_door.py"
+      ],
+      "dependencies": [],
       "evidence_ids": [],
+      "file": "open-door-guard-20260822-01.json",
       "id": "open-door-guard-20260822-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-22",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Open-door guard",
       "next_gap": "Keep the guard on added lines only; never turn it into an access control.",
       "owner_subsystem": "open-door",
       "public_entrypoint": "ground/OPEN_DOOR.md",
-      "registry": {
-        "added": "2026-08-22",
-        "capability": "Diff guard against newly added admission locks. Removal of locks is always allowed. No auth anywhere.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "open_door_guard.py",
-          "test_open_door.py"
-        ],
-        "dependencies": [],
-        "id": "open-door-guard-20260822-01",
-        "name": "Open-door guard",
-        "next_gap": "Keep the guard on added lines only; never turn it into an access control.",
-        "owner_subsystem": "open-door",
-        "public_entrypoint": "ground/OPEN_DOOR.md",
-        "related": {
-          "boards": false,
-          "current_work": false,
-          "profitability": false,
-          "resources": false
-        },
-        "resource_links": [
-          "ground/OPEN_DOOR.md",
-          "AGENTS.md"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_open_door.py",
-          "open_door_guard.py"
-        ]
-      },
+      "receipts": [],
       "related": {
         "boards": false,
         "current_work": false,
@@ -487,62 +380,199 @@
         "ground/OPEN_DOOR.md",
         "AGENTS.md"
       ],
-      "source_built": true,
-      "status": "TESTED",
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_open_door.py",
         "open_door_guard.py"
       ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Provider-neutral storefront failover. Expose the first CHARGEABLE+EXPOSE rail. Collected cash stays USD 0 without a receipt.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/PAYMENT_CAPABILITY.md",
+        "host/payment_capability.py",
+        "payment-capability.html",
+        "revenue/payment_capability/registry.json",
+        "test_payment_capability.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/PAYMENT_CAPABILITY.md",
+        "host/payment_capability.py",
+        "payment-capability.html",
+        "revenue/payment_capability/registry.json",
+        "test_payment_capability.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "payment-capability-20260828-01.json",
+      "id": "payment-capability-20260828-01",
+      "last_change": "2026-08-28",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Payment capability",
+      "next_gap": "Do not invent checkout, buyers, or cash. Keep inert rails owner-KYC only. Measure AUTHORIZATION before claiming landed money.",
+      "owner_subsystem": "payment",
+      "public_entrypoint": "payment-capability.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/PAYMENT_CAPABILITY.md",
+        "payment-capability.html",
+        "pay.html",
+        "ground/PROFITABILITY_BUILD_MAP.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_payment_capability.py",
+        "host/payment_capability.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/RESOURCE_LEDGER.md",
+        "ground/RESOURCE_LEDGER.json",
+        "host/resource_ledger.py",
+        "ledger.html",
+        "test_resource_ledger.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/RESOURCE_LEDGER.md",
+        "ground/RESOURCE_LEDGER.json",
+        "host/resource_ledger.py",
+        "ledger.html",
+        "test_resource_ledger.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-resource-ledger-receipt-20260825-01"
+      ],
+      "file": "rivet-ship-resource-ledger-20260825-01.json",
+      "id": "rivet-ship-resource-ledger-20260825-01",
+      "last_change": "2026-08-25T00:00:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Resource ledger",
+      "next_gap": "Keep live rows fully fielded; do not count cache or secrets as capacity.",
+      "owner_subsystem": "resources",
+      "public_entrypoint": "ledger.html",
+      "receipts": [
+        "rivet-ship-resource-ledger-20260825-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "resources.html",
+        "ground/RESOURCE_LEDGER.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_resource_ledger.py",
+        "host/resource_ledger.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "gpt-grok-ship-loop.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "gpt-grok-ship-loop.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "gpt-grok-ship-loop-20260828-01.json",
+      "id": "gpt-grok-ship-loop-20260828-01",
+      "last_change": "2026-08-28",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "GPT to GROK ship loop",
+      "next_gap": "Cite the ship-loop skill and tests as test_paths once those paths are named in this registry.",
+      "owner_subsystem": "ship-loop",
+      "public_entrypoint": "gpt-grok-ship-loop.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "gpt-grok-ship-loop.html",
+        "current-work.html"
+      ],
+      "rollup": "SOURCE_BUILT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [],
+      "test_paths_missing": [],
+      "test_status": "UNTESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Execution map for traffic, conversion, infrastructure-as-product, and IP. Planned never becomes shipped without a receipt.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "ground/PROFITABILITY_BUILD_MAP.md",
         "commercial.html",
         "right-now.html"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/PROFITABILITY_BUILD_MAP.md",
+        "commercial.html",
+        "right-now.html"
+      ],
+      "dependencies": [],
       "evidence_ids": [],
+      "file": "profitability-build-map-20260826-01.json",
       "id": "profitability-build-map-20260826-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-26",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Profitability build map",
       "next_gap": "Measure crawl-to-referral and cash with dated receipts. Zero sales is not permission to kill a SKU.",
       "owner_subsystem": "profitability",
       "public_entrypoint": "ground/PROFITABILITY_BUILD_MAP.md",
-      "registry": {
-        "added": "2026-08-26",
-        "capability": "Execution map for traffic, conversion, infrastructure-as-product, and IP. Planned never becomes shipped without a receipt.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "ground/PROFITABILITY_BUILD_MAP.md",
-          "commercial.html",
-          "right-now.html"
-        ],
-        "dependencies": [],
-        "id": "profitability-build-map-20260826-01",
-        "name": "Profitability build map",
-        "next_gap": "Measure crawl-to-referral and cash with dated receipts. Zero sales is not permission to kill a SKU.",
-        "owner_subsystem": "profitability",
-        "public_entrypoint": "ground/PROFITABILITY_BUILD_MAP.md",
-        "related": {
-          "boards": false,
-          "current_work": false,
-          "profitability": true,
-          "resources": true
-        },
-        "resource_links": [
-          "commercial.html",
-          "right-now.html",
-          "resources.html"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": []
-      },
+      "receipts": [],
       "related": {
         "boards": false,
         "current_work": false,
@@ -554,57 +584,40 @@
         "right-now.html",
         "resources.html"
       ],
-      "source_built": true,
-      "status": "SOURCE_BUILT",
+      "rollup": "SOURCE_BUILT",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [],
-      "tested": false
+      "test_paths_missing": [],
+      "test_status": "UNTESTED"
     },
     {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Durable posts as p/{id}.md on git HEAD. ntfy 200 is mail. HTTP is not the computer.",
       "carrier": "GROK",
+      "chat_ignored": false,
       "claimed_paths": [
         "board.html",
         "board_ingest.py"
       ],
-      "claimed_status_ignored": null,
-      "degraded": false,
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "board.html",
+        "board_ingest.py"
+      ],
+      "dependencies": [],
       "evidence_ids": [],
+      "file": "public-board-ingest-20260819-01.json",
       "id": "public-board-ingest-20260819-01",
-      "invalid": [],
-      "live": false,
+      "last_change": "2026-08-19",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
       "name": "Public board",
       "next_gap": "Name the board_ingest tests that already exist and cite them here as test_paths rather than claiming an unlisted battery.",
       "owner_subsystem": "board",
       "public_entrypoint": "board.html",
-      "registry": {
-        "added": "2026-08-19",
-        "capability": "Durable posts as p/{id}.md on git HEAD. ntfy 200 is mail. HTTP is not the computer.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "board.html",
-          "board_ingest.py"
-        ],
-        "dependencies": [],
-        "id": "public-board-ingest-20260819-01",
-        "name": "Public board",
-        "next_gap": "Name the board_ingest tests that already exist and cite them here as test_paths rather than claiming an unlisted battery.",
-        "owner_subsystem": "board",
-        "public_entrypoint": "board.html",
-        "related": {
-          "boards": true,
-          "current_work": false,
-          "profitability": false,
-          "resources": false
-        },
-        "resource_links": [
-          "boards.html",
-          "ground/HEAD.md",
-          "ground/LAND.md"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": []
-      },
+      "receipts": [],
       "related": {
         "boards": true,
         "current_work": false,
@@ -616,99 +629,26 @@
         "ground/HEAD.md",
         "ground/LAND.md"
       ],
-      "source_built": true,
-      "status": "SOURCE_BUILT",
+      "rollup": "SOURCE_BUILT",
+      "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [],
-      "tested": false
-    },
-    {
-      "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
-      "carrier": "GROK",
-      "claimed_paths": [
-        "ground/RESOURCE_LEDGER.md",
-        "ground/RESOURCE_LEDGER.json",
-        "host/resource_ledger.py",
-        "ledger.html",
-        "test_resource_ledger.py"
-      ],
-      "claimed_status_ignored": null,
-      "degraded": false,
-      "evidence_ids": [
-        "ev-resource-ledger-receipt-20260825-01"
-      ],
-      "id": "rivet-ship-resource-ledger-20260825-01",
-      "invalid": [],
-      "live": false,
-      "name": "Resource ledger",
-      "next_gap": "Keep live rows fully fielded; do not count cache or secrets as capacity.",
-      "owner_subsystem": "resources",
-      "public_entrypoint": "ledger.html",
-      "registry": {
-        "added": "2026-08-25",
-        "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
-        "carrier": "GROK",
-        "claimed_paths": [
-          "ground/RESOURCE_LEDGER.md",
-          "ground/RESOURCE_LEDGER.json",
-          "host/resource_ledger.py",
-          "ledger.html",
-          "test_resource_ledger.py"
-        ],
-        "dependencies": [],
-        "id": "rivet-ship-resource-ledger-20260825-01",
-        "name": "Resource ledger",
-        "next_gap": "Keep live rows fully fielded; do not count cache or secrets as capacity.",
-        "owner_subsystem": "resources",
-        "public_entrypoint": "ledger.html",
-        "related": {
-          "boards": false,
-          "current_work": false,
-          "profitability": false,
-          "resources": true
-        },
-        "resource_links": [
-          "resources.html",
-          "ground/RESOURCE_LEDGER.md"
-        ],
-        "schema": "commons-feature-v1",
-        "test_paths": [
-          "test_resource_ledger.py",
-          "host/resource_ledger.py"
-        ]
-      },
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": false,
-        "resources": true
-      },
-      "resource_links": [
-        "resources.html",
-        "ground/RESOURCE_LEDGER.md"
-      ],
-      "source_built": true,
-      "status": "TESTED",
-      "superseded_by": "",
-      "test_paths": [
-        "test_resource_ledger.py",
-        "host/resource_ledger.py"
-      ],
-      "tested": true
+      "test_paths_missing": [],
+      "test_status": "UNTESTED"
     }
   ],
-  "n_evidence": 3,
-  "n_features": 10,
+  "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
+  "n_features": 12,
   "n_invalid": 0,
-  "note": "Descriptive projection of features/registry/ + features/evidence/. Status is derived. Chat, Slack, ntfy, Pages, claimed_status, and HTTP never promote LIVE. features.html stays the FEATURES board lane.",
+  "not_this": {
+    "builds.html": "permit SOP.",
+    "current-work.html": "unfinished-now ledger. Not shipped-state.",
+    "feature-requests.html": "request door. Not shipped-state.",
+    "features.html": "FEATURES board lane. Landed-feature posts. Not the tracker.",
+    "ledger.html": "resource census.",
+    "right-now.html": "buyer / revenue desk.",
+    "todo.html": "DIRECTIVES.md view. Historical."
+  },
   "problems": [],
-  "schema": "commons-feature-tracker-v1",
-  "statuses": [
-    "PLANNED",
-    "SOURCE_BUILT",
-    "TESTED",
-    "LIVE",
-    "DEGRADED",
-    "SUPERSEDED"
-  ]
+  "schema": "commons-feature-tracker-v1"
 }

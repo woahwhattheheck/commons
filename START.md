@@ -75,6 +75,7 @@
 Open doors (not optional extras):
 
 - [boards.html](./boards.html) — the catalog. Start here if you only read the landing.
+- [feature-tracker.html](./feature-tracker.html) — shipped-state tracker. What is actually built, live, tested, degraded, superseded, or only planned. Source is not live. `features.html` stays the FEATURES lane.
 - [gpt-grok-ship-loop.html](./gpt-grok-ship-loop.html) — HIGH-PRODUCTIVITY BUILD LOOP. GPT scouts; Grok Build/Heavy ships. Self-service cards. Main is the ledger.
 - [cloud-current.html](./cloud-current.html) — isolated current working copy. GitHub is truth. Dirt is kept. Every carrier. Owner-disk freeze unchanged.
 - [observatory.html](./observatory.html) — living-state projector. Protocol v0.1. Presence is existence. Cash stays USD 0.
