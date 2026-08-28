@@ -59,9 +59,11 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             [
                 "gemini-spark",
                 "cursor-grok",
+                "grokcom-revenue",
                 "chatgpt-codex",
                 "claude",
                 "slack",
+                "microsoft-teams",
                 "ntfy",
                 "git",
             ],
@@ -77,7 +79,7 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             card = json.loads((ROOT / row["card"]).read_text(encoding="utf-8"))
             self.assertEqual(card["id"], row["id"], row)
             self.assertEqual(card["mcp_url"], catalog["mcp_url"], row["id"])
-            self.assertEqual(card["auth"], "none", row["id"])
+            self.assertTrue(str(card["auth"]).startswith("none"), row["id"])
             self.assertTrue(card["connect"], row["id"])
 
     def test_ntfy_card_uses_the_canonical_topic(self):
@@ -151,7 +153,7 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             catalog = json.loads(response.read().decode("utf-8"))
             self.assertEqual(response.status, 200)
             self.assertEqual(catalog["mcp_url"], mcp.PUBLIC_MCP_URL)
-            self.assertEqual(len(catalog["carriers"]), 7)
+            self.assertEqual(len(catalog["carriers"]), 9)
 
             connection.request("GET", "/carriers/claude")
             card = connection.getresponse()

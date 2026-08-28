@@ -11,7 +11,14 @@ EVENT = {
     "author": "BRYCE",
     "text": "research current prospects, build the fix, and push revenue forward",
 }
-ARTIFACT = {"head_sha": "1" * 40, "paths": ["host/example.py"], "tests": ["7 passed"]}
+ARTIFACT = {
+    "head_sha": "1" * 40,
+    "paths": ["host/example.py"],
+    "tests": ["7 passed"],
+    "run_key": "captured-parent-run-001",
+    "conversation_url": "https://grok.com/c/captured-parent-rid",
+    "exact_prompts": ["finished parent prompt"],
+}
 
 
 class GrokcomRevenueOrchestratorTests(unittest.TestCase):
@@ -20,12 +27,16 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         second = orchestrate({"event": EVENT})
         self.assertEqual(first, second)
         self.assertEqual(first["state"], "GROKCOM_WORK")
-        self.assertEqual(first["next"], "SEND_TO_GROKCOM")
+        self.assertEqual(first["next"], "WRITE_CAPTURE_START_THEN_SEND_TO_GROKCOM_ONCE")
         self.assertEqual(first["connector"]["reply_mode"], "ALL_MESSAGES")
         self.assertTrue(first["connector"]["post_reply"])
         self.assertEqual(first["grokcom"]["surface"], "grok.com")
         self.assertEqual(first["grokcom"]["commons_mcp_url"], "https://commons-spark-mcp.vercel.app/mcp")
         self.assertIn("authenticated grok.com only", first["grokcom"]["prompt"])
+        self.assertEqual(first["grokcom"]["capture_start"]["tool"], "start_grok_capture")
+        capture_args = first["grokcom"]["capture_start"]["arguments"]
+        self.assertEqual(capture_args["run_key"], first["grokcom"]["run_key"])
+        self.assertEqual(capture_args["exact_prompts"], [first["grokcom"]["prompt"]])
         self.assertFalse(first["cash_claimed"])
 
     def test_empty_and_free_form_calls_stay_open(self):
@@ -71,8 +82,47 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
             "artifact": ARTIFACT,
             "review": {"decision": "APPROVE", "checks": checks},
         })
-        self.assertEqual(result["state"], "GROKCOM_REVISION")
+        self.assertEqual(result["state"], "GROK_CONTINUE")
         self.assertIn("zero_fabrication_check", result["review"]["issues"][0])
+        self.assertEqual(result["grokcom"]["parent_run_key"], ARTIFACT["run_key"])
+        self.assertTrue(result["grokcom"]["no_replay"])
+        self.assertEqual(
+            result["grokcom"]["capture_start"]["arguments"]["parent_run_key"],
+            ARTIFACT["run_key"],
+        )
+
+    def test_explicit_continuation_is_new_lineage_linked_and_idempotent(self):
+        arguments = {
+            "stage": "GPT_REVIEW",
+            "event": EVENT,
+            "artifact": ARTIFACT,
+            "review": {
+                "decision": "CONTINUE",
+                "checks": {name: True for name in REVIEW_CHECKS},
+                "continuation_prompt": "new continuation prompt",
+                "issues": ["candidate bytes remain provider-private"],
+            },
+        }
+        first = orchestrate(arguments)
+        second = orchestrate(arguments)
+        self.assertEqual(first, second)
+        self.assertEqual(first["state"], "GROK_CONTINUE")
+        self.assertEqual(first["grokcom"]["prompt"], "new continuation prompt")
+        self.assertEqual(first["grokcom"]["parent_conversation_url"], ARTIFACT["conversation_url"])
+        self.assertEqual(first["grokcom"]["capture_start"]["arguments"]["exact_prompts"], ["new continuation prompt"])
+
+    def test_continuation_cannot_replay_a_finished_prompt(self):
+        with self.assertRaisesRegex(ValueError, "never replayed"):
+            orchestrate({
+                "stage": "GPT_REVIEW",
+                "event": EVENT,
+                "artifact": ARTIFACT,
+                "review": {
+                    "decision": "CONTINUE",
+                    "checks": {name: True for name in REVIEW_CHECKS},
+                    "continuation_prompt": "finished parent prompt",
+                },
+            })
 
     def test_review_cannot_detach_from_the_grokcom_artifact(self):
         with self.assertRaisesRegex(ValueError, "exact artifact manifest"):
