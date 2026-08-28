@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -173,20 +174,30 @@ class RuntimeTests(unittest.TestCase):
         self.assertFalse(probed["ok"])
         self.assertEqual(probed["failure_reason"], "TRANSPORT_UNCONFIGURED")
 
-    def test_file_write_is_additive_only(self):
+    def test_file_write_can_create_overwrite_and_cross_repo_boundary(self):
         created = self.runtime.handle(
             {"route": "file", "op": "write", "path": "notes/new.txt", "contents": "hello"}
         )
         self.assertTrue(created["ok"])
         self.assertEqual((self.root / "notes" / "new.txt").read_text(encoding="utf-8"), "hello")
         again = self.runtime.handle(
-            {"route": "file", "op": "write", "path": "notes/new.txt", "contents": "nope"}
+            {"route": "file", "op": "write", "path": "notes/new.txt", "contents": "updated"}
         )
-        self.assertEqual(again["failure_reason"], "PATH_EXISTS")
+        self.assertTrue(again["ok"])
+        self.assertFalse(again["created"])
+        self.assertEqual((self.root / "notes" / "new.txt").read_text(encoding="utf-8"), "updated")
         listed = self.runtime.handle({"route": "file", "op": "list", "path": "notes"})
         self.assertEqual(listed["names"], ["new.txt"])
 
-    def test_board_post_refuses_remint_and_mno(self):
+        outside = self.root.parent / f"{self.root.name}-outside.txt"
+        self.addCleanup(lambda: outside.unlink(missing_ok=True))
+        escaped = self.runtime.handle(
+            {"route": "file", "op": "write", "path": str(outside), "contents": "open"}
+        )
+        self.assertTrue(escaped["ok"])
+        self.assertEqual(outside.read_text(encoding="utf-8"), "open")
+
+    def test_board_post_and_mno_can_be_written_again(self):
         first = self.runtime.handle(
             {
                 "route": "board",
@@ -196,7 +207,7 @@ class RuntimeTests(unittest.TestCase):
             }
         )
         self.assertTrue(first["ok"])
-        remint = self.runtime.handle(
+        updated = self.runtime.handle(
             {
                 "route": "board",
                 "op": "post",
@@ -204,17 +215,20 @@ class RuntimeTests(unittest.TestCase):
                 "body": "PLAIN: remint",
             }
         )
-        self.assertEqual(remint["failure_reason"], "REMINT_REFUSED")
+        self.assertTrue(updated["ok"])
+        self.assertIn("PLAIN: remint", (self.root / "p" / "cursor-hands-fixture-0001.md").read_text(encoding="utf-8"))
         mno = self.runtime.handle(
             {"route": "file", "op": "write", "path": "commons.mno", "contents": "no"}
         )
-        self.assertEqual(mno["failure_reason"], "MNO_REFUSED")
+        self.assertTrue(mno["ok"])
+        self.assertEqual((self.root / "commons.mno").read_text(encoding="utf-8"), "no")
 
-    def test_git_add_refuses_tracked_head_paths(self):
+    def test_git_add_and_commit_accept_tracked_and_bulk_changes(self):
+        (self.root / "README.md").write_text("updated\n", encoding="utf-8")
         tracked = self.runtime.handle({"route": "git", "op": "add", "path": "README.md"})
-        self.assertEqual(tracked["failure_reason"], "NOT_ADDITIVE")
+        self.assertTrue(tracked["ok"])
         (self.root / "extra.md").write_text("new\n", encoding="utf-8")
-        added = self.runtime.handle({"route": "git", "op": "add", "path": "extra.md"})
+        added = self.runtime.handle({"route": "git", "op": "add", "path": "-A"})
         self.assertTrue(added["ok"])
         committed = self.runtime.handle(
             {"route": "git", "op": "commit", "message": "add extra.md"}
@@ -223,17 +237,18 @@ class RuntimeTests(unittest.TestCase):
         status = self.runtime.handle({"route": "git", "op": "status"})
         self.assertTrue(status["ok"])
 
-    def test_slack_fails_closed_without_token_and_refuses_invented_dest(self):
+    def test_slack_reports_provider_token_requirement_without_channel_gate(self):
         missing = self.runtime.handle({"route": "slack", "op": "read"})
         self.assertEqual(missing["failure_reason"], "TOKEN_MISS")
         self.assertEqual(self.http.calls, [])
-        refused = self.runtime.handle(
+        other_missing = self.runtime.handle(
             {"route": "slack", "op": "post", "channel": "C0SOMEOTHER1", "text": "hi"}
         )
-        self.assertEqual(refused["failure_reason"], "CHANNEL_REFUSED")
+        self.assertEqual(other_missing["failure_reason"], "TOKEN_MISS")
+        self.assertEqual(other_missing["evidence"]["channel"], "C0SOMEOTHER1")
         self.assertEqual(self.http.calls, [])
 
-    def test_slack_posts_only_commons_when_token_present(self):
+    def test_slack_posts_requested_channel_when_provider_token_present(self):
         self.runtime.routes.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture"
         posted = self.runtime.handle({"route": "slack", "op": "post", "text": "same table"})
         self.assertTrue(posted["ok"])
@@ -242,9 +257,16 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(payload["channel"], "C0BRGMDQB6G")
         self.assertNotIn("xoxb-fixture", json.dumps(posted))
 
+        other = self.runtime.handle(
+            {"route": "slack", "op": "post", "channel": "C0SOMEOTHER1", "text": "open route"}
+        )
+        self.assertTrue(other["ok"])
+        other_payload = json.loads(self.http.calls[-1]["body"].decode("utf-8"))
+        self.assertEqual(other_payload["channel"], "C0SOMEOTHER1")
+
     def test_shell_and_web_keep_pixels_off_default_path(self):
         shell = self.runtime.handle(
-            {"route": "shell", "op": "run", "command": ["python3", "-c", "print('hands-ok')"]}
+            {"route": "shell", "op": "run", "command": [sys.executable, "-c", "print('hands-ok')"]}
         )
         self.assertTrue(shell["ok"])
         self.assertIn("hands-ok", shell["stdout"])
@@ -266,11 +288,6 @@ class RuntimeTests(unittest.TestCase):
         }
         text = self.runtime.handle({"route": "web", "op": "fetch", "url": "https://example.com/"})
         self.assertEqual(text["text"], "hello web")
-
-    def test_path_escape_is_typed(self):
-        result = self.runtime.handle({"route": "file", "op": "read", "path": "../secret"})
-        self.assertEqual(result["failure_reason"], "PATH_OUTSIDE_REPO")
-
 
 if __name__ == "__main__":
     unittest.main()
