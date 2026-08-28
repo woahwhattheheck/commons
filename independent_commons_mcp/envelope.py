@@ -16,6 +16,7 @@ from . import MAX_BODY, NTFY_MAX
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+METADATA_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 SECRET_ENV = (
     "COMMONS_GITHUB_TOKEN",
     "GITHUB_TOKEN",
@@ -85,6 +86,16 @@ def redact(value: Any) -> Any:
     return text
 
 
+def _structure_lines(value: Any) -> list[str]:
+    """Split envelope structure on CR/LF only; other Unicode boundaries are payload."""
+    return str(value or "").replace("\r\n", "\n").replace("\r", "\n").split("\n")
+
+
+def _metadata_line(value: Any) -> str:
+    """Collapse every Unicode line boundary before projecting one metadata line."""
+    return " ".join(str(value).splitlines()).strip()
+
+
 def _plain(value: Any, field: str, maximum: int = 200) -> str:
     if not isinstance(value, str):
         raise EnvelopeError("SCHEMA", "%s must be a string" % field)
@@ -95,7 +106,7 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if "\n" in out or "\r" in out or len(out) > maximum:
+    if METADATA_BREAK_RE.search(out) or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
 
@@ -125,7 +136,7 @@ def _body(value: Any) -> str:
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
-    lines = str(text or "").splitlines()
+    lines = _structure_lines(text)
     meta: dict[str, str] = {}
     i = 0
     if lines and lines[0].strip() == "---":
@@ -176,16 +187,16 @@ def projection_headers(payload: dict[str, Any], *, default_capability: str | Non
     lines = []
     seen = set()
     for key in PROJECTION_REQUIRED:
-        lines.append("%s: %s" % (key, row.get(key, "")))
+        lines.append("%s: %s" % (key, _metadata_line(row.get(key, ""))))
         seen.add(key)
     for key in PROJECTION_OPTIONAL:
         if row.get(key) not in (None, ""):
-            lines.append("%s: %s" % (key, row[key]))
+            lines.append("%s: %s" % (key, _metadata_line(row[key])))
             seen.add(key)
     for key in sorted(row):
         if key in seen or key == "body" or row.get(key) in (None, ""):
             continue
-        lines.append("%s: %s" % (key, str(row[key]).replace("\n", " ")))
+        lines.append("%s: %s" % (key, _metadata_line(row[key])))
     return lines
 
 
