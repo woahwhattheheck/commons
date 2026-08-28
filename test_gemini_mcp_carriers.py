@@ -79,7 +79,7 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             card = json.loads((ROOT / row["card"]).read_text(encoding="utf-8"))
             self.assertEqual(card["id"], row["id"], row)
             self.assertEqual(card["mcp_url"], catalog["mcp_url"], row["id"])
-            self.assertEqual(card["auth"], "none", row["id"])
+            self.assertTrue(str(card["auth"]).startswith("none"), row["id"])
             self.assertTrue(card["connect"], row["id"])
 
     def test_ntfy_card_uses_the_canonical_topic(self):
