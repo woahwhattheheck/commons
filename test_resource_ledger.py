@@ -145,6 +145,22 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         self.assertEqual(catalog["slack_ts"], "1787911777.379739")
+        self.assertEqual(
+            catalog["source_id"], "codex-grok-executor-queue-activation-20260828-01"
+        )
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-grok-executor-queue-activation-20260828-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        self.assertEqual(
+            catalog["slack_ts"],
+            activation["connected_app_aggregate"]["slack_activation_ts"],
+        )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
