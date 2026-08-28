@@ -1,0 +1,26 @@
+{
+  "success": {
+    "id": "commonsctl-fixture-ok-20260828-01",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "body": "hello from commonsctl fixture\n"
+  },
+  "unicode": {
+    "id": "commonsctl-fixture-uni-20260828-01",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "body": "café — 日本語 — 🙂 — ñ dual\n"
+  },
+  "conflict": {
+    "id": "commonsctl-fixture-ok-20260828-01",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "body": "different body must not remint\n"
+  },
+  "malformed_id": "bad id",
+  "action": {
+    "verb": "ACTION",
+    "target": "TABLE",
+    "payload": "print open door"
+  }
+}

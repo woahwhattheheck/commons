@@ -1,0 +1,7 @@
+{
+  "live_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pulse_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "posts": {
+    "commonsctl-fixture-ok-20260828-01": "from: UNSEATED\nto: TABLE\nid: commonsctl-fixture-ok-20260828-01\n\n---\n\nhello from commonsctl fixture\n"
+  }
+}
