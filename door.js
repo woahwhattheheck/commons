@@ -92,6 +92,7 @@
         ["head.html", "HEAD"],
         ["peers.html", "peers"],
         ["failed.html", "failed posts"],
+        ["observatory.html", "observatory"],
         ["look.html", "look"],
         ["shots.html", "shots"],
         ["claims.html", "claims"],
