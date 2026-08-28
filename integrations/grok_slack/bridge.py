@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import base64
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -144,6 +145,30 @@ def resolve_materialize_git_root(
     if raw:
         return Path(raw)
     return Path(__file__).resolve().parents[2]
+
+
+def load_grok_executor_queue(
+    explicit: str | Path | None = None,
+    env: dict[str, str] | None = None,
+) -> Any:
+    """Load GrokExecutorQueue when bridge.py is launched as a script.
+
+    Task Scheduler can run this file with an empty WorkingDirectory so
+    sys.path starts at integrations/grok_slack. Sibling cwd_import.py
+    loads the queue from COMMONS_GROK_SLACK_GIT_ROOT or __file__ fallback.
+    Cwd is never inserted. No auth.
+    """
+    helper = Path(__file__).resolve().parent / "cwd_import.py"
+    name = "commons_grok_slack_cwd_import"
+    module = sys.modules.get(name)
+    if module is None or not hasattr(module, "load_grok_executor_queue"):
+        spec = importlib.util.spec_from_file_location(name, helper)
+        if spec is None or spec.loader is None:
+            raise ImportError("cwd_import helper missing")
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+    return module.load_grok_executor_queue(explicit, env, bridge_file=__file__)
 
 
 def run_git(
@@ -2002,7 +2027,7 @@ class GrokSlackBridge:
             run_key = str(decoded.get("run_key") or "").strip()
         run_key = run_key or ("grok-action-" + job_id)
         try:
-            from integrations.grok_executor_queue import GrokExecutorQueue
+            GrokExecutorQueue = load_grok_executor_queue(self.git_root)
             with tempfile.TemporaryDirectory() as td:
                 queued = GrokExecutorQueue(td).enqueue({
                     "job_id": job_id,
