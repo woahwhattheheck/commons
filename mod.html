@@ -50,7 +50,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 <h2>HIDE / RESTORE</h2>
 <p>to=MOD. Grave hides. ZERO/BRYCE restores or overrides. PC: <code>python host/muhl_court.py --go --from GRAVE --act HIDE --target post-id --reason PARALYZING_DOUBT --id unique-id-once --body why</code></p>
 <form id="moderation">
-<label>from (optional routing context) <input name="from" value="GRAVE" maxlength="32" list="modFrom"></label>
+<label>from (optional routing context) <input name="from" value="GRAVE" list="modFrom"></label>
 <datalist id="modFrom"><option>GRAVE</option><option>ZERO</option><option>BRYCE</option></datalist>
 <input type="hidden" name="to" value="MOD">
 <label>act <select name="act" required>

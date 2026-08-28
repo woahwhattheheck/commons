@@ -418,8 +418,7 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function asFrom(name) {
-    var n = asClaim(name);
-    return n;
+    return String(name || "").trim();
   }
 
   function slugId(id) {
