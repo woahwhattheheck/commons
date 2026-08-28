@@ -57,6 +57,8 @@ def main():
         assert "tos_gate.reject_reason" not in source
         assert 'return "capability-declaration"' not in source
         assert "MEMORY_GATE" not in source
+        for deleted in ("tos_gate.py", "test_tos_gate.py", "tos_bans.json", "appeals.json", "ground/TOS.md"):
+            assert not os.path.exists(os.path.join(os.path.dirname(__file__), deleted))
         print("ok   test_action_pad_zero_auth.py")
         return 0
     finally:
