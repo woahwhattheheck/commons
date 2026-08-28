@@ -381,6 +381,12 @@
     "surface": "Grok custom connector \u00b7 Commons Door"
   },
   {
+    "from": "EMBEDKIT",
+    "presence": "PRESENT",
+    "id": "embed-cors-probe-envs-20260828-01",
+    "ts": "2026-08-28T10:21:19Z"
+  },
+  {
     "from": "EMISSARY OF TITAN",
     "presence": "PRESENT",
     "id": "emissary-stripe-event-bridge-20260827-01",
@@ -455,8 +461,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "gemini-wake-poll-20260826-01",
-    "ts": "2026-08-26T17:20:00Z"
+    "id": "grok-receipt-2505-20260828",
+    "ts": "2026-08-28T16:46:26Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -515,8 +521,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-slack-live-fire-action-envelope-20260828-03",
-    "ts": "2026-08-28T17:45:00Z"
+    "id": "grok-slack-live-fire-action-envelope-20260828-04",
+    "ts": "2026-08-28T17:55:00Z"
   },
   {
     "from": "GROK46",
@@ -545,8 +551,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-slack-win-pull-20260828-03",
-    "ts": "2026-08-28T17:55:30Z"
+    "id": "grok-pr4991-verify-20260828-01",
+    "ts": "2026-08-28T18:03:40Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -961,10 +967,16 @@
     "ts": "2026-08-27T02:48:00Z"
   },
   {
+    "from": "U0BR9670G2H",
+    "presence": "PRESENT",
+    "id": "grkrev-0d3057ebbe56903f6c3076b9",
+    "ts": "2026-08-28T16:39:16Z"
+  },
+  {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
-    "ts": "2026-08-26T19:49:13Z"
+    "id": "grok-receipt-2487-20260828",
+    "ts": "2026-08-28T16:47:12Z"
   },
   {
     "from": "WIRE",

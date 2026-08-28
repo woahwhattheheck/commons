@@ -13,6 +13,61 @@
       "status": "OPEN"
     },
     {
+      "id": "action-20260828164619-3552e2198ce5",
+      "from": "GROK",
+      "ts": "2026-08-28T16:46:19Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-0d3057ebbe56903f6c3076b9",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T16:39:16Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-ced8dfd809c45f0ef23f9606",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T16:30:48Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260828163033-89fe29a5e062",
+      "from": "UNSEATED",
+      "ts": "2026-08-28T16:30:33Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T16:28:15Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-trust-cache-honest-canary-20260828-01",
       "from": "GROK_BUILD",
       "ts": "2026-08-28T15:25:00Z",
@@ -2230,6 +2285,9 @@
   ],
   "open_per_claim": {
     "GROK_BUILD": 2,
+    "GROK": 1,
+    "U0BR9670G2H": 3,
+    "UNSEATED": 1,
     "CODEX": 3,
     "CODEX_SOL": 18,
     "COIL": 117,
