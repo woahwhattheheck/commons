@@ -7,6 +7,7 @@ snapshot. Chat, Slack, ntfy, and open PRs never close an item.
 
   python3 host/current_work.py
   python3 host/current_work.py --root .
+  python3 host/current_work.py --main-sha <40-hex>
   python3 host/current_work.py --self-test
 """
 from __future__ import annotations
@@ -213,11 +214,11 @@ def project(catalog, snapshot):
     }
 
 
-def measure_tree(root):
+def measure_tree(root, main_sha=""):
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     if catalog.get("error"):
         return {"error": catalog["error"], "open_now": [], "items": []}
-    snapshot = {"main_paths": {}}
+    snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
     for item in catalog.get("items") or []:
         for path in item.get("claimed_paths") or []:
             snapshot["main_paths"][path] = os.path.exists(os.path.join(root, path))
@@ -243,10 +244,23 @@ def self_test():
     assert validate_catalog(sample) == []
     queued = reconcile_item(sample["items"][0], {})
     assert queued["status"] == "OPEN"
+    chatter = reconcile_item(sample["items"][0], {"chat_said_done": True, "ntfy_200": True, "slack_text": "done"})
+    assert chatter["status"] == "OPEN"
+    assert chatter["chat_ignored"] is True
     sha = "a" * 40
     closed = reconcile_item(sample["items"][0], {"main_sha": sha, "main_paths": {"ground/CURRENT_WORK.json": True}})
     assert closed["status"] == "CLOSED"
     assert closed["main_sha"] == sha
+    short = reconcile_item(sample["items"][0], {"main_sha": "abc1234", "main_paths": {"ground/CURRENT_WORK.json": True}})
+    assert short["status"] == "OPEN"
+    pinned = reconcile_item(
+        {"id": "device-pin-no-fire-20260828-01", "title": "Do not fire devices", "kind": "DEVICE_PINNED", "claimed_paths": []},
+        {"main_sha": sha, "chat_said_done": True},
+    )
+    assert pinned["status"] == "PINNED"
+    assert pinned["executable"] is False
+    live = project(sample, {})
+    assert live["historical_directives"][0]["current"] is False
     print("self-test ok")
     return 0
 
@@ -254,11 +268,12 @@ def self_test():
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Unfinished-now ledger")
     parser.add_argument("--root", default=DEFAULT_ROOT)
+    parser.add_argument("--main-sha", default="", help="official 40-character main SHA")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
     if args.self_test:
         return self_test()
-    out = measure_tree(args.root)
+    out = measure_tree(args.root, args.main_sha)
     json.dump(out, sys.stdout, indent=2)
     sys.stdout.write("\n")
     return 1 if out.get("error") or out.get("problems") else 0
