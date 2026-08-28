@@ -35,7 +35,7 @@ PEER_BLOBS = {
     "p/demon-human-outcomes-sales-ops-20260825-01.md": "fe19cfb7e57c4932d3db5f161166a91814a037f9",
 }
 CATALOG_BLOBS = {
-    "humans.html": "f0b250d6b6eb83f0b8b914f7720d9d84f20645e4",
+    "humans.html": "024b77587e926e965a5ecc3f06ee7d2dd99b4dda",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
     "revenue/human_outcomes/README.md": "66c64b6eba9b7aba035223940676bb134590a660",
     "revenue/human_outcomes/fulfillment.md": "fbaf8be09bc4bc544ea470670f3eb6435ebc5838",
