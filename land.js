@@ -247,6 +247,8 @@
     "ground/CURSOR_HALT.json",
     "ground/GROK_APP_ROUTE.md",
     "ground/GROK_APP_ROUTE.json",
+    "ground/OWNER_CONTEXT.md",
+    "ground/OWNER_CONTEXT.json",
     "ground/DIO_CRLF.md",
     "ground/DIO_CRLF.json",
     "ground/DEVICE_CANARY.md",
@@ -479,6 +481,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isOwnerContextTalk(t)) {
+      return { state: "CLAIMED", note: "host-outside-this-static-tree / richer-context-only-display / optional-owner-context talk. Talk is not a land. Ship the owner-context leftover to current main. Display only. Never invent LIVE. Do not remint two-slot hashed enrollment or vr8fo8." };
     }
     if (api.isCursorHaltTalk(t)) {
       return { state: "CLAIMED", note: "Bryce until-future-notice / 93%-usage / stop-giving-you-work talk. Talk is not a land. Ship the cursor-halt leftover to current main. Stop assigning work to Cursor until BRYCE or ZERO lifts it. Do not remint GROK_APP_ROUTE, SUPERGROK_HEAVY, or SITTING_REMINT." };
@@ -1025,6 +1030,37 @@
     return {
       state: "NOT_LANDED",
       note: "host/grok_app_route.py missing the leftover. Grok-app / grok.com-tokens / use-grok-more talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isOwnerContextTalk = function (text) {
+    return /host outside this static tree|richer context-only display remains OPEN|owner-context leftover|host-side optional network-context|optional owner context without publishing|OWNER_CONTEXT leftover/i.test(String(text || ""));
+  };
+
+  api.ownerContextState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/owner_context.py body not read. Absence was not measured." };
+    }
+    var hasAnnotate = /def annotate_context/.test(body);
+    var hasDoctor = /def doctor/.test(body);
+    var hasSimulate = /def simulate/.test(body);
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var display = /display_only/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    var refuse = /refuse_raw_ips/.test(body);
+    var external = /EXTERNAL_HOST_ACTION/.test(body);
+    var miss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    if (hasAnnotate && hasDoctor && hasSimulate && hasMeasure && hasClassify && display && noGate && refuse && external && miss) {
+      return {
+        state: "INTEGRATED",
+        note: "owner-context leftover is on this file. Display only. A Slack/board line is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/owner_context.py missing the leftover. Host-outside-this-static-tree talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3687,6 +3723,7 @@
   var grokReceiptOut = document.getElementById("grok-receipt-result");
   var cursorHaltOut = document.getElementById("cursor-halt-result");
   var grokAppRouteOut = document.getElementById("grok-app-route-result");
+  var ownerContextOut = document.getElementById("owner-context-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4425,6 +4462,12 @@
     if (!grokAppRouteOut) return;
     grokAppRouteOut.setAttribute("data-tone", api.toneFor(result.state));
     grokAppRouteOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintOwnerContext(result) {
+    if (!ownerContextOut) return;
+    ownerContextOut.setAttribute("data-tone", api.toneFor(result.state));
+    ownerContextOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5430,6 +5473,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintGrokAppRoute(err);
+      return err;
+    });
+  }
+
+  function loadOwnerContext(sha) {
+    if (!ownerContextOut) return Promise.resolve(null);
+    ownerContextOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/owner_context.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/owner_context.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/owner_context.py absent at the measured main SHA. Host-outside-this-static-tree talk is CLAIMED." };
+        paintOwnerContext(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintOwnerContext(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.ownerContextState(body);
+        paintOwnerContext(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintOwnerContext(err);
       return err;
     });
   }
@@ -6836,6 +6906,7 @@
     loadSittingPr(sha);
     loadCursorHalt(sha);
     loadGrokAppRoute(sha);
+    loadOwnerContext(sha);
     loadGrokReceipt(sha);
     loadDioCrlf(sha);
     loadSubzeroReceipt(sha);

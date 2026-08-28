@@ -106,6 +106,41 @@ def run() -> dict[str, Any]:
 
         pack = bridge.host_pack_presence()
         checks.append(_check("host_pack_complete", all(pack.values()), json.dumps(pack, sort_keys=True)))
+        handoff_root = bridge.integration_root()
+        checks.append(_check("handoff_py_present", (handoff_root / "handoff.py").is_file()))
+        checks.append(_check("handoff_ps1_present", (handoff_root / "run-handoff.ps1").is_file()))
+        from integrations.grok_slack import handoff as grok_handoff
+        checks.append(_check("slack_app_id_pinned", grok_handoff.SLACK_APP_ID == "A0BTJMFPTT6"))
+        checks.append(_check(
+            "grok_handoff_not_gemini_port",
+            grok_handoff.DEFAULT_HANDOFF_BIND == "127.0.0.1:8789" and grok_handoff.GEMINI_HANDOFF_BIND == "127.0.0.1:8780",
+        ))
+        gemini_refused = False
+        try:
+            grok_handoff.parse_loopback_bind("127.0.0.1:8780")
+        except grok_handoff.VaultError:
+            gemini_refused = True
+        checks.append(_check("refuses_gemini_port_8780", gemini_refused))
+        with tempfile.TemporaryDirectory() as vault_dir:
+            vault_path = Path(vault_dir) / "grok_slack.vault"
+            protector = grok_handoff.PosixUserProtector(material=b"canary-user")
+            bot_value = "xoxb" + "-injected-not-printed"
+            app_value = "xapp" + "-injected-not-printed"
+            grok_handoff.write_vault(vault_path, bot_value, app_value, protector=protector)
+            raw_vault = vault_path.read_bytes()
+            checks.append(_check(
+                "vault_is_not_plaintext",
+                bot_value.encode() not in raw_vault and app_value.encode() not in raw_vault,
+            ))
+            reloaded = grok_handoff.read_vault(vault_path, protector=protector)
+            checks.append(_check("vault_survives_reread", reloaded["slack_app_id"] == "A0BTJMFPTT6"))
+            status = grok_handoff.redacted_status(env={}, vault_path=vault_path, protector=protector, live=False)
+            status_blob = json.dumps(status)
+            checks.append(_check(
+                "handoff_status_omits_values",
+                bot_value not in status_blob and app_value not in status_blob and status["live"] is False,
+            ))
+            blob_parts.append(status_blob)
 
         health_code, health_report = bridge.health(args, env={}, root=bridge.integration_root())
         encoded_health = json.dumps(health_report)
@@ -165,6 +200,53 @@ def run() -> dict[str, Any]:
             result.get("delivery_owner") == bridge.FINAL_DELIVERY_OWNER,
         ))
         store.close()
+
+        stale_github = harness.FakeGitHub()
+        stale_github.put("carriers/catalog.json", {"carriers": []})
+        stale_mcp = harness.StaleMcp(stale_github)
+        stale_dir = Path(directory) / "stale"
+        stale_dir.mkdir()
+        stale_service, _stale_slack, _stale_gh, stale_mcp, stale_store = harness.build_bridge(
+            str(stale_dir), github=stale_github, mcp=stale_mcp
+        )
+        stale_result = stale_service.handle_event(
+            "Ev-canary-stale",
+            harness.event_payload(EXACT_TEXT, ts="1787871538.226989"),
+        )
+        stale_intake = [
+            call for call in stale_mcp.calls
+            if call[0] == "route_grokcom_revenue_work" and call[1].get("stage") == "INTAKE"
+        ]
+        stale_fires = [call for call in stale_mcp.calls if call[0] == "fire_action"]
+        checks.append(_check(
+            "stale_mcp_intake_uses_orchestrator",
+            stale_service.intake_road == "current_main_orchestrator" and stale_result.get("state") == "DELIVERED",
+            "%s:%s" % (stale_service.intake_road, stale_result.get("state")),
+        ))
+        checks.append(_check(
+            "stale_mcp_preserves_exact_text",
+            bool(stale_intake) and stale_intake[0][1]["event"]["text"] == EXACT_TEXT,
+        ))
+        checks.append(_check("stale_mcp_one_fire_action", len(stale_fires) == 1, str(len(stale_fires))))
+        stale_store.close()
+
+        def _rate_limited(_request: Any, timeout: float | None = None) -> Any:
+            del timeout
+            raise bridge.BridgeError("github HTTP 403")
+
+        limited = bridge.GitHubReadback(
+            opener=_rate_limited,
+            token="",
+            public_sha=lambda: "b" * 40,
+            public_read=lambda path, sha: b'{"carriers":[]}',
+        )
+        limited_sha = limited.current_main_sha()
+        limited_blob = limited.read_path("carriers/catalog.json", limited_sha)
+        checks.append(_check(
+            "github_readback_without_token",
+            limited_sha == "b" * 40 and limited_blob == b'{"carriers":[]}' and limited.road == "sha_pinned_raw",
+            limited.road,
+        ))
 
         crash_dir = Path(directory) / "crash"
         crash_dir.mkdir()
@@ -251,9 +333,10 @@ def run() -> dict[str, Any]:
         "final_delivery_owner": bridge.FINAL_DELIVERY_OWNER,
         "runtime_state": "CODE_LANDED_RUNTIME_UNCONFIGURED",
         "external_action": (
-            "Create the Slack app from integrations/grok_slack/app_manifest.yaml, "
-            "inject SLACK_BOT_TOKEN and SLACK_APP_TOKEN into the always-on host environment, "
-            "then start serve."
+            "Create the Slack app from integrations/grok_slack/app_manifest.yaml "
+            "(id A0BTJMFPTT6), open http://127.0.0.1:8789/, paste SLACK_BOT_TOKEN "
+            "and SLACK_APP_TOKEN once (never into the Gemini 8780 page), then the "
+            "encrypted vault plus serve survive restart."
         ),
     }
 
