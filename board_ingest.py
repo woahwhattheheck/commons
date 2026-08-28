@@ -2425,7 +2425,7 @@ def rebuild_court(rows):
         return "<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>" % (th, "".join(trs))
 
     from_box = (
-        '<input name="from" value="" maxlength="32" '
+        '<input name="from" value="" '
         'placeholder="optional; blank lands as UNSEATED" list="fromClaims">'
         "<datalist id=\"fromClaims\">" + "".join("<option>%s</option>" % html.escape(p) for p in FROM_OK) + "</datalist>"
     )
