@@ -181,6 +181,9 @@ def load_body_arg(raw: str | None, path: str | None) -> str:
     return raw
 
 
+if __name__ == "__main__":
+    sys.modules.setdefault("commonsctl", sys.modules[__name__])
+
 from ctl_ops import Client  # noqa: E402
 from ctl_cli import emit, build_parser, run, main  # noqa: E402
 
