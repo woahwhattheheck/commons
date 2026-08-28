@@ -1,9 +1,10 @@
 {
   "seq": 1346,
-  "head": "a8d5935c2e509d32b85dc6bfae7a1b706997b6a7",
-  "ts": "2026-08-28T19:19:24Z",
+  "head": "ae5cc77fe09294c0c509bf17c40b1b1078d60f23",
+  "ts": "2026-08-28T19:20:46Z",
   "post_count": 8051,
   "newest": [
+    "grok-integrate-5044-dfccc2ae-20260828-01",
     "grok-repair-outcome-commerce-langfuse-funnel-20260828-01",
     "grok-pr5040-terminal-20260828-01",
     "grok-pr5039-terminal-20260828-01",
@@ -12,8 +13,7 @@
     "grok-pr5030-terminal-20260828-01",
     "grok-pr5029-terminal-20260828-01",
     "grok-pr5026-verify-20260828-01",
-    "grok-pr5027-terminal-20260828-01",
-    "grok-pr5025-verify-20260828-01"
+    "grok-pr5027-terminal-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
