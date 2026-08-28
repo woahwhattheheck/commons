@@ -12,7 +12,11 @@
   };
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
-      return ({ "&": "&", "<": "<", ">": ">", '"': """, "'": "&#39;" })[c];
+      if (c === "&") return "&amp;";
+      if (c === "<") return "&lt;";
+      if (c === ">") return "&gt;";
+      if (c === '"') return "&quot;";
+      return "&#39;";
     });
   }
   function isStripeCheckoutUrl(raw) {
