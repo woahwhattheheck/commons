@@ -54,6 +54,7 @@ The live $45,000 Titan checkout is in `land/sku-muhlnickel-titan-20260826.md`. W
 4. Map the phone-agent architecture against the current wave by public, dated capability claims: interruption, latency, tool use, recovery, receipts, deployment boundary, and data handling. Mark unknowns as unknown.
 5. Target collaboration money separately from procurement: labs for reproduction, vendors for integration, and researchers for evaluation.
 6. Keep a grants ledger with funder, program, eligibility, deadline, requested amount, matching requirement, IP terms, deliverables, owner, and next action. Submit only when the archive/license facts match the program.
+7. Compile a non-dilutive opportunity registry that composes this grants ledger, White Box offers, collaboration targets, procurement channels, and the listing registry with hashed TITAN Hands / RINGDELTA / carrier / evidence / swarm / reliability receipts. Public doors: `opportunity.html` and `proof-to-proposal.html`. It does not submit, accept terms, remint listing-registry, or claim awards.
 
 ## Evidence rule
 
