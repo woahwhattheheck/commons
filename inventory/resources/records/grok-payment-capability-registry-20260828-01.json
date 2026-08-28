@@ -1,0 +1,41 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "grok-payment-capability-registry-20260828-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "GROK_BUILD",
+  "observed_at": "2026-08-28T16:43:00Z",
+  "base_main_sha": "3087b1f88094bae180d1ec9ea4d23152652dcbc7",
+  "selected_resource": "payment-capability-registry",
+  "selection": {
+    "held": false,
+    "blocked": false,
+    "concrete_consumer": "Public storefront, owner dashboard invoices, and future failover rails",
+    "reason": "Commons needed a provider-neutral chargeability registry so Stripe failing closed cannot freeze buyer intake, without pretending PayPal/Sponsors/Square are live."
+  },
+  "before": {
+    "stage": "REACHABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "checkout_capability snapshot was Stripe-only; failover was mailto only"
+  },
+  "after": {
+    "stage": "EXERCISED",
+    "condition": "LIVE",
+    "producing_outcome": "Registry names Stripe CHARGEABLE with verified settlement last4 7243 and keeps PayPal, GitHub Sponsors, and Square INERT with one-click owner actions. Cash USD 0."
+  },
+  "current_truth": {
+    "chargeable_public_rails": 1,
+    "owner_usable_rails": 2,
+    "inert_failover_rails": 3,
+    "collected_cash_usd": "0.00",
+    "authorization": "NOT_LANDED",
+    "bank_available": "NOT_LANDED"
+  },
+  "non_claims": [
+    "No credentials, KYC, bank, OTP, or provider approval entered",
+    "No PayPal.me, Sponsors profile, or Square checkout invented",
+    "No charge, payout, buyer, or cash",
+    "No auth gate",
+    "No remint of SKUs or Payment Links"
+  ],
+  "titan": "NOT_WRITTEN"
+}

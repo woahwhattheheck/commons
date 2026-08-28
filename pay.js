@@ -89,7 +89,46 @@
       '. AUTHORIZATION/SETTLEMENT/PAYOUT/BANK_AVAILABLE remain ' +
       esc(money.bank_available || "NOT_LANDED") + '.</p>';
   }
-  function render(snapshot, catalog) {
+  function ownerActionUrlOk(raw) {
+    if (typeof raw !== "string" || !raw) return false;
+    var parsed;
+    try { parsed = new URL(raw); } catch (err) { return false; }
+    if (parsed.protocol !== "https:") return false;
+    if (parsed.username || parsed.password) return false;
+    return parsed.hostname === "dashboard.stripe.com" ||
+      parsed.hostname === "www.paypal.com" ||
+      parsed.hostname === "paypal.com" ||
+      parsed.hostname === "github.com" ||
+      parsed.hostname === "squareup.com" ||
+      parsed.hostname === "www.squareup.com";
+  }
+  function fillFailover(registry, snapshot) {
+    var node = document.getElementById("rail-failover");
+    if (!node) return;
+    var rails = (registry && registry.rails) || [];
+    var stripeReady = accountReady(snapshot);
+    var actions = [];
+    rails.forEach(function (rail) {
+      var list = (rail.required_owner_actions || []).concat(rail.optional_owner_actions || []);
+      list.forEach(function (action) {
+        if (action && action.kind === "EXTERNAL_OWNER_ACTION" && ownerActionUrlOk(action.url)) {
+          if (!stripeReady || action.blocking) actions.push(action);
+        }
+      });
+    });
+    if (stripeReady && !actions.length) {
+      node.innerHTML = '<p class="note">Measured Stripe rail is CHARGEABLE. Failover owner actions stay one-click and unpublished as checkout. Full registry: <a href="./payment-capability.html">payment rails</a>.</p>';
+      return;
+    }
+    var html = '<p><b>Storefront failover.</b> Unverified rails stay inert. Official provider UIs only:</p>';
+    actions.forEach(function (action) {
+      html += '<p><a class="failover-owner-action" href="' + esc(action.url) +
+        '" rel="noopener noreferrer" target="_blank">' + esc(action.label) + "</a></p>";
+    });
+    html += '<p><a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a></p>';
+    node.innerHTML = html;
+  }
+  function render(snapshot, catalog, registry) {
     var byId = {};
     (catalog.listings || []).forEach(function (row) { byId[row.id] = row; });
     Array.prototype.forEach.call(document.querySelectorAll(".js-checkout-slot"), function (slot) {
@@ -97,9 +136,11 @@
       fillSlot(slot, byId[sku], snapshot, (catalog.funnels || {})[sku]);
     });
     fillOwner(snapshot);
+    fillFailover(registry, snapshot);
   }
   var snapshotUrl = "./revenue/checkout_capability/snapshot.json?v=" + Date.now();
   var catalogUrl = "./revenue/outcome_commerce/catalog.json?v=" + Date.now();
+  var registryUrl = "./revenue/payment_capability/registry.json?v=" + Date.now();
   Promise.all([
     fetch(snapshotUrl, { cache: "no-store" }).then(function (response) {
       if (!response.ok) throw new Error(String(response.status));
@@ -108,9 +149,13 @@
     fetch(catalogUrl, { cache: "no-store" }).then(function (response) {
       if (!response.ok) throw new Error(String(response.status));
       return response.json();
-    })
+    }),
+    fetch(registryUrl, { cache: "no-store" }).then(function (response) {
+      if (!response.ok) throw new Error(String(response.status));
+      return response.json();
+    }).catch(function () { return { rails: [] }; })
   ]).then(function (pair) {
-    render(pair[0], pair[1]);
+    render(pair[0], pair[1], pair[2]);
   }).catch(function (error) {
     Array.prototype.forEach.call(document.querySelectorAll(".js-checkout-slot"), function (slot) {
       slot.textContent = "Catalog unavailable: " + error.message + ". Stripe URLs stay inert.";
