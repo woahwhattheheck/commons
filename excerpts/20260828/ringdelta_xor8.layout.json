@@ -1,0 +1,18 @@
+{
+  "name": "ringdelta_xor8",
+  "magic": "MUHLRD01",
+  "organ": "excerpts/20260828/ringdelta_xor8.mno",
+  "bytes": 300,
+  "record": "<BQQQ>",
+  "stride_bytes": 25,
+  "n_gate": 8,
+  "n_wires": 72,
+  "n_in": 16,
+  "n_out": 8,
+  "depth": 1,
+  "opcode": "XOR=0",
+  "inject": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+  "surface": [56, 57, 58, 59, 60, 61, 62, 63],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true
+}
