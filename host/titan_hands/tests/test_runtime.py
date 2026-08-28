@@ -289,5 +289,13 @@ class RuntimeTests(unittest.TestCase):
         text = self.runtime.handle({"route": "web", "op": "fetch", "url": "https://example.com/"})
         self.assertEqual(text["text"], "hello web")
 
+    def test_shell_surfaces_nonzero_exit_as_typed_failure(self):
+        failed = self.runtime.handle(
+            {"route": "shell", "op": "run", "command": [sys.executable, "-c", "raise SystemExit(7)"]}
+        )
+        self.assertFalse(failed["ok"])
+        self.assertEqual(failed["failure_reason"], "COMMAND_FAILED")
+        self.assertEqual(failed["evidence"]["returncode"], 7)
+
 if __name__ == "__main__":
     unittest.main()
