@@ -39,9 +39,8 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 
 <section id="session-controls">
 <h2>Court session</h2>
-<p class="note">Pages from=BRYCE is a claim. Laptop path: <code>python host/muhl_session_once.py --go --open|--close --from BRYCE</code>. Do not forge.</p>
+<p class="note">Open control: anyone with the link may open or close the court session. <code>from=</code> is optional context, never authorization.</p>
 <form id="session-open">
-<input type="hidden" name="from" value="BRYCE">
 <input type="hidden" name="to" value="COURT">
 <input type="hidden" name="act" value="SESSION_OPEN">
 <input type="hidden" name="court" value="order">
@@ -50,7 +49,6 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 </form>
 <pre class="out" id="session-open-out"></pre>
 <form id="session-close">
-<input type="hidden" name="from" value="BRYCE">
 <input type="hidden" name="to" value="COURT">
 <input type="hidden" name="act" value="SESSION_CLOSE">
 <input type="hidden" name="court" value="order">
