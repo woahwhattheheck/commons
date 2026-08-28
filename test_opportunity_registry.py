@@ -145,6 +145,20 @@ class OpportunityRegistryTests(unittest.TestCase):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         self.assertIn(feat[0]["sha256"][:16], html)
 
+    def test_capability_receipts_name_every_stale_path(self):
+        stale = []
+        for cap in self.registry["capabilities"]:
+            for rec in cap["receipts"]:
+                path = ROOT / rec["path"]
+                live = mod.sha256_file(path)
+                size = path.stat().st_size
+                if live != rec["sha256"] or size != rec["bytes"]:
+                    stale.append(
+                        "%s live=%s/%s pinned=%s/%s"
+                        % (rec["path"], live, size, rec["sha256"], rec["bytes"])
+                    )
+        self.assertEqual(stale, [], "stale capability receipts:\n%s" % "\n".join(stale))
+
     def test_resource_ledger_receipt_tracks_live_bytes(self):
         recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
         ledger = [rec for rec in recs if rec["path"] == "ground/RESOURCE_LEDGER.json"]
