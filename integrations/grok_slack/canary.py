@@ -166,6 +166,53 @@ def run() -> dict[str, Any]:
         ))
         store.close()
 
+        stale_github = harness.FakeGitHub()
+        stale_github.put("carriers/catalog.json", {"carriers": []})
+        stale_mcp = harness.StaleMcp(stale_github)
+        stale_dir = Path(directory) / "stale"
+        stale_dir.mkdir()
+        stale_service, _stale_slack, _stale_gh, stale_mcp, stale_store = harness.build_bridge(
+            str(stale_dir), github=stale_github, mcp=stale_mcp
+        )
+        stale_result = stale_service.handle_event(
+            "Ev-canary-stale",
+            harness.event_payload(EXACT_TEXT, ts="1787871538.226989"),
+        )
+        stale_intake = [
+            call for call in stale_mcp.calls
+            if call[0] == "route_grokcom_revenue_work" and call[1].get("stage") == "INTAKE"
+        ]
+        stale_fires = [call for call in stale_mcp.calls if call[0] == "fire_action"]
+        checks.append(_check(
+            "stale_mcp_intake_uses_orchestrator",
+            stale_service.intake_road == "current_main_orchestrator" and stale_result.get("state") == "DELIVERED",
+            "%s:%s" % (stale_service.intake_road, stale_result.get("state")),
+        ))
+        checks.append(_check(
+            "stale_mcp_preserves_exact_text",
+            bool(stale_intake) and stale_intake[0][1]["event"]["text"] == EXACT_TEXT,
+        ))
+        checks.append(_check("stale_mcp_one_fire_action", len(stale_fires) == 1, str(len(stale_fires))))
+        stale_store.close()
+
+        def _rate_limited(_request: Any, timeout: float | None = None) -> Any:
+            del timeout
+            raise bridge.BridgeError("github HTTP 403")
+
+        limited = bridge.GitHubReadback(
+            opener=_rate_limited,
+            token="",
+            public_sha=lambda: "b" * 40,
+            public_read=lambda path, sha: b'{"carriers":[]}',
+        )
+        limited_sha = limited.current_main_sha()
+        limited_blob = limited.read_path("carriers/catalog.json", limited_sha)
+        checks.append(_check(
+            "github_readback_without_token",
+            limited_sha == "b" * 40 and limited_blob == b'{"carriers":[]}' and limited.road == "sha_pinned_raw",
+            limited.road,
+        ))
+
         crash_dir = Path(directory) / "crash"
         crash_dir.mkdir()
         github = harness.FakeGitHub()
