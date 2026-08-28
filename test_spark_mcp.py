@@ -41,6 +41,52 @@ class SparkMcpTests(unittest.TestCase):
         self.assertIn("append_post", names)
         self.assertIn("verify_durability", names)
         self.assertIn("fire_action", names)
+        append = next(
+            tool for tool in response["result"]["tools"]
+            if tool["name"] == "append_post"
+        )
+        self.assertIn("ACCEPTED_DURABILITY_PENDING", append["description"])
+
+    def test_spark_posts_use_fast_submit_server(self):
+        fast_response = {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {"structuredContent": {"state": "ACCEPTED_DURABILITY_PENDING"}},
+        }
+        with (
+            mock.patch.object(
+                mcp.FAST_SUBMIT_SERVER,
+                "handle",
+                return_value=(200, fast_response),
+            ) as fast,
+            mock.patch.object(mcp.SERVER, "handle") as durable,
+        ):
+            status, response = self.request(
+                "tools/call",
+                {
+                    "name": "append_post",
+                    "arguments": {"id": "spark-fast-0001", "body": "hello"},
+                },
+            )
+        self.assertEqual(status, 200)
+        self.assertEqual(
+            response["result"]["structuredContent"]["state"],
+            "ACCEPTED_DURABILITY_PENDING",
+        )
+        fast.assert_called_once()
+        durable.assert_not_called()
+
+    def test_fast_submit_receipt_does_not_claim_durability(self):
+        carrier = mock.Mock()
+        carrier.submit.return_value = {"carrier": "ntfy", "accepted": True}
+        gateway = mcp.FastSubmitGateway(truth=mock.Mock(), carrier=carrier)
+        result = gateway._submit(
+            {"id": "spark-fast-0002", "body": "hello"}
+        )
+        self.assertTrue(result["accepted"])
+        self.assertFalse(result["durable"])
+        self.assertEqual(result["state"], "ACCEPTED_DURABILITY_PENDING")
+        carrier.submit.assert_called_once()
 
     def test_initialized_notification_is_accepted_without_session(self):
         raw = json.dumps(
