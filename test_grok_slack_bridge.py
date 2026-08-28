@@ -1310,6 +1310,142 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertTrue(any(item.startswith("materialize:") for item in logged), logged)
             store.close()
 
+    def test_git_clone_materialize_survives_eight_origin_main_moves(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            origin_root = Path(directory) / "git"
+            origin_root.mkdir()
+            bare, clone = make_bare_commons_clone(str(origin_root))
+            count_file = bare / "hooks" / "move-count"
+            hook = bare / "hooks" / "pre-receive"
+            hook.write_text(
+                "#!/bin/sh\n"
+                "count_file=\"%s\"\n"
+                "count=0\n"
+                "if [ -f \"$count_file\" ]; then\n"
+                "  count=$(cat \"$count_file\")\n"
+                "fi\n"
+                "if [ \"$count\" -lt 8 ]; then\n"
+                "  echo $((count + 1)) > \"$count_file\"\n"
+                "  parent=$(git rev-parse refs/heads/main)\n"
+                "  tree=$(git rev-parse 'refs/heads/main^{tree}')\n"
+                "  moved=$(GIT_AUTHOR_NAME=llms GIT_AUTHOR_EMAIL=llms@example.test "
+                "GIT_COMMITTER_NAME=llms GIT_COMMITTER_EMAIL=llms@example.test "
+                "git commit-tree \"$tree\" -p \"$parent\" -m 'origin moved')\n"
+                "  git update-ref refs/heads/main \"$moved\"\n"
+                "  echo 'non-fast-forward: origin/main moved' >&2\n"
+                "  exit 1\n"
+                "fi\n"
+                "exit 0\n" % count_file,
+                encoding="utf-8",
+            )
+            hook.chmod(hook.stat().st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
+            github = OfflineGitHub()
+            mcp = FakeMcp(FakeGitHub(), fire_mode="pending-unlanded")
+            service, slack, _github, mcp, store = build_bridge(
+                directory, github=github, mcp=mcp, git_root=clone,
+            )
+            result = service.handle_event("Ev-git-8move", event_payload("eight origin moves"))
+            self.assertEqual(result["state"], "OBSERVING", service.work_log)
+            ident = store.get("Ev-git-8move").job_id
+            head = remote_head(bare)
+            names = remote_commit_files(bare, head)
+            self.assertEqual(names, {f"p/{ident}.md", f"wake_jobs/{ident}.json"})
+            rejected = [item for item in service.work_log if "git_push_rejected" in str(item)]
+            self.assertGreaterEqual(len(rejected), 8, service.work_log)
+            self.assertIn("git:materialize_wake_job", service.work_log)
+            self.assertEqual(store.get("Ev-git-8move").fire_action_calls, 1)
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            self.assertFalse(any("DURABILITY_NEVER_APPEARED" in (row.get("text") or "") for row in slack.posts))
+            self.assertTrue(count_file.is_file())
+            self.assertGreaterEqual(int(count_file.read_text(encoding="utf-8").strip() or "0"), 8)
+            store.close()
+
+    def test_git_materialize_uses_env_git_root_despite_cwd_and_git_dir_decoy(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            origin_root = Path(directory) / "git"
+            origin_root.mkdir()
+            bare, clone = make_bare_commons_clone(str(origin_root))
+            decoy = Path(directory) / "decoy.git"
+            _git_in(Path(directory), ["init", "--bare", str(decoy)])
+            cwd = Path(directory) / "scheduler-cwd"
+            cwd.mkdir()
+            github = OfflineGitHub()
+            mcp = FakeMcp(FakeGitHub(), fire_mode="pending-unlanded")
+            old_cwd = os.getcwd()
+            old_git_dir = os.environ.get("GIT_DIR")
+            old_root = os.environ.get("COMMONS_GROK_SLACK_GIT_ROOT")
+            try:
+                os.chdir(cwd)
+                os.environ["GIT_DIR"] = str(decoy)
+                os.environ["COMMONS_GROK_SLACK_GIT_ROOT"] = str(clone)
+                env = bridge.git_env()
+                self.assertEqual(env.get("GCM_INTERACTIVE"), "Never")
+                self.assertEqual(env.get("GIT_TERMINAL_PROMPT"), "0")
+                self.assertNotIn("GIT_DIR", env)
+                service, slack, _github, mcp, store = build_bridge(
+                    directory, github=github, mcp=mcp,
+                )
+                result = service.handle_event("Ev-git-env", event_payload("scheduled process env"))
+            finally:
+                os.chdir(old_cwd)
+                if old_git_dir is None:
+                    os.environ.pop("GIT_DIR", None)
+                else:
+                    os.environ["GIT_DIR"] = old_git_dir
+                if old_root is None:
+                    os.environ.pop("COMMONS_GROK_SLACK_GIT_ROOT", None)
+                else:
+                    os.environ["COMMONS_GROK_SLACK_GIT_ROOT"] = old_root
+            self.assertEqual(result["state"], "OBSERVING", service.work_log)
+            ident = store.get("Ev-git-env").job_id
+            head = remote_head(bare)
+            names = remote_commit_files(bare, head)
+            self.assertEqual(names, {f"p/{ident}.md", f"wake_jobs/{ident}.json"})
+            self.assertIn("git:materialize_wake_job", service.work_log)
+            self.assertEqual(store.get("Ev-git-env").fire_action_calls, 1)
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            self.assertFalse(any("DURABILITY_NEVER_APPEARED" in (row.get("text") or "") for row in slack.posts))
+            store.close()
+
+    def test_materialize_diagnostics_survive_store_reopen(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            origin_root = Path(directory) / "git"
+            origin_root.mkdir()
+            _bare, clone = make_bare_commons_clone(str(origin_root))
+            github = OfflineGitHub()
+            mcp = FakeMcp(FakeGitHub(), fire_mode="pending-unlanded")
+            state_path = Path(directory) / "state.sqlite3"
+            store = bridge.BridgeStore(state_path)
+            service, slack, _github, mcp, store = build_bridge(
+                directory, github=github, mcp=mcp, git_root=clone, store=store,
+            )
+
+            def boom(*_args: Any, **_kwargs: Any) -> Any:
+                raise RuntimeError("hidden-git-failure")
+
+            service._git = boom  # type: ignore[method-assign]
+            result = service.handle_event("Ev-git-diag", event_payload("diagnostics must persist"))
+            self.assertEqual(result["state"], "FAILED")
+            self.assertEqual(result.get("code"), "DURABILITY_NEVER_APPEARED")
+            row = store.get("Ev-git-diag")
+            self.assertIsNotNone(row)
+            self.assertIn("git_exception", row.diagnostics)
+            self.assertIn("hidden-git-failure", row.diagnostics)
+            sidecar = store.materialize_log_path()
+            self.assertTrue(sidecar.is_file(), sidecar)
+            self.assertIn("hidden-git-failure", sidecar.read_text(encoding="utf-8"))
+            posted = [item for item in slack.posts if "DURABILITY_NEVER_APPEARED" in (item.get("text") or "")]
+            self.assertEqual(len(posted), 1)
+            self.assertIn("hidden-git-failure", posted[0].get("text") or "")
+            store.close()
+            store2 = bridge.BridgeStore(state_path)
+            again = store2.get("Ev-git-diag")
+            self.assertIsNotNone(again)
+            self.assertIn("git_exception", again.diagnostics)
+            self.assertIn("hidden-git-failure", again.diagnostics)
+            self.assertEqual(again.fire_action_calls, 1)
+            store2.close()
+
 
 if __name__ == "__main__":
     unittest.main()
