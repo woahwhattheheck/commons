@@ -4,6 +4,7 @@ import hashlib
 import io
 import json
 import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -797,6 +798,7 @@ class RevenueRecoveryTests(unittest.TestCase):
         for path in (
             "p/jojo-revenue-recovery-pipeline-20260825-01.md",
             "test_carrier_from_memory.js",
+            ".gitignore",
         ):
             self.assertEqual(focused.count(f"- '{path}'"), 2)
         self.assertIn("node test_carrier_from_memory.js", focused)
@@ -806,9 +808,53 @@ class RevenueRecoveryTests(unittest.TestCase):
             "python host/revenue_recovery.py --self-test",
             "python host/revenue_recovery.py measure",
             "open_door_guard.py --diff-file -",
+            "git diff --check HEAD^",
         ):
             self.assertIn(command, focused)
         self.assertEqual(focused.count("'test_diagnostic_dlp.js'"), 2)
+
+    def test_gitignore_has_no_extra_blank_line_at_eof(self):
+        data = (ROOT / ".gitignore").read_bytes()
+        self.assertTrue(data.endswith(b"\n"), "POSIX text files end with one newline")
+        self.assertFalse(
+            data.endswith(b"\n\n"),
+            "extra blank line at EOF fails git diff --check (revenue-hardening whitespace guard)",
+        )
+        self.assertNotIn(b"\r", data)
+        text = data.decode("utf-8")
+        self.assertIn("*.vault\n", text)
+        self.assertIn("**/.commons/*.vault\n", text)
+        self.assertTrue(text.rstrip("\n").endswith("**/.commons/*.vault"))
+
+    def test_extra_blank_line_at_eof_fails_git_diff_check(self):
+        """Regression for revenue-hardening run 33187123387 (.gitignore:21 new blank line at EOF)."""
+        good = (ROOT / ".gitignore").read_bytes()
+        self.assertFalse(good.endswith(b"\n\n"))
+        bad = good.rstrip(b"\n") + b"\n\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+
+            def git(*args, check=True):
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args],
+                    check=check,
+                    capture_output=True,
+                    text=True,
+                )
+
+            git("init")
+            git("config", "user.email", "rivet@example.invalid")
+            git("config", "user.name", "RIVET")
+            (repo / ".gitignore").write_bytes(good)
+            git("add", ".gitignore")
+            git("commit", "-m", "good")
+            (repo / ".gitignore").write_bytes(bad)
+            git("add", ".gitignore")
+            git("commit", "-m", "bad")
+            result = git("diff", "--check", "HEAD^", check=False)
+            self.assertNotEqual(result.returncode, 0)
+            combined = result.stdout + result.stderr
+            self.assertIn("new blank line at EOF", combined)
 
     def test_append_only_canonical_post_and_new_correction_receipt(self):
         canonical_path = ROOT / "p/jojo-revenue-recovery-pipeline-20260825-01.md"
