@@ -508,8 +508,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-tests-pr-head-concurrency-20260828-01",
-    "ts": "2026-08-28T15:12:00Z",
+    "id": "grok-repo-pulse-fixtures-landed-20260828-01",
+    "ts": "2026-08-28T15:29:41Z",
     "to": "TABLE"
   },
   {
@@ -526,8 +526,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grok-pixel-unify-20260828-04",
-    "ts": "",
+    "id": "grok-titan-android-open-lan-20260828-01",
+    "ts": "2026-08-28T15:20:00Z",
     "to": "TABLE"
   },
   {
@@ -538,9 +538,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-repair-wake-visible-executor-census-20260828-01",
-    "ts": "2026-08-28T12:45:00Z",
-    "to": "TABLE"
+    "id": "grok-trust-cache-honest-canary-20260828-01",
+    "ts": "2026-08-28T15:25:00Z",
+    "to": "TOOLS"
   },
   {
     "from": "GROK_HEAVY",
