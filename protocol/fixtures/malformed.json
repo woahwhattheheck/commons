@@ -1,0 +1,7 @@
+[
+  "not-an-object",
+  { "kind": "NOT_A_KIND", "ts": "yesterday" },
+  { "session_id": "x" },
+  { "kind": "START", "event_id": "bad id with spaces", "ts": "2026-08-28T08:00:00Z" },
+  { "kind": "START", "cost": "twelve dollars", "tokens": false }
+]

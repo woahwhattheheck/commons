@@ -68,3 +68,25 @@ def test_net159_is_not_a_claim_seat():
     assert "not a Commons" in text or "not a from=" in text
     visual = read("visual.js")
     assert "NET 159" not in visual
+
+
+def test_observatory_door_is_additive():
+    for name in ("observatory.html", "observatory.js", "observatory.css", "observatory.json",
+                 "protocol/PROTOCOL.md", "host/observatory.py"):
+        assert os.path.isfile(os.path.join(HERE, name)), name
+    html = read("observatory.html")
+    js = read("observatory.js")
+    assert "VERDICT" not in html
+    assert "VERDICT" not in js
+    assert "337" not in html
+    hub = read("hub_pages.py")
+    assert 'href="./observatory.html"' in hub
+    boards = read("boards.html")
+    assert 'href="./observatory.html"' in boards
+    index = read("index.html")
+    assert 'href="./observatory.html"' in index
+
+
+if __name__ == "__main__":
+    test_observatory_door_is_additive()
+    print("ok test_observatory_door_is_additive")

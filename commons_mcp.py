@@ -1116,6 +1116,30 @@ class CommonsGateway:
             "body_sha256": actual_hash,
         }
 
+    def read_observatory(self, arguments: Any) -> dict[str, Any]:
+        """Return the Observatory bake. Optional view filter. Never a gate."""
+        from host.observatory import read_observatory
+        args = arguments if isinstance(arguments, dict) else {}
+        return read_observatory(str(Path(__file__).resolve().parent), args)
+
+    def observe_work(self, arguments: Any) -> dict[str, Any]:
+        """Project current sessions, work, collisions, and attention."""
+        from host.observatory import observe_work
+        args = arguments if isinstance(arguments, dict) else {}
+        return observe_work(str(Path(__file__).resolve().parent), args)
+
+    def project_live_work(self, arguments: Any) -> dict[str, Any]:
+        """Rebuild the Observatory snapshot from current bakes and optional events."""
+        from host.observatory import project_live_work
+        args = arguments if isinstance(arguments, dict) else {}
+        return project_live_work(str(Path(__file__).resolve().parent), args)
+
+    def continue_from_observation(self, arguments: Any) -> dict[str, Any]:
+        """Advisory continuation packet. Does not schedule or replay prompts."""
+        from host.observatory import continue_from
+        args = arguments if isinstance(arguments, dict) else {}
+        return continue_from(str(Path(__file__).resolve().parent), args)
+
     def read_resource(self, uri: str) -> dict[str, Any]:
         if not isinstance(uri, str) or not uri or "%" in uri or "?" in uri or "#" in uri:
             raise CommonsError("SCHEMA", "invalid or aliased resource URI", state="UNVERIFIED")
@@ -1166,6 +1190,7 @@ class CommonsGateway:
             ("orchestration", "jeffersonville/topology"): ("orchestration/jeffersonville/topology.json", "application/json", 60000, "public"),
             ("orchestration", "jeffersonville/adapter-schema"): ("orchestration/jeffersonville/adapter.schema.json", "application/schema+json", 60000, "public"),
             ("relays", "ntfy"): ("relay-manifest.json", "application/json", 60000, "public"),
+            ("observatory", ""): ("observatory.json", "application/json", 60000, "public"),
         }
         if (key, tail) in mapping:
             path, mime, ttl, scope = mapping[(key, tail)]
@@ -1355,6 +1380,34 @@ TOOL_DEFINITIONS = [
         ),
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
     },
+    {
+        "name": "read_observatory",
+        "title": "Read Commons Observatory",
+        "description": "Read the canonical Observatory snapshot bake (sessions, work, collisions, attention, cash truth). Optional view=census|work|collisions|attention|timeline|briefing|economy|routes. Metadata is optional and never a gate.",
+        "inputSchema": _object_schema({"view": STRING_SCHEMA, "limit": {"type": "integer", "minimum": 0}, "offset": {"type": "integer", "minimum": 0}, "cursor": STRING_SCHEMA}, []),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
+    {
+        "name": "observe_work",
+        "title": "Observe Live Commons Work",
+        "description": "Project current sessions, presence, work map, collisions, and attention from existing bakes and protocol events. Does not schedule work.",
+        "inputSchema": _object_schema({"filter": {"type": "object", "additionalProperties": True}}, []),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
+    {
+        "name": "project_live_work",
+        "title": "Project Live Work Snapshot",
+        "description": "Rebuild the Observatory snapshot from current Commons bakes plus optional protocol events. Returns a bake, never mutates p/{id}.md.",
+        "inputSchema": _object_schema({"events": {"type": "array", "items": {"type": "object", "additionalProperties": True}}}, []),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
+    {
+        "name": "continue_from_observation",
+        "title": "Continue From Observation",
+        "description": "Return an advisory lineage-linked continuation packet and open-carrier envelope. Does not replay finished prompts, does not schedule, does not grant authority.",
+        "inputSchema": _object_schema({"session_id": STRING_SCHEMA}, []),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
 ]
 
 RESOURCES = [
@@ -1371,6 +1424,7 @@ RESOURCES = [
     {"uri": "commons://orchestration/jeffersonville/topology", "name": "Jeffersonville reference topology", "description": "Adapter and benchmark plan only; no infrastructure deployment claim.", "mimeType": "application/json"},
     {"uri": "commons://orchestration/jeffersonville/adapter-schema", "name": "Jeffersonville adapter schema", "description": "Permissive descriptive capability metadata.", "mimeType": "application/schema+json"},
     {"uri": "commons://relays/ntfy", "name": "Commons ntfy relay manifest", "description": "Ordered open relay roads and direct-observation contract.", "mimeType": "application/json"},
+    {"uri": "commons://observatory", "name": "Commons Observatory snapshot", "description": "Bake of protocol v0.1 living state. Not durable truth.", "mimeType": "application/json"},
     {"uri": APP_URI, "name": "Commons Composer", "description": "Open-door MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
 ]
 

@@ -70,6 +70,10 @@ SHARED_HTTP_TOOL_NAMES = (
     "create_memory_board",
     "append_memory",
     "verify_durability",
+    "read_observatory",
+    "observe_work",
+    "project_live_work",
+    "continue_from_observation",
     GET_SEND_LINK_TOOL["name"],
 )
 _CARRIER_ID_RE = re.compile(r"^[a-z0-9-]+$")

@@ -380,6 +380,53 @@
           "worker_id": { "type": "string" }
         }
       }
+    },
+    {
+      "name": "read_observatory",
+      "description": "Read the Commons Observatory bake (sessions, work, collisions, attention, cash). Optional view and deterministic limit/offset pagination. Metadata is optional and never a gate.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "view": { "type": "string" },
+          "limit": { "type": "integer", "minimum": 0 },
+          "offset": { "type": "integer", "minimum": 0 },
+          "cursor": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "observe_work",
+      "description": "Project current sessions, presence, work map, collisions, and attention. Does not schedule work. Unknown extra fields are ignored.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "filter": { "type": "object" }
+        }
+      }
+    },
+    {
+      "name": "project_live_work",
+      "description": "Rebuild the Observatory snapshot from current bakes plus optional protocol events. Returns a bake. Never mutates p/{id}.md.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "events": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+        }
+      }
+    },
+    {
+      "name": "continue_from_observation",
+      "description": "Return an advisory lineage-linked continuation packet and open-carrier envelope. Does not replay finished prompts, does not schedule, does not grant authority.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "session_id": { "type": "string" }
+        }
+      }
     }
   ]
 }

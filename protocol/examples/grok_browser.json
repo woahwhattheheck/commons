@@ -1,0 +1,77 @@
+{
+  "artifacts": [],
+  "attention_reason": "UNKNOWN",
+  "blocker": {
+    "detail": "UNKNOWN",
+    "type": "UNKNOWN"
+  },
+  "checkpoint": "UNKNOWN",
+  "claimed_paths": [],
+  "classification": "BROWSER",
+  "cost": {
+    "debit": "UNKNOWN",
+    "grade": "UNKNOWN",
+    "tokens": null,
+    "visible": false
+  },
+  "dedupe_key": "https://grok.com/c/example-rid",
+  "event_id": "a98a4bd15e525402a18e83a43409f72d",
+  "evidence": [
+    {
+      "event_id": "a98a4bd15e525402a18e83a43409f72d",
+      "grade": "OBSERVED",
+      "source": "event"
+    }
+  ],
+  "fields_inferred": [],
+  "fields_observed": [
+    "classification",
+    "dedupe_key",
+    "event_id",
+    "grok_url",
+    "harness",
+    "kind",
+    "model",
+    "objective",
+    "protocol",
+    "protocol_version",
+    "run_id",
+    "session_id",
+    "task_id",
+    "tools",
+    "ts"
+  ],
+  "grok_url": "https://grok.com/c/example-rid",
+  "harness": "grok.com browser",
+  "head_sha": "",
+  "kind": "START",
+  "lease": {
+    "descriptive_only": true,
+    "holder": "UNKNOWN",
+    "lease_id": "UNKNOWN",
+    "until": "UNKNOWN"
+  },
+  "model": "Grok",
+  "objective": "Capture one intentional grok.com run",
+  "origin": {
+    "message_id": "UNKNOWN",
+    "post_id": "UNKNOWN",
+    "thread_id": "UNKNOWN"
+  },
+  "parent_ids": [],
+  "parse_state": "OK",
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "provider": {},
+  "run_id": "run-grok-browser-01",
+  "semantic_area": "UNKNOWN",
+  "session_id": "grok-browser-01",
+  "supersedes": "UNKNOWN",
+  "task_id": "task-grok-capture",
+  "terminal_disposition": "UNKNOWN",
+  "tools": [
+    "browser",
+    "grok.com"
+  ],
+  "ts": "2026-08-28T08:10:00Z"
+}
