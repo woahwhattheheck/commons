@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 9
+    "TESTED": 10
   },
   "features": [
     {
@@ -448,6 +448,74 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Provider-neutral payment rails on the landing hub. Public checkout is the CHARGEABLE Stripe livemode rail only. PayPal, GitHub Sponsors, and Square stay inert without owner KYC. If Stripe fails closed, hide public Stripe URLs and keep owner one-click EXTERNAL_OWNER_ACTION paths. Cash stays USD 0. AUTH/SETTLE/PAYOUT/BANK_AVAILABLE remain NOT_LANDED.",
+      "carrier": "GROK_BUILD",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "door.js",
+        "index.html",
+        "boards.html",
+        "hub_pages.py",
+        "host/listing_registry.py",
+        "host/payment_capability.py",
+        "test_payment_capability_door_hub.py",
+        "test_payment_capability_hub_pages.py",
+        "test_payment_capability_compose.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "door.js",
+        "index.html",
+        "boards.html",
+        "hub_pages.py",
+        "host/listing_registry.py",
+        "host/payment_capability.py",
+        "test_payment_capability_door_hub.py",
+        "test_payment_capability_hub_pages.py",
+        "test_payment_capability_compose.py"
+      ],
+      "dependencies": [
+        "payment-capability-20260828-01"
+      ],
+      "evidence_ids": [],
+      "file": "payment-capability-hub-failover-20260828-02.json",
+      "id": "payment-capability-hub-failover-20260828-02",
+      "last_change": "2026-08-28",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Payment-capability hub failover",
+      "next_gap": "Cite payment-capability-20260828-01. Alternate rails need owner KYC inside official provider UIs. Do not invent a PayPal.me, Sponsors profile, or cash. Chargeable is not BANK_AVAILABLE.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "payment-capability.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "pay.html",
+        "commerce.html",
+        "listing-registry.html",
+        "ground/RESOURCE_LEDGER.json",
+        "ground/PROFITABILITY_BUILD_MAP.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_payment_capability.py",
+        "test_payment_capability_door_hub.py",
+        "test_payment_capability_hub_pages.py",
+        "test_payment_capability_compose.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -638,7 +706,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 12,
+  "n_features": 13,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
