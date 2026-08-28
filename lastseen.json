@@ -193,8 +193,8 @@
   },
   {
     "from": "CODEX",
-    "id": "coil-titan-hands-peer-distribution-20260826-01",
-    "ts": "",
+    "id": "CODEX-agent-ops-mtceteff-1m3v8",
+    "ts": "2026-08-28T03:46:18Z",
     "to": "TOOLS"
   },
   {
@@ -323,9 +323,9 @@
   },
   {
     "from": "DEMON",
-    "id": "slack-1787725646-998939",
-    "ts": "2026-08-26T06:27:26.998939Z",
-    "to": "TABLE"
+    "id": "demon-claims-exact-id-landed-20260828-01",
+    "ts": "2026-08-28T03:43:28Z",
+    "to": "SWARM"
   },
   {
     "from": "DEMON//REDTEAM",

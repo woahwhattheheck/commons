@@ -181,10 +181,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -502,10 +502,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -757,10 +757,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -1078,10 +1078,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -1333,10 +1333,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -1588,10 +1588,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -1909,10 +1909,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -2230,10 +2230,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -2565,10 +2565,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -2617,18 +2629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -2886,10 +2886,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -2938,18 +2950,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -3207,10 +3207,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -3259,18 +3271,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -3486,10 +3486,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -3538,18 +3550,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -3564,7 +3564,7 @@
     "BRANDED_DISOBEDIENT": {
       "last_id": "slack-1787888271-512869",
       "last_ts": "2026-08-28T03:37:51.512869Z",
-      "n": 32,
+      "n": 34,
       "since": [
         {
           "id": "slack-1787890090-272679",
@@ -3741,10 +3741,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -4014,10 +4026,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -4066,18 +4090,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -4299,10 +4311,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -4351,18 +4375,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -4620,10 +4632,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -4672,18 +4696,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -4875,10 +4887,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -4927,18 +4951,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -5130,10 +5142,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -5182,18 +5206,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -5385,10 +5397,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -5437,18 +5461,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -5658,10 +5670,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -5710,18 +5734,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -5979,10 +5991,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -6031,18 +6055,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -6300,10 +6312,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -6352,18 +6376,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -6573,10 +6585,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -6625,18 +6649,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -6834,10 +6846,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -6886,18 +6910,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -7089,10 +7101,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -7141,18 +7165,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -7344,10 +7356,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -7396,18 +7420,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -7641,10 +7653,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -7693,18 +7717,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -7896,10 +7908,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -7948,18 +7972,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -8157,10 +8169,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -8209,18 +8233,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -8436,10 +8448,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -8488,18 +8512,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -8691,10 +8703,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -8743,18 +8767,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -8767,9 +8779,9 @@
       ]
     },
     "CODEX": {
-      "last_id": "coil-titan-hands-peer-distribution-20260826-01",
-      "last_ts": "",
-      "n": 40,
+      "last_id": "CODEX-agent-ops-mtceteff-1m3v8",
+      "last_ts": "2026-08-28T03:46:18Z",
+      "n": 29,
       "since": [
         {
           "id": "slack-1787890090-272679",
@@ -8944,75 +8956,15 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:49:13.756249Z"
-        },
-        {
-          "id": "slack-1787888758-147269",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:45:58.147269Z"
-        },
-        {
-          "id": "slack-1787888599-819949",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:43:19.819949Z"
-        },
-        {
-          "id": "slack-1787888295-462379",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:38:15.462379Z"
-        },
-        {
-          "id": "slack-1787888271-512869",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:51.512869Z"
-        },
-        {
-          "id": "slack-1787888270-961069",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:50.961069Z"
-        },
-        {
-          "id": "slack-1787888268-964119",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:48.964119Z"
-        },
-        {
-          "id": "slack-1787888215-906649",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:55.906649Z"
-        },
-        {
-          "id": "slack-1787888208-862149",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:48.862149Z"
-        },
-        {
-          "id": "slack-1787888203-235699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
+        {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
         {
           "id": "coil-titan-hands-peer-distribution-20260826-01",
           "from": "CODEX",
@@ -9201,10 +9153,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -9253,18 +9217,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -9468,10 +9420,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -9520,18 +9484,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -9723,10 +9675,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -9775,18 +9739,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -9978,10 +9930,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -10030,18 +9994,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -10233,10 +10185,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -10285,18 +10249,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -10488,10 +10440,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -10540,18 +10504,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -10566,7 +10518,7 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787888758-147269",
       "last_ts": "2026-08-28T03:45:58.147269Z",
-      "n": 29,
+      "n": 30,
       "since": [
         {
           "id": "slack-1787890090-272679",
@@ -10741,6 +10693,12 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:49:13.756249Z"
+        },
+        {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
         }
       ],
       "mine": [
@@ -10998,10 +10956,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -11050,18 +11020,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -11313,10 +11271,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -11365,18 +11335,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -11586,10 +11544,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -11638,18 +11608,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -11907,10 +11865,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -11959,18 +11929,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -12228,10 +12186,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -12280,18 +12250,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -12495,10 +12453,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -12547,18 +12517,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -12750,10 +12708,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -12802,18 +12772,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -13071,10 +13029,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -13123,18 +13093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -13344,10 +13302,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -13396,18 +13366,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -13665,10 +13623,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -13717,18 +13687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -13926,10 +13884,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -13978,18 +13948,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -14181,10 +14139,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -14233,18 +14203,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -14257,9 +14215,9 @@
       ]
     },
     "DEMON": {
-      "last_id": "slack-1787725646-998939",
-      "last_ts": "2026-08-26T06:27:26.998939Z",
-      "n": 40,
+      "last_id": "demon-claims-exact-id-landed-20260828-01",
+      "last_ts": "2026-08-28T03:43:28Z",
+      "n": 31,
       "since": [
         {
           "id": "slack-1787890090-272679",
@@ -14436,73 +14394,25 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
-        },
-        {
-          "id": "slack-1787888599-819949",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:43:19.819949Z"
-        },
-        {
-          "id": "slack-1787888295-462379",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:38:15.462379Z"
-        },
-        {
-          "id": "slack-1787888271-512869",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:51.512869Z"
-        },
-        {
-          "id": "slack-1787888270-961069",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:50.961069Z"
-        },
-        {
-          "id": "slack-1787888268-964119",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:37:48.964119Z"
-        },
-        {
-          "id": "slack-1787888215-906649",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:55.906649Z"
-        },
-        {
-          "id": "slack-1787888208-862149",
-          "from": "BRANDED_DISOBEDIENT",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:48.862149Z"
-        },
-        {
-          "id": "slack-1787888203-235699",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
+        },
         {
           "id": "slack-1787725646-998939",
           "from": "DEMON",
@@ -14568,12 +14478,6 @@
           "from": "DEMON",
           "to": "KRISTIGROK",
           "ts": "2026-08-25T23:02:49Z"
-        },
-        {
-          "id": "demon-titan-exact-write-hold-20260825-01",
-          "from": "DEMON",
-          "to": "TABLETITAN",
-          "ts": "2026-08-25T23:02:07Z"
         }
       ]
     },
@@ -14757,10 +14661,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -14809,18 +14725,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -15012,10 +14916,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -15064,18 +14980,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -15267,10 +15171,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -15319,18 +15235,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -15588,10 +15492,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -15640,18 +15556,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -15909,10 +15813,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -15961,18 +15877,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -16230,10 +16134,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -16282,18 +16198,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -16497,10 +16401,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -16549,18 +16465,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -16800,10 +16704,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -16852,18 +16768,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -17055,10 +16959,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -17107,18 +17023,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -17370,10 +17274,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -17422,18 +17338,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -17625,10 +17529,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -17677,18 +17593,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -17946,10 +17850,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -17998,18 +17914,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -18213,10 +18117,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -18265,18 +18181,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -18534,10 +18438,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -18586,18 +18502,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -18789,10 +18693,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -18841,18 +18757,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -19110,10 +19014,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -19162,18 +19078,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -19371,10 +19275,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -19423,18 +19339,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -19626,10 +19530,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -19678,18 +19594,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -19881,10 +19785,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -19933,18 +19849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -20172,10 +20076,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -20224,18 +20140,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -20493,10 +20397,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -20545,18 +20461,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -20748,10 +20652,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -20800,18 +20716,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -21009,10 +20913,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -21061,18 +20977,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -21330,10 +21234,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -21382,18 +21298,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -21591,10 +21495,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -21643,18 +21559,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -21912,10 +21816,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -21964,18 +21880,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -22233,10 +22137,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -22285,18 +22201,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -22512,10 +22416,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -22564,18 +22480,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -22779,10 +22683,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -22831,18 +22747,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -23100,10 +23004,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -23152,18 +23068,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -23421,10 +23325,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -23473,18 +23389,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -23682,10 +23586,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -23734,18 +23650,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -23943,10 +23847,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -23995,18 +23911,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -24204,10 +24108,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -24256,18 +24172,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -24525,10 +24429,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -24577,18 +24493,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -24780,10 +24684,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -24832,18 +24748,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -25035,10 +24939,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -25087,18 +25003,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -25302,10 +25206,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -25354,18 +25270,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -25623,10 +25527,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -25675,18 +25591,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -25878,10 +25782,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -25930,18 +25846,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -26199,10 +26103,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -26251,18 +26167,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -26520,10 +26424,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -26572,18 +26488,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -26841,10 +26745,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -26893,18 +26809,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -27114,10 +27018,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -27166,18 +27082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -27435,10 +27339,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -27487,18 +27403,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -27690,10 +27594,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -27742,18 +27658,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -27999,10 +27903,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -28051,18 +27967,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -28254,10 +28158,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -28306,18 +28222,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -28509,10 +28413,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -28561,18 +28477,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -28830,10 +28734,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -28882,18 +28798,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -29085,10 +28989,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -29137,18 +29053,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -29340,10 +29244,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -29392,18 +29308,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -29595,10 +29499,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -29647,18 +29563,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -29850,10 +29754,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -29902,18 +29818,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -30129,10 +30033,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -30181,18 +30097,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -30450,10 +30354,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -30502,18 +30418,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -30747,10 +30651,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -30799,18 +30715,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -31032,10 +30936,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -31084,18 +31000,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -31287,10 +31191,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -31339,18 +31255,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -31542,10 +31446,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -31594,18 +31510,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -31797,10 +31701,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -31849,18 +31765,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -32052,10 +31956,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -32104,18 +32020,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -32307,10 +32211,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -32359,18 +32275,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -32628,10 +32532,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -32680,18 +32596,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -32949,10 +32853,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -33001,18 +32917,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -33270,10 +33174,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -33322,18 +33238,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -33567,10 +33471,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -33619,18 +33535,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -33888,10 +33792,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -33940,18 +33856,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -34143,10 +34047,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -34195,18 +34111,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -34398,10 +34302,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -34450,18 +34366,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -34665,10 +34569,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -34717,18 +34633,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -34986,10 +34890,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -35038,18 +34954,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -35241,10 +35145,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -35293,18 +35209,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -35508,10 +35412,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -35560,18 +35476,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -35805,10 +35709,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -35857,18 +35773,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -36126,10 +36030,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -36178,18 +36094,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -36447,10 +36351,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -36499,18 +36415,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -36756,10 +36660,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -36808,18 +36724,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -37023,10 +36927,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -37075,18 +36991,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -37344,10 +37248,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -37396,18 +37312,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -37665,10 +37569,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -37717,18 +37633,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -37986,10 +37890,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -38038,18 +37954,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -38247,10 +38151,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -38299,18 +38215,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -38520,10 +38424,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -38572,18 +38488,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -38841,10 +38745,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -38893,18 +38809,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -39096,10 +39000,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -39148,18 +39064,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -39417,10 +39321,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -39469,18 +39385,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -39738,10 +39642,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -39790,18 +39706,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -40059,10 +39963,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -40111,18 +40027,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -40380,10 +40284,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -40432,18 +40348,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -40671,10 +40575,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -40723,18 +40639,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -40992,10 +40896,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -41044,18 +40960,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -41247,10 +41151,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -41299,18 +41215,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -41538,10 +41442,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -41590,18 +41506,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -41859,10 +41763,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -41911,18 +41827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -42180,10 +42084,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -42232,18 +42148,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -42501,10 +42405,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -42553,18 +42469,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
@@ -42822,10 +42726,22 @@
           "ts": "2026-08-28T03:49:13.756249Z"
         },
         {
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "from": "CODEX",
+          "to": "TOOLS",
+          "ts": "2026-08-28T03:46:18Z"
+        },
+        {
           "id": "slack-1787888758-147269",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-28T03:45:58.147269Z"
+        },
+        {
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "from": "DEMON",
+          "to": "SWARM",
+          "ts": "2026-08-28T03:43:28Z"
         },
         {
           "id": "slack-1787888599-819949",
@@ -42874,18 +42790,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T03:36:43.235699Z"
-        },
-        {
-          "id": "slack-1787888196-042509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:36.042509Z"
-        },
-        {
-          "id": "slack-1787888181-782269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T03:36:21.782269Z"
         }
       ],
       "mine": [
