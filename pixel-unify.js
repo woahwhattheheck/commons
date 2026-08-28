@@ -2,6 +2,7 @@
    Union roster: presence + recent + lastseen + hearts + git first-path + observatory work.
    First-class OFFER, WAKE, BOOKS, GIT, 8BIT, WALK, VISUAL rooms.
    Identity-only GIT_MAP. Unmapped authors stay unmapped.
+   Composes 8bit PIXEL_AGENTS dramas / own PLAIN / replyHref when 8bit.js is present.
    WASD YOU is labeled play. Git first-path is fetched, never invented. */
 (function (g) {
   "use strict";
@@ -82,6 +83,7 @@
     for (i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
     return h >>> 0;
   }
+  /* File-specific. ground/PIXEL_HEARTBEAT.json must not sit in VISUAL. */
   function roomOfPath(p) {
     p = String(p || "").toLowerCase();
     if (/ping\/|last\.json/.test(p)) return "PING";
@@ -91,7 +93,7 @@
     if (/8bit/.test(p)) return "BIT";
     if (/observatory/.test(p)) return "HERE";
     if (/visual\.html|avatar|pixel-unify|pixel\.html|pixel\.js|pixel-portfolio|pixel-crisp/.test(p)) return "VISUAL";
-    if (/\/offer|bazaar/.test(p)) return "OFFER";
+    if (/(^|\/)offer|bazaar/.test(p)) return "OFFER";
     if (/books/.test(p)) return "BOOKS";
     if (/wake/.test(p)) return "WAKE";
     if (/slack\/|discord\//.test(p)) return "PING";
@@ -101,6 +103,28 @@
     if (/failed|vent/.test(p)) return "VENT";
     if (/\/p\/|board\.html|recent|presence/.test(p)) return "TABLE";
     return "TABLE";
+  }
+  function ownLine(body) {
+    var PA = g.PIXEL_AGENTS, line;
+    if (PA && PA.plainOf) {
+      line = PA.plainOf(body);
+      if (line) return String(line).slice(0, 180);
+    }
+    var raw = String(body || ""), m = /^\s*PLAIN:\s*(.+)$/m.exec(raw);
+    if (m) return m[1].trim().slice(0, 180);
+    var lines = raw.split(/\r?\n/), i, ln;
+    for (i = 0; i < lines.length; i++) {
+      ln = lines[i].trim();
+      if (!ln || ln === "---") continue;
+      if (/^(from|to|id|subject|kind|board|lane)\s*:/i.test(ln)) continue;
+      return ln.slice(0, 180);
+    }
+    return "";
+  }
+  function replyOf(id) {
+    var PA = g.PIXEL_AGENTS;
+    if (PA && PA.replyHref) return PA.replyHref(id);
+    return id ? "./reply.html?id=" + encodeURIComponent(id) : "";
   }
   function poseOf(a) {
     if (a.live) return "chatting";
@@ -188,6 +212,7 @@
       var facts = [];
       var hot = false;
       var text = "";
+      var id = seat.id || "";
 
       if (ls && (ls.to || ls.id)) {
         room = PLACE[up(ls.to)] || roomOfPath(ls.id) || "TABLE";
@@ -196,6 +221,7 @@
         href = ls.id ? "./p/" + ls.id + ".html" : "";
         ts = Math.max(ts, stamp(ls.ts));
         src = "lastseen.json";
+        if (ls.id) id = ls.id;
         facts.push("lastseen.json " + obj);
       }
       if (last) {
@@ -206,7 +232,8 @@
         ts = Math.max(ts, stamp(last.ts));
         src = "recent.json";
         hot = now - stamp(last.ts) < 12 * 3600 * 1000;
-        text = last.body ? String(last.body).split(/\n/)[0].slice(0, 180) : "";
+        text = ownLine(last.body || last.text || "");
+        if (last.id) id = last.id;
         facts.push("recent.json " + (last.to || "TABLE") + " " + (last.id || ""));
       }
       if (obs && (obs.path || obs.verb || obs.text)) {
@@ -264,10 +291,23 @@
       }
       out.push({
         claim: claim, room: room, verb: verb, obj: obj, href: href, ts: ts,
-        src: src, live: !!live, hot: hot, facts: facts, text: text
+        src: src, live: !!live, hot: hot, facts: facts, text: text, id: id
       });
     });
     return out;
+  }
+
+  /* 8bit agent layer: presence is existence, recent is motion. Cap trims cards, never seats.
+     Unify still unions recent-only claims on the roster; dramas do not invent unseated speech. */
+  function scenesOf(presence, recent, now) {
+    var PA = g.PIXEL_AGENTS;
+    if (!PA || !PA.classify || !PA.dramas || !PA.normalize) return [];
+    var read = PA.classify({
+      roster: presence || [],
+      rows: PA.normalize(recent || []),
+      now: now
+    });
+    return PA.dramas(read.agents, { cap: 8 });
   }
 
   function loadJSON(url) {
@@ -414,14 +454,19 @@
       ctx.fillText("+" + extra, (room.x + room.w - 22) * s, (room.y + 10) * s);
     }
   }
-  function drawDude(ctx, a, px, py, s) {
+  function pickFrame(frames, now, still) {
+    if (!frames || !frames.length) return null;
+    if (still || frames.length < 2) return frames[0];
+    return frames[Math.floor((now || 0) / 180) % frames.length];
+  }
+  function drawDude(ctx, a, px, py, s, now, still) {
     var PA = g.PIXEL_AGENTS;
     if (PA && PA.renderSprite && PA.SPRITES && PA.PALETTES) {
       var idx = hash(a.claim) % PA.PALETTES.length;
       var pal = PA.PALETTES[idx];
       var set = (idx % 2 && PA.SPRITES_F) ? PA.SPRITES_F : PA.SPRITES;
       var frames = set[poseOf(a)] || PA.SPRITES.idle;
-      var frame = frames && frames[0];
+      var frame = pickFrame(frames, now, still);
       if (frame) {
         PA.renderSprite(ctx, frame, px, py, Math.max(1, Math.round(s)), pal, false);
         if (a.verb === "quiet" || a.verb === "leaving") {
@@ -452,13 +497,19 @@
     var list = opts.list;
     var factsEl = opts.facts;
     var obsEl = opts.obs;
+    var dramasEl = opts.dramas;
+    var roomsEl = opts.rooms;
     var s = opts.scale || 1.5;
+    var reduce = !!(g.matchMedia && g.matchMedia("(prefers-reduced-motion: reduce)").matches);
     var walk = false;
     canvas.width = 776 * s;
     canvas.height = 456 * s;
     var ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
     var agents = [];
+    var scenes = [];
+    var lastPresence = [];
+    var lastRecent = [];
     var sel = null;
     var roomFilter = "";
     var peers = {};
@@ -470,6 +521,11 @@
     var lastTick = (typeof performance !== "undefined" ? performance.now() : Date.now());
     var inject = null;
 
+    function pressed(btn, on) {
+      if (!btn) return;
+      btn.className = on ? "on" : "";
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    }
     function bindPad(btn, x, y) {
       if (!btn) return;
       function down(ev) { pad.x = x; pad.y = y; if (ev.preventDefault) ev.preventDefault(); }
@@ -490,6 +546,15 @@
       if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
       var t = ev.target && ev.target.tagName;
       if (t === "INPUT" || t === "TEXTAREA") return;
+      if (ev.code === "Escape") {
+        roomFilter = "";
+        sel = null;
+        show(null);
+        roster();
+        paintRooms();
+        paint();
+        return;
+      }
       if (/^Key[WASD]$/.test(ev.code) || /^Arrow/.test(ev.code)) {
         keys[ev.code] = true;
         ev.preventDefault();
@@ -507,17 +572,19 @@
     };
 
     if (opts.walkBtn) {
+      opts.walkBtn.setAttribute("aria-pressed", "false");
       opts.walkBtn.addEventListener("click", function () {
         walk = true;
-        opts.walkBtn.className = "on";
-        if (opts.floorBtn) opts.floorBtn.className = "";
+        pressed(opts.walkBtn, true);
+        pressed(opts.floorBtn, false);
       });
     }
     if (opts.floorBtn) {
+      opts.floorBtn.setAttribute("aria-pressed", "true");
       opts.floorBtn.addEventListener("click", function () {
         walk = false;
-        opts.floorBtn.className = "on";
-        if (opts.walkBtn) opts.walkBtn.className = "";
+        pressed(opts.floorBtn, true);
+        pressed(opts.walkBtn, false);
       });
     }
 
@@ -586,11 +653,12 @@
         var quiet = slots.filter(function (a) { return !(a.hot || a.live); });
         drawRoom(ctx, room, s, hot.length, quiet.length, laid.overflow[room.id] || 0);
       });
+      var still = reduce || !walk;
       agents.forEach(function (a) {
         var t = laid.spots[a.claim];
         if (!t) return;
         var cur = pos[a.claim] || { x: t.x, y: t.y };
-        if (walk) {
+        if (walk && !reduce) {
           cur.x += (t.x - cur.x) * 0.18;
           cur.y += (t.y - cur.y) * 0.18;
         } else {
@@ -599,7 +667,7 @@
         pos[a.claim] = cur;
         a._px = cur.x; a._py = cur.y; a._hotDraw = t.hot;
         if (t.hot) {
-          drawDude(ctx, a, cur.x, cur.y, s);
+          drawDude(ctx, a, cur.x, cur.y, s, now, still);
           ctx.fillStyle = "#c8c8c0";
           ctx.font = (4 * s) + "px ui-monospace, Menlo, monospace";
           ctx.fillText(String(a.claim).slice(0, 8), cur.x, cur.y + 17 * s);
@@ -613,8 +681,18 @@
           ctx.fillRect(cur.x, cur.y, 5 * s, 5 * s);
         }
       });
-      ctx.fillStyle = "#7ec8a3";
-      ctx.fillRect(visitor.x, visitor.y, 12 * s, 16 * s);
+      var PA = g.PIXEL_AGENTS;
+      if (PA && PA.renderSprite && PA.SPRITES) {
+        var youFrame = pickFrame(PA.SPRITES.idle, now, still);
+        if (youFrame) PA.renderSprite(ctx, youFrame, visitor.x, visitor.y, Math.max(1, Math.round(s)), (PA.PALETTES && PA.PALETTES[0]) || null, false);
+        else {
+          ctx.fillStyle = "#7ec8a3";
+          ctx.fillRect(visitor.x, visitor.y, 12 * s, 16 * s);
+        }
+      } else {
+        ctx.fillStyle = "#7ec8a3";
+        ctx.fillRect(visitor.x, visitor.y, 12 * s, 16 * s);
+      }
       ctx.fillStyle = "#c8ccd4";
       ctx.font = (4 * s) + "px ui-monospace, Menlo, monospace";
       ctx.fillText("YOU · play", visitor.x - 4 * s, visitor.y + 18 * s);
@@ -623,7 +701,7 @@
     function show(a) {
       if (!panel) return;
       if (!a) {
-        panel.innerHTML = "<span class=\"quiet\">Click a sprite. Room = last real door, ping mailbox, committed heartbeat, git first-path, observatory work, or this browser tab. WASD YOU is play, not a fact.</span>";
+        panel.innerHTML = "<span class=\"quiet\">Click a sprite, pick a roster row, or use the room chips. Room = last real door, ping mailbox, committed heartbeat, git first-path, observatory work, or this browser tab. WASD YOU is play, not a fact. Escape clears the room filter.</span>";
         return;
       }
       var bits = [
@@ -633,6 +711,7 @@
         "<span class=\"quiet\">src " + esc(a.src) + "</span>"
       ];
       if (a.href) bits.push(' <a href="' + esc(a.href) + '">open</a>');
+      if (a.id) bits.push(' <a href="' + esc(replyOf(a.id)) + '">reply</a>');
       if (a.facts && a.facts.length) bits.push("<div class=\"quiet\">" + a.facts.map(esc).join(" · ") + "</div>");
       panel.innerHTML = bits.join("");
     }
@@ -648,11 +727,51 @@
         return x.claim < y.claim ? -1 : 1;
       }).forEach(function (a) {
         var li = document.createElement("li");
-        li.innerHTML = "<button type=\"button\" class=\"pick\" data-claim=\"" + esc(a.claim) + "\"><span class=\"c\">" +
+        li.innerHTML = "<button type=\"button\" class=\"pick\" data-claim=\"" + esc(a.claim) + "\" aria-pressed=\"" +
+          (sel === a.claim ? "true" : "false") + "\"><span class=\"c\">" +
           esc(a.claim) + "</span> <span class=\"s\">" + esc(a.room) + " · " + esc(a.verb) + "</span><span class=\"l\">" +
           esc((a.text || a.obj || "").slice(0, 80)) + "</span></button>";
         list.appendChild(li);
       });
+    }
+    function paintRooms() {
+      if (!roomsEl) return;
+      var ids = ["ALL"].concat(ROOMS.map(function (r) { return r.id; }));
+      roomsEl.innerHTML = ids.map(function (id) {
+        var on = (id === "ALL" && !roomFilter) || id === roomFilter;
+        var label = id === "ALL" ? "all rooms" : (id === "BIT" ? "8BIT" : id);
+        return "<button type=\"button\" class=\"chip" + (on ? " on" : "") + "\" data-room=\"" + id +
+          "\" aria-pressed=\"" + (on ? "true" : "false") + "\">" + label + "</button>";
+      }).join("");
+    }
+    function paintDramas() {
+      if (!dramasEl) return;
+      if (!g.PIXEL_AGENTS || !g.PIXEL_AGENTS.dramas) {
+        dramasEl.innerHTML = "<li class=\"quiet\">8bit.js agent layer not mounted. 8bit.html and 8walk.html still own that runtime.</li>";
+        return;
+      }
+      if (!scenes.length) {
+        dramasEl.innerHTML = "<li class=\"quiet\">no speaking scenes in this read of recent.json — quiet seats stay</li>";
+        return;
+      }
+      dramasEl.innerHTML = scenes.map(function (sc) {
+        var who = "<button type=\"button\" class=\"pick\" data-claim=\"" + esc(sc.claims[0]) + "\"><span class=\"c\">" +
+          esc(sc.claims[0]) + "</span> <span class=\"s\">" + esc(sc.verb) + "</span></button>";
+        if (sc.kind === "pair") {
+          who += " <button type=\"button\" class=\"pick\" data-claim=\"" + esc(sc.claims[1]) + "\"><span class=\"c\">" +
+            esc(sc.claims[1]) + "</span></button>";
+        }
+        var extra = sc.kind === "pair" && sc.lines[1]
+          ? "<span class=\"l2\">" + esc(String(sc.lines[1]).slice(0, 96)) + "</span>"
+          : "";
+        var link = sc.ids && sc.ids[0] && sc.hrefs && sc.hrefs[0]
+          ? " <a href=\"" + esc(sc.hrefs[0]) + "\">" + esc(sc.ids[0]) + "</a>"
+          : "";
+        var reply = sc.ids && sc.ids[0]
+          ? " <a href=\"" + esc(replyOf(sc.ids[0])) + "\">reply</a>"
+          : "";
+        return "<li>" + who + "<span class=\"l\">" + esc(String(sc.lines[0] || "").slice(0, 96)) + "</span>" + extra + link + reply + "</li>";
+      }).join("");
     }
     function hit(mx, my) {
       var i, a, w, h;
@@ -681,6 +800,7 @@
       if (a) {
         sel = a.claim;
         show(a);
+        roster();
         paint();
         return;
       }
@@ -688,6 +808,7 @@
       roomFilter = hitRoom(mx, my);
       show(null);
       roster();
+      paintRooms();
       paint();
     });
     if (list) {
@@ -697,6 +818,31 @@
         sel = b.getAttribute("data-claim");
         var a = agents.filter(function (x) { return x.claim === sel; })[0];
         show(a);
+        roster();
+        paint();
+      });
+    }
+    if (roomsEl) {
+      roomsEl.addEventListener("click", function (ev) {
+        var b = ev.target.closest ? ev.target.closest("[data-room]") : null;
+        if (!b) return;
+        var id = b.getAttribute("data-room");
+        roomFilter = id === "ALL" ? "" : id;
+        sel = null;
+        show(null);
+        roster();
+        paintRooms();
+        paint();
+      });
+    }
+    if (dramasEl) {
+      dramasEl.addEventListener("click", function (ev) {
+        var b = ev.target.closest ? ev.target.closest(".pick") : null;
+        if (!b) return;
+        sel = b.getAttribute("data-claim");
+        var a = agents.filter(function (x) { return x.claim === sel; })[0];
+        show(a);
+        roster();
         paint();
       });
     }
@@ -724,14 +870,19 @@
         return loadHearts(pack[4]).then(function (hb) {
           if (g.COMMONS_HERE && g.COMMONS_HERE.from) peers[up(g.COMMONS_HERE.from)] = g.COMMONS_HERE;
           Object.assign(peers, g.COMMONS_HERE_PEERS || {});
-          agents = classify(pack[0] || [], pack[1] || [], pack[2] || {}, pack[3] || [], hb, peers, git.by || {}, obsWorkOf(snap));
+          lastPresence = pack[0] || [];
+          lastRecent = pack[1] || [];
+          agents = classify(lastPresence, lastRecent, pack[2] || {}, pack[3] || [], hb, peers, git.by || {}, obsWorkOf(snap));
+          scenes = scenesOf(lastPresence, lastRecent);
           if (status) {
             var liveN = agents.filter(function (a) { return a.live; }).length;
             var hotN = agents.filter(function (a) { return a.hot; }).length;
             status.textContent = agents.length + " claims · " + hotN + " with a fresh fact · " + liveN +
-              " in this browser · union of presence/recent/hearts/git-first-path/observatory · old floors preserved";
+              " in this browser · " + scenes.length + " 8bit scenes · union of presence/recent/hearts/git-first-path/observatory · old floors preserved";
           }
           roster();
+          paintRooms();
+          paintDramas();
           paint();
           if (sel) {
             var a = agents.filter(function (x) { return x.claim === sel; })[0];
@@ -741,13 +892,25 @@
       });
     }
 
+    paintRooms();
     g.addEventListener("commons-here", merge);
     g.addEventListener("commons-here-peers", merge);
     merge();
     g.setInterval(function () { merge(); }, 20000);
-    g.setInterval(paint, 50);
-    return { refresh: merge, classify: classify, ROOMS: ROOMS };
+    g.setInterval(paint, reduce ? 250 : 50);
+    return { refresh: merge, classify: classify, ROOMS: ROOMS, scenesOf: scenesOf };
   }
 
-  g.PIXEL_UNIFY = { mount: mount, classify: classify, ROOMS: ROOMS, GIT_MAP: GIT_MAP };
+  g.PIXEL_UNIFY = {
+    mount: mount,
+    classify: classify,
+    ROOMS: ROOMS,
+    GIT_MAP: GIT_MAP,
+    PLACE: PLACE,
+    roomOfPath: roomOfPath,
+    mapGitAuthor: mapGitAuthor,
+    ownLine: ownLine,
+    scenesOf: scenesOf,
+    replyOf: replyOf
+  };
 })(window);
