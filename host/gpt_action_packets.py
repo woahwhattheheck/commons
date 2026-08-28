@@ -61,6 +61,12 @@ def validate_packets(value: dict[str, Any]) -> None:
             raise PacketError(f"{cid} DNR lane without DNR status")
         if row.get("economic_state_if_successful") in {"SETTLED", "BANK_AVAILABLE"}:
             raise PacketError("packets must not skip to cash states")
+        if status == "ready-to-send under existing authorization":
+            receipt = row.get("live_first_party_receipt")
+            if not isinstance(receipt, dict) or receipt.get("state") != "LIVE" or not receipt.get("evidence"):
+                raise PacketError(f"{cid} ready-to-send requires a live first-party receipt")
+            if row.get("confirm_before_send") is not True:
+                raise PacketError(f"{cid} ready-to-send must retain confirm_before_send")
         if row.get("concise_proposed_message") and status in {"do-not-resend", "do-not-contact"}:
             raise PacketError(f"{cid} must not carry a send body")
 
@@ -93,7 +99,7 @@ def validate_demand(value: dict[str, Any]) -> None:
 def next_external_action(control: dict[str, Any], packets: dict[str, Any]) -> str:
     for row in packets["packets"]:
         if row["status"] == "ready-to-send under existing authorization":
-            return f"send authorized packet {row['candidate_id']}"
+            return f"confirm once, then send authorized packet {row['candidate_id']}"
     for item in control.get("execution_queue") or []:
         if item.get("decision") == "READY_TO_DRAFT":
             return f"draft packet for {item['prospect_id']} without sending"
