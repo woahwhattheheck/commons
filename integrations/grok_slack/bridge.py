@@ -97,6 +97,17 @@ class BridgeError(RuntimeError):
     """Expected connector or upstream failure."""
 
 
+class McpToolError(BridgeError):
+    """Structured MCP tool error. Payload is preserved; this is not a JSON-RPC transport failure."""
+
+    def __init__(self, payload: dict[str, Any], *, http_status: int | None = None) -> None:
+        data = dict(payload) if isinstance(payload, dict) else {}
+        code = str(data.get("code") or data.get("state") or "mcp tool error")
+        super().__init__(code)
+        self.payload = data
+        self.http_status = http_status
+
+
 class RuntimeUnconfigured(BridgeError):
     """Slack credentials are missing. Zero Slack or provider calls."""
 
@@ -781,6 +792,134 @@ class BridgeStore:
         )
 
 
+ACCEPTED_PENDING_CODES = frozenset({"ACTION_RESULT_PENDING"})
+ACCEPTED_PENDING_STATES = frozenset({"DURABLE_ACTION_PENDING"})
+PROVEN_REJECTION_CODES = frozenset({
+    "SCHEMA",
+    "CARRIER_REJECTED",
+    "NOT_SENT",
+    "CONFIG",
+    "DUPLICATE_BODY_MISMATCH",
+})
+
+
+def unwrap_mcp_tool_payload(value: Any) -> dict[str, Any]:
+    """Keep structured MCP tool-error data. Never drop code/state/action_record."""
+    if not isinstance(value, dict):
+        return {}
+    if isinstance(value.get("structuredContent"), dict):
+        payload = dict(value["structuredContent"])
+        if "isError" in value and "isError" not in payload:
+            payload["isError"] = value["isError"]
+        return payload
+    nested = value.get("result")
+    if isinstance(nested, dict) and (
+        "structuredContent" in nested or "state" in nested or "code" in nested
+    ):
+        return unwrap_mcp_tool_payload(nested)
+    err = value.get("error")
+    if isinstance(err, dict) and isinstance(err.get("data"), dict):
+        return unwrap_mcp_tool_payload(err["data"])
+    if any(key in value for key in ("state", "code", "ok", "action_record", "isError")):
+        return dict(value)
+    return {}
+
+
+def _structured_from_http_error(exc: HTTPError) -> dict[str, Any]:
+    try:
+        raw = exc.read()
+    except Exception:
+        return {}
+    if not raw:
+        return {}
+    try:
+        decoded = json.loads(raw.decode("utf-8") if isinstance(raw, bytes) else raw)
+    except (UnicodeError, json.JSONDecodeError):
+        return {}
+    return unwrap_mcp_tool_payload(decoded)
+
+
+def has_durable_action_record(payload: dict[str, Any]) -> bool:
+    record = payload.get("action_record")
+    if isinstance(record, dict) and (
+        record.get("git_sha") or record.get("path") or record.get("id") or record.get("ok") is True
+    ):
+        return True
+    if payload.get("git_sha") and (payload.get("id") or payload.get("path")):
+        return True
+    return False
+
+
+def _fire_action_kind(payload: dict[str, Any], exc: BaseException | None) -> str:
+    return classify_fire_action(payload, exc)["kind"]
+
+
+def classify_fire_action(
+    payload: dict[str, Any] | None = None,
+    exc: BaseException | None = None,
+) -> dict[str, Any]:
+    """Classify fire_action as accepted-pending, proven rejection, or timeout ambiguity."""
+    data = dict(payload or {})
+    if not data and isinstance(exc, McpToolError):
+        data = dict(exc.payload)
+    code = str(data.get("code") or "")
+    state = str(data.get("state") or "")
+    pending = code in ACCEPTED_PENDING_CODES or state in ACCEPTED_PENDING_STATES
+    if pending and has_durable_action_record(data):
+        return {
+            "kind": "accepted_pending",
+            "phase": "OBSERVING",
+            "replay": False,
+            "code": code or "ACTION_RESULT_PENDING",
+            "payload": data,
+        }
+    if pending:
+        return {
+            "kind": "timeout_ambiguous",
+            "phase": "FIRE_ACTION_UNKNOWN",
+            "replay": False,
+            "code": code or "ACTION_RESULT_PENDING",
+            "payload": data,
+        }
+    if (
+        data.get("ok") is False
+        and (code in PROVEN_REJECTION_CODES or (code and not pending))
+        and not has_durable_action_record(data)
+        and code not in {"TIMEOUT_UNVERIFIED", "PROJECTION_TIMEOUT", "CANCELLED", "TRUTH_UNAVAILABLE"}
+    ):
+        return {
+            "kind": "rejected",
+            "phase": "FAILED",
+            "replay": False,
+            "retryable": True,
+            "code": code,
+            "payload": data,
+        }
+    if exc is not None and _is_ambiguous(exc):
+        return {
+            "kind": "timeout_ambiguous",
+            "phase": "FIRE_ACTION_UNKNOWN",
+            "replay": False,
+            "code": code,
+            "payload": data,
+        }
+    if exc is not None:
+        return {
+            "kind": "failed",
+            "phase": "FAILED",
+            "replay": False,
+            "code": code,
+            "payload": data,
+        }
+    return {
+        "kind": "accepted",
+        "phase": "SUBMITTED",
+        "replay": False,
+        "code": code or state,
+        "payload": data,
+    }
+
+
 class CommonsMcpClient:
     """Public Streamable HTTP client. Does not import Commons private logic."""
 
@@ -806,11 +945,10 @@ class CommonsMcpClient:
     def call_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         self.calls.append((name, arguments))
         result = self._rpc("tools/call", {"name": name, "arguments": arguments})
-        if isinstance(result.get("structuredContent"), dict):
-            return result["structuredContent"]
-        if isinstance(result, dict) and "state" in result:
-            return result
-        return result
+        payload = unwrap_mcp_tool_payload(result)
+        if payload.get("isError") and _fire_action_kind(payload, None) == "rejected":
+            raise McpToolError(payload)
+        return payload if payload else result
 
     def _rpc(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         ident = self._next_id
@@ -830,11 +968,19 @@ class CommonsMcpClient:
             with self._opener(request, timeout=30) as response:
                 raw = response.read().decode("utf-8")
         except HTTPError as exc:
+            structured = _structured_from_http_error(exc)
+            if structured:
+                raise McpToolError(structured, http_status=exc.code) from exc
             raise BridgeError(f"mcp HTTP {exc.code}") from exc
         except (URLError, TimeoutError, OSError) as exc:
             raise BridgeError("mcp unavailable") from exc
         decoded = _decode_mcp_body(raw)
         if "error" in decoded:
+            err = decoded.get("error")
+            data = err.get("data") if isinstance(err, dict) else None
+            structured = unwrap_mcp_tool_payload(data) if isinstance(data, dict) else {}
+            if structured:
+                raise McpToolError(structured) from None
             raise BridgeError("mcp error")
         result = decoded.get("result")
         if not isinstance(result, dict):
@@ -1274,6 +1420,10 @@ class GrokSlackBridge:
             self.store.set_phase(event_id, "FAILED")
             return {"ok": False, "state": "FAILED", "reason": "NO_EXECUTOR_JOB"}
         submitted = self._fire_once(event_id, job_id, arguments)
+        if submitted.get("kind") == "rejected":
+            self.store.set_phase(event_id, "FAILED")
+            self._post_rejection(event_id, contract, submitted)
+            return submitted
         if submitted["state"] in {"FIRE_ACTION_UNKNOWN", "FAILED"}:
             self.store.set_phase(event_id, submitted["state"])
             return submitted
@@ -1331,17 +1481,73 @@ class GrokSlackBridge:
             self.store.increment_fire_action(event_id)
             result = self.mcp.call_tool("fire_action", arguments)
         except Exception as exc:
-            inspected = self._inspect_job(job_id)
-            if inspected is not None:
-                self.store.set_phase(event_id, "SUBMITTED")
-                return {"ok": True, "state": "SUBMITTED", "job_id": job_id, "submit": False, "inspected": True}
-            if _is_ambiguous(exc):
-                self.store.set_phase(event_id, "FIRE_ACTION_UNKNOWN")
-                return {"ok": False, "state": "FIRE_ACTION_UNKNOWN", "job_id": job_id, "submit": False}
+            return self._classify_fire_exception(event_id, job_id, exc)
+        classified = classify_fire_action(unwrap_mcp_tool_payload(result), None)
+        if classified["kind"] == "accepted_pending":
+            self.store.set_phase(event_id, "SUBMITTED")
+            return {
+                "ok": True,
+                "state": "SUBMITTED",
+                "job_id": job_id,
+                "submit": True,
+                "kind": "accepted_pending",
+                "result": classified["payload"],
+            }
+        if classified["kind"] == "rejected":
             self.store.set_phase(event_id, "FAILED")
-            return {"ok": False, "state": "FAILED", "job_id": job_id}
+            return {
+                "ok": False,
+                "state": "FAILED",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "rejected",
+                "retryable": True,
+                "code": classified.get("code") or "SCHEMA",
+                "result": classified["payload"],
+            }
         self.store.set_phase(event_id, "SUBMITTED")
         return {"ok": True, "state": "SUBMITTED", "job_id": job_id, "submit": True, "result": result}
+
+    def _classify_fire_exception(self, event_id: str, job_id: str, exc: Exception) -> dict[str, Any]:
+        payload = dict(getattr(exc, "payload", {}) or {}) if isinstance(exc, McpToolError) else {}
+        classified = classify_fire_action(payload, exc)
+        if classified["kind"] == "accepted_pending" or self._accepted_wake(job_id):
+            self.store.set_phase(event_id, "SUBMITTED")
+            return {
+                "ok": True,
+                "state": "SUBMITTED",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "accepted_pending" if classified["kind"] == "accepted_pending" else "inspected",
+                "inspected": True,
+                "result": classified.get("payload") or payload,
+            }
+        if classified["kind"] == "rejected":
+            self.store.set_phase(event_id, "FAILED")
+            return {
+                "ok": False,
+                "state": "FAILED",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "rejected",
+                "retryable": True,
+                "code": classified.get("code") or "SCHEMA",
+                "result": classified.get("payload") or payload,
+            }
+        if classified["kind"] == "timeout_ambiguous" or _is_ambiguous(exc):
+            self.store.set_phase(event_id, "FIRE_ACTION_UNKNOWN")
+            return {
+                "ok": False,
+                "state": "FIRE_ACTION_UNKNOWN",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "timeout_ambiguous",
+            }
+        self.store.set_phase(event_id, "FAILED")
+        return {"ok": False, "state": "FAILED", "job_id": job_id, "kind": "failed"}
+
+    def _accepted_wake(self, job_id: str) -> bool:
+        return self._inspect_job(job_id) is not None or self._inspect_action_page(job_id)
 
     def _inspect_job(self, job_id: str) -> dict[str, Any] | None:
         if not job_id:
@@ -1358,6 +1564,16 @@ class GrokSlackBridge:
         if isinstance(job, dict):
             return job
         return None
+
+    def _inspect_action_page(self, ident: str) -> bool:
+        if not ident:
+            return False
+        try:
+            sha = self.github.current_main_sha()
+            blob = self.github.read_path(f"p/{ident}.md", sha)
+        except (FileNotFoundError, BridgeError, OSError):
+            return False
+        return bool(blob)
 
     def _observe_and_deliver(
         self,
@@ -1502,6 +1718,17 @@ class GrokSlackBridge:
                 return last
         return last
 
+    def _post_rejection(self, event_id: str, contract: dict[str, Any], submitted: dict[str, Any]) -> SlackSendResult:
+        code = str(submitted.get("code") or "REJECTED")
+        row = self.store.get(event_id)
+        calls = 0 if row is None else row.fire_action_calls
+        text = (
+            f"GROK SLACK fire_action was rejected ({code}). "
+            "This is retryable. No Grok work was queued from this Slack event. "
+            f"fire_action_calls={calls}."
+        )
+        return self._post_status(event_id, contract, text, phase="rejected")
+
     def _deliver_result(self, event_id: str, contract: dict[str, Any], envelope: dict[str, Any]) -> SlackSendResult:
         if self.executor_slack is not None:
             # Executor automation is not the final Slack owner.
@@ -1568,10 +1795,11 @@ class GrokSlackBridge:
 
 
 def _is_ambiguous(exc: Exception) -> bool:
-    if isinstance(exc, TimeoutError):
+    if isinstance(exc, (TimeoutError, URLError)):
         return True
     name = type(exc).__name__.casefold()
-    return "timeout" in name or "timeout" in str(exc).casefold()
+    text = str(exc).casefold()
+    return "timeout" in name or "timeout" in text or "unavailable" in text
 
 
 def _job_is_terminal(job: dict[str, Any]) -> bool:

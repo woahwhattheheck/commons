@@ -147,13 +147,51 @@ class FakeMcp:
         if name == "fire_action":
             if self.fire_mode == "timeout":
                 raise TimeoutError("fire_action ambiguous")
+            if self.fire_mode == "timeout-after-wake":
+                self._queue(arguments)
+                raise TimeoutError("fire_action ambiguous after wake")
             if self.fire_mode == "crash-after":
                 self._queue(arguments)
                 raise RuntimeError("killed after fire_action")
             if self.fire_mode == "refuse":
                 raise ConnectionError("pre-send failure")
+            if self.fire_mode == "pending":
+                return self._pending(arguments)
+            if self.fire_mode == "schema":
+                ident = str(arguments.get("id") or "")
+                raise bridge.McpToolError({
+                    "ok": False,
+                    "isError": True,
+                    "state": "INGEST_ERROR",
+                    "code": "SCHEMA",
+                    "message": "body must not be empty",
+                    "id": ident,
+                })
             return self._queue(arguments)
         raise AssertionError("unexpected tool " + name)
+
+    def _pending(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        ident = str(arguments.get("id") or "")
+        page = f"p/{ident}.md"
+        self.github.put(page, f"from: UNSEATED\nto: TOOLS\nid: {ident}\n---\nBUILD\n")
+        return {
+            "ok": False,
+            "isError": True,
+            "state": "DURABLE_ACTION_PENDING",
+            "code": "ACTION_RESULT_PENDING",
+            "message": "the action record is durable but its executor result is still pending",
+            "id": ident,
+            "git_sha": MAIN_SHA,
+            "action_record": {
+                "ok": True,
+                "state": "DURABLE_PAGE",
+                "id": ident,
+                "git_sha": MAIN_SHA,
+                "path": page,
+            },
+            "result_path": f"actions/results/{ident}.json",
+            "verify_tool": "verify_durability",
+        }
 
     def _queue(self, arguments: dict[str, Any]) -> dict[str, Any]:
         ident = str(arguments.get("id") or "")
@@ -752,6 +790,135 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(report["mcp"]["intake_road"], "current_main_orchestrator")
             self.assertNotIn("BOT_TOKEN_SHOULD_NOT_LEAK", encoded)
             self.assertNotIn("APP_TOKEN_SHOULD_NOT_LEAK", encoded)
+
+    def test_fire_action_pending_with_durable_record_is_observing_not_failed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="pending")
+            service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-pending", event_payload("accepted pending"))
+            self.assertEqual(result["state"], "OBSERVING")
+            self.assertNotEqual(result["state"], "FAILED")
+            self.assertEqual(store.get("Ev-pending").phase, "OBSERVING")
+            self.assertEqual(store.get("Ev-pending").fire_action_calls, 1)
+            self.assertFalse(any("rejected" in (row.get("text") or "").casefold() for row in slack.posts))
+            fires = [name for name, _ in mcp.calls if name == "fire_action"]
+            self.assertEqual(len(fires), 1)
+            ident = store.get("Ev-pending").job_id
+            run_key = store.get("Ev-pending").run_key
+            FakeMcp(github)._queue({"id": ident, "payload": json.dumps({"run_key": run_key, "origin": {"thread_id": "1787871538.126989"}})})
+            recovered = service.recover_pending()
+            self.assertGreaterEqual(recovered, 1)
+            self.assertEqual(store.get("Ev-pending").phase, "DELIVERED")
+            self.assertEqual(store.get("Ev-pending").fire_action_calls, 1)
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            store.close()
+
+    def test_fire_action_schema_rejection_posts_one_retryable_reply(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="schema")
+            service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-schema", event_payload("true rejection"))
+            self.assertEqual(result["state"], "FAILED")
+            self.assertEqual(result.get("kind"), "rejected")
+            self.assertTrue(result.get("retryable"))
+            self.assertEqual(store.get("Ev-schema").phase, "FAILED")
+            self.assertEqual(store.get("Ev-schema").fire_action_calls, 1)
+            rejected = [row for row in slack.posts if "rejected" in (row.get("text") or "").casefold() and "SCHEMA" in (row.get("text") or "")]
+            self.assertEqual(len(rejected), 1)
+            self.assertIn("retryable", (rejected[0].get("text") or "").casefold())
+            again = service.handle_event("Ev-schema", event_payload("true rejection"))
+            self.assertEqual(again["state"], "FAILED")
+            self.assertEqual(again.get("submit"), False)
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            rejected_again = [row for row in slack.posts if "rejected" in (row.get("text") or "").casefold() and "SCHEMA" in (row.get("text") or "")]
+            self.assertEqual(len(rejected_again), 1)
+            store.close()
+
+    def test_fire_action_timeout_with_wake_is_not_false_terminal(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="timeout-after-wake")
+            service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-to-wake", event_payload("timeout after wake"))
+            self.assertEqual(result["state"], "DELIVERED")
+            self.assertNotEqual(result["state"], "FAILED")
+            self.assertEqual(store.get("Ev-to-wake").fire_action_calls, 1)
+            self.assertFalse(any("rejected" in (row.get("text") or "").casefold() for row in slack.posts))
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            store.close()
+
+    def test_fire_action_timeout_without_wake_is_unknown_not_rejection(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="timeout")
+            service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-to-none", event_payload("timeout ambiguity"))
+            self.assertEqual(result["state"], "FIRE_ACTION_UNKNOWN")
+            self.assertNotEqual(result.get("kind"), "rejected")
+            self.assertEqual(store.get("Ev-to-none").phase, "FIRE_ACTION_UNKNOWN")
+            self.assertEqual(store.get("Ev-to-none").fire_action_calls, 1)
+            self.assertFalse(any("rejected" in (row.get("text") or "").casefold() for row in slack.posts))
+            store.close()
+            service2, _slack2, github, mcp2, store2 = build_bridge(directory, github=github, mcp=FakeMcp(github, fire_mode="timeout"))
+            service2.recover_pending()
+            self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
+            self.assertEqual(store2.get("Ev-to-none").fire_action_calls, 1)
+            store2.close()
+
+    def test_restart_after_accepted_pending_does_not_replay_fire_action(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="pending")
+            service, _slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-restart", event_payload("restart pending"))
+            self.assertEqual(result["state"], "OBSERVING")
+            self.assertEqual(store.get("Ev-restart").fire_action_calls, 1)
+            ident = store.get("Ev-restart").job_id
+            run_key = store.get("Ev-restart").run_key
+            store.close()
+            FakeMcp(github)._queue({"id": ident, "payload": json.dumps({"run_key": run_key, "origin": {}})})
+            mcp2 = FakeMcp(github, fire_mode="pending")
+            service2, _slack2, github, mcp2, store2 = build_bridge(directory, github=github, mcp=mcp2)
+            service2.recover_pending()
+            self.assertEqual(store2.get("Ev-restart").phase, "DELIVERED")
+            self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
+            self.assertEqual(store2.get("Ev-restart").fire_action_calls, 1)
+            store2.close()
+
+    def test_mcp_client_preserves_structured_pending_from_http_400(self) -> None:
+        from urllib.error import HTTPError
+
+        pending = {
+            "ok": False,
+            "state": "DURABLE_ACTION_PENDING",
+            "code": "ACTION_RESULT_PENDING",
+            "id": "job-pending-01",
+            "git_sha": MAIN_SHA,
+            "action_record": {"ok": True, "id": "job-pending-01", "git_sha": MAIN_SHA, "path": "p/job-pending-01.md"},
+        }
+        body = json.dumps(pending).encode("utf-8")
+
+        def opener(request: Any, timeout: int = 0) -> Any:
+            raise HTTPError(request.full_url, 400, "tool error", {}, io.BytesIO(body))
+
+        client = bridge.CommonsMcpClient(opener=opener)
+        with self.assertRaises(bridge.McpToolError) as raised:
+            client.call_tool("fire_action", {"id": "job-pending-01"})
+        payload = raised.exception.payload
+        self.assertEqual(payload["code"], "ACTION_RESULT_PENDING")
+        self.assertEqual(payload["state"], "DURABLE_ACTION_PENDING")
+        self.assertTrue(bridge.has_durable_action_record(payload))
+        classified = bridge.classify_fire_action(payload, raised.exception)
+        self.assertEqual(classified["kind"], "accepted_pending")
+        self.assertEqual(classified["phase"], "OBSERVING")
+        self.assertFalse(classified["replay"])
 
 
 if __name__ == "__main__":
