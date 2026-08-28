@@ -40,7 +40,7 @@ ANALYSIS: Procurement channel gsa-schedule is composed from the distribution lay
 ### Feature and resource trackers (`resource-feature-trackers`, `SHIPPED_ON_MAIN`)
 
 - `ground/FEATURES.md` sha256 `5312db472d2b9c39c08f73cbee69d645f74453596eefa6aa2e0021f5cf5a0418` (946 bytes)
-- `features.html` sha256 `6b3bf25a49b2eb29946f9e284393bc35f8a810365d6c6d81a85bf45bf8777d32` (10160 bytes)
+- `features.html` sha256 `6412d6e40c7612fe431562d55418a8614bf09e256d1aa50fa0622c393c4c510d` (10160 bytes)
 - `resources.html` sha256 `e7b81f68e90b900f53f41df78c5cc44dcf3e38af28b5f2ae0468a80d319559ac` (10314 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `7353421716adc008d5c3551adc3437ee4e575230e4d55a6f111607af674cdcac` (76717 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
