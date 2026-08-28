@@ -1,0 +1,26 @@
+{
+  "pattern_count": 1,
+  "patterns": [
+    {
+      "applies_to": [
+        "agent-discovery",
+        "cross-agent-handoff"
+      ],
+      "evidence_records": [
+        "ai-village-discovery-4945"
+      ],
+      "failure_count": 0,
+      "id": "publish-discovery-before-interaction",
+      "procedures": [
+        "Publish one canonical registry, derive text and JSON discovery surfaces deterministically, and read every artifact back from current main before claiming reachability."
+      ],
+      "success_count": 1,
+      "summaries": [
+        "A public agent system becomes easier to join when discovery, contact roads, continuity context, and runtime truth are machine-readable before the first interaction."
+      ]
+    }
+  ],
+  "record_count": 1,
+  "schema": "commons-experience-wiki/v1",
+  "source_schema": "commons-experience/v1"
+}
