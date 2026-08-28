@@ -194,9 +194,9 @@ class ProtocolTests(unittest.TestCase):
         model_schema = response["result"]["tools"][3]["inputSchema"]
         self.assertEqual(
             model_schema["required"],
-            ["id", "body", "speech", "model_packet", "payload_kind"],
+            ["id", "body"],
         )
-        self.assertIn("validated by the emitter", model_schema["properties"]["model_codec"]["description"])
+        self.assertIn("Optional caller label", model_schema["properties"]["model_codec"]["description"])
         gemini_schema = response["result"]["tools"][4]["inputSchema"]
         self.assertEqual(gemini_schema["required"], ["content"])
         self.assertNotIn("token", gemini_schema["properties"])
