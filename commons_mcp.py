@@ -1468,8 +1468,35 @@ def make_http_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
             self.close_connection = True
             self.end_headers()
 
-        do_GET = _method_not_allowed
-        do_DELETE = _method_not_allowed
+        def do_HEAD(self) -> None:
+            if self.path != "/mcp":
+                self.send_response(404)
+            else:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("MCP-Protocol-Version", PROTOCOL_VERSION)
+            self.send_header("Content-Length", "0")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+
+        def do_GET(self) -> None:
+            if self.path in {
+                "/.well-known/oauth-protected-resource",
+                "/.well-known/oauth-protected-resource/mcp",
+            }:
+                self.send_response(404)
+                self.send_header("Content-Length", "0")
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                return
+            self._method_not_allowed()
+
+        def do_DELETE(self) -> None:
+            self.send_response(204)
+            self.send_header("Content-Length", "0")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+
         do_PUT = _method_not_allowed
         do_PATCH = _method_not_allowed
 
