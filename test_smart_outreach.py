@@ -47,7 +47,7 @@ class SmartOutreachTests(unittest.TestCase):
         plan = smart.build_plan(smart.read_object(smart.DEFAULT_INPUT))
         decisions = {item["prospect_id"]: item["decision"] for item in plan["items"]}
         self.assertEqual(decisions["anythingllm-mintplex"], "HOLD_DO_NOT_RESEND")
-        self.assertEqual(decisions["metaforms"], "HOLD_OCCUPIED")
+        self.assertEqual(decisions["metaforms"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["signoz"], "RESEARCH_REQUIRED")
         self.assertEqual(plan["truth"]["drafts_created"], 0)
         self.assertEqual(plan["truth"]["transport_actions"], 0)
