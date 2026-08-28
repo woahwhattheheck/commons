@@ -719,11 +719,32 @@ class BridgeStore:
             rows = self._connection.execute(
                 """
                 SELECT * FROM slack_events
-                WHERE phase NOT IN ('DELIVERED', 'FAILED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED')
+                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED')
+                  AND NOT (
+                    phase = 'FAILED'
+                    AND EXISTS (
+                      SELECT 1 FROM deliveries
+                      WHERE deliveries.event_id = slack_events.event_id
+                        AND deliveries.phase = 'rejected'
+                        AND deliveries.state = 'SENT'
+                    )
+                  )
                 ORDER BY created_at
                 """
             ).fetchall()
         return [self._row_to_work(row) for row in rows]
+
+    def has_sent_rejected(self, event_id: str) -> bool:
+        with self._lock:
+            row = self._connection.execute(
+                """
+                SELECT 1 FROM deliveries
+                WHERE event_id = ? AND phase = 'rejected' AND state = 'SENT'
+                LIMIT 1
+                """,
+                (event_id,),
+            ).fetchone()
+        return row is not None
 
     def owns_client_msg_id(self, client_msg_id: str) -> bool:
         with self._lock:
@@ -1412,8 +1433,12 @@ class GrokSlackBridge:
             row = self.store.get(event_id)
             if row is None:
                 return {"ok": True, "state": "RETRY_DUPLICATE", "submit": False}
-            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "FAILED", "EVENT_ID_COLLISION"}:
+            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION"}:
                 return {"ok": True, "state": row.phase, "submit": False}
+            if row.phase == "FAILED":
+                if self.store.has_sent_rejected(event_id):
+                    return {"ok": True, "state": "FAILED", "submit": False}
+                return self._resume_failed_rejection(row)
             if row.phase in POST_SUBMIT_PHASES:
                 return self._resume_output_only(row)
             return self._run_claimed(event_id, contract)
@@ -1423,7 +1448,9 @@ class GrokSlackBridge:
         recovered = 0
         for item in self.store.pending():
             try:
-                if item.phase in POST_SUBMIT_PHASES or item.phase == "JOB_PERSISTED":
+                if item.phase == "FAILED":
+                    result = self._resume_failed_rejection(item)
+                elif item.phase in POST_SUBMIT_PHASES or item.phase == "JOB_PERSISTED":
                     result = self._resume_output_only(item)
                 else:
                     result = self._resume_pre_submit(item)
@@ -1783,6 +1810,33 @@ class GrokSlackBridge:
         }
         return self._observe_and_deliver(item.event_id, contract, packet, {"job_id": item.job_id, "state": "SUBMITTED"})
 
+    def _resume_failed_rejection(self, item: PendingWork) -> dict[str, Any]:
+        """Output-only: post the missing Slack rejection. Never replay fire_action."""
+        if self.store.has_sent_rejected(item.event_id):
+            return {"ok": True, "state": "FAILED", "submit": False}
+        contract = {
+            "event_id": item.event_id,
+            "channel": item.channel,
+            "message_ts": item.message_ts,
+            "thread_ts": item.thread_ts,
+            "author": item.author,
+            "text": "",
+            "files": [],
+        }
+        submitted = {
+            "ok": False,
+            "state": "FAILED",
+            "kind": "rejected",
+            "retryable": True,
+            "code": DURABILITY_NEVER_APPEARED,
+            "job_id": item.job_id,
+            "task_id": item.task_id,
+            "submit": False,
+        }
+        posted = self._post_rejection(item.event_id, contract, submitted)
+        submitted["delivery"] = posted.state
+        return submitted
+
     def _post_status(self, event_id: str, contract: dict[str, Any], text: str, *, phase: str) -> SlackSendResult:
         pieces = chunk_text(text)
         last = SlackSendResult("FAILED")
@@ -1809,7 +1863,10 @@ class GrokSlackBridge:
             "This is retryable. No Grok work was queued from this Slack event. "
             f"fire_action_calls={calls}."
         )
-        return self._post_status(event_id, contract, text, phase="rejected")
+        try:
+            return self._post_status(event_id, contract, text, phase="rejected")
+        except Exception:
+            return SlackSendResult("FAILED")
 
     def _deliver_result(self, event_id: str, contract: dict[str, Any], envelope: dict[str, Any]) -> SlackSendResult:
         if self.executor_slack is not None:

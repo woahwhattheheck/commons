@@ -298,6 +298,13 @@ class CrashSentStore(bridge.BridgeStore):
         super().upsert_delivery(key, event_id, phase, index, count, body_sha256, channel, thread_ts, client_msg_id, state, slack_ts)
 
 
+class CrashRejectedStore(bridge.BridgeStore):
+    def upsert_delivery(self, key: str, event_id: str, phase: str, index: int, count: int, body_sha256: str, channel: str, thread_ts: str, client_msg_id: str, state: str, slack_ts: str = "") -> None:
+        if phase == "rejected":
+            raise RuntimeError("killed before rejected SENT persist")
+        super().upsert_delivery(key, event_id, phase, index, count, body_sha256, channel, thread_ts, client_msg_id, state, slack_ts)
+
+
 def build_bridge(directory: str, slack: FakeSlack | None = None, github: FakeGitHub | None = None, mcp: FakeMcp | None = None, store: bridge.BridgeStore | None = None, **extra: Any) -> tuple[bridge.GrokSlackBridge, FakeSlack, FakeGitHub, FakeMcp, bridge.BridgeStore]:
     slack = slack or FakeSlack()
     github = github or FakeGitHub()
@@ -1017,6 +1024,49 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
             self.assertEqual(store2.get("Ev-unlanded").fire_action_calls, 1)
             self.assertEqual(store2.get("Ev-unlanded").phase, "FAILED")
+            store2.close()
+
+    def test_failed_durability_without_rejected_row_posts_once_on_restart(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="pending-unlanded")
+            slack = FakeSlack()
+            store = CrashRejectedStore(Path(directory) / "state.sqlite3")
+            sink = bridge.SlackTransport(slack, store, sleeper=lambda _s: None)
+            service = bridge.GrokSlackBridge(
+                store, mcp, github, sink, bot_user_id="UBOT", poll_budget=3, sleeper=lambda _s: None
+            )
+            result = service.handle_event("Ev-failed-rej", event_payload("durability never appeared"))
+            self.assertEqual(result["state"], "FAILED")
+            self.assertEqual(result.get("code"), "DURABILITY_NEVER_APPEARED")
+            self.assertTrue(result.get("retryable"))
+            self.assertEqual(store.get("Ev-failed-rej").phase, "FAILED")
+            self.assertEqual(store.get("Ev-failed-rej").fire_action_calls, 1)
+            self.assertFalse(store.has_sent_rejected("Ev-failed-rej"))
+            self.assertFalse(any("DURABILITY_NEVER_APPEARED" in (row.get("text") or "") for row in slack.posts))
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            store.close()
+
+            mcp2 = FakeMcp(github, fire_mode="pending-unlanded")
+            service2, slack2, github, mcp2, store2 = build_bridge(directory, github=github, mcp=mcp2)
+            recovered = service2.recover_pending()
+            self.assertGreaterEqual(recovered, 1)
+            self.assertEqual(store2.get("Ev-failed-rej").phase, "FAILED")
+            self.assertEqual(store2.get("Ev-failed-rej").fire_action_calls, 1)
+            self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
+            posted = [row for row in slack2.posts if "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")]
+            self.assertEqual(len(posted), 1)
+            self.assertIn("retryable", (posted[0].get("text") or "").casefold())
+            self.assertTrue(store2.has_sent_rejected("Ev-failed-rej"))
+            service2.recover_pending()
+            posted_again = [row for row in slack2.posts if "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")]
+            self.assertEqual(len(posted_again), 1)
+            again = service2.handle_event("Ev-failed-rej", event_payload("durability never appeared"))
+            self.assertEqual(again["state"], "FAILED")
+            self.assertEqual(again.get("submit"), False)
+            self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
+            self.assertEqual(len([row for row in slack2.posts if "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")]), 1)
             store2.close()
 
     def test_accepted_pending_still_one_fire_action_call(self) -> None:
