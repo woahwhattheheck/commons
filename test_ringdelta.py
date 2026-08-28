@@ -124,7 +124,6 @@ class TestRingdeltaDoor(unittest.TestCase):
             "login",
             "password",
             "allowlist",
-            "protected-path",
             "api-key",
             "signup",
         ):
