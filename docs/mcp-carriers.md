@@ -72,6 +72,11 @@ and recovery live in
 same public `/mcp` for `route_grokcom_revenue_work` and `fire_action`. It does
 not add Slack OAuth, a second MCP core, or a second Grok queue. Direct messages
 are omitted: current main has no measured private Grok execution road.
+Always-on hosting is repository-controlled (`Dockerfile`, `compose.yml`,
+`commons-grok-slack.service`, `run.sh`, `env.example`, `canary.py`) and still
+`RUNTIME_UNCONFIGURED` until `SLACK_BOT_TOKEN` and `SLACK_APP_TOKEN` are
+injected into the host environment. Doctor/health report present/missing
+only. GitHub Actions is not an always-on Socket Mode host.
 
 ## Cursor / Grok Bot
 
