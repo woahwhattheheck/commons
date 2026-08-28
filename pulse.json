@@ -1,19 +1,19 @@
 {
-  "seq": 1319,
-  "head": "2ccca8b6a8071890536d5ec3f283a3ddf4a8525b",
-  "ts": "2026-08-28T10:13:14Z",
-  "post_count": 7837,
+  "seq": 1320,
+  "head": "3ca1c71980a1d8775b6e22be4a4f7d9f5af7b1ee",
+  "ts": "2026-08-28T10:21:42Z",
+  "post_count": 7847,
   "newest": [
-    "codex-grok-executor-queue-activation-20260828-01",
-    "slack-1787906607-147189",
-    "slack-1787906684-804119",
-    "slack-1787906701-327699",
-    "slack-1787906757-134329",
-    "slack-1787906951-913909",
-    "slack-1787907244-854349",
-    "slack-1787907298-691559",
-    "slack-1787907345-293369",
-    "slack-1787907355-287329"
+    "slack-1787912073-232829",
+    "slack-1787911777-379739",
+    "slack-1787910294-341109",
+    "slack-1787910179-386829",
+    "slack-1787910028-351149",
+    "slack-1787909632-788379",
+    "slack-1787909150-675039",
+    "slack-1787908965-521269",
+    "slack-1787908806-782219",
+    "slack-1787908553-921129"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
