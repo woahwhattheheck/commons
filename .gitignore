@@ -18,4 +18,3 @@ _git_ok.py
 owner-private/
 *.vault
 **/.commons/*.vault
-
