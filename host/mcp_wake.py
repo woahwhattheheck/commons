@@ -70,6 +70,10 @@ ADAPTER_PATHS = (
 )
 WAKE_JOBS = "wake_jobs"
 PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
+CANONICAL_WAKE_JOB_IDS = (
+    "rivet-watchdog-canary-20260825-01",
+    PRODUCTION_CANARY_ID,
+)
 
 
 def _exists(root, rel):
@@ -104,7 +108,12 @@ def _wake_state(wake_json, wake_jobs):
 
 
 def _wake_job_rows(root):
-    """Read status-only job rows. Invalid files stay visible, never silent."""
+    """Read canonical leftover canaries only.
+
+    Unscoped wake_jobs/{id}.json beyond the named SPECTER/RIVET canaries
+    stays visible on disk and is hands-off for this leftover. A leased
+    grok-executor row is not a failed canary.
+    """
     folder = os.path.join(root, WAKE_JOBS)
     if not os.path.isdir(folder):
         return []
@@ -117,18 +126,21 @@ def _wake_job_rows(root):
             or not os.path.isfile(path)
         ):
             continue
+        stem = name[:-5]
+        if stem not in CANONICAL_WAKE_JOB_IDS:
+            continue
         try:
             with open(path, encoding="utf-8") as handle:
                 data = json.load(handle)
         except (OSError, ValueError):
-            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            rows.append({"job_id": stem, "status": "INVALID"})
             continue
         if not isinstance(data, dict):
-            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            rows.append({"job_id": stem, "status": "INVALID"})
             continue
         rows.append(
             {
-                "job_id": str(data.get("job_id") or name[:-5]),
+                "job_id": str(data.get("job_id") or stem),
                 "status": str(data.get("status") or "UNKNOWN"),
                 "result_address": str(data.get("result_address") or ""),
                 "attempt_count": int(data.get("attempt_count") or 0),
