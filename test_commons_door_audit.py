@@ -167,8 +167,8 @@ def main() -> None:
     assert "postNtfy(post)" in append
     assert "waitForDurable(post.id)" in append
     assert 'name === "append_model_post"' in append
-    assert "cmlModelArgs(args)" in mcp
-    cml_start = mcp.index("function cmlModelArgs(")
+    assert "await cmlModelArgs(args)" in mcp
+    cml_start = mcp.index("async function cmlModelArgs(")
     cml_end = mcp.index("\n}\n\nasync function callTool", cml_start) + 2
     cml_helper = mcp[cml_start:cml_end]
     assert "...args" in cml_helper
@@ -176,6 +176,12 @@ def main() -> None:
     assert "JSON.parse" not in cml_helper
     assert "scratchpad" not in cml_helper
     assert "chain_of_thought" not in cml_helper
+    assert "crypto.subtle.digest" in mcp
+    assert 'payload_sha256: await sha256Text(body)' in cml_helper
+    assert 'language_state: layered ? "LAYERED" : "UNLAYERED"' in cml_helper
+    assert 'speech !== "" && modelPacket !== ""' in cml_helper
+    assert "args.payload_sha256" not in cml_helper
+    assert "args.language_state" not in cml_helper
 
     mirror = call_branch(mcp, "mirror_to_slack")
     assert "postSlack(post, slack)" in mirror
