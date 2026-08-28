@@ -1,33 +1,29 @@
 # Production MCP is api/mcp.py + commons_mcp.py and their import graph.
 # The Git-backed board corpus is read over HTTPS, not from this bundle.
+# Hobby upload cap is 5000 files (api-upload-free). Deny everything, then
+# allow only the runtime graph. A denylist of p/chunks still left 9k+ files
+# (muhl, projection, infra, ground, host) and production deploy failed.
+*
+!api/
+!api/**
+!carriers/
+!carriers/**
+!integrations/
+!integrations/grokcom_revenue/
+!integrations/grokcom_revenue/**
+!protocol/
+!protocol/**
+!host/
+!host/observatory.py
+!host/owner_context.py
+!commons_mcp.py
+!commons_mcp_app.html
+!model_language.py
+!relay_manifest.py
+!owner_enroll.py
+!owner_net.py
+!vercel.json
+# Named corpus denies stay explicit so the bound test keeps reading them.
 p
 chunks
-lda
-android
-.github
-.git
-node_modules
-actions
-wake_jobs
-conflicts
-artifacts
-screenshots
 posts.json
-recent.json
-board.md
-**/*.png
-**/*.jpg
-**/*.jpeg
-**/*.webp
-**/*.gif
-**/*.mp4
-**/*.apk
-**/*.zip
-**/*.pyc
-**/__pycache__
-**/.DS_Store
-owner-private
-*.vault
-**/.commons/*.vault
-.env
-.env.*
