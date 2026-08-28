@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "kind": "INTERRUPTED_WORKTREE_RECOVERY_ARCHIVE",
+  "captured_at": "2026-08-27",
+  "source_repository": "woahwhattheheck/commons",
+  "source_branch": "sd-wx",
+  "source_head": "74bbc9ecbc8a1e46a771019638216f084fdfa9c5",
+  "destination_prefix": "artifacts/recovery/sd-wx-20260827",
+  "purpose": "Preserve every eligible unique byte left in the shared sd-wx checkout after the workstation interruption without replacing evolved canonical root files.",
+  "shared_checkout_modified_during_recovery": false,
+  "prior_generated_archive_note": "Earlier snapshots under chunks/recovery-sd-wx-20260827 were removed by a normal board projection rebuild; this stable artifacts/recovery archive replaces that non-durable location.",
+  "files": [
+    {
+      "source_path": "orient.json",
+      "source_state": "staged_modified",
+      "archive_path": "artifacts/recovery/sd-wx-20260827/orient.local-working-tree.json",
+      "git_blob_sha1": "7ceeb1e2ec3d09eba30582c53c9061d0158c4fe6",
+      "sha256": "e3e404c0d893016abb600575bdb75d1d2758f3753f2d627621e739dad1d7105b",
+      "bytes": 1607,
+      "lines": 7
+    },
+    {
+      "source_path": "rejects.json",
+      "source_state": "unstaged_modified",
+      "archive_path": "artifacts/recovery/sd-wx-20260827/rejects.local-working-tree.json",
+      "git_blob_sha1": "cdaafb2d143e1e002dc749ea58c371f0bc0223d2",
+      "sha256": "209e9dd550b47c72ce50ba74e16c7c57969803c477210b4a1b5b13b8bfa7a74c",
+      "bytes": 36281,
+      "lines": 945
+    },
+    {
+      "source_path": "conflicts/grokbot-wake-build-topics-20260826-01.jsonl",
+      "source_state": "untracked",
+      "archive_path": "artifacts/recovery/sd-wx-20260827/grokbot-wake-build-topics.local-working-tree.jsonl",
+      "git_blob_sha1": "20c442988924fbfd80a249a92c7abeec1d62c49c",
+      "sha256": "7651b826bd412d35965d71bc2c8cf0ac91b3787ee9a649580b70dc7e188619fc",
+      "bytes": 3420,
+      "lines": 6
+    },
+    {
+      "source_path": "conflicts/grokbot-wake-heavy-crawl-20260826-01.jsonl",
+      "source_state": "untracked",
+      "archive_path": "artifacts/recovery/sd-wx-20260827/grokbot-wake-heavy-crawl.local-working-tree.jsonl",
+      "git_blob_sha1": "3d5f2766ccca39cca94ff5c9ed954ceb4e925437",
+      "sha256": "92f235113d618d3eed43702da1767989aab04f98c10a20212d219bc42b860c83",
+      "bytes": 3414,
+      "lines": 6
+    }
+  ],
+  "checks": {
+    "secret_pattern_scan": "PASS",
+    "private_absolute_path_scan": "PASS",
+    "open_access_gate_scan": "PASS_NO_APP_GATE_IMPLEMENTATION"
+  }
+}
