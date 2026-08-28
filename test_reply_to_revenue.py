@@ -46,6 +46,24 @@ class ReplyToRevenueTests(unittest.TestCase):
         self.assertTrue(verdict["buyer_interest"])
         self.assertEqual(verdict["next_action"], "NEEDS_ACCEPTANCE")
 
+    def test_langfuse_is_hard_dnr_zero_cash(self) -> None:
+        funnel = r2r.validate_funnel()
+        langfuse = next(c for c in funnel["contacts"] if c["prospect_key"] == "langfuse")
+        self.assertTrue(langfuse["hard_dnr"])
+        self.assertFalse(langfuse["resend"])
+        self.assertEqual(langfuse["cash_usd"], 0)
+        self.assertEqual(langfuse["organization"], "Langfuse GmbH")
+        self.assertEqual(langfuse["receipt_count"], 1)
+        self.assertEqual(funnel["truth"]["cash_usd"], 0)
+        self.assertEqual(funnel["truth"]["transport_actions"], 0)
+        receipt = r2r.read_object(
+            ROOT / "revenue" / "payment_ready" / "outreach_receipts" / "20260828-langfuse-1a0496451e052b9d.json"
+        )
+        self.assertTrue(receipt["dedupe"]["do_not_resend"])
+        self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
+        self.assertFalse(receipt["facts"]["cash_claimed"])
+        self.assertEqual(receipt["provider_state"], "COMPLETED")
+
     def test_checked_in_funnel_is_all_dnr_auto_acks_and_zero_cash(self) -> None:
         funnel = r2r.validate_funnel()
         self.assertEqual(funnel["truth"]["cash_usd"], 0)

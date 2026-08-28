@@ -35,6 +35,10 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships | [gpt-grok-ship-loop](../.agents/skills/gpt-grok-ship-loop/SKILL.md) | — |
 | launch a Grok Build / Heavy lane from a thinking model | [elitist-way](../.agents/skills/elitist-way/SKILL.md) | [tokens/elitist-way](../ground/tokens/elitist-way.md) |
 | isolated current working copy / keep dirt / cloud is truth | [cloud-current](../.agents/skills/cloud-current/SKILL.md) | [tokens/cloud-current](../ground/tokens/cloud-current.md) |
+| fit sellable outcomes to public marketplaces and channels | [distribution](../.agents/skills/distribution/SKILL.md) | [tokens/distribution](../ground/tokens/distribution.md) |
+| evidence-derived shipped-state tracker | [feature-tracker](../.agents/skills/feature-tracker/SKILL.md) | [ground/FEATURE_TRACKER.md](../ground/FEATURE_TRACKER.md) |
+| canonical listing registry for marketplace/MCP/procurement packs | [listing-registry](../.agents/skills/listing-registry/SKILL.md) | [ground/LISTING_REGISTRY.md](../ground/LISTING_REGISTRY.md) |
+| compile verified outcomes into reusable skill patterns | [experience-compiler](../.agents/skills/experience-compiler/SKILL.md) | [experience/README.md](../experience/README.md) |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
