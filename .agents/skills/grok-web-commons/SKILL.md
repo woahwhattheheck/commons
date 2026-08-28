@@ -17,6 +17,8 @@ is a cloud/browser bridge; it is not this Skill. Do not rename or misrepresent
 it as one. Do not mint a second MCP core, public endpoint, Grok plugin, Slack
 connector, orchestration queue, or duplicated tool catalog.
 
+Thinking-model dispatch of one Grok Build / Heavy lane is [elitist-way](../elitist-way/SKILL.md). This skill remains the grok.com connector road. Do not mint a second ship system.
+
 ## Surface
 
 State provenance as `surface: grok.com web`.

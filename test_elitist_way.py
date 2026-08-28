@@ -126,6 +126,20 @@ class ElitistWayTests(unittest.TestCase):
         self.assertNotIn("authorization required", lower)
         self.assertNotIn("permission denied", lower)
 
+    def test_compose_pointers_on_review_and_ship_and_grok_web_commons(self):
+        review = (ROOT / ".agents" / "skills" / "review-and-ship" / "SKILL.md").read_text(
+            encoding="utf-8"
+        )
+        grokweb = (ROOT / ".agents" / "skills" / "grok-web-commons" / "SKILL.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("[elitist-way](../elitist-way/SKILL.md)", review)
+        self.assertIn("Do not mint a second ship-loop", review)
+        self.assertIn("integration and current-main readback", review)
+        self.assertIn("[elitist-way](../elitist-way/SKILL.md)", grokweb)
+        self.assertIn("Do not mint a second ship system", grokweb)
+        self.assertIn("grok.com connector road", grokweb)
+
     def test_skills_check_receipt_passes(self):
         result = subprocess.run(
             ["python3", str(CHECK)],
