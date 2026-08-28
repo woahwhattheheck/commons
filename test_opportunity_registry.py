@@ -142,6 +142,8 @@ class OpportunityRegistryTests(unittest.TestCase):
         self.assertTrue(path.is_file())
         self.assertEqual(mod.sha256_file(path), feat[0]["sha256"])
         self.assertEqual(path.stat().st_size, feat[0]["bytes"])
+        html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
+        self.assertIn(feat[0]["sha256"][:16], html)
 
     def test_packets_and_js_off_html(self):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
