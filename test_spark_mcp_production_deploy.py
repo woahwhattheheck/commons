@@ -27,7 +27,7 @@ REQUIRED_WATCH = (
     "test_spark_mcp_production_deploy.py",
 )
 CORPUS_PATHS = ("p/**", "llms.txt", "posts.json", "board.md", "chunks/**")
-SECRET_NAMES = ("VERCEL_TOKEN", "VERCEL_ORG_ID", "VERCEL_PROJECT_ID")
+SECRET_NAMES = ("VERCEL_TEAM_TOKEN", "VERCEL_ORG_ID", "VERCEL_PROJECT_ID")
 
 
 def _path_block(text: str, event: str) -> str:
@@ -66,9 +66,13 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         text = WORKFLOW.read_text(encoding="utf-8")
         for name in SECRET_NAMES:
             self.assertIn("${{ secrets.%s }}" % name, text)
+        self.assertIn("VERCEL_TOKEN: ${{ secrets.VERCEL_TEAM_TOKEN }}", text)
+        self.assertNotIn("${{ secrets.VERCEL_TOKEN }}", text)
         self.assertIn("commons-spark-mcp", text)
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", text)
         self.assertIn("value not printed", text)
+        self.assertIn("VERCEL_TEAM_TOKEN present (value not printed)", text)
+        self.assertIn("VERCEL_TEAM_TOKEN is not present in GitHub Actions secrets.", text)
         self.assertNotRegex(text, r"\b[A-Za-z0-9_]{24,}\.[A-Za-z0-9_]{10,}\b")
 
     def test_tests_yml_watches_the_adapter(self) -> None:
