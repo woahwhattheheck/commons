@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -12,6 +13,7 @@ import open_door_guard as guard
 from host import repo_backup
 
 ROOT = Path(__file__).resolve().parent
+WORKFLOW = ROOT / ".github" / "workflows" / "open-repo-backup.yml"
 
 
 def git(repo: Path, *args: str) -> str:
@@ -128,6 +130,162 @@ class RepoBackupTests(unittest.TestCase):
         self.assertEqual(restored["state"], "RESTORED")
         self.assertEqual(restored["restored_head_sha"], git(self.source, "rev-parse", "HEAD"))
 
+    def test_drill_round_trip_and_forced_receipt_flags(self) -> None:
+        restore_dir = self.root / "drill-restored"
+        env = {
+            "run_id": "24862801",
+            "run_attempt": "1",
+            "repository": "woahwhattheheck/commons",
+            "ref": "refs/heads/main",
+            "sha": git(self.source, "rev-parse", "HEAD"),
+        }
+        result = repo_backup.drill(
+            self.source,
+            self.output,
+            restore_dir,
+            storage="github-actions-artifact",
+            retention_days=90,
+            artifact_name="commons-open-repo-backup",
+            bare=True,
+            run=env,
+        )
+        self.assertEqual(result["state"], "DRILLED")
+        self.assertEqual(result["restored_head_sha"], git(self.source, "rev-parse", "HEAD"))
+        self.assertTrue(result["bare"])
+        receipt_path = Path(result["receipt"])
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        self.assertEqual(set(receipt), repo_backup.DRILL_FIELDS)
+        self.assertEqual(receipt["schema_version"], repo_backup.DRILL_SCHEMA_VERSION)
+        self.assertEqual(receipt["storage"], "github-actions-artifact")
+        self.assertEqual(receipt["retention_days"], 90)
+        self.assertEqual(receipt["artifact_name"], "commons-open-repo-backup")
+        self.assertIs(receipt["github_outage_protection"], False)
+        self.assertIs(receipt["same_repo_copy"], False)
+        self.assertIs(receipt["owner_disk"], False)
+        self.assertIs(receipt["secrets_present"], False)
+        self.assertIs(receipt["independent_of_git_objects"], True)
+        self.assertIs(receipt["independent_of_owner_disk"], True)
+        self.assertIs(receipt["github_hosted"], True)
+        self.assertEqual(receipt["run_id"], "24862801")
+        self.assertEqual(receipt["sha"], env["sha"])
+        with self.assertRaises(repo_backup.BackupError):
+            repo_backup.drill(
+                self.source,
+                self.output,
+                self.root / "drill-restored-2",
+                storage="github-actions-artifact",
+                retention_days=90,
+                artifact_name="commons-open-repo-backup",
+                bare=True,
+                run=env,
+            )
+
+    def test_make_drill_receipt_rejects_unmeasured_storage_and_forces_false_flags(self) -> None:
+        manifest_path = repo_backup.snapshot(self.source, self.output)
+        restored = repo_backup.restore(manifest_path, self.root / "for-receipt", bare=True)
+        restored["github_outage_protection"] = True
+        restored["same_repo_copy"] = True
+        restored["owner_disk"] = True
+        restored["secrets_present"] = True
+        with self.assertRaises(repo_backup.BackupError):
+            repo_backup.make_drill_receipt(
+                storage="s3",
+                retention_days=90,
+                artifact_name="commons-open-repo-backup",
+                restore_receipt=restored,
+            )
+        with self.assertRaises(repo_backup.BackupError):
+            repo_backup.make_drill_receipt(
+                storage="google-drive",
+                retention_days=90,
+                artifact_name="commons-open-repo-backup",
+                restore_receipt=restored,
+            )
+        with self.assertRaises(repo_backup.BackupError):
+            repo_backup.make_drill_receipt(
+                storage="github-actions-artifact",
+                retention_days=30,
+                artifact_name="commons-open-repo-backup",
+                restore_receipt=restored,
+            )
+        receipt = repo_backup.make_drill_receipt(
+            storage="github-actions-artifact",
+            retention_days=90,
+            artifact_name="commons-open-repo-backup",
+            restore_receipt=restored,
+            run={"run_id": "x", "run_attempt": "1", "repository": "woahwhattheheck/commons", "ref": "refs/heads/main", "sha": restored["head_sha"]},
+        )
+        self.assertIs(receipt["github_outage_protection"], False)
+        self.assertIs(receipt["same_repo_copy"], False)
+        self.assertIs(receipt["owner_disk"], False)
+        self.assertIs(receipt["secrets_present"], False)
+        self.assertEqual(receipt["storage"], "github-actions-artifact")
+        self.assertEqual(receipt["retention_days"], 90)
+
+    def test_cli_drill(self) -> None:
+        tool = ROOT / "host" / "repo_backup.py"
+        env = os.environ.copy()
+        env["GITHUB_RUN_ID"] = "cli-run"
+        env["GITHUB_RUN_ATTEMPT"] = "1"
+        env["GITHUB_REPOSITORY"] = "woahwhattheheck/commons"
+        env["GITHUB_REF"] = "refs/heads/main"
+        env["GITHUB_SHA"] = git(self.source, "rev-parse", "HEAD")
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(tool),
+                "drill",
+                "--source",
+                str(self.source),
+                "--output-dir",
+                str(self.output),
+                "--restore-dir",
+                str(self.root / "cli-drill"),
+                "--bare",
+                "--storage",
+                "github-actions-artifact",
+                "--retention-days",
+                "90",
+                "--artifact-name",
+                "commons-open-repo-backup",
+            ],
+            check=True,
+            text=True,
+            capture_output=True,
+            env=env,
+        )
+        payload = json.loads(completed.stdout)
+        self.assertEqual(payload["state"], "DRILLED")
+        self.assertEqual(payload["run_id"], "cli-run")
+        self.assertIs(payload["github_outage_protection"], False)
+
+    def test_workflow_file_contract(self) -> None:
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("schedule:", text)
+        self.assertIn('cron: "17 5 * * *"', text)
+        self.assertIn("workflow_dispatch:", text)
+        self.assertIn("contents: read", text)
+        self.assertNotIn("contents: write", text)
+        self.assertNotIn("secrets.", text)
+        self.assertIn("persist-credentials: false", text)
+        self.assertIn("host/repo_backup.py drill", text)
+        self.assertIn("github-actions-artifact", text)
+        self.assertIn("retention-days: 90", text)
+        self.assertIn("upload-artifact", text)
+        self.assertIn("commons-open-repo-backup", text)
+        self.assertIn("if-no-files-found: error", text)
+        self.assertIn("fetch-depth: 0", text)
+        self.assertIn("timeout-minutes: 120", text)
+
+    def test_law_names_90_day_artifact_and_not_github_outage_protection(self) -> None:
+        law = (ROOT / "ground" / "BACKUP_OPEN_REPO.md").read_text(encoding="utf-8")
+        readme = (ROOT / "backups" / "README.md").read_text(encoding="utf-8")
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        for text in (law, readme, agents):
+            self.assertIn("90-day", text)
+            self.assertIn("not GitHub-outage protection", text)
+            self.assertIn("Do not add GitHub auth", text)
+
     def test_backup_law_is_prohibition_not_a_lock(self) -> None:
         paths = (
             ROOT / "AGENTS.md",
@@ -135,6 +293,7 @@ class RepoBackupTests(unittest.TestCase):
             ROOT / "backups" / "README.md",
             ROOT / "host" / "repo_backup.py",
             ROOT / "test_repo_backup.py",
+            WORKFLOW,
         )
         lines = [
             guard.AddedLine(path.as_posix(), line_number, text)

@@ -72,6 +72,12 @@
 > [host/repo_backup.py](./host/repo_backup.py). Slack source:
 > `1787927952.994499`.
 >
+> Measured independent copy: GitHub Actions artifact from
+> [`.github/workflows/open-repo-backup.yml`](./.github/workflows/open-repo-backup.yml),
+> 90-day retention, independent of git objects and Bryce's disk, still
+> GitHub-hosted, not GitHub-outage protection. Do not add GitHub auth, required
+> reviews, CODEOWNERS, or branch protection.
+>
 > **Pinned owner resource route — CURSOR QUOTA HOLD**
 >
 > Do not launch, wake, resume, assign, delegate to, or test with Cursor, Cursor
