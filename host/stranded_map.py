@@ -41,10 +41,6 @@ SLACK_TS = "1787635487.642039"
 PACKET_SIZE = 103812669582
 LATER_SIZE = 103831308164
 PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
-CANONICAL_WAKE_JOB_IDS = (
-    "rivet-watchdog-canary-20260825-01",
-    PRODUCTION_CANARY_ID,
-)
 
 
 def _exists(root, rel):
@@ -52,11 +48,9 @@ def _exists(root, rel):
 
 
 def _wake_job_rows(root):
-    """Read canonical leftover canaries only.
+    """Read every job file. Invalid files stay visible, never silent.
 
-    STRANDED_MAP production_canaries are the two watchdog rows. Unscoped
-    grok-executor jobs in the same folder stay on disk and are not this
-    leftover's census.
+    Executor-queue rows stay in the census. VERIFIED uses canonical canaries.
     """
     folder = os.path.join(root, WAKE_JOBS)
     if not os.path.isdir(folder):
@@ -71,8 +65,6 @@ def _wake_job_rows(root):
         ):
             continue
         stem = name[:-5]
-        if stem not in CANONICAL_WAKE_JOB_IDS:
-            continue
         try:
             with open(path, encoding="utf-8") as handle:
                 data = json.load(handle)
@@ -82,10 +74,13 @@ def _wake_job_rows(root):
         if not isinstance(data, dict):
             rows.append({"job_id": stem, "status": "INVALID"})
             continue
+        checkpoint = data.get("checkpoint") if isinstance(data.get("checkpoint"), dict) else {}
         rows.append(
             {
                 "job_id": str(data.get("job_id") or stem),
                 "status": str(data.get("status") or "UNKNOWN"),
+                "owner_claim": str(data.get("owner_claim") or ""),
+                "schema": str(data.get("schema") or checkpoint.get("schema") or ""),
             }
         )
     return rows
@@ -101,19 +96,42 @@ def _wake_job_json_count(root):
     return _wake_job_census(root)["wake_job_json"]
 
 
+def is_canonical_wake_job(item):
+    """Production canaries are canonical. Live grok.com executor jobs are not.
+
+    wake_jobs/ is one store: watchdog canaries and the grok.com executor queue.
+    VERIFIED is the canary lane. A live LEASED/OPEN executor job stays visible
+    and does not poison that lane.
+    """
+    item = item or {}
+    claim = str(item.get("owner_claim") or "").strip().upper()
+    schema = str(item.get("schema") or "").strip().lower()
+    checkpoint = item.get("checkpoint") if isinstance(item.get("checkpoint"), dict) else {}
+    checkpoint_schema = str(checkpoint.get("schema") or "").strip().lower()
+    if claim == "GROK_EXECUTOR":
+        return False
+    if schema.startswith("commons-grok-executor"):
+        return False
+    if checkpoint_schema.startswith("commons-grok-executor"):
+        return False
+    return True
+
+
 def _wake_state(wake_json, wake_jobs):
     """VERIFIED only when every canonical row is DONE. Else CANDIDATE/EMPTY."""
-    statuses = [
-        str((item or {}).get("status") or "UNKNOWN").upper()
-        for item in (wake_jobs or [])
-    ]
+    rows = list(wake_jobs or [])
     if wake_json <= 0:
         return "EMPTY"
-    if (
-        len(statuses) == int(wake_json)
-        and statuses
-        and all(status == "DONE" for status in statuses)
-    ):
+    if len(rows) != int(wake_json):
+        return "CANDIDATE"
+    canonical = [item for item in rows if is_canonical_wake_job(item)]
+    if not canonical:
+        return "CANDIDATE"
+    statuses = [
+        str((item or {}).get("status") or "UNKNOWN").upper()
+        for item in canonical
+    ]
+    if all(status == "DONE" for status in statuses):
         return "VERIFIED"
     return "CANDIDATE"
 

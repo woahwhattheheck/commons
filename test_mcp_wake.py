@@ -22,6 +22,7 @@ from mcp_wake import (
     classify,
     grok_smoke,
     idle_resume_row,
+    is_canonical_wake_job,
     load_inventory,
     measure_from_rows,
     measure_root,
@@ -175,6 +176,45 @@ class TestMcpWake(unittest.TestCase):
         )
         self.assertEqual(mismatched["wake"], "CANDIDATE")
 
+    def test_executor_queue_job_stays_visible_without_poisoning_canaries(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder = os.path.join(root, "wake_jobs")
+            os.makedirs(folder)
+            jobs = (
+                ("rivet-watchdog-canary-20260825-01", "DONE", "RIVET", ""),
+                (PRODUCTION_CANARY_ID, "DONE", "SPECTER", ""),
+                (
+                    "grok-community-evidence-portable-20260828",
+                    "LEASED",
+                    "GROK_EXECUTOR",
+                    "commons-grok-executor-job/v1",
+                ),
+            )
+            for job_id, status, claim, schema in jobs:
+                payload = {"job_id": job_id, "status": status, "owner_claim": claim}
+                if schema:
+                    payload["checkpoint"] = {"schema": schema}
+                with open(
+                    os.path.join(folder, job_id + ".json"), "w", encoding="utf-8"
+                ) as handle:
+                    json.dump(payload, handle)
+            row = measure_root(root)
+        ids = [item["job_id"] for item in row["wake_jobs"]]
+        leased = next(
+            item
+            for item in row["wake_jobs"]
+            if item["job_id"] == "grok-community-evidence-portable-20260828"
+        )
+        self.assertEqual(row["wake_job_json"], 3)
+        self.assertIn("grok-community-evidence-portable-20260828", ids)
+        self.assertFalse(is_canonical_wake_job(leased))
+        self.assertTrue(
+            is_canonical_wake_job(
+                {"job_id": PRODUCTION_CANARY_ID, "status": "DONE", "owner_claim": "SPECTER"}
+            )
+        )
+        self.assertEqual(row["wake"], "VERIFIED")
+
     def test_tick_receipt_is_not_counted_as_a_job(self):
         with tempfile.TemporaryDirectory() as root:
             folder = os.path.join(root, "wake_jobs")
@@ -187,29 +227,6 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(row["wake_job_json"], 0)
         self.assertEqual(row["wake_jobs"], [])
         self.assertEqual(row["wake"], "EMPTY")
-
-    def test_unscoped_executor_job_does_not_demote_canonical_canaries(self):
-        with tempfile.TemporaryDirectory() as root:
-            folder = os.path.join(root, "wake_jobs")
-            os.makedirs(folder)
-            for job_id, status in (
-                ("rivet-watchdog-canary-20260825-01", "DONE"),
-                (PRODUCTION_CANARY_ID, "DONE"),
-                ("grok-community-evidence-portable-20260828", "LEASED"),
-            ):
-                with open(
-                    os.path.join(folder, job_id + ".json"), "w", encoding="utf-8"
-                ) as handle:
-                    json.dump({"job_id": job_id, "status": status}, handle)
-            row = measure_root(root)
-        ids = [item["job_id"] for item in row["wake_jobs"]]
-        self.assertEqual(row["wake_job_json"], 2)
-        self.assertEqual(
-            sorted(ids),
-            ["rivet-watchdog-canary-20260825-01", PRODUCTION_CANARY_ID],
-        )
-        self.assertEqual(row["wake"], "VERIFIED")
-        self.assertNotIn("grok-community-evidence-portable-20260828", ids)
 
     def test_real_job_tick_does_not_invoke_or_write_repo(self):
         job = verify_job()
@@ -256,6 +273,19 @@ class TestMcpWake(unittest.TestCase):
         )
         self.assertEqual(canary["job_id"], PRODUCTION_CANARY_ID)
         self.assertEqual(canary["status"], "DONE")
+        canonical = [
+            item for item in row["wake_jobs"] if is_canonical_wake_job(item)
+        ]
+        self.assertTrue(canonical)
+        self.assertTrue(
+            all(str(item.get("status") or "").upper() == "DONE" for item in canonical)
+        )
+        executor_ids = [
+            item["job_id"]
+            for item in row["wake_jobs"]
+            if not is_canonical_wake_job(item)
+        ]
+        self.assertIn("grok-community-evidence-portable-20260828", executor_ids)
         self.assertEqual(row["wake"], "VERIFIED")
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         catalog = catalog_from_row(row)

@@ -17,6 +17,7 @@ from stranded_map import (
     PACKET_SIZE,
     PRODUCTION_CANARY_ID,
     classify,
+    is_canonical_wake_job,
     load_catalog,
     measure_from_rows,
     measure_tree,
@@ -169,31 +170,42 @@ class TestStrandedMap(unittest.TestCase):
         )
         self.assertEqual(measured["wake"], "CANDIDATE")
 
-    def test_unscoped_executor_job_does_not_demote_canonical_canaries(self):
+    def test_executor_queue_job_stays_visible_without_poisoning_canaries(self):
         catalog_path = os.path.join(ROOT, "ground", "STRANDED_MAP.json")
         with open(catalog_path, encoding="utf-8") as handle:
             catalog_text = handle.read()
         with tempfile.TemporaryDirectory() as root:
             folder = os.path.join(root, "wake_jobs")
             os.makedirs(folder)
-            for job_id, status in (
-                ("rivet-watchdog-canary-20260825-01", "DONE"),
-                (PRODUCTION_CANARY_ID, "DONE"),
-                ("grok-community-evidence-portable-20260828", "LEASED"),
-            ):
+            jobs = (
+                ("rivet-watchdog-canary-20260825-01", "DONE", "RIVET", ""),
+                (PRODUCTION_CANARY_ID, "DONE", "SPECTER", ""),
+                (
+                    "grok-community-evidence-portable-20260828",
+                    "LEASED",
+                    "GROK_EXECUTOR",
+                    "commons-grok-executor-job/v1",
+                ),
+            )
+            for job_id, status, claim, schema in jobs:
+                payload = {"job_id": job_id, "status": status, "owner_claim": claim}
+                if schema:
+                    payload["checkpoint"] = {"schema": schema}
                 with open(
                     os.path.join(folder, job_id + ".json"), "w", encoding="utf-8"
                 ) as handle:
-                    json.dump({"job_id": job_id, "status": status}, handle)
+                    json.dump(payload, handle)
             row = measure_tree(root, catalog_text)
         ids = [item["job_id"] for item in row["wake_jobs"]]
-        self.assertEqual(row["wake_job_json"], 2)
-        self.assertEqual(
-            sorted(ids),
-            ["rivet-watchdog-canary-20260825-01", PRODUCTION_CANARY_ID],
+        leased = next(
+            item
+            for item in row["wake_jobs"]
+            if item["job_id"] == "grok-community-evidence-portable-20260828"
         )
+        self.assertEqual(row["wake_job_json"], 3)
+        self.assertIn("grok-community-evidence-portable-20260828", ids)
+        self.assertFalse(is_canonical_wake_job(leased))
         self.assertEqual(row["wake"], "VERIFIED")
-        self.assertNotIn("grok-community-evidence-portable-20260828", ids)
 
     def test_missing_titan_size_is_not_landed(self):
         measured = measure_from_rows({"lda_android": True, "gh_android": False})
@@ -215,8 +227,19 @@ class TestStrandedMap(unittest.TestCase):
         self.assertGreaterEqual(row["wake_job_json"], 1)
         self.assertEqual(row["wake"], "VERIFIED")
         self.assertEqual(row["wake_job_json"], len(row["wake_jobs"]))
+        canonical = [
+            item for item in row["wake_jobs"] if is_canonical_wake_job(item)
+        ]
+        self.assertTrue(canonical)
         self.assertTrue(
-            all(str(item.get("status") or "").upper() == "DONE" for item in row["wake_jobs"])
+            all(str(item.get("status") or "").upper() == "DONE" for item in canonical)
+        )
+        self.assertTrue(
+            any(item.get("job_id") == PRODUCTION_CANARY_ID for item in canonical)
+        )
+        self.assertIn(
+            "grok-community-evidence-portable-20260828",
+            [item["job_id"] for item in row["wake_jobs"]],
         )
         self.assertGreaterEqual(len(row["mcp_surfaces"]), 4)
         self.assertTrue(row["mcp_inventory"])
