@@ -73,6 +73,7 @@ TOKEN_VALUE_RE = re.compile(r"(?:xox[baprs]|xapp)-[A-Za-z0-9-]{8,}")
 ENV_FILE_VAR = "COMMONS_GROK_SLACK_ENV_FILE"
 STATE_DB_VAR = "COMMONS_GROK_SLACK_STATE_DB"
 HEALTH_BIND_VAR = "COMMONS_GROK_SLACK_HEALTH_BIND"
+GIT_ROOT_VAR = "COMMONS_GROK_SLACK_GIT_ROOT"
 DEFAULT_HEALTH_BIND = "127.0.0.1:8788"
 SLACK_APP_ID = "A0BTJMFPTT6"
 HOST_PACK_FILES = (
@@ -96,6 +97,8 @@ SECRET_SCAN_FILES = HOST_PACK_FILES + (
 )
 RETRY_BUDGET = 4
 POLL_BUDGET = 12
+GIT_MATERIALIZE_ATTEMPTS = 16
+GIT_MATERIALIZE_DEADLINE_S = 45.0
 _GIT_SECRET_RE = re.compile(
     r"(?:ghp_|ghu_|gho_|ghs_|github_pat_|xox[baprs]-|xapp-)[A-Za-z0-9._-]{8,}"
 )
@@ -123,9 +126,24 @@ def git_env(extra: dict[str, str] | None = None) -> dict[str, str]:
     for name in _GIT_STRIP_ENV:
         env.pop(name, None)
     env["GIT_TERMINAL_PROMPT"] = "0"
+    env["GCM_INTERACTIVE"] = "Never"
     if extra:
         env.update(extra)
     return env
+
+
+def resolve_materialize_git_root(
+    explicit: str | Path | None = None,
+    env: dict[str, str] | None = None,
+) -> Path:
+    """Clone used for isolated-index writes. Env beats __file__ for scheduled cwd."""
+    if explicit is not None:
+        return Path(explicit)
+    source = env if env is not None else os.environ
+    raw = str(source.get(GIT_ROOT_VAR) or "").strip()
+    if raw:
+        return Path(raw)
+    return Path(__file__).resolve().parents[2]
 
 
 def run_git(
@@ -212,6 +230,7 @@ class PendingWork:
     text_sha256: str = ""
     source_key: str = ""
     fire_action_calls: int = 0
+    diagnostics: str = ""
     extras: dict[str, Any] = field(default_factory=dict)
 
 
@@ -653,6 +672,15 @@ class BridgeStore:
                 );
                 """
             )
+        self._ensure_diagnostics_column()
+
+    def _ensure_diagnostics_column(self) -> None:
+        with self._connection:
+            cols = {str(row[1]) for row in self._connection.execute("PRAGMA table_info(slack_events)")}
+            if "diagnostics" not in cols:
+                self._connection.execute(
+                    "ALTER TABLE slack_events ADD COLUMN diagnostics TEXT NOT NULL DEFAULT ''"
+                )
 
     def close(self) -> None:
         with self._lock:
@@ -761,6 +789,36 @@ class BridgeStore:
                 (event_id,),
             ).fetchone()
         return int(row["fire_action_calls"]) if row else 0
+
+    def materialize_log_path(self) -> Path:
+        return Path(str(self.path) + ".materialize.log")
+
+    def persist_diagnostics(self, event_id: str, note: str) -> None:
+        """Keep sanitized materialize notes after the process dies."""
+        cleaned = git_detail(note)[:240]
+        if not cleaned:
+            return
+        if event_id:
+            with self._lock, self._connection:
+                row = self._connection.execute(
+                    "SELECT diagnostics FROM slack_events WHERE event_id = ?",
+                    (event_id,),
+                ).fetchone()
+                if row is not None:
+                    prior = str(row["diagnostics"] or "")
+                    combined = (prior + " | " + cleaned).strip(" |") if prior else cleaned
+                    combined = combined[-1800:]
+                    self._connection.execute(
+                        "UPDATE slack_events SET diagnostics = ?, updated_at = ? WHERE event_id = ?",
+                        (combined, _now(), event_id),
+                    )
+        try:
+            sidecar = self.materialize_log_path()
+            sidecar.parent.mkdir(parents=True, exist_ok=True)
+            with sidecar.open("a", encoding="utf-8") as handle:
+                handle.write("%s %s %s\n" % (_now(), event_id or "-", cleaned))
+        except OSError:
+            pass
 
     def get(self, event_id: str) -> PendingWork | None:
         with self._lock:
@@ -871,6 +929,7 @@ class BridgeStore:
             text_sha256=str(row["text_sha256"] or ""),
             source_key=str(row["source_key"] or ""),
             fire_action_calls=int(row["fire_action_calls"] or 0),
+            diagnostics=str(row["diagnostics"] or "") if "diagnostics" in row.keys() else "",
         )
 
 
@@ -1509,9 +1568,11 @@ class GrokSlackBridge:
         self.delivery_owner = FINAL_DELIVERY_OWNER
         self.intake_road = "unknown"
         self._live_route_tool: bool | None = None
+        self._active_event_id = ""
 
     def handle_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         self.work_log.append("handle_event")
+        self._active_event_id = event_id
         if is_direct_message(event):
             return {"ok": True, "state": "NO_SUBMIT", "reason": "DM_OMITTED"}
         if is_edit_or_delete(event):
@@ -1577,6 +1638,7 @@ class GrokSlackBridge:
         return recovered
 
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
+        self._active_event_id = event_id
         packet = self._intake(event_id, contract)
         if packet.get("state") == "ECHO_PROCESSED" or packet.get("connector", {}).get("post_reply") is False:
             self.store.set_phase(event_id, "ECHO_SUPPRESSED")
@@ -1762,7 +1824,7 @@ class GrokSlackBridge:
         """Read p+wake_jobs from origin/main without a GitHub token."""
         if not job_id:
             return {}
-        if self.git_root is None and not isinstance(self.github, GitHubReadback):
+        if not self._wants_git_materialize():
             return {}
         found: dict[str, bytes] = {}
         try:
@@ -1819,7 +1881,18 @@ class GrokSlackBridge:
         text = "materialize:" + code
         if detail:
             text += ":" + git_detail(str(detail))
-        self.work_log.append(text[:240])
+        text = text[:240]
+        self.work_log.append(text)
+        persist = getattr(self.store, "persist_diagnostics", None)
+        if callable(persist):
+            persist(str(self._active_event_id or ""), text)
+
+    def _wants_git_materialize(self) -> bool:
+        if self.git_root is not None:
+            return True
+        if str(os.environ.get(GIT_ROOT_VAR) or "").strip():
+            return True
+        return isinstance(self.github, GitHubReadback)
 
     def _git(
         self,
@@ -1833,10 +1906,7 @@ class GrokSlackBridge:
         return run_git(args, cwd=cwd, env=env, stdin=stdin, timeout=timeout)
 
     def _materialize_git_root(self) -> Path | None:
-        raw = self.git_root
-        if raw is None:
-            raw = Path(__file__).resolve().parents[2]
-        root = Path(raw)
+        root = resolve_materialize_git_root(self.git_root)
         if not (root / "action_executor.py").is_file():
             return None
         try:
@@ -1874,7 +1944,7 @@ class GrokSlackBridge:
                 self._note_materialize("blob_empty")
             return None
         landed = self._materialize_blobs_map(job_id, page, job_blob)
-        use_git = isinstance(self.github, GitHubReadback) or self.git_root is not None
+        use_git = self._wants_git_materialize()
         if use_git:
             if self._materialize_via_git_checkout(job_id, page, job_blob):
                 return landed
@@ -1996,9 +2066,21 @@ class GrokSlackBridge:
             rel_page = "p/%s.md" % job_id
             rel_job = "wake_jobs/%s.json" % job_id
             page_bytes = page.encode("utf-8") if isinstance(page, str) else page
-            for attempt in range(1, 6):
+            started = self.clock()
+            for attempt in range(1, GIT_MATERIALIZE_ATTEMPTS + 1):
                 if attempt > 1:
-                    self.sleeper(attempt)
+                    elapsed = self.clock() - started
+                    if elapsed >= GIT_MATERIALIZE_DEADLINE_S:
+                        last_reason = "git_deadline"
+                        self._note_materialize("git_deadline", "%.3f" % elapsed)
+                        break
+                    delay = min(0.75, 0.15 * attempt)
+                    remaining = GIT_MATERIALIZE_DEADLINE_S - elapsed
+                    if remaining <= 0:
+                        last_reason = "git_deadline"
+                        self._note_materialize("git_deadline", "%.3f" % elapsed)
+                        break
+                    self.sleeper(min(delay, remaining))
                 try:
                     fetch = self._git(
                         ["fetch", "origin", "+refs/heads/main:refs/remotes/origin/main"],
@@ -2007,6 +2089,8 @@ class GrokSlackBridge:
                     )
                     if fetch.returncode != 0:
                         last_reason = "git_fetch:" + git_stderr(fetch)
+                        self._note_materialize("git_fetch", git_stderr(fetch))
+                        continue
                     parent_run = self._git(
                         ["rev-parse", "--verify", "refs/remotes/origin/main"],
                         cwd=root,
@@ -2111,6 +2195,7 @@ class GrokSlackBridge:
         submitted: dict[str, Any],
     ) -> dict[str, Any]:
         self.store.set_phase(event_id, "OBSERVING")
+        self._active_event_id = event_id
         job_id = str(submitted.get("job_id") or packet.get("grokcom", {}).get("executor_job", {}).get("job_id") or "")
         extra_paths = claimed_durable_paths(submitted.get("result") if isinstance(submitted.get("result"), dict) else {})
         job = None
@@ -2153,6 +2238,8 @@ class GrokSlackBridge:
                 if addressable:
                     return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
                 self.store.set_phase(event_id, "FAILED", result_id=DURABILITY_NEVER_APPEARED)
+                row = self.store.get(event_id)
+                diagnostics = str(row.diagnostics or "") if row is not None else ""
                 failed = {
                     "ok": False,
                     "state": "FAILED",
@@ -2161,6 +2248,7 @@ class GrokSlackBridge:
                     "code": DURABILITY_NEVER_APPEARED,
                     "job_id": job_id,
                     "task_id": packet.get("task_id"),
+                    "diagnostics": diagnostics,
                 }
                 self._post_rejection(event_id, contract, failed)
                 return failed
@@ -2270,6 +2358,7 @@ class GrokSlackBridge:
         return self._observe_and_deliver(item.event_id, contract, packet, {"job_id": item.job_id, "state": "SUBMITTED"})
 
     def _resume_failed_rejection(self, item: PendingWork) -> dict[str, Any]:
+        self._active_event_id = item.event_id
         code = str(item.result_id or DURABILITY_NEVER_APPEARED)
         submitted = {
             "ok": False,
@@ -2280,6 +2369,7 @@ class GrokSlackBridge:
             "code": code,
             "job_id": item.job_id,
             "task_id": item.task_id,
+            "diagnostics": str(item.diagnostics or ""),
         }
         if self.store.has_sent_rejected_delivery(item.event_id):
             return submitted
@@ -2321,6 +2411,11 @@ class GrokSlackBridge:
             "This is retryable. No Grok work was queued from this Slack event. "
             f"fire_action_calls={calls}."
         )
+        diag = git_detail(str(submitted.get("diagnostics") or (row.diagnostics if row is not None else "") or ""))
+        if diag:
+            remain = SLACK_TEXT_LIMIT - len(text) - 1
+            if remain > 24:
+                text = text + " " + diag[:remain]
         try:
             return self._post_status(event_id, contract, text, phase="rejected")
         except Exception:
@@ -2757,7 +2852,12 @@ def serve(args: argparse.Namespace) -> int:
     identity = web_client.auth_test()
     bot_user_id = identity.get("user_id")
     sink = SlackTransport(web_client, store)
-    bridge = GrokSlackBridge(store, mcp, github, sink, bot_user_id=str(bot_user_id) if bot_user_id else None)
+    git_root = os.environ.get(GIT_ROOT_VAR) or None
+    bridge = GrokSlackBridge(
+        store, mcp, github, sink,
+        bot_user_id=str(bot_user_id) if bot_user_id else None,
+        git_root=git_root,
+    )
     recovered = bridge.recover_pending()
     executor = ThreadPoolExecutor(max_workers=args.workers, thread_name_prefix="grok-slack")
     socket_client = SocketModeClient(app_token=app_token, web_client=web_client)
