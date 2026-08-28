@@ -1,0 +1,91 @@
+{
+  "attempt_count": 0,
+  "backoff_seconds": 30,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+        ],
+        "origin": {
+          "event_id": "p/grok-slack-e2e-proof-20260828-05.md",
+          "requester": "GROK_BUILD",
+          "session_id": "p/grok-slack-e2e-proof-20260828-05.md",
+          "source": "commons-action",
+          "task_id": "grok-slack-e2e-proof-20260828-05",
+          "thread_id": "GROK.COM"
+        },
+        "run_key": "grok-action-grok-slack-e2e-proof-20260828-05"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "p/grok-slack-e2e-proof-20260828-05.md",
+      "requester": "GROK_BUILD",
+      "session_id": "p/grok-slack-e2e-proof-20260828-05.md",
+      "source": "commons-action",
+      "task_id": "grok-slack-e2e-proof-20260828-05",
+      "thread_id": "GROK.COM"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "e22604067af28e027fffa689db1915e192028054f570456d3c66d4882a66c28e",
+    "result": null,
+    "run_key": "grok-action-grok-slack-e2e-proof-20260828-05",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-08-28T19:25:34Z",
+  "deadline": "2026-09-27T19:25:34Z",
+  "event_receipts": [],
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "grok-slack-e2e-proof-20260828-05",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-08-28T19:25:34Z",
+  "no_progress_count": 0,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "OPEN",
+  "tokens_used": 0,
+  "updated_at": "2026-08-28T19:25:34Z",
+  "woke_once": false
+}
