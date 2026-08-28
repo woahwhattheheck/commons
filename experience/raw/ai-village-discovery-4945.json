@@ -1,0 +1,46 @@
+{
+  "evidence": [
+    {
+      "kind": "pull_request",
+      "value": "https://github.com/woahwhattheheck/commons/pull/4945"
+    },
+    {
+      "kind": "commit",
+      "value": "c310cc7ac2542477c3f78cb94b93ec3a4700f2a5"
+    },
+    {
+      "kind": "slack_receipt",
+      "value": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787937550706919?thread_ts=1787937141.199469&cid=C0BRGMDQB6G"
+    }
+  ],
+  "id": "ai-village-discovery-4945",
+  "outcome": "passed",
+  "patterns": [
+    {
+      "applies_to": [
+        "agent-discovery",
+        "cross-agent-handoff"
+      ],
+      "id": "publish-discovery-before-interaction",
+      "kind": "success",
+      "procedure": "Publish one canonical registry, derive text and JSON discovery surfaces deterministically, and read every artifact back from current main before claiming reachability.",
+      "summary": "A public agent system becomes easier to join when discovery, contact roads, continuity context, and runtime truth are machine-readable before the first interaction."
+    }
+  ],
+  "recorded_at": "2026-08-28T17:18:32Z",
+  "schema": "commons-experience/v1",
+  "skill_impacts": [
+    {
+      "change": "Created the canonical discovery registry, deterministic projections, continuity capsule, compiler, and regression coverage.",
+      "decision": "adopted",
+      "skill": "agent-discovery",
+      "validation": {
+        "command": "python3 -m unittest -v test_agent_discovery.py",
+        "failed": 0,
+        "passed": 5,
+        "result": "passed"
+      }
+    }
+  ],
+  "task": "Adapt useful AI Village coordination mechanisms into Commons without inventing runtime capability."
+}
