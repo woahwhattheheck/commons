@@ -4140,7 +4140,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 8a999ce5e585bb687f0a3a2fc13dd81ebc300742).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 7e94f42e9a92e166f614916d63712403f6fc77f7).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -4152,7 +4152,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
+          "blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
           "kind":"canonical_source",
           "path":"land/sku-tip-20260826.md"
         },
@@ -4171,7 +4171,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4208,7 +4208,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 8a999ce5e585bb687f0a3a2fc13dd81ebc300742).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 7e94f42e9a92e166f614916d63712403f6fc77f7).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -4220,7 +4220,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
+          "blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
           "kind":"canonical_source",
           "path":"land/sku-tip-20260826.md"
         },
@@ -4239,7 +4239,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4276,7 +4276,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 8a999ce5e585bb687f0a3a2fc13dd81ebc300742).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 7e94f42e9a92e166f614916d63712403f6fc77f7).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -4288,7 +4288,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
+          "blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
           "kind":"canonical_source",
           "path":"land/sku-tip-20260826.md"
         },
@@ -4307,7 +4307,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4343,8 +4343,8 @@
       "title":"Tip"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 8a999ce5e585bb687f0a3a2fc13dd81ebc300742).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Tip — Commons channel package (not a live listing)\n\nOutcome: Tip.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-tip-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-tip-20260826.md (blob 7e94f42e9a92e166f614916d63712403f6fc77f7).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -4356,7 +4356,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"8a999ce5e585bb687f0a3a2fc13dd81ebc300742",
+          "blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
           "kind":"canonical_source",
           "path":"land/sku-tip-20260826.md"
         },
@@ -4375,10 +4375,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -4389,7 +4389,7 @@
       "id":"stripe-payment-links__sku-tip-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"micro_sku",
       "offer_id":"sku-tip-20260826",
       "offer_name":"Tip",
@@ -4412,7 +4412,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 091a1f85497b02e350d39f5bd5f892b66e759d0b).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 235c94284c14c179388b5e53b4b9d0f6a8a0dd7d).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -4424,7 +4424,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"091a1f85497b02e350d39f5bd5f892b66e759d0b",
+          "blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
           "kind":"canonical_source",
           "path":"land/sku-seat-20260826.md"
         },
@@ -4443,7 +4443,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4480,7 +4480,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 091a1f85497b02e350d39f5bd5f892b66e759d0b).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 235c94284c14c179388b5e53b4b9d0f6a8a0dd7d).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -4492,7 +4492,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"091a1f85497b02e350d39f5bd5f892b66e759d0b",
+          "blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
           "kind":"canonical_source",
           "path":"land/sku-seat-20260826.md"
         },
@@ -4511,7 +4511,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4548,7 +4548,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 091a1f85497b02e350d39f5bd5f892b66e759d0b).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 235c94284c14c179388b5e53b4b9d0f6a8a0dd7d).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -4560,7 +4560,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"091a1f85497b02e350d39f5bd5f892b66e759d0b",
+          "blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
           "kind":"canonical_source",
           "path":"land/sku-seat-20260826.md"
         },
@@ -4579,7 +4579,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4615,8 +4615,8 @@
       "title":"Seat"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 091a1f85497b02e350d39f5bd5f892b66e759d0b).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Seat — Commons channel package (not a live listing)\n\nOutcome: Seat.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-seat-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-seat-20260826.md (blob 235c94284c14c179388b5e53b4b9d0f6a8a0dd7d).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -4628,7 +4628,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"091a1f85497b02e350d39f5bd5f892b66e759d0b",
+          "blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
           "kind":"canonical_source",
           "path":"land/sku-seat-20260826.md"
         },
@@ -4647,10 +4647,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -4661,7 +4661,7 @@
       "id":"stripe-payment-links__sku-seat-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"micro_sku",
       "offer_id":"sku-seat-20260826",
       "offer_name":"Seat",
@@ -4684,7 +4684,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 258734957efc727f46f6315804b6034487e98896).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -4696,7 +4696,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
+          "blob_sha":"258734957efc727f46f6315804b6034487e98896",
           "kind":"canonical_source",
           "path":"land/sku-unlock-20260826.md"
         },
@@ -4715,7 +4715,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4752,7 +4752,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 258734957efc727f46f6315804b6034487e98896).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -4764,7 +4764,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
+          "blob_sha":"258734957efc727f46f6315804b6034487e98896",
           "kind":"canonical_source",
           "path":"land/sku-unlock-20260826.md"
         },
@@ -4783,7 +4783,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4820,7 +4820,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 258734957efc727f46f6315804b6034487e98896).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -4832,7 +4832,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
+          "blob_sha":"258734957efc727f46f6315804b6034487e98896",
           "kind":"canonical_source",
           "path":"land/sku-unlock-20260826.md"
         },
@@ -4851,7 +4851,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -4887,8 +4887,8 @@
       "title":"Unlock"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Unlock — Commons channel package (not a live listing)\n\nOutcome: Unlock.\nPrice: USD 5.00. Source terms win; this package does not rewrite them.\nOffer id: sku-unlock-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-unlock-20260826.md (blob 258734957efc727f46f6315804b6034487e98896).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -4900,7 +4900,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"0a92d4812ded4f8d6bb4f2b427032e6f760ad6fa",
+          "blob_sha":"258734957efc727f46f6315804b6034487e98896",
           "kind":"canonical_source",
           "path":"land/sku-unlock-20260826.md"
         },
@@ -4919,10 +4919,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -4933,7 +4933,7 @@
       "id":"stripe-payment-links__sku-unlock-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"micro_sku",
       "offer_id":"sku-unlock-20260826",
       "offer_name":"Unlock",
@@ -4956,7 +4956,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob 914e47c310bd91b7cb1854216fb130dda26838bc).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob b2c54753a82683a70831588366e35114ad644a65).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -4968,7 +4968,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"914e47c310bd91b7cb1854216fb130dda26838bc",
+          "blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
           "kind":"canonical_source",
           "path":"land/sku-monthly-tip-20260826.md"
         },
@@ -4987,7 +4987,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5024,7 +5024,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob 914e47c310bd91b7cb1854216fb130dda26838bc).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob b2c54753a82683a70831588366e35114ad644a65).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -5036,7 +5036,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"914e47c310bd91b7cb1854216fb130dda26838bc",
+          "blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
           "kind":"canonical_source",
           "path":"land/sku-monthly-tip-20260826.md"
         },
@@ -5055,7 +5055,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5092,7 +5092,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob 914e47c310bd91b7cb1854216fb130dda26838bc).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob b2c54753a82683a70831588366e35114ad644a65).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -5104,7 +5104,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"914e47c310bd91b7cb1854216fb130dda26838bc",
+          "blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
           "kind":"canonical_source",
           "path":"land/sku-monthly-tip-20260826.md"
         },
@@ -5123,7 +5123,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5159,8 +5159,8 @@
       "title":"Monthly tip"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob 914e47c310bd91b7cb1854216fb130dda26838bc).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Monthly tip — Commons channel package (not a live listing)\n\nOutcome: Monthly tip.\nPrice: USD 3.00. Source terms win; this package does not rewrite them.\nOffer id: sku-monthly-tip-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-monthly-tip-20260826.md (blob b2c54753a82683a70831588366e35114ad644a65).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -5172,7 +5172,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"914e47c310bd91b7cb1854216fb130dda26838bc",
+          "blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
           "kind":"canonical_source",
           "path":"land/sku-monthly-tip-20260826.md"
         },
@@ -5191,10 +5191,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -5205,7 +5205,7 @@
       "id":"stripe-payment-links__sku-monthly-tip-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"micro_sku",
       "offer_id":"sku-monthly-tip-20260826",
       "offer_name":"Monthly tip",
@@ -5228,7 +5228,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob fe70d4d0f16355a94b14157b26d3f647d9435f17).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob 4fd23e7a10e90a5c988f3581d77e83b86e212884).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -5240,7 +5240,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"fe70d4d0f16355a94b14157b26d3f647d9435f17",
+          "blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
           "kind":"canonical_source",
           "path":"land/sku-boost-20260826.md"
         },
@@ -5259,7 +5259,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5296,7 +5296,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob fe70d4d0f16355a94b14157b26d3f647d9435f17).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob 4fd23e7a10e90a5c988f3581d77e83b86e212884).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -5308,7 +5308,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"fe70d4d0f16355a94b14157b26d3f647d9435f17",
+          "blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
           "kind":"canonical_source",
           "path":"land/sku-boost-20260826.md"
         },
@@ -5327,7 +5327,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5364,7 +5364,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob fe70d4d0f16355a94b14157b26d3f647d9435f17).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob 4fd23e7a10e90a5c988f3581d77e83b86e212884).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -5376,7 +5376,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"fe70d4d0f16355a94b14157b26d3f647d9435f17",
+          "blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
           "kind":"canonical_source",
           "path":"land/sku-boost-20260826.md"
         },
@@ -5395,7 +5395,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5431,8 +5431,8 @@
       "title":"Boost"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob fe70d4d0f16355a94b14157b26d3f647d9435f17).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Boost — Commons channel package (not a live listing)\n\nOutcome: Boost.\nPrice: USD 4.99. Source terms win; this package does not rewrite them.\nOffer id: sku-boost-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-boost-20260826.md (blob 4fd23e7a10e90a5c988f3581d77e83b86e212884).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -5444,7 +5444,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"fe70d4d0f16355a94b14157b26d3f647d9435f17",
+          "blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
           "kind":"canonical_source",
           "path":"land/sku-boost-20260826.md"
         },
@@ -5463,10 +5463,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -5477,7 +5477,7 @@
       "id":"stripe-payment-links__sku-boost-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"micro_sku",
       "offer_id":"sku-boost-20260826",
       "offer_name":"Boost",
@@ -5500,7 +5500,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob 62625136a9e5abfe77d9e7afa59e8ee67571b33e).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -5512,7 +5512,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
+          "blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
           "kind":"canonical_source",
           "path":"land/sku-whitebox-hour-20260826.md"
         },
@@ -5531,7 +5531,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5568,7 +5568,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob 62625136a9e5abfe77d9e7afa59e8ee67571b33e).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -5580,7 +5580,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
+          "blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
           "kind":"canonical_source",
           "path":"land/sku-whitebox-hour-20260826.md"
         },
@@ -5599,7 +5599,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5636,7 +5636,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob 62625136a9e5abfe77d9e7afa59e8ee67571b33e).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -5648,7 +5648,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
+          "blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
           "kind":"canonical_source",
           "path":"land/sku-whitebox-hour-20260826.md"
         },
@@ -5667,7 +5667,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5703,8 +5703,8 @@
       "title":"White Box hour"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"White Box hour — Commons channel package (not a live listing)\n\nOutcome: White Box hour.\nPrice: USD 250.00. Source terms win; this package does not rewrite them.\nOffer id: sku-whitebox-hour-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-whitebox-hour-20260826.md (blob 62625136a9e5abfe77d9e7afa59e8ee67571b33e).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -5716,7 +5716,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"e8cd0861c42f428a059be1b3cf2d6de0d2f0d3cd",
+          "blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
           "kind":"canonical_source",
           "path":"land/sku-whitebox-hour-20260826.md"
         },
@@ -5735,10 +5735,10 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -5749,7 +5749,7 @@
       "id":"stripe-payment-links__sku-whitebox-hour-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"expertise_hour",
       "offer_id":"sku-whitebox-hour-20260826",
       "offer_name":"White Box hour",
@@ -5772,7 +5772,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
@@ -5784,7 +5784,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -5803,7 +5803,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -5841,7 +5841,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
@@ -5853,7 +5853,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -5872,7 +5872,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -5910,7 +5910,7 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
@@ -5922,7 +5922,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -5941,7 +5941,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -5979,7 +5979,7 @@
     },
     {
       "blocked_reason":"No CAGE/UEI/SAM/GSA evidence on current main.",
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: SAM.gov (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=SAM.gov. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: SAM.gov (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=SAM.gov. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"sam-gov-procurement",
       "channel_name":"SAM.gov",
@@ -5991,7 +5991,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -6010,7 +6010,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -6048,7 +6048,7 @@
     },
     {
       "blocked_reason":"No CAGE/UEI/SAM/GSA evidence on current main.",
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: GSA Schedule (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=GSA Schedule. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: GSA Schedule (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=GSA Schedule. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"gsa-schedule",
       "channel_name":"GSA Schedule",
@@ -6060,7 +6060,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -6079,7 +6079,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -6117,7 +6117,7 @@
     },
     {
       "blocked_reason":"No authorized Public RFP response pack account in this session. Do not submit.",
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Public RFP response pack (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=Public RFP response pack. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Public RFP response pack (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=Public RFP response pack. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"public-rfp-pack",
       "channel_name":"Public RFP response pack",
@@ -6129,7 +6129,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -6148,7 +6148,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
@@ -6185,8 +6185,8 @@
       "title":"Muhlnickel / Titan"
     },
     {
-      "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
-      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob 3e0988b040a1c90180888f5999baf99eb1fae592).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel / Titan — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel / Titan.\nPrice: USD 45000.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-titan-20260826.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/commerce.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: land/sku-muhlnickel-titan-20260826.md (blob fa4ef433b0b233bb3ddc633c1828957e5d75e453).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/commerce.html — do not open a second CRM.",
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
@@ -6198,7 +6198,7 @@
       },
       "evidence":[
         {
-          "blob_sha":"3e0988b040a1c90180888f5999baf99eb1fae592",
+          "blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
           "kind":"canonical_source",
           "path":"land/sku-muhlnickel-titan-20260826.md"
         },
@@ -6217,11 +6217,11 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.",
         "High-ticket work is a named-human or procurement conversation, not a gig race."
       ],
       "honesty":{
-        "blocked_reason":"Stripe livemode URLs are recorded; account_charges_enabled=false; link_active=UNVERIFIED.",
+        "blocked_reason":null,
         "customers":0,
         "leads":0,
         "listed":false,
@@ -6232,7 +6232,7 @@
       "id":"stripe-payment-links__sku-muhlnickel-titan-20260826",
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
-      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "listing_state":"NOT_LISTED",
       "offer_class":"high_ticket_product",
       "offer_id":"sku-muhlnickel-titan-20260826",
       "offer_name":"Muhlnickel / Titan",

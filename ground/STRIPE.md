@@ -7,14 +7,16 @@ One Commons link stays [https://woahwhattheheck.github.io/commons/](https://woah
 ## Current account truth
 
 - The Token Junkie Labs Stripe account already exists. Do not create a second account and do not use the registration link.
-- Charges are disabled, payouts are disabled, and no bank account is connected.
-- No Payment Link, invoice, payment, payout, buyer, or collected cash is implied by the account's existence.
+- Livemode GET `/v1/accounts/acct_1U6HI9ATH4EDE7XD` on 2026-08-28T16:10:00Z proved `charges_enabled=true`, `payouts_enabled=true`, `details_submitted=true`, and `currently_due=[]`.
+- The seven canonical Payment Links were `active=true` on the same observation. Duplicate older links on the same SKU metadata stay inert.
+- No charge, payout, buyer, or collected cash is implied. Cash remains USD 0 / NOT_LANDED until a BANK_AVAILABLE event exists.
+- Public surfaces must still hide a URL unless charges, payouts, and that exact link are all proven. Stripe onboarding cannot freeze the business: the provider-neutral fallback is `mailto:tokenjunkielabs@gmail.com`.
 
 ## What Bryce completes privately
 
-1. In the existing account, finish [account onboarding](https://dashboard.stripe.com/account/onboarding).
-2. Accept the required terms and enter banking, tax, and support-phone information only in Stripe's own dashboard.
-3. Confirm that Stripe reports the account ready before any Payment Link is minted or published.
+1. No currently_due Stripe onboarding step remains for charges or payouts.
+2. Optional non-blocking: `company.vat_id` is eventually_due inside Stripe's own dashboard. It does not block charges or payouts.
+3. If Stripe later fails closed, keep buyer intake on the public email and use official provider UIs for invoices or PayPal withdrawal. Never paste bank, routing, tax, or credentials onto Commons.
 
 Agents may prepare public SKU copy and honest `NOT_MINTED` checkout records. They do not request, store, relay, or publish the owner's private onboarding data.
 

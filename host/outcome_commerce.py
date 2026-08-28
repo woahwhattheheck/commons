@@ -552,6 +552,7 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                     }
                     if status == "ACTIVE_CHARGEABLE":
                         required.add("capability_evidence")
+                        required.add("account_payouts_enabled")
                     if set(checkout) != required:
                         errors.append(prefix + ".checkout Stripe fields are invalid")
                     if checkout.get("provider") != "stripe":
@@ -564,6 +565,8 @@ def catalog_errors(catalog: Any, *, root: Path | None = ROOT, check_sources: boo
                             errors.append(prefix + ".checkout link_active must be true")
                         if checkout.get("account_charges_enabled") is not True:
                             errors.append(prefix + ".checkout account_charges_enabled must be true")
+                        if checkout.get("account_payouts_enabled") is not True:
+                            errors.append(prefix + ".checkout account_payouts_enabled must be true")
                         evidence = checkout.get("capability_evidence")
                         if not isinstance(evidence, dict) or set(evidence) != {"reference", "observed_at"}:
                             errors.append(prefix + ".checkout capability_evidence fields are invalid")

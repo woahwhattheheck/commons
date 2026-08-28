@@ -164,6 +164,7 @@
         "url",
         "link_active",
         "account_charges_enabled",
+        "account_payouts_enabled",
         "capability_evidence"
       ],
       "properties": {
@@ -175,6 +176,7 @@
         },
         "link_active": {"const": true},
         "account_charges_enabled": {"const": true},
+        "account_payouts_enabled": {"const": true},
         "capability_evidence": {
           "type": "object",
           "additionalProperties": false,

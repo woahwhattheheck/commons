@@ -87,6 +87,20 @@ OFFER_CLASS = {
 }
 
 
+def sku_checkout_proven(listing: dict[str, Any]) -> bool:
+    checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+    url = checkout.get("url")
+    return (
+        checkout.get("status") == "ACTIVE_CHARGEABLE"
+        and checkout.get("provider") == "stripe"
+        and checkout.get("account_charges_enabled") is True
+        and checkout.get("account_payouts_enabled") is True
+        and checkout.get("link_active") is True
+        and isinstance(url, str)
+        and url.startswith("https://")
+    )
+
+
 class DistributionError(ValueError):
     pass
 
@@ -283,6 +297,14 @@ def fit_pair(listing: dict[str, Any], channel: dict[str, Any]) -> dict[str, Any]
             listing_state = "SURFACE_LIVE"
         elif channel["family"] == "partner" and channel.get("honest_live"):
             listing_state = "SURFACE_LIVE"
+        elif channel.get("id") == "stripe-payment-links":
+            if sku_checkout_proven(listing):
+                listing_state = "NOT_LISTED"
+                blocked_reason = None
+            else:
+                listing_state = "BLOCKED_CHARGES_DISABLED"
+                package_state = "PACKAGE_READY"
+                blocked_reason = "Stripe rail is not proven chargeable and payout-capable on the catalog."
         elif channel.get("requires_charges_enabled") and channel.get("account_status") == "URL_RECORDED_CHARGES_DISABLED":
             listing_state = "BLOCKED_CHARGES_DISABLED"
             package_state = "PACKAGE_READY"
@@ -334,7 +356,10 @@ def _exclusions(listing: dict[str, Any], channel: dict[str, Any]) -> list[str]:
     ]
     oid = listing.get("id") or ""
     if oid.startswith("sku-"):
-        out.append("Stripe checkout is unverified; recorded URLs are provenance only.")
+        if sku_checkout_proven(listing):
+            out.append("Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.")
+        else:
+            out.append("Stripe checkout is unverified; recorded URLs are provenance only.")
     if channel.get("family") == "public_marketplace":
         out.append("No seller identity or marketplace account is authorized in this session.")
     if classify_offer(listing) in {"high_ticket_service", "high_ticket_product"}:

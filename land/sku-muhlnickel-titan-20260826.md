@@ -9,10 +9,13 @@ band: HIGH
 scope: NARROW
 product: Muhlnickel / Titan (.mno computers from file on PC)
 checkout: `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`
-status: LIVEMODE_URL_RECORDED
+status: ACTIVE_CHARGEABLE
 provider: stripe
-link_active: UNVERIFIED
-account_charges_enabled: false
+link_active: true
+account_charges_enabled: true
+account_payouts_enabled: true
+capability_evidence_reference: stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links
+capability_evidence_observed_at: 2026-08-28T16:10:00Z
 product_id: prod_V93zMHrqmWNLlx
 price_id: price_1U8lrdATH4EDE7XDutwbZPHT
 plink: plink_1U8lrlATH4EDE7XDjSe2LqEc
@@ -38,7 +41,7 @@ pricing decision:
 
 The bigger offer. Not a tip. A paid keep or build on the actual machines, receipt as files on HEAD. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.
 GOAT holds leftover FROM FILE. This file names the SKU and carries the recorded Stripe URL as provenance.
-TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
+TYPE owns provider verification. Livemode GET /v1/accounts plus GET /v1/payment_links on 2026-08-28T16:10:00Z proved charges_enabled=true, payouts_enabled=true, and this canonical link active=true. A click is still not authorization, settlement, payout, or cash.
 337 NO.
 
 ## Buyer copy
@@ -47,4 +50,4 @@ $45,000. One narrow Muhlnickel / Titan keep-or-build.
 
 Receipt is files on HEAD. HTTP is not the computer.
 
-Recorded URL (not a checkout): `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`
+Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`

@@ -1,11 +1,12 @@
 {
   "schema_version": "agent-ops-checkout/v1",
-  "measured_at": "2026-08-27T23:30:00Z",
+  "measured_at": "2026-08-28T16:10:00Z",
   "provider": {
     "name": "stripe",
-    "livemode": false,
-    "account_charges_enabled": false,
-    "connection_state": "SANDBOX_ONLY"
+    "livemode": true,
+    "account_charges_enabled": true,
+    "account_payouts_enabled": true,
+    "connection_state": "LIVEMODE_CONNECTED"
   },
   "offers": {
     "operator": {
@@ -40,6 +41,7 @@
   },
   "source_refs": [
     "ground/STRIPE.md",
+    "ground/CHECKOUT_CAPABILITY.md",
     "land/stripe-payment-links-20260826.md"
   ]
 }
