@@ -34,6 +34,15 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(first["grokcom"]["commons_mcp_url"], "https://commons-spark-mcp.vercel.app/mcp")
         self.assertIn("authenticated grok.com only", first["grokcom"]["prompt"])
         self.assertEqual(first["grokcom"]["capture_start"]["tool"], "start_grok_capture")
+        executor_job = first["grokcom"]["executor_job"]
+        self.assertEqual(executor_job["submit_tool"], "fire_action")
+        self.assertEqual(executor_job["run_key"], first["grokcom"]["run_key"])
+        self.assertEqual(executor_job["arguments"]["target"], "GROK.COM")
+        self.assertEqual(executor_job["arguments"]["payload"], first["grokcom"]["prompt"])
+        self.assertEqual(
+            executor_job["durable_path"],
+            "wake_jobs/%s.json" % executor_job["job_id"],
+        )
         capture_args = first["grokcom"]["capture_start"]["arguments"]
         self.assertEqual(capture_args["run_key"], first["grokcom"]["run_key"])
         self.assertEqual(capture_args["exact_prompts"], [first["grokcom"]["prompt"]])
@@ -110,6 +119,17 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(first["grokcom"]["prompt"], "new continuation prompt")
         self.assertEqual(first["grokcom"]["parent_conversation_url"], ARTIFACT["conversation_url"])
         self.assertEqual(first["grokcom"]["capture_start"]["arguments"]["exact_prompts"], ["new continuation prompt"])
+        executor_job = first["grokcom"]["executor_job"]
+        self.assertTrue(executor_job["no_replay"])
+        self.assertEqual(
+            executor_job["arguments"]["parent_run_key"],
+            ARTIFACT["run_key"],
+        )
+        self.assertEqual(
+            executor_job["arguments"]["parent_conversation_url"],
+            ARTIFACT["conversation_url"],
+        )
+        self.assertNotEqual(executor_job["job_id"], first["task_id"])
 
     def test_continuation_cannot_replay_a_finished_prompt(self):
         with self.assertRaisesRegex(ValueError, "never replayed"):
