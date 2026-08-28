@@ -59,9 +59,11 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             [
                 "gemini-spark",
                 "cursor-grok",
+                "grokcom-revenue",
                 "chatgpt-codex",
                 "claude",
                 "slack",
+                "microsoft-teams",
                 "ntfy",
                 "git",
             ],
@@ -151,7 +153,7 @@ class GeminiMcpCarrierTests(unittest.TestCase):
             catalog = json.loads(response.read().decode("utf-8"))
             self.assertEqual(response.status, 200)
             self.assertEqual(catalog["mcp_url"], mcp.PUBLIC_MCP_URL)
-            self.assertEqual(len(catalog["carriers"]), 7)
+            self.assertEqual(len(catalog["carriers"]), 9)
 
             connection.request("GET", "/carriers/claude")
             card = connection.getresponse()
