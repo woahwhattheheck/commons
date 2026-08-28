@@ -15,8 +15,15 @@ every directly composed source.
 ```sh
 python3 host/right_now_revenue.py compile
 python3 host/right_now_revenue.py validate
-python3 -m unittest test_right_now.py test_right_now_execution.py test_smart_outreach.py
+python3 host/gpt_action_packets.py validate
+python3 host/gpt_action_packets.py next
+python3 -m unittest test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py
 ```
+
+Buyer-facing first rung: [agent-triage.html](../../agent-triage.html).
+GPT packets: [action_packets.json](./action_packets.json).
+Demand ledger: [demand_ledger.json](./demand_ledger.json).
+Experiments: [experiments.json](./experiments.json).
 
 `control.json` is the committed browser projection. `validate` fails whenever
 the projection drifts from its sources, including a price, cash, payment,

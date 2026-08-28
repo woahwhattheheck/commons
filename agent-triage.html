@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Agent Failure Triage — free, no login</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:70rem}
+.hero h1{font-size:clamp(2.2rem,7vw,5.4rem);line-height:.94;max-width:14ch}
+.lead{font-size:1.2rem;max-width:48rem}
+form,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114;margin:1rem 0}
+label{display:block;font-weight:700;margin:.85rem 0 .3rem}
+input,textarea{width:100%;box-sizing:border-box;background:#18181d;color:#ececef;border:1px solid #4a4a52;border-radius:8px;padding:.65rem}
+textarea{min-height:4.5rem}
+button,.start{display:inline-block;border:0;border-radius:8px;padding:.7rem .9rem;background:#ececef;color:#09090a;font-weight:800;cursor:pointer;text-decoration:none}
+.warning{border-left:4px solid #d0a252;padding:.8rem 1rem}
+.output textarea{min-height:14rem;font:800 .82rem/1.4 ui-monospace,monospace}
+</style>
+</head>
+<body>
+<p class="law">FREE OPEN DOOR. No login. No account. No upload. No telemetry. The packet stays in your browser.</p>
+<p class="nav">
+  <a href="./index.html">Commons</a>
+  <a href="./right-now.html">right now</a>
+  <a href="./agent-triage.html">triage</a>
+  <a href="./agent-rescue.html">same-day proof</a>
+  <a href="./commerce.html">all commerce</a>
+</p>
+<header class="hero">
+  <p class="note">Token Junkie Labs · Commons</p>
+  <h1>Triage the production failure before you buy anything.</h1>
+  <p class="lead">Write what the agent should do and what it does instead. This page classifies the failure, builds an evidence checklist, and gives you a Markdown/JSON packet you can keep. Payment is optional and never removes the free output.</p>
+</header>
+<section class="warning" aria-label="Privacy">
+  <h2>Private data warning</h2>
+  <p>Do not paste credentials, tokens, customer records, private source, or anything you would not put on a public whiteboard. Use a non-confidential sentence and public or synthetic details. This tool does not certify, scan, or upload your systems.</p>
+</section>
+<form id="triage-form">
+  <h2>My agent should [outcome], but in production it [failure].</h2>
+  <label for="expected-outcome">Expected outcome</label>
+  <input id="expected-outcome" name="expected-outcome" required maxlength="400" placeholder="finish one ticket and stop">
+  <label for="observed-failure">Observed failure</label>
+  <input id="observed-failure" name="observed-failure" required maxlength="400" placeholder="retries the same broken tool call">
+  <label for="repro">Reproduction steps</label>
+  <textarea id="repro" name="repro" maxlength="1200" placeholder="smallest public or synthetic steps"></textarea>
+  <label for="external">External actions the agent takes</label>
+  <textarea id="external" name="external" maxlength="800"></textarea>
+  <label for="retry">Retry behavior</label>
+  <textarea id="retry" name="retry" maxlength="800"></textarea>
+  <label for="restart">Restart behavior</label>
+  <textarea id="restart" name="restart" maxlength="800"></textarea>
+  <label for="state">State persistence</label>
+  <textarea id="state" name="state" maxlength="800"></textarea>
+  <label for="duplicate">Duplicate-action risk</label>
+  <textarea id="duplicate" name="duplicate" maxlength="800"></textarea>
+  <label for="rollback">Rollback or reset path</label>
+  <textarea id="rollback" name="rollback" maxlength="800"></textarea>
+  <label for="logs">Available logs or evidence</label>
+  <textarea id="logs" name="logs" maxlength="800"></textarea>
+  <label for="privacy">Privacy constraints</label>
+  <textarea id="privacy" name="privacy" maxlength="800" placeholder="no credentials, no customer data"></textarea>
+  <p><button type="submit">Build the free packet</button></p>
+  <p class="note" id="triage-status">JavaScript builds the packet locally. With JavaScript off, use the sentence and email intake on <a href="./agent-rescue.html">agent-rescue.html</a>.</p>
+</form>
+<section id="triage-output" class="panel output" hidden>
+  <h2>Buyer-owned packet</h2>
+  <p id="triage-cta"></p>
+  <label for="triage-markdown">Markdown</label>
+  <textarea id="triage-markdown" readonly></textarea>
+  <p><button type="button" id="copy-markdown">Copy Markdown</button></p>
+  <label for="triage-json">JSON</label>
+  <textarea id="triage-json" readonly></textarea>
+</section>
+<section class="panel">
+  <h2>What this is not</h2>
+  <ul>
+    <li>Not a paid customer case study.</li>
+    <li>Not automated certification.</li>
+    <li>Not checkout, acceptance, or cash.</li>
+    <li>Not a reason to resend outreach.</li>
+  </ul>
+  <p>Next paid rungs, if you want them: <a href="./right-now.html">right-now.html</a>.</p>
+</section>
+<script src="./agent-triage.js?v=20260828a" defer></script>
+</body>
+</html>
