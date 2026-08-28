@@ -112,12 +112,22 @@ class DistributionLayerTests(unittest.TestCase):
         self.assertEqual(pair["fit"], "FIT")
         self.assertEqual(pair["listing_state"], "BLOCKED_REGISTRATION")
 
-    def test_stripe_rail_blocked_charges(self):
+    def test_stripe_rail_recorded_not_marketplace_live(self):
         pair = self._pair("sku-tip-20260826", "stripe-payment-links")
         self.assertEqual(pair["fit"], "FIT")
-        self.assertEqual(pair["listing_state"], "BLOCKED_CHARGES_DISABLED")
+        self.assertEqual(pair["listing_state"], "NOT_LISTED")
+        self.assertIs(pair["submit_allowed"], False)
+        self.assertIsNone(pair["blocked_reason"])
         pair2 = self._pair("same-day-agent-survival-proof", "stripe-payment-links")
         self.assertEqual(pair2["fit"], "UNFIT")
+
+    def test_stripe_rail_fail_closed_without_payouts(self):
+        listing = json.loads(json.dumps(self.listings["sku-tip-20260826"]))
+        listing["checkout"]["account_payouts_enabled"] = False
+        channel = self.channel_rows["stripe-payment-links"]
+        pair = self.mod.fit_pair(listing, channel)
+        self.assertEqual(pair["listing_state"], "BLOCKED_CHARGES_DISABLED")
+        self.assertIs(pair["submit_allowed"], False)
 
     def test_commons_pages_are_surface_live_not_marketplace_live(self):
         pair = self._pair("same-day-agent-survival-proof", "commons-pages")

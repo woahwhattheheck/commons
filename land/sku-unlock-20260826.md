@@ -7,10 +7,13 @@ band: LOW
 scope: WIDE
 price: $5 USD one-time
 checkout: `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`
-status: LIVEMODE_URL_RECORDED
+status: ACTIVE_CHARGEABLE
 provider: stripe
-link_active: UNVERIFIED
-account_charges_enabled: false
+link_active: true
+account_charges_enabled: true
+account_payouts_enabled: true
+capability_evidence_reference: stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links
+capability_evidence_observed_at: 2026-08-28T16:10:00Z
 product: prod_V93nM541nt0tKv
 price_id: price_1U8lflATH4EDE7XD6xNapRSL
 plink: plink_1U8lgEATH4EDE7XDB4w8xZu5
@@ -28,7 +31,7 @@ comps (live, cited):
 - Gumroad PWYW example $5+. https://gumroad.com/help/article/133-pay-what-you-want-pricing
 
 Unlock one small door: a print pack, a paid-build bump, or a session note. The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
-TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
+TYPE owns provider verification. Livemode GET /v1/accounts plus GET /v1/payment_links on 2026-08-28T16:10:00Z proved charges_enabled=true, payouts_enabled=true, and this canonical link active=true. A click is still not authorization, settlement, payout, or cash.
 337 NO.
 
 ## Buyer copy
@@ -37,4 +40,4 @@ $5 once. One small door: a print pack, a paid-build bump, or a session note.
 
 The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
 
-Recorded URL (not a checkout): `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`
+Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`

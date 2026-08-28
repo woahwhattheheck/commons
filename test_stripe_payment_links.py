@@ -45,11 +45,13 @@ class StripePaymentLinks(unittest.TestCase):
             path = os.path.join(ROOT, "land", filename)
             with open(path, encoding="utf-8") as handle:
                 sku = handle.read()
-            self.assertEqual(field(sku, "status"), "LIVEMODE_URL_RECORDED", slug)
+            self.assertEqual(field(sku, "status"), "ACTIVE_CHARGEABLE", slug)
             self.assertEqual(field(sku, "provider"), "stripe", slug)
-            self.assertEqual(field(sku, "link_active"), "UNVERIFIED", slug)
-            self.assertEqual(field(sku, "account_charges_enabled"), "false", slug)
+            self.assertEqual(field(sku, "link_active"), "true", slug)
+            self.assertEqual(field(sku, "account_charges_enabled"), "true", slug)
+            self.assertEqual(field(sku, "account_payouts_enabled"), "true", slug)
             self.assertNotIn("status: LIVE\n", sku, slug)
+            self.assertNotIn("status: LIVEMODE_URL_RECORDED\n", sku, slug)
             self.assertIn("checkout: `", sku, slug)
             checkout = field(sku, "checkout")
             self.assertRegex(

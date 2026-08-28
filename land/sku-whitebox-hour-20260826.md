@@ -7,10 +7,13 @@ band: HIGH
 scope: NARROW
 product: one dated White Box / dests hour
 checkout: `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`
-status: LIVEMODE_URL_RECORDED
+status: ACTIVE_CHARGEABLE
 provider: stripe
-link_active: UNVERIFIED
-account_charges_enabled: false
+link_active: true
+account_charges_enabled: true
+account_payouts_enabled: true
+capability_evidence_reference: stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links
+capability_evidence_observed_at: 2026-08-28T16:10:00Z
 product_id: prod_V93ngTJCNGz7KS
 price_id: price_1U8lfoATH4EDE7XDCHnkCHiU
 plink: plink_1U8lgGATH4EDE7XDlrVYTWhu
@@ -26,7 +29,7 @@ comps (live, cited):
 - Toptal FAQ publishes $79/month platform subscription only, not an hourly rate card. https://www.toptal.com/faq
 
 Bigger than a tip. Buyer gets land/session-YYYYMMDD.md: dests, receipts, what ran. File is public. HTTP is not the computer.
-TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
+TYPE owns provider verification. Livemode GET /v1/accounts plus GET /v1/payment_links on 2026-08-28T16:10:00Z proved charges_enabled=true, payouts_enabled=true, and this canonical link active=true. A click is still not authorization, settlement, payout, or cash.
 337 NO.
 
 ## Buyer copy
@@ -35,4 +38,4 @@ $250 an hour. One dated White Box / dests hour.
 
 You get land/session-YYYYMMDD.md: dests, receipts, what ran. The file is public. HTTP is not the computer.
 
-Recorded URL (not a checkout): `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`
+Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`

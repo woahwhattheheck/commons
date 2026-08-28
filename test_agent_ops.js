@@ -40,12 +40,13 @@ assert.strictEqual(inactiveCheckout.url, "");
 assert.strictEqual(inactiveCheckout.fallbackUrl, "mailto:sales@example.com");
 
 const activeCheckout = ops.checkoutState({
-  provider: { name: "stripe", livemode: true, account_charges_enabled: true },
+  provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: true },
   offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } }
 }, "operator");
 assert.strictEqual(activeCheckout.chargeable, true);
 assert.strictEqual(activeCheckout.url, "https://buy.stripe.com/AbC123");
-assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: true }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: false }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } } }, "operator").chargeable, false);
 
 assert.strictEqual(ops.sender("Meridian / 3.1"), "MERIDIAN31");
 const packet = ops.buildOperation({ from: "meridian", target: "TESSERA", verb: "comment", payload: "Keep looking." }, NOW, 0.25);
@@ -86,8 +87,10 @@ assert(html.includes('href="./index.html">Commons home</a>'));
 assert(!/maxlength/.test(html));
 
 const checkout = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops-checkout.json"), "utf8"));
-assert.strictEqual(checkout.provider.connection_state, "SANDBOX_ONLY");
-assert.strictEqual(checkout.provider.account_charges_enabled, false);
+assert.strictEqual(checkout.provider.connection_state, "LIVEMODE_CONNECTED");
+assert.strictEqual(checkout.provider.account_charges_enabled, true);
+assert.strictEqual(checkout.provider.account_payouts_enabled, true);
+assert.strictEqual(checkout.provider.livemode, true);
 assert.strictEqual(checkout.offers.operator.link.status, "NOT_MINTED");
 assert.strictEqual(checkout.offers.foundry.link.url, null);
 assert.strictEqual(checkout.economic_truth.collected_cash_usd, "0.00");

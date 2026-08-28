@@ -53,6 +53,7 @@
     }
     if (checkout.status !== "ACTIVE_CHARGEABLE") return "";
     if (checkout.link_active !== true || checkout.account_charges_enabled !== true) return "";
+    if (checkout.account_payouts_enabled !== true) return "";
     if (!hasDurableCapabilityEvidence(checkout)) return "";
     if (funnel && funnel.readiness !== "READY_FOR_CHECKOUT") {
       return '<p class="note">Provider capability is verified, but checkout stays behind the scope-first intake until the missing terms are written.</p>';

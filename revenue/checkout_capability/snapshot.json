@@ -1,0 +1,113 @@
+{
+  "schema_version": "commons-checkout-capability/v1",
+  "kind": "CHECKOUT_CAPABILITY_SNAPSHOT",
+  "observed_at": "2026-08-28T16:10:00Z",
+  "observer": "GROK_BUILD",
+  "evidence": {
+    "reference": "stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links",
+    "account_id": "acct_1U6HI9ATH4EDE7XD",
+    "account_display_name": "Token Junkie Labs",
+    "operations": [
+      "GET /v1/accounts/acct_1U6HI9ATH4EDE7XD",
+      "GET /v1/payment_links?active=true",
+      "GET /v1/charges?limit=5",
+      "GET /v1/payouts?limit=5"
+    ]
+  },
+  "provider": {
+    "name": "stripe",
+    "livemode": true,
+    "charges_enabled": true,
+    "payouts_enabled": true,
+    "details_submitted": true,
+    "currently_due": [],
+    "card_payments": "active",
+    "transfers": "active"
+  },
+  "money": {
+    "collected_cash_usd": 0,
+    "charges_count": 0,
+    "payouts_count": 0,
+    "authorization": "NOT_LANDED",
+    "settlement": "NOT_LANDED",
+    "payout": "NOT_LANDED",
+    "bank_available": "NOT_LANDED"
+  },
+  "canonical_rails": [
+    {
+      "sku": "sku-tip-20260826",
+      "plink": "plink_1U8lgOATH4EDE7XDZobVyXvE",
+      "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST"
+    },
+    {
+      "sku": "sku-seat-20260826",
+      "plink": "plink_1U8lgDATH4EDE7XDHtJcyv60",
+      "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "sku-unlock-20260826",
+      "plink": "plink_1U8lgEATH4EDE7XDB4w8xZu5",
+      "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "sku-monthly-tip-20260826",
+      "plink": "plink_1U8lgFATH4EDE7XDGfz9Ax3S",
+      "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST"
+    },
+    {
+      "sku": "sku-boost-20260826",
+      "plink": "plink_1U8lgFATH4EDE7XD1Ho7KkA2",
+      "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "sku-whitebox-hour-20260826",
+      "plink": "plink_1U8lgGATH4EDE7XDlrVYTWhu",
+      "url": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "sku-muhlnickel-titan-20260826",
+      "plink": "plink_1U8lrlATH4EDE7XDjSe2LqEc",
+      "url": "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "INTAKE_FIRST"
+    }
+  ],
+  "inert_duplicate_urls": [
+    "https://buy.stripe.com/28E5kCgBfajndKVbp843S00",
+    "https://donate.stripe.com/3cI6oGbgVdvz8qBdxg43S01",
+    "https://buy.stripe.com/9B68wO98N0INgX7al443S02"
+  ],
+  "owner_action": {
+    "id": "NONE",
+    "required_for_charges": false,
+    "required_for_payouts": false,
+    "summary": "No owner Stripe onboarding step remains for charges or payouts. currently_due is empty.",
+    "optional_nonblocking": "company.vat_id is eventually_due inside Stripe's dashboard. It is not currently_due and does not block charges or payouts.",
+    "surface": "https://dashboard.stripe.com/account/onboarding"
+  },
+  "fallback": {
+    "kind": "PROVIDER_NEUTRAL_INTAKE",
+    "url": "mailto:tokenjunkielabs@gmail.com",
+    "label": "Email Token Junkie Labs",
+    "note": "If Stripe capability later fails closed, public surfaces hide Stripe URLs and keep this contact. Owner-private PayPal wallet and Stripe hosted invoices stay inside official provider UIs. No PayPal.me, ACH, or bank destination is published."
+  }
+}

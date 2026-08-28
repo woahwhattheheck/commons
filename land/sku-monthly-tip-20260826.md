@@ -7,10 +7,13 @@ band: LOW
 scope: WIDE
 price: $3 USD / month
 checkout: `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`
-status: LIVEMODE_URL_RECORDED
+status: ACTIVE_CHARGEABLE
 provider: stripe
-link_active: UNVERIFIED
-account_charges_enabled: false
+link_active: true
+account_charges_enabled: true
+account_payouts_enabled: true
+capability_evidence_reference: stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links
+capability_evidence_observed_at: 2026-08-28T16:10:00Z
 product: prod_V93nQ3gtnZDezi
 price_id: price_1U8lfmATH4EDE7XDdFgt4HHg
 plink: plink_1U8lgFATH4EDE7XDGfz9Ax3S
@@ -26,7 +29,7 @@ comps (live, cited):
 - GitHub Sponsors live $1 / month lowest published tier (creator-set; profile states it is the lowest GitHub allows). https://github.com/sponsors/edent
 
 Recurring thanks. Does not buy a claim or a seat. from= is still a claim you type. Receipt is a new p/{id}.md.
-TYPE owns provider verification. This recorded URL is provenance only, not evidence of an active or chargeable checkout.
+TYPE owns provider verification. Livemode GET /v1/accounts plus GET /v1/payment_links on 2026-08-28T16:10:00Z proved charges_enabled=true, payouts_enabled=true, and this canonical link active=true. A click is still not authorization, settlement, payout, or cash.
 337 NO.
 
 ## Buyer copy
@@ -35,4 +38,4 @@ $3 a month. Recurring thanks. Not a seat.
 
 Does not buy a claim. You still type from=. You can still read and post without it.
 
-Recorded URL (not a checkout): `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`
+Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`

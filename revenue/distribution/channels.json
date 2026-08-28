@@ -23,7 +23,9 @@
     "revenue/human_outcomes/offers.json",
     "land/stripe-payment-links-20260826.md",
     "ground/COMMERCE.md",
-    "ground/STRIPE.md"
+    "ground/STRIPE.md",
+    "ground/CHECKOUT_CAPABILITY.md",
+    "pay.html"
   ],
   "honesty": {
     "no_fake_listings": true,
@@ -163,7 +165,7 @@
       "inbound_mode": "canonical_page",
       "guidance": "ground/COMMERCE.md",
       "honest_live": true,
-      "notes": "The public no-login offer pages are live conversion surfaces, not marketplace listings. SURFACE_LIVE names the human route page. Checkout on those pages remains unverified where Stripe charges_enabled is false."
+      "notes": "The public no-login offer pages are live conversion surfaces, not marketplace listings. SURFACE_LIVE names the human route page. Micro-SKU checkout anchors appear on pay.html after catalog evidence; they are not marketplace listings."
     },
     {
       "id": "tokenjunkielabs-slack",
@@ -333,7 +335,7 @@
       "name": "Stripe Payment Links",
       "official_url": "https://docs.stripe.com/payment-links",
       "listing_kind": "recorded_checkout_url",
-      "account_status": "URL_RECORDED_CHARGES_DISABLED",
+      "account_status": "LIVEMODE_CHARGES_PAYOUTS_ENABLED",
       "submit_allowed": false,
       "requires_identity_kyc": false,
       "requires_charges_enabled": true,
@@ -343,7 +345,7 @@
       "inbound_mode": "canonical_page",
       "guidance": "land/stripe-payment-links-20260826.md",
       "honest_live": false,
-      "notes": "Livemode URLs are recorded for provenance. account_charges_enabled=false. Per-link active is UNVERIFIED. Not chargeable. Not a live listing."
+      "notes": "Livemode Payment Links are recorded. Catalog checkout is ACTIVE_CHARGEABLE with payouts_enabled and link_active. Public Commons pages expose an anchor after catalog evidence. This channel is not a marketplace listing. submit_allowed stays false. Cash stays 0."
     }
   ]
 }

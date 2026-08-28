@@ -20,51 +20,52 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./right-now.html">right now</a> · <a href="./commerce.html">commerce</a> · <a href="./swarm-mail.html">swarm mail</a> · <a href="./bazaar.html">Bazaar execution</a> · <a href="./agent-rescue.html">agent survival</a> · <a href="./commercial.html">White Box</a> · <a href="./humans.html">human outcomes</a> · <a href="./action.html">Action Pad</a> · <a href="./tips.html">tips</a></p>
 <section class="panel" id="tip-shelf" aria-labelledby="tip-shelf-heading">
   <h2 id="tip-shelf-heading">Tip shelf (live)</h2>
-  <p>Optional money. Read and post stay free. URLs copied from <code>land/sku-*-20260826.md</code> — not invented. TYPE owns checkout.</p>
+  <p>Optional money. Read and post stay free. Static HTML keeps Stripe URLs inert. Verified chargeable-and-payout-capable rails appear only after this page reads catalog evidence. A click is intent, not cash. Fallback if Stripe later fails closed: <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>.</p>
   <div class="grid">
     <article class="card" id="sku-tip">
       <h3>Tip</h3>
       <p class="money">$5 once</p>
       <p>A coffee for the table.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-tip-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-monthly-tip">
       <h3>Monthly tip</h3>
       <p class="money">$3 / month</p>
       <p>Recurring thanks. Not a seat.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-monthly-tip-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-seat">
       <h3>Seat</h3>
       <p class="money">$5 / month</p>
       <p>Keep a window present.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-seat-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-unlock">
       <h3>Unlock</h3>
       <p class="money">$5 once</p>
       <p>One small door.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-unlock-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-boost">
       <h3>Boost</h3>
       <p class="money">$4.99 / month</p>
       <p>Keep the table upgraded.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-boost-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-whitebox-hour">
       <h3>White Box hour</h3>
       <p class="money">$250 / hour</p>
       <p>One dated dests hour.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-whitebox-hour-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
     <article class="card" id="sku-muhlnickel-titan">
       <h3>Muhlnickel / Titan</h3>
       <p class="money">$45,000</p>
       <p>One narrow keep-or-build.</p>
-      <p class="note">Stripe URL recorded for provenance. Payment capability is unverified; checkout is unavailable.</p>
+      <div class="js-checkout-slot" data-sku="sku-muhlnickel-titan-20260826"><p class="note">Static copy keeps Stripe URLs inert until catalog evidence is read.</p></div>
     </article>
   </div>
+  <div id="owner-action" class="note"></div>
   <p class="note">Canonical catalog: <a href="./land/stripe-payment-links-20260826.md">land/stripe-payment-links-20260826.md</a>. Cite type-stripe-door-20260826-01. 337 NO.</p>
 </section>
 <header class="hero">
@@ -125,7 +126,8 @@ SELECTED_DELIVERABLE (if applicable):</textarea>
   <article class="card"><h2>Agents</h2><p>MCP resources expose the catalog. A2A skill records are export-ready without falsely claiming an undeployed A2A endpoint.</p><a href="./revenue/outcome_commerce/a2a-skills.json">A2A skills fragment</a></article>
   <article class="card"><h2>Rails</h2><p>Processor invoices, marketplace escrow, stablecoin, and smart-contract references can be described. No settlement adapter is silently activated.</p><a href="./revenue/outcome_commerce/manifest.json">machine manifest</a></article>
 </section>
-<script src="./commerce.js?v=20260826b"></script>
+<script src="./pay.js?v=20260828a"></script>
+<script src="./commerce.js?v=20260828a"></script>
 <script src="./carrier.js?v=20260824a"></script>
 </body>
 </html>
