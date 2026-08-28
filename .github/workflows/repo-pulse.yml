@@ -1,22 +1,17 @@
-# repo-pulse — a lossless, one-glance change index for this repo, posted to Slack
-# every 5 minutes. Quiet windows still report; "nothing moved for 40 minutes" is data.
+# repo-pulse — lossless 5-minute change index for main, posted to Slack.
 #
-# Single file on purpose: the script is inlined, so this workflow needs no checkout
-# (the repo is ~1GB — cloning it every 5 minutes to read one script would be absurd)
-# and there is no second file to drift out of sync.
+# The engine lives in repo_pulse.py (imported by test_repo_pulse.py). This
+# workflow fetches those two files over the API so it never clones the ~1GB
+# tree. Cursor state is a cache, not a commit: committing evidence onto main
+# would make the pulse appear in its own next pulse.
 #
-# LOOP SAFETY — do not remove the COMMONS_SLACK_MIRROR header the script emits.
-# slack_ingest.py turns Slack messages into board issues and commons-board.yml
-# rebuilds on each one, so an untagged digest would create an issue -> which is an
-# event -> which lands in the next digest -> forever. That claim is exactly what
-# slack_ingest.should_skip() refuses to mirror. Verified in both directions.
+# LOOP SAFETY — do not remove the COMMONS_SLACK_MIRROR header the engine
+# emits. slack_ingest.should_skip() refuses that claim, so the digest cannot
+# create a board issue that becomes the next digest, forever.
 #
-# For the same reason nothing is ever committed back: machine-readable evidence is
-# uploaded as a run artifact, not written into the repo, so the pulse never shows up
-# in its own next pulse.
-#
-# Until SLACK_WEBHOOK_URL exists the digest goes to the job summary instead of
-# failing, so the schedule can be live before the credential is.
+# Quiet windows emit nothing except a once-an-hour heartbeat.
+# Until SLACK_WEBHOOK_URL exists the digest goes to the job summary instead
+# of failing, so the schedule can be live before the credential is.
 name: repo-pulse
 
 on:
@@ -29,6 +24,17 @@ on:
         description: "Render to the job log instead of posting to Slack"
         type: boolean
         default: false
+  pull_request:
+    paths:
+      - "repo_pulse.py"
+      - "test_repo_pulse.py"
+      - ".github/workflows/repo-pulse.yml"
+  push:
+    branches: [main]
+    paths:
+      - "repo_pulse.py"
+      - "test_repo_pulse.py"
+      - ".github/workflows/repo-pulse.yml"
 
 concurrency:
   group: repo-pulse
@@ -40,6 +46,7 @@ permissions:
   pull-requests: read
   checks: read
   pages: read
+  actions: read
 
 jobs:
   pulse:
@@ -47,6 +54,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Restore cursor from the previous run
+        if: github.event_name != 'pull_request'
         uses: actions/cache/restore@v4
         with:
           path: .pulse-state.json
@@ -54,666 +62,57 @@ jobs:
           restore-keys: |
             repo-pulse-cursor-
 
-      - name: Build and post the digest
+      - name: Fetch engine, run fixtures, post digest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
           GITHUB_RUN_ID: ${{ github.run_id }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          # Alternative to the webhook — set both to use the bot API instead:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID }}
           PULSE_STATE: .pulse-state.json
-          PULSE_EVIDENCE: pulse-evidence.json
-          PULSE_REPORT_IDLE: "true"            # false = only post when something moved
-          PULSE_IDLE_HEARTBEAT_MINUTES: "60"   # ...plus this heartbeat, even when silent
-          PULSE_MAX_COMMIT_LINES: "8"          # commits listed inline; rest go to the artifact
-          PULSE_FALLBACK_MINUTES: "5"          # first-run lookback only
-          PULSE_DRY_RUN: ${{ inputs.dry_run && 'true' || '' }}
+          PULSE_EVIDENCE: repo-pulse/latest.json
+          PULSE_REPORT_IDLE: "false"
+          PULSE_IDLE_HEARTBEAT_MINUTES: "60"
+          PULSE_MAX_COMMIT_LINES: "8"
+          PULSE_FALLBACK_MINUTES: "5"
+          PULSE_DRY_RUN: ${{ (inputs.dry_run || github.event_name == 'pull_request') && 'true' || '' }}
         run: |
-          cat > /tmp/repo_pulse.py <<'REPO_PULSE_EOF'
-          #!/usr/bin/env python3
-          """repo-pulse: a lossless, one-glance change index for this repo, posted to Slack.
-
-          Design notes that are load-bearing:
-
-          * The commit range is authoritative, not the event feed. PushEvent payloads cap
-            at 20 commits and the events feed is eventually consistent, so commits come
-            from ``compare/previous_head...current_head``. The event feed is used only for
-            things a diff cannot show (issues, comments, PRs, stars, forks, wiki).
-          * Events are deduped by id against a rolling seen-id window, so the feed can be
-            queried with overlap and neither miss nor double-report at a run boundary.
-          * Observed facts and gaps are separated. If a counter moves without matching
-            events, the digest prints EVENT_GAP rather than implying the feed was complete.
-          * Nothing is ever written back to the repo. A digest that committed its own
-            evidence file would appear in its own next digest — the same feedback loop the
-            COMMONS_SLACK_MIRROR header exists to prevent. Evidence goes to a workflow
-            artifact instead.
-          * Loop safety: every digest leads with ``from: COMMONS_SLACK_MIRROR``, the claim
-            slack_ingest.should_skip() refuses to mirror into a board issue.
-          """
-
-          from __future__ import annotations
-
-          import json
-          import os
-          import re
-          import sys
-          import urllib.error
-          import urllib.parse
-          import urllib.request
-          from datetime import datetime, timedelta, timezone
-
-          API = "https://api.github.com"
-          REPO = os.environ.get("GITHUB_REPOSITORY", "")
-          TOKEN = os.environ.get("GITHUB_TOKEN", "")
-          RUN_URL = "%s/%s/actions/runs/%s" % ("https://github.com", REPO, os.environ.get("GITHUB_RUN_ID", ""))
-
-          STATE_PATH = os.environ.get("PULSE_STATE", ".pulse-state.json")
-          EVIDENCE_PATH = os.environ.get("PULSE_EVIDENCE", "pulse-evidence.json")
-
-          WEBHOOK = os.environ.get("SLACK_WEBHOOK_URL", "").strip()
-          BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", "").strip()
-          CHANNEL = os.environ.get("SLACK_CHANNEL_ID", "").strip()
-
-          REPORT_IDLE = os.environ.get("PULSE_REPORT_IDLE", "true").lower() == "true"
-          IDLE_HEARTBEAT_MIN = int(os.environ.get("PULSE_IDLE_HEARTBEAT_MINUTES", "60"))
-          MAX_COMMIT_LINES = int(os.environ.get("PULSE_MAX_COMMIT_LINES", "8"))
-          SEEN_CAP = int(os.environ.get("PULSE_SEEN_CAP", "1200"))
-          FIRST_RUN_LOOKBACK_MIN = int(os.environ.get("PULSE_FALLBACK_MINUTES", "5"))
-          DRY_RUN = os.environ.get("PULSE_DRY_RUN", "").lower() == "true"
-          MIRROR_CLAIM = os.environ.get("PULSE_MIRROR_CLAIM", "COMMONS_SLACK_MIRROR")
-
-          UA = "repo-pulse/2.0"
-
-          # Path prefix -> Commons surface. First match wins, so order matters.
-          SURFACES = [
-              ("board-records", ("p/", "by/", "to/", "chunks/", "excerpts/", "conflicts/")),
-              ("muhlnickel", ("muhl/",)),
-              ("projection", ("projection/",)),
-              ("revenue", ("revenue/",)),
-              ("agents", ("integrations/", "host/", "mesh/", "protocol/", "actions/", "door/",
-                          "memory/", "wake_jobs/", "independent_commons_mcp/")),
-              ("infra", ("infra/", "titan/", "lda/", "android/")),
-              ("ci-tests", (".github/", "tests/")),
-              ("docs-ground", ("ground/", "evidence/")),
-          ]
-          WEB_EXT = (".html", ".js", ".css", ".webmanifest")
-          DOC_EXT = (".md", ".txt")
-
-
-          def surface_of(path):
-              for label, prefixes in SURFACES:
-                  if path.startswith(prefixes):
-                      return label
-              base = path.rsplit("/", 1)[-1]
-              if base.startswith("test_") or base.endswith("_test.py"):
-                  return "ci-tests"
-              if path.endswith(WEB_EXT):
-                  return "web-ui"
-              if path.endswith(DOC_EXT):
-                  return "docs-ground"
-              if path.endswith(".py"):
-                  return "code-root"
-              return "other"
-
-
-          # ---------------------------------------------------------------- http
-
-          def _req(url, headers=None, data=None, method=None):
-              hdrs = {"User-Agent": UA, "Accept": "application/vnd.github+json"}
-              if TOKEN and url.startswith(API):
-                  hdrs["Authorization"] = "Bearer " + TOKEN
-                  hdrs["X-GitHub-Api-Version"] = "2022-11-28"
-              hdrs.update(headers or {})
-              req = urllib.request.Request(url, data=data, headers=hdrs, method=method)
-              with urllib.request.urlopen(req, timeout=30) as resp:
-                  return resp.status, resp.headers, resp.read()
-
-
-          NOTES = []          # non-fatal degradations, surfaced in the coverage line
-
-
-          def gh(path, **params):
-              url = API + path
-              if params:
-                  url += "?" + urllib.parse.urlencode(params)
-              try:
-                  _, headers, body = _req(url)
-                  return json.loads(body.decode("utf-8")), headers
-              except urllib.error.HTTPError as exc:
-                  if exc.code in (403, 404, 409, 422, 451):
-                      if exc.code == 403:
-                          NOTES.append("rate-limited on %s" % path.split("?")[0])
-                      return None, None
-                  raise
-              except (urllib.error.URLError, TimeoutError):
-                  NOTES.append("network error on %s" % path.split("?")[0])
-                  return None, None
-
-
-          def count_via_link(path, **params):
-              params.setdefault("per_page", 1)
-              payload, headers = gh(path, **params)
-              if payload is None:
-                  return -1
-              link = (headers or {}).get("Link", "") if headers else ""
-              match = re.search(r'[?&]page=(\d+)>;\s*rel="last"', link or "")
-              if match:
-                  return int(match.group(1))
-              return len(payload) if isinstance(payload, list) else -1
-
-
-          def search_total(query):
-              payload, _ = gh("/search/issues", q="repo:%s %s" % (REPO, query), per_page=1)
-              return payload.get("total_count", -1) if isinstance(payload, dict) else -1
-
-
-          # ---------------------------------------------------------------- time
-
-          def now_utc():
-              return datetime.now(timezone.utc)
-
-
-          def iso(dt):
-              return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-          def parse_iso(value):
-              if not value:
-                  return None
-              try:
-                  return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-              except ValueError:
-                  return None
-
-
-          def human_delta(seconds):
-              seconds = int(max(seconds, 0))
-              if seconds < 60:
-                  return "%ds" % seconds
-              if seconds < 3600:
-                  return "%dm" % (seconds // 60)
-              if seconds < 86400:
-                  return "%dh%02dm" % (seconds // 3600, (seconds % 3600) // 60)
-              return "%dd%02dh" % (seconds // 86400, (seconds % 86400) // 3600)
-
-
-          def compact(n):
-              if not isinstance(n, int) or n < 0:
-                  return "?"
-              if n >= 1000:
-                  return "%.1fk" % (n / 1000.0) if n < 100000 else "%dk" % (n // 1000)
-              return str(n)
-
-
-          # ---------------------------------------------------------------- state
-
-          def load_state():
-              try:
-                  with open(STATE_PATH, "r", encoding="utf-8") as fh:
-                      return json.load(fh)
-              except (OSError, ValueError):
-                  return {}
-
-
-          def save_state(state):
-              with open(STATE_PATH, "w", encoding="utf-8") as fh:
-                  json.dump(state, fh, indent=1, sort_keys=True)
-
-
-          # ---------------------------------------------------------------- events
-
-          def fetch_events(seen_ids, first_run, max_pages=3):
-              """Every event not already seen. Overlap-tolerant: dedupe is by id, so the
-              feed can be re-read across the run boundary without double-reporting."""
-              seen = set(seen_ids or [])
-              fresh, all_ids, pages = [], [], 0
-              exhausted = False
-              horizon = now_utc() - timedelta(minutes=FIRST_RUN_LOOKBACK_MIN)
-              for page in range(1, max_pages + 1):
-                  batch, _ = gh("/repos/%s/events" % REPO, per_page=100, page=page)
-                  pages = page
-                  if not batch:
-                      break
-                  all_ids.extend(e["id"] for e in batch)
-                  page_all_seen = True
-                  for event in batch:
-                      if event["id"] in seen:
-                          continue
-                      page_all_seen = False
-                      if first_run and (parse_iso(event.get("created_at")) or now_utc()) <= horizon:
-                          continue
-                      fresh.append(event)
-                  if page_all_seen or len(batch) < 100:
-                      break
-                  if page == max_pages:
-                      # Still finding unseen events at the last page — the window may
-                      # extend past what the feed retains.
-                      exhausted = not page_all_seen
-              fresh.sort(key=lambda e: int(e["id"]), reverse=True)
-              return fresh, exhausted, pages, all_ids
-
-
-          # ---------------------------------------------------------------- snapshot
-
-          def repo_snapshot():
-              repo, _ = gh("/repos/%s" % REPO)
-              if repo is None:
-                  return {}
-              default_branch = repo.get("default_branch") or "main"
-              head = ""
-              ref, _ = gh("/repos/%s/commits/%s" % (REPO, default_branch))
-              if isinstance(ref, dict):
-                  head = ref.get("sha") or ""
-              issues_total, issues_open = search_total("is:issue"), search_total("is:issue is:open")
-              prs_total, prs_merged = search_total("is:pr"), search_total("is:pr is:merged")
-              prs_open = count_via_link("/repos/%s/pulls" % REPO, state="open")
-              known = lambda *v: min(v) >= 0
-              return {
-                  "head": head,
-                  "default_branch": default_branch,
-                  "commits_total": count_via_link("/repos/%s/commits" % REPO),
-                  "issues_total": issues_total,
-                  "issues_open": issues_open,
-                  "issues_closed": issues_total - issues_open if known(issues_total, issues_open) else -1,
-                  "prs_total": prs_total,
-                  "prs_open": prs_open,
-                  "prs_merged": prs_merged,
-                  "prs_closed_unmerged": prs_total - prs_merged - prs_open
-                                         if known(prs_total, prs_merged, prs_open) else -1,
-                  "branches": count_via_link("/repos/%s/branches" % REPO),
-                  "tags": count_via_link("/repos/%s/tags" % REPO),
-                  "releases_total": count_via_link("/repos/%s/releases" % REPO),
-                  "contributors_total": count_via_link("/repos/%s/contributors" % REPO, anon=1),
-                  "stars": repo.get("stargazers_count", 0),
-                  "forks": repo.get("forks_count", 0),
-                  "watchers": repo.get("subscribers_count", 0),
-                  "size_kb": repo.get("size", 0),
-                  "visibility": repo.get("visibility", ""),
-                  "archived": bool(repo.get("archived")),
-                  "description": repo.get("description") or "",
-                  "homepage": repo.get("homepage") or "",
-                  "topics": sorted(repo.get("topics") or []),
-                  "has_issues": bool(repo.get("has_issues")),
-                  "has_wiki": bool(repo.get("has_wiki")),
-                  "has_pages": bool(repo.get("has_pages")),
-                  "has_discussions": bool(repo.get("has_discussions")),
-              }
-
-
-          SETTING_LABELS = {
-              "default_branch": "default branch", "visibility": "visibility", "archived": "archived",
-              "description": "description", "homepage": "homepage", "topics": "topics",
-              "has_issues": "issues enabled", "has_wiki": "wiki enabled",
-              "has_pages": "pages enabled", "has_discussions": "discussions enabled",
+          set -euo pipefail
+          mkdir -p /tmp/pulse repo-pulse
+          api="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents"
+          fetch() {
+            curl -fsSL \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github.raw" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              -H "User-Agent: repo-pulse/2.1" \
+              "${api}/$1?ref=${GITHUB_SHA}" -o "/tmp/pulse/$1"
           }
-
-
-          def settings_delta(old, new):
-              out = []
-              for key, label in SETTING_LABELS.items():
-                  before, after = old.get(key), new.get(key)
-                  if before is not None and before != after:
-                      out.append("%s %r → %r" % (label, before, after))
-              return out
-
-
-          # ---------------------------------------------------------------- diff
-
-          def commit_range(previous_head, head):
-              """Authoritative commit + file truth for the window."""
-              blank = {"commits": [], "files": {}, "total": 0, "adds": 0, "dels": 0,
-                       "status": "identical", "truncated": False, "available": False}
-              if not head:
-                  return blank
-              if not previous_head:
-                  return dict(blank, status="no-baseline")
-              if previous_head == head:
-                  return dict(blank, available=True)
-              payload, _ = gh("/repos/%s/compare/%s...%s" % (REPO, previous_head, head))
-              if not isinstance(payload, dict):
-                  NOTES.append("compare unavailable (%s...%s)" % (previous_head[:7], head[:7]))
-                  return dict(blank, status="compare-failed")
-              commits = payload.get("commits") or []
-              files = payload.get("files") or []
-              surfaces = {}
-              adds = dels = 0
-              for entry in files:
-                  label = surface_of(entry.get("filename", ""))
-                  bucket = surfaces.setdefault(label, {"files": 0, "adds": 0, "dels": 0})
-                  bucket["files"] += 1
-                  bucket["adds"] += entry.get("additions", 0)
-                  bucket["dels"] += entry.get("deletions", 0)
-                  adds += entry.get("additions", 0)
-                  dels += entry.get("deletions", 0)
-              total = payload.get("total_commits", len(commits))
-              return {
-                  "commits": [{
-                      "sha": c.get("sha", "")[:7],
-                      "title": " ".join((c.get("commit", {}).get("message") or "").split("\n")[0].split())[:72],
-                      "author": (c.get("author") or {}).get("login")
-                                or (c.get("commit", {}).get("author") or {}).get("name") or "unknown",
-                  } for c in commits],
-                  "files": surfaces,
-                  "total": total,
-                  "adds": adds,
-                  "dels": dels,
-                  "status": payload.get("status", "ahead"),
-                  # compare caps at 250 commits / 300 files
-                  "truncated": total > len(commits) or len(files) >= 300,
-                  "available": True,
-              }
-
-
-          # ---------------------------------------------------------------- health
-
-          def health(head):
-              """Check runs on HEAD plus Pages deploy drift."""
-              out = {"checks": {}, "failing": [], "pending": 0, "pages": None, "pages_drift": False}
-              if not head:
-                  return out
-              payload, _ = gh("/repos/%s/commits/%s/check-runs" % (REPO, head), per_page=100)
-              if isinstance(payload, dict):
-                  for run in payload.get("check_runs") or []:
-                      if run.get("status") != "completed":
-                          out["pending"] += 1
-                          continue
-                      conclusion = run.get("conclusion") or "unknown"
-                      out["checks"][conclusion] = out["checks"].get(conclusion, 0) + 1
-                      if conclusion in ("failure", "timed_out", "action_required"):
-                          out["failing"].append({
-                              "name": run.get("name", "?"),
-                              "url": run.get("html_url") or run.get("details_url") or "",
-                          })
-              build, _ = gh("/repos/%s/pages/builds/latest" % REPO)
-              if isinstance(build, dict):
-                  out["pages"] = {"status": build.get("status"), "sha": (build.get("commit") or "")[:7]}
-                  out["pages_drift"] = bool(build.get("commit")) and build.get("commit") != head
-              return out
-
-
-          # ---------------------------------------------------------------- gaps
-
-          def event_gaps(events, prev_snapshot, snapshot):
-              """Counters that moved without matching events in the feed."""
-              gaps = []
-              if not prev_snapshot:
-                  return gaps
-              observed_opened = sum(1 for e in events
-                                    if e["type"] == "IssuesEvent" and (e.get("payload") or {}).get("action") == "opened")
-              before, after = prev_snapshot.get("issues_total", -1), snapshot.get("issues_total", -1)
-              if before >= 0 and after >= 0:
-                  moved = after - before
-                  if moved > observed_opened:
-                      gaps.append("EVENT_GAP issues +%d, feed showed %d" % (moved, observed_opened))
-              before, after = prev_snapshot.get("prs_total", -1), snapshot.get("prs_total", -1)
-              observed_prs = sum(1 for e in events
-                                 if e["type"] == "PullRequestEvent" and (e.get("payload") or {}).get("action") == "opened")
-              if before >= 0 and after >= 0 and (after - before) > observed_prs:
-                  gaps.append("EVENT_GAP PRs +%d, feed showed %d" % (after - before, observed_prs))
-              return gaps
-
-
-          # ---------------------------------------------------------------- velocity
-
-          def velocity(history, events_now, commits_now):
-              """Rolling counts. history entries are [iso, events, commits]."""
-              cutoff_1h = now_utc() - timedelta(hours=1)
-              cutoff_24h = now_utc() - timedelta(hours=24)
-              ev1 = cm1 = ev24 = cm24 = 0
-              for stamp, evs, cms in history:
-                  when = parse_iso(stamp)
-                  if not when:
-                      continue
-                  if when > cutoff_24h:
-                      ev24 += evs
-                      cm24 += cms
-                  if when > cutoff_1h:
-                      ev1 += evs
-                      cm1 += cms
-              return {"ev_5m": events_now, "ev_1h": ev1 + events_now, "ev_24h": ev24 + events_now,
-                      "cm_5m": commits_now, "cm_1h": cm1 + commits_now, "cm_24h": cm24 + commits_now,
-                      "samples": len(history)}
-
-
-          # ---------------------------------------------------------------- render
-
-          def esc(text):
-              return str(text or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-          EVENT_LABEL = {
-              "IssuesEvent": "issues", "IssueCommentEvent": "comments", "PullRequestEvent": "PRs",
-              "PullRequestReviewEvent": "reviews", "PullRequestReviewCommentEvent": "review-comments",
-              "PushEvent": "pushes", "CreateEvent": "creates", "DeleteEvent": "deletes",
-              "ReleaseEvent": "releases", "ForkEvent": "forks", "WatchEvent": "stars",
-              "GollumEvent": "wiki", "CommitCommentEvent": "commit-comments",
-              "MemberEvent": "members", "PublicEvent": "visibility",
-          }
-
-
-          def render(ctx):
-              events, diff, hp, snap = ctx["events"], ctx["diff"], ctx["health"], ctx["snapshot"]
-              vel, gaps = ctx["velocity"], ctx["gaps"]
-              settings = settings_delta(ctx["prev_snapshot"], snap)
-
-              if hp["failing"]:
-                  status = "BROKEN"
-              elif gaps or hp["pending"] or hp["pages_drift"] or ctx["exhausted"] or settings:
-                  status = "ATTENTION"
-              else:
-                  status = "CLEAR"
-
-              head_short = (snap.get("head") or "")[:7] or "?"
-              prev_short = (ctx["previous_head"] or "")[:7]
-              quiet = ""
-              if not events and not diff["total"]:
-                  last = parse_iso(ctx["last_event_at"])
-                  # No baseline yet is not the same as "quiet for an unknown time" — say so.
-                  quiet = human_delta((now_utc() - last).total_seconds()) if last else "since first run"
-
-              L = ["from: %s" % MIRROR_CLAIM, "to: TABLE",
-                   "id: repo-pulse-%s" % now_utc().strftime("%Y%m%dT%H%M%SZ"),
-                   "carrier: github-actions/repo-pulse", ""]
-
-              span = "%s→%s" % (ctx["window_from"][11:19], now_utc().strftime("%H:%M:%S"))
-              if quiet:
-                  L.append("*%s* · `%s` · %s · *no changes* (quiet %s) · main `%s`"
-                           % (status, REPO.split("/")[-1], span, quiet, head_short))
-              else:
-                  moved = ("main `%s`→`%s` +%d commits +%d/-%d"
-                           % (prev_short or "?", head_short, diff["total"], diff["adds"], diff["dels"])
-                           if diff["total"] else "main `%s` unchanged" % head_short)
-                  L.append("*%s* · `%s` · %s · *%d events* · %s"
-                           % (status, REPO.split("/")[-1], span, len(events), moved))
-
-              if hp["failing"]:
-                  for job in hp["failing"][:3]:
-                      L.append(":red_circle: *%s* <%s|job log>" % (esc(job["name"]), job["url"]))
-              for gap in gaps:
-                  L.append(":warning: `%s`" % gap)
-              if hp["pages_drift"]:
-                  L.append(":warning: pages built at `%s`, main at `%s`" % (hp["pages"]["sha"], head_short))
-              if ctx["exhausted"]:
-                  L.append(":warning: event feed exhausted — window exceeds the 300-event retention")
-              for line in settings[:4]:
-                  L.append(":gear: %s" % line)
-
-              if diff["files"]:
-                  top = sorted(diff["files"].items(), key=lambda kv: -(kv[1]["adds"] + kv[1]["dels"]))[:5]
-                  L.append("*surfaces* " + " · ".join(
-                      "%s %df +%d/-%d" % (name, b["files"], b["adds"], b["dels"]) for name, b in top))
-
-              L.append("*velocity* ev %s/5m %s/1h %s/24h · commits %s/5m %s/1h %s/24h"
-                       % (compact(vel["ev_5m"]), compact(vel["ev_1h"]), compact(vel["ev_24h"]),
-                          compact(vel["cm_5m"]), compact(vel["cm_1h"]), compact(vel["cm_24h"])))
-
-              if events:
-                  by_type = {}
-                  for event in events:
-                      by_type[event["type"]] = by_type.get(event["type"], 0) + 1
-                  L.append("*events* " + " · ".join(
-                      "%s %d" % (EVENT_LABEL.get(k, k.replace("Event", "").lower()), v)
-                      for k, v in sorted(by_type.items(), key=lambda kv: -kv[1])))
-                  actors = {}
-                  for event in events:
-                      actors[event["actor"]["login"]] = actors.get(event["actor"]["login"], 0) + 1
-                  L.append("*who* " + " · ".join(
-                      "`%s` %d" % (esc(a), n) for a, n in sorted(actors.items(), key=lambda kv: -kv[1])[:5]))
-
-              if diff["commits"]:
-                  L.append("*commits*")
-                  for commit in diff["commits"][:MAX_COMMIT_LINES]:
-                      L.append("• <https://github.com/%s/commit/%s|`%s`> %s — `%s`"
-                               % (REPO, commit["sha"], commit["sha"], esc(commit["title"]), esc(commit["author"])))
-                  if diff["total"] > MAX_COMMIT_LINES:
-                      L.append("• …%d more in <%s|the run evidence>" % (diff["total"] - MAX_COMMIT_LINES, RUN_URL))
-
-              checks = " ".join("%s %d" % (k, v) for k, v in sorted(hp["checks"].items())) or "none"
-              L.append("*checks* %s%s" % (checks, " · %d pending" % hp["pending"] if hp["pending"] else ""))
-
-              L.append("*totals* commits %s · issues %s (%s open) · PRs %s (%s merged) · branches %s · tags %s · contributors %s · stars %s"
-                       % (compact(snap.get("commits_total", -1)), compact(snap.get("issues_total", -1)),
-                          compact(snap.get("issues_open", -1)), compact(snap.get("prs_total", -1)),
-                          compact(snap.get("prs_merged", -1)), compact(snap.get("branches", -1)),
-                          compact(snap.get("tags", -1)), compact(snap.get("contributors_total", -1)),
-                          compact(snap.get("stars", -1))))
-
-              coverage = ["cursor %s" % ctx["window_from"], "%d feed page(s)" % ctx["pages"]]
-              coverage.append("range %s...%s" % (prev_short or "none", head_short))
-              if diff["truncated"]:
-                  coverage.append("compare truncated at API cap")
-              if not diff["available"]:
-                  coverage.append("compare %s" % diff["status"])
-              coverage.extend(NOTES[:2])
-              L.append("_%s · <%s|evidence>_" % (" · ".join(coverage), RUN_URL))
-              return "\n".join(L)
-
-
-          # ---------------------------------------------------------------- slack
-
-          def post_slack(text):
-              if WEBHOOK:
-                  data = json.dumps({"text": text, "unfurl_links": False, "unfurl_media": False}).encode("utf-8")
-                  status, _, body = _req(WEBHOOK, headers={"Content-Type": "application/json"},
-                                         data=data, method="POST")
-                  if status != 200:
-                      raise SystemExit("slack webhook failed: %s %s" % (status, body[:200]))
-                  return "webhook"
-              if BOT_TOKEN and CHANNEL:
-                  data = json.dumps({"channel": CHANNEL, "text": text, "unfurl_links": False}).encode("utf-8")
-                  _, _, body = _req("https://slack.com/api/chat.postMessage",
-                                    headers={"Content-Type": "application/json; charset=utf-8",
-                                             "Authorization": "Bearer " + BOT_TOKEN},
-                                    data=data, method="POST")
-                  payload = json.loads(body.decode("utf-8"))
-                  if not payload.get("ok"):
-                      raise SystemExit("slack api failed: %s" % payload.get("error"))
-                  return "bot"
-              summary = os.environ.get("GITHUB_STEP_SUMMARY")
-              if summary:
-                  with open(summary, "a", encoding="utf-8") as fh:
-                      fh.write("### repo-pulse (no Slack destination configured)\n\n```\n%s\n```\n" % text)
-              print("NOTE: no SLACK_WEBHOOK_URL / SLACK_BOT_TOKEN set — digest written to the job "
-                    "summary instead. Add the secret and it starts posting to Slack.")
-              return "summary"
-
-
-          # ---------------------------------------------------------------- main
-
-          def build_context(state):
-              first_run = not state.get("seen_ids")
-              events, exhausted, pages, all_ids = fetch_events(state.get("seen_ids"), first_run)
-              snapshot = repo_snapshot()
-              previous_head = state.get("previous_head") or ""
-              diff = commit_range(previous_head, snapshot.get("head", ""))
-              hp = health(snapshot.get("head", ""))
-              prev_snapshot = state.get("snapshot") or {}
-              gaps = event_gaps(events, prev_snapshot, snapshot)
-              history = state.get("history") or []
-              return {
-                  "events": events, "exhausted": exhausted, "pages": pages, "all_ids": all_ids,
-                  "snapshot": snapshot, "prev_snapshot": prev_snapshot, "diff": diff, "health": hp,
-                  "gaps": gaps, "previous_head": previous_head,
-                  "velocity": velocity(history, len(events), diff["total"]),
-                  "window_from": state.get("last_run_at") or iso(now_utc() - timedelta(minutes=FIRST_RUN_LOOKBACK_MIN)),
-                  "last_event_at": state.get("last_event_at"),
-                  "history": history,
-              }
-
-
-          def main():
-              if not REPO:
-                  raise SystemExit("GITHUB_REPOSITORY is not set")
-              state = load_state()
-              ctx = build_context(state)
-
-              changed = bool(ctx["events"] or ctx["diff"]["total"] or ctx["gaps"]
-                             or ctx["health"]["failing"] or settings_delta(ctx["prev_snapshot"], ctx["snapshot"]))
-              last_post = parse_iso(state.get("last_post_at"))
-              heartbeat_due = (not last_post) or (now_utc() - last_post) >= timedelta(minutes=IDLE_HEARTBEAT_MIN)
-              should_post = changed or (REPORT_IDLE and True) or heartbeat_due
-
-              text = render(ctx)
-              with open(EVIDENCE_PATH, "w", encoding="utf-8") as fh:
-                  json.dump({"generated_at": iso(now_utc()), "status_line": text.splitlines()[5],
-                             "window_from": ctx["window_from"], "range": [ctx["previous_head"], ctx["snapshot"].get("head")],
-                             "events": ctx["events"], "diff": ctx["diff"], "health": ctx["health"],
-                             "gaps": ctx["gaps"], "velocity": ctx["velocity"], "snapshot": ctx["snapshot"],
-                             "notes": NOTES}, fh, indent=1, default=str)
-
-              posted = None
-              if should_post:
-                  if DRY_RUN:
-                      print(text)
-                      posted = "dry-run"
-                  else:
-                      posted = post_slack(text)
-                      print("posted via %s: %d events, %d commits" % (posted, len(ctx["events"]), ctx["diff"]["total"]))
-              else:
-                  print("quiet window, heartbeat not due — nothing posted")
-
-              newest = ctx["events"][0] if ctx["events"] else None
-              lifetime = state.get("lifetime") or {"since": now_utc().strftime("%Y-%m-%d"), "events": 0, "commits": 0, "digests": 0}
-              lifetime["events"] = lifetime.get("events", 0) + len(ctx["events"])
-              lifetime["commits"] = lifetime.get("commits", 0) + ctx["diff"]["total"]
-              lifetime["digests"] = lifetime.get("digests", 0) + (1 if posted else 0)
-
-              history = (ctx["history"] + [[iso(now_utc()), len(ctx["events"]), ctx["diff"]["total"]]])[-300:]
-              seen = (list(dict.fromkeys(ctx["all_ids"] + (state.get("seen_ids") or []))))[:SEEN_CAP]
-
-              save_state({
-                  "last_run_at": iso(now_utc()),
-                  "last_post_at": iso(now_utc()) if posted else state.get("last_post_at"),
-                  "previous_head": ctx["snapshot"].get("head") or ctx["previous_head"],
-                  "seen_ids": seen,
-                  "last_event_at": newest["created_at"] if newest else state.get("last_event_at"),
-                  "last_activity_desc": ("%s by %s" % (newest["type"], newest["actor"]["login"]))
-                                        if newest else state.get("last_activity_desc", "n/a"),
-                  "snapshot": ctx["snapshot"] or ctx["prev_snapshot"],
-                  "history": history,
-                  "lifetime": lifetime,
-              })
-              return 0
-
-
-          if __name__ == "__main__":
-              sys.exit(main())
-          REPO_PULSE_EOF
-          python3 /tmp/repo_pulse.py
+          fetch repo_pulse.py
+          fetch test_repo_pulse.py
+          python3 /tmp/pulse/test_repo_pulse.py
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "PR dry-run: fixtures passed; skipping live digest so a preview cannot move the cursor."
+            exit 0
+          fi
+          python3 /tmp/pulse/repo_pulse.py
+          if [ -f repo-pulse/latest.json ]; then
+            python3 -c "import json,sys; json.load(open('repo-pulse/latest.json')); print('evidence ok')"
+          fi
 
       - name: Upload machine-readable evidence
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: pulse-evidence-${{ github.run_id }}
-          path: pulse-evidence.json
+          name: repo-pulse-latest
+          path: repo-pulse/latest.json
           retention-days: 14
-          if-no-files-found: ignore
+          if-no-files-found: warn
 
       - name: Save cursor for the next run
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: actions/cache/save@v4
         with:
           path: .pulse-state.json
