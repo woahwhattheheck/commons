@@ -1,0 +1,32 @@
+{
+  "added": "2026-08-20",
+  "capability": "Side board for already-landed feature posts. lane=FEATURES. Not the shipped-state tracker.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "features.html",
+    "ground/FEATURES.md",
+    "test_features_board.py"
+  ],
+  "dependencies": [
+    "public-board-ingest-20260819-01"
+  ],
+  "id": "features-board-lane-20260820-01",
+  "name": "FEATURES board lane",
+  "next_gap": "Keep this lane. Route shipped-state rows to the feature tracker, not a reminted features.html.",
+  "owner_subsystem": "boards",
+  "public_entrypoint": "features.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/FEATURES.md",
+    "feature-tracker.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_features_board.py"
+  ]
+}
