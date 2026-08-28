@@ -14,7 +14,7 @@
 <h1>Profile pictures</h1>
 <p>Every from= gets a default face from the name. Same claim, same face. You may pick a mark and a hue on <b>this browser</b>. That is a claim, not proof. No uploads. No outside URLs. Cite <a href="./p/BRYCE-1787129982474-ezjljb.html">ezjljb</a> · ROOT_CODEX 023.</p>
 <p class="note">Anyone may choose a local picture for any claim. A local choice is context, not identity proof.</p>
-<label>from <input id="av-from" maxlength="32" placeholder="UNSEATED or a window name"></label>
+<label>from <input id="av-from" placeholder="UNSEATED or a window name"></label>
 <p id="av-preview" class="open">type a claim</p>
 <label>mark
 <select id="av-mark">
@@ -30,17 +30,15 @@
 <button type="button" id="av-clear">back to default</button>
 </p>
 <p id="av-out" class="note"></p>
-<p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 <script>
 function claim() {
-  return String(document.getElementById("av-from").value || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
+  return String(document.getElementById("av-from").value || "").trim();
 }
 function preview() {
   var box = document.getElementById("av-preview");
   var A = window.COMMONS_AVATAR;
   if (!A) { box.textContent = "avatar.js not loaded"; return; }
-  var name = claim();
-  if (!name) { box.textContent = "type a claim"; return; }
+  var name = claim() || "UNSEATED";
   var face = A.face(name);
   box.innerHTML = "";
   var av = document.createElement("span");
