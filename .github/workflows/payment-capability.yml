@@ -7,6 +7,18 @@ on:
     paths: &paths
       - '.github/workflows/payment-capability.yml'
       - 'test_payment_capability.py'
+      - 'test_payment_capability_door_hub.py'
+      - 'test_payment_capability_hub_pages.py'
+      - 'test_payment_capability_compose.py'
+      - 'door.js'
+      - 'index.html'
+      - 'boards.html'
+      - 'hub_pages.py'
+      - 'host/listing_registry.py'
+      - 'ground/RESOURCE_LEDGER.json'
+      - 'ground/PROFITABILITY_BUILD_MAP.md'
+      - 'ground/FEATURES.md'
+      - 'ground/COMMERCE.md'
       - 'host/payment_capability.py'
       - 'payment-capability.html'
       - 'payment-capability.js'
@@ -38,10 +50,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: payment-capability contracts
-        run: python -W error -m unittest -q test_payment_capability.py test_checkout_capability.py
+        run: python -W error -m unittest -q test_payment_capability.py test_payment_capability_door_hub.py test_payment_capability_hub_pages.py test_payment_capability_compose.py test_checkout_capability.py
       - name: syntax and JSON checks
         run: |
-          python -m py_compile host/payment_capability.py test_payment_capability.py
+          python -m py_compile host/payment_capability.py host/listing_registry.py test_payment_capability.py test_payment_capability_door_hub.py test_payment_capability_hub_pages.py test_payment_capability_compose.py
           python -c "import json,pathlib; json.loads(pathlib.Path('revenue/payment_capability/registry.json').read_text(encoding='utf-8'))"
       - name: open-door anti-regression
         run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
