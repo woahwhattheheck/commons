@@ -21,9 +21,11 @@ on:
       - "harness_wake/**"
       - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
+      - "action_executor.py"
       - "test_harness_wake.py"
       - "test_peer_wake_bus.py"
       - "test_job_watchdog_land.py"
+      - "test_action_executor.py"
       - ".github/workflows/job-watchdog.yml"
   workflow_dispatch:
 permissions:
@@ -33,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: cheap tick, never a model
         run: |
           set -e
@@ -41,6 +45,9 @@ jobs:
           else
             python3 -m harness_wake --tick
           fi
+      - name: queue pending GROK.COM actions into wake_jobs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: python3 -c "import json, action_executor as ae; print(json.dumps(ae.enqueue_pending_grok_com(), sort_keys=True))"
       - name: land job state on main only
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
