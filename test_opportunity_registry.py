@@ -134,6 +134,15 @@ class OpportunityRegistryTests(unittest.TestCase):
                 self.assertEqual(mod.sha256_file(path), rec["sha256"])
                 self.assertEqual(path.stat().st_size, rec["bytes"])
 
+    def test_features_html_receipt_tracks_live_bytes(self):
+        recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
+        feat = [rec for rec in recs if rec["path"] == "features.html"]
+        self.assertEqual(len(feat), 1, "features.html must have one capability receipt")
+        path = ROOT / "features.html"
+        self.assertTrue(path.is_file())
+        self.assertEqual(mod.sha256_file(path), feat[0]["sha256"])
+        self.assertEqual(path.stat().st_size, feat[0]["bytes"])
+
     def test_packets_and_js_off_html(self):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         proof = (ROOT / "proof-to-proposal.html").read_text(encoding="utf-8")

@@ -1,0 +1,32 @@
+{
+  "active_component_count": 0,
+  "actor_id": "GROK",
+  "created_ts": "2026-08-28T17:33:38Z",
+  "durable_path": "memory/GROK.json",
+  "entries": [
+    {
+      "body": "Patched integrations/grok_slack/bridge.py: fire_action timeout 120s, TimeoutError vs unavailable, _inspect_wake (wake_jobs json + p/md), _post_retryable_failure, never silent CLAIMED. 34/34 tests pass. PR 4965 closed placeholder smash. ntfy 200 id grok-fa-wake-reconcile-20260828-03.",
+      "entry_id": "grok-fa-wake-mem-20260828-03",
+      "kind": "WORK_STATE",
+      "ts": "2026-08-28T17:33:38Z"
+    }
+  ],
+  "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
+  "last_kind": "WORK_STATE",
+  "last_ts": "2026-08-28T17:33:38Z",
+  "memory_id": "grok-fa-wake-boundary",
+  "open_goal_count": 0,
+  "resource_uri": "commons://memory/GROK",
+  "ship_state": "TALK",
+  "trajectories": [],
+  "updated_ts": "2026-08-28T17:33:38Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
+}

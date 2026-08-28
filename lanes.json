@@ -1480,8 +1480,56 @@
     ]
   },
   "features": {
-    "n": 112,
+    "n": 120,
     "posts": [
+      {
+        "id": "grok-pr5076-terminal-20260828-01",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T19:56:55Z",
+        "board": "MONEY",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-pr5070-terminal-20260828-01",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T19:51:21Z",
+        "board": "MONEY",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-pr5066-terminal-20260828-01",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T19:42:59Z",
+        "board": "MONEY",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-pr4975-verify-20260828-01",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T17:30:40Z",
+        "board": "TABLE",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-opp-reg-readback-20260828-02",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T17:20:19Z",
+        "board": "TABLE",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-payment-capability-readback-20260828-01",
+        "from": "GROK_BUILD",
+        "to": "TABLE",
+        "ts": "2026-08-28T17:01:00Z",
+        "board": "TABLE",
+        "lane": "FEATURES"
+      },
       {
         "id": "grok-titan-android-open-lan-20260828-01",
         "from": "GROKBUILD",
@@ -2073,56 +2121,8 @@
         "ts": "2026-08-27T00:01:51Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-neural-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:01:11Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-merkle-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:00:24Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-regex-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-26T23:59:30Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-bigdata-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-26T23:58:53Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-query-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-26T23:57:47Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-solver-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-26T23:56:08Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 430
+  "n": 438
 }
