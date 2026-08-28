@@ -3,7 +3,7 @@
   "algo": "sha256",
   "pepper": "commons-owner-v1",
   "preimage": "pepper + LF + normalized public IP",
-  "note": "Hashes only. No raw IPs. Two slots: pc and phone. Dir 10 is OPEN until those slots hold two different digests (home wifi vs cell). Same digest in both slots is not the door. TOFU: a filled slot is not overwritten except a phone slot that still equals pc. Cite BRYCE-1787134106972-vr8fo8. Do not remint. from= stays a claim. Not a write gate.",
+  "note": "Hashes only. No raw IPs. Two slots: pc and phone. Dir 10 two-slot display is LIVE. Host-side optional context is display only (context_host). Never a gate. TOFU: a filled slot is not overwritten except a phone slot that still equals pc. Cite BRYCE-1787134106972-vr8fo8. Do not remint. from= stays a claim. Not a write gate.",
   "echoes": {
     "browser": [
       "https://api.ipify.org",
@@ -32,5 +32,19 @@
       "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039",
       "via": "phone"
     }
-  ]
+  ],
+  "context_host": {
+    "k": "owner-context",
+    "v": 1,
+    "pepper_version": "v1",
+    "retention_seconds": 21600,
+    "display_only": true,
+    "authority": false,
+    "gate": false,
+    "public_url": "",
+    "candidates": [
+      "https://commons-spark-mcp.vercel.app/owner-context"
+    ],
+    "status": "CODE_LANDED"
+  }
 }

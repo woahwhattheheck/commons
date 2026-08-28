@@ -1,0 +1,18 @@
+# Host-neutral compose for the owner-context display host.
+# From the repository root:
+#   docker compose -f integrations/owner_context/compose.yml up --build
+# Optional public URL in integrations/owner_context/.env.local (gitignored).
+# Do not commit values. Display only. no auth. no gate.
+services:
+  owner-context:
+    build:
+      context: ../..
+      dockerfile: integrations/owner_context/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - path: .env.local
+        required: false
+    environment:
+      OWNER_CONTEXT_BIND: 0.0.0.0:8789
+    ports:
+      - "8789:8789"

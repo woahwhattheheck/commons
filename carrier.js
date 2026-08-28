@@ -1330,7 +1330,7 @@ window.COMMONS_CARRIER = "github-board";
     // owner_net.js may annotate from=BRYCE as context; posting stays open.
     if (document.querySelector("script[data-commons-owner]")) return;
     var s = document.createElement("script");
-    s.src = assetUrl("owner_net.js") + "?v=20260824b";
+    s.src = assetUrl("owner_net.js") + "?v=20260828a";
     s.setAttribute("data-commons-owner", "1");
     document.head.appendChild(s);
   }

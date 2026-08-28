@@ -27,6 +27,8 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
   ];
   var SEND_GAP_MS = 6 * 60 * 60 * 1000;
   var SENT_KEY = "commons-owner-net-sent";
+  var HOST_IPV4_RE = /\b(?:\d{1,3}\.){3}\d{1,3}\b/;
+  var HOST_IPV6_RE = /\b[0-9a-fA-F:]+:[0-9a-fA-F:]+\b/;
 
   function assetUrl(name) {
     var link = document.querySelector('link[rel="stylesheet"]');
@@ -214,6 +216,48 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     return send(0);
   }
 
+  function hostCandidates(spec) {
+    var ch = spec && spec.context_host;
+    if (!ch || typeof ch !== "object") return [];
+    var out = [];
+    var seen = {};
+    function add(u) {
+      u = String(u || "").trim();
+      if (!u || seen[u] || u.indexOf("https://") !== 0) return;
+      seen[u] = 1;
+      out.push(u.replace(/\/$/, ""));
+    }
+    add(ch.public_url);
+    (ch.candidates || []).forEach(add);
+    return out;
+  }
+
+  function hostLooksSafe(obj) {
+    if (!obj || obj.k !== "owner-context") return false;
+    if (obj.authority || obj.gate) return false;
+    var blob = "";
+    try { blob = JSON.stringify(obj); } catch (e) { return false; }
+    if (HOST_IPV4_RE.test(blob) || HOST_IPV6_RE.test(blob)) return false;
+    if (obj.slot && obj.slot !== "pc" && obj.slot !== "phone") obj.slot = "";
+    return true;
+  }
+
+  function fetchHostContext(spec) {
+    var urls = hostCandidates(spec);
+    function next(i) {
+      if (i >= urls.length) return Promise.resolve(null);
+      return fetch(urls[i], { cache: "no-store", credentials: "omit" }).then(function (r) {
+        if (!r.ok) return next(i + 1);
+        return r.json().then(function (obj) {
+          if (!hostLooksSafe(obj)) return next(i + 1);
+          obj._url = urls[i];
+          return obj;
+        }, function () { return next(i + 1); });
+      }, function () { return next(i + 1); });
+    }
+    return next(0);
+  }
+
   function matchingSlot(spec, digests) {
     var i;
     var pc = slotHash(spec, "pc");
@@ -285,7 +329,7 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     if (knock) {
       if (live && matchedSlot) {
         knock.textContent = "two-slot context display is LIVE. this machine is the " + matchedSlot +
-          " slot. Directive 10 is HALF; this is display context only.";
+          " slot. host-side optional context is display only and cannot control participation, reads, writes, or execution.";
       } else if (matchedSlot) {
         knock.textContent = "this machine matches the " + matchedSlot + " slot. still OPEN: need the other machine on a different public IP.";
       } else if (!digest) {
@@ -296,6 +340,22 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     }
     var copyBtn = document.getElementById("owner-copy");
     if (copyBtn) copyBtn.disabled = !blob;
+  }
+
+  function paintHost(ctx) {
+    var el = document.getElementById("owner-host-state");
+    if (!el) return;
+    if (!ctx) {
+      if (el.textContent === "checking…" || !el.textContent) {
+        el.textContent = "host context missed this load (fail open; not a gate)";
+      }
+      return;
+    }
+    var slot = ctx.slot ? (" slot=" + ctx.slot) : " slot=(none)";
+    var digest = ctx.sha256 ? String(ctx.sha256).slice(0, 12) + "…" : "(none)";
+    el.textContent = "host display " + (ctx.available ? "available" : "unavailable") +
+      slot + " digest=" + digest +
+      " display-only. authority false. from= stays a claim.";
   }
 
   function boot() {
@@ -331,6 +391,13 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
               "OPEN — waiting for distinct pc and phone context slots");
           paintPanel(state, spec, digests, matchedSlot, live);
         }
+        return fetchHostContext(spec).then(function (ctx) {
+          paintHost(ctx);
+          return ctx;
+        }, function () {
+          paintHost(null);
+          return null;
+        });
       });
     }).catch(function () {
       if (panel) paintPanel("owner door missed this load", null, [], "", false);
