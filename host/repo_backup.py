@@ -61,19 +61,21 @@ def _bundle_heads(bundle: Path) -> list[dict[str, str]]:
     heads = []
     for line in completed.stdout.splitlines():
         sha, separator, ref = line.partition(" ")
-        if not separator or not SHA_RE.fullmatch(sha) or not ref.strip():
+        ref = ref.strip()
+        if not separator or not SHA_RE.fullmatch(sha) or not ref:
             raise BackupError(f"invalid bundle head: {line!r}")
-        heads.append({"ref": ref.strip(), "sha": sha})
+        # git bundle list-heads always emits HEAD as a pointer; for-each-ref does not.
+        if ref == "HEAD":
+            continue
+        heads.append({"ref": ref, "sha": sha})
     if not heads:
         raise BackupError("bundle has no refs")
     return sorted(heads, key=lambda row: row["ref"])
 
 
 def _repo_heads(source: Path) -> list[dict[str, str]]:
-    # `git bundle --all` records HEAD plus every ref. `for-each-ref` omits HEAD,
-    # so compare against `show-ref --head` or the snapshot rejects a valid bundle.
     completed = _run(
-        ["show-ref", "--head"],
+        ["for-each-ref", "--format=%(objectname) %(refname)"],
         cwd=source,
     )
     heads = []
