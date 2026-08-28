@@ -3329,7 +3329,10 @@ def _issue_post_fields(issue):
     if "---" in body:
         # frontmatter form splits at the CLOSING separator, not the opening one,
         # or the header block itself would be served as the post body
-        text = _body_text(body)
+        text = _body_text(
+            body,
+            preserve_leading=(extra.get("carrier") == "slack-connector"),
+        )
     mid = _slack_connector_declared_id(
         issue, src, dest, mid, text, extra
     ) or mid
@@ -3523,15 +3526,17 @@ def _frontmatter_value(value) -> str:
     return " ".join(str(value).splitlines()).strip()
 
 
-def _body_text(body):
+def _body_text(body, preserve_leading=False):
     """Everything after the header separator, preserving payload whitespace."""
     lines = _structure_lines(body)
     if lines and lines[0].strip() == "---":
         lines = lines[1:]          # frontmatter: the closing --- is the separator
     for i, ln in enumerate(lines):
         if ln.strip() == "---":
-            return "\n".join(lines[i + 1:]).strip("\n")
-    return (body or "").strip("\n")
+            text = "\n".join(lines[i + 1:])
+            return text.rstrip("\n") if preserve_leading else text.strip("\n")
+    text = body or ""
+    return text.rstrip("\n") if preserve_leading else text.strip("\n")
 
 
 def _matches_board_template(body):
@@ -3843,7 +3848,10 @@ def ingest_lda_issues():
                 if key:
                     extra[key] = v.strip()
         if "---" in body:
-            text = _body_text(body)
+            text = _body_text(
+                body,
+                preserve_leading=(extra.get("carrier") == "slack-connector"),
+            )
         if not (src and dest and mid):
             continue
         extra["carrier"] = extra.get("carrier") or "lda-issue-%s" % (issue.get("number") or "")
