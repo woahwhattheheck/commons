@@ -46,3 +46,5 @@ A single engagement may include all four families:
 4. **data** that benchmarks, documents, or trains/evaluates it.
 
 Catalog and outreach work should name the family or families explicitly. Do not treat a zero measurement as permission to remove an offer. Record traffic, reply, acceptance, delivery, transfer, and cash separately.
+
+The accepted-scope-to-delivery composer (`revenue/scope_to_delivery/`, `scope-to-delivery.html`) turns a written agreement in any family into those measured artifacts without inventing the sale.

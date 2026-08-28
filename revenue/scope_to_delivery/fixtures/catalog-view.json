@@ -1,0 +1,410 @@
+{
+  "funnel_truth": {
+    "accepted_scopes": 0,
+    "as_of": "2026-08-27T03:10:57.416Z",
+    "collected_cash_usd": "0.00",
+    "delivered_transports": 16,
+    "distinct_targets": 11,
+    "next_edge": "QUALIFIED_BUYER",
+    "paid_deliveries": 0,
+    "source": "revenue/payment_ready/current_receipt.json plus revenue/payment_ready/outreach_receipts/ through 20260827-nextdata-6a8faa92579ff9000cb874e2.json; unclassified response signal: p/slack-1787769698-642529.md",
+    "unclassified_response_signals": 1,
+    "verified_positive_replies": 0
+  },
+  "honesty": [
+    "accepted_scopes on current catalog truth: 0",
+    "paid_deliveries on current catalog truth: 0",
+    "collected_cash_usd on current catalog truth: 0.00",
+    "This composer does not mint buyers, acceptances, or cash."
+  ],
+  "kind": "SCOPE_TO_DELIVERY_CATALOG",
+  "listing_count": 15,
+  "listings": [
+    {
+      "acceptance_row_count": 4,
+      "amount": "2500.00",
+      "currency": "USD",
+      "family": "service",
+      "id": "same-day-agent-survival-proof",
+      "in_scope": [
+        "Open provider-hosted working proof",
+        "Visible happy path and forced failure or stop path",
+        "Rollback or reset path",
+        "Durable receipt and one-command handoff"
+      ],
+      "name": "Same-Day Agent Survival Proof",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing",
+        "production-migration",
+        "ongoing-hosting-or-sla",
+        "white-box-or-model-files"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded unless the buyer elects in writing one free next-business-day repair.",
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/production_survival/offer.json"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "15000.00",
+      "currency": "USD",
+      "family": "service",
+      "id": "production-survival-sprint",
+      "in_scope": [
+        "Measured failure cycle on one buyer-owned workflow",
+        "Retry and rollback implementation",
+        "Durable receipt in the agreed sandbox"
+      ],
+      "name": "Production Survival Sprint",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing",
+        "production-migration",
+        "ongoing-hosting-or-sla",
+        "white-box-or-model-files"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/production_survival/offer.json"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "12000.00",
+      "currency": "USD",
+      "family": "expertise",
+      "id": "gguf-diagnostic-10d-12k",
+      "in_scope": [
+        "Original, ablated, and byte-exact restored hashes",
+        "Baseline, ablation, and restore harness logs",
+        "Concise finding and hashed delivery receipt"
+      ],
+      "name": "GGUF Diagnostic",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing",
+        "production-migration",
+        "ongoing-hosting-or-sla"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "diagnostic.html",
+        "machine": "revenue/payment_ready/pack.json"
+      },
+      "state": "CANDIDATE"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "30000.00",
+      "currency": "USD",
+      "family": "expertise",
+      "id": "white-box-gguf-pilot-30d",
+      "in_scope": [
+        "Target-focused model map",
+        "Reversible ablation and targeted-edit artifacts",
+        "Restored artifact and rollback proof",
+        "Comparison report and technical review"
+      ],
+      "name": "White Box",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing",
+        "production-migration",
+        "ongoing-hosting-or-sla"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commercial.html",
+        "machine": "commercial.json"
+      },
+      "state": "PROPOSED"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "2500.00",
+      "currency": "USD",
+      "family": "service",
+      "id": "ho-issue-to-pr",
+      "in_scope": [
+        "One pull request for the named public issue"
+      ],
+      "name": "Named issue to a CI-green PR",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing",
+        "style-only-rewrites"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "If work never starts after written intake, founder refunds the authorized amount. If CI never greens or the PR never merges, the second half is withheld. A style disagreement is not a refund.",
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      },
+      "state": "CANDIDATE"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "1200.00",
+      "currency": "USD",
+      "family": "service",
+      "id": "ho-meeting-packet",
+      "in_scope": [
+        "HTML packet",
+        "Printable packet",
+        "Agenda",
+        "One-page brief",
+        "Source list"
+      ],
+      "name": "Accessible public-meeting packet",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "pii-phi",
+        "authentication",
+        "billing"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "If the packet is not delivered before the named meeting date because the provider missed the clock, founder refunds. Buyer-late inputs move the clock. A policy disagreement is not a refund.",
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      },
+      "state": "CANDIDATE"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "3000.00",
+      "currency": "USD",
+      "family": "service",
+      "id": "ho-security-questionnaire",
+      "in_scope": [
+        "Filled questionnaire returned through the founder-sent private contact"
+      ],
+      "name": "Security questionnaire completion",
+      "out_of_scope": [
+        "credentials",
+        "invented-certification",
+        "third-party-audit",
+        "publishing-private-answers-on-main"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "If the filled copy is not returned in 10 days after complete inputs, founder refunds. Missing buyer attachments move the clock. A failed third-party audit is not this SKU.",
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      },
+      "state": "CANDIDATE"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "800.00",
+      "currency": "USD",
+      "family": "product",
+      "id": "ho-pixel-pack",
+      "in_scope": [
+        "Sprite",
+        "Walk loop",
+        "Speak line linked to a public post",
+        "Static readable frame"
+      ],
+      "name": "8-bit / pixel agent pack",
+      "out_of_scope": [
+        "credentials",
+        "private-data",
+        "unbounded-art-direction-churn"
+      ],
+      "readiness": "READY_FOR_QUALIFICATION",
+      "refund_text": "If no sprite lands on the named public page in 5 days after intake, founder refunds. Art-direction churn after acceptance is a change order.",
+      "routes": {
+        "human": "humans.html",
+        "machine": "revenue/human_outcomes/offers.json"
+      },
+      "state": "CANDIDATE"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "5.00",
+      "currency": "USD",
+      "family": "sponsorship",
+      "id": "sku-tip-20260826",
+      "in_scope": [
+        "Optional support only; Commons remains open"
+      ],
+      "name": "Tip",
+      "out_of_scope": [
+        "membership",
+        "access-gate",
+        "private-buyer-data-on-main"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-tip-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "5.00",
+      "currency": "USD",
+      "family": "sponsorship",
+      "id": "sku-seat-20260826",
+      "in_scope": [
+        "One calendar month of named presence"
+      ],
+      "name": "Seat",
+      "out_of_scope": [
+        "claim-purchase",
+        "access-gate",
+        "from-equals-payment"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-seat-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "5.00",
+      "currency": "USD",
+      "family": "product",
+      "id": "sku-unlock-20260826",
+      "in_scope": [
+        "One selected public pack, build bump, or session note"
+      ],
+      "name": "Unlock",
+      "out_of_scope": [
+        "private-deliverable",
+        "unbounded-scope"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-unlock-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "3.00",
+      "currency": "USD",
+      "family": "sponsorship",
+      "id": "sku-monthly-tip-20260826",
+      "in_scope": [
+        "Recurring support with no gated entitlement"
+      ],
+      "name": "Monthly tip",
+      "out_of_scope": [
+        "seat",
+        "claim",
+        "access-gate"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-monthly-tip-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "4.99",
+      "currency": "USD",
+      "family": "sponsorship",
+      "id": "sku-boost-20260826",
+      "in_scope": [
+        "Recurring support for table upgrades"
+      ],
+      "name": "Boost",
+      "out_of_scope": [
+        "claim-purchase",
+        "unspecified-upgrade"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-boost-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "250.00",
+      "currency": "USD",
+      "family": "expertise",
+      "id": "sku-whitebox-hour-20260826",
+      "in_scope": [
+        "land/session-YYYYMMDD.md with dests, receipts, and what ran"
+      ],
+      "name": "White Box hour",
+      "out_of_scope": [
+        "private-session-notes-on-main",
+        "unbounded-follow-on"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-whitebox-hour-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    },
+    {
+      "acceptance_row_count": 1,
+      "amount": "45000.00",
+      "currency": "USD",
+      "family": "product",
+      "id": "sku-muhlnickel-titan-20260826",
+      "in_scope": [
+        "One narrow actual-machine keep-or-build engagement",
+        "Receipt files on current main"
+      ],
+      "name": "Muhlnickel / Titan",
+      "out_of_scope": [
+        "unbounded-platform-rebuild",
+        "credentials",
+        "private-data",
+        "pii-phi"
+      ],
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "refund_text": "UNKNOWN",
+      "routes": {
+        "human": "commerce.html",
+        "machine": "land/sku-muhlnickel-titan-20260826.md"
+      },
+      "state": "PUBLIC_OFFER"
+    }
+  ],
+  "schema_version": "commons-scope-catalog/v1"
+}
