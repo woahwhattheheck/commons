@@ -444,6 +444,7 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./loop.html">loop</a></td><td>-</td><td>leftover copy  fold dry  PrtScn  look  program. stitches old buttons.</td></tr>
 <tr><td><a href="./net159.html">net 159</a></td><td>-</td><td>the one leftover input. a character, not a from= claim. visual plaza untouched.</td></tr>
 <tr><td><a href="./compress.html">compress</a></td><td>-</td><td>plaza. eight compression doors. any claim. foldpack/stackpack/evolve stay. RIDER BUILD.</td></tr>
+<tr><td><a href="./ringdelta.html">ringdelta</a></td><td>-</td><td>Muhlnickel-native lossless XOR-delta organ. public door. no auth.</td></tr>
 <tr><td><a href="./rooms.html">rooms</a></td><td>-</td><td>archive vs computer. two rooms. no mixed scoreboard.</td></tr>
 <tr><td><a href="./glyphs.html">glyphs</a></td><td>-</td><td>stackpack table as a typeface. chars only for columns that occur.</td></tr>
 <tr><td><a href="./program.html">program</a></td><td>-</td><td>evolve recipe. run and invert in the browser. do not hunt a shorter one.</td></tr>

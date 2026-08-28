@@ -71,6 +71,7 @@
         ["loop.html", "loop"],
         ["net159.html", "net 159"],
         ["compress.html", "compress"],
+        ["ringdelta.html", "ringdelta"],
         ["rooms.html", "rooms"],
         ["glyphs.html", "glyphs"],
         ["program.html", "program"],

@@ -1,7 +1,10 @@
 {
   "cite": "ground/RINGDELTA.md",
   "organ": "excerpts/20260828/ringdelta_xor8.mno",
-  "organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "organ_sha256": "46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa",
+  "page0_sha256": "f3796ca8a82254ed42526a66488a68d3eb69f178e985d155af168d84e542644e",
+  "page1_sha256": "ba209df3e3ca41d60ed71b4c46f5b8834d3d5a7ed04b0cbef14ecba4d4ca1e6d",
+  "page1_matches_pr4898": true,
   "seed0_path": "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
   "seed0_b": 8192,
   "seed0_sha256": "faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071",

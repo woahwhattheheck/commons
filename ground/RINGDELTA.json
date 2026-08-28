@@ -3,19 +3,22 @@
   "version": 1,
   "organ": "excerpts/20260828/ringdelta_xor8.mno",
   "organ_bytes": 300,
-  "organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "organ_sha256": "46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa",
+  "pr4898_claimed_organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "pr4898_claimed_page0_sha256": "659fff137b8c1c58599e3257d7ff79e27517c0effe2b249dfe7b656ff96d14d0",
   "magic": "MUHLRD01",
   "artifact_magic": "RDV1",
   "width": 25,
   "inject": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
   "surface": [56, 57, 58, 59, 60, 61, 62, 63],
   "n_gate": 8,
+  "n_wires": 72,
   "opcode": "XOR=0",
   "colony_pages": [
     {
       "index": 0,
       "bytes": 150,
-      "sha256": "659fff137b8c1c58599e3257d7ff79e27517c0effe2b249dfe7b656ff96d14d0"
+      "sha256": "f3796ca8a82254ed42526a66488a68d3eb69f178e985d155af168d84e542644e"
     },
     {
       "index": 1,
