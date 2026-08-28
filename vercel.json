@@ -3,6 +3,9 @@
   "functions": {
     "api/mcp.py": {
       "maxDuration": 300
+    },
+    "api/owner_context.py": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
@@ -17,7 +20,14 @@
     {
       "source": "/send",
       "destination": "/api/mcp"
+    },
+    {
+      "source": "/owner-context",
+      "destination": "/api/owner_context"
+    },
+    {
+      "source": "/owner-context/",
+      "destination": "/api/owner_context"
     }
   ]
 }
-

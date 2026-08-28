@@ -1,0 +1,24 @@
+[Unit]
+Description=Commons owner-context display host
+Documentation=https://github.com/woahwhattheheck/commons/blob/main/integrations/owner_context/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=commons
+Group=commons
+WorkingDirectory=/opt/commons
+Environment=OWNER_CONTEXT_BIND=0.0.0.0:8789
+EnvironmentFile=-/etc/commons/owner-context.env
+ExecStartPre=/usr/bin/python3 /opt/commons/host/owner_context.py doctor --no-probe --json
+ExecStart=/usr/bin/python3 /opt/commons/integrations/owner_context/service.py serve
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

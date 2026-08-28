@@ -1625,6 +1625,35 @@ assert.ok(html.indexOf("1787669986.483149") >= 0, "desk must cite the tell-them 
 assert.ok(/use grok.com more|grok.com tokens|use-grok-more/i.test(html), "desk must name grok-app-route talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_APP_ROUTE.md") >= 0, "grok-app-route card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_APP_ROUTE.json") >= 0, "grok-app-route catalog must stay a canary");
+assert.ok(api.isOwnerContextTalk, "land.js must classify owner-context leftover talk leftover-first");
+assert.ok(api.ownerContextState, "land.js must classify the owner-context leftover");
+assert.ok(api.isOwnerContextTalk("a host outside this static tree that can add optional owner context without publishing network material"), "host-outside leftover talk");
+assert.ok(api.isOwnerContextTalk("richer context-only display remains OPEN\nowner-context leftover"), "richer display leftover talk");
+assert.ok(!api.isOwnerContextTalk("make sure people do more than talk about shit"), "generic ship-talk is not the owner-context leftover");
+assert.ok(!api.isOwnerContextTalk("Guys stop routing away from grok app and to cursor\ngrok.com tokens\n1787669923.780099"), "grok-app-route leftover is not owner-context");
+var ownerContextTalk = api.completionStateFromText(
+  "a host outside this static tree that can add optional owner context without publishing\nowner-context leftover"
+);
+assert.strictEqual(ownerContextTalk.state, "CLAIMED");
+assert.ok(/owner-context|display/i.test(ownerContextTalk.note), "owner-context-without-SHA must stay CLAIMED leftover-first");
+var ownerContextDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nowner-context leftover landed"
+);
+assert.strictEqual(ownerContextDone.state, "INTEGRATED", "completion words still beat owner-context leftover talk");
+var ownerContextEmpty = api.ownerContextState("");
+assert.strictEqual(ownerContextEmpty.state, "UNMEASURED");
+var ownerContextMissing = api.ownerContextState("# empty stub\nno leftover");
+assert.strictEqual(ownerContextMissing.state, "NOT_LANDED");
+var ownerContextOk = api.ownerContextState("def annotate_context():\n    return {}\ndef doctor():\n    return {}\ndef simulate():\n    return {}\ndef measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndisplay_only\nno auth\nno gate\nrefuse_raw_ips\nEXTERNAL_HOST_ACTION\nFINDER-FAILED\nNever 0\n");
+assert.strictEqual(ownerContextOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(ownerContextOk.note), "landed owner-context leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="owner-context-result"') >= 0, "desk must name the owner-context leftover");
+assert.ok(html.indexOf("host/owner_context.py") >= 0, "desk must name the owner-context instrument");
+assert.ok(html.indexOf("ground/OWNER_CONTEXT.md") >= 0, "desk must link the owner-context card");
+assert.ok(html.indexOf("ground/OWNER_CONTEXT.json") >= 0, "desk must link the owner-context catalog");
+assert.ok(/host-outside-this-static-tree|richer-context-only-display/i.test(html), "desk must name owner-context talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/OWNER_CONTEXT.md") >= 0, "owner-context card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/OWNER_CONTEXT.json") >= 0, "owner-context catalog must stay a canary");
 assert.ok(api.isExplorerFailClosedTalk, "land.js must classify explorer fail-closed leftover talk");
 assert.ok(api.isExplorerFailClosedTalk("JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED / CURRENT-MAIN RESIDUALS\nSUBZERO_CHLS.md FINDER_FAILED\ninvalid runtime timestamp + FAIL check\nnonempty-list nested receipt fields crash AttributeError\n1787652792.439959"), "JOJO exact-head residual review is leftover talk");
 assert.ok(!api.isExplorerFailClosedTalk("make sure people do more than talk about shit"), "generic ship-talk is not the explorer fail-closed leftover");

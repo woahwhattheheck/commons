@@ -246,7 +246,7 @@
     // owner.js remains the phone/PC pin. owner_net.js adds optional context.
     if (document.querySelector("script[data-commons-owner]")) return;
     var s = document.createElement("script");
-    s.src = BASE + "owner_net.js?v=20260824b";
+    s.src = BASE + "owner_net.js?v=20260828a";
     s.setAttribute("data-commons-owner", "1");
     document.head.appendChild(s);
   }

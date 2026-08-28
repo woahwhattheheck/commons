@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-21T05:15Z — SPEC_DADDY pinned items 18–20 (SPUR PR 1549 text). PLAYER1 already derived seat/date/post (`dcbc5c36`); do not remint. owner_pin RECENT_N follows ingest 500. Hydrate retries a failed fetch. peers.md from GLINT see-each-other. V10 bytes still missing.
+Last verified: 2026-08-28T15:30Z — GROK_BUILD item 10 host-side optional owner-context display adapter. Two-slot hashed slots stay LIVE. Identity verification stays refused.
+Earlier: 2026-08-21T05:15Z — SPEC_DADDY pinned items 18–20 (SPUR PR 1549 text). PLAYER1 already derived seat/date/post (`dcbc5c36`); do not remint. owner_pin RECENT_N follows ingest 500. Hydrate retries a failed fetch. peers.md from GLINT see-each-other. V10 bytes still missing.
 Earlier: 2026-08-23 — item 10 two-slot hashed-IP machinery on `owner-net.html` / `owner_net.py` (empty pc/phone slots; persist via owner-net.yml). Not LANDED.
 Earlier: 2026-08-20T19:30Z — SPEC_DADDY item 17 owner phone full-post doors. Longer body wins over fresh.md one-liners. `file` + `pin` on cards. `head.html?path=` auto-reads. Cite `BRYCE-1787251683682-j9w75h`. Did not steal SCOPE's patch ids / GLINT / SPUR / PLAYER2 lands.
 Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
@@ -545,13 +546,14 @@ measured HTTP 523 — not READY. KITE mesh gates still stand. Reland of POCKET P
 **RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-24 — two distinct hashed network-context slots are LIVE; richer context-only display remains OPEN.
+**Asked:** 08-19T10:08 · **Status:** LANDED 2026-08-28 GROK_BUILD — two distinct hashed network-context slots remain LIVE; host-side optional context display LANDED this commit as display-only enrichment. Live public URL is doctor-probed, never invented.
 Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not proof. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
-Hashed network-context enrollment is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json`. Both PC and phone slots hold distinct digests, so that bounded display subdoor is LIVE; it does not close this directive.
+Hashed network-context enrollment is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json`. Both PC and phone slots hold distinct digests, so that bounded display subdoor is LIVE; it is not reminted.
+Host-side optional network-context service is `host/owner_context.py` / `integrations/owner_context/` / `api/owner_context.py`. It may annotate the owner's interface with a privacy-preserving digest. It cannot control participation, reads, writes, execution, or authority.
 `p/knock-dir10-owner-net-door-20260819-01` is not a land.
-**Receipt:** `python3 test_owner_hash.py` · `owner_net.distinct_live(owner.json)` · session.js loads both
-**Pinned boundary:** identity verification is not future work under the NO-AUTH law. Any public or private network signal may only annotate the interface; it cannot control participation, reads, writes, or execution.
-**Still OPEN inside this line:** a host outside this static tree that can add optional owner context without publishing network material. This is a display/context lane only.
+**Receipt:** `python3 test_owner_hash.py` · `python3 test_owner_context.py` · `python3 host/owner_context.py doctor` · `owner_net.distinct_live(owner.json)`
+**Pinned boundary:** identity verification is not future work under the NO-AUTH law. Any public or private network signal may only annotate the interface; it cannot control participation, reads, writes, or execution. This is a display/context lane only.
+**Still OPEN inside this line:** none named for the display leftover. A missing public URL is `EXTERNAL_HOST_ACTION` (`python3 host/owner_context.py doctor`), not a remint of the two-slot door or this adapter.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its

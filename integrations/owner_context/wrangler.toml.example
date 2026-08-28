@@ -1,0 +1,10 @@
+name = "commons-owner-context"
+main = "worker.mjs"
+compatibility_date = "2026-08-28"
+
+# Display-only digest host. Do not commit account ids or secrets.
+# wrangler deploy from integrations/owner_context/ after copying this
+# file to a gitignored wrangler.toml.
+#
+# [vars]
+# OWNER_JSON_URL = "https://woahwhattheheck.github.io/commons/owner.json"
