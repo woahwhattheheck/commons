@@ -149,7 +149,7 @@ class GrokExecutorQueue:
                 return job_id, job
         return None
 
-    def submit(self, request: dict[str, Any], *, now: str | None = None) -> dict[str, Any]:
+    def enqueue(self, request: dict[str, Any], *, now: str | None = None) -> dict[str, Any]:
         if not isinstance(request, dict):
             raise JobError("SCHEMA", "request must be an object", state="SCHEMA")
         _reject_secrets(request)
@@ -280,6 +280,11 @@ class GrokExecutorQueue:
             "capture_start": capture_start,
             "job": queued["job"],
         }
+
+    # Compatibility name for direct adapter callers; action_executor uses the
+    # non-activation routing verb so its existing Muhlnickel observation import
+    # closure remains behaviorally unchanged.
+    submit = enqueue
 
     def _require_live(
         self,
