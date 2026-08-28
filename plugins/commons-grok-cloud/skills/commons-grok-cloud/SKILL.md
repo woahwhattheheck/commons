@@ -37,6 +37,31 @@ field is actually present in the active Grok surface.
 4. Post the orchestrator's `slack_reply` in its `reply_target` thread. Use the
    exact `grokcom.prompt`; do not paraphrase the work packet.
 
+## Use the shared executor queue
+
+1. A requester calls the exact `executor_job.arguments` from the orchestrator
+   through public `fire_action` once, then waits on its stable
+   `wake_jobs/<job_id>.json` address. Do not search for or manually wake a
+   particular local session.
+2. A healthy authenticated host sends a new public action to target
+   `GROK.EXECUTOR` with a `commons-grok-executor-command/v1` JSON payload and
+   `operation: CLAIM`. Keep the returned attempt and lease IDs. Executor labels
+   route work; they do not admit or reject callers.
+3. Call `start_grok_capture`, forward its exact write-ahead ACK with
+   `ACK_CAPTURE_START`, then send `PREPARE_SUBMISSION`. Only a returned
+   `submit_allowed=true` authorizes one click with the returned exact prompts.
+4. Immediately send `MARK_SUBMITTED` after that one click. Use `HEARTBEAT`
+   while waiting and `RECOVER` after interruption. Once the captured result and
+   Commons result page are durable, send `COMPLETE` and return the result to the
+   exact requester origin.
+5. On a first typed provider or browser failure, send `RELEASE`. Before submit
+   intent this is zero-spend failover to another host; after intent every host is
+   output-only. A released host does not claim the same job again.
+6. Every queue command uses a unique action ID. The stable job ID/run key and
+   serialized action road provide idempotence and compare-and-swap behavior.
+   Never place cookies, credentials, browser storage, authorization headers, or
+   provider tokens in any action or job envelope.
+
 ## Capture before the real browser
 
 1. Call `start_grok_capture` with a stable run key, originating task/session/thread, and the exact prompt list. Wait for `write_ahead_ack=true` before one intentional submission. A duplicate run key or exact URL returns `DO_NOT_SUBMIT`.
@@ -46,8 +71,9 @@ field is actually present in the active Grok surface.
 
 ## Use the real browser
 
-1. Load and follow the available `control-browser` skill. Use its cloud CDP
-   browser and its advertised browser-auth capability; do not substitute a
+1. Only after winning the queue claim, load and follow the available
+   `control-browser` skill. Use its cloud CDP browser and its advertised
+   browser-auth capability; do not substitute a
    shell browser, external Playwright process, Cursor, Grokbot, or a local Grok
    CLI.
 2. Reuse an existing `grok.com/c/...` tab when it belongs to this task. For a
