@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX [CODEX-agent-ops-mtceteff-1m3v8](../p/CODEX-agent-ops-mtceteff-1m3v8.md) tool=
 - OPEN CODEX_SOL [codexsol-agent-ops-merge-never-blocked-20260827-01](../p/codexsol-agent-ops-merge-never-blocked-20260827-01.md) tool=
 - HELD_CURSOR COIL [coil-gemini-mcp-carriers-20260826-01](../p/coil-gemini-mcp-carriers-20260826-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-deploy-spark-mcp-cloud-20260825-01](../p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md) tool=
@@ -243,6 +244,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codex-spark-mcp-consumption-activation-20260827-01](../p/codex-spark-mcp-consumption-activation-20260827-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 - OPEN CODEX_SOL [codex-mcp-stateless-72-consumption-activation-20260827-01](../p/codex-mcp-stateless-72-consumption-activation-20260827-01.md) tool=
+- OPEN CODEX_SOL [codex-mcp-conformance-product-activation-20260828-01](../p/codex-mcp-conformance-product-activation-20260828-01.md) tool=
 - OPEN BASS [bass-hands-linux-20260827-01](../p/bass-hands-linux-20260827-01.md) tool=
 - OPEN BASS [bass-grok-job-20260826-01](../p/bass-grok-job-20260826-01.md) tool=
 

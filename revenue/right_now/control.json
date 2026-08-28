@@ -1,0 +1,181 @@
+{
+  "as_of": "2026-08-28T03:13:00Z",
+  "blockers": [
+    {
+      "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
+      "current": "NOT_LANDED",
+      "id": "LIVE_PAYMENT_EVIDENCE",
+      "owner": "FOUNDER_OR_CONNECTED_PROCESSOR_LANE",
+      "rank": 1
+    },
+    {
+      "condition": "At least one non-colliding evidence-bound prospect reaches READY_TO_DRAFT.",
+      "current": 0,
+      "id": "QUALIFIED_UNCONTACTED_DEMAND",
+      "owner": "COMMONS_RESEARCH_AND_OUTREACH_LANES",
+      "rank": 2
+    },
+    {
+      "condition": "A real buyer accepts one exact scope and delivery window.",
+      "current": 0,
+      "id": "BUYER_ACCEPTANCE",
+      "owner": "REAL_BUYER",
+      "rank": 3
+    }
+  ],
+  "execution_queue": [
+    {
+      "collision_receipts": [],
+      "decision": "RESEARCH_REQUIRED",
+      "fit_score": 40,
+      "missing": [
+        "an observable production failure phrase",
+        "a relevant owner role",
+        "a verified first-party route"
+      ],
+      "next_action": "complete the listed research gaps, then rerun this planner",
+      "observed_at": "2026-08-27T00:40:00Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "SigNoz",
+      "prospect_id": "signoz",
+      "rank": 1,
+      "route_state": "UNVERIFIED",
+      "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
+      "transport_authorized": false
+    },
+    {
+      "collision_receipts": [
+        "revenue/payment_ready/outreach_receipts/20260827-metaforms-6a8f9759437c7d0010ef8788.json"
+      ],
+      "decision": "HOLD_DO_NOT_RESEND",
+      "fit_score": 80,
+      "missing": [],
+      "next_action": "retain canonical receipt suppression; no draft and no transport handoff",
+      "observed_at": "2026-08-27T01:10:00Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "Metaforms",
+      "prospect_id": "metaforms",
+      "rank": 2,
+      "route_state": "VERIFIED",
+      "source_url": "https://www.metaforms.ai/",
+      "transport_authorized": false
+    },
+    {
+      "collision_receipts": [
+        "revenue/payment_ready/outreach_receipts/20260826-anythingllm-mintplex-6a8e640556046a000f481b98.json",
+        "revenue/payment_ready/outreach_receipts/20260826-anythingllm-mintplex-duplicate-6a8e6452641e500010a2128f-corr-01.json"
+      ],
+      "decision": "HOLD_DO_NOT_RESEND",
+      "fit_score": 75,
+      "missing": [
+        "an observable production failure phrase"
+      ],
+      "next_action": "retain canonical receipt suppression; no draft and no transport handoff",
+      "observed_at": "2026-08-26T05:01:30Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "AnythingLLM / Mintplex Labs",
+      "prospect_id": "anythingllm-mintplex",
+      "rank": 3,
+      "route_state": "VERIFIED",
+      "source_url": "https://anythingllm.com/",
+      "transport_authorized": false
+    }
+  ],
+  "kind": "RIGHT_NOW_REVENUE_CONTROL",
+  "offers": [
+    {
+      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding.",
+      "delivery_window": "one agreed business day",
+      "founder_bottleneck": "Accept the exact sentence and window, then issue the buyer-specific payment handoff.",
+      "id": "same-day-agent-survival-proof",
+      "name": "Same-Day Agent Survival Proof",
+      "next_external_event": "A real buyer sends the one-sentence failure and agrees to a start window.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 2500,
+      "rank": 1,
+      "start_route": "agent-rescue.html"
+    },
+    {
+      "commons_bottleneck": "Confirm the art direction and land the four acceptance items.",
+      "delivery_window": "five calendar days",
+      "founder_bottleneck": "Issue the buyer-specific payment handoff after the public scope is accepted.",
+      "id": "ho-pixel-pack",
+      "name": "8-bit / pixel agent pack",
+      "next_external_event": "A real buyer posts a public interest signal naming the page and job.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 800,
+      "rank": 2,
+      "start_route": "humans.html#interest"
+    },
+    {
+      "commons_bottleneck": "Produce the packet before the named date and mark unsupported claims UNMEASURED.",
+      "delivery_window": "five calendar days",
+      "founder_bottleneck": "Issue the buyer-specific payment handoff after the public scope is accepted.",
+      "id": "ho-meeting-packet",
+      "name": "Accessible public-meeting packet",
+      "next_external_event": "A real buyer posts the meeting name, date, and public inputs.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 1200,
+      "rank": 3,
+      "start_route": "humans.html#interest"
+    },
+    {
+      "commons_bottleneck": "Select a collision-free implementation lane and carry it through merged green CI.",
+      "delivery_window": "seven calendar days",
+      "founder_bottleneck": "Issue the buyer-specific payment handoff after the public issue and acceptance rule are confirmed.",
+      "id": "ho-issue-to-pr",
+      "name": "Named issue to a CI-green PR",
+      "next_external_event": "A real buyer names the issue and confirms they can accept or sponsor the merged result.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 2500,
+      "rank": 4,
+      "start_route": "humans.html#interest"
+    }
+  ],
+  "payment": {
+    "cash_claimed": false,
+    "collected_cash_usd": 0,
+    "next_stage": "PURCHASE_INTENT",
+    "processor_payment": "NOT_LANDED",
+    "receipt_id": "rr-intent-awaiting-buyer",
+    "stage": "PURCHASE_INTENT",
+    "state": "NEEDS_BUYER"
+  },
+  "preserved_portfolio": {
+    "LATER": "Recurring software, infrastructure, licensing, grants, enterprise pilots, and other compounding lanes remain active in commerce.html.",
+    "NOW": "A buyer can start the qualification path immediately and Commons can deliver the bounded outcome in seven days or less.",
+    "SOON": "One buyer conversation, private input, legal document, or customer-specific invoice is needed before delivery."
+  },
+  "schema_version": "commons-right-now-control/v1",
+  "source_receipts": [
+    {
+      "path": "revenue/right_now/catalog.json",
+      "sha256": "f65207fdebfcf9dbff2d974c08536cf8199b7827eb03ceb59b95d84f5ddfb4d0"
+    },
+    {
+      "path": "revenue/smart_outreach/candidates.json",
+      "sha256": "5682f0e7cdafba3534f26310ed0b31ff88f3ac23eddddd583081ea2ac8fd1efc"
+    },
+    {
+      "path": "revenue/payment_ready/current_receipt.json",
+      "sha256": "fb0126f3ccf46b1cc4fd476d18fd38f27e18492d31844d2971da5fc2d1b7c7f5"
+    },
+    {
+      "path": "revenue/human_outcomes/offers.json",
+      "sha256": "89e559f39f9101efa7ea2ecedaa63167a07798a307fd11294be5822ea1758603"
+    },
+    {
+      "path": "revenue/production_survival/offer.json",
+      "sha256": "82e1ddc6cdddc477e38c1027678a443b3191e0c155a089401eb7a6fd7775b880"
+    }
+  ],
+  "truth": {
+    "accepted_scopes": 0,
+    "active_chargeable_checkout": false,
+    "collected_cash_usd": 0,
+    "prospects_evaluated": 3,
+    "ready_to_draft": 0,
+    "transport_actions": 0,
+    "verified_positive_replies": 0
+  }
+}
