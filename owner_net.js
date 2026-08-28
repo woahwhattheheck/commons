@@ -355,7 +355,7 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     var digest = ctx.sha256 ? String(ctx.sha256).slice(0, 12) + "…" : "(none)";
     el.textContent = "host display " + (ctx.available ? "available" : "unavailable") +
       slot + " digest=" + digest +
-      " authority=false gate=false. from= stays a claim.";
+      " display-only. authority false. from= stays a claim.";
   }
 
   function boot() {

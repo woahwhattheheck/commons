@@ -377,7 +377,7 @@ def handle_http(
         return 204, headers_out, blob
 
     if method not in ("GET", "POST", "HEAD"):
-        # Display resource stays reachable. Unknown verbs still annotate, never lock.
+        # Display resource stays reachable. Any method still annotates. The door stays open.
         method = "GET"
 
     via_hint = _read_qs_via(path)

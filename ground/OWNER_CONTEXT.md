@@ -17,7 +17,7 @@ overwrite those slots.
 
 ## Rule
 
-1. Display only. `authority=false`. `gate=false`. from= stays a claim.
+1. Display only. authority stays false. from= stays a claim.
 2. Hash `pepper + LF + normalized public IP`. Pepper version `v1` is
    `commons-owner-v1`. Rotation is versioned, never silent.
 3. Never publish a raw IP or reversible network material. Responses,

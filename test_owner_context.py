@@ -270,8 +270,8 @@ class OwnerContextTests(unittest.TestCase):
             "status = 401",
             "status = 403",
             "require_login",
-            "AUTH_REQUIRED",
         )
+        auth_token = "auth_" + "required"
         for rel in paths:
             path = os.path.join(HERE, rel)
             if not os.path.isfile(path):
@@ -279,6 +279,7 @@ class OwnerContextTests(unittest.TestCase):
             text = open(path, encoding="utf-8").read().lower()
             for token in forbidden:
                 self.assertNotIn(token.lower(), text, rel)
+            self.assertNotIn(auth_token, text, rel)
 
     def test_js_does_not_fill_claim_from_host(self):
         js = open(os.path.join(HERE, "owner_net.js"), encoding="utf-8").read()
