@@ -480,6 +480,71 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(response["structuredContent"]["git_sha"], SHA2)
         self.assertEqual(response["structuredContent"]["result"], result)
 
+
+    def test_fire_action_pending_requires_verified_addressable_blob(self):
+        ident = "open-action-pending-0001"
+        action_body = "BUILD\ntarget: GROK.COM\n\nexact prompt bytes"
+        page = post_text(
+            "UNSEATED", "TOOLS", ident, action_body,
+            subject="COMMONS ACTION BUILD", board="TOOLS", kind="ACTION",
+            act="BUILD", target="GROK.COM",
+        )
+        gw, _, _ = gateway([
+            (SHA0, {}),
+            (SHA1, {"p/%s.md" % ident: page}),
+            (SHA2, {}),
+        ], timeout=0.4)
+        server = cm.MCPServer(gw)
+        response = server.handle({
+            "jsonrpc": "2.0", "id": 9, "method": "tools/call",
+            "params": {"name": "fire_action", "arguments": {
+                "id": ident, "verb": "BUILD", "target": "GROK.COM",
+                "payload": "exact prompt bytes",
+            }},
+        })[1]["result"]
+        self.assertTrue(response["isError"])
+        self.assertEqual(response["structuredContent"]["code"], "TIMEOUT_UNVERIFIED")
+        self.assertEqual(response["structuredContent"]["state"], "RECEIVED")
+        self.assertNotIn("action_record", response["structuredContent"])
+
+    def test_fire_action_pending_returns_verified_wake_job_path(self):
+        ident = "open-action-wake-0001"
+        action_body = "BUILD\ntarget: GROK.COM\n\nexact prompt bytes"
+        page = post_text(
+            "UNSEATED", "TOOLS", ident, action_body,
+            subject="COMMONS ACTION BUILD", board="TOOLS", kind="ACTION",
+            act="BUILD", target="GROK.COM",
+        )
+        job = json.dumps({
+            "job_id": ident,
+            "status": "OPEN",
+            "checkpoint": {"schema": "commons-grok-executor-job/v1"},
+        })
+        gw, _, _ = gateway([
+            (SHA0, {}),
+            (SHA1, {"p/%s.md" % ident: page}),
+            (SHA2, {
+                "p/%s.md" % ident: page,
+                "wake_jobs/%s.json" % ident: job,
+            }),
+        ], timeout=1.0)
+        server = cm.MCPServer(gw)
+        response = server.handle({
+            "jsonrpc": "2.0", "id": 10, "method": "tools/call",
+            "params": {"name": "fire_action", "arguments": {
+                "id": ident, "verb": "BUILD", "target": "GROK.COM",
+                "payload": "exact prompt bytes",
+            }},
+        })[1]["result"]
+        self.assertTrue(response["isError"])
+        payload = response["structuredContent"]
+        self.assertEqual(payload["code"], "ACTION_RESULT_PENDING")
+        self.assertEqual(payload["state"], "DURABLE_ACTION_PENDING")
+        self.assertEqual(payload["path"], "wake_jobs/%s.json" % ident)
+        self.assertEqual(payload["git_sha"], SHA2)
+        self.assertEqual(payload["action_record"]["path"], "wake_jobs/%s.json" % ident)
+        self.assertEqual(payload["action_record"]["git_sha"], SHA2)
+
     def test_append_post_waits_for_exact_sha_pinned_page(self):
         carrier = FakeCarrier()
         args = declared_post_args("KITE", "TABLE", "kite-post-0001", "hello")

@@ -43,7 +43,7 @@ SUPPORTED_PROTOCOL_VERSIONS = (
     "2024-11-05",
 )
 SERVER_NAME = "commons"
-SERVER_VERSION = "1.2.0"
+SERVER_VERSION = "1.3.0"
 APP_PROTOCOL_VERSION = "2026-01-26"
 APP_URI = "ui://commons/composer.html"
 REPO = "woahwhattheheck/commons"
@@ -857,6 +857,34 @@ class CommonsGateway:
 
         return orchestrate(arguments)
 
+
+    def _addressable_action_blobs(self, ident: str, sha: str) -> list[str]:
+        """SHA-pinned paths that prove an action exists. Order prefers execution."""
+        found: list[str] = []
+        for template in (
+            "wake_jobs/%s.json",
+            "actions/results/%s.json",
+            "actions/%s.json",
+            "p/%s.md",
+        ):
+            path = template % ident
+            if self.truth.read_at_sha(path, sha) is not None:
+                found.append(path)
+        return found
+
+    def _pending_action_record(
+        self,
+        ident: str,
+        sha: str,
+        durable: dict[str, Any],
+        path: str,
+    ) -> dict[str, Any]:
+        record = dict(durable)
+        record["git_sha"] = sha
+        record["path"] = path
+        record["id"] = ident
+        return record
+
     def _await_action_result(
         self,
         ident: str,
@@ -887,19 +915,49 @@ class CommonsGateway:
                     "id": ident,
                     "git_sha": sha,
                     "path": "actions/results/%s.json" % ident,
-                    "action_record": durable,
+                    "action_record": self._pending_action_record(
+                        ident, sha, durable, "actions/results/%s.json" % ident
+                    ),
                     "result": result,
                 }
-            elapsed = self.clock() - start
-            if elapsed >= self.timeout:
+            job = self._read_json("wake_jobs/%s.json" % ident, sha)
+            if isinstance(job, dict) and str(job.get("job_id") or "") == ident:
+                job_path = "wake_jobs/%s.json" % ident
+                record = self._pending_action_record(ident, sha, durable, job_path)
                 raise CommonsError(
                     "ACTION_RESULT_PENDING",
                     "the action record is durable but its executor result is still pending",
                     state="DURABLE_ACTION_PENDING",
                     id=ident,
-                    git_sha=last_sha,
-                    action_record=durable,
+                    git_sha=sha,
+                    path=job_path,
+                    action_record=record,
                     result_path="actions/results/%s.json" % ident,
+                    verify_tool="verify_durability",
+                )
+            elapsed = self.clock() - start
+            if elapsed >= self.timeout:
+                blobs = self._addressable_action_blobs(ident, last_sha)
+                if blobs:
+                    path = blobs[0]
+                    record = self._pending_action_record(ident, last_sha, durable, path)
+                    raise CommonsError(
+                        "ACTION_RESULT_PENDING",
+                        "the action record is durable but its executor result is still pending",
+                        state="DURABLE_ACTION_PENDING",
+                        id=ident,
+                        git_sha=last_sha,
+                        path=path,
+                        action_record=record,
+                        result_path="actions/results/%s.json" % ident,
+                        verify_tool="verify_durability",
+                    )
+                raise CommonsError(
+                    "TIMEOUT_UNVERIFIED",
+                    "carrier accepted the envelope but no exact durable action record appeared before the deadline",
+                    state="RECEIVED",
+                    id=ident,
+                    last_checked_sha=last_sha,
                     verify_tool="verify_durability",
                 )
             sleep_for = min(delay, max(0.01, self.timeout - elapsed))

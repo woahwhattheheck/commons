@@ -85,6 +85,21 @@ class EnqueuePendingGrokComTests(unittest.TestCase):
         self.assertNotIn("git push --force", text)
         self.assertNotIn("git push -f", text)
 
+    def test_push_to_action_pages_triggers_watchdog_enqueue(self):
+        text = WORKFLOW.read_text(encoding="utf-8")
+        push, _sep, rest = text.partition("pull_request:")
+        self.assertIn('"p/**"', push.replace("'", '"'))
+        self.assertIn("enqueue_pending_grok_com.py", push)
+
+    def test_board_ingest_records_new_wake_jobs_with_action_pages(self):
+        ingest = Path(__file__).resolve().parent / "board_ingest.py"
+        text = ingest.read_text(encoding="utf-8")
+        record_fn = text.split("def _record_paths", 1)[1].split("def commit_and_push", 1)[0]
+        self.assertIn('"wake_jobs"', record_fn.replace("'", '"'))
+        self.assertIn("materialize_pending_grok_com_jobs()", text)
+        before_commit, _sep, _rest = text.partition('commit_and_push("board ingest"')
+        self.assertIn("materialize_pending_grok_com_jobs()", before_commit)
+
 
 if __name__ == "__main__":
     raise SystemExit(unittest.main())
