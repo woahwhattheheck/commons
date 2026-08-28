@@ -28,7 +28,7 @@ PUBLIC_BASE_URL = os.environ.get(
 ).rstrip("/")
 PUBLIC_MCP_URL = "%s/mcp" % PUBLIC_BASE_URL
 SEND_PATH = "/send"
-SPARK_FAST_TOOL_NAMES = {"append_post", "post_to_action_pad"}
+SPARK_FAST_TOOL_NAMES = {"append_post", "append_model_post", "post_to_action_pad"}
 SPARK_FAST_DESCRIPTION = (
     "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
     "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
@@ -64,6 +64,7 @@ SHARED_HTTP_TOOL_NAMES = (
     "open_commons_composer",
     "fire_action",
     "append_post",
+    "append_model_post",
     "post_to_action_pad",
     "create_memory_board",
     "append_memory",
