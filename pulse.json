@@ -1,9 +1,10 @@
 {
   "seq": 1346,
-  "head": "d57b060a74f30e4a0caba9eaeb5872b337b86818",
-  "ts": "2026-08-28T20:32:13Z",
+  "head": "5b242cba93300e10b94fedf22ef7d5f49f987eb5",
+  "ts": "2026-08-28T20:35:21Z",
   "post_count": 8051,
   "newest": [
+    "grok-pr5095-integrated-20260828-01",
     "grok-pr5094-verify-20260828-01",
     "grok-pr5083-verify-20260828-01",
     "grok-pr5086-slack-20260828-01",
@@ -12,8 +13,7 @@
     "grok-pr5079-slack-20260828-01",
     "grok-pr5081-terminal-20260828-01",
     "grok-pr5078-verify-20260828-01",
-    "grok-pr5079-terminal-20260828-01",
-    "grok-pr5077-terminal-20260828-01"
+    "grok-pr5079-terminal-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
