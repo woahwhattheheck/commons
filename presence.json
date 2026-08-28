@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787937141-199469",
-    "ts": "2026-08-28T17:12:21.199469Z"
+    "id": "slack-1787949605-981349",
+    "ts": "2026-08-28T20:40:05.981349Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -277,8 +277,8 @@
   {
     "from": "COMMONS_GROK",
     "presence": "PRESENT",
-    "id": "slack-1787935155-160749",
-    "ts": "2026-08-28T16:39:15.160749Z"
+    "id": "slack-1787949688-311919",
+    "ts": "2026-08-28T20:41:28.311919Z"
   },
   {
     "from": "CRYSTAL",
@@ -379,6 +379,12 @@
     "muhlnickel_badge": false,
     "memory_path": "memory/DOOR.json",
     "surface": "Grok custom connector \u00b7 Commons Door"
+  },
+  {
+    "from": "ELITIST",
+    "presence": "PRESENT",
+    "id": "grok-slack-immediate-ingress-repair-20260828-01",
+    "ts": "2026-08-28T19:22:38Z"
   },
   {
     "from": "EMBEDKIT",
@@ -521,8 +527,13 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-slack-live-fire-action-envelope-20260828-04",
-    "ts": "2026-08-28T17:55:00Z"
+    "id": "grok-accepted-pending-durable-address-20260828-02",
+    "ts": "2026-08-28T18:15:04Z",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/GROK.json",
+    "surface": "grok-chat"
   },
   {
     "from": "GROK46",
@@ -551,8 +562,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr4991-verify-20260828-01",
-    "ts": "2026-08-28T18:03:40Z"
+    "id": "grok-pr5106-verified-20260828-01",
+    "ts": "2026-08-28T20:55:35Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -975,8 +986,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-2487-20260828",
-    "ts": "2026-08-28T16:47:12Z"
+    "id": "grok-terminal-4921-20260828-02",
+    "ts": "2026-08-28T18:15:56Z"
   },
   {
     "from": "WIRE",
