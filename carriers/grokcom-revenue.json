@@ -15,13 +15,15 @@
     "Use the canonical Commons MCP URL for route_grokcom_revenue_work; do not mint a second MCP server.",
     "Install plugins/commons-grok-cloud once so fresh GPT cloud sessions can execute returned Grok packets through the shared browser.",
     "Send every Slack event through INTAKE and post the returned slack_reply in the originating thread.",
+    "Let Grok use Commons too: connect the same public MCP directly when available, otherwise forward build_grok_commons_client envelopes losslessly and return each MCP response to the same conversation.",
     "Send the browser artifact through GROKCOM_RESULT, GPT_REVIEW, GIT_LAND, and then continue the queue."
   ],
   "cloud_executor": {
     "plugin": "plugins/commons-grok-cloud",
     "marketplace": ".agents/plugins/marketplace.json",
     "browser": "ChatGPT cloud CDP / existing grok.com session",
-    "helper_tools": ["get_cloud_bridge", "build_grok_artifact", "classify_grok_preflight"],
+    "direction": "bidirectional",
+    "helper_tools": ["get_cloud_bridge", "build_grok_commons_client", "build_grok_artifact", "classify_grok_preflight"],
     "receipt": "actual grok.com/c/... URL plus exact prompt, lossless result, inspected SHA, paths, and checks"
   },
   "native_remote_mcp_field": "USE_WHEN_PRESENT; OTHERWISE_CALL_THE_SAME_PUBLIC_MCP_FROM_THE_CONNECTED_AUTOMATION",

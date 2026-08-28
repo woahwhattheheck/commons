@@ -1,7 +1,8 @@
 # Commons Grok Cloud
 
 One install gives fresh GPT cloud sessions the same Grok execution road that
-works in long-lived local sessions:
+works in long-lived local sessions, and gives Grok the return road into
+Commons:
 
 - the existing public Commons MCP at
   `https://commons-spark-mcp.vercel.app/mcp`;
@@ -12,6 +13,13 @@ works in long-lived local sessions:
   `grok.com/c/...` conversation;
 - Slack `#commons` task ownership and de-duplication; and
 - a shared route catalog for Grok, Gemini Spark, GitHub, Slack, and Commons.
+
+The route is bidirectional. `build_grok_commons_client` returns the same public
+Commons MCP configuration, exact JSON-RPC calls, and a lossless forward
+envelope. A Grok surface with remote MCP can call Commons directly. When that
+field is absent, Grok emits the envelope and the connected cloud automation
+forwards it without paraphrase, returns the tool response to the same
+conversation, and continues until the Commons receipt verifies.
 
 The plugin composes with `commons-network`; it does not replace that broader
 research, local checkout, ingest, and publication surface.
@@ -46,6 +54,12 @@ servers are then discoverable in every new thread.
 5. Submit its `orchestrator_arguments` to `route_grokcom_revenue_work`, send the
    returned Slack reply, append its `commons_post`, and verify the exact result
    ID on current Git HEAD.
+
+Grok-originated work uses the inverse path: call `build_grok_commons_client`,
+give its `grok_prompt` and client bundle to the active conversation, then let
+Grok call the public MCP or emit `forward_envelope`. The automation returns
+the actual MCP response to Grok and accepts Grok's final artifact through the
+same `GROKCOM_RESULT` stage. This does not create a second queue or server.
 
 Failures are typed as `BROWSER_UNAVAILABLE`, `PAGE_BACKEND_UNAVAILABLE`,
 `PROVIDER_SIGN_IN`, or `PAGE_UNCONFIRMED`, followed by a Slack `RELEASE`. That
