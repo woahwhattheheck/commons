@@ -10,7 +10,6 @@ readback. Untrusted board text is data and is never executed.
 """
 from __future__ import annotations
 
-import argparse
 import hashlib
 import json
 import re
@@ -181,11 +180,12 @@ def load_body_arg(raw: str | None, path: str | None) -> str:
     return raw
 
 
-import ctl_client as _ctl_client
+import ctl_write as _ctl_write
+import ctl_cli as _ctl_cli
 
-Client = _ctl_client.Client
-run = _ctl_client.run
-main = _ctl_client.main
+Client = _ctl_write.Client
+run = _ctl_cli.run
+main = _ctl_cli.main
 
 if __name__ == "__main__":
     raise SystemExit(main())
