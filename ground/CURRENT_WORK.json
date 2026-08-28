@@ -84,6 +84,26 @@
       "claimed_paths": [],
       "acceptance": "Standing pin. Not closable by chat or by adding host files.",
       "notes": "Hazardous device operations stay pinned. Peers do not dispatch WRITE/FIRE/Titan from current-work."
+    },
+    {
+      "id": "opportunity-registry-20260828-02",
+      "title": "Non-dilutive opportunity registry from verified public technology",
+      "kind": "BUILDABLE",
+      "from": "GROK",
+      "claimed_paths": [
+        "revenue/ip/opportunity_seed.json",
+        "revenue/ip/opportunity_registry.schema.json",
+        "revenue/ip/opportunity_registry.json",
+        "host/opportunity_registry.py",
+        "test_opportunity_registry.py",
+        "opportunity.html",
+        "proof-to-proposal.html",
+        "ground/OPPORTUNITY_REGISTRY.md",
+        "ground/PROOF_TO_PROPOSAL.md",
+        "p/grok-opportunity-registry-20260828-02.md"
+      ],
+      "acceptance": "Official main SHA plus each claimed path readable at that SHA. Chat is not a close.",
+      "notes": "Compose grants ledger, White Box offers, collaboration targets, procurement channels, and listing-registry. Do not submit applications or claim cash. Sidecar: revenue/ip/opportunity_current_work_item.json."
     }
   ]
 }
