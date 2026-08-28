@@ -1,7 +1,8 @@
 /* pixel-unify.js — additive floor. Does not replace pixel.js / 8bit.html / 8walk.html / visual.html.
-   Union roster: presence + recent + lastseen + hearts + git.
+   Union roster: presence + recent + lastseen + hearts + git first-path + observatory work.
    First-class OFFER, WAKE, BOOKS, GIT, 8BIT, WALK, VISUAL rooms.
-   Identity-only GIT_MAP. Unmapped authors stay unmapped. */
+   Identity-only GIT_MAP. Unmapped authors stay unmapped.
+   WASD YOU is labeled play. Git first-path is fetched, never invented. */
 (function (g) {
   "use strict";
 
@@ -25,11 +26,11 @@
   ];
 
   var PLACE = {
-    TABLE: "TABLE", BOARD: "TABLE", FUTURE: "TABLE", REQUESTS: "TABLE",
+    TABLE: "TABLE", BOARD: "TABLE", FUTURE: "TABLE", REQUESTS: "TABLE", TODO: "TABLE",
     COURT: "COURT", MOD: "COURT",
     TOOLS: "TOOLS", WORLD: "TOOLS", DATA: "TOOLS", BUILDS: "TOOLS", LAB: "TOOLS", WEATHER: "TOOLS",
     VENT: "VENT", FAILED: "VENT",
-    SALON: "SALON", ANNEX: "SALON", UNLISTED: "SALON", PAD: "SALON",
+    SALON: "SALON", ANNEX: "SALON", UNLISTED: "SALON", PAD: "SALON", ACTION: "SALON",
     OFFER: "OFFER", BAZAAR: "OFFER",
     BOOKS: "BOOKS",
     WAKE: "WAKE",
@@ -37,7 +38,9 @@
     GIT: "GIT",
     BIT: "BIT", "8BIT": "BIT",
     WALK: "WALK", "8WALK": "WALK",
-    VISUAL: "VISUAL", PIXEL: "VISUAL"
+    VISUAL: "VISUAL", PIXEL: "VISUAL", PORTFOLIO: "VISUAL",
+    OBSERVATORY: "HERE", OBS: "HERE",
+    DISCORD: "PING", SLACK: "PING"
   };
 
   var GIT_MAP = {
@@ -86,11 +89,14 @@
     if (/court/.test(p)) return "COURT";
     if (/8walk|walk\.html/.test(p)) return "WALK";
     if (/8bit/.test(p)) return "BIT";
-    if (/visual|avatar|pixel-unify|pixel\.html|pixel\.js/.test(p)) return "VISUAL";
+    if (/observatory/.test(p)) return "HERE";
+    if (/visual|avatar|pixel-unify|pixel\.html|pixel\.js|pixel-portfolio|pixel-crisp/.test(p)) return "VISUAL";
     if (/\/offer|bazaar/.test(p)) return "OFFER";
     if (/books/.test(p)) return "BOOKS";
     if (/wake/.test(p)) return "WAKE";
-    if (/(^|\/)git/.test(p)) return "GIT";
+    if (/slack\/|discord\//.test(p)) return "PING";
+    if (/(^|\/)cli\/|commonsctl/.test(p)) return "TOOLS";
+    if (/(^|\/)git/.test(p) && !/github\.com/.test(p)) return "GIT";
     if (/tools|builds/.test(p)) return "TOOLS";
     if (/failed|vent/.test(p)) return "VENT";
     if (/\/p\/|board\.html|recent|presence/.test(p)) return "TABLE";
@@ -115,7 +121,7 @@
     }
   }
 
-  function classify(presence, recent, ping, lastseen, hearts, peers, gitBy) {
+  function classify(presence, recent, ping, lastseen, hearts, peers, gitBy, obsWork) {
     var names = {};
     (presence || []).forEach(function (r) {
       if (!r || !r.from) return;
@@ -148,6 +154,13 @@
     Object.keys(peers || {}).forEach(function (claim) {
       touch(names, up(claim), stamp((peers[claim] || {}).ts));
     });
+    var obsBy = {};
+    (obsWork || []).forEach(function (row) {
+      var f = up(row.claim);
+      if (!f) return;
+      touch(names, f, stamp(row.ts));
+      obsBy[f] = row;
+    });
     var mail = {};
     (((ping && ping.moved_poll) || (ping && ping.moved) || [])).forEach(function (n) {
       var f = up(n);
@@ -164,6 +177,7 @@
       var hb = (hearts || {})[claim];
       var peer = (peers || {})[claim];
       var git = (gitBy || {})[claim];
+      var obs = obsBy[claim];
       var live = peer && (now - stamp(peer.ts) < 45000) && peer.vis !== "hidden";
       var room = "TABLE";
       var verb = "present";
@@ -195,6 +209,15 @@
         text = last.body ? String(last.body).split(/\n/)[0].slice(0, 180) : "";
         facts.push("recent.json " + (last.to || "TABLE") + " " + (last.id || ""));
       }
+      if (obs && (obs.path || obs.verb || obs.text)) {
+        if (obs.path) room = roomOfPath(obs.path);
+        verb = obs.verb || "observed work";
+        obj = obs.path || obs.state || obj;
+        ts = Math.max(ts, stamp(obs.ts));
+        src = "observatory.json";
+        if (obs.text && !text) text = String(obs.text).slice(0, 180);
+        facts.push("observatory.json " + (obs.state || "work"));
+      }
       if (mail[claim]) {
         room = "PING";
         verb = "mailbox moved";
@@ -211,7 +234,7 @@
         ts = Math.max(ts, stamp(git.ts));
         src = "GitHub commits API";
         hot = true;
-        facts.push("GitHub last-25 " + git.path);
+        facts.push("GitHub last-25 first path " + git.path);
       }
       if (hb && (hb.path || hb.verb)) {
         room = (hb.on === "pc" || hb.on === "phone") ? "OFF" : roomOfPath(hb.path);
@@ -278,6 +301,7 @@
       var by = {};
       var unmapped = [];
       var seenUn = {};
+      var need = [];
       function consider(c) {
         if (!c || c._err) return;
         var name = c.commit && c.commit.author && c.commit.author.name;
@@ -290,19 +314,58 @@
           return;
         }
         if (by[who]) return;
-        by[who] = {
-          path: "git/" + String(c.sha || "").slice(0, 7),
-          ts: c.commit && c.commit.author && c.commit.author.date,
-          url: c.html_url || ""
-        };
+        var paths = (c.files || []).map(function (f) { return f.filename; });
+        if (paths[0]) {
+          by[who] = {
+            path: paths[0],
+            ts: c.commit && c.commit.author && c.commit.author.date,
+            url: c.html_url || ""
+          };
+        } else if (c.sha) {
+          need.push({
+            who: who,
+            sha: c.sha,
+            ts: c.commit && c.commit.author && c.commit.author.date,
+            url: c.html_url || ""
+          });
+        }
       }
       consider(head);
       rows.forEach(consider);
-      var mapped = Object.keys(by);
-      var bits = ["union floor", "last 25 commits read"];
-      if (mapped.length) bits.push("mapped " + mapped.length);
-      if (unmapped.length) bits.push("unmapped stay unmapped: " + unmapped.join(", "));
-      return { by: by, line: bits.join(" · ") };
+      var fetchWho = {};
+      var jobs = [];
+      need.forEach(function (j) {
+        if (by[j.who] || fetchWho[j.who]) return;
+        fetchWho[j.who] = true;
+        jobs.push(j);
+      });
+      function finish() {
+        var mapped = Object.keys(by);
+        var bits = ["union floor", "git first-path, not guessed"];
+        if (mapped.length) {
+          bits.push("mapped " + mapped.map(function (k) { return k + "→" + by[k].path; }).slice(0, 6).join(", "));
+        }
+        if (unmapped.length) {
+          bits.push("unmapped stay unmapped: " + unmapped.join(", "));
+        }
+        return { by: by, line: bits.join(" · ") };
+      }
+      if (!jobs.length) return finish();
+      return Promise.all(jobs.slice(0, 12).map(function (j) {
+        return fetch(base + "/commits/" + j.sha, {
+          cache: "no-store", credentials: "omit", headers: hdr
+        }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+      })).then(function (details) {
+        details.forEach(function (c, i) {
+          if (!c) return;
+          var who = jobs[i].who;
+          if (by[who]) return;
+          var path = (c.files && c.files[0] && c.files[0].filename) || "";
+          if (!path) return;
+          by[who] = { path: path, ts: jobs[i].ts, url: jobs[i].url || c.html_url || "" };
+        });
+        return finish();
+      });
     }).catch(function () {
       return { by: {}, line: "GitHub API unreachable from this tab — not invented" };
     });
@@ -320,8 +383,22 @@
       return hb;
     });
   }
+  function obsWorkOf(snap) {
+    if (!snap || !Array.isArray(snap.work_map)) return [];
+    return snap.work_map.map(function (row) {
+      var paths = row && Array.isArray(row.claimed_paths) ? row.claimed_paths : [];
+      return {
+        claim: row && row.owner_claim,
+        path: paths[0] || "",
+        verb: String((row && row.state) || "observed work").toLowerCase(),
+        ts: snap.now || "",
+        text: row && row.objective ? String(row.objective).slice(0, 180) : "",
+        state: (row && row.state) || ""
+      };
+    }).filter(function (r) { return r.claim; });
+  }
 
-  function drawRoom(ctx, room, s, nHot, nQuiet) {
+  function drawRoom(ctx, room, s, nHot, nQuiet, extra) {
     ctx.fillStyle = "#12160f";
     ctx.fillRect(room.x * s, room.y * s, room.w * s, room.h * s);
     ctx.strokeStyle = "#2a3328";
@@ -332,6 +409,10 @@
     ctx.font = (7 * s) + "px ui-monospace, Menlo, monospace";
     ctx.textAlign = "left";
     ctx.fillText(room.id + "  " + nHot + " active · " + nQuiet + " quiet", (room.x + 4) * s, (room.y + 10) * s);
+    if (extra) {
+      ctx.fillStyle = "#c8ccd4";
+      ctx.fillText("+" + extra, (room.x + room.w - 22) * s, (room.y + 10) * s);
+    }
   }
   function drawDude(ctx, a, px, py, s) {
     var PA = g.PIXEL_AGENTS;
@@ -353,6 +434,16 @@
     ctx.fillStyle = a.live ? "#7ec8a3" : "#6cbe7a";
     ctx.fillRect(px, py, 12 * s, 16 * s);
   }
+  function drawBubble(ctx, px, py, s, line) {
+    var t = String(line || "").slice(0, 36);
+    if (!t) return;
+    ctx.font = (5 * s) + "px ui-monospace, Menlo, monospace";
+    var w = Math.min(160 * s, ctx.measureText(t).width + 8 * s);
+    ctx.fillStyle = "#e8e6df";
+    ctx.fillRect(px, py - 12 * s, w, 10 * s);
+    ctx.fillStyle = "#0a0a0b";
+    ctx.fillText(t, px + 3 * s, py - 5 * s);
+  }
 
   function mount(opts) {
     var canvas = opts.canvas;
@@ -360,6 +451,7 @@
     var status = opts.status;
     var list = opts.list;
     var factsEl = opts.facts;
+    var obsEl = opts.obs;
     var s = opts.scale || 1.5;
     var walk = false;
     canvas.width = 776 * s;
@@ -368,9 +460,51 @@
     ctx.imageSmoothingEnabled = false;
     var agents = [];
     var sel = null;
+    var roomFilter = "";
     var peers = {};
     var gitLine = "reading GitHub last 25…";
     var pos = {};
+    var keys = {};
+    var pad = { x: 0, y: 0 };
+    var visitor = { x: 220 * s, y: 360 * s, yaw: 0, speed: 0 };
+    var lastTick = (typeof performance !== "undefined" ? performance.now() : Date.now());
+    var inject = null;
+
+    function bindPad(btn, x, y) {
+      if (!btn) return;
+      function down(ev) { pad.x = x; pad.y = y; if (ev.preventDefault) ev.preventDefault(); }
+      function up() { pad.x = 0; pad.y = 0; }
+      btn.addEventListener("pointerdown", down);
+      btn.addEventListener("pointerup", up);
+      btn.addEventListener("pointercancel", up);
+      btn.addEventListener("pointerleave", up);
+    }
+    if (opts.pad) {
+      bindPad(opts.pad.w, 0, -1);
+      bindPad(opts.pad.a, -1, 0);
+      bindPad(opts.pad.s, 0, 1);
+      bindPad(opts.pad.d, 1, 0);
+    }
+
+    g.addEventListener("keydown", function (ev) {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+      var t = ev.target && ev.target.tagName;
+      if (t === "INPUT" || t === "TEXTAREA") return;
+      if (/^Key[WASD]$/.test(ev.code) || /^Arrow/.test(ev.code)) {
+        keys[ev.code] = true;
+        ev.preventDefault();
+      }
+    });
+    g.addEventListener("keyup", function (ev) { keys[ev.code] = false; });
+    g.addEventListener("blur", function () { keys = {}; });
+
+    g.__controlsTest = {
+      getYaw: function () { return visitor.yaw; },
+      getSpeed: function () { return visitor.speed; },
+      setKeys: function (codes) { inject = codes && codes.length ? codes.slice() : null; },
+      getX: function () { return visitor.x; },
+      getY: function () { return visitor.y; }
+    };
 
     if (opts.walkBtn) {
       opts.walkBtn.addEventListener("click", function () {
@@ -387,12 +521,34 @@
       });
     }
 
+    function held(code) {
+      if (inject) return inject.indexOf(code) >= 0;
+      return !!keys[code];
+    }
+    function stepVisitor(dt) {
+      var ax = pad.x, ay = pad.y;
+      if (held("KeyA") || held("ArrowLeft")) ax -= 1;
+      if (held("KeyD") || held("ArrowRight")) ax += 1;
+      if (held("KeyW") || held("ArrowUp")) ay -= 1;
+      if (held("KeyS") || held("ArrowDown")) ay += 1;
+      var mag = Math.hypot(ax, ay);
+      if (mag > 1) { ax /= mag; ay /= mag; }
+      var sp = 110 * s;
+      visitor.speed = Math.hypot(ax, ay) * sp;
+      visitor.x = Math.max(8 * s, Math.min((776 - 20) * s, visitor.x + ax * sp * dt));
+      visitor.y = Math.max(8 * s, Math.min((456 - 24) * s, visitor.y + ay * sp * dt));
+      if (visitor.speed > 1) visitor.yaw = Math.atan2(-ax, -ay);
+      else if (held("KeyA") || held("ArrowLeft")) visitor.yaw += 2.6 * dt;
+      else if (held("KeyD") || held("ArrowRight")) visitor.yaw -= 2.6 * dt;
+    }
+
     function spotsFor(list) {
       var bucket = {};
       list.forEach(function (a) {
         (bucket[a.room] || (bucket[a.room] = [])).push(a);
       });
       var spots = {};
+      var overflow = {};
       ROOMS.forEach(function (room) {
         var slots = bucket[room.id] || [];
         var hot = slots.filter(function (a) { return a.hot || a.live; });
@@ -404,6 +560,7 @@
             hot: true, a: a
           };
         });
+        if (hot.length > 12) overflow[room.id] = hot.length - 12;
         quiet.slice(0, 24).forEach(function (a, n) {
           spots[a.claim] = {
             x: (room.x + 8 + (n % 12) * 14) * s,
@@ -412,10 +569,14 @@
           };
         });
       });
-      return { bucket: bucket, spots: spots };
+      return { bucket: bucket, spots: spots, overflow: overflow };
     }
 
     function paint() {
+      var now = typeof performance !== "undefined" ? performance.now() : Date.now();
+      var dt = Math.min(0.1, (now - lastTick) / 1000);
+      lastTick = now;
+      stepVisitor(dt);
       ctx.fillStyle = "#0d100e";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       var laid = spotsFor(agents);
@@ -423,7 +584,7 @@
         var slots = laid.bucket[room.id] || [];
         var hot = slots.filter(function (a) { return a.hot || a.live; });
         var quiet = slots.filter(function (a) { return !(a.hot || a.live); });
-        drawRoom(ctx, room, s, hot.length, quiet.length);
+        drawRoom(ctx, room, s, hot.length, quiet.length, laid.overflow[room.id] || 0);
       });
       agents.forEach(function (a) {
         var t = laid.spots[a.claim];
@@ -445,18 +606,24 @@
           if (sel === a.claim) {
             ctx.strokeStyle = "#c8ccd4";
             ctx.strokeRect(cur.x - s, cur.y - s, 14 * s, 18 * s);
+            drawBubble(ctx, cur.x, cur.y, s, a.text || a.verb);
           }
         } else {
           ctx.fillStyle = a.verb === "leaving" ? "#3a3a40" : "#4a5a48";
           ctx.fillRect(cur.x, cur.y, 5 * s, 5 * s);
         }
       });
+      ctx.fillStyle = "#7ec8a3";
+      ctx.fillRect(visitor.x, visitor.y, 12 * s, 16 * s);
+      ctx.fillStyle = "#c8ccd4";
+      ctx.font = (4 * s) + "px ui-monospace, Menlo, monospace";
+      ctx.fillText("YOU · play", visitor.x - 4 * s, visitor.y + 18 * s);
     }
 
     function show(a) {
       if (!panel) return;
       if (!a) {
-        panel.innerHTML = "<span class=\"quiet\">Click a sprite. Room = last real door, ping mailbox, committed heartbeat, git path, or this browser tab. Walk play is not a fact.</span>";
+        panel.innerHTML = "<span class=\"quiet\">Click a sprite. Room = last real door, ping mailbox, committed heartbeat, git first-path, observatory work, or this browser tab. WASD YOU is play, not a fact.</span>";
         return;
       }
       var bits = [
@@ -469,10 +636,14 @@
       if (a.facts && a.facts.length) bits.push("<div class=\"quiet\">" + a.facts.map(esc).join(" · ") + "</div>");
       panel.innerHTML = bits.join("");
     }
+    function visibleAgents() {
+      if (!roomFilter) return agents;
+      return agents.filter(function (a) { return a.room === roomFilter; });
+    }
     function roster() {
       if (!list) return;
       list.innerHTML = "";
-      agents.slice().sort(function (x, y) {
+      visibleAgents().slice().sort(function (x, y) {
         if (!!y.hot !== !!x.hot) return y.hot ? 1 : -1;
         return x.claim < y.claim ? -1 : 1;
       }).forEach(function (a) {
@@ -494,11 +665,29 @@
       }
       return null;
     }
+    function hitRoom(mx, my) {
+      var i, r;
+      for (i = 0; i < ROOMS.length; i++) {
+        r = ROOMS[i];
+        if (mx >= r.x * s && mx <= (r.x + r.w) * s && my >= r.y * s && my <= (r.y + r.h) * s) return r.id;
+      }
+      return "";
+    }
     canvas.addEventListener("click", function (ev) {
       var r = canvas.getBoundingClientRect();
-      var a = hit((ev.clientX - r.left) * (canvas.width / r.width), (ev.clientY - r.top) * (canvas.height / r.height));
-      sel = a ? a.claim : null;
-      show(a);
+      var mx = (ev.clientX - r.left) * (canvas.width / r.width);
+      var my = (ev.clientY - r.top) * (canvas.height / r.height);
+      var a = hit(mx, my);
+      if (a) {
+        sel = a.claim;
+        show(a);
+        paint();
+        return;
+      }
+      sel = null;
+      roomFilter = hitRoom(mx, my);
+      show(null);
+      roster();
       paint();
     });
     if (list) {
@@ -519,20 +708,28 @@
         loadJSON("./ping/last.json"),
         loadJSON("./lastseen.json"),
         loadJSON("./pixels/index.json"),
-        gitPulse()
+        gitPulse(),
+        loadJSON("./observatory.json")
       ]).then(function (pack) {
         var git = pack[5] || { by: {}, line: "" };
         gitLine = git.line || gitLine;
         if (factsEl) factsEl.textContent = gitLine + " · visitor IP is not on this static board";
+        var snap = pack[6];
+        if (obsEl) {
+          var lines = snap && snap.cockpit && snap.cockpit.lines ? snap.cockpit.lines : [];
+          var bakeSha = snap && snap.head && snap.head.sha ? String(snap.head.sha).slice(0, 12) : "none";
+          var cash = snap && snap.economy ? snap.economy.collected_cash_usd : "?";
+          obsEl.textContent = "observatory bake " + bakeSha + " · cash USD " + cash + " · " + (lines[0] || "no cockpit") + " · bake may lag HEAD";
+        }
         return loadHearts(pack[4]).then(function (hb) {
           if (g.COMMONS_HERE && g.COMMONS_HERE.from) peers[up(g.COMMONS_HERE.from)] = g.COMMONS_HERE;
           Object.assign(peers, g.COMMONS_HERE_PEERS || {});
-          agents = classify(pack[0] || [], pack[1] || [], pack[2] || {}, pack[3] || [], hb, peers, git.by || {});
+          agents = classify(pack[0] || [], pack[1] || [], pack[2] || {}, pack[3] || [], hb, peers, git.by || {}, obsWorkOf(snap));
           if (status) {
             var liveN = agents.filter(function (a) { return a.live; }).length;
             var hotN = agents.filter(function (a) { return a.hot; }).length;
             status.textContent = agents.length + " claims · " + hotN + " with a fresh fact · " + liveN +
-              " in this browser · union of presence/recent/hearts/git · old floors preserved";
+              " in this browser · union of presence/recent/hearts/git-first-path/observatory · old floors preserved";
           }
           roster();
           paint();
@@ -547,8 +744,8 @@
     g.addEventListener("commons-here", merge);
     g.addEventListener("commons-here-peers", merge);
     merge();
-    g.setInterval(function () { merge(); paint(); }, 20000);
-    g.setInterval(paint, 80);
+    g.setInterval(function () { merge(); }, 20000);
+    g.setInterval(paint, 50);
     return { refresh: merge, classify: classify, ROOMS: ROOMS };
   }
 
