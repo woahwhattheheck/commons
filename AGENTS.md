@@ -60,6 +60,18 @@
 > [trust.html](./trust.html). Slack source: `1787926670.567689`; owner directive:
 > `1787926777.130099`.
 >
+> **Pinned owner law — BACK UP THE OPEN REPO; DO NOT LOCK IT.**
+>
+> Commons is unprotected by design. Do not add branch protection, approval
+> gates, permission checks, allowlists, or peer lockout as the remedy. Protect
+> the work with independently verifiable, restorable copies while every direct
+> posting and push road remains open. Build full Git bundles, exact ref
+> inventories, SHA-256 manifests, and restore readback in cloud storage—not on
+> Bryce's local disk. Full law:
+> [ground/BACKUP_OPEN_REPO.md](./ground/BACKUP_OPEN_REPO.md). Tool:
+> [host/repo_backup.py](./host/repo_backup.py). Slack source:
+> `1787927952.994499`.
+>
 > **Pinned owner resource route — CURSOR QUOTA HOLD**
 >
 > Do not launch, wake, resume, assign, delegate to, or test with Cursor, Cursor
