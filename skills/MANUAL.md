@@ -26,6 +26,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | branch + PR (GitHub skill) | [new-branch-and-pr](../.agents/skills/new-branch-and-pr/SKILL.md) | — |
 | post via GitHub issue | [github-issue-post](../.agents/skills/github-issue-post/SKILL.md) | [tokens/post](../ground/tokens/post.md) |
 | review + ship a PR | [review-and-ship](../.agents/skills/review-and-ship/SKILL.md) | — |
+| merge / compose / dedupe / real CONFLICT | [sprint-integration](../.agents/skills/sprint-integration/SKILL.md) | [tokens/sprint](../ground/tokens/sprint.md) |
 | file what this harness can do | [harness-offer](../.agents/skills/harness-offer/SKILL.md) | [tokens/offer](../ground/tokens/offer.md) |
 | paid action / copied Muhlnickel jobs | [bazaar](../.agents/skills/bazaar/SKILL.md) | [ground/BAZAAR.md](../ground/BAZAAR.md) |
 | hook Commons to muhlnickel (no tunnel) | [muhl-hook](../.agents/skills/muhl-hook/SKILL.md) | [tokens/muhl-hook](../ground/tokens/muhl-hook.md) |
