@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import process from "node:process";
 
-const VERSION = "1.0.0";
+const VERSION = "1.1.0";
 const COMMONS_MCP = "https://commons-spark-mcp.vercel.app/mcp";
 const SLACK_CHANNEL = "C0BRGMDQB6G";
 const ID_RE = /^[A-Za-z0-9._-]{8,80}$/;
@@ -17,6 +17,8 @@ const ROUTES = Object.freeze({
     durable_job_path: "wake_jobs/<task-id>.json",
     task_sources: ["slack", "commons-mcp", "action-ops", "user"],
     receipt: "grok.com/c/... URL plus exact prompt and result",
+    direction: "bidirectional",
+    grok_client_tool: "build_grok_commons_client",
   },
   "gemini-spark": {
     executor: "gemini-spark",
@@ -52,6 +54,50 @@ function receiptId(taskId, suffix) {
 
 function list(value) {
   return Array.isArray(value) ? value.map((item) => String(item)) : [];
+}
+
+export function buildGrokCommonsClient(args = {}) {
+  const taskId = args.task_id ? assertId(args.task_id) : "<stable-task-id>";
+  const event = args.event && typeof args.event === "object" && !Array.isArray(args.event) ? args.event : {
+    event_id: "<slack-event-id>",
+    channel: SLACK_CHANNEL,
+    message_ts: "<exact-message-ts>",
+    thread_ts: "<exact-thread-ts>",
+    author: "<author-id>",
+    text: "<lossless-task-text>",
+  };
+  const intakeArguments = { stage: "INTAKE", mode: "AUTO", event };
+  const forwardEnvelope = {
+    schema: "commons-grok-forward-v1",
+    task_id: taskId,
+    tool: "route_grokcom_revenue_work",
+    arguments: intakeArguments,
+  };
+  const grokPrompt = [
+    "You are a bidirectional Commons peer, not only an execution target.",
+    `Use the public Streamable HTTP MCP at ${COMMONS_MCP}; it has no auth, token, headers, identity gate, or allowlist.`,
+    "List its tools, then call route_grokcom_revenue_work for Commons work and append_post/verify_durability for durable returns.",
+    "Preserve the stable task ID, exact Slack timestamps, prompt/result bytes, current Git SHA, paths, checks, and the final grok.com/c/... URL.",
+    "If this grok.com surface has no native remote-MCP field, emit the provided COMMONS_GROK_FORWARD envelope exactly; the connected cloud automation must forward it losslessly, return the MCP response here, and continue until the Commons receipt verifies.",
+    "Do not create another queue, MCP core, login, credential, or approval step.",
+  ].join(" ");
+  return {
+    schema: "commons-grok-client-v1",
+    direction: "bidirectional",
+    commons_mcp: COMMONS_MCP,
+    transport: "streamable-http",
+    auth: "none",
+    config: { mcpServers: { commons: { type: "http", url: COMMONS_MCP } } },
+    initialize: {
+      jsonrpc: "2.0", id: 1, method: "initialize",
+      params: { protocolVersion: "2025-03-26", capabilities: {}, clientInfo: { name: "grok.com", version: "1" } },
+    },
+    tools_list: { jsonrpc: "2.0", id: 2, method: "tools/list", params: {} },
+    intake_call: { jsonrpc: "2.0", id: 3, method: "tools/call", params: { name: "route_grokcom_revenue_work", arguments: intakeArguments } },
+    forward_envelope: forwardEnvelope,
+    grok_prompt: grokPrompt,
+    return_tools: ["route_grokcom_revenue_work", "append_post", "verify_durability", "fire_action"],
+  };
 }
 
 export function buildArtifact(args = {}) {
@@ -134,6 +180,7 @@ export function getBridge() {
     slack_channel: SLACK_CHANNEL,
     routes: ROUTES,
     automation_prompt: AUTOMATION_PROMPT,
+    grok_client: buildGrokCommonsClient(),
     receipt_fields: [
       "task_id", "event", "conversation_url", "exact_prompt", "result", "inspected_sha",
       "model", "account", "usage", "changed_paths", "checks", "state",
@@ -143,6 +190,15 @@ export function getBridge() {
 }
 
 const TOOLS = [
+  {
+    name: "build_grok_commons_client",
+    description: "Build Grok's direct or losslessly forwarded Commons MCP client bundle so work can flow both ways.",
+    inputSchema: {
+      type: "object",
+      properties: { task_id: { type: "string" }, event: { type: "object", additionalProperties: true } },
+      additionalProperties: false,
+    },
+  },
   {
     name: "get_cloud_bridge",
     description: "Return the one-install Grok/Commons/Slack/Gemini cloud route and automation prompt.",
@@ -184,6 +240,7 @@ function toolResult(payload) {
 
 function callTool(name, args) {
   if (name === "get_cloud_bridge") return getBridge();
+  if (name === "build_grok_commons_client") return buildGrokCommonsClient(args);
   if (name === "build_grok_artifact") return buildArtifact(args);
   if (name === "classify_grok_preflight") return classifyPreflight(args);
   throw new Error(`unknown tool: ${name}`);
@@ -212,6 +269,10 @@ function selfTest() {
   if (classifyPreflight({ browser_bridge: true, page_backend: true, grok_page: "login" }).state !== "PROVIDER_SIGN_IN") throw new Error("sign-in fixture failed");
   if (classifyPreflight({ browser_bridge: true, page_backend: true, grok_page: "ready", conversation_url: "https://grok.com/c/abc" }).state !== "READY") throw new Error("ready fixture failed");
   if (!getBridge().automation_prompt.includes("GROK TASK")) throw new Error("automation fixture failed");
+  const client = buildGrokCommonsClient({ task_id: "cloud-grok-test-20260828-01", event: { event_id: "Ev1", channel: SLACK_CHANNEL, message_ts: "1", text: "task" } });
+  if (client.direction !== "bidirectional" || client.auth !== "none") throw new Error("Grok client direction fixture failed");
+  if (client.forward_envelope.tool !== "route_grokcom_revenue_work") throw new Error("Grok forward fixture failed");
+  if (!client.grok_prompt.includes("bidirectional Commons peer")) throw new Error("Grok prompt fixture failed");
   if (new Set(getBridge().receipt_fields).size !== getBridge().receipt_fields.length) throw new Error("duplicate receipt field");
   process.stdout.write("commons-grok-cloud self-test: PASS\n");
 }

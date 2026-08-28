@@ -849,6 +849,14 @@ class CommonsGateway:
             cancel_event=cancel_event,
         )
 
+    def route_grokcom_revenue_work(self, arguments: Any) -> dict[str, Any]:
+        """Route two-way Grok/Commons work through the canonical orchestrator."""
+        if not isinstance(arguments, dict):
+            raise CommonsError("SCHEMA", "route_grokcom_revenue_work arguments must be an object")
+        from integrations.grokcom_revenue.orchestrator import orchestrate
+
+        return orchestrate(arguments)
+
     def _await_action_result(
         self,
         ident: str,
@@ -1293,6 +1301,14 @@ TOOL_DEFINITIONS = [
             },
             ["content"],
         ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "route_grokcom_revenue_work",
+        "title": "Route Bidirectional Grok Revenue Work",
+        "description": "Route any Slack, Commons, GPT, or Grok event through the canonical stable task, grok.com result, review, Git landing, and continue loop. Empty and future fields remain open.",
+        "inputSchema": {"type": "object", "additionalProperties": True},
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
         "_meta": {"ui": {"visibility": ["model", "app"]}},
     },

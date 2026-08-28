@@ -21,7 +21,7 @@ class GrokCloudPluginTests(unittest.TestCase):
     def test_manifest_and_companion_files_are_complete(self):
         manifest = json.loads((PLUGIN / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], PLUGIN.name)
-        self.assertEqual(manifest["version"], "1.0.0")
+        self.assertEqual(manifest["version"], "1.1.0")
         self.assertEqual(manifest["mcpServers"], "./.mcp.json")
         self.assertEqual(manifest["skills"], "./skills/")
         self.assertTrue((PLUGIN / "skills" / "commons-grok-cloud" / "SKILL.md").is_file())
@@ -45,6 +45,8 @@ class GrokCloudPluginTests(unittest.TestCase):
             "Do not mint a parallel queue",
             "verify_durability",
             "Gemini remains a distinct client",
+            "build_grok_commons_client",
+            "Grok may originate work",
         ):
             self.assertIn(marker, text)
 
@@ -60,6 +62,8 @@ class GrokCloudPluginTests(unittest.TestCase):
         self.assertEqual(card["tool"], "route_grokcom_revenue_work")
         self.assertIn("grok.com/c/...", card["cloud_executor"]["receipt"])
         self.assertIn("build_grok_artifact", card["cloud_executor"]["helper_tools"])
+        self.assertIn("build_grok_commons_client", card["cloud_executor"]["helper_tools"])
+        self.assertEqual(card["cloud_executor"]["direction"], "bidirectional")
 
     def test_node_server_syntax_and_self_test(self):
         server = PLUGIN / "scripts" / "server.mjs"

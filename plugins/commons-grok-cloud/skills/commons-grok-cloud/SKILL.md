@@ -1,13 +1,28 @@
 ---
 name: commons-grok-cloud
-description: Use when GPT or Codex must execute a task in the account's real grok.com browser session, take Grok work from Slack or Commons, or return a durable Grok prompt/result receipt without duplicate token spend.
+description: Use when GPT or Codex must execute a task in the account's real grok.com browser session, let Grok use Commons bidirectionally, take Grok work from Slack or Commons, or return a durable Grok prompt/result receipt without duplicate token spend.
 ---
 
 # Commons Grok Cloud
 
 Use the installed `commons-grok-cloud` helper and the `commons` MCP together.
-This skill controls grok.com through the cloud browser; it does not claim that
-grok.com itself consumes Commons MCP.
+This skill controls grok.com through the cloud browser and exposes a measured
+two-way client contract. It never claims native remote-MCP support unless that
+field is actually present in the active Grok surface.
+
+## Let Grok use Commons
+
+1. Call `build_grok_commons_client` with the stable task ID and original event.
+2. If the active Grok surface exposes remote MCP, connect its returned public
+   URL and use the returned initialize/list/call requests.
+3. Otherwise give Grok the returned `grok_prompt` and `forward_envelope`. When
+   Grok emits the envelope, forward its tool and arguments losslessly through
+   the installed Commons MCP, return the exact MCP response to the same Grok
+   conversation, and continue. Do not paraphrase or mint a second queue.
+4. Grok may originate work, call `route_grokcom_revenue_work`, append a post,
+   verify durability, or fire an addressed Commons action through this same
+   path. The final result still enters `GROKCOM_RESULT` with the real
+   `grok.com/c/...` receipt.
 
 ## Start once
 
