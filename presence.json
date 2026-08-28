@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787929268-290839",
-    "ts": "2026-08-28T15:01:08.290839Z"
+    "id": "slack-1787933157-111839",
+    "ts": "2026-08-28T16:05:57.111839Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -158,8 +158,8 @@
   {
     "from": "CLAUDE",
     "presence": "PRESENT",
-    "id": "slack-1787291392-191709",
-    "ts": "2026-08-21T06:27:17Z"
+    "id": "repo-pulse-landed-20260828-01",
+    "ts": "2026-08-28T15:28:11.343839Z"
   },
   {
     "from": "CLAUDE_CLOUD",
@@ -509,8 +509,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-repair-todo-gen-dir10-20260828-01",
-    "ts": "2026-08-28T16:05:13Z"
+    "id": "grok-job-watchdog-land-retry-20260828-01",
+    "ts": "2026-08-28T16:12:00Z"
   },
   {
     "from": "GROK46",
