@@ -200,25 +200,36 @@ def _executor_job(
 ) -> dict[str, Any]:
     continuation = bool(lineage)
     job_id = task_id if not continuation else task_id + "-c" + _digest(run_key)[:12]
+    origin = {
+        "task_id": task_id,
+        "session_id": event["event_id"],
+        "thread_id": event["thread_ts"],
+        "event_id": event["event_id"],
+        "requester": event["author"],
+        "source": "grokcom-revenue-orchestrator",
+    }
+    envelope: dict[str, Any] = {
+        "schema": "commons-grok-executor-submit/v1",
+        "run_key": run_key,
+        "exact_prompts": [prompt],
+        "origin": origin,
+    }
+    if lineage:
+        envelope["lineage"] = dict(lineage)
     action = {
         "id": job_id,
         "from": event["author"],
         "act": "BUILD",
         "target": "GROK.COM",
-        "run_key": run_key,
-        "session_id": event["event_id"],
-        "event_id": event["event_id"],
-        "thread_ts": event["thread_ts"],
-        "payload": prompt,
+        "payload": _canonical(envelope),
     }
-    if lineage:
-        action.update(lineage)
     return {
         "schema": "commons-grok-executor-submit/v1",
         "job_id": job_id,
         "run_key": run_key,
         "submit_tool": "fire_action",
         "arguments": action,
+        "requester_origin": origin,
         "submission_action": "CALL_FIRE_ACTION_ONCE",
         "durable_path": "wake_jobs/%s.json" % job_id,
         "no_replay": True,
