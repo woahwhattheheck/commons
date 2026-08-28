@@ -2,7 +2,7 @@
   "id": "grokcom-revenue",
   "name": "grok.com revenue orchestrator",
   "kind": "github-plus-mcp-client",
-  "status": "live-github-road-mcp-tool-cloud-executor-ready",
+  "status": "live-github-road-mcp-tool-cloud-executor-automatic-capture",
   "surface": "grok.com",
   "auth": "none-on-commons-mcp",
   "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
@@ -14,17 +14,41 @@
     "Keep the existing grok.com GitHub connection as the code and exact-byte road.",
     "Use the canonical Commons MCP URL for route_grokcom_revenue_work; do not mint a second MCP server.",
     "Install plugins/commons-grok-cloud once so fresh GPT cloud sessions can execute returned Grok packets through the shared browser.",
+    "Before one intentional browser submission, call start_grok_capture and require its write-ahead acknowledgment; exact run-key/URL duplicates never submit again.",
+    "Capture every partial/terminal output through capture_grok_run; recover_grok_capture is output-only and never replays a finished prompt.",
+    "Use GROK_CONTINUE only for a new lineage-linked prompt after GPT identifies real unfinished work.",
     "Send every Slack event through INTAKE and post the returned slack_reply in the originating thread.",
     "Let Grok use Commons too: connect the same public MCP directly when available, otherwise forward build_grok_commons_client envelopes losslessly and return each MCP response to the same conversation.",
-    "Send the browser artifact through GROKCOM_RESULT, GPT_REVIEW, GIT_LAND, and then continue the queue."
+    "Send the verified capture through GROKCOM_RESULT, GPT_REVIEW, optional lineage-linked GROK_CONTINUE, GIT_LAND, and then continue the queue."
   ],
   "cloud_executor": {
     "plugin": "plugins/commons-grok-cloud",
     "marketplace": ".agents/plugins/marketplace.json",
     "browser": "ChatGPT cloud CDP / existing grok.com session",
     "direction": "bidirectional",
-    "helper_tools": ["get_cloud_bridge", "build_grok_commons_client", "build_grok_artifact", "classify_grok_preflight"],
-    "receipt": "actual grok.com/c/... URL plus exact prompt, lossless result, inspected SHA, paths, and checks"
+    "helper_tools": [
+      "get_cloud_bridge",
+      "build_grok_commons_client",
+      "start_grok_capture",
+      "capture_grok_run",
+      "recover_grok_capture",
+      "build_grok_artifact",
+      "classify_grok_preflight"
+    ],
+    "receipt": "stable run key; actual grok.com/c/... URL/rid; exact prompts/result; originating task/session; provider-private artifact paths plus exposed hashes/sizes; visible model/mode/source/token/debit evidence; timestamps; terminal state; zero-token/no-mutation boundary",
+    "capture_states": [
+      "CAPTURE_STARTED",
+      "CAPTURING",
+      "PARTIAL",
+      "VERIFIED_COMPLETE",
+      "GROK_CONTINUE",
+      "PAGE_UNCONFIRMED",
+      "FAILED",
+      "RECEIPT_PENDING",
+      "RECEIPT_EMITTED"
+    ],
+    "no_replay": "Finished prompts are never replayed. A real unfinished edge gets one new deterministic run key with parent run/conversation lineage.",
+    "failure_route": "First exact Cloudflare/login/browser/page error is captured and RELEASED with zero spend; do not retry-loop, bypass, or substitute GPT/Codex for the heavy assignment."
   },
   "native_remote_mcp_field": "USE_WHEN_PRESENT; OTHERWISE_CALL_THE_SAME_PUBLIC_MCP_FROM_THE_CONNECTED_AUTOMATION",
   "credentials": "No Slack, GitHub, xAI, or grok.com credential is accepted by the Commons tool or stored in this repository.",
