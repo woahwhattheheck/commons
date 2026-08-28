@@ -36,6 +36,12 @@ Skill: [.agents/skills/distribution/SKILL.md](../.agents/skills/distribution/SKI
 Measured cash, leads, customers, and live marketplace listings stay `0` until
 evidence files exist.
 
+Non-dilutive grant, pilot, licensing, procurement, and research rows now live on
+the composed [opportunity registry](../opportunity.html) and
+[proof-to-proposal packets](../proof-to-proposal.html). That desk does not
+submit SAM, GSA, or funder forms. It hashes the listing registry as a compose
+source and does not remint `listing-registry.html`.
+
 ## Compose, do not remint
 
 Does not replace `commerce.html`, Bazaar, SKU files, Stripe notes, human

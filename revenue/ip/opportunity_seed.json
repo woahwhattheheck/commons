@@ -1,0 +1,235 @@
+{
+  "schema_version": "commons-opportunity-seed/v1",
+  "kind": "OPPORTUNITY_SEED",
+  "as_of": "2026-08-28T17:15:00Z",
+  "generated_from_main": "6a09762980a0597fafc47aff620a4ac633e93c1f",
+  "checked_at": "2026-08-28T17:15:00Z",
+  "scope": "Non-dilutive commercialization research for verified public Commons technology. Compile grants, pilots, licensing, procurement, and research partnership rows from exact repository receipts. Do not submit, accept terms, or claim awards.",
+  "compose": [
+    {
+      "id": "grants-ledger",
+      "path": "revenue/ip/grants_ledger.json",
+      "role": "GRANT"
+    },
+    {
+      "id": "collaboration-targets",
+      "path": "revenue/ip/collaboration_targets.json",
+      "role": "RESEARCH"
+    },
+    {
+      "id": "whitebox-offers",
+      "path": "revenue/ip/whitebox_collaboration_offers.json",
+      "role": "LICENSING_AND_PILOT"
+    },
+    {
+      "id": "distribution-channels",
+      "path": "revenue/distribution/channels.json",
+      "role": "PROCUREMENT"
+    },
+    {
+      "id": "listing-registry",
+      "path": "revenue/listing_registry/registry.json",
+      "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "titan-hands",
+      "name": "TITAN Hands computer-use substrate",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "docs/TITAN_HANDS.md",
+        "titan-hands.html",
+        "titan-hour.html",
+        "host/titan_hands/one_tool.py",
+        "host/titan_hands/linux_atspi.py",
+        "p/emissary-titan-hands-features-20260826-01.md",
+        "p/coil-titan-hands-linux-atspi-land-20260827-01.md"
+      ]
+    },
+    {
+      "id": "ringdelta-muhlnickel",
+      "name": "RINGDELTA Muhlnickel-native lossless organ",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "ground/RINGDELTA.md",
+        "ground/RINGDELTA.json",
+        "ringdelta.html",
+        "host/ringdelta.py",
+        "excerpts/20260828/ringdelta_xor8.mno"
+      ]
+    },
+    {
+      "id": "carrier-infrastructure",
+      "name": "Open carrier and distribution roads",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "carrier.js",
+        "distribution.html",
+        "host/distribution.py",
+        "ground/DISTRIBUTION.md",
+        "p/grok-distribution-layer-20260828-01.md"
+      ]
+    },
+    {
+      "id": "evidence-record",
+      "name": "Public evidence record and required-reading corpus",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "evidence/README.md",
+        "ground/03_EVIDENCE_ANNEX.md"
+      ]
+    },
+    {
+      "id": "agent-swarm",
+      "name": "Agent swarm datacenter prep and swarm-mail",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "ground/SWARM.md",
+        "swarm-mail.html"
+      ]
+    },
+    {
+      "id": "reliability-trust",
+      "name": "Trust-cache and production-survival reliability",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "ground/TRUST.md",
+        "trust.html",
+        "host/trust_cache.py",
+        "p/bernays-production-survival-operating-system-20260826-01.md"
+      ]
+    },
+    {
+      "id": "resource-feature-trackers",
+      "name": "Feature and resource trackers",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        "ground/FEATURES.md",
+        "features.html",
+        "resources.html",
+        "ground/RESOURCE_LEDGER.json",
+        "host/resource_ledger.py"
+      ]
+    }
+  ],
+  "seed_programs": [
+    {
+      "id": "sovereign-tech-fund-rolling",
+      "lane": "GRANT",
+      "name": "Sovereign Tech Fund",
+      "funder_or_counterparty": "Sovereign Tech Agency",
+      "official_urls": [
+        "https://www.sovereign.tech/programs/fund",
+        "https://apply.sovereign.tech"
+      ],
+      "application_state": "ROLLING",
+      "application_state_basis": "The official Fund page says applications are accepted exclusively through the online application platform and does not publish a closing date.",
+      "opens_date": "UNKNOWN",
+      "deadline": "UNKNOWN",
+      "program_eligibility_text": "Official text requires open digital base technologies; OSI-approved or FSF Free/Libre licenses for code; Creative-Commons-like documentation licenses without non-commercial or no-derivatives clauses; German or English submissions; worldwide applicants; no other public financing for the same proposed activities; and that the Fund is not currently looking for user-facing applications such as messaging apps or file storage and does not finance the development of prototypes.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "funding_text": "The cost of the work described in the application must exceed EUR 50,000 (current minimum). No fixed upper limit is stated on the inspected Fund page.",
+      "funding_evidence_state": "VERIFIED",
+      "matching_state": "UNKNOWN",
+      "matching_basis": "Matching was not independently established from the inspected Fund page.",
+      "ip_terms": "Supported code and documentation must be freely reusable, changeable, and redistributable under OSI-approved or FSF Free/Libre licenses for code.",
+      "ip_evidence_state": "VERIFIED",
+      "deliverables": [
+        "Work related to developing or maintaining open digital base technologies as described by the Fund page.",
+        "Portal application through apply.sovereign.tech. This registry does not create an account or submit."
+      ],
+      "fit_note": "ANALYSIS: Public RINGDELTA organ bytes and TITAN Hands substrate receipts may relate to base-technology language, but the prototype exclusion, user-facing-application exclusion, missing root LICENSE file, and unknown applicant entity remain unresolved. This is not an eligibility finding.",
+      "capability_ids": [
+        "ringdelta-muhlnickel",
+        "titan-hands",
+        "reliability-trust"
+      ],
+      "public_next_action": "Compare already-public RINGDELTA and TITAN Hands receipts with the Fund base-technology and prototype exclusions. Do not register or submit.",
+      "private_blockers": [
+        "Exact eligible entity",
+        "Root LICENSE still absent on this main",
+        "German or English application-portal identity",
+        "Whether the work is a prototype versus maintained base technology",
+        "Owner choice"
+      ]
+    },
+    {
+      "id": "nlnet-codesupply-ois-2026",
+      "lane": "GRANT",
+      "name": "NLnet CodeSupply (Open Internet Stack)",
+      "funder_or_counterparty": "NLnet Foundation",
+      "official_urls": [
+        "https://nlnet.nl/codesupply/",
+        "https://nlnet.nl/propose/"
+      ],
+      "application_state": "UPCOMING",
+      "application_state_basis": "The CodeSupply page said the first call will open up soon and linked Coming soon to the propose form. The propose page said sending material was currently impossible and that new calls for several funds open 2026-09-03. This row does not assume CodeSupply shares that calendar.",
+      "opens_date": "UNKNOWN",
+      "deadline": "UNKNOWN",
+      "program_eligibility_text": "CodeSupply text supports independent researchers, developers, and organisations contributing free and open source technology for a reliable software supply chain. Project results shall always become available under a recognised free or open source license. Propose-page transversal requirement: libre/open licenses and open standards where possible.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "funding_text": "Part of the CodeSupply budget, 400000 EUR, is reserved for open calls. The page seeks project proposals between 5000 and 50000 EUR.",
+      "funding_evidence_state": "VERIFIED",
+      "matching_state": "UNKNOWN",
+      "matching_basis": "Matching was not independently established from the inspected CodeSupply pages.",
+      "ip_terms": "Project results shall always become available under a recognised free or open source license. Detailed MoU terms remain UNKNOWN.",
+      "ip_evidence_state": "PARTIAL",
+      "deliverables": [
+        "Auxiliary free and open source work contributing to CodeSupply software-metadata, access, or framework objectives.",
+        "Detailed call guide and form fields remain UNKNOWN until the first call is independently re-read as open."
+      ],
+      "fit_note": "ANALYSIS: Public carrier, evidence, and RINGDELTA receipts may relate to software-metadata and supply-chain language, but European dimension, applicant eligibility, root LICENSE, and the actual open-call calendar remain unresolved.",
+      "capability_ids": [
+        "carrier-infrastructure",
+        "evidence-record",
+        "ringdelta-muhlnickel",
+        "reliability-trust"
+      ],
+      "public_next_action": "Re-read https://nlnet.nl/codesupply/ and https://nlnet.nl/propose/ after the first call is labeled open. Do not use the form.",
+      "private_blockers": [
+        "Exact open-call calendar",
+        "European-dimension case",
+        "Root LICENSE still absent on this main",
+        "Contact and form fields",
+        "Owner choice"
+      ]
+    },
+    {
+      "id": "commons-public-license-unknown",
+      "lane": "LICENSING",
+      "name": "Commons public license posture",
+      "funder_or_counterparty": "UNKNOWN",
+      "official_urls": [
+        "https://github.com/woahwhattheheck/commons"
+      ],
+      "application_state": "UNKNOWN",
+      "application_state_basis": "Current main has no root LICENSE or COPYING file. This row records that absence; it is not a license grant, dual-license, or assignment.",
+      "opens_date": "UNKNOWN",
+      "deadline": "UNKNOWN",
+      "program_eligibility_text": "Many libre funders require an OSI or FSF license. This repository snapshot does not publish a root license file.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "funding_text": "UNKNOWN: this is a blocker row, not a funder.",
+      "funding_evidence_state": "UNKNOWN",
+      "matching_state": "UNKNOWN",
+      "matching_basis": "Not a funding program.",
+      "ip_terms": "UNKNOWN: no root LICENSE file on current main. Do not invent CC0, MIT, Apache, or GPL terms.",
+      "ip_evidence_state": "UNKNOWN",
+      "deliverables": [
+        "Owner-directed public license decision if one is to exist.",
+        "Until then, NLnet and Sovereign Tech Fund IP terms cannot be matched from this repository."
+      ],
+      "fit_note": "ANALYSIS: Missing root LICENSE is a public blocker for libre-license funders. Publishing a license would be an owner legal act, not a peer invention.",
+      "capability_ids": [
+        "ringdelta-muhlnickel",
+        "titan-hands",
+        "carrier-infrastructure"
+      ],
+      "public_next_action": "Leave the missing LICENSE visible. Do not mint a license file without an exact owner legal act.",
+      "private_blockers": [
+        "Owner legal choice",
+        "Counsel if requested by owner"
+      ]
+    }
+  ]
+}

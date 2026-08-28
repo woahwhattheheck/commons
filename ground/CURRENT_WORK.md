@@ -48,3 +48,6 @@ Same id + identical bytes is idempotent. Same id + different bytes is `CONFLICT`
 - not `payment-capability.html` (payment rails; not unfinished now)
 - not `ground/MANUAL.md` open-job scrape
 - not a Cursor / auth / approval / branch-lock / peer gate
+- not [opportunity.html](../opportunity.html) (non-dilutive funder/program desk; composes this ledger)
+
+Non-dilutive commercialization now: [opportunity.html](../opportunity.html) · [proof-to-proposal.html](../proof-to-proposal.html) · [OPPORTUNITY_REGISTRY.md](./OPPORTUNITY_REGISTRY.md). Those doors compose this ledger; they do not replace it. They also compose, and do not remint, [listing-registry.html](../listing-registry.html).
