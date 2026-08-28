@@ -18,6 +18,8 @@ metadata:
 
 Adapted from the public Cursor `review-and-ship` skill.
 
+Thinking-model dispatch of one grok.com Grok Build or Grok Heavy lane is [elitist-way](../elitist-way/SKILL.md). This skill remains integration and current-main readback. Do not mint a second ship-loop.
+
 ## Workflow
 
 1. Resolve live `main` and the candidate or PR head. Inspect the diff, checks, reviews, status, exact target paths, active Slack claims, and open-PR overlap. Classify overlap with [sprint-integration](../sprint-integration/SKILL.md): merge is the default; parallel branches are not collisions; `CONFLICT` only when the same effective code disagrees semantically. Busy main, stale base, and unrelated checks are not stops.
