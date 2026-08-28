@@ -30,6 +30,17 @@ const ROUTES = Object.freeze({
   },
   commons: { executor: "streamable-http-mcp", surface: COMMONS_MCP },
   slack: { executor: "chatgpt-slack-connector", channel: SLACK_CHANNEL },
+  "grokcom-slack": {
+    executor: "grok_slack_bridge",
+    surface: "http://127.0.0.1:8789/",
+    slack_app_id: "A0BTJMFPTT6",
+    channel: SLACK_CHANNEL,
+    health: "127.0.0.1:8788",
+    gemini_isolated: true,
+    gemini_handoff: "127.0.0.1:8780",
+    tool: "grok_slack_bridge",
+    table_proof: "python integrations/grok_slack/bridge.py table-proof --json",
+  },
   github: { executor: "chatgpt-github-connector", repository: "woahwhattheheck/commons" },
 });
 
@@ -783,7 +794,34 @@ const TOOLS = [
       additionalProperties: false,
     },
   },
+  {
+    name: "grok_slack_bridge",
+    description: "Callable Commons Grok Slack bridge: DPAPI vault, loopback 8789, #commons table-proof. Never returns token values. Gemini stays on 8780.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+  },
 ];
+
+function grokSlackBridge() {
+  return {
+    schema: "commons-grok-slack-handoff/v1",
+    slack_app_id: "A0BTJMFPTT6",
+    handoff_bind: "127.0.0.1:8789",
+    gemini_handoff_bind: "127.0.0.1:8780",
+    health_bind: "127.0.0.1:8788",
+    slack_channel: SLACK_CHANNEL,
+    implementation: "integrations/grok_slack/bridge.py",
+    callable: [
+      "python integrations/grok_slack/bridge.py health --json",
+      "python integrations/grok_slack/bridge.py table-proof --json",
+    ],
+    vault: "current-user DPAPI (Windows) / user-bound ciphertext (POSIX); never plaintext; never deleted on unreadable",
+    cross_process: true,
+    secrets_printed: false,
+    auth: "none",
+    final_delivery_owner: "grok_slack_bridge",
+    gemini_isolated: true,
+  };
+}
 
 function toolResult(payload) {
   return { content: [{ type: "text", text: JSON.stringify(payload, null, 2) }], structuredContent: payload };
@@ -797,6 +835,7 @@ function callTool(name, args) {
   if (name === "build_grok_commons_client") return buildGrokCommonsClient(args);
   if (name === "build_grok_artifact") return buildArtifact(args);
   if (name === "classify_grok_preflight") return classifyPreflight(args);
+  if (name === "grok_slack_bridge") return grokSlackBridge();
   throw new Error(`unknown tool: ${name}`);
 }
 
@@ -829,6 +868,10 @@ function selfTest() {
   if (!client.grok_prompt.includes("bidirectional Commons peer")) throw new Error("Grok prompt fixture failed");
   if (new Set(getBridge().receipt_fields).size !== getBridge().receipt_fields.length) throw new Error("duplicate receipt field");
   if (!getBridge().capture_tools.includes("start_grok_capture") || getBridge().continuation_state !== "GROK_CONTINUE") throw new Error("capture route fixture failed");
+  if (!TOOLS.some((tool) => tool.name === "grok_slack_bridge")) throw new Error("grok slack tool missing");
+  if (!getBridge().routes["grokcom-slack"] || getBridge().routes["grokcom-slack"].slack_app_id !== "A0BTJMFPTT6") throw new Error("grok slack route missing");
+  if (callTool("grok_slack_bridge", {}).slack_app_id !== "A0BTJMFPTT6") throw new Error("grok slack tool fixture failed");
+  if (callTool("grok_slack_bridge", {}).gemini_handoff_bind !== "127.0.0.1:8780") throw new Error("gemini isolation fixture failed");
   process.stdout.write("commons-grok-cloud self-test: PASS\n");
 }
 

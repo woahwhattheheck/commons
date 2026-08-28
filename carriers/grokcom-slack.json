@@ -27,6 +27,23 @@
   "implementation": "integrations/grok_slack/bridge.py",
   "tool": "route_grokcom_revenue_work",
   "submit_tool": "fire_action",
+  "callable_tools": [
+    "grok_slack_bridge",
+    "health",
+    "table-proof"
+  ],
+  "commands": {
+    "health": "python integrations/grok_slack/bridge.py health --json",
+    "table_proof": "python integrations/grok_slack/bridge.py table-proof --json",
+    "handoff": "python integrations/grok_slack/handoff.py serve --open-browser"
+  },
+  "vault": {
+    "header": "CGSVAULT1W",
+    "protector": "win_dpapi",
+    "cross_process": true,
+    "restart_reloads": true,
+    "never_delete_on_unreadable": true
+  },
   "slack_channel": "C0BRGMDQB6G",
   "connector_origin": "COMMONS_GROKCOM_REVENUE",
   "final_delivery_owner": "grok_slack_bridge",

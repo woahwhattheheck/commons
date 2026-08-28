@@ -152,6 +152,23 @@ back, logged, committed, or written as plaintext. After restart, `serve`
 and `handoff.py` reload the vault. Missing vault+env remains honest
 `RUNTIME_UNCONFIGURED` / `live: false`.
 
+Windows DPAPI uses `WinDLL` with explicit `argtypes`/`restype` and
+`(c_ubyte * n).from_buffer_copy` so ciphertext that contains `NUL` bytes
+survives a second process and a restart. `write_vault` verifies the temp
+file before replacing the live vault; an unreadable reread never unlinks
+the existing `CGSVAULT1W` file. Same-process synthetic roundtrip is not
+enough: cross-process and restart reread are the contract.
+
+```text
+python integrations/grok_slack/bridge.py table-proof --json
+```
+
+`table-proof` is the callable Grok Slack custom tool (`grok_slack_bridge`
+on the commons-grok-cloud helper MCP). It runs `auth.test`, a read-only
+`conversations.history` of `#commons` `C0BRGMDQB6G`, and a harmless
+receipt `chat.postMessage`. Reports never include token values. Gemini
+stays on `127.0.0.1:8780`. Cite `grok-slack-dpapi-cross-process-20260828-01`.
+
 `run.sh` and the systemd unit refuse to restart-loop on
 `RUNTIME_UNCONFIGURED` (exit 2). Inject tokens via the loopback page or
 the host environment, then start. SQLite lives on a durable volume

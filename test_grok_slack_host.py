@@ -141,6 +141,73 @@ class GrokSlackHostTests(unittest.TestCase):
         sha = bridge.GitHubReadback(token="")._ls_remote_main()
         self.assertRegex(sha, r"^[0-9a-f]{40}$")
 
+    def test_table_proof_is_redacted_and_callable(self) -> None:
+        bot = "xoxb-table-proof-bot-aaaaaaaa"
+        app = "xapp-table-proof-app-bbbbbbbb"
+        calls: list[str] = []
+
+        class _Resp:
+            def __init__(self, payload: dict) -> None:
+                self._payload = json.dumps(payload).encode("utf-8")
+
+            def read(self) -> bytes:
+                return self._payload
+
+            def __enter__(self) -> "_Resp":
+                return self
+
+            def __exit__(self, *args: object) -> None:
+                return None
+
+        def opener(request: object, timeout: float | None = None) -> object:
+            del timeout
+            url = str(getattr(request, "full_url", ""))
+            calls.append(url.rsplit("/", 1)[-1])
+            auth = ""
+            headers = getattr(request, "headers", {}) or {}
+            if hasattr(headers, "items"):
+                for key, value in headers.items():
+                    if str(key).lower() == "authorization":
+                        auth = str(value)
+            self.assertTrue(auth.startswith("Bearer "))
+            self.assertIn(bot, auth)
+            if url.endswith("auth.test"):
+                return _Resp({"ok": True, "team_id": "T123", "user_id": "U123"})
+            if url.endswith("conversations.history"):
+                return _Resp({"ok": True, "messages": [{"ts": "1.2", "text": "hello table"}]})
+            if url.endswith("chat.postMessage"):
+                return _Resp({"ok": True, "ts": "3.4"})
+            raise AssertionError(url)
+
+        args = type("Args", (), {
+            "state_db": Path(tempfile.gettempdir()) / "unused-grok-slack-proof.sqlite3",
+            "probe": "",
+            "health_bind": "127.0.0.1:8788",
+            "post_receipt": True,
+        })()
+        with tempfile.TemporaryDirectory() as directory:
+            args.state_db = Path(directory) / "db.sqlite3"
+            code, report = bridge.table_proof(
+                args,
+                env={"SLACK_BOT_TOKEN": bot, "SLACK_APP_TOKEN": app},
+                opener=opener,
+                post_receipt=True,
+            )
+        encoded = json.dumps(report)
+        self.assertEqual(code, 0)
+        self.assertTrue(report["ok"])
+        self.assertTrue(report["read_only_history"])
+        self.assertTrue(report["receipt_posted"])
+        self.assertEqual(report["channel"], "C0BRGMDQB6G")
+        self.assertEqual(report["slack_app_id"], "A0BTJMFPTT6")
+        self.assertTrue(report["gemini_isolated"])
+        self.assertEqual(report["gemini_handoff_bind"], "127.0.0.1:8780")
+        self.assertNotIn(bot, encoded)
+        self.assertNotIn(app, encoded)
+        self.assertEqual(calls, ["auth.test", "conversations.history", "chat.postMessage"])
+        self.assertIn("table-proof", Path("integrations/grok_slack/bridge.py").read_text(encoding="utf-8"))
+
+
 
 if __name__ == "__main__":
     unittest.main()

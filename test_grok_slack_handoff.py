@@ -7,6 +7,9 @@ import hashlib
 import hmac
 import http.client
 import json
+import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -236,6 +239,138 @@ class GrokSlackHandoffTests(unittest.TestCase):
         self.assertEqual(handoff.GEMINI_HANDOFF_BIND, "127.0.0.1:8780")
         digest = hashlib.sha256(Path("integrations/gemini_slack/bridge.py").read_bytes()).hexdigest()
         self.assertEqual(len(digest), 64)
+
+    def test_binary_cdata_roundtrip_keeps_embedded_nuls(self) -> None:
+        blob = b"\x01\x00\x00\x00DPAPI\x00\xff" + bytes(range(32)) + b"\x00END"
+        buf, n = handoff._cdata_from_bytes(blob)
+        out = handoff._bytes_from_cdata(buf, n)
+        self.assertEqual(out, blob)
+        self.assertIn(b"\x00", out)
+        source = (handoff.integration_root() / "handoff.py").read_text(encoding="utf-8")
+        self.assertNotIn("create_string_buffer(blob", source)
+        self.assertNotIn("create_string_buffer(plaintext", source)
+        self.assertIn("from_buffer_copy", source)
+        self.assertIn("WinDLL", source)
+
+    def test_nul_embedding_protector_survives_write_and_is_not_deleted_on_failed_read(self) -> None:
+        class NulBlobProtector(handoff.Protector):
+            name = "nul_blob"
+
+            def __init__(self, inner: handoff.Protector) -> None:
+                self.inner = inner
+
+            def protect(self, plaintext: bytes) -> bytes:
+                return b"\x01\x00\x00\x00\xd0\x8c\x9d\xdf" + os.urandom(8) + self.inner.protect(plaintext)
+
+            def unprotect(self, blob: bytes) -> bytes:
+                if len(blob) < 16 or blob[:4] != b"\x01\x00\x00\x00":
+                    raise handoff.VaultError("vault unreadable")
+                return self.inner.unprotect(blob[16:])
+
+        bot, app = _bot(), _app()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "grok_slack.vault"
+            inner = handoff.PosixUserProtector(material=b"user-a")
+            protector = NulBlobProtector(inner)
+            written = handoff.write_vault(path, bot, app, protector=protector)
+            raw = path.read_bytes()
+            self.assertTrue(written["verified"])
+            self.assertTrue(raw.startswith(handoff.MAGIC + handoff.KIND_POSIX))
+            self.assertIn(b"\x00", raw[len(handoff.MAGIC) + 1 :])
+            self.assertNotIn(bot.encode(), raw)
+            loaded = handoff.read_vault(path, protector=protector)
+            self.assertTrue(hmac.compare_digest(loaded["bot_token"], bot))
+            before = path.read_bytes()
+            other = handoff.PosixUserProtector(material=b"user-b")
+            with self.assertRaises(handoff.VaultError):
+                handoff.read_vault(path, protector=other)
+            self.assertTrue(path.is_file())
+            self.assertEqual(path.read_bytes(), before)
+
+    def test_cross_process_and_restart_reread_same_vault(self) -> None:
+        bot, app = _bot(), _app()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "grok_slack.vault"
+            root = str(Path(__file__).resolve().parent)
+            writer = (
+                "import json,sys\\n"
+                f"sys.path.insert(0,{root!r})\\n"
+                "from pathlib import Path\\n"
+                "from integrations.grok_slack import handoff\\n"
+                f"path=Path({str(path)!r})\\n"
+                f"bot={bot!r}; app={app!r}\\n"
+                "p=handoff.PosixUserProtector(material=b'user-a')\\n"
+                "handoff.write_vault(path, bot, app, protector=p)\\n"
+                "print('WROTE', path.stat().st_size)\\n"
+            )
+            reader = (
+                "import json,sys,hmac\\n"
+                f"sys.path.insert(0,{root!r})\\n"
+                "from pathlib import Path\\n"
+                "from integrations.grok_slack import handoff\\n"
+                f"path=Path({str(path)!r})\\n"
+                f"bot={bot!r}; app={app!r}\\n"
+                "p=handoff.PosixUserProtector(material=b'user-a')\\n"
+                "loaded=handoff.read_vault(path, protector=p)\\n"
+                "ok=hmac.compare_digest(loaded['bot_token'], bot) and hmac.compare_digest(loaded['app_token'], app)\\n"
+                "print('READ', 'ok' if ok else 'bad', path.stat().st_size, loaded['slack_app_id'])\\n"
+            )
+            write_proc = subprocess.run([sys.executable, "-c", writer.replace("\\n", "\n")], capture_output=True, text=True, check=False)
+            self.assertEqual(write_proc.returncode, 0, write_proc.stderr)
+            self.assertIn("WROTE", write_proc.stdout)
+            self.assertNotIn(bot, write_proc.stdout + write_proc.stderr)
+            self.assertNotIn(app, write_proc.stdout + write_proc.stderr)
+            read_proc = subprocess.run([sys.executable, "-c", reader.replace("\\n", "\n")], capture_output=True, text=True, check=False)
+            self.assertEqual(read_proc.returncode, 0, read_proc.stderr)
+            self.assertIn("READ ok", read_proc.stdout)
+            self.assertIn("A0BTJMFPTT6", read_proc.stdout)
+            self.assertNotIn(bot, read_proc.stdout + read_proc.stderr)
+            env: dict[str, str] = {}
+            restarted = handoff.HandoffApp(
+                bind="127.0.0.1:0",
+                vault_path=path,
+                protector=handoff.PosixUserProtector(material=b"user-a"),
+                starter=lambda _b, _a: None,
+                live_probe=lambda: False,
+                env=env,
+            )
+            restarted.load_and_maybe_start()
+            self.assertTrue(hmac.compare_digest(env["SLACK_BOT_TOKEN"], bot))
+            self.assertNotIn(bot, json.dumps(restarted.status()))
+            self.assertTrue(path.is_file())
+
+    def test_kind_win_header_is_preserved_and_not_deleted(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "grok_slack.vault"
+            fake = handoff.MAGIC + handoff.KIND_WIN + b"\x01\x00ciphertext\x00blob"
+            path.write_bytes(fake)
+            with self.assertRaises(handoff.VaultError):
+                handoff.read_vault(path, protector=handoff.PosixUserProtector(material=b"x"))
+            self.assertEqual(path.read_bytes(), fake)
+            self.assertTrue(path.read_bytes().startswith(b"CGSVAULT1W"))
+
+    def test_failed_write_does_not_replace_existing_vault(self) -> None:
+        existing = handoff.MAGIC + handoff.KIND_WIN + b"\x01\x00keep-me\x00blob"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "grok_slack.vault"
+            path.write_bytes(existing)
+
+            class BoomProtector(handoff.Protector):
+                name = "boom"
+
+                def protect(self, plaintext: bytes) -> bytes:
+                    del plaintext
+                    return b"\x00new-ciphertext"
+
+                def unprotect(self, blob: bytes) -> bytes:
+                    del blob
+                    raise handoff.VaultError("vault unreadable")
+
+            with self.assertRaises(handoff.VaultError):
+                handoff.write_vault(path, _bot(), _app(), protector=BoomProtector())
+            self.assertEqual(path.read_bytes(), existing)
+            self.assertFalse(path.with_suffix(path.suffix + ".tmp").is_file())
+
 
 
 if __name__ == "__main__":

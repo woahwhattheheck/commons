@@ -117,6 +117,21 @@ class GrokCloudPluginTests(unittest.TestCase):
         self.assertIn("build_grok_commons_client", card["cloud_executor"]["helper_tools"])
         self.assertEqual(card["cloud_executor"]["direction"], "bidirectional")
 
+    def test_grokcom_slack_exposes_callable_bridge_and_never_deletes_vault(self):
+        card = json.loads((ROOT / "carriers" / "grokcom-slack.json").read_text(encoding="utf-8"))
+        self.assertEqual(card["id"], "grokcom-slack")
+        self.assertEqual(card["slack_app_id"], "A0BTJMFPTT6")
+        self.assertEqual(card["tool"], "route_grokcom_revenue_work")
+        self.assertEqual(card["auth"], "none")
+        self.assertIn("grok_slack_bridge", card["callable_tools"])
+        self.assertIn("table-proof", card["callable_tools"])
+        self.assertTrue(card["vault"]["cross_process"])
+        self.assertTrue(card["vault"]["never_delete_on_unreadable"])
+        self.assertEqual(card["handoff"], "http://127.0.0.1:8789/")
+        self.assertEqual(card["gemini_handoff"], "http://127.0.0.1:8780/")
+        server = (PLUGIN / "scripts" / "server.mjs").read_text(encoding="utf-8")
+        self.assertIn('name: "grok_slack_bridge"', server)
+
 
     def test_lossless_success_capture_builds_receipts_only_after_verified_completion(self):
         with tempfile.TemporaryDirectory() as td:
