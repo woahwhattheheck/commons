@@ -27,7 +27,7 @@
       "id": "software-heritage",
       "independent_origin": true,
       "kind": "independent-origin-git-save",
-      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Origin-readable after the visit finishes. Not canonical durability.",
+      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Origin GET 200 listed (ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit created, snapshot_swhid null, directory browse 404. Not origin-readable restore yet.",
       "operational": true
     },
     {
@@ -101,6 +101,6 @@
   ],
   "law": "git HEAD is canonical. Mirrors copy and can post back. A receipt is not the board.",
   "schema_version": "commons-moving-main-mirror/v1",
-  "still_open": "GitLab/Codeberg/object-store full-bundle independent origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last measured HTTP 523. jsDelivr is GitHub-backed. None of these is canonical durability.",
-  "ts": "2026-08-28T15:30:00Z"
+  "still_open": "Software Heritage origin GET 200 listed; snapshot_swhid still null so directory browse 404. GitLab/Codeberg/object-store full-bundle independent origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last measured HTTP 523. jsDelivr is GitHub-backed. None of these is canonical durability.",
+  "ts": "2026-08-28T15:50:00Z"
 }

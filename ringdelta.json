@@ -1,0 +1,35 @@
+{
+  "plaza": "ringdelta.html",
+  "kind": "RINGDELTA_ORGAN",
+  "version": 1,
+  "magic_mno": "MUHLRD01",
+  "magic_artifact": "RDV1",
+  "organ": "excerpts/20260828/ringdelta_xor8.mno",
+  "organ_bytes": 300,
+  "organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "width": 25,
+  "inject": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+  "surface": [56, 57, 58, 59, 60, 61, 62, 63],
+  "opcode": "XOR=0",
+  "n_gate": 8,
+  "usable": "public door ringdelta.html. drop a fixture or load published SEED0. queue a packet in compress/ringdelta/queue/. no auth.",
+  "colony": {
+    "genome": "muhl/cloud_substrate/cloud_genome.ringdelta-xor8-6x2.json",
+    "pages": "compress/ringdelta/colony/pages/",
+    "generation": "compress/ringdelta/colony/generation.json",
+    "page_count": 2,
+    "page_bytes": 150
+  },
+  "does_not_remint": [
+    "foldpack.py",
+    "stackpack.py",
+    "evolve.py",
+    "muhc.py",
+    "titan/engines/muhl_compress.py",
+    "SEED0.mno",
+    "cairn-folded-compression-and-the-breathing-budget-20260820-07"
+  ],
+  "hands_off": ["336", "fire337", "pulse78", "light7913", "DC"],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true
+}

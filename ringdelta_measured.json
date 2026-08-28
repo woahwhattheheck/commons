@@ -1,0 +1,16 @@
+{
+  "cite": "ground/RINGDELTA.md",
+  "organ": "excerpts/20260828/ringdelta_xor8.mno",
+  "organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "seed0_path": "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+  "seed0_b": 8192,
+  "seed0_sha256": "faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071",
+  "width": 25,
+  "delta_zeros": 6145,
+  "delta_zero_pct": 75.01,
+  "native_container_b": 3119,
+  "native_vs_source_pct": 38.07,
+  "zlib_source_b": 1391,
+  "zlib_delta_b": 1025,
+  "roundtrip": "EXACT"
+}

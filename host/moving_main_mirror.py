@@ -69,6 +69,16 @@ SWH_ORIGIN = (
     "https://archive.softwareheritage.org/api/1/origin/"
     "https://github.com/woahwhattheheck/commons/get/"
 )
+SWH_VISITS = (
+    "https://archive.softwareheritage.org/api/1/origin/"
+    "https://github.com/woahwhattheheck/commons/visits/"
+)
+SWH_BROWSE = (
+    "https://archive.softwareheritage.org/browse/origin/directory/"
+    "?origin_url=https://github.com/woahwhattheheck/commons"
+)
+SWH_VAULT_PREFIX = "https://archive.softwareheritage.org/api/1/vault/git-bare/"
+ORI_RE = re.compile(r"swh:1:ori:[0-9a-f]{40}")
 IA_SAVE_PREFIX = "https://web.archive.org/save/"
 PAGES = "https://woahwhattheheck.github.io/commons/"
 JSDELIVR_MAIN = "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/"
@@ -361,8 +371,9 @@ def prefer_receipts(receipts: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
     for row in pool:
         key = str(row.get("head_sha") or row.get("digest") or row.get("sha256") or "")
         keys.append(key)
+    comparable = [(row, key) for row, key in zip(pool, keys) if key]
     by_key: dict[str, list[dict[str, Any]]] = {}
-    for row, key in zip(pool, keys):
+    for row, key in comparable:
         by_key.setdefault(key, []).append(row)
     if len(by_key) > 1:
         return {
@@ -415,7 +426,11 @@ ADAPTERS = (
         "independent_origin": True,
         "operational": True,
         "href": SWH_SAVE,
-        "notes": "Zero-new-credential Save Code Now from GitHub Actions. Origin-readable after the visit finishes. Not canonical durability.",
+        "notes": (
+            "Zero-new-credential Save Code Now from GitHub Actions. Origin GET 200 listed "
+            "(ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit created, "
+            "snapshot_swhid null, directory browse 404. Not origin-readable restore yet."
+        ),
         "external_provider_action": None,
     },
     {
@@ -499,7 +514,7 @@ ADAPTERS = (
 def adapters_catalog() -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
-        "ts": "2026-08-28T15:30:00Z",
+        "ts": "2026-08-28T15:50:00Z",
         "law": "git HEAD is canonical. Mirrors copy and can post back. A receipt is not the board.",
         "compose": [
             "host/repo_backup.py",
@@ -511,9 +526,10 @@ def adapters_catalog() -> dict[str, Any]:
         ],
         "adapters": list(ADAPTERS),
         "still_open": (
-            "GitLab/Codeberg/object-store full-bundle independent origins remain "
-            "EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last measured HTTP 523. "
-            "jsDelivr is GitHub-backed. None of these is canonical durability."
+            "Software Heritage origin GET 200 listed; snapshot_swhid still null so "
+            "directory browse 404. GitLab/Codeberg/object-store full-bundle independent "
+            "origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last "
+            "measured HTTP 523. jsDelivr is GitHub-backed. None of these is canonical durability."
         ),
     }
 
@@ -683,6 +699,123 @@ def readback_software_heritage(request_url: str | None = None) -> dict[str, Any]
         "url": url,
         "note": redact(result.get("error") or body.get("reason") or "origin not yet listed"),
     }
+
+
+def extract_ori_swhid(origin: Mapping[str, Any] | None) -> str | None:
+    found = ORI_RE.search(json.dumps(origin or {}, sort_keys=True))
+    return found.group(0) if found else None
+
+
+def classify_swh_origin(
+    origin: Mapping[str, Any] | None,
+    visits: Any = None,
+    save: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    origin = dict(origin or {})
+    listed = bool(origin.get("url") or origin.get("origin_visits_url") or origin.get("visit_types"))
+    rows: list[Any] = []
+    if isinstance(visits, list):
+        rows = visits
+    elif isinstance(visits, Mapping):
+        maybe = visits.get("items") or visits.get("visits") or []
+        if isinstance(maybe, list):
+            rows = maybe
+    snapshot = None
+    visit_status = None
+    if rows:
+        latest = rows[0] if isinstance(rows[0], Mapping) else {}
+        snapshot = latest.get("snapshot") or latest.get("snapshot_swhid")
+        visit_status = latest.get("status")
+    if save and not snapshot:
+        snapshot = save.get("snapshot_swhid")
+        visit_status = visit_status or save.get("visit_status")
+    if snapshot:
+        state = "SNAPSHOT_READY"
+        origin_readable = True
+        verified = True
+        note = "independent origin snapshot is set; vault git-bare may cook"
+    elif listed:
+        state = "ORIGIN_LISTED"
+        origin_readable = False
+        verified = False
+        note = "origin listed; snapshot_swhid null so directory browse is not a restore"
+    else:
+        state = "MISS"
+        origin_readable = False
+        verified = False
+        note = "origin not listed"
+    return {
+        "id": "software-heritage",
+        "state": state,
+        "verified": verified,
+        "origin_readable": origin_readable,
+        "independent_origin": True,
+        "listed": listed,
+        "visit_status": visit_status,
+        "snapshot_swhid": snapshot,
+        "ori_swhid": extract_ori_swhid(origin),
+        "note": note,
+    }
+
+
+def request_swh_vault(snapshot_swhid: str | None, post: Callable[..., int] | None = None) -> dict[str, Any]:
+    if not snapshot_swhid:
+        return {
+            "id": "software-heritage-vault",
+            "state": "SKIP",
+            "verified": False,
+            "independent_origin": True,
+            "note": "no snapshot_swhid; do not claim origin-readable restore",
+        }
+    url = SWH_VAULT_PREFIX + str(snapshot_swhid).rstrip("/") + "/"
+    cooked = http_call(url, data=b"", method="POST", timeout=40, post=post)
+    if cooked["status"] not in {200, 201}:
+        cooked = http_call(url, timeout=40)
+    body = {}
+    try:
+        body = json.loads(cooked["body"].decode("utf-8") or "{}") if cooked.get("body") else {}
+    except json.JSONDecodeError:
+        body = {}
+    status_name = str(body.get("status") or "")
+    ready = cooked["status"] in {200, 201} and status_name.lower() in {"done", "ready"}
+    return {
+        "id": "software-heritage-vault",
+        "state": "VAULT_READY" if ready else "VAULT_PENDING" if cooked["status"] in {200, 201} else "MISS",
+        "verified": bool(ready),
+        "independent_origin": True,
+        "status": cooked["status"],
+        "url": url,
+        "vault_status": status_name or None,
+        "note": "vault git-bare is a restore fetch, not canonical durability",
+    }
+
+
+def read_software_heritage_origin() -> dict[str, Any]:
+    origin = http_call(SWH_ORIGIN, timeout=30)
+    visits = http_call(SWH_VISITS, timeout=30)
+    browse = http_call(SWH_BROWSE, timeout=20)
+    origin_body: dict[str, Any] = {}
+    visits_body: Any = []
+    try:
+        if origin["status"] == 200 and origin.get("body"):
+            origin_body = json.loads(origin["body"].decode("utf-8") or "{}")
+    except json.JSONDecodeError:
+        origin_body = {}
+    try:
+        if visits["status"] == 200 and visits.get("body"):
+            visits_body = json.loads(visits["body"].decode("utf-8") or "[]")
+    except json.JSONDecodeError:
+        visits_body = []
+    classified = classify_swh_origin(origin_body, visits_body)
+    classified["status"] = origin["status"]
+    classified["browse_status"] = browse["status"]
+    classified["url"] = SWH_ORIGIN
+    classified["visits_url"] = SWH_VISITS
+    if classified.get("origin_readable") and classified.get("snapshot_swhid"):
+        classified["vault"] = request_swh_vault(str(classified["snapshot_swhid"]))
+    else:
+        classified["vault"] = request_swh_vault(None)
+    return classified
 
 
 def publish_internet_archive(path: str = "mirrors.json") -> dict[str, Any]:
@@ -883,6 +1016,7 @@ def sync(source: Path, live: bool = False, output: Path | None = None) -> dict[s
         receipts.append(ntfy_read)
         swh_url = next((row.get("request_url") for row in receipts if row.get("id") == "software-heritage"), None)
         receipts.append(readback_software_heritage(swh_url))
+        receipts.append(read_software_heritage_origin())
     elif not live:
         receipts.append(
             {

@@ -1,0 +1,40 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "software-heritage",
+  "kind": "independent-origin-listed",
+  "observed_at": "2026-08-28T15:50:00Z",
+  "origin": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/get/",
+    "http_status": 200,
+    "origin_url": "https://github.com/woahwhattheheck/commons",
+    "visit_types": ["git"],
+    "ori_swhid": "swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb"
+  },
+  "visits": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/visits/",
+    "http_status": 200,
+    "visit": 1,
+    "status": "created",
+    "snapshot": null
+  },
+  "browse": {
+    "url": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/woahwhattheheck/commons",
+    "http_status": 404,
+    "reason": "No valid visit for origin with url https://github.com/woahwhattheheck/commons found!"
+  },
+  "save": {
+    "save_id": 2456178,
+    "save_request_status": "accepted",
+    "save_task_status": "running",
+    "snapshot_swhid": null
+  },
+  "claim_boundary": {
+    "zero_new_credential_save": true,
+    "independent_origin": true,
+    "origin_listed": true,
+    "origin_readable": false,
+    "canonical_durability": false
+  },
+  "state": "ORIGIN_LISTED",
+  "note": "Origin GET 200 listed after save 2456178. Directory browse 404 until snapshot_swhid is set. Do not claim origin-readable restore."
+}

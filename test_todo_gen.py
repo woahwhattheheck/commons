@@ -17,7 +17,8 @@ def main():
     assert len(rows) >= 22, "late directives disappeared from the fallback"
     assert by_id[7]["word"] == "BUILT", by_id[7]
     assert by_id[9]["word"] == "HALF", by_id[9]
-    assert by_id[10]["word"] == "HALF", by_id[10]
+    assert by_id[10]["word"] == "LANDED", by_id[10]
+    assert "2026-08-28" in by_id[10]["status"], by_id[10]
     assert by_id[18]["word"] == "MEASURED", by_id[18]
     assert todo_gen.status_word("NOT BUILT") == "NOT BUILT"
     assert todo_gen.status_word("UNBUILT") == "OPEN"
