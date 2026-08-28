@@ -1,0 +1,33 @@
+# Production MCP is api/mcp.py + commons_mcp.py and their import graph.
+# The Git-backed board corpus is read over HTTPS, not from this bundle.
+p
+chunks
+lda
+android
+.github
+.git
+node_modules
+actions
+wake_jobs
+conflicts
+artifacts
+screenshots
+posts.json
+recent.json
+board.md
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.webp
+**/*.gif
+**/*.mp4
+**/*.apk
+**/*.zip
+**/*.pyc
+**/__pycache__
+**/.DS_Store
+owner-private
+*.vault
+**/.commons/*.vault
+.env
+.env.*
