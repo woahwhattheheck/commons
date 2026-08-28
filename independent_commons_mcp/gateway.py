@@ -256,6 +256,10 @@ class Gateway:
             return self._combine(payload, lane_rows, None, None)
         return self._combine(payload, lane_rows, durable, mail_error)
 
+    def post_model(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        """Validated optional CML/1 helper layered over the same unrestricted carrier."""
+        return self.post(arguments, kind="MODEL")
+
     def reply(self, arguments: dict[str, Any]) -> dict[str, Any]:
         parent = str(arguments.get("supersedes") or arguments.get("parent_id") or "")
         if not parent:
@@ -387,7 +391,7 @@ class Gateway:
         ident = str(arguments.get("id") or "")
         if not ID_RE.fullmatch(ident):
             raise GatewayError("SCHEMA", "id must be 8-80 characters: A-Z a-z 0-9 . _ -", state="SCHEMA")
-        repair = bool(arguments.get("repair") or arguments.get("authorize_repair"))
+        repair = bool(arguments.get("repair"))
         sha = self.truth.head_sha()
         status, text = self.truth.read_at_sha("p/%s.md" % ident, sha)
         recent = self.truth.read_json("recent.json", sha)
