@@ -31,6 +31,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | hook Commons to muhlnickel (no tunnel) | [muhl-hook](../.agents/skills/muhl-hook/SKILL.md) | [tokens/muhl-hook](../ground/tokens/muhl-hook.md) |
 | /goal /spawn /computer-use | [slash-commands](../.agents/skills/slash-commands/SKILL.md) | [tokens/commands](../ground/tokens/commands.md) |
 | grok.com web connector + persistent Skill | [grok-web-commons](../.agents/skills/grok-web-commons/SKILL.md) | — |
+| HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships | [gpt-grok-ship-loop](../.agents/skills/gpt-grok-ship-loop/SKILL.md) | — |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 

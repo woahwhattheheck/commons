@@ -24,6 +24,7 @@
     {"id": "bazaar", "job": "paid action / copied Muhlnickel jobs", "token": ""},
     {"id": "muhl-hook", "job": "hook Commons to muhlnickel (no tunnel)", "token": "ground/tokens/muhl-hook.md"},
     {"id": "slash-commands", "job": "/goal /spawn /computer-use and the other slashes", "token": "ground/tokens/commands.md"},
-    {"id": "grok-web-commons", "job": "grok.com web connector + persistent Skill", "token": ""}
+    {"id": "grok-web-commons", "job": "grok.com web connector + persistent Skill", "token": ""},
+    {"id": "gpt-grok-ship-loop", "job": "HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships", "token": ""}
   ]
 }
