@@ -144,22 +144,45 @@ class TestResourceLedger(unittest.TestCase):
         with open(catalog_path, encoding="utf-8") as handle:
             text = handle.read()
         catalog = load_catalog(text)
-        self.assertEqual(catalog["slack_ts"], "1787911777.379739")
+        raw = json.loads(text)
+        self.assertEqual(catalog["slack_ts"], "1787933005.065549")
         self.assertEqual(
-            catalog["source_id"], "codex-grok-executor-queue-activation-20260828-01"
+            catalog["source_id"], "codex-github-actions-watchdog-advancement-20260828-01"
+        )
+        self.assertIn(
+            "codex-grok-executor-queue-activation-20260828-01",
+            raw.get("supersedes_source_ids") or [],
         )
         activation_path = os.path.join(
             ROOT,
             "inventory",
             "resources",
             "records",
-            "codex-grok-executor-queue-activation-20260828-01.json",
+            "codex-github-actions-watchdog-advancement-20260828-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
+        self.assertEqual(activation["event_id"], catalog["source_id"])
+        self.assertEqual(activation["event_type"], "RESOURCE_ADVANCEMENT")
+        self.assertEqual(activation["selected_resource"], "github-actions")
+        slack_cite = "p" + catalog["slack_ts"].replace(".", "")
+        self.assertIn(slack_cite, activation["evidence"]["slack"])
+        superseded_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-grok-executor-queue-activation-20260828-01.json",
+        )
+        with open(superseded_path, encoding="utf-8") as handle:
+            superseded = json.load(handle)
         self.assertEqual(
+            superseded["connected_app_aggregate"]["slack_activation_ts"],
+            "1787911777.379739",
+        )
+        self.assertNotEqual(
             catalog["slack_ts"],
-            activation["connected_app_aggregate"]["slack_activation_ts"],
+            superseded["connected_app_aggregate"]["slack_activation_ts"],
         )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
@@ -197,7 +220,19 @@ class TestResourceLedger(unittest.TestCase):
         queue_names = [row["name"] for row in measured["activation_queue"]]
         self.assertNotIn("titan-hands-windows", queue_names)
         self.assertIn("titan-hands-windows", measured["expired_resources"])
-        self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
+        self.assertEqual(measured["activation_queue"][0]["name"], "github-actions")
+        self.assertEqual(measured["activation_queue"][0]["priority"], 85)
+        self.assertIn("outcome-commerce-bridge", queue_names)
+        commerce = next(
+            row
+            for row in measured["activation_queue"]
+            if row["name"] == "outcome-commerce-bridge"
+        )
+        self.assertGreater(measured["activation_queue"][0]["priority"], commerce["priority"])
+        self.assertEqual(
+            [row["priority"] for row in measured["activation_queue"]],
+            sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
+        )
         self.assertIn("commons-swarm-gateway", measured["expired_resources"])
         self.assertIn("stale-claim-capacity", measured["expired_resources"])
         self.assertEqual(
