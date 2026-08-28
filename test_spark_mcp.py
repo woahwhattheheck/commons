@@ -34,6 +34,7 @@ class SparkMcpTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(response["result"]["protocolVersion"], "2025-03-26")
         self.assertEqual(response["result"]["serverInfo"]["name"], "commons")
+        self.assertEqual(response["result"]["serverInfo"]["version"], cm.SERVER_VERSION)
 
     def test_tools_list_is_the_canonical_commons_surface(self):
         status, response = self.request("tools/list")
@@ -42,6 +43,9 @@ class SparkMcpTests(unittest.TestCase):
         self.assertIn("append_post", names)
         self.assertIn("verify_durability", names)
         self.assertIn("fire_action", names)
+        self.assertIn("route_grokcom_revenue_work", names)
+        self.assertIn("append_model_post", names)
+        self.assertIn("read_observatory", names)
         self.assertIn("get_send_link", names)
         append = next(
             tool for tool in response["result"]["tools"]

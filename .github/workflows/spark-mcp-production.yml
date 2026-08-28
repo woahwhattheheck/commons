@@ -1,0 +1,191 @@
+# Keep production Commons MCP at https://commons-spark-mcp.vercel.app/mcp
+# identical to current main. Manual Aug-25 deploys went stale; this is the
+# no-click road after VERCEL_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID exist.
+#
+# Queue fuse: path-filter only MCP production source. Do not add p/**,
+# llms.txt, board.md, posts.json, or other corpus paths — those commits are
+# continuous and must not roll Vercel. Unique board/job events stay on their
+# own workflows. Main deploys coalesce to the latest SHA.
+#
+# pull_request runs focused tests only. Never deploys. Never replays Slack.
+name: spark-mcp-production
+
+on:
+  push:
+    branches:
+      - main
+    paths: &mcp_production_paths
+      - "api/mcp.py"
+      - "api/owner_context.py"
+      - "commons_mcp.py"
+      - "vercel.json"
+      - ".vercelignore"
+      - "carriers/**"
+      - "host/observatory.py"
+      - "integrations/grokcom_revenue/**"
+      - "model_language.py"
+      - "relay_manifest.py"
+      - "protocol/**"
+      - ".github/workflows/spark-mcp-production.yml"
+      - "test_spark_mcp.py"
+      - "test_spark_mcp_production_deploy.py"
+  pull_request:
+    paths: *mcp_production_paths
+  workflow_dispatch:
+
+concurrency:
+  group: spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: adapter surface, fire_action 1.3.0, deploy contract
+        run: python -B -W error -m unittest -q test_spark_mcp.py test_spark_mcp_production_deploy.py test_commons_mcp.py
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: focused
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_NAME: commons-spark-mcp
+      VERCEL_SCOPE: woahwhatthehecks-projects
+      PUBLIC_MCP_URL: https://commons-spark-mcp.vercel.app/mcp
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: detect Vercel credentials without printing values
+        id: creds
+        run: |
+          set -euo pipefail
+          if [ -n "${VERCEL_TOKEN}" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+            echo "VERCEL_TOKEN present (value not printed)"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## spark-mcp-production skipped"
+              echo
+              echo "VERCEL_TOKEN is not present in GitHub Actions secrets."
+              echo
+              echo "Exact UI action: open"
+              echo "https://github.com/woahwhattheheck/commons/settings/secrets/actions"
+              echo "→ New repository secret, and add these three names"
+              echo "(values from Vercel, never from chat or git):"
+              echo
+              echo "1. \`VERCEL_TOKEN\` — Vercel → Account Settings → Tokens → Create"
+              echo "2. \`VERCEL_ORG_ID\` — Vercel → commons-spark-mcp → Settings → General"
+              echo "3. \`VERCEL_PROJECT_ID\` — same General page"
+              echo
+              echo "Then re-run this workflow on main (Actions → spark-mcp-production → Run workflow)."
+            } | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.creds.outputs.present == 'true'
+        with:
+          node-version: "22"
+
+      - name: deploy current main to commons-spark-mcp production
+        if: steps.creds.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          npm install --global vercel@56.1.0
+          mkdir -p .vercel
+          if [ -n "${VERCEL_ORG_ID}" ] && [ -n "${VERCEL_PROJECT_ID}" ]; then
+            python3 - <<'PY'
+          import json, os, pathlib
+          pathlib.Path(".vercel").mkdir(exist_ok=True)
+          pathlib.Path(".vercel/project.json").write_text(
+              json.dumps({
+                  "orgId": os.environ["VERCEL_ORG_ID"],
+                  "projectId": os.environ["VERCEL_PROJECT_ID"],
+              }),
+              encoding="utf-8",
+          )
+          PY
+          else
+            vercel link --yes --token="${VERCEL_TOKEN}" --project "${VERCEL_PROJECT_NAME}" --scope "${VERCEL_SCOPE}"
+          fi
+          vercel deploy --prod --yes --token="${VERCEL_TOKEN}" | tee /tmp/vercel-deploy.log
+          {
+            echo "## spark-mcp-production deployed"
+            echo
+            echo "SHA \`${GITHUB_SHA}\` → ${PUBLIC_MCP_URL}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/setup-python@v5
+        if: steps.creds.outputs.present == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: wait for live initialize/tools-list parity
+        if: steps.creds.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, sys, time, urllib.request
+
+          url = "https://commons-spark-mcp.vercel.app/mcp"
+          want_version = "1.3.0"
+          want_tool = "route_grokcom_revenue_work"
+          headers = {
+              "Content-Type": "application/json",
+              "Accept": "application/json, text/event-stream",
+              "MCP-Protocol-Version": "2025-03-26",
+          }
+
+          def rpc(method, params=None, request_id=1):
+              payload = {"jsonrpc": "2.0", "id": request_id, "method": method}
+              if params is not None:
+                  payload["params"] = params
+              req = urllib.request.Request(
+                  url,
+                  data=json.dumps(payload).encode("utf-8"),
+                  headers=headers,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=20) as resp:
+                  return json.loads(resp.read().decode("utf-8"))
+
+          last = None
+          for attempt in range(18):
+              try:
+                  init = rpc(
+                      "initialize",
+                      {
+                          "protocolVersion": "2025-03-26",
+                          "capabilities": {},
+                          "clientInfo": {"name": "spark-mcp-production", "version": "1"},
+                      },
+                  )
+                  tools = rpc("tools/list", {}, request_id=2)
+                  info = (init.get("result") or {}).get("serverInfo") or {}
+                  names = [row.get("name") for row in ((tools.get("result") or {}).get("tools") or [])]
+                  last = {"version": info.get("version"), "name": info.get("name"), "tools": names}
+                  print("live", json.dumps({"version": last["version"], "tool_count": len(names), "has_route": want_tool in names}))
+                  if info.get("name") == "commons" and info.get("version") == want_version and want_tool in names:
+                      print("LIVE_SOURCE_PARITY")
+                      sys.exit(0)
+              except Exception as exc:
+                  last = {"error": str(exc)}
+                  print("poll error", exc)
+              time.sleep(10)
+          print("STALE_OR_UNVERIFIED", json.dumps(last))
+          sys.exit(1)
+          PY
