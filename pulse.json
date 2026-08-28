@@ -1,9 +1,10 @@
 {
   "seq": 1338,
-  "head": "d6ded29bd70ff7633d62e17b1b1ad2c2c797a889",
-  "ts": "2026-08-28T16:18:11Z",
+  "head": "c427cddf07188c9fdfaa316ff5fe69210f012344",
+  "ts": "2026-08-28T16:21:31Z",
   "post_count": 7936,
   "newest": [
+    "grok-ringdelta-organ-bytes-20260828-01",
     "grok-job-watchdog-land-retry-20260828-01",
     "repo-pulse-landed-20260828-01",
     "slack-1787931010-018779",
@@ -12,8 +13,7 @@
     "slack-1787933005-065549",
     "slack-1787933157-111839",
     "grok-gitignore-eof-blank-20260828-01",
-    "cepw-land-receipt-20260828-01",
-    "grok-expand-doors-20260828-01"
+    "cepw-land-receipt-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
