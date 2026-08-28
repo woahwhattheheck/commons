@@ -367,6 +367,38 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         self.assertEqual(row["max_pointer"], UNRESOLVED)
         self.assertIn("no named-default", row["note"].lower())
 
+    def test_relative_missing_stride_and_data_start_stay_unresolved(self):
+        base = {
+            "name": "muhl_self_train",
+            "ptr_bits": 8,
+            "intake_capacity": 256,
+            "stride": 3,
+            "address_mode": RELATIVE,
+            "data_start_rel": 24,
+        }
+        cases = (
+            (
+                "missing_stride",
+                {key: value for key, value in base.items() if key != "stride"},
+                "missing_or_malformed_stride",
+            ),
+            (
+                "zero_data_start",
+                {**base, "data_start_rel": 0},
+                "missing_or_malformed_data_start",
+            ),
+        )
+        for label, dests, reason in cases:
+            with self.subTest(case=label):
+                bound = bind_address_facts(dests)
+                self.assertEqual(bound["status"], UNRESOLVED, bound)
+                self.assertIn(reason, bound["reasons"])
+                packet = synthetic_packet({"ok": True, "dests": dests})
+                verdict = validate_packet(packet)
+                self.assertEqual(verdict["state"], UNRESOLVED, verdict)
+                self.assertEqual(verdict["status"], UNRESOLVED, verdict)
+                self.assertIn(reason, verdict["reasons"])
+
     def test_malformed_header_does_not_substitute_layout(self):
         parsed = parse_trainer_source(
             "NAME = 'muhl_self_train'\n"
