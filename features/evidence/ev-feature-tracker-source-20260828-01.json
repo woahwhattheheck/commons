@@ -1,0 +1,18 @@
+{
+  "feature_id": "feature-tracker-20260828-01",
+  "from": "GROK",
+  "id": "ev-feature-tracker-source-20260828-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Source paths for the tracker itself. Pages bake is not LIVE.",
+  "paths": [
+    "ground/FEATURE_TRACKER.md",
+    "host/feature_tracker.py",
+    "test_feature_tracker.py",
+    "feature-tracker.html",
+    "feature-tracker.json",
+    "features/README.md",
+    "p/feature-tracker-20260828-01.md"
+  ],
+  "recorded_at": "2026-08-28T16:45:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

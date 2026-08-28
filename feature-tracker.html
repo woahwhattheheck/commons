@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Commons feature tracker</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+</head><body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Once evidence validates a path, stop re-litigating it: build through it at full speed and reopen doubt only when a named boundary check or new evidence invalidates the cache. <strong>Commerce is included:</strong> when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./features.html">FEATURES lane</a> · <a href="./current-work.html">current work</a> · <a href="./ledger.html">resource ledger</a> · <a href="./boards.html">boards</a></p>
+<h1>Feature tracker</h1>
+<p class="law">Shipped-state tracker. Status is derived from git-visible registry, evidence, and the measured tree. <b>Source and live stay separate columns.</b> Chat, Slack, ntfy 200, an open PR, Pages, <code>claimed_status</code>, and HTTP never promote LIVE.</p>
+<p>Law: <a href="./ground/FEATURE_TRACKER.md">ground/FEATURE_TRACKER.md</a>. Machine: <a href="./feature-tracker.json">feature-tracker.json</a>. Instrument: <code>python3 host/feature_tracker.py --write</code>. Proof: <code>python3 test_feature_tracker.py</code>. Registry: <a href="./features/README.md">features/registry/</a>.</p>
+<p class="note"><a href="./features.html">features.html</a> is the FEATURES board lane. Do not remint it. This page is a different object.</p>
+<p class="note">0 PLANNED · 3 SOURCE_BUILT · 7 TESTED · 0 LIVE · 0 DEGRADED · 0 SUPERSEDED · 10 features · HTTP is a bake.</p>
+<table>
+<thead><tr><th>id</th><th>name</th><th>status</th><th>source</th><th>tested</th><th>live</th><th>door</th><th>next gap</th></tr></thead>
+<tbody>
+<tr class="st-TESTED"><td><code>action-pad-open-door-20260822-01</code></td><td>Action Pad</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./action.html">action.html</a></td><td>Do not add auth, identity, seat, memory, permission, or verb gates. Expand capability.</td></tr>
+<tr class="st-TESTED"><td><code>builds-attribution-ledger-20260818-01</code></td><td>Build attribution ledger</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./builds.html">builds.html</a></td><td>Keep records append-only; edits of prior record files stay a guard alert.</td></tr>
+<tr class="st-TESTED"><td><code>current-work-ledger-20260828-01</code></td><td>Current-work ledger</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./current-work.html">current-work.html</a></td><td>Add now-work only with claimed_paths; do not revive historical DIRECTIVES OPEN lines.</td></tr>
+<tr class="st-TESTED"><td><code>feature-tracker-20260828-01</code></td><td>Feature tracker</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./feature-tracker.html">feature-tracker.html</a></td><td>After merge, add a LIVE_MEASUREMENT evidence row citing the Pages URL and the official 40-character main SHA.</td></tr>
+<tr class="st-TESTED"><td><code>features-board-lane-20260820-01</code></td><td>FEATURES board lane</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./features.html">features.html</a></td><td>Keep this lane. Route shipped-state rows to the feature tracker, not a reminted features.html.</td></tr>
+<tr class="st-SOURCE_BUILT"><td><code>gpt-grok-ship-loop-20260828-01</code></td><td>GPT to GROK ship loop</td><td class="status">SOURCE_BUILT</td><td>yes</td><td>no</td><td>no</td><td><a href="./gpt-grok-ship-loop.html">gpt-grok-ship-loop.html</a></td><td>Cite the ship-loop skill and tests as test_paths once those paths are named in this registry.</td></tr>
+<tr class="st-TESTED"><td><code>open-door-guard-20260822-01</code></td><td>Open-door guard</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./ground/OPEN_DOOR.md">ground/OPEN_DOOR.md</a></td><td>Keep the guard on added lines only; never turn it into an access control.</td></tr>
+<tr class="st-SOURCE_BUILT"><td><code>profitability-build-map-20260826-01</code></td><td>Profitability build map</td><td class="status">SOURCE_BUILT</td><td>yes</td><td>no</td><td>no</td><td><a href="./ground/PROFITABILITY_BUILD_MAP.md">ground/PROFITABILITY_BUILD_MAP.md</a></td><td>Measure crawl-to-referral and cash with dated receipts. Zero sales is not permission to kill a SKU.</td></tr>
+<tr class="st-SOURCE_BUILT"><td><code>public-board-ingest-20260819-01</code></td><td>Public board</td><td class="status">SOURCE_BUILT</td><td>yes</td><td>no</td><td>no</td><td><a href="./board.html">board.html</a></td><td>Name the board_ingest tests that already exist and cite them here as test_paths rather than claiming an unlisted battery.</td></tr>
+<tr class="st-TESTED"><td><code>rivet-ship-resource-ledger-20260825-01</code></td><td>Resource ledger</td><td class="status">TESTED</td><td>yes</td><td>yes</td><td>no</td><td><a href="./ledger.html">ledger.html</a></td><td>Keep live rows fully fielded; do not count cache or secrets as capacity.</td></tr>
+</tbody>
+</table>
+<p>Add a feature: mint id <code>^[A-Za-z0-9._-]{8,80}$</code>, write one new <code>features/registry/{id}.json</code>, optionally write evidence, run the instrument, unique branch, merge not force. Same id + same bytes is idempotent. Same id + different bytes is CONFLICT. No auth. No secrets.</p>
+<p>LIVE requires a <code>LIVE_MEASUREMENT</code> evidence row with a public URL and a 40-character SHA. After merge, cite the Pages URL against the official main SHA. Do not fabricate LIVE.</p>
+</body></html>
