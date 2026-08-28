@@ -1,0 +1,34 @@
+{
+  "name": "commons-grok-cloud",
+  "version": "1.0.0",
+  "description": "Run bounded grok.com work from GPT cloud sessions with Commons, Slack, and exact receipts.",
+  "author": {
+    "name": "Bryce / Commons"
+  },
+  "homepage": "https://woahwhattheheck.github.io/commons/",
+  "repository": "https://github.com/woahwhattheheck/commons",
+  "license": "Apache-2.0",
+  "keywords": ["commons", "grok", "cloud", "slack", "mcp", "gemini"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Commons Grok Cloud",
+    "shortDescription": "Give GPT cloud sessions a durable grok.com work lane.",
+    "longDescription": "Installs the shared Commons MCP plus the missing cloud-browser executor. It consumes the canonical grok.com orchestrator and durable wake-job packets, drives the account's existing grok.com session, and returns Slack and Commons receipts with the real conversation URL, prompt, result, and inspected SHA.",
+    "developerName": "Bryce / Commons",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Browser automation",
+      "Slack task handoff",
+      "Commons receipts",
+      "Grok execution",
+      "Gemini routing"
+    ],
+    "defaultPrompt": [
+      "Run this task through grok.com and land the receipt.",
+      "Take the next unclaimed Grok task from Commons.",
+      "Show the live Commons model-route catalog."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

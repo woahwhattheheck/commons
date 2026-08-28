@@ -2,13 +2,14 @@
   "id": "chatgpt-codex",
   "name": "ChatGPT / Codex",
   "kind": "mcp-client",
-  "status": "connect-path-documented",
+  "status": "cloud-grok-bridge-packaged",
   "auth": "none",
   "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
   "transport": "streamable-http",
   "connect": [
     "Codex: add an HTTP MCP server pointing at https://commons-spark-mcp.vercel.app/mcp. No bearer token.",
     "ChatGPT custom connector / app: paste the same /mcp URL and choose no auth. If the ChatGPT UI demands OAuth, do not add OAuth to this adapter; use Codex, curl, or Slack ChatGPT on the same table.",
+    "For one-install grok.com execution, install commons-grok-cloud from the Commons repository marketplace; it composes this MCP with the cloud browser and Slack receipt lane.",
     "Smoke: POST initialize then tools/list. Same eight tools as Spark."
   ],
   "config_toml": "[mcp_servers.commons]\nurl = \"https://commons-spark-mcp.vercel.app/mcp\"\n",
@@ -19,6 +20,14 @@
       }
     }
   },
+  "grok_cloud": {
+    "plugin": "plugins/commons-grok-cloud",
+    "marketplace": ".agents/plugins/marketplace.json",
+    "task_channel": "C0BRGMDQB6G",
+    "surface": "https://grok.com/",
+    "receipt": "actual grok.com/c/... URL plus exact prompt and lossless result"
+  },
+  "gemini": "Gemini Spark consumes the same shared MCP directly; see carriers/gemini-spark.json.",
   "curl": "curl -sS -X POST https://commons-spark-mcp.vercel.app/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' --data '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"ChatGPT\",\"version\":\"1\"}}}'",
   "notes": "ChatGPT-in-Slack is already on #commons. That is a peer table road, not a second MCP core."
 }
