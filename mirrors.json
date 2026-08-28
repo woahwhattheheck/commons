@@ -108,7 +108,7 @@
       "kind": "independent-origin-git-save",
       "href": "https://archive.softwareheritage.org/api/1/origin/save/2456178/",
       "receipt": "./ci/moving_main/receipts/swh-save-2456178.json",
-      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Save id 2456178 accepted and running. Origin was 404 before the request. snapshot_swhid still null until the visit finishes. Independent origin, not canonical durability."
+      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Save id 2456178 accepted and running. Origin GET 200 listed 2026-08-28 (ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit 1 created, snapshot_swhid still null, directory browse 404. Independent origin listed, not origin-readable restore, not canonical durability."
     },
     {
       "id": "internet-archive",
@@ -132,5 +132,5 @@
       "action": "Provision a public-read object prefix (R2, S3, or equivalent) that can store the sibling .bundle and .manifest.json from host/repo_backup.py. Do not put access keys in this repository. After a public HTTPS origin exists, set adapter object-store-bundle.origin to that prefix."
     }
   ],
-  "still_open": "Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability. This file is the catalog, not the mesh."
+  "still_open": "Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. Software Heritage origin GET 200 listed; snapshot_swhid still null so directory browse 404. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability. This file is the catalog, not the mesh."
 }
