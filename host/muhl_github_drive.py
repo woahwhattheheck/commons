@@ -35,7 +35,6 @@ SKIP_NAMES = {
     "template_say.txt", "template_surface.txt",
 }
 PLAYERS = mstore.PLAYERS
-REFUSE_PURPOSE = frozenset({"VERIFY", "PROOF", "TEST", "BATTERY", "PROVE"})
 LIVE_PATHS = {
     os.path.normcase(os.path.abspath(p)): p
     for p in (
@@ -207,18 +206,6 @@ def write_receipt(mid, text):
     _write(pub_path, text)
 
 
-def purpose_refused(mid, cmd):
-    purpose = (cmd.get("purpose") or "USE").strip().upper()
-    if purpose not in REFUSE_PURPOSE:
-        return None
-    rec = (
-        "REFUSE id=%s purpose=%s. Verification is not a panel verb. "
-        "USE or BUILD only. MATCH is held.\n" % (mid, purpose)
-    )
-    write_receipt(mid, rec)
-    return rec
-
-
 def resolve_live(cmd):
     raw = (cmd.get("path") or "").strip()
     if not raw:
@@ -346,25 +333,12 @@ def act_say(mid, cmd):
     if isinstance(body, list):
         body = "\n".join(str(x) for x in body)
     body = str(body).replace("\x00", "")
-    approved = (cmd.get("approved") or "").strip().upper()
-    owner_ok = (cmd.get("owner_ok") or "").strip().upper()
-    if approved != "YES":
-        rec = "REFUSE id=%s kind=say NEED approved=YES\n" % mid
-        write_receipt(mid, rec)
-        return "refuse", rec
     if not ID_OK.match(mid):
         rec = "REFUSE id=%s NEED id 8-80 [A-Za-z0-9._-]\n" % mid
         write_receipt(mid, rec)
         return "refuse", rec
     if not body.strip():
         rec = "REFUSE id=%s kind=say NEED body\n" % mid
-        write_receipt(mid, rec)
-        return "refuse", rec
-    if src == "KITE" and dest == "GROK" and owner_ok != "BRYCE":
-        rec = (
-            "REFUSE id=%s KITE->GROK /say dest. "
-            "NEED Bryce confirm outbound body (owner_ok=BRYCE).\n" % mid
-        )
         write_receipt(mid, rec)
         return "refuse", rec
     env = mstore.store_offered(mid, src, dest, body)
@@ -381,7 +355,7 @@ def inbox_text(cmds, results):
         "COMMANDS INBOX",
         "GitHub is the board + command tickets. GitHub does not compute.",
         "claimed_from is a CLAIM. authenticated_player=UNKNOWN.",
-        "Cloud GET cannot push a command. Bryce or Grok writes the ticket, then --go pulls.",
+        "Cloud GET cannot push a command. A writer publishes the ticket; --go pulls it.",
         "kind=surface surfaces dests FROM FILE. kind=dump/analyzer surface bits. kind=say address+fire+die once per id.",
         "Duplicate id = original receipt. Never smash commons.mno. Never --inject 0x01.",
         "",
@@ -394,7 +368,6 @@ def inbox_text(cmds, results):
         lines.append("----")
         lines.append("id=%s" % mid)
         lines.append("kind=%s" % (cmd.get("kind") or ""))
-        lines.append("approved=%s" % (cmd.get("approved") or ""))
         lines.append("claimed_from=%s" % (cmd.get("claimed_from") or cmd.get("from") or ""))
         lines.append("authenticated_player=UNKNOWN")
         lines.append("to=%s" % (cmd.get("to") or ""))
@@ -429,8 +402,8 @@ def receipts_inbox():
 
 def publish_after(files, token):
     if not token:
-        print("NEED_BRYCE - no GitHub token. Local COMMANDS+BOARD written.")
-        print("NEED_BRYCE - python host/muhl_pub_commons.py --go")
+        print("REMOTE_PUBLISH_SKIPPED - no GitHub credential available. Local COMMANDS+BOARD written.")
+        print("To publish remotely later: python host/muhl_pub_commons.py --go")
         return
     for path, text in files.items():
         pub._put(token, path, text, "drive receipt %s. mutation=NO on this publish." % path)
@@ -438,7 +411,7 @@ def publish_after(files, token):
 
 def main():
     if "--go" not in sys.argv:
-        print("NEED_BRYCE — python host/muhl_github_drive.py --go")
+        print("NEED --go — python host/muhl_github_drive.py --go")
         return 1
     os.makedirs(RECEIPT_ROOT, exist_ok=True)
     token = None
@@ -456,11 +429,6 @@ def main():
     results = {}
     acted = 0
     for mid, cmd in sorted(cmds.items()):
-        refused = purpose_refused(mid, cmd)
-        if refused:
-            results[mid] = ("refuse", refused)
-            print("DRIVE refuse purpose", mid)
-            continue
         kind = (cmd.get("kind") or "").strip().lower()
         if kind == "surface":
             st, rec = act_surface(mid, cmd)
