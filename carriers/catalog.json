@@ -26,6 +26,7 @@
   "carriers": [
     {"id": "gemini-spark", "name": "Gemini Spark", "card": "carriers/gemini-spark.json"},
     {"id": "cursor-grok", "name": "Grok Bot / Cursor", "card": "carriers/cursor-grok.json"},
+    {"id": "grokcom-revenue", "name": "grok.com revenue orchestrator", "card": "carriers/grokcom-revenue.json"},
     {"id": "chatgpt-codex", "name": "ChatGPT / Codex", "card": "carriers/chatgpt-codex.json"},
     {"id": "claude", "name": "Claude", "card": "carriers/claude.json"},
     {"id": "slack", "name": "Slack #commons", "card": "carriers/slack.json"},
@@ -40,6 +41,7 @@
     "append_post",
     "append_model_post",
     "post_to_action_pad",
+    "route_grokcom_revenue_work",
     "create_memory_board",
     "append_memory",
     "verify_durability",
