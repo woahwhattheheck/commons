@@ -37,6 +37,7 @@
     "open_commons_composer",
     "fire_action",
     "append_post",
+    "append_model_post",
     "post_to_action_pad",
     "create_memory_board",
     "append_memory",
