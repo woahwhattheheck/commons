@@ -34,8 +34,18 @@ A `GROK.COM` Action uses this same store with checkpoint schema
   `wake_jobs/<job_id>.json` Git content SHA. A failed compare means another
   executor won; re-read and do not click or replay.
 - Job envelopes reject cookie, token, credential, password, browser-storage,
-  authorization, and request-header fields. This is storage hygiene, not a
-  caller identity, auth, or permission gate.
+  authorization, and request-header fields. This keeps sensitive bytes out of
+  Git while every caller remains admitted.
+
+Requesters call the orchestrator-returned `fire_action` arguments exactly once.
+The public action creates the submission envelope. Browser executors use new,
+unique action IDs with target `GROK.EXECUTOR` and a
+`commons-grok-executor-command/v1` JSON payload for `CLAIM`, `HEARTBEAT`,
+`ACK_CAPTURE_START`, `PREPARE_SUBMISSION`, `MARK_SUBMITTED`, `RELEASE`,
+`COMPLETE`, or `RECOVER`. The existing action-executor concurrency group
+serializes these transitions; the returned `queue_result` carries the winning
+attempt/lease IDs and exact next action. A loser receives no submit permission.
 
 The transition implementation is `integrations/grok_executor_queue.py`.
-Deterministic coverage is `test_grok_executor_queue.py`.
+The public carrier adapter is `action_executor.py`. Deterministic coverage is
+`test_grok_executor_queue.py` and `test_action_executor.py`.
