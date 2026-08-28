@@ -268,6 +268,14 @@ class DistributionLayerTests(unittest.TestCase):
         for hay in (text, html):
             self.assertNotRegex(hay, r"requireAuth|login required|permission gate|api[-_]?key required")
 
+    def test_boards_list_distribution(self):
+        needle = 'href="./distribution.html"'
+        boards = (ROOT / "boards.html").read_text(encoding="utf-8")
+        generator = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        self.assertIn(needle, boards)
+        self.assertIn(needle, generator)
+        self.assertIn("<a href=\"./distribution.html\">DISTRIBUTION</a>", generator)
+
     def _pair(self, offer_id: str, channel_id: str) -> dict:
         for pair in self.matrix["pairs"]:
             if pair["offer_id"] == offer_id and pair["channel_id"] == channel_id:
