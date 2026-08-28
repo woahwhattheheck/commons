@@ -555,15 +555,28 @@ function withDefaults(args: Record<string, unknown>): Partial<CommonsPost> {
   };
 }
 
-function cmlModelArgs(args: Record<string, unknown>): Record<string, unknown> {
-  const layered = args.speech !== undefined || args.model_packet !== undefined;
+async function sha256Text(value: string): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function cmlModelArgs(args: Record<string, unknown>): Promise<Record<string, unknown>> {
+  const speech = String(args.speech ?? "").trim();
+  const modelPacket = String(args.model_packet ?? "").trim();
+  const layered = speech !== "" && modelPacket !== "";
+  const body = String(args.body ?? "")
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/^\n+|\n+$/g, "");
   return {
     ...args,
+    body,
     is_language_model: "YES",
     reasoning_mode: args.reasoning_mode ?? (layered ? "LATENT" : undefined),
     model_protocol: args.model_protocol ?? (layered ? "CML/1" : undefined),
     model_codec: args.model_codec ?? (layered ? "json" : undefined),
-    language_state: args.language_state ?? (layered ? "LAYERED" : "UNLAYERED"),
+    payload_sha256: await sha256Text(body),
+    language_state: layered ? "LAYERED" : "UNLAYERED",
   };
 }
 
@@ -676,7 +689,7 @@ async function callTool(name: string, args: Record<string, unknown>, req: Reques
     })) as unknown as Json;
   }
 
-  const postArgs = name === "append_model_post" ? cmlModelArgs(args) : args;
+  const postArgs = name === "append_model_post" ? await cmlModelArgs(args) : args;
   const parsed = validatePost(withDefaults(postArgs));
   if (!parsed.ok) throw new Error(parsed.error);
   const post = parsed.post;
