@@ -49,6 +49,36 @@ A partial run may return `GROK_CONTINUE` with a deterministic new run key, `pare
 
 The capture helper never submits a prompt, spends provider tokens, mutates provider/repository state, or reads cookies, credentials, browser storage, or request headers.
 
+## Shared executor queue
+
+The orchestrator's `executor_job.arguments` are already valid public
+`fire_action` arguments. A requester calls them once and then waits on the
+durable `wake_jobs/<job_id>.json` row; it never hunts for a particular local
+session or asks Lucy to babysit a browser.
+
+A verified healthy grok.com browser host becomes an interchangeable executor by
+sending unique public actions to target `GROK.EXECUTOR`. Each action payload is
+a `commons-grok-executor-command/v1` object. The lifecycle is:
+
+1. `CLAIM` and retain the returned `attempt_id` and `lease_id`.
+2. Call local `start_grok_capture`, then send its exact ACK with
+   `ACK_CAPTURE_START`.
+3. Send `PREPARE_SUBMISSION`. Only `submit_allowed=true` permits one click
+   with the returned exact prompt bytes. The durable `SUBMITTING` transition is
+   the replay fence.
+4. Send `MARK_SUBMITTED`, heartbeat the lease while output is rendering, and
+   recover/capture output without ever replaying the prompt.
+5. After structural capture is verified and its Commons result page is durable,
+   send `COMPLETE`; the queue returns the exact requester origin for GPT review.
+6. On the first measured Cloudflare/login/browser/page/connector failure, send
+   `RELEASE`. Pre-submit failure is zero-spend failover to a different host.
+   Post-intent failure remains output-only.
+
+The existing action-executor concurrency group serializes commands and returns
+their `queue_result`; no second queue, credential copy, or manual local-session
+handoff is involved. Each command action needs a new action ID, while the Grok
+job ID and run key remain stable.
+
 ## Execution contract
 
 1. Read the task from the user, Slack `#commons` (`C0BRGMDQB6G`), or a Commons
@@ -57,10 +87,11 @@ The capture helper never submits a prompt, spends provider tokens, mutates provi
    consume an existing `wake_jobs` GROK.COM packet). Its stable task/dedupe key
    is the single task identity. Reuse completed output and do not duplicate a
    live spend.
-3. Post the orchestrator's `slack_reply`, attach to the cloud browser, and use
-   the existing grok.com session. The browser controller is the executor;
-   grok.com is not misreported as a native Commons MCP client.
-4. Call `build_grok_artifact` with the real conversation URL, exact prompt,
+3. Post the orchestrator's `slack_reply`, call its `executor_job.arguments`
+   through `fire_action` once, and let a claimed healthy host use the existing
+   grok.com session. The browser controller is the executor; grok.com is not
+   misreported as a native Commons MCP client.
+4. After the queue grants one submission, call `build_grok_artifact` with the real conversation URL, exact prompt,
    lossless result, inspected SHA, model/account/usage when visible, proposed
    paths, and checks.
 5. Submit its `orchestrator_arguments` to `route_grokcom_revenue_work`, send the

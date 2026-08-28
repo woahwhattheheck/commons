@@ -30,6 +30,8 @@ MAX_ACTION_VERB_CHARS = 160
 MAX_DEVICE_TARGET_CHARS = 1024
 WRITER_OK = {"wrote", "exists", "unchanged"}
 GROK_COM_HARNESS = "grok.com authenticated browser via Commons MCP"
+GROK_SUBMIT_SCHEMA = "commons-grok-executor-submit/v1"
+GROK_COMMAND_SCHEMA = "commons-grok-executor-command/v1"
 
 
 def _load_board_ingest():
@@ -93,6 +95,11 @@ def is_grok_com_target(target: str) -> bool:
     return normalized in {"GROK.COM", "HTTPS://GROK.COM", "HTTP://GROK.COM"}
 
 
+def is_grok_executor_target(target: str) -> bool:
+    """Recognize the public action address for executor lease transitions."""
+    return target.strip().upper().rstrip("/") == "GROK.EXECUTOR"
+
+
 def _job_owner(meta: dict) -> str:
     """Carry the sender into the existing uppercase Commons job claim field."""
     owner = re.sub(r"[^A-Z0-9_]", "_", str(meta.get("from") or "UNSEATED").upper())[:32]
@@ -100,58 +107,79 @@ def _job_owner(meta: dict) -> str:
 
 
 def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict:
-    """Route a GROK.COM action into the durable wake/job road.
+    """Route a GROK.COM action into the one durable shared executor queue.
 
-    The GitHub executor cannot own an authenticated browser session.  Its job
-    is to preserve the exact task once, wake the owning grok.com harness, and
-    require that harness to return a real conversation URL plus a durable
-    Commons result page.  This deliberately does not treat prose as shell.
+    This process never owns a browser and never submits the prompt. It records
+    the requester, exact bytes, structural-capture START packet, bounded retry
+    contract, and submit-once state machine. Healthy authenticated browser hosts
+    lease the resulting wake_jobs row through the Grok executor adapter.
     """
-    task = payload.strip()
-    if not task:
+    task_bytes = payload.strip()
+    if not task_bytes:
         raise ValueError("GROK.COM task payload must be non-empty")
 
-    from independent_commons_mcp.jobs import JobStore
+    envelope: dict = {}
+    try:
+        decoded = json.loads(task_bytes)
+    except json.JSONDecodeError:
+        decoded = None
+    if isinstance(decoded, dict) and decoded.get("schema") == GROK_SUBMIT_SCHEMA:
+        allowed = {
+            "schema", "run_key", "exact_prompts", "origin", "lineage",
+            "conversation_url", "lease_seconds", "max_attempts", "budget_tokens",
+        }
+        unknown = sorted(set(decoded) - allowed)
+        if unknown:
+            raise ValueError("unknown Grok submit envelope fields: " + ", ".join(unknown))
+        envelope = decoded
+        exact_prompts = envelope.get("exact_prompts")
+        if (
+            not isinstance(exact_prompts, list)
+            or not exact_prompts
+            or not all(isinstance(item, str) and item.strip() for item in exact_prompts)
+        ):
+            raise ValueError("Grok submit exact_prompts must be a non-empty string array")
+    else:
+        exact_prompts = [task_bytes]
+
+    from integrations.grok_executor_queue import GrokExecutorQueue, SCHEMA
 
     before = working_state()
     now = datetime.now(timezone.utc).replace(microsecond=0)
+    at = now.isoformat().replace("+00:00", "Z")
     source_action = "p/%s.md" % ident
-    store = JobStore(ROOT / "wake_jobs")
-    queued = store.upsert({
+    run_key = str(envelope.get("run_key") or meta.get("run_key") or ("grok-action-" + ident)).strip()
+    default_origin = {
+        "task_id": ident,
+        "session_id": str(meta.get("session_id") or meta.get("event_id") or source_action),
+        "thread_id": str(meta.get("thread_ts") or meta.get("target") or ""),
+        "source": "commons-action",
+        "event_id": str(meta.get("event_id") or source_action),
+        "requester": str(meta.get("from") or "UNSEATED"),
+    }
+    supplied_origin = envelope.get("origin")
+    if supplied_origin is not None and not isinstance(supplied_origin, dict):
+        raise ValueError("Grok submit origin must be an object")
+    origin = dict(supplied_origin or default_origin)
+    for key, value in default_origin.items():
+        origin.setdefault(key, value)
+    lineage = envelope.get("lineage")
+    if lineage is None and meta.get("parent_run_key"):
+        lineage = {
+            "parent_run_key": str(meta.get("parent_run_key")),
+            "parent_conversation_url": str(meta.get("parent_conversation_url") or ""),
+        }
+    queued = GrokExecutorQueue(ROOT / "wake_jobs").enqueue({
         "job_id": ident,
-        "owner_claim": _job_owner(meta),
-        "harness": GROK_COM_HARNESS,
-        "objective": (
-            "Execute grok.com task %s from checkpoint.task and return its verified receipt."
-            % ident
-        ),
-        "checkpoint": {
-            "step": 0,
-            "task": task,
-            "verb": verb,
-            "source_action": source_action,
-            "receipt_contract": {
-                "conversation_url_prefix": "https://grok.com/c/",
-                "required": [
-                    "exact_prompt",
-                    "result_summary",
-                    "conversation_url",
-                    "token_receipt_when_available",
-                    "changed_paths_and_git_sha_when_code_changed",
-                    "durable_commons_result_address",
-                ],
-                "fabricated_receipts_forbidden": True,
-            },
-        },
-        "next_wake_at": now.isoformat().replace("+00:00", "Z"),
-        "deadline": (now + timedelta(days=30)).isoformat().replace("+00:00", "Z"),
-        "backoff_seconds": 60,
-        "max_backoff_seconds": 3600,
-        "lease_seconds": 1800,
-        "max_attempts": 64,
-        "budget_tokens": 1000000,
-        "completion_predicate": {"type": "result_address_on_head"},
-    })
+        "run_key": run_key,
+        "origin": origin,
+        "lineage": lineage,
+        "conversation_url": envelope.get("conversation_url") or "",
+        "exact_prompts": exact_prompts,
+        "lease_seconds": int(envelope.get("lease_seconds") or 300),
+        "max_attempts": int(envelope.get("max_attempts") or 8),
+        "budget_tokens": int(envelope.get("budget_tokens") or 1000000),
+    }, now=at)
     changed, outputs, deletions = collect_action_outputs(before)
     job_path = "wake_jobs/%s.json" % ident
     return {
@@ -160,18 +188,114 @@ def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict
         "target": "GROK.COM",
         "scope": "github",
         "ok": True,
-        "state": "GROK_TASK_QUEUED",
-        "output": "queued authenticated grok.com browser job %s" % ident,
+        "state": "GROK_TASK_QUEUED" if queued.get("state") == "QUEUED" else queued.get("state"),
+        "output": "queued shared authenticated grok.com browser job %s" % ident,
         "job_id": ident,
+        "run_key": run_key,
+        "queue_schema": SCHEMA,
         "job_path": job_path,
         "source_action": source_action,
+        "capture_start": queued.get("capture_start"),
         "receipt_url_prefix": "https://grok.com/c/",
         "changed": changed,
         "canonical_records": {},
         "action_outputs": outputs,
         "action_deletions": deletions,
         "job": queued.get("job"),
-        "executed_at": now.isoformat().replace("+00:00", "Z"),
+        "executed_at": at,
+    }
+
+
+def execute_grok_executor_command(meta: dict, payload: str, ident: str) -> dict:
+    """Apply one serialized lease transition through the public action road."""
+    try:
+        command = json.loads(payload)
+    except json.JSONDecodeError as exc:
+        raise ValueError("GROK.EXECUTOR payload must be a JSON command envelope") from exc
+    if not isinstance(command, dict) or command.get("schema") != GROK_COMMAND_SCHEMA:
+        raise ValueError("GROK.EXECUTOR requires commons-grok-executor-command/v1")
+    allowed = {
+        "schema", "operation", "job_id", "executor_id", "attempt_id", "lease_id",
+        "capture_ack", "conversation_url", "blocker_state", "detail", "capture",
+        "result_address", "now",
+    }
+    unknown = sorted(set(command) - allowed)
+    if unknown:
+        raise ValueError("unknown Grok executor command fields: " + ", ".join(unknown))
+
+    from integrations.grok_executor_queue import GrokExecutorQueue
+
+    operation = str(command.get("operation") or "").strip().upper()
+    job_id = str(command.get("job_id") or "").strip()
+    if not ID_RE.fullmatch(job_id):
+        raise ValueError("Grok executor command job_id must be an exact Commons id")
+    executor_id = str(command.get("executor_id") or "").strip()
+    now = command.get("now")
+    queue = GrokExecutorQueue(ROOT / "wake_jobs")
+    before = working_state()
+
+    if operation == "CLAIM":
+        response = queue.claim(job_id, executor_id, now=now)
+    elif operation == "HEARTBEAT":
+        response = queue.heartbeat(
+            job_id, attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id, now=now,
+        )
+    elif operation == "ACK_CAPTURE_START":
+        response = queue.acknowledge_capture_start(
+            job_id, command.get("capture_ack"),
+            attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id, now=now,
+        )
+    elif operation == "PREPARE_SUBMISSION":
+        response = queue.prepare_submission(
+            job_id, attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id, now=now,
+        )
+    elif operation == "MARK_SUBMITTED":
+        response = queue.mark_submitted(
+            job_id, attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id,
+            conversation_url=str(command.get("conversation_url") or ""), now=now,
+        )
+    elif operation == "RELEASE":
+        response = queue.release(
+            job_id, str(command.get("blocker_state") or ""), str(command.get("detail") or ""),
+            attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id, now=now,
+        )
+    elif operation == "COMPLETE":
+        response = queue.complete(
+            job_id, command.get("capture"),
+            result_address=str(command.get("result_address") or ""),
+            page_exists=lambda address: (ROOT / "p" / (address + ".md")).is_file(),
+            attempt_id=str(command.get("attempt_id") or ""),
+            lease_id=str(command.get("lease_id") or ""), executor_id=executor_id, now=now,
+        )
+    elif operation == "RECOVER":
+        response = queue.recover(job_id, now=now)
+    else:
+        raise ValueError(
+            "operation must be CLAIM, HEARTBEAT, ACK_CAPTURE_START, PREPARE_SUBMISSION, "
+            "MARK_SUBMITTED, RELEASE, COMPLETE, or RECOVER"
+        )
+
+    changed, outputs, deletions = collect_action_outputs(before)
+    return {
+        "id": ident,
+        "verb": str(meta.get("act") or "ACTION").upper(),
+        "target": "GROK.EXECUTOR",
+        "scope": "github",
+        "ok": bool(response.get("ok")),
+        "state": response.get("state"),
+        "output": "applied Grok executor %s for %s" % (operation, job_id),
+        "job_id": job_id,
+        "operation": operation,
+        "queue_result": response,
+        "changed": changed,
+        "canonical_records": {},
+        "action_outputs": outputs,
+        "action_deletions": deletions,
     }
 
 
@@ -493,6 +617,8 @@ def execute(rec: dict, scope: str) -> dict:
     action_outputs: dict[str, str] = {}
     action_deletions: list[str] = []
     output = ""
+    if scope == "github" and is_grok_executor_target(target):
+        return execute_grok_executor_command(meta, payload, ident)
     if scope == "github" and is_grok_com_target(target) and verb not in {"POST", "REPLY"}:
         return queue_grok_com_task(meta, verb, payload, ident)
     if verb == "POST":

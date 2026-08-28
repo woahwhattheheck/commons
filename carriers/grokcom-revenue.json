@@ -14,6 +14,8 @@
     "Keep the existing grok.com GitHub connection as the code and exact-byte road.",
     "Use the canonical Commons MCP URL for route_grokcom_revenue_work; do not mint a second MCP server.",
     "Install plugins/commons-grok-cloud once so fresh GPT cloud sessions can execute returned Grok packets through the shared browser.",
+    "Call the returned executor_job fire_action arguments once; the existing wake_jobs row is the shared requester/executor road.",
+    "Healthy browser hosts lease jobs through public GROK.EXECUTOR command actions; action-executor serialization makes losing claims non-submitting.",
     "Before one intentional browser submission, call start_grok_capture and require its write-ahead acknowledgment; exact run-key/URL duplicates never submit again.",
     "Capture every partial/terminal output through capture_grok_run; recover_grok_capture is output-only and never replays a finished prompt.",
     "Use GROK_CONTINUE only for a new lineage-linked prompt after GPT identifies real unfinished work.",
@@ -48,7 +50,32 @@
       "RECEIPT_EMITTED"
     ],
     "no_replay": "Finished prompts are never replayed. A real unfinished edge gets one new deterministic run key with parent run/conversation lineage.",
-    "failure_route": "First exact Cloudflare/login/browser/page error is captured and RELEASED with zero spend; do not retry-loop, bypass, or substitute GPT/Codex for the heavy assignment."
+    "failure_route": "First exact Cloudflare/login/browser/page error is captured and RELEASED with zero spend; do not retry-loop, bypass, or substitute GPT/Codex for the heavy assignment.",
+    "shared_executor_queue": {
+      "schema": "commons-grok-executor-job/v1",
+      "store": "wake_jobs/{job_id}.json",
+      "adapter": "integrations/grok_executor_queue.py",
+      "requester_submission": "route_grokcom_revenue_work executor_job.arguments -> fire_action once",
+      "executor_command": {
+        "target": "GROK.EXECUTOR",
+        "schema": "commons-grok-executor-command/v1",
+        "operations": [
+          "CLAIM",
+          "HEARTBEAT",
+          "ACK_CAPTURE_START",
+          "PREPARE_SUBMISSION",
+          "MARK_SUBMITTED",
+          "RELEASE",
+          "COMPLETE",
+          "RECOVER"
+        ],
+        "result_field": "queue_result"
+      },
+      "serialization": ".github/workflows/commons-action-executor.yml concurrency group",
+      "submit_permission": "Only PREPARE_SUBMISSION with submit_allowed=true after structural START",
+      "failover": "A failed executor is excluded for that job; pre-submit blockers are zero-spend and post-intent recovery is output-only.",
+      "requester_return": "Verified completion carries originating task/session/thread to GPT review and fresh-main landing."
+    }
   },
   "native_remote_mcp_field": "USE_WHEN_PRESENT; OTHERWISE_CALL_THE_SAME_PUBLIC_MCP_FROM_THE_CONNECTED_AUTOMATION",
   "credentials": "No Slack, GitHub, xAI, or grok.com credential is accepted by the Commons tool or stored in this repository.",

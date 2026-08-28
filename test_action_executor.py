@@ -64,6 +64,8 @@ class ActionExecutorTests(unittest.TestCase):
         self.assertTrue(ae.is_grok_com_target("GROK.COM"))
         self.assertTrue(ae.is_grok_com_target("https://grok.com/"))
         self.assertFalse(ae.is_grok_com_target("repo"))
+        self.assertTrue(ae.is_grok_executor_target("GROK.EXECUTOR"))
+        self.assertFalse(ae.is_grok_executor_target("GROK.COM"))
 
     def test_grok_com_build_queues_durable_browser_job_instead_of_shell(self):
         with tempfile.TemporaryDirectory() as td:
@@ -89,13 +91,62 @@ class ActionExecutorTests(unittest.TestCase):
             job = json.loads(job_path.read_text(encoding="utf-8"))
             self.assertEqual(job["harness"], ae.GROK_COM_HARNESS)
             self.assertEqual(job["checkpoint"]["task"], rec["payload"])
+            self.assertEqual(job["checkpoint"]["schema"], "commons-grok-executor-job/v1")
+            self.assertEqual(job["checkpoint"]["run_key"], "grok-action-codex-grok-task-0001")
+            self.assertEqual(job["checkpoint"]["origin"]["requester"], "CODEX")
+            self.assertEqual(job["checkpoint"]["execution"]["submission_state"], "NOT_SUBMITTED")
+            self.assertTrue(
+                job["checkpoint"]["receipt_contract"]["structural_start_before_submit"]
+            )
+            self.assertEqual(
+                job["checkpoint"]["capture_start"]["tool"],
+                "start_grok_capture",
+            )
             self.assertEqual(
                 job["checkpoint"]["receipt_contract"]["conversation_url_prefix"],
                 "https://grok.com/c/",
             )
+            self.assertEqual(result["queue_schema"], "commons-grok-executor-job/v1")
             self.assertEqual(job["completion_predicate"], {"type": "result_address_on_head"})
             self.assertEqual(result["changed"], ["wake_jobs/codex-grok-task-0001.json"])
             self.assertIn("wake_jobs/codex-grok-task-0001.json", result["action_outputs"])
+
+    def test_grok_executor_claim_command_uses_public_serialized_action_road(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            submit = {
+                "meta": {"id": "grok-command-job-0001", "from": "OPEN_CALLER"},
+                "verb": "BUILD",
+                "target": "GROK.COM",
+                "payload": "exact prompt bytes",
+            }
+            command = {
+                "schema": ae.GROK_COMMAND_SCHEMA,
+                "operation": "CLAIM",
+                "job_id": "grok-command-job-0001",
+                "executor_id": "healthy-executor",
+            }
+            claim = {
+                "meta": {"id": "grok-command-claim-0001", "act": "ACTION"},
+                "verb": "ACTION",
+                "target": "GROK.EXECUTOR",
+                "payload": json.dumps(command, sort_keys=True),
+            }
+            with mock.patch.object(ae, "ROOT", root):
+                queued = ae.execute(submit, "github")
+                result = ae.execute(claim, "github")
+            self.assertEqual(queued["state"], "GROK_TASK_QUEUED")
+            self.assertEqual(result["state"], "CLAIMED")
+            self.assertEqual(result["operation"], "CLAIM")
+            self.assertEqual(
+                result["queue_result"]["capture_start"]["tool"],
+                "start_grok_capture",
+            )
+            job = json.loads(
+                (root / "wake_jobs" / "grok-command-job-0001.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(job["checkpoint"]["execution"]["active_executor"], "healthy-executor")
 
     def test_device_pending_runs_in_bulk_and_can_optionally_filter_id(self):
         with tempfile.TemporaryDirectory() as td:
