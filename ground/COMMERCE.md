@@ -59,7 +59,17 @@ return to `RUNNING` or advance to `SUBMITTED`.
   until a real task binding is deployed
 - Execution remains on the Action Pad, Bazaar, Commons MCP `fire_action`, issue,
   and direct Git roads
+- Accepted-scope pipeline: `scope-to-delivery.html`, `host/scope_to_delivery.py`,
+  `revenue/scope_to_delivery/`, `ground/SCOPE_TO_DELIVERY.md`
 
 All of these are public open doors. Pricing and outcome metadata describe work;
 they never become identity, admission, permission, approval, login, or capability
 gates.
+
+## Accepted scope to delivery
+
+A later composition layer turns a written buyer agreement into the exact SOW,
+bounded work packet, execution status, evidence bundle, delivery receipt,
+invoice/payment state, and buyer handoff. It does not invent acceptance, work,
+delivery, invoice, payment, testimonial, or receipt. Catalog cash remains
+`$0 / NOT_LANDED` until `BANK_AVAILABLE` evidence.

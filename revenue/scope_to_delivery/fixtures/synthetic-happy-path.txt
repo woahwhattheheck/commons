@@ -1,0 +1,1 @@
+SYNTHETIC FIXTURE ONLY. Happy path of same-day-agent-survival-proof. Forced timeout recovered via idempotency key. One external effect. No customer data.
