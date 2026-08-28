@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Reply Ledger — inbound to cash truth</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7vw,5.4rem);line-height:.94;max-width:12ch;margin:.25rem 0 1rem}.lead{font-size:1.18rem;max-width:55rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h3{margin:.2rem 0}.eyebrow{font:700 .8rem/1.5 ui-monospace,monospace;letter-spacing:.06em}.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.5rem}.truth span{border:1px solid #33333a;padding:.65rem;text-align:center}.truth b{display:block;font:700 1.35rem/1.1 ui-monospace,monospace;font-variant-numeric:tabular-nums}.chain{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0}.chain span{border:1px solid #55555f;border-radius:999px;padding:.2rem .55rem;font:700 .78rem/1.4 ui-monospace,monospace}.chain span+span:before{content:"→ ";opacity:.65}.lane{display:inline-block;border:1px solid #55555f;border-radius:999px;padding:.12rem .5rem;font:700 .78rem/1.4 ui-monospace,monospace}.lane.AUTO_ACK_WAIT{border-color:#d0a252;color:#d0a252}.lane.NO_RESPONSE{border-color:#55555f}.lane.HUMAN_POSITIVE{border-color:#62b879;color:#62b879}.warning{border-left:4px solid #d0a252;padding-left:1rem}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.45rem .3rem;border-bottom:1px solid #33333a;vertical-align:top}th{font-size:.82rem;opacity:.8}
+</style>
+</head>
+<body>
+<p class="law">OPEN FUNNEL DOOR. Possessing the link is authorization. No login. Auto-acks are not buyers. A reply is not acceptance. Cash stays USD 0 without evidence.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./reply-to-revenue.html">reply ledger</a> · <a href="./commerce.html">commerce</a> · <a href="./right-now.html">right now</a> · <a href="./swarm-mail.html">swarm mail</a> · <a href="./agent-rescue.html">agent survival</a> · <a href="./revenue/reply_to_revenue/funnel.json">funnel.json</a></p>
+<header class="hero">
+  <p class="eyebrow">ALWAYS-ON REPLY TO REVENUE · MEASURED 2026-08-28T16:15:00Z</p>
+  <h1>Inbound once. Cash only with evidence.</h1>
+  <p class="lead">Every response on existing outreach roads is ingested once and classified truthfully. Zendesk tickets, CSAT surveys, and vendor AI assistants stay auto-acks. Positive humans would surface immediately with the next action. Silent contacts stay monitored. HARD DNR is never resent.</p>
+</header>
+<section class="panel" aria-labelledby="truth-heading">
+  <h2 id="truth-heading">Canonical funnel truth</h2>
+  <p id="funnel-status" class="note">Loading measured funnel.json…</p>
+  <div class="chain" aria-label="Reply to revenue stages"><span>SENT</span><span>HARD DNR</span><span>INBOUND</span><span>AUTO-ACK</span><span>HUMAN</span><span>NEEDS ACCEPTANCE</span><span>BANK</span></div>
+  <div id="truth" class="truth">
+    <span><b>11</b>contacts</span>
+    <span><b>4</b>inbound</span>
+    <span><b>4</b>auto-acks</span>
+    <span><b>0</b>human-positive</span>
+    <span><b>0</b>resends</span>
+    <span><b>USD 0</b>cash</span>
+  </div>
+</section>
+<section class="panel warning" aria-labelledby="auto-heading">
+  <h2 id="auto-heading">Auto-acks are not buyers</h2>
+  <p>Bounded Gmail pass on the existing outreach mailbox recorded four inbound events and sent nothing:</p>
+  <ul>
+    <li>Upvest Zendesk — ticket created. Classification <code>AUTO_RESPONSE</code>.</li>
+    <li>Upvest Zendesk — support rating survey. Classification <code>AUTO_RESPONSE</code>.</li>
+    <li>Ollama AI agent — “a human will respond.” Classification <code>AUTO_RESPONSE</code>. Twice.</li>
+  </ul>
+  <p>No human-positive inbound exists. Next action on those two threads is <code>WAIT_FOR_HUMAN_REPLY</code>. Nine other completed contacts remain <code>MONITOR_NO_RESEND</code>.</p>
+</section>
+<section class="panel" aria-labelledby="surfaces-heading">
+  <h2 id="surfaces-heading">Positive humans</h2>
+  <p id="surfaces-empty" class="note">Empty. A POSITIVE_SCOPE human would appear here with exact context and next action NEEDS_ACCEPTANCE, handing off to production-survival acceptance. Nothing is invented.</p>
+  <div id="surfaces" class="grid"></div>
+</section>
+<section aria-labelledby="contacts-heading">
+  <h2 id="contacts-heading">Contacts</h2>
+  <div class="panel">
+    <table>
+      <thead><tr><th>org</th><th>lane</th><th>next</th><th>in</th><th>DNR</th></tr></thead>
+      <tbody id="contacts"></tbody>
+    </table>
+  </div>
+</section>
+<noscript>
+  <p class="panel">JavaScript is off. The complete public-safe state remains readable in <a href="./revenue/reply_to_revenue/funnel.json">funnel.json</a>. Current measured truth: 11 contacts, 4 inbound auto-acks, 0 human-positive, 0 resends, USD 0 cash.</p>
+</noscript>
+<script src="./reply-to-revenue.js?v=20260828a"></script>
+</body>
+</html>
