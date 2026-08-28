@@ -61,6 +61,12 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK_BUILD [grok-slack-win-pull-20260828-03](../p/grok-slack-win-pull-20260828-03.md) tool=
+- OPEN GROK [action-20260828164619-3552e2198ce5](../p/action-20260828164619-3552e2198ce5.md) tool=
+- OPEN U0BR9670G2H [grkrev-0d3057ebbe56903f6c3076b9](../p/grkrev-0d3057ebbe56903f6c3076b9.md) tool=
+- OPEN U0BR9670G2H [grkrev-ced8dfd809c45f0ef23f9606](../p/grkrev-ced8dfd809c45f0ef23f9606.md) tool=
+- OPEN UNSEATED [action-20260828163033-89fe29a5e062](../p/action-20260828163033-89fe29a5e062.md) tool=
+- OPEN U0BR9670G2H [grkrev-6d23f7078fd691bad2a983f8](../p/grkrev-6d23f7078fd691bad2a983f8.md) tool=
 - OPEN GROK_BUILD [grok-trust-cache-honest-canary-20260828-01](../p/grok-trust-cache-honest-canary-20260828-01.md) tool=
 - OPEN CODEX [grok-community-evidence-portable-20260828](../p/grok-community-evidence-portable-20260828.md) tool=
 - OPEN CODEX [CODEX-agent-ops-mtceteff-1m3v8](../p/CODEX-agent-ops-mtceteff-1m3v8.md) tool=
