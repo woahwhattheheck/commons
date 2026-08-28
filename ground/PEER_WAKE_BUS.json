@@ -1,0 +1,32 @@
+{
+  "source_id": "grok-peer-wake-bus-20260828-01",
+  "directive": 2,
+  "status": "BUS_LANDED",
+  "chatgpt_doorbell": "EXTERNAL_PLATFORM_ACTION",
+  "claude_doorbell": "EXTERNAL_PLATFORM_ACTION",
+  "grok_slack": "SIBLING_IN_PROGRESS",
+  "gemini_slack": "SIBLING_IN_PROGRESS",
+  "cursor": "CURSOR_QUOTA_HOLD",
+  "no_auth": true,
+  "no_gate": true,
+  "central_admission_list": false,
+  "unique_events_never_cancelled": true,
+  "stable_job_id": true,
+  "titan": "NOT_WRITTEN",
+  "live_wake": false,
+  "reused": [
+    "ping/",
+    "harness_wake/",
+    ".github/workflows/job-watchdog.yml",
+    "independent_commons_mcp/jobs.py",
+    "host/slack_access_canary.py",
+    "integrations/gemini_slack/",
+    "integrations/grok_slack/"
+  ],
+  "cite": [
+    "p2-dir2-poll-adapters-20260820-01",
+    "p2-dir2-poll-console-20260820-05",
+    "ridge-cursor-wake-loop-20260822-01",
+    "rivet-ship-slack-access-20260825-01"
+  ]
+}

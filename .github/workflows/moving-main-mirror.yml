@@ -1,0 +1,92 @@
+# Automatic moving-main read copies. No new secret. No commit-back (avoids
+# ingest loops). Cursor goes to public ntfy; Software Heritage Save Code Now
+# is the independent git origin. Full git-bundle restore drill already lives
+# in open-repo-backup.yml — compose, do not remint. GitLab/Codeberg/object-store
+# origins are EXTERNAL_PROVIDER_ACTION, not a Commons lock.
+name: moving-main-mirror
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+    inputs:
+      live:
+        description: "Publish to public ntfy / Software Heritage (default on for schedule)"
+        type: boolean
+        default: true
+  push:
+    paths:
+      - "host/moving_main_mirror.py"
+      - "host/repo_backup.py"
+      - "test_moving_main_mirror.py"
+      - "ground/MOVING_MAIN_MIRROR.md"
+      - "mirrors.json"
+      - "mirrors.html"
+      - "ci/moving_main/**"
+      - ".github/workflows/moving-main-mirror.yml"
+  pull_request:
+    paths:
+      - "host/moving_main_mirror.py"
+      - "host/repo_backup.py"
+      - "test_moving_main_mirror.py"
+      - "ground/MOVING_MAIN_MIRROR.md"
+      - "mirrors.json"
+      - "mirrors.html"
+      - "ci/moving_main/**"
+      - ".github/workflows/moving-main-mirror.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: moving-main-mirror
+  cancel-in-progress: false
+
+jobs:
+  courier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: restore last cursor (monotonic)
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/moving-main-out
+          key: moving-main-cursor-${{ github.run_id }}
+          restore-keys: |
+            moving-main-cursor-
+
+      - name: contract and restore drill
+        run: python3 test_moving_main_mirror.py
+
+      - name: snapshot current HEAD
+        run: python3 host/moving_main_mirror.py snapshot --source .
+
+      - name: publish automatic mirrors
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p /tmp/moving-main-out
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.live }}" = "false" ]; then
+            python3 host/moving_main_mirror.py sync --source . --output /tmp/moving-main-out
+          else
+            python3 host/moving_main_mirror.py sync --source . --live --output /tmp/moving-main-out
+          fi
+
+      - name: store cursor
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: /tmp/moving-main-out
+          key: moving-main-cursor-${{ github.run_id }}
+
+      - name: upload receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moving-main-receipts
+          path: /tmp/moving-main-out
+          if-no-files-found: warn

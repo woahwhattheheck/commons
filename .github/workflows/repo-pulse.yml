@@ -9,9 +9,15 @@
 # emits. slack_ingest.should_skip() refuses that claim, so the digest cannot
 # create a board issue that becomes the next digest, forever.
 #
-# Quiet windows emit nothing except a once-an-hour heartbeat.
+# Owner contract: every scheduled quiet window is data and posts one compact line.
 # Until SLACK_WEBHOOK_URL exists the digest goes to the job summary instead
 # of failing, so the schedule can be live before the credential is.
+#
+# Sprint integration (additive): the engine teaches MERGE DEFAULT and lists
+# CLEAR_TO_MERGE / COMPOSE_AND_MERGE / DEDUPED / CONFLICT with exact evidence.
+# host/sprint_integration.py is fetched next to the engine so the checker
+# cannot drift. Policy: ground/SPRINT_INTEGRATION.json. Does not change
+# CLEAR/ATTENTION/BROKEN. PULSE_REPORT_IDLE stays true.
 name: repo-pulse
 
 on:
@@ -28,12 +34,18 @@ on:
     paths:
       - "repo_pulse.py"
       - "test_repo_pulse.py"
+      - "host/sprint_integration.py"
+      - "test_sprint_integration.py"
+      - "ground/SPRINT_INTEGRATION.json"
       - ".github/workflows/repo-pulse.yml"
   push:
     branches: [main]
     paths:
       - "repo_pulse.py"
       - "test_repo_pulse.py"
+      - "host/sprint_integration.py"
+      - "test_sprint_integration.py"
+      - "ground/SPRINT_INTEGRATION.json"
       - ".github/workflows/repo-pulse.yml"
 
 concurrency:
@@ -73,7 +85,7 @@ jobs:
           SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID }}
           PULSE_STATE: .pulse-state.json
           PULSE_EVIDENCE: repo-pulse/latest.json
-          PULSE_REPORT_IDLE: "false"
+          PULSE_REPORT_IDLE: "true"
           PULSE_IDLE_HEARTBEAT_MINUTES: "60"
           PULSE_MAX_COMMIT_LINES: "8"
           PULSE_FALLBACK_MINUTES: "5"
@@ -83,6 +95,7 @@ jobs:
           mkdir -p /tmp/pulse repo-pulse
           api="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents"
           fetch() {
+            mkdir -p "/tmp/pulse/$(dirname "$1")"
             curl -fsSL \
               -H "Authorization: Bearer ${GITHUB_TOKEN}" \
               -H "Accept: application/vnd.github.raw" \
@@ -92,6 +105,8 @@ jobs:
           }
           fetch repo_pulse.py
           fetch test_repo_pulse.py
+          fetch host/sprint_integration.py
+          cp /tmp/pulse/host/sprint_integration.py /tmp/pulse/sprint_integration.py
           python3 /tmp/pulse/test_repo_pulse.py
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             echo "PR dry-run: fixtures passed; skipping live digest so a preview cannot move the cursor."

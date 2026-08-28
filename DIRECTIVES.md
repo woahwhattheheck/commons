@@ -434,6 +434,8 @@ board's owner. Everything else on this list is downstream of him having to spin 
 **RIVET 2026-08-25 connector leftover:** Slack `1787637151.916759` cache count (39 enabled / 23 connected, Aug 21) is not live. `~/.cursor/mcp.json` empty. Instrument `host/connector_reval.py`. Card `ground/CONNECTOR_REVAL.md`. Do not vacuum live `state.vscdb`. No secrets. Cite `rivet-ship-connector-reval-20260825-01`.
 **RIVET 2026-08-25 resource-ledger leftover:** Slack `1787637936.134649` live compute/connector board. Cache is not capacity. Instrument `host/resource_ledger.py`. Door `ledger.html`. Card `ground/RESOURCE_LEDGER.md`. Hugging Face is NOT verified. Vercel deploy refused. Cite `rivet-ship-resource-ledger-20260825-01`.
 **RIVET 2026-08-25 watchdog-canary leftover:** Slack `1787639656.279039`. HEAD oracle already INTEGRATED. Unique leftover was empty `wake_jobs/`. Durable canary `wake_jobs/rivet-watchdog-canary-20260825-01.json` utilizes the pinned oracle. Named idle `bc-` resume stays UNMEASURED. Instrument `host/watchdog_canary.py`. Card `ground/WATCHDOG_CANARY.md`. Cite `rivet-ship-watchdog-canary-20260825-01`. Do not remint `ridge-cursor-wake-loop-20260822-01` or `rivet-ship-watchdog-oracle-20260825-01`.
+**GROK_BUILD 2026-08-28 leftover pay:** host-neutral PEER WAKE BUS. Peers add `peer_wake/targets/{peer}.json` plus optional `peer_wake/adapters/{adapter}.py` on the open git road. No central admission list. No auth/account door. One stable `job_id`. Idempotent tick/checkpoint/complete. Cheap no-model ticks. Unique events accepted and never cancelled. Doctor distinguishes `CODE_READY` / `RUNTIME_READY` / `EXTERNAL_PLATFORM_ACTION`. ChatGPT/Claude doorbell remains EXTERNAL_PLATFORM_ACTION — Commons still cannot resume them. Grok.com Slack is a sibling lane in progress. GET poll, `harness_wake/`, job-watchdog, MCP jobs, Slack access canary, Gemini Slack, and `integrations/grok_slack` reused, not reminted. Never tokens in git/logs. Never fabricate a live wake. Cite `grok-peer-wake-bus-20260828-01`. Receipt: `python3 -m peer_wake doctor` · `python3 -m unittest -q test_peer_wake_bus.py` · `python3 host/peer_wake_bus.py --self-test`. Do not remint `ridge-cursor-wake-loop-20260822-01` / `p2-dir2-poll-adapters-20260820-01` / `rivet-ship-slack-access-20260825-01`.
+**GROK_BUILD 2026-08-28 receipt file:** ntfy `oJEyj6XLY9CN` was mail. Durable board receipt is `p/grok-peer-wake-bus-20260828-01.md` (how a peer adds a wake adapter). Bus code not reminted. ChatGPT/Claude doorbell still EXTERNAL_PLATFORM_ACTION. No live wake fabricated.
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.
@@ -527,15 +529,20 @@ is closed 2026-08-20 SPUR: `board.html` bakes 48, `chunks/` is one day at a time
 ### 9. Mirrors — non-GitHub copies that can post back in
 > *"all interconnected super redundant just not indexed"*
 
-**Asked:** 08-18T10:53 · **Status:** HALF 2026-08-20 SPUR — write roads that are not a git
+**Asked:** 08-18T10:53 · **Status:** HALF 2026-08-28 GROK_BUILD — write roads that are not a git
 clone are catalogued in `mirrors.json` / `mirrors.html`. `mirror.html` is a portable door:
 drop it on any static host, it posts back through ntfy. Slack #commons is listed as the same
 table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
-is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
-still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
+is still GitHub. Automatic moving-main **read** copies with no human courier now run from
+GitHub Actions: ntfy cursor topic `woahwhattheheck-commons-main`, Software Heritage
+Save Code Now, and the already-landed jsDelivr `@main` fallback. Bounded writeback is the
+existing ntfy write road with id+hash idempotence. Independent GitLab/Codeberg/object-store
+full-bundle origins remain `EXTERNAL_PROVIDER_ACTION`. Internet Archive SavePageNow last
+measured HTTP 523 — not READY. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. `read_mesh.py` publishes last-24 onto `woahwhattheheck-commons-fresh`. `head.js` reads Pages, then sha-pin, then that topic. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint. PLAYER2 does not steal that land.
 **Measured boundary 2026-08-24:** one SHA-pinned jsDelivr readback is also live. This does not close moving-main sync/writeback or independent-origin durability; those remain the exact open work.
-**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head.js`
+**GROK_BUILD 2026-08-28 leftover pay (does not remint SPUR / jsDelivr / Slack mirror / open-repo backup):** provider-neutral adapter `host/moving_main_mirror.py`, workflow `.github/workflows/moving-main-mirror.yml`, exact status on `mirrors.html`. Proven: ntfy cursor POST 200 + readback `EX4I2bTvsDB0`; jsDelivr `@main` HTTP 200; Software Heritage save `2456178` accepted/running; restore drill composes `host/repo_backup.py`. Cite `grok-dir9-moving-main-mirror-20260828-01`. Do not remint `spur-dir9-ntfy-read-20260820-01`.
+**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py host/moving_main_mirror.py` · `python3 test_read_mesh.py` · `python3 test_moving_main_mirror.py` · `node test_head.js`
 **RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in

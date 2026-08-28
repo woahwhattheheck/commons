@@ -157,6 +157,28 @@ class PaginationTests(unittest.TestCase):
         self.assertTrue(rp.RATE["truncated"])
         self.assertTrue(any("truncated" in n for n in rp.NOTES))
 
+    def test_first_run_horizon_is_a_clean_stop_not_exhaustion(self):
+        old_page = [event(3000 + i, created=iso_at(6)) for i in range(100)]
+        rp.GET = FakeAPI(
+            pages={
+                "/repos/{repo}/events": [old_page, [event(4000, created=iso_at(7))]],
+            }
+        )
+        rp.reset_io()
+        fresh, exhausted, pages, all_ids = rp.fetch_events(
+            seen_ids=[],
+            first_run=True,
+            now=NOW,
+            lookback_min=5,
+            max_pages=3,
+        )
+        self.assertEqual(fresh, [])
+        self.assertFalse(exhausted)
+        self.assertEqual(pages, 1)
+        self.assertEqual(len(all_ids), 100)
+        self.assertFalse(rp.RATE["truncated"])
+        self.assertFalse(any("truncated" in n for n in rp.NOTES))
+
 
 class MovingMainCompareTests(unittest.TestCase):
     def test_compare_payload_is_the_commit_authority(self):
@@ -283,6 +305,17 @@ class ZeroChangeSuppressionTests(unittest.TestCase):
         )
         self.assertFalse(should)
         self.assertEqual(reason, "quiet")
+
+    def test_owner_idle_mode_reports_every_scheduled_window(self):
+        should, reason = rp.decide_post(
+            changed=False,
+            last_post_at=NOW - timedelta(minutes=5),
+            now=NOW,
+            heartbeat_min=60,
+            report_idle=True,
+        )
+        self.assertTrue(should)
+        self.assertEqual(reason, "idle-forced")
 
     def test_hourly_heartbeat_fires(self):
         should, reason = rp.decide_post(
@@ -497,6 +530,28 @@ class RenderContractTests(unittest.TestCase):
         self.assertIn("CLEAR", text)
         self.assertIn("heartbeat", text)
         self.assertLess(len(text), 2500)
+
+    def test_sprint_teach_line_and_verdicts_do_not_rewrite_status(self):
+        text = rp.render(_ctx())
+        self.assertIn("MERGE DEFAULT", text)
+        self.assertIn("ground/SPRINT_INTEGRATION.json", text)
+        src = open(rp.__file__, encoding="utf-8").read()
+        for verdict in ("CLEAR_TO_MERGE", "COMPOSE_AND_MERGE", "DEDUPED", "CONFLICT"):
+            self.assertIn(verdict, src)
+        health = {"checks": {"success": 1}, "failing": [], "pending": 0, "pages": None, "pages_drift": False}
+        self.assertEqual(rp.classify_status(health, [], False, [], None), "CLEAR")
+        conflict_ctx = _ctx(status="CLEAR", sprint={
+            "slack_lines": [
+                "*sprint* MERGE DEFAULT · <https://github.com/woahwhattheheck/commons/blob/main/ground/SPRINT_INTEGRATION.json|policy>",
+                ":warning: *CONFLICT* #1 vs #2 path `flag.py` SI-SEMANTIC-DISAGREE left `aaa` right `bbb` base `ccc` head-L `ddd` head-R `eee`",
+            ],
+            "pairs": [{"verdict": "CONFLICT"}],
+        })
+        rendered = rp.render(conflict_ctx)
+        self.assertIn("*CONFLICT*", rendered)
+        self.assertIn("SI-SEMANTIC-DISAGREE", rendered)
+        self.assertEqual(conflict_ctx["status"], "CLEAR")
+        self.assertTrue(rendered.startswith("from: COMMONS_SLACK_MIRROR\n"))
 
 
 class StateRoundTripTests(unittest.TestCase):

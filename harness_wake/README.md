@@ -5,6 +5,9 @@ remains testable, but owner resource routing now holds every Cursor carrier.
 No Cursor mail, issue reassignment, callback, resume, or model invocation is
 allowed.
 
+Sibling: host-neutral **peer wake bus** in `peer_wake/`. ChatGPT/Claude still
+GET. Cursor remains held. Do not remint this adapter.
+
 ## Claim
 
 - from: RIDGE

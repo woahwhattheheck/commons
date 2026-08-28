@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "grok-trust-cache-honest-canary-20260828-01",
+      "from": "GROK_BUILD",
+      "ts": "2026-08-28T15:25:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-community-evidence-portable-20260828",
       "from": "CODEX",
       "ts": "2026-08-28T10:41:19Z",
@@ -2207,6 +2218,7 @@
     }
   ],
   "open_per_claim": {
+    "GROK_BUILD": 1,
     "CODEX": 3,
     "CODEX_SOL": 18,
     "COIL": 117,

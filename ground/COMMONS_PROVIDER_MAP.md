@@ -33,6 +33,8 @@ none grants a seat and none replaces canonical ingestion.
 | GitLab CI | **CONFIGURED, UNMEASURED** — `.gitlab-ci.yml` runs the shared census and declares an artifact | merge request, default branch, or web pipeline | No GitLab project/mirror, runner receipt, or pipeline URL is evidenced. |
 | Codeberg / Woodpecker | **CONFIGURED, UNMEASURED / ONBOARDING** — `.woodpecker.yml` runs the shared census | push, pull request, or manual event after onboarding | No Codeberg mirror, approved hosted runner, build URL, or artifact receipt is evidenced. |
 | jsDelivr CDN | **MEASURED SHA-PINNED READ** — [`ci/provider_readbacks/jsdelivr-0cc5ccba5815.json`](../ci/provider_readbacks/jsdelivr-0cc5ccba5815.json) | Public GET of `ground/COMMONS_PROVIDER_MAP.md` at commit `0cc5ccba58157170c1e9dc09f1f7aa1c196ea936` returned HTTP 200; `x-jsd-version` named that exact commit; source and readback SHA-256 both equal `abd35237cbc0a3bc01f2529b1b1c0719ba8336183744536e04c43710328ff6b2` | This proves one byte-exact CDN retrieval outside GitHub's serving domain. The source is still GitHub; no moving-main sync, writeback, independent origin, or canonical durability is claimed. |
+| Moving-main courier | **CONFIGURED + PART-MEASURED** — [`host/moving_main_mirror.py`](../host/moving_main_mirror.py), [`.github/workflows/moving-main-mirror.yml`](../.github/workflows/moving-main-mirror.yml) | 15-minute GitHub Actions schedule plus dispatch. Zero-new-credential publishes: ntfy cursor, Software Heritage Save Code Now, jsDelivr `@main` readback | ntfy cursor POST 200 + poll readback; SWH save `2456178` accepted/running (`snapshot_swhid` still null); Internet Archive SavePageNow HTTP 523 so that adapter is MISS. GitLab/Codeberg/object-store stay EXTERNAL_PROVIDER_ACTION. None of this is canonical durability. |
+| Software Heritage | **SAVE ACCEPTED, ORIGIN PENDING** — [`ci/moving_main/receipts/swh-save-2456178.json`](../ci/moving_main/receipts/swh-save-2456178.json) | Public Save Code Now POST, no new secret | Origin URL 404 before the request. Visit created. Do not claim a browsable independent git tree until `snapshot_swhid` is set. |
 | Oracle Cloud | **MISSING** | none | No OCI config, SDK, IaC, function, VM receipt, object store, database, or deployment exists. The repository's separate `ORACLE` research name is not OCI. |
 | Cloudflare Workers + D1 | **MISSING ON MAIN** | none | No checked-in Worker, D1 schema/binding, migration receipt, Worker URL, scheduled drain, or integration test is evidenced. A recovered source proposal exists outside canonical `main`; it is not an implementation receipt and is not counted here. |
 | Cloudflare R2 | **MISSING** | none | No R2 binding, bucket code, lifecycle, backup, or restore path. |
@@ -52,12 +54,14 @@ not that a participant is excluded from Commons.
 
 ## What should happen next
 
-The jsDelivr receipt closes one measured cross-provider read only. For every
+The jsDelivr receipt closes one measured cross-provider read only. The
+moving-main courier closes the no-courier automatic cursor and the
+zero-new-credential Software Heritage save request; it does not close
+canonical durability or GitLab/Codeberg/R2 full-bundle origins (those stay
+EXTERNAL_PROVIDER_ACTION). Backup snapshot/verify/restore is landed in
+`host/repo_backup.py` and composed by the courier. For every
 configured-but-unmeasured compute provider, the next evidence is a real run URL,
-source commit, artifact hash, and readback. For every missing provider, source and
-restore behavior must exist before it is described as redundancy. Cloudflare
+source commit, artifact hash, and readback. Cloudflare
 Workers/D1 first needs reviewed source on `main`, then a deployed binding and
 end-to-end submit -> canonical exact-hash receipt. R2, KV, Oracle, Deno, Kaggle,
-Colab, and HF Spaces remain missing until their own evidence exists. Backup and
-quarantine restore likewise remain an implementation gap; an unlanded local
-draft is not counted as redundancy.
+Colab, and HF Spaces remain missing until their own evidence exists.

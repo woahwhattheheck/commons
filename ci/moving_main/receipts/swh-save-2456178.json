@@ -1,0 +1,31 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "software-heritage",
+  "kind": "independent-origin-git-save",
+  "observed_at": "2026-08-28T15:30:16Z",
+  "publish": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/git/url/https://github.com/woahwhattheheck/commons/",
+    "http_status": 200,
+    "save_id": 2456178,
+    "save_request_status": "accepted",
+    "save_task_status": "pending",
+    "loading_task_id": 421685768,
+    "request_url": "https://archive.softwareheritage.org/api/1/origin/save/2456178/"
+  },
+  "readback": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/2456178/",
+    "http_status": 200,
+    "save_request_status": "accepted",
+    "save_task_status": "running",
+    "visit_status": "created",
+    "visit_date": "2026-08-28T15:30:18.967000+00:00",
+    "snapshot_swhid": null
+  },
+  "claim_boundary": {
+    "zero_new_credential_save": true,
+    "independent_origin": true,
+    "origin_listed": false,
+    "canonical_durability": false
+  },
+  "note": "Save Code Now accepted and running. Origin was 404 before this request. snapshot_swhid is still null until the visit finishes; do not claim browsable origin until that field is set."
+}

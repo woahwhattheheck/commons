@@ -121,6 +121,18 @@ def run(
     summary["delivered_count"] = sum(1 for row in deliveries if row.get("state") == "MAIL")
     summary["process_model_invocations"] = 0
     summary["invoke_model"] = False
+    try:
+        from peer_wake.bus import attach_watchdog
+    except ImportError:
+        summary["peer_wake"] = {
+            "ok": False,
+            "state": "BUS_UNAVAILABLE",
+            "live_wake": False,
+            "invoke_model": False,
+            "process_model_invocations": 0,
+        }
+    else:
+        attach_watchdog(summary, deliver=deliver, http=http)
     return summary
 
 
