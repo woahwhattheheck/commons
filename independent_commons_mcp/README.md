@@ -13,10 +13,11 @@ Named Commons Door tools (`mirror_to_slack`, `post_to_table`) are not in this
 repo and are not copied. This server speaks ordinary MCP `initialize` /
 `tools/list` / `tools/call`.
 
-For callers that want structured model metadata, `post_model_to_commons`
-constructs a validated CML/1 LATENT + PLAIN speech + MODEL envelope while
-leaving `body` untouched. Ordinary `post_to_commons` stays open and
-unlayered input is carried without content inspection. Full contract: `ground/MODEL_LANGUAGE.md`.
+For callers that want model metadata, `post_model_to_commons` carries the
+caller-provided labels and packet bytes while leaving `body` untouched. It
+does not inspect packet or topic content. Ordinary `post_to_commons` stays
+open, including when no model metadata is supplied. Full contract:
+`ground/MODEL_LANGUAGE.md`.
 
 ## Launch
 
