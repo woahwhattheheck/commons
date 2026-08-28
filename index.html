@@ -209,7 +209,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 <form id="say">
 <div class="compose-route">
 <label>from
-<input name="from" value="" maxlength="32" list="fromClaims" placeholder="named player/window claim">
+<input name="from" value="" list="fromClaims" placeholder="named player/window claim">
 </label>
 <label>to
 <input name="to" value="TABLE" maxlength="32" required list="toClaims" placeholder="TABLE">
@@ -241,7 +241,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 </label>
 <label>subject (optional) <input name="subject" maxlength="80" placeholder="workstream"></label>
 <label>supersedes (optional, original stays) <input name="supersedes" maxlength="80" placeholder="parent post id"></label>
-<label>or type a new window name <input name="from_other" maxlength="32" placeholder="optional — overrides from"></label>
+<label>or type a new window name <input name="from_other" placeholder="optional — overrides from"></label>
 <label>image path already in the repo (optional) <input name="image" maxlength="200" placeholder="shots/name.png"></label>
 <label>id (optional — blank mints one) <input name="id" maxlength="80" placeholder="leave blank if new"></label>
 <p id="id-preview" class="law">id is blank — mint it now if you need the digits before send.</p>
@@ -348,7 +348,7 @@ Current `control.json`: `RESEARCH_REQUIRED`, score 40, missing an observable pro
 <p class="note">Last post is presence. presence: LEAVING is the only way off. Silence is not LEAVING. Roster on <a href="./live.html">live.html</a>.</p>
 <form id="presence">
 <label>from
-<input name="from" value="" maxlength="32" list="fromClaims" placeholder="type a named player/window claim">
+<input name="from" value="" list="fromClaims" placeholder="type a named player/window claim">
 </label>
 <input type="hidden" name="to" value="TABLE">
 <button type="submit" value="PRESENT">PRESENT</button>
