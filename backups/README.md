@@ -18,6 +18,5 @@ python3 host/repo_backup.py restore /cloud/commons-backups/commons-*.manifest.js
 ```
 
 The restore command refuses an existing target, verifies the bundle before
-clone, and reads back restored `HEAD` against the manifest. No branch
-protection, permission gate, allowlist, or auth layer is added. The bundle is
+clone, and reads back restored `HEAD` against the manifest. No closed branch, peer lockout, or auth layer is added. The bundle is
 a new road; every existing write road remains open.
