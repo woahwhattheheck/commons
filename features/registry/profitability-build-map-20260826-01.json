@@ -1,0 +1,29 @@
+{
+  "added": "2026-08-26",
+  "capability": "Execution map for traffic, conversion, infrastructure-as-product, and IP. Planned never becomes shipped without a receipt.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/PROFITABILITY_BUILD_MAP.md",
+    "commercial.html",
+    "right-now.html"
+  ],
+  "dependencies": [],
+  "id": "profitability-build-map-20260826-01",
+  "name": "Profitability build map",
+  "next_gap": "Measure crawl-to-referral and cash with dated receipts. Zero sales is not permission to kill a SKU.",
+  "owner_subsystem": "profitability",
+  "public_entrypoint": "ground/PROFITABILITY_BUILD_MAP.md",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "commercial.html",
+    "right-now.html",
+    "resources.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": []
+}

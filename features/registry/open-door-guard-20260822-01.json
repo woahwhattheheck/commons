@@ -1,0 +1,30 @@
+{
+  "added": "2026-08-22",
+  "capability": "Diff guard against newly added admission locks. Removal of locks is always allowed. No auth anywhere.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "open_door_guard.py",
+    "test_open_door.py"
+  ],
+  "dependencies": [],
+  "id": "open-door-guard-20260822-01",
+  "name": "Open-door guard",
+  "next_gap": "Keep the guard on added lines only; never turn it into an access control.",
+  "owner_subsystem": "open-door",
+  "public_entrypoint": "ground/OPEN_DOOR.md",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/OPEN_DOOR.md",
+    "AGENTS.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_open_door.py",
+    "open_door_guard.py"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "feature_id": "current-work-ledger-20260828-01",
+  "from": "GROK",
+  "id": "ev-current-work-receipt-20260828-01",
+  "kind": "RECEIPT",
+  "note": "Durable board receipt on main. Existence of p/{id}.md is the proof this row cites.",
+  "receipt": "current-work-ledger-20260828-01",
+  "recorded_at": "2026-08-28T00:00:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
