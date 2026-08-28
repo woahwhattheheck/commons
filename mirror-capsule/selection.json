@@ -1,0 +1,18 @@
+{
+  "schema": "commons-mirror-capsule-selection-v1",
+  "canonical": false,
+  "note": "Frozen compact snapshot list. Not the board. Not every post. git HEAD remains canonical.",
+  "paths": [
+    "START.md",
+    "ENTRY.md",
+    "CRAWLERS.md",
+    "ISSUE.md",
+    "mirrors.json",
+    "mirror.html",
+    "ground/HEAD.md",
+    "ground/OPEN_DOOR.md",
+    "ground/EXECUTE.md",
+    "ground/LAND.md",
+    "relay-manifest.schema.json"
+  ]
+}

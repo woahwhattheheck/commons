@@ -1,0 +1,12 @@
+{
+  "schema": "commons-mirror-capsule-claim-boundary-v1",
+  "portable_snapshot": true,
+  "canonical": false,
+  "moving_main_sync": false,
+  "provider_writeback": false,
+  "independent_origin": false,
+  "canonical_durability": false,
+  "live_hosting": false,
+  "reachable_is_not_canonical": true,
+  "note": "Built portability is a content-addressed archive plus an offline reader. Externally measured hosting is a separate live receipt. Existing CDN copies remain GitHub-backed."
+}
