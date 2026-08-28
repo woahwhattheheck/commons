@@ -1,0 +1,45 @@
+{
+  "schema_version": "agent-ops-checkout/v1",
+  "measured_at": "2026-08-27T23:30:00Z",
+  "provider": {
+    "name": "stripe",
+    "livemode": false,
+    "account_charges_enabled": false,
+    "connection_state": "SANDBOX_ONLY"
+  },
+  "offers": {
+    "operator": {
+      "sku": "agent-ops-operator-monthly",
+      "price_usd": "49.00",
+      "interval": "month",
+      "link": {
+        "status": "NOT_MINTED",
+        "active": false,
+        "url": null
+      },
+      "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Operator",
+      "fallback_label": "Join operator pilot"
+    },
+    "foundry": {
+      "sku": "agent-ops-foundry-same-day",
+      "price_usd": "2500.00",
+      "interval": "one_time",
+      "link": {
+        "status": "NOT_MINTED",
+        "active": false,
+        "url": null
+      },
+      "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Foundry",
+      "fallback_label": "Book integration"
+    }
+  },
+  "economic_truth": {
+    "buyer_claimed": false,
+    "processor_payment_claimed": false,
+    "collected_cash_usd": "0.00"
+  },
+  "source_refs": [
+    "ground/STRIPE.md",
+    "land/stripe-payment-links-20260826.md"
+  ]
+}
