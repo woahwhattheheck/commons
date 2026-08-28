@@ -7,7 +7,8 @@ working copy is local and safe. Dirt is never discarded.
 This is the **ephemeral cloud** road. It composes with
 [CLOUD_STORAGE_ONLY.md](./CLOUD_STORAGE_ONLY.md). It does not replace the
 owner-disk freeze, Cursor Task/best-of-n ban, or the LocalDeviceAgent vault
-worktree hold.
+worktree hold. It is not the unfinished-now ledger
+([CURRENT_WORK.md](./CURRENT_WORK.md)).
 
 No login. No token gate. Possessing the link is enough. Blank `from=` is
 `UNSEATED`. Catalog: [CLOUD_CURRENT.json](./CLOUD_CURRENT.json). Tool:
