@@ -31,11 +31,17 @@
       "active_attempt_id": "grok-community-evidence-portable-20260828-a02",
       "active_executor": "codex-01a0454f",
       "blockers": [],
-      "capture_ack": null,
+      "capture_ack": {
+        "revision": 1,
+        "run_id": "267c48a640306a2f2e28817fd73840a7",
+        "snapshot_sha256": "729c94394c9de747261ebd64141c367ee46b5a87ddc8d13997a31354bebd81e5",
+        "snapshot_size_bytes": 4350,
+        "state": "GROK_CONTINUE"
+      },
       "failed_executors": [],
       "prompt_replay_allowed": true,
-      "state": "LEASED",
-      "submission_state": "NOT_SUBMITTED",
+      "state": "CAPTURE_STARTED",
+      "submission_state": "CAPTURE_STARTED",
       "submitted_at": ""
     },
     "lineage": {
@@ -126,6 +132,14 @@
       "submission_state": "NOT_SUBMITTED",
       "ts": "2026-08-28T11:13:53Z",
       "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "event": "grok_capture_started",
+      "lease_id": "lease-9b88f4ba8eef",
+      "submission_state": "CAPTURE_STARTED",
+      "ts": "2026-08-28T11:14:54Z",
+      "worker_id": "codex-01a0454f"
     }
   ],
   "harness": "grok.com authenticated browser via Commons MCP",
@@ -149,7 +163,7 @@
   "result_address": "",
   "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-28T11:13:53Z",
+  "updated_at": "2026-08-28T11:14:54Z",
   "woke_once": true
 }
 
