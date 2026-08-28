@@ -22,6 +22,7 @@ RUNTIME_FILES = (
     "commons_mcp_app.html",
     "model_language.py",
     "relay_manifest.py",
+    "relay-manifest.json",  # imported at module load; missing => FUNCTION_INVOCATION_FAILED
     "owner_enroll.py",
     "owner_net.py",
     "host/observatory.py",
