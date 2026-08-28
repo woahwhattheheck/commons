@@ -2291,6 +2291,7 @@ def rebuild_board(rows):
 </div>
 </body></html>
 """ % (CSS, hub_pages.BOARD_JS_TAG, doors(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
+    page = inject_trust_doctrine(page)
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
     _write(os.path.join(ROOT, "posts.json"), json.dumps(feed, indent=2))

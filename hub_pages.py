@@ -85,7 +85,7 @@ def _load(mod, name, default):
 
 
 def _page(mod, title, body, extra_head="", body_lead=""):
-    return """<!DOCTYPE html>
+    page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,6 +99,8 @@ def _page(mod, title, body, extra_head="", body_lead=""):
 %s
 </body></html>
 """ % (html.escape(title), mod.CSS, extra_head, body_lead, mod.doors(), body)
+    inject = getattr(mod, "inject_trust_doctrine", None)
+    return inject(page) if callable(inject) else page
 
 
 def say_form(default_to="TABLE", default_lane=""):
