@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import re
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -94,7 +96,10 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertNotIn("api/mcp.py", lines)
         self.assertNotIn("carriers", lines)
         # Hobby api-upload-free is 5000 files. Allowlist the runtime graph.
-        self.assertIn("*", lines)
+        # Bare * is the Vercel CLI 56.1.0 bug: every-depth match dropped
+        # directory un-ignores (run 33218271833 uploaded 7 files, no api/mcp.py).
+        self.assertIn("/*", lines)
+        self.assertNotIn("*", lines)
         self.assertIn("!commons_mcp.py", lines)
         self.assertIn("!commons_mcp_app.html", lines)
         self.assertIn("!api/", lines)
@@ -102,9 +107,53 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("!protocol/", lines)
         self.assertIn("!integrations/grokcom_revenue/", lines)
         self.assertIn("!host/observatory.py", lines)
+        self.assertIn("host/*", lines)
         self.assertIn("!vercel.json", lines)
         self.assertIn("api-upload-free", text)
         self.assertIn("5000", text)
+        self.assertIn("33218271833", text)
+        self.assertIn("7 root files", text)
+
+    def test_vercelignore_keeps_api_mcp_and_drops_corpus_via_git_matcher(self) -> None:
+        """Regression for run 33218271833: api/mcp.py must survive the allowlist."""
+        text = VERCELIGNORE.read_text(encoding="utf-8")
+        keep = (
+            "api/mcp.py",
+            "api/owner_context.py",
+            "commons_mcp.py",
+            "vercel.json",
+            "host/observatory.py",
+            "host/owner_context.py",
+            "carriers/x.json",
+            "protocol/events.py",
+            "integrations/grokcom_revenue/orchestrator.py",
+            "model_language.py",
+        )
+        drop = (
+            "p/hello.md",
+            "chunks/x.json",
+            "posts.json",
+            "muhl/foo.py",
+            "projection/x.py",
+            "infra/x.py",
+            "ground/LAND.md",
+            "host/cash_now.py",
+            "host/commons_android/foo.py",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            (root / ".gitignore").write_text(text, encoding="utf-8")
+            for rel in keep + drop:
+                path = root / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("x\n", encoding="utf-8")
+            for rel in keep:
+                proc = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
+                self.assertNotEqual(proc.returncode, 0, "should keep %s" % rel)
+            for rel in drop:
+                proc = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
+                self.assertEqual(proc.returncode, 0, "should drop %s" % rel)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]
