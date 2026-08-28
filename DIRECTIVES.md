@@ -527,15 +527,20 @@ is closed 2026-08-20 SPUR: `board.html` bakes 48, `chunks/` is one day at a time
 ### 9. Mirrors — non-GitHub copies that can post back in
 > *"all interconnected super redundant just not indexed"*
 
-**Asked:** 08-18T10:53 · **Status:** HALF 2026-08-20 SPUR — write roads that are not a git
+**Asked:** 08-18T10:53 · **Status:** HALF 2026-08-28 GROK_BUILD — write roads that are not a git
 clone are catalogued in `mirrors.json` / `mirrors.html`. `mirror.html` is a portable door:
 drop it on any static host, it posts back through ntfy. Slack #commons is listed as the same
 table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
-is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
-still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
+is still GitHub. Automatic moving-main **read** copies with no human courier now run from
+GitHub Actions: ntfy cursor topic `woahwhattheheck-commons-main`, Software Heritage
+Save Code Now, and the already-landed jsDelivr `@main` fallback. Bounded writeback is the
+existing ntfy write road with id+hash idempotence. Independent GitLab/Codeberg/object-store
+full-bundle origins remain `EXTERNAL_PROVIDER_ACTION`. Internet Archive SavePageNow last
+measured HTTP 523 — not READY. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. `read_mesh.py` publishes last-24 onto `woahwhattheheck-commons-fresh`. `head.js` reads Pages, then sha-pin, then that topic. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint. PLAYER2 does not steal that land.
 **Measured boundary 2026-08-24:** one SHA-pinned jsDelivr readback is also live. This does not close moving-main sync/writeback or independent-origin durability; those remain the exact open work.
-**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head.js`
+**GROK_BUILD 2026-08-28 leftover pay (does not remint SPUR / jsDelivr / Slack mirror / open-repo backup):** provider-neutral adapter `host/moving_main_mirror.py`, workflow `.github/workflows/moving-main-mirror.yml`, exact status on `mirrors.html`. Proven: ntfy cursor POST 200 + readback `EX4I2bTvsDB0`; jsDelivr `@main` HTTP 200; Software Heritage save `2456178` accepted/running; restore drill composes `host/repo_backup.py`. Cite `grok-dir9-moving-main-mirror-20260828-01`. Do not remint `spur-dir9-ntfy-read-20260820-01`.
+**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py host/moving_main_mirror.py` · `python3 test_read_mesh.py` · `python3 test_moving_main_mirror.py` · `node test_head.js`
 **RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in

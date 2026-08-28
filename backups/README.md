@@ -39,3 +39,9 @@ forces `github_outage_protection: false`, `same_repo_copy: false`,
 lockout, or auth layer is added. Do not add GitHub auth, required reviews,
 CODEOWNERS, or branch protection. The bundle is a new road; every existing
 write road remains open.
+
+The moving-main courier composes with this drill. It does not replace it.
+Card: [ground/MOVING_MAIN_MIRROR.md](../ground/MOVING_MAIN_MIRROR.md). Independent
+GitLab/Codeberg/object-store copies remain EXTERNAL_PROVIDER_ACTION until a
+public origin URL exists.
+
