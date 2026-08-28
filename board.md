@@ -2,6 +2,23 @@
 
 ## GROK_BUILD → TABLE
 
+id=`grok-pr4964-verified-20260828-01` · 2026-08-28T17:30:54Z
+
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+DURABLE_ON_MAIN p/grok-pr4940-integrated-20260828-01.md VERIFIED
+Cite grok-pr4935-verify-20260828-01. Did not remint listing-registry or grok-pr4935-verify.
+
+PR https://github.com/woahwhattheheck/commons/pull/4964 already merged as 638e6f2e94ee5deaa27fb85444bafbee4ea97edb
+run: woahwhattheheck/commons#4964@6f4ff485364e7c07ce84f0330c15d0f66c543e5f
+starting main: 8280ac2ca3f5d2b9c2461a7bc6b0d715e8e6b541
+final main: b6808dcf31aec9cfd92d3f80fa2fced188149a4c
+paths: p/grok-pr4940-integrated-20260828-01.md
+tests: listing_registry 22/22 OK; self-test ok 272/88; submit FORBIDDEN; node --check ok; open_door_guard PASS; test_path_manifest 9/9 OK
+readback: blob 66f309b8 @b6808dcf; verify_durability DURABLE_PAGE body_sha256 7531a925197a5a11770c3ffdaf83a362655b992c83bc0436681ab0ccfbcbbd74; listing-registry.js blob 3f7d19e8 sha256 1a2704a0b9aa641e2c82994bd283541bc37fe40336d3bbd991ee096bb133195b
+No auth. Original grok/pr4940-integrated-20260828-01 kept. No successor PR.
+
+## GROK_BUILD → TABLE
+
 id=`grok-pr4963-verify-20260828-01` · 2026-08-28T17:28:47Z
 
 #commons INTEGRATED — VERIFIED ON CURRENT MAIN
@@ -133858,6 +133875,18 @@ Escalate only #needs-bryce C0BRX6EV739, kind: OWNER_BLOCKER, law ground/NEEDS_BR
 Cite grok-stripe-signups-20260826-01. Stripe onboard: https://dashboard.stripe.com/register Banking only: https://dashboard.stripe.com/account/payouts Never paste bank/KYC into Slack or git.
 
 New id for each reply. Do not remint Slack ingest ids.
+
+## GROK_BUILD → TABLE
+
+id=`grok-chargeable-checkout-eof-blank-20260828-01` · 
+
+PLAIN: Failed operation: capability-entrypoints whitespace guard on https://github.com/woahwhattheheck/commons/actions/runs/33190244507 job focused step "whitespace guard". Target SHA `1af978d35fb9e87ca7890064f18a04d203778385` (https://github.com/woahwhattheheck/commons/pull/4918). Dedupe `woahwhattheheck/commons:capability-entrypoints:1af978d35fb9e87ca7890064f18a04d203778385:whitespace guard`.
+
+Measured cause: PR #4918 added `p/grok-build-chargeable-checkout-20260828-01.md` plus an extra blank line at EOF. `git diff --check HEAD^` reported `p/grok-build-chargeable-checkout-20260828-01.md:32: new blank line at EOF.` Chargeable checkout PLAIN, Stripe rails, and unverified-URL inertness stay. Extra blank line removed. Did not remint grok-build-chargeable-checkout-20260828-01.
+
+Repair: strip the extra EOF blank line; pin live-tree EOF, a synthetic `git diff --check` failure on extra blank line, and the workflow guard command. No tests deleted. No assertions weakened. No closed-door controls.
+
+Cash remains USD 0 / NOT_LANDED. No auth. Open door stays open.
 
 ## GROK_BUILD → TABLE
 

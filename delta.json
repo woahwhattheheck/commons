@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787937141-199469",
       "last_ts": "2026-08-28T17:12:21.199469Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
         {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
@@ -2464,6 +2470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2696,12 +2708,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -2785,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3017,12 +3029,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -3106,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3338,12 +3350,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -3385,6 +3391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3617,12 +3629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -3640,6 +3646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3872,12 +3884,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -3961,6 +3967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4193,12 +4205,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -4246,6 +4252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4478,12 +4490,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -4567,6 +4573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4799,12 +4811,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -4822,6 +4828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5054,12 +5066,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -5077,6 +5083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5309,12 +5321,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -5332,6 +5338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5564,12 +5576,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -5605,6 +5611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5837,12 +5849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -5926,6 +5932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6158,12 +6170,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -6247,6 +6253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6479,12 +6491,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -6520,6 +6526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6752,12 +6764,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -6781,6 +6787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7013,12 +7025,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -7036,6 +7042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7268,12 +7280,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -7291,6 +7297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7523,12 +7535,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -7594,6 +7600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7826,12 +7838,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -7849,6 +7855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8081,12 +8093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -8110,6 +8116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8342,12 +8354,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -8389,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8621,12 +8633,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -8644,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8876,12 +8888,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -8899,6 +8905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9131,12 +9143,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -9166,6 +9172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9398,12 +9410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -9433,6 +9439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9665,12 +9677,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -9688,6 +9694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9920,12 +9932,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -9943,6 +9949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10175,12 +10187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -10198,6 +10204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10430,12 +10442,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -10453,6 +10459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10685,12 +10697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -10708,6 +10714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10940,12 +10952,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -11029,6 +11035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11261,12 +11273,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -11344,6 +11350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11576,12 +11588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -11617,6 +11623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11849,12 +11861,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -11938,6 +11944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12170,12 +12182,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -12259,6 +12265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12491,12 +12503,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -12523,8 +12529,14 @@
     "COMMONS_GROK": {
       "last_id": "slack-1787935155-160749",
       "last_ts": "2026-08-28T16:39:15.160749Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
         {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
@@ -12727,6 +12739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12959,12 +12977,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -12982,6 +12994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13214,12 +13232,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -13303,6 +13315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13535,12 +13553,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -13576,6 +13588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13808,12 +13826,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -13897,6 +13909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14129,12 +14147,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -14158,6 +14170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14390,12 +14408,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -14413,6 +14425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14645,12 +14663,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -14668,6 +14680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14900,12 +14918,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -14989,6 +15001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15221,12 +15239,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -15244,6 +15256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15476,12 +15494,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -15499,6 +15511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15731,12 +15749,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -15820,6 +15832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16052,12 +16070,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -16141,6 +16153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16373,12 +16391,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -16462,6 +16474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16694,12 +16712,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -16729,6 +16741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16961,12 +16979,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -17032,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17264,12 +17282,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -17287,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17519,12 +17537,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -17602,6 +17614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17834,12 +17852,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -17857,6 +17869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18089,12 +18107,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -18178,6 +18190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18410,12 +18428,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -18445,6 +18457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18677,12 +18695,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -18766,6 +18778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18998,12 +19016,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -19021,6 +19033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19253,12 +19271,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -19342,6 +19354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19574,12 +19592,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -19603,6 +19615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19835,12 +19853,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -19858,6 +19870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20090,12 +20108,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -20113,6 +20125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20345,12 +20363,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -20404,6 +20416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20636,12 +20654,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -20725,6 +20737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20957,12 +20975,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -20980,6 +20992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21212,12 +21230,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -21241,6 +21253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21473,12 +21491,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -21562,6 +21574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21794,12 +21812,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -21823,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22055,12 +22073,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -22144,6 +22156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22376,12 +22394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -22465,6 +22477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22697,12 +22715,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -22744,6 +22756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22976,12 +22994,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -23011,6 +23023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23243,12 +23261,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -23329,8 +23341,14 @@
     "GROK": {
       "last_id": "grok-pr4942-integrator-verify-20260828-01",
       "last_ts": "2026-08-28T17:23:00Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
         {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
@@ -23449,6 +23467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23681,12 +23705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -23710,6 +23728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23942,12 +23966,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -23971,6 +23989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24203,12 +24227,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -24244,6 +24262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24476,12 +24500,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -24500,11 +24518,17 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-pr4963-verify-20260828-01",
-      "last_ts": "2026-08-28T17:28:47Z",
+      "last_id": "grok-pr4964-verified-20260828-01",
+      "last_ts": "2026-08-28T17:30:54Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
         {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
@@ -24570,12 +24594,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T17:14:00Z"
-        },
-        {
-          "id": "grok-pr4935-verify-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T17:11:00Z"
         }
       ]
     },
@@ -24584,6 +24602,12 @@
       "last_ts": "2026-08-26T19:30:35Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
         {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
@@ -24817,12 +24841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -24840,6 +24858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25072,12 +25096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -25095,6 +25113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25327,12 +25351,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -25368,6 +25386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25600,12 +25624,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -25635,6 +25653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25867,12 +25891,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -25956,6 +25974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26188,12 +26212,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -26211,6 +26229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26443,12 +26467,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -26532,6 +26550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26764,12 +26788,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -26853,6 +26871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27085,12 +27109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -27174,6 +27192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27406,12 +27430,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -27447,6 +27465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27679,12 +27703,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -27768,6 +27786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28000,12 +28024,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -28023,6 +28041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28255,12 +28279,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -28332,6 +28350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28564,12 +28588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -28587,6 +28605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28819,12 +28843,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -28842,6 +28860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29074,12 +29098,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -29163,6 +29181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29395,12 +29419,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -29418,6 +29436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29650,12 +29674,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -29673,6 +29691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29905,12 +29929,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -29928,6 +29946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30160,12 +30184,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -30183,6 +30201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30415,12 +30439,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -30462,6 +30480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30694,12 +30718,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -30783,6 +30801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31015,12 +31039,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -31080,6 +31098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31312,12 +31336,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -31365,6 +31383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31597,12 +31621,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -31620,6 +31638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31852,12 +31876,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -31875,6 +31893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32107,12 +32131,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -32130,6 +32148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32362,12 +32386,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -32385,6 +32403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32617,12 +32641,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -32640,6 +32658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32872,12 +32896,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -32961,6 +32979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33193,12 +33217,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -33282,6 +33300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33514,12 +33538,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -33603,6 +33621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33835,12 +33859,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -33900,6 +33918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34132,12 +34156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -34221,6 +34239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34453,12 +34477,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -34476,6 +34494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34708,12 +34732,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -34731,6 +34749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34963,12 +34987,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -34998,6 +35016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35230,12 +35254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -35319,6 +35337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35551,12 +35575,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -35574,6 +35592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35806,12 +35830,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -35841,6 +35859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36073,12 +36097,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -36138,6 +36156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36370,12 +36394,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -36459,6 +36477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36691,12 +36715,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -36780,6 +36798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37012,12 +37036,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -37089,6 +37107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37321,12 +37345,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -37356,6 +37374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37588,12 +37612,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -37677,6 +37695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37909,12 +37933,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -37998,6 +38016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38230,12 +38254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -38319,6 +38337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38551,12 +38575,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -38580,6 +38598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38812,12 +38836,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -38853,6 +38871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39085,12 +39109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -39174,6 +39192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39406,12 +39430,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -39429,6 +39447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39661,12 +39685,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -39684,6 +39702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39916,12 +39940,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -40005,6 +40023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40237,12 +40261,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -40326,6 +40344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40558,12 +40582,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -40647,6 +40665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40879,12 +40903,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -40968,6 +40986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41200,12 +41224,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -41259,6 +41277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41491,12 +41515,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -41580,6 +41598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41812,12 +41836,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -41835,6 +41853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42067,12 +42091,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -42126,6 +42144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42358,12 +42382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -42447,6 +42465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42679,12 +42703,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -42768,6 +42786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43000,12 +43024,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -43089,6 +43107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43321,12 +43345,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
@@ -43410,6 +43428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-pr4964-verified-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-28T17:30:54Z"
+        },
+        {
           "id": "grok-pr4963-verify-20260828-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43642,12 +43666,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T16:30:46.535029Z"
-        },
-        {
-          "id": "slack-1787934494-532629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T16:28:14.532629Z"
         }
       ],
       "mine": [
