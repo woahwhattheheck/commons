@@ -77,6 +77,20 @@ class GrokSlackHostTests(unittest.TestCase):
         text = Path("tests.yml" if Path("tests.yml").is_file() else ".github/workflows/tests.yml").read_text(encoding="utf-8")
         self.assertIn("integrations/**", text)
 
+    def test_dockerfile_copies_named_files_not_env(self) -> None:
+        text = (bridge.integration_root() / "Dockerfile").read_text(encoding="utf-8")
+        self.assertNotIn("COPY integrations/grok_slack /opt/commons/integrations/grok_slack", text)
+        self.assertIn("integrations/grok_slack/bridge.py", text)
+        self.assertNotIn(".env.local", text)
+        self.assertIsNone(bridge.TOKEN_VALUE_RE.search(text))
+
+    def test_compose_optional_env_file_without_tokens(self) -> None:
+        text = (bridge.integration_root() / "compose.yml").read_text(encoding="utf-8")
+        self.assertIn("env_file:", text)
+        self.assertIn(".env.local", text)
+        self.assertIn("required: false", text)
+        self.assertIsNone(bridge.TOKEN_VALUE_RE.search(text))
+
     def test_doctor_marks_secrets_in_config(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

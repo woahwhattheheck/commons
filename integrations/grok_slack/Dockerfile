@@ -2,6 +2,7 @@
 # Build from the repository root:
 #   docker build -f integrations/grok_slack/Dockerfile -t commons-grok-slack .
 # GitHub Actions is not an always-on Socket Mode host.
+# Copy named files only so a local gitignored env file cannot bake into the image.
 FROM python:3.12-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -14,7 +15,18 @@ RUN useradd --system --uid 10001 --create-home --home-dir /var/lib/commons commo
 WORKDIR /opt/commons
 COPY integrations/grok_slack/requirements.txt /opt/commons/requirements.txt
 RUN pip install --no-cache-dir -r /opt/commons/requirements.txt
-COPY integrations/grok_slack /opt/commons/integrations/grok_slack
+RUN mkdir -p /opt/commons/integrations/grok_slack
+COPY integrations/grok_slack/__init__.py \
+     integrations/grok_slack/app_manifest.yaml \
+     integrations/grok_slack/bridge.py \
+     integrations/grok_slack/canary.py \
+     integrations/grok_slack/env.example \
+     integrations/grok_slack/run.sh \
+     integrations/grok_slack/Dockerfile \
+     integrations/grok_slack/compose.yml \
+     integrations/grok_slack/commons-grok-slack.service \
+     integrations/grok_slack/README.md \
+     /opt/commons/integrations/grok_slack/
 
 USER commons
 VOLUME ["/var/lib/commons"]
