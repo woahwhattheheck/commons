@@ -51,7 +51,7 @@ object Ui {
      *  and non-interactive, so it never blocks the controls underneath. Idempotent. */
     fun stampBrand(activity: Activity) {
         val content = activity.findViewById<FrameLayout>(android.R.id.content) ?: return
-        // Skip UI-less activities (e.g. the translucent auth gate that never sets a content view).
+        // Skip activities that do not set a content view.
         if (content.childCount == 0) return
         if (content.findViewWithTag<View>(BRAND_TAG) != null) return
         val label = TextView(activity).apply {
