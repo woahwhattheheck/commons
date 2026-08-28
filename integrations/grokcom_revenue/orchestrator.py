@@ -191,6 +191,40 @@ def _grok_prompt(task_id: str, mode: str, event: dict[str, str], sales: dict[str
     ))
 
 
+def _executor_job(
+    task_id: str,
+    run_key: str,
+    event: dict[str, str],
+    prompt: str,
+    lineage: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    continuation = bool(lineage)
+    job_id = task_id if not continuation else task_id + "-c" + _digest(run_key)[:12]
+    action = {
+        "id": job_id,
+        "from": event["author"],
+        "act": "BUILD",
+        "target": "GROK.COM",
+        "run_key": run_key,
+        "session_id": event["event_id"],
+        "event_id": event["event_id"],
+        "thread_ts": event["thread_ts"],
+        "payload": prompt,
+    }
+    if lineage:
+        action.update(lineage)
+    return {
+        "schema": "commons-grok-executor-submit/v1",
+        "job_id": job_id,
+        "run_key": run_key,
+        "submit_tool": "fire_action",
+        "arguments": action,
+        "submission_action": "CALL_FIRE_ACTION_ONCE",
+        "durable_path": "wake_jobs/%s.json" % job_id,
+        "no_replay": True,
+    }
+
+
 def _review_packet(task_id: str, artifact: dict[str, Any]) -> dict[str, Any]:
     return {
         "review_id": f"review-{task_id}",
@@ -268,6 +302,16 @@ def _continuation_packet(
         "parent_conversation_url": parent_url,
         "prompt": prompt,
         "no_replay": True,
+        "executor_job": _executor_job(
+            task_id,
+            run_key,
+            event,
+            prompt,
+            {
+                "parent_run_key": parent_run_key,
+                "parent_conversation_url": parent_url,
+            },
+        ),
         "capture_start": {
             "tool": "start_grok_capture",
             "arguments": {
@@ -357,6 +401,7 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
                 "surface": "grok.com",
                 "run_key": run_key,
                 "prompt": prompt,
+                "executor_job": _executor_job(task_id, run_key, event, prompt),
                 "capture_start": {
                     "tool": "start_grok_capture",
                     "arguments": {
