@@ -17,6 +17,11 @@ Load-bearing rules:
 * Evidence is a run artifact at repo-pulse/latest.json, never committed
   back onto main.
 * Missing fields are omitted. Never print "no title" or "?".
+* Sprint integration is additive: every digest teaches MERGE DEFAULT and
+  lists open-PR verdicts CLEAR_TO_MERGE / COMPOSE_AND_MERGE / DEDUPED /
+  CONFLICT with SHAs, overlapping paths, blob hashes, and rule ids. The
+  exact checker is host/sprint_integration.py. Policy:
+  ground/SPRINT_INTEGRATION.json. This does not change CLEAR/ATTENTION/BROKEN.
 """
 
 from __future__ import annotations
@@ -33,6 +38,14 @@ from datetime import datetime, timedelta, timezone
 API = "https://api.github.com"
 MIRROR_CLAIM = "COMMONS_SLACK_MIRROR"
 UA = "repo-pulse/2.1"
+SPRINT_CHECKER = "host/sprint_integration.py"
+SPRINT_POLICY = "ground/SPRINT_INTEGRATION.json"
+SPRINT_LAW = "ground/SPRINT_INTEGRATION.md"
+SPRINT_TEACH = (
+    "MERGE DEFAULT. Parallel branches are not collisions. "
+    "CONFLICT only when same effective code disagrees. "
+    "Busy main, stale base, unrelated checks are not stops."
+)
 
 # First match wins. Generated board records are not "board/UI".
 SURFACES = [
@@ -494,6 +507,79 @@ def list_open_pulls(payload):
     return out
 
 
+def load_sprint_module():
+    try:
+        import sprint_integration as si
+        return si
+    except ImportError:
+        pass
+    here = os.path.dirname(os.path.abspath(__file__))
+    host = os.path.join(here, "host")
+    if os.path.isdir(host) and host not in sys.path:
+        sys.path.insert(0, host)
+        try:
+            import sprint_integration as si
+            return si
+        except ImportError:
+            pass
+    return None
+
+
+def scan_sprint(head):
+    """Classify open PRs. Never raises; never changes CLEAR/ATTENTION/BROKEN."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "") or "woahwhattheheck/commons"
+    policy = "https://github.com/%s/blob/main/%s" % (repo, SPRINT_POLICY)
+    law = "https://github.com/%s/blob/main/%s" % (repo, SPRINT_LAW)
+    teach_line = "*sprint* %s · <%s|policy> · <%s|law>" % (SPRINT_TEACH, policy, law)
+    blank = {
+        "teach": SPRINT_TEACH,
+        "policy": policy,
+        "law": law,
+        "pairs": [],
+        "prs": [],
+        "slack_lines": [teach_line],
+        "available": False,
+        "verdicts": ["CLEAR_TO_MERGE", "COMPOSE_AND_MERGE", "DEDUPED", "CONFLICT"],
+    }
+    si = load_sprint_module()
+    if si is None or not hasattr(si, "pulse_scan"):
+        return blank
+
+    def fetch_json(path, **params):
+        mapped = path
+        if repo and path.startswith("/repos/" + repo):
+            mapped = "/repos/{repo}" + path[len("/repos/" + repo):]
+        payload, _ = gh(mapped, **params)
+        return payload
+
+    try:
+        scan = si.pulse_scan(fetch_json, repo, head)
+    except Exception:
+        NOTES.append("sprint scan failed")
+        return blank
+    out = dict(blank)
+    out.update(scan or {})
+    out["available"] = True
+    out["teach"] = SPRINT_TEACH
+    out["policy"] = policy
+    out["law"] = law
+    if not out.get("slack_lines"):
+        fmt = getattr(si, "format_slack_lines", None)
+        out["slack_lines"] = fmt(out, repo) if callable(fmt) else [teach_line]
+    return out
+
+
+def sprint_lines(ctx):
+    sprint = ctx.get("sprint") or {}
+    lines = list(sprint.get("slack_lines") or [])
+    if lines:
+        return lines[:8]
+    repo = ctx.get("repo") or os.environ.get("GITHUB_REPOSITORY", "") or "woahwhattheheck/commons"
+    policy = "https://github.com/%s/blob/main/%s" % (repo, SPRINT_POLICY)
+    law = "https://github.com/%s/blob/main/%s" % (repo, SPRINT_LAW)
+    return ["*sprint* %s · <%s|policy> · <%s|law>" % (SPRINT_TEACH, policy, law)]
+
+
 # ---------------------------------------------------------------- health / backup / pages
 
 def parse_check_runs(payload):
@@ -808,6 +894,9 @@ def render(ctx):
         if shown:
             L.append("*open PRs* " + " · ".join(shown))
 
+    for line in sprint_lines(ctx):
+        L.append(line)
+
     if diff.get("files"):
         top = sorted(diff["files"].items(), key=lambda kv: -(kv[1]["adds"] + kv[1]["dels"]))[:5]
         L.append(
@@ -1065,6 +1154,7 @@ def build_context(state, now=None, lookback_min=5):
     gaps = event_gaps(events, prev_snapshot, snapshot)
     settings = settings_delta(prev_snapshot, snapshot)
     history = state.get("history") or []
+    sprint = scan_sprint(snapshot.get("head") or "")
     return {
         "now": now,
         "events": events,
@@ -1086,6 +1176,7 @@ def build_context(state, now=None, lookback_min=5):
         "cursor": state.get("last_event_at") or state.get("last_run_at"),
         "last_event_at": state.get("last_event_at"),
         "history": history,
+        "sprint": sprint,
         "status": classify_status(hp, gaps, exhausted, settings, backup),
     }
 
@@ -1168,6 +1259,7 @@ def main(argv=None):
             for k, v in (ctx.get("backup") or {}).items()
         },
         "open_prs": ctx.get("open_prs"),
+        "sprint": ctx.get("sprint"),
         "gaps": ctx["gaps"],
         "velocity": ctx["velocity"],
         "snapshot": ctx["snapshot"],
