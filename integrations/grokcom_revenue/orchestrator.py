@@ -99,13 +99,24 @@ def _mode(requested: Any, text: str) -> str:
     return "OPERATE"
 
 
+def _event_text(value: Any) -> str:
+    """Preserve exact Slack event bytes. Whitespace-only remains invalid."""
+    if not isinstance(value, str):
+        raise ValueError("event.text must be a string")
+    if not value.strip():
+        raise ValueError("event.text must not be empty")
+    if len(value) > 16_000:
+        raise ValueError("event.text exceeds 16000 characters")
+    return value
+
+
 def _event(value: Any) -> dict[str, str]:
     row = _object(value, "event")
-    text = _string(
-        row.get("text") or "Continue the highest-value open Commons revenue work.",
-        "event.text",
-        required=True,
-    )
+    raw_text = row.get("text")
+    if raw_text is None or raw_text == "":
+        text = "Continue the highest-value open Commons revenue work."
+    else:
+        text = _event_text(raw_text)
     channel = _string(row.get("channel") or row.get("channel_id") or "C0BRGMDQB6G", "event.channel", required=True, maximum=128)
     message_ts = _string(
         row.get("message_ts") or row.get("ts") or row.get("event_id") or "open-call",

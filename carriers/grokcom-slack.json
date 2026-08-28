@@ -1,0 +1,31 @@
+{
+  "id": "grokcom-slack",
+  "name": "grok.com Slack connector",
+  "kind": "slack-socket-mode-transport",
+  "status": "code-landed-runtime-unconfigured",
+  "surface": "grok.com",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "slack-socket-mode",
+  "implementation": "integrations/grok_slack/bridge.py",
+  "tool": "route_grokcom_revenue_work",
+  "submit_tool": "fire_action",
+  "slack_channel": "C0BRGMDQB6G",
+  "connector_origin": "COMMONS_GROKCOM_REVENUE",
+  "final_delivery_owner": "grok_slack_bridge",
+  "connect": [
+    "Create the Slack app from integrations/grok_slack/app_manifest.yaml and install it in the workspace.",
+    "Put SLACK_BOT_TOKEN and SLACK_APP_TOKEN in the process environment only. Doctor reports present/missing, never values.",
+    "Run python integrations/grok_slack/bridge.py doctor --json then python integrations/grok_slack/bridge.py serve on a host-neutral always-on VM or container. GitHub Actions is not an always-on Socket Mode host. Bryce's desktop is not required.",
+    "Every Slack event is ACKed, claimed, and sent to public Commons MCP route_grokcom_revenue_work at INTAKE.",
+    "Post the returned slack_reply only when connector.post_reply is true.",
+    "Persist the returned job identity, then call fire_action exactly once with grokcom.executor_job.arguments.",
+    "Observe wake_jobs/<job_id>.json through a SHA-pinned current-main GitHub readback.",
+    "Feed the capture through GROKCOM_RESULT. This connector is the only final Slack delivery owner; reuse the commons-grok-cloud slack_receipt envelope when present.",
+    "Do not publish DMs into the public Git-backed Grok queue. Current main has no measured private Grok execution road."
+  ],
+  "scopes": ["app_mentions:read", "chat:write", "channels:history", "groups:history"],
+  "omitted_scopes": ["im:history", "mpim:history"],
+  "credentials": "No Slack, GitHub, xAI, or grok.com credential is accepted by the Commons tool or stored in this repository.",
+  "docs": "integrations/grok_slack/README.md"
+}

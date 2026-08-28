@@ -188,7 +188,21 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(result["next"], "TAKE_NEXT_SLACK_OR_REVENUE_ACTION")
         self.assertEqual(result["landing"]["main_sha"], "3" * 40)
 
-    def test_canonical_mcp_exposes_and_calls_the_orchestrator(self):
+    def test_event_text_preserves_exact_bytes_and_rejects_whitespace_only(self):
+        lossless = "  leading\n\ntrailing café ☃  \n"
+        result = orchestrate({
+            "event": {
+                **EVENT,
+                "text": lossless,
+            },
+        })
+        self.assertIn("Slack message: " + lossless, result["grokcom"]["prompt"])
+        self.assertEqual(result["source"]["event_id"], EVENT["event_id"])
+        with self.assertRaisesRegex(ValueError, "event.text must not be empty"):
+            orchestrate({"event": {**EVENT, "text": " \n\t  "}})
+        with self.assertRaisesRegex(ValueError, "event.text must not be empty"):
+            orchestrate({"event": {**EVENT, "text": "\n\n"}})
+
         class Gateway:
             def route_grokcom_revenue_work(self, arguments):
                 return orchestrate(arguments)
