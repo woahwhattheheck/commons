@@ -128,3 +128,99 @@ def build_capsule(root, source_sha=None, paths=None):
         if sha256_hex(files[row["path"]]) != row["sha256"] or len(files[row["path"]]) != row["bytes"]:
             raise HashCorrupt("collected bytes drifted from %s" % row["path"])
     return build_manifest(entries, sha, selection), build_archive(files), files
+
+def plan_update(old, new):
+    old_map = {row["path"]: row for row in old.get("entries", [])}
+    new_map = {row["path"]: row for row in new.get("entries", [])}
+    add, replace, remove, unchanged = [], [], [], 0
+    for path, row in sorted(new_map.items()):
+        if path not in old_map:
+            add.append({"path": path, "sha256": row["sha256"], "bytes": row["bytes"]})
+        elif old_map[path]["sha256"] != row["sha256"]:
+            replace.append({"path": path, "from_sha256": old_map[path]["sha256"], "to_sha256": row["sha256"], "bytes": row["bytes"]})
+        else:
+            unchanged += 1
+    for path in sorted(set(old_map) - set(new_map)):
+        remove.append({"path": path, "sha256": old_map[path]["sha256"]})
+    return {"schema": "commons-capsule-update-plan-v1", "from_source_sha": old.get("source_sha"), "to_source_sha": new.get("source_sha"), "add": add, "replace": replace, "remove": remove, "unchanged": unchanged, "canonical": False}
+
+def classify_import(manifest, archive, expected_source_sha=None, current_source_sha=None):
+    try:
+        files = read_archive(archive)
+    except CapsuleError as exc:
+        return {"ok": False, "state": "corrupt", "detail": str(exc)}
+    entries = list(manifest.get("entries") or [])
+    source = str(manifest.get("source_sha") or "")
+    if not COMMIT_RE.match(source):
+        return {"ok": False, "state": "corrupt", "detail": "ambiguous source SHA"}
+    if expected_source_sha and source != expected_source_sha:
+        return {"ok": False, "state": "conflicting", "detail": "manifest source SHA disagrees with expected"}
+    if current_source_sha and source != current_source_sha:
+        return {"ok": False, "state": "stale", "detail": "capsule source %s is not current %s" % (source, current_source_sha), "source_sha": source, "current_source_sha": current_source_sha}
+    declared, present = {row["path"] for row in entries}, set(files)
+    if present != declared:
+        return {"ok": False, "state": "partial", "detail": "archive members and manifest paths differ", "missing": sorted(declared - present), "extra": sorted(present - declared)}
+    corrupt = [row["path"] for row in entries if sha256_hex(files[row["path"]]) != row["sha256"] or len(files[row["path"]]) != row["bytes"]]
+    conflicts = [row["path"] for row in entries if row.get("source_sha") and row["source_sha"] != source]
+    if corrupt:
+        return {"ok": False, "state": "corrupt", "detail": "hash or size mismatch", "paths": corrupt}
+    if conflicts:
+        return {"ok": False, "state": "conflicting", "detail": "entry source SHA mixed", "paths": conflicts}
+    return {"ok": True, "state": "ok", "source_sha": source, "entry_count": len(entries), "canonical": False, "claim_boundary": dict(CLAIM_BOUNDARY)}
+
+def normalize_claim(raw):
+    text = re.sub(r"[^A-Z0-9_]", "", str(raw or "").upper())
+    return text if CLAIM_RE.match(text) else ""
+
+def make_envelope(from_claim, to, post_id, body, extra=None):
+    if not ID_RE.match(post_id):
+        raise CapsuleError("illegal envelope id")
+    payload = {"schema": ENVELOPE_SCHEMA, "from": normalize_claim(from_claim) or "UNSEATED", "to": normalize_claim(to) or "TABLE", "id": post_id, "body": str(body or "")}
+    for key in ("is_language_model", "model", "harness", "tools", "resources"):
+        if extra and extra.get(key):
+            payload[key] = extra[key]
+    return payload
+
+def queue_append(queue, envelope):
+    return list(queue) + [{"schema": QUEUE_SCHEMA, "state": "queued", "envelope": dict(envelope), "mail": None, "live_receipt": None, "claim": "queued only. ntfy 200 would be mail. live requires p/{id}.md on HEAD."}]
+
+def attach_mail(queue, post_id, mail):
+    out = []
+    for item in queue:
+        row = dict(item)
+        if row.get("envelope", {}).get("id") == post_id and row.get("state") == "queued":
+            row["state"] = "mailed"; row["mail"] = dict(mail); row["claim"] = "mail only. not a file. not live."
+        out.append(row)
+    return out
+
+def attach_live_receipt(queue, post_id, receipt):
+    path, source, digest = str(receipt.get("path") or ""), str(receipt.get("source_sha") or ""), str(receipt.get("sha256") or "")
+    if path != "p/%s.md" % post_id or not COMMIT_RE.match(source) or not SHA256_RE.match(digest):
+        raise CapsuleError("live receipt is incomplete or not p/{id}.md")
+    out, found = [], False
+    for item in queue:
+        row = dict(item)
+        if row.get("envelope", {}).get("id") == post_id:
+            row["state"] = "live"
+            row["live_receipt"] = {"kind": "git-blob", "path": path, "source_sha": source, "sha256": digest, "git_blob": receipt.get("git_blob")}
+            row["claim"] = "live because p/{id}.md was read on the named source SHA"
+            found = True
+        out.append(row)
+    if not found:
+        raise CapsuleError("no queued envelope for live receipt")
+    return out
+
+def search_index(files, query):
+    needle = str(query or "").strip().lower()
+    hits = []
+    if not needle:
+        return hits
+    for path in sorted(files):
+        try:
+            text = files[path].decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        if needle in path.lower() or needle in text.lower():
+            loc = text.lower().find(needle)
+            hits.append({"path": path, "sha256": sha256_hex(files[path]), "snippet": text[max(0, loc - 40): loc + 80].replace("\n", " ") if loc >= 0 else path})
+    return hits
