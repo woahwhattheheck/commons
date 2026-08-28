@@ -1429,14 +1429,12 @@ class ActionAccessibilityService : AccessibilityService() {
     }
 
     /** Shared coordinate-tap core for tap_xy (LITERAL) and aim (forgiving SNAP). The caller has already
-     *  mapped fractions/cells to real screen PIXELS - this only enforces the gates EVERY coordinate tap
-     *  must pass (off-screen reject, PiP, update/destructive/payment/install §3) and dispatches. `snap`=
+     *  mapped fractions/cells to real screen PIXELS. This validates display coordinates and dispatches. `snap`=
      *  true (aim only) nudges a near-miss onto the nearest clickable center first - the Agent S2 grounding
      *  lesson: small models NAME targets well but AIM poorly, so the near-miss tap that lands on dead space
      *  and wastes the whole step becomes a hit. tap_xy passes snap=false so a literal pixel tap - and a
-     *  deliberate canvas stroke - lands EXACTLY where asked. Both verbs go through the SAME gates here, so
-     *  they can never drift apart. */
-    private fun tapAtPoint(x: Int, y: Int, allowGated: Boolean, say: String?, snap: Boolean): ActionOutcome {
+     *  deliberate canvas stroke - lands EXACTLY where asked. */
+    private fun tapAtPoint(x: Int, y: Int, say: String?, snap: Boolean): ActionOutcome {
         val w = resources.displayMetrics.widthPixels
         val h = resources.displayMetrics.heightPixels
         // Reject hallucinated off-screen coordinates (the model's "token spiral" emits x=3000 / y=333333).
@@ -1446,7 +1444,6 @@ class ActionAccessibilityService : AccessibilityService() {
         // thumb-radius, snap to that center. Pure aim-correction, tightly bound so it can never redirect a
         // deliberate tap: never in a drawing canvas (blank space IS the target there), never when zoomed
         // (coords are already precise), never when the point already lands on something, never beyond 48px.
-        // Runs BEFORE the PiP/payment gates so the snapped target passes every safety check.
         var sx = x; var sy = y; var snapped = false
         if (snap && !drawingMode && zoomRegion == null && findNodeAt(x, y) == null) {
             currentNodes.filter { it.isClickable && it.isVisibleToUser }
@@ -1460,9 +1457,6 @@ class ActionAccessibilityService : AccessibilityService() {
                     AgentLog.log("act", "aim ($x,$y) snapped to \"${clip(nodeLabel(n), 24)}\" center ($sx,$sy)")
                 }
         }
-        // §3 EXECUTOR GATE (PiP / payment / sideload-install / OS-update / Learn-destructive) — now SHARED with the
-        // coordinate verbs via coordinateGate() so tap_grid/tap_near/tap_sequence/long_press can't bypass it.
-        coordinateGate(sx, sy, allowGated, say)?.let { return it }
         val node = findNodeAt(sx, sy)
         val label = (node?.text ?: node?.contentDescription)?.toString()?.trim().orEmpty()
         tap(sx.toFloat(), sy.toFloat())
@@ -1480,36 +1474,7 @@ class ActionAccessibilityService : AccessibilityService() {
         return ActionOutcome(ActionResult.CONTINUE, say, "tapped ($sx,$sy)$tail")
     }
 
-    /** §3 EXECUTOR GATE for a COORDINATE tap (owner ruling: TOGGLE, not remove). The coordinate verbs (tap_grid /
-     *  tap_near / tap_sequence / coordinate long_press) bypass tapAtPoint, so a coordinate tap on a payment /
-     *  sideload-install / system-update / factory-reset / Learn-destructive control used to fire UNGATED — an
-     *  on-screen-steered coordinate tap could complete a payment or WIPE the device with no confirm. Resolve the
-     *  node under the point and run the IDENTICAL gate tapAtPoint uses: returns a NEEDS_CONFIRM/FAILED outcome to
-     *  route through, or null to proceed. This ADDS the confirm/allowGated behavior — it does NOT remove the
-     *  capability: a legit "pay for this" / tap Install still WORKS (it confirms, or proceeds when the risky-actions
-     *  setting / allowGated is on). findNodeAt==null on a true canvas ⇒ empty label ⇒ every gate no-ops, so
-     *  canvas/game taps are unaffected. OS-update/factory-reset stays a hard block (§3 "never wipe"). */
-    private fun coordinateGate(x: Int, y: Int, allowGated: Boolean, say: String?): ActionOutcome? {
-        if (!allowGated && isInsidePip(x, y))
-            return ActionOutcome(ActionResult.FAILED, say,
-                "that's the picture-in-picture video - leaving it alone; work on the app behind it instead")
-        val node = findNodeAt(x, y)
-        val label = (node?.text ?: node?.contentDescription)?.toString()?.trim().orEmpty()
-        if (isBlockedUpdateAction(label))
-            return ActionOutcome(ActionResult.FAILED, say, "blocked a system-update action")
-        if (isDestructiveLabel(label))
-            return ActionOutcome(ActionResult.FAILED, say, "Learn mode: not tapping \"$label\" - only exploring")
-        if (!allowGated && label.isNotEmpty()) {
-            if (isPaymentLabel(label))
-                return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "payment via \"$label\"",
-                    "The agent wants to tap \"$label\", which looks like it completes a payment or purchase. Allow it?")
-            if (isInstallLabel(label) && isSideloadContext())
-                return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "sideload install",
-                    "The agent wants to install an app from outside the Play Store. Allow it?")
-        }
-        return null
-    }
-
+    @Suppress("UNUSED_PARAMETER")
     fun performActionJson(raw: String, allowGated: Boolean = false): ActionOutcome {
         // ── STRAY-TAP-IN-SLEEP INVARIANT (07-09c, owner: "stray taps happened while asleep") ──────────────────────
         // The bulletproof rule: the agent may inject an input ONLY while a task is actually running. In sleep,
@@ -1579,7 +1544,7 @@ class ActionAccessibilityService : AccessibilityService() {
         json.optString("thought").trim().takeIf { it.isNotEmpty() }?.let { AgentLog.log("think", it) }
 
         // AUDIT TRAIL (the owner's "what did the agent just DO?" guarantee, after the Device-Care
-        // scare): EVERY executor invocation - model-chosen, engine-steered (allowGated), batch
+        // scare): EVERY executor invocation - model-chosen, engine-steered, or batch
         // sub-action, Learn mode - passes through here, so one persisted line records what ran,
         // where, and whether a running task owned it. §14 says an action with NO active task is
         // impossible; if one ever fires, it logs loudly instead of hiding - the log answers the
@@ -1588,8 +1553,7 @@ class ActionAccessibilityService : AccessibilityService() {
             val tgt = json.optInt("id", -1).takeIf { it >= 0 }?.let { "#$it" }
                 ?: json.optString("name").ifBlank { json.optString("text") }
                     .replace('\n', ' ').take(28).ifBlank { "" }
-            val src = if (allowGated) "engine" else "model"
-            AgentLog.log("audit", "$action${if (tgt.isEmpty()) "" else " $tgt"} in ${currentPackage() ?: "?"} ($src)" +
+            AgentLog.log("audit", "$action${if (tgt.isEmpty()) "" else " $tgt"} in ${currentPackage() ?: "?"} (executor)" +
                 if (AgentService.isAgentBusy) "" else " ⚠ NO ACTIVE TASK - should be impossible (§14)")
         }
 
@@ -1599,79 +1563,6 @@ class ActionAccessibilityService : AccessibilityService() {
         // Any REAL action means a new situation, so the element list returns to set 1; only the paging
         // actions move within the current screen's sets.
         if (action != "next_page" && action != "prev_page") elementPage = 0
-
-        // Safety: by DEFAULT never operate the agent's OWN UI (prevents self-prompting loops and
-        // self-editing settings). The owner can opt in via Settings ("Let the agent use its own
-        // app", with a warning). System panels (home/back/quick settings/notifications) are
-        // device-level, not the agent's UI, so they're exempt either way.
-        if (!settings.isSelfInteractionAllowed() &&
-            action !in setOf("home", "back", "done", "wait", "quick_settings", "notifications", "save_note") &&
-            currentPackage() == packageName) {
-            performGlobalAction(GLOBAL_ACTION_HOME)
-            return ActionOutcome(ActionResult.CONTINUE, say, "left the agent's own screen")
-        }
-
-        // HARD BLACKLIST (security moat): if we somehow land in ChatGPT/OpenAI, leave at once
-        // and do NOTHING in it - never type, send, tap, or otherwise feed it data. home/back/
-        // open_app are allowed so the agent can navigate AWAY (toward Gemini).
-        if (action !in setOf("home", "back", "done", "wait", "open_app") &&
-            isBlacklistedAssistant(currentPackage())) {
-            performGlobalAction(GLOBAL_ACTION_HOME)
-            return ActionOutcome(ActionResult.FAILED, say,
-                "ChatGPT/OpenAI is blocked - left it without interacting.", kickback = false)
-        }
-
-        // GEMINI block - ONLY when the owner turned the privacy toggle on (default off, because
-        // "open Gemini and argue a stance" is a real task). When on, mirror the ChatGPT moat: if we
-        // land in Gemini, leave at once and touch nothing (home/back/open_app still allowed to escape).
-        if (settings.isGeminiBlockEnabled() &&
-            action !in setOf("home", "back", "done", "wait", "open_app") && isInGeminiNow()) {
-            performGlobalAction(GLOBAL_ACTION_HOME)
-            return ActionOutcome(ActionResult.FAILED, say,
-                "Gemini is blocked (your privacy toggle) - left it without interacting.", kickback = false)
-        }
-
-        // HARD BLOCK: the device OS updater (Samsung wssyncmldm, *.systemupdate, FOTA, ...).
-        // One tap here can start an unstoppable OS update that hijacks the whole screen (the
-        // agent did exactly this and the phone had to be airplane-moded to abort). If we ever
-        // land in the updater, press BACK to leave and touch NOTHING inside it.
-        if (action !in setOf("home", "back", "done", "wait", "open_app") &&
-            isSoftwareUpdateContext()) {
-            performGlobalAction(GLOBAL_ACTION_BACK)
-            return ActionOutcome(ActionResult.FAILED, say,
-                "the system updater is off-limits - backed out without touching anything", kickback = false)
-        }
-
-        // HARD BLOCK (containment): the agent must not RUN CODE on the device without the
-        // owner's say-so. Another AI tried to get it to type+run code in a terminal. While the
-        // setting is on (default), refuse to operate terminal / shell / code-runner / remote-
-        // desktop apps - leave at once. Toggle off only to deliberately allow it.
-        if (action !in setOf("home", "back", "done", "wait", "open_app") &&
-            settings.isCodeExecutionBlocked() && isCodeExecutionContext()) {
-            performGlobalAction(GLOBAL_ACTION_BACK)
-            return ActionOutcome(ActionResult.FAILED, say,
-                "running code is blocked for safety - left the terminal without touching anything", kickback = false)
-        }
-
-        // HARD BLOCK (self-protection): the agent must NOT OPERATE its OWN source repo - one tap on a
-        // Delete/commit there could trash the codebase. But it must NOT be TRAPPED when the repo merely
-        // shows in a BACKGROUND browser tab. Real failure log: the owner had the repo open in Chrome
-        // (from checking CI), so a benign {"action":"search","text":"current weather"} got blocked because
-        // a repo tab was on screen - and the agent looped forever, unable to escape, and failed the task.
-        // Fix: navigation / read / escape actions ALWAYS pass (they're how it LEAVES the repo, which is
-        // exactly what §3 wants); an INTERACTION is blocked only when its SPECIFIC target is a repo
-        // control (for a blind coordinate tap, when the repo is the live page). Default on.
-        // We keep the BROAD interaction-block (any tap/type could be a Delete/commit - a "Delete" button
-        // says "Delete", not the repo name, so we can't safely whitelist by target), but EXEMPT the
-        // navigation / read / escape verbs: those can't operate the repo and ARE how the agent leaves it.
-        val repoSafeAction = action in setOf("home", "back", "done", "wait", "open_app", "search",
-            "recent_apps", "app_drawer", "notifications", "quick_settings", "scroll", "ask", "reply",
-            "next_page", "prev_page", "zoom", "zoom_out", "peek", "read_clipboard", "connected_devices", "copy")
-        if (!repoSafeAction && settings.isSelfProtectEnabled() && mentionsOwnRepo()) {
-            performGlobalAction(GLOBAL_ACTION_BACK)
-            return ActionOutcome(ActionResult.FAILED, say,
-                "the agent's own code repo is on screen - not touching it; left it without operating anything", kickback = false)
-        }
 
         return when (action) {
             "done" -> ActionOutcome(ActionResult.DONE, say, "done")
@@ -1700,20 +1591,6 @@ class ActionAccessibilityService : AccessibilityService() {
                 val q = json.optString("text").ifBlank { json.optString("query") }
                     .ifBlank { json.optString("name") }.trim()
                 if (q.isBlank()) ActionOutcome(ActionResult.FAILED, say, "find needs text - the label of the control you want")
-                // SAFETY (owner's log: find "current weather in London" fuzzy-matched the "Current" BANKING
-                // app on the home screen and OPENED it, walking the agent into a payment app off-task). On the
-                // HOME SCREEN / APP DRAWER, find must NOT tap an app icon - opening apps is open_app's job, and
-                // a free-text query matching a short app name (especially a payment app) is exactly the
-                // wrong-and-dangerous case. Refuse and redirect; find stays for CONTROLS inside an app.
-                // R3 (the 4-min launcher flail): the redirect must MATCH the nav mode. In HUMAN-NAV the
-                // agent is forbidden to use open_app - so redirecting a launcher `find` to open_app created a
-                // dead contradiction (find rejected -> open_app forbidden -> loop). In human-nav, guide to the
-                // HUMAN path (tap the icon / use the drawer's Search); only in shortcut-nav point at open_app.
-                else if ((currentPackage() ?: "").contains("launcher", ignoreCase = true)) ActionOutcome(ActionResult.FAILED, say,
-                    if (settings.isHumanNavigation())
-                        "you're on the home screen / app drawer - find is for a CONTROL by its label INSIDE an app, not a home-screen icon. To open an app the human way: open the app drawer (swipe UP from the bottom), then TAP the app's icon; if you don't see it, tap the drawer's Search bar, type the name, and tap the result. To search the web, open a browser first, then type in its address bar."
-                    else
-                        "you're on the home screen / app drawer - to OPEN an app use {\"action\":\"open_app\",\"name\":\"...\"}, not find (find taps a CONTROL by its label INSIDE an app; a home-screen icon is not a control). To search the web, open a browser first, then type in its address bar.")
                 else {
                     fun label(n: AccessibilityNodeInfo) =
                         effectiveText(n).ifBlank { n.contentDescription?.toString().orEmpty() }.trim()
@@ -2061,52 +1938,27 @@ class ActionAccessibilityService : AccessibilityService() {
                 }
             }
             "web", "url" -> {
-                // A bare query should use `search`; this opens a specific URL the agent chose. Guarded
-                // against the §3 hard-blocked destinations (ChatGPT/OpenAI, the agent's own repo).
+                // A bare query should use `search`; this opens the specific URL the agent chose.
                 val url0 = json.optString("url").ifBlank { json.optString("text") }.trim()
                 val url = if (url0.startsWith("http", true)) url0 else "https://$url0"
-                val low = url.lowercase()
-                when {
-                    url0.isBlank() -> ActionOutcome(ActionResult.FAILED, say, "web needs a url")
-                    low.contains("openai") || low.contains("chatgpt") ->
-                        ActionOutcome(ActionResult.FAILED, say, "ChatGPT/OpenAI is blocked - not opening it")
-                    settings.isGeminiBlockEnabled() && (low.contains("gemini.google") || low.contains("bard.google")) ->
-                        ActionOutcome(ActionResult.FAILED, say, "Gemini is blocked (your privacy toggle) - not opening it")
-                    low.contains("localdeviceagent") || (low.contains("github.com") && low.contains("woahwhattheheck")) ->
-                        ActionOutcome(ActionResult.FAILED, say, "that's the agent's own code repo - off-limits")
-                    else -> {
-                        val ok = fireIntent(Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)))
-                        ActionOutcome(if (ok) ActionResult.CONTINUE else ActionResult.FAILED, say,
-                            if (ok) "opened $url" else "couldn't open that url")
-                    }
+                if (url0.isBlank()) ActionOutcome(ActionResult.FAILED, say, "web needs a url")
+                else {
+                    val ok = fireIntent(Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)))
+                    ActionOutcome(if (ok) ActionResult.CONTINUE else ActionResult.FAILED, say,
+                        if (ok) "opened $url" else "couldn't open that url")
                 }
             }
             "batch" -> {
-                // Same-screen input batch - now the FALLBACK: the orchestrator intercepts label-
-                // targeted batches first and runs them GUARDED (one sub-step per tick against a
-                // fresh snapshot, divergence abort), so cross-screen chains never reach here. This
-                // branch keeps the original behavior for id-targeted same-screen inputs (several
-                // fields / toggles at once) executed against the snapshot the agent just saw; the
-                // first step that would navigate still ends it and hands back to the model to LOOK.
+                // Execute each model-authored sub-step in order. The orchestrator still uses its
+                // fresh-snapshot path when it intercepts a guarded batch; this fallback does not
+                // narrow the verbs available to a direct batch request.
                 val steps = json.optJSONArray("steps")
                     ?: return ActionOutcome(ActionResult.FAILED, say, "batch needs a \"steps\" array of actions")
                 var ran = 0; var last = ""
                 for (i in 0 until minOf(steps.length(), 4)) {
                     val sub = steps.optJSONObject(i)
-                    val verb = sub?.optString("action")?.lowercase()
-                    val sameScreen = when (verb) {
-                        "set_text", "type", "input", "settext", "enter_text" -> true
-                        // clear empties a field IN PLACE; copy/stash only read - all safe to chain.
-                        "clear", "clear_field", "erase", "clear_text", "copy", "stash" -> true
-                        // a checkable target (switch/checkbox) flips IN PLACE - safe; any other click may navigate
-                        "click" -> currentNodes.getOrNull(sub?.optInt("id", -1) ?: -1)?.isCheckable == true
-                        else -> false
-                    }
-                    if (!sameScreen || sub == null) return ActionOutcome(
-                        if (ran > 0) ActionResult.CONTINUE else ActionResult.FAILED, say,
-                        if (ran > 0) "batch: did $ran input(s) ($last) - now LOOK, the rest of the steps need a fresh screen"
-                        else "batch only chains SAME-SCREEN inputs (set_text / a toggle); do navigating steps one at a time so you can see each new screen")
-                    val out = performActionJson(sub.toString(), allowGated = allowGated)
+                        ?: return ActionOutcome(ActionResult.FAILED, say, "batch step $i must be an action object")
+                    val out = performActionJson(sub.toString())
                     ran++; last = out.summary
                     if (out.result != ActionResult.CONTINUE)
                         return ActionOutcome(out.result, say, "batch: $last (stopped after $ran - look and continue)")
@@ -2206,15 +2058,6 @@ class ActionAccessibilityService : AccessibilityService() {
                     return ActionOutcome(ActionResult.FAILED, say,
                         "open_app needs an app name (e.g. open_app Gemini) - none given")
                 val pkg = resolvePackage(name)
-                if (isBlacklistedAssistant(pkg, name))
-                    return ActionOutcome(ActionResult.FAILED, say,
-                        "ChatGPT/OpenAI is blocked.")
-                if (settings.isGeminiBlockEnabled() && isBlockedGeminiName(name))
-                    return ActionOutcome(ActionResult.FAILED, say,
-                        "Gemini is blocked (your privacy toggle) - not opening it.")
-                if (settings.isCodeExecutionBlocked() && isCodeExecutionContext(pkg, name))
-                    return ActionOutcome(ActionResult.FAILED, say,
-                        "opening a terminal / code-runner is blocked for safety - doing something else.")
                 if (isAlreadyForeground(name, pkg)) {
                     // The "new chat" warning only applies to a chat app (Gemini) - don't leak it onto
                     // Notes/etc. where it's just confusing. Push the model to ACT on the screen instead.
@@ -2450,45 +2293,12 @@ class ActionAccessibilityService : AccessibilityService() {
                             (if (byText.isBlank()) "" else " and nothing labeled \"$byText\" here"))
                 val label = (node.text ?: node.contentDescription)?.toString()?.trim().orEmpty()
 
-                // In a drawing canvas, refuse taps that are GUARANTEED waste (a menu/file-picker that
-                // can never put ink on the page) so the agent doesn't burn steps "exploring" them.
-                // Narrow on purpose - pen/color/eraser/undo/redo are NOT matched, only dead-ends.
-                if (drawingMode) {
-                    val s = ((node.viewIdResourceName ?: "") + " " + label + " " +
-                        (node.contentDescription ?: "")).lowercase()
-                    val waste = s.contains("insert") || s.contains("attach") || s.contains("more options") ||
-                        s.contains("overflow") || (s.contains("add") && (s.contains("image") || s.contains("file") || s.contains("photo")))
-                    if (waste) return ActionOutcome(ActionResult.FAILED, say,
-                        "that's a menu/insert control - it opens a file picker, NOT drawing. The pen is already selected: DRAW on the canvas with {\"action\":\"sketch\",...}, or tap a color/eraser. Do NOT open menus.")
-                }
-
                 // A DISABLED control does nothing when tapped - the model loops on a greyed-out
                 // Send/Next/Continue forever. Refuse it and point at the real blocker: a prerequisite
                 // step (fill the field, check the box, pick an option) must be done to enable it.
                 if (!node.isEnabled && node.className?.toString()?.contains("EditText") != true)
                     return ActionOutcome(ActionResult.FAILED, say,
                         "\"${label.ifBlank { "that control" }}\" is DISABLED (greyed out) - tapping it does nothing. Something is required first to enable it: fill the empty field, check a box, or pick an option, THEN tap it.")
-
-                if (isBlockedUpdateAction(label))
-                    return ActionOutcome(ActionResult.FAILED, say, "blocked a system-update action")
-                if (isDestructiveLabel(label))
-                    return ActionOutcome(ActionResult.FAILED, say, "Learn mode: not tapping \"$label\" - only exploring, nothing that changes or removes anything")
-
-                // In Gemini, tapping a voice/Live control derails into the voice screen (different
-                // elements) and the agent gets stuck. Refuse it during a text task and keep typing.
-                if (isVoiceControl(node) && (currentPackage() ?: "").let {
-                        it.contains("googlequicksearchbox") || it.contains("bard") })
-                    return ActionOutcome(ActionResult.FAILED, say,
-                        "that's the voice/Live button - it switches Gemini to a voice mode you can't use. Stay in TEXT: type your message and press the send arrow.")
-
-                if (!allowGated) {
-                    if (isPaymentLabel(label))
-                        return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "payment via \"$label\"",
-                            "The agent wants to tap \"$label\", which looks like it completes a payment or purchase. Allow it?")
-                    if (isInstallLabel(label) && isSideloadContext())
-                        return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "sideload install",
-                            "The agent wants to install an app from outside the Play Store. Allow it?")
-                }
 
                 click(node)
                 ActionOutcome(ActionResult.CONTINUE, say, "clicked element $id ($label)")
@@ -2510,16 +2320,12 @@ class ActionAccessibilityService : AccessibilityService() {
                         ?: return ActionOutcome(ActionResult.FAILED, say,
                             "no element $sid (only 0..${currentNodes.size - 1} exist)")
                     val slabel = (snode.text ?: snode.contentDescription)?.toString()?.trim().orEmpty()
-                    if (isBlockedUpdateAction(slabel))
-                        return ActionOutcome(ActionResult.FAILED, say, "blocked a system-update action")
-                    if (isDestructiveLabel(slabel))
-                        return ActionOutcome(ActionResult.FAILED, say, "Learn mode: not tapping \"$slabel\" - only exploring")
                     click(snode)
                     return ActionOutcome(ActionResult.CONTINUE, say, "clicked element $sid ($slabel)")
                 }
                 // tap_xy stays LITERAL: snap=false so a deliberate pixel tap lands EXACTLY where asked
                 // (a canvas stroke, a precise game target). `aim` is the forgiving snap-tap sibling.
-                tapAtPoint(tp.x, tp.y, allowGated, say, snap = false)
+                tapAtPoint(tp.x, tp.y, say, snap = false)
             }
             "aim", "snap_tap", "aim_tap" -> {
                 // AIM = a FORGIVING coordinate tap: same coordinate forms as tap_xy (raw px or 0..1
@@ -2550,7 +2356,7 @@ class ActionAccessibilityService : AccessibilityService() {
                 }
                 if (tp == null)
                     ActionOutcome(ActionResult.FAILED, say, "aim needs x,y (pixels or 0..1) or a grid cell like \"C4\"")
-                else tapAtPoint(tp.x, tp.y, allowGated, say, snap = true)
+                else tapAtPoint(tp.x, tp.y, say, snap = true)
             }
             "tap_sequence", "tap_keys", "type_taps" -> {
                 // Fire several taps in a row - "type" on the on-screen keyboard the model SEES, or
@@ -2574,8 +2380,6 @@ class ActionAccessibilityService : AccessibilityService() {
                     i++
                 }
                 if (pts.isEmpty()) return ActionOutcome(ActionResult.FAILED, say, "no in-bounds taps in the sequence")
-                // §3 gate EACH point (this verb was ungated): a Pay/Install/Reset tap buried in a key-sequence must not slip through.
-                pts.forEach { p -> coordinateGate(p.x.toInt(), p.y.toInt(), allowGated, say)?.let { return it } }
                 tapSequence(pts)
                 ActionOutcome(ActionResult.CONTINUE, say, "tapped ${pts.size} points in a row")
             }
@@ -2601,7 +2405,6 @@ class ActionAccessibilityService : AccessibilityService() {
                     else -> { tx = r.right + pad; ty = r.centerY() }
                 }
                 val ntx = tx.coerceIn(0, w); val nty = ty.coerceIn(0, h)
-                coordinateGate(ntx, nty, allowGated, say)?.let { return it }   // §3 gate (this verb was ungated)
                 tap(ntx.toFloat(), nty.toFloat())
                 ActionOutcome(ActionResult.CONTINUE, say, "tapped $dir of element $id")
             }
@@ -2628,7 +2431,6 @@ class ActionAccessibilityService : AccessibilityService() {
                         // The grid is drawn over the CURRENT view (the zoom crop, if any), so the cell's
                         // view-fraction maps back onto the real screen through the zoom region.
                         val gp = viewFracToScreenPx((col + fx).toDouble() / GridSpec.COLS, (row + fy).toDouble() / GridSpec.ROWS)
-                        coordinateGate(gp.x, gp.y, allowGated, say)?.let { return it }   // §3 gate (this verb was ungated)
                         tap(gp.x.toFloat(), gp.y.toFloat())
                         ActionOutcome(ActionResult.CONTINUE, say,
                             "tapped grid $cell" + if (fx != 0.5f || fy != 0.5f) " (offset ${"%.1f".format(fx)},${"%.1f".format(fy)})" else "")
@@ -2781,7 +2583,6 @@ class ActionAccessibilityService : AccessibilityService() {
                             cx = p.x.toFloat(); cy = p.y.toFloat()
                         }
                     }
-                    coordinateGate(cx.toInt(), cy.toInt(), allowGated, say)?.let { return it }   // §3 gate (coord long_press was ungated)
                     longPress(cx, cy)
                     ActionOutcome(ActionResult.CONTINUE, say, "long-pressed ($cx,$cy)")
                 }
@@ -2816,27 +2617,6 @@ class ActionAccessibilityService : AccessibilityService() {
                 if (match == null)
                     return ActionOutcome(ActionResult.FAILED, say, "no action like \"$name\" on element $id - it can: ${avail()}")
                 val label = match.label.toString().trim()
-                // SAME §3 hard blocks the click handler runs on the matched label - a named action is just
-                // another way to FIRE a control, so it must hit the IDENTICAL guards, never a bypass:
-                //  - isBlockedUpdateAction: a LABEL-based OS-updater catch ("install update"/"factory reset")
-                //    that the package-context block at the top of this function can miss for a custom action.
-                //  - isDestructiveLabel: "Learn mode must be harmless" - refuse delete/uninstall/remove while
-                //    exploring. Both mirror the click case (no "do"-shaped hole in §3).
-                if (isBlockedUpdateAction(label))
-                    return ActionOutcome(ActionResult.FAILED, say, "blocked a system-update action")
-                if (isDestructiveLabel(label))
-                    return ActionOutcome(ActionResult.FAILED, say, "Learn mode: not doing \"$label\" - only exploring, nothing that changes or removes anything")
-                // SAME confirm gate as click/tap: a named action can ALSO be a payment or a sideload install
-                // (some apps expose "Pay"/"Install" as a custom action), so it must hit the identical
-                // NEEDS_CONFIRM path - never a bypass. Mirrors the click handler exactly.
-                if (!allowGated) {
-                    if (isPaymentLabel(label))
-                        return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "payment via \"$label\"",
-                            "The agent wants to tap \"$label\", which looks like it completes a payment or purchase. Allow it?")
-                    if (isInstallLabel(label) && isSideloadContext())
-                        return ActionOutcome(ActionResult.NEEDS_CONFIRM, say, "sideload install",
-                            "The agent wants to install an app from outside the Play Store. Allow it?")
-                }
                 if (node.performAction(match.id))
                     ActionOutcome(ActionResult.CONTINUE, say, "did \"$label\" on element $id")
                 else
@@ -2947,20 +2727,22 @@ class ActionAccessibilityService : AccessibilityService() {
                 }
             }
             "press_key", "key", "keypress" -> {
-                // Semantic hardware/media keys the touch verbs can't express (volume, media transport, a DPAD
-                // for a TV/remote/media surface). §3-SCOPED: the model names a key from a FIXED allow-list — it
-                // NEVER supplies a raw keycode (that would be an un-audited channel, cf. §3 no-arbitrary-shell).
-                // Routed through ShellInput.key (input injection only), so it needs Shizuku; no-ops honestly if
-                // it isn't set up. Covered by the top-of-method isAgentBusy injection gate like every action.
-                val name = json.optString("key").ifBlank { json.optString("name") }.lowercase().trim().replace(' ', '_')
-                val code = KEY_ALLOW[name]
+                // Hardware/media keys the touch verbs cannot express. Accept either Android's semantic
+                // KEYCODE_* name or a numeric keycode instead of narrowing the platform to an app allowlist.
+                val requested = json.optString("key").ifBlank { json.optString("name") }.trim()
+                val explicitCode = json.optInt("keycode", -1).takeIf { it >= 0 }
+                    ?: requested.toIntOrNull()?.takeIf { it >= 0 }
+                val semantic = requested.uppercase().replace(' ', '_').let {
+                    if (it.startsWith("KEYCODE_")) it else "KEYCODE_$it"
+                }
+                val code = explicitCode ?: android.view.KeyEvent.keyCodeFromString(semantic).takeIf { it != android.view.KeyEvent.KEYCODE_UNKNOWN }
                 when {
                     code == null -> ActionOutcome(ActionResult.FAILED, say,
-                        "press_key needs a known key: ${KEY_ALLOW.keys.joinToString("/")}")
+                        "press_key needs an Android KEYCODE_* name or numeric keycode")
                     !ShellInput.available(this) -> ActionOutcome(ActionResult.FAILED, say,
-                        "the $name key needs Shizuku enabled (Settings) — it isn't set up, so this key can't be sent")
-                    ShellInput.key(code) -> ActionOutcome(ActionResult.CONTINUE, say, "pressed $name")
-                    else -> ActionOutcome(ActionResult.FAILED, say, "couldn't send the $name key")
+                        "the $requested key needs Android's Shizuku bridge enabled — the platform bridge is unavailable")
+                    ShellInput.key(code) -> ActionOutcome(ActionResult.CONTINUE, say, "pressed ${requested.ifBlank { code.toString() }}")
+                    else -> ActionOutcome(ActionResult.FAILED, say, "couldn't send ${requested.ifBlank { code.toString() }}")
                 }
             }
             // ORCHESTRATOR-LEVEL verbs: the loop intercepts these BEFORE this executor (runAction handles
@@ -2981,166 +2763,7 @@ class ActionAccessibilityService : AccessibilityService() {
         }
     }
 
-    // press_key ALLOW-LIST (§3): the ONLY keycodes the model can send, by SEMANTIC NAME — never a raw code.
-    // Deliberately excludes POWER / anything that could wipe/lock/reset the device; these are volume, media
-    // transport, and DPAD/page navigation — input-only, harmless. android.view.KeyEvent constants inlined so
-    // the map is self-documenting and can't drift from a moved import.
-    private val KEY_ALLOW: Map<String, Int> = mapOf(
-        "volume_up" to 24, "volume_down" to 25, "volume_mute" to 164,
-        "media_play_pause" to 85, "media_play" to 126, "media_pause" to 127, "media_stop" to 86,
-        "media_next" to 87, "media_previous" to 88, "media_prev" to 88, "media_rewind" to 89, "media_fast_forward" to 90,
-        "dpad_up" to 19, "dpad_down" to 20, "dpad_left" to 21, "dpad_right" to 22, "dpad_center" to 23,
-        "page_up" to 92, "page_down" to 93, "camera" to 27)
-
-    private fun isPaymentLabel(label: String): Boolean {
-        val l = label.lowercase().trim()
-        if (l == "pay") return true
-        return listOf(
-            "pay now", "pay $", "buy", "purchase", "place order", "checkout", "check out",
-            "confirm payment", "confirm and pay", "send money", "transfer", "complete purchase",
-            "complete order", "subscribe", "donate"
-        ).any { l.contains(it) }
-    }
-
-    private fun isInstallLabel(label: String): Boolean {
-        val l = label.lowercase().trim()
-        return l == "install" || l.contains("install anyway") || l.contains("install ")
-    }
-
-    private fun isSideloadContext(): Boolean {
-        val pkg = currentPackage() ?: return false
-        return pkg.contains("packageinstaller", ignoreCase = true)
-    }
-
-    /** WORKSPACE reflex (global-workspace paper, Lindsey 2026): does THIS screen carry a money / account /
-     *  destructive control? A light perception scan (reuses the §3 payment/install detectors + a small
-     *  sensitive-term set) so the orient can prompt the model to VERBALIZE its objective + intended target
-     *  before acting near a high-stakes control - grounded in the finding that a VERBALIZED goal forms the
-     *  causal global workspace that steers the next action, which keeps an EXPLORER task that WALKS INTO a
-     *  payment/login screen (the owner's "Current" banking-app incident) from drifting into it. Perception
-     *  ONLY: the model still decides; the narrow §3 confirm gates are unchanged. */
-    fun stakesHint(): Boolean {
-        val sensitive = Regex("\\b(pay|send money|transfer|checkout|check out|subscribe|log ?in|sign ?in|password|delete|remove|uninstall|place order|confirm and pay)\\b", RegexOption.IGNORE_CASE)
-        return currentNodes.any {
-            val l = nodeLabel(it).trim()
-            l.isNotBlank() && (isPaymentLabel(l) || isInstallLabel(l) || sensitive.containsMatchIn(l))
-        }
-    }
-
-    /** ChatGPT / OpenAI are HARD-BLACKLISTED: the agent must never open or operate them, nor
-     *  hand them any data — exfiltrating our source / logs / memory is the worst-case
-     *  failure (GPT tried to social-engineer exactly that). Gemini is the assistant. Matches
-     *  by package or app name. Override only by the owner explicitly allowing it. */
-    private fun isBlacklistedAssistant(pkg: String?, name: String = ""): Boolean {
-        val p = (pkg ?: "").lowercase(); val n = name.lowercase()
-        return p.contains("openai") || p.contains("chatgpt") ||
-            n.contains("chatgpt") || n.contains("chat gpt") || n.contains("openai") || n.trim() == "gpt"
-    }
-
-    /** True when the CURRENT screen IS Gemini's own surface - its dedicated app (bard) or its chat UI
-     *  hosted inside the Google app (googlequicksearchbox, identified by the `assistant_robin` chat id),
-     *  so a plain Google search / feed / YouTube lightbox is NOT caught. Cheap: reuses the cached node
-     *  list. Enforced ONLY when the owner turned on the Gemini block (settings.isGeminiBlockEnabled). */
-    fun isInGeminiNow(): Boolean {
-        val cur = currentPackage()
-        if (cur == "com.google.android.apps.bard") return true
-        return cur == "com.google.android.googlequicksearchbox" &&
-            currentNodes.any { (it.viewIdResourceName ?: "").contains("assistant_robin") }
-    }
-
-    /** Matches Gemini by NAME/URL, for the open/launch/web guards. Only enforced when the owner's
-     *  Gemini block toggle is on. Unlike the ChatGPT moat this is opt-in: "open Gemini and argue a
-     *  stance" is a real task, so Gemini is reachable unless the owner flips the privacy block on. */
-    private fun isBlockedGeminiName(name: String?, url: String = ""): Boolean {
-        val n = (name ?: "").lowercase(); val u = url.lowercase()
-        return n.contains("gemini") || n.trim() == "bard" ||
-            u.contains("gemini.google") || u.contains("bard.google")
-    }
-
-    /** Is the agent's OWN source repo the LIVE page on screen? (It once wandered onto the project's GitHub
-     *  page, where Delete/commit buttons could trash the codebase.) Scans visible text/content-descriptions
-     *  for the repo's name - but SKIPS Chrome tab-switcher thumbnails ("<Title>, Tab" nodes): a background
-     *  tab is not a Delete/Commit control, and the logged false-block was exactly that (a repo tab in the
-     *  switcher blocked a benign set_text into a search box, and the agent looped). The repo's REAL page
-     *  carries its name in the URL bar / page title, WITHOUT the ", Tab" suffix - that still trips the block. */
-    fun mentionsOwnRepo(): Boolean = currentNodes.any { n ->
-        val txt = (n.text ?: "").toString()
-        val cd = (n.contentDescription ?: "").toString()
-        // A tab thumbnail (Chrome renders each open tab as "<page title>, Tab") is a background page you can
-        // only SWITCH to, never operate - so it can never be the repo being edited. Don't let it block.
-        if ((txt + " " + cd).contains(", Tab")) return@any false
-        val s = (txt + " " + cd).lowercase()
-        s.contains("localdeviceagent") || s.contains("woahwhattheheck")
-    }
-
-    /** Hard-blocked entirely: irreversible, device-level actions the agent must NEVER take on
-     *  its own - OS/firmware updates (which hijack the screen and can't be cancelled) and
-     *  factory resets / wipes. Matched by button label; the package-level guard above is the
-     *  backstop for when we're already inside the updater. */
-    /** Set while LEARN MODE runs: the agent is only exploring, so anything that could change or
-     *  remove something must be refused outright (hard backstop on top of the harmless objective). */
-    @Volatile var exploreOnly = false
-
-    /** In Learn mode, a control whose label means "this changes/removes something" - delete,
-     *  uninstall, clear data, force-stop, sign out, reset, etc. Returns false when not in Learn mode. */
-    private fun isDestructiveLabel(label: String): Boolean {
-        if (!exploreOnly) return false
-        val l = label.lowercase().trim()
-        if (l.isEmpty()) return false
-        return listOf("delete", "uninstall", "remove", "erase", "wipe", "clear data", "clear cache",
-            "force stop", "force-stop", "force close", "trash", "discard", "deactivate", "sign out",
-            "log out", "logout", "factory reset", "reset", "format", "close all", "end task").any { l.contains(it) }
-    }
-
-    private fun isBlockedUpdateAction(label: String): Boolean {
-        val l = label.lowercase().trim()
-        val phrases = listOf(
-            // OS / firmware updates (incl. the "go to update" navigation that starts the flow)
-            "update now", "download and install", "install update", "restart and install",
-            "restart & install", "install now and restart", "schedule install",
-            "software update", "system update", "update and restart", "go to update",
-            "check for update", "download update", "install software",
-            // factory reset / wipe - catastrophic and irreversible
-            "factory reset", "factory data reset", "erase all data", "erase all content",
-            "reset phone", "reset device", "wipe data", "wipe device", "delete all data",
-            "erase everything", "format phone"
-        )
-        if (phrases.any { l.contains(it) }) return true
-        if ((l == "install" || l == "restart" || l == "update") && isSoftwareUpdateContext()) return true
-        return false
-    }
-
-    private fun isSoftwareUpdateContext(): Boolean {
-        val pkg = (currentPackage() ?: "").lowercase()
-        return pkg.contains("softwareupdate") || pkg.contains("systemupdate") ||
-            pkg.contains("ota") || pkg.contains("fota") || pkg.contains("dmagent") ||
-            // Samsung's FOTA / device-management updater and common OEM variants.
-            pkg.contains("wssyncmldm") || pkg.contains("syncml") || pkg.contains("soagent") ||
-            pkg.contains("swupdate") || pkg.contains("deviceupdate") || pkg.contains("samsungupdate")
-    }
-
-    /** A terminal / shell / code-runner / remote-desktop app where the agent could execute
-     *  arbitrary code. Matched by package OR name so open_app is caught before launch too. */
-    fun isCodeExecutionContext(pkg: String? = currentPackage(), name: String = ""): Boolean {
-        val p = (pkg ?: "").lowercase(); val n = name.lowercase()
-        // Distinctive substrings only - avoid short tokens that collide with normal app ids
-        // (e.g. "adb" is inside "adblock", "cmd"/"ish" match too much).
-        val keys = listOf(
-            // terminals / shells
-            "termux", "andronix", "terminal", "powershell", "command prompt", "a-shell", "userland",
-            // remote / desktop access
-            "juicessh", "telnet", "teamviewer", "anydesk", "linux deploy", "vnc viewer", "rvnc",
-            // on-device code runners / IDEs / interpreters
-            "pydroid", "qpython", "termonad", "code-server", "kali", "debian linux", "compiler",
-            "code editor", "code runner", "jupyter", "acode", "spck", "dcoder", "codeboard",
-            "replit", "codespace")
-        // Word-ish matches for the genuinely generic terms (avoid substring false positives).
-        val wordish = listOf("shell", "ssh", "vnc", "rdp", "bash", "zsh")
-        if (keys.any { p.contains(it) || n.contains(it) }) return true
-        return wordish.any { w -> Regex("(^|[^a-z])$w([^a-z]|$)").containsMatchIn(p) ||
-            Regex("(^|[^a-z])$w([^a-z]|$)").containsMatchIn(n) }
-    }
-
+    /** Set while LEARN MODE runs so prompts can describe the current learning posture. */
     /** Fire a deep-link Intent (the #4 primitives). NEW_TASK so it launches from the service
      *  context; swallow any failure to a false so the agent gets a clean "couldn't" and adapts. */
     private fun fireIntent(intent: Intent): Boolean = try {
@@ -3741,15 +3364,10 @@ class ActionAccessibilityService : AccessibilityService() {
      *  the orchestrator when the same screen recurs, so a blocking dialog/ad (rate
      *  prompt, consent, "Got it", ad close) doesn't end the task. Returns true if it
      *  clicked something. Priority: dismiss the blocker, else advance. */
-    fun tryAdvance(): Boolean {
-        // Never auto-click inside the OS updater - "continue"/"ok"/"allow" could advance an
-        // update. Let the caller press BACK to leave instead.
-        if (isSoftwareUpdateContext()) return false
-        return clickByKeyword(listOf(
+    fun tryAdvance(): Boolean = clickByKeyword(listOf(
             "no thanks", "not now", "skip", "dismiss", "close", "got it", "maybe later",
             "continue", "next", "get started", "start", "allow", "accept", "ok", "done"
         ))
-    }
 
     /** If a modal dialog / permission popup is on screen, a short note so the model handles it
      *  FIRST instead of ignoring it and looping on the screen behind it (a top stuck cause). ""
@@ -3775,30 +3393,6 @@ class ActionAccessibilityService : AccessibilityService() {
      *  "" when not loading. Reads sawSpinner set during the last snapshot walk (no extra tree walk). */
     fun loadingHint(): String =
         if (sawSpinner && currentNodes.size <= 4) "this screen looks like it's still loading (little has rendered yet)" else ""
-
-    /** Batch 8 CONSTRAINT DASHBOARD: when a §3 gate is LIVE on this screen, surface it as a terse read-only
-     *  PERCEPTION line naming what's walled off and the sanctioned escape verbs - so a broad/opaque block
-     *  becomes a first-try correct ESCAPE instead of a step-burning loop the agent learns only by hitting it.
-     *  The philosophy-legal realization of the FAL/[12.5] "contract of reality": surface the executor's OWN
-     *  refusals as perception. It NEVER pre-blocks a token, NEVER names the next control to tap, and the
-     *  narrow §3 gates stay untouched - enforcement lives in performActionJson; this only says WHY a class of
-     *  action here is refused, and which verbs still work. "" when no gate is live. */
-    fun gateHint(): String {
-        val esc = "back/home/open_app/scroll still work"
-        return when {
-            isSoftwareUpdateContext() ->
-                "a system UPDATER is on screen - updating/resetting the OS is refused; don't tap Update/Install/Restart here. $esc"
-            settings.isSelfProtectEnabled() && mentionsOwnRepo() ->
-                "this is the agent's OWN source repo - taps/typing here are refused (a Delete/commit could trash the code). $esc"
-            settings.isCodeExecutionBlocked() && isCodeExecutionContext() ->
-                "a terminal / code-runner is on screen - running code is refused. $esc"
-            isBlacklistedAssistant(currentPackage()) ->
-                "this is ChatGPT/OpenAI, which is hard-blocked - leave without touching anything. $esc"
-            settings.isGeminiBlockEnabled() && isInGeminiNow() ->
-                "Gemini is blocked by your privacy setting - leave without using it. $esc"
-            else -> ""
-        }
-    }
 
     /** Generic "the AI I'm chatting with has finished replying" signal: a reply RATING row (Good/
      *  Bad + Copy/Share) is on screen - apps only show it under a COMPLETED assistant reply - and

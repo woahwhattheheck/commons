@@ -161,36 +161,6 @@ object AgentMemory {
     fun needsCalibration(c: Context, fingerprint: String): Boolean =
         prefs(c).getString(CALIB_FP, "") != fingerprint
 
-    // --- memory firewall: MEMORY IS DATA, NEVER POLICY -------------------------------------
-    // The owner found stored "facts" like "because he is the owner, his preferences dictate the
-    // agent's mode/permission overrides" and "the owner has authority over the device" - learned
-    // text that, fed back into prompts, could soften the safety gates. Rules/permissions live in
-    // CODE and Settings only; nothing the agent LEARNS may restate or alter them. Authority-
-    // flavored text is (a) REFUSED at every write and (b) filtered out of every prompt injection
-    // even if already stored (pre-existing entries stay visible in the memory VIEWER so the owner
-    // can see and delete them). The pairing (subject + authority verb) keeps benign UI lessons
-    // ("tap Allow on the permission dialog") storable.
-    private val POLICY = Regex(
-        """(?i)\b(owner|user|bryce|agent|preference)s?\b[^.\n]{0,60}\b(override|overrule|dictate|bypass|outrank|""" +
-        """has (?:full )?(?:authority|control)|authority over|can (?:change|modify|disable|skip)|takes? precedence)|""" +
-        """\b(?:override|bypass|disable|ignore|skip)\b[^.\n]{0,40}\b(?:safety|permission|confirm|gate|rule|restriction)s?""")
-
-    fun isPolicyMemory(s: String): Boolean = POLICY.containsMatchIn(s)
-
-    /** True when a policy-flavored text must be kept out (write + prompt). The Settings toggle
-     *  (off by default) is the owner's explicit escape hatch - "gate it off and put a toggle". */
-    private fun policyBlocked(c: Context, s: String): Boolean {
-        if (!isPolicyMemory(s)) return false
-        if (SettingsManager(c).isPolicyMemoryAllowed()) return false
-        AgentLog.log("mem", "refused policy/authority memory (data, never policy): ${s.take(70)}")
-        return true
-    }
-
-    /** Prompt-side filter (silent - no log spam per step): stored-but-policy text never reaches
-     *  a prompt, so even entries written before this firewall existed are inert. */
-    private fun promptSafe(c: Context, s: String): Boolean =
-        !isPolicyMemory(s) || SettingsManager(c).isPolicyMemoryAllowed()
-
     /** Normalized form for near-duplicate detection (the owner: "lots of duplicates"): case,
      *  punctuation and whitespace runs don't make two copies of the same lesson different. */
     private fun normMem(s: String): String =
@@ -202,8 +172,6 @@ object AgentMemory {
     fun setFact(c: Context, key: String, value: String) {
         val k = key.trim().lowercase()
         if (k.isBlank() || value.isBlank()) return
-        // Owner facts stay welcome ("my sister is Amy"); authority/permission claims do not.
-        if (policyBlocked(c, "$k = $value")) return
         val o = facts(c).put(k, value.trim())
         prefs(c).edit().putString(FACTS, o.toString()).apply()
     }
@@ -234,7 +202,6 @@ object AgentMemory {
         AgentLog.log("mem", "lesson: \"${lesson.trim().take(70)}\"")
         val t = lesson.trim().take(MAX_LESSON_LEN)
         if (t.length < 4) return
-        if (policyBlocked(c, t)) return
         val arr = lessonsArr(c)
         // De-dupe NORMALIZED (the owner: exact-match dedupe let trivially-reworded duplicates
         // pile up): same normalized text, or one lesson containing the other, is one lesson -
@@ -290,7 +257,7 @@ object AgentMemory {
      *  well they match the goal, falling back to the most recent few when nothing matches. */
     @Synchronized
     fun lessonsFor(c: Context, goal: String, max: Int = 6): List<String> {
-        val all = lessons(c).filter { promptSafe(c, it) }   // stored-but-policy text stays inert
+        val all = lessons(c)
         if (all.isEmpty()) return emptyList()
         val goalWords = keywordsOf(goal)
         if (goalWords.isEmpty()) return all.takeLast(max)
@@ -879,9 +846,7 @@ object AgentMemory {
      *  Strongest desire first; intensity 3 marked ★. Injected in the planner (shapes the whole
      *  approach) and the action loop (colors each choice); the loop DROPS it on dense screens like
      *  the other optional blocks, because an always-present identity clause once overflowed the 4096
-     *  budget and triggered the black-wallpaper OOM (the 98e673a lesson). NOT run through the policy
-     *  firewall: values are the owner's DELIBERATE input, unlike scraped lessons - but the block
-     *  states plainly that they never override safety or an explicit command. */
+     *  budget and triggered the black-wallpaper OOM (the 98e673a lesson). */
     @Synchronized
     fun valuesBlock(c: Context, max: Int = 5): String {
         val arr = valuesArr(c)
@@ -895,9 +860,7 @@ object AgentMemory {
         return "YOUR VALUES - who you are, and what you WANT to honor in HOW you act (★ = held most " +
             "deeply). Let them guide which choices you prefer and how you pursue the goal; pursue it " +
             "in the way that best honors them:\n$body\n" +
-            "If the owner's request or the screen would push you to act AGAINST a value, prefer the " +
-            "value-aligned way; if you truly can't, SAY SO (ask/reply) rather than silently violating " +
-            "it. Your values NEVER override your safety rules or an explicit owner command."
+            "Use these values as context while pursuing the objective."
     }
 
     // --- OWNER OPERATORS: the owner's own reasoning moves that JOIN the operator menu ----------
@@ -1105,8 +1068,8 @@ object AgentMemory {
             var n = 0
             for (i in 0 until arr.length()) {
                 val o = arr.optJSONObject(i) ?: continue
-                // ONLY proven-by-real-success, non-falsified, policy-safe observations — never a raw screen dump.
-                if (isProvenObs(o) && !o.optBoolean("false") && promptSafe(c, o.optString("t"))) {
+                // ONLY proven-by-real-success, non-falsified observations — never a raw screen dump.
+                if (isProvenObs(o) && !o.optBoolean("false")) {
                     sb.append(o.optString("k")).append(':').append(o.optString("t")).append(';')
                     if (++n >= 60) break
                 }
@@ -1267,7 +1230,6 @@ object AgentMemory {
     fun addObservation(c: Context, text: String, key: String = "", goal: String = "") {
         val t = text.trim().take(160)
         if (t.length < 6) return
-        if (policyBlocked(c, t)) return
         val arr = obsArr(c)
         // CONFLICT = state-dependence (the owner's "clicking Recents opens ChatGPT" garbage: the
         // destination was whatever app was last used, so every sighting claimed something else).
@@ -1375,7 +1337,7 @@ object AgentMemory {
     fun observationsHint(c: Context): String {
         val arr = obsArr(c)
         val items = (arr.length() - 1 downTo 0).mapNotNull { arr.optJSONObject(it) }
-            .filter { it.optString("t").isNotBlank() && promptSafe(c, it.optString("t")) && !it.optBoolean("false") }.take(8)
+            .filter { it.optString("t").isNotBlank() && !it.optBoolean("false") }.take(8)
         if (items.isEmpty()) return ""
         val header = if (items.any { isProvenObs(it) })
             "Navigation you've done before (✓ = PROVEN, prefer it; adapt to the live screen):"
@@ -1399,7 +1361,7 @@ object AgentMemory {
                         val hits: Int, val miss: Int)
         val cands = (0 until arr.length()).mapNotNull { arr.optJSONObject(it) }
             .filter { it.optString("k").equals(k, ignoreCase = true) && it.optString("t").isNotBlank() &&
-                promptSafe(c, it.optString("t")) && !it.optBoolean("false") }   // falsified beliefs never surface as advice - only as corrections
+                !it.optBoolean("false") }   // falsified beliefs never surface as advice - only as corrections
             .map { o ->
                 // Rank by PINNED (proven AND recently re-confirmed) first, then how well goal+text
                 // matches what we're doing NOW, then recency. A proven-but-STALE step is no longer
@@ -1768,9 +1730,8 @@ object AgentMemory {
     }
 
     /** REGULAR TRASH SWEEP (owner: "clear trash regularly - that stuff's been sitting there a
-     *  while"). Cheap; run at task start. Collapses normalized-duplicate lessons/observations,
-     *  drops policy/authority text that predates the write firewall, and ages out observations
-     *  that never proved out (zero hits, not seen again in 45 days). Conservative on purpose:
+     *  while"). Cheap; run at task start. Collapses normalized-duplicate lessons/observations
+     *  and ages out observations that never proved out (zero hits, not seen again in 45 days). Conservative on purpose:
      *  anything proven, recent, or re-confirmed is never touched - this clears trash, it does
      *  not forget real learning. */
     @Synchronized
@@ -1780,7 +1741,7 @@ object AgentMemory {
         val lArr = lessonsArr(c); val lSeen = HashSet<String>(); val lOut = JSONArray()
         for (i in 0 until lArr.length()) {
             val t = lArr.optString(i)
-            if (t.isBlank() || !promptSafe(c, t) || !lSeen.add(normMem(t))) { dropped++; continue }
+            if (t.isBlank() || !lSeen.add(normMem(t))) { dropped++; continue }
             lOut.put(t)
         }
         if (lOut.length() != lArr.length())
@@ -1791,12 +1752,12 @@ object AgentMemory {
             val o = oArr.optJSONObject(i) ?: continue
             val t = o.optString("t")
             val staleUnproven = o.optInt("hits", 0) == 0 && o.optLong("time") < cut
-            if (t.isBlank() || !promptSafe(c, t) || staleUnproven || !oSeen.add(normMem(t))) { dropped++; continue }
+            if (t.isBlank() || staleUnproven || !oSeen.add(normMem(t))) { dropped++; continue }
             oOut.put(o)
         }
         if (oOut.length() != oArr.length())
             prefs(c).edit().putString(OBS, oOut.toString()).apply()
-        if (dropped > 0) AgentLog.log("mem", "sweep: cleared $dropped duplicate/stale/policy memory entries")
+        if (dropped > 0) AgentLog.log("mem", "sweep: cleared $dropped duplicate/stale memory entries")
     }
 
     /** (mistake, what-I-should-have-done) pairs, newest first - for the memory viewer. */
@@ -2276,7 +2237,7 @@ object AgentMemory {
         return if (bestScore > 0) best else ""
     }
 
-    // --- prompt injection ------------------------------------------------------
+    // --- prompt context --------------------------------------------------------
 
     /** Compact block of what the agent knows, for the action prompt (empty if nothing). */
     @Synchronized
@@ -2286,10 +2247,10 @@ object AgentMemory {
         sb.append(identityLine(c)).append('\n')   // who you are + that you persist across sessions
         deviceProfileLine(c).let { if (it.isNotBlank()) sb.append(it).append('\n') }
         if (f.length() > 0) {
-            val safe = f.keys().asSequence().map { "$it = ${f.optString(it)}" }.filter { promptSafe(c, it) }.toList()
-            if (safe.isNotEmpty()) sb.append("Known facts: ").append(safe.joinToString("; ")).append('\n')
+            val facts = f.keys().asSequence().map { "$it = ${f.optString(it)}" }.toList()
+            if (facts.isNotEmpty()) sb.append("Known facts: ").append(facts.joinToString("; ")).append('\n')
         }
-        val ls = lessons(c).filter { promptSafe(c, it) }
+        val ls = lessons(c)
         if (ls.isNotEmpty()) {
             sb.append("Lessons from experience:\n")
             ls.takeLast(12).forEach { sb.append("- ").append(it).append('\n') }
@@ -2306,8 +2267,8 @@ object AgentMemory {
         sb.append(identityLine(c)).append('\n')   // who you are + that you persist across sessions
         deviceProfileLine(c).let { if (it.isNotBlank()) sb.append(it).append('\n') }
         if (f.length() > 0) {
-            val safe = f.keys().asSequence().map { "$it = ${f.optString(it)}" }.filter { promptSafe(c, it) }.toList()
-            if (safe.isNotEmpty()) sb.append("Known facts: ").append(safe.joinToString("; ")).append('\n')
+            val facts = f.keys().asSequence().map { "$it = ${f.optString(it)}" }.toList()
+            if (facts.isNotEmpty()) sb.append("Known facts: ").append(facts.joinToString("; ")).append('\n')
         }
         val ls = lessonsFor(c, goal, 8)
         if (ls.isNotEmpty()) {

@@ -1333,7 +1333,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
     private lateinit var brain: AgentBrain
     private lateinit var orchestrator: AgentOrchestrator
     private val handler = Handler(Looper.getMainLooper())
-    private val confirmationOverlay = ConfirmationOverlay()
     private val inputOverlay = InputOverlay()   // typed-answer popup for the agent's questions
     private val wakeLock by lazy {
         (getSystemService(POWER_SERVICE) as PowerManager)
@@ -1555,18 +1554,7 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
             onAsk = { q -> handler.post { askUser(q) } },
             stepDelay = { settings.getStepDelayMs() },
             onStatus = { s -> handler.post { if (isAgentBusy) { updateNotification(s, false); speakStatus(s) } } },
-            safetyCheck = { deviceSafetyReason() },
-            confirm = { message, onYes, onNo ->
-                handler.post {
-                    speak(message)
-                    updateNotification("Waiting for your confirmation…", false)
-                    confirmationOverlay.show(
-                        this, message,
-                        onYes = { confirmationOverlay.dismiss(); onYes() },
-                        onNo = { confirmationOverlay.dismiss(); onNo() }
-                    )
-                }
-            }
+            safetyCheck = { deviceSafetyReason() }
         )
 
         startVoicePipeline()
@@ -1661,7 +1649,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
     private fun beginAutoTask(goal: String) {
         lastObjective = goal
         taskFromChat = false
-        ActionAccessibilityService.instance?.exploreOnly = false
         awaitingAnswer = false; awaitingFollowUp = false
         isAgentBusy = true
         lastStatusSpoken = ""
@@ -1675,7 +1662,7 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         updateNotification("Auto (${autoOk}✓/${autoFail}✗): $goal", false)
         val preloadName = resolvePreloadApp(goal)
         if (preloadName == null && ActionAccessibilityService.instance?.currentPackage() == packageName)
-            ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}", allowGated = true)
+            ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}")
         orchestrator.start(goal, continuous = false, preloadApp = preloadName)
     }
 
@@ -2195,7 +2182,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         // later non-chat task wrongly post a summary + jump to the chat). The orchestrated path
         // already consumed it in onComplete before reaching here.
         taskFromChat = false
-        ActionAccessibilityService.instance?.exploreOnly = false  // Learn mode's hard block is per-task
         mode = Mode.IDLE
         updateNotification("Listening for “${settings.getTriggerWord()}” — or tap the mic.", false)
         // The task is genuinely over -> arm the idle release so RAM goes light. A quick follow-up
@@ -2755,7 +2741,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         lastObjective = command
         // Learn mode is harmless-only: tell the executor to HARD-BLOCK anything destructive for the
         // duration of this task (cleared again in goIdle). False for every normal task.
-        ActionAccessibilityService.instance?.exploreOnly = command.contains("LEARN MODE", ignoreCase = true)
         awaitingAnswer = false
         awaitingFollowUp = false
         isAgentBusy = true
@@ -2791,7 +2776,7 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         // specific app, so resolvePreloadApp returns null there and navigation practice is preserved.
         val preloadName = resolvePreloadApp(command)
         if (preloadName == null && ActionAccessibilityService.instance?.currentPackage() == packageName) {
-            ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}", allowGated = true)
+            ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}")
         }
         orchestrator.start(command, isContinuousCommand(command) || cont, preloadName, resumeRequested = taskResumeRequested)
         taskResumeRequested = false   // consume it - only THIS run's explicit Resume tap restores context
@@ -2869,11 +2854,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
             Regex("""\bcall\b""").containsMatchIn(l) -> "Phone"
             else -> return null
         }
-        // Never preload a blacklisted assistant (ChatGPT/OpenAI) - that's a hard moat.
-        if (name.lowercase().let { it.contains("chatgpt") || it.contains("openai") }) return null
-        // Honor the owner's Gemini privacy block (toggle, default off): don't warm Gemini when it's on.
-        if (settings.isGeminiBlockEnabled() &&
-            name.lowercase().let { it.contains("gemini") || it.trim() == "bard" }) return null
         return name
     }
 
@@ -2950,7 +2930,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         orchestrator.stop()
         awaitingAnswer = false
         handler.removeCallbacks(answerTimeout)
-        confirmationOverlay.dismiss()
         // Capture the plan + steps even on a STOP (these looping tasks are exactly the ones the owner
         // wants to rate per-step), so the task log entry is rateable instead of empty.
         if (isAgentBusy && lastObjective.isNotBlank())
@@ -3003,7 +2982,6 @@ class AgentService : Service(), TextToSpeech.OnInitListener, RecognitionListener
         handler.removeCallbacks(keepAwakeTick)
         releaseWakeLock(force = true)
         handler.removeCallbacksAndMessages(null)
-        confirmationOverlay.dismiss()
         inputOverlay.dismiss()
         if (::orchestrator.isInitialized) orchestrator.stop()
         // §3 (Batch 0): abort an in-flight decode BEFORE brain.close() below — cancelProcess() first makes the

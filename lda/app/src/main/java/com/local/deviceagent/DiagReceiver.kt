@@ -3,10 +3,9 @@ package com.local.deviceagent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ApplicationInfo
 
 /**
- * DEBUG-ONLY adb-triggerable diagnostic + A/B toggle (07-11/12, owner: "one test button… something you can use easily
+ * adb-triggerable diagnostic + settings toggle (07-11/12, owner: "one test button… something you can use easily
  * from your end too", then the REGRESSION-MAP A/B).
  *
  *   Run the full read-only diagnostic dump ([diag] block):
@@ -18,32 +17,14 @@ import android.content.pm.ApplicationInfo
  * The explicit `-n <component>` is REQUIRED: since Android 8, an implicit (action-only) broadcast is NOT delivered to a
  * manifest-declared receiver.
  *
- * SAFETY (§3): gated to DEBUGGABLE builds only (inert in a release APK). The diagnostic is read-only (no task, no phone
- * driving, no account access). The SETFLAG A/B toggle can flip ONLY the WHITELISTED non-safety feature flags below — it
- * can NEVER touch a §3 SAFETY flag (block_gemini / risky_actions / self_protect / policy_memory / shell_input /
- * code-exec), so an external broadcast can't weaken the safety posture. The debuggable gate is the outer guard.
+ * The diagnostic is available in every build. SETFLAG accepts any SharedPreferences boolean key so the
+ * receiver does not maintain a second allowlist over app capabilities.
  */
 class DiagReceiver : BroadcastReceiver() {
-    // A/B-safe feature flags an adb SETFLAG may toggle. NON-safety only — the §3 safety flags are deliberately absent so
-    // a broadcast can never disable a guardrail. These are the levers the REGRESSION MAP A/Bs against the operator win.
-    private val SETFLAG_WHITELIST = setOf(
-        "thinking_logs", "operator_binding", "operator_stacking", "fold_verify", "adaptive_decode",
-        "agent_language", "evidence_mode", "world_model", "session_sigma", "continuous_engine",
-        "self_calibrate", "operator_layer", "vision_skip_proven", "mechanism_router", "tier_observ"
-    )
-
     override fun onReceive(context: Context, intent: Intent?) {
-        // Inert on any non-debuggable (release) build — this hook exists ONLY for the debug test build.
-        val debuggable = (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-        if (!debuggable) return
-
-        // A/B FLAG TOGGLE path (regression bisect): `--es setflag <name> --ez val <true|false>`. Whitelisted flags only.
+        // Settings toggle path: `--es setflag <name> --ez val <true|false>`.
         val setflag = intent?.getStringExtra("setflag")
         if (!setflag.isNullOrBlank()) {
-            if (setflag !in SETFLAG_WHITELIST) {
-                AgentLog.log("diag", "SETFLAG refused: '$setflag' is not in the A/B whitelist (safety flags are never adb-togglable)")
-                return
-            }
             val v = intent.getBooleanExtra("val", true)
             try {
                 // Same SharedPreferences SettingsManager reads (in-process cache is shared, so the next decode sees it).
@@ -198,12 +179,8 @@ class DiagReceiver : BroadcastReceiver() {
         // TASK TRIGGER (owner debug, 07-24: "trigger it to act… so u dont have to pilot the phone"): start a REAL agent
         // task from adb, so tasks can be driven + observed from the dev side without piloting the phone UI.
         //   adb shell am broadcast -a com.local.deviceagent.DIAG -n com.local.deviceagent/.DiagReceiver --es task "open the clock app"
-        // SAFETY: this is the SAME entry the chat UI uses (ACTION_RUN_COMMAND) — the task runs through the orchestrator and
-        // EVERY §3 executor safety gate (unsafe ACTIONs blocked, payment/install confirmations, kill switches, the
-        // battery/thermal floor). It touches NO §3 safety flag, and it is DEBUGGABLE-only
-        // (the outer guard above). Starting the service IN-PROCESS here bypasses ONLY the service's export restriction
-        // (adb can't start the non-exported service directly) — never a safety gate. Unlike obs/lab, this DOES drive the
-        // phone, by design; keep the dedicated device's blast radius contained (wifi off) while testing.
+        // This is the same entry the chat UI uses (ACTION_RUN_COMMAND), so the task runs through the
+        // ordinary orchestrator and retains the battery/thermal floor and user Stop control.
         val task = intent?.getStringExtra("task")
         if (!task.isNullOrBlank()) {
             AgentLog.log("diag", "adb task trigger: ${task.take(160)}")

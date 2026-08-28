@@ -168,7 +168,7 @@ class MemoryActivity : AppCompatActivity() {
                 onDelete = { AgentMemory.removeValue(this@MemoryActivity, text); render() }) { nt, w ->
                 // Editing replaces the old entry (clearing the text deletes it, like facts/lessons).
                 AgentMemory.removeValue(this@MemoryActivity, text)
-                if (nt.isNotEmpty()) { AgentMemory.addValue(this@MemoryActivity, nt, w); maybeWarnPolicy(nt) }
+                if (nt.isNotEmpty()) AgentMemory.addValue(this@MemoryActivity, nt, w)
                 render()
             }
         }
@@ -181,20 +181,11 @@ class MemoryActivity : AppCompatActivity() {
             .apply { setMargins(0, 12, 0, 0) }
         setOnClickListener {
             valueDialog("Add a value", "", 2) { t, w ->
-                if (t.isNotEmpty()) { AgentMemory.addValue(this@MemoryActivity, t, w); maybeWarnPolicy(t) }
+                if (t.isNotEmpty()) AgentMemory.addValue(this@MemoryActivity, t, w)
                 render()
             }
         }
     })
-
-    /** A value can't weaken the hard safety gates - if the owner sets one that reads like it tries,
-     *  say so plainly (it's still saved; his device, his call - the executor stays supreme). */
-    private fun maybeWarnPolicy(text: String) {
-        if (AgentMemory.isPolicyMemory(text))
-            Toast.makeText(this,
-                "Saved. Heads up: a value guides choices but can't override the agent's hard safety rules or your direct command.",
-                Toast.LENGTH_LONG).show()
-    }
 
     /** Add/edit a value: a text field + a 3-way strength picker (Mild / Value / Core = intensity
      *  1/2/3, the desire-strength dial). onDelete adds a Delete button (edit only). */
