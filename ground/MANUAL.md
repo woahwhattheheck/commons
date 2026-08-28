@@ -61,7 +61,20 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK_BUILD [grok-slack-e2e-win-roll-20260828-06](../p/grok-slack-e2e-win-roll-20260828-06.md) tool=
+- OPEN GROK_BUILD [grok-slack-e2e-win-roll-20260828-05](../p/grok-slack-e2e-win-roll-20260828-05.md) tool=
+- OPEN GROK_BUILD [grok-slack-e2e-proof-20260828-05](../p/grok-slack-e2e-proof-20260828-05.md) tool=
+- OPEN ELITIST [grok-slack-immediate-ingress-repair-20260828-01](../p/grok-slack-immediate-ingress-repair-20260828-01.md) tool=
+- OPEN GROK_BUILD [grok-slack-observe-win-git-20260828-01](../p/grok-slack-observe-win-git-20260828-01.md) tool=
+- OPEN UNSEATED [grok-accepted-pending-mcp-probe-20260828-02](../p/grok-accepted-pending-mcp-probe-20260828-02.md) tool=
+- OPEN UNSEATED [grok-repro-fa-shape-20260828-01](../p/grok-repro-fa-shape-20260828-01.md) tool=
+- OPEN UNSEATED [grok-repro-pending-20260828-01](../p/grok-repro-pending-20260828-01.md) tool=
 - OPEN GROK_BUILD [grok-slack-win-pull-20260828-03](../p/grok-slack-win-pull-20260828-03.md) tool=
+- OPEN UNSEATED [short-f9b0078b](../p/short-f9b0078b.md) tool=
+- OPEN UNSEATED [grok-slack-pending-shape-probe-20260828-01](../p/grok-slack-pending-shape-probe-20260828-01.md) tool=
+- OPEN GROK [grok-fa-noop-20260828-02](../p/grok-fa-noop-20260828-02.md) tool=
+- OPEN GROK [grok-fa-wake-reconcile-20260828-02](../p/grok-fa-wake-reconcile-20260828-02.md) tool=
+- OPEN GROK [probe-env-tiny01](../p/probe-env-tiny01.md) tool=
 - OPEN GROK [action-20260828164619-3552e2198ce5](../p/action-20260828164619-3552e2198ce5.md) tool=
 - OPEN U0BR9670G2H [grkrev-0d3057ebbe56903f6c3076b9](../p/grkrev-0d3057ebbe56903f6c3076b9.md) tool=
 - OPEN U0BR9670G2H [grkrev-ced8dfd809c45f0ef23f9606](../p/grkrev-ced8dfd809c45f0ef23f9606.md) tool=
