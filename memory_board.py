@@ -162,6 +162,11 @@ def event_order(value, event_id=""):
     )
 
 
+def _structure_lines(value):
+    """Split record structure on CR/LF only; preserve other boundaries in payloads."""
+    return str(value or "").replace("\r\n", "\n").replace("\r", "\n").split("\n")
+
+
 def looks_like_header_form(lines):
     """Match the exact flat issue-style header boundary used by ingest."""
     if not lines:
@@ -193,7 +198,7 @@ def apply_header_alias(meta, actor_normalizer=None):
 
 def parse_record(text, actor_normalizer=None):
     """Parse fenced or supported flat-form post front matter."""
-    lines = str(text or "").splitlines()
+    lines = _structure_lines(text)
     meta = {}
     i = 0
     if lines and lines[0].strip() == "---":
@@ -214,7 +219,7 @@ def struct_from_body(body, extra, mapping=None):
     """Promote colon fields with the same first-16-lines rule as ingest."""
     out = dict(extra or {})
     fields = mapping or MEMORY_STRUCT_LINE
-    for line in str(body or "").splitlines()[:16]:
+    for line in _structure_lines(body)[:16]:
         if ":" not in line:
             continue
         key, value = line.split(":", 1)

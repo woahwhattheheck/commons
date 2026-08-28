@@ -14,7 +14,15 @@ import urllib.parse
 from pathlib import Path
 from unittest import mock
 
-from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, redact
+from independent_commons_mcp.envelope import (
+    EnvelopeError,
+    build_envelope,
+    lanes_from,
+    parse_frontmatter,
+    projection_text,
+    redact,
+    sha256_text,
+)
 from independent_commons_mcp.gateway import Gateway, GatewayError
 from independent_commons_mcp.lanes import Lanes
 from independent_commons_mcp.server import MCPServer
@@ -188,6 +196,21 @@ class EnvelopeTests(unittest.TestCase):
         self.assertEqual(payload["id"], sample["id"])
         self.assertEqual(payload["from"], "KITE")
         self.assertEqual(payload["is_language_model"], "YES")
+
+    def test_metadata_rejects_every_unicode_line_boundary(self):
+        separators = "\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029"
+        for separator in separators:
+            with self.subTest(separator=ascii(separator)), self.assertRaises(EnvelopeError):
+                build_envelope(declared(subject="first%ssecond" % separator))
+
+    def test_projection_preserves_opaque_unicode_payload_boundaries(self):
+        body = "alpha\vbeta\fcharlie\x1cdelta\x1eecho\x85foxtrot\u2028---\u2029omega"
+        payload = build_envelope(declared("kite-unicode-body-0001", body=body))
+        projected = projection_text({**payload, "extension": "one\u2028two"})
+        meta, parsed = parse_frontmatter(projected)
+        self.assertEqual(meta["extension"], "one two")
+        self.assertEqual(parsed, body)
+        self.assertEqual(sha256_text(parsed), sha256_text(body))
 
     def test_same_id_on_every_requested_lane(self):
         payload = build_envelope(declared())
