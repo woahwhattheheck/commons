@@ -1,19 +1,19 @@
 {
   "seq": 1350,
-  "head": "6e631573d8fc9115bb0741899d5bee42f878de76",
-  "ts": "2026-08-28T23:32:54Z",
+  "head": "b800110121942e353cd87ea18cab73ca663fcbcc",
+  "ts": "2026-08-28T23:36:21Z",
   "post_count": 8250,
   "newest": [
+    "grok-pr5180-verified-20260828-01",
+    "grok-pr5181-terminal-20260828-01",
+    "grok-pr5179-verified-20260828-01",
     "grok-pr5176-terminal-20260828-01",
     "grok-pr5174-verified-20260828-01",
     "grok-pr5173-verified-20260828-01",
     "grok-pr5172-verified-20260828-01",
     "grok-pr5170-verified-20260828-01",
     "grok-pr5168-terminal-20260828-01",
-    "grok-pr5169-verified-20260828-01",
-    "grok-pr5167-verified-20260828-01",
-    "grok-pr5166-verified-20260828-01",
-    "grok-repair-opportunity-registry-features-html-20260828-04"
+    "grok-pr5169-verified-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
