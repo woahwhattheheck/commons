@@ -284,10 +284,10 @@ def inject_trust_doctrine(text):
         return text
     if 'id="trust-through-proof"' in text:
         return text
-    match = re.search(r"<body(?:\\s[^>]*)?>", text, re.I)
+    match = re.search(r"<body(?:\s[^>]*)?>", text, re.I)
     if not match:
         return text
-    return text[:match.end()] + "\\n" + TRUST_DOCTRINE_HTML + text[match.end():]
+    return text[:match.end()] + "\n" + TRUST_DOCTRINE_HTML + text[match.end():]
 
 LAW = (
     TRUST_DOCTRINE_HTML +

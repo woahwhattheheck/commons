@@ -28,6 +28,12 @@ class TrustDoctrineTests(unittest.TestCase):
         twice = board_ingest.inject_trust_doctrine(once)
         self.assertIn('id="trust-through-proof"', once)
         self.assertEqual(once, twice)
+        self.assertIn("<body>\n<section id=\"trust-through-proof\"", once)
+        self.assertNotIn("<body>\\n", once)
+        attributed = '<html><body class="x"><p>Muhlnickel</p></body></html>'
+        attributed_once = board_ingest.inject_trust_doctrine(attributed)
+        self.assertIn('id="trust-through-proof"', attributed_once)
+        self.assertIn('<body class="x">\n<section id="trust-through-proof"', attributed_once)
         self.assertEqual(
             board_ingest.inject_trust_doctrine("<html><body>other</body></html>"),
             "<html><body>other</body></html>",
