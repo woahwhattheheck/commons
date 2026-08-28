@@ -32,6 +32,7 @@ on:
       - "integrations/grokcom_revenue/**"
       - "model_language.py"
       - "relay_manifest.py"
+      - "relay-manifest.json"
       - "protocol/**"
       - ".github/workflows/spark-mcp-production.yml"
       - "test_spark_mcp.py"
