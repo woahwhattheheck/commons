@@ -67,14 +67,20 @@ class CommonsAndroidProjectTests(unittest.TestCase):
 
     def test_job_post_is_cited_not_reminted(self):
         self.assertTrue(os.path.isfile(os.path.join(ROOT, "p/wire-commons-android-apk-20260826-01.md")))
+        self.assertTrue(os.path.isfile(os.path.join(ROOT, "p/grok-titan-android-open-lan-20260828-01.md")))
         lan = Path(os.path.join(ROOT, "host/commons_android/lan_client.py")).read_text(encoding="utf-8")
         self.assertIn("wire-commons-android-apk-20260826-01", lan)
+        self.assertIn("grok-titan-android-open-lan-20260828-01", lan)
         readme = Path(os.path.join(ROOT, "android/README.md")).read_text(encoding="utf-8")
         self.assertIn("wire-commons-android-apk-20260826-01", readme)
         self.assertIn("assembleDebug", readme)
-        self.assertIn("X-Commons-Pairing", readme)
-        self.assertIn("TITAN_HANDS_ANDROID_LAN_PAIRING", readme)
-        self.assertIn("on-device pairing", readme.lower())
+        self.assertNotIn("X-Commons-Pairing", readme)
+        self.assertNotIn("TITAN_HANDS_ANDROID_LAN_PAIRING", readme)
+        self.assertIn("credential-free", readme.lower())
+        self.assertFalse(os.path.isfile(os.path.join(ROOT, "android/app/src/main/java/org/commons/android/Pairing.kt")))
+        lan_src = Path(os.path.join(ROOT, "android/app/src/main/java/org/commons/android/HttpJsonServer.kt")).read_text(encoding="utf-8")
+        self.assertNotIn("PAIRING_REQUIRED", lan_src)
+        self.assertNotIn("expectedPairing", lan_src)
 
 
 if __name__ == "__main__":

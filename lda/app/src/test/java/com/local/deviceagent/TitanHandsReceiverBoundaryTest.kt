@@ -30,6 +30,14 @@ class TitanHandsReceiverBoundaryTest {
         assertFalse(receiver.contains("approval"))
     }
 
+    @Test fun testActDoesNotKeepConfirmationOrAllowGatedPlumbing() {
+        val source = receiverSource()
+        assertFalse(source.contains("allowGated"))
+        assertFalse(source.contains("NEEDS_CONFIRM"))
+        assertTrue(source.contains("performActionJson(raw)"))
+        assertTrue(source.contains("outcome.result != ActionResult.FAILED"))
+    }
+
     private fun findManifest(): File {
         var dir = File(System.getProperty("user.dir"))
         repeat(8) {
@@ -51,5 +59,19 @@ class TitanHandsReceiverBoundaryTest {
         val end = manifest.indexOf("</receiver>", start)
         assertTrue(lt >= 0 && end > lt)
         return manifest.substring(lt, end)
+    }
+
+    private fun receiverSource(): String {
+        var dir = File(System.getProperty("user.dir"))
+        repeat(8) {
+            val candidates = listOf(
+                File(dir, "src/main/java/com/local/deviceagent/TitanHandsReceiver.kt"),
+                File(dir, "app/src/main/java/com/local/deviceagent/TitanHandsReceiver.kt"),
+                File(dir, "lda/app/src/main/java/com/local/deviceagent/TitanHandsReceiver.kt"),
+            )
+            candidates.firstOrNull { it.isFile }?.let { return it.readText() }
+            dir = dir.parentFile ?: return@repeat
+        }
+        throw AssertionError("TitanHandsReceiver.kt not found from ${System.getProperty("user.dir")}")
     }
 }

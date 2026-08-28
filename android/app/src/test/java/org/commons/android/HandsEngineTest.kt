@@ -107,24 +107,6 @@ class HandsEngineTest {
         assertEquals(6, CommonsClient.NTFY_HOSTS.size)
         assertEquals("woahwhattheheck-commons-board", CommonsClient.NTFY_TOPIC)
     }
-
-    @Test
-    fun pairingIsOnDeviceAndTyped() {
-        val code = Pairing.mint()
-        assertEquals(32, code.length)
-        val missing = Pairing.check(code, "")
-        assertEquals("PAIRING_REQUIRED", missing!!.getString("failure_reason"))
-        val wrong = Pairing.check(code, "deadbeef")
-        assertEquals("PAIRING_MISMATCH", wrong!!.getString("failure_reason"))
-        assertEquals(null, Pairing.check(code, code))
-        val headers = mapOf("x-commons-pairing" to code)
-        assertEquals(code, Pairing.presented(headers, "/", null))
-        val body = JSONObject().put("pairing", code).put("op", "observe")
-        assertEquals(code, Pairing.presented(emptyMap(), "/", body))
-        assertEquals(code, Pairing.presented(emptyMap(), "/titan_hands?pairing=$code", null))
-        val offline = Pairing.check("", "")
-        assertEquals("HOST_OFFLINE", offline!!.getString("failure_reason"))
-    }
 }
 
 class FakeBackend(

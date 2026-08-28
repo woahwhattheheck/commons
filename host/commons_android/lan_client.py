@@ -6,6 +6,7 @@ to http://<phone>:8745/. It does not remint host/titan_hands/android.py
 
 Cite: p/wire-commons-android-apk-20260826-01.md
       p/emissary-titan-hands-unified-runtime-20260826-01.md
+      p/grok-titan-android-open-lan-20260828-01.md
 """
 
 from __future__ import annotations
@@ -22,7 +23,6 @@ from host.titan_hands_windows.protocol import PROTOCOL_VERSION, failure
 
 
 DEFAULT_PORT = 8745
-PAIRING_ENV = "TITAN_HANDS_ANDROID_LAN_PAIRING"
 
 
 class LanAndroidServer:
@@ -36,10 +36,8 @@ class LanAndroidServer:
     ) -> None:
         self.base_url = (base_url or os.environ.get("TITAN_HANDS_ANDROID_LAN") or "").rstrip("/")
         self._post = post
-        if pairing is None:
-            self.pairing = (os.environ.get(PAIRING_ENV) or "").strip()
-        else:
-            self.pairing = pairing.strip()
+        # pairing is leftover env accepted and ignored. The host is credential-free.
+        self.pairing = (pairing or "").strip()
 
     def close(self) -> None:
         return None
@@ -57,30 +55,12 @@ class LanAndroidServer:
                     "online": False,
                     "pixels": "on-demand-only",
                     "observation": "accessibility-semantic-delta",
-                    "pairing": "on-device",
-                    "note": "set TITAN_HANDS_ANDROID_LAN to the phone URL and TITAN_HANDS_ANDROID_LAN_PAIRING to the code shown after Start host",
+                    "pairing": "none",
+                    "note": "set TITAN_HANDS_ANDROID_LAN to the phone URL after Start host",
                 }
             return failure(
                 "HOST_OFFLINE",
                 "set TITAN_HANDS_ANDROID_LAN to the Commons Android host URL",
-            )
-        if self._post is None and not self.pairing:
-            if op == "capabilities":
-                return {
-                    "ok": True,
-                    "protocol": PROTOCOL_VERSION,
-                    "kind": "capabilities",
-                    "platform": "android",
-                    "transport": "lan",
-                    "online": False,
-                    "pixels": "on-demand-only",
-                    "observation": "accessibility-semantic-delta",
-                    "pairing": "on-device",
-                    "note": "set TITAN_HANDS_ANDROID_LAN_PAIRING to the on-device code shown in Commons after Start host",
-                }
-            return failure(
-                "PAIRING_REQUIRED",
-                "set TITAN_HANDS_ANDROID_LAN_PAIRING to the on-device code shown after Start host",
             )
         try:
             result = dict(self._send(dict(request)))
@@ -101,8 +81,6 @@ class LanAndroidServer:
             "Content-Type": "application/json; charset=utf-8",
             "User-Agent": "CommonsAndroidLan/1",
         }
-        if self.pairing:
-            headers["X-Commons-Pairing"] = self.pairing
         http = Request(
             url,
             data=payload,

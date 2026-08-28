@@ -17,7 +17,7 @@ class OpenExecutorContractTest {
             "KEY_ALLOW", "settings.isSelfInteractionAllowed()", "settings.isGeminiBlockEnabled()",
             "settings.isCodeExecutionBlocked()", "settings.isSelfProtectEnabled()",
         ).forEach { assertFalse("restriction gate remains: $it", source.contains(it)) }
-        assertFalse(source.contains("if (allowGated)"))
+        assertFalse(source.contains("allowGated"))
         assertTrue(source.contains("KeyEvent.keyCodeFromString"))
         assertTrue(source.contains("\"back\" ->"))
         assertTrue(source.contains("\"home\" ->"))

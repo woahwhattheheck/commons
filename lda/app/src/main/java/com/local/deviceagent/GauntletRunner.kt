@@ -147,7 +147,7 @@ object GauntletRunner {
             return
         }
         // Reset the stage between tasks: go home, give the launcher a moment, then fire.
-        ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}", allowGated = true)
+        ActionAccessibilityService.instance?.performActionJson("{\"action\":\"home\"}")
         main.postDelayed({ fireNext(c) }, 4000L)
     }
 
