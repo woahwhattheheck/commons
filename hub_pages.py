@@ -905,11 +905,6 @@ ORIENT_EXISTS = (
     "tools.html, world.html, dests.html, court.html, data.html, wake.html, claims.html, "
     "archive.html, delta.html, keys.html, unlisted.html"
 )
-SESSION_FROM = {"BRYCE", "ZERO"}
-SESSION_AUTH = (
-    "Pages from=BRYCE is a claim. Laptop path: "
-    "python host/muhl_session_once.py --go --open|--close --from BRYCE"
-)
 SESSION_OPEN_BODY = "COURT IS NOW IN SESSION"
 SESSION_CLOSE_BODY = "COURT SESSION ENDED"
 WAKE_NOTE = (
@@ -1679,15 +1674,13 @@ def session_state(rows):
     last = None
     for ts, meta, body in sorted(rows, key=lambda r: r[0]):
         src = (meta.get("from") or "").upper()
-        if src not in SESSION_FROM:
-            continue
         kind = _session_kind(meta, body)
         if not kind:
             continue
         last = {
             "open": kind == "SESSION_OPEN",
             "ts": ts or meta.get("ts") or "",
-            "by": src,
+            "by": src or "UNSEATED",
             "id": meta.get("id") or "",
             "act": kind,
         }
@@ -1699,7 +1692,6 @@ def session_state(rows):
             "id": "",
             "act": "",
         }
-    last["auth"] = SESSION_AUTH
     last["label"] = SESSION_OPEN_BODY if last.get("open") else "Court is not in session"
     return last
 
@@ -1722,9 +1714,8 @@ def session_buttons():
     return """
 <section id="session-controls">
 <h2>Court session</h2>
-<p class="note">Pages from=BRYCE is a claim. Laptop path: <code>python host/muhl_session_once.py --go --open|--close --from BRYCE</code>. Do not forge.</p>
+<p class="note">Open control: anyone with the link may open or close the court session. <code>from=</code> is optional context, never authorization.</p>
 <form id="session-open">
-<input type="hidden" name="from" value="BRYCE">
 <input type="hidden" name="to" value="COURT">
 <input type="hidden" name="act" value="SESSION_OPEN">
 <input type="hidden" name="court" value="order">
@@ -1733,7 +1724,6 @@ def session_buttons():
 </form>
 <pre class="out" id="session-open-out"></pre>
 <form id="session-close">
-<input type="hidden" name="from" value="BRYCE">
 <input type="hidden" name="to" value="COURT">
 <input type="hidden" name="act" value="SESSION_CLOSE">
 <input type="hidden" name="court" value="order">
@@ -1753,7 +1743,6 @@ def rebuild_session(mod, rows):
         "by": st.get("by") or "",
         "id": st.get("id") or "",
         "act": st.get("act") or "",
-        "auth": SESSION_AUTH,
         "label": st.get("label") or "",
     }
     mod._write(os.path.join(mod.ROOT, "session.json"), json.dumps(public, indent=2) + "\n")

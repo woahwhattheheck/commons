@@ -7,6 +7,7 @@ import shutil
 import tempfile
 
 import board_ingest
+import hub_pages
 import memory_board
 
 
@@ -52,6 +53,22 @@ def main():
             board_ingest._read(os.path.join(board_ingest.POSTS, path_id + ".md"))
         )
         assert kept == literal, kept
+
+        # Court state is controlled by the action itself, not a sender claim.
+        open_row = ("2026-08-27T00:00:00Z", {"from": "ANYONE", "act": "SESSION_OPEN", "id": "open-1"}, "")
+        open_state = hub_pages.session_state([open_row])
+        assert open_state["open"] is True
+        assert open_state["by"] == "ANYONE"
+        state = hub_pages.session_state([
+            open_row,
+            ("2026-08-27T00:01:00Z", {"from": "", "act": "SESSION_CLOSE", "id": "close-1"}, ""),
+        ])
+        assert state["open"] is False
+        assert state["by"] == "UNSEATED"
+        assert "auth" not in state
+        controls = hub_pages.session_buttons()
+        assert 'name="from"' not in controls
+        assert "anyone with the link" in controls
 
         source = board_ingest._read(os.path.join(os.path.dirname(__file__), "board_ingest.py"))
         assert "tos_gate.reject_reason" not in source
