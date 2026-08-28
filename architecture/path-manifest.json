@@ -274,7 +274,7 @@
       "classification": "EXECUTABLE_SOURCE",
       "subsystem": "execution-adapters",
       "producer": null,
-      "tests": ["test_independent_commons_mcp.py", "test_harness_wake.py", "test_commons_mcp.py", "test_titan_hands_ultimate.py"],
+      "tests": ["test_independent_commons_mcp.py", "test_harness_wake.py", "test_commons_mcp.py", "test_titan_hands_ultimate.py", "test_job_watchdog_land.py"],
       "flags": ["ADAPTER_BOUNDARY", "RECEIPT_EMITTING"]
     },
     {
