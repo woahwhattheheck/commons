@@ -12,7 +12,9 @@ seller offers, sharpen the ideal-customer profile, rank high-intent prospects,
 personalize each message, and then handle replies. Commons now composes those
 stages from its own evidence and roads: this planner owns evidence, collision,
 fit, rank, and copy; Swarm Mail owns exact-once transport state; reply intake
-owns reply classification. Reference observed 2026-08-27:
+owns mailbox-operator classification; the always-on reply-to-revenue funnel
+composes those receipts into public cash truth without a second CRM.
+Reference observed 2026-08-27:
 <https://explee.com/>.
 
 It does not replace `revenue/production_survival`, the canonical commerce
