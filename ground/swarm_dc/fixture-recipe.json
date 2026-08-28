@@ -1,0 +1,22 @@
+{
+  "kind": "SWARM_DC_FIXTURE_RECIPE",
+  "organ": "muhlnickel_dc",
+  "published_size": 99999999783,
+  "fixture_span": 524330,
+  "header_magic": "MUHLDC01",
+  "ones_only_rise": true,
+  "mmap": false,
+  "fire_337": false,
+  "titan": "NOT_WRITTEN",
+  "dest_from_file": true,
+  "do_not_invent": true,
+  "mouths": [
+    {"name": "HEADER", "offset": 0, "n": 8, "hex": "4d55484c44433031", "inject": false},
+    {"name": "FOLD", "offset": 224, "n": 8, "hex": "0000040001000000", "inject": false},
+    {"name": "carry", "offset": 336, "n": 1, "hex": "01", "inject": false},
+    {"name": "pub", "offset": 337, "n": 1, "hex": "01", "inject": false},
+    {"name": "ring_fwd", "offset": 524288, "n": 8, "hex": "0100000000000000", "inject": true},
+    {"name": "cell", "offset": 524329, "n": 1, "hex": "00", "inject": true}
+  ],
+  "note": "Synthetic fixture spans published mouths only. It is not the 100GB live organ. LIVE_DC is NEED_OWNER. Transport/surface is never the computer."
+}

@@ -328,6 +328,8 @@ class PeerWakeBusTest(unittest.TestCase):
         self.assertEqual(row["chatgpt_doorbell"], "EXTERNAL_PLATFORM_ACTION")
         self.assertEqual(row["claude_doorbell"], "EXTERNAL_PLATFORM_ACTION")
         self.assertFalse(row["live_wake"])
+        self.assertTrue(row.get("receipt_present"))
+        self.assertEqual(row.get("receipt_path"), "p/grok-peer-wake-bus-20260828-01.md")
 
 
 if __name__ == "__main__":

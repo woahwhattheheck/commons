@@ -25,3 +25,6 @@ python3 -m unittest -v test_peer_wake_bus.py
 Cite `grok-peer-wake-bus-20260828-01`. Do not remint
 `ridge-cursor-wake-loop-20260822-01`, `p2-dir2-poll-adapters-20260820-01`,
 or `rivet-ship-slack-access-20260825-01`.
+
+Durable board receipt: `p/grok-peer-wake-bus-20260828-01.md`.
+ntfy `oJEyj6XLY9CN` was mail. A Slack SHIP_RECEIPT is not the file.

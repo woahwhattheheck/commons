@@ -78,6 +78,12 @@
 > GitHub-hosted, not GitHub-outage protection. Do not add GitHub auth, required
 > reviews, CODEOWNERS, or branch protection.
 >
+> Automatic moving-main copies (Dir 9 leftover): ntfy cursor, Software Heritage
+> Save Code Now, jsDelivr `@main` compose. Card:
+> [ground/MOVING_MAIN_MIRROR.md](./ground/MOVING_MAIN_MIRROR.md). Tool:
+> [host/moving_main_mirror.py](./host/moving_main_mirror.py). GitLab/Codeberg/object-store
+> stay EXTERNAL_PROVIDER_ACTION.
+>
 > **Pinned owner resource route — CURSOR QUOTA HOLD**
 >
 > Do not launch, wake, resume, assign, delegate to, or test with Cursor, Cursor
