@@ -9,12 +9,14 @@ import sys
 from datetime import datetime, timezone
 from typing import Any
 
+import model_language
 
 from . import MAX_BODY, NTFY_MAX
 
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+METADATA_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 SECRET_ENV = (
     "COMMONS_GITHUB_TOKEN",
     "GITHUB_TOKEN",
@@ -36,7 +38,6 @@ MEMORY_APPEND_KINDS = {"MEMORY_APPEND"}
 ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE",
 }
-LINE_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 
 
 class EnvelopeError(Exception):
@@ -85,6 +86,16 @@ def redact(value: Any) -> Any:
     return text
 
 
+def _structure_lines(value: Any) -> list[str]:
+    """Split envelope structure on CR/LF only; other Unicode boundaries are payload."""
+    return str(value or "").replace("\r\n", "\n").replace("\r", "\n").split("\n")
+
+
+def _metadata_line(value: Any) -> str:
+    """Collapse every Unicode line boundary before projecting one metadata line."""
+    return " ".join(str(value).splitlines()).strip()
+
+
 def _plain(value: Any, field: str, maximum: int = 200) -> str:
     if not isinstance(value, str):
         raise EnvelopeError("SCHEMA", "%s must be a string" % field)
@@ -95,13 +106,9 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if LINE_BREAK_RE.search(out) or len(out) > maximum:
+    if METADATA_BREAK_RE.search(out) or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
-
-
-def _metadata_line(value: Any) -> str:
-    return " ".join(str(value).splitlines()).strip()
 
 
 def _actor(value: Any, field: str) -> str:
@@ -129,7 +136,7 @@ def _body(value: Any) -> str:
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
-    lines = str(text or "").splitlines()
+    lines = _structure_lines(text)
     meta: dict[str, str] = {}
     i = 0
     if lines and lines[0].strip() == "---":
@@ -271,7 +278,7 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
             payload[key] = _plain(arguments[key], key, maximum)
     if kind == "MODEL":
         payload["is_language_model"] = "YES"
-        layered = any(
+        layered = all(
             arguments.get(key) not in (None, "")
             for key in ("speech", "model_packet")
         )
@@ -279,10 +286,9 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
             payload.setdefault("reasoning_mode", "LATENT")
             payload.setdefault("model_protocol", "CML/1")
             payload.setdefault("model_codec", "json")
-            payload.setdefault("payload_sha256", sha256_text(body))
-            payload.setdefault("language_state", "LAYERED")
-        else:
-            payload.setdefault("language_state", "UNLAYERED")
+        # These are observed truth, never caller labels.
+        payload["payload_sha256"] = sha256_text(body)
+        payload["language_state"] = "LAYERED" if layered else "UNLAYERED"
     packed = canonical_json(payload)
     if len(packed.encode("utf-8")) > NTFY_MAX:
         raise EnvelopeError(
@@ -306,8 +312,6 @@ def public_summary(payload: dict[str, Any]) -> dict[str, Any]:
         "supersedes": payload.get("supersedes") or "",
         "body_sha256": sha256_text(str(payload.get("body") or "")),
         "is_language_model": payload.get("is_language_model") or "",
-        "language_state": payload.get("language_state") or "",
-        "payload_sha256": payload.get("payload_sha256") or "",
     }
 
 
