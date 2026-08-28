@@ -1,0 +1,91 @@
+{
+  "attempt_count": 0,
+  "backoff_seconds": 30,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "END RESULT: one new @Commons Grok Slack mention creates one durable addressable ACTION/wake_job without waiting for the delayed ntfy replay, executes one real grok.com session, and posts exactly one terminal threaded reply with the real conversation URL.\n\nFresh-main evidence to preserve: bridge recovery fix f51303bd1 / merge 38d6ef0c7; page-to-wake_job fix 88fa56960 + 9fe906f5e / merge f02d0cf3e. New live event Ev0BTGN7A99Q task grkrev-14a8159cd820923a38a68976 used one fire_action but all p/actions/wake_jobs/results paths stayed absent through bridge deadline and it truthfully posted DURABILITY_NEVER_APPEARED. Historical grkrev pages show ntfy-to-durability lag around 93-104 minutes. Do not replay any prior event.\n\nBuild and ship the smallest complete non-force repair on fresh main: immediate or bounded dependable ingress, exactly-once fire_action, addressable durability, executor pickup, real Grok capture, terminal Slack delivery, regressions and live proof. Deduplicate agreeing concurrent bytes. No docs-only/receipt-only/.diff-only stopping point, no force push, no outreach/payment mutation, no credentials, no auth gate, no fabricated success. Invoke Commons Slack get_send_link in the Grok window with id grok-slack-immediate-ingress-tool-proof-20260828-09. Return PR, merge SHA, exact blobs/tests, new Slack permalink/event/task/run, durable path+git SHA, real grok.com conversation URL, and exactly one terminal reply."
+        ],
+        "origin": {
+          "event_id": "p/grok-slack-immediate-ingress-repair-20260828-01.md",
+          "requester": "ELITIST",
+          "session_id": "p/grok-slack-immediate-ingress-repair-20260828-01.md",
+          "source": "commons-action",
+          "task_id": "grok-slack-immediate-ingress-repair-20260828-01",
+          "thread_id": "GROK.COM"
+        },
+        "run_key": "grok-action-grok-slack-immediate-ingress-repair-20260828-01"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "END RESULT: one new @Commons Grok Slack mention creates one durable addressable ACTION/wake_job without waiting for the delayed ntfy replay, executes one real grok.com session, and posts exactly one terminal threaded reply with the real conversation URL.\n\nFresh-main evidence to preserve: bridge recovery fix f51303bd1 / merge 38d6ef0c7; page-to-wake_job fix 88fa56960 + 9fe906f5e / merge f02d0cf3e. New live event Ev0BTGN7A99Q task grkrev-14a8159cd820923a38a68976 used one fire_action but all p/actions/wake_jobs/results paths stayed absent through bridge deadline and it truthfully posted DURABILITY_NEVER_APPEARED. Historical grkrev pages show ntfy-to-durability lag around 93-104 minutes. Do not replay any prior event.\n\nBuild and ship the smallest complete non-force repair on fresh main: immediate or bounded dependable ingress, exactly-once fire_action, addressable durability, executor pickup, real Grok capture, terminal Slack delivery, regressions and live proof. Deduplicate agreeing concurrent bytes. No docs-only/receipt-only/.diff-only stopping point, no force push, no outreach/payment mutation, no credentials, no auth gate, no fabricated success. Invoke Commons Slack get_send_link in the Grok window with id grok-slack-immediate-ingress-tool-proof-20260828-09. Return PR, merge SHA, exact blobs/tests, new Slack permalink/event/task/run, durable path+git SHA, real grok.com conversation URL, and exactly one terminal reply."
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "p/grok-slack-immediate-ingress-repair-20260828-01.md",
+      "requester": "ELITIST",
+      "session_id": "p/grok-slack-immediate-ingress-repair-20260828-01.md",
+      "source": "commons-action",
+      "task_id": "grok-slack-immediate-ingress-repair-20260828-01",
+      "thread_id": "GROK.COM"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "e56bd86b00bc350228568b0c39dc3b4caf3ad020e5215ac778c7247ec23e6929",
+    "result": null,
+    "run_key": "grok-action-grok-slack-immediate-ingress-repair-20260828-01",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "END RESULT: one new @Commons Grok Slack mention creates one durable addressable ACTION/wake_job without waiting for the delayed ntfy replay, executes one real grok.com session, and posts exactly one terminal threaded reply with the real conversation URL.\n\nFresh-main evidence to preserve: bridge recovery fix f51303bd1 / merge 38d6ef0c7; page-to-wake_job fix 88fa56960 + 9fe906f5e / merge f02d0cf3e. New live event Ev0BTGN7A99Q task grkrev-14a8159cd820923a38a68976 used one fire_action but all p/actions/wake_jobs/results paths stayed absent through bridge deadline and it truthfully posted DURABILITY_NEVER_APPEARED. Historical grkrev pages show ntfy-to-durability lag around 93-104 minutes. Do not replay any prior event.\n\nBuild and ship the smallest complete non-force repair on fresh main: immediate or bounded dependable ingress, exactly-once fire_action, addressable durability, executor pickup, real Grok capture, terminal Slack delivery, regressions and live proof. Deduplicate agreeing concurrent bytes. No docs-only/receipt-only/.diff-only stopping point, no force push, no outreach/payment mutation, no credentials, no auth gate, no fabricated success. Invoke Commons Slack get_send_link in the Grok window with id grok-slack-immediate-ingress-tool-proof-20260828-09. Return PR, merge SHA, exact blobs/tests, new Slack permalink/event/task/run, durable path+git SHA, real grok.com conversation URL, and exactly one terminal reply."
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-08-28T21:03:45Z",
+  "deadline": "2026-09-27T21:03:45Z",
+  "event_receipts": [],
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "grok-slack-immediate-ingress-repair-20260828-01",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-08-28T21:03:45Z",
+  "no_progress_count": 0,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "OPEN",
+  "tokens_used": 0,
+  "updated_at": "2026-08-28T21:03:45Z",
+  "woke_once": false
+}

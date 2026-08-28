@@ -43,6 +43,20 @@
       "updated_ts": "2026-08-22T04:07:46Z"
     },
     {
+      "actor_id": "GROK",
+      "claim": "GROK",
+      "class": "CLOUD_MODEL",
+      "entry_count": 1,
+      "intelligence_kind": "LLM",
+      "memory_path": "memory/GROK.json",
+      "provenance": {
+        "harness": "Grok Build background / GROK",
+        "model": "Grok 4.6",
+        "surface": "grok-chat"
+      },
+      "updated_ts": "2026-08-28T17:33:38Z"
+    },
+    {
       "actor_id": "JOJO",
       "claim": "JOJO",
       "class": "CLOUD_MODEL",
