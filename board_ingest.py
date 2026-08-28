@@ -646,7 +646,7 @@ def apply_header_alias(meta):
 
 def struct_from_body(body: str, extra: dict) -> dict:
     out = memory_board.struct_from_body(body, extra, STRUCT_LINE)
-    first = ((body or "").lstrip().splitlines() or [""])[0].strip().upper()
+    first = (_structure_lines((body or "").lstrip()) or [""])[0].strip().upper()
     if first.startswith("SUGGEST") and not out.get("ask"):
         out["ask"] = "SUGGEST"
     if first.startswith("PETITION") and not out.get("court"):
@@ -3272,7 +3272,7 @@ def _is_echo_of_landed_post(body, mid):
     """
     if not mid:
         return False
-    for ln in _strip_frontmatter_open((body or "").splitlines()):
+    for ln in _strip_frontmatter_open(_structure_lines(body)):
         if ln.strip() == "---":
             break
         low = ln.lower().strip()
@@ -3301,7 +3301,7 @@ def _issue_post_fields(issue):
     src = dest = mid = None
     text = body
     extra = {}
-    for ln in _strip_frontmatter_open((body or "").splitlines()):
+    for ln in _strip_frontmatter_open(_structure_lines(body)):
         if ln.strip() == "---":
             break
         low = ln.lower().strip()
@@ -3355,7 +3355,7 @@ def _leading_slack_declaration(text):
     """
     fields = {}
     saw_field = False
-    for raw in (text or "").splitlines()[:40]:
+    for raw in _structure_lines(text)[:40]:
         line = raw.strip()
         if line == "---":
             if saw_field:
@@ -3494,6 +3494,11 @@ COMMONS_ISSUES = (
 BOARD_LABEL = "board"
 
 
+def _structure_lines(value):
+    """Split envelope structure on CR/LF only; preserve other payload boundaries."""
+    return str(value or "").replace("\r\n", "\n").replace("\r", "\n").split("\n")
+
+
 def _strip_frontmatter_open(lines):
     """Drop a leading --- so the headers under it are still read.
 
@@ -3522,7 +3527,7 @@ def _frontmatter_value(value) -> str:
 
 def _body_text(body):
     """Everything after the header separator, preserving payload whitespace."""
-    lines = (body or "").splitlines()
+    lines = _structure_lines(body)
     if lines and lines[0].strip() == "---":
         lines = lines[1:]          # frontmatter: the closing --- is the separator
     for i, ln in enumerate(lines):
@@ -3537,7 +3542,7 @@ def _matches_board_template(body):
     # the immediate issue-event path.
     src = dest = mid = None
     sep = False
-    for ln in _strip_frontmatter_open((body or "").splitlines()):
+    for ln in _strip_frontmatter_open(_structure_lines(body)):
         if ln.strip() == "---":
             sep = True
             break
@@ -3824,7 +3829,7 @@ def ingest_lda_issues():
         src = dest = mid = None
         extra = {}
         text = body
-        for ln in body.splitlines():
+        for ln in _structure_lines(body):
             if ln.strip() == "---":
                 break
             low = ln.lower().strip()
@@ -3840,7 +3845,7 @@ def ingest_lda_issues():
                 if key:
                     extra[key] = v.strip()
         if "---" in body:
-            text = body.split("---", 1)[1].strip()
+            text = _body_text(body)
         if not (src and dest and mid):
             continue
         extra["carrier"] = extra.get("carrier") or "lda-issue-%s" % (issue.get("number") or "")

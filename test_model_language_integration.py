@@ -92,6 +92,23 @@ class BoardModelLanguageTests(unittest.TestCase):
                 self.assertEqual(meta["language_state"], "INVALID")
                 self.assertEqual(landed, body)
 
+    def test_issue_round_trip_preserves_opaque_unicode_payload_boundaries(self):
+        body = "alpha\vbeta\fcharlie\x1cdelta\x1eecho\x85foxtrot\u2028---\u2029omega"
+        layer = ml.canonicalize_emitter_metadata(cml(), body)
+        envelope = {
+            "from": "KITE", "to": "TABLE", "id": "kite-cml-unicode-body-0001",
+            "body": body, "is_language_model": "YES", **layer,
+        }
+        issue = {"title": envelope["id"], "body": projection_text(envelope)}
+        src, dest, ident, issue_body, extra = bi._issue_post_fields(issue)
+        self.assertEqual((src, dest, ident), ("KITE", "TABLE", envelope["id"]))
+        self.assertEqual(issue_body, body)
+        state, text = self.write_in_temp(ident, issue_body, extra)
+        self.assertEqual(state, "wrote")
+        meta, landed = bi.parse_post(text)
+        self.assertEqual(landed, body)
+        self.assertEqual(meta["payload_sha256"], ml.payload_sha256(body))
+
     def test_legacy_body_layers_are_not_rendered_twice(self):
         body = 'PLAIN: Human summary.\nMODEL: legacy packet\nprint("untouched")'
         _, text = self.write_in_temp(
