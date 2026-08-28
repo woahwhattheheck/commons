@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "change": "Created the canonical discovery registry, deterministic projections, continuity capsule, compiler, and regression coverage.",
+      "decision": "adopted",
+      "experience_id": "ai-village-discovery-4945",
+      "skill": "agent-discovery",
+      "validation": {
+        "command": "python3 -m unittest -v test_agent_discovery.py",
+        "failed": 0,
+        "passed": 5,
+        "result": "passed"
+      }
+    }
+  ],
+  "schema": "commons-skill-impact/v1"
+}
