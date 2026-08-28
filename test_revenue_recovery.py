@@ -827,8 +827,8 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertTrue(prospects["do_not_resend_all"])
         transports = prospects["canonical_transports"]
         self.assertEqual(len(transports), 7)
-        self.assertEqual(len({row["provider_reference"] for row in transports}), 11)
-        self.assertEqual(len({row["receipt"] for row in transports}), 11)
+        self.assertEqual(len({row["provider_reference"] for row in transports}), 7)
+        self.assertEqual(len({row["receipt"] for row in transports}), 7)
         receipt_paths = list((ROOT / "revenue/payment_ready/outreach_receipts").glob("*.json"))
         receipt_names = {path.name for path in receipt_paths}
         canonical_contact_keys = set()
