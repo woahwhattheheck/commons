@@ -1,0 +1,48 @@
+{
+  "kind": "RINGDELTA_ORGAN",
+  "version": 1,
+  "organ": "excerpts/20260828/ringdelta_xor8.mno",
+  "organ_bytes": 300,
+  "organ_sha256": "a06d90086949e6073d077ffd0ed4c593091414b7053daf9340efaf389b245da9",
+  "magic": "MUHLRD01",
+  "artifact_magic": "RDV1",
+  "width": 25,
+  "inject": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+  "surface": [56, 57, 58, 59, 60, 61, 62, 63],
+  "n_gate": 8,
+  "opcode": "XOR=0",
+  "colony_pages": [
+    {
+      "index": 0,
+      "bytes": 150,
+      "sha256": "659fff137b8c1c58599e3257d7ff79e27517c0effe2b249dfe7b656ff96d14d0"
+    },
+    {
+      "index": 1,
+      "bytes": 150,
+      "sha256": "ba209df3e3ca41d60ed71b4c46f5b8834d3d5a7ed04b0cbef14ecba4d4ca1e6d"
+    }
+  ],
+  "seed0": {
+    "path": "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+    "source_b": 8192,
+    "source_sha256": "faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071",
+    "delta_zeros": 6145,
+    "delta_zero_pct": 75.01,
+    "native_container_b": 3119,
+    "zlib_source_b": 1391,
+    "zlib_delta_b": 1025,
+    "roundtrip": "EXACT"
+  },
+  "hands_off": ["336", "fire337", "pulse78", "light7913", "DC"],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "does_not_remint": [
+    "foldpack.py",
+    "stackpack.py",
+    "evolve.py",
+    "muhc.py",
+    "titan/engines/muhl_compress.py",
+    "SEED0.mno"
+  ]
+}

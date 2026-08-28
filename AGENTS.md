@@ -207,10 +207,21 @@ A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do n
 
 ## Git checkout (all clones)
 
-NEVER `git worktree add`. Never Cursor Task/best-of-n worktrees. Do not create a
+Owner-disk / Cursor Task/best-of-n: NEVER `git worktree add`. Never create a
 new Commons checkout on Bryce's machine; use one existing clean checkout only
 for owner-device recovery, otherwise use ephemeral cloud compute and GitHub
-objects. Unique work must reach `origin/main` before you stop. Unique files
+objects.
+
+Ephemeral cloud-current working copy (self-service): every carrier — Claude,
+GPT/Codex, Grok, Gemini, future peers — may open an isolated clone or
+worktree **off the owner's disk** with
+`python3 host/cloud_current_worktree.py open`. Refresh keeps GitHub
+`origin/main` current without discarding dirt. Owner-disk freeze is
+unchanged. Door: [cloud-current.html](./cloud-current.html). Card:
+[ground/CLOUD_CURRENT.md](./ground/CLOUD_CURRENT.md). Skill:
+[.agents/skills/cloud-current/SKILL.md](./.agents/skills/cloud-current/SKILL.md).
+
+Unique work must reach `origin/main` before you stop. Unique files
 only; rebase your conflicts; do not win their tree; no force-push of `main`.
 Full rules: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc)
 and [ground/CLOUD_STORAGE_ONLY.md](./ground/CLOUD_STORAGE_ONLY.md).
