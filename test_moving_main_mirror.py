@@ -306,6 +306,53 @@ class MovingMainMirrorTests(unittest.TestCase):
         self.assertEqual(last["state"], "ADVANCE")
         self.assertEqual(last["receipts"][0]["state"], "DRY")
 
+    def test_swh_origin_listed_is_not_origin_readable(self) -> None:
+        origin = {
+            "url": "https://github.com/woahwhattheheck/commons",
+            "visit_types": ["git"],
+            "origin_visits_url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/visits/",
+            "metadata_authorities_url": (
+                "https://archive.softwareheritage.org/api/1/raw-extrinsic-metadata/swhid/"
+                "swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb/authorities/"
+            ),
+        }
+        visits = [{"origin": origin["url"], "visit": 1, "status": "created", "snapshot": None}]
+        listed = mmm.classify_swh_origin(origin, visits)
+        self.assertEqual(listed["state"], "ORIGIN_LISTED")
+        self.assertTrue(listed["listed"])
+        self.assertFalse(listed["origin_readable"])
+        self.assertFalse(listed["verified"])
+        self.assertEqual(listed["ori_swhid"], "swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb")
+        ready = mmm.classify_swh_origin(
+            origin,
+            [{"status": "full", "snapshot": "swh:1:snp:" + "a" * 40}],
+        )
+        self.assertEqual(ready["state"], "SNAPSHOT_READY")
+        self.assertTrue(ready["origin_readable"])
+        self.assertTrue(ready["verified"])
+        self.assertEqual(mmm.classify_swh_origin({}, []).get("state"), "MISS")
+        skip = mmm.request_swh_vault(None)
+        self.assertEqual(skip["state"], "SKIP")
+        self.assertFalse(skip["verified"])
+
+    def test_prefer_skips_empty_keys_so_save_receipt_does_not_false_conflict(self) -> None:
+        ntfy = {
+            "id": "ntfy-cursor",
+            "verified": True,
+            "independent_origin": True,
+            "digest": "a" * 64,
+        }
+        save = {
+            "id": "software-heritage",
+            "verified": True,
+            "independent_origin": True,
+            "state": "SAVE_ACCEPTED",
+        }
+        preferred = mmm.prefer_receipts([ntfy, save])
+        self.assertEqual(preferred["state"], "PREFERRED")
+        self.assertEqual(preferred["receipt"]["id"], "ntfy-cursor")
+        self.assertEqual(preferred["independent"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
