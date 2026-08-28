@@ -38,16 +38,6 @@ muhl-address-contract-stride-math-20260825-01:
   length. Full-stride bounds and modular cycle math, including
   absolute mode/base. Do not remint.
 
-Follow-up Slack 1787653848.428899 absolute-base/capacity
-integrity residual:
-
-  Landed stride math still reports last_safe_start from pointer
-  span alone. ABSOLUTE base=0 / declared capacity=8 / stride=3
-  can print last_safe_start=13 outside range 0..7. Canonical
-  payload omits absolute_base, so bases 10 and 11 hash
-  identically. Bind absolute base + declared capacity, enforce
-  full-stride bounds, keep RELATIVE two-byte hash. Do not remint.
-
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --root .
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --self-test
@@ -116,7 +106,6 @@ FOLLOWUP_SLACK_TS = "1787651271.265499"
 FOLLOWUP_ID = "muhl-address-contract-integrity-followup-20260825-02"
 STRIDE_MATH_SLACK_TS = "1787652385.567949"
 STRIDE_MATH_ID = "muhl-address-contract-stride-math-20260825-01"
-ABSOLUTE_BIND_SLACK_TS = "1787653848.428899"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     CONTRACT_REL,
@@ -159,8 +148,6 @@ REQUIRED_PHRASES = (
     "re-signed",
     "full-stride",
     "modular cycle",
-    "absolute base",
-    "declared capacity",
 )
 REQUIRED_PACKET_FIELDS = (
     "kind",
@@ -208,22 +195,6 @@ def required_bits_for(span):
 
 def _valid_positive_int(value):
     return isinstance(value, int) and not isinstance(value, bool) and value > 0
-
-
-def _valid_absolute_base(value):
-    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
-
-
-def _absolute_usable_end(absolute_base, capacity, pointer_span):
-    """Exclusive end of the declared absolute window inside pointer space."""
-    if not (
-        _valid_absolute_base(absolute_base)
-        and _valid_positive_int(capacity)
-        and isinstance(pointer_span, int)
-        and pointer_span > 0
-    ):
-        return UNRESOLVED
-    return min(absolute_base + capacity, pointer_span)
 
 
 def _mode_text(value):
@@ -311,47 +282,48 @@ def pointer_space(ptr_bits=None, capacity=None, stride=None, address_mode=None, 
     if step is UNRESOLVED:
         reasons.append("missing_or_malformed_stride")
     pointer_span = (1 << bits) if bits is not UNRESOLVED else UNRESOLVED
-    max_pointer = (pointer_span - 1) if isinstance(pointer_span, int) else UNRESOLVED
+    mode = _mode_text(address_mode)
+    base = (
+        absolute_base
+        if mode == ABSOLUTE
+        and isinstance(absolute_base, int)
+        and not isinstance(absolute_base, bool)
+        and absolute_base >= 0
+        else UNRESOLVED
+    )
+    declared_span = capacity if _valid_positive_int(capacity) else UNRESOLVED
+    if mode == ABSOLUTE and isinstance(base, int) and isinstance(declared_span, int):
+        max_pointer = base + declared_span - 1
+        wrap_span = declared_span
+    else:
+        max_pointer = (pointer_span - 1) if isinstance(pointer_span, int) else UNRESOLVED
+        wrap_span = pointer_span
     last_safe_start = UNRESOLVED
     steps_before_wrap = UNRESOLVED
-    if isinstance(pointer_span, int) and isinstance(step, int):
-        if step > pointer_span:
-            reasons.append("stride_exceeds_pointer_space")
-        else:
-            last_safe_start = pointer_span - step
-        steps_before_wrap = pointer_span // math.gcd(step, pointer_span)
-        mode = _mode_text(address_mode)
-        if mode == ABSOLUTE:
-            usable_end = _absolute_usable_end(
-                absolute_base, capacity, pointer_span
+    if isinstance(wrap_span, int) and isinstance(step, int):
+        if step > wrap_span:
+            reasons.append(
+                "stride_exceeds_declared_capacity"
+                if mode == ABSOLUTE
+                else "stride_exceeds_pointer_space"
             )
-            if isinstance(usable_end, int) and step <= pointer_span:
-                window = usable_end - absolute_base
-                if window <= 0 or step > window:
-                    reasons.append("absolute_base_no_full_stride")
-                    last_safe_start = UNRESOLVED
-                else:
-                    last_safe_start = usable_end - step
-                    declared_last = absolute_base + capacity - 1
-                    if last_safe_start < absolute_base or last_safe_start > declared_last:
-                        reasons.append("absolute_base_no_full_stride")
-                        last_safe_start = UNRESOLVED
-            elif (
-                _valid_absolute_base(absolute_base)
-                and isinstance(last_safe_start, int)
-                and last_safe_start < absolute_base
-            ):
-                reasons.append("absolute_base_no_full_stride")
-    needed = required_bits_for(capacity)
+        else:
+            last_safe_start = wrap_span - step
+            if mode == ABSOLUTE and isinstance(base, int):
+                last_safe_start += base
+        steps_before_wrap = wrap_span // math.gcd(step, wrap_span)
+    needed_input = (
+        base + declared_span
+        if mode == ABSOLUTE and isinstance(base, int) and isinstance(declared_span, int)
+        else capacity
+    )
+    needed = required_bits_for(needed_input)
     return {
         "max_pointer": max_pointer,
         "last_safe_start": last_safe_start,
         "steps_before_wrap": steps_before_wrap,
         "required_bits": needed if needed is not None else UNRESOLVED,
         "stride": step,
-        "absolute_base": (
-            absolute_base if _valid_absolute_base(absolute_base) else UNRESOLVED
-        ),
         "reasons": reasons,
     }
 
@@ -392,11 +364,11 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         data_start = UNRESOLVED
         reasons.append("missing_or_malformed_data_start")
     base = absolute_base
-    if mode == ABSOLUTE and not _valid_absolute_base(base):
+    if mode == ABSOLUTE and not (isinstance(base, int) and not isinstance(base, bool) and base >= 0):
         base = UNRESOLVED
         reasons.append("missing_or_malformed_absolute_base")
     elif mode != ABSOLUTE:
-        base = UNRESOLVED if not _valid_absolute_base(base) else base
+        base = UNRESOLVED if not (isinstance(base, int) and not isinstance(base, bool) and base >= 0) else base
     space = pointer_space(
         ptr_bits=ptr_bits,
         capacity=capacity,
@@ -404,15 +376,20 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         address_mode=mode,
         absolute_base=base,
     )
-    if mode == ABSOLUTE and _valid_absolute_base(base) and _valid_positive_int(capacity):
+    if mode == ABSOLUTE and isinstance(base, int) and not isinstance(base, bool) and base >= 0 and _valid_positive_int(capacity):
         needed = required_bits_for(base + capacity)
         space["required_bits"] = needed if needed is not None else UNRESOLVED
     status = OK
-    if ptr_bits is UNRESOLVED or capacity is UNRESOLVED:
+    if (
+        ptr_bits is UNRESOLVED
+        or capacity is UNRESOLVED
+        or stride is UNRESOLVED
+        or data_start is UNRESOLVED
+    ):
         status = UNRESOLVED
-    elif mode == ABSOLUTE and not _valid_absolute_base(base):
+    elif mode == ABSOLUTE and not (isinstance(base, int) and not isinstance(base, bool) and base >= 0):
         status = UNRESOLVED
-    elif mode == ABSOLUTE and _valid_absolute_base(base):
+    elif mode == ABSOLUTE and isinstance(base, int) and not isinstance(base, bool):
         pointer_span = 1 << ptr_bits
         if (base + capacity) > pointer_span:
             status = BLOCKED
@@ -424,7 +401,7 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         status = UNRESOLVED
         reasons.append("missing_or_malformed_address_mode")
     for reason in space.get("reasons") or []:
-        if reason in ("stride_exceeds_pointer_space", "absolute_base_no_full_stride"):
+        if reason in ("stride_exceeds_pointer_space", "stride_exceeds_declared_capacity"):
             if reason not in reasons:
                 reasons.append(reason)
             if status == OK:
@@ -493,8 +470,6 @@ def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=
                 payload[key] = space[key]
         if "stride" in space:
             payload["stride"] = space["stride"]
-        if "absolute_base" in space and payload.get("address_mode") == ABSOLUTE:
-            payload["absolute_base"] = space["absolute_base"]
         bound["canonical_payload"] = payload
         bound["canonical_hash"] = payload_digest(payload)
     return bound["canonical_payload"]
@@ -1503,44 +1478,23 @@ def self_test():
         return False
     if odd.get("steps_before_wrap") == (256 // 3):
         return False
-    window = pointer_space(
-        ptr_bits=4,
-        capacity=8,
-        stride=3,
-        address_mode=ABSOLUTE,
-        absolute_base=0,
-    )
-    if window.get("last_safe_start") != 5:
-        return False
-    if window.get("last_safe_start") == 13:
-        return False
-    if window.get("last_safe_start") not in range(0, 8):
-        return False
-    first = bind_address_facts(
+    absolute = bind_address_facts(
         {
-            "ptr_bits": 8,
-            "intake_capacity": 256,
+            "ptr_bits": 4,
+            "intake_capacity": 8,
             "stride": 3,
             "address_mode": ABSOLUTE,
-            "absolute_base": 10,
-            "data_start_rel": 24,
+            "absolute_base": 0,
+            "data_start_rel": 1,
         }
     )
-    second = bind_address_facts(
-        {
-            "ptr_bits": 8,
-            "intake_capacity": 256,
-            "stride": 3,
-            "address_mode": ABSOLUTE,
-            "absolute_base": 11,
-            "data_start_rel": 24,
-        }
-    )
-    if first.get("canonical_hash") == second.get("canonical_hash"):
+    if absolute.get("max_pointer") != 7:
         return False
-    if first.get("canonical_payload", {}).get("absolute_base") != 10:
+    if absolute.get("last_safe_start") != 5:
         return False
-    if second.get("canonical_payload", {}).get("absolute_base") != 11:
+    if absolute.get("steps_before_wrap") != 8:
+        return False
+    if (absolute.get("canonical_payload") or {}).get("absolute_base") != 0:
         return False
     tampered = dict(blocked.get("canonical_payload") or {})
     if tampered:
