@@ -1,5 +1,5 @@
 {
-  "attempt_count": 0,
+  "attempt_count": 1,
   "backoff_seconds": 30,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -28,13 +28,13 @@
       "GROK_CONTINUE - NEW lineage-linked continuation of the completed Community Evidence Packet Workbench conversation at https://grok.com/c/2a5cba92-d0b0-4f95-8bca-b5dd676f91f7. Do not replay the finished original prompt and do not redo broad research. The recovered candidate/ was provider-private and could not be extracted, so turn that existing work into a portable, reviewable contribution using the owner's authenticated grok.com token pool.\n\nTarget repository: woahwhattheheck/public-commons-sprint-2026. Read fresh main and its instructions first. Claim only a new branch named grok/community-evidence-portable-20260828 and the proposed path accessibility/community-evidence-packet-workbench/. Stop and report overlap if an active peer or current main already owns the same path.\n\nReconstruct the polished offline Community Evidence Packet Workbench from the existing conversation context into editable source, deterministic tests, and a reproducible static build. Preserve the original requirements: entirely browser-local/offline after load; no backend, accounts, auth, permissions, telemetry, runtime network, remote fetch, or code execution; universal open door; safe escaping/import; advisory-only limits; accessible empty/incomplete exports; local SHA-256 with honest byte-identity language; RO-Crate 1.2 / RFC 8493 BagIt grounding; WACZ only as an opaque recognized attachment; HTML, Markdown, JSON, ZIP, copy, print, and both structured archive modes; WCAG 2.2 AA engineering targets; deterministic tests for hashes, path normalization, ZIP-slip/collision defense, escaping, empty/incomplete exports, unknown-field preservation, and no-network behavior.\n\nUse Grok for the heavy build. If the connected GitHub surface permits, commit only the claimed path on the new branch and open a PR; never push directly to main. If GitHub writing is unavailable, return the full portable file manifest and exact file bytes in a lossless artifact that GPT can review and land without another research pass. Do not touch the Commons executor/capture repository.\n\nReturn the exact final result with: actual conversation URL/rid; summary; exact source and build paths; changed file count; base/head SHAs and PR URL when created; deterministic test commands and unabridged pass/fail totals; provider-private artifact paths; only hashes/sizes you actually inspected; visible model/mode/source count and token/debit evidence; remaining risks including physical assistive-tech gaps; and a precise recommended next action. Never invent hashes, tests, PRs, standards conformance, accessibility certification, token counts, or repository state."
     ],
     "execution": {
-      "active_attempt_id": "",
-      "active_executor": "",
+      "active_attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "active_executor": "codex-01a0454f",
       "blockers": [],
       "capture_ack": null,
       "failed_executors": [],
       "prompt_replay_allowed": true,
-      "state": "QUEUED",
+      "state": "LEASED",
       "submission_state": "NOT_SUBMITTED",
       "submitted_at": ""
     },
@@ -76,11 +76,44 @@
   },
   "created_at": "2026-08-28T10:46:59Z",
   "deadline": "2026-09-27T10:46:59Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "wake",
+      "lease_id": "lease-b82f9bc79630",
+      "ts": "2026-08-28T11:06:53Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "delivery_claim",
+      "lease_id": "lease-b82f9bc79630",
+      "step": 1,
+      "ts": "2026-08-28T11:06:53Z",
+      "wake_checkpoint_fp": "89d415b1aae0f50b",
+      "wake_checkpoint_sha256": "89d415b1aae0f50bf4d4dc081f00a501230ce7aec6aed9185471bf47dadd888f",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "grok_executor_claim",
+      "lease_id": "lease-b82f9bc79630",
+      "submission_state": "NOT_SUBMITTED",
+      "ts": "2026-08-28T11:06:53Z",
+      "worker_id": "codex-01a0454f"
+    }
+  ],
   "harness": "grok.com authenticated browser via Commons MCP",
   "in_backoff": false,
   "job_id": "grok-community-evidence-portable-20260828",
-  "lease": null,
+  "last_wake_at": "2026-08-28T11:06:53Z",
+  "last_wake_checkpoint_fp": "89d415b1aae0f50b",
+  "last_wake_checkpoint_sha256": "89d415b1aae0f50bf4d4dc081f00a501230ce7aec6aed9185471bf47dadd888f",
+  "lease": {
+    "holder": "codex-01a0454f",
+    "lease_id": "lease-b82f9bc79630",
+    "until": "2026-08-28T11:11:53Z"
+  },
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
@@ -89,8 +122,9 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-28T10:46:59Z",
-  "woke_once": false
+  "updated_at": "2026-08-28T11:06:53Z",
+  "woke_once": true
 }
+
