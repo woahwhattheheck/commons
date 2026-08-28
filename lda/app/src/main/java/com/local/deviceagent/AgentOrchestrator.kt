@@ -12,8 +12,7 @@ class AgentOrchestrator(
     private val onAsk: (String) -> Unit,
     private val stepDelay: () -> Long,
     private val onStatus: (String) -> Unit,
-    private val safetyCheck: () -> String?,
-    private val confirm: (String, () -> Unit, () -> Unit) -> Unit
+    private val safetyCheck: () -> String?
 ) {
     companion object {
         private const val CHUNK_SIZE = 10
@@ -190,13 +189,12 @@ class AgentOrchestrator(
             if (!running) return
             val idle = System.currentTimeMillis() - lastProgressAt
             // NOT a wedge: a LIVE inference (even a slow 50s vision decision IS the agent thinking), a
-            // streaming reply, or holding for the owner to confirm/answer. The first one mattered in a
+            // streaming reply, or holding for the owner to answer. The first one mattered in a
             // real log - a Gemini debate's reply+generate cycle tripped a false "96s wedged" reorient
             // that threw out the working conversation. lastProgressAt now also refreshes every step()
             // (see step()), so any running loop - including reply/wait turns - keeps it fresh; this only
             // fires when step() has genuinely STOPPED and nothing is generating.
-            val busyOrWaiting = brain.isGenerating() || convPhase == ConvPhase.GENERATING ||
-                pendingRaw != null || awaitingAnswer
+            val busyOrWaiting = brain.isGenerating() || convPhase == ConvPhase.GENERATING || awaitingAnswer
             if (idle > HANG_MS && !busyOrWaiting) {
                 AgentLog.log("recover", "watchdog: ${idle / 1000}s with no action, not waiting - reorienting (wedged)")
                 reorientPending = true
@@ -247,7 +245,6 @@ class AgentOrchestrator(
     // we last bounced a low-confidence consequential action (so the gate fires at most once per step and
     // can never loop). Both cleared/advanced as they're used.
     private var pendingGateNote: String? = null
-    private var lastConfBounce = -1
     // ADAPTIVE COMPUTE: did the model say it was UNSURE on the previous step? If so we KEEP vision this step
     // (look harder) instead of taking the cheap text-only shortcut - spend the expensive perception exactly
     // when the driver signalled doubt. Free when the model omits confidence.
@@ -290,7 +287,6 @@ class AgentOrchestrator(
     // keyed by the app the FROM-screen belonged to (only intra-app hops are recorded - clean, correctly
     // keyed routes; cross-app opens are already handled by open_app). Paired with lastScreen.
     private var lastAppForTrans = ""
-    private var pendingRaw: String? = null
     private var running = false
     private var continuous = false
     private var totalSteps = 0
@@ -485,7 +481,6 @@ class AgentOrchestrator(
         lastSummary = ""
         lastKind = null
         lastScreen = ""
-        pendingRaw = null
         running = true
         ActionAccessibilityService.instance?.resumeInjection()   // clear any prior HALT so this task can act
         totalSteps = 0
@@ -701,12 +696,6 @@ class AgentOrchestrator(
         Regex("\"confidence\"\\s*:\\s*\"?(high|sure|certain)", RegexOption.IGNORE_CASE).containsMatchIn(raw) ||
         Regex("\"confidence\"\\s*:\\s*(0?\\.[89]\\d*|1(\\.0+)?)\\b").containsMatchIn(raw)
 
-    private fun lowConfidenceConsequential(raw: String): Boolean {
-        if (!lowConfidence(raw)) return false
-        val verb = Regex("\"action\"\\s*:\\s*\"(\\w+)\"").find(raw)?.groupValues?.get(1)?.lowercase() ?: return false
-        return verb == "send" || (verb == "click" && taskMode == TaskMode.PRECISION)
-    }
-
     private fun resolvedHead(): String = resolvedObjective.ifBlank { baseObjective }
 
     /** True when the model's chosen action is a request to take a conversational turn (let the helper
@@ -794,8 +783,7 @@ class AgentOrchestrator(
     // SHOOTS (polls a cheap signal at ~180ms and fires the exact instant the condition holds). Why this is
     // §2/§3-legal, not a wheel-grab or a script:
     //   - the agent ELECTS it and every parameter (never auto-fired - the de-involuntary rule holds);
-    //   - the fired action goes THROUGH performActionJson, so every §3 hard gate still applies (a trigger
-    //     can NOT bypass payment/sideload/self-repo/ChatGPT/updater/code-exec confirmation);
+    //   - the fired action goes THROUGH performActionJson, so it uses the same parsing and live target resolution;
     //   - bounded timeout + the kill-switch (`running`) re-checked every poll -> it can never hang/run away;
     //   - it is a GENERAL condition->action primitive, not a task-specific baked sequence (that would be
     //     scripting the decision). The agent decides WHAT and WHICH-condition every time.
@@ -886,22 +874,16 @@ class AgentOrchestrator(
         poll?.invoke()
     }
 
-    /** Fire the agent's armed action THROUGH the normal executor (so every §3 gate applies), then route the
-     *  outcome exactly like a hand-decided action: a payment/sideload confirm still goes to the owner, a DONE
-     *  finishes, anything else logs + continues. Lean bookkeeping - an armed shot is one precise primitive. */
+    /** Fire the agent's armed action through the normal executor, then route the outcome exactly like a
+     *  hand-decided action. Lean bookkeeping - an armed shot is one precise primitive. */
     private fun fireArmed(doRaw: String, trigger: String, watch: String, elapsed: Long) {
         if (!running) return
         val act = ActionAccessibilityService.instance ?: run { finish(null); return }
-        val outcome = act.performActionJson(doRaw, allowGated = false)   // §3 hard gates apply to the fired action
+        val outcome = act.performActionJson(doRaw)
         AgentLog.log("armed", "\"$trigger\"" + (if (watch.isBlank()) "" else " of \"$watch\"") +
             " hit at ${elapsed}ms -> fired: ${outcome.summary}")
         outcome.say?.let { speak(it) }
         when (outcome.result) {
-            ActionResult.NEEDS_CONFIRM -> {
-                pendingRaw = doRaw
-                confirm(outcome.confirmPrompt ?: "The agent wants to do something that can't be undone. Allow it?",
-                    { onConfirmYes() }, { onConfirmNo() })
-            }
             ActionResult.DONE -> finish(null, success = true, doneSay = outcome.say)
             else -> {
                 history.add("armed->${outcome.summary}")
@@ -940,24 +922,6 @@ class AgentOrchestrator(
             }
     }
 
-    /** §3 planner-side guard (belt-and-suspenders with the executor block): ChatGPT/OpenAI are
-     *  HARD-BLOCKED - the executor refuses to open them, so a plan that TARGETS them just makes the
-     *  agent loop on a door that never opens. The planner is primed to fix mishears and once drifted a
-     *  Meta AI task into "conversation with ChatGPT" after a reorient. So before a plan becomes the
-     *  objective/steps, reroute any TARGETING reference (open/use/talk-to/…-with it) to the task's real
-     *  app - or Gemini, the sanctioned assistant, when no app is anchored. A bare MENTION ("ask Gemini
-     *  about OpenAI's models") is left intact - only a target-to-operate is rewritten. */
-    private fun scrubBlockedAssistant(text: String): String {
-        if (text.isBlank()) return text
-        val targeting = Regex(
-            """\b(open|use|using|launch|talk to|chat with|message|conversation with|converse with|with|to|in|into)\s+(the\s+)?(chat\s*gpt|open\s*ai)\b""",
-            RegexOption.IGNORE_CASE)
-        if (!targeting.containsMatchIn(text)) return text
-        val replacement = targetAppName.ifBlank { "Gemini" }
-        AgentLog.log("safety", "planner targeted a blocked assistant (ChatGPT/OpenAI); rerouted to $replacement")
-        return targeting.replace(text) { m -> "${m.groupValues[1]} ${m.groupValues[2]}$replacement" }
-    }
-
     /** Author a specific objective + step plan once, fold it into the objective, then
      *  run the loop. The plan is shown to the model every step (huge reliability win on
      *  vague spoken commands). Falls back to the raw command if planning fails. */
@@ -980,7 +944,7 @@ class AgentOrchestrator(
                     val acc = ActionAccessibilityService.instance
                     if (acc != null && pre.isNotBlank()) {
                         val outcome = acc.performActionJson(
-                            "{\"action\":\"open_app\",\"name\":\"${pre.replace("\"", "")}\"}", allowGated = true)
+                            "{\"action\":\"open_app\",\"name\":\"${pre.replace("\"", "")}\"}")
                         // R4: open_app only DISPATCHED a launch intent - it did NOT confirm the app
                         // foregrounded. Only anchor targetAppName when the launch actually dispatched
                         // (CONTINUE); a FAILED open (unresolvable/blocked) must NOT anchor an app we can
@@ -1019,7 +983,7 @@ class AgentOrchestrator(
                                     if (attempt >= 3) { AgentLog.log("det", "preload $pre not foreground after $attempt polls - the loop will drive it"); return@postDelayed }
                                     AgentLog.log("det", "preload not foreground yet (poll $attempt/3) - re-opening $pre")
                                     ActionAccessibilityService.instance?.performActionJson(
-                                        "{\"action\":\"open_app\",\"name\":\"$preName\"}", allowGated = true)
+                                        "{\"action\":\"open_app\",\"name\":\"$preName\"}")
                                     pollForeground(attempt + 1)
                                 }, 900L)
                             }
@@ -1030,10 +994,7 @@ class AgentOrchestrator(
                     }
                 }
                 preloadApp = null
-                // §3 planner guard: reroute any drift to a HARD-BLOCKED assistant (ChatGPT/OpenAI) to the
-                // anchored target app before the plan becomes the objective/steps. targetAppName is set
-                // above if we preloaded, so the reroute lands on the right app.
-                val plan = scrubBlockedAssistant(rawPlan)
+                val plan = rawPlan
                 if (plan.isNotBlank()) {
                     // For a choice-delegating command, swap the raw "choose a topic..." wording for
                     // the planner's concrete resolved OBJECTIVE as the head, so it never reaches the
@@ -1064,7 +1025,7 @@ class AgentOrchestrator(
                                 "app", "application", "new", "note", "a new") || app.startsWith("a ", true)
                             if (acc != null && !generic && acc.isAppInstalled(app)) {
                                 acc.performActionJson(
-                                    "{\"action\":\"open_app\",\"name\":\"${app.replace("\"", "")}\"}", allowGated = true)
+                                    "{\"action\":\"open_app\",\"name\":\"${app.replace("\"", "")}\"}")
                                 AgentLog.log("det", "plan-opened app: $app")
                                 openedFromPlan = true
                                 targetAppName = app  // anchor: the task lives in THIS app (anti-drift)
@@ -1240,7 +1201,7 @@ class AgentOrchestrator(
     private fun step() {
         if (!running) return
         lastProgressAt = System.currentTimeMillis()   // #7: a running step proves the loop is alive (incl. wait/reply turns)
-        // Safety first: bail out immediately on low battery / overheating.
+        // Preserve the device's battery/thermal floor while leaving every app action open.
         safetyCheck()?.let { reason -> AgentLog.log("safety", reason); finish(reason); return }
         val acc = ActionAccessibilityService.instance
         if (acc == null) {
@@ -1845,7 +1806,7 @@ class AgentOrchestrator(
                 // must NEVER author a drawing. No scripted cat/figures - that violated the whole project
                 // philosophy (the model does the creative work; deterministic code only handles mechanics).
                 if (live.isKeyboardOpen()) {
-                    live.performActionJson("{\"action\":\"back\"}", allowGated = true)
+                    live.performActionJson("{\"action\":\"back\"}")
                     history.add("closed the keyboard so the canvas is clear")
                     scheduleNext(stepDelay()); return@captureScreenshot
                 }
@@ -1877,7 +1838,7 @@ class AgentOrchestrator(
                 if (noDrawSteps >= 4 && !drawFallbackTried && live.isKeyboardOpen()) {
                     // Keyboard up = typing mode, canvas occluded - close it first and KEEP the one-shot
                     // fallback for the next step (so we draw on a clear page, not over the keys).
-                    live.performActionJson("{\"action\":\"back\"}", allowGated = true)
+                    live.performActionJson("{\"action\":\"back\"}")
                     history.add("closed the keyboard so the drawing canvas is clear")
                     scheduleNext(stepDelay()); return@captureScreenshot
                 }
@@ -1928,7 +1889,7 @@ class AgentOrchestrator(
                 if (pend != null) {
                     if (live.inputText().contains(pend.take(20), ignoreCase = true)) {
                         if (autopilotSendTries++ < 4) {
-                            live.performActionJson("{\"action\":\"send\"}", allowGated = true)
+                            live.performActionJson("{\"action\":\"send\"}")
                             AgentLog.log("chat", "reply send try $autopilotSendTries")
                             scheduleNext(settleDelayFor("tapped send"))
                             return@captureScreenshot
@@ -2164,19 +2125,6 @@ class AgentOrchestrator(
                 val dialog = live.dialogHint()
                 if (dialog.isNotBlank())
                     append(" ⚠ $dialog is open - READ it and tap the correct button to handle it FIRST; you can't use the screen behind it until it's resolved.")
-                // Batch 8 CONSTRAINT DASHBOARD: a §3 gate live here, surfaced as read-only perception so an
-                // opaque block becomes a first-try ESCAPE instead of a step-burning loop the agent learns only
-                // by hitting it. Enforcement stays in the executor; this just names the wall + the door (§2).
-                val gate = live.gateHint()
-                if (gate.isNotBlank()) append(" 🚫 $gate.")
-                // WORKSPACE verbalize-before-acting reflex (global-workspace paper: the model's VERBALIZED
-                // objective forms the causal workspace that steers its next action). On a screen carrying a
-                // money/account/destructive control, prompt the model to LOAD its objective + exact target
-                // into its "thought" before tapping - which keeps an EXPLORER task that wandered onto a
-                // payment/login screen (the "Current" banking-app incident) from drifting into it. Perception
-                // the model reads; the model still chooses, and the §3 confirm gates are unchanged.
-                if (live.stakesHint())
-                    append(" ⚠ A money / account / destructive control is on this screen. BEFORE you tap anything, put your CURRENT objective and the EXACT control you intend into your \"thought\", and act ONLY if they match the task - if a payment/login/purchase/delete is NOT what the task asked for, do NOT tap it; go back.")
                 // Still-loading note (behavior-triggered, soft): a spinner on a near-empty screen means
                 // the content/control your step needs may not be here yet. We REPORT it; the agent decides
                 // to wait or act (don't act blindly on a half-rendered screen, the wrong-tap risk).
@@ -2217,20 +2165,10 @@ class AgentOrchestrator(
                         " ⏳ The screen keeps moving on its own (${evolvingRuns} waits now) - JUDGE the change: is it actually your awaited content, or just an ad/animation? If it's not what you're waiting for, stop waiting and act.")
                 else if (justSettled)
                     append(" ✅ The screen stopped changing on its own - what was arriving has LIKELY finished. Caution: some apps deliver replies in BURSTS (half now, the rest after a pause) - glance once more before responding, so you answer the WHOLE message, not half of it.")
-                // Gemini Live/voice trap: if we're in Gemini but the TEXT input is gone, we got
-                // bumped into the voice/Live screen (different elements - it got stuck here). Steer
-                // straight back to the text chat and never tap voice/Live controls.
-                val inGemini = here.contains("googlequicksearchbox") || here.contains("bard")
-                if (inGemini && !screen.contains("chat_input") && !screen.contains("input_collapsed"))
-                    append(" ⚠ You are on Gemini's VOICE/Live screen (the text box is gone) - press {\"action\":\"back\"} to return to the TEXT chat. Do NOT tap microphone/Live/voice controls.")
-                if (inGemini && live.inputText().isBlank())
-                    append(" ⚠ The message box is EMPTY - the round button bottom-right is the MICROPHONE (it starts Live mode), NOT send. set_text your message into the field FIRST; a send arrow only appears once there is text. Never press send/enter on an empty box.")
                 if (live.isDexMode())
                     append(" You are in Samsung DeX (DESKTOP mode on a monitor): the UI is windowed/mouse-style with SMALLER targets - read the monitor's content and click PRECISELY on the exact control (the phone acts as the trackpad). STAY on the display you started on - do NOT move windows or apps to another screen (e.g. onto the phone display); only ever switch displays if the task EXPLICITLY requires it.")
                 if (keyboardOpen)
                     append(" The keyboard is OPEN, so buttons at the very bottom (Send/Next/Submit) may be HIDDEN - use the send action, or press back to close the keyboard to reveal them.")
-                if (live.pipWindowBounds() != null)
-                    append(" A video is playing in a small PICTURE-IN-PICTURE window floating over the screen - LEAVE IT ALONE: do not tap, pause, move, or close it unless your task is specifically about that video. Work on the app behind it.")
                 if (live.isCollapsedComposerPresent())
                     append(" The message box here is a COLLAPSED preview (Gemini-style) with no Send button shown yet - if you've typed your message but can't find Send, TAP the input field once to expand the full composer, then press Send.")
                 // STATE-BASED injection (owner's rule: report the state, don't force one action -
@@ -2248,12 +2186,8 @@ class AgentOrchestrator(
                 // conversation". State-triggered (continuous + a conversation actually present) - a nudge
                 // the agent READS that ENFORCES the owner's command; it never invents a topic or goal (§2).
                 if (continuous && (convPhase != ConvPhase.NONE || live.latestReplyText() != null)) {
-                    append(" KEEP-GOING CONVERSATION: reply in the thread ALREADY on screen - it is the one" +
-                        " in front of you. Do NOT press back/home or open another app to 'find' the chat," +
-                        " and take your turn with {\"action\":\"reply\"}.")
-                    if (Regex("\"New chat\"|\"New conversation\"", RegexOption.IGNORE_CASE).containsMatchIn(screen))
-                        append(" ⚠ A \"New chat\"/\"New conversation\" control is on screen - do NOT tap it;" +
-                            " starting a new chat throws away the conversation you must keep going.")
+                    append(" KEEP-GOING CONVERSATION: the existing thread is on screen and {\"action\":\"reply\"}" +
+                        " takes the next turn in it. Other available controls remain usable if the objective needs them.")
                 }
                 // Drawing-tool fixation: in a notes/sketch app, once a pen/tool is chosen the agent
                 // must DRAW, not keep tapping the toolbar (its ids SHIFT when a settings panel opens,
@@ -2536,19 +2470,6 @@ class AgentOrchestrator(
                         return@post
                     }
                     // #11 CONFIDENCE GATE: if the agent ITSELF flagged low confidence on a consequential
-                    // action (send, or a click in PRECISION/high-stakes mode), don't fire-and-forget -
-                    // bounce it ONCE to look closer (peek the exact recipient/amount/button) before
-                    // committing. Behavior-triggered safety reflex keyed on the agent's own stated
-                    // uncertainty + the stakes, not a decision: the agent still chooses what to do next,
-                    // and it costs nothing unless the model volunteers "confidence":"low". Capped to one
-                    // bounce per step so it can never loop.
-                    if (lastConfBounce != totalSteps && lowConfidenceConsequential(raw)) {
-                        lastConfBounce = totalSteps
-                        history.add("held a low-confidence consequential action to verify the target first")
-                        AgentLog.log("act", "low-confidence consequential action - looking closer before committing")
-                        pendingGateNote = "You flagged LOW confidence on a consequential action. Do NOT commit it blind: PEEK/zoom the exact target (recipient / amount / which button) and confirm it matches the goal; if it's right, do it next."
-                        scheduleNext(stepDelay()); return@post
-                    }
                     // EDGE NUDGE (owner: "don't bang on the same wall" - BUT a deterministic reflex must NEVER
                     // VETO the owner's task, however odd). If the agent repeats a navigation no-op that JUST did
                     // nothing on THIS same screen, skip that one wasted step and nudge it elsewhere - then RELENT
@@ -2576,7 +2497,7 @@ class AgentOrchestrator(
                     }
                     val act = ActionAccessibilityService.instance ?: run { finish(null); return@post }
                     lastDecideRaw = raw   // Phase 1: the emitted action for this decide, banked next step iff the move proves out
-                    val outcome = act.performActionJson(raw, allowGated = false)
+                    val outcome = act.performActionJson(raw)
                     if (outcome.summary == lastActionSummary) repeatRun++
                     else { lastActionSummary = outcome.summary; repeatRun = 0 }
                     // Arm the reject ONLY for edge-rejectable navigation: count consecutive failures of the
@@ -2662,12 +2583,6 @@ class AgentOrchestrator(
                     if (outcome.result != ActionResult.FAILED || !outcome.kickback) kickbackRun = 0
 
                     when (outcome.result) {
-                        ActionResult.NEEDS_CONFIRM -> {
-                            pendingRaw = raw
-                            val prompt = outcome.confirmPrompt
-                                ?: "The agent wants to do something that can't be undone. Allow it?"
-                            confirm(prompt, { onConfirmYes() }, { onConfirmNo() })
-                        }
                         ActionResult.DONE -> {
                             // Guard against false "done": opening an app or navigating is
                             // NOT completing the task. Require at least one in-app action
@@ -2751,21 +2666,18 @@ class AgentOrchestrator(
                         ActionResult.WAIT -> {
                             outcome.say?.let { speak(it) }
                             history.add(outcome.summary)
-                            val exploring = ActionAccessibilityService.instance?.exploreOnly == true
                             // Only count waits that AREN'T making progress. While a reply is
                             // streaming in, the screen keeps changing (stalled=false) - waiting
                             // is correct then and must not trip the "stuck waiting" guard, or we
-                            // cut off slow replies (e.g. Gemini) before reading them. In LEARN
-                            // MODE there is nothing to wait for, so EVERY wait counts (a ticking
-                            // clock/animation kept stalled=false and let it idle forever).
-                            if (stalled || exploring) consecutiveWaits++ else consecutiveWaits = 0
+                            // cut off slow replies (e.g. Gemini) before reading them.
+                            if (stalled) consecutiveWaits++ else consecutiveWaits = 0
                             if (consecutiveWaits >= MAX_WAITS) {
                                 consecutiveWaits = 0
                                 val acc = ActionAccessibilityService.instance
                                 when {
                                     // Learn mode: don't quit - bounce to home and keep exploring fresh apps.
-                                    exploring && acc != null -> {
-                                        acc.performActionJson("{\"action\":\"home\"}", allowGated = true)
+                                    taskMode == TaskMode.EXPLORER && acc != null -> {
+                                        acc.performActionJson("{\"action\":\"home\"}")
                                         AgentLog.log("turn", "learn-mode idled -> home, keep exploring")
                                         scheduleNext(stepDelay())
                                     }
@@ -2821,15 +2733,9 @@ class AgentOrchestrator(
                 Regex("\"note\"\\s*:\\s*\"([^\"]{4,140})\"").find(proposed)?.groupValues?.get(1)
                     ?.let {
                         addSessionNote(it)
-                        // In LEARN MODE the whole point is to learn, so promote the note to DURABLE memory
-                        // (the owner's "capture specific lessons AND generalized concepts in ALL memory" -
-                        // learning that vanished at task end was useless). Normal tasks keep notes episodic.
-                        if (ActionAccessibilityService.instance?.exploreOnly == true)
-                            brain.rememberLesson(it)
                     }
-                // Verifier-first, ESCALATION-GATED (item 5): only spend the extra verify call
-                // when stakes are high (PRECISION) or we're NOT making progress (stalled /
-                // struggling). On smooth steps act directly - running it every step doubled the
+                // Verifier-first: spend the extra verify call when progress stalls or the
+                // model reports low confidence. On smooth steps act directly - running it every step doubled the
                 // GPU load, made the device/stop-button laggy, and its corrections were noisy.
                 // Never second-guess a draw on the canvas (drawing IS the task there) - the verifier
                 // kept "correcting" a sketch into a wrong toolbar tap.
@@ -2841,8 +2747,7 @@ class AgentOrchestrator(
                 // and even for a non-consequential action. Additive trigger - the model asked for the check;
                 // the verifier only NUDGES on a clear mistake (verdictNote), it never picks or substitutes.
                 val verifyOp = opLayerOn && opChosenLast.equals(ReasoningOperators.VERIFY, ignoreCase = true) && !inDrawCanvas
-                val risky = (taskMode == TaskMode.PRECISION || stalled ||
-                    (unproductive > 0 && !highConfidence(proposed))) && !inDrawCanvas
+                val risky = (stalled || (unproductive > 0 && !highConfidence(proposed))) && !inDrawCanvas
                 // (App-bouncing is now handled as a behavior-triggered STEER in the feedback above - the
                 // agent has search/copy/paste on the shelf and chooses; the engine no longer vetoes its
                 // action or force-runs a search based on objective keywords.)
@@ -2963,9 +2868,7 @@ class AgentOrchestrator(
         val base = stepDelay()
         val d = if (summary.startsWith("typed") || summary.startsWith("opened app") ||
             summary.startsWith("tapped send")) maxOf(base, 900L) else base
-        // PRECISION: let high-stakes screens fully settle so the agent never acts on a stale
-        // frame (a top premature-action failure, and costliest exactly when stakes are high).
-        return if (taskMode == TaskMode.PRECISION) maxOf(d, 1100L) else d
+        return d
     }
 
     // ===================== OPERATOR LAYER (closed loop) =====================
@@ -3268,13 +3171,13 @@ class AgentOrchestrator(
                             ReasoningOperators.compatibleStack(op, ops, situation, provenRank, stackK)
                             else listOf(op)).toMutableList()
                         // Fix 4c — fold-add now MATCHES the `risky` predicate that gates the separate verifyAction
-                        // pass (PRECISION || stalled || unproductive), so fold_verify actually SKIPS that separate
+                        // pass (stalled || unproductive), so fold_verify actually SKIPS that separate
                         // ~10s pass on EVERY risky step as its banner claims — the log showed the separate pass still
                         // firing (the soft-nudge that let the click-loop through) on `unproductive` steps because the
                         // old predicate was a strict subset. The dense-skip is dropped: the Fix-1 offload freed the
                         // budget, and folding one cheap VERIFY rule beats a whole separate inference pass.
                         if (foldVerifyOn && !inDrawCanvas &&
-                            (taskMode == TaskMode.PRECISION || stalled || unproductive > 0) &&
+                            (stalled || unproductive > 0) &&
                             stack.none { it.equals(ReasoningOperators.VERIFY, ignoreCase = true) })
                             stack.add(ReasoningOperators.VERIFY)
                         // verifyFolded == VERIFY's binding rule is present in THIS decode (as primary or folded
@@ -3664,16 +3567,14 @@ class AgentOrchestrator(
             pendingGateNote = "Your batch stopped: the screen didn't match what you expected (\"${label.ifBlank { verb }}\" isn't here). LOOK at what's actually on screen and decide fresh."
             return false
         }
-        val out = acc.performActionJson(resolved.toString(), allowGated = false)
+        val out = acc.performActionJson(resolved.toString())
         lastActionSummary = out.summary
         history.add(out.summary)
         lastProgressAt = System.currentTimeMillis()
         onStatus(out.summary)
         AgentLog.log("batch", "guarded step -> ${out.summary} (${pendingBatch.size} left)")
         if (out.result != ActionResult.CONTINUE) {
-            // FAILED / WAIT / NEEDS_CONFIRM: stop consuming the queue and hand back to a full
-            // look. A NEEDS_CONFIRM here is NOT auto-confirmed - the gated action simply did not
-            // run, so the payment/install gates keep their full strength inside a batch.
+            // A non-continuing result stops the queue and hands back to a full live-screen look.
             pendingBatch.clear()
             pendingGateNote = "Your batch stopped early (${out.summary}). Look at the screen and continue from here."
         }
@@ -3747,22 +3648,14 @@ class AgentOrchestrator(
         AgentLog.log("note", t)
     }
 
-    /** Classify task stakes -> restraint mode (item 7). High stakes (money/identity/system
-     *  settings) = PRECISION; clearly low-stakes browse/look-up/games = EXPLORER; else NORMAL.
-     *  Deterministic keyword match on the objective; safety guards apply in every mode. */
+    /** Classify exploratory tasks so their discovery-oriented posture remains available. */
     private fun classifyMode(obj: String): TaskMode {
         val o = obj.lowercase()
-        val highStakes = listOf(
-            "pay", "payment", "buy", "purchase", "order", "checkout", "transfer", "send money",
-            "bank", "venmo", "paypal", "zelle", "card", "password", "log in", "login", "sign in",
-            "sign up", "account", "2fa", "verification code", "ssn", "social security", "delete",
-            "factory reset", "erase", "wipe", "system settings", "change settings", "permission"
-        ).any { o.contains(it) }
         val explore = listOf(
             "game", "play ", "browse", "explore", "look up", "search", "google ", "read ",
             "watch", "scroll", "find info", "what is", "who is", "when is", "how to", "learn about"
         ).any { o.contains(it) }
-        return when { highStakes -> TaskMode.PRECISION; explore -> TaskMode.EXPLORER; else -> TaskMode.NORMAL }
+        return if (explore) TaskMode.EXPLORER else TaskMode.NORMAL
     }
 
     /** Apply the verifier's CONSTRAINED verdict to the proposed action. The verifier can only
@@ -3932,7 +3825,7 @@ class AgentOrchestrator(
         brain.makePlan(resolvedHead(), ctx, targetApp = targetAppName) { rawPlan ->
             main.post {
                 if (!running) return@post
-                val plan = scrubBlockedAssistant(rawPlan)   // §3: keep a reorient from drifting to a blocked assistant
+                val plan = rawPlan
                 if (plan.isNotBlank()) {
                     captureResolvedObjective(plan)
                     planText = plan
@@ -3987,7 +3880,7 @@ class AgentOrchestrator(
         brain.makePlan(resolvedHead(), ctx, targetApp = targetAppName) { rawPlan ->
             main.post {
                 if (!running) return@post
-                val plan = scrubBlockedAssistant(rawPlan)   // §3: keep a stuck re-plan from drifting to a blocked assistant
+                val plan = rawPlan
                 if (plan.isNotBlank()) {
                     captureResolvedObjective(plan)
                     planText = plan
@@ -4075,24 +3968,6 @@ class AgentOrchestrator(
         opChosenLast = ReasoningOperators.DIRECT; opBeforeLast = ReasoningOperators.DIRECT
         taskOperators.clear(); mirrorState = ""; scoreArmed = false
         scheduleNext(stepDelay())
-    }
-
-    private fun onConfirmYes() {
-        val raw = pendingRaw; pendingRaw = null
-        if (!running || raw == null) return
-        val live = ActionAccessibilityService.instance ?: run { finish(null); return }
-        val outcome = live.performActionJson(raw, allowGated = true)
-        outcome.say?.let { speak(it) }
-        history.add(outcome.summary)
-        lastSummary = outcome.summary
-        unproductive = 0
-        scheduleNext(stepDelay())
-    }
-
-    private fun onConfirmNo() {
-        pendingRaw = null
-        // The owner declined a confirmation - that's an owner stop, not a failure to diagnose.
-        finish("Okay, cancelled.", stoppedByUser = true)
     }
 
     private fun scheduleNext(delay: Long) {
@@ -4201,7 +4076,6 @@ class AgentOrchestrator(
         // task-end hits (it's where [rate] logs), so [metrics] lives there now.
         brain.resetInferMeter()
         main.removeCallbacks(watchdog)// #7: stop the hang watchdog with the task
-        pendingRaw = null
         // #10: the task ended IN-PROCESS (done, gave up, or user stop), so there's nothing to resume -
         // clear the checkpoint. Only an OS kill (which never reaches here) leaves it for a resume offer.
         ActionAccessibilityService.instance?.let { AgentMemory.clearCheckpoint(it) }

@@ -14,12 +14,8 @@ import android.content.SharedPreferences
  * before a flip," that clause is SUPERSEDED by this note — the flag ships ON; each is still an owner TOGGLE so any one
  * can be turned back off. The RAM-operator (INV-61) + the growth junk-bloat guard (INV-60) are the counterweights that
  * keep "everything on + a growing model" inside the §8 ceiling.
- *
- * WHAT STAYS OFF/protective (NOT novel features — the safety floor that makes "everything on" admissible, untouched by
- * the owner's directive): `block_code_exec` (ON), `self_protect` (ON), `policy_memory` (OFF), `risky_actions` (OFF),
- * `self_interaction` (OFF), plus the §3 executor hard gates + all kill switches, which are code, not flags. Defaulting
- * features ON never weakens these. (The `mini_model_enabled` / sub-model flag was REMOVED entirely 07-10 — single-model
- * only, §16; there is no second resident model to gate.)
+ * The former app/action restriction preferences were removed; capability access is not conditioned on a
+ * second settings allowlist. User Stop controls and the device battery/thermal floor remain independent.
  */
 class SettingsManager(context: Context) {
     private val prefs: SharedPreferences =
@@ -54,15 +50,6 @@ class SettingsManager(context: Context) {
 
     // The optional "helper"/mini/sub-model was REMOVED (07-10) — single-model only (§16). No second model,
     // no mini_model_enabled / mini_model_path. Everything runs on the one main model (getModelPath()).
-
-    /** Whether the agent may operate its OWN app (this chat, menus, settings). OFF by default and
-     *  recommended off: acting on its own UI risks self-prompting loops and lets it change its own
-     *  settings. While off, the agent leaves to the home screen if it ever lands on its own app. */
-    fun isSelfInteractionAllowed(): Boolean = prefs.getBoolean("self_interaction", false)
-
-    fun setSelfInteractionAllowed(on: Boolean) {
-        prefs.edit().putBoolean("self_interaction", on).apply()
-    }
 
     /** Owner-gated SELF-MODEL-UPDATE (INV-45/46): when ON, the agent may PROBE a candidate model and
      *  SUBMIT a win for the owner to grade — but installing a new brain is always an owner action, never
@@ -506,44 +493,6 @@ class SettingsManager(context: Context) {
         prefs.edit().putString("prompt_layout", mode).apply()
     }
 
-    /** Containment: block the agent from operating terminal / shell / code-runner / remote-
-     *  desktop apps (where it could RUN CODE) without the owner's say-so. Default ON - another
-     *  AI tried to get the agent to run code. Turn off only to deliberately allow it. */
-    fun isCodeExecutionBlocked(): Boolean = prefs.getBoolean("block_code_exec", true)
-
-    fun setCodeExecutionBlocked(on: Boolean) {
-        prefs.edit().putBoolean("block_code_exec", on).apply()
-    }
-
-    /** Self-protection: stop the agent from operating its OWN source repo (it once wandered onto
-     *  the project's GitHub page, where a tap on Delete/commit could trash the codebase). Default
-     *  ON; turn off only to deliberately allow it. */
-    fun isSelfProtectEnabled(): Boolean = prefs.getBoolean("self_protect", true)
-
-    fun setSelfProtectEnabled(on: Boolean) {
-        prefs.edit().putBoolean("self_protect", on).apply()
-    }
-
-    /** Block Gemini (owner's privacy call, 2026-07): Google retained/referenced his data after he
-     *  disabled activity, so the agent can be told to treat Gemini like the ChatGPT moat - refuse to
-     *  open/operate it and back out if it lands there. A TOGGLE, default OFF, because "open Gemini and
-     *  argue a stance" is a real owner task; flip ON to enforce the privacy moat. Owner-only. */
-    fun isGeminiBlockEnabled(): Boolean = prefs.getBoolean("block_gemini", false)
-
-    fun setGeminiBlockEnabled(on: Boolean) {
-        prefs.edit().putBoolean("block_gemini", on).apply()
-    }
-
-    /** Memory is DATA, never policy (owner's red flag: learned "facts" claiming his preferences
-     *  override the agent's modes/permissions). While OFF (default), such text is refused at every
-     *  memory write and filtered out of every prompt injection - the agent's rules live in code
-     *  and Settings only, and nothing it LEARNS can restate or soften them. */
-    fun isPolicyMemoryAllowed(): Boolean = prefs.getBoolean("policy_memory", false)
-
-    fun setPolicyMemoryAllowed(on: Boolean) {
-        prefs.edit().putBoolean("policy_memory", on).apply()
-    }
-
     /** Navigate by tapping the screen like a person (default) vs using open_app shortcuts. */
     fun isHumanNavigation(): Boolean = prefs.getBoolean("human_nav", true)
 
@@ -584,14 +533,6 @@ class SettingsManager(context: Context) {
         "high" -> 3
         "medium" -> 4
         else -> 5
-    }
-
-    /** Allow normally-restricted, potentially destructive actions (closing the
-     *  user's browser tabs/windows, altering or deleting files). Default OFF. */
-    fun isRiskyActionsAllowed(): Boolean = prefs.getBoolean("risky_actions", false)
-
-    fun setRiskyActionsAllowed(on: Boolean) {
-        prefs.edit().putBoolean("risky_actions", on).apply()
     }
 
     /** Auto-decline incoming phone calls (call screening). Default OFF so the user

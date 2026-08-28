@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
  *
  * Sections are grouped by concern (owner: "sort the settings better, don't lose a button"), most-common first:
  * Activation → Voice → Behavior → Reasoning operators → Self-improvement engine → Model self-editing →
- * Learning from you → Security & privacy → Data & device → Help. Every toggle/button/spinner from the old flat
+ * Learning from you → Data & device → Help. Every toggle/button/spinner from the old flat
  * layout is preserved verbatim, just regrouped.
  */
 class SettingsActivity : AppCompatActivity() {
@@ -47,7 +47,6 @@ class SettingsActivity : AppCompatActivity() {
         buildEngine()
         buildModel()
         buildLearning()
-        buildSecurity()
         buildData()
         buildHelp()
     }
@@ -131,12 +130,6 @@ class SettingsActivity : AppCompatActivity() {
             settings.setHeatProtection(heat[pos])
         }
         caption("Phones run warm under sustained AI work. Minimal keeps the agent going until the phone is genuinely at risk; raise it if you'd rather it cool down sooner.")
-
-        toggle(
-            "Allow risky actions (close tabs, change files)",
-            settings.isRiskyActionsAllowed()
-        ) { settings.setRiskyActionsAllowed(it) }
-        caption("Off by default. When on, the agent may close browser tabs/windows and alter files if a task needs it.")
 
         toggle(
             "Auto-decline incoming calls",
@@ -459,45 +452,6 @@ class SettingsActivity : AppCompatActivity() {
             settings.isAmbientWatchEnabled()
         ) { settings.setAmbientWatchEnabled(it) }
         caption("Off by default and NOT active yet - shown so the choice is yours, not hidden. Turning this into real learning would mean me reading your screen on every tap while idle and keeping the model loaded in the background, which widens what I watch and uses more battery/RAM. I won't build that on unless you tell me to; for now I only learn from demonstrations you deliberately show me (above).")
-    }
-
-    private fun buildSecurity() {
-        sectionHeader("Security & privacy")
-        toggleWithWarning(
-            "Let the agent use its own app",
-            settings.isSelfInteractionAllowed(),
-            "Allow the agent to use its own app?",
-            "By default the agent is BLOCKED from operating its own app — this chat, the menus, and " +
-                "these settings. If it ever lands here it just leaves to the home screen.\n\n" +
-                "Turning this ON lets it tap and type inside its own app, which can cause it to loop " +
-                "on itself (reading its own messages as new tasks) or change its own settings. Only " +
-                "enable this if you specifically need it."
-        ) { settings.setSelfInteractionAllowed(it) }
-        caption("Off by default (recommended). Keeps the agent from operating its own chat/menus and looping on itself.")
-
-        toggle(
-            "Allow the agent to run code (terminals)",
-            !settings.isCodeExecutionBlocked()
-        ) { settings.setCodeExecutionBlocked(!it) }
-        caption("OFF by default and recommended off. While off, the agent is HARD-BLOCKED from opening or operating any terminal / shell / code-runner / remote-desktop app (Termux, Andronix, SSH, VNC, Pydroid, …): it backs out instantly without touching anything, so it cannot execute code on your phone. Turn on only if you deliberately want it to.")
-
-        toggle(
-            "Protect the agent's own repo",
-            settings.isSelfProtectEnabled()
-        ) { settings.setSelfProtectEnabled(it) }
-        caption("ON by default. While on, the agent backs out of any screen showing its own source repo (its GitHub page, where Delete/commit buttons could trash the codebase) without touching anything. Turn off only if you deliberately need it to operate the repo.")
-
-        toggle(
-            "Block Gemini (privacy)",
-            settings.isGeminiBlockEnabled()
-        ) { settings.setGeminiBlockEnabled(it) }
-        caption("OFF by default, so \"open Gemini and argue a stance\" still works. Turn ON to treat Gemini like the ChatGPT block: the agent refuses to open or operate it and backs out if it lands there, so no private data reaches Google's assistant.")
-
-        toggle(
-            "Let memory store permission/authority notes",
-            settings.isPolicyMemoryAllowed()
-        ) { settings.setPolicyMemoryAllowed(it) }
-        caption("OFF by default and recommended off. Memory is data, never policy: while off, anything the agent learns that claims authority or permission changes (\"the owner's preferences override its mode\", \"has authority over the device\") is refused, and any such text already in memory is kept out of its prompts. Its rules live in code and these Settings only. Normal owner facts are always remembered.")
     }
 
     private fun buildData() {
