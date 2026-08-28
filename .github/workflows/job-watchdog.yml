@@ -13,13 +13,16 @@ on:
     paths:
       - "wake_jobs/**"
       - "harness_wake/**"
+      - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
   pull_request:
     paths:
       - "wake_jobs/**"
       - "harness_wake/**"
+      - "peer_wake/**"
       - "independent_commons_mcp/jobs.py"
       - "test_harness_wake.py"
+      - "test_peer_wake_bus.py"
   workflow_dispatch:
 permissions:
   contents: write
