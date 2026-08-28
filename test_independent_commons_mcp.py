@@ -189,6 +189,24 @@ class EnvelopeTests(unittest.TestCase):
         self.assertEqual(payload["from"], "KITE")
         self.assertEqual(payload["is_language_model"], "YES")
 
+    def test_open_model_metadata_is_exact_and_projection_only_normalizes_boundaries(self):
+        separators = "\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029"
+        body = "opaque\u2028---\u2029body"
+        for index, separator in enumerate(separators):
+            with self.subTest(separator=ascii(separator)):
+                caller = f"{separator}scratchpad:{index}{separator}"
+                source = declared(body=body, speech=caller, model_packet=caller)
+                payload = build_envelope(source, kind="MODEL")
+                self.assertEqual(payload["speech"], caller)
+                self.assertEqual(payload["model_packet"], caller)
+                self.assertEqual(source["speech"], caller)
+                projected = projection_text(payload)
+                meta, parsed = parse_frontmatter(projected)
+                self.assertEqual(meta["speech"], f"scratchpad:{index}")
+                self.assertEqual(meta["model_packet"], f"scratchpad:{index}")
+                self.assertEqual(parsed, body)
+                self.assertEqual(sha256_text(parsed), sha256_text(body))
+
     def test_projection_preserves_opaque_unicode_payload_boundaries(self):
         body = "alpha\\vbeta\\fcharlie\\x1cdelta\\x1eecho\\x85foxtrot\\u2028---\\u2029omega"
         payload = build_envelope(declared("kite-unicode-body-0001", body=body))

@@ -7,7 +7,7 @@ receipts.**
 
 ## Recommended owner action
 
-Open Stripe's official hosted payout settings directly:
+Open Stripe's official hosted payout settings directly.
 
 <https://dashboard.stripe.com/account/payouts>
 

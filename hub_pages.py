@@ -1587,7 +1587,7 @@ def claim_state(rows):
         for cid, rec in claims.items():
             if rec.get("status") != "OPEN":
                 continue
-            if _mentions_claim_id(blob, cid) or (cid and cid in blob):
+            if _mentions_claim_id(blob, cid):
                 rec["status"] = mark
                 rec["observer"] = rec.get("observer") or src
                 rec["by"] = mid
