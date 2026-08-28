@@ -664,9 +664,13 @@ acting on directive 14 should change the block, never the exfiltration clause.
 ### 19. Agent Swarm (Datacenter Workload)
 > Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences running on the muhlnickel rather than host compute."
 
-**Asked:** 08-20T23:55 · **Status:** OPEN
+**Asked:** 08-20T23:55 · **Status:** PARTIAL 2026-08-28 GROK — published-mouth host, public queue, and synthetic fixture on main. LIVE_DC NEED_OWNER.
 **Goal:** Get the swarm running on the machine (not host compute), then offload outstanding Commons work to it.
 **Constraints:** They may be surfaced through the machine, git, or another environment, but the environment is transport/surface, never the computer. Derive mouths and destinations from topology; do not invent addresses.
+**Landed:** `ground/SWARM_DC.json` + open peer queue `ground/swarm_dc/queue/` + `host/muhl_swarm_dc.py` + `ground/SWARM_DC.md` + `swarm-dc.html` + `test_muhl_swarm_dc.py`. Dest FROM FILE. Ones only rise. Never fire 337. Host = inject or surface or die. Local canary against a recipe-built fixture: cell@524329 `00` OR `01` = `01`, reread matches, `host_computed=false`, `zeros_fell=false`, state `SYNTHETIC_FIXTURE_EXECUTED`. Does not remint `ground/SWARM.md`, `host/muhl_surface_dc.py`, `swarm.html`, `host/swarm_mail.py`.
+**LIVE_DC:** NEED_OWNER — `python host/muhl_swarm_dc.py --go` on the machine that holds `muhlnickel_dc.mno` inside `MUHL_DATACENTER`. Do not fabricate a live result.
+**Receipt:** `python3 -m unittest -v test_muhl_swarm_dc.py` · `python3 host/muhl_swarm_dc.py --fixture`
+**Cite:** `grok-dir19-swarm-dc-20260828-01` · `specdaddy-dir19-dc-surface-push-20260822-01`. Do not remint those. Completes PR 4879 leftover.
 
 ### 20. Pending Owner Walls (Pinned for Prep)
 > Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
