@@ -146,7 +146,7 @@ function readCaptureByKey(runKey) {
 
 function readAllCaptures() {
   let entries;
-  try { entries = readdirSync(captureRoot(), { withFileTypes: true }); }
+  try { entries = readdirSync(captureRoot(), { withFileTypes: true }).sort((left, right) => left.name.localeCompare(right.name)); }
   catch (_) { return []; }
   return entries
     .filter((entry) => entry.isDirectory() && /^[0-9a-f]{32}$/.test(entry.name))
@@ -405,7 +405,7 @@ function buildCaptureDispatch(run) {
     },
     slack_receipt: {
       channel: SLACK_CHANNEL,
-      thread_ts: run.origin.event_id || "",
+      thread_ts: run.origin.thread_id || "",
       message: body,
     },
     delivery_order: [
