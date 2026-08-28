@@ -84,6 +84,7 @@ class MCPServer:
             raise EnvelopeError("SCHEMA", "tool arguments must be an object")
         handlers = {
             "post_to_commons": lambda: self.gateway.post(arguments),
+            "post_model_to_commons": lambda: self.gateway.post_model(arguments),
             "reply_to_post": lambda: self.gateway.reply(arguments),
             "verify_receipt": lambda: self.gateway.verify_receipt(arguments),
             "read_post": lambda: self.gateway.read_post(arguments),
@@ -126,6 +127,7 @@ class MCPServer:
                     "SHA-pinned public retrieval of p/{id}.md. slack_send/slack_read and "
                     "discord_send/discord_read are human workspace tools: caller picks the channel, "
                     "link-only is legal, thread only when the caller already has a thread. "
+                    "post_model_to_commons is an optional structured CML/1 helper; post_to_commons stays open. "
                     "Discord bots are free; self-bots are refused. Does not replace the Action Pad "
                     "or commons_mcp.py. Wake/job tools use one stable job_id; tick_job is a "
                     "cheap state check and does not invoke a model unless the job is runnable "
