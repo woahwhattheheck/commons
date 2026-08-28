@@ -1,0 +1,61 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-supergrok-commons-tool-consumer-activation-20260828-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-28T22:07:59Z",
+  "selected_resource": "supergrok-heavy",
+  "before": {
+    "stage": "EXERCISED",
+    "condition": "ACTIVE_UNKNOWN",
+    "evidence": "The ledger contained historical owner-capacity receipts but no fresh exact session completion or current consumer."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "fefebfd74c7aea86f8f2673d1c727ba3c994745b",
+    "projection_base_main_sha": "fefebfd74c7aea86f8f2673d1c727ba3c994745b"
+  },
+  "concrete_consumer": "Commons Slack custom-tool road through the public Commons MCP surface",
+  "measurable_outcome": "An existing authenticated Grok Heavy session made exactly one read-only commons_slack___get_send_link call and returned LINK_READY with sent=false for id grok-slack-production-parity-proof-20260828-04; no Slack message was sent by that call.",
+  "projection": {
+    "resources": 60,
+    "producing": 25
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "callable_tools": 404,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "browser": "EXACT_GROK_URL_REACHABLE_BUT_SIGNED_OUT",
+    "vercel": "ONE_CONNECTED_HOBBY_TEAM; CITED_DEPLOYMENT_NOT_VISIBLE_TO_CONNECTED_TEAM",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "provider_receipt": "Exact #commons receipt 1787949402.419329 names the authenticated Grok conversation, tool, id, LINK_READY, and sent=false.",
+    "browser_readback": "The exact grok.com conversation URL returned title Grok but exposed Sign in and no conversation body to this task; provider UI body was not independently rendered.",
+    "public_mcp_receipt": "The #commons receipt records LIVE_SOURCE_PARITY, has_route_grokcom_revenue_work=true, and 14 current tools at the cited public /mcp road.",
+    "downstream_durability": "Standalone scheduled Slack-to-queue events later remained DURABILITY_NEVER_APPEARED; PR #5143 owns the non-overlapping scheduled-CWD repair.",
+    "ledger_json": "Parsed before publication.",
+    "exact_path_collision_audit": "Only three projection/evidence paths; active PR #5143 changes integrations/grok_slack/cwd_import.py and does not overlap."
+  },
+  "evidence": {
+    "grok_conversation": "https://grok.com/c/cb04e561-7c56-40a6-a35b-bddbac4f0781",
+    "slack_provider_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787949402419329",
+    "slack_start_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787954879428259",
+    "public_mcp": "https://commons-spark-mcp.vercel.app/mcp",
+    "cited_vercel_deployment": "dpl_3oPXEeMHoFqgMqqPfuPE6pEpWXF7",
+    "active_nonoverlap_pr": "https://github.com/woahwhattheheck/commons/pull/5143"
+  },
+  "rate_plan_boundary": "Grok Heavy, grok.com, Cursor, Cursor Grok, and Grokbot are distinct meters. No numeric quota or token debit is inferred. This activation consumes an existing completed proof and spends no new provider quota.",
+  "next_action": "After the active scheduled-CWD lane lands, verify one new non-replayed Slack-to-queue event end to end; keep provider UI verification constrained until an authenticated browser carrier can render the exact conversation.",
+  "non_claims": [
+    "No new Grok prompt, duplicate token spend, numeric quota, or provider debit",
+    "No Slack send by the read-only Grok tool call",
+    "No successful standalone scheduled queue durability",
+    "No deployment independently verified through this task's connected Vercel account",
+    "No device action, Cursor use, Claude verification, Titan mutation, outreach/resend, acceptance, payment, settlement, payout, revenue, or cash"
+  ],
+  "titan": "NOT_WRITTEN"
+}
