@@ -86,6 +86,16 @@ class FakeSlack:
         return {"ok": True, "messages": list(self.history)}
 
 
+class RejectPostFailSlack(FakeSlack):
+    """Slack accepts CLAIMED/status but refuses the rejected delivery row."""
+
+    def chat_postMessage(self, **kwargs: Any) -> dict[str, Any]:
+        text = str(kwargs.get("text") or "")
+        if "rejected" in text.casefold():
+            raise RuntimeError("rejected delivery failed")
+        return super().chat_postMessage(**kwargs)
+
+
 class FakeGitHub:
     def __init__(self) -> None:
         self.main_sha = MAIN_SHA
@@ -1044,6 +1054,55 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(again["state"], "OBSERVING")
             self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
             store.close()
+
+    def test_failed_durability_without_rejected_row_posts_once_on_restart(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="pending-unlanded")
+            slack = RejectPostFailSlack()
+            service, slack, github, mcp, store = build_bridge(directory, slack=slack, github=github, mcp=mcp)
+            result = service.handle_event("Ev-dur-fail", event_payload("durability missing"))
+            self.assertEqual(result["state"], "FAILED")
+            self.assertEqual(result.get("code"), "DURABILITY_NEVER_APPEARED")
+            self.assertTrue(result.get("retryable"))
+            self.assertEqual(store.get("Ev-dur-fail").phase, "FAILED")
+            self.assertEqual(store.get("Ev-dur-fail").fire_action_calls, 1)
+            self.assertFalse(store.has_sent_rejected_delivery("Ev-dur-fail"))
+            self.assertTrue(any("CLAIMED" in (row.get("text") or "") for row in slack.posts))
+            self.assertFalse(any("rejected" in (row.get("text") or "").casefold() for row in slack.posts))
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            pending = store.pending()
+            self.assertEqual([row.event_id for row in pending], ["Ev-dur-fail"])
+            store.close()
+
+            slack2 = FakeSlack()
+            mcp2 = FakeMcp(github, fire_mode="pending-unlanded")
+            service2, slack2, github, mcp2, store2 = build_bridge(directory, slack=slack2, github=github, mcp=mcp2)
+            recovered = service2.recover_pending()
+            self.assertGreaterEqual(recovered, 1)
+            self.assertEqual(len([name for name, _ in mcp2.calls if name == "fire_action"]), 0)
+            self.assertEqual(store2.get("Ev-dur-fail").fire_action_calls, 1)
+            self.assertEqual(store2.get("Ev-dur-fail").phase, "FAILED")
+            rejected = [
+                row
+                for row in slack2.posts
+                if "rejected" in (row.get("text") or "").casefold()
+                and "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")
+            ]
+            self.assertEqual(len(rejected), 1)
+            self.assertIn("retryable", (rejected[0].get("text") or "").casefold())
+            self.assertTrue(store2.has_sent_rejected_delivery("Ev-dur-fail"))
+            recovered_again = service2.recover_pending()
+            self.assertEqual(recovered_again, 0)
+            rejected_again = [
+                row
+                for row in slack2.posts
+                if "rejected" in (row.get("text") or "").casefold()
+                and "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")
+            ]
+            self.assertEqual(len(rejected_again), 1)
+            store2.close()
 
 
 if __name__ == "__main__":
