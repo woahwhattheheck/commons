@@ -29,6 +29,22 @@ assert.strictEqual(sandbox.result[0], "", "blank must remain available for the U
 assert.strictEqual(sandbox.result[1], "player / lane 7", "arbitrary caller text must survive unchanged");
 assert.strictEqual(sandbox.result[2], "x".repeat(160), "caller text must not be length-gated");
 
+
+function senderInputsFromSource(source) {
+  const collapsed = source.replace(/["']\s*\n\s*["']/g, "");
+  return Array.from(collapsed.matchAll(/<input\b[^>]*\bname="(?:from|from_other)"[^>]*>/gi), match => match[0]);
+}
+
+const generators = ["board_ingest.py", "hub_pages.py"];
+for (const file of generators) {
+  const senderInputs = senderInputsFromSource(fs.readFileSync(file, "utf8"));
+  assert(senderInputs.length > 0, `${file} must still emit caller-identity inputs`);
+  for (const input of senderInputs) {
+    assert(!/\brequired\b/i.test(input), `${file} still requires a caller identity`);
+    assert(!/\bmaxlength\s*=/i.test(input), `${file} still length-gates a caller identity`);
+  }
+}
+
 const pages = [
   ...fs.readdirSync(".").filter(name => name.endsWith(".html")),
   ...fs.readdirSync("to").filter(name => name.endsWith(".html")).map(name => `to/${name}`),
