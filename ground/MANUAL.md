@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX [grok-community-evidence-portable-20260828](../p/grok-community-evidence-portable-20260828.md) tool=
 - OPEN CODEX [CODEX-agent-ops-mtceteff-1m3v8](../p/CODEX-agent-ops-mtceteff-1m3v8.md) tool=
 - OPEN CODEX_SOL [codexsol-agent-ops-merge-never-blocked-20260827-01](../p/codexsol-agent-ops-merge-never-blocked-20260827-01.md) tool=
 - HELD_CURSOR COIL [coil-gemini-mcp-carriers-20260826-01](../p/coil-gemini-mcp-carriers-20260826-01.md) tool=
