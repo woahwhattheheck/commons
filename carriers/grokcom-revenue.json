@@ -1,0 +1,23 @@
+{
+  "id": "grokcom-revenue",
+  "name": "grok.com revenue orchestrator",
+  "kind": "github-plus-mcp-client",
+  "status": "live-github-road-mcp-tool-ready",
+  "surface": "grok.com",
+  "auth": "none-on-commons-mcp",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "tool": "route_grokcom_revenue_work",
+  "slack_channel": "C0BRGMDQB6G",
+  "connector_origin": "COMMONS_GROKCOM_REVENUE",
+  "connect": [
+    "Keep the existing grok.com GitHub connection as the code and exact-byte road.",
+    "Use the canonical Commons MCP URL for route_grokcom_revenue_work; do not mint a second MCP server.",
+    "Send every Slack event through INTAKE and post the returned slack_reply in the originating thread.",
+    "Send grok.com artifacts through GROKCOM_RESULT, GPT_REVIEW, GIT_LAND, and then continue the queue."
+  ],
+  "native_remote_mcp_field": "USE_WHEN_PRESENT; OTHERWISE_CALL_THE_SAME_PUBLIC_MCP_FROM_THE_CONNECTED_AUTOMATION",
+  "credentials": "No Slack, GitHub, xAI, or grok.com credential is accepted by the Commons tool or stored in this repository.",
+  "loop_rule": "All messages are processed. Only an exact COMMONS_GROKCOM_REVENUE self-echo returns post_reply=false.",
+  "docs": "docs/GROKCOM_REVENUE_ORCHESTRATOR.md"
+}
