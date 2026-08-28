@@ -1358,6 +1358,27 @@
       "last_used_at": "2026-08-28T10:10:31Z",
       "stale_after": "P7D",
       "priority": 92
+    },
+    {
+      "name": "payment-capability-registry",
+      "kind": "PAYMENT_CONNECTOR",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Token Junkie Labs",
+      "authority": "PUBLIC_READ; OWNER_KYC_BANK_OTP_STAY_IN_PROVIDER_UI; NO_CASH_WITHOUT_BANK_AVAILABLE",
+      "consumer": "Public checkout, listing registry, pay/tips/commerce doors",
+      "value": "Provider-neutral rail registry. Fresh livemode GET on acct_1U6HI9ATH4EDE7XD: charges_enabled=true, payouts_enabled=true, currently_due=[], verified bank last4 7243. PayPal, GitHub Sponsors, and Square stay INERT. Cash USD 0.",
+      "next_action": "If Stripe fails closed, hide public Stripe URLs and keep owner one-click EXTERNAL_OWNER_ACTION paths. Do not invent a PayPal.me, Sponsors profile, or cash.",
+      "source": "revenue/payment_capability/registry.json; host/payment_capability.py; stripe livemode GET /v1/accounts/acct_1U6HI9ATH4EDE7XD 2026-08-28T17:23:00Z",
+      "evidence_ts": "2026-08-28T17:23:00Z",
+      "auth_surface": "connected Stripe livemode account list plus public registry",
+      "exact_safe_probe": "charges_enabled=true payouts_enabled=true currently_due=[] balance USD 0; PayPal/Square connectors absent; github.com/sponsors/woahwhattheheck not proven enabled",
+      "rate_plan_boundary": "chargeable is not cash; AUTH/SETTLE/PAYOUT/BANK_AVAILABLE remain NOT_LANDED; sandbox resource stripe-sandbox-account is a separate row",
+      "assigned_backlog": "owner KYC only inside official provider UIs if a failover rail is wanted",
+      "last_receipt": "grok-payment-capability-hub-failover-20260828-02",
+      "last_used_at": "2026-08-28T17:23:00Z",
+      "stale_after": "PT6H"
     }
   ]
 }

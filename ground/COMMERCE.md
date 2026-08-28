@@ -50,6 +50,7 @@ return to `RUNNING` or advance to `SUBMITTED`.
 ## Interfaces
 
 - Human: `commerce.html`
+- Payment rails: `payment-capability.html`, `host/payment_capability.py`, `revenue/payment_capability/registry.json`, `ground/PAYMENT_CAPABILITY.md`. Public checkout stays inert until a rail is CHARGEABLE. Stripe livemode is the measured chargeable path; PayPal, GitHub Sponsors, and Square remain owner-KYC leftovers. Cash stays `$0` until `BANK_AVAILABLE`.
 - Machine catalog: `revenue/outcome_commerce/catalog.json`
 - CLI: `python3 host/outcome_commerce.py`
 - Replay: `python3 host/outcome_commerce.py project --events revenue/outcome_commerce/examples/commercial_events.json`

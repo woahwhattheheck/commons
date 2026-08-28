@@ -237,10 +237,10 @@ def compose_errors(root: str, registry: dict[str, Any], projected: dict[str, Any
     provider = snapshot.get("provider") if isinstance(snapshot.get("provider"), dict) else {}
     money = snapshot.get("money") if isinstance(snapshot.get("money"), dict) else {}
     stripe = next((r for r in registry.get("rails") or [] if r.get("id") == "stripe-livemode-acct_1U6HI9ATH4EDE7XD"), {})
-    if provider.get("charges_enabled") is True and stripe.get("charges_enabled") is not True:
-        errors.append("registry Stripe charges_enabled must match checkout snapshot")
-    if provider.get("payouts_enabled") is True and stripe.get("payouts_enabled") is not True:
-        errors.append("registry Stripe payouts_enabled must match checkout snapshot")
+    if stripe.get("charges_enabled") is True and provider.get("charges_enabled") is not True:
+        errors.append("registry must not claim Stripe charges_enabled without the checkout snapshot")
+    if stripe.get("payouts_enabled") is True and provider.get("payouts_enabled") is not True:
+        errors.append("registry must not claim Stripe payouts_enabled without the checkout snapshot")
     if money.get("collected_cash_usd") != 0 or projected["collected_cash_usd"] != 0:
         errors.append("collected cash must stay 0")
     pack_text = json.dumps(pack)
@@ -295,6 +295,52 @@ def html_surface_errors(root: str) -> list[str]:
     pay_js = _read(root, "pay.js")
     if "payment_capability/registry.json" not in pay_js:
         errors.append("pay.js must load the provider-neutral registry for failover")
+    door = _read(root, "door.js")
+    if '["payment-capability.html", "payment rails"]' not in door:
+        errors.append("door.js must surface payment-capability.html")
+    index = _read(root, "index.html")
+    if 'href="./payment-capability.html">payment rails</a>' not in index:
+        errors.append("index hub must surface payment-capability.html")
+    boards = _read(root, "boards.html")
+    hub = _read(root, "hub_pages.py")
+    needle = 'href="./payment-capability.html">payment rails</a>'
+    if needle not in boards:
+        errors.append("boards.html must catalog payment-capability.html")
+    if needle not in hub:
+        errors.append("hub_pages.py must keep payment-capability.html")
+    listing = _read(root, os.path.join("host", "listing_registry.py"))
+    if "revenue/payment_capability/registry.json" not in listing:
+        errors.append("listing_registry must compose with payment_capability")
+    return errors
+
+
+def storefront_policy_errors(projected: dict[str, Any]) -> list[str]:
+    """Public storefront follows the registry. Dead Stripe stays honest."""
+    errors: list[str] = []
+    stripe_row = next(
+        (row for row in projected["rails"] if row["id"] == "stripe-livemode-acct_1U6HI9ATH4EDE7XD"),
+        {},
+    )
+    if stripe_row.get("chargeable"):
+        if not projected["has_lawfully_chargeable_path"]:
+            errors.append("chargeable Stripe rail must remain owner-usable")
+        if projected["active_storefront_rail_id"] != "stripe-livemode-acct_1U6HI9ATH4EDE7XD":
+            errors.append("active public storefront must be the proven Stripe rail")
+    else:
+        if projected["has_public_storefront"] or projected["active_storefront_rail_id"]:
+            errors.append("inert Stripe must hide the public storefront")
+        invented = [
+            row["id"]
+            for row in projected["rails"]
+            if row["id"] != "stripe-livemode-acct_1U6HI9ATH4EDE7XD"
+            and row.get("public_presentation") == "EXPOSE"
+        ]
+        if invented:
+            errors.append("unproven rails must stay inert: %s" % ",".join(invented))
+    if "paypal-wallet-unmeasured" not in projected["inert_rails"]:
+        errors.append("PayPal must stay inert without owner KYC evidence")
+    if not projected["failover_owner_actions"]:
+        errors.append("inert rails must keep one-click owner actions")
     return errors
 
 
@@ -354,14 +400,7 @@ def measure_root(root: str) -> dict[str, Any]:
         errors.append("authorization/settlement/payout/bank must stay NOT_LANDED")
     if projected["intake_url"] != "mailto:tokenjunkielabs@gmail.com":
         errors.append("intake fallback must stay the public email")
-    if not projected["has_lawfully_chargeable_path"]:
-        errors.append("fresh Stripe evidence must keep at least one owner-usable chargeable path")
-    if projected["active_storefront_rail_id"] != "stripe-livemode-acct_1U6HI9ATH4EDE7XD":
-        errors.append("active public storefront must be the proven Stripe rail")
-    if "paypal-wallet-unmeasured" not in projected["inert_rails"]:
-        errors.append("PayPal must stay inert without owner KYC evidence")
-    if not projected["failover_owner_actions"]:
-        errors.append("inert rails must keep one-click owner actions")
+    errors.extend(storefront_policy_errors(projected))
     errors.extend(compose_errors(root, registry, projected))
     errors.extend(html_surface_errors(root))
     for rel in (
