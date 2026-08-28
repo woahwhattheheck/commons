@@ -16,3 +16,6 @@ __pycache__/
 _git_ok.py
 # Defense in depth only: revenue evidence roots must still be outside Commons.
 owner-private/
+*.vault
+**/.commons/*.vault
+

@@ -99,9 +99,13 @@ Repository-controlled host pack (no tokens in git):
 ```text
 integrations/grok_slack/env.example
 integrations/grok_slack/run.sh
+integrations/grok_slack/run-handoff.ps1
+integrations/grok_slack/run-handoff.sh
+integrations/grok_slack/handoff.py
 integrations/grok_slack/Dockerfile
 integrations/grok_slack/compose.yml
 integrations/grok_slack/commons-grok-slack.service
+integrations/grok_slack/commons-grok-slack-handoff.service
 ```
 
 ```text
@@ -121,10 +125,29 @@ or container `env_file`. Process environment wins. Doctor reports
 present/missing, never values. `GITHUB_TOKEN` is optional connector
 infrastructure for Contents rate limits and is not a Commons admission gate.
 
+Desktop activation is a local browser button, not a command-line paste.
+Gemini keeps `127.0.0.1:8780`. Grok handoff binds `127.0.0.1:8789` so the
+two bridges coexist and Grok tokens never enter the Gemini process or
+`~/.gemini`. Slack app id is `A0BTJMFPTT6`.
+
+```text
+integrations/grok_slack/run-handoff.ps1
+python integrations/grok_slack/handoff.py serve --open-browser
+```
+
+Open `http://127.0.0.1:8789/`, paste the bot and app tokens once, press
+Activate. The page stores a current-user encrypted vault (Windows DPAPI,
+otherwise user-bound authenticated ciphertext, mode 0600). Status JSON
+reports present/missing and live/not-live only. Tokens are never rendered
+back, logged, committed, or written as plaintext. After restart, `serve`
+and `handoff.py` reload the vault. Missing vault+env remains honest
+`RUNTIME_UNCONFIGURED` / `live: false`.
+
 `run.sh` and the systemd unit refuse to restart-loop on
-`RUNTIME_UNCONFIGURED` (exit 2). Inject tokens, then start. SQLite lives on
-a durable volume (`COMMONS_GROK_SLACK_STATE_DB`); `serve` runs
-`recover_pending` before consuming new work and on a recovery interval.
+`RUNTIME_UNCONFIGURED` (exit 2). Inject tokens via the loopback page or
+the host environment, then start. SQLite lives on a durable volume
+(`COMMONS_GROK_SLACK_STATE_DB`); `serve` runs `recover_pending` before
+consuming new work and on a recovery interval.
 
 ## Idempotency
 
