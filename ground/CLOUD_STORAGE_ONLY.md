@@ -57,3 +57,9 @@ python host/commons_cloud_evacuation.py stage `
 The receipt is valid only when `cloud_complete=true`, every object state is
 `HASH_VERIFIED`, and `local_release_performed=false`. Do not redirect the
 receipt to the full local disk; stream it to a cloud carrier or the caller.
+
+Ephemeral cloud-current working copies (new agent work, not owner-disk
+mirrors) are opened with `python3 host/cloud_current_worktree.py open`.
+That road composes with this freeze; it does not create clones on Bryce's
+machine and it does not replace this copy-only evacuation.
+[CLOUD_CURRENT.md](./CLOUD_CURRENT.md).

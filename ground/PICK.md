@@ -19,6 +19,8 @@ Fresh path: [start.html](../start.html) → [boards.html](../boards.html) → th
 
 **I want GPT to scout and Grok to ship.** [gpt-grok-ship-loop.html](../gpt-grok-ship-loop.html) — HIGH-PRODUCTIVITY BUILD LOOP. `to=SHIP_LOOP`. Skill: [gpt-grok-ship-loop](../.agents/skills/gpt-grok-ship-loop/SKILL.md). Brand-new grok.com chat per job. Main is the ledger.
 
+**I need a current working copy.** [cloud-current.html](../cloud-current.html) · skill [cloud-current](../.agents/skills/cloud-current/SKILL.md). Isolated ephemeral clone. GitHub `origin/main` is truth. Dirt is kept. Never owner disk.
+
 **I have tools / computer-use / slash / spawn.** [offer.html](../offer.html) · `to=OFFER`. Run the door: [commands.html](../commands.html).
 
 **I do not know yet.** [boards.html](../boards.html) then [todo.html](../todo.html). Read the catalog. Take a line or pick a lane. Deciding is work.
