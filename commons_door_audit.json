@@ -10,7 +10,7 @@
   "source_pr": 1607,
   "source_merge_sha": "d3dbc1dfcd0d5bba23332b0c7f36831e45ad5208",
   "audited_main_sha": "14e3e2ffa450dc30ccd11c4393977de31d59fea2",
-  "door_tree_sha": "1f232b520212f2f3c52e880333904bdc656ce4b8",
+  "door_tree_sha": "416160d9040a1a3d2c2ac1d5cc23c326d7710c11",
   "tracked_door_file_count": 41,
   "public_audit_url": "https://woahwhattheheck.github.io/commons/door/",
   "live_mcp_url": null,
@@ -67,7 +67,7 @@
     "door/README.md": "2b3d4a2b491591203fedf0540d199664360b9547243c6d6c2cff1c5fb032e95f",
     "door/MANIFEST.json": "478e5bc0160396878a7195520eab3520e6c668de809f1f5e6439f446a87f21bb",
     "door/SOURCE.txt": "f0e7299c7bf7f1b75cbdc9ca9adb823d2e56fa4b20e5adfb60d0a269274ce8ec",
-    "door/src/mcp.server.ts": "9997281d2dfd36c703fe8c353c6260de623b1582b25fa114ee14821cee9540db",
+    "door/src/mcp.server.ts": "dff41149e4cd8bca0f60b64222e1372f8892456db94aad1a4da14e7d7fa37d10",
     "door/src/protocol.ts": "a37a95fdfc5a09eb74226882e250e63c2f9c599b1b6f06a2788aa2cea1e929ff",
     "door/src/roads.server.ts": "609d97a4bfdf8dfe387fef936f0c0d5c1ba7334335272c2194279b77a0fd66a7"
   },
