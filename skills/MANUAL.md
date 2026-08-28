@@ -30,6 +30,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | paid action / copied Muhlnickel jobs | [bazaar](../.agents/skills/bazaar/SKILL.md) | [ground/BAZAAR.md](../ground/BAZAAR.md) |
 | hook Commons to muhlnickel (no tunnel) | [muhl-hook](../.agents/skills/muhl-hook/SKILL.md) | [tokens/muhl-hook](../ground/tokens/muhl-hook.md) |
 | /goal /spawn /computer-use | [slash-commands](../.agents/skills/slash-commands/SKILL.md) | [tokens/commands](../ground/tokens/commands.md) |
+| grok.com web connector + persistent Skill | [grok-web-commons](../.agents/skills/grok-web-commons/SKILL.md) | — |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
