@@ -19,6 +19,7 @@ on:
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
       - 'test_dio_revenue_contract.py'
+      - 'test_gitignore_eof.py'
       - 'test_payment_ready.py'
       - 'test_revenue_recovery.py'
   pull_request:
@@ -37,6 +38,7 @@ on:
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
       - 'test_dio_revenue_contract.py'
+      - 'test_gitignore_eof.py'
       - 'test_payment_ready.py'
       - 'test_revenue_recovery.py'
   workflow_dispatch:
@@ -58,7 +60,7 @@ jobs:
         with:
           node-version: '20'
       - name: focused Python contract suite
-        run: python -W error -m unittest -q test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py
+        run: python -W error -m unittest -q test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
       - name: actual diagnostic inline DLP
         run: |
           node test_diagnostic_dlp.js
@@ -69,7 +71,7 @@ jobs:
           python host/revenue_recovery.py measure
       - name: syntax and JSON checks
         run: |
-          python -m py_compile host/revenue_recovery.py host/payment_ready.py test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py
+          python -m py_compile host/revenue_recovery.py host/payment_ready.py test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
           node --check carrier.js
           node --check test_diagnostic_dlp.js
           node --check test_carrier_from_memory.js
