@@ -193,6 +193,48 @@ class GrokExecutorQueueTests(unittest.TestCase):
             self.assertEqual(second["action"], "START_STRUCTURAL_CAPTURE")
             self.assertTrue(second["invoke_grok"])
 
+    def test_capture_started_failover_preserves_write_ahead_ack_for_next_executor(self):
+        with tempfile.TemporaryDirectory() as td:
+            queue = GrokExecutorQueue(td)
+            queue.submit(self.request(), now=T0)
+            first = self.claim(queue)
+            queue.acknowledge_capture_start(
+                first["job_id"],
+                self.capture_ack(),
+                attempt_id=first["attempt_id"],
+                lease_id=first["lease_id"],
+                executor_id=first["executor_id"],
+                now=T1,
+            )
+            released = queue.release(
+                first["job_id"],
+                "PAGE_UNCONFIRMED",
+                "page failed before submit intent",
+                attempt_id=first["attempt_id"],
+                lease_id=first["lease_id"],
+                executor_id=first["executor_id"],
+                now=T2,
+            )
+            self.assertTrue(released["zero_spend_before_submission"])
+            self.assertEqual(
+                released["job"]["checkpoint"]["execution"]["submission_state"],
+                "CAPTURE_STARTED",
+            )
+            self.assertIsNotNone(
+                released["job"]["checkpoint"]["execution"]["capture_ack"]
+            )
+
+            second = queue.claim(first["job_id"], "executor-beta", now=T3)
+            self.assertEqual(second["action"], "PREPARE_ONE_SUBMISSION")
+            prepared = queue.prepare_submission(
+                second["job_id"],
+                attempt_id=second["attempt_id"],
+                lease_id=second["lease_id"],
+                executor_id=second["executor_id"],
+                now="2026-08-28T10:00:16Z",
+            )
+            self.assertTrue(prepared["submit_allowed"])
+
     def test_crash_after_submit_intent_is_output_only_on_failover_and_never_replays(self):
         with tempfile.TemporaryDirectory() as td:
             queue = GrokExecutorQueue(td)
