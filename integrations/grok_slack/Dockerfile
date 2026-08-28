@@ -20,12 +20,16 @@ RUN mkdir -p /opt/commons/integrations/grok_slack /opt/commons/integrations/grok
 COPY integrations/grok_slack/__init__.py \
      integrations/grok_slack/app_manifest.yaml \
      integrations/grok_slack/bridge.py \
+     integrations/grok_slack/handoff.py \
      integrations/grok_slack/canary.py \
      integrations/grok_slack/env.example \
      integrations/grok_slack/run.sh \
+     integrations/grok_slack/run-handoff.sh \
+     integrations/grok_slack/run-handoff.ps1 \
      integrations/grok_slack/Dockerfile \
      integrations/grok_slack/compose.yml \
      integrations/grok_slack/commons-grok-slack.service \
+     integrations/grok_slack/commons-grok-slack-handoff.service \
      integrations/grok_slack/README.md \
      /opt/commons/integrations/grok_slack/
 COPY integrations/grokcom_revenue/__init__.py \

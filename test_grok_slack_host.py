@@ -83,6 +83,7 @@ class GrokSlackHostTests(unittest.TestCase):
         text = (bridge.integration_root() / "Dockerfile").read_text(encoding="utf-8")
         self.assertNotIn("COPY integrations/grok_slack /opt/commons/integrations/grok_slack", text)
         self.assertIn("integrations/grok_slack/bridge.py", text)
+        self.assertIn("integrations/grok_slack/handoff.py", text)
         self.assertIn("integrations/grokcom_revenue/orchestrator.py", text)
         self.assertNotIn(".env.local", text)
         self.assertIsNone(bridge.TOKEN_VALUE_RE.search(text))

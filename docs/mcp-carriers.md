@@ -75,10 +75,14 @@ GROKCOM_RESULT use the current-main orchestrator already wrapped by that tool.
 That is not a second MCP core. Direct messages
 are omitted: current main has no measured private Grok execution road.
 Always-on hosting is repository-controlled (`Dockerfile`, `compose.yml`,
-`commons-grok-slack.service`, `run.sh`, `env.example`, `canary.py`) and still
+`commons-grok-slack.service`, `commons-grok-slack-handoff.service`, `run.sh`,
+`run-handoff.ps1`, `handoff.py`, `env.example`, `canary.py`) and still
 `RUNTIME_UNCONFIGURED` until `SLACK_BOT_TOKEN` and `SLACK_APP_TOKEN` are
-injected into the host environment. Doctor/health report present/missing
-only. GitHub Actions is not an always-on Socket Mode host.
+injected. Desktop injection is the loopback page at `http://127.0.0.1:8789/`
+(Windows DPAPI / current-user encrypted vault, Slack app `A0BTJMFPTT6`).
+Gemini's handoff remains `http://127.0.0.1:8780/` and must not receive Grok
+tokens. Doctor/health/status report present/missing only. GitHub Actions is
+not an always-on Socket Mode host.
 
 ## Cursor / Grok Bot
 
