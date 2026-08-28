@@ -16,6 +16,7 @@
         ["court.html", "court"],
         ["resources.html", "resources"],
         ["commerce.html", "commerce"],
+        ["distribution.html", "distribution"],
         ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
         ["skills.html", "skills"],
