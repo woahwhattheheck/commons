@@ -4,7 +4,7 @@
   "kind": "github-plus-mcp-client",
   "status": "live-github-road-mcp-tool-cloud-executor-automatic-capture",
   "surface": "grok.com",
-  "auth": "none-on-commons-mcp",
+  "auth": "none",
   "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
   "transport": "streamable-http",
   "tool": "route_grokcom_revenue_work",
