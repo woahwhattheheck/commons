@@ -115,6 +115,42 @@ def main():
     historical = diff("p/old-gate-record.md", ["The capability declaration is required."])
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
 
+    # Compact catalog exclusion lists may name retired mechanisms only when they
+    # do not collocate claim/seat with "gate" on one line. PR 4924's compact
+    # out_of_scope one-liners failed open-door-guard on this collocation.
+    catalog_blocked = "\n".join(
+        [
+            diff(
+                "revenue/scope_to_delivery/catalog_bindings.json",
+                ['      "out_of_scope": ["claim-purchase", "access-gate", "from-equals-payment"],'],
+            ),
+            diff(
+                "revenue/scope_to_delivery/catalog_bindings.json",
+                ['      "out_of_scope": ["seat", "claim", "access-gate"],'],
+            ),
+        ]
+    )
+    assert rules(catalog_blocked) == {"admission-phrase"}, rules(catalog_blocked)
+
+    catalog_allowed = diff(
+        "revenue/scope_to_delivery/catalog_bindings.json",
+        [
+            '      "out_of_scope": ["membership", "gated-entitlement", "private-buyer-data-on-main"],',
+            '      "out_of_scope": ["claim-purchase", "gated-entitlement", "from-equals-payment"],',
+            '      "out_of_scope": ["seat", "claim", "gated-entitlement"],',
+        ],
+    )
+    assert guard.scan_diff(catalog_allowed) == [], guard.scan_diff(catalog_allowed)
+
+    bindings_path = Path("revenue/scope_to_delivery/catalog_bindings.json")
+    binding_lines = [
+        guard.AddedLine(bindings_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(bindings_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    binding_violations = guard.scan_added(binding_lines)
+    assert binding_violations == [], binding_violations
+
+
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.
     original_run = guard.subprocess.run
