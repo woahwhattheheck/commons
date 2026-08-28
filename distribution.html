@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Distribution — channel fit, packages, honest status</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260826b"></script>
+<script src="./carrier.js?v=20260824a"></script>
+<style>
+body{max-width:78rem}
+.hero{padding:2rem 0 1rem}
+.hero h1{font-size:clamp(2.2rem,7vw,5.2rem);line-height:.96;max-width:14ch;margin:.25rem 0 1rem}
+.lead{font-size:1.2rem;max-width:55rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.card h3,.panel h2{margin-top:0}
+.pill{display:inline-block;border:1px solid #55555f;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-size:.82rem}
+.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.4rem}
+.truth span{border:1px solid #33333a;padding:.5rem;text-align:center}
+.truth b{display:block;font:700 1.2rem/1.2 ui-monospace,monospace}
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.filters button{border:1px solid #55555f;background:#161618;color:inherit;border-radius:999px;padding:.45rem .8rem}
+.filters button[aria-pressed="true"]{border-color:#62b879;background:#142018}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem}
+table.matrix th,table.matrix td{border-bottom:1px solid #2a2a30;padding:.4rem .35rem;text-align:left;vertical-align:top}
+.state-SURFACE_LIVE{color:#62b879}
+.state-PACKAGE_READY{color:#d0a252}
+.state-UNFIT,.state-NOT_LISTED{color:#9a9aa3}
+.state-BLOCKED_PROVIDER_ACCOUNT,.state-BLOCKED_IDENTITY_KYC,.state-BLOCKED_CHARGES_DISABLED,.state-BLOCKED_REGISTRATION{color:#d07070}
+pre.copy{white-space:pre-wrap;max-height:22rem;overflow:auto}
+#sku-intake textarea,form#say textarea,form#say input{width:100%;max-width:40rem;box-sizing:border-box}
+</style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Once evidence validates a path, stop re-litigating it: build through it at full speed and reopen doubt only when a named boundary check or new evidence invalidates the cache. <strong>Commerce is included:</strong> when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
+<p class="law">OPEN DISTRIBUTION DOOR. Fit offers to channels. Generate truthful packages. Track listing/live/lead status without inventing any of them. Route interest back to canonical conversion. No login. A package is not a listing. A surface is not a marketplace.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./agent-rescue.html">agent survival</a> · <a href="./bazaar.html">bazaar</a> · <a href="./offer.html">offer</a> · <a href="./humans.html">human outcomes</a> · <a href="./action.html">Action Pad</a></p>
+<header class="hero">
+  <p class="note">Distribution layer · <code>host/distribution.py</code></p>
+  <h1>Sell on the roads that fit. Never fake the listing.</h1>
+  <p class="lead">Commons already has sellable outcomes. This door identifies which offers fit which public marketplace, partner channel, procurement road, or developer ecosystem; writes channel-ready packages from canonical terms; and sends buyer interest back to the existing conversion pages. It does not mint accounts, listings, customers, or cash.</p>
+</header>
+<section class="panel" aria-labelledby="honest-heading">
+  <h2 id="honest-heading">Honest counts</h2>
+  <div class="truth" id="truth-counts">
+    <span><b id="c-packages">—</b>packages ready</span>
+    <span><b id="c-live-mkt">0</b>live marketplace listings</span>
+    <span><b id="c-surfaces">—</b>live Commons surfaces</span>
+    <span><b id="c-leads">0</b>verified leads</span>
+    <span><b id="c-cash">0.00</b>collected cash USD</span>
+    <span><b id="c-blocked">—</b>blocked fit pairs</span>
+  </div>
+  <p class="note" id="status-src">Loading revenue/distribution/status.json…</p>
+</section>
+<section class="panel">
+  <h2>Channel families</h2>
+  <p>Four external families plus Commons conversion surfaces and recorded Stripe URLs. Marketplace families have no authorized account in this snapshot. Submit stays false.</p>
+  <div class="grid" id="channel-cards"></div>
+</section>
+<section class="panel">
+  <h2>Offer × channel matrix</h2>
+  <p>FIT means a truthful package can be generated. LIVE marketplace listings require a verified URL. None exist here.</p>
+  <div class="filters" id="family-filters"></div>
+  <div style="overflow:auto">
+    <table class="matrix" id="matrix-table">
+      <thead><tr><th>Offer</th><th>Channel</th><th>Family</th><th>Fit</th><th>Listing</th><th>Conversion</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+<section class="panel" id="package-panel">
+  <h2>Channel-ready package</h2>
+  <p>Pick a FIT pair. Copy the package. Do not submit it through an unauthorised account. Conversion stays on the canonical page.</p>
+  <label>Offer
+    <select id="offer-select"></select>
+  </label>
+  <label>Channel
+    <select id="channel-select"></select>
+  </label>
+  <p id="package-state" class="note"></p>
+  <pre class="copy" id="package-copy"></pre>
+  <button type="button" id="copy-package">Copy package</button>
+</section>
+<section class="panel" id="sku-intake" aria-labelledby="inbound-heading">
+  <h2 id="inbound-heading">Route inbound interest</h2>
+  <p>Public, non-confidential signal only. This form posts to the existing OFFER board. It does not create a CRM row, a lead count, or a customer.</p>
+  <form id="say">
+    <label>from <input name="from" placeholder="name or organization (optional)"></label>
+    <input type="hidden" name="to" value="OFFER">
+    <input type="hidden" name="board" value="OFFER">
+    <input type="hidden" name="subject" value="COMMONS DISTRIBUTION INBOUND">
+    <label>public inbound
+      <textarea id="inbound-body" name="body" required rows="10">PLAIN: Public, non-confidential buyer interest from a distribution channel.
+CHANNEL:
+OFFER_ID:
+PUBLIC_OBJECTIVE:
+PUBLIC_ARTIFACT:
+PUBLIC_CONTACT_URL:
+START_WINDOW:
+CONVERSION:
+NOTE: This is intent only. It is not a lead, customer, or payment.</textarea>
+    </label>
+    <button type="submit">Post inbound to OFFER</button>
+  </form>
+  <pre id="out" aria-live="polite"></pre>
+</section>
+<p class="note">Machine: <a href="./revenue/distribution/status.json">status.json</a> · <a href="./revenue/distribution/packages.json">packages.json</a> · <a href="./revenue/distribution/matrix.json">matrix.json</a> · <a href="./revenue/distribution/channels.json">channels.json</a> · CLI <code>python3 host/distribution.py</code>. Law: <a href="./ground/DISTRIBUTION.md">ground/DISTRIBUTION.md</a>. Canonical commerce stays <a href="./commerce.html">commerce.html</a>. 337 NO.</p>
+<script src="./distribution.js?v=20260828a"></script>
+</body>
+</html>
