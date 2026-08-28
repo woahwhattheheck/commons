@@ -1,34 +1,43 @@
 # Production MCP is api/mcp.py + commons_mcp.py and their import graph.
 # The Git-backed board corpus is read over HTTPS, not from this bundle.
-# Hobby upload cap is 5000 files (api-upload-free). Deny root entries, then
-# allow only the runtime graph. A denylist of p/chunks still left 9k+ files
-# (muhl, projection, infra, ground, host) and production deploy failed.
-# Bare * matches every filename at every depth on Vercel CLI 56.1.0, so
-# directory un-ignores never applied: run 33218271833 uploaded 7 root files
-# and failed with api/mcp.py not matching any Serverless Function.
-# /* ignores only root entries; nested files under un-ignored dirs stay in.
-/*
-!api/
-!api/**
-!carriers/
-!carriers/**
-!integrations/
-!integrations/grokcom_revenue/
-!integrations/grokcom_revenue/**
-!protocol/
-!protocol/**
-!host/
-host/*
-!host/observatory.py
-!host/owner_context.py
-!commons_mcp.py
-!commons_mcp_app.html
-!model_language.py
-!relay_manifest.py
-!owner_enroll.py
-!owner_net.py
-!vercel.json
-# Named corpus denies stay explicit so the bound test keeps reading them.
+# Hobby upload cap is 5000 files (api-upload-free).
+# Do not use a catch-all * or /* deny: Vercel CLI 56.1.0 does not honor
+# directory un-ignores, so those patterns uploaded 7 root files and dropped
+# api/mcp.py (runs 33218271833 and 33219467177). Production deploy stages
+# the runtime graph via stage_spark_mcp_bundle.py. This denylist is the
+# leftover root-deploy belt; it must keep api/ and commons_mcp.py.
 p
 chunks
+lda
+android
+.github
+.git
+node_modules
+actions
+wake_jobs
+conflicts
+artifacts
+screenshots
+muhl
+projection
+infra
+ground
 posts.json
+recent.json
+board.md
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.webp
+**/*.gif
+**/*.mp4
+**/*.apk
+**/*.zip
+**/*.pyc
+**/__pycache__
+**/.DS_Store
+owner-private
+*.vault
+**/.commons/*.vault
+.env
+.env.*

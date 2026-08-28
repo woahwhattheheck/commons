@@ -3,10 +3,10 @@
 # no-click road after VERCEL_TEAM_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID
 # exist. VERCEL_TOKEN (project-scoped newer format) is rejected by Vercel CLI
 # 56.x/59.x; deploy auth is the team-scoped CLI-compatible secret only.
-# .vercelignore allowlists the MCP runtime graph so Hobby api-upload-free
-# (5000 files) cannot upload muhl/projection/board corpus. Deny with /*
-# not bare *: Vercel CLI 56 treated * as every depth and dropped api/mcp.py
-# (run 33218271833, 7 deployment files).
+# Vercel CLI 56.1.0 .vercelignore does not honor directory un-ignores after
+# * or /* (runs 33218271833 and 33219467177 uploaded 7 root files and
+# dropped api/mcp.py). Stage the runtime graph with
+# stage_spark_mcp_bundle.py and deploy that directory. Hobby cap 5000.
 #
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are
@@ -26,6 +26,7 @@ on:
       - "commons_mcp.py"
       - "vercel.json"
       - ".vercelignore"
+      - "stage_spark_mcp_bundle.py"
       - "carriers/**"
       - "host/observatory.py"
       - "integrations/grokcom_revenue/**"
@@ -128,7 +129,15 @@ jobs:
           else
             vercel link --yes --token="${VERCEL_TOKEN}" --project "${VERCEL_PROJECT_NAME}" --scope "${VERCEL_SCOPE}"
           fi
-          vercel deploy --prod --yes --token="${VERCEL_TOKEN}" | tee /tmp/vercel-deploy.log
+          STAGE="$(mktemp -d)"
+          python3 stage_spark_mcp_bundle.py --src . --dst "${STAGE}"
+          if [ -d .vercel ]; then
+            cp -a .vercel "${STAGE}/.vercel"
+          fi
+          (
+            cd "${STAGE}"
+            vercel deploy --prod --yes --token="${VERCEL_TOKEN}" | tee /tmp/vercel-deploy.log
+          )
           {
             echo "## spark-mcp-production deployed"
             echo
