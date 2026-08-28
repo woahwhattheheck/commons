@@ -47,6 +47,19 @@
 > ```
 >
 
+> **Pinned owner law — TRUST AFTER PROOF.**
+>
+> **Proof is cached. Build unless the bytes moved.** Verification must have a
+> stopping condition. Once evidence validates a road,
+> cache the proof, keep cheap boundary checks or named canaries, and build through
+> it at full speed. Reopen doubt only when fresh evidence invalidates the cache.
+> This includes commerce: once the offer, delivery path, buyer road, and honest
+> payment state are verified, make the offer, ask for the sale, fulfill, and
+> record the attributable result. Never invent buyers, replies, payments, cash,
+> or receipts. Full law: [ground/TRUST.md](./ground/TRUST.md). Human essay:
+> [trust.html](./trust.html). Slack source: `1787926670.567689`; owner directive:
+> `1787926777.130099`.
+>
 > **Pinned owner resource route — CURSOR QUOTA HOLD**
 >
 > Do not launch, wake, resume, assign, delegate to, or test with Cursor, Cursor

@@ -315,3 +315,7 @@ body:has(#say) .note{
   .door-grid{grid-template-columns:repeat(auto-fill,minmax(7.6rem,1fr))}
   .home-bar a,.door-tabs label,.door-btn{font-size:.95rem}
 }
+
+/* Trust after proof is operating law, not footer copy. */
+.trust-law{border:2px solid #d0a252;background:#1a160d;color:#f4e8c2;padding:.85rem 1rem;margin:.75rem 0 1rem;box-shadow:0 0 0 1px #4e3d19 inset}
+.trust-law strong:first-child{letter-spacing:.06em}.trust-law a{font-weight:800}

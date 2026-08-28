@@ -7,6 +7,8 @@ import sys
 import unittest
 from pathlib import Path
 
+from host import gpt_action_packets
+
 
 ROOT = Path(__file__).resolve().parent
 
@@ -38,6 +40,35 @@ class GptActionPacketTests(unittest.TestCase):
         right_now = (ROOT / "right-now.html").read_text(encoding="utf-8")
         self.assertIn("agent-triage.html", right_now)
         self.assertIn("ho-agent-failure-diagnostic", right_now)
+
+    def test_ready_send_requires_live_first_party_receipt_and_confirm(self) -> None:
+        packet = {
+            "kind": "GPT_ACTION_PACKETS",
+            "cash": {"collected_cash_usd": 0, "cash_claimed": False},
+            "packets": [
+                {
+                    "candidate_id": "qualified-live",
+                    "status": "ready-to-send under existing authorization",
+                    "lane": "ready-to-send",
+                    "economic_state_if_successful": "DISCOVERED",
+                    "concise_proposed_message": "Bounded truthful message.",
+                    "live_first_party_receipt": {
+                        "state": "LIVE",
+                        "evidence": "receipt://first-party/example",
+                    },
+                    "confirm_before_send": True,
+                }
+            ],
+        }
+        gpt_action_packets.validate_packets(packet)
+        action = gpt_action_packets.next_external_action({}, packet)
+        self.assertEqual(
+            action,
+            "confirm once, then send authorized packet qualified-live",
+        )
+        del packet["packets"][0]["live_first_party_receipt"]
+        with self.assertRaises(gpt_action_packets.PacketError):
+            gpt_action_packets.validate_packets(packet)
 
     def test_cli_validate_and_next(self) -> None:
         validate = subprocess.run(
