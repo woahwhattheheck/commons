@@ -10,6 +10,13 @@ Run 33204247596 on SHA 9fc85d4c58e895fba469d029aea2a7698492cae4 then
 hit REBASE_CONFLICT: add/add on three grkrev wake_jobs rows plus a content
 split on grok-community-evidence-portable-20260828.json. Cite:
 woahwhattheheck/commons:job-watchdog:9fc85d4c58e895fba469d029aea2a7698492cae4:land job state on main only
+
+Sibling run 33204368748 on SHA e9c3e87a70bfe135747ee5b41d647b5ad1e72551
+failed the same land step with the same four wake_jobs paths after a
+two-hour queue on a stale checkout. Compose landed in #5124. Unique
+leftover: refresh onto current main before the tick so queued runs do
+not replay hours-old job files. Cite:
+woahwhattheheck/commons:job-watchdog:e9c3e87a70bfe135747ee5b41d647b5ad1e72551:land job state on main only
 """
 from __future__ import annotations
 
@@ -163,6 +170,10 @@ class JobWatchdogLandTests(unittest.TestCase):
     def test_workflow_lands_through_retrying_helper(self):
         text = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("python3 -m harness_wake.land", text)
+        self.assertIn("name: refresh onto current main", text)
+        self.assertIn("git fetch origin main", text)
+        self.assertIn("git reset --hard origin/main", text)
+        self.assertNotIn("--force", text)
         land_step = text.split("name: land job state on main only", 1)[1]
         self.assertNotIn("git pull --rebase origin main", land_step)
         self.assertNotIn("git push origin HEAD:main", land_step)
