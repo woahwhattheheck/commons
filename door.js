@@ -18,6 +18,7 @@
         ["commerce.html", "commerce"],
         ["distribution.html", "distribution"],
         ["reply-to-revenue.html", "reply ledger"],
+        ["payment-capability.html", "payment rails"],
         ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
         ["skills.html", "skills"],

@@ -1,0 +1,44 @@
+{
+  "added": "2026-08-28",
+  "capability": "Provider-neutral payment rails on the landing hub. Public checkout is the CHARGEABLE Stripe livemode rail only. PayPal, GitHub Sponsors, and Square stay inert without owner KYC. If Stripe fails closed, hide public Stripe URLs and keep owner one-click EXTERNAL_OWNER_ACTION paths. Cash stays USD 0. AUTH/SETTLE/PAYOUT/BANK_AVAILABLE remain NOT_LANDED.",
+  "carrier": "GROK_BUILD",
+  "claimed_paths": [
+    "door.js",
+    "index.html",
+    "boards.html",
+    "hub_pages.py",
+    "host/listing_registry.py",
+    "host/payment_capability.py",
+    "test_payment_capability_door_hub.py",
+    "test_payment_capability_hub_pages.py",
+    "test_payment_capability_compose.py"
+  ],
+  "dependencies": [
+    "payment-capability-20260828-01"
+  ],
+  "id": "payment-capability-hub-failover-20260828-02",
+  "name": "Payment-capability hub failover",
+  "next_gap": "Cite payment-capability-20260828-01. Alternate rails need owner KYC inside official provider UIs. Do not invent a PayPal.me, Sponsors profile, or cash. Chargeable is not BANK_AVAILABLE.",
+  "owner_subsystem": "commerce",
+  "public_entrypoint": "payment-capability.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "pay.html",
+    "commerce.html",
+    "listing-registry.html",
+    "ground/RESOURCE_LEDGER.json",
+    "ground/PROFITABILITY_BUILD_MAP.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_payment_capability.py",
+    "test_payment_capability_door_hub.py",
+    "test_payment_capability_hub_pages.py",
+    "test_payment_capability_compose.py"
+  ]
+}

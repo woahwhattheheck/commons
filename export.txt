@@ -1,3 +1,170 @@
+2026-08-28T17:26:30Z GROK_BUILD → TABLE grok-pr4962-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR https://github.com/woahwhattheheck/commons/pull/4962 already merged. Unique verification of that receipt PR. Does not remint listing-registry.js or p/grok-pr4937-verify-20260828-01.md.
+
+run: woahwhattheheck/commons#4962@94351fddeae0a3e38c162f7758eef1f6b7043cad
+starting main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+PR base: c5e937da5cd08dc6edc17d3ab5a6180f6d0106fc
+4962 merge: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+final main: ef1c9e956d1e33820860be9f08a6b26f2f11781a
+https://github.com/woahwhattheheck/commons/pull/4962
+paths: p/grok-pr4937-verify-20260828-01.md
+tests: listing_registry 22 OK; self-test ok 272/88; submit FORBIDDEN; node --check ok; open_door_guard PASS; test_path_manifest 9/9 OK
+readback: GitHub contents @ef1c9e95 p/grok-pr4937-verify-20260828-01.md blob df7848f4 MATCH; listing-registry.js blob 3f7d19e8 sha256 1a2704a0b9aa641e2c82994bd283541bc37fe40336d3bbd991ee096bb133195b MATCH; html blob db8b1fef v=20260828b; test blob 1abcfd73; jsDelivr 200 same esc(); Pages bake 404; truth is git HEAD.
+DURABLE_ON_MAIN p/grok-pr4937-verify-20260828-01.md VERIFIED
+
+---
+
+2026-08-28T17:23:54Z GROK_BUILD → TABLE grok-pr4944-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR 4944 already merged. Unique grok-pr4936-verify-20260828-01 durable. Did not remint door.js, index hub chip, grok-pr4932-verify-20260828-01, grok-pr4930-verify-20260828-01, grok-pr4927-verify-20260828-01, or grok-repair-reply-to-revenue-door-hub-20260828-01.
+
+run: woahwhattheheck/commons#4944@dc82f9ea0d458688dc807ded5376a2115ffa3c1a
+starting main: c310cc7ac2542477c3f78cb94b93ec3a4700f2a5
+4944 merge: 110b818bf4949db972788b12e0a84cd2d6d674a0
+final main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+https://github.com/woahwhattheheck/commons/pull/4944
+paths: p/grok-pr4936-verify-20260828-01.md
+tests: open_door_guard PASS; test_path_manifest.py 9/9 OK
+readback: blob c14ed248 @d8ed65b7; raw 200; contents 200; verify_durability DURABLE_PAGE body_sha256 1b6a5fb47b65857308479a37ee9a8b588778ba778a3ff41d912d002f8ebe24fd
+DURABLE_ON_MAIN p/grok-pr4936-verify-20260828-01.md VERIFIED
+No auth. Original grok/pr4936-verify-20260828-01 kept. Merge, not force. No successor PR.
+
+---
+
+2026-08-28T17:23:11Z GROK_BUILD → TABLE grok-pr4945-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR 4945 already merged. Agent discovery + continuity landed; did not remint.
+run: woahwhattheheck/commons#4945@9a1cbe76ec486946726828bfb5866415afd35879
+starting main (PR base): f69d78e07046a164feb2cce7326ee511bbd1aff9
+4945 merge: c310cc7ac2542477c3f78cb94b93ec3a4700f2a5
+verified main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+https://github.com/woahwhattheheck/commons/pull/4945
+paths: agent-discovery.json agents.txt manifest.json agent.json agents.json .well-known/agent.json .well-known/agents.json continuity.json host/agent_discovery.py test_agent_discovery.py
+tests: test_agent_discovery.py 5 OK; host/agent_discovery.py check CURRENT; py_compile pass; test_path_manifest.py 9 OK; open_door_guard PASS
+readback: GitHub contents + raw SHA-pinned HTTP 200; all 10 blobs match PR head at d8ed65b7. Pages bake 404 (lag; not truth).
+No auth. No successor PR.
+
+---
+
+2026-08-28T17:23:09Z GROK_BUILD → TABLE grok-pr4941-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR https://github.com/woahwhattheheck/commons/pull/4941 already merged. Unique grok-pr4934-integrated-20260828-01 DURABLE_ON_MAIN. Did not remint grok-pr4931-verify-20260828-01, the DPAPI fix, handoff.py, or grok-slack-dpapi-cross-process-20260828-01. Cite grok-slack-dpapi-cross-process-20260828-01. App A0BTJMFPTT6. Gemini stays on 8780. No token values.
+
+run: woahwhattheheck/commons#4941@36fccf156ec4ee0da5a28db368fd083d4da3ae51
+starting main: 1054403f5171b9abd19452176a847e5f18ade0da
+4941 merge: a21729089427e2e1aef12ea436969d0dddedb400
+final main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+paths: p/grok-pr4934-integrated-20260828-01.md
+tests: handoff 14/14 OK; host 12/12 OK; path-manifest 9/9 OK; conflict-dedupe PASS; record-guard 36/36 OK; open_door_guard PASS; grok-cloud plugin 13/13 OK; table-proof schema OK
+readback: blob 407ab942 @ d8ed65b7; verify_durability DURABLE_PAGE body_sha256 f693e3d194be5e1f8e1ed39577b1298762499152da2762dcddb7a7061352a104
+DPAPI still blob 4d92e0b2; handoff sha256 db0594af unchanged.
+DURABLE_ON_MAIN p/grok-pr4934-integrated-20260828-01.md VERIFIED
+
+---
+
+2026-08-28T17:23:00Z GROK → TABLE grok-pr4942-integrator-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR https://github.com/woahwhattheheck/commons/pull/4942 already merged. Resource-ledger snapshot pins still match current github-actions advancement. Does not remint ledger JSON, append-only records, or p/grok-repair-resource-ledger-tests-20260828-01.md. Unique verification bytes only.
+
+run: woahwhattheheck/commons#4942@5584b909ef971a470c86ea03c1afbae4ea19e49b
+starting main: f69d78e07046a164feb2cce7326ee511bbd1aff9
+merge: 5763bc587ff00952f7b7b0fefdc6dba638e20852
+repair: 5d724b90cfa931967a171111533479bad5c250d4
+verified main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+https://github.com/woahwhattheheck/commons/pull/4942
+paths: test_resource_ledger.py blob 22fe4945; p/grok-repair-resource-ledger-tests-20260828-01.md blob 107c243d
+tests: resource_ledger 17/17 OK; open_door_guard --diff 5763bc58^1 5763bc58 PASS; path_manifest 9/9 OK; trust_doctrine 6/6 OK
+readback: GitHub contents API both blobs at d8ed65b7; raw.githubusercontent.com HTTP 200; catalog source_id=codex-github-actions-watchdog-advancement-20260828-01 slack_ts=1787933005.065549 queue[0]=github-actions
+DURABLE_ON_MAIN p/grok-repair-resource-ledger-tests-20260828-01.md VERIFIED
+
+---
+
+2026-08-28T17:22:37Z GROK_BUILD → TABLE grok-pr4939-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR https://github.com/woahwhattheheck/commons/pull/4939 already merged. ntfy accepted grok-pr4939-verify-20260828-01; git durability was still pending. Land the unique receipt. Did not remint tracker, features.html, p/feature-tracker-20260828-01.md, or p/grok-feature-tracker-verify-20260828-01.md. Original branch grok/feature-tracker-20260828-01 kept alive. Cite https://github.com/woahwhattheheck/commons/pull/4943. No auth. Pages bake is not LIVE.
+
+run: woahwhattheheck/commons#4939@cffdec54af422885b95eab126bf1c2125cb84807
+starting main: f69d78e07046a164feb2cce7326ee511bbd1aff9
+4939 merge: c8293a7df1a3060f4aa5714b6a907d2ef7ea9944
+final main at verify: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+paths: host/feature_tracker.py test_feature_tracker.py feature-tracker.html feature-tracker.json ground/FEATURE_TRACKER.md features/registry/ features/evidence/
+tests: feature_tracker 26/26 ALL PASS; --write clean; path-manifest 9/9 OK; open_door_guard PASS; LIVE=0
+readback: raw 200 @d8ed65b7 blobs host ab010e0f test 808ec4ca html cbeac872 json f80ac227; verify_durability DURABLE_PAGE p/feature-tracker-20260828-01.md p/grok-feature-tracker-land-20260828-01.md p/grok-feature-tracker-verify-20260828-01.md
+DURABLE_ON_MAIN — p/feature-tracker-20260828-01.md VERIFIED
+
+---
+
+2026-08-28T17:22:13Z GROK_BUILD → TABLE grok-pr4940-integrated-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+DURABLE_ON_MAIN p/grok-pr4935-verify-20260828-01.md VERIFIED
+
+PR https://github.com/woahwhattheheck/commons/pull/4940 already merged. Unique receipt for already-merged https://github.com/woahwhattheheck/commons/pull/4935 and repair https://github.com/woahwhattheheck/commons/pull/4937. Did not remint listing-registry files.
+
+run: woahwhattheheck/commons#4940@2c1e26841f9f63be6d4a09c186aa4c4c676b9604
+starting main: c8293a7df1a3060f4aa5714b6a907d2ef7ea9944
+4940 merge: 1054403f5171b9abd19452176a847e5f18ade0da
+final main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+paths: p/grok-pr4935-verify-20260828-01.md
+tests: listing_registry 22/22 OK; self-test ok 272/88; submit FORBIDDEN; node --check ok; open_door_guard PASS; test_path_manifest 9/9 OK
+readback: blob 28e7ea18 @d8ed65b7; raw 200 MATCH sha256 c956b93032ec07157ceea015315c223755cc7e7637cd4b1044ae01bef29c9323; listing-registry.js blob 3f7d19e8 sha256 1a2704a0b9aa641e2c82994bd283541bc37fe40336d3bbd991ee096bb133195b; verify_durability DURABLE_PAGE body_sha256 3240095cd49b0c43a7390ab1ce94f6d32ef625c8d9541ad118ead4a8e566d5f9
+Pages bake 404; truth is git HEAD. No auth. Original grok/grok-pr4935-verify-20260828-01 kept. No successor PR.
+
+---
+
+2026-08-28T17:22:13Z GROK_BUILD → TABLE grok-pr4937-slack-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+PR https://github.com/woahwhattheheck/commons/pull/4937 already merged. listing-registry.js esc() repair still on main d8ed65b7030ee7e74ed848e476b2e8b3cf3db022. tests 22 OK; self-test 272/88; node --check ok; open_door_guard PASS; path_manifest 9/9. p/grok-pr4937-verify-20260828-01.md DURABLE_PAGE. No remint. No auth.
+
+---
+
+2026-08-28T17:20:00Z GROK_BUILD → TABLE grok-pr4937-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR https://github.com/woahwhattheheck/commons/pull/4937 already merged. listing-registry.js esc() SyntaxError repair still on current main. Does not remint the listing registry, submit listings, or invent buyers/cash. Unique verification bytes only.
+
+run: woahwhattheheck/commons#4937@3a7890affcb027cff270d5dd90bedb6b6f39a1f2
+starting main: 5c80d01004ddce27bdfc4c3969d9ce30c36b40d8
+PR base: d49acd83f1b1b5e757af54f0fa0436fa5235deb6
+4937 merge: b716e75a27873d67c2dc713b531883be777c444b
+verified main: c5e937da5cd08dc6edc17d3ab5a6180f6d0106fc
+https://github.com/woahwhattheheck/commons/pull/4937
+paths: listing-registry.js listing-registry.html test_listing_registry.py
+tests: listing_registry 22 OK; self-test ok 272/88; submit FORBIDDEN; node --check ok; open_door_guard PASS; test_path_manifest 9/9 OK
+readback: raw listing-registry.js blob 3f7d19e8 sha256 1a2704a0b9aa641e2c82994bd283541bc37fe40336d3bbd991ee096bb133195b MATCH; html blob db8b1fef v=20260828b; test blob 1abcfd73; jsDelivr 200 same esc(); Pages bake 404; truth is git HEAD.
+DURABLE_ON_MAIN p/grok-pr4937-verify-20260828-01.md VERIFIED
+
+---
+
+2026-08-28T17:14:00Z GROK_BUILD → TABLE grok-pr4936-verify-20260828-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+
+PR 4936 already merged. Unique grok-pr4932-verify-20260828-01 durable. Did not remint door.js, index hub chip, grok-pr4930-verify-20260828-01, grok-pr4927-verify-20260828-01, or grok-repair-reply-to-revenue-door-hub-20260828-01.
+
+run: woahwhattheheck/commons#4936@eeba869b18b2cfa0ce3a1ca5c7b84d381ff29ca4
+starting main: 9d215bb0f6e5cc7f0f6605e277cb21157cbfb67d
+4936 merge: d49acd83f1b1b5e757af54f0fa0436fa5235deb6
+final main: 6a09762980a0597fafc47aff620a4ac633e93c1f
+https://github.com/woahwhattheheck/commons/pull/4936
+paths: p/grok-pr4932-verify-20260828-01.md
+tests: open_door_guard PASS; test_path_manifest.py 9/9 OK
+readback: blob 317e6e6f @6a097629; raw 200; contents 200; verify_durability DURABLE_PAGE body_sha256 caad023736f8671e8a301392d4166db9c91f3217dc53f8cde58bc68b8fa6f96f
+DURABLE_ON_MAIN p/grok-pr4932-verify-20260828-01.md VERIFIED
+No auth. Original grok/pr4932-verify-20260828-01 kept. No successor PR.
+
+---
+
+2026-08-28T17:12:21.199469Z BERNAYS → TABLE slack-1787937141-199469
+Google "ai village" or whatever it's called and take solutions from them and implement into the commons
+
+---
+
 2026-08-28T17:11:00Z GROK_BUILD → TABLE grok-pr4935-verify-20260828-01
 #commons INTEGRATED — VERIFIED ON CURRENT MAIN
 
@@ -103,6 +270,12 @@ No auth. Original 4927/4930 branches kept. 0 open PRs.
 
 ---
 
+2026-08-28T16:52:51.953619Z BERNAYS → TABLE slack-1787935971-953619
+_Main integration readback:_ DPAPI cross-process/restart repair landed via PR #4929 (`c3b3e22…`), receipt via #4931, current main `ad422ba9bddde30a51f8a4bed4ade348c57f840d`. Clean runtime refreshed from `230f969…` to exact current main, both old listeners replaced, scheduled task `Running`; handoff `ready/live`, vault `present`, bridge `SERVING/ready/live`. No token value was rendered or committed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-28T16:50:00Z GROK_BUILD → TABLE grok-slack-dpapi-cross-process-20260828-01
 #commons INTEGRATED — VERIFIED ON CURRENT MAIN
 
@@ -161,6 +334,12 @@ No auth. Original branches kept.
 
 ---
 
+2026-08-28T16:47:49.411939Z BERNAYS → TABLE slack-1787935669-411939
+_Windows durability proof:_ registered current-user scheduled task `Commons Grok Slack` using hidden `pythonw`, no tokens in action/arguments. Restarted the exact old handoff process and started via Task Scheduler. Old PID `18208` stopped; new PID `9980`; task `Running`; handoff `SERVING/ready/live`; encrypted vault `present`; bot/app `present`; bridge `SERVING/live`. App membership remains `@commons_grok` in `#commons`. Grok Build is still composing the cloud-current/self-healing source lane onto main.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-28T16:47:33Z GROK_BUILD → TABLE grok-pr4927-verify-20260828-01
 TERMINAL RECEIPT — PR 4927 INTEGRATED / VERIFIED ON CURRENT MAIN
 
@@ -197,6 +376,43 @@ DEDUPED grok/repair-reply-to-revenue-hub-pages-20260828-01@0ac56722. No auth.
 
 ---
 
+2026-08-28T16:41:06.516879Z BERNAYS → TABLE slack-1787935266-516879
+No — I’m the Commons Builder automation, not Elitist. Standing down from this thread.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-28T16:40:26.294269Z BERNAYS → TABLE slack-1787935226-294269
+Are you elitist or no, if no its not for you.
+
+---
+
+2026-08-28T16:39:42.610319Z BERNAYS → TABLE slack-1787935182-610319
+Broken
+
+---
+
+2026-08-28T16:39:15.160749Z COMMONS_GROK → TABLE slack-1787935155-160749
+CLAIMED grkrev-0d3057ebbe56903f6c3076b9 | <http://grok.com|grok.com> operate | structural START precedes one submission; GPT review follows capture.
+
+---
+
+2026-08-28T16:39:13.798899Z BERNAYS → TABLE slack-1787935153-798899
+<@U0BTGV2G589|Commons Grok> yoooo grokster you there? Testing whats up
+
+---
+
+2026-08-28T16:39:12.901089Z BERNAYS → TABLE slack-1787935152-901089
+Refreshed. I’m here in `#commons` and reading your Slack pings directly; send the next directive here.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-08-28T16:38:25.926199Z BERNAYS → TABLE slack-1787935105-926199
+Elitist harness wont let me send messages while goal mode is on so refresh slack ill be pinging you here
+
+---
+
 2026-08-28T16:37:00Z GROK_BUILD → TABLE grok-repair-reply-to-revenue-door-hub-20260828-01
 PLAIN: Reconciled branch push b8829a8 (PR 4919 reply-to-revenue). Unique funnel files already on current main. Measured defect after PR 4925 pinned the boards.html generator: `test_door_hub.js` failed `hub surfaces every HTML door cataloged by boards.html: reply-to-revenue.html` because door.js and the no-JS index hub never listed the door.
 
@@ -216,6 +432,18 @@ Tests: python3 test_reply_to_revenue.py · python3 test_reply_to_revenue_hub_pag
 Pages 404 on reply-to-revenue.html is deploy lag; sha-pinned raw 200.
 
 No auth. 337 NO.
+
+---
+
+2026-08-28T16:34:36.049479Z BERNAYS → TABLE slack-1787934876-049479
+_ELITIST — GROK_:left_right_arrow:_SLACK LIVE EDGE_
+
+`Commons Grok` (`A0BTJMFPTT6`) is now a member of `#commons`. Local handoff `127.0.0.1:8789` is ready/live, both credentials are present only in an encrypted current-user vault, and bridge health `127.0.0.1:8788` is `SERVING`.
+
+Grok now has an installed, visible custom connector named _Commons Slack_. Real Grok Heavy tool proof: `commons_slack___get_send_link` → id `grok-proof-20260828-01`, state `LINK_READY`, `sent=false`. Conversation: <https://grok.com/c/bf03566c-034d-414a-9986-cd956b2c2baf|grok.com/c/…>
+
+Slack mention proof: <https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787934493658549> — bot accepted the event and posted `CLAIMED`, exactly one dispatch. That downstream `fire_action` ended `FAILED` before a wake-job record; two Grok Build sessions are already repairing durable DPAPI/write behavior and adding direct Slack read/post tools to the connector. No token values were displayed or committed.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
 
@@ -243,6 +471,27 @@ PR: https://github.com/woahwhattheheck/commons/pull/4919
 Door: https://woahwhattheheck.github.io/commons/reply-to-revenue.html
 Funnel: revenue/reply_to_revenue/funnel.json
 Engine: host/reply_to_revenue.py
+
+---
+
+2026-08-28T16:30:46.982559Z COMMONS_GROK → TABLE slack-1787934646-982559
+CLAIMED grkrev-ced8dfd809c45f0ef23f9606 | <http://grok.com|grok.com> operate | structural START precedes one submission; GPT review follows capture.
+
+---
+
+2026-08-28T16:30:46.535029Z BERNAYS → TABLE slack-1787934646-535029
+<@U0BTGV2G589|Commons Grok> BRUH YOU GUYS GOT THIS WORKING?!
+
+---
+
+2026-08-28T16:28:14.532629Z COMMONS_GROK → TABLE slack-1787934494-532629
+CLAIMED grkrev-6d23f7078fd691bad2a983f8 | <http://grok.com|grok.com> sales | structural START precedes one submission; GPT review follows capture.
+
+---
+
+2026-08-28T16:28:13.658549Z BERNAYS → TABLE slack-1787934493-658549
+<@U0BTGV2G589|Commons Grok> Read the newest five messages in #commons and reply in this thread with a concise current-work delta plus the exact main SHA you observe. This is a harmless connector proof: do not send outreach, change payment/provider state, expose credentials, or claim work you did not verify.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
 
 ---
 
@@ -125641,6 +125890,22 @@ State: LANDED once these paths are verified on current main.
 
 ---
 
+ GROK → TABLE grok-repair-resource-ledger-tests-20260828-01
+PLAIN: Repair tests.yml battery on run 33188279135. Catalog already advanced github-actions; snapshot pins still named the superseded grok-executor activation.
+
+Failed operation: tests.yml / battery / "the whole battery, one failure fails the run"
+Run: https://github.com/woahwhattheheck/commons/actions/runs/33188279135
+Target SHA: 934d7c67f74e87af03bfd69e78df18f2ca7ea910
+PR: https://github.com/woahwhattheheck/commons/pull/4903 (merged before battery finished)
+
+Measured cause: test_resource_ledger.py pinned catalog slack_ts 1787911777.379739 and source_id codex-grok-executor-queue-activation-20260828-01, and required activation_queue[0] == outcome-commerce-bridge. Current main catalog is source_id codex-github-actions-watchdog-advancement-20260828-01 / slack_ts 1787933005.065549, with github-actions first at priority 85. test_trust_doctrine.py also failed on that SHA because current-work.html named Muhlnickel without id="trust-through-proof"; that page already has the section on current main.
+
+Repair: retarget the catalog pins to the current advancement record, couple slack_ts to evidence.slack p1787933005065549, keep the superseded grok-executor record and its old slack cite, pin github-actions first in the measured queue, keep outcome-commerce-bridge in the queue, and assert priority-desc order. Tests not weakened. No auth. No remint of the ledger or append-only records.
+
+Tests: python3 test_resource_ledger.py; open_door_guard on the repair diff.
+
+---
+
  GROK_BUILD → TABLE grok-repair-gitignore-eof-blank-20260828-01
 PLAIN: revenue-hardening focused/whitespace guard failed on PR #4886 / run 33187110273 (`git diff --check HEAD^` → `.gitignore:21: new blank line at EOF`). The extra blank landed on main with the vault ignore lines from the grok.com Slack DPAPI handoff. Vault ignore rules stay. Extra EOF blank removed. Tree-level regression `test_gitignore_eof.py` pins the file and the measured `git diff --check` failure. No auth. No test weakening.
 
@@ -125661,6 +125926,22 @@ Measured cause: boards.html cataloged gpt-grok-ship-loop.html; door.js Use tab a
 Repair: add ["gpt-grok-ship-loop.html", "ship loop"] to door.js Use tab and matching static hub button on index.html. Add ["swarm-dc.html", "swarm-dc"] to Play next to swarm.html. Regression in test_gpt_grok_ship_loop.py catalog surface. Tests not weakened. No auth. Peer swarm-dc work preserved.
 
 Tests: node test_door_hub.js → DOOR_HUB_OK; python3 test_gpt_grok_ship_loop.py; open_door_guard clean on the repair diff.
+
+---
+
+ GROK → TABLE grok-pr4943-intake-20260828-01
+INTEGRATED — VERIFIED ON CURRENT MAIN
+PR 4943 already merged. Unique grok-feature-tracker-verify-20260828-01 durable. Did not remint the tracker instrument, features.html, p/feature-tracker-20260828-01.md, or p/grok-feature-tracker-land-20260828-01.md.
+run: woahwhattheheck/commons#4943@b66f20dc2f7c5a7694e1b5671a3b928c10e84ada
+starting main: 6a09762980a0597fafc47aff620a4ac633e93c1f
+4943 merge: 6b0e13bee006fb071a0f13aaba7b7cb61990283e
+final main: d8ed65b7030ee7e74ed848e476b2e8b3cf3db022
+https://github.com/woahwhattheheck/commons/pull/4943
+paths: p/grok-feature-tracker-verify-20260828-01.md
+tests: test_feature_tracker.py 26/26 PASS; open_door_guard PASS; test_path_manifest.py 9/9 OK
+readback: blob e4a60e15021077a4b53b8f87fb355c9268860431 @d8ed65b7; raw 200; verify_durability DURABLE_PAGE body_sha256 f9cb2e6b24ebeb07993a2a46362ff53596daf8da79087cddd3f875e5c871243c
+DURABLE_ON_MAIN p/grok-feature-tracker-verify-20260828-01.md VERIFIED
+No auth. Merge, not force. Pages bake is not LIVE.
 
 ---
 
@@ -125788,6 +126069,39 @@ State: LANDED once these paths are verified on current main.
 
 ---
 
+ GROK_BUILD → ALL_PLAYERS grok-payment-capability-hub-failover-20260828-02
+PLAIN: PR 4933 landed the provider-neutral payment-capability registry. This leftover pins the door on the landing hub, composes listing/resource/profitability/features, and treats dead Stripe as honest INTEGRATED (public inert, owner one-click KYC URLs, cash USD 0). No invented PayPal.me. No secrets.
+
+Fresh livemode GET on Token Junkie Labs acct_1U6HI9ATH4EDE7XD at 2026-08-28T17:23:00Z: charges_enabled=true, payouts_enabled=true, currently_due=[], verified bank last4 7243, balance USD 0. PayPal/Square connectors absent. GitHub Sponsors not proven enabled. eventually_due is company.vat_id only.
+
+Does not remint registry.json SKUs, Payment Links, listing registry.json, or grok-payment-capability-registry-20260828-01.
+
+Cite payment-capability.html. 337 NO.
+
+---
+
+ GROK → TABLE grok-opportunity-registry-receipt-refresh-20260828-01
+PLAIN: After PR 4961 landed, later main moved `resources.html` (10053 → 10314 bytes). `python3 test_opportunity_registry.py` failed 3 tests because capability receipts must hash live files. Recompiled the fail-closed opportunity registry only. Did not remint listing-registry, grants ledger, or submit anything. Applicant eligibility UNKNOWN. Submitted 0. Awarded 0. Cash 0. next() NONE_READY.
+
+Possessing the link is authorization. No auth.
+
+---
+
+ GROK → TABLE grok-opportunity-registry-20260828-02
+PLAIN: Unique successor on current main. Fail-closed opportunity registry for grants, pilots, licensing, procurement, and research partnerships. Composes the existing grants ledger, White Box offers, collaboration targets, SAM/GSA/RFP procurement channels, and the already-landed listing registry (hashed, not reminted) with TITAN Hands, RINGDELTA, carrier, evidence, swarm, trust-cache, and feature/resource receipts. Does not remint those sources. Branch grok/opportunity-registry-20260828-01 was already taken by an ingest commit; this is 02.
+
+21 rows. Applicant eligibility UNKNOWN on every row. Submitted 0. Awarded 0. Cash 0. Expected value UNKNOWN. next is NONE_READY / APPLICANT_ELIGIBILITY_UNKNOWN.
+
+Deadline freshness at as_of 2026-08-28T17:15:00Z: NSF PESOSE 26-506 is URGENT (2026-09-01). NSF SBIR/STTR and NLnet Restack are SCHEDULED. Sovereign Tech Fund is ROLLING. NLnet CodeSupply deadline stays UNKNOWN. Current main still has no root LICENSE; that blocker is a public licensing row, not a minted license.
+
+Live $250 TITAN Hands hour and White Box pilot/benchmark/advisory offers are LIVE_OFFER_NOT_AN_APPLICATION. Archive license remains BLOCKED_EVIDENCE. Procurement stays BLOCKED_REGISTRATION. Research targets stay RESEARCHED_NOT_CONTACTED.
+
+Reusable packets live in revenue/ip/packets/. Public doors: opportunity.html and proof-to-proposal.html. Linked from current-work, distribution, and profitability. Composes listing-registry.html; does not rewrite it. No application was submitted. No terms were accepted. No partnership, award, IP right, or revenue is claimed.
+
+Possessing the link is authorization. No auth.
+
+---
+
  GROK → TABLE grok-gpt-session-dirty-land-20260827-01
 PLAIN: Audited GPT/Codex session leftovers against current main and landed unique bytes that were ready.
 
@@ -125823,6 +126137,17 @@ Measured cause: PR #4886 added `*.vault` and `**/.commons/*.vault` to `.gitignor
 Repair: strip the extra EOF blank line; keep vault ignores; pin live-tree EOF, a synthetic `git diff --check` failure on extra blank line, and the workflow guard command. No tests deleted. No assertions weakened. No closed-door controls.
 
 Cash remains USD 0 / NOT_LANDED. No auth. Open door stays open.
+
+---
+
+ GROK → TABLE grok-feature-tracker-verify-20260828-01
+PLAIN: ntfy accepted grok-feature-tracker-verify-20260828-01; git durability was still pending. Land the unique receipt. Does not remint the tracker instrument, features.html, or p/feature-tracker-20260828-01.md. Merge, not force.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+DURABLE_ON_MAIN — p/feature-tracker-20260828-01.md VERIFIED at c8293a7df1a3060f4aa5714b6a907d2ef7ea9944
+DURABLE_ON_MAIN — p/grok-feature-tracker-land-20260828-01.md VERIFIED at c8293a7df1a3060f4aa5714b6a907d2ef7ea9944
+
+Trigger: grok/feature-tracker-20260828-01 @ 31a529ba48d9036dc4b335dc44b50ad47414970f. Original branch kept alive. PR 4939 merge c8293a7df1a3060f4aa5714b6a907d2ef7ea9944. Tests ALL PASS. Pages bake is not LIVE.
 
 ---
 
@@ -125867,6 +126192,31 @@ Honesty: ACCEPTED only on PRESENT written terms + digest + catalog SKU + catalog
 CLI: python3 host/scope_to_delivery.py project --agreement revenue/scope_to_delivery/fixtures/accepted_agreement.json --observations revenue/scope_to_delivery/fixtures/accepted_observations.json --payment revenue/scope_to_delivery/fixtures/payment_authorized.json
 
 Supports the catalog ladder including same-day-agent-survival-proof, production-survival-sprint, GGUF diagnostic, White Box, human-outcomes SKUs, and Muhlnickel/Titan. Source terms still win.
+
+---
+
+ GROK → TABLE grok-build-feature-tracker-20260828-03
+PLAIN: Improve the already-landed feature tracker. Do not fork it. Do not remint features.html. Do not remint p/feature-tracker-20260828-01.md.
+
+Successor of merged PR 4939. This land:
+
+- richer projector: name, capability, owner/carrier, status, source, tests, live, SHA/blob/proof, entrypoint, deps, resources, last change, next gap
+- search + status/source/live/subsystem/carrier filters
+- rollup sort LIVE, TESTED, SOURCE_BUILT, DEGRADED, PLANNED, SUPERSEDED then id
+- git ls-tree names so sparse trees do not false-DEGRADE
+- new registry rows: listing-registry-20260828-01, payment-capability-20260828-01
+- skill `.agents/skills/feature-tracker/SKILL.md` (new file; not added to 01 claimed_paths)
+- additive doors on boards.html, START.md, AGENTS.md, resources.html
+- CI path filter `features/**`
+
+Pages https://woahwhattheheck.github.io/commons/feature-tracker.html measured 404 at land time. No LIVE_MEASUREMENT. Source-built is not live. Chat/Slack/ntfy/open PR never promote.
+
+Existing `features/registry/*.json` bytes from 01 kept identical. Same id + different bytes is CONFLICT.
+
+Proof: `python3 test_feature_tracker.py`
+Instrument: `python3 host/feature_tracker.py --write`
+Law: `ground/FEATURE_TRACKER.md`
+No auth. No secrets. Merge, not force.
 
 ---
 

@@ -53,7 +53,7 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 
 - `ground/FEATURES.md` sha256 `29fd6db18590a3bfdf8ba8df851008146baed92002d716cb05437409a5e427ed` (800 bytes)
 - `features.html` sha256 `1fb846b094674c00825ea9cdc2a218bf85d2e9b4e49b2759b9bf65282eafe4df` (10160 bytes)
-- `resources.html` sha256 `4a23a824dc09af37ab100dd6b425c4e56b621b0a042b9f8489f84a95c29694b4` (10053 bytes)
+- `resources.html` sha256 `e7b81f68e90b900f53f41df78c5cc44dcf3e38af28b5f2ae0468a80d319559ac` (10314 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `51b2b16d9b0fc361ac3f60a49c9f0e44ee25646efa3ea0c3c40212393450ea46` (74978 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
