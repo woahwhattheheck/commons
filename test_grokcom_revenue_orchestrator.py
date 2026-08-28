@@ -38,7 +38,13 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(executor_job["submit_tool"], "fire_action")
         self.assertEqual(executor_job["run_key"], first["grokcom"]["run_key"])
         self.assertEqual(executor_job["arguments"]["target"], "GROK.COM")
-        self.assertEqual(executor_job["arguments"]["payload"], first["grokcom"]["prompt"])
+        self.assertEqual(
+            set(executor_job["arguments"]),
+            {"id", "from", "act", "target", "payload"},
+        )
+        submit_envelope = json.loads(executor_job["arguments"]["payload"])
+        self.assertEqual(submit_envelope["exact_prompts"], [first["grokcom"]["prompt"]])
+        self.assertEqual(submit_envelope["run_key"], first["grokcom"]["run_key"])
         self.assertEqual(
             executor_job["durable_path"],
             "wake_jobs/%s.json" % executor_job["job_id"],
@@ -121,12 +127,13 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(first["grokcom"]["capture_start"]["arguments"]["exact_prompts"], ["new continuation prompt"])
         executor_job = first["grokcom"]["executor_job"]
         self.assertTrue(executor_job["no_replay"])
+        continuation_envelope = json.loads(executor_job["arguments"]["payload"])
         self.assertEqual(
-            executor_job["arguments"]["parent_run_key"],
+            continuation_envelope["lineage"]["parent_run_key"],
             ARTIFACT["run_key"],
         )
         self.assertEqual(
-            executor_job["arguments"]["parent_conversation_url"],
+            continuation_envelope["lineage"]["parent_conversation_url"],
             ARTIFACT["conversation_url"],
         )
         self.assertNotEqual(executor_job["job_id"], first["task_id"])
