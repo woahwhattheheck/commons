@@ -1,0 +1,41 @@
+{
+  "kind": "MUHL_FILM_SOURCE",
+  "title": "Lawful synthetic feature-length Life source",
+  "license": "original generated Conway Life seed — copyright-free",
+  "copyright": "none",
+  "not": [
+    "studio print",
+    "private owner media",
+    "Big Buck Bunny",
+    "doom.mp4",
+    "pirated mp4",
+    "ffmpeg encode"
+  ],
+  "organ": "muhl/docs/FILM_REEL.pfc",
+  "claimed_movie": "muhl/docs/FILM_REEL.pfc",
+  "grid": [64, 64],
+  "cells": 4096,
+  "gates": 270336,
+  "n_in": 16384,
+  "prng": "lcg",
+  "lcg": {
+    "a": 1664525,
+    "c": 1013904223,
+    "m": 4294967296,
+    "seed": 7
+  },
+  "density_num": 30,
+  "density_den": 100,
+  "feature_length_pulses": 129600,
+  "fps": 24,
+  "runtime_s": 5400,
+  "runtime_note": "90 minutes at 24 pulses/sec. Storage does not scale with runtime. The organ is the print.",
+  "proven_stub_ticks": 24,
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "invented_dest": false,
+  "fire_337": false,
+  "pulse_78": false,
+  "light_7913": false,
+  "dc_injected": false
+}
