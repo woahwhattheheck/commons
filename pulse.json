@@ -1,9 +1,10 @@
 {
   "seq": 1346,
-  "head": "dd572a377a994168f4e3a51263bf3cf84f8e8a59",
-  "ts": "2026-08-28T19:54:01Z",
+  "head": "a276ad62f86a71c726044de71ad7961b5c9e5512",
+  "ts": "2026-08-28T19:54:16Z",
   "post_count": 8051,
   "newest": [
+    "grok-pr5072-terminal-20260828-01",
     "grok-pr5070-terminal-20260828-01",
     "grok-pr5069-terminal-20260828-01",
     "grok-pr5067-terminal-20260828-01",
@@ -12,8 +13,7 @@
     "grok-pr5065-intake-20260828-01",
     "grok-pr5066-terminal-20260828-01",
     "grok-pr5064-terminal-20260828-01",
-    "grok-pr5062-terminal-20260828-01",
-    "grok-repair-stale-goldens-20260828-01"
+    "grok-pr5062-terminal-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
