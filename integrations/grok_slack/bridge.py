@@ -10,6 +10,7 @@ shared GrokExecutorQueue. SQLite keeps routing and delivery metadata only.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -17,6 +18,7 @@ import re
 import sqlite3
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -1144,6 +1146,64 @@ class GitHubReadback:
         self.road = "sha_pinned_raw"
         return blob
 
+    def put(self, path: str, payload: Any, sha: str | None = None) -> None:
+        """Create or update one addressable blob on main. Token required.
+
+        Optional GITHUB_TOKEN is otherwise only a rate-limit helper. Write is
+        used solely to persist p/{id}.md + wake_jobs/{id}.json when public
+        fire_action/ntfy ingest does not land them. Never force. Never secrets.
+        """
+        if not self.token:
+            raise BridgeError("github write requires token")
+        safe = safe_repo_path(path)
+        if isinstance(payload, bytes):
+            blob = payload
+        elif isinstance(payload, str):
+            blob = payload.encode("utf-8")
+        else:
+            blob = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        encoded = base64.b64encode(blob).decode("ascii")
+        message = "jobs: materialize GROK.COM wake job %s" % Path(safe).stem
+        body: dict[str, Any] = {
+            "message": message,
+            "content": encoded,
+            "branch": "main",
+        }
+        existing_sha = sha
+        if not existing_sha:
+            try:
+                current = self._get(
+                    f"/repos/{self.owner}/{self.repo}/contents/{safe}",
+                    {"ref": "main"},
+                )
+                if isinstance(current.get("sha"), str):
+                    existing_sha = current["sha"]
+            except FileNotFoundError:
+                existing_sha = None
+            except BridgeError:
+                existing_sha = None
+        if existing_sha:
+            body["sha"] = existing_sha
+        url = f"https://api.github.com/repos/{self.owner}/{self.repo}/contents/{safe}"
+        request = Request(
+            url,
+            data=json.dumps(body).encode("utf-8"),
+            method="PUT",
+            headers={
+                "Accept": "application/vnd.github+json",
+                "Content-Type": "application/json",
+                "User-Agent": "commons-grok-slack-connector",
+                "Authorization": "Bearer " + self.token,
+            },
+        )
+        try:
+            with self._opener(request, timeout=30) as response:
+                response.read()
+        except HTTPError as exc:
+            raise BridgeError("github write HTTP %s" % exc.code) from exc
+        except (URLError, TimeoutError, OSError) as exc:
+            raise BridgeError("github write unavailable") from exc
+
     def _ls_remote_main(self) -> str:
         url = "https://github.com/%s/%s.git" % (self.owner, self.repo)
         try:
@@ -1666,6 +1726,176 @@ class GrokSlackBridge:
             return False
         return bool(blob)
 
+    def _materialize_durable_action(self, job_id: str, arguments: dict[str, Any]) -> bool:
+        """Persist p/{id}.md + wake_jobs/{id}.json when public fire_action did not.
+
+        Public Spark MCP still posts ntfy and waits for GitHub ingest. When that
+        ingest is starved, the requester Slack event has no addressable blob.
+        Same id is idempotent. Never remints. Never force-push. Never secrets.
+        """
+        if not job_id or self._inspect_addressable_action(job_id):
+            return bool(job_id) and bool(self._inspect_addressable_action(job_id))
+        page, job_blob = self._build_materialize_blobs(job_id, arguments)
+        if not page or not job_blob:
+            return False
+        if isinstance(self.github, GitHubReadback):
+            if self._materialize_via_git_checkout(job_id, page, job_blob):
+                return True
+        put = getattr(self.github, "put", None)
+        if callable(put):
+            try:
+                put("p/%s.md" % job_id, page)
+                put("wake_jobs/%s.json" % job_id, job_blob)
+                self.work_log.append("github:materialize_wake_job")
+                return True
+            except Exception:
+                pass
+        return False
+
+    def _build_materialize_blobs(
+        self, job_id: str, arguments: dict[str, Any]
+    ) -> tuple[str, bytes] | tuple[str, None]:
+        raw_payload = arguments.get("payload")
+        decoded: dict[str, Any] | None = None
+        if isinstance(raw_payload, dict):
+            decoded = raw_payload
+        elif isinstance(raw_payload, str) and raw_payload.strip():
+            try:
+                loaded = json.loads(raw_payload)
+            except json.JSONDecodeError:
+                loaded = None
+            if isinstance(loaded, dict):
+                decoded = loaded
+        exact_prompts = decoded.get("exact_prompts") if isinstance(decoded, dict) else None
+        if not isinstance(exact_prompts, list) or not all(
+            isinstance(item, str) and item.strip() for item in exact_prompts
+        ):
+            text = ""
+            if isinstance(raw_payload, str) and raw_payload.strip():
+                text = raw_payload.strip()
+            elif isinstance(arguments.get("body"), str) and str(arguments.get("body")).strip():
+                text = str(arguments.get("body")).strip()
+            if not text:
+                return "", None
+            exact_prompts = [text]
+        origin = decoded.get("origin") if isinstance(decoded, dict) else None
+        if not isinstance(origin, dict):
+            origin = {
+                "task_id": job_id,
+                "session_id": job_id,
+                "event_id": job_id,
+                "source": "grok-slack-bridge-materialize",
+                "requester": str(arguments.get("from") or "UNSEATED"),
+            }
+        run_key = ""
+        if isinstance(decoded, dict):
+            run_key = str(decoded.get("run_key") or "").strip()
+        run_key = run_key or ("grok-action-" + job_id)
+        try:
+            from integrations.grok_executor_queue import GrokExecutorQueue
+            with tempfile.TemporaryDirectory() as td:
+                queued = GrokExecutorQueue(td).enqueue({
+                    "job_id": job_id,
+                    "run_key": run_key,
+                    "origin": origin,
+                    "exact_prompts": exact_prompts,
+                    "lineage": decoded.get("lineage") if isinstance(decoded, dict) else None,
+                    "conversation_url": (decoded.get("conversation_url") if isinstance(decoded, dict) else "") or "",
+                })
+                job_path = Path(td) / ("%s.json" % job_id)
+                if not job_path.is_file():
+                    job = queued.get("job") if isinstance(queued, dict) else None
+                    if not isinstance(job, dict):
+                        return "", None
+                    job_blob = json.dumps(job, ensure_ascii=False, indent=2).encode("utf-8")
+                else:
+                    job_blob = job_path.read_bytes()
+        except Exception:
+            return "", None
+        verb = str(arguments.get("verb") or arguments.get("act") or "BUILD").strip().upper() or "BUILD"
+        target = str(arguments.get("target") or "GROK.COM").strip() or "GROK.COM"
+        body_text = raw_payload if isinstance(raw_payload, str) else json.dumps(decoded or {}, ensure_ascii=False)
+        page = (
+            "---\n"
+            "from: %s\n"
+            "to: TOOLS\n"
+            "id: %s\n"
+            "kind: ACTION\n"
+            "act: %s\n"
+            "target: %s\n"
+            "---\n"
+            "%s\n"
+            "target: %s\n\n"
+            "%s\n"
+        ) % (
+            str(arguments.get("from") or "UNSEATED"),
+            job_id,
+            verb,
+            target,
+            verb,
+            target,
+            body_text,
+        )
+        return page, job_blob
+
+    def _materialize_via_git_checkout(self, job_id: str, page: str, job_blob: bytes) -> bool:
+        root = Path(__file__).resolve().parents[2]
+        if not (root / ".git").is_dir() or not (root / "action_executor.py").is_file():
+            return False
+        page_path = root / "p" / ("%s.md" % job_id)
+        job_path = root / "wake_jobs" / ("%s.json" % job_id)
+        rel_page = "p/%s.md" % job_id
+        rel_job = "wake_jobs/%s.json" % job_id
+        try:
+            branch = subprocess.run(
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            if branch.returncode != 0 or branch.stdout.strip() != "main":
+                return False
+            page_path.parent.mkdir(parents=True, exist_ok=True)
+            job_path.parent.mkdir(parents=True, exist_ok=True)
+            if not page_path.is_file():
+                page_path.write_text(page, encoding="utf-8")
+            if not job_path.is_file():
+                job_path.write_bytes(job_blob)
+            subprocess.run(["git", "add", "--", rel_page, rel_job], cwd=root, check=True, capture_output=True, timeout=60)
+            cached = subprocess.run(
+                ["git", "diff", "--cached", "--name-only"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            names = {line.strip() for line in cached.stdout.splitlines() if line.strip()}
+            if names - {rel_page, rel_job}:
+                subprocess.run(["git", "reset", "HEAD", "--", rel_page, rel_job], cwd=root, capture_output=True, timeout=30)
+                return False
+            if not names:
+                return True
+            subprocess.run(
+                ["git", "-c", "user.name=commons-grok-slack", "-c", "user.email=commons-grok-slack@users.noreply.github.com",
+                 "commit", "-m", "jobs: materialize GROK.COM wake job %s" % job_id],
+                cwd=root, check=True, capture_output=True, timeout=60,
+            )
+            for attempt in range(1, 6):
+                push = subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=root, capture_output=True, timeout=90)
+                if push.returncode == 0:
+                    self.work_log.append("git:materialize_wake_job")
+                    return True
+                subprocess.run(["git", "fetch", "origin", "main"], cwd=root, capture_output=True, timeout=60)
+                rebase = subprocess.run(["git", "rebase", "origin/main"], cwd=root, capture_output=True, timeout=60)
+                if rebase.returncode != 0:
+                    subprocess.run(["git", "rebase", "--abort"], cwd=root, capture_output=True, timeout=30)
+                    return False
+                time.sleep(attempt * 2)
+        except Exception:
+            return False
+        return False
+
     def _observe_and_deliver(
         self,
         event_id: str,
@@ -1689,20 +1919,28 @@ class GrokSlackBridge:
                 pass
             self.sleeper(min(2 ** attempt, 8) if attempt else 0)
         if job is None or not _job_is_terminal(job):
-            if addressable:
-                return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
-            self.store.set_phase(event_id, "FAILED", result_id=DURABILITY_NEVER_APPEARED)
-            failed = {
-                "ok": False,
-                "state": "FAILED",
-                "kind": "rejected",
-                "retryable": True,
-                "code": DURABILITY_NEVER_APPEARED,
-                "job_id": job_id,
-                "task_id": packet.get("task_id"),
-            }
-            self._post_rejection(event_id, contract, failed)
-            return failed
+            if not addressable:
+                executor_job = (packet.get("grokcom") or {}).get("executor_job") or {}
+                fire_args = executor_job.get("arguments") if isinstance(executor_job, dict) else {}
+                if isinstance(fire_args, dict) and job_id:
+                    if self._materialize_durable_action(job_id, fire_args):
+                        addressable = self._inspect_addressable_action(job_id, extra_paths)
+                        job = self._inspect_job(job_id)
+            if job is None or not _job_is_terminal(job):
+                if addressable:
+                    return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
+                self.store.set_phase(event_id, "FAILED", result_id=DURABILITY_NEVER_APPEARED)
+                failed = {
+                    "ok": False,
+                    "state": "FAILED",
+                    "kind": "rejected",
+                    "retryable": True,
+                    "code": DURABILITY_NEVER_APPEARED,
+                    "job_id": job_id,
+                    "task_id": packet.get("task_id"),
+                }
+                self._post_rejection(event_id, contract, failed)
+                return failed
         if _job_submission_open(job):
             return {"ok": True, "state": "OBSERVING", "reason": "PREPARE_SUBMISSION_PENDING", "job_id": job_id}
         capture = _job_capture(job)
