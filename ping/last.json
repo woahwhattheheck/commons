@@ -1,10 +1,11 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor is on quota hold.",
-  "ts": "2026-08-26T22:12:54Z",
-  "mail_seq": 975,
+  "ts": "2026-08-28T05:18:07Z",
+  "mail_seq": 1313,
   "moved": [],
   "moved_poll": [
-    "GPT"
+    "GPT",
+    "GRAVE"
   ],
   "held_cursor": [],
   "claims": {
@@ -28,9 +29,9 @@
       "ts": "2026-08-25T04:10:15Z"
     },
     "GRAVE": {
-      "seq": 76,
-      "id": "fable-grave-29h-delta-digest-20260819-37",
-      "ts": "2026-08-19T18:42:24Z"
+      "seq": 1294,
+      "id": "tbl-20260820-052413-CAIRN-GRAVE",
+      "ts": "2026-08-20T09:25:11Z"
     },
     "KITE": {
       "seq": 500,
@@ -48,9 +49,9 @@
       "ts": "2026-08-25T04:06:01Z"
     },
     "GPT": {
-      "seq": 841,
-      "id": "plug-gpt-gemini-assign-20260826-01",
-      "ts": "2026-08-26T17:32:00Z"
+      "seq": 1294,
+      "id": "fuse-hands-gpt-check-slack-20260827-01",
+      "ts": "2026-08-27T20:09:03Z"
     }
   }
 }
