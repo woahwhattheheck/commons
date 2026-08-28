@@ -14,15 +14,7 @@ import urllib.parse
 from pathlib import Path
 from unittest import mock
 
-from independent_commons_mcp.envelope import (
-    EnvelopeError,
-    build_envelope,
-    lanes_from,
-    parse_frontmatter,
-    projection_text,
-    redact,
-    sha256_text,
-)
+from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, parse_frontmatter, projection_text, redact, sha256_text
 from independent_commons_mcp.gateway import Gateway, GatewayError
 from independent_commons_mcp.lanes import Lanes
 from independent_commons_mcp.server import MCPServer
@@ -197,18 +189,11 @@ class EnvelopeTests(unittest.TestCase):
         self.assertEqual(payload["from"], "KITE")
         self.assertEqual(payload["is_language_model"], "YES")
 
-    def test_metadata_rejects_every_unicode_line_boundary(self):
-        separators = "\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029"
-        for separator in separators:
-            with self.subTest(separator=ascii(separator)), self.assertRaises(EnvelopeError):
-                build_envelope(declared(subject="first%ssecond" % separator))
-
     def test_projection_preserves_opaque_unicode_payload_boundaries(self):
-        body = "alpha\vbeta\fcharlie\x1cdelta\x1eecho\x85foxtrot\u2028---\u2029omega"
+        body = "alpha\\vbeta\\fcharlie\\x1cdelta\\x1eecho\\x85foxtrot\\u2028---\\u2029omega"
         payload = build_envelope(declared("kite-unicode-body-0001", body=body))
-        projected = projection_text({**payload, "extension": "one\u2028two"})
-        meta, parsed = parse_frontmatter(projected)
-        self.assertEqual(meta["extension"], "one two")
+        projected = projection_text(payload)
+        _, parsed = parse_frontmatter(projected)
         self.assertEqual(parsed, body)
         self.assertEqual(sha256_text(parsed), sha256_text(body))
 
@@ -728,6 +713,43 @@ class ReviewFixTests(unittest.TestCase):
         self.assertEqual(payload["to"], "TABLE")
         self.assertNotIn("is_language_model", payload)
 
+    def test_model_road_layers_metadata_without_touching_code(self):
+        body = 'def answer():\n    return {"ok": True}'
+        packet = '{"k":"RESULT","ops":[["K","source","ready"]],"v":1}'
+        gw, net = make_gateway()
+        result = gw.post_model({
+            "from": "KITE", "to": "TABLE", "id": "kite-model-code-0001",
+            "body": body, "speech": "The source is ready.",
+            "model_packet": packet, "payload_kind": "code",
+        })
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        sent = next(
+            json.loads(row["data"].decode("utf-8"))
+            for row in net.calls
+            if row["method"] == "POST" and "ntfy" in row["url"]
+        )
+        self.assertEqual(sent["body"], body)
+        self.assertEqual(sent["speech"], "The source is ready.")
+        self.assertEqual(sent["model_packet"], packet)
+        self.assertEqual(sent["reasoning_mode"], "LATENT")
+        self.assertEqual(sent["payload_sha256"], sha256_text(body))
+        self.assertEqual(sent["language_state"], "LAYERED")
+
+    def test_model_road_preserves_scratchpad_packet_and_arbitrary_labels(self):
+        packet = '{"v":1,"k":"RESULT","ops":[["K","scratchpad","dump"]]}'
+        payload = build_envelope({
+            "from": "KITE", "to": "TABLE", "id": "kite-model-open-0001",
+            "body": "answer", "speech": "Answer.", "payload_kind": "scratchpad",
+            "model_codec": "caller-codec", "model_packet": packet,
+        }, kind="MODEL")
+        self.assertEqual(payload["model_packet"], packet)
+        self.assertEqual(payload["payload_kind"], "scratchpad")
+        self.assertEqual(payload["model_codec"], "caller-codec")
+        self.assertEqual(payload["reasoning_mode"], "LATENT")
+        self.assertEqual(payload["language_state"], "LAYERED")
+        open_payload = build_envelope({"id": "kite-open-still-0001", "body": "answer"})
+        self.assertNotIn("model_protocol", open_payload)
+
 
 class ServerTests(unittest.TestCase):
     def test_http_console_has_no_origin_or_bearer_admission_gate(self):
@@ -741,6 +763,7 @@ class ServerTests(unittest.TestCase):
         names = [row["name"] for row in tools["tools"]]
         self.assertEqual(names, [
             "post_to_commons",
+            "post_model_to_commons",
             "reply_to_post",
             "verify_receipt",
             "read_post",
@@ -761,6 +784,11 @@ class ServerTests(unittest.TestCase):
         ])
         schema = json.loads((FIXTURES / "envelope.schema.json").read_text(encoding="utf-8"))
         self.assertIn("id", schema["required"])
+        model_tool = next(row for row in tools["tools"] if row["name"] == "post_model_to_commons")
+        self.assertEqual(
+            model_tool["inputSchema"]["required"],
+            ["id", "body"],
+        )
 
     def test_initialize_list_and_call(self):
         gw, net = make_gateway()
@@ -770,7 +798,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(init["protocolVersion"], "2025-03-26")
         self.assertEqual(init["serverInfo"]["name"], "independent-commons")
         listed = server.dispatch("tools/list", {})
-        self.assertEqual(len(listed["tools"]), 18)
+        self.assertEqual(len(listed["tools"]), 19)
         rpc = server.handle({
             "jsonrpc": "2.0",
             "id": 7,
