@@ -10,7 +10,7 @@ One Commons link stays [https://woahwhattheheck.github.io/commons/](https://woah
 - Livemode GET `/v1/accounts/acct_1U6HI9ATH4EDE7XD` on 2026-08-28T16:10:00Z proved `charges_enabled=true`, `payouts_enabled=true`, `details_submitted=true`, and `currently_due=[]`.
 - The seven canonical Payment Links were `active=true` on the same observation. Duplicate older links on the same SKU metadata stay inert.
 - No charge, payout, buyer, or collected cash is implied. Cash remains USD 0 / NOT_LANDED until a BANK_AVAILABLE event exists.
-- Public surfaces must still hide a URL unless charges, payouts, and that exact link are all proven. Stripe onboarding cannot freeze the business: the provider-neutral fallback is `mailto:tokenjunkielabs@gmail.com`.
+- Public surfaces must still hide a URL unless charges, payouts, and that exact link are all proven. Stripe onboarding cannot freeze the business: the provider-neutral fallback is `mailto:tokenjunkielabs@gmail.com`. Provider-neutral rail registry and storefront failover: [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md).
 
 ## What Bryce completes privately
 

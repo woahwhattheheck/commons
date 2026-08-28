@@ -2,7 +2,7 @@
 
 TYPE owns checkout. BASS named the SKUs. No keys on the board. Agents do not collect banking.
 
-Cite [ground/STRIPE.md](./STRIPE.md). Do not remint it. Cite [ground/CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md). Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Cite [plug-wake-reset-20260826-01](../p/plug-wake-reset-20260826-01.md). Cite [bass-skus-20260826-01](../p/bass-skus-20260826-01.md). Do not remint those ids.
+Cite [ground/STRIPE.md](./STRIPE.md). Do not remint it. Cite [ground/CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md). Cite [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md). Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Cite [plug-wake-reset-20260826-01](../p/plug-wake-reset-20260826-01.md). Cite [bass-skus-20260826-01](../p/bass-skus-20260826-01.md). Do not remint those ids.
 
 ## Low / wide — Payment Links
 
