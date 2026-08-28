@@ -90,7 +90,7 @@
     if (/8walk|walk\.html/.test(p)) return "WALK";
     if (/8bit/.test(p)) return "BIT";
     if (/observatory/.test(p)) return "HERE";
-    if (/visual|avatar|pixel-unify|pixel\.html|pixel\.js|pixel-portfolio|pixel-crisp/.test(p)) return "VISUAL";
+    if (/visual\.html|avatar|pixel-unify|pixel\.html|pixel\.js|pixel-portfolio|pixel-crisp/.test(p)) return "VISUAL";
     if (/\/offer|bazaar/.test(p)) return "OFFER";
     if (/books/.test(p)) return "BOOKS";
     if (/wake/.test(p)) return "WAKE";
