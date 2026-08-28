@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Listing Registry — exact SKU, evidence, chargeability, next action</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260826b"></script>
+<script src="./carrier.js?v=20260824a"></script>
+<style>
+body{max-width:82rem}
+.hero{padding:2rem 0 1rem}
+.hero h1{font-size:clamp(2.2rem,7vw,5rem);line-height:.96;max-width:16ch;margin:.25rem 0 1rem}
+.lead{font-size:1.2rem;max-width:55rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.card h3,.panel h2{margin-top:0}
+.pill{display:inline-block;border:1px solid #55555f;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-size:.82rem}
+.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.4rem}
+.truth span{border:1px solid #33333a;padding:.5rem;text-align:center}
+.truth b{display:block;font:700 1.2rem/1.2 ui-monospace,monospace}
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.filters button{border:1px solid #55555f;background:#161618;color:inherit;border-radius:999px;padding:.45rem .8rem}
+.filters button[aria-pressed="true"]{border-color:#d4a017;background:#241c0a}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem}
+table.matrix th,table.matrix td{border-bottom:1px solid #2a2a30;padding:.4rem .35rem;text-align:left;vertical-align:top}
+.state-SURFACE_PUBLISHED,.state-SURFACE_LIVE,.state-FIT{color:#6f9e6a}
+.state-PACKAGE_READY,.state-OWNER_PLATFORM_UNCLAIMED{color:#d4a017}
+.state-UNFIT,.state-NOT_LISTED,.state-NOT_PUBLISHED,.state-NOT_SUBMITTED{color:#9a9aa3}
+.state-BLOCKED_PROVIDER_ACCOUNT,.state-BLOCKED_IDENTITY_KYC,.state-BLOCKED_CHARGES_DISABLED,.state-BLOCKED_REGISTRATION,.state-NOT_CHARGEABLE_ON_THIS_SURFACE{color:#d07070}
+.state-ACTIVE_CHARGEABLE,.state-INTAKE_FIRST_ON_COMMONS{color:#d4a017}
+.state-NOT_A_PRICED_SKU{color:#8aa0c8}
+pre.copy{white-space:pre-wrap;max-height:22rem;overflow:auto}
+.search{width:100%;max-width:28rem;box-sizing:border-box;padding:.5rem .7rem;background:#161618;color:inherit;border:1px solid #55555f;border-radius:8px}
+details.row{border-bottom:1px solid #2a2a30;padding:.35rem 0}
+details.row summary{cursor:pointer;display:grid;grid-template-columns:minmax(8rem,1.4fr) minmax(7rem,1fr) 7rem 8rem 8rem 8rem;gap:.4rem;align-items:start}
+@media (max-width:720px){
+  details.row summary{grid-template-columns:1fr;gap:.15rem}
+}
+</style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Once evidence validates a path, stop re-litigating it: build through it at full speed and reopen doubt only when a named boundary check or new evidence invalidates the cache. <strong>Commerce is included:</strong> when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
+<p class="law">OPEN LISTING REGISTRY. One row per offer × surface. Exact SKU, evidence packet, chargeability, submission, owner, URL, last verified, next action. A draft is not a listing. A Commons page is not a marketplace. No duplicate posting. No login.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./distribution.html">distribution</a> · <a href="./pay.html">pay</a> · <a href="./scope-to-delivery.html">scope to delivery</a> · <a href="./current-work.html">current work</a> · <a href="./action.html">Action Pad</a></p>
+<header class="hero">
+  <p class="note">Listing registry · <code>host/listing_registry.py</code></p>
+  <h1>Discoverable offers. Zero invented listings.</h1>
+  <p class="lead">Verified shipped outcomes become GitHub Marketplace-style drafts, MCP directory rows, partner/vendor notes, procurement packs, service-catalog packages, and community-channel copy. Nothing here creates an account, accepts terms, submits a listing, or claims buyers or cash.</p>
+</header>
+<section class="panel" aria-labelledby="honest-heading">
+  <h2 id="honest-heading">Honest counts</h2>
+  <div class="truth" id="truth-counts">
+    <span><b id="c-listings">—</b>registry rows</span>
+    <span><b id="c-fit">—</b>fit / package-ready</span>
+    <span><b id="c-live-ext">0</b>live marketplace listings</span>
+    <span><b id="c-submitted">0</b>submitted</span>
+    <span><b id="c-published">—</b>Commons surfaces</span>
+    <span><b id="c-buyers">0</b>verified buyers</span>
+    <span><b id="c-cash">0.00</b>collected cash USD</span>
+    <span><b id="c-dup">0</b>duplicate postings</span>
+  </div>
+  <p class="note" id="status-src">Loading revenue/listing_registry/registry.json…</p>
+</section>
+<section class="panel">
+  <h2>Surfaces</h2>
+  <p>Six families. External families have no authorized account in this snapshot. Submit stays false. GitHub About is an owner act.</p>
+  <div class="grid" id="surface-cards"></div>
+</section>
+<section class="panel">
+  <h2>Registry</h2>
+  <p>Each row is one offer on one surface. Filter does not hide unfit rows — unread rows are how duplicate posting gets refused.</p>
+  <div class="filters" id="family-filters"></div>
+  <p><input class="search" id="q" type="search" placeholder="Filter offer, SKU, or surface" aria-label="Filter listings"></p>
+  <div id="listing-list"></div>
+</section>
+<section class="panel" id="asset-panel">
+  <h2>Ready-to-submit asset</h2>
+  <p>Pick a FIT row. Copy the draft. Do not submit it. Conversion stays on the canonical Commons page.</p>
+  <label>Listing
+    <select id="listing-select"></select>
+  </label>
+  <p id="asset-state" class="note"></p>
+  <pre class="copy" id="asset-copy"></pre>
+  <button type="button" id="copy-asset">Copy asset</button>
+</section>
+<p class="note">Machine: <a href="./revenue/listing_registry/registry.json">registry.json</a> · <a href="./revenue/listing_registry/assets.json">assets.json</a> · <a href="./revenue/listing_registry/surfaces.json">surfaces.json</a> · <a href="./revenue/listing_registry/schema.json">schema.json</a> · CLI <code>python3 host/listing_registry.py</code>. Law: <a href="./ground/LISTING_REGISTRY.md">ground/LISTING_REGISTRY.md</a>. Distribution stays <a href="./distribution.html">distribution.html</a>. Commerce stays <a href="./commerce.html">commerce.html</a>. Profitability map stays <a href="./ground/PROFITABILITY_BUILD_MAP.md">PROFITABILITY_BUILD_MAP.md</a>. Current work stays <a href="./current-work.html">current-work.html</a>. 337 NO.</p>
+<script src="./listing-registry.js?v=20260828a"></script>
+</body>
+</html>
