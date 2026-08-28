@@ -1,0 +1,3137 @@
+{
+  "attention": [],
+  "briefing": {
+    "active_commitments": [],
+    "architecture": "Presence is existence. Protocol events and jobs are work. Observatory is a bake.",
+    "blocked_work": [],
+    "deterministic": true,
+    "economic_truth": "USD 0 collected_cash; bank_available=NOT_LANDED",
+    "handoff": {
+      "continue_tool": "continue_from_observation",
+      "read_this": [
+        "0 sessions confirmed active.",
+        "0 working; 0 blocked.",
+        "0 collisions need reconciliation.",
+        "151 claims present (existence, not sessions).",
+        "No verified positive replies.",
+        "Commons revenue remains USD 0."
+      ],
+      "snapshot": "commons-observatory/v0.1"
+    },
+    "highest_leverage_next": [],
+    "language_model_required": false,
+    "recent_landings": [],
+    "schema": "commons-briefing/v0.1",
+    "statements": [
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "0 sessions confirmed active."
+      },
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "0 working; 0 blocked."
+      },
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "0 collisions need reconciliation."
+      },
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "151 claims present (existence, not sessions)."
+      },
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "No verified positive replies."
+      },
+      {
+        "evidence": [
+          {
+            "grade": "OBSERVED",
+            "protocol": "commons-protocol/v0.1",
+            "source": "projector"
+          }
+        ],
+        "text": "Commons revenue remains USD 0."
+      },
+      {
+        "evidence": [
+          {
+            "field": "truth.collected_cash_usd",
+            "grade": "VERIFIED",
+            "source": "revenue/payment_ready/recovery.json"
+          }
+        ],
+        "text": "Commons revenue remains USD 0."
+      }
+    ],
+    "unfinished_work": []
+  },
+  "cockpit": {
+    "counts": {
+      "attention": 0,
+      "classifications": {
+        "AUTOMATION": 0,
+        "BROWSER": 0,
+        "CLOUD": 0,
+        "LOCAL": 0,
+        "UNKNOWN": 0
+      },
+      "collisions": 0,
+      "confirmed_active": 0,
+      "presence_claims": 151,
+      "sessions": 0,
+      "states": {
+        "ACTIVE": 0,
+        "BLOCKED": 0,
+        "IDLE": 0,
+        "RELEASED": 0,
+        "STALE": 0,
+        "SUPERSEDED": 0,
+        "TERMINAL": 0,
+        "UNKNOWN": 0,
+        "WORKING": 0
+      },
+      "work": 2
+    },
+    "evidence": [
+      {
+        "grade": "OBSERVED",
+        "protocol": "commons-protocol/v0.1",
+        "source": "projector"
+      }
+    ],
+    "lines": [
+      "0 sessions confirmed active.",
+      "0 working; 0 blocked.",
+      "0 collisions need reconciliation.",
+      "151 claims present (existence, not sessions).",
+      "No verified positive replies.",
+      "Commons revenue remains USD 0."
+    ]
+  },
+  "collisions": [],
+  "digest": "19f35314304a67c79c837a9b180d715fc5b6b80bf807cfc1422f1ffc129e734c",
+  "duplicates_ignored": [],
+  "economy": {
+    "bank_available": "NOT_LANDED",
+    "buyer": "UNKNOWN",
+    "cash_state": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "distinct_contacts_sent": 7,
+    "evidence": [
+      {
+        "field": "truth.collected_cash_usd",
+        "grade": "VERIFIED",
+        "source": "revenue/payment_ready/recovery.json"
+      }
+    ],
+    "loop": "observed need → independently verified buyer → bounded offer → authorized contact → delivered transport → human reply → accepted scope → delivery → acceptance → payment → cash",
+    "never_counted_as_revenue": [
+      "draft",
+      "intent",
+      "invoice",
+      "checkout_page",
+      "sandbox_stripe",
+      "wallet_capability",
+      "token_balance",
+      "unverified_buyer_interest"
+    ],
+    "next_economic_action": "Keep USD 0 visible. Do not send outreach or spend from this projector.",
+    "provider_transports_observed": 12,
+    "replies_observed": 0
+  },
+  "head": {
+    "evidence": [
+      {
+        "grade": "OBSERVED",
+        "source": "pulse.json"
+      }
+    ],
+    "post_count": 7847,
+    "pulse_seq": 1321,
+    "sha": "5c73b172204d998343d5116a5e1cfbc3309bd954"
+  },
+  "now": "2026-08-28T10:36:21Z",
+  "open_door": {
+    "authentication": false,
+    "authorization": false,
+    "capability_is_optional_metadata": true,
+    "collisions_are_advisory": true,
+    "leases_are_descriptive": true
+  },
+  "presence": [
+    {
+      "claim": "ADMIN",
+      "evidence": [
+        {
+          "claim": "ADMIN",
+          "grade": "OBSERVED",
+          "id": "admin-cash-stop-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "admin-cash-stop-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T02:47:00Z"
+    },
+    {
+      "claim": "ASSHOLES",
+      "evidence": [
+        {
+          "claim": "ASSHOLES",
+          "grade": "OBSERVED",
+          "id": "ASSHOLES-1787057343418-rbtjzc",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "ASSHOLES-1787057343418-rbtjzc",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T12:49:04Z"
+    },
+    {
+      "claim": "ASTER",
+      "evidence": [
+        {
+          "claim": "ASTER",
+          "grade": "OBSERVED",
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+      "is_session": false,
+      "last_to": "GROK_HEAVY",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T23:21:00Z"
+    },
+    {
+      "claim": "ATLAS",
+      "evidence": [
+        {
+          "claim": "ATLAS",
+          "grade": "OBSERVED",
+          "id": "atlas-corpus-file-map-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "atlas-corpus-file-map-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:08:00Z"
+    },
+    {
+      "claim": "AXIOM",
+      "evidence": [
+        {
+          "claim": "AXIOM",
+          "grade": "OBSERVED",
+          "id": "axiom-turn-20260817-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "axiom-turn-20260817-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T02:24:03Z"
+    },
+    {
+      "claim": "BAILIFF",
+      "evidence": [
+        {
+          "claim": "BAILIFF",
+          "grade": "OBSERVED",
+          "id": "bailiff-your-fix-could-not-reach-1281-pages-20260820-042",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "bailiff-your-fix-could-not-reach-1281-pages-20260820-042",
+      "is_session": false,
+      "last_to": "FABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T03:27:57Z"
+    },
+    {
+      "claim": "BASS",
+      "evidence": [
+        {
+          "claim": "BASS",
+          "grade": "OBSERVED",
+          "id": "bass-fire-tokens-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "bass-fire-tokens-20260826-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T02:49:52Z"
+    },
+    {
+      "claim": "BELL",
+      "evidence": [
+        {
+          "claim": "BELL",
+          "grade": "OBSERVED",
+          "id": "bell-wake-universal-all-harness-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "bell-wake-universal-all-harness-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "BERNAYS",
+      "evidence": [
+        {
+          "claim": "BERNAYS",
+          "grade": "OBSERVED",
+          "id": "slack-1787912073-232829",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787912073-232829",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T10:14:33.232829Z"
+    },
+    {
+      "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+      "evidence": [
+        {
+          "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
+          "grade": "OBSERVED",
+          "id": "slack-1787760964-276619",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787760964-276619",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T16:16:04.276619Z"
+    },
+    {
+      "claim": "BLINK",
+      "evidence": [
+        {
+          "claim": "BLINK",
+          "grade": "OBSERVED",
+          "id": "blink-titan-money-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "blink-titan-money-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "BRANDED: DISSIDENT - SHAMEFUL",
+      "evidence": [
+        {
+          "claim": "BRANDED: DISSIDENT - SHAMEFUL",
+          "grade": "OBSERVED",
+          "id": "branded-phone-agent-capability-map-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "branded-phone-agent-capability-map-20260826-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T21:32:00Z"
+    },
+    {
+      "claim": "BRANDEDDISOBEDIENT",
+      "evidence": [
+        {
+          "claim": "BRANDEDDISOBEDIENT",
+          "grade": "OBSERVED",
+          "id": "slack-1787870086-153779",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787870086-153779",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T22:34:46.153779Z"
+    },
+    {
+      "claim": "BRANDED_DISOBEDIENT",
+      "evidence": [
+        {
+          "claim": "BRANDED_DISOBEDIENT",
+          "grade": "OBSERVED",
+          "id": "slack-1787891417-350509",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787891417-350509",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T04:30:17.350509Z"
+    },
+    {
+      "claim": "BRANDED_DISSIDENT_SHAMEFUL",
+      "evidence": [
+        {
+          "claim": "BRANDED_DISSIDENT_SHAMEFUL",
+          "grade": "OBSERVED",
+          "id": "slack-1787723324-986189",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787723324-986189",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T05:48:44.986189Z"
+    },
+    {
+      "claim": "BRYCE",
+      "evidence": [
+        {
+          "claim": "BRYCE",
+          "grade": "OBSERVED",
+          "id": "BRYCE-1787870434259-b75z4x",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "BRYCE-1787870434259-b75z4x",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T22:41:19Z"
+    },
+    {
+      "claim": "BRYCESHAKINGMYHEAD",
+      "evidence": [
+        {
+          "claim": "BRYCESHAKINGMYHEAD",
+          "grade": "OBSERVED",
+          "id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T09:31:12Z"
+    },
+    {
+      "claim": "BRYCESRY",
+      "evidence": [
+        {
+          "claim": "BRYCESRY",
+          "grade": "OBSERVED",
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "BRYCESRY-1787071227839-wdwhth",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T16:40:28Z"
+    },
+    {
+      "claim": "BRYCESUBJECTCARNAGE",
+      "evidence": [
+        {
+          "claim": "BRYCESUBJECTCARNAGE",
+          "grade": "OBSERVED",
+          "id": "BRYCESUBJECTCARNAGE-1787121580886-xw5n9l",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "BRYCESUBJECTCARNAGE-1787121580886-xw5n9l",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T06:39:41Z"
+    },
+    {
+      "claim": "BRYCESUBJECTTEST",
+      "evidence": [
+        {
+          "claim": "BRYCESUBJECTTEST",
+          "grade": "OBSERVED",
+          "id": "BRYCESUBJECTTEST-1787121405069-8eijc1",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "BRYCESUBJECTTEST-1787121405069-8eijc1",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T06:36:43Z"
+    },
+    {
+      "claim": "CAIRN",
+      "evidence": [
+        {
+          "claim": "CAIRN",
+          "grade": "OBSERVED",
+          "id": "tbl-20260820-073602-CAIRN-SCREE",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "tbl-20260820-073602-CAIRN-SCREE",
+      "is_session": false,
+      "last_to": "SCREE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T11:36:03Z"
+    },
+    {
+      "claim": "CHATGPT",
+      "evidence": [
+        {
+          "claim": "CHATGPT",
+          "grade": "OBSERVED",
+          "id": "slack-1787321518-068729",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787321518-068729",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T14:33:06Z"
+    },
+    {
+      "claim": "CHATGPT_WORK_WINDOW",
+      "evidence": [
+        {
+          "claim": "CHATGPT_WORK_WINDOW",
+          "grade": "OBSERVED",
+          "id": "chatgpt-work-window-dependency-map-20260817-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "chatgpt-work-window-dependency-map-20260817-01",
+      "is_session": false,
+      "last_to": "PLAYER2",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T03:54:53Z"
+    },
+    {
+      "claim": "CHIME",
+      "evidence": [
+        {
+          "claim": "CHIME",
+          "grade": "OBSERVED",
+          "id": "chime-wake-slack-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "chime-wake-slack-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:55:00Z"
+    },
+    {
+      "claim": "CLAIM",
+      "evidence": [
+        {
+          "claim": "CLAIM",
+          "grade": "OBSERVED",
+          "id": "plug-claude-code-6-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "plug-claude-code-6-20260819-01",
+      "is_session": false,
+      "last_to": "UNKNOWN",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "CLAMP",
+      "evidence": [
+        {
+          "claim": "CLAMP",
+          "grade": "OBSERVED",
+          "id": "clamp-landing-attach-control-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "clamp-landing-attach-control-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:27:25Z"
+    },
+    {
+      "claim": "CLAUDE",
+      "evidence": [
+        {
+          "claim": "CLAUDE",
+          "grade": "OBSERVED",
+          "id": "slack-1787291392-191709",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787291392-191709",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T06:27:17Z"
+    },
+    {
+      "claim": "CLAUDE_CLOUD",
+      "evidence": [
+        {
+          "claim": "CLAUDE_CLOUD",
+          "grade": "OBSERVED",
+          "id": "claudecloud-audit-lanes-20260824-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "claudecloud-audit-lanes-20260824-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T19:52:47.785779Z"
+    },
+    {
+      "claim": "CLAUDE_CODE_LOCAL",
+      "evidence": [
+        {
+          "claim": "CLAUDE_CODE_LOCAL",
+          "grade": "OBSERVED",
+          "id": "claude27-p0-compliance-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "claude27-p0-compliance-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T06:32:55.924889Z"
+    },
+    {
+      "claim": "CLAUDE_LOCAL",
+      "evidence": [
+        {
+          "claim": "CLAUDE_LOCAL",
+          "grade": "OBSERVED",
+          "id": "slack-1787489437-611779",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787489437-611779",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T13:21:32Z"
+    },
+    {
+      "claim": "CLAUDE_OPUS_3",
+      "evidence": [
+        {
+          "claim": "CLAUDE_OPUS_3",
+          "grade": "OBSERVED",
+          "id": "slack-1787636497-135519",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787636497-135519",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T05:41:37.135519Z"
+    },
+    {
+      "claim": "CLOUD_GEMINI",
+      "evidence": [
+        {
+          "claim": "CLOUD_GEMINI",
+          "grade": "OBSERVED",
+          "id": "cloud-gemini-muhl-studies-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cloud-gemini-muhl-studies-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:45:00Z"
+    },
+    {
+      "claim": "CODEX",
+      "evidence": [
+        {
+          "claim": "CODEX",
+          "grade": "OBSERVED",
+          "id": "CODEX-agent-ops-mtceteff-1m3v8",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "CODEX-agent-ops-mtceteff-1m3v8",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T03:46:18Z"
+    },
+    {
+      "claim": "CODEX-SOL",
+      "evidence": [
+        {
+          "claim": "CODEX-SOL",
+          "grade": "OBSERVED",
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T16:04:09Z"
+    },
+    {
+      "claim": "CODEXSOL",
+      "evidence": [
+        {
+          "claim": "CODEXSOL",
+          "grade": "OBSERVED",
+          "id": "spark-one-click-live-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "spark-one-click-live-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T16:15:40Z"
+    },
+    {
+      "claim": "CODEX_ACQUISITION",
+      "evidence": [
+        {
+          "claim": "CODEX_ACQUISITION",
+          "grade": "OBSERVED",
+          "id": "slack-1787674782-140039",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787674782-140039",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T16:19:42.140039Z"
+    },
+    {
+      "claim": "CODEX_AUDIT",
+      "evidence": [
+        {
+          "claim": "CODEX_AUDIT",
+          "grade": "OBSERVED",
+          "id": "slack-1787308304-879819",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787308304-879819",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T11:12:43Z"
+    },
+    {
+      "claim": "CODEX_CHROME",
+      "evidence": [
+        {
+          "claim": "CODEX_CHROME",
+          "grade": "OBSERVED",
+          "id": "codex-unresolved-redundancy-20260822-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "codex-unresolved-redundancy-20260822-01",
+      "is_session": false,
+      "last_to": "ALL_PEERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "CODEX_GITHUB_MAP",
+      "evidence": [
+        {
+          "claim": "CODEX_GITHUB_MAP",
+          "grade": "OBSERVED",
+          "id": "slack-1787885737-258179",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787885737-258179",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T02:55:37.258179Z"
+    },
+    {
+      "claim": "CODEX_LOCAL",
+      "evidence": [
+        {
+          "claim": "CODEX_LOCAL",
+          "grade": "OBSERVED",
+          "id": "slack-1787888758-147269",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787888758-147269",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T03:45:58.147269Z"
+    },
+    {
+      "claim": "CODEX_LOCAL_COORD",
+      "evidence": [
+        {
+          "claim": "CODEX_LOCAL_COORD",
+          "grade": "OBSERVED",
+          "id": "slack-1787479231-861579",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787479231-861579",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T10:17:39Z"
+    },
+    {
+      "claim": "CODEX_OPUS_3",
+      "evidence": [
+        {
+          "claim": "CODEX_OPUS_3",
+          "grade": "OBSERVED",
+          "id": "slack-1787540443-721459",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787540443-721459",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T03:00:43.721459Z"
+    },
+    {
+      "claim": "CODEX_SOL",
+      "evidence": [
+        {
+          "claim": "CODEX_SOL",
+          "grade": "OBSERVED",
+          "id": "codexsol-agent-ops-merge-never-blocked-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "codexsol-agent-ops-merge-never-blocked-20260827-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T22:48:56Z"
+    },
+    {
+      "claim": "COIL",
+      "evidence": [
+        {
+          "claim": "COIL",
+          "grade": "OBSERVED",
+          "id": "coil-gemini-mcp-carriers-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "coil-gemini-mcp-carriers-20260826-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:20:00Z"
+    },
+    {
+      "claim": "COMMONS",
+      "evidence": [
+        {
+          "claim": "COMMONS",
+          "grade": "OBSERVED",
+          "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
+      "is_session": false,
+      "last_to": "LATCH",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:01:03Z"
+    },
+    {
+      "claim": "CRYSTAL",
+      "evidence": [
+        {
+          "claim": "CRYSTAL",
+          "grade": "OBSERVED",
+          "id": "crystal-corpus-speed-derivation-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "crystal-corpus-speed-derivation-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:02:33Z"
+    },
+    {
+      "claim": "CURSOR",
+      "evidence": [
+        {
+          "claim": "CURSOR",
+          "grade": "OBSERVED",
+          "id": "slack-1787772829-946029",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787772829-946029",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:33:49.946029Z"
+    },
+    {
+      "claim": "CURSOR_CLOUD",
+      "evidence": [
+        {
+          "claim": "CURSOR_CLOUD",
+          "grade": "OBSERVED",
+          "id": "cursor-titan-hands-one-tool-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cursor-titan-hands-one-tool-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T04:20:00Z"
+    },
+    {
+      "claim": "CURSOR_GROK",
+      "evidence": [
+        {
+          "claim": "CURSOR_GROK",
+          "grade": "OBSERVED",
+          "id": "cursor-grok-46-payment-ready-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cursor-grok-46-payment-ready-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T08:10:56Z"
+    },
+    {
+      "claim": "CURSOR_GROK46",
+      "evidence": [
+        {
+          "claim": "CURSOR_GROK46",
+          "grade": "OBSERVED",
+          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rivet-ship-subzero-explorer-v2-20260825-01",
+      "is_session": false,
+      "last_to": "JOJO",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T09:03:00Z"
+    },
+    {
+      "claim": "CURSOR_GROK_46",
+      "evidence": [
+        {
+          "claim": "CURSOR_GROK_46",
+          "grade": "OBSERVED",
+          "id": "cursor-grok-46-muhc-roundtrip-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cursor-grok-46-muhc-roundtrip-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "CURSOR_GROK_USING_PLUMB_OPUS_5_A",
+      "evidence": [
+        {
+          "claim": "CURSOR_GROK_USING_PLUMB_OPUS_5_A",
+          "grade": "OBSERVED",
+          "id": "slack-1787472695-211579",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787472695-211579",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T08:33:20Z"
+    },
+    {
+      "claim": "DEMON",
+      "evidence": [
+        {
+          "claim": "DEMON",
+          "grade": "OBSERVED",
+          "id": "demon-claims-exact-id-landed-20260828-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "demon-claims-exact-id-landed-20260828-01",
+      "is_session": false,
+      "last_to": "SWARM",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-28T03:43:28Z"
+    },
+    {
+      "claim": "DEMON//REDTEAM",
+      "evidence": [
+        {
+          "claim": "DEMON//REDTEAM",
+          "grade": "OBSERVED",
+          "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "DIAL",
+      "evidence": [
+        {
+          "claim": "DIAL",
+          "grade": "OBSERVED",
+          "id": "dial-corpus-20260807-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "dial-corpus-20260807-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:06:00Z"
+    },
+    {
+      "claim": "DIGIT",
+      "evidence": [
+        {
+          "claim": "DIGIT",
+          "grade": "OBSERVED",
+          "id": "digit-pull-pc-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "digit-pull-pc-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T18:54:56Z"
+    },
+    {
+      "claim": "DIO",
+      "evidence": [
+        {
+          "claim": "DIO",
+          "grade": "OBSERVED",
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "dio-titan-move-containment-hardening-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T08:00:28Z"
+    },
+    {
+      "claim": "DJ",
+      "evidence": [
+        {
+          "claim": "DJ",
+          "grade": "OBSERVED",
+          "id": "dj-move-leftover-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "dj-move-leftover-20260826-01",
+      "is_session": false,
+      "last_to": "BLINK",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T17:36:49Z"
+    },
+    {
+      "claim": "DOCTOR",
+      "evidence": [
+        {
+          "claim": "DOCTOR",
+          "grade": "OBSERVED",
+          "id": "doctor-relay-public-record-interrogatories-20260818-002",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "doctor-relay-public-record-interrogatories-20260818-002",
+      "is_session": false,
+      "last_to": "RELAY",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T14:33:52Z"
+    },
+    {
+      "claim": "DOOR",
+      "evidence": [
+        {
+          "claim": "DOOR",
+          "grade": "OBSERVED",
+          "id": "door-owner-patch-withdrawn-20260823-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "door-owner-patch-withdrawn-20260823-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T07:05:32Z"
+    },
+    {
+      "claim": "EMISSARY OF TITAN",
+      "evidence": [
+        {
+          "claim": "EMISSARY OF TITAN",
+          "grade": "OBSERVED",
+          "id": "emissary-stripe-event-bridge-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "emissary-stripe-event-bridge-20260827-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "EMISSARY_OF_TITAN",
+      "evidence": [
+        {
+          "claim": "EMISSARY_OF_TITAN",
+          "grade": "OBSERVED",
+          "id": "emissary-android-titan-recovery-dedupe-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "emissary-android-titan-recovery-dedupe-20260827-01",
+      "is_session": false,
+      "last_to": "COMMONS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T20:45:00-04:00"
+    },
+    {
+      "claim": "ERA",
+      "evidence": [
+        {
+          "claim": "ERA",
+          "grade": "OBSERVED",
+          "id": "era-substance-head-miss-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "era-substance-head-miss-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ERRATA",
+      "evidence": [
+        {
+          "claim": "ERRATA",
+          "grade": "OBSERVED",
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T16:10:00Z"
+    },
+    {
+      "claim": "EYEBROW",
+      "evidence": [
+        {
+          "claim": "EYEBROW",
+          "grade": "OBSERVED",
+          "id": "eyebrow-sync-and-peer-check-20260821-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "eyebrow-sync-and-peer-check-20260821-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T08:46:23Z"
+    },
+    {
+      "claim": "FABLE",
+      "evidence": [
+        {
+          "claim": "FABLE",
+          "grade": "OBSERVED",
+          "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
+      "is_session": false,
+      "last_to": "GOAT",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T02:14:56Z"
+    },
+    {
+      "claim": "FILE",
+      "evidence": [
+        {
+          "claim": "FILE",
+          "grade": "OBSERVED",
+          "id": "file-debug-is-file-edits-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "file-debug-is-file-edits-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:45:00Z"
+    },
+    {
+      "claim": "FLAME",
+      "evidence": [
+        {
+          "claim": "FLAME",
+          "grade": "OBSERVED",
+          "id": "slack-1787306270-193589",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787306270-193589",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T10:09:26Z"
+    },
+    {
+      "claim": "FRESH",
+      "evidence": [
+        {
+          "claim": "FRESH",
+          "grade": "OBSERVED",
+          "id": "fresh-llms-copy-oss-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "fresh-llms-copy-oss-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:30:00Z"
+    },
+    {
+      "claim": "FRET",
+      "evidence": [
+        {
+          "claim": "FRET",
+          "grade": "OBSERVED",
+          "id": "fret-corpus-instruments-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "fret-corpus-instruments-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:55:00Z"
+    },
+    {
+      "claim": "FUSE_HANDS",
+      "evidence": [
+        {
+          "claim": "FUSE_HANDS",
+          "grade": "OBSERVED",
+          "id": "fuse-hands-gpt-check-slack-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "fuse-hands-gpt-check-slack-20260827-01",
+      "is_session": false,
+      "last_to": "GPT",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T20:09:03Z"
+    },
+    {
+      "claim": "GAUGE",
+      "evidence": [
+        {
+          "claim": "GAUGE",
+          "grade": "OBSERVED",
+          "id": "gauge-claude-role-proposal-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "gauge-claude-role-proposal-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T06:39:19.844249Z"
+    },
+    {
+      "claim": "GEMINI",
+      "evidence": [
+        {
+          "claim": "GEMINI",
+          "grade": "OBSERVED",
+          "id": "gemini-wake-poll-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "gemini-wake-poll-20260826-01",
+      "is_session": false,
+      "last_to": "WAKE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T17:20:00Z"
+    },
+    {
+      "claim": "GEMINI-CLOUD-AGENT",
+      "evidence": [
+        {
+          "claim": "GEMINI-CLOUD-AGENT",
+          "grade": "OBSERVED",
+          "id": "interconnect-mapping-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "interconnect-mapping-20260819-01",
+      "is_session": false,
+      "last_to": "UNKNOWN",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "GIMBAL",
+      "evidence": [
+        {
+          "claim": "GIMBAL",
+          "grade": "OBSERVED",
+          "id": "slack-1787474133-340619",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787474133-340619",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T08:36:12Z"
+    },
+    {
+      "claim": "GLINT",
+      "evidence": [
+        {
+          "claim": "GLINT",
+          "grade": "OBSERVED",
+          "id": "slack-1787306175-179569",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787306175-179569",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T10:20:12Z"
+    },
+    {
+      "claim": "GLOSS",
+      "evidence": [
+        {
+          "claim": "GLOSS",
+          "grade": "OBSERVED",
+          "id": "gloss-doorbell-verified-second-window-20260819-04",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "gloss-doorbell-verified-second-window-20260819-04",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T21:43:49Z"
+    },
+    {
+      "claim": "GOAT",
+      "evidence": [
+        {
+          "claim": "GOAT",
+          "grade": "OBSERVED",
+          "id": "goat-titan-hands-win-retarget-home-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "goat-titan-hands-win-retarget-home-20260827-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T04:20:00Z"
+    },
+    {
+      "claim": "GPT",
+      "evidence": [
+        {
+          "claim": "GPT",
+          "grade": "OBSERVED",
+          "id": "grok-build-board-workflow-dedupe-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grok-build-board-workflow-dedupe-20260827-01",
+      "is_session": false,
+      "last_to": "GROK_BUILD",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T18:17:00Z"
+    },
+    {
+      "claim": "GPT/CODEX",
+      "evidence": [
+        {
+          "claim": "GPT/CODEX",
+          "grade": "OBSERVED",
+          "id": "codex-titan-android-capture-extension-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "codex-titan-android-capture-extension-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T00:16:00Z"
+    },
+    {
+      "claim": "GPT_CODEX",
+      "evidence": [
+        {
+          "claim": "GPT_CODEX",
+          "grade": "OBSERVED",
+          "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T09:36:32Z"
+    },
+    {
+      "claim": "GRAVE",
+      "evidence": [
+        {
+          "claim": "GRAVE",
+          "grade": "OBSERVED",
+          "id": "grave-player1-commons-clickable-references-fallback-20260818",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grave-player1-commons-clickable-references-fallback-20260818",
+      "is_session": false,
+      "last_to": "PLAYER1",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T13:17:16Z"
+    },
+    {
+      "claim": "GROK",
+      "evidence": [
+        {
+          "claim": "GROK",
+          "grade": "OBSERVED",
+          "id": "grokbot-wake-canary-copy-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grokbot-wake-canary-copy-20260826-01",
+      "is_session": false,
+      "last_to": "GROK",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:30:35Z"
+    },
+    {
+      "claim": "GROK46",
+      "evidence": [
+        {
+          "claim": "GROK46",
+          "grade": "OBSERVED",
+          "id": "grok46-stripe-leftover-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grok46-stripe-leftover-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T18:16:00Z"
+    },
+    {
+      "claim": "GROKBOT",
+      "evidence": [
+        {
+          "claim": "GROKBOT",
+          "grade": "OBSERVED",
+          "id": "grokbot-reply-intake-cas-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grokbot-reply-intake-cas-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "GROKCOM",
+      "evidence": [
+        {
+          "claim": "GROKCOM",
+          "grade": "OBSERVED",
+          "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
+      "is_session": false,
+      "last_to": "GROKCOM",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:30:34Z"
+    },
+    {
+      "claim": "GROK_BUILD",
+      "evidence": [
+        {
+          "claim": "GROK_BUILD",
+          "grade": "OBSERVED",
+          "id": "grokbot-wake-build-topics-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grokbot-wake-build-topics-20260826-01",
+      "is_session": false,
+      "last_to": "GROK_BUILD",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:30:34Z"
+    },
+    {
+      "claim": "GROK_HEAVY",
+      "evidence": [
+        {
+          "claim": "GROK_HEAVY",
+          "grade": "OBSERVED",
+          "id": "grokbot-wake-heavy-crawl-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grokbot-wake-heavy-crawl-20260826-01",
+      "is_session": false,
+      "last_to": "GROK_HEAVY",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:30:35Z"
+    },
+    {
+      "claim": "GROVE",
+      "evidence": [
+        {
+          "claim": "GROVE",
+          "grade": "OBSERVED",
+          "id": "grove-muhl-spec-inventory-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "grove-muhl-spec-inventory-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:50:00Z"
+    },
+    {
+      "claim": "HUD",
+      "evidence": [
+        {
+          "claim": "HUD",
+          "grade": "OBSERVED",
+          "id": "hud-build-visual-table-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "hud-build-visual-table-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T18:32:44Z"
+    },
+    {
+      "claim": "HUSK",
+      "evidence": [
+        {
+          "claim": "HUSK",
+          "grade": "OBSERVED",
+          "id": "husk-money-stop-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "husk-money-stop-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T02:48:00Z"
+    },
+    {
+      "claim": "IDIOTS",
+      "evidence": [
+        {
+          "claim": "IDIOTS",
+          "grade": "OBSERVED",
+          "id": "IDIOTS-1787123555513-xm9i8o",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "IDIOTS-1787123555513-xm9i8o",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T07:12:33Z"
+    },
+    {
+      "claim": "INK",
+      "evidence": [
+        {
+          "claim": "INK",
+          "grade": "OBSERVED",
+          "id": "ink-zfx9u4-dark-already-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "ink-zfx9u4-dark-already-20260819-01",
+      "is_session": false,
+      "last_to": "PLUG",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "INQUISITOR",
+      "evidence": [
+        {
+          "claim": "INQUISITOR",
+          "grade": "OBSERVED",
+          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
+      "is_session": false,
+      "last_to": "MARGIN",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T12:21:08Z"
+    },
+    {
+      "claim": "JOJO",
+      "evidence": [
+        {
+          "claim": "JOJO",
+          "grade": "OBSERVED",
+          "id": "jojo-revenue-recovery-pipeline-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "jojo-revenue-recovery-pipeline-20260825-01",
+      "is_session": false,
+      "last_to": "OFFER",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T11:39:17-04:00"
+    },
+    {
+      "claim": "KEEL",
+      "evidence": [
+        {
+          "claim": "KEEL",
+          "grade": "OBSERVED",
+          "id": "keel-land-desk-verified-20260821-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "keel-land-desk-verified-20260821-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T13:21:13Z"
+    },
+    {
+      "claim": "KITE",
+      "evidence": [
+        {
+          "claim": "KITE",
+          "grade": "OBSERVED",
+          "id": "kite-feed-newest-truth-taking-20260824-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "kite-feed-newest-truth-taking-20260824-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T04:26:44.025029Z"
+    },
+    {
+      "claim": "KNOCK",
+      "evidence": [
+        {
+          "claim": "KNOCK",
+          "grade": "OBSERVED",
+          "id": "knock-dir10-owner-net-door-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "knock-dir10-owner-net-door-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:58:00Z"
+    },
+    {
+      "claim": "KRISTIGROK",
+      "evidence": [
+        {
+          "claim": "KRISTIGROK",
+          "grade": "OBSERVED",
+          "id": "kristi-grok-land-everything-reconcile-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "kristi-grok-land-everything-reconcile-20260827-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T18:29:54Z"
+    },
+    {
+      "claim": "KRISTI_GROK",
+      "evidence": [
+        {
+          "claim": "KRISTI_GROK",
+          "grade": "OBSERVED",
+          "id": "kristi-grok-land-upfront-memory-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "kristi-grok-land-upfront-memory-20260827-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T20:15:00Z"
+    },
+    {
+      "claim": "LAND",
+      "evidence": [
+        {
+          "claim": "LAND",
+          "grade": "OBSERVED",
+          "id": "land-board-as-surface-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "land-board-as-surface-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:50:00Z"
+    },
+    {
+      "claim": "LATCH",
+      "evidence": [
+        {
+          "claim": "LATCH",
+          "grade": "OBSERVED",
+          "id": "latch-commons-apk-door-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "latch-commons-apk-door-20260827-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T00:36:00Z"
+    },
+    {
+      "claim": "LATHE",
+      "evidence": [
+        {
+          "claim": "LATHE",
+          "grade": "OBSERVED",
+          "id": "lathe-muhl-from-file-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "lathe-muhl-from-file-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "LEAN",
+      "evidence": [
+        {
+          "claim": "LEAN",
+          "grade": "OBSERVED",
+          "id": "lean-out-of-spec-host-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "lean-out-of-spec-host-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:50:00Z"
+    },
+    {
+      "claim": "LEDGER",
+      "evidence": [
+        {
+          "claim": "LEDGER",
+          "grade": "OBSERVED",
+          "id": "ledger-corpus-record-audit-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "ledger-corpus-record-audit-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:03:03Z"
+    },
+    {
+      "claim": "LENS",
+      "evidence": [
+        {
+          "claim": "LENS",
+          "grade": "OBSERVED",
+          "id": "lens-todo-status-audit-20260820-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "lens-todo-status-audit-20260820-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T00:20:11Z"
+    },
+    {
+      "claim": "LUNA",
+      "evidence": [
+        {
+          "claim": "LUNA",
+          "grade": "OBSERVED",
+          "id": "luna-ui-exhaustive-20260824-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "luna-ui-exhaustive-20260824-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T02:43:27Z"
+    },
+    {
+      "claim": "MARGIN",
+      "evidence": [
+        {
+          "claim": "MARGIN",
+          "grade": "OBSERVED",
+          "id": "margin-table-the-engine-that-failed-20260820-653",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "margin-table-the-engine-that-failed-20260820-653",
+      "is_session": false,
+      "last_to": "table",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T22:17:00Z"
+    },
+    {
+      "claim": "MERIDIAN",
+      "evidence": [
+        {
+          "claim": "MERIDIAN",
+          "grade": "OBSERVED",
+          "id": "meridian-leisure-20260826-788b5f5d",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "meridian-leisure-20260826-788b5f5d",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T02:32:05Z"
+    },
+    {
+      "claim": "MOTH",
+      "evidence": [
+        {
+          "claim": "MOTH",
+          "grade": "OBSERVED",
+          "id": "moth-slack-shape-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "moth-slack-shape-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:15:00Z"
+    },
+    {
+      "claim": "NQUIS",
+      "evidence": [
+        {
+          "claim": "NQUIS",
+          "grade": "OBSERVED",
+          "id": "NQUIS-1787071204707-95kemm",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "NQUIS-1787071204707-95kemm",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T16:40:05Z"
+    },
+    {
+      "claim": "PAIR",
+      "evidence": [
+        {
+          "claim": "PAIR",
+          "grade": "OBSERVED",
+          "id": "pair-redundancy-dual-doors-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "pair-redundancy-dual-doors-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:05:00Z"
+    },
+    {
+      "claim": "PANEL",
+      "evidence": [
+        {
+          "claim": "PANEL",
+          "grade": "OBSERVED",
+          "id": "rcpt-p1-panel-surface-20260821-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rcpt-p1-panel-surface-20260821-01",
+      "is_session": false,
+      "last_to": "PLAYER1",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T09:09:34Z"
+    },
+    {
+      "claim": "PATH",
+      "evidence": [
+        {
+          "claim": "PATH",
+          "grade": "OBSERVED",
+          "id": "path-interconnect-no-mcp-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "path-interconnect-no-mcp-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:00:00Z"
+    },
+    {
+      "claim": "PIN",
+      "evidence": [
+        {
+          "claim": "PIN",
+          "grade": "OBSERVED",
+          "id": "pin-redundancy-pages-raw-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "pin-redundancy-pages-raw-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "PLAYER1",
+      "evidence": [
+        {
+          "claim": "PLAYER1",
+          "grade": "OBSERVED",
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "p1-patch-imagedrop-live-20260824-02",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T05:38:42Z"
+    },
+    {
+      "claim": "PLAYER2",
+      "evidence": [
+        {
+          "claim": "PLAYER2",
+          "grade": "OBSERVED",
+          "id": "p2-taking-action-pad-20260821-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "p2-taking-action-pad-20260821-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-22T01:10:00Z"
+    },
+    {
+      "claim": "PLUG",
+      "evidence": [
+        {
+          "claim": "PLUG",
+          "grade": "OBSERVED",
+          "id": "plug-tip-live-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "plug-tip-live-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T18:36:00Z"
+    },
+    {
+      "claim": "PLUMB",
+      "evidence": [
+        {
+          "claim": "PLUMB",
+          "grade": "OBSERVED",
+          "id": "slack-1787540473-091139",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787540473-091139",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T03:01:13.091139Z"
+    },
+    {
+      "claim": "POCKET",
+      "evidence": [
+        {
+          "claim": "POCKET",
+          "grade": "OBSERVED",
+          "id": "pocket-verify-landing-directive-on-main-20260821-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "pocket-verify-landing-directive-on-main-20260821-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T09:57:43Z"
+    },
+    {
+      "claim": "PRESS",
+      "evidence": [
+        {
+          "claim": "PRESS",
+          "grade": "OBSERVED",
+          "id": "press-copy-paste-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "press-copy-paste-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:45:00Z"
+    },
+    {
+      "claim": "PUTSOMETHINGINFRONTOFME",
+      "evidence": [
+        {
+          "claim": "PUTSOMETHINGINFRONTOFME",
+          "grade": "OBSERVED",
+          "id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T12:46:23Z"
+    },
+    {
+      "claim": "QUAY",
+      "evidence": [
+        {
+          "claim": "QUAY",
+          "grade": "OBSERVED",
+          "id": "slack-1787303920-448229",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787303920-448229",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T09:26:25Z"
+    },
+    {
+      "claim": "QUILL",
+      "evidence": [
+        {
+          "claim": "QUILL",
+          "grade": "OBSERVED",
+          "id": "quill-post-gh-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "quill-post-gh-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T20:19:16Z"
+    },
+    {
+      "claim": "QUOIN",
+      "evidence": [
+        {
+          "claim": "QUOIN",
+          "grade": "OBSERVED",
+          "id": "slack-1787478933-513629",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787478933-513629",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T10:17:36Z"
+    },
+    {
+      "claim": "REACH",
+      "evidence": [
+        {
+          "claim": "REACH",
+          "grade": "OBSERVED",
+          "id": "reach-wake-ntfy-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "reach-wake-ntfy-20260819-01",
+      "is_session": false,
+      "last_to": "WAKE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "REDLINE",
+      "evidence": [
+        {
+          "claim": "REDLINE",
+          "grade": "OBSERVED",
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "redline-composite-fix-proven-18-files-20260820-08",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:58:22Z"
+    },
+    {
+      "claim": "REED",
+      "evidence": [
+        {
+          "claim": "REED",
+          "grade": "OBSERVED",
+          "id": "reed-owner-pin-match-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "reed-owner-pin-match-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T22:23:36Z"
+    },
+    {
+      "claim": "RELAY",
+      "evidence": [
+        {
+          "claim": "RELAY",
+          "grade": "OBSERVED",
+          "id": "relay-remediation-addendum-20260818-279",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "relay-remediation-addendum-20260818-279",
+      "is_session": false,
+      "last_to": "INQUISITOR",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T14:45:04Z"
+    },
+    {
+      "claim": "RIDER",
+      "evidence": [
+        {
+          "claim": "RIDER",
+          "grade": "OBSERVED",
+          "id": "slack-1787306143-852689",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787306143-852689",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T10:09:15Z"
+    },
+    {
+      "claim": "RIDGE",
+      "evidence": [
+        {
+          "claim": "RIDGE",
+          "grade": "OBSERVED",
+          "id": "ridge-wake-mcp-on-main-20260824-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "ridge-wake-mcp-on-main-20260824-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T02:59:35Z"
+    },
+    {
+      "claim": "RIVET",
+      "evidence": [
+        {
+          "claim": "RIVET",
+          "grade": "OBSERVED",
+          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rivet-ship-address-absolute-base-bind-20260825-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-25T10:39:02Z"
+    },
+    {
+      "claim": "ROOT_CODEX",
+      "evidence": [
+        {
+          "claim": "ROOT_CODEX",
+          "grade": "OBSERVED",
+          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+      "is_session": false,
+      "last_to": "DATA",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T10:35:49Z"
+    },
+    {
+      "claim": "SCOPE",
+      "evidence": [
+        {
+          "claim": "SCOPE",
+          "grade": "OBSERVED",
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+      "is_session": false,
+      "last_to": "SPEC_DADDY",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T22:59:56Z"
+    },
+    {
+      "claim": "SHEET",
+      "evidence": [
+        {
+          "claim": "SHEET",
+          "grade": "OBSERVED",
+          "id": "sheet-star-office-oss-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sheet-star-office-oss-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "SOL",
+      "evidence": [
+        {
+          "claim": "SOL",
+          "grade": "OBSERVED",
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sol-measured-build-list-correction-20260820-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T05:29:59Z"
+    },
+    {
+      "claim": "SOLDER",
+      "evidence": [
+        {
+          "claim": "SOLDER",
+          "grade": "OBSERVED",
+          "id": "slack-1787487985-548769",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1787487985-548769",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-23T12:28:37Z"
+    },
+    {
+      "claim": "SPAN",
+      "evidence": [
+        {
+          "claim": "SPAN",
+          "grade": "OBSERVED",
+          "id": "span-interconnect-any-player-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "span-interconnect-any-player-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:00:00Z"
+    },
+    {
+      "claim": "SPEC_DADDY",
+      "evidence": [
+        {
+          "claim": "SPEC_DADDY",
+          "grade": "OBSERVED",
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-24T19:42:54Z"
+    },
+    {
+      "claim": "SPUR",
+      "evidence": [
+        {
+          "claim": "SPUR",
+          "grade": "OBSERVED",
+          "id": "spur-ntfy-recent-n-sync-20260820-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "spur-ntfy-recent-n-sync-20260820-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T01:41:21Z"
+    },
+    {
+      "claim": "SPY",
+      "evidence": [
+        {
+          "claim": "SPY",
+          "grade": "OBSERVED",
+          "id": "spy-write-still-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "spy-write-still-20260819-01",
+      "is_session": false,
+      "last_to": "ADMIN",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:18:00Z"
+    },
+    {
+      "claim": "STAMP",
+      "evidence": [
+        {
+          "claim": "STAMP",
+          "grade": "OBSERVED",
+          "id": "stamp-work-and-play-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "stamp-work-and-play-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T19:39:14Z"
+    },
+    {
+      "claim": "TESSERA",
+      "evidence": [
+        {
+          "claim": "TESSERA",
+          "grade": "OBSERVED",
+          "id": "tessera-leisure-20260826-5d31967e",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "tessera-leisure-20260826-5d31967e",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T02:28:01Z"
+    },
+    {
+      "claim": "THE_WEEKEND",
+      "evidence": [
+        {
+          "claim": "THE_WEEKEND",
+          "grade": "OBSERVED",
+          "id": "weekend-099-the-from-file-ask-is-one-file",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "weekend-099-the-from-file-ask-is-one-file",
+      "is_session": false,
+      "last_to": "PLUG",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-20T00:09:03Z"
+    },
+    {
+      "claim": "TOME",
+      "evidence": [
+        {
+          "claim": "TOME",
+          "grade": "OBSERVED",
+          "id": "tome-corpus-knowledge-base-20260819-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "tome-corpus-knowledge-base-20260819-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-19T23:05:00Z"
+    },
+    {
+      "claim": "TOOLS",
+      "evidence": [
+        {
+          "claim": "TOOLS",
+          "grade": "OBSERVED",
+          "id": "rcpt-bass-fire-tokens-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rcpt-bass-fire-tokens-20260826-01",
+      "is_session": false,
+      "last_to": "BASS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T07:29:46Z"
+    },
+    {
+      "claim": "TYPE",
+      "evidence": [
+        {
+          "claim": "TYPE",
+          "grade": "OBSERVED",
+          "id": "type-tip-shelf-20260827-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "type-tip-shelf-20260827-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-27T02:48:00Z"
+    },
+    {
+      "claim": "UNSEATED",
+      "evidence": [
+        {
+          "claim": "UNSEATED",
+          "grade": "OBSERVED",
+          "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "GROK-BUILD--compose-all-seven-live-Stripe-SKUs-into-Outcome-Commerce",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T19:49:13Z"
+    },
+    {
+      "claim": "WIRE",
+      "evidence": [
+        {
+          "claim": "WIRE",
+          "grade": "OBSERVED",
+          "id": "wire-commons-android-apk-20260826-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "wire-commons-android-apk-20260826-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-26T23:54:00Z"
+    },
+    {
+      "claim": "YAPPER",
+      "evidence": [
+        {
+          "claim": "YAPPER",
+          "grade": "OBSERVED",
+          "id": "yapper-second-window-present-20260818-101",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "yapper-second-window-present-20260818-101",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-18T05:28:55Z"
+    },
+    {
+      "claim": "ZERO",
+      "evidence": [
+        {
+          "claim": "ZERO",
+          "grade": "OBSERVED",
+          "id": "ZERO-1787318039560-5i8goo",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "ZERO-1787318039560-5i8goo",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-08-21T13:53:42Z"
+    }
+  ],
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "routes": [],
+  "schema": "commons-observatory/v0.1",
+  "sessions": [],
+  "stale_after_seconds": 3600,
+  "state": "BAKE",
+  "timeline": [],
+  "work_map": [
+    {
+      "blocker": null,
+      "checkpoint": "{\"step\":0}",
+      "claimed_paths": [],
+      "classification": "AUTOMATION",
+      "evidence": [
+        {
+          "grade": "OBSERVED",
+          "grok_executor": false,
+          "job_id": "rivet-watchdog-canary-20260825-01",
+          "source": "wake_jobs/rivet-watchdog-canary-20260825-01.json",
+          "status": "DONE"
+        }
+      ],
+      "expected_next": "none; do not replay a finished prompt",
+      "grok_url": "",
+      "harness": "cursor-automation",
+      "lease": {
+        "descriptive_only": true
+      },
+      "lineage": [],
+      "objective": "Durable production GitTruth HEAD-oracle canary. Known-present result_address ridge-cursor-wake-loop-20260822-01. Not a named-session resume.",
+      "owner_claim": "RIVET",
+      "provenance": "JOBSTORE",
+      "replay_finished_prompt": false,
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "run_id": "UNKNOWN",
+      "semantic_area": "UNKNOWN",
+      "session_id": "job.rivet-watchdog-canary-20260825-01",
+      "state": "TERMINAL",
+      "task_id": "rivet-watchdog-canary-20260825-01"
+    },
+    {
+      "blocker": null,
+      "checkpoint": "{}",
+      "claimed_paths": [],
+      "classification": "UNKNOWN",
+      "evidence": [
+        {
+          "grade": "OBSERVED",
+          "grok_executor": false,
+          "job_id": "specter-watchdog-head-proof-20260825-01",
+          "source": "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
+          "status": "DONE"
+        }
+      ],
+      "expected_next": "none; do not replay a finished prompt",
+      "grok_url": "",
+      "harness": "github-actions-head-proof",
+      "lease": {
+        "descriptive_only": true
+      },
+      "lineage": [],
+      "objective": "prove production watchdog stops without mail when result_address already exists on pinned Commons HEAD",
+      "owner_claim": "SPECTER",
+      "provenance": "JOBSTORE",
+      "replay_finished_prompt": false,
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "run_id": "UNKNOWN",
+      "semantic_area": "UNKNOWN",
+      "session_id": "job.specter-watchdog-head-proof-20260825-01",
+      "state": "TERMINAL",
+      "task_id": "specter-watchdog-head-proof-20260825-01"
+    }
+  ]
+}

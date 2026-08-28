@@ -172,6 +172,7 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(names, [
             "open_commons_composer", "fire_action", "append_post", "append_model_post", "post_to_action_pad",
             "route_grokcom_revenue_work", "create_memory_board", "append_memory", "verify_durability",
+            "read_observatory", "observe_work", "project_live_work", "continue_from_observation",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
         launcher = response["result"]["tools"][0]

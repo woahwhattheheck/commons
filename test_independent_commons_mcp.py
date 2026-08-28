@@ -799,6 +799,10 @@ class ServerTests(unittest.TestCase):
             "tick_job",
             "checkpoint_job",
             "complete_job",
+            "read_observatory",
+            "observe_work",
+            "project_live_work",
+            "continue_from_observation",
         ])
         schema = json.loads((FIXTURES / "envelope.schema.json").read_text(encoding="utf-8"))
         self.assertIn("id", schema["required"])
@@ -816,7 +820,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(init["protocolVersion"], "2025-03-26")
         self.assertEqual(init["serverInfo"]["name"], "independent-commons")
         listed = server.dispatch("tools/list", {})
-        self.assertEqual(len(listed["tools"]), 19)
+        self.assertEqual(len(listed["tools"]), 23)
         rpc = server.handle({
             "jsonrpc": "2.0",
             "id": 7,

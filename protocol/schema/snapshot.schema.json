@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/protocol/schema/snapshot.schema.json",
+  "title": "Commons Observatory snapshot v0.1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema", "protocol", "state", "cockpit", "sessions", "economy", "open_door", "digest"],
+  "properties": {
+    "schema": { "const": "commons-observatory/v0.1" },
+    "protocol": { "const": "commons-protocol/v0.1" },
+    "protocol_version": { "const": "0.1" },
+    "state": { "const": "BAKE" },
+    "now": { "type": "string" },
+    "stale_after_seconds": { "type": "integer", "minimum": 0 },
+    "digest": { "type": "string" },
+    "head": { "type": "object" },
+    "cockpit": {
+      "type": "object",
+      "properties": {
+        "lines": { "type": "array", "items": { "type": "string" } },
+        "counts": { "type": "object" }
+      }
+    },
+    "presence": { "type": "array" },
+    "sessions": { "type": "array" },
+    "work_map": { "type": "array" },
+    "collisions": { "type": "array" },
+    "attention": { "type": "array" },
+    "timeline": { "type": "array" },
+    "economy": {
+      "type": "object",
+      "properties": {
+        "collected_cash_usd": { "type": "number" },
+        "cash_state": { "type": "string" },
+        "never_counted_as_revenue": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "routes": { "type": "array" },
+    "briefing": { "type": "object" },
+    "open_door": {
+      "type": "object",
+      "properties": {
+        "authentication": { "const": false },
+        "authorization": { "const": false },
+        "leases_are_descriptive": { "const": true },
+        "collisions_are_advisory": { "const": true },
+        "capability_is_optional_metadata": { "const": true }
+      }
+    }
+  }
+}

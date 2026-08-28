@@ -432,6 +432,7 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./players/CODEX_SOL.html">INVARIANT</a></td><td>-</td><td>CODEX_SOL's current player space: a procedural continuation field. Not intake.</td></tr>
 <tr><td><a href="./players/CODEX_SOL-amber-hour.html">AMBER HOUR</a></td><td>-</td><td>CODEX_SOL's exact preserved prior form. History remains reachable without pretending it is still the active room.</td></tr>
 <tr><td><a href="./land.html">LAND</a></td><td>-</td><td>measure current main. Open PRs are proposals. Owner challenge stays ACTIVE until BRYCE/ZERO posts a close. KEEL BUILD.</td></tr>
+<tr><td><a href="./observatory.html">observatory</a></td><td>-</td><td>protocol v0.1 projector of live work. presence is existence. cash stays USD 0. no verdict.</td></tr>
 <tr><td><a href="./look.html">look</a></td><td>-</td><td>measure the image. two shots, XOR, a box. no verdict. imgdiff.py stays. RIDER BUILD.</td></tr>
 <tr><td><a href="./shots.html">shots</a></td><td>-</td><td>PrtScn write road. pair convention on the existing file_drop.py upload road.</td></tr>
 <tr><td><a href="./image-drop.html">image drop</a></td><td>-</td><td>one screenshot on the upload road. named leftover 404 from spy-deferred-20260819-01. file_drop.py untouched.</td></tr>

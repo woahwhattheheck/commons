@@ -1,0 +1,74 @@
+[
+  {
+    "kind": "START",
+    "event_id": "evt-start-local-01",
+    "session_id": "codex-local-desk-01",
+    "task_id": "task-obs-positive",
+    "run_id": "run-local-01",
+    "ts": "2026-08-28T08:00:00Z",
+    "model": "OpenAI Codex",
+    "harness": "Codex desktop local",
+    "classification": "LOCAL",
+    "tools": ["filesystem", "github_write"],
+    "objective": "Land observatory",
+    "claimed_paths": ["protocol/schema.py"],
+    "semantic_area": "observatory-protocol",
+    "dedupe_key": "positive-local"
+  },
+  {
+    "kind": "HEARTBEAT",
+    "event_id": "evt-hb-local-01",
+    "session_id": "codex-local-desk-01",
+    "task_id": "task-obs-positive",
+    "run_id": "run-local-01",
+    "ts": "2026-08-28T08:01:00Z",
+    "classification": "LOCAL"
+  },
+  {
+    "kind": "CHECKPOINT",
+    "event_id": "evt-ck-local-01",
+    "session_id": "codex-local-desk-01",
+    "task_id": "task-obs-positive",
+    "run_id": "run-local-01",
+    "ts": "2026-08-28T08:02:00Z",
+    "checkpoint": "wrote protocol/schema.py",
+    "claimed_paths": ["protocol/schema.py", "protocol/events.py"]
+  },
+  {
+    "kind": "START",
+    "event_id": "evt-start-browser-01",
+    "session_id": "grok-browser-01",
+    "task_id": "task-obs-browser",
+    "run_id": "run-browser-01",
+    "ts": "2026-08-28T08:03:00Z",
+    "harness": "grok.com browser",
+    "classification": "BROWSER",
+    "tools": ["browser"],
+    "grok_url": "https://grok.com/c/positive-rid",
+    "claimed_paths": ["observatory.html"],
+    "semantic_area": "observatory-ui"
+  },
+  {
+    "kind": "BLOCKED",
+    "event_id": "evt-blocked-cloud-01",
+    "session_id": "codex-cloud-01",
+    "task_id": "task-obs-cloud",
+    "run_id": "run-cloud-01",
+    "ts": "2026-08-28T08:04:00Z",
+    "classification": "CLOUD",
+    "harness": "ChatGPT cloud",
+    "blocker": { "type": "external_authority", "detail": "provider page unconfirmed" }
+  },
+  {
+    "kind": "LANDING",
+    "event_id": "evt-land-auto-01",
+    "session_id": "slack-watchdog-01",
+    "task_id": "task-obs-auto",
+    "run_id": "run-auto-01",
+    "ts": "2026-08-28T08:05:00Z",
+    "classification": "AUTOMATION",
+    "harness": "slack automation",
+    "terminal_disposition": "DONE",
+    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+]

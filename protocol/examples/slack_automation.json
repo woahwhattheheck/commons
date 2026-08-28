@@ -1,0 +1,75 @@
+{
+  "artifacts": [],
+  "attention_reason": "UNKNOWN",
+  "blocker": {
+    "detail": "UNKNOWN",
+    "type": "UNKNOWN"
+  },
+  "checkpoint": "UNKNOWN",
+  "claimed_paths": [],
+  "classification": "AUTOMATION",
+  "cost": {
+    "debit": "UNKNOWN",
+    "grade": "UNKNOWN",
+    "tokens": null,
+    "visible": false
+  },
+  "dedupe_key": "UNKNOWN",
+  "event_id": "44ae616d70fc37657d40cd2ad16a1a2e",
+  "evidence": [
+    {
+      "event_id": "44ae616d70fc37657d40cd2ad16a1a2e",
+      "grade": "OBSERVED",
+      "source": "event"
+    }
+  ],
+  "fields_inferred": [],
+  "fields_observed": [
+    "classification",
+    "event_id",
+    "harness",
+    "kind",
+    "objective",
+    "origin",
+    "protocol",
+    "protocol_version",
+    "run_id",
+    "session_id",
+    "task_id",
+    "tools",
+    "ts"
+  ],
+  "grok_url": "",
+  "harness": "slack automation",
+  "head_sha": "",
+  "kind": "HEARTBEAT",
+  "lease": {
+    "descriptive_only": true,
+    "holder": "UNKNOWN",
+    "lease_id": "UNKNOWN",
+    "until": "UNKNOWN"
+  },
+  "model": "UNKNOWN",
+  "objective": "Mirror receipts; do not mint sessions from Slack authors",
+  "origin": {
+    "message_id": "1787900000.000002",
+    "post_id": "UNKNOWN",
+    "thread_id": "1787900000.000001"
+  },
+  "parent_ids": [],
+  "parse_state": "OK",
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "provider": {},
+  "run_id": "run-slack-auto-01",
+  "semantic_area": "UNKNOWN",
+  "session_id": "slack-watchdog-01",
+  "supersedes": "UNKNOWN",
+  "task_id": "rivet-watchdog-canary-20260825-01",
+  "terminal_disposition": "UNKNOWN",
+  "tools": [
+    "slack_read",
+    "slack_send"
+  ],
+  "ts": "2026-08-28T08:15:00Z"
+}

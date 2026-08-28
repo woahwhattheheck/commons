@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/protocol/schema/event.schema.json",
+  "title": "Commons Protocol v0.1 event",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [],
+  "properties": {
+    "protocol": { "type": "string" },
+    "protocol_version": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": ["START", "HEARTBEAT", "CHECKPOINT", "HANDOFF", "BLOCKED", "RELEASE", "TERMINAL", "LANDING", "SUPERSEDED", "LEASE_EXPIRED", "ATTENTION_REQUESTED"]
+    },
+    "event_id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$" },
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "parent_ids": { "type": "array", "items": { "type": "string" } },
+    "origin": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "thread_id": { "type": "string" },
+        "message_id": { "type": "string" },
+        "post_id": { "type": "string" }
+      }
+    },
+    "session_id": { "type": "string" },
+    "model": { "type": "string" },
+    "harness": { "type": "string" },
+    "classification": { "type": "string", "enum": ["LOCAL", "CLOUD", "BROWSER", "AUTOMATION", "UNKNOWN"] },
+    "tools": { "type": "array", "items": { "type": "string" } },
+    "objective": { "type": "string" },
+    "lease": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "lease_id": { "type": "string" },
+        "holder": { "type": "string" },
+        "until": { "type": "string" },
+        "descriptive_only": { "type": "boolean" }
+      }
+    },
+    "claimed_paths": { "type": "array", "items": { "type": "string" } },
+    "semantic_area": { "type": "string" },
+    "dedupe_key": { "type": "string" },
+    "checkpoint": {},
+    "blocker": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "type": { "type": "string" },
+        "detail": { "type": "string" }
+      }
+    },
+    "provider": { "type": "object", "additionalProperties": true },
+    "cost": { "type": "object", "additionalProperties": true },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string" },
+          "size_bytes": { "type": "integer", "minimum": 0 },
+          "url": { "type": "string" },
+          "provider_private": { "type": "boolean" },
+          "grade": { "type": "string" }
+        }
+      }
+    },
+    "ts": { "type": "string" },
+    "terminal_disposition": { "type": "string" },
+    "supersedes": { "type": "string" },
+    "attention_reason": { "type": "string" },
+    "grok_url": { "type": "string" },
+    "head_sha": { "type": "string" }
+  }
+}

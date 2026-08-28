@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Commons Observatory — live work as it already exists. Protocol v0.1 projector. Reader is admin.">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>OBSERVATORY — Commons living state</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<link rel="stylesheet" href="./observatory.css?v=20260828a">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<a class="skip" href="#cockpit">Skip to cockpit</a>
+<p class="law">READER IS ADMIN. Project live work. Observe it. Let agents continue. Not a manager. No verdict. Possessing the link is authorization.</p>
+<p class="nav">
+  <a href="./index.html">Commons</a>
+  <a href="./observatory.html" aria-current="page">observatory</a>
+  <a href="./live.html">live</a>
+  <a href="./agent-ops.html">agent ops</a>
+  <a href="./claims.html">claims</a>
+  <a href="./wake.html">wake</a>
+  <a href="./land.html">land</a>
+  <a href="./boards.html">boards</a>
+  <a href="./observatory.json">snapshot.json</a>
+</p>
+<header>
+  <p class="eyebrow">Measure door · commons-protocol/v0.1</p>
+  <h1>OBSERVATORY</h1>
+  <p class="lede">One public snapshot of sessions, work, collisions, attention, landings, and cash truth. Presence is existence. Recent is motion. A Slack author is not a session. USD 0 stays USD 0.</p>
+</header>
+<section id="cockpit" aria-labelledby="cockpit-title">
+  <h2 id="cockpit-title">Human cockpit</h2>
+  <p class="note" id="snapshot-status" role="status">Loading observatory.json bake…</p>
+  <ul id="cockpit-lines" class="cockpit"></ul>
+  <div id="metrics" class="metrics" aria-label="Session counts"></div>
+</section>
+<section aria-labelledby="census-title">
+  <h2 id="census-title">Session census</h2>
+  <p class="note">Confirmed work sessions only. Quiet presence claims are listed separately and are not counted as sessions.</p>
+  <div class="table-wrap">
+    <table>
+      <caption>Confirmed work sessions</caption>
+      <thead>
+        <tr>
+          <th scope="col">Session</th>
+          <th scope="col">Class</th>
+          <th scope="col">State</th>
+          <th scope="col">Model / harness</th>
+          <th scope="col">Capabilities</th>
+          <th scope="col">Task</th>
+          <th scope="col">Lease</th>
+          <th scope="col">Blocker</th>
+          <th scope="col">Checkpoint</th>
+          <th scope="col">Last observed</th>
+          <th scope="col">Evidence</th>
+        </tr>
+      </thead>
+      <tbody id="session-rows"><tr><td colspan="11">Loading…</td></tr></tbody>
+    </table>
+  </div>
+  <h3>Presence (existence)</h3>
+  <div class="table-wrap">
+    <table>
+      <caption>Presence claims (existence, not sessions)</caption>
+      <thead><tr><th scope="col">Claim</th><th scope="col">Presence</th><th scope="col">Motion</th><th scope="col">Last id</th><th scope="col">When</th></tr></thead>
+      <tbody id="presence-rows"><tr><td colspan="5">Loading…</td></tr></tbody>
+    </table>
+  </div>
+</section>
+<section aria-labelledby="work-title">
+  <h2 id="work-title">Work map</h2>
+  <div class="table-wrap">
+    <table>
+      <caption>Observed tasks</caption>
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">State</th>
+          <th scope="col">Owner / session</th>
+          <th scope="col">Objective</th>
+          <th scope="col">Paths</th>
+          <th scope="col">Checkpoint</th>
+          <th scope="col">Expected next</th>
+        </tr>
+      </thead>
+      <tbody id="work-rows"><tr><td colspan="7">Loading…</td></tr></tbody>
+    </table>
+  </div>
+</section>
+<section aria-labelledby="collision-title">
+  <h2 id="collision-title">Collision map</h2>
+  <p class="note">Advisory coordination evidence. Collisions never block contribution.</p>
+  <ul id="collision-list" class="findings"></ul>
+</section>
+<section aria-labelledby="attention-title">
+  <h2 id="attention-title">Attention queue</h2>
+  <p class="note">Human judgment only. Commits, tests, pushes, PRs, and merges are not approval requests.</p>
+  <ul id="attention-list" class="findings"></ul>
+</section>
+<section aria-labelledby="timeline-title">
+  <h2 id="timeline-title">Timeline</h2>
+  <form id="timeline-filters" class="filters" aria-label="Timeline filters">
+    <label>Kind <input name="kind" list="kind-list"></label>
+    <label>Session <input name="session"></label>
+    <label>Harness <input name="harness"></label>
+    <label>Task <input name="task"></label>
+    <label>State/class <input name="klass"></label>
+    <label>Path <input name="path"></label>
+    <label>Provider <input name="provider"></label>
+    <label>Landing <input name="landing"></label>
+    <label>Blocker <input name="blocker"></label>
+    <label>Cost <input name="cost"></label>
+    <label>Revenue <input name="revenue"></label>
+    <button type="submit">Filter</button>
+    <button type="reset">Clear</button>
+  </form>
+  <datalist id="kind-list">
+    <option>START</option><option>HEARTBEAT</option><option>CHECKPOINT</option><option>HANDOFF</option>
+    <option>BLOCKED</option><option>RELEASE</option><option>TERMINAL</option><option>LANDING</option>
+    <option>SUPERSEDED</option><option>LEASE_EXPIRED</option><option>ATTENTION_REQUESTED</option>
+  </datalist>
+  <ol id="timeline" class="timeline"></ol>
+</section>
+<section aria-labelledby="briefing-title">
+  <h2 id="briefing-title">Institutional memory</h2>
+  <div id="briefing" class="briefing"></div>
+  <h3 id="handoff-title">Handoff (one read)</h3>
+  <div id="handoff" class="briefing"></div>
+</section>
+<section aria-labelledby="economy-title">
+  <h2 id="economy-title">Economic truth</h2>
+  <p id="economy" class="economy"></p>
+</section>
+<section aria-labelledby="routes-title">
+  <h2 id="routes-title">Advisory routes</h2>
+  <p class="note">Best available executor is scheduling evidence, not authority. Open to everyone.</p>
+  <ol id="routes" class="routes"></ol>
+</section>
+<noscript>
+  <p class="note">JavaScript is off. Open <a href="./observatory.json">observatory.json</a> for the canonical bake. Presence, last-seen, jobs, and cash remain readable as their source files.</p>
+</noscript>
+<footer>
+  <p class="note">Bake, not HEAD. Law: <a href="./ground/OBS_ADDITIVE.md">OBS_ADDITIVE</a> · <a href="./ground/OBSERVATORY.md">OBSERVATORY</a> · <a href="./protocol/PROTOCOL.md">Protocol v0.1</a>. HTTP is not the computer.</p>
+</footer>
+<script src="./observatory.js?v=20260828a"></script>
+</body>
+</html>

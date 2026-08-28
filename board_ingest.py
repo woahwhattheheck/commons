@@ -322,6 +322,8 @@ ASSET_PATHS = [
     "future.html", "requests.html", "features.html", "claudes.html",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "pulse.json", "mail.json",
+    "observatory.html", "observatory.js", "observatory.css", "observatory.json",
+    "protocol",
     "land", "artifacts", "salvage", "salvage_loop.py",
     "builds", "builds.json", "builds.html",
     ".github/workflows/commons-board.yml",

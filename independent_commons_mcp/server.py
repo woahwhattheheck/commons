@@ -110,8 +110,25 @@ class MCPServer:
                 worker_id=str(arguments.get("worker_id") or "watchdog"),
             ),
             "complete_job": lambda: self._complete_job(arguments),
+            "read_observatory": lambda: self._observatory("read_observatory", arguments),
+            "observe_work": lambda: self._observatory("observe_work", arguments),
+            "project_live_work": lambda: self._observatory("project_live_work", arguments),
+            "continue_from_observation": lambda: self._observatory("continue_from_observation", arguments),
         }
         return handlers[name]()
+
+    def _observatory(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        root = str(HERE.parent)
+        if root not in sys.path:
+            sys.path.insert(0, root)
+        from host.observatory import continue_from, observe_work, project_live_work, read_observatory
+        if name == "observe_work":
+            return observe_work(root, arguments)
+        if name == "project_live_work":
+            return project_live_work(root, arguments)
+        if name == "continue_from_observation":
+            return continue_from(root, arguments)
+        return read_observatory(root, arguments)
 
     def dispatch(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         if method == "initialize":
@@ -131,7 +148,10 @@ class MCPServer:
                     "Discord bots are free; self-bots are refused. Does not replace the Action Pad "
                     "or commons_mcp.py. Wake/job tools use one stable job_id; tick_job is a "
                     "cheap state check and does not invoke a model unless the job is runnable "
-                    "and due. Harness adapters are owned by each harness, not this pack."
+                    "and due. Harness adapters are owned by each harness, not this pack. "
+                    "Observatory tools (read_observatory, observe_work, project_live_work, "
+                    "continue_from_observation) are a bake of live work. Metadata is optional "
+                    "and never a gate."
                 ),
             }
         if method in {"notifications/initialized", "initialized"}:
