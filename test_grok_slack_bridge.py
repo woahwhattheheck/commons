@@ -205,6 +205,18 @@ def event_payload(text: str = "build the slack connector", **extra: Any) -> dict
     return row
 
 
+class StaleMcp(FakeMcp):
+    """Live production that still has fire_action but not route_grokcom_revenue_work."""
+
+    def tools_list(self) -> list[str]:
+        return ["fire_action", "append_post", "verify_durability"]
+
+    def call_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        if name == "route_grokcom_revenue_work":
+            raise AssertionError("stale production must not call missing tool")
+        return super().call_tool(name, arguments)
+
+
 class CrashSubmitStore(bridge.BridgeStore):
     def set_phase(self, event_id: str, phase: str, **fields: Any) -> None:
         if phase == "SUBMITTED":
@@ -684,6 +696,62 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(len(intake), 1)
             self.assertEqual(intake[0][1]["event"]["text"], "original")
             store.close()
+
+    def test_stale_live_mcp_uses_current_main_orchestrator(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = StaleMcp(github)
+            service, _slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-stale", event_payload("stale production"))
+            self.assertEqual(result["state"], "DELIVERED")
+            self.assertEqual(service.intake_road, "current_main_orchestrator")
+            fires = [call for call in mcp.calls if call[0] == "fire_action"]
+            self.assertEqual(len(fires), 1)
+            intake = [
+                call for call in mcp.calls
+                if call[0] == "route_grokcom_revenue_work" and call[1].get("stage") == "INTAKE"
+            ]
+            self.assertEqual(len(intake), 1)
+            self.assertEqual(intake[0][1]["event"]["text"], "stale production")
+            self.assertTrue(any(item.startswith("orchestrator:route_grokcom_revenue_work") for item in service.work_log))
+            store.close()
+
+    def test_doctor_stale_mcp_keeps_runtime_unconfigured_without_tokens(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = StaleMcp(github)
+            args = type("Args", (), {"state_db": Path(directory) / "db.sqlite3", "mcp_url": mcp.url})()
+            code, report = bridge.doctor(args, env={}, mcp=mcp, github=github)
+            self.assertEqual(code, 2)
+            self.assertEqual(report["state"], "RUNTIME_UNCONFIGURED")
+            self.assertFalse(report["mcp"]["has_route_grokcom_revenue_work"])
+            self.assertTrue(report["mcp"]["has_fire_action"])
+            self.assertTrue(report["mcp"]["orchestrator_available"])
+            self.assertEqual(report["mcp"]["intake_road"], "current_main_orchestrator")
+            self.assertEqual(report["mcp"]["production_state"], "STALE_DEPLOYMENT")
+            self.assertFalse(report["ready"])
+
+    def test_doctor_ready_with_stale_mcp_when_tokens_present(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = StaleMcp(github)
+            args = type("Args", (), {"state_db": Path(directory) / "db.sqlite3", "mcp_url": mcp.url})()
+            code, report = bridge.doctor(
+                args,
+                env={"SLACK_BOT_TOKEN": "BOT_TOKEN_SHOULD_NOT_LEAK", "SLACK_APP_TOKEN": "APP_TOKEN_SHOULD_NOT_LEAK"},
+                mcp=mcp,
+                github=github,
+            )
+            encoded = json.dumps(report)
+            self.assertEqual(code, 0)
+            self.assertEqual(report["state"], "READY")
+            self.assertTrue(report["ready"])
+            self.assertEqual(report["mcp"]["intake_road"], "current_main_orchestrator")
+            self.assertNotIn("BOT_TOKEN_SHOULD_NOT_LEAK", encoded)
+            self.assertNotIn("APP_TOKEN_SHOULD_NOT_LEAK", encoded)
 
 
 if __name__ == "__main__":
