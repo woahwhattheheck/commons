@@ -6,7 +6,7 @@ import sys
 from typing import Any
 
 import commonsctl as core
-from ctl_write import Client
+from ctl_ops import Client
 
 canonical_json = core.canonical_json
 load_body_arg = core.load_body_arg
