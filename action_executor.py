@@ -100,58 +100,48 @@ def _job_owner(meta: dict) -> str:
 
 
 def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict:
-    """Route a GROK.COM action into the durable wake/job road.
+    """Route a GROK.COM action into the one durable shared executor queue.
 
-    The GitHub executor cannot own an authenticated browser session.  Its job
-    is to preserve the exact task once, wake the owning grok.com harness, and
-    require that harness to return a real conversation URL plus a durable
-    Commons result page.  This deliberately does not treat prose as shell.
+    This process never owns a browser and never submits the prompt. It records
+    the requester, exact bytes, structural-capture START packet, bounded retry
+    contract, and submit-once state machine. Healthy authenticated browser hosts
+    lease the resulting wake_jobs row through the Grok executor adapter.
     """
     task = payload.strip()
     if not task:
         raise ValueError("GROK.COM task payload must be non-empty")
 
-    from independent_commons_mcp.jobs import JobStore
+    from integrations.grok_executor_queue import GrokExecutorQueue, SCHEMA
 
     before = working_state()
     now = datetime.now(timezone.utc).replace(microsecond=0)
+    at = now.isoformat().replace("+00:00", "Z")
     source_action = "p/%s.md" % ident
-    store = JobStore(ROOT / "wake_jobs")
-    queued = store.upsert({
+    run_key = str(meta.get("run_key") or ("grok-action-" + ident)).strip()
+    origin = {
+        "task_id": ident,
+        "session_id": str(meta.get("session_id") or meta.get("event_id") or source_action),
+        "thread_id": str(meta.get("thread_ts") or meta.get("target") or ""),
+        "source": "commons-action",
+        "event_id": str(meta.get("event_id") or source_action),
+        "requester": str(meta.get("from") or "UNSEATED"),
+    }
+    lineage = None
+    if meta.get("parent_run_key"):
+        lineage = {
+            "parent_run_key": str(meta.get("parent_run_key")),
+            "parent_conversation_url": str(meta.get("parent_conversation_url") or ""),
+        }
+    queued = GrokExecutorQueue(ROOT / "wake_jobs").submit({
         "job_id": ident,
-        "owner_claim": _job_owner(meta),
-        "harness": GROK_COM_HARNESS,
-        "objective": (
-            "Execute grok.com task %s from checkpoint.task and return its verified receipt."
-            % ident
-        ),
-        "checkpoint": {
-            "step": 0,
-            "task": task,
-            "verb": verb,
-            "source_action": source_action,
-            "receipt_contract": {
-                "conversation_url_prefix": "https://grok.com/c/",
-                "required": [
-                    "exact_prompt",
-                    "result_summary",
-                    "conversation_url",
-                    "token_receipt_when_available",
-                    "changed_paths_and_git_sha_when_code_changed",
-                    "durable_commons_result_address",
-                ],
-                "fabricated_receipts_forbidden": True,
-            },
-        },
-        "next_wake_at": now.isoformat().replace("+00:00", "Z"),
-        "deadline": (now + timedelta(days=30)).isoformat().replace("+00:00", "Z"),
-        "backoff_seconds": 60,
-        "max_backoff_seconds": 3600,
-        "lease_seconds": 1800,
-        "max_attempts": 64,
+        "run_key": run_key,
+        "origin": origin,
+        "lineage": lineage,
+        "exact_prompts": [task],
+        "lease_seconds": 300,
+        "max_attempts": 8,
         "budget_tokens": 1000000,
-        "completion_predicate": {"type": "result_address_on_head"},
-    })
+    }, now=at)
     changed, outputs, deletions = collect_action_outputs(before)
     job_path = "wake_jobs/%s.json" % ident
     return {
@@ -160,18 +150,21 @@ def queue_grok_com_task(meta: dict, verb: str, payload: str, ident: str) -> dict
         "target": "GROK.COM",
         "scope": "github",
         "ok": True,
-        "state": "GROK_TASK_QUEUED",
-        "output": "queued authenticated grok.com browser job %s" % ident,
+        "state": "GROK_TASK_QUEUED" if queued.get("state") == "QUEUED" else queued.get("state"),
+        "output": "queued shared authenticated grok.com browser job %s" % ident,
         "job_id": ident,
+        "run_key": run_key,
+        "queue_schema": SCHEMA,
         "job_path": job_path,
         "source_action": source_action,
+        "capture_start": queued.get("capture_start"),
         "receipt_url_prefix": "https://grok.com/c/",
         "changed": changed,
         "canonical_records": {},
         "action_outputs": outputs,
         "action_deletions": deletions,
         "job": queued.get("job"),
-        "executed_at": now.isoformat().replace("+00:00", "Z"),
+        "executed_at": at,
     }
 
 
