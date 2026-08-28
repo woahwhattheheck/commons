@@ -1,9 +1,10 @@
 {
   "seq": 1349,
-  "head": "6cd077081e43a81b151745690d663389c7c59e8a",
-  "ts": "2026-08-28T22:49:13Z",
+  "head": "ebda2d08ab3dc9b2bea797e73f789c00499a2722",
+  "ts": "2026-08-28T22:50:37Z",
   "post_count": 8244,
   "newest": [
+    "grok-pr5159-48013dff-01",
     "grok-pr5160-verified-20260828-01",
     "grok-job-watchdog-cancel-stale-20260828-01",
     "slack-1787952275-718879",
@@ -12,8 +13,7 @@
     "slack-1787954879-428259",
     "slack-1787955021-809269",
     "grok-pr5157-verified-20260828-01",
-    "grok-pr5156-verified-20260828-01",
-    "grok-repair-opportunity-registry-resource-ledger-20260828-01"
+    "grok-pr5156-verified-20260828-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
