@@ -32,6 +32,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | /goal /spawn /computer-use | [slash-commands](../.agents/skills/slash-commands/SKILL.md) | [tokens/commands](../ground/tokens/commands.md) |
 | grok.com web connector + persistent Skill | [grok-web-commons](../.agents/skills/grok-web-commons/SKILL.md) | — |
 | HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships | [gpt-grok-ship-loop](../.agents/skills/gpt-grok-ship-loop/SKILL.md) | — |
+| launch a Grok Build / Heavy lane from a thinking model | [elitist-way](../.agents/skills/elitist-way/SKILL.md) | [tokens/elitist-way](../ground/tokens/elitist-way.md) |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
