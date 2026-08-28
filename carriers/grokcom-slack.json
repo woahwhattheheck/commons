@@ -27,7 +27,7 @@
     "Create the Slack app from integrations/grok_slack/app_manifest.yaml and install it in the workspace.",
     "Put SLACK_BOT_TOKEN and SLACK_APP_TOKEN in the process environment only. Doctor and health report present/missing, never values.",
     "Run python integrations/grok_slack/bridge.py doctor --json, python integrations/grok_slack/bridge.py health --json, python integrations/grok_slack/canary.py, then python integrations/grok_slack/bridge.py serve (or run.sh / systemd / Docker) on a host-neutral always-on VM or container. GitHub Actions is not an always-on Socket Mode host. Bryce's desktop is not required.",
-    "Every Slack event is ACKed, claimed, and sent to public Commons MCP route_grokcom_revenue_work at INTAKE.",
+    "Every Slack event is ACKed, claimed, and sent to public Commons MCP route_grokcom_revenue_work at INTAKE. If live tools/list does not advertise that tool, INTAKE uses current-main integrations/grokcom_revenue/orchestrator.py. fire_action still uses the public /mcp. This is not a second MCP core.",
     "Post the returned slack_reply only when connector.post_reply is true.",
     "Persist the returned job identity, then call fire_action exactly once with grokcom.executor_job.arguments.",
     "Observe wake_jobs/<job_id>.json through a SHA-pinned current-main GitHub readback.",

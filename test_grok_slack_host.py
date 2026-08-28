@@ -3,10 +3,12 @@
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 import unittest
 from pathlib import Path
+from urllib.error import HTTPError
 
 from integrations.grok_slack.canary import run as run_canary
 from integrations.grok_slack import bridge
@@ -81,6 +83,7 @@ class GrokSlackHostTests(unittest.TestCase):
         text = (bridge.integration_root() / "Dockerfile").read_text(encoding="utf-8")
         self.assertNotIn("COPY integrations/grok_slack /opt/commons/integrations/grok_slack", text)
         self.assertIn("integrations/grok_slack/bridge.py", text)
+        self.assertIn("integrations/grokcom_revenue/orchestrator.py", text)
         self.assertNotIn(".env.local", text)
         self.assertIsNone(bridge.TOKEN_VALUE_RE.search(text))
 
@@ -113,6 +116,29 @@ class GrokSlackHostTests(unittest.TestCase):
             self.assertFalse(report["ready"])
             self.assertNotIn("xoxb-should-fail-scan-here", json.dumps(report))
             self.assertNotIn("present-token", json.dumps(report))
+
+    def test_github_readback_falls_back_without_token(self) -> None:
+        def opener(request: object, timeout: float | None = None) -> object:
+            del timeout
+            url = str(getattr(request, "full_url", ""))
+            raise HTTPError(url, 403, "rate limit", hdrs=None, fp=io.BytesIO(b""))
+
+        reader = bridge.GitHubReadback(
+            opener=opener,
+            token="",
+            public_sha=lambda: "b" * 40,
+            public_read=lambda path, sha: b'{"ok":true}',
+        )
+        sha = reader.current_main_sha()
+        self.assertEqual(sha, "b" * 40)
+        self.assertEqual(reader.road, "git_ls_remote")
+        blob = reader.read_path("carriers/catalog.json", sha)
+        self.assertEqual(blob, b'{"ok":true}')
+        self.assertEqual(reader.road, "sha_pinned_raw")
+
+    def test_ls_remote_public_main_sha(self) -> None:
+        sha = bridge.GitHubReadback(token="")._ls_remote_main()
+        self.assertRegex(sha, r"^[0-9a-f]{40}$")
 
 
 if __name__ == "__main__":
