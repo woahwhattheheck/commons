@@ -1,0 +1,34 @@
+{
+  "added": "2026-08-28",
+  "capability": "Unfinished-now queue. Closes only from a 40-character main SHA plus claimed paths. DIRECTIVES OPEN/HALF stays historical.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/CURRENT_WORK.md",
+    "ground/CURRENT_WORK.json",
+    "host/current_work.py",
+    "current-work.html",
+    "test_current_work.py",
+    "p/current-work-ledger-20260828-01.md"
+  ],
+  "dependencies": [],
+  "id": "current-work-ledger-20260828-01",
+  "name": "Current-work ledger",
+  "next_gap": "Add now-work only with claimed_paths; do not revive historical DIRECTIVES OPEN lines.",
+  "owner_subsystem": "current-work",
+  "public_entrypoint": "current-work.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/CURRENT_WORK.md",
+    "gpt-grok-ship-loop.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_current_work.py",
+    "host/current_work.py"
+  ]
+}
