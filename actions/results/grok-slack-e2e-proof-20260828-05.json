@@ -1,0 +1,134 @@
+{
+  "id": "grok-slack-e2e-proof-20260828-05",
+  "verb": "BUILD",
+  "target": "GROK.COM",
+  "scope": "github",
+  "ok": true,
+  "state": "DUPLICATE",
+  "output": "queued shared authenticated grok.com browser job grok-slack-e2e-proof-20260828-05",
+  "job_id": "grok-slack-e2e-proof-20260828-05",
+  "run_key": "grok-action-grok-slack-e2e-proof-20260828-05",
+  "queue_schema": "commons-grok-executor-job/v1",
+  "job_path": "wake_jobs/grok-slack-e2e-proof-20260828-05.json",
+  "source_action": "p/grok-slack-e2e-proof-20260828-05.md",
+  "capture_start": null,
+  "receipt_url_prefix": "https://grok.com/c/",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "job": {
+    "job_id": "grok-slack-e2e-proof-20260828-05",
+    "owner_claim": "GROK_EXECUTOR",
+    "harness": "grok.com authenticated browser via Commons MCP",
+    "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+    "checkpoint": {
+      "capture_start": {
+        "arguments": {
+          "exact_prompts": [
+            "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+          ],
+          "origin": {
+            "event_id": "p/grok-slack-e2e-proof-20260828-05.md",
+            "requester": "GROK_BUILD",
+            "session_id": "p/grok-slack-e2e-proof-20260828-05.md",
+            "source": "commons-action",
+            "task_id": "grok-slack-e2e-proof-20260828-05",
+            "thread_id": "GROK.COM"
+          },
+          "run_key": "grok-action-grok-slack-e2e-proof-20260828-05"
+        },
+        "tool": "start_grok_capture"
+      },
+      "conversation_url": "",
+      "exact_prompts": [
+        "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+      ],
+      "execution": {
+        "active_attempt_id": "",
+        "active_executor": "",
+        "blockers": [],
+        "capture_ack": null,
+        "failed_executors": [],
+        "prompt_replay_allowed": true,
+        "state": "QUEUED",
+        "submission_state": "NOT_SUBMITTED",
+        "submitted_at": ""
+      },
+      "lineage": null,
+      "origin": {
+        "event_id": "p/grok-slack-e2e-proof-20260828-05.md",
+        "requester": "GROK_BUILD",
+        "session_id": "p/grok-slack-e2e-proof-20260828-05.md",
+        "source": "commons-action",
+        "task_id": "grok-slack-e2e-proof-20260828-05",
+        "thread_id": "GROK.COM"
+      },
+      "receipt_contract": {
+        "conversation_url_prefix": "https://grok.com/c/",
+        "fabricated_receipts_forbidden": true,
+        "required": [
+          "exact_prompts",
+          "exact_final_result",
+          "completion_state",
+          "provider_evidence",
+          "artifact_evidence",
+          "origin",
+          "timestamps"
+        ],
+        "structural_start_before_submit": true
+      },
+      "request_sha256": "e22604067af28e027fffa689db1915e192028054f570456d3c66d4882a66c28e",
+      "result": null,
+      "run_key": "grok-action-grok-slack-e2e-proof-20260828-05",
+      "schema": "commons-grok-executor-job/v1",
+      "step": 0,
+      "task": "Harmless Commons Grok Slack e2e proof 20260828-05. Reply with only these three words: Commons door open. Do not browse, email, mention anyone, send outreach, or touch payments. Never replay Ev0BTCDPM0Q5."
+    },
+    "next_wake_at": "2026-08-28T19:25:34Z",
+    "deadline": "2026-09-27T19:25:34Z",
+    "backoff_seconds": 30,
+    "max_backoff_seconds": 600,
+    "lease_seconds": 300,
+    "max_attempts": 8,
+    "attempt_count": 1,
+    "budget_tokens": 1000000,
+    "tokens_used": 0,
+    "completion_predicate": {
+      "type": "result_address_on_head"
+    },
+    "result_address": "",
+    "status": "LEASED",
+    "blocker": null,
+    "lease": {
+      "holder": "gh-watchdog",
+      "lease_id": "lease-908bd39d6780",
+      "until": "2026-08-28T22:21:20Z"
+    },
+    "created_at": "2026-08-28T19:25:34Z",
+    "updated_at": "2026-08-28T22:16:20Z",
+    "completed_at": null,
+    "exhausted_reason": null,
+    "event_receipts": [
+      {
+        "attempt_id": "grok-slack-e2e-proof-20260828-05-a01",
+        "event": "wake",
+        "lease_id": "lease-908bd39d6780",
+        "ts": "2026-08-28T22:16:20Z",
+        "worker_id": "gh-watchdog"
+      },
+      {
+        "attempt_id": "grok-slack-e2e-proof-20260828-05-a01",
+        "carrier": "MAIL",
+        "event": "deliver",
+        "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+        "http_status": 200,
+        "id": "grok-slack-e2e-proof-20260828-05",
+        "ts": "2026-08-28T22:16:20Z"
+      }
+    ],
+    "no_progress_count": 0,
+    "in_backoff": false
+  },
+  "executed_at": "2026-08-28T22:59:59Z"
+}
