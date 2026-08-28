@@ -1,7 +1,7 @@
 {
-  "seq": 1329,
-  "head": "1a230ef7013043976a8ffa89ed8d38f35627583a",
-  "ts": "2026-08-28T13:12:37Z",
+  "seq": 1330,
+  "head": "47b8ae40c14e25b9106d394a63d5432103917139",
+  "ts": "2026-08-28T13:16:09Z",
   "post_count": 7885,
   "newest": [
     "grok-branch-truth-delta-ledger-20260828-01",
