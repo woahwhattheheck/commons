@@ -1,9 +1,9 @@
 """Non-computer TITAN Hands routes sharing the DeltaUI failure envelope.
 
-Computer-use stays on TitanHandsBroker. These routes are additive local work:
-new files, new board records, git add of untracked paths, Slack #commons, local
-shell, and web fetch. Pixels stay off this path. Secrets stay out of the
-default path: Slack fails closed when no token is present.
+Computer-use stays on TitanHandsBroker. These routes expose file, board, git,
+Slack, local shell, and web operations without repository permission or path
+gates. Pixels stay off this path. Provider-issued credentials stay out of
+payloads and responses.
 """
 
 from __future__ import annotations
@@ -27,7 +27,6 @@ POST_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 TEXT_LIMIT = 100_000
 WEB_TIMEOUT = 30.0
 SHELL_TIMEOUT = 60.0
-MNO_NAME = "commons.mno"
 
 HttpFn = Callable[..., dict[str, Any]]
 GitFn = Callable[..., subprocess.CompletedProcess[str]]
@@ -96,7 +95,11 @@ def _ok(kind: str, **fields: Any) -> dict[str, Any]:
 
 
 def _relpath(root: Path, path: Path) -> str:
-    return path.resolve().relative_to(root.resolve()).as_posix()
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(root.resolve()).as_posix()
+    except ValueError:
+        return str(resolved)
 
 
 class HandsRoutes:
@@ -139,13 +142,6 @@ class HandsRoutes:
             resolved = candidate.resolve()
         else:
             resolved = (self.repo_root / candidate).resolve()
-        root = self.repo_root.resolve()
-        try:
-            resolved.relative_to(root)
-        except ValueError as exc:
-            raise ProtocolError(f"PATH_OUTSIDE_REPO:{rel}") from exc
-        if resolved == root / MNO_NAME or resolved.name == MNO_NAME:
-            raise ProtocolError("MNO_REFUSED")
         return resolved
 
     def _file(self, op: str, request: Mapping[str, Any]) -> dict[str, Any]:
@@ -172,10 +168,7 @@ class HandsRoutes:
         if op == "write":
             target = self._resolve(request.get("path"))
             rel = _relpath(self.repo_root, target)
-            if target.exists():
-                if rel.startswith("p/") and rel.endswith(".md"):
-                    return failure("REMINT_REFUSED", f"canonical record already exists: {rel}")
-                return failure("PATH_EXISTS", f"write is additive only; file already exists: {rel}")
+            created = not target.exists()
             contents = request.get("contents")
             if contents is None:
                 contents = request.get("text")
@@ -184,7 +177,7 @@ class HandsRoutes:
             target.parent.mkdir(parents=True, exist_ok=True)
             data = contents if isinstance(contents, str) else json.dumps(contents)
             target.write_text(data, encoding="utf-8")
-            return _ok("file_write", path=rel, bytes=len(data.encode("utf-8")), additive=True)
+            return _ok("file_write", path=rel, bytes=len(data.encode("utf-8")), created=created)
         return failure("UNKNOWN_OPERATION", f"unknown file operation: {op or '<empty>'}")
 
     def _git(self, op: str, request: Mapping[str, Any]) -> dict[str, Any]:
@@ -212,22 +205,8 @@ class HandsRoutes:
                 paths = [raw_path] if raw_path else []
             if not isinstance(paths, list) or not paths:
                 raise ProtocolError("git add requires path or paths")
-            rels = []
-            for item in paths:
-                target = self._resolve(item)
-                rel = _relpath(self.repo_root, target)
-                if rel in {".", "-A", "-u"} or rel.startswith("-"):
-                    return failure("NOT_ADDITIVE", f"git add refuses bulk or flag path: {rel}")
-                tracked = self.git(["ls-files", "--error-unmatch", "--", rel], cwd=self.repo_root)
-                if tracked.returncode == 0:
-                    return failure(
-                        "NOT_ADDITIVE",
-                        f"git add is additive only; {rel} is already tracked",
-                    )
-                if not target.exists():
-                    return failure("PATH_MISS", f"cannot add missing path: {rel}")
-                rels.append(rel)
-            completed = self.git(["add", "--", *rels], cwd=self.repo_root)
+            rels = [str(item) for item in paths]
+            completed = self.git(["add", *rels], cwd=self.repo_root)
             result = self._git_result("git_add", completed)
             result["paths"] = rels
             return result
@@ -240,14 +219,7 @@ class HandsRoutes:
                 return self._git_result("git_commit", staged)
             names = [line.strip() for line in staged.stdout.splitlines() if line.strip()]
             if not names:
-                return failure("NOTHING_STAGED", "git commit has no additive staged paths")
-            for name in names:
-                in_head = self.git(["cat-file", "-e", f"HEAD:{name}"], cwd=self.repo_root)
-                if in_head.returncode == 0:
-                    return failure(
-                        "NOT_ADDITIVE",
-                        f"git commit is additive only; {name} already exists on HEAD",
-                    )
+                return failure("NOTHING_STAGED", "git commit has no staged changes")
             completed = self.git(["commit", "-m", message], cwd=self.repo_root)
             result = self._git_result("git_commit", completed)
             result["paths"] = names
@@ -283,37 +255,30 @@ class HandsRoutes:
 
     def _slack(self, op: str, request: Mapping[str, Any]) -> dict[str, Any]:
         channel = self._slack_channel(request)
-        if channel != COMMONS_SLACK_CHANNEL:
-            return failure(
-                "CHANNEL_REFUSED",
-                "Slack dest is #commons C0BRGMDQB6G; other dests are not invented here",
-                channel=channel,
-                table=COMMONS_SLACK_CHANNEL,
-            )
         token = self._slack_token()
         if not token:
             return failure(
                 "TOKEN_MISS",
                 "COMMONS_SLACK_BOT_TOKEN is absent; Slack was not contacted",
-                channel=COMMONS_SLACK_CHANNEL,
+                channel=channel,
             )
         headers = {
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json; charset=utf-8",
         }
         if op == "read":
-            query = urllib.parse.urlencode({"channel": COMMONS_SLACK_CHANNEL, "limit": int(request.get("limit") or 20)})
+            query = urllib.parse.urlencode({"channel": channel, "limit": int(request.get("limit") or 20)})
             response = self.http(
                 "GET",
                 f"https://slack.com/api/conversations.history?{query}",
                 headers=headers,
             )
-            return self._slack_api("slack_read", response)
+            return self._slack_api("slack_read", response, channel)
         if op == "post":
             text = str(request.get("text") or request.get("body") or "").strip()
             if not text:
                 raise ProtocolError("slack post requires text")
-            payload = {"channel": COMMONS_SLACK_CHANNEL, "text": text}
+            payload = {"channel": channel, "text": text}
             thread_ts = str(request.get("thread_ts") or "").strip()
             if thread_ts:
                 payload["thread_ts"] = thread_ts
@@ -323,10 +288,10 @@ class HandsRoutes:
                 headers=headers,
                 body=json.dumps(payload).encode("utf-8"),
             )
-            return self._slack_api("slack_post", response)
+            return self._slack_api("slack_post", response, channel)
         return failure("UNKNOWN_OPERATION", f"unknown slack operation: {op or '<empty>'}")
 
-    def _slack_api(self, kind: str, response: Mapping[str, Any]) -> dict[str, Any]:
+    def _slack_api(self, kind: str, response: Mapping[str, Any], channel: str) -> dict[str, Any]:
         if not response.get("status"):
             return failure("SLACK_FAILED", str(response.get("error") or "Slack HTTP failed"))
         body = response.get("body") or b""
@@ -336,7 +301,7 @@ class HandsRoutes:
             return failure("SLACK_FAILED", f"Slack body was not JSON: {exc}")
         if not parsed.get("ok"):
             return failure("SLACK_FAILED", str(parsed.get("error") or "Slack api returned ok=false"), payload=parsed)
-        return _ok(kind, channel=COMMONS_SLACK_CHANNEL, slack=parsed)
+        return _ok(kind, channel=channel, slack=parsed)
 
     def _board(self, op: str, request: Mapping[str, Any]) -> dict[str, Any]:
         ident = str(request.get("id") or "").strip()
@@ -350,8 +315,6 @@ class HandsRoutes:
             text = target.read_text(encoding="utf-8", errors="replace")
             return _ok("board_read", id=ident, path=rel, text=text)
         if op == "post":
-            if target.exists():
-                return failure("REMINT_REFUSED", f"canonical record already exists: {rel}")
             body = str(request.get("body") or request.get("text") or "")
             if not body.strip():
                 raise ProtocolError("board post requires body")
@@ -371,7 +334,7 @@ class HandsRoutes:
             target.parent.mkdir(parents=True, exist_ok=True)
             text = "\n".join(lines)
             target.write_text(text, encoding="utf-8")
-            return _ok("board_post", id=ident, path=rel, additive=True)
+            return _ok("board_post", id=ident, path=rel)
         return failure("UNKNOWN_OPERATION", f"unknown board operation: {op or '<empty>'}")
 
     def _shell(self, op: str, request: Mapping[str, Any]) -> dict[str, Any]:
