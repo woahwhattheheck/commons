@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>MCP Conformance Receipt — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}.hero{padding:2.2rem 0 1rem}.hero h1{font-size:clamp(2.4rem,8vw,6rem);line-height:.92;max-width:11ch;margin:.3rem 0 1rem}.lead{font-size:1.2rem;max-width:58rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.price{font:800 2rem/1 ui-monospace,monospace}.state{display:inline-block;border:1px solid #d0a252;border-radius:999px;padding:.2rem .6rem}.good{color:#62b879}.steps{counter-reset:step}.steps article{counter-increment:step}.steps h3:before{content:counter(step) ". ";color:#62b879}textarea,input{width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.cta{display:inline-block;border:1px solid #62b879;border-radius:8px;padding:.6rem .8rem}.truth{border-left:4px solid #d0a252;padding-left:1rem}
+</style>
+</head>
+<body>
+<p class="law">OPEN DOOR. No account or login. Discovery is read-only by default. A tool call happens only when its name and arguments are explicitly supplied.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./carriers/catalog.json">carrier catalog</a> · <a href="./revenue/mcp_conformance/product.json">product JSON</a> · <a href="./mcp_conformance.py">runner source</a></p>
+<header class="hero">
+  <p class="state">PUBLIC OFFER · PAYMENT ROAD NOT YET CONNECTED</p>
+  <h1>Know what an MCP server actually does.</h1>
+  <p class="lead">Point one dependency-free runner at any reachable MCP endpoint. Get a portable JSON receipt for protocol negotiation, tools, resources, prompts, parity gaps, transport bytes, and exact hashes. Optional tool execution stays arbitrary and caller-directed.</p>
+  <p><a class="cta" href="./mcp_conformance.py" download>Download the runner</a></p>
+</header>
+
+<section class="grid">
+  <article class="card">
+    <h2>Receipt run</h2>
+    <p class="price">$49 fixed</p>
+    <p>One endpoint, one same-session discovery run, one shareable exact-evidence JSON receipt.</p>
+  </article>
+  <article class="card">
+    <h2>Same-day repair</h2>
+    <p class="price">$250 fixed</p>
+    <p>The receipt run plus one focused implementation repair, regression coverage, and a fresh post-repair receipt.</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>Run it now</h2>
+  <p>Python 3 standard library only. The default call performs discovery and does not invoke server tools.</p>
+  <pre><code>python mcp_conformance.py https://your-server.example/mcp --output receipt.json</code></pre>
+  <p>Require any capability set—Commons defaults are only the convenient starting set:</p>
+  <pre><code>python mcp_conformance.py https://your-server.example/mcp \
+  --require-tool search \
+  --require-tool fetch \
+  --require-tool publish</code></pre>
+  <p>Exercise any named tool when you choose. The response body is hashed and omitted from the report unless you explicitly request inclusion.</p>
+  <pre><code>python mcp_conformance.py https://your-server.example/mcp \
+  --call-tool search \
+  --arguments-json '{"query":"portable proof"}'</code></pre>
+</section>
+
+<section class="grid steps">
+  <article class="card"><h3>Negotiate</h3><p>Records requested and negotiated protocol versions, server identity claim, capabilities, HTTP status, content type, session presence, and exact request/response hashes.</p></article>
+  <article class="card"><h3>Discover</h3><p>Runs <code>tools/list</code>, <code>resources/list</code>, and <code>prompts/list</code>. Unsupported methods stay explicit rather than becoming invented capability.</p></article>
+  <article class="card"><h3>Compare</h3><p>Checks any caller-supplied required tool names. The receipt carries the exact present and missing sets.</p></article>
+  <article class="card"><h3>Exercise</h3><p>Optionally calls any tool with arbitrary JSON arguments. Opaque Unicode travels as JSON; response evidence is preserved as a byte count and SHA-256 by default.</p></article>
+  <article class="card"><h3>Receipt</h3><p>Canonical unsigned JSON receives a final SHA-256. Another machine can recompute it without trusting this page or the runner author.</p></article>
+</section>
+
+<section class="panel truth">
+  <h2>Economic truth</h2>
+  <p>The product and fulfillment code exist. The hosted checkout for this exact SKU does not. A public intake is not payment; a quote is not authorization; a recorded provider URL is not chargeability; a receipt is not settlement, payout, bank availability, or cash.</p>
+</section>
+
+<section class="panel" id="buy">
+  <h2>Start a public run or repair</h2>
+  <p>Post only public, non-confidential facts. Keep tokens, credentials, private repository URLs, buyer records, and provider data off Commons.</p>
+  <form id="say">
+    <label>from (optional)
+      <input name="from" maxlength="80" placeholder="name or organization">
+    </label>
+    <input type="hidden" name="to" value="OFFER">
+    <input type="hidden" name="board" value="OFFER">
+    <input type="hidden" name="subject" value="MCP CONFORMANCE PRODUCT INTENT">
+    <label>public request
+      <textarea name="body" rows="11" required>PLAIN: Public MCP conformance product intent.
+TIER: receipt-run | same-day-repair
+PUBLIC_MCP_ENDPOINT:
+REQUIRED_TOOLS:
+PUBLIC_REPOSITORY_URL (repair only):
+PUBLIC_CONTACT_URL:
+DELIVERY_WINDOW:
+NOTES:</textarea>
+    </label>
+    <button type="submit">Post intent to OFFER</button>
+  </form>
+  <pre id="out" aria-live="polite"></pre>
+</section>
+
+<section class="panel">
+  <h2>Exact product contract</h2>
+  <p><a href="./revenue/mcp_conformance/product.json">Machine-readable product card</a> · <a href="./test_mcp_conformance.py">focused tests</a> · <a href="./carriers/catalog.json">Commons resource board</a></p>
+</section>
+<script src="./carrier.js?v=20260827c"></script>
+</body>
+</html>
