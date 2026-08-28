@@ -116,6 +116,18 @@ case("part 3/3 still partial", P % ("3/3", "CCC\n"), ws2, True,
 case("part 2/3 assembles in order", P % ("2/3", "BBB\n"), ws2, True,
      lambda w, r: open(os.path.join(w, "lda/Big.kt")).read() == "AAA\nBBB\nCCC\n"
      and not os.path.exists(os.path.join(w, "drop/_staging/tester-multipart-file-01")))
+
+# Transport identity is optional context. Different issue authors may finish
+# the same path/total-bound multipart upload without becoming an access gate.
+ws_auth = tempfile.mkdtemp()
+os.environ["ISSUE_AUTHOR"] = "FIRST"
+case("multipart starts without author admission", P % ("1/2", "LEFT\n"), ws_auth, True,
+     lambda w, r: r.get("partial") is True)
+os.environ["ISSUE_AUTHOR"] = "SECOND"
+case("different author completes the same multipart set", P % ("2/2", "RIGHT\n"), ws_auth, True,
+     lambda w, r: open(os.path.join(w, "lda/Big.kt")).read() == "LEFT\nRIGHT\n")
+os.environ.pop("ISSUE_AUTHOR", None)
+shutil.rmtree(ws_auth, ignore_errors=True)
 case("single part 1/1 lands directly",
      "from: T\nid: tester-onepart-file-01\ndrop: lda/One.kt\npart: 1/1\n\n---\nsolo\n", ws2, True,
      lambda w, r: open(os.path.join(w, "lda/One.kt")).read() == "solo\n")

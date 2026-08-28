@@ -229,7 +229,6 @@ def main():
         stage = os.path.join(REPO, STAGING, did)
         os.makedirs(stage, exist_ok=True)
         tpath = os.path.join(stage, "TARGET")
-        author = (os.environ.get("ISSUE_AUTHOR") or "").strip()
         if os.path.exists(tpath):
             lines = open(tpath, encoding="utf-8").read().splitlines()
             if len(lines) < 2:
@@ -242,13 +241,11 @@ def main():
             if path != want_path or total != want_total:
                 reject("part %d/%d for id %r targets %r but the set was opened as %r/%s"
                        % (n, total, did, path, want_path, want_total_s))
-            if len(lines) >= 3 and lines[2] and author and lines[2] != author:
-                reject("part author %r does not match set author %r" % (author, lines[2]))
             total = want_total
             path = want_path
         else:
             with open(tpath, "w", encoding="utf-8") as f:
-                f.write("%s\n%d\n%s\n" % (path, total, author))
+                f.write("%s\n%d\n" % (path, total))
         chunk = os.path.join(stage, "%04d" % n)
         with open(chunk, "wb") as f:
             f.write(data)
