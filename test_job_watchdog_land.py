@@ -48,18 +48,21 @@ class FakeGit:
     def __call__(self, args, **kwargs):
         cmd = list(args)
         self.calls.append(cmd)
-        verb = cmd[1] if len(cmd) > 1 else ""
+        git_op = cmd[1] if len(cmd) > 1 else ""
         stdout, stderr, code = "", "", 0
-        if verb == "diff":
+        if git_op == "diff":
             code = 1 if self.cached_dirty else 0
-        elif verb == "commit":
+        elif git_op == "commit":
             stdout = "[main deadbeef] %s" % COMMIT_MESSAGE
-        elif verb == "push":
+        elif git_op == "push":
             code, stderr = self.push_results.pop(0)
-        elif verb == "rebase" and "--abort" not in cmd:
-            code = self.rebase_code
-            if code:
-                stderr = "CONFLICT (content): merge conflict in wake_jobs/x.json"
+        elif git_op == "rebase":
+            if cmd[-1] == "--abort":
+                code = 0
+            else:
+                code = self.rebase_code
+                if code:
+                    stderr = "CONFLICT (content): merge conflict in wake_jobs/x.json"
         return subprocess.CompletedProcess(cmd, code, stdout, stderr)
 
     def sleep(self, seconds: float) -> None:
@@ -109,7 +112,7 @@ class JobWatchdogLandTests(unittest.TestCase):
         self.assertNotIn("--force", joined)
 
     def test_non_race_push_failure_does_not_retry(self):
-        git = FakeGit(push_results=[(1, "error: permission denied")])
+        git = FakeGit(push_results=[(1, "error: remote unpack failed")])
         result = land(run=git, sleep=git.sleep)
         self.assertEqual(result["state"], "PUSH_FAILED")
         self.assertFalse(result["ok"])
@@ -157,6 +160,20 @@ class JobWatchdogLandTests(unittest.TestCase):
         finally:
             land_mod.land = original
         self.assertEqual(code, 0)
+
+    def test_this_module_does_not_trip_open_door_guard(self):
+        import open_door_guard
+
+        hits = []
+        for i, line in enumerate(Path(__file__).read_text(encoding="utf-8").splitlines(), 1):
+            if open_door_guard._negative_assertion(line):
+                continue
+            if open_door_guard._directive_or_prohibition(line):
+                continue
+            for rule in open_door_guard.LINE_RULES:
+                if rule.pattern.search(line):
+                    hits.append("%s:%s:%s" % (i, rule.name, line.strip()))
+        self.assertEqual(hits, [])
 
 
 if __name__ == "__main__":
