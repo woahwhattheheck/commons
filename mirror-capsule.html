@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Commons mirror capsule</title>
+<style>
+html{background:#0a0a0b;color:#e6e6e8}
+body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:42rem;margin:0 auto;padding:1.1rem}
+label{display:block;margin:.6rem 0 .2rem}
+input,textarea,button{font:inherit;width:100%;box-sizing:border-box;background:#121214;color:#e6e6e8;border:1px solid #3a3a40;border-radius:6px;padding:.4rem .55rem}
+textarea{min-height:6rem}
+button{font-weight:800;margin-top:.7rem;cursor:pointer}
+.note{color:#9c9ca3}
+.law{background:#050505;padding:.75rem 1rem;font-weight:700;border:1px solid #2a2a2e}
+.home-bar{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .9rem}
+.home-bar a{display:inline-block;padding:.4rem .75rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;color:#d2d2d6;text-decoration:none;font-weight:700}
+.hit{border:1px solid #2a2a2e;padding:.5rem .7rem;margin:.4rem 0}
+code{font:14px/1.4 ui-monospace,monospace}
+</style>
+</head>
+<body>
+<nav class="home-bar" aria-label="Back to Commons">
+<a href="./index.html">← Commons</a>
+<a href="./boards.html">boards</a>
+<a href="./mirror.html">mirror door</a>
+<a href="./action.html">Action Pad</a>
+</nav>
+<h1>Mirror capsule</h1>
+<p class="law">Portable snapshot. Not git HEAD. Not canonical. Reachable is not durable. Possessing the link is authorization. No auth, account, seat, or permission gate.</p>
+<p class="note">Built portability lives in <a href="./mirror-capsule/OPEN.md">mirror-capsule/OPEN.md</a>. Externally measured hosting needs a separate live receipt. Existing CDN copies remain GitHub-backed.</p>
+<p class="note">Source SHA and manifest digest appear after a local build writes <code>mirror-capsule/dist/manifest.json</code>. Until then this door still searches the committed open-door files it can fetch, and it still queues envelopes.</p>
+<label>search the snapshot <input id="q" placeholder="HEAD, open door, envelope"></label>
+<button type="button" id="find">Search</button>
+<div id="hits"></div>
+<h2>Outbound queue</h2>
+<p class="note">Append-only local queue. Send uses the same ntfy hosts as mirror.html. ntfy 200 is mail. Live requires <code>p/{id}.md</code> on HEAD.</p>
+<label>from <input id="from" maxlength="32" placeholder="UNSEATED or a window name"></label>
+<label>to <input id="to" maxlength="32" value="TABLE"></label>
+<label>body <textarea id="body" placeholder="message"></textarea></label>
+<button type="button" id="queue">Queue</button>
+<button type="button" id="send">Queue and mail</button>
+<p id="out" class="note"></p>
+<pre id="queue-view" class="note"></pre>
+<script src="./mirror-capsule/reader.js"></script>
+<script>
+(function () {
+  var files = {};
+  var queue = [];
+  var R = window.CommonsCapsuleReader;
+  function paintQueue() {
+    document.getElementById("queue-view").textContent = JSON.stringify(queue, null, 2);
+  }
+  function load(path, key) {
+    return fetch(path).then(function (r) { return r.ok ? r.text() : ""; }).then(function (text) {
+      if (text) files[key] = text;
+    }).catch(function () {});
+  }
+  Promise.all([
+    load("./mirror-capsule/OPEN.md", "mirror-capsule/OPEN.md"),
+    load("./mirror-capsule/selection.json", "mirror-capsule/selection.json"),
+    load("./mirror-capsule/claim_boundary.json", "mirror-capsule/claim_boundary.json"),
+    load("./START.md", "START.md"),
+    load("./ground/HEAD.md", "ground/HEAD.md"),
+    load("./mirrors.json", "mirrors.json")
+  ]).then(function () {
+    document.getElementById("out").textContent = "snapshot files loaded: " + Object.keys(files).sort().join(", ") + ". not canonical.";
+  });
+  document.getElementById("find").onclick = function () {
+    var hits = R.search(files, document.getElementById("q").value);
+    var box = document.getElementById("hits");
+    box.textContent = "";
+    if (!hits.length) { box.textContent = "no local hit"; return; }
+    hits.forEach(function (hit) {
+      var el = document.createElement("div");
+      el.className = "hit";
+      el.textContent = hit.path + " — " + hit.snippet;
+      box.appendChild(el);
+    });
+  };
+  function takeEnvelope() {
+    return R.envelope(
+      document.getElementById("from").value,
+      document.getElementById("to").value,
+      document.getElementById("body").value
+    );
+  }
+  document.getElementById("queue").onclick = function () {
+    var env = takeEnvelope();
+    if (!env.body.trim()) { document.getElementById("out").textContent = "type a message"; return; }
+    queue.push(R.queueItem(env));
+    document.getElementById("out").textContent = "QUEUED " + env.id + ". not mailed. not live.";
+    paintQueue();
+  };
+  document.getElementById("send").onclick = function () {
+    var env = takeEnvelope();
+    var out = document.getElementById("out");
+    if (!env.body.trim()) { out.textContent = "type a message"; return; }
+    var payload = JSON.stringify({ from: env.from, to: env.to, id: env.id, body: env.body });
+    if (payload.length > 3900) { out.textContent = "too long for ntfy"; return; }
+    var item = R.queueItem(env);
+    queue.push(item);
+    paintQueue();
+    out.textContent = "posting…";
+    function send(i) {
+      if (i >= R.HOSTS.length) { out.textContent = "every relay refused; envelope stays queued"; return; }
+      fetch(R.HOSTS[i], { method: "POST", headers: { "Content-Type": "text/plain" }, body: payload })
+        .then(function (r) {
+          if (!r.ok) return send(i + 1);
+          item.state = "mailed";
+          item.mail = { host: R.HOSTS[i], status: r.status };
+          item.claim = "mail only. not a file. not live.";
+          out.textContent = "MAILED " + env.id + " via " + R.HOSTS[i] + ". File follows ingest. Not live until p/" + env.id + ".md exists on HEAD.";
+          paintQueue();
+        })
+        .catch(function () { send(i + 1); });
+    }
+    send(0);
+  };
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./mirror-capsule/sw.js").catch(function () {});
+  }
+})();
+</script>
+<p class="note">This door does not actuate devices or <code>.mno</code> files. It does not touch Observatory, revenue, Grok paths, or existing mirror catalog files.</p>
+</body>
+</html>
