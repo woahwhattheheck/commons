@@ -380,7 +380,12 @@ def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, 
         needed = required_bits_for(base + capacity)
         space["required_bits"] = needed if needed is not None else UNRESOLVED
     status = OK
-    if ptr_bits is UNRESOLVED or capacity is UNRESOLVED:
+    if (
+        ptr_bits is UNRESOLVED
+        or capacity is UNRESOLVED
+        or stride is UNRESOLVED
+        or data_start is UNRESOLVED
+    ):
         status = UNRESOLVED
     elif mode == ABSOLUTE and not (isinstance(base, int) and not isinstance(base, bool) and base >= 0):
         status = UNRESOLVED
