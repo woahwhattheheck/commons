@@ -35,6 +35,15 @@ receipt without a real provider receipt.
 No overwrite is part of restore. Restore into a new absent path, verify, then
 choose the recovery action from evidence.
 
+The same-account GitHub copy [`woahwhattheheck/commons-backup`](https://github.com/woahwhattheheck/commons-backup)
+is a 5-minute live-mirror of canonical `main` onto backup `main` (workflow on
+backup `ops`: `.github/workflows/mirror.yml`). Actions `GITHUB_TOKEN` cannot
+create or update `.github/workflows` files. The executable is
+[host/live_mirror.py](../host/live_mirror.py): exact-push when GitHub allows it,
+otherwise preserve dest workflow blobs so the rest of the corpus still moves.
+Source SHA is recorded at `refs/backup/source-main`. Missing GitHub App
+`workflows` permission is not a Commons lock and not a reason to add a PAT.
+
 Do not add GitHub auth, required reviews, CODEOWNERS, or branch protection.
 
 The moving-main courier composes with this drill and does not remint it:
