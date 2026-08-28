@@ -528,6 +528,32 @@ def probe_live(url: str, timeout: float = 2.0) -> bool:
     return bool(payload.get("live")) and payload.get("state") == "SERVING"
 
 
+def background_process_kwargs(platform: str | None = None) -> dict[str, Any]:
+    """Return detached, no-console child settings for the bridge process."""
+    target = platform or sys.platform
+    kwargs: dict[str, Any] = {
+        "stdin": subprocess.DEVNULL,
+        "stdout": subprocess.DEVNULL,
+        "stderr": subprocess.DEVNULL,
+        "close_fds": True,
+    }
+    if target == "win32":
+        # CREATE_NO_WINDOW prevents the bridge from allocating a console even
+        # when a watchdog or scheduled task starts the handoff repeatedly.
+        kwargs["creationflags"] = int(getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000))
+        startup_factory = getattr(subprocess, "STARTUPINFO", None)
+        if startup_factory is not None:
+            startupinfo = startup_factory()
+            startupinfo.dwFlags |= int(getattr(subprocess, "STARTF_USESHOWWINDOW", 0x00000001))
+            startupinfo.wShowWindow = int(getattr(subprocess, "SW_HIDE", 0))
+            kwargs["startupinfo"] = startupinfo
+    else:
+        # Keep a local handoff shutdown from re-parenting the bridge onto the
+        # caller's terminal session.
+        kwargs["start_new_session"] = True
+    return kwargs
+
+
 PAGE_HTML = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -694,9 +720,8 @@ class HandoffApp:
             self.child = subprocess.Popen(  # noqa: S603
                 cmd,
                 env=child_env,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
                 cwd=str(integration_root().parents[1]),
+                **background_process_kwargs(),
             )
             self.last_child_state = "CHILD_SPAWNED"
         return True

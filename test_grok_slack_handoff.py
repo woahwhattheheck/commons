@@ -13,6 +13,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
@@ -231,6 +232,42 @@ class GrokSlackHandoffTests(unittest.TestCase):
             self.assertEqual(health["state"], "NOT_READY")
             self.assertFalse(health.get("live"))
             self.assertEqual(code, 2)
+
+    def test_windows_bridge_spawn_and_launcher_never_allocate_a_console(self) -> None:
+        bot, app = _bot(), _app()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "vault"
+            protector = handoff.PosixUserProtector(material=b"user-a")
+            handoff.write_vault(path, bot, app, protector=protector)
+            app_obj = handoff.HandoffApp(
+                bind="127.0.0.1:0",
+                vault_path=path,
+                protector=protector,
+                live_probe=lambda: False,
+                env={},
+            )
+            with patch.object(handoff, "probe_live", return_value=False), \
+                    patch.object(handoff.sys, "platform", "win32"), \
+                    patch.object(handoff.subprocess, "Popen") as popen:
+                popen.return_value.poll.return_value = None
+                self.assertTrue(app_obj.ensure_bridge())
+            kwargs = popen.call_args.kwargs
+            self.assertIs(kwargs["stdin"], subprocess.DEVNULL)
+            self.assertIs(kwargs["stdout"], subprocess.DEVNULL)
+            self.assertIs(kwargs["stderr"], subprocess.DEVNULL)
+            self.assertTrue(kwargs["close_fds"])
+            self.assertEqual(kwargs["creationflags"] & 0x08000000, 0x08000000)
+
+        posix = handoff.background_process_kwargs("linux")
+        self.assertTrue(posix["start_new_session"])
+        windows = handoff.background_process_kwargs("win32")
+        self.assertEqual(windows["creationflags"] & 0x08000000, 0x08000000)
+
+        launcher = (handoff.integration_root() / "run-handoff.ps1").read_text(encoding="utf-8")
+        self.assertIn("[switch]$Foreground", launcher)
+        self.assertIn("pythonw.exe", launcher)
+        self.assertIn("-WindowStyle Hidden", launcher)
+        self.assertNotIn("Start-Process -FilePath $python ", launcher)
 
     def test_windows_dpapi_symbols_exist_without_calling_them_here(self) -> None:
         self.assertTrue(callable(handoff.WinDpapiProtector().protect))
