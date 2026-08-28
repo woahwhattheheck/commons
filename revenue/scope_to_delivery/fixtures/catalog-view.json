@@ -257,7 +257,7 @@
       "name": "Tip",
       "out_of_scope": [
         "membership",
-        "access-gate",
+        "gated-entitlement",
         "private-buyer-data-on-main"
       ],
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
@@ -280,7 +280,7 @@
       "name": "Seat",
       "out_of_scope": [
         "claim-purchase",
-        "access-gate",
+        "gated-entitlement",
         "from-equals-payment"
       ],
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
@@ -326,7 +326,7 @@
       "out_of_scope": [
         "seat",
         "claim",
-        "access-gate"
+        "gated-entitlement"
       ],
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "refund_text": "UNKNOWN",

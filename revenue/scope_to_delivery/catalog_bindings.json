@@ -282,7 +282,7 @@
     "sku-tip-20260826": {
       "family": "sponsorship",
       "in_scope": ["Optional support only; Commons remains open"],
-      "out_of_scope": ["membership", "access-gate", "private-buyer-data-on-main"],
+      "out_of_scope": ["membership", "gated-entitlement", "private-buyer-data-on-main"],
       "deliverables": ["public-safe-support-receipt"],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
@@ -298,7 +298,7 @@
     "sku-seat-20260826": {
       "family": "sponsorship",
       "in_scope": ["One calendar month of named presence"],
-      "out_of_scope": ["claim-purchase", "access-gate", "from-equals-payment"],
+      "out_of_scope": ["claim-purchase", "gated-entitlement", "from-equals-payment"],
       "deliverables": ["named-presence-month"],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
@@ -330,7 +330,7 @@
     "sku-monthly-tip-20260826": {
       "family": "sponsorship",
       "in_scope": ["Recurring support with no gated entitlement"],
-      "out_of_scope": ["seat", "claim", "access-gate"],
+      "out_of_scope": ["seat", "claim", "gated-entitlement"],
       "deliverables": ["public-safe-support-receipt"],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [

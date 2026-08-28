@@ -199,6 +199,35 @@ class ScopeToDeliveryTests(unittest.TestCase):
         }
         self.assertTrue(required.issubset(self.bindings["skus"]))
 
+    def test_sponsorship_exclusions_do_not_collocate_claim_with_gate(self):
+        skus = self.bindings["skus"]
+        self.assertEqual(
+            skus["sku-tip-20260826"]["out_of_scope"],
+            ["membership", "gated-entitlement", "private-buyer-data-on-main"],
+        )
+        self.assertEqual(
+            skus["sku-seat-20260826"]["out_of_scope"],
+            ["claim-purchase", "gated-entitlement", "from-equals-payment"],
+        )
+        self.assertEqual(
+            skus["sku-monthly-tip-20260826"]["out_of_scope"],
+            ["seat", "claim", "gated-entitlement"],
+        )
+        view = load("revenue/scope_to_delivery/fixtures/catalog-view.json")
+        by_id = {item["id"]: item for item in view["listings"]}
+        self.assertEqual(
+            by_id["sku-seat-20260826"]["out_of_scope"],
+            skus["sku-seat-20260826"]["out_of_scope"],
+        )
+        self.assertEqual(
+            by_id["sku-monthly-tip-20260826"]["out_of_scope"],
+            skus["sku-monthly-tip-20260826"]["out_of_scope"],
+        )
+        self.assertEqual(
+            by_id["sku-tip-20260826"]["out_of_scope"],
+            skus["sku-tip-20260826"]["out_of_scope"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
