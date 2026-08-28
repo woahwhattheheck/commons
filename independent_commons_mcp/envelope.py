@@ -106,7 +106,7 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if METADATA_BREAK_RE.search(out) or len(out) > maximum:
+    if METADATA_BREAK_RE.search(value) or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
 

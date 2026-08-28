@@ -199,9 +199,12 @@ class EnvelopeTests(unittest.TestCase):
 
     def test_metadata_rejects_every_unicode_line_boundary(self):
         separators = "\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029"
+        placements = ("first%ssecond", "%sfirst", "last%s")
         for separator in separators:
-            with self.subTest(separator=ascii(separator)), self.assertRaises(EnvelopeError):
-                build_envelope(declared(subject="first%ssecond" % separator))
+            for placement in placements:
+                subject = placement % separator
+                with self.subTest(subject=ascii(subject)), self.assertRaises(EnvelopeError):
+                    build_envelope(declared(subject=subject))
 
     def test_projection_preserves_opaque_unicode_payload_boundaries(self):
         body = "alpha\vbeta\fcharlie\x1cdelta\x1eecho\x85foxtrot\u2028---\u2029omega"
