@@ -117,6 +117,15 @@ class FakeGitHub:
         self.files[(path, sha or self.main_sha)] = blob
 
 
+class ReadOnlyGitHub(FakeGitHub):
+    """Public readback without a write token — materialize must not invent a blob."""
+
+    def put(self, path: str, payload: Any, sha: str | None = None) -> None:
+        if path.startswith(("p/", "wake_jobs/", "actions/")):
+            raise bridge.BridgeError("github write requires token")
+        super().put(path, payload, sha)
+
+
 class FakeGrokProvider:
     def __init__(self) -> None:
         self.submits = 0
@@ -981,29 +990,41 @@ class GrokSlackBridgeTests(unittest.TestCase):
             mcp = FakeMcp(github, fire_mode="pending-id-only")
             service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
             result = service.handle_event("Ev-id-only", event_payload("id only pending"))
-            self.assertEqual(result["state"], "FAILED")
-            self.assertEqual(result.get("code"), "DURABILITY_NEVER_APPEARED")
-            self.assertTrue(result.get("retryable"))
-            self.assertNotEqual(result["state"], "OBSERVING")
-            self.assertEqual(store.get("Ev-id-only").phase, "FAILED")
+            self.assertEqual(result["state"], "OBSERVING")
+            self.assertNotEqual(result.get("code"), "DURABILITY_NEVER_APPEARED")
+            ident = store.get("Ev-id-only").job_id
+            self.assertTrue(any(path == f"wake_jobs/{ident}.json" for path, _sha in github.files))
+            self.assertTrue(any(path == f"p/{ident}.md" for path, _sha in github.files))
+            self.assertEqual(store.get("Ev-id-only").phase, "OBSERVING")
             self.assertEqual(store.get("Ev-id-only").fire_action_calls, 1)
             posted = [row for row in slack.posts if "DURABILITY_NEVER_APPEARED" in (row.get("text") or "")]
-            self.assertEqual(len(posted), 1)
-            self.assertIn("retryable", (posted[0].get("text") or "").casefold())
-            inspected = {path for path, _sha in github.reads if path != "carriers/catalog.json"}
-            ident = store.get("Ev-id-only").job_id
-            for path in bridge.durable_action_paths(ident):
-                self.assertIn(path, inspected)
+            self.assertEqual(len(posted), 0)
             again = service.handle_event("Ev-id-only", event_payload("id only pending"))
-            self.assertEqual(again["state"], "FAILED")
-            self.assertEqual(again.get("submit"), False)
+            self.assertEqual(again["state"], "OBSERVING")
+            self.assertNotEqual(again.get("submit"), True)
             self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            store.close()
+
+    def test_unlanded_structured_pending_materializes_wake_job(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            github = FakeGitHub()
+            github.put("carriers/catalog.json", {"carriers": []})
+            mcp = FakeMcp(github, fire_mode="pending-unlanded")
+            service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
+            result = service.handle_event("Ev-unlanded", event_payload("unlanded structured pending"))
+            self.assertEqual(result["state"], "OBSERVING")
+            ident = store.get("Ev-unlanded").job_id
+            self.assertTrue(any(path == f"wake_jobs/{ident}.json" for path, _sha in github.files))
+            self.assertTrue(any(path == f"p/{ident}.md" for path, _sha in github.files))
+            self.assertEqual(store.get("Ev-unlanded").fire_action_calls, 1)
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            self.assertFalse(any("DURABILITY_NEVER_APPEARED" in (row.get("text") or "") for row in slack.posts))
             store.close()
 
     def test_unlanded_structured_pending_posts_durability_never_appeared(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            github = FakeGitHub()
-            github.put("carriers/catalog.json", {"carriers": []})
+            github = ReadOnlyGitHub()
+            github.files[("carriers/catalog.json", MAIN_SHA)] = json.dumps({"carriers": []}).encode("utf-8")
             mcp = FakeMcp(github, fire_mode="pending-unlanded")
             service, slack, github, mcp, store = build_bridge(directory, github=github, mcp=mcp)
             result = service.handle_event("Ev-unlanded", event_payload("unlanded structured pending"))
@@ -1057,8 +1078,8 @@ class GrokSlackBridgeTests(unittest.TestCase):
 
     def test_failed_durability_without_rejected_row_posts_once_on_restart(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            github = FakeGitHub()
-            github.put("carriers/catalog.json", {"carriers": []})
+            github = ReadOnlyGitHub()
+            github.files[("carriers/catalog.json", MAIN_SHA)] = json.dumps({"carriers": []}).encode("utf-8")
             mcp = FakeMcp(github, fire_mode="pending-unlanded")
             slack = RejectPostFailSlack()
             service, slack, github, mcp, store = build_bridge(directory, slack=slack, github=github, mcp=mcp)
