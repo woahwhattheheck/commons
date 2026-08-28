@@ -293,7 +293,7 @@ export function startGrokCapture(args = {}) {
 
   const conversation = conversationFacts(args.conversation_url || parent?.conversation_url || "");
   const urlMatch = findCaptureByConversation(conversation.canonical);
-  if (urlMatch && (!parent || urlMatch.run_id !== parent.run_id)) return duplicateCapture("EXACT_URL", urlMatch);
+  if (urlMatch && !parent) return duplicateCapture("EXACT_URL", urlMatch);
   if (parent && conversation.canonical && parent.conversation_url && conversation.canonical !== parent.conversation_url) {
     throw new Error("continuation conversation must preserve parent conversation lineage");
   }
@@ -406,6 +406,7 @@ function buildCaptureDispatch(run) {
     slack_receipt: {
       channel: SLACK_CHANNEL,
       thread_ts: run.origin.thread_id || "",
+      dedupe_key: receiptIdValue,
       message: body,
     },
     delivery_order: [
@@ -431,7 +432,10 @@ export function captureGrokRun(args = {}) {
   const conversation = conversationFacts(args.conversation_url || run.conversation_url || "");
   if (conversation.canonical) {
     const urlMatch = findCaptureByConversation(conversation.canonical);
-    if (urlMatch && urlMatch.run_id !== run.run_id && run.lineage?.parent_run_id !== urlMatch.run_id) {
+    const lineageOwnsConversation = Boolean(
+      run.lineage && conversation.canonical === run.lineage.parent_conversation_url
+    );
+    if (urlMatch && urlMatch.run_id !== run.run_id && !lineageOwnsConversation) {
       return duplicateCapture("EXACT_URL", urlMatch);
     }
     run.conversation_url_observed = conversation.observed;
@@ -511,7 +515,7 @@ export function captureGrokRun(args = {}) {
     zero_token_boundary: persisted.capture.boundary,
   };
   if (continuation) response.next_run = continuation;
-  if (["VERIFIED_COMPLETE", "RECEIPT_PENDING", "RECEIPT_EMITTED"].includes(persisted.capture.state)) {
+  if (["VERIFIED_COMPLETE", "RECEIPT_PENDING"].includes(persisted.capture.state)) {
     response.dispatch = buildCaptureDispatch(persisted.capture);
   }
   return response;
