@@ -1,0 +1,74 @@
+{
+  "artifacts": [
+    {
+      "bytes": 4,
+      "path": "ci/federated/artifacts/federated-echo-20260828-01/shard-1.stdout",
+      "sha256": "e43010e4c07c7cee53685f8c37ea8ef0ef01d9f8035dd79cd88955ddf814981a"
+    },
+    {
+      "bytes": 0,
+      "path": "ci/federated/artifacts/federated-echo-20260828-01/shard-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "attempt": 1,
+  "claim_boundary": {
+    "fabricated_url": false,
+    "measured_live_run": true,
+    "other_provider_activated": false,
+    "provider_activated_by_this_engine": false,
+    "quota_claimed": false
+  },
+  "command": {
+    "argv": [
+      "python3",
+      "-c",
+      "import sys; sys.stdout.write('ok-' + sys.argv[1])",
+      "1"
+    ],
+    "cwd": ".",
+    "env": {},
+    "shell": false,
+    "timeout_s": 15
+  },
+  "duration_ms": 11,
+  "exit_code": 0,
+  "job_id": "federated-echo-20260828-01",
+  "kind": "FEDERATED_CI_RECEIPT",
+  "measured": true,
+  "parent_receipt_id": null,
+  "provider": "local-fixture",
+  "receipt_id": "fcr-224daaf0c607f730",
+  "run_url": null,
+  "scan": {
+    "hit_counts": {
+      "AWS_KEY": 0,
+      "BEARER": 0,
+      "EMAIL": 0,
+      "GITHUB_TOKEN": 0,
+      "PASSWORD": 0,
+      "PHONE": 0,
+      "PRIVATE_KEY": 0,
+      "SLACK_TOKEN": 0,
+      "STRIPE_SECRET": 0
+    },
+    "rules": [
+      "PRIVATE_KEY",
+      "GITHUB_TOKEN",
+      "SLACK_TOKEN",
+      "AWS_KEY",
+      "STRIPE_SECRET",
+      "BEARER",
+      "PASSWORD",
+      "EMAIL",
+      "PHONE"
+    ],
+    "scanner_version": "commons-federated-ci-scan/v1",
+    "status": "PASS_ZERO_HITS"
+  },
+  "schema_version": "commons-federated-receipt/v1",
+  "shard_id": 1,
+  "source_sha": "38dad71081c1dc2e458004324046cebf4008c03c",
+  "terminal_state": "PASSED",
+  "test_identity": "federated.echo.shard-b"
+}
