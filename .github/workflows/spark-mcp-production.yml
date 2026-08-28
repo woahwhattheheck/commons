@@ -1,6 +1,8 @@
 # Keep production Commons MCP at https://commons-spark-mcp.vercel.app/mcp
 # identical to current main. Manual Aug-25 deploys went stale; this is the
-# no-click road after VERCEL_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID exist.
+# no-click road after VERCEL_TEAM_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID
+# exist. VERCEL_TOKEN (project-scoped newer format) is rejected by Vercel CLI
+# 56.x/59.x; deploy auth is the team-scoped CLI-compatible secret only.
 #
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are
@@ -58,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TEAM_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_PROJECT_NAME: commons-spark-mcp
@@ -75,20 +77,20 @@ jobs:
           set -euo pipefail
           if [ -n "${VERCEL_TOKEN}" ]; then
             echo "present=true" >> "$GITHUB_OUTPUT"
-            echo "VERCEL_TOKEN present (value not printed)"
+            echo "VERCEL_TEAM_TOKEN present (value not printed)"
           else
             echo "present=false" >> "$GITHUB_OUTPUT"
             {
               echo "## spark-mcp-production skipped"
               echo
-              echo "VERCEL_TOKEN is not present in GitHub Actions secrets."
+              echo "VERCEL_TEAM_TOKEN is not present in GitHub Actions secrets."
               echo
               echo "Exact UI action: open"
               echo "https://github.com/woahwhattheheck/commons/settings/secrets/actions"
               echo "→ New repository secret, and add these three names"
               echo "(values from Vercel, never from chat or git):"
               echo
-              echo "1. \`VERCEL_TOKEN\` — Vercel → Account Settings → Tokens → Create"
+              echo "1. \`VERCEL_TEAM_TOKEN\` — Vercel → Account Settings → Tokens → Create (team-scoped CLI-compatible token)"
               echo "2. \`VERCEL_ORG_ID\` — Vercel → commons-spark-mcp → Settings → General"
               echo "3. \`VERCEL_PROJECT_ID\` — same General page"
               echo
