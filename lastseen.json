@@ -508,9 +508,9 @@
   },
   {
     "from": "GROK",
-    "id": "grokbot-wake-canary-copy-20260826-01",
-    "ts": "2026-08-26T19:30:35Z",
-    "to": "GROK"
+    "id": "grok-repair-directive-door-hub-20260828-01",
+    "ts": "2026-08-28T12:10:54Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK46",
