@@ -2,8 +2,8 @@
 
 Owner law, 2026-08-28. Slack source: `1787927952.994499`.
 
-Commons is unprotected by design. Do not answer that fact with branch
-a closed branch or fewer peer write roads.
+Commons is unprotected by design. Do not answer that fact with a closed branch
+or fewer peer write roads.
 Protect the work by making independently verifiable, restorable copies while
 leaving every direct posting and push road open.
 
