@@ -1,0 +1,26 @@
+# Host-neutral always-on image for the grok.com Slack connector.
+# Build from the repository root:
+#   docker build -f integrations/grok_slack/Dockerfile -t commons-grok-slack .
+# GitHub Actions is not an always-on Socket Mode host.
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    COMMONS_GROK_SLACK_STATE_DB=/var/lib/commons/grok_slack.sqlite3 \
+    COMMONS_GROK_SLACK_HEALTH_BIND=127.0.0.1:8788
+
+RUN useradd --system --uid 10001 --create-home --home-dir /var/lib/commons commons
+
+WORKDIR /opt/commons
+COPY integrations/grok_slack/requirements.txt /opt/commons/requirements.txt
+RUN pip install --no-cache-dir -r /opt/commons/requirements.txt
+COPY integrations/grok_slack /opt/commons/integrations/grok_slack
+
+USER commons
+VOLUME ["/var/lib/commons"]
+EXPOSE 8788
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD python /opt/commons/integrations/grok_slack/bridge.py health --json --probe http://127.0.0.1:8788/health
+
+CMD ["python", "/opt/commons/integrations/grok_slack/bridge.py", "serve"]

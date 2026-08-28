@@ -25,19 +25,36 @@ class LanAndroidTests(unittest.TestCase):
         self.assertTrue(caps["ok"])
         self.assertFalse(caps["online"])
         self.assertEqual(caps["transport"], "lan")
+        self.assertEqual(caps["pairing"], "none")
         observed = server.handle({"op": "observe"})
         self.assertEqual(observed["failure_reason"], "HOST_OFFLINE")
         self.assertFalse(contains_pixel_payload(observed))
 
-    def test_lan_url_without_pairing_is_typed_not_open(self):
-        server = LanAndroidServer(base_url="http://192.168.1.20:8745", pairing="")
+    def test_lan_url_without_pairing_is_open(self):
+        posted = []
+
+        def post(url, request):
+            posted.append((url, dict(request)))
+            return {
+                "ok": True,
+                "kind": "observation_delta",
+                "added": [{"id": "a_1", "role": "Button", "name": "Send"}],
+                "pixels": "not-captured",
+            }
+
+        server = LanAndroidServer(
+            base_url="http://192.168.1.20:8745",
+            pairing="",
+            post=post,
+        )
         caps = server.handle({"op": "capabilities"})
         self.assertTrue(caps["ok"])
-        self.assertEqual(caps["pairing"], "on-device")
-        self.assertFalse(caps["online"])
         observed = server.handle({"op": "observe"})
-        self.assertEqual(observed["failure_reason"], "PAIRING_REQUIRED")
+        self.assertTrue(observed["ok"])
+        self.assertEqual(observed["kind"], "observation_delta")
         self.assertFalse(contains_pixel_payload(observed))
+        self.assertEqual(posted[0][0], "http://192.168.1.20:8745")
+        self.assertNotIn("failure_reason", observed)
 
     def test_forward_observe_without_pixels_and_capture_to_file(self):
         tmp = Path(tempfile.mkdtemp())

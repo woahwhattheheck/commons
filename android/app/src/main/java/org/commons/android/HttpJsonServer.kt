@@ -11,12 +11,17 @@ import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 
+/**
+ * Credential-free LAN JSON host for Titan Hands.
+ *
+ * User Start host is the only on/off. Accessibility stays a phone setting.
+ * Possessing the LAN URL is enough to observe/act/capture, matching LDA's
+ * TitanHandsLanService. Commons read/post stay open. This adds no seat.
+ */
 class HttpJsonServer(
     private val port: Int,
     private val handler: (JSONObject) -> JSONObject,
     private val health: () -> JSONObject,
-    private val publicHealth: () -> JSONObject,
-    private val expectedPairing: () -> String,
     private val bindHost: String = "127.0.0.1",
 ) {
     private val running = AtomicBoolean(false)
@@ -26,10 +31,6 @@ class HttpJsonServer(
         private set
 
     fun start() {
-        val loopback = bindHost == "127.0.0.1" || bindHost == "::1" || bindHost == "localhost"
-        if (!loopback && expectedPairing().isBlank()) {
-            throw IllegalStateException("non-loopback Hands bind needs an on-device pairing code")
-        }
         if (!running.compareAndSet(false, true)) return
         val socket = ServerSocket(port, 50, InetAddress.getByName(bindHost))
         server = socket
@@ -80,22 +81,11 @@ class HttpJsonServer(
             }
             val response: JSONObject = try {
                 when {
-                    method == "GET" && (path == "/" || path == "/health") -> {
-                        val presented = Pairing.presented(headers, rawPath, null)
-                        val mismatch = Pairing.check(expectedPairing(), presented)
-                        if (mismatch == null) health() else publicHealth()
-                    }
+                    method == "GET" && (path == "/" || path == "/health") -> health()
                     method == "POST" && (path == "/" || path == "/titan_hands") -> {
                         val text = String(body, StandardCharsets.UTF_8).trim()
-                        val json = if (text.isEmpty()) JSONObject() else JSONObject(text)
-                        val presented = Pairing.presented(headers, rawPath, json)
-                        json.remove("pairing")
-                        val gate = Pairing.check(expectedPairing(), presented)
-                        when {
-                            gate != null -> gate
-                            text.isEmpty() -> failure("INVALID_REQUEST", "empty body")
-                            else -> handler(json)
-                        }
+                        if (text.isEmpty()) failure("INVALID_REQUEST", "empty body")
+                        else handler(JSONObject(text).apply { remove("pairing") })
                     }
                     else -> failure("UNKNOWN_OPERATION", "no handler for $method $path")
                 }
@@ -114,7 +104,7 @@ class HttpJsonServer(
             .append("Content-Length: ").append(body.size).append("\r\n")
             .append("Access-Control-Allow-Origin: *\r\n")
             .append("Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n")
-            .append("Access-Control-Allow-Headers: Content-Type, X-Commons-Pairing\r\n")
+            .append("Access-Control-Allow-Headers: Content-Type\r\n")
             .append("Connection: close\r\n\r\n")
             .toString()
             .toByteArray(StandardCharsets.US_ASCII)

@@ -26,10 +26,9 @@ Linux AT-SPI stays the existing `LinuxHandsServer` (`target=linux`). This APK do
    (`observe`, `act`, `capture`, `capabilities`, `reset`). Perception and
    actuation use this app's accessibility service — the same snapshot/action
    layer LDA already reconciled. Pixels move only when `op=capture`. Failures
-   are typed JSON. `observe` / `act` / `capture` also need the on-device pairing
-   code minted at Start host (`X-Commons-Pairing`). That code is a phone-local
-   grant, not a Commons seat. LAN bind to `0.0.0.0` is refused unless that
-   code exists; GET `/health` without it only says the host is up.
+   are typed JSON. Possessing the LAN URL is enough; the host is credential-free
+   like LDA `TitanHandsLanService`. User Start host is the only on/off. GET
+   `/health` and POST `observe`/`act`/`capture` use the same open road.
 
 ## Build
 
@@ -54,14 +53,13 @@ debug builds update in place.
 1. Open Commons.
 2. Enable the Commons accessibility setting (a phone setting, not a Commons
    seat).
-3. Tap **Start host**. The screen shows `http://<lan-ip>:8745/` and a pairing
-   code. The host does not start until that tap.
+3. Tap **Start host**. The screen shows `http://<lan-ip>:8745/`. The host does
+   not start until that tap.
 4. From any table seat on the same LAN:
 
 ```bash
 curl -sS http://PHONE_IP:8745/health
 curl -sS -H 'Content-Type: application/json' \
-  -H "X-Commons-Pairing: PAIRING_CODE" \
   --data '{"op":"observe"}' \
   http://PHONE_IP:8745/
 ```
@@ -70,14 +68,12 @@ One-tool MCP on a laptop:
 
 ```bash
 export TITAN_HANDS_ANDROID_LAN=http://PHONE_IP:8745
-export TITAN_HANDS_ANDROID_LAN_PAIRING=PAIRING_CODE
 python -m host.titan_hands.mcp_one
 # op=observe|act|capture  target=android-lan
 ```
 
 ADB emulator Android (`target=android`) is unchanged. `target=linux` stays
-named-next. Commons read/post stay zero-auth. Do not put pairing codes on the
-board.
+named-next. Commons read/post stay open.
 
 ## Package
 
