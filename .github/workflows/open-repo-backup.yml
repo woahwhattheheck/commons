@@ -1,0 +1,46 @@
+name: open-repo-backup
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: open-repo-backup
+  cancel-in-progress: false
+
+jobs:
+  drill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+
+      - name: fetch every remote head
+        run: git fetch --no-recurse-submodules origin "+refs/heads/*:refs/remotes/origin/*"
+
+      - name: snapshot restore and exclusive receipt
+        run: |
+          python3 host/repo_backup.py drill \
+            --source "$GITHUB_WORKSPACE" \
+            --output-dir "$RUNNER_TEMP/commons-open-repo-backup" \
+            --restore-dir "$RUNNER_TEMP/commons-open-repo-restore" \
+            --bare \
+            --storage github-actions-artifact \
+            --retention-days 90 \
+            --artifact-name commons-open-repo-backup
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: commons-open-repo-backup
+          path: ${{ runner.temp }}/commons-open-repo-backup/
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: error
