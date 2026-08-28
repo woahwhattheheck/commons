@@ -2,8 +2,10 @@
 """Production Commons MCP must auto-deploy from current main."""
 from __future__ import annotations
 
+import os
 import re
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -24,6 +26,9 @@ REQUIRED_WATCH = (
     "vercel.json",
     ".vercelignore",
     "stage_spark_mcp_bundle.py",
+    "model_language.py",
+    "relay_manifest.py",
+    "relay-manifest.json",
     "carriers/**",
     ".github/workflows/spark-mcp-production.yml",
     "test_spark_mcp.py",
@@ -158,6 +163,7 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("api/mcp.py", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
+        self.assertIn("relay-manifest.json", copied)
         self.assertIn("vercel.json", copied)
         self.assertIn("host/observatory.py", copied)
         self.assertTrue(any(row.startswith("carriers/") for row in copied))
@@ -168,6 +174,31 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertFalse(any(row.startswith("muhl/") for row in copied))
         self.assertFalse(any(row.startswith("projection/") for row in copied))
         self.assertNotIn("host/cash_now.py", copied)
+
+    def test_stage_bundle_imports_mcp_handler(self) -> None:
+        """Missing relay-manifest.json 500s production after the PR 5175 stage deploy."""
+        import stage_spark_mcp_bundle as stager
+
+        with tempfile.TemporaryDirectory() as tmp:
+            copied = stager.stage_bundle(ROOT, Path(tmp))
+            self.assertIn("relay-manifest.json", copied)
+            env = dict(os.environ)
+            env["PYTHONPATH"] = tmp
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    "-c",
+                    "import commons_mcp as cm; from api import mcp; "
+                    "assert cm.SERVER_VERSION == '1.3.0'; "
+                    "assert 'route_grokcom_revenue_work' in [row['name'] for row in cm.TOOL_DEFINITIONS]; "
+                    "assert 'fire_action' in mcp.SHARED_HTTP_TOOL_NAMES",
+                ],
+                cwd=tmp,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]

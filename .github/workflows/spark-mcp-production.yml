@@ -2,7 +2,7 @@
 # identical to current main. Manual Aug-25 deploys went stale; this is the
 # no-click road after VERCEL_TEAM_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID
 # exist. VERCEL_TOKEN (project-scoped newer format) is rejected by Vercel CLI
-# 56.x/59.x; deploy auth is the team-scoped CLI-compatible secret only.
+# 56.x/59.x; deploy auth is the team-scoped CLI-compatible token only.
 # Vercel CLI 56.1.0 .vercelignore does not honor directory un-ignores after
 # * or /* (runs 33218271833 and 33219467177 uploaded 7 root files and
 # dropped api/mcp.py). Stage the runtime graph with
@@ -32,6 +32,7 @@ on:
       - "integrations/grokcom_revenue/**"
       - "model_language.py"
       - "relay_manifest.py"
+      - "relay-manifest.json"
       - "protocol/**"
       - ".github/workflows/spark-mcp-production.yml"
       - "test_spark_mcp.py"
