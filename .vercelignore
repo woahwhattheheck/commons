@@ -1,9 +1,13 @@
 # Production MCP is api/mcp.py + commons_mcp.py and their import graph.
 # The Git-backed board corpus is read over HTTPS, not from this bundle.
-# Hobby upload cap is 5000 files (api-upload-free). Deny everything, then
+# Hobby upload cap is 5000 files (api-upload-free). Deny root entries, then
 # allow only the runtime graph. A denylist of p/chunks still left 9k+ files
 # (muhl, projection, infra, ground, host) and production deploy failed.
-*
+# Bare * matches every filename at every depth on Vercel CLI 56.1.0, so
+# directory un-ignores never applied: run 33218271833 uploaded 7 root files
+# and failed with api/mcp.py not matching any Serverless Function.
+# /* ignores only root entries; nested files under un-ignored dirs stay in.
+/*
 !api/
 !api/**
 !carriers/
@@ -14,6 +18,7 @@
 !protocol/
 !protocol/**
 !host/
+host/*
 !host/observatory.py
 !host/owner_context.py
 !commons_mcp.py
