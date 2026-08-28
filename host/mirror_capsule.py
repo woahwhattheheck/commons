@@ -67,3 +67,64 @@ def _read_regular_file(root, rel):
     except ValueError as exc:
         raise PathRejected("escaped root: %s" % rel) from exc
     return path.read_bytes()
+
+def collect_entries(root, paths, source_sha):
+    seen, entries = {}, []
+    for raw in paths:
+        rel = normalize_path(raw)
+        data = _read_regular_file(root, rel)
+        digest = sha256_hex(data)
+        if rel in seen:
+            raise PathRejected("duplicate-normalized path: %s" % rel)
+        seen[rel] = digest
+        entries.append({"path": rel, "bytes": len(data), "sha256": digest, "source_sha": source_sha, "media_type": media_type(rel)})
+    entries.sort(key=lambda row: row["path"])
+    return entries
+
+def build_manifest(entries, source_sha, selection=None):
+    if not COMMIT_RE.match(source_sha):
+        raise AmbiguousSource("manifest source SHA must be 40 hex chars")
+    if {row["source_sha"] for row in entries} - {source_sha}:
+        raise AmbiguousSource("mixed source SHAs in one capsule")
+    for row in entries:
+        if not SHA256_RE.match(row["sha256"]) or int(row["bytes"]) < 0:
+            raise HashCorrupt("bad hash or size on %s" % row["path"])
+    body = {"schema": SCHEMA, "source_sha": source_sha, "canonical": False, "claim_boundary": dict(CLAIM_BOUNDARY), "selection": list(selection if selection is not None else [row["path"] for row in entries]), "entries": entries, "entry_count": len(entries), "byte_count": sum(int(row["bytes"]) for row in entries)}
+    body["manifest_sha256"] = sha256_hex(canonical_json({k: v for k, v in body.items() if k != "manifest_sha256"}))
+    return body
+
+def build_archive(files):
+    ordered = sorted((normalize_path(path), data) for path, data in files.items())
+    seen, buf = set(), io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w", format=tarfile.USTAR_FORMAT) as tar:
+        for path, data in ordered:
+            if path in seen:
+                raise PathRejected("duplicate archive member: %s" % path)
+            seen.add(path)
+            info = tarfile.TarInfo(name=path)
+            info.size = len(data); info.mtime = 0; info.uid = 0; info.gid = 0; info.uname = ""; info.gname = ""; info.mode = 0o644; info.type = tarfile.REGTYPE
+            tar.addfile(info, io.BytesIO(data))
+    return buf.getvalue()
+
+def read_archive(blob):
+    out = {}
+    with tarfile.open(fileobj=io.BytesIO(blob), mode="r:") as tar:
+        for info in tar.getmembers():
+            if info.issym() or info.islnk() or not info.isfile():
+                raise PathRejected("archive non-file: %s" % info.name)
+            handle = tar.extractfile(info)
+            if handle is None:
+                raise PathRejected("unreadable member: %s" % info.name)
+            out[normalize_path(info.name)] = handle.read()
+    return out
+
+def build_capsule(root, source_sha=None, paths=None):
+    root = Path(root)
+    sha = _resolve_source_sha(root, source_sha)
+    selection = list(paths if paths is not None else DEFAULT_SELECTION)
+    files = {normalize_path(rel): _read_regular_file(root, normalize_path(rel)) for rel in selection}
+    entries = collect_entries(root, selection, sha)
+    for row in entries:
+        if sha256_hex(files[row["path"]]) != row["sha256"] or len(files[row["path"]]) != row["bytes"]:
+            raise HashCorrupt("collected bytes drifted from %s" % row["path"])
+    return build_manifest(entries, sha, selection), build_archive(files), files
