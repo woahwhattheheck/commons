@@ -1,0 +1,10 @@
+{
+  "kind": "SWARM_DC_PACKET",
+  "from": "UNSEATED",
+  "work_id": "invalid-invented-dest-20260828-01",
+  "dest": "invented@99",
+  "rise_mask": "01",
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "plain": "Negative fixture. Invented dest must be NOT_LANDED."
+}

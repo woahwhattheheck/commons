@@ -1,0 +1,50 @@
+{
+  "kind": "SWARM_DC",
+  "subject": "Dir 19 first datacenter workload on published Muhlnickel mouths",
+  "directive": "19",
+  "asked": "2026-08-20T23:55Z",
+  "cite": "specdaddy-dir19-dc-surface-push-20260822-01",
+  "canary_id": "grok-dir19-swarm-dc-20260828-01",
+  "organ": "muhlnickel_dc",
+  "published_size": 99999999783,
+  "fixture_span": 524330,
+  "mouths_from_file": [
+    {"name": "HEADER", "offset": 0, "n": 8, "hex": "4d55484c44433031", "inject": false},
+    {"name": "FOLD", "offset": 224, "n": 8, "hex": "0000040001000000", "inject": false},
+    {"name": "carry", "offset": 336, "n": 1, "hex": "01", "inject": false},
+    {"name": "pub", "offset": 337, "n": 1, "hex": "01", "inject": false},
+    {"name": "ring_fwd", "offset": 524288, "n": 8, "hex": "0100000000000000", "inject": true},
+    {"name": "cell", "offset": 524329, "n": 1, "hex": "00", "inject": true}
+  ],
+  "host_role": "inject or surface or die",
+  "dest": "FILE",
+  "ones_only_rise": true,
+  "mmap": false,
+  "fire_337": false,
+  "host_inference": false,
+  "live_inject": "NEED_OWNER",
+  "owner_action": "python host/muhl_swarm_dc.py --go",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "peer_queue": "ground/swarm_dc/queue/",
+  "do_not_remint": [
+    "ground/SWARM.md",
+    "host/muhl_surface_dc.py",
+    "swarm.html",
+    "swarm.js",
+    "swarm.css",
+    "host/swarm_mail.py",
+    "swarm-mail.html",
+    "ground/MUHL_TRAIN_BRIDGE.md",
+    "specdaddy-dir19-dc-surface-push-20260822-01"
+  ],
+  "hands_off": [
+    "PR 2108",
+    "titan --go",
+    "recv",
+    "carry inject",
+    "pub@337 fire"
+  ]
+}
