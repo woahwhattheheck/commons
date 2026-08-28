@@ -121,6 +121,22 @@ class PaymentCapability(unittest.TestCase):
         self.assertIn("payment_capability/registry.json", pay_js)
         self.assertIn("failover-owner-action", pay_js)
 
+    def test_payment_capability_js_parses_and_keeps_html_escapes(self):
+        js = (ROOT / "payment-capability.js").read_text(encoding="utf-8")
+        self.assertIn("&amp;", js)
+        self.assertIn("&lt;", js)
+        self.assertIn("&gt;", js)
+        self.assertIn("&quot;", js)
+        self.assertIn("&#39;", js)
+        proc = subprocess.run(
+            ["node", "--check", str(ROOT / "payment-capability.js")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
     def test_registry_records_settlement_without_routing_secrets(self):
         text = (ROOT / "revenue" / "payment_capability" / "registry.json").read_text(
             encoding="utf-8"
