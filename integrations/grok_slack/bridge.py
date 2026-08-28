@@ -723,10 +723,10 @@ class BridgeStore:
                   AND NOT (
                     phase = 'FAILED'
                     AND EXISTS (
-                      SELECT 1 FROM deliveries
-                      WHERE deliveries.event_id = slack_events.event_id
-                        AND deliveries.phase = 'rejected'
-                        AND deliveries.state = 'SENT'
+                      SELECT 1 FROM deliveries d
+                      WHERE d.event_id = slack_events.event_id
+                        AND d.phase = 'rejected'
+                        AND d.state = 'SENT'
                     )
                   )
                 ORDER BY created_at
@@ -734,7 +734,7 @@ class BridgeStore:
             ).fetchall()
         return [self._row_to_work(row) for row in rows]
 
-    def has_sent_rejected(self, event_id: str) -> bool:
+    def has_sent_rejected_delivery(self, event_id: str) -> bool:
         with self._lock:
             row = self._connection.execute(
                 """
@@ -1436,8 +1436,6 @@ class GrokSlackBridge:
             if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION"}:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
-                if self.store.has_sent_rejected(event_id):
-                    return {"ok": True, "state": "FAILED", "submit": False}
                 return self._resume_failed_rejection(row)
             if row.phase in POST_SUBMIT_PHASES:
                 return self._resume_output_only(row)
@@ -1487,7 +1485,7 @@ class GrokSlackBridge:
             return {"ok": False, "state": "FAILED", "reason": "NO_EXECUTOR_JOB"}
         submitted = self._fire_once(event_id, job_id, arguments)
         if submitted.get("kind") == "rejected":
-            self.store.set_phase(event_id, "FAILED")
+            self.store.set_phase(event_id, "FAILED", result_id=str(submitted.get("code") or "REJECTED"))
             self._post_rejection(event_id, contract, submitted)
             return submitted
         if submitted["state"] in {"FIRE_ACTION_UNKNOWN", "FAILED"}:
@@ -1560,7 +1558,7 @@ class GrokSlackBridge:
                 "result": classified["payload"],
             }
         if classified["kind"] == "rejected":
-            self.store.set_phase(event_id, "FAILED")
+            self.store.set_phase(event_id, "FAILED", result_id=str(classified.get("code") or "SCHEMA"))
             return {
                 "ok": False,
                 "state": "FAILED",
@@ -1589,7 +1587,7 @@ class GrokSlackBridge:
                 "result": classified.get("payload") or payload,
             }
         if classified["kind"] == "rejected":
-            self.store.set_phase(event_id, "FAILED")
+            self.store.set_phase(event_id, "FAILED", result_id=str(classified.get("code") or "SCHEMA"))
             return {
                 "ok": False,
                 "state": "FAILED",
@@ -1693,7 +1691,7 @@ class GrokSlackBridge:
         if job is None or not _job_is_terminal(job):
             if addressable:
                 return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
-            self.store.set_phase(event_id, "FAILED")
+            self.store.set_phase(event_id, "FAILED", result_id=DURABILITY_NEVER_APPEARED)
             failed = {
                 "ok": False,
                 "state": "FAILED",
@@ -1811,9 +1809,19 @@ class GrokSlackBridge:
         return self._observe_and_deliver(item.event_id, contract, packet, {"job_id": item.job_id, "state": "SUBMITTED"})
 
     def _resume_failed_rejection(self, item: PendingWork) -> dict[str, Any]:
-        """Output-only: post the missing Slack rejection. Never replay fire_action."""
-        if self.store.has_sent_rejected(item.event_id):
-            return {"ok": True, "state": "FAILED", "submit": False}
+        code = str(item.result_id or DURABILITY_NEVER_APPEARED)
+        submitted = {
+            "ok": False,
+            "state": "FAILED",
+            "kind": "rejected",
+            "retryable": True,
+            "submit": False,
+            "code": code,
+            "job_id": item.job_id,
+            "task_id": item.task_id,
+        }
+        if self.store.has_sent_rejected_delivery(item.event_id):
+            return submitted
         contract = {
             "event_id": item.event_id,
             "channel": item.channel,
@@ -1823,18 +1831,7 @@ class GrokSlackBridge:
             "text": "",
             "files": [],
         }
-        submitted = {
-            "ok": False,
-            "state": "FAILED",
-            "kind": "rejected",
-            "retryable": True,
-            "code": DURABILITY_NEVER_APPEARED,
-            "job_id": item.job_id,
-            "task_id": item.task_id,
-            "submit": False,
-        }
-        posted = self._post_rejection(item.event_id, contract, submitted)
-        submitted["delivery"] = posted.state
+        self._post_rejection(item.event_id, contract, submitted)
         return submitted
 
     def _post_status(self, event_id: str, contract: dict[str, Any], text: str, *, phase: str) -> SlackSendResult:
