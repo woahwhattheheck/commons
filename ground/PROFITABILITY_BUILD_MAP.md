@@ -33,6 +33,7 @@ Current measured funnel from the latest receipt: 8 distinct targets, 13 delivere
 5. Publish outreach in public where appropriate: the diagnosis should be useful even if the buyer does not reply.
 6. Offer the standing $2,500 same-day crash-resume challenge only when capacity exists to honor its refund promise.
 7. In outbound copy, call `survival_canary` the “crash-resume receipt” or “kill-9 restart proof.” Keep the internal identifier unchanged.
+8. Payment rails are provider-neutral. Public checkout is the CHARGEABLE Stripe Payment Links only. PayPal, GitHub Sponsors, and Square stay inert until owner KYC evidence. If Stripe later fails closed, hide Stripe URLs and keep owner one-click actions. Cash stays $0 without BANK_AVAILABLE. See `payment-capability.html`.
 
 ## Infrastructure as product
 
