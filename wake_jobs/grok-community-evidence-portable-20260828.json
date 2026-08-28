@@ -1,5 +1,5 @@
 {
-  "attempt_count": 0,
+  "attempt_count": 2,
   "backoff_seconds": 30,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -30,12 +30,30 @@
     "execution": {
       "active_attempt_id": "",
       "active_executor": "",
-      "blockers": [],
-      "capture_ack": null,
-      "failed_executors": [],
+      "blockers": [
+        {
+          "at": "2026-08-28T11:17:19Z",
+          "attempt_id": "grok-community-evidence-portable-20260828-a02",
+          "detail": "Action-time confirmation for the single external provider submission was not received before handoff. No provider submission occurred; no Grok conversation was created; no provider tokens or debit were observed; no artifact, branch, commit, or PR was produced. Preserve the durable CAPTURE_STARTED ACK and fail over without replaying any prompt or touching user foreground tabs.",
+          "executor_id": "codex-01a0454f",
+          "provider_tokens_spent_by_failed_attempt": 0,
+          "state": "PAGE_UNCONFIRMED",
+          "submission_state": "CAPTURE_STARTED"
+        }
+      ],
+      "capture_ack": {
+        "revision": 1,
+        "run_id": "267c48a640306a2f2e28817fd73840a7",
+        "snapshot_sha256": "729c94394c9de747261ebd64141c367ee46b5a87ddc8d13997a31354bebd81e5",
+        "snapshot_size_bytes": 4350,
+        "state": "GROK_CONTINUE"
+      },
+      "failed_executors": [
+        "codex-01a0454f"
+      ],
       "prompt_replay_allowed": true,
       "state": "QUEUED",
-      "submission_state": "NOT_SUBMITTED",
+      "submission_state": "CAPTURE_STARTED",
       "submitted_at": ""
     },
     "lineage": {
@@ -76,21 +94,92 @@
   },
   "created_at": "2026-08-28T10:46:59Z",
   "deadline": "2026-09-27T10:46:59Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "wake",
+      "lease_id": "lease-b82f9bc79630",
+      "ts": "2026-08-28T11:06:53Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "delivery_claim",
+      "lease_id": "lease-b82f9bc79630",
+      "step": 1,
+      "ts": "2026-08-28T11:06:53Z",
+      "wake_checkpoint_fp": "89d415b1aae0f50b",
+      "wake_checkpoint_sha256": "89d415b1aae0f50bf4d4dc081f00a501230ce7aec6aed9185471bf47dadd888f",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a01",
+      "event": "grok_executor_claim",
+      "lease_id": "lease-b82f9bc79630",
+      "submission_state": "NOT_SUBMITTED",
+      "ts": "2026-08-28T11:06:53Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "event": "wake",
+      "lease_id": "lease-9b88f4ba8eef",
+      "ts": "2026-08-28T11:13:53Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "event": "delivery_claim",
+      "lease_id": "lease-9b88f4ba8eef",
+      "step": 1,
+      "ts": "2026-08-28T11:13:53Z",
+      "wake_checkpoint_fp": "0b4853a5c9dfbe9a",
+      "wake_checkpoint_sha256": "0b4853a5c9dfbe9a5311b7bd3acad16863f447ef6be23fc3c2f4914f9ff17d26",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "event": "grok_executor_claim",
+      "lease_id": "lease-9b88f4ba8eef",
+      "submission_state": "NOT_SUBMITTED",
+      "ts": "2026-08-28T11:13:53Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "event": "grok_capture_started",
+      "lease_id": "lease-9b88f4ba8eef",
+      "submission_state": "CAPTURE_STARTED",
+      "ts": "2026-08-28T11:14:54Z",
+      "worker_id": "codex-01a0454f"
+    },
+    {
+      "attempt_id": "grok-community-evidence-portable-20260828-a02",
+      "blocker_state": "PAGE_UNCONFIRMED",
+      "event": "grok_executor_release",
+      "lease_id": "lease-9b88f4ba8eef",
+      "submission_state": "CAPTURE_STARTED",
+      "ts": "2026-08-28T11:17:19Z",
+      "worker_id": "codex-01a0454f"
+    }
+  ],
   "harness": "grok.com authenticated browser via Commons MCP",
   "in_backoff": false,
   "job_id": "grok-community-evidence-portable-20260828",
+  "last_wake_at": "2026-08-28T11:13:53Z",
+  "last_wake_checkpoint_fp": "0b4853a5c9dfbe9a",
+  "last_wake_checkpoint_sha256": "0b4853a5c9dfbe9a5311b7bd3acad16863f447ef6be23fc3c2f4914f9ff17d26",
   "lease": null,
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
-  "next_wake_at": "2026-08-28T10:46:59Z",
+  "next_wake_at": "2026-08-28T11:17:19Z",
   "no_progress_count": 0,
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
   "status": "OPEN",
   "tokens_used": 0,
-  "updated_at": "2026-08-28T10:46:59Z",
-  "woke_once": false
+  "updated_at": "2026-08-28T11:17:19Z",
+  "woke_once": true
 }
