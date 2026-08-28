@@ -531,6 +531,28 @@ class RenderContractTests(unittest.TestCase):
         self.assertIn("heartbeat", text)
         self.assertLess(len(text), 2500)
 
+    def test_sprint_teach_line_and_verdicts_do_not_rewrite_status(self):
+        text = rp.render(_ctx())
+        self.assertIn("MERGE DEFAULT", text)
+        self.assertIn("ground/SPRINT_INTEGRATION.json", text)
+        src = open(rp.__file__, encoding="utf-8").read()
+        for verdict in ("CLEAR_TO_MERGE", "COMPOSE_AND_MERGE", "DEDUPED", "CONFLICT"):
+            self.assertIn(verdict, src)
+        health = {"checks": {"success": 1}, "failing": [], "pending": 0, "pages": None, "pages_drift": False}
+        self.assertEqual(rp.classify_status(health, [], False, [], None), "CLEAR")
+        conflict_ctx = _ctx(status="CLEAR", sprint={
+            "slack_lines": [
+                "*sprint* MERGE DEFAULT · <https://github.com/woahwhattheheck/commons/blob/main/ground/SPRINT_INTEGRATION.json|policy>",
+                ":warning: *CONFLICT* #1 vs #2 path `flag.py` SI-SEMANTIC-DISAGREE left `aaa` right `bbb` base `ccc` head-L `ddd` head-R `eee`",
+            ],
+            "pairs": [{"verdict": "CONFLICT"}],
+        })
+        rendered = rp.render(conflict_ctx)
+        self.assertIn("*CONFLICT*", rendered)
+        self.assertIn("SI-SEMANTIC-DISAGREE", rendered)
+        self.assertEqual(conflict_ctx["status"], "CLEAR")
+        self.assertTrue(rendered.startswith("from: COMMONS_SLACK_MIRROR\n"))
+
 
 class StateRoundTripTests(unittest.TestCase):
     def test_next_state_persists_cursor_head_and_ids(self):

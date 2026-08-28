@@ -401,7 +401,8 @@ class MirrorCapsuleTests(unittest.TestCase):
         self.assertFalse(boundary["live_hosting"])
         self.assertTrue(boundary["portable_snapshot"])
         mirrors = json.loads((ROOT / "mirrors.json").read_text(encoding="utf-8"))
-        self.assertIn("independent-origin durability remain open", mirrors["still_open"])
+        self.assertIn("EXTERNAL_PROVIDER_ACTION", mirrors["still_open"])
+        self.assertIn("HTTP 523", mirrors["still_open"])
 
     def test_planner_queue_search_open_door(self):
         files = _fixture(Path(tempfile.mkdtemp()))

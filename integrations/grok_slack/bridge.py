@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sqlite3
+import subprocess
 import sys
 import threading
 import time
@@ -37,6 +38,7 @@ DEFAULT_CHANNEL = "C0BRGMDQB6G"
 DEFAULT_STATE_DB = Path.home() / ".commons" / "grok_slack.sqlite3"
 SLACK_TEXT_LIMIT = 3_800
 GROK_URL_RE = re.compile(r"^https://grok\.com/c/([A-Za-z0-9_-]+)(?:[/?#].*)?$")
+MAIN_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 MCP_PROTOCOL = "2025-03-26"
 REQUIRED_TOOLS = ("route_grokcom_revenue_work", "fire_action")
 PHASES = (
@@ -263,6 +265,35 @@ def github_token_presence(env: dict[str, str] | None = None) -> str:
 
 def integration_root() -> Path:
     return Path(__file__).resolve().parent
+
+
+def repo_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def load_orchestrate() -> Callable[[Any], dict[str, Any]]:
+    """Current-main packet builder. Same function the public MCP tool wraps."""
+    root = str(repo_root())
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    from integrations.grokcom_revenue.orchestrator import orchestrate as orchestrate_fn
+
+    return orchestrate_fn
+
+
+def orchestrator_available() -> bool:
+    try:
+        load_orchestrate()
+    except Exception:
+        return False
+    return True
+
+
+def safe_repo_path(path: str) -> str:
+    text = str(path or "")
+    if not text or text.startswith("/") or ".." in text.split("/"):
+        raise BridgeError("unsafe github path")
+    return text
 
 
 def default_state_db_path(env: dict[str, str] | None = None) -> Path:
@@ -839,7 +870,11 @@ def _decode_mcp_body(raw: str) -> dict[str, Any]:
 
 
 class GitHubReadback:
-    """SHA-pinned Contents reads of current main. Never uses raw/main or Pages."""
+    """SHA-pinned current-main reads. Contents API first; never raw/main or Pages.
+
+    Unauthenticated Contents 403 falls through to git ls-remote and a SHA-pinned
+    raw.githubusercontent.com blob. Those are public truth roads, not admission.
+    """
 
     def __init__(
         self,
@@ -848,6 +883,8 @@ class GitHubReadback:
         *,
         opener: Callable[..., Any] | None = None,
         token: str | None = None,
+        public_sha: Callable[[], str] | None = None,
+        public_read: Callable[[str, str], bytes] | None = None,
     ) -> None:
         self.owner = owner
         self.repo = repo
@@ -855,28 +892,85 @@ class GitHubReadback:
         if token is None:
             token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
         self.token = token
+        self._public_sha = public_sha
+        self._public_read = public_read
+        self.road = "contents"
 
     def current_main_sha(self) -> str:
-        payload = self._get(f"/repos/{self.owner}/{self.repo}/commits/main")
-        sha = payload.get("sha")
-        if not isinstance(sha, str) or len(sha) != 40:
+        try:
+            payload = self._get(f"/repos/{self.owner}/{self.repo}/commits/main")
+            sha = payload.get("sha")
+            if isinstance(sha, str) and MAIN_SHA_RE.fullmatch(sha):
+                self.road = "contents"
+                return sha
+        except BridgeError:
+            pass
+        sha = (self._public_sha or self._ls_remote_main)()
+        if not isinstance(sha, str) or not MAIN_SHA_RE.fullmatch(sha):
             raise BridgeError("github main SHA unavailable")
+        self.road = "git_ls_remote"
         return sha
 
     def read_path(self, path: str, sha: str) -> bytes:
-        payload = self._get(f"/repos/{self.owner}/{self.repo}/contents/{path}", {"ref": sha})
-        encoding = payload.get("encoding")
-        content = payload.get("content")
-        if encoding == "base64" and isinstance(content, str):
-            import base64
-            return base64.b64decode(content)
-        if isinstance(payload.get("download_url"), str):
-            request = Request(payload["download_url"], headers={"Accept": "application/octet-stream", "User-Agent": "commons-grok-slack-connector"})
-            if self.token:
-                request.add_header("Authorization", "Bearer " + self.token)
+        if not MAIN_SHA_RE.fullmatch(str(sha or "")):
+            raise BridgeError("github path unavailable")
+        safe = safe_repo_path(path)
+        try:
+            payload = self._get(f"/repos/{self.owner}/{self.repo}/contents/{safe}", {"ref": sha})
+            encoding = payload.get("encoding")
+            content = payload.get("content")
+            if encoding == "base64" and isinstance(content, str):
+                import base64
+                self.road = "contents"
+                return base64.b64decode(content)
+            if isinstance(payload.get("download_url"), str):
+                request = Request(payload["download_url"], headers={"Accept": "application/octet-stream", "User-Agent": "commons-grok-slack-connector"})
+                if self.token:
+                    request.add_header("Authorization", "Bearer " + self.token)
+                with self._opener(request, timeout=30) as response:
+                    self.road = "contents"
+                    return response.read()
+        except FileNotFoundError:
+            raise
+        except BridgeError:
+            pass
+        blob = (self._public_read or self._raw_at_sha)(safe, sha)
+        self.road = "sha_pinned_raw"
+        return blob
+
+    def _ls_remote_main(self) -> str:
+        url = "https://github.com/%s/%s.git" % (self.owner, self.repo)
+        try:
+            completed = subprocess.run(
+                ["git", "ls-remote", url, "refs/heads/main"],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise BridgeError("github unavailable") from exc
+        line = (completed.stdout or "").splitlines()[0] if completed.stdout else ""
+        sha = line.split()[0] if line else ""
+        if not MAIN_SHA_RE.fullmatch(sha):
+            raise BridgeError("github main SHA unavailable")
+        return sha
+
+    def _raw_at_sha(self, path: str, sha: str) -> bytes:
+        url = "https://raw.githubusercontent.com/%s/%s/%s/%s" % (self.owner, self.repo, sha, path)
+        request = Request(
+            url,
+            headers={"Accept": "application/octet-stream", "User-Agent": "commons-grok-slack-connector"},
+        )
+        try:
             with self._opener(request, timeout=30) as response:
                 return response.read()
-        raise BridgeError("github path unavailable")
+        except HTTPError as exc:
+            if exc.code == 404:
+                raise FileNotFoundError(path) from exc
+            raise BridgeError("github HTTP %s" % exc.code) from exc
+        except (URLError, TimeoutError, OSError) as exc:
+            raise BridgeError("github unavailable") from exc
 
     def _get(self, path: str, query: dict[str, str] | None = None) -> dict[str, Any]:
         url = "https://api.github.com" + path
@@ -1089,6 +1183,8 @@ class GrokSlackBridge:
         self.ack_log: list[str] = []
         self.work_log: list[str] = []
         self.delivery_owner = FINAL_DELIVERY_OWNER
+        self.intake_road = "unknown"
+        self._live_route_tool: bool | None = None
 
     def handle_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         self.work_log.append("handle_event")
@@ -1184,7 +1280,6 @@ class GrokSlackBridge:
         return self._observe_and_deliver(event_id, contract, packet, submitted)
 
     def _intake(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
-        self.work_log.append("mcp:route_grokcom_revenue_work")
         event = {
             "event_id": contract["event_id"],
             "channel": contract["channel"],
@@ -1196,9 +1291,32 @@ class GrokSlackBridge:
         }
         if contract.get("connector_origin"):
             event["connector_origin"] = contract["connector_origin"]
-        packet = self.mcp.call_tool("route_grokcom_revenue_work", {"stage": "INTAKE", "mode": "AUTO", "event": event})
+        packet = self._route_revenue({"stage": "INTAKE", "mode": "AUTO", "event": event})
         self.store.set_phase(event_id, "INTAKE", task_id=str(packet.get("task_id") or ""))
         return packet
+
+    def _has_live_route_tool(self) -> bool:
+        if self._live_route_tool is not None:
+            return self._live_route_tool
+        try:
+            names = self.mcp.tools_list()
+            self._live_route_tool = "route_grokcom_revenue_work" in names
+        except Exception:
+            self._live_route_tool = False
+        return self._live_route_tool
+
+    def _route_revenue(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        """Prefer live public MCP. Current-main orchestrator if production is stale."""
+        if self._has_live_route_tool():
+            self.intake_road = "public_mcp"
+            self.work_log.append("mcp:route_grokcom_revenue_work")
+            return self.mcp.call_tool("route_grokcom_revenue_work", arguments)
+        self.intake_road = "current_main_orchestrator"
+        self.work_log.append("orchestrator:route_grokcom_revenue_work")
+        calls = getattr(self.mcp, "calls", None)
+        if isinstance(calls, list):
+            calls.append(("route_grokcom_revenue_work", arguments))
+        return load_orchestrate()(arguments)
 
     def _fire_once(self, event_id: str, job_id: str, arguments: dict[str, Any]) -> dict[str, Any]:
         row = self.store.get(event_id)
@@ -1284,8 +1402,8 @@ class GrokSlackBridge:
             "completion_state": capture.get("completion_state") or "COMPLETED",
         }
         if contract.get("text"):
-            self.work_log.append("mcp:route_grokcom_revenue_work:GROKCOM_RESULT")
-            result_packet = self.mcp.call_tool("route_grokcom_revenue_work", {
+            self.work_log.append("route:GROKCOM_RESULT")
+            result_packet = self._route_revenue({
                 "stage": "GROKCOM_RESULT",
                 "event": {
                     "event_id": contract["event_id"],
@@ -1554,6 +1672,7 @@ def doctor(
     report["mcp"] = {"url": getattr(args, "mcp_url", DEFAULT_MCP_URL), "initialize": False}
     report["github_readback"] = {"ok": False}
     client = mcp or CommonsMcpClient(getattr(args, "mcp_url", DEFAULT_MCP_URL))
+    names: list[str] = []
     try:
         client.initialize()
         names = client.tools_list()
@@ -1566,15 +1685,36 @@ def doctor(
         }
     except Exception as exc:
         report["mcp"]["error"] = type(exc).__name__
+        report["mcp"]["has_route_grokcom_revenue_work"] = False
+        report["mcp"]["has_fire_action"] = False
+    has_route = bool(report["mcp"].get("has_route_grokcom_revenue_work"))
+    has_fire = bool(report["mcp"].get("has_fire_action"))
+    local_orchestrator = orchestrator_available()
+    if has_route:
+        intake_road = "public_mcp"
+        production_state = "LIVE_SOURCE_PARITY"
+    elif local_orchestrator:
+        intake_road = "current_main_orchestrator"
+        production_state = "STALE_DEPLOYMENT" if report["mcp"].get("initialize") else "MCP_UNAVAILABLE"
+    else:
+        intake_road = "none"
+        production_state = "STALE_DEPLOYMENT" if report["mcp"].get("initialize") else "MCP_UNAVAILABLE"
+    report["mcp"]["orchestrator_available"] = local_orchestrator
+    report["mcp"]["intake_road"] = intake_road
+    report["mcp"]["production_state"] = production_state
     reader = github or GitHubReadback()
     try:
         sha = reader.current_main_sha()
         reader.read_path("carriers/catalog.json", sha)
-        report["github_readback"] = {"ok": True, "main_sha": sha}
+        report["github_readback"] = {
+            "ok": True,
+            "main_sha": sha,
+            "road": getattr(reader, "road", "contents"),
+        }
     except Exception as exc:
         report["github_readback"] = {"ok": False, "error": type(exc).__name__}
     missing = report["slack_bot_token"] == "missing" or report["slack_app_token"] == "missing"
-    mcp_ok = bool(report["mcp"].get("initialize") and report["mcp"].get("has_route_grokcom_revenue_work") and report["mcp"].get("has_fire_action"))
+    mcp_ok = bool(report["mcp"].get("initialize") and has_fire and (has_route or local_orchestrator))
     ready = (
         not missing
         and report["state_db"]["usable"]

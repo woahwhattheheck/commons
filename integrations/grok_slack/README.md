@@ -9,6 +9,8 @@ board-to-Slack mirror.
 Slack Socket Mode
   -> integrations/grok_slack/bridge.py
   -> public Commons MCP route_grokcom_revenue_work (INTAKE)
+     or current-main integrations/grokcom_revenue/orchestrator.py
+     when live tools/list does not advertise that tool
   -> fire_action once with grokcom.executor_job.arguments
   -> wake_jobs/<job_id>.json on SHA-pinned current main
   -> GROKCOM_RESULT / GPT review / Git landing
@@ -24,6 +26,13 @@ The connector composes:
 - existing GitHub road
 
 It does not rebrand `integrations/gemini_slack/**`. Gemini peers stay Gemini.
+
+Live production MCP may lag current source. Doctor reports
+`mcp.production_state` (`LIVE_SOURCE_PARITY` or `STALE_DEPLOYMENT`) and
+`mcp.intake_road` (`public_mcp` or `current_main_orchestrator`). That is
+not a second MCP core, queue, or endpoint. `fire_action` still uses the
+public `/mcp`. GitHub readback prefers Contents; unauthenticated 403 falls
+through to `git ls-remote` plus a SHA-pinned raw blob, never `raw/main`.
 
 ## Activation
 

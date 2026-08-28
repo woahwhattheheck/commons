@@ -68,9 +68,11 @@ MCP core is involved.
 The machine-readable card is
 [carriers/grokcom-slack.json](../carriers/grokcom-slack.json). Slack transport
 and recovery live in
-[integrations/grok_slack/](../integrations/grok_slack/). The connector calls this
-same public `/mcp` for `route_grokcom_revenue_work` and `fire_action`. It does
-not add Slack OAuth, a second MCP core, or a second Grok queue. Direct messages
+[integrations/grok_slack/](../integrations/grok_slack/). The connector prefers this
+same public `/mcp` for `route_grokcom_revenue_work` and `fire_action`. When live
+`tools/list` does not advertise `route_grokcom_revenue_work`, INTAKE and
+GROKCOM_RESULT use the current-main orchestrator already wrapped by that tool.
+That is not a second MCP core. Direct messages
 are omitted: current main has no measured private Grok execution road.
 Always-on hosting is repository-controlled (`Dockerfile`, `compose.yml`,
 `commons-grok-slack.service`, `commons-grok-slack-handoff.service`, `run.sh`,

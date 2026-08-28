@@ -1,0 +1,23 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "jsdelivr",
+  "kind": "automatic-non-github-moving-main-read",
+  "observed_at": "2026-08-28T15:30:00Z",
+  "readback": {
+    "url": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/fresh.md",
+    "http_status": 200,
+    "bytes": 24449,
+    "sha256": "2f546ad1ec131f623cd92d7cdb4d151d7052d8ca2a337665ecee4a727dfe03f4",
+    "headers": {
+      "x-jsd-version": "main",
+      "x-jsd-version-type": "branch"
+    }
+  },
+  "claim_boundary": {
+    "automatic_non_github_branch_read": true,
+    "independent_origin": false,
+    "provider_writeback": false,
+    "canonical_durability": false
+  },
+  "note": "Compose with the already-landed head.js @main fallback. Did not remint jsdelivr-0cc5ccba5815 or jsdelivr-main-83f814139956."
+}

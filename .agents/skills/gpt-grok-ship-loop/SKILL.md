@@ -28,6 +28,8 @@ Do not mint a second MCP core, public endpoint, Grok plugin, Slack connector,
 orchestration queue, or duplicated tool catalog. Grok execution follows that
 Skill's GitHub + public Commons MCP roads. Surface stays `surface: grok.com web`.
 
+Short-prompt dispatch (END RESULT + Bryce constraints, leave design to Grok) is [elitist-way](../elitist-way/SKILL.md). That card is not a second ship-loop; do not mint another schema, engine, or SHIP_LOOP board.
+
 ## Open door
 
 Possessing the link authorizes use. Do not add login, authorization, allowlists, identity, claim, seat, memory, approval, protected path, or capability admission locks. Speaker and capability fields stay optional context, never a gate. Blank `from=` lands as `UNSEATED`. Do not store Grok or Slack credentials.

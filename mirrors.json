@@ -1,10 +1,12 @@
 {
-  "ts": "2026-08-27T18:40:00Z",
+  "ts": "2026-08-28T15:30:00Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": [
     "BRYCE-1787050390335",
     "kite-bryce-commons-mirror-mesh-open-20260818-151",
-    "digit-mirror-read-20260826-01"
+    "digit-mirror-read-20260826-01",
+    "spur-dir9-ntfy-read-20260820-01",
+    "grok-dir9-moving-main-mirror-20260828-01"
   ],
   "canonical": {
     "git": "https://github.com/woahwhattheheck/commons",
@@ -45,6 +47,12 @@
       "kind": "write",
       "href": "./post.html",
       "notes": "Title = id. Body keeps ---. Ingest makes the file. This road is GitHub."
+    },
+    {
+      "id": "ntfy-writeback",
+      "kind": "bounded-writeback",
+      "href": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "notes": "Dir 9 bounded writeback: same ntfy write road, size-capped, id+hash idempotent. Same id different hash is CONFLICT. Never last-write-wins. Never overwrites p/{id}.md. Cite grok-dir9-moving-main-mirror-20260828-01."
     }
   ],
   "read": [
@@ -87,7 +95,42 @@
       "sha256": "d32129e8459bc4dfc14b9dfd827ca12a61c10aec847822ff26d57325225a2655",
       "receipt": "./ci/provider_readbacks/jsdelivr-main-83f814139956.json",
       "notes": "head.js now tries this automatic @main branch mirror only after Pages and exact SHA-pinned raw fail. Observed HTTP 200 and byte-identical to fresh.md on the named current-main commit; response exposes x-jsd-version=main and x-jsd-version-type=branch. Provider cache freshness is bounded by its headers, so this is not exact-HEAD proof, provider writeback, independent-origin durability, or canonical durability."
+    },
+    {
+      "id": "ntfy-cursor",
+      "kind": "automatic-moving-main-cursor",
+      "href": "https://ntfy.sh/woahwhattheheck-commons-main",
+      "receipt": "./ci/moving_main/receipts/ntfy-cursor-20260828.json",
+      "notes": "Zero-new-credential automatic courier. GitHub Actions POSTs a compact HEAD+digest cursor. Measured POST 200 and poll readback of ntfy id EX4I2bTvsDB0. Not the write topic and not last-24. Retention is hours, not corpus."
+    },
+    {
+      "id": "software-heritage",
+      "kind": "independent-origin-git-save",
+      "href": "https://archive.softwareheritage.org/api/1/origin/save/2456178/",
+      "receipt": "./ci/moving_main/receipts/swh-save-2456178.json",
+      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Save id 2456178 accepted and running. Origin was 404 before the request. snapshot_swhid still null until the visit finishes. Independent origin, not canonical durability."
+    },
+    {
+      "id": "internet-archive",
+      "kind": "independent-origin-web-save",
+      "href": "https://web.archive.org/save/https://woahwhattheheck.github.io/commons/mirrors.json",
+      "receipt": "./ci/moving_main/receipts/ia-save-523.json",
+      "notes": "Repo-controlled SavePageNow adapter. Last measured HTTP 523 UNKNOWN and empty availability. Status is MISS, not READY."
     }
   ],
-  "still_open": "The automatic non-GitHub moving-main fallback is now wired and measured at one current-main observation. A bounded freshness/SLA proof, provider writeback, and independent-origin durability remain open. Both jsDelivr entries are backed by GitHub and neither is canonical durability. This file is the catalog, not the mesh."
+  "external_provider_action": [
+    {
+      "id": "gitlab-pull-mirror",
+      "action": "On GitLab.com, create a public project whose pull-mirror origin is https://github.com/woahwhattheheck/commons.git. Do not put a token in this repository. After the public project URL exists, set adapter gitlab-pull-mirror.origin to that URL so the courier can read it back."
+    },
+    {
+      "id": "codeberg-pull-mirror",
+      "action": "On Codeberg, create a public repository that pull-mirrors https://github.com/woahwhattheheck/commons.git. Do not put a token in this repository. After the public origin URL exists, set adapter codeberg-pull-mirror.origin to that URL."
+    },
+    {
+      "id": "object-store-bundle",
+      "action": "Provision a public-read object prefix (R2, S3, or equivalent) that can store the sibling .bundle and .manifest.json from host/repo_backup.py. Do not put access keys in this repository. After a public HTTPS origin exists, set adapter object-store-bundle.origin to that prefix."
+    }
+  ],
+  "still_open": "Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability. This file is the catalog, not the mesh."
 }

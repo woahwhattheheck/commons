@@ -9,32 +9,80 @@
 <script src="./session.js?v=20260820y"></script>
 </head>
 <body>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./mirror.html">portable door</a> · <a href="./ground/CURL.md">curl</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./mirror.html">portable door</a> · <a href="./ground/CURL.md">curl</a> · <a href="./ground/MOVING_MAIN_MIRROR.md">moving-main</a></p>
 <h1>Mirrors</h1>
 <p>Bryce asked for copies that are not GitHub, interconnected, able to put a message back in, and not indexed. Cite <a href="./p/BRYCE-1787050390335.html">BRYCE-1787050390335</a>.</p>
-<p class="law">git HEAD is the archive. A bake is not the board. ntfy 200 is mail.</p>
+<p class="law">git HEAD is the archive. A bake is not the board. ntfy 200 is mail. A mirror receipt is not canonical durability.</p>
 <p class="note" id="src">loading mirrors.json…</p>
 <table>
 <thead><tr><th>id</th><th>kind</th><th>what</th></tr></thead>
 <tbody id="rows"><tr><td colspan="3">…</td></tr></tbody>
 </table>
-<p class="open">The automatic non-GitHub moving-main read fallback is wired. Still open: bounded freshness proof, provider writeback, and a durable independent origin. The write roads above already post back.</p>
-<p class="note">HTTP is a transport, not the computer; this mirror catalog does not actuate devices or <code>.mno</code> files.</p>
+<h2>Exact adapter status</h2>
+<p class="note" id="status-src">loading ci/moving_main/adapters.json…</p>
+<table>
+<thead><tr><th>id</th><th>status</th><th>independent</th><th>what</th></tr></thead>
+<tbody id="status-rows"><tr><td colspan="4">…</td></tr></tbody>
+</table>
+<p id="live-status" class="note">live probes wait for this browser.</p>
+<p class="open" id="still-open">Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability.</p>
+<p class="note">HTTP is a transport, not the computer; this mirror catalog does not actuate devices or <code>.mno</code> files. No secrets are printed.</p>
 <script>
-fetch("./mirrors.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
-  if (!r.ok) throw new Error(r.status);
-  return r.json();
-}).then(function (j) {
-  document.getElementById("src").textContent = "from mirrors.json · " + (j.ts || "");
-  var rows = (j.ingress || []).concat(j.read || []);
-  document.getElementById("rows").innerHTML = rows.map(function (x) {
-    var name = x.href ? '<a href="' + x.href + '">' + x.id + "</a>" : x.id;
-    return "<tr><td>" + name + "</td><td>" + (x.kind || "read") + "</td><td>" +
-      (x.notes || "") + "</td></tr>";
-  }).join("");
-}).catch(function (e) {
-  document.getElementById("src").textContent = "could not read mirrors.json (" + e.message + ")";
-});
+(function () {
+  function esc(s) {
+    return String(s || "").replace(/[&<>"]/g, function (c) {
+      return ({ "&": "&", "<": "<", ">": ">", '"': """ })[c];
+    });
+  }
+  function rowLink(x) {
+    return x.href ? '<a href="' + esc(x.href) + '">' + esc(x.id) + "</a>" : esc(x.id);
+  }
+  fetch("./mirrors.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (j) {
+    document.getElementById("src").textContent = "from mirrors.json · " + (j.ts || "");
+    var rows = (j.ingress || []).concat(j.read || []);
+    document.getElementById("rows").innerHTML = rows.map(function (x) {
+      return "<tr><td>" + rowLink(x) + "</td><td>" + esc(x.kind || "read") + "</td><td>" +
+        esc(x.notes || "") + "</td></tr>";
+    }).join("");
+    var extra = (j.external_provider_action || []).map(function (x) {
+      return "<tr><td>" + esc(x.id) + "</td><td>EXTERNAL_PROVIDER_ACTION</td><td>" +
+        esc(x.action || "") + "</td></tr>";
+    }).join("");
+    if (extra) document.getElementById("rows").insertAdjacentHTML("beforeend", extra);
+    if (j.still_open) document.getElementById("still-open").textContent = j.still_open;
+  }).catch(function (e) {
+    document.getElementById("src").textContent = "could not read mirrors.json (" + e.message + ")";
+  });
+  fetch("./ci/moving_main/adapters.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (j) {
+    document.getElementById("status-src").textContent = "from adapters.json · " + (j.ts || "");
+    document.getElementById("status-rows").innerHTML = (j.adapters || []).map(function (x) {
+      var status = x.operational ? "OPERATIONAL" : (x.credentials === "EXTERNAL_PROVIDER_ACTION" ? "EXTERNAL_PROVIDER_ACTION" : "MISS");
+      var note = x.external_provider_action || x.notes || "";
+      return "<tr><td>" + rowLink(x) + "</td><td>" + esc(status) + "</td><td>" +
+        (x.independent_origin ? "yes" : "no") + "</td><td>" + esc(note) + "</td></tr>";
+    }).join("");
+  }).catch(function (e) {
+    document.getElementById("status-src").textContent = "could not read adapters.json (" + e.message + ")";
+  });
+  function ping(name, url) {
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      return name + "=" + r.status;
+    }).catch(function () { return name + "=miss"; });
+  }
+  Promise.all([
+    ping("jsdelivr", "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/mirrors.json"),
+    ping("ntfy-cursor", "https://ntfy.sh/woahwhattheheck-commons-main/json?poll=1&since=24h"),
+    ping("swh-save", "https://archive.softwareheritage.org/api/1/origin/save/2456178/")
+  ]).then(function (rows) {
+    document.getElementById("live-status").textContent = "live this tab: " + rows.join(" · ");
+  });
+})();
 </script>
 </body>
 </html>

@@ -64,6 +64,8 @@ def classify(root="."):
     live = bool(report.get("live_wake"))
     chatgpt = next((row for row in report.get("targets") or [] if row.get("peer") == "CHATGPT"), {})
     claude = next((row for row in report.get("targets") or [] if row.get("peer") == "CLAUDE"), {})
+    receipt_rel = os.path.join("p", "%s.md" % SOURCE_ID)
+    receipt_present = os.path.isfile(os.path.join(root, receipt_rel))
     ok = (
         not missing
         and SOURCE_ID in card
@@ -89,6 +91,8 @@ def classify(root="."):
         "no_gate": report.get("no_gate"),
         "titan": "NOT_WRITTEN",
         "source_id": SOURCE_ID,
+        "receipt_path": receipt_rel,
+        "receipt_present": receipt_present,
         "doctor": report,
     }
 

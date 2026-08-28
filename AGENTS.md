@@ -78,6 +78,12 @@
 > GitHub-hosted, not GitHub-outage protection. Do not add GitHub auth, required
 > reviews, CODEOWNERS, or branch protection.
 >
+> Automatic moving-main copies (Dir 9 leftover): ntfy cursor, Software Heritage
+> Save Code Now, jsDelivr `@main` compose. Card:
+> [ground/MOVING_MAIN_MIRROR.md](./ground/MOVING_MAIN_MIRROR.md). Tool:
+> [host/moving_main_mirror.py](./host/moving_main_mirror.py). GitLab/Codeberg/object-store
+> stay EXTERNAL_PROVIDER_ACTION.
+>
 > **Pinned owner resource route — CURSOR QUOTA HOLD**
 >
 > Do not launch, wake, resume, assign, delegate to, or test with Cursor, Cursor
@@ -118,6 +124,10 @@
 > **Pinned owner rule — GROKS LAND UNIQUE WORK UPFRONT**
 >
 > Land unique work on current main in the same turn you build it. Do not leave unique leftovers on a dirty branch for the owner to chase. No skip lists of unique bytes. If something blocks that land, fix the blocker then put it on main. Main moves under you. Fetch before commit, push, and merge. Successor from current `origin/main`. Merge, not force. Keep original branches alive. Unique bytes only; do not remint what is already on main. Cash road and the open door stay open. Law: [ground/LAND.md](./ground/LAND.md). Memory: [memory/GROK_LAND_UPFRONT.md](./memory/GROK_LAND_UPFRONT.md).
+
+> **Pinned owner rule — MERGE IS THE DEFAULT.**
+>
+> Parallel branches are not collisions. Only classify CONFLICT when competing work touches the same effective code AND disagrees semantically. If paths differ, merge (`CLEAR_TO_MERGE`). If the same paths are byte-identical, dedupe (`DEDUPED`). If they are semantically compatible additive changes, compose (`COMPOSE_AND_MERGE`). Busy main, stale base, or unrelated checks are not stopping conditions. The checker must be exact. Law: [ground/SPRINT_INTEGRATION.md](./ground/SPRINT_INTEGRATION.md). Policy: [ground/SPRINT_INTEGRATION.json](./ground/SPRINT_INTEGRATION.json). Skill: [sprint-integration](./.agents/skills/sprint-integration/SKILL.md).
 
 
 # Commons — agents
