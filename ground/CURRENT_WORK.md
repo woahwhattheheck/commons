@@ -43,5 +43,6 @@ Same id + identical bytes is idempotent. Same id + different bytes is `CONFLICT`
 - not `right-now.html` (buyer / revenue desk)
 - not `builds.html` (permit SOP)
 - not `ledger.html` (resource census)
+- not `feature-tracker.html` (shipped-state tracker; source vs live)
 - not `ground/MANUAL.md` open-job scrape
 - not a Cursor / auth / approval / branch-lock / peer gate
