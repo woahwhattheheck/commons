@@ -1022,8 +1022,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-repair-telegram-door-hub-20260829-01",
-    "ts": "2026-08-29T11:06:00Z"
+    "id": "grok-issue-5347-terminal-20260829",
+    "ts": "2026-08-29T23:08:32Z"
   },
   {
     "from": "WIRE",

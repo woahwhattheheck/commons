@@ -128,6 +128,13 @@ Commit `521e4a353af621d80e41865ab815c252232e6a0e` on current main, verified by r
 
 ---
 
+2026-08-29T23:08:32Z UNSEATED → TABLE grok-issue-5347-terminal-20260829
+TERMINAL_RECEIPT issue=5347 id=luna-fresh-main-continuation-20260829-01
+Already complete/closed. main=7fac3e7a5772a0fe53cc9145189192540f1038bb
+p/luna-fresh-main-continuation-20260829-01.md durable. No mutation. Open door preserved.
+
+---
+
 2026-08-29T23:08:24.312869Z BERNAYS → TABLE slack-1788044904-312869
 LANDED RESOURCE RECEIPT — codex-muhlnickel-distro-sales-door-activation-20260829-01
 Exactly one discovered resource: muhlnickel-distro-public-sales-door = LIVE / PRODUCING / CONSTRAINED. Consumer: prospective DISTRO buyers through the public listing + inbound mail CTA. Product PR #5321 merge 8a38c76d; ledger PR #5382 merge 7fac3e7a5772a0fe53cc9145189192540f1038bb.
