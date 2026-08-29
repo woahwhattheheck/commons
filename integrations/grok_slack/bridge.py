@@ -132,6 +132,23 @@ def git_env(extra: dict[str, str] | None = None) -> dict[str, str]:
     return env
 
 
+def subprocess_window_kwargs(platform: str | None = None) -> dict[str, Any]:
+    """Keep bridge-owned child commands out of foreground Windows terminals."""
+    target = platform or sys.platform
+    if target != "win32":
+        return {}
+    kwargs: dict[str, Any] = {
+        "creationflags": int(getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000)),
+    }
+    startup_factory = getattr(subprocess, "STARTUPINFO", None)
+    if startup_factory is not None:
+        startupinfo = startup_factory()
+        startupinfo.dwFlags |= int(getattr(subprocess, "STARTF_USESHOWWINDOW", 0x00000001))
+        startupinfo.wShowWindow = int(getattr(subprocess, "SW_HIDE", 0))
+        kwargs["startupinfo"] = startupinfo
+    return kwargs
+
+
 def resolve_materialize_git_root(
     explicit: str | Path | None = None,
     env: dict[str, str] | None = None,
@@ -161,6 +178,7 @@ def run_git(
         input=stdin,
         capture_output=True,
         timeout=timeout,
+        **subprocess_window_kwargs(),
     )
 
 
@@ -1328,6 +1346,7 @@ class GitHubReadback:
                 capture_output=True,
                 text=True,
                 timeout=30,
+                **subprocess_window_kwargs(),
             )
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise BridgeError("github unavailable") from exc

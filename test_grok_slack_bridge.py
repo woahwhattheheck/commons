@@ -14,6 +14,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 from typing import Any
 
@@ -406,6 +407,18 @@ def build_bridge(directory: str, slack: FakeSlack | None = None, github: FakeGit
 
 
 class GrokSlackBridgeTests(unittest.TestCase):
+    def test_bridge_owned_windows_subprocesses_never_open_terminal_windows(self) -> None:
+        windows = bridge.subprocess_window_kwargs("win32")
+        self.assertEqual(windows["creationflags"] & 0x08000000, 0x08000000)
+        self.assertEqual(bridge.subprocess_window_kwargs("linux"), {})
+
+        completed = subprocess.CompletedProcess(["git", "status"], 0, b"", b"")
+        with mock.patch.object(bridge, "subprocess_window_kwargs", return_value=windows):
+            with mock.patch.object(bridge.subprocess, "run", return_value=completed) as runner:
+                result = bridge.run_git(["status"], cwd=Path.cwd())
+        self.assertIs(result, completed)
+        self.assertEqual(runner.call_args.kwargs["creationflags"] & 0x08000000, 0x08000000)
+
     def test_ack_occurs_before_provider_work(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             service, _slack, _github, mcp, store = build_bridge(directory)
