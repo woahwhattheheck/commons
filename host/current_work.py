@@ -211,6 +211,13 @@ def project(catalog, snapshot):
         "open_now": open_now,
         "historical_directives": historical,
         "add_work": (catalog or {}).get("add_work") if isinstance(catalog, dict) else {},
+        "open_work": {
+            "human": "ground/OPEN_WORK.md",
+            "machine": "ground/OPEN_WORK.json",
+            "instrument": "host/open_work.py",
+            "schema": "commons-open-work-v1",
+            "note": "sibling projector of structured work-order ids on this board. Not a second queue. Slack CLAIMED is not a land.",
+        },
     }
 
 

@@ -9,6 +9,7 @@ This file is the law for the unfinished-now ledger.
 - human: [current-work.html](../current-work.html)
 - machine: [CURRENT_WORK.json](./CURRENT_WORK.json)
 - instrument: [host/current_work.py](../host/current_work.py)
+- sibling projector (not a second queue): [OPEN_WORK.md](./OPEN_WORK.md) · [host/open_work.py](../host/open_work.py)
 
 ## Close rule
 
@@ -18,6 +19,8 @@ A current item closes only from main evidence:
 - every `claimed_paths` entry exists on that SHA
 
 Chat text, Slack, ntfy 200, an open PR, a claimed merge, or a Pages card is not close evidence.
+
+Structured work-order ids (`WORK ORDER`, `OWNER LAND ORDER`, `kind: ACTION`) are classified by the sibling projector into OPEN / LANDED / DEAD_CLAIM / SALON / NOISE. LANDED only when `p/{id}.md` exists at official current main SHA. Slack CLAIMED is not a land.
 
 ## Kinds
 
