@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1787976347.829539")
+        self.assertEqual(catalog["slack_ts"], "1787997064.565089")
         self.assertEqual(
             catalog["source_id"],
+            "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+        )
+        self.assertIn(
             "codex-github-actions-watchdog-production-activation-20260829-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-supergrok-commons-tool-consumer-activation-20260828-01",
@@ -167,15 +171,35 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-github-actions-watchdog-production-activation-20260829-01.json",
+            "codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
-        self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
-        self.assertEqual(activation["selected_resource"], "github-actions")
+        self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
+        self.assertEqual(
+            activation["selected_resource"], "muhlnickel-distro-public-sales-door"
+        )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack_start"])
+        self.assertIn(slack_cite, activation["evidence"]["slack_receipt"])
+        watchdog_production_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-github-actions-watchdog-production-activation-20260829-01.json",
+        )
+        with open(watchdog_production_path, encoding="utf-8") as handle:
+            watchdog_production = json.load(handle)
+        self.assertEqual(
+            watchdog_production["event_id"],
+            "codex-github-actions-watchdog-production-activation-20260829-01",
+        )
+        self.assertEqual(watchdog_production["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(watchdog_production["selected_resource"], "github-actions")
+        self.assertIn(
+            "p1787976347829539", watchdog_production["evidence"]["slack_start"]
+        )
         watchdog_path = os.path.join(
             ROOT,
             "inventory",
@@ -190,6 +214,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1787976347.829539")
         self.assertNotEqual(catalog["slack_ts"], "1787954879.428259")
         self.assertNotEqual(catalog["slack_ts"], "1787933005.065549")
         superseded_path = os.path.join(
@@ -214,10 +239,18 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["github-actions"]["stage"], "PRODUCING")
         self.assertEqual(rows["github-actions"]["condition"], "DEGRADED")
+        self.assertEqual(rows["muhlnickel-distro-public-sales-door"]["stage"], "PRODUCING")
+        self.assertEqual(
+            rows["muhlnickel-distro-public-sales-door"]["condition"], "CONSTRAINED"
+        )
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
-        self.assertEqual(activation["after"]["condition"], "DEGRADED")
-        self.assertEqual(activation["projection"]["resources"], 60)
-        self.assertEqual(activation["projection"]["producing"], 26)
+        self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
+        self.assertEqual(activation["projection"]["resources"], 61)
+        self.assertEqual(activation["projection"]["producing"], 27)
+        self.assertIn(
+            "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
             raw.get("record_sources") or [],
@@ -323,6 +356,53 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual([row["name"] for row in queued["activation_queue"]], ["github-actions"])
         self.assertEqual(queued["activation_queue"][0]["priority"], 85)
         self.assertEqual([row["name"] for row in unqueued["activation_queue"]], [])
+
+    def test_muhlnickel_distro_sales_door_is_producing_without_cash(self):
+        catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
+        with open(catalog_path, encoding="utf-8") as handle:
+            catalog = load_catalog(handle.read())
+        rows = {row["name"]: row for row in catalog["surfaces"]}
+        door = rows["muhlnickel-distro-public-sales-door"]
+        self.assertEqual(door["capacity"], "LIVE")
+        self.assertEqual(door["stage"], "PRODUCING")
+        self.assertEqual(door["condition"], "CONSTRAINED")
+        self.assertEqual(
+            door["last_receipt"],
+            "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+        )
+        self.assertIn("not checkout", door["rate_plan_boundary"].lower())
+        live_queue = [
+            row["name"] for row in measure_from_rows(catalog)["activation_queue"]
+        ]
+        self.assertNotIn("muhlnickel-distro-public-sales-door", live_queue)
+
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        self.assertEqual(
+            activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
+        )
+        self.assertEqual(
+            activation["selected_resource"], "muhlnickel-distro-public-sales-door"
+        )
+        self.assertEqual(activation["after"]["capacity"], "LIVE")
+        self.assertEqual(activation["after"]["stage"], "PRODUCING")
+        self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
+        self.assertEqual(activation["projection"]["resources"], 61)
+        self.assertEqual(activation["projection"]["producing"], 27)
+        self.assertIn(
+            "No dedicated DISTRO Payment Link or checkout", activation["non_claims"]
+        )
+        self.assertIn(
+            "No buyer inquiry, order, acceptance, payment, settlement, payout, revenue, or cash",
+            activation["non_claims"],
+        )
 
     def test_duration_freshness_expires_claims_without_rewriting_condition(self):
         row = {
