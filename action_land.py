@@ -5,21 +5,46 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+COMMIT_MESSAGE = "fire addressed Commons actions"
+MAX_ATTEMPTS = 5
+RESULT_PREFIX = "actions/results/"
+REMOTE_REF = "HEAD:main"
 
 
-def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
-    return subprocess.run(["git", *args], cwd=ROOT, text=True, check=check,
-                          capture_output=True)
+def git(*args: str, check: bool = True, env: dict[str, str] | None = None) -> subprocess.CompletedProcess:
+    if any(part == "--force" or part.startswith("--force") for part in args):
+        raise RuntimeError("force-push is forbidden")
+    kwargs = {"cwd": ROOT, "text": True, "check": check, "capture_output": True}
+    if env is not None:
+        kwargs["env"] = env
+    return subprocess.run(["git", *args], **kwargs)
+
+
+def git_bytes(*args: str) -> subprocess.CompletedProcess:
+    if any(part == "--force" or part.startswith("--force") for part in args):
+        raise RuntimeError("force-push is forbidden")
+    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, check=False)
 
 
 def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def emit(payload: dict) -> None:
+    print(json.dumps(payload, sort_keys=True), flush=True)
+
+
+def combined(result: subprocess.CompletedProcess) -> str:
+    stdout = result.stdout if isinstance(result.stdout, str) else (result.stdout or b"").decode("utf-8", "replace")
+    stderr = result.stderr if isinstance(result.stderr, str) else (result.stderr or b"").decode("utf-8", "replace")
+    return (stdout + "\n" + stderr).strip()
 
 
 def manifest_name(value: object) -> str:
@@ -139,11 +164,75 @@ def materialize(source: Path, paths: list[str], deletions: set[str]) -> list[str
     return landed
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--source", type=Path, help="artifact directory from the unprivileged execute job")
-    args = ap.parse_args()
-    source = (args.source or ROOT).resolve()
+def is_result_latch(name: str) -> bool:
+    return name.startswith(RESULT_PREFIX) and name.endswith(".json")
+
+
+def already_on_origin_main(name: str) -> bool:
+    probed = git("cat-file", "-e", "origin/main:%s" % name, check=False)
+    return probed.returncode == 0
+
+
+def drop_already_latched(paths: list[str], deletions: set[str]) -> tuple[list[str], list[str]]:
+    """Duplicate result ids keep the original. Do not remint."""
+    kept = []
+    deduped = []
+    for name in paths:
+        if name in deletions or not is_result_latch(name) or not already_on_origin_main(name):
+            kept.append(name)
+            continue
+        dest = repository_destination(name)
+        if dest is not None and dest.is_file() and not dest.is_symlink():
+            dest.unlink()
+        deduped.append(name)
+    return kept, deduped
+
+
+def unmerged_paths() -> list[str] | None:
+    listed = git("diff", "--name-only", "--diff-filter=U", check=False)
+    if listed.returncode != 0:
+        return None
+    return [row.strip() for row in listed.stdout.splitlines() if row.strip()]
+
+
+def resolve_result_rebase() -> dict:
+    """Keep already-latched result ids during rebase. Never force-push."""
+    paths = unmerged_paths()
+    if paths is None:
+        return {"ok": False, "reason": "UNMERGED_LIST_FAILED"}
+    if not paths:
+        return {"ok": False, "reason": "NO_UNMERGED"}
+    for path in paths:
+        if not is_result_latch(path):
+            return {"ok": False, "reason": "NON_RESULT_PATH", "path": path}
+        shown = git_bytes("show", ":2:%s" % path)
+        if shown.returncode != 0:
+            return {"ok": False, "reason": "MISSING_STAGE", "path": path}
+        dest = repository_destination(path)
+        if dest is None:
+            return {"ok": False, "reason": "NON_REPO_PATH", "path": path}
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(shown.stdout)
+        added = git("add", "--", path, check=False)
+        if added.returncode != 0:
+            return {"ok": False, "reason": "ADD_FAILED", "path": path, "detail": combined(added)}
+    env = os.environ.copy()
+    env["GIT_EDITOR"] = "true"
+    env["GIT_SEQUENCE_EDITOR"] = "true"
+    continued = git("rebase", "--continue", check=False, env=env)
+    if continued.returncode == 0:
+        return {"ok": True, "state": "DEDUPED", "paths": paths}
+    blob = combined(continued).lower()
+    if "nothing to commit" in blob or "no changes" in blob:
+        skipped = git("rebase", "--skip", check=False)
+        if skipped.returncode == 0:
+            return {"ok": True, "state": "DEDUPED", "paths": paths}
+        return {"ok": False, "reason": "SKIP_FAILED", "detail": combined(skipped)}
+    return {"ok": False, "reason": "CONTINUE_FAILED", "detail": combined(continued)}
+
+
+def land_from_source(source: Path) -> int:
+    source = source.resolve()
     data = json.loads((source / ".action_changed.json").read_text(encoding="utf-8"))
     paths = validate_manifest(data, source)
     deletions = {manifest_name(name) for name in (data.get("action_deletions") or []) if manifest_name(name)}
@@ -151,23 +240,63 @@ def main() -> int:
         paths = materialize(source, paths, deletions)
     else:
         paths = [name for name in paths if repository_destination(name) is not None]
+    fetched = git("fetch", "origin", "main", check=False)
+    deduped: list[str] = []
+    if fetched.returncode == 0:
+        paths, deduped = drop_already_latched(paths, deletions)
     if not paths:
+        emit({"ok": True, "state": "DEDUPED" if deduped else "QUIET", "deduped": deduped})
         return 0
     git("add", "--all", "--", *paths)
     if git("diff", "--cached", "--quiet", check=False).returncode == 0:
+        emit({"ok": True, "state": "DEDUPED" if deduped else "QUIET", "deduped": deduped})
         return 0
     git("config", "user.name", "commons-action")
     git("config", "user.email", "commons-action@users.noreply.github.com")
-    git("commit", "-m", "fire addressed Commons actions")
-    for attempt in range(1, 6):
-        if git("push", "origin", "HEAD:main", check=False).returncode == 0:
+    git("commit", "-m", COMMIT_MESSAGE)
+    last_resolve = None
+    last_push = None
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        pushed = git("push", "origin", REMOTE_REF, check=False)
+        last_push = pushed
+        if pushed.returncode == 0:
+            emit({"ok": True, "state": "LANDED", "attempts": attempt, "deduped": deduped, "resolve": last_resolve})
             return 0
-        git("fetch", "origin", "main")
-        if git("rebase", "origin/main", check=False).returncode != 0:
+        git("fetch", "origin", "main", check=False)
+        rebased = git("rebase", "origin/main", check=False)
+        if rebased.returncode != 0:
+            resolved = resolve_result_rebase()
+            last_resolve = resolved
+            if resolved.get("ok"):
+                if attempt < MAX_ATTEMPTS:
+                    time.sleep(attempt * 3)
+                continue
             git("rebase", "--abort", check=False)
+            emit({
+                "ok": False,
+                "state": "REBASE_CONFLICT",
+                "attempts": attempt,
+                "detail": combined(rebased),
+                "resolve": resolved,
+            })
             return 1
-        time.sleep(attempt * 3)
+        if attempt < MAX_ATTEMPTS:
+            time.sleep(attempt * 3)
+    emit({
+        "ok": False,
+        "state": "PUSH_RACE",
+        "attempts": MAX_ATTEMPTS,
+        "detail": combined(last_push) if last_push is not None else "",
+    })
     return 1
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--source", type=Path, help="artifact directory from the unprivileged execute job")
+    args = ap.parse_args()
+    source = (args.source or ROOT).resolve()
+    return land_from_source(source)
 
 
 if __name__ == "__main__":

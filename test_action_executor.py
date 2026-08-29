@@ -775,6 +775,149 @@ new file mode 100644
             self.assertEqual(paths, manifest["changed"])
             self.assertEqual(landed, [])
 
+    def make_remote_pair(self, td):
+        origin = Path(td) / "origin.git"
+        work = Path(td) / "work"
+        subprocess.run(["git", "init", "--bare", "-q", "-b", "main", str(origin)], check=True)
+        subprocess.run(["git", "clone", "-q", str(origin), str(work)], check=True)
+        subprocess.run(["git", "config", "user.email", "commons-action@users.noreply.github.com"], cwd=work, check=True)
+        subprocess.run(["git", "config", "user.name", "commons-action"], cwd=work, check=True)
+        (work / "seed.txt").write_text("seed\n", encoding="utf-8")
+        subprocess.run(["git", "add", "seed.txt"], cwd=work, check=True)
+        subprocess.run(["git", "commit", "-qm", "seed"], cwd=work, check=True)
+        subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=work, check=True)
+        return origin, work
+
+    def write_action_source(self, source: Path, files: dict):
+        records = {}
+        changed = []
+        for name, body in files.items():
+            path = source / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(body, encoding="utf-8")
+            records[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+            changed.append(name)
+        (source / ".action_changed.json").write_text(
+            json.dumps({
+                "changed": changed,
+                "canonical_records": {},
+                "action_outputs": {},
+                "action_deletions": [],
+                "result_records": records,
+            }) + "\n",
+            encoding="utf-8",
+        )
+
+    def origin_blob(self, origin: Path, name: str) -> str:
+        shown = subprocess.run(
+            ["git", "show", "main:%s" % name],
+            cwd=origin,
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        return shown.stdout
+
+    def test_action_land_run_33223581414_dedupes_result_remints(self):
+        """Run 33223581414 re-fired two already-latched result ids with later executed_at.
+
+        Cite: woahwhattheheck/commons:commons-action-executor:05290b210bd7105e7c2a9970297776268a24d3ed:verify exact outputs on a fresh runner and land
+        """
+        ingress = "actions/results/grok-slack-immediate-ingress-repair-20260828-01.json"
+        observe = "actions/results/grok-slack-observe-win-git-20260828-01.json"
+        original_ingress = (
+            '{\n  "id": "grok-slack-immediate-ingress-repair-20260828-01",\n'
+            '  "ok": true,\n  "state": "DUPLICATE",\n'
+            '  "executed_at": "2026-08-29T00:27:17Z"\n}\n'
+        )
+        remint_ingress = original_ingress.replace("2026-08-29T00:27:17Z", "2026-08-29T00:31:29Z")
+        original_observe = (
+            '{\n  "id": "grok-slack-observe-win-git-20260828-01",\n'
+            '  "ok": false,\n  "executed_at": "2026-08-29T00:27:18.821158Z"\n}\n'
+        )
+        remint_observe = original_observe.replace(
+            "2026-08-29T00:27:18.821158Z",
+            "2026-08-29T00:31:30.625125Z",
+        )
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as sd:
+            origin, work = self.make_remote_pair(td)
+            for name, body in ((ingress, original_ingress), (observe, original_observe)):
+                path = work / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(body, encoding="utf-8")
+            subprocess.run(["git", "add", "--", ingress, observe], cwd=work, check=True)
+            subprocess.run(["git", "commit", "-qm", "fire addressed Commons actions"], cwd=work, check=True)
+            subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=work, check=True)
+            subprocess.run(["git", "reset", "--hard", "-q", "HEAD~1"], cwd=work, check=True)
+            source = Path(sd)
+            self.write_action_source(source, {ingress: remint_ingress, observe: remint_observe})
+            with mock.patch.object(al, "ROOT", work), mock.patch.object(al.time, "sleep"):
+                code = al.land_from_source(source)
+            self.assertEqual(code, 0)
+            self.assertEqual(self.origin_blob(origin, ingress), original_ingress)
+            self.assertEqual(self.origin_blob(origin, observe), original_observe)
+            self.assertNotIn("2026-08-29T00:31:29Z", self.origin_blob(origin, ingress))
+
+    def test_action_land_lands_unique_result_and_drops_remint(self):
+        remint_path = "actions/results/grok-slack-immediate-ingress-repair-20260828-01.json"
+        unique_path = "actions/results/grok-slack-pending-shape-probe-20260828-01.json"
+        original = (
+            '{\n  "id": "grok-slack-immediate-ingress-repair-20260828-01",\n'
+            '  "executed_at": "2026-08-29T00:27:17Z"\n}\n'
+        )
+        remint = original.replace("2026-08-29T00:27:17Z", "2026-08-29T00:31:29Z")
+        unique = '{\n  "id": "grok-slack-pending-shape-probe-20260828-01",\n  "ok": true\n}\n'
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as sd:
+            origin, work = self.make_remote_pair(td)
+            path = work / remint_path
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(original, encoding="utf-8")
+            subprocess.run(["git", "add", "--", remint_path], cwd=work, check=True)
+            subprocess.run(["git", "commit", "-qm", "latch original"], cwd=work, check=True)
+            subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=work, check=True)
+            subprocess.run(["git", "reset", "--hard", "-q", "HEAD~1"], cwd=work, check=True)
+            source = Path(sd)
+            self.write_action_source(source, {remint_path: remint, unique_path: unique})
+            with mock.patch.object(al, "ROOT", work), mock.patch.object(al.time, "sleep"):
+                code = al.land_from_source(source)
+            self.assertEqual(code, 0)
+            self.assertEqual(self.origin_blob(origin, remint_path), original)
+            self.assertEqual(self.origin_blob(origin, unique_path), unique)
+
+    def test_action_land_rebase_conflict_keeps_original_result_latch(self):
+        name = "actions/results/grok-slack-immediate-ingress-repair-20260828-01.json"
+        original = (
+            '{\n  "id": "grok-slack-immediate-ingress-repair-20260828-01",\n'
+            '  "executed_at": "2026-08-29T00:27:17Z"\n}\n'
+        )
+        remint = original.replace("2026-08-29T00:27:17Z", "2026-08-29T00:31:29Z")
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as sd:
+            origin, work = self.make_remote_pair(td)
+            path = work / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(original, encoding="utf-8")
+            subprocess.run(["git", "add", "--", name], cwd=work, check=True)
+            subprocess.run(["git", "commit", "-qm", "latch original"], cwd=work, check=True)
+            subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=work, check=True)
+            subprocess.run(["git", "reset", "--hard", "-q", "HEAD~1"], cwd=work, check=True)
+            source = Path(sd)
+            self.write_action_source(source, {name: remint})
+
+            def keep_remint(paths, deletions):
+                del deletions
+                return list(paths), []
+
+            with (
+                mock.patch.object(al, "ROOT", work),
+                mock.patch.object(al.time, "sleep"),
+                mock.patch.object(al, "drop_already_latched", side_effect=keep_remint),
+            ):
+                code = al.land_from_source(source)
+            self.assertEqual(code, 0)
+            self.assertEqual(self.origin_blob(origin, name), original)
+            with self.assertRaisesRegex(RuntimeError, "force-push is forbidden"):
+                al.git("push", "--force", "origin", "HEAD:main")
+
     def test_device_actions_reserve_automatically_without_a_reviewed_id(self):
         executor = Path(__file__).with_name("action_executor.py").read_text(encoding="utf-8")
         workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
