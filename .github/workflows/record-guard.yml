@@ -1,14 +1,17 @@
 # INQUISITOR order 016 point 5, hardened per order 023: alert-only integrity
-# guard. Flags any direct push (actor is not github-actions[bot]) that ADDS,
+# guard. Main ranges are now observed by main-range-verify; this manual drill
+# flags a selected base..current-head range that ADDS,
 # MODIFIES, or DELETES canonical record files or protected code. Committer
-# email is spoofable commit metadata, so the exemption keys on the push event's
-# actor — which only GitHub sets — never on the commit. Never reverts anything:
+# email is spoofable commit metadata, so the exemption keys on GitHub's event
+# actor — never on the commit. Never reverts anything:
 # a red check and a summary are the whole action.
 name: record-guard
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      base:
+        description: Optional range base (defaults to HEAD^)
+        required: false
 permissions:
   contents: read
 jobs:
@@ -21,8 +24,8 @@ jobs:
           fetch-depth: 0
       - name: flag direct edits to canonical record files and protected code
         run: |
-          BEFORE="${{ github.event.before }}"
-          AFTER="${{ github.event.after }}"
+          BEFORE="${{ inputs.base }}"
+          AFTER="${{ github.sha }}"
           if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE" 2>/dev/null || echo "$BEFORE" | grep -q '^0*$'; then
             RANGE="$AFTER~1..$AFTER"
           else

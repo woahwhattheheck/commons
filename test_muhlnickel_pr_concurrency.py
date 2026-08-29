@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""muhlnickel-spec-guard.yml may coalesce stale PR synchronize, never unique main/dispatch."""
+"""Muhlnickel PR checks coalesce; main verification belongs to the range lane."""
 
 from __future__ import annotations
 
@@ -53,8 +53,8 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
         cls.text = WORKFLOW.read_text(encoding="utf-8")
         cls.group_template, cls.cancel_template = parse_concurrency(cls.text)
 
-    def test_workflow_keeps_unique_non_pr_triggers(self):
-        self.assertRegex(self.text, r"(?m)^  push:\n    branches:\n      - main$")
+    def test_workflow_keeps_pr_and_manual_triggers_only(self):
+        self.assertNotRegex(self.text, r"(?m)^  push:")
         self.assertIn("\n  pull_request:\n", self.text)
         self.assertIn("\n  workflow_dispatch:\n", self.text)
         self.assertNotRegex(self.text, r"(?m)^  issues:\n    types: \[opened\]$")
@@ -104,19 +104,17 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
         g2, _ = decide(self.group_template, self.cancel_template, b)
         self.assertNotEqual(g1, g2)
 
-    def test_unique_main_and_dispatch_keep_run_id_groups(self):
-        push_a = github_ctx("push", 33184402936, workflow=WORKFLOW_NAME)
-        push_b = github_ctx("push", 33183891443, workflow=WORKFLOW_NAME)
+    def test_unique_dispatch_and_other_events_keep_run_id_groups(self):
         dispatch = github_ctx("workflow_dispatch", 5001, workflow=WORKFLOW_NAME)
         issues = github_ctx("issues", 5002, workflow=WORKFLOW_NAME)
         groups = []
-        for ctx in (push_a, push_b, dispatch, issues):
+        for ctx in (dispatch, issues):
             group, cancel = decide(self.group_template, self.cancel_template, ctx)
             groups.append(group)
             self.assertFalse(cancel)
             self.assertTrue(group.startswith("muhlnickel-spec-guard-"))
             self.assertIn(ctx["github"]["run_id"], group)
-        self.assertEqual(len(set(groups)), 4)
+        self.assertEqual(len(set(groups)), 2)
 
     def test_event_simulation_cancels_only_stale_pr_synchronize(self):
         live = simulate(
@@ -131,8 +129,6 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
                     "run_id": 33184356598,
                     "head_label": "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
                 },
-                {"event_name": "push", "run_id": 33184402936},
-                {"event_name": "push", "run_id": 33183891443},
                 {"event_name": "workflow_dispatch", "run_id": 5001},
                 {"event_name": "issues", "run_id": 5002},
                 {
@@ -147,7 +143,7 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
         by_id = {row["run_id"]: row for row in live}
         self.assertEqual(by_id["33184047999"]["status"], "cancelled")
         self.assertEqual(by_id["33184356598"]["status"], "in_progress")
-        for run_id in ("33184402936", "33183891443", "5001", "5002", "33184129806"):
+        for run_id in ("5001", "5002", "33184129806"):
             self.assertEqual(by_id[run_id]["status"], "in_progress", run_id)
         self.assertEqual(
             {row["run_id"] for row in live if row["status"] == "cancelled"},

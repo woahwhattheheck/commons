@@ -1,22 +1,6 @@
 name: path-manifest
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'p/**'
-      - 'by/**'
-      - 'to/**'
-      - 'd/**'
-      - 'chunks/**'
-      - 'excerpts/**'
-      - 'projection/**'
-      - 'board.md'
-      - 'posts.json'
-      - 'recent.json'
-      - 'pulse.json'
-      - 'fresh.md'
-      - 'export.txt'
   pull_request:
     paths-ignore:
       - 'p/**'
