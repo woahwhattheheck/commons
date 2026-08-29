@@ -1,0 +1,71 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-29T23:06:24.617Z",
+  "selected_resource": "muhlnickel-distro-public-sales-door",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_ON_MAIN",
+    "evidence": "PR #5321 and its receipt were on main, but the dedicated public DISTRO sales asset was absent from the canonical resource ledger."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "5e6238f8cab35f044543ecde142be8df76b27cff",
+    "product_merge_sha": "8a38c76d65dde2cda7b1a657f392af8c27d448b8"
+  },
+  "concrete_consumer": "Prospective Muhlnickel DISTRO buyers seeking the folder through the public sales listing and inbound mail route",
+  "measurable_outcome": "A public open-door sales listing, mail CTA, sitemap entry, catalog owner slot, measured product claims, and preserved seven-link payment catalog exist on current main. The DISTRO page contains no checkout URL and does not publish the artifact.",
+  "exact_blobs": {
+    "distro.html": "565845d3ba8e852893f8ab54f524537264fde135",
+    "land/stripe-payment-links-20260826.md": "3b1e79a7434bf3e063868304a1f40250e02f463f",
+    "stripe-payment-links-20260826.html": "c71848ecfddae666cf83ba4488275fe137a0fdaa",
+    "commercial.html": "0abb22d21996d0f179bc45a4cd4f1eabee9ecca9",
+    "sitemap.xml": "6beda0e4857d3e16ca92d6b348dc0e6c79539487",
+    "test_distro_listing.py": "858bbb79fadbac31f814f2ee7c6b1dc65138f82c",
+    "p/kimi-distro-listing-20260829-01.md": "6b04f8a8278962f78d6729c5ced5f3878a7e420f"
+  },
+  "projection": {
+    "resources": 61,
+    "producing": 27
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "callable_tools": 404,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_PRODUCING",
+    "harness_coordination": "TWO_READ_ONLY_SCOUTS_COMPLETED",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "current_main_readback": "Seven exact product/evidence blobs read from main 5e6238f8cab35f044543ecde142be8df76b27cff.",
+    "listing_invariants": "Title, 136450-byte container, 7611-byte reader, 0/65536 and 65536/65536 claims, digest, OWNER SLOT, No login, artifact-not-published statement, and mail CTA all present.",
+    "payment_truth": "DISTRO page contains zero Stripe URLs; catalog Markdown and payment HTML each preserve exactly seven unique canonical Stripe URLs.",
+    "integration_truth": "WB-RANGE line and sitemap entry present; receipt names product merge.",
+    "test_contract": "Four named test_distro_listing.py tests independently matched against current-main content.",
+    "public_runtime_evidence": "Exact #commons receipt records public distro.html and integration; public search did not return a renderable page, so condition remains CONSTRAINED and no independent browser-live claim is added.",
+    "fresh_main_collision_audit": "Only open PR #5333 is a duplicate single-receipt path already on main and does not overlap this three-path evidence lane.",
+    "secrets_and_open_door": "No credential material; listing explicitly says No login and contains no password input."
+  },
+  "evidence": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/5321",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/8a38c76d65dde2cda7b1a657f392af8c27d448b8",
+    "product_receipt": "https://github.com/woahwhattheheck/commons/blob/5e6238f8cab35f044543ecde142be8df76b27cff/p/kimi-distro-listing-20260829-01.md",
+    "slack_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787997064565089?thread_ts=1787988957.632549&cid=C0BRGMDQB6G",
+    "public_listing": "https://woahwhattheheck.github.io/commons/distro.html"
+  },
+  "next_action": "Use the existing inbound mail path for a real prospective buyer; if Bryce chooses a dedicated DISTRO checkout or artifact delivery, record the owner-minted link or exact delivery receipt before advancing payment or delivery state.",
+  "rate_plan_boundary": "A listing, mail link, owner slot, or payment-catalog pointer is not a checkout, buyer, delivery, authorization, settlement, payout, revenue, or cash.",
+  "non_claims": [
+    "No dedicated DISTRO Payment Link or checkout",
+    "No artifact hosting, attachment, download, or delivery",
+    "No buyer inquiry, order, acceptance, payment, settlement, payout, revenue, or cash",
+    "No owner identity, KYC, bank, policy, call, or device action",
+    "No Cursor use in this activation; the landed product provenance is preserved as evidence"
+  ],
+  "titan": "NOT_WRITTEN"
+}
