@@ -212,11 +212,13 @@ def project(catalog, snapshot):
         "historical_directives": historical,
         "add_work": (catalog or {}).get("add_work") if isinstance(catalog, dict) else {},
         "open_work": {
-            "human": "ground/OPEN_WORK.md",
-            "machine": "ground/OPEN_WORK.json",
+            "human": "ground/open-work-structured-ids-on-current-main.md",
+            "machine": "ground/open-work-structured-ids-on-current-main.json",
+            "listing": "ground/open-work-listing",
+            "pointer_human": "ground/OPEN_WORK.md",
             "instrument": "host/open_work.py",
             "schema": "commons-open-work-v1",
-            "note": "sibling projector of structured work-order ids on this board. Not a second queue. Slack CLAIMED is not a land.",
+            "note": "sibling projector of structured work-order ids on this board. Not a second queue. Slack CLAIMED is not a land. Title-filenames on new outputs only; existing p/ slugs stay.",
         },
     }
 

@@ -38,8 +38,11 @@ import sys
 SCHEMA = "commons-open-work-v1"
 CLASSES = ("OPEN", "LANDED", "DEAD_CLAIM", "SALON", "NOISE")
 DEFAULT_ROOT = "."
-HUMAN_REL = os.path.join("ground", "OPEN_WORK.md")
-MACHINE_REL = os.path.join("ground", "OPEN_WORK.json")
+HUMAN_REL = os.path.join("ground", "open-work-structured-ids-on-current-main.md")
+MACHINE_REL = os.path.join("ground", "open-work-structured-ids-on-current-main.json")
+POINTER_HUMAN_REL = os.path.join("ground", "OPEN_WORK.md")
+POINTER_MACHINE_REL = os.path.join("ground", "OPEN_WORK.json")
+LISTING_REL = os.path.join("ground", "open-work-listing")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 WORK_MARK_RE = re.compile(
@@ -59,6 +62,7 @@ LM_RE = re.compile(r"^is_language_model\s*:\s*(\S+)\s*$", re.I)
 CLAIMED_STATES = frozenset({"CLAIMED", "COMPLETE", "COMPLETED", "DONE", "SUCCESS"})
 SLACK_TS_RE = re.compile(r"^\d{10,}\.\d+$")
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.I)
+OPAQUE_ACTION_RE = re.compile(r"^action-\d{8,}-[0-9a-f]{8,}$", re.I)
 PREFIX_BYTES = 8192
 BODY_STRUCTURE_LINES = 16
 
@@ -112,6 +116,27 @@ def is_work_id(ident):
     if SLACK_TS_RE.match(text) or UUID_RE.match(text):
         return False
     return True
+
+
+def is_title_filename(ident):
+    """True when a peer can read the work from the filename itself."""
+    text = str(ident or "")
+    if not is_work_id(text):
+        return False
+    if OPAQUE_ACTION_RE.match(text):
+        return False
+    tokens = [part for part in re.split(r"[._-]+", text) if part]
+    words = [part for part in tokens if re.search(r"[A-Za-z]{3,}", part)]
+    return len(words) >= 2
+
+
+def listing_filename(ident, klass):
+    stem = "%s-%s" % (str(klass or "open").lower(), ident)
+    if len(stem) > 80:
+        stem = stem[:80].rstrip("._-")
+    if not ID_RE.match(stem):
+        stem = re.sub(r"[^A-Za-z0-9._-]", "-", stem)[:80].strip("._-")
+    return "%s.md" % stem
 
 
 def extract_work_ids(text):
@@ -396,12 +421,14 @@ def project(root, main_sha="", extra=None, include_salon=False):
             extra.get("slack_claimed") or []
         )
         klass = classify_record(record, exists, slack_claimed=slack_claimed)
+        titled = is_title_filename(ident)
         items.append(
             {
                 "id": ident,
                 "class": klass,
                 "receipt": receipt_path(ident) if exists else "404",
                 "last_sha": sha,
+                "title_filename": listing_filename(ident, klass) if titled else "",
             }
         )
     counts = {name: 0 for name in CLASSES}
@@ -414,6 +441,9 @@ def project(root, main_sha="", extra=None, include_salon=False):
         "counts": counts,
         "human": HUMAN_REL,
         "machine": MACHINE_REL,
+        "listing": LISTING_REL,
+        "pointer_human": POINTER_HUMAN_REL,
+        "pointer_machine": POINTER_MACHINE_REL,
     }
 
 
@@ -428,25 +458,36 @@ def render_human(snapshot):
         "",
         "LANDED only when `p/{id}.md` exists at the official current main SHA. Slack CLAIMED, pulse, Pages, and ntfy 200 are not a land.",
         "",
-        "Instrument: [`host/open_work.py`](../host/open_work.py). Machine: [`OPEN_WORK.json`](./OPEN_WORK.json). Law: this file, regenerated from HEAD.",
+        "Instrument: [`host/open_work.py`](../host/open_work.py). Machine: [`open-work-structured-ids-on-current-main.json`](./open-work-structured-ids-on-current-main.json). Listing dir: [`open-work-listing/`](./open-work-listing/). Pointer: [`OPEN_WORK.md`](./OPEN_WORK.md).",
+        "",
+        "New projector outputs use title-filenames. Existing `p/{id}.md` slugs are not renamed.",
         "",
         "Checked SHA: `%s`" % (sha or "UNKNOWN"),
         "",
     ]
     for klass in ("OPEN", "LANDED", "DEAD_CLAIM"):
-        rows = [item for item in snapshot.get("items") or [] if item.get("class") == klass]
+        rows = [
+            item
+            for item in snapshot.get("items") or []
+            if item.get("class") == klass and item.get("title_filename")
+        ]
         lines.append("## %s" % klass)
         lines.append("")
         if not rows:
             lines.append("None this SHA.")
             lines.append("")
             continue
-        lines.append("| id | receipt | last SHA |")
-        lines.append("| --- | --- | --- |")
+        lines.append("| title filename | id | receipt | last SHA |")
+        lines.append("| --- | --- | --- | --- |")
         for item in rows:
             lines.append(
-                "| `%s` | `%s` | `%s` |"
-                % (item.get("id"), item.get("receipt"), item.get("last_sha") or "")
+                "| `%s` | `%s` | `%s` | `%s` |"
+                % (
+                    item.get("title_filename"),
+                    item.get("id"),
+                    item.get("receipt"),
+                    item.get("last_sha") or "",
+                )
             )
         lines.append("")
     lines.extend(
@@ -466,6 +507,63 @@ def render_human(snapshot):
     return "\n".join(lines)
 
 
+def render_pointer(snapshot):
+    sha = (snapshot or {}).get("main_sha") or "UNKNOWN"
+    return "\n".join(
+        [
+            "# Open work",
+            "",
+            "Pointer only. Canonical title-filename listing:",
+            "",
+            "- human: [`open-work-structured-ids-on-current-main.md`](./open-work-structured-ids-on-current-main.md)",
+            "- machine: [`open-work-structured-ids-on-current-main.json`](./open-work-structured-ids-on-current-main.json)",
+            "- ls listing: [`open-work-listing/`](./open-work-listing/)",
+            "",
+            "Existing `p/{id}.md` slugs are not renamed. This path stays so older links still resolve.",
+            "",
+            "Checked SHA: `%s`" % sha,
+            "",
+        ]
+    )
+
+
+def write_listing(root, snapshot):
+    folder = os.path.join(root, LISTING_REL)
+    os.makedirs(folder, exist_ok=True)
+    keep = set()
+    for item in snapshot.get("items") or []:
+        if item.get("class") not in ("OPEN", "DEAD_CLAIM"):
+            continue
+        name = item.get("title_filename") or ""
+        if not name.endswith(".md"):
+            continue
+        keep.add(name)
+        path = os.path.join(folder, name)
+        body = "\n".join(
+            [
+                "# %s" % item.get("id"),
+                "",
+                "- class: `%s`" % item.get("class"),
+                "- receipt: `%s`" % item.get("receipt"),
+                "- last_sha: `%s`" % (item.get("last_sha") or ""),
+                "- title_filename: `%s`" % name,
+                "",
+                "Projection of the existing board. Not a second queue. Not a remint of `p/{id}.md`.",
+                "",
+            ]
+        )
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write(body)
+    if os.path.isdir(folder):
+        for name in os.listdir(folder):
+            if name.endswith(".md") and name not in keep:
+                try:
+                    os.remove(os.path.join(folder, name))
+                except OSError:
+                    pass
+    return folder
+
+
 def write_snapshot(root, snapshot):
     human = render_human(snapshot)
     machine = {
@@ -473,6 +571,9 @@ def write_snapshot(root, snapshot):
         "main_sha": snapshot.get("main_sha"),
         "counts": snapshot.get("counts"),
         "items": snapshot.get("items"),
+        "human": HUMAN_REL,
+        "machine": MACHINE_REL,
+        "listing": LISTING_REL,
     }
     human_path = os.path.join(root, HUMAN_REL)
     machine_path = os.path.join(root, MACHINE_REL)
@@ -484,6 +585,25 @@ def write_snapshot(root, snapshot):
     with open(machine_path, "w", encoding="utf-8") as handle:
         json.dump(machine, handle, indent=2, sort_keys=True)
         handle.write("\n")
+    pointer_human = os.path.join(root, POINTER_HUMAN_REL)
+    pointer_machine = os.path.join(root, POINTER_MACHINE_REL)
+    with open(pointer_human, "w", encoding="utf-8") as handle:
+        handle.write(render_pointer(snapshot))
+    with open(pointer_machine, "w", encoding="utf-8") as handle:
+        json.dump(
+            {
+                "schema": SCHEMA,
+                "canonical_human": HUMAN_REL,
+                "canonical_machine": MACHINE_REL,
+                "listing": LISTING_REL,
+                "main_sha": snapshot.get("main_sha"),
+            },
+            handle,
+            indent=2,
+            sort_keys=True,
+        )
+        handle.write("\n")
+    write_listing(root, snapshot)
     return human_path, machine_path
 
 
@@ -503,6 +623,13 @@ def self_test():
     assert classify_record({"work": True}, False) == "OPEN"
     assert classify_record({"work": True}, False, slack_claimed=True) == "DEAD_CLAIM"
     assert classify_record({"work": True}, True, slack_claimed=True) == "LANDED"
+    assert is_title_filename("kimi-pages-speed-20260829-01")
+    assert is_title_filename("commons-peers-telegram-20260829-01")
+    assert is_title_filename("open-work-projector-20260829-01")
+    assert not is_title_filename("action-20260828163033-89fe29a5e062")
+    assert listing_filename("kimi-continuity-kit-20260829-01", "OPEN") == (
+        "open-kimi-continuity-kit-20260829-01.md"
+    )
     print("self-test ok")
     return 0
 
