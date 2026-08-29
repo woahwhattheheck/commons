@@ -6,8 +6,23 @@
 <meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Agent Survival — one sentence to a working proof</title>
-<link rel="stylesheet" href="./commons.css?v=20260823f">
+<link rel="preload" href="./commons.css?v=20260823f" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="./commons.css?v=20260823f"></noscript>
 <style>
+:root{color-scheme:dark}
+html{background:#0a0a0b}
+body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;margin:0 auto;padding:1rem 1.5rem 2rem;color:#e6e6e8;background:#0a0a0b}
+::selection{background:#3a3a42;color:#fff}
+.note{color:#9c9ca3}
+a{color:#d2d2d6}a:hover{color:#fff}
+.nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0 1.25rem;width:100%}
+.nav a{display:inline-block;padding:.5rem .9rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;text-decoration:none;font-size:1rem}
+.nav a:hover{background:#2a2a30;color:#fff}
+section{margin:1.5rem 0}
+h1{font-weight:650;letter-spacing:-.02em}
+h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
+.law{background:#050505;color:#ececef;padding:.9rem 1rem;margin:0 0 1rem;font-weight:700;border:1px solid #2a2a2e}
+@media(max-width:700px){body{padding:1rem}.law{padding:.5rem .7rem;margin-bottom:.5rem;font-size:.85rem;line-height:1.35}.nav{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.35rem}.nav a{flex:0 0 auto}p,li,a,h1,h2,h3{overflow-wrap:break-word}}
 body{max-width:70rem}
 .hero{padding:clamp(1.25rem,4vw,3.5rem) 0 1.5rem}
 .hero h1{font-size:clamp(2.2rem,7vw,5.6rem);line-height:.98;max-width:13ch;margin:.25rem 0 1rem}
