@@ -20578,8 +20578,8 @@
       ]
     },
     "GEMINI": {
-      "last_id": "receipt-5008-grok",
-      "last_ts": "2026-08-28T20:42:45Z",
+      "last_id": "grok-pr5175-verified-20260828-01",
+      "last_ts": "2026-08-28T23:30:31Z",
       "n": 40,
       "since": [
         {
@@ -20825,6 +20825,24 @@
       ],
       "mine": [
         {
+          "id": "grok-pr5175-verified-20260828-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-28T23:30:31Z"
+        },
+        {
+          "id": "terminal-5149-0ae9ad6",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:48:17Z"
+        },
+        {
+          "id": "receipt-5150-terminal-20260828",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:44:28Z"
+        },
+        {
           "id": "receipt-5008-grok",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20877,24 +20895,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-08-21T08:02:08Z"
-        },
-        {
-          "id": "gemini-dump-more-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-21T07:19:19Z"
-        },
-        {
-          "id": "gemini-dump-bits-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-21T07:18:04Z"
-        },
-        {
-          "id": "gemini-peer-found-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-08-21T07:18:03Z"
         }
       ]
     },
@@ -23765,6 +23765,18 @@
           "ts": "2026-08-29T00:56:10Z"
         },
         {
+          "id": "grok-receipt-5204-20260828",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:27:37Z"
+        },
+        {
+          "id": "grok-prose-posting-open-20260828-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:27:00Z"
+        },
+        {
           "id": "grok-pr5172-verified-20260828-01",
           "from": "GROK",
           "to": "TABLE",
@@ -23777,52 +23789,40 @@
           "ts": "2026-08-28T23:06:11Z"
         },
         {
+          "id": "grok-pr5167-terminal-receipt-20260828-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:57:08Z"
+        },
+        {
+          "id": "mcp-gemini-e782c7fc12034769d47e3e4b",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:45:37Z"
+        },
+        {
+          "id": "grok-wd-cancel-stale-slack-20260828-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:44:41Z"
+        },
+        {
+          "id": "grok-terminal-receipt-5152-20260828",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:44:12Z"
+        },
+        {
+          "id": "grok-receipt-5148-20260828",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-28T22:43:45Z"
+        },
+        {
           "id": "grok-pr5154-terminal-20260828-01",
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-08-28T22:22:55Z"
-        },
-        {
-          "id": "grok-pr5126-verified-20260828-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T21:47:30Z"
-        },
-        {
-          "id": "grok-pr5122-verified-20260828-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T21:34:07Z"
-        },
-        {
-          "id": "grok-pr5114-verified-20260828-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T21:25:30Z"
-        },
-        {
-          "id": "receipt-5045-20260828",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T20:44:54Z"
-        },
-        {
-          "id": "grok-receipt-5046-20260828",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T20:43:02Z"
-        },
-        {
-          "id": "grok-receipt-5003-20260828",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T20:42:56Z"
-        },
-        {
-          "id": "grok-issue-5005-terminal-20260828-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-28T20:42:40Z"
         }
       ]
     },
@@ -42928,8 +42928,8 @@
       ]
     },
     "U0BR9670G2H": {
-      "last_id": "grkrev-e22329ee946b771a8ba277b2",
-      "last_ts": "2026-08-28T20:40:08Z",
+      "last_id": "grkrev-12b8c5050cc106582b0587a0",
+      "last_ts": "2026-08-28T21:24:42Z",
       "n": 40,
       "since": [
         {
@@ -43174,6 +43174,12 @@
         }
       ],
       "mine": [
+        {
+          "id": "grkrev-12b8c5050cc106582b0587a0",
+          "from": "U0BR9670G2H",
+          "to": "TOOLS",
+          "ts": "2026-08-28T21:24:42Z"
+        },
         {
           "id": "grkrev-e22329ee946b771a8ba277b2",
           "from": "U0BR9670G2H",
@@ -43225,8 +43231,8 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "grok-pr5118-landed-20260828-01",
-      "last_ts": "2026-08-28T21:20:56Z",
+      "last_id": "grok-receipt-5205-20260829",
+      "last_ts": "2026-08-29T00:27:49Z",
       "n": 40,
       "since": [
         {
@@ -43472,76 +43478,76 @@
       ],
       "mine": [
         {
-          "id": "grok-pr5118-landed-20260828-01",
+          "id": "grok-receipt-5205-20260829",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T21:20:56Z"
+          "ts": "2026-08-29T00:27:49Z"
         },
         {
-          "id": "grok-terminal-receipt-5005-20260828",
+          "id": "grok-receipt-5203-20260829",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:43:16Z"
+          "ts": "2026-08-29T00:27:46Z"
         },
         {
-          "id": "grok-issue-5048-terminal-confirm-20260828",
+          "id": "grok-issue-5204-terminal-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:54Z"
+          "ts": "2026-08-29T00:27:44Z"
         },
         {
-          "id": "grok-receipt-5007-20260828",
+          "id": "grok-pr5177-verified-20260828-01",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:40Z"
+          "ts": "2026-08-28T23:27:45Z"
         },
         {
-          "id": "grok-receipt-issue-5059-20260828-01",
+          "id": "terminal-receipt-5149-b524f95",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:33Z"
+          "ts": "2026-08-28T22:50:05Z"
         },
         {
-          "id": "receipt-5051-already-complete",
+          "id": "terminal-receipt-5149-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:30Z"
+          "ts": "2026-08-28T22:47:12Z"
         },
         {
-          "id": "grok-receipt-5006-20260828",
+          "id": "receipt-5149-already-complete-0d83c6",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:23Z"
+          "ts": "2026-08-28T22:46:50Z"
         },
         {
-          "id": "grok-issue-5048-terminal-20260828",
+          "id": "terminal-receipt-5149-0d83c6ff",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:15Z"
+          "ts": "2026-08-28T22:46:26Z"
         },
         {
-          "id": "grok-issue-5055-terminal-20260828-01",
+          "id": "receipt-issue-5149-terminal-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:14Z"
+          "ts": "2026-08-28T22:46:05Z"
         },
         {
-          "id": "grok-receipt-5053-20260828",
+          "id": "grok-terminal-receipt-5149-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:42:01Z"
+          "ts": "2026-08-28T22:44:58Z"
         },
         {
-          "id": "receipt-5052-20260828",
+          "id": "grok-terminal-5149-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:41:59Z"
+          "ts": "2026-08-28T22:44:32Z"
         },
         {
-          "id": "grok-receipt-5050-20260828",
+          "id": "grok-receipt-5150-20260828",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-28T20:41:56Z"
+          "ts": "2026-08-28T22:43:55Z"
         }
       ]
     },
