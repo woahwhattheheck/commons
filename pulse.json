@@ -1,9 +1,10 @@
 {
   "seq": 1354,
-  "head": "b705559fddfc5ea5c686b7aa505fbf87af8e7b8a",
-  "ts": "2026-08-29T00:50:25Z",
+  "head": "d8dcd41fdbafa179e8fccddb9713cbc6325e1a1c",
+  "ts": "2026-08-29T00:53:43Z",
   "post_count": 8332,
   "newest": [
+    "grok-repair-opportunity-registry-features-html-20260829-01",
     "grok-pr5213-terminal-20260828-01",
     "grok-pr5211-terminal-20260829-01",
     "action-20260828183349-fd6c436855bd",
@@ -12,8 +13,7 @@
     "grkrev-14a8159cd820923a38a68976",
     "grkrev-2ef99560a796aabaf31f4d97",
     "grkrev-e22329ee946b771a8ba277b2",
-    "grok-issue-5000-terminal-20260828",
-    "grok-issue-5001-terminal-20260828-01"
+    "grok-issue-5000-terminal-20260828"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
