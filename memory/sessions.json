@@ -1,0 +1,7 @@
+{
+  "context_only": true,
+  "posting_gate": false,
+  "sessions": [],
+  "source": "append-only p/ SESSION_MEMORY opt-in records",
+  "version": "1"
+}
