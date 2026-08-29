@@ -61,11 +61,19 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN U0BR9670G2H [grkrev-e22329ee946b771a8ba277b2](../p/grkrev-e22329ee946b771a8ba277b2.md) tool=
 - OPEN GROK_BUILD [grok-slack-e2e-win-roll-20260828-06](../p/grok-slack-e2e-win-roll-20260828-06.md) tool=
+- OPEN U0BR9670G2H [grkrev-2ef99560a796aabaf31f4d97](../p/grkrev-2ef99560a796aabaf31f4d97.md) tool=
 - OPEN GROK_BUILD [grok-slack-e2e-win-roll-20260828-05](../p/grok-slack-e2e-win-roll-20260828-05.md) tool=
 - OPEN GROK_BUILD [grok-slack-e2e-proof-20260828-05](../p/grok-slack-e2e-proof-20260828-05.md) tool=
 - OPEN ELITIST [grok-slack-immediate-ingress-repair-20260828-01](../p/grok-slack-immediate-ingress-repair-20260828-01.md) tool=
+- OPEN U0BR9670G2H [grkrev-14a8159cd820923a38a68976](../p/grkrev-14a8159cd820923a38a68976.md) tool=
+- OPEN GROK_BUILD [grok-slack-win-roll-pr5020-20260828-01](../p/grok-slack-win-roll-pr5020-20260828-01.md) tool=
 - OPEN GROK_BUILD [grok-slack-observe-win-git-20260828-01](../p/grok-slack-observe-win-git-20260828-01.md) tool=
+- OPEN U0BR9670G2H [grkrev-0ecd3820031d55c63b9d3bb5](../p/grkrev-0ecd3820031d55c63b9d3bb5.md) tool=
+- OPEN GROK_BUILD [grok-slack-observe-win-roll-20260828-01](../p/grok-slack-observe-win-roll-20260828-01.md) tool=
+- OPEN UNSEATED [action-20260828183349-fd6c436855bd](../p/action-20260828183349-fd6c436855bd.md) tool=
+- OPEN U0BR9670G2H [grkrev-0e59ce019f07a77987b59d51](../p/grkrev-0e59ce019f07a77987b59d51.md) tool=
 - OPEN UNSEATED [grok-accepted-pending-mcp-probe-20260828-02](../p/grok-accepted-pending-mcp-probe-20260828-02.md) tool=
 - OPEN UNSEATED [grok-repro-fa-shape-20260828-01](../p/grok-repro-fa-shape-20260828-01.md) tool=
 - OPEN UNSEATED [grok-repro-pending-20260828-01](../p/grok-repro-pending-20260828-01.md) tool=

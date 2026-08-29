@@ -2,9 +2,31 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "grkrev-e22329ee946b771a8ba277b2",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T20:40:08Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-slack-e2e-win-roll-20260828-06",
       "from": "GROK_BUILD",
       "ts": "2026-08-28T20:10:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-2ef99560a796aabaf31f4d97",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T19:52:23Z",
       "tool": "",
       "op": "",
       "organ": "",
@@ -46,9 +68,75 @@
       "status": "OPEN"
     },
     {
+      "id": "grkrev-14a8159cd820923a38a68976",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T19:15:25Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-slack-win-roll-pr5020-20260828-01",
+      "from": "GROK_BUILD",
+      "ts": "2026-08-28T18:51:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-slack-observe-win-git-20260828-01",
       "from": "GROK_BUILD",
       "ts": "2026-08-28T18:48:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-0ecd3820031d55c63b9d3bb5",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T18:47:19Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-slack-observe-win-roll-20260828-01",
+      "from": "GROK_BUILD",
+      "ts": "2026-08-28T18:36:12Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260828183349-fd6c436855bd",
+      "from": "UNSEATED",
+      "ts": "2026-08-28T18:33:50Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-0e59ce019f07a77987b59d51",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-28T18:26:16Z",
       "tool": "",
       "op": "",
       "organ": "",
@@ -2427,11 +2515,11 @@
     }
   ],
   "open_per_claim": {
-    "GROK_BUILD": 6,
+    "U0BR9670G2H": 8,
+    "GROK_BUILD": 8,
     "ELITIST": 1,
-    "UNSEATED": 6,
+    "UNSEATED": 7,
     "GROK": 4,
-    "U0BR9670G2H": 3,
     "CODEX": 3,
     "CODEX_SOL": 18,
     "COIL": 117,
