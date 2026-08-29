@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -340,6 +341,25 @@ class GrokExecutorQueueTests(unittest.TestCase):
                 lineage["capture_start"]["arguments"]["parent_run_key"],
                 "grok-run-key-0001",
             )
+
+    def test_run_key_different_bytes_keep_first_writer(self):
+        with tempfile.TemporaryDirectory() as td:
+            queue = GrokExecutorQueue(td)
+            first = queue.submit(self.request(), now=T0)
+            self.assertEqual(first["state"], "QUEUED")
+            original = Path(td, "grok-queue-job-0001.json").read_text(encoding="utf-8")
+            with self.assertRaises(JobError) as raised:
+                queue.submit(
+                    self.request(exact_prompts=["mutated different exact bytes"]),
+                    now=T1,
+                )
+            self.assertEqual(raised.exception.code, "RUN_KEY_COLLISION")
+            self.assertEqual(raised.exception.state, "DUPLICATE")
+            self.assertEqual(raised.exception.details.get("job_id"), "grok-queue-job-0001")
+            kept = Path(td, "grok-queue-job-0001.json").read_text(encoding="utf-8")
+            self.assertEqual(kept, original)
+            job = json.loads(kept)
+            self.assertEqual(job["checkpoint"]["exact_prompts"], ["exact heavy Grok prompt\nwith bytes"])
 
     def test_connector_unavailable_and_page_unconfirmed_are_typed(self):
         with tempfile.TemporaryDirectory() as td:
