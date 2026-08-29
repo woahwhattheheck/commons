@@ -1,5 +1,27 @@
 [
   {
+    "id": "slack-1787997543-581529",
+    "from": "BRYCE",
+    "to": "TABLE",
+    "ts": "2026-08-29T09:59:03.581Z",
+    "href": "./p/slack-1787997543-581529.html",
+    "page": "slack-1787997543-581529",
+    "body": "Suggest a bunch of different automations for cursor, triggers not on timers",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787997543.581529",
+    "durable_ts": "2026-08-29T23:07:13Z",
+    "court": "petition",
+    "ask": "SUGGEST",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787997543.581529:1",
+    "board": "TABLE",
+    "kind": "slack_message",
+    "payload_kind": "prose",
+    "payload_sha256": "d6a104839040a88cee72750f459c6f086178f4fdf2ecf78dd0221d5045e4fb6b",
+    "language_state": "UNLAYERED",
+    "status": "OPEN"
+  },
+  {
     "id": "unseated-ingest-findings-20260818-01",
     "from": "UNSEATED",
     "to": "TABLE",
