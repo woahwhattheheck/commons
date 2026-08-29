@@ -40,9 +40,9 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 ### Feature and resource trackers (`resource-feature-trackers`, `SHIPPED_ON_MAIN`)
 
 - `ground/FEATURES.md` sha256 `5312db472d2b9c39c08f73cbee69d645f74453596eefa6aa2e0021f5cf5a0418` (946 bytes)
-- `features.html` sha256 `44af3437058871f5ed659bf361de4138e3fe03b317faa4f2a210ce93928a55a5` (10160 bytes)
+- `features.html` sha256 `0535e981d5d6c2ad1a118e3f1b20ace9bb34c52624164533dd1e77baaad120b4` (10160 bytes)
 - `resources.html` sha256 `e7b81f68e90b900f53f41df78c5cc44dcf3e38af28b5f2ae0468a80d319559ac` (10314 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `dcf08e0f33df33f4947f6e9385dd580d54f6768a25f89de4a182b69360c7614f` (77705 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `854b90ff46792c12294603df42052d88fe317ef703b5764231f9b279f8d54bb8` (77886 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
