@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-29T04:05:47Z",
-    "base_main_sha": "d3414c8cf82c205387b23366f17eaff60cd48822",
+    "observed_at": "2026-08-29T23:06:24.617Z",
+    "base_main_sha": "5e6238f8cab35f044543ecde142be8df76b27cff",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1787976347.829539",
-  "source_id": "codex-github-actions-watchdog-production-activation-20260829-01",
+  "slack_ts": "1787997064.565089",
+  "source_id": "codex-muhlnickel-distro-sales-door-activation-20260829-01",
   "supersedes_source_ids": [
+    "codex-github-actions-watchdog-production-activation-20260829-01",
     "codex-supergrok-commons-tool-consumer-activation-20260828-01",
     "codex-github-actions-watchdog-advancement-20260828-01",
     "codex-grok-executor-queue-activation-20260828-01",
@@ -48,7 +49,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — GitHub Actions watchdog now produces durable moving-main writes; underlying Grok jobs remain degraded",
+  "subject": "MASTER RESOURCE LEDGER — Muhlnickel DISTRO public sales door discovered and producing; checkout, delivery, buyer, and cash remain unlanded",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -70,7 +71,8 @@
     "inventory/resources/records/codex-grok-executor-queue-activation-20260828-01.json",
     "inventory/resources/records/codex-github-actions-watchdog-advancement-20260828-01.json",
     "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
-    "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json"
+    "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
+    "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json"
   ],
   "priority_queue": [
     {
@@ -1383,6 +1385,28 @@
       "last_receipt": "grok-payment-capability-hub-failover-20260828-02",
       "last_used_at": "2026-08-28T17:23:00Z",
       "stale_after": "PT6H"
+    },
+    {
+      "name": "muhlnickel-distro-public-sales-door",
+      "kind": "COMMERCIAL_ASSET",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Token Junkie Labs",
+      "authority": "PUBLIC_READ_AND_INQUIRY; OWNER_ONLY_PAYMENT_LINK_DELIVERY_AND_FINANCIAL_ACTION",
+      "consumer": "Prospective Muhlnickel DISTRO buyers seeking the folder through the public listing and inbound mail route",
+      "value": "Dedicated measured sales listing, discoverable sitemap entry, inbound mail CTA, preserved payment catalog, and an explicit owner checkout slot",
+      "next_action": "Use the existing inbound mail path for a real buyer inquiry; add a dedicated checkout or artifact delivery only with an owner-minted link or exact delivery receipt.",
+      "source": "PR #5321; distro.html; p/kimi-distro-listing-20260829-01.md; #commons 1787997064.565089",
+      "evidence_ts": "2026-08-29T09:51:04Z",
+      "auth_surface": "current-main Git blobs plus exact #commons public-integration receipt",
+      "exact_safe_probe": "PR #5321 merged as 8a38c76d65dde2cda7b1a657f392af8c27d448b8. Current main retains distro.html blob 565845d3, zero DISTRO Stripe URLs, seven unique catalog URLs, OWNER SLOT, No login, artifact-not-published text, mail CTA, WB-RANGE line, sitemap entry, four named listing tests, and exact merge receipt.",
+      "rate_plan_boundary": "A listing, mail CTA, catalog pointer, or owner slot is not checkout, buyer, artifact delivery, authorization, settlement, payout, revenue, or cash. Public search did not render the page in this task, so condition remains CONSTRAINED.",
+      "assigned_backlog": "one real prospective-buyer inquiry; owner-only payment-link or delivery action only when actually needed",
+      "last_receipt": "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+      "last_used_at": "2026-08-29T09:51:04Z",
+      "stale_after": "P7D",
+      "priority": 80
     }
   ]
 }
