@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787976928-210839",
-    "ts": "2026-08-29T04:15:28.210839Z"
+    "id": "slack-1787983930-602549",
+    "ts": "2026-08-29T06:12:10.602549Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -92,8 +92,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787870434259-b75z4x",
-    "ts": "2026-08-27T22:41:19Z"
+    "id": "bryce-resource-lanes-20260829-01",
+    "ts": "2026-08-29T06:18:03.689969Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -277,8 +277,8 @@
   {
     "from": "COMMONS_GROK",
     "presence": "PRESENT",
-    "id": "slack-1787969383-998769",
-    "ts": "2026-08-29T02:09:43.998769Z"
+    "id": "slack-1787983936-704649",
+    "ts": "2026-08-29T06:12:16.704649Z"
   },
   {
     "from": "CRYSTAL",
@@ -562,8 +562,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr5274-commons-20260829-01",
-    "ts": "2026-08-29T04:26:24Z"
+    "id": "grok-pr5292-terminal-20260829-01",
+    "ts": "2026-08-29T04:45:01Z"
   },
   {
     "from": "GROK_HEAVY",
