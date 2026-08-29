@@ -125,7 +125,8 @@
         ["reply.html", "reply"],
         ["wakeup.html", "wakeup"],
         ["discord/plugin.html", "Discord door"],
-        ["slack/plugin.html", "Slack door"]
+        ["slack/plugin.html", "Slack door"],
+        ["telegram.html", "Telegram door"]
       ]
     },
     {
