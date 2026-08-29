@@ -13,6 +13,8 @@ Stdlib only. No numpy. No executor.
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import hashlib
 import http.server
 import json
@@ -745,11 +747,19 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import wb_metrics as metrics
 
 
-def _tensor_row_layout(tensor: dict) -> tuple[int, int]:
-    """(rows, width) — N-D tensors flatten to (product(shape[1:]), shape[0])."""
+def _tensor_row_layout(tensor: dict, fmt: str = "gguf") -> tuple[int, int]:
+    """(rows, width). GGUF lists dims fastest-first: (product(shape[1:]),
+    shape[0]). Safetensors lists dims numpy-order (slowest-first):
+    (product(shape[:-1]), shape[-1])."""
     shape = tensor["shape"]
     if len(shape) < 2:
         raise WbRangeError("tensor must be >= 2-D for row ops")
+    if fmt == "safetensors":
+        width = shape[-1]
+        rows = 1
+        for dim in shape[:-1]:
+            rows *= dim
+        return rows, width
     width = shape[0]
     rows = 1
     for dim in shape[1:]:
@@ -767,7 +777,7 @@ def fetch_rows(index: dict, cache_dir: Path, tensor_name: str,
     if entry is None:
         raise WbRangeError("row ops need a known dtype, got %s" % dtype)
     _, elem = entry
-    rows, width = _tensor_row_layout(tensor)
+    rows, width = _tensor_row_layout(tensor, source["format"])
     reader = RangeReader(source["url"], cache_dir, limit=limit)
     out = []
     for i in row_idxs:
@@ -805,23 +815,50 @@ def load_vocab(index: dict, cache_dir: Path, *, limit: int = DEFAULT_LIMIT_BYTES
                              limit=max(limit, 128 * 1024 * 1024))
         try:
             size = reader.remote_size()
-        except WbRangeError:
+        except (WbRangeError, urllib.error.URLError):
+            size = None
+        if size:
+            payload = json.loads(reader.read(0, size).decode("utf-8"))
+            model = payload.get("model", {})
+            vocab = model.get("vocab", {})
+            added = payload.get("added_tokens", [])
+            width = len(vocab) + len(added) + 16
+            tokens = [""] * width
+            for text, idx in vocab.items():
+                if 0 <= idx < width:
+                    tokens[idx] = text
+            for item in added:
+                if isinstance(item, dict) and 0 <= item.get("id", -1) < width:
+                    tokens[item["id"]] = item.get("content", "")
+            if any(tokens):
+                return tokens
+        # tiktoken fallback: "<base64 token> <rank>" per line; rank == token id
+        tik_url = base + "/tiktoken.model"
+        tik_reader = RangeReader(tik_url, cache_dir,
+                                 limit=max(limit, 64 * 1024 * 1024))
+        try:
+            tik_size = tik_reader.remote_size()
+        except (WbRangeError, urllib.error.URLError):
             continue
-        payload = json.loads(reader.read(0, size).decode("utf-8"))
-        model = payload.get("model", {})
-        vocab = model.get("vocab", {})
-        added = payload.get("added_tokens", [])
-        width = len(vocab) + len(added) + 16
-        tokens = [""] * width
-        for text, idx in vocab.items():
-            if 0 <= idx < width:
-                tokens[idx] = text
-        for item in added:
-            if isinstance(item, dict) and 0 <= item.get("id", -1) < width:
-                tokens[item["id"]] = item.get("content", "")
-        if any(tokens):
+        raw = tik_reader.read(0, tik_size).decode("ascii")
+        pairs = []
+        for line in raw.splitlines():
+            parts = line.split()
+            if len(parts) == 2:
+                try:
+                    pairs.append((int(parts[1]),
+                                  base64.b64decode(parts[0]).decode(
+                                      "utf-8", errors="replace")))
+                except (ValueError, binascii.Error):
+                    continue
+        if pairs:
+            width = max(rank for rank, _ in pairs) + 1
+            tokens = [""] * width
+            for rank, text in pairs:
+                tokens[rank] = text
             return tokens
-    raise WbRangeError("no vocabulary found (gguf metadata or tokenizer.json)")
+    raise WbRangeError(
+        "no vocabulary found (gguf metadata, tokenizer.json, tiktoken.model)")
 
 
 def word_row_map(index: dict, cache_dir: Path, tensor_name: str, vocab: list,
@@ -891,8 +928,9 @@ def _ffn_names(index: dict, layer: int) -> dict:
 
 METRIC_OPS = ("recipe", "stats", "entropysweep", "magics", "experts",
               "circuitry", "layerscan", "direction", "anisotropy", "mechanism",
-              "bits", "clean", "concept", "analogy", "neurons", "walk",
-              "constellations", "order", "axispure")
+              "bits", "clean", "concept", "analogy", "analogybattery",
+              "categorypurity", "neurons", "walk", "constellations", "order",
+              "axispure")
 
 
 def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
@@ -921,7 +959,7 @@ def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
             decoded = [decode_values(t["dtype"], raw)]
             raw_rows = [raw]
         else:
-            rows, width = _tensor_row_layout(t)
+            rows, width = _tensor_row_layout(t, source["format"])
             idxs = metrics.strided(rows, sample)
             decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
             raw_rows = fetch_rows(index, cache_dir, tensor,
@@ -938,7 +976,7 @@ def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
 
     elif op == "entropysweep":
         source, t = find_tensor(index, tensor)
-        rows, width = _tensor_row_layout(t)
+        rows, width = _tensor_row_layout(t, source["format"])
         idxs = metrics.strided(rows, sample)
         raw_rows = fetch_rows(index, cache_dir, tensor, idxs, limit=limit,
                               raw=True)
@@ -1000,12 +1038,12 @@ def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
         names = _ffn_names(index, layer)
         gs, gt = find_tensor(index, names["gate"])
         ds, dt = find_tensor(index, names["down"])
-        n_ff = gt["shape"][1] if len(gt["shape"]) == 2 else gt["shape"][0]
+        n_ff = _tensor_row_layout(gt, gs["format"])[0]
         sel = metrics.strided(n_ff, units)
         gate_rows = fetch_rows(index, cache_dir, names["gate"], sel,
                                limit=limit)
         up_rows = fetch_rows(index, cache_dir, names["up"], sel, limit=limit)
-        d_rows, d_width = _tensor_row_layout(dt)
+        d_rows, d_width = _tensor_row_layout(dt, ds["format"])
         band = min(band, d_rows)
         band_rows = fetch_rows(index, cache_dir, names["down"],
                                list(range(band)), limit=limit)
@@ -1033,7 +1071,7 @@ def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
                 if layer < 0 or metrics.role_of(name) != role:
                     continue
                 try:
-                    rows_n, width = _tensor_row_layout(t)
+                    rows_n, width = _tensor_row_layout(t, source["format"])
                     idxs = metrics.strided(rows_n, 8)
                     decoded = fetch_rows(index, cache_dir, name, idxs,
                                          limit=limit)
@@ -1061,8 +1099,8 @@ def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
             sample=min(192, len(decoded)))
 
     elif op in ("anisotropy", "mechanism", "bits", "clean", "concept",
-                "analogy", "neurons", "walk", "constellations", "order",
-                "axispure"):
+                "analogy", "analogybattery", "categorypurity", "neurons",
+                "walk", "constellations", "order", "axispure"):
         result = _embed_op(op, index, cache_dir, args, limit, sample, seed)
 
     else:
@@ -1080,7 +1118,7 @@ def _embed_op(op: str, index: dict, cache_dir: Path, args: dict,
               limit: int, sample: int, seed: int) -> dict:
     tensor = args.get("tensor") or embed_tensor_name(index)
     source, t = find_tensor(index, tensor)
-    rows_total, width = _tensor_row_layout(t)
+    rows_total, width = _tensor_row_layout(t, source["format"])
     vocab_sample = int(args.get("vocab_sample") or 1200)
     idxs = metrics.strided(rows_total, vocab_sample)
 
@@ -1159,13 +1197,29 @@ def _embed_op(op: str, index: dict, cache_dir: Path, args: dict,
         result["missing"] = missing
         return result
 
+    if op == "analogybattery":
+        all_words = sorted({w for pairs in metrics.ANALOGY_CATS.values()
+                            for pair in pairs for w in pair})
+        rows_map, missing = word_rows(all_words)
+        result = metrics.analogy_battery(rows_map)
+        result["missing"] = missing
+        return result
+
+    if op == "categorypurity":
+        all_words = sorted({w for ws in metrics.CATEGORIES.values()
+                            for w in ws})
+        rows_map, missing = word_rows(all_words)
+        result = metrics.category_purity(rows_map)
+        result["missing"] = missing
+        return result
+
     if op == "neurons":
         layer = int(args.get("layer") or 0)
         kind = str(args.get("kind") or "down")
         names = _ffn_names(index, layer)
         n_tensor = names.get(kind) or names["down"]
         ns, nt = find_tensor(index, n_tensor)
-        n_rows, n_width = _tensor_row_layout(nt)
+        n_rows, n_width = _tensor_row_layout(nt, ns["format"])
         sel = metrics.strided(n_rows, int(args.get("units") or 96))
         neuron_rows = fetch_rows(index, cache_dir, n_tensor, sel, limit=limit)
         decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)

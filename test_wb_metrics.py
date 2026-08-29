@@ -367,14 +367,15 @@ class WiringTests(unittest.TestCase):
         self.assertIn("PFCGAME1", result["result"]["tags"])
 
     def test_circuitry_over_ranges(self):
-        # n_embd = 2, n_ff = 4: gate/up [n_embd, n_ff], down [n_ff, n_embd]
+        # safetensors numpy order: n_embd = 2, n_ff = 4:
+        # gate/up [n_ff, n_embd], down [n_embd, n_ff]
         gate = struct.pack("<8f", 1, 0, 1, 0, 0, 1, 0, 0)
         up = struct.pack("<8f", .9, .1, -.9, -.1, 0, 1, 1, 1)
         down = struct.pack("<8f", .5, .5, 0, 0, 0, 0, .5, 0)
         full_index = self._serve_index({
-            "blk.0.ffn_gate.weight": ("F32", [2, 4], gate),
-            "blk.0.ffn_up.weight": ("F32", [2, 4], up),
-            "blk.0.ffn_down.weight": ("F32", [4, 2], down),
+            "blk.0.ffn_gate.weight": ("F32", [4, 2], gate),
+            "blk.0.ffn_up.weight": ("F32", [4, 2], up),
+            "blk.0.ffn_down.weight": ("F32", [2, 4], down),
         })
         archive = wb_range.Archive(self.work / "archive")
         result = wb_range.metric_op("circuitry", full_index, archive,
