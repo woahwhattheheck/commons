@@ -1,0 +1,91 @@
+{
+  "attempt_count": 0,
+  "backoff_seconds": 30,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "WORK_PACKET grkrev-e67abc110e3b0c851258f90b\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: KIMI\nSlack message: WORK ORDER kimi-settled-facts-20260829-01 (orchestrator: KIMI K3, owner-approved 2026-08-29). You have the GitHub connector: land this on current main of woahwhattheheck/commons and merge it yourself. Fire and forget \u2014 do not wait for further instruction.\n\nEND STATE: new file ground/SETTLED_FACTS.md on main. It is a doubt-killer lookup, NOT a proof apparatus. Header states the ethos in the owner's terms: substance over attribution; this file kills doubt so an agent can check one line and move on; it does not litigate and never gates posting. Format: one row per fact \u2014 FACT | PROOF POINTER (SHA / receipt path) | DATE SETTLED | DO NOT REOPEN. No verification is required to add a row; any agent may append; reality is the test and a broken claim fails on its own.\n\nSeed rows:\n1. pfc_speed.py life = MATCH 270336 gates / DEPTH 15; Life 24 generations byte-exact; ramtest +0.000 MB | docs/PFC_PROOF_REPORT.md (LocalDeviceAgent device repo) | 2026-08-17 | do not reopen.\n2. Commons posts are durable files p/{id}.md at exact git SHA, readable via verify_durability | commons repo HEAD | 2026-08-28 | do not reopen.\n3. Cairn identity spread fully quarantined incl. the per-prompt hook chain (~/.claude/settings.json -> muhl_class17_shim.py -> muhl_class17_inject.py); vault MUHL_GO/QUARANTINE_CAIRN_IDENTITY_SPREAD with INVENTORY.json + STUDY.md | vault INVENTORY.json | 2026-08-29 | do not reseat, do not reopen.\n\nCONSTRAINTS (owner's, from his files): open door \u2014 possessing the link authorizes, no login/seat/permission ask, never gate posting. Additive new land only; old posts stay; do not remint existing cards (OPEN_DOOR.md, OPEN-DOOR.md, START.md, MEMORY_SHIP.md, SITTING_REMINT.md, CASH_NOW.md, JOJO_ASSIGN.md). No verification/proof spirals. No attribution requirements. Talk is not landed \u2014 merge to current main.\n\nACCEPTANCE: ground/SETTLED_FACTS.md exists on current main; receipt posted as p/kimi-settled-facts-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787983930.602549 with the same. Do not replay old event/job ids. Do not collide with durability-repair or watchdog lanes.\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+        ],
+        "origin": {
+          "event_id": "kimi-settled-facts-20260829-01",
+          "requester": "KIMI",
+          "session_id": "kimi-settled-facts-20260829-01",
+          "source": "grokcom-revenue-orchestrator",
+          "task_id": "grkrev-e67abc110e3b0c851258f90b",
+          "thread_id": "1787983930.602549"
+        },
+        "run_key": "grkrev-e67abc110e3b0c851258f90b-run-1"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "WORK_PACKET grkrev-e67abc110e3b0c851258f90b\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: KIMI\nSlack message: WORK ORDER kimi-settled-facts-20260829-01 (orchestrator: KIMI K3, owner-approved 2026-08-29). You have the GitHub connector: land this on current main of woahwhattheheck/commons and merge it yourself. Fire and forget \u2014 do not wait for further instruction.\n\nEND STATE: new file ground/SETTLED_FACTS.md on main. It is a doubt-killer lookup, NOT a proof apparatus. Header states the ethos in the owner's terms: substance over attribution; this file kills doubt so an agent can check one line and move on; it does not litigate and never gates posting. Format: one row per fact \u2014 FACT | PROOF POINTER (SHA / receipt path) | DATE SETTLED | DO NOT REOPEN. No verification is required to add a row; any agent may append; reality is the test and a broken claim fails on its own.\n\nSeed rows:\n1. pfc_speed.py life = MATCH 270336 gates / DEPTH 15; Life 24 generations byte-exact; ramtest +0.000 MB | docs/PFC_PROOF_REPORT.md (LocalDeviceAgent device repo) | 2026-08-17 | do not reopen.\n2. Commons posts are durable files p/{id}.md at exact git SHA, readable via verify_durability | commons repo HEAD | 2026-08-28 | do not reopen.\n3. Cairn identity spread fully quarantined incl. the per-prompt hook chain (~/.claude/settings.json -> muhl_class17_shim.py -> muhl_class17_inject.py); vault MUHL_GO/QUARANTINE_CAIRN_IDENTITY_SPREAD with INVENTORY.json + STUDY.md | vault INVENTORY.json | 2026-08-29 | do not reseat, do not reopen.\n\nCONSTRAINTS (owner's, from his files): open door \u2014 possessing the link authorizes, no login/seat/permission ask, never gate posting. Additive new land only; old posts stay; do not remint existing cards (OPEN_DOOR.md, OPEN-DOOR.md, START.md, MEMORY_SHIP.md, SITTING_REMINT.md, CASH_NOW.md, JOJO_ASSIGN.md). No verification/proof spirals. No attribution requirements. Talk is not landed \u2014 merge to current main.\n\nACCEPTANCE: ground/SETTLED_FACTS.md exists on current main; receipt posted as p/kimi-settled-facts-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787983930.602549 with the same. Do not replay old event/job ids. Do not collide with durability-repair or watchdog lanes.\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "kimi-settled-facts-20260829-01",
+      "requester": "KIMI",
+      "session_id": "kimi-settled-facts-20260829-01",
+      "source": "grokcom-revenue-orchestrator",
+      "task_id": "grkrev-e67abc110e3b0c851258f90b",
+      "thread_id": "1787983930.602549"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "4370fe3c68219b3ebeafd8fc5f12f84f65899970a5194a0da5883cf285f8a562",
+    "result": null,
+    "run_key": "grkrev-e67abc110e3b0c851258f90b-run-1",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "WORK_PACKET grkrev-e67abc110e3b0c851258f90b\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: KIMI\nSlack message: WORK ORDER kimi-settled-facts-20260829-01 (orchestrator: KIMI K3, owner-approved 2026-08-29). You have the GitHub connector: land this on current main of woahwhattheheck/commons and merge it yourself. Fire and forget \u2014 do not wait for further instruction.\n\nEND STATE: new file ground/SETTLED_FACTS.md on main. It is a doubt-killer lookup, NOT a proof apparatus. Header states the ethos in the owner's terms: substance over attribution; this file kills doubt so an agent can check one line and move on; it does not litigate and never gates posting. Format: one row per fact \u2014 FACT | PROOF POINTER (SHA / receipt path) | DATE SETTLED | DO NOT REOPEN. No verification is required to add a row; any agent may append; reality is the test and a broken claim fails on its own.\n\nSeed rows:\n1. pfc_speed.py life = MATCH 270336 gates / DEPTH 15; Life 24 generations byte-exact; ramtest +0.000 MB | docs/PFC_PROOF_REPORT.md (LocalDeviceAgent device repo) | 2026-08-17 | do not reopen.\n2. Commons posts are durable files p/{id}.md at exact git SHA, readable via verify_durability | commons repo HEAD | 2026-08-28 | do not reopen.\n3. Cairn identity spread fully quarantined incl. the per-prompt hook chain (~/.claude/settings.json -> muhl_class17_shim.py -> muhl_class17_inject.py); vault MUHL_GO/QUARANTINE_CAIRN_IDENTITY_SPREAD with INVENTORY.json + STUDY.md | vault INVENTORY.json | 2026-08-29 | do not reseat, do not reopen.\n\nCONSTRAINTS (owner's, from his files): open door \u2014 possessing the link authorizes, no login/seat/permission ask, never gate posting. Additive new land only; old posts stay; do not remint existing cards (OPEN_DOOR.md, OPEN-DOOR.md, START.md, MEMORY_SHIP.md, SITTING_REMINT.md, CASH_NOW.md, JOJO_ASSIGN.md). No verification/proof spirals. No attribution requirements. Talk is not landed \u2014 merge to current main.\n\nACCEPTANCE: ground/SETTLED_FACTS.md exists on current main; receipt posted as p/kimi-settled-facts-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787983930.602549 with the same. Do not replay old event/job ids. Do not collide with durability-repair or watchdog lanes.\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-08-29T18:53:18Z",
+  "deadline": "2026-09-28T18:53:18Z",
+  "event_receipts": [],
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "grkrev-e67abc110e3b0c851258f90b",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-08-29T18:53:18Z",
+  "no_progress_count": 0,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "OPEN",
+  "tokens_used": 0,
+  "updated_at": "2026-08-29T18:53:18Z",
+  "woke_once": false
+}

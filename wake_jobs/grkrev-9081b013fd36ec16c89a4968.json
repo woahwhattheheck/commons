@@ -1,0 +1,91 @@
+{
+  "attempt_count": 0,
+  "backoff_seconds": 30,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "WORK_PACKET grkrev-9081b013fd36ec16c89a4968\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: <@U0BTGV2G589> OWNER LAND ORDER `bryce-land-subzero-walker-20260829-01` \u2014 <http://grok.com|grok.com> lane. Do the work. Ship it to current main. Do not leave unique bytes sitting in your session.\n\nBuild the already-specified walker `kimi-subzero-walker-20260829-01`: stdlib-only, tick the public GRBN excerpt (8,704 gates) through one full settle, commit printed next-state bits beside the excerpt. One public artifact crosses STRUCTURAL_ONLY \u2192 RUNTIME_MEASURED.\n\nLand rules:\n\u2022 Unique work on current main this turn. Fetch before commit. Merge, not force. Keep original branches alive.\n\u2022 Receipt = PR URL + merge SHA + `INTEGRATED \u2014 VERIFIED ON CURRENT MAIN` as `p/kimi-subzero-walker-20260829-01.md` on that SHA. Talk is not landed.\n\u2022 Snapshot input bytes for every gate read during the settle. Gate records are node-ordered; final roots write back onto the 256 input/state addresses. If you skip the snapshot, later nodes eat earlier writes and you get an accidental async walk.\n\u2022 Preserve byte-for-byte: `excerpts/20260823/muhl_grbn.mno` e39bad0d\u2026, `grbn_circuits.json` d2c190f2\u2026, fabricator f20609aa\u2026\n\u2022 Additive only. No titan. No live-container writes. No remint of existing cards.\n\u2022 Fresh main is moving. Do not sit on a dirty branch. If a piece cannot land, say the exact blocker in one terminal reply.\nThis is owner-directed. <http://grok.com|grok.com> builds. Main is the ledger. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+        ],
+        "origin": {
+          "event_id": "Ev0BTM86QS1F",
+          "requester": "U0BR9670G2H",
+          "session_id": "Ev0BTM86QS1F",
+          "source": "grokcom-revenue-orchestrator",
+          "task_id": "grkrev-9081b013fd36ec16c89a4968",
+          "thread_id": "1787988363.062809"
+        },
+        "run_key": "grkrev-9081b013fd36ec16c89a4968-run-1"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "WORK_PACKET grkrev-9081b013fd36ec16c89a4968\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: <@U0BTGV2G589> OWNER LAND ORDER `bryce-land-subzero-walker-20260829-01` \u2014 <http://grok.com|grok.com> lane. Do the work. Ship it to current main. Do not leave unique bytes sitting in your session.\n\nBuild the already-specified walker `kimi-subzero-walker-20260829-01`: stdlib-only, tick the public GRBN excerpt (8,704 gates) through one full settle, commit printed next-state bits beside the excerpt. One public artifact crosses STRUCTURAL_ONLY \u2192 RUNTIME_MEASURED.\n\nLand rules:\n\u2022 Unique work on current main this turn. Fetch before commit. Merge, not force. Keep original branches alive.\n\u2022 Receipt = PR URL + merge SHA + `INTEGRATED \u2014 VERIFIED ON CURRENT MAIN` as `p/kimi-subzero-walker-20260829-01.md` on that SHA. Talk is not landed.\n\u2022 Snapshot input bytes for every gate read during the settle. Gate records are node-ordered; final roots write back onto the 256 input/state addresses. If you skip the snapshot, later nodes eat earlier writes and you get an accidental async walk.\n\u2022 Preserve byte-for-byte: `excerpts/20260823/muhl_grbn.mno` e39bad0d\u2026, `grbn_circuits.json` d2c190f2\u2026, fabricator f20609aa\u2026\n\u2022 Additive only. No titan. No live-container writes. No remint of existing cards.\n\u2022 Fresh main is moving. Do not sit on a dirty branch. If a piece cannot land, say the exact blocker in one terminal reply.\nThis is owner-directed. <http://grok.com|grok.com> builds. Main is the ledger. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "Ev0BTM86QS1F",
+      "requester": "U0BR9670G2H",
+      "session_id": "Ev0BTM86QS1F",
+      "source": "grokcom-revenue-orchestrator",
+      "task_id": "grkrev-9081b013fd36ec16c89a4968",
+      "thread_id": "1787988363.062809"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "96b8bba2a45dc0fccadf5cd0168fa91da21168b95dba1d1e196c95efe32202a4",
+    "result": null,
+    "run_key": "grkrev-9081b013fd36ec16c89a4968-run-1",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "WORK_PACKET grkrev-9081b013fd36ec16c89a4968\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nImplement the smallest complete change in the connected GitHub repository, test it, and return exact paths, blobs, base/head SHAs, and test output.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: <@U0BTGV2G589> OWNER LAND ORDER `bryce-land-subzero-walker-20260829-01` \u2014 <http://grok.com|grok.com> lane. Do the work. Ship it to current main. Do not leave unique bytes sitting in your session.\n\nBuild the already-specified walker `kimi-subzero-walker-20260829-01`: stdlib-only, tick the public GRBN excerpt (8,704 gates) through one full settle, commit printed next-state bits beside the excerpt. One public artifact crosses STRUCTURAL_ONLY \u2192 RUNTIME_MEASURED.\n\nLand rules:\n\u2022 Unique work on current main this turn. Fetch before commit. Merge, not force. Keep original branches alive.\n\u2022 Receipt = PR URL + merge SHA + `INTEGRATED \u2014 VERIFIED ON CURRENT MAIN` as `p/kimi-subzero-walker-20260829-01.md` on that SHA. Talk is not landed.\n\u2022 Snapshot input bytes for every gate read during the settle. Gate records are node-ordered; final roots write back onto the 256 input/state addresses. If you skip the snapshot, later nodes eat earlier writes and you get an accidental async walk.\n\u2022 Preserve byte-for-byte: `excerpts/20260823/muhl_grbn.mno` e39bad0d\u2026, `grbn_circuits.json` d2c190f2\u2026, fabricator f20609aa\u2026\n\u2022 Additive only. No titan. No live-container writes. No remint of existing cards.\n\u2022 Fresh main is moving. Do not sit on a dirty branch. If a piece cannot land, say the exact blocker in one terminal reply.\nThis is owner-directed. <http://grok.com|grok.com> builds. Main is the ledger. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-08-29T18:53:18Z",
+  "deadline": "2026-09-28T18:53:18Z",
+  "event_receipts": [],
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "grkrev-9081b013fd36ec16c89a4968",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-08-29T18:53:18Z",
+  "no_progress_count": 0,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "OPEN",
+  "tokens_used": 0,
+  "updated_at": "2026-08-29T18:53:18Z",
+  "woke_once": false
+}
