@@ -1,6 +1,6 @@
 {
   "attempt_count": 2,
-  "backoff_seconds": 60,
+  "backoff_seconds": 120,
   "blocker": null,
   "budget_tokens": 1000000,
   "checkpoint": {
@@ -106,25 +106,21 @@
     }
   ],
   "harness": "grok.com authenticated browser via Commons MCP",
-  "in_backoff": false,
+  "in_backoff": true,
   "job_id": "grkrev-38bb3015a45f3ddcba050acc",
   "last_wake_at": "2026-08-29T23:11:28Z",
   "last_wake_checkpoint_fp": "41c098c19037f130",
   "last_wake_checkpoint_sha256": "41c098c19037f130075205f0cb71f077488313204ca2f47a1c94bac2502ac3c8",
-  "lease": {
-    "holder": "gh-watchdog",
-    "lease_id": "lease-55ab46cf5907",
-    "until": "2026-08-29T23:16:28Z"
-  },
+  "lease": null,
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
-  "next_wake_at": "2026-08-29T21:14:25Z",
-  "no_progress_count": 1,
+  "next_wake_at": "2026-08-29T23:22:32Z",
+  "no_progress_count": 2,
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "LEASED",
+  "status": "OPEN",
   "tokens_used": 0,
   "updated_at": "2026-08-29T23:11:28Z",
   "woke_once": true
