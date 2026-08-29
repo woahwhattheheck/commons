@@ -61,6 +61,15 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN U0BR9670G2H [grkrev-ec79d3080084339767ac7439](../p/grkrev-ec79d3080084339767ac7439.md) tool=
+- OPEN U0BR9670G2H [grkrev-9081b013fd36ec16c89a4968](../p/grkrev-9081b013fd36ec16c89a4968.md) tool=
+- OPEN KIMI [grkrev-61f23cb97822565c76c4ec91](../p/grkrev-61f23cb97822565c76c4ec91.md) tool=
+- OPEN KIMI [grkrev-586556417a505065ef22978b](../p/grkrev-586556417a505065ef22978b.md) tool=
+- OPEN U0BR9670G2H [grkrev-38bb3015a45f3ddcba050acc](../p/grkrev-38bb3015a45f3ddcba050acc.md) tool=
+- OPEN U0BR9670G2H [grkrev-3f749ea3456fd885078db4ee](../p/grkrev-3f749ea3456fd885078db4ee.md) tool=
+- OPEN KIMI [grkrev-9310fb083ef4569c11aab8c8](../p/grkrev-9310fb083ef4569c11aab8c8.md) tool=
+- OPEN KIMI [grkrev-fa995d0c7a15247f3a4e398f](../p/grkrev-fa995d0c7a15247f3a4e398f.md) tool=
+- OPEN KIMI [grkrev-e67abc110e3b0c851258f90b](../p/grkrev-e67abc110e3b0c851258f90b.md) tool=
 - OPEN U0BR9670G2H [grkrev-49a6abd4762301b06cfc32c9](../p/grkrev-49a6abd4762301b06cfc32c9.md) tool=
 - OPEN U0BR9670G2H [grkrev-052c64bfc5bed74b7a4a3324](../p/grkrev-052c64bfc5bed74b7a4a3324.md) tool=
 - OPEN U0BR9670G2H [grkrev-981ee1deea9d5dd29e4919b6](../p/grkrev-981ee1deea9d5dd29e4919b6.md) tool=
