@@ -131,9 +131,16 @@ def is_title_filename(ident):
 
 
 def listing_filename(ident, klass):
-    stem = "%s-%s" % (str(klass or "open").lower(), ident)
+    """Readable title first. Class slug goes last so a truncated file list still reads."""
+    title = str(ident or "")
+    klass = str(klass or "open").lower()
+    stem = "%s-%s" % (title, klass)
     if len(stem) > 80:
-        stem = stem[:80].rstrip("._-")
+        keep = 80 - (len(klass) + 1)
+        if keep >= 8:
+            stem = "%s-%s" % (title[:keep].rstrip("._-"), klass)
+        else:
+            stem = title[:80].rstrip("._-")
     if not ID_RE.match(stem):
         stem = re.sub(r"[^A-Za-z0-9._-]", "-", stem)[:80].strip("._-")
     return "%s.md" % stem
@@ -460,7 +467,7 @@ def render_human(snapshot):
         "",
         "Instrument: [`host/open_work.py`](../host/open_work.py). Machine: [`open-work-structured-ids-on-current-main.json`](./open-work-structured-ids-on-current-main.json). Listing dir: [`open-work-listing/`](./open-work-listing/). Pointer: [`OPEN_WORK.md`](./OPEN_WORK.md).",
         "",
-        "New projector outputs use title-filenames. Existing `p/{id}.md` slugs are not renamed.",
+        "New projector outputs use title-filenames with useful words first. Existing `p/{id}.md` slugs are not renamed.",
         "",
         "Checked SHA: `%s`" % (sha or "UNKNOWN"),
         "",
@@ -628,7 +635,10 @@ def self_test():
     assert is_title_filename("open-work-projector-20260829-01")
     assert not is_title_filename("action-20260828163033-89fe29a5e062")
     assert listing_filename("kimi-continuity-kit-20260829-01", "OPEN") == (
-        "open-kimi-continuity-kit-20260829-01.md"
+        "kimi-continuity-kit-20260829-01-open.md"
+    )
+    assert listing_filename("kimi-continuity-kit-20260829-01", "OPEN").startswith(
+        "kimi-continuity-kit"
     )
     print("self-test ok")
     return 0
