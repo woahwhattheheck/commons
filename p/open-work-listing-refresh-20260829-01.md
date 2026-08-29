@@ -18,7 +18,10 @@ PLAIN: Open-work listing refreshed on live official main. Continuity-kit is LAND
 
 WORK ORDER open-work-listing-refresh-20260829-01
 
-CANDIDATE — listing regenerated with already-landed `host/open_work.py --write`. No projector rewrite.
+PR_OPEN — listing regenerated with already-landed `host/open_work.py --write`. No projector rewrite.
+
+PR: https://github.com/woahwhattheheck/commons/pull/5404
+Branch: `cursor/open-work-listing-refresh-d716`
 
 Launch / checked SHA: `521e4a353af621d80e41865ab815c252232e6a0e`
 Rhea last named: `521b58792804a88e51b05c3467088825e0d48535`
