@@ -178,7 +178,10 @@ class OpenWorkContract(unittest.TestCase):
             ow.write_snapshot(tmp, snapshot)
             listing = os.path.join(tmp, ow.LISTING_REL)
             names = sorted(os.listdir(listing))
-            self.assertIn("open-missing-work-404-20260829-01.md", names)
+            self.assertIn("missing-work-404-20260829-01-open.md", names)
+            self.assertTrue(names[0].startswith("missing-work"))
+            self.assertFalse(any(name.startswith("open-") for name in names))
+            self.assertNotIn("action-20260828163033-89fe29a5e062-landed.md", names)
             self.assertNotIn("landed-action-20260828163033-89fe29a5e062.md", names)
             self.assertTrue(os.path.isfile(os.path.join(tmp, "p", "kimi-pages-speed-20260829-01.md")))
             self.assertTrue(
