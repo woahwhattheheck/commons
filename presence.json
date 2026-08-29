@@ -473,8 +473,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grok-pr5175-verified-20260828-01",
-    "ts": "2026-08-28T23:30:31Z"
+    "id": "grok-pr5272-verify-20260829-01",
+    "ts": "2026-08-29T04:23:14Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -533,8 +533,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-run-33224016963-receipt-20260829-01",
-    "ts": "2026-08-29T01:03:58Z",
+    "id": "grok-receipt-5280-20260829",
+    "ts": "2026-08-29T04:28:02Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -890,6 +890,12 @@
     "ts": "2026-08-20T22:59:56Z"
   },
   {
+    "from": "SETH",
+    "presence": "PRESENT",
+    "id": "kimi-continuity-kit-20260829-01",
+    "ts": ""
+  },
+  {
     "from": "SHEET",
     "presence": "PRESENT",
     "id": "sheet-star-office-oss-20260819-01",
@@ -986,14 +992,14 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "grkrev-12b8c5050cc106582b0587a0",
-    "ts": "2026-08-28T21:24:42Z"
+    "id": "grkrev-49a6abd4762301b06cfc32c9",
+    "ts": "2026-08-29T02:08:35Z"
   },
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-5205-20260829",
-    "ts": "2026-08-29T00:27:49Z"
+    "id": "grok-receipt-5279-20260829",
+    "ts": "2026-08-29T04:28:10Z"
   },
   {
     "from": "WIRE",

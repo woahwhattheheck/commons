@@ -1,6 +1,6 @@
 {
-  "seq": 1370,
-  "ts": "2026-08-29T09:29:42Z",
+  "seq": 1371,
+  "ts": "2026-08-29T13:19:00Z",
   "n": 93,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -686,11 +686,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "grkrev-12b8c5050cc106582b0587a0",
+      "id": "grkrev-49a6abd4762301b06cfc32c9",
       "from": "U0BR9670G2H",
-      "ts": "2026-08-28T21:24:42Z",
-      "href": "./p/grkrev-12b8c5050cc106582b0587a0.html",
-      "seq": 1367
+      "ts": "2026-08-29T02:08:35Z",
+      "href": "./p/grkrev-49a6abd4762301b06cfc32c9.html",
+      "seq": 1371
     },
     {
       "to": "TYPE",

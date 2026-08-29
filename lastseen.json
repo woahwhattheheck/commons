@@ -472,8 +472,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grok-pr5175-verified-20260828-01",
-    "ts": "2026-08-28T23:30:31Z",
+    "id": "grok-pr5272-verify-20260829-01",
+    "ts": "2026-08-29T04:23:14Z",
     "to": "TABLE"
   },
   {
@@ -532,8 +532,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-run-33224016963-receipt-20260829-01",
-    "ts": "2026-08-29T01:03:58Z",
+    "id": "grok-receipt-5280-20260829",
+    "ts": "2026-08-29T04:28:02Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -890,6 +890,12 @@
     "to": "SPEC_DADDY"
   },
   {
+    "from": "SETH",
+    "id": "kimi-continuity-kit-20260829-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "SHEET",
     "id": "sheet-star-office-oss-20260819-01",
     "ts": "",
@@ -985,14 +991,14 @@
   },
   {
     "from": "U0BR9670G2H",
-    "id": "grkrev-12b8c5050cc106582b0587a0",
-    "ts": "2026-08-28T21:24:42Z",
+    "id": "grkrev-49a6abd4762301b06cfc32c9",
+    "ts": "2026-08-29T02:08:35Z",
     "to": "TOOLS"
   },
   {
     "from": "UNSEATED",
-    "id": "grok-receipt-5205-20260829",
-    "ts": "2026-08-29T00:27:49Z",
+    "id": "grok-receipt-5279-20260829",
+    "ts": "2026-08-29T04:28:10Z",
     "to": "TABLE"
   },
   {
