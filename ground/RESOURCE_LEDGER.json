@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-28T16:03:25Z",
-    "base_main_sha": "1041c556e87b0db4e0924f5ff6112a674ea9ea94",
+    "observed_at": "2026-08-28T22:07:59Z",
+    "base_main_sha": "fefebfd74c7aea86f8f2673d1c727ba3c994745b",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1787933005.065549",
-  "source_id": "codex-github-actions-watchdog-advancement-20260828-01",
+  "slack_ts": "1787954879.428259",
+  "source_id": "codex-supergrok-commons-tool-consumer-activation-20260828-01",
   "supersedes_source_ids": [
+    "codex-github-actions-watchdog-advancement-20260828-01",
     "codex-grok-executor-queue-activation-20260828-01",
     "codex-mcp-conformance-product-activation-20260828-01",
     "codex-master-resource-office-20260827-05",
@@ -46,7 +47,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — GitHub Actions watchdog moving-main land repair merged; terminal workflow proof still pending",
+  "subject": "MASTER RESOURCE LEDGER — Grok Heavy consumed one real Commons Slack custom-tool read; provider UI and downstream scheduler remain constrained",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -66,7 +67,8 @@
     "resources.html",
     "inventory/resources/records/codex-mcp-conformance-product-activation-20260828-01.json",
     "inventory/resources/records/codex-grok-executor-queue-activation-20260828-01.json",
-    "inventory/resources/records/codex-github-actions-watchdog-advancement-20260828-01.json"
+    "inventory/resources/records/codex-github-actions-watchdog-advancement-20260828-01.json",
+    "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json"
   ],
   "priority_queue": [
     {
@@ -889,24 +891,24 @@
     {
       "name": "supergrok-heavy",
       "kind": "SUBSCRIPTION",
-      "capacity": "NOT_VERIFIED",
-      "stage": "EXERCISED",
-      "condition": "ACTIVE_UNKNOWN",
-      "holder": "Bryce / Grok coordinators",
-      "authority": "ANALYSIS_AND_GROK_BUILD; DISTINCT_FROM_CURSOR_HOLD",
-      "consumer": "Existing grok.com Heavy and Build sessions",
-      "value": "High-volume analysis/build capacity with prior usage receipts",
-      "next_action": "Route only bounded nonduplicate analysis through already-open grok.com sessions; do not infer numeric quota.",
-      "source": "ground/SUPERGROK_HEAVY.json; #commons owner-capacity relay 1787803540.237349",
-      "evidence_ts": "2026-08-27T04:05:40Z",
-      "auth_surface": "owner-capacity relay plus historical direct receipts",
-      "exact_safe_probe": "reported online; numeric capacity and current session completion not independently probed",
-      "rate_plan_boundary": "distinct from Cursor Grok, Grokbot, and Cursor; no quota burn for census",
-      "assigned_backlog": "bounded unique Grok analysis already routed by peers",
-      "last_receipt": "#commons 1787803540.237349",
-      "last_used_at": "2026-08-26T13:37:15Z",
-      "stale_after": "probe-before-new-assignment",
-      "priority": 40
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Bryce / authenticated grok.com session",
+      "authority": "AUTHENTICATED_GROKCOM; DISTINCT_FROM_CURSOR_HOLD; READ_ONLY_COMMONS_TOOL_PROOF",
+      "consumer": "Commons Slack custom-tool road through the public Commons MCP surface",
+      "value": "Grok Heavy executed one real read-only Commons tool call and returned a typed LINK_READY result without sending",
+      "next_action": "After the active scheduled-CWD repair lands, verify one new non-replayed Slack-to-queue event end to end; keep provider UI visibility constrained until an authenticated browser carrier renders the exact conversation.",
+      "source": "ground/SUPERGROK_HEAVY.json; #commons provider receipt 1787949402.419329; grok.com conversation cb04e561-7c56-40a6-a35b-bddbac4f0781",
+      "evidence_ts": "2026-08-28T20:36:42Z",
+      "auth_surface": "authenticated grok.com execution receipted in #commons; this task's read-only browser carrier was signed out",
+      "exact_safe_probe": "Provider receipt records exactly one commons_slack___get_send_link call with id grok-slack-production-parity-proof-20260828-04 and visible LINK_READY / sent=false. Exact Grok URL answered with title Grok but showed Sign in to this task. Connected Vercel Hobby team did not expose cited deployment dpl_3oPXEeMHoFqgMqqPfuPE6pEpWXF7; later standalone scheduler events still reported DURABILITY_NEVER_APPEARED.",
+      "rate_plan_boundary": "Grok Heavy, grok.com, Cursor, Cursor Grok, and Grokbot are distinct meters. No numeric quota or token debit inferred; no new provider call was spent for this census.",
+      "assigned_backlog": "one new non-replayed end-to-end Slack-to-queue proof after active PR #5143's scheduled-CWD lane lands",
+      "last_receipt": "codex-supergrok-commons-tool-consumer-activation-20260828-01",
+      "last_used_at": "2026-08-28T20:36:42Z",
+      "stale_after": "P1D",
+      "priority": 72
     },
     {
       "name": "cursor-ultra",

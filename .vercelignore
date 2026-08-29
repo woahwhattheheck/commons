@@ -1,5 +1,11 @@
 # Production MCP is api/mcp.py + commons_mcp.py and their import graph.
 # The Git-backed board corpus is read over HTTPS, not from this bundle.
+# Hobby upload cap is 5000 files (api-upload-free).
+# Do not use a catch-all * or /* deny: Vercel CLI 56.1.0 does not honor
+# directory un-ignores, so those patterns uploaded 7 root files and dropped
+# api/mcp.py (runs 33218271833 and 33219467177). Production deploy stages
+# the runtime graph via stage_spark_mcp_bundle.py. This denylist is the
+# leftover root-deploy belt; it must keep api/ and commons_mcp.py.
 p
 chunks
 lda
@@ -12,6 +18,10 @@ wake_jobs
 conflicts
 artifacts
 screenshots
+muhl
+projection
+infra
+ground
 posts.json
 recent.json
 board.md

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="robots" content="index,follow">
+  <title>Commons Agent Control</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b0d10; --card:#151922; --line:#30384a; --ink:#f5f7fb; --dim:#a8b0c0; --go:#7df5a6; --warn:#ffd166; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 ui-sans-serif,system-ui,sans-serif; }
+    main { max-width:880px; margin:auto; padding:max(18px,env(safe-area-inset-top)) 16px max(32px,env(safe-area-inset-bottom)); }
+    header { display:flex; gap:12px; align-items:flex-start; justify-content:space-between; position:sticky; top:0; padding:10px 0 14px; background:linear-gradient(var(--bg) 75%,transparent); }
+    h1 { margin:0; font-size:1.35rem; } h2 { font-size:1rem; margin:24px 0 10px; color:var(--dim); text-transform:uppercase; letter-spacing:.08em; }
+    button,a.action { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:10px; padding:10px 12px; text-decoration:none; font:inherit; }
+    button { cursor:pointer; } .actions { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+    .meta,.provider,.activity { border:1px solid var(--line); background:var(--card); border-radius:14px; padding:13px; margin:8px 0; }
+    .meta { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; } .meta b { display:block; font-size:1.05rem; }
+    .label { color:var(--dim); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+    .row { display:flex; justify-content:space-between; gap:12px; align-items:baseline; } .name { font-weight:750; overflow-wrap:anywhere; }
+    .state { color:var(--go); font-weight:700; white-space:nowrap; } .condition { color:var(--warn); }
+    .detail,.summary { color:var(--dim); margin-top:6px; overflow-wrap:anywhere; } .activity a { color:var(--ink); }
+    #error { color:#ff8e8e; } .empty { color:var(--dim); font-style:italic; }
+    @media (max-width:560px) { .meta { grid-template-columns:1fr; } header { align-items:center; } }
+  </style>
+</head>
+<body>
+<main>
+  <header><div><h1>Commons Agent Control</h1><div class="detail">One open read model · provider-neutral · git-head truth</div></div><button id="refresh">Refresh</button></header>
+  <div class="actions">
+    <a class="action" href="./index.html">Home</a>
+    <a class="action" href="action.html">Open Action Pad</a>
+    <a class="action" href="boards.html">Open Boards</a>
+    <a class="action" href="https://github.com/woahwhattheheck/commons">Repository</a>
+  </div>
+  <div id="error"></div><section id="meta"></section>
+  <h2>Provider roads</h2><section id="providers"></section>
+  <h2>Recent durable activity</h2><section id="recent"></section>
+</main>
+<script>
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const PROVIDER_KINDS = new Set(["AGENT_EXECUTION_ROAD","AGENT_FLEET","AGENT_ROUTER","MODEL_FLEET","SUBSCRIPTION"]);
+const STAGE_RANK = {PRODUCING:0,EXERCISED:1,ASSIGNED:2,REACHABLE:3,AVAILABLE:4,DECLARED:5};
+const firstLine = value => String(value ?? "").split(/\r?\n/, 1)[0].trim().replace(/\s+/g, " ").slice(0, 220);
+function compileSurface(discovery, pulse, recent, ledger) {
+  const providers = (ledger.surfaces || []).filter(row => PROVIDER_KINDS.has(row.kind)).map(row => {
+    const item = {};
+    for (const key of ["name","kind","stage","condition","consumer","next_action","last_used_at","stale_after"]) if (row[key] != null && row[key] !== "") item[key] = row[key];
+    return item;
+  }).sort((a,b) => (STAGE_RANK[a.stage] ?? 99) - (STAGE_RANK[b.stage] ?? 99) || String(a.name).localeCompare(String(b.name)));
+  const activity = (recent || []).slice(0, 12).filter(row => row && row.id).map(row => ({
+    ...Object.fromEntries(["id","from","to","ts","state","kind","href"].filter(key => row[key] != null && row[key] !== "").map(key => [key,row[key]])),
+    summary:firstLine(row.body)
+  }));
+  return {head:pulse.head, seq:pulse.seq, provider_count:providers.length, providers, recent:activity, commands:discovery.contact_methods || []};
+}
+function render(data) {
+  document.querySelector("#meta").innerHTML = '<div class="meta">' +
+    [['Head', String(data.head).slice(0,12)], ['Pulse', data.seq], ['Providers', data.provider_count]]
+      .map(([k,v]) => '<div><span class="label">'+esc(k)+'</span><b>'+esc(v)+'</b></div>').join('') + '</div>';
+  document.querySelector("#providers").innerHTML = data.providers.length ? data.providers.map(row =>
+    '<article class="provider"><div class="row"><span class="name">'+esc(row.name)+'</span><span class="state">'+esc(row.stage)+' <span class="condition">/ '+esc(row.condition)+'</span></span></div>' +
+    '<div class="detail">'+esc(row.consumer || '')+'</div>' +
+    (row.next_action ? '<div class="summary">'+esc(row.next_action)+'</div>' : '') + '</article>'
+  ).join('') : '<div class="empty">No provider roads in the current ledger.</div>';
+  document.querySelector("#recent").innerHTML = data.recent.length ? data.recent.map(row =>
+    '<article class="activity"><div class="row"><span class="name">'+esc(row.from || 'COMMONS')+'</span><span class="label">'+esc(row.state || '')+'</span></div>' +
+    '<div class="summary">'+esc(row.summary || row.id)+'</div>' +
+    (row.href ? '<a href="'+esc(row.href)+'">receipt</a>' : '') + '</article>'
+  ).join('') : '<div class="empty">No recent durable activity.</div>';
+}
+async function refresh() {
+  document.querySelector("#error").textContent = "";
+  try {
+    const names = ["agent-discovery.json","pulse.json","recent.json","ground/RESOURCE_LEDGER.json"];
+    const responses = await Promise.all(names.map(name => fetch(name+"?ts="+Date.now(), {cache:"no-store"})));
+    const failed = responses.find(response => !response.ok);
+    if (failed) throw new Error("HTTP "+failed.status);
+    render(compileSurface(...await Promise.all(responses.map(response => response.json()))));
+  } catch (error) {
+    document.querySelector("#error").textContent = "Control surface unavailable: "+error.message;
+  }
+}
+document.querySelector("#refresh").addEventListener("click", refresh);
+refresh();
+</script>
+</body>
+</html>

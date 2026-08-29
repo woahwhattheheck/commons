@@ -1,6 +1,6 @@
 {
-  "attempt_count": 0,
-  "backoff_seconds": 30,
+  "attempt_count": 6,
+  "backoff_seconds": 600,
   "blocker": null,
   "budget_tokens": 1000000,
   "checkpoint": {
@@ -71,21 +71,125 @@
   },
   "created_at": "2026-08-28T20:40:47Z",
   "deadline": "2026-09-27T20:40:47Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a01",
+      "event": "wake",
+      "lease_id": "lease-b56e596aa6af",
+      "ts": "2026-08-28T22:16:20Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a01",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-28T22:16:20Z"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a02",
+      "event": "wake",
+      "lease_id": "lease-7978dd1c2420",
+      "ts": "2026-08-28T23:20:36Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a02",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-28T23:20:36Z"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a03",
+      "event": "wake",
+      "lease_id": "lease-c8ff8aa4cbad",
+      "ts": "2026-08-28T23:29:55Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a03",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-28T23:29:55Z"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a04",
+      "event": "wake",
+      "lease_id": "lease-d06cf065a451",
+      "ts": "2026-08-28T23:46:21Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a04",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-28T23:46:21Z"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a05",
+      "event": "wake",
+      "lease_id": "lease-89a6f7abff97",
+      "ts": "2026-08-29T00:08:48Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a05",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-29T00:08:48Z"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a06",
+      "event": "wake",
+      "lease_id": "lease-ddf2894ba60e",
+      "ts": "2026-08-29T00:32:13Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-6d23f7078fd691bad2a983f8-a06",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-6d23f7078fd691bad2a983f8",
+      "ts": "2026-08-29T00:32:13Z"
+    }
+  ],
   "harness": "grok.com authenticated browser via Commons MCP",
   "in_backoff": false,
   "job_id": "grkrev-6d23f7078fd691bad2a983f8",
-  "lease": null,
+  "last_wake_at": "2026-08-29T00:32:13Z",
+  "last_wake_checkpoint_fp": "6483b4c486352aea",
+  "last_wake_checkpoint_sha256": "6483b4c486352aea478bc2ebce49024ce5ab8d257a34342bba396145f5ab3dcd",
+  "lease": {
+    "holder": "gh-watchdog",
+    "lease_id": "lease-ddf2894ba60e",
+    "until": "2026-08-29T00:37:13Z"
+  },
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
-  "next_wake_at": "2026-08-28T20:40:47Z",
-  "no_progress_count": 0,
+  "next_wake_at": "2026-08-29T00:24:23Z",
+  "no_progress_count": 5,
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-28T20:40:47Z",
-  "woke_once": false
+  "updated_at": "2026-08-29T00:32:13Z",
+  "woke_once": true
 }

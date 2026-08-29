@@ -1460,5 +1460,131 @@ class GrokSlackBridgeTests(unittest.TestCase):
             store2.close()
 
 
+class ScheduledCwdImportTests(unittest.TestCase):
+    """Task Scheduler launches bridge.py with an empty/foreign WorkingDirectory."""
+
+    def test_load_grok_executor_queue_uses_explicit_git_root(self) -> None:
+        Queue = bridge.load_grok_executor_queue(Path(__file__).resolve().parent)
+        self.assertEqual(Queue.__name__, "GrokExecutorQueue")
+        loaded = Path(sys.modules["integrations.grok_executor_queue"].__file__).resolve()
+        expected = (Path(__file__).resolve().parent / "integrations" / "grok_executor_queue.py").resolve()
+        self.assertEqual(loaded, expected)
+
+    def test_cwd_import_never_inserts_cwd(self) -> None:
+        import integrations.grok_slack.cwd_import as cwd_import
+        with tempfile.TemporaryDirectory() as directory:
+            decoy = Path(directory)
+            (decoy / "integrations").mkdir()
+            (decoy / "integrations" / "__init__.py").write_text("", encoding="utf-8")
+            (decoy / "integrations" / "grok_executor_queue.py").write_text(
+                "class GrokExecutorQueue:\n    decoy = True\n",
+                encoding="utf-8",
+            )
+            old = os.getcwd()
+            try:
+                os.chdir(decoy)
+                root = cwd_import.ensure_integrations_import_path(
+                    Path(__file__).resolve().parent,
+                    bridge_file=MODULE_PATH,
+                )
+            finally:
+                os.chdir(old)
+            self.assertNotEqual(Path(root).resolve(), decoy.resolve())
+            self.assertNotIn(str(decoy.resolve()), sys.path)
+            self.assertNotIn(str(decoy), sys.path)
+
+    def test_foreign_cwd_child_builds_materialize_blobs_against_decoy(self) -> None:
+        repo = Path(__file__).resolve().parent
+        child = r'''
+import json
+import os
+import sys
+from pathlib import Path
+
+decoy = Path(sys.argv[1])
+git_root = Path(sys.argv[2])
+bridge_py = Path(sys.argv[3])
+os.chdir(decoy)
+os.environ["COMMONS_GROK_SLACK_GIT_ROOT"] = str(git_root)
+script_dir = str(bridge_py.parent)
+# Simulate `python integrations/grok_slack/bridge.py`: sys.path[0] is the script dir.
+# Cwd (decoy) is also searchable, as on some scheduled launches.
+sys.path = [script_dir, str(decoy), ""] + [p for p in sys.path if p not in {script_dir, str(decoy), ""}]
+while str(git_root) in sys.path:
+    sys.path.remove(str(git_root))
+import importlib.util
+spec = importlib.util.spec_from_file_location("grok_slack_bridge_child", bridge_py)
+mod = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = mod
+spec.loader.exec_module(mod)
+
+class Stub:
+    def __init__(self):
+        self.posts = []
+    def chat_postMessage(self, **kwargs):
+        return {"ok": True, "ts": "1.1"}
+    def conversations_replies(self, **kwargs):
+        return {"ok": True, "messages": []}
+
+store = mod.BridgeStore(decoy / "state.sqlite3")
+sink = mod.SlackTransport(Stub(), store, sleeper=lambda _s: None)
+service = mod.GrokSlackBridge(store, Stub(), Stub(), sink, git_root=git_root)
+page, blob = service._build_materialize_blobs(
+    "job-cwd-import-01",
+    {
+        "from": "UNSEATED",
+        "payload": json.dumps({
+            "exact_prompts": ["scheduled cwd import proof"],
+            "run_key": "rk-cwd-import-01",
+        }),
+    },
+)
+queue_file = Path(sys.modules["integrations.grok_executor_queue"].__file__).resolve()
+want = (git_root / "integrations" / "grok_executor_queue.py").resolve()
+decoy_queue = (decoy / "integrations" / "grok_executor_queue.py").resolve()
+print(json.dumps({
+    "ok": bool(page and blob),
+    "page_len": len(page or ""),
+    "blob_len": len(blob or b""),
+    "queue_file": str(queue_file),
+    "want": str(want),
+    "used_decoy": queue_file == decoy_queue,
+    "cwd_on_path": str(decoy) in sys.path or "" in sys.path,
+    "work_log": list(service.work_log),
+}))
+'''
+        with tempfile.TemporaryDirectory() as directory:
+            decoy = Path(directory) / "scheduler-cwd"
+            decoy.mkdir()
+            integ = decoy / "integrations"
+            integ.mkdir()
+            (integ / "__init__.py").write_text("# decoy package\n", encoding="utf-8")
+            (integ / "grok_executor_queue.py").write_text(
+                "raise ImportError('decoy integrations.grok_executor_queue must not be used')\n",
+                encoding="utf-8",
+            )
+            script = Path(directory) / "child.py"
+            script.write_text(child, encoding="utf-8")
+            completed = subprocess.run(
+                [sys.executable, str(script), str(decoy), str(repo), str(MODULE_PATH)],
+                cwd=str(decoy),
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
+            if completed.returncode != 0:
+                self.fail(
+                    "child failed rc=%s stdout=%s stderr=%s"
+                    % (completed.returncode, completed.stdout, completed.stderr)
+                )
+            payload = json.loads(completed.stdout.strip().splitlines()[-1])
+            self.assertTrue(payload["ok"], payload)
+            self.assertFalse(payload["used_decoy"], payload)
+            self.assertEqual(payload["queue_file"], payload["want"])
+            self.assertGreater(payload["page_len"], 20)
+            self.assertGreater(payload["blob_len"], 20)
+            self.assertFalse(any("blob_exception" in str(item) for item in payload["work_log"]), payload)
+
+
 if __name__ == "__main__":
     unittest.main()
