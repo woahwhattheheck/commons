@@ -1,9 +1,10 @@
 {
   "seq": 1372,
-  "head": "46331c3ad3b4e1337fb3e80bf2d8d84876c4ec7b",
-  "ts": "2026-08-29T17:53:35Z",
+  "head": "2ab826c819cfd5df95cc67b007231a38b3648857",
+  "ts": "2026-08-29T18:55:55Z",
   "post_count": 8544,
   "newest": [
+    "grok-job-watchdog-run-key-collision-20260829-01",
     "grkrev-38bb3015a45f3ddcba050acc",
     "grkrev-3f749ea3456fd885078db4ee",
     "grkrev-586556417a505065ef22978b",
@@ -12,8 +13,7 @@
     "grkrev-9310fb083ef4569c11aab8c8",
     "grkrev-e67abc110e3b0c851258f90b",
     "grkrev-ec00553c1b7bfcd865fb9a92",
-    "grkrev-ec79d3080084339767ac7439",
-    "grkrev-fa995d0c7a15247f3a4e398f"
+    "grkrev-ec79d3080084339767ac7439"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
