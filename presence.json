@@ -271,8 +271,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
-    "ts": "2026-08-19T23:01:03Z"
+    "id": "grkrev-ec00553c1b7bfcd865fb9a92",
+    "ts": "2026-08-29T07:39:16Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -568,8 +568,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr5292-terminal-20260829-01",
-    "ts": "2026-08-29T04:45:01Z"
+    "id": "grok-pr5318-wb-metrics-union-20260829",
+    "ts": "2026-08-29T08:08:37Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -635,6 +635,12 @@
     "presence": "PRESENT",
     "id": "keel-land-desk-verified-20260821-01",
     "ts": "2026-08-21T13:21:13Z"
+  },
+  {
+    "from": "KIMI",
+    "presence": "PRESENT",
+    "id": "grkrev-61f23cb97822565c76c4ec91",
+    "ts": "2026-08-29T07:11:13Z"
   },
   {
     "from": "KITE",
@@ -992,14 +998,14 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "grkrev-49a6abd4762301b06cfc32c9",
-    "ts": "2026-08-29T02:08:35Z"
+    "id": "grkrev-ec79d3080084339767ac7439",
+    "ts": "2026-08-29T09:51:23Z"
   },
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-5279-20260829",
-    "ts": "2026-08-29T04:28:10Z"
+    "id": "grok-repair-telegram-door-hub-20260829-01",
+    "ts": "2026-08-29T11:06:00Z"
   },
   {
     "from": "WIRE",
