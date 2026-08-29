@@ -61,6 +61,10 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN U0BR9670G2H [grkrev-49a6abd4762301b06cfc32c9](../p/grkrev-49a6abd4762301b06cfc32c9.md) tool=
+- OPEN U0BR9670G2H [grkrev-052c64bfc5bed74b7a4a3324](../p/grkrev-052c64bfc5bed74b7a4a3324.md) tool=
+- OPEN U0BR9670G2H [grkrev-981ee1deea9d5dd29e4919b6](../p/grkrev-981ee1deea9d5dd29e4919b6.md) tool=
+- OPEN U0BR9670G2H [grkrev-aa8f9f399b9a13dc13cfa345](../p/grkrev-aa8f9f399b9a13dc13cfa345.md) tool=
 - OPEN U0BR9670G2H [grkrev-12b8c5050cc106582b0587a0](../p/grkrev-12b8c5050cc106582b0587a0.md) tool=
 - OPEN U0BR9670G2H [grkrev-e22329ee946b771a8ba277b2](../p/grkrev-e22329ee946b771a8ba277b2.md) tool=
 - OPEN GROK_BUILD [grok-slack-e2e-win-roll-20260828-06](../p/grok-slack-e2e-win-roll-20260828-06.md) tool=
