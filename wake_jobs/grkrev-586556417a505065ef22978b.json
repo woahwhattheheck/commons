@@ -1,5 +1,5 @@
 {
-  "attempt_count": 0,
+  "attempt_count": 1,
   "backoff_seconds": 30,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -7,7 +7,7 @@
     "capture_start": {
       "arguments": {
         "exact_prompts": [
-          "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt — the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) — through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class — a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals — one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt — not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED — VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+          "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt \u2014 the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) \u2014 through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class \u2014 a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals \u2014 one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt \u2014 not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
         ],
         "origin": {
           "event_id": "kimi-subzero-walker-20260829-01",
@@ -23,7 +23,7 @@
     },
     "conversation_url": "",
     "exact_prompts": [
-      "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt — the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) — through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class — a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals — one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt — not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED — VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+      "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt \u2014 the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) \u2014 through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class \u2014 a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals \u2014 one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt \u2014 not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
     ],
     "execution": {
       "active_attempt_id": "",
@@ -64,18 +64,42 @@
     "run_key": "grkrev-586556417a505065ef22978b-run-1",
     "schema": "commons-grok-executor-job/v1",
     "step": 0,
-    "task": "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt — the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) — through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class — a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals — one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt — not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED — VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+    "task": "WORK ORDER kimi-subzero-walker-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a stdlib-only walker (host/subzero_walk.py) that ticks ONE public excerpt \u2014 the GRBN organ under excerpts/20260823/ (8,704 gates, MUHLGRBN magic; locate via ground/SUBZERO_TECH.json if the path differs) \u2014 through ONE full settle and prints the expected next-state bits; the tick output committed next to the excerpt as new land, plus a card ground/SUBZERO_WALK.md naming exactly what was measured. This moves one public artifact from STRUCTURAL_ONLY to RUNTIME_MEASURED.\n\nCONSTRAINTS (owner's): fabrication-verification class \u2014 a bounded host walk over ONE small public excerpt is the sanctioned check. Do NOT open titan.gguf, do NOT touch commons.mno, never write any live container. Stdlib only, no numpy. Additive new land only; do not remint existing SUBZERO_* cards; old posts stay. Open door: no gates, no auth. No verification spirals \u2014 one tick, printed, committed; reality is the test. Honest labeling: one settle on one excerpt \u2014 not organ certification, not a customer claim.\n\nACCEPTANCE: walker + tick output + card on current main; receipt p/kimi-subzero-walker-20260829-01.md with PR URL + merge SHA + 'INTEGRATED \u2014 VERIFIED ON CURRENT MAIN'; exactly one reply in Slack thread 1787986041.293809. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
   },
   "completion_predicate": {
     "type": "result_address_on_head"
   },
   "created_at": "2026-08-29T07:22:48Z",
   "deadline": "2026-09-28T07:22:48Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "grkrev-586556417a505065ef22978b-a01",
+      "event": "wake",
+      "lease_id": "lease-53682d94fa83",
+      "ts": "2026-08-29T07:26:15Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-586556417a505065ef22978b-a01",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-586556417a505065ef22978b",
+      "ts": "2026-08-29T07:26:15Z"
+    }
+  ],
   "harness": "grok.com authenticated browser via Commons MCP",
   "in_backoff": false,
   "job_id": "grkrev-586556417a505065ef22978b",
-  "lease": null,
+  "last_wake_at": "2026-08-29T07:26:15Z",
+  "last_wake_checkpoint_fp": "41b84e0b2b4e3c1c",
+  "last_wake_checkpoint_sha256": "41b84e0b2b4e3c1c47b5160caecd57ff27b5b1b36f0a2430d6e828a07967b6a9",
+  "lease": {
+    "holder": "gh-watchdog",
+    "lease_id": "lease-53682d94fa83",
+    "until": "2026-08-29T07:31:15Z"
+  },
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
@@ -84,8 +108,8 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-29T07:22:48Z",
-  "woke_once": false
+  "updated_at": "2026-08-29T07:26:15Z",
+  "woke_once": true
 }
