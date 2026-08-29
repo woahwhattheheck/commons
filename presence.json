@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1787962868-090899",
-    "ts": "2026-08-29T00:21:08.090899Z"
+    "id": "slack-1787963335-564729",
+    "ts": "2026-08-29T00:28:55.564729Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -562,8 +562,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr5197-terminal-20260828-01",
-    "ts": "2026-08-29T00:08:46Z"
+    "id": "grok-pr5202-terminal-20260828-01",
+    "ts": "2026-08-29T00:25:34Z"
   },
   {
     "from": "GROK_HEAVY",

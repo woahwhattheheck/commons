@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -328,6 +328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -554,18 +566,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -583,6 +583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -809,18 +821,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -904,6 +904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1130,18 +1142,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1385,18 +1397,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1640,18 +1652,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1961,18 +1973,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2282,18 +2294,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -2306,11 +2306,17 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1787962868-090899",
-      "last_ts": "2026-08-29T00:21:08.090899Z",
+      "last_id": "slack-1787963335-564729",
+      "last_ts": "2026-08-29T00:28:55.564729Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
         {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
@@ -2376,12 +2382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-28T19:17:57.304259Z"
-        },
-        {
-          "id": "slack-1787944519-978109",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-28T19:15:19.978109Z"
         }
       ]
     },
@@ -2390,6 +2390,18 @@
       "last_ts": "2026-08-26T16:16:04.276619Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
         {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
@@ -2617,18 +2629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -2712,6 +2712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2938,18 +2950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -3033,6 +3033,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3259,18 +3271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -3312,6 +3312,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3538,18 +3550,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -3567,6 +3567,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3793,18 +3805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -3888,6 +3888,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4114,18 +4126,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -4173,6 +4173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4399,18 +4411,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -4494,6 +4494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4720,18 +4732,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -4749,6 +4749,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4975,18 +4987,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -5004,6 +5004,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5230,18 +5242,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -5259,6 +5259,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5485,18 +5497,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -5532,6 +5532,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5758,18 +5770,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -5853,6 +5853,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6079,18 +6091,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -6174,6 +6174,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6400,18 +6412,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -6447,6 +6447,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6673,18 +6685,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -6708,6 +6708,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6934,18 +6946,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -6963,6 +6963,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7189,18 +7201,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -7218,6 +7218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7444,18 +7456,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -7521,6 +7521,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7747,18 +7759,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -7776,6 +7776,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8002,18 +8014,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -8037,6 +8037,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8263,18 +8275,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -8316,6 +8316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8542,18 +8554,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -8571,6 +8571,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8797,18 +8809,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -8826,6 +8826,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9052,18 +9064,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -9093,6 +9093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9319,18 +9331,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -9360,6 +9360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9586,18 +9598,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -9615,6 +9615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9841,18 +9853,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -9870,6 +9870,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10096,18 +10108,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -10125,6 +10125,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10351,18 +10363,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -10380,6 +10380,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10606,18 +10618,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -10635,6 +10635,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10861,18 +10873,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -10956,6 +10956,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11182,18 +11194,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -11271,6 +11271,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11497,18 +11509,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -11544,6 +11544,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11770,18 +11782,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -11865,6 +11865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12091,18 +12103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -12186,6 +12186,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12412,18 +12424,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -12453,6 +12453,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12679,18 +12691,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -12774,6 +12774,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13000,18 +13012,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -13029,6 +13029,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13255,18 +13267,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -13350,6 +13350,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13576,18 +13588,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -13623,6 +13623,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13849,18 +13861,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -13944,6 +13944,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14170,18 +14182,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -14205,6 +14205,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14431,18 +14443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -14460,6 +14460,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14686,18 +14698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -14715,6 +14715,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14941,18 +14953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -15036,6 +15036,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15262,18 +15274,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -15291,6 +15291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15517,18 +15529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -15546,6 +15546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15772,18 +15784,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -15867,6 +15867,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16093,18 +16105,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -16188,6 +16188,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16414,18 +16426,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -16509,6 +16509,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16735,18 +16747,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -16776,6 +16776,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17002,18 +17014,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -17079,6 +17079,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17305,18 +17317,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -17334,6 +17334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17560,18 +17572,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -17601,6 +17601,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17827,18 +17839,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -17856,6 +17856,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18082,18 +18094,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -18171,6 +18171,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18397,18 +18409,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -18426,6 +18426,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18652,18 +18664,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -18747,6 +18747,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18973,18 +18985,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -19014,6 +19014,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19240,18 +19252,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -19335,6 +19335,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19561,18 +19573,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -19590,6 +19590,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19816,18 +19828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -19911,6 +19911,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20137,18 +20149,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -20172,6 +20172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20398,18 +20410,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -20427,6 +20427,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20653,18 +20665,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -20682,6 +20682,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20908,18 +20920,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -20973,6 +20973,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21199,18 +21211,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -21294,6 +21294,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21520,18 +21532,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -21549,6 +21549,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21775,18 +21787,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -21810,6 +21810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22036,18 +22048,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -22131,6 +22131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22357,18 +22369,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -22392,6 +22392,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22618,18 +22630,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -22713,6 +22713,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22939,18 +22951,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -23034,6 +23034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23260,18 +23272,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -23313,6 +23313,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23539,18 +23551,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -23580,6 +23580,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23806,18 +23818,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -23898,8 +23898,20 @@
     "GROK": {
       "last_id": "grok-pr5172-verified-20260828-01",
       "last_ts": "2026-08-28T23:20:00Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
         {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
@@ -24144,6 +24156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24370,18 +24394,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -24405,6 +24417,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24631,18 +24655,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -24666,6 +24678,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24892,18 +24916,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -24939,6 +24951,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25165,18 +25189,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -25195,30 +25207,24 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-pr5197-terminal-20260828-01",
-      "last_ts": "2026-08-29T00:08:46Z",
-      "n": 3,
+      "last_id": "grok-pr5202-terminal-20260828-01",
+      "last_ts": "2026-08-29T00:25:34Z",
+      "n": 1,
       "since": [
         {
-          "id": "slack-1787962868-090899",
+          "id": "slack-1787963335-564729",
           "from": "BERNAYS",
           "to": "TABLE",
-          "ts": "2026-08-29T00:21:08.090899Z"
-        },
-        {
-          "id": "slack-1787962594-101829",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T00:16:34.101829Z"
-        },
-        {
-          "id": "slack-1787962504-808899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T00:15:04.808899Z"
+          "ts": "2026-08-29T00:28:55.564729Z"
         }
       ],
       "mine": [
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
         {
           "id": "grok-pr5197-terminal-20260828-01",
           "from": "GROK_BUILD",
@@ -25284,12 +25290,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T23:49:10Z"
-        },
-        {
-          "id": "grok-pr5187-terminal-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T23:47:33Z"
         }
       ]
     },
@@ -25298,6 +25298,18 @@
       "last_ts": "2026-08-26T19:30:35Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
         {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
@@ -25525,18 +25537,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -25554,6 +25554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25780,18 +25792,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -25809,6 +25809,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26035,18 +26047,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -26082,6 +26082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26308,18 +26320,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -26349,6 +26349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26575,18 +26587,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -26670,6 +26670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26896,18 +26908,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -26925,6 +26925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27151,18 +27163,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -27246,6 +27246,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27472,18 +27484,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -27567,6 +27567,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27793,18 +27805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -27888,6 +27888,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28114,18 +28126,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -28161,6 +28161,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28387,18 +28399,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -28482,6 +28482,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28708,18 +28720,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -28737,6 +28737,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28963,18 +28975,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -29046,6 +29046,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29272,18 +29284,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -29301,6 +29301,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29527,18 +29539,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -29556,6 +29556,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29782,18 +29794,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -29877,6 +29877,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30103,18 +30115,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -30132,6 +30132,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30358,18 +30370,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -30387,6 +30387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30613,18 +30625,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -30642,6 +30642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30868,18 +30880,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -30897,6 +30897,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31123,18 +31135,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -31176,6 +31176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31402,18 +31414,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -31497,6 +31497,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31723,18 +31735,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -31794,6 +31794,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32020,18 +32032,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -32079,6 +32079,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32305,18 +32317,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -32334,6 +32334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32560,18 +32572,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -32589,6 +32589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32815,18 +32827,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -32844,6 +32844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33070,18 +33082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -33099,6 +33099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33325,18 +33337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -33354,6 +33354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33580,18 +33592,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -33675,6 +33675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33901,18 +33913,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -33996,6 +33996,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34222,18 +34234,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -34317,6 +34317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34543,18 +34555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -34614,6 +34614,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34840,18 +34852,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -34935,6 +34935,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35161,18 +35173,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -35190,6 +35190,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35416,18 +35428,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -35445,6 +35445,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35671,18 +35683,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -35712,6 +35712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35938,18 +35950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -36033,6 +36033,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36259,18 +36271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -36288,6 +36288,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36514,18 +36526,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -36555,6 +36555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36781,18 +36793,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -36852,6 +36852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37078,18 +37090,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -37173,6 +37173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37399,18 +37411,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -37494,6 +37494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37720,18 +37732,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -37803,6 +37803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38029,18 +38041,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -38070,6 +38070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38296,18 +38308,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -38391,6 +38391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38617,18 +38629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -38712,6 +38712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38938,18 +38950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -39033,6 +39033,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39259,18 +39271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -39294,6 +39294,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39520,18 +39532,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -39567,6 +39567,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39793,18 +39805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -39888,6 +39888,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40114,18 +40126,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -40143,6 +40143,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40369,18 +40381,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -40398,6 +40398,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40624,18 +40636,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -40719,6 +40719,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40945,18 +40957,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -41040,6 +41040,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41266,18 +41278,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -41361,6 +41361,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41587,18 +41599,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -41682,6 +41682,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41908,18 +41920,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -41973,6 +41973,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42199,18 +42211,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -42294,6 +42294,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42520,18 +42532,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -42549,6 +42549,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42775,18 +42787,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -42840,6 +42840,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43066,18 +43078,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -43161,6 +43161,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43387,18 +43399,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -43428,6 +43428,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43654,18 +43666,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -43749,6 +43749,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43975,18 +43987,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -44070,6 +44070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44296,18 +44308,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
@@ -44391,6 +44391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787963335-564729",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:28:55.564729Z"
+        },
+        {
+          "id": "grok-pr5202-terminal-20260828-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T00:25:34Z"
+        },
+        {
           "id": "slack-1787962868-090899",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44617,18 +44629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-28T22:45:00Z"
-        },
-        {
-          "id": "grok-job-watchdog-cancel-stale-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:42:00Z"
-        },
-        {
-          "id": "grok-pr5157-verified-20260828-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-28T22:37:00Z"
         }
       ],
       "mine": [
