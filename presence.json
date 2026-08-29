@@ -568,8 +568,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr5318-wb-metrics-union-20260829",
-    "ts": "2026-08-29T08:08:37Z"
+    "id": "grok-job-watchdog-run-key-collision-20260829-01",
+    "ts": "2026-08-29T18:54:00Z"
   },
   {
     "from": "GROK_HEAVY",

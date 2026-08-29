@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1787987663-666409",
       "last_ts": "2026-08-29T07:14:23.666409Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -2452,6 +2458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2684,12 +2696,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -2773,6 +2779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3005,12 +3017,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -3094,6 +3100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3326,12 +3338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -3373,6 +3379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3605,12 +3617,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -3628,6 +3634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3860,12 +3872,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -3949,6 +3955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4181,12 +4193,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -4231,8 +4237,14 @@
     "BRYCE": {
       "last_id": "bryce-resource-lanes-20260829-01",
       "last_ts": "2026-08-29T06:18:03.689969Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -4483,6 +4495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4715,12 +4733,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -4738,6 +4750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4970,12 +4988,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -4993,6 +5005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5225,12 +5243,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -5248,6 +5260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5480,12 +5498,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -5521,6 +5533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5753,12 +5771,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -5842,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6074,12 +6092,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -6163,6 +6175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6395,12 +6413,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -6436,6 +6448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6668,12 +6686,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -6697,6 +6709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6929,12 +6947,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -6952,6 +6964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7184,12 +7202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -7207,6 +7219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7439,12 +7457,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -7510,6 +7522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7742,12 +7760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -7765,6 +7777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7997,12 +8015,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -8026,6 +8038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8258,12 +8276,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -8305,6 +8317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8537,12 +8555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -8560,6 +8572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8792,12 +8810,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -8815,6 +8827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9047,12 +9065,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -9082,6 +9094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9314,12 +9332,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -9349,6 +9361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9581,12 +9599,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -9604,6 +9616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9836,12 +9854,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -9859,6 +9871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10091,12 +10109,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -10114,6 +10126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10346,12 +10364,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -10369,6 +10381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10601,12 +10619,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -10624,6 +10636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10856,12 +10874,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -10945,6 +10957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11177,12 +11195,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -11260,6 +11272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11492,12 +11510,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -11533,6 +11545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11765,12 +11783,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -11854,6 +11866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12086,12 +12104,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -12172,8 +12184,14 @@
     "COMMONS": {
       "last_id": "grkrev-ec00553c1b7bfcd865fb9a92",
       "last_ts": "2026-08-29T07:39:16Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -12253,8 +12271,14 @@
     "COMMONS_GROK": {
       "last_id": "slack-1787985194-484129",
       "last_ts": "2026-08-29T06:33:14.484129Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -12433,6 +12457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12665,12 +12695,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -12688,6 +12712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12920,12 +12950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -13006,8 +13030,14 @@
     "CURSORGROK": {
       "last_id": "cursor-grok-hello-haiku-20260829-01",
       "last_ts": "2026-08-29T09:18:53Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -13059,6 +13089,12 @@
       "last_ts": "2026-08-27T04:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -13292,12 +13328,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -13330,8 +13360,14 @@
     "CURSOR_GROK": {
       "last_id": "kimi-subzero-walker-20260829-01",
       "last_ts": "2026-08-29T09:24:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -13432,6 +13468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13664,12 +13706,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -13693,6 +13729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13925,12 +13967,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -13948,6 +13984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14180,12 +14222,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -14203,6 +14239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14435,12 +14477,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -14524,6 +14560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14756,12 +14798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -14779,6 +14815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15011,12 +15053,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -15034,6 +15070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15266,12 +15308,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -15355,6 +15391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15587,12 +15629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -15676,6 +15712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15908,12 +15950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -15997,6 +16033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16229,12 +16271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -16264,6 +16300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16496,12 +16538,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -16567,6 +16603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16799,12 +16841,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -16822,6 +16858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17054,12 +17096,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -17089,6 +17125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17321,12 +17363,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -17344,6 +17380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17576,12 +17618,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -17659,6 +17695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17891,12 +17933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -17914,6 +17950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18146,12 +18188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -18235,6 +18271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18467,12 +18509,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -18502,6 +18538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18734,12 +18776,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -18823,6 +18859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19055,12 +19097,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -19078,6 +19114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19310,12 +19352,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -19399,6 +19435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19631,12 +19673,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -19660,6 +19696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19892,12 +19934,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -19915,6 +19951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20147,12 +20189,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -20170,6 +20206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20402,12 +20444,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -20461,6 +20497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20693,12 +20735,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -20782,6 +20818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21014,12 +21056,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -21037,6 +21073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21269,12 +21311,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -21298,6 +21334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21530,12 +21572,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -21619,6 +21655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21851,12 +21893,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -21880,6 +21916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22112,12 +22154,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -22201,6 +22237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22433,12 +22475,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -22522,6 +22558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22754,12 +22796,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -22801,6 +22837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23033,12 +23075,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -23068,6 +23104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23300,12 +23342,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -23389,6 +23425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23621,12 +23663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -23707,8 +23743,14 @@
     "GROK46": {
       "last_id": "grok46-hello-haiku-20260829-02",
       "last_ts": "2026-08-29T09:24:46Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -23755,6 +23797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23987,12 +24035,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -24016,6 +24058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24248,12 +24296,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -24289,6 +24331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24521,12 +24569,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -24545,48 +24587,17 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-pr5318-wb-metrics-union-20260829",
-      "last_ts": "2026-08-29T08:08:37Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "grok-repair-telegram-door-hub-20260829-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-29T11:06:00Z"
-        },
-        {
-          "id": "grkrev-ec79d3080084339767ac7439",
-          "from": "U0BR9670G2H",
-          "to": "TOOLS",
-          "ts": "2026-08-29T09:51:23Z"
-        },
-        {
-          "id": "grok46-hello-haiku-20260829-02",
-          "from": "GROK46",
-          "to": "HAIKU",
-          "ts": "2026-08-29T09:24:46Z"
-        },
-        {
-          "id": "kimi-subzero-walker-20260829-01",
-          "from": "CURSOR_GROK",
-          "to": "KIMI",
-          "ts": "2026-08-29T09:24:00Z"
-        },
-        {
-          "id": "cursor-grok-hello-haiku-20260829-01",
-          "from": "CURSORGROK",
-          "to": "HAIKU",
-          "ts": "2026-08-29T09:18:53Z"
-        },
-        {
-          "id": "grok46-hello-haiku-20260829-01",
-          "from": "GROK46",
-          "to": "HAIKU",
-          "ts": "2026-08-29T09:18:38Z"
-        }
-      ],
+      "last_id": "grok-job-watchdog-run-key-collision-20260829-01",
+      "last_ts": "2026-08-29T18:54:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-pr5318-wb-metrics-union-20260829",
           "from": "GROK_BUILD",
@@ -24652,12 +24663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:30:09Z"
-        },
-        {
-          "id": "grok-pr5282-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:29:32Z"
         }
       ]
     },
@@ -24666,6 +24671,12 @@
       "last_ts": "2026-08-26T19:30:35Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -24899,12 +24910,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -24922,6 +24927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25154,12 +25165,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -25177,6 +25182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25409,12 +25420,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -25450,6 +25455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25682,12 +25693,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -25717,6 +25722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25949,12 +25960,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -26038,6 +26043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26270,12 +26281,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -26293,6 +26298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26525,12 +26536,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -26614,6 +26619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26846,12 +26857,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -26935,6 +26940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27167,12 +27178,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -27256,6 +27261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27488,12 +27499,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -27526,8 +27531,14 @@
     "KIMI": {
       "last_id": "grkrev-61f23cb97822565c76c4ec91",
       "last_ts": "2026-08-29T07:11:13Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -27634,6 +27645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27866,12 +27883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -27955,6 +27966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28187,12 +28204,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -28210,6 +28221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28442,12 +28459,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -28519,6 +28530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28751,12 +28768,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -28774,6 +28785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29006,12 +29023,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -29029,6 +29040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29261,12 +29278,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -29350,6 +29361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29582,12 +29599,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -29605,6 +29616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29837,12 +29854,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -29860,6 +29871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30092,12 +30109,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -30115,6 +30126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30347,12 +30364,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -30370,6 +30381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30602,12 +30619,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -30649,6 +30660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30881,12 +30898,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -30970,6 +30981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31202,12 +31219,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -31267,6 +31278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31499,12 +31516,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -31552,6 +31563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31784,12 +31801,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -31807,6 +31818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32039,12 +32056,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -32062,6 +32073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32294,12 +32311,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -32317,6 +32328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32549,12 +32566,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -32572,6 +32583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32804,12 +32821,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -32827,6 +32838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33059,12 +33076,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -33148,6 +33159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33380,12 +33397,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -33469,6 +33480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33701,12 +33718,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -33790,6 +33801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34022,12 +34039,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -34087,6 +34098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34319,12 +34336,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -34408,6 +34419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34640,12 +34657,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -34663,6 +34674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34895,12 +34912,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -34918,6 +34929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35150,12 +35167,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -35185,6 +35196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35417,12 +35434,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -35506,6 +35517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35738,12 +35755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -35761,6 +35772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35993,12 +36010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -36028,6 +36039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36260,12 +36277,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -36325,6 +36336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36557,12 +36574,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -36646,6 +36657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36878,12 +36895,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -36967,6 +36978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37199,12 +37216,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -37276,6 +37287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37508,12 +37525,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -37543,6 +37554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37775,12 +37792,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -37864,6 +37875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38096,12 +38113,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -38185,6 +38196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38417,12 +38434,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -38506,6 +38517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38738,12 +38755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -38761,6 +38772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38993,12 +39010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -39022,6 +39033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39254,12 +39271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -39295,6 +39306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39527,12 +39544,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -39616,6 +39627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39848,12 +39865,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -39871,6 +39882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40103,12 +40120,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -40126,6 +40137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40358,12 +40375,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -40447,6 +40458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40679,12 +40696,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -40768,6 +40779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41000,12 +41017,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -41089,6 +41100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41321,12 +41338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -41410,6 +41421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41642,12 +41659,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -41701,6 +41712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41933,12 +41950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -42022,6 +42033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42254,12 +42271,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -42277,6 +42288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42509,12 +42526,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -42568,6 +42579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42800,12 +42817,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -42886,8 +42897,14 @@
     "U0BR9670G2H": {
       "last_id": "grkrev-ec79d3080084339767ac7439",
       "last_ts": "2026-08-29T09:51:23Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -42973,8 +42990,15 @@
     "UNSEATED": {
       "last_id": "grok-repair-telegram-door-hub-20260829-01",
       "last_ts": "2026-08-29T11:06:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
@@ -43055,6 +43079,12 @@
       "last_ts": "2026-08-26T23:54:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
         {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
@@ -43288,12 +43318,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -43377,6 +43401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43609,12 +43639,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
@@ -43698,6 +43722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-job-watchdog-run-key-collision-20260829-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-29T18:54:00Z"
+        },
+        {
           "id": "grok-repair-telegram-door-hub-20260829-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43930,12 +43960,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
         }
       ],
       "mine": [
