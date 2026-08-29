@@ -1,0 +1,13 @@
+{
+  "id": "grok-slack-observe-win-roll-20260828-01",
+  "verb": "BUILD",
+  "target": "existing-windows-commons-checkout",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Update: not found\n/bin/sh: 3: PR: not found\n/bin/sh: 4: Blobs:: not found\n/bin/sh: 4: test_enqueue_pending_grok_com.py: not found\n/bin/sh: 4: .github/workflows/job-watchdog.yml: Permission denied\nFrom https://github.com/woahwhattheheck/commons\n * branch                main       -> FETCH_HEAD\n   455091fe4..d8dcd41fd  main       -> origin/main\nmerge: origin/main. - not something we can merge\n/bin/sh: 7: Restart: not found\n/bin/sh: 8: On: not found\n/bin/sh: 10: Prove: not found\n/bin/sh: 12: Write: not found\n",
+  "executed_at": "2026-08-29T00:52:44.438516Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
