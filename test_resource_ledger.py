@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1787954879.428259")
+        self.assertEqual(catalog["slack_ts"], "1787976347.829539")
         self.assertEqual(
             catalog["source_id"],
+            "codex-github-actions-watchdog-production-activation-20260829-01",
+        )
+        self.assertIn(
             "codex-supergrok-commons-tool-consumer-activation-20260828-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-actions-watchdog-advancement-20260828-01",
@@ -163,15 +167,15 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
+            "codex-github-actions-watchdog-production-activation-20260829-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
         self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
-        self.assertEqual(activation["selected_resource"], "supergrok-heavy")
+        self.assertEqual(activation["selected_resource"], "github-actions")
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack_start_receipt"])
+        self.assertIn(slack_cite, activation["evidence"]["slack_start"])
         watchdog_path = os.path.join(
             ROOT,
             "inventory",
@@ -186,6 +190,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1787954879.428259")
         self.assertNotEqual(catalog["slack_ts"], "1787933005.065549")
         superseded_path = os.path.join(
             ROOT,
@@ -207,11 +212,14 @@ class TestResourceLedger(unittest.TestCase):
         rows = {row["name"]: row for row in catalog["surfaces"]}
         self.assertEqual(rows["supergrok-heavy"]["stage"], "PRODUCING")
         self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["github-actions"]["stage"], "PRODUCING")
+        self.assertEqual(rows["github-actions"]["condition"], "DEGRADED")
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
+        self.assertEqual(activation["after"]["condition"], "DEGRADED")
         self.assertEqual(activation["projection"]["resources"], 60)
-        self.assertEqual(activation["projection"]["producing"], 25)
+        self.assertEqual(activation["projection"]["producing"], 26)
         self.assertIn(
-            "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
+            "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
             raw.get("record_sources") or [],
         )
         self.assertFalse(catalog["cache_as_capacity"])
@@ -250,15 +258,16 @@ class TestResourceLedger(unittest.TestCase):
         queue_names = [row["name"] for row in measured["activation_queue"]]
         self.assertNotIn("titan-hands-windows", queue_names)
         self.assertIn("titan-hands-windows", measured["expired_resources"])
-        self.assertEqual(measured["activation_queue"][0]["name"], "github-actions")
-        self.assertEqual(measured["activation_queue"][0]["priority"], 85)
-        self.assertIn("outcome-commerce-bridge", queue_names)
-        commerce = next(
+        self.assertNotIn("github-actions", queue_names)
+        self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
+        self.assertEqual(measured["activation_queue"][0]["priority"], 72)
+        self.assertIn("commons-skill-and-tool-set", queue_names)
+        skills = next(
             row
             for row in measured["activation_queue"]
-            if row["name"] == "outcome-commerce-bridge"
+            if row["name"] == "commons-skill-and-tool-set"
         )
-        self.assertGreater(measured["activation_queue"][0]["priority"], commerce["priority"])
+        self.assertGreater(measured["activation_queue"][0]["priority"], skills["priority"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
