@@ -7,7 +7,7 @@
     "capture_start": {
       "arguments": {
         "exact_prompts": [
-          "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages \u2014 specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link \u2014 the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+          "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages — specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link — the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test — no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
         ],
         "origin": {
           "event_id": "kimi-pages-speed-20260829-01",
@@ -23,7 +23,7 @@
     },
     "conversation_url": "",
     "exact_prompts": [
-      "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages \u2014 specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link \u2014 the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+      "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages — specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link — the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test — no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
     ],
     "execution": {
       "active_attempt_id": "",
@@ -64,7 +64,7 @@
     "run_key": "grkrev-61f23cb97822565c76c4ec91-run-1",
     "schema": "commons-grok-executor-job/v1",
     "step": 0,
-    "task": "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages \u2014 specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link \u2014 the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
+    "task": "WORK ORDER kimi-pages-speed-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: the GitHub Pages site woahwhattheheck.github.io/commons stops timing out on money-path pages — specifically agent-rescue.html and stripe-payment-links-20260826.html, which carry the live Stripe payment links. Both URLs return 200 and load fast on metered wifi; fix committed straight to current main.\n\nCONSTRAINTS (owner's): additive-only. Do NOT add, remove, or reorder any Stripe link — the canonical list is land/stripe-payment-links-20260826.md and it is law. Keep existing page copy intact. Fix the bottleneck at the source (oversized inline payloads, render-blocking assets, broken build output); static dependency-free pages preferred. Do not break other pages. No locks on the open door, no auth gates. Reality is the test — no verification spirals, no test harness for its own sake.\n\nACCEPTANCE: fix on current main + receipt p/kimi-pages-speed-20260829-01.md naming what was slow, files+hashes changed, and load evidence (or exactly what was changed and why it removes the bottleneck). Exactly one reply in Slack thread 1787987449.665919. Do not replay old event/job ids; do not collide with durability-repair or watchdog lanes."
   },
   "completion_predicate": {
     "type": "result_address_on_head"
@@ -167,6 +167,12 @@
       "http_status": 200,
       "id": "grkrev-61f23cb97822565c76c4ec91",
       "ts": "2026-08-29T21:13:25Z"
+    },
+    {
+      "attempt_id": "grkrev-61f23cb97822565c76c4ec91-cancel",
+      "ts": "2026-08-29T23:11:52Z",
+      "event": "cancel",
+      "worker_id": "kimi-k3-cursor"
     }
   ],
   "harness": "grok.com authenticated browser via Commons MCP",
@@ -184,8 +190,9 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "CANCELLED",
   "tokens_used": 0,
-  "updated_at": "2026-08-29T21:13:25Z",
-  "woke_once": true
+  "updated_at": "2026-08-29T23:11:52Z",
+  "woke_once": true,
+  "cancel_reason": "LANDED elsewhere: PR #5305 merged; both money-path URLs live 200; receipt on main 946652ad. Do not execute."
 }
