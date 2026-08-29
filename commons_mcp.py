@@ -1193,7 +1193,7 @@ class CommonsGateway:
         return project_live_work(str(Path(__file__).resolve().parent), args)
 
     def continue_from_observation(self, arguments: Any) -> dict[str, Any]:
-        """Advisory continuation packet. Does not schedule or replay prompts."""
+        """Advisory continuation packet with optional session-memory delta."""
         from host.observatory import continue_from
         args = arguments if isinstance(arguments, dict) else {}
         return continue_from(str(Path(__file__).resolve().parent), args)
@@ -1462,8 +1462,13 @@ TOOL_DEFINITIONS = [
     {
         "name": "continue_from_observation",
         "title": "Continue From Observation",
-        "description": "Return an advisory lineage-linked continuation packet and open-carrier envelope. Does not replay finished prompts, does not schedule, does not grant authority.",
-        "inputSchema": _object_schema({"session_id": STRING_SCHEMA}, []),
+        "description": "Return an advisory lineage-linked continuation packet and open-carrier envelope. An explicitly bound session also receives only its undelivered optional memory delta; a changed compaction epoch causes one bounded re-insertion. Does not replay finished prompts, schedule, grant authority, or gate posting.",
+        "inputSchema": _object_schema({
+            "session_id": STRING_SCHEMA,
+            "memory_cursor": STRING_SCHEMA,
+            "compaction_epoch": STRING_SCHEMA,
+            "acknowledged_compaction_epoch": STRING_SCHEMA,
+        }, []),
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
     },
 ]

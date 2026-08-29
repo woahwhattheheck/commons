@@ -228,8 +228,27 @@ def project_live_work(root: str | None = None, arguments: dict[str, Any] | None 
 
 def continue_from(root: str | None = None, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
     arguments = arguments if isinstance(arguments, dict) else {}
+    root = root or ROOT
     snap = snapshot(root)
-    return continue_from_observation(snap, session_id=str(arguments.get("session_id") or ""))
+    result = continue_from_observation(snap, session_id=str(arguments.get("session_id") or ""))
+
+    # SESSION_MEMORY is an explicit, per-session opt-in.  The continuation
+    # surface carries only a delta, except for one bounded re-insertion after a
+    # caller-reported compaction epoch change.  No binding is the ordinary
+    # open-door case and never blocks continuation or posting.
+    import memory_board
+    memory = memory_board.session_memory_packet(
+        root,
+        str(arguments.get("session_id") or ""),
+        after_entry_id=str(arguments.get("memory_cursor") or ""),
+        compaction_epoch=str(arguments.get("compaction_epoch") or ""),
+        acknowledged_compaction_epoch=str(
+            arguments.get("acknowledged_compaction_epoch") or ""
+        ),
+    )
+    result["session_memory"] = memory
+    result["resume_context"] = [memory["context"]] if memory.get("should_insert") else []
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:

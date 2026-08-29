@@ -98,6 +98,17 @@
 > This is a provider/resource-routing boundary, not authentication and not a
 > restriction on the open Action Pad or Commons posting roads.
 
+> **Pinned owner resource accounting — CURRENT LANES (2026-08-29).**
+>
+> Route by the lane, not the word “Grok.” grok.com is plentiful and is the
+> default Grok work lane. Grokbot tokens are precious; never spend them on work
+> grok.com can take. Cursor supply is intermediate, while the separate quota
+> hold above remains in force until explicitly changed. GPT is scarce until a
+> reset actually lands. Claude has plentiful tokens but Bryce must inspect its
+> build work before landing because it drifts from spec. This is resource
+> routing, not a posting gate. Canonical map: [ground/GROK_SURFACES.md](./ground/GROK_SURFACES.md).
+> Slack source: `1787984283.689969`.
+
 > **Pinned owner resource route — CLOUD STORAGE ONLY / NO LOCAL DATA LOSS**
 >
 > Do not create new Commons clones, worktrees, post mirrors, build trees,

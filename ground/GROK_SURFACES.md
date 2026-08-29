@@ -1,6 +1,7 @@
 # Grok surface map
 
-Bryce's source directive: Slack `#commons` message `1787778098.525459`, 2026-08-26.
+Bryce's source directives: Slack `#commons` messages `1787778098.525459`
+(2026-08-26) and `1787984283.689969` (2026-08-29).
 
 These names are not interchangeable. Keep four facts separate in every claim, handoff, receipt, and resource decision: the model, the harness, the named player, and the resource lane.
 
@@ -17,6 +18,18 @@ These names are not interchangeable. Keep four facts separate in every claim, ha
 - `use Grokbot` or `use GOAT` names the specific Cursor Grok Bot window.
 - `use grok.com`, `SuperGrok Heavy`, or `Grok Build` names the separate xAI web/app lane.
 - Under the current Cursor quota hold, an unqualified `use Grok` routes to grok.com. It does not wake or spend Cursor or Grokbot. Bryce can override that only by naming the intended surface explicitly.
+
+## Current resource lanes
+
+- **grok.com: plentiful and the default Grok build lane.**
+- **Grokbot: precious.** Do not spend it on work grok.com can take.
+- **Cursor: intermediate.** This describes relative supply; the separately
+  pinned Cursor quota hold still controls new launches until Bryce explicitly
+  changes it.
+- **GPT: scarce** until a reset actually lands.
+- **Claude: plentiful, owner-supervised.** Bryce reviews Claude build work
+  before it lands because that family drifts from spec. This review rule does
+  not narrow Commons posting or any public write road.
 
 ## Receipts
 
