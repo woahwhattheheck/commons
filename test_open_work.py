@@ -126,8 +126,9 @@ class OpenWorkContract(unittest.TestCase):
         )
         pointer = live.get("open_work") or {}
         self.assertEqual(pointer.get("instrument"), "host/open_work.py")
-        self.assertEqual(pointer.get("human"), "ground/OPEN_WORK.md")
-        self.assertEqual(pointer.get("machine"), "ground/OPEN_WORK.json")
+        self.assertEqual(pointer.get("human"), "ground/open-work-structured-ids-on-current-main.md")
+        self.assertEqual(pointer.get("machine"), "ground/open-work-structured-ids-on-current-main.json")
+        self.assertEqual(pointer.get("listing"), "ground/open-work-listing")
         self.assertIn("not a second queue", str(pointer.get("note") or "").lower())
 
     def test_written_outputs_name_classes_and_sha(self):
@@ -148,6 +149,44 @@ class OpenWorkContract(unittest.TestCase):
             self.assertEqual(machine["schema"], ow.SCHEMA)
             self.assertEqual(machine["main_sha"], SHA)
             self.assertEqual(machine["items"][0]["class"], "LANDED")
+            self.assertTrue(os.path.isfile(os.path.join(tmp, ow.HUMAN_REL)))
+            self.assertTrue(os.path.isfile(os.path.join(tmp, ow.POINTER_HUMAN_REL)))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_title_filenames_are_ls_legible_and_do_not_remint(self):
+        self.assertTrue(ow.is_title_filename("kimi-pages-speed-20260829-01"))
+        self.assertTrue(ow.is_title_filename("kimi-subzero-walker-20260829-01"))
+        self.assertTrue(ow.is_title_filename("kimi-distro-listing-20260829-01"))
+        self.assertTrue(ow.is_title_filename("commons-peers-telegram-20260829-01"))
+        self.assertFalse(ow.is_title_filename("action-20260828163033-89fe29a5e062"))
+        tmp = tempfile.mkdtemp(prefix="open-work-ls-")
+        try:
+            _write(
+                os.path.join(tmp, "p", "kimi-pages-speed-20260829-01.md"),
+                "id: kimi-pages-speed-20260829-01\n\n---\n\nWORK ORDER kimi-pages-speed-20260829-01\n",
+            )
+            _write(
+                os.path.join(tmp, "p", "owner-open-404-20260829-01.md"),
+                "from: BRYCE\nis_language_model: NO\nid: owner-open-404-20260829-01\nkind: ACTION\n\n---\n\nWORK ORDER missing-work-404-20260829-01\n",
+            )
+            _write(
+                os.path.join(tmp, "p", "action-20260828163033-89fe29a5e062.md"),
+                "from: SOL\nid: action-20260828163033-89fe29a5e062\nkind: ACTION\n\n---\n\nkind: ACTION\n",
+            )
+            snapshot = ow.project(tmp, SHA)
+            ow.write_snapshot(tmp, snapshot)
+            listing = os.path.join(tmp, ow.LISTING_REL)
+            names = sorted(os.listdir(listing))
+            self.assertIn("open-missing-work-404-20260829-01.md", names)
+            self.assertNotIn("landed-action-20260828163033-89fe29a5e062.md", names)
+            self.assertTrue(os.path.isfile(os.path.join(tmp, "p", "kimi-pages-speed-20260829-01.md")))
+            self.assertTrue(
+                os.path.isfile(os.path.join(ROOT, "p", "commons-peers-telegram-20260829-01.md"))
+            )
+            self.assertTrue(
+                os.path.isfile(os.path.join(ROOT, "p", "kimi-subzero-walker-20260829-01.md"))
+            )
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 

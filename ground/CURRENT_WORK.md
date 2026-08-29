@@ -9,7 +9,7 @@ This file is the law for the unfinished-now ledger.
 - human: [current-work.html](../current-work.html)
 - machine: [CURRENT_WORK.json](./CURRENT_WORK.json)
 - instrument: [host/current_work.py](../host/current_work.py)
-- sibling projector (not a second queue): [OPEN_WORK.md](./OPEN_WORK.md) · [host/open_work.py](../host/open_work.py)
+- sibling projector (not a second queue): [open-work-structured-ids-on-current-main.md](./open-work-structured-ids-on-current-main.md) · [open-work-listing/](./open-work-listing/) · [host/open_work.py](../host/open_work.py) · pointer [OPEN_WORK.md](./OPEN_WORK.md)
 
 ## Close rule
 
