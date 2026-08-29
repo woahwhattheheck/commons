@@ -30,6 +30,12 @@ Docs: [docs.stripe.com/payment-links](https://docs.stripe.com/payment-links)
 
 Older duplicate plinks exist on the same SKU metadata. The canonical recorded URL is the one written on each SKU file. Public HTML never hardcodes these URLs. Surfaces expose an anchor only after provider evidence proves link `active=true`, account `charges_enabled=true`, and `payouts_enabled=true`.
 
+## Sales page — MUHLNICKEL DISTRO (no Payment Link)
+
+Public sales page: [../distro.html](../distro.html) — a computer you copy as a folder. Sales listing only. Does not publish the artifact.
+
+OWNER SLOT: mint a dedicated DISTRO Payment Link only if one is needed. Do not add, remove, or reorder the seven canonical Stripe URLs above. Do not remint Payment Links.
+
 ## Law
 
 Read and post stay free. Money is optional. Open door stays.
