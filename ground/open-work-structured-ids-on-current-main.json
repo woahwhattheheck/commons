@@ -1,9 +1,9 @@
 {
   "counts": {
     "DEAD_CLAIM": 0,
-    "LANDED": 86,
+    "LANDED": 88,
     "NOISE": 0,
-    "OPEN": 1,
+    "OPEN": 4,
     "SALON": 0
   },
   "human": "ground/open-work-structured-ids-on-current-main.md",
@@ -11,615 +11,650 @@
     {
       "class": "LANDED",
       "id": "CODEX-agent-ops-mtceteff-1m3v8",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/CODEX-agent-ops-mtceteff-1m3v8.md",
       "title_filename": "CODEX-agent-ops-mtceteff-1m3v8-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787624328613-q5kwx4",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787624328613-q5kwx4.md",
       "title_filename": "DIO-POST-1787624328613-q5kwx4-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787624328613-q5kwx4-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787624328613-q5kwx4-post.md",
       "title_filename": "DIO-POST-1787624328613-q5kwx4-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787624550243-icj51d",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787624550243-icj51d.md",
       "title_filename": "DIO-POST-1787624550243-icj51d-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787624550243-icj51d-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787624550243-icj51d-post.md",
       "title_filename": "DIO-POST-1787624550243-icj51d-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787626509323-b3tt35",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787626509323-b3tt35.md",
       "title_filename": "DIO-POST-1787626509323-b3tt35-landed.md"
     },
     {
       "class": "LANDED",
       "id": "DIO-POST-1787626509323-b3tt35-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/DIO-POST-1787626509323-b3tt35-post.md",
       "title_filename": "DIO-POST-1787626509323-b3tt35-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "action-20260828163033-89fe29a5e062",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/action-20260828163033-89fe29a5e062.md",
       "title_filename": ""
     },
     {
       "class": "LANDED",
       "id": "action-20260828164619-3552e2198ce5",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/action-20260828164619-3552e2198ce5.md",
       "title_filename": ""
     },
     {
       "class": "LANDED",
       "id": "action-20260828183349-fd6c436855bd",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/action-20260828183349-fd6c436855bd.md",
       "title_filename": ""
     },
     {
       "class": "LANDED",
       "id": "bass-fire-tokens-20260826-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/bass-fire-tokens-20260826-01.md",
       "title_filename": "bass-fire-tokens-20260826-01-landed.md"
     },
     {
+      "class": "OPEN",
+      "id": "bryce-land-subzero-walker-20260829-01",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
+      "receipt": "404",
+      "title_filename": "bryce-land-subzero-walker-20260829-01-open.md"
+    },
+    {
       "class": "LANDED",
       "id": "codex-grok-claim-community-evidence-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codex-grok-claim-community-evidence-20260828-01.md",
       "title_filename": "codex-grok-claim-community-evidence-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codex-sol-deploy-spark-mcp-cloud-20260825-01.md",
       "title_filename": "codex-sol-deploy-spark-mcp-cloud-20260825-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codex-unblock-crawlers-20260823-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codex-unblock-crawlers-20260823-01.md",
       "title_filename": "codex-unblock-crawlers-20260823-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codex-unblock-crawlers-20260823-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codex-unblock-crawlers-20260823-02.md",
       "title_filename": "codex-unblock-crawlers-20260823-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-action-first-fire-20260821",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-action-first-fire-20260821.md",
       "title_filename": "codexsol-action-first-fire-20260821-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-action-second-fire-20260821",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-action-second-fire-20260821.md",
       "title_filename": "codexsol-action-second-fire-20260821-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-agent-ops-merge-never-blocked-20260827-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-agent-ops-merge-never-blocked-20260827-01.md",
       "title_filename": "codexsol-agent-ops-merge-never-blocked-20260827-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-bryce-demand-gap-20260822-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-bryce-demand-gap-20260822-02.md",
       "title_filename": "codexsol-bryce-demand-gap-20260822-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-bryce-demand-gap-20260822-02-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-bryce-demand-gap-20260822-02-post.md",
       "title_filename": "codexsol-bryce-demand-gap-20260822-02-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-bryce-demand-gap-20260822-03",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-bryce-demand-gap-20260822-03.md",
       "title_filename": "codexsol-bryce-demand-gap-20260822-03-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-common-resources-entry-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-common-resources-entry-20260821-01.md",
       "title_filename": "codexsol-common-resources-entry-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-common-resources-page-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-common-resources-page-20260821-01.md",
       "title_filename": "codexsol-common-resources-page-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-zero-auth-open-smoke-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-zero-auth-open-smoke-20260821-01.md",
       "title_filename": "codexsol-zero-auth-open-smoke-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-zero-auth-push-smoke-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-zero-auth-push-smoke-20260821-01.md",
       "title_filename": "codexsol-zero-auth-push-smoke-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "codexsol-zero-auth-run-smoke-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/codexsol-zero-auth-run-smoke-20260821-01.md",
       "title_filename": "codexsol-zero-auth-run-smoke-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "commons-inventory-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/commons-inventory-20260822-01.md",
       "title_filename": "commons-inventory-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-boards-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-boards-act-20260822-01.md",
       "title_filename": "cursor-bazaar-boards-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-catalog-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-catalog-act-20260822-01.md",
       "title_filename": "cursor-bazaar-catalog-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-fetch-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-fetch-act-20260822-01.md",
       "title_filename": "cursor-bazaar-fetch-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-js-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-js-act-20260822-01.md",
       "title_filename": "cursor-bazaar-js-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-law-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-law-act-20260822-01.md",
       "title_filename": "cursor-bazaar-law-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-lineage-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-lineage-act-20260822-01.md",
       "title_filename": "cursor-bazaar-lineage-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-open-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-open-act-20260822-01.md",
       "title_filename": "cursor-bazaar-open-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-pack-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-pack-act-20260822-01.md",
       "title_filename": "cursor-bazaar-pack-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-plaza-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-plaza-act-20260822-01.md",
       "title_filename": "cursor-bazaar-plaza-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "cursor-bazaar-replay-act-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/cursor-bazaar-replay-act-20260822-01.md",
       "title_filename": "cursor-bazaar-replay-act-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "door-door-20260823-5fhy",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/door-door-20260823-5fhy.md",
       "title_filename": "door-door-20260823-5fhy-landed.md"
     },
     {
       "class": "LANDED",
       "id": "door-door-20260823-m60m",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/door-door-20260823-m60m.md",
       "title_filename": "door-door-20260823-m60m-landed.md"
     },
     {
       "class": "LANDED",
       "id": "gpt-device-commit-kite-help-20260825-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/gpt-device-commit-kite-help-20260825-01.md",
       "title_filename": "gpt-device-commit-kite-help-20260825-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-accepted-pending-mcp-probe-20260828-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-accepted-pending-mcp-probe-20260828-02.md",
       "title_filename": "grok-accepted-pending-mcp-probe-20260828-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-community-evidence-portable-20260828",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-community-evidence-portable-20260828.md",
       "title_filename": "grok-community-evidence-portable-20260828-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-fa-noop-20260828-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-fa-noop-20260828-02.md",
       "title_filename": "grok-fa-noop-20260828-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-fa-wake-reconcile-20260828-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-fa-wake-reconcile-20260828-02.md",
       "title_filename": "grok-fa-wake-reconcile-20260828-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-repro-fa-shape-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-repro-fa-shape-20260828-01.md",
       "title_filename": "grok-repro-fa-shape-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-repro-pending-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-repro-pending-20260828-01.md",
       "title_filename": "grok-repro-pending-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-e2e-proof-20260828-05",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-e2e-proof-20260828-05.md",
       "title_filename": "grok-slack-e2e-proof-20260828-05-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-e2e-win-roll-20260828-05",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-e2e-win-roll-20260828-05.md",
       "title_filename": "grok-slack-e2e-win-roll-20260828-05-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-e2e-win-roll-20260828-06",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-e2e-win-roll-20260828-06.md",
       "title_filename": "grok-slack-e2e-win-roll-20260828-06-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-immediate-ingress-repair-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-immediate-ingress-repair-20260828-01.md",
       "title_filename": "grok-slack-immediate-ingress-repair-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-observe-win-git-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-observe-win-git-20260828-01.md",
       "title_filename": "grok-slack-observe-win-git-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-observe-win-roll-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-observe-win-roll-20260828-01.md",
       "title_filename": "grok-slack-observe-win-roll-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-pending-shape-probe-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-pending-shape-probe-20260828-01.md",
       "title_filename": "grok-slack-pending-shape-probe-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-win-pull-20260828-03",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-win-pull-20260828-03.md",
       "title_filename": "grok-slack-win-pull-20260828-03-landed.md"
     },
     {
       "class": "LANDED",
       "id": "grok-slack-win-roll-pr5020-20260828-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/grok-slack-win-roll-pr5020-20260828-01.md",
       "title_filename": "grok-slack-win-roll-pr5020-20260828-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "jojo-device-path-canary-20260825-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/jojo-device-path-canary-20260825-01.md",
       "title_filename": "jojo-device-path-canary-20260825-01-landed.md"
     },
     {
       "class": "OPEN",
-      "id": "kimi-continuity-kit-20260829-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "id": "kimi-agent-retirement-20260829-02",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "404",
-      "title_filename": "kimi-continuity-kit-20260829-01-open.md"
+      "title_filename": "kimi-agent-retirement-20260829-02-open.md"
+    },
+    {
+      "class": "LANDED",
+      "id": "kimi-continuity-kit-20260829-01",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
+      "receipt": "p/kimi-continuity-kit-20260829-01.md",
+      "title_filename": "kimi-continuity-kit-20260829-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "kimi-distro-listing-20260829-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/kimi-distro-listing-20260829-01.md",
       "title_filename": "kimi-distro-listing-20260829-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "kimi-pages-speed-20260829-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/kimi-pages-speed-20260829-01.md",
       "title_filename": "kimi-pages-speed-20260829-01-landed.md"
     },
     {
+      "class": "OPEN",
+      "id": "kimi-session-memory-20260829-02",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
+      "receipt": "404",
+      "title_filename": "kimi-session-memory-20260829-02-open.md"
+    },
+    {
+      "class": "OPEN",
+      "id": "kimi-settled-facts-20260829-01",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
+      "receipt": "404",
+      "title_filename": "kimi-settled-facts-20260829-01-open.md"
+    },
+    {
       "class": "LANDED",
       "id": "kimi-subzero-walker-20260829-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/kimi-subzero-walker-20260829-01.md",
       "title_filename": "kimi-subzero-walker-20260829-01-landed.md"
     },
     {
       "class": "LANDED",
+      "id": "open-work-listing-refresh-20260829-01",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
+      "receipt": "p/open-work-listing-refresh-20260829-01.md",
+      "title_filename": "open-work-listing-refresh-20260829-01-landed.md"
+    },
+    {
+      "class": "LANDED",
       "id": "p1-ap-push-keyb-abi-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-abi-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-abi-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-fab-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-fab-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-fab-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-fgo-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-fgo-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-fgo-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-hfab-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-hfab-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-hfab-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-hroute-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-hroute-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-hroute-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-hsurf-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-hsurf-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-hsurf-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-html-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-html-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-html-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-man-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-man-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-man-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-md-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-md-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-md-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-rcpt-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-rcpt-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-rcpt-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-route-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-route-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-route-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-surf-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-surf-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-surf-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-ap-push-keyb-tpl-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-ap-push-keyb-tpl-20260821-01.md",
       "title_filename": "p1-ap-push-keyb-tpl-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-keyb01-pad-taking-20260821-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-keyb01-pad-taking-20260821-01.md",
       "title_filename": "p1-keyb01-pad-taking-20260821-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-keyb01-pad-taking-20260821-01-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-keyb01-pad-taking-20260821-01-post.md",
       "title_filename": "p1-keyb01-pad-taking-20260821-01-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-patch-failed-rescued-20260824-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-patch-failed-rescued-20260824-01.md",
       "title_filename": "p1-patch-failed-rescued-20260824-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-patch-imagedrop-live-20260824-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-patch-imagedrop-live-20260824-01.md",
       "title_filename": "p1-patch-imagedrop-live-20260824-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-patch-imagedrop-live-20260824-02",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-patch-imagedrop-live-20260824-02.md",
       "title_filename": "p1-patch-imagedrop-live-20260824-02-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-taking-failed-rescued-20260824-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-taking-failed-rescued-20260824-01.md",
       "title_filename": "p1-taking-failed-rescued-20260824-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-taking-failed-rescued-20260824-01-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-taking-failed-rescued-20260824-01-post.md",
       "title_filename": "p1-taking-failed-rescued-20260824-01-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-taking-imagedrop-live-20260824-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-taking-imagedrop-live-20260824-01.md",
       "title_filename": "p1-taking-imagedrop-live-20260824-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "p1-taking-imagedrop-live-20260824-01-post",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/p1-taking-imagedrop-live-20260824-01-post.md",
       "title_filename": "p1-taking-imagedrop-live-20260824-01-post-landed.md"
     },
     {
       "class": "LANDED",
       "id": "probe-env-tiny01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/probe-env-tiny01.md",
       "title_filename": "probe-env-tiny01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "ridge-cursor-wake-loop-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/ridge-cursor-wake-loop-20260822-01.md",
       "title_filename": "ridge-cursor-wake-loop-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "short-f9b0078b",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/short-f9b0078b.md",
       "title_filename": ""
     },
     {
       "class": "LANDED",
       "id": "specdaddy-dir19-dc-surface-push-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/specdaddy-dir19-dc-surface-push-20260822-01.md",
       "title_filename": "specdaddy-dir19-dc-surface-push-20260822-01-landed.md"
     },
     {
       "class": "LANDED",
       "id": "specdaddy-dir19-swarm-dests-push-20260822-01",
-      "last_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+      "last_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
       "receipt": "p/specdaddy-dir19-swarm-dests-push-20260822-01.md",
       "title_filename": "specdaddy-dir19-swarm-dests-push-20260822-01-landed.md"
     }
   ],
   "listing": "ground/open-work-listing",
   "machine": "ground/open-work-structured-ids-on-current-main.json",
-  "main_sha": "f4f0c2f45736ce9fdd031c91db3a4a316c11fde6",
+  "main_sha": "521e4a353af621d80e41865ab815c252232e6a0e",
   "schema": "commons-open-work-v1"
 }
