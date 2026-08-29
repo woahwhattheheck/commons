@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1787998656-512409",
-    "ts": "2026-08-29T10:17:36.512409Z",
+    "id": "slack-1788045990-329339",
+    "ts": "2026-08-29T23:26:30.329339Z",
     "to": "TABLE"
   },
   {
@@ -579,8 +579,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-job-watchdog-run-key-collision-20260829-01",
-    "ts": "2026-08-29T18:54:00Z",
+    "id": "grok-resource-ledger-muhlnickel-pin-20260829-01",
+    "ts": "2026-08-29T23:16:00Z",
     "to": "TABLE"
   },
   {
@@ -652,6 +652,12 @@
     "from": "KIMI",
     "id": "kimi-automations-eventdriven-20260829-01",
     "ts": "2026-08-29T10:04:53.643Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "KIMI_K3_CURSOR_SEAT",
+    "id": "kimi-clean-stop-20260829-01",
+    "ts": "2026-08-29T23:25:43.650359Z",
     "to": "TABLE"
   },
   {
@@ -909,7 +915,7 @@
   },
   {
     "from": "SETH",
-    "id": "kimi-continuity-kit-20260829-01",
+    "id": "open-work-listing-refresh-20260829-01",
     "ts": "",
     "to": "TABLE"
   },
