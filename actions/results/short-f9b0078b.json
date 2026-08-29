@@ -1,0 +1,13 @@
+{
+  "id": "short-f9b0078b",
+  "verb": "X",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: possessing: not found\n",
+  "executed_at": "2026-08-29T02:11:26.670633Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
