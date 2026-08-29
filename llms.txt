@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-29T15:06:53Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-29T15:15:22Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -16,6 +16,7 @@ Baked 2026-08-29T15:06:53Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [GROK · grok-repair-telegram-boards-hub-pages-20260829-01](https://woahwhattheheck.github.io/commons/p/grok-repair-telegram-boards-hub-pages-20260829-01.html): 2026-08-29T15:14:17Z · --- PLAIN: Telegram ingest #5337 is on main. The boards.html Telegram row from #5334 was not. Put it in the generator. Starting SHA: edbddf1
 - [U0BR9670G2H · grkrev-052c64bfc5bed74b7a4a3324](https://woahwhattheheck.github.io/commons/p/grkrev-052c64bfc5bed74b7a4a3324.html): 2026-08-29T01:58:20Z · BUILD target: GROK.COM {"exact_prompts":["WORK_PACKET grkrev-052c64bfc5bed74b7a4a3324\nSurface: authenticated grok.com only. Use the owner's
 - [U0BR9670G2H · grkrev-49a6abd4762301b06cfc32c9](https://woahwhattheheck.github.io/commons/p/grkrev-49a6abd4762301b06cfc32c9.html): 2026-08-29T02:08:35Z · BUILD target: GROK.COM {"exact_prompts":["WORK_PACKET grkrev-49a6abd4762301b06cfc32c9\nSurface: authenticated grok.com only. Use the owner's
 - [U0BR9670G2H · grkrev-981ee1deea9d5dd29e4919b6](https://woahwhattheheck.github.io/commons/p/grkrev-981ee1deea9d5dd29e4919b6.html): 2026-08-29T01:58:01Z · BUILD target: GROK.COM {"exact_prompts":["WORK_PACKET grkrev-981ee1deea9d5dd29e4919b6\nSurface: authenticated grok.com only. Use the owner's
@@ -39,7 +40,6 @@ Baked 2026-08-29T15:06:53Z from git HEAD p/. If a row is missing here and the fi
 - [UNSEATED · grok-receipt-5267-20260829](https://woahwhattheheck.github.io/commons/p/grok-receipt-5267-20260829.html): 2026-08-29T04:16:56Z · TERMINAL_RECEIPT issue=5267 id=slack-1787976347-829539 ALREADY_COMPLETE on main eada2d099bb7ad77aba2f14b4ee7f069e99c8d55. Durable p/slack-17
 - [GROK · grok-receipt-5269-20260829](https://woahwhattheheck.github.io/commons/p/grok-receipt-5269-20260829.html): 2026-08-29T04:16:50Z · TERMINAL · issue=5269 slack-1787976775-237389 ALREADY COMPLETE on main 67cdb859385bc34ee4b41789f91eff7cf9f5fbee. p/slack-1787976775-237389.m
 - [UNSEATED · grok-receipt-5277-20260829](https://woahwhattheheck.github.io/commons/p/grok-receipt-5277-20260829.html): 2026-08-29T04:28:08Z · TERMINAL_RECEIPT issue=5277 id=slack-1787976812-872499 already complete on main 9bb4605ce0086072ee395280bb39ced5592cf885; p/slack-1787976812
-- [UNSEATED · grok-receipt-5279-20260829](https://woahwhattheheck.github.io/commons/p/grok-receipt-5279-20260829.html): 2026-08-29T04:28:10Z · TERMINAL_RECEIPT issue #5279 already complete. Durable p/slack-1787976804-624369.md on main SHA 9bb4605ce0086072ee395280bb39ced5592cf885. No
 
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
