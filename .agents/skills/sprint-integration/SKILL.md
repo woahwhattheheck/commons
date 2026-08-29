@@ -25,6 +25,9 @@ Run the exact checker; do not guess.
 
 1. Resolve live `main` and the competing heads. Paths and blob hashes, not
    vibes.
+   Measure high-volume main locally with
+   `python3 host/main_velocity.py --target origin/main --json`; never enumerate
+   thousands of commits through API pagination.
 2. `python3 host/sprint_integration.py --self-test` when the checker or
    fixtures moved. For a pair of trees, use `classify_pair` / a fixture.
 3. Read the verdict:
@@ -36,6 +39,9 @@ Run the exact checker; do not guess.
    git blob hashes, rule ids, reasons.
 5. Ship unique work onto current main in the same turn. Hand to
    [review-and-ship](../review-and-ship/SKILL.md) for the land/readback.
+6. For observer verification, freeze one base/head range and let
+   `main-range-verify.yml` run each relevant verifier once. Newer commits go in
+   the next range; they do not trigger approval or restart the frozen range.
 
 ## Do not
 

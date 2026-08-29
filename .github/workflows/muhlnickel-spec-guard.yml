@@ -3,9 +3,6 @@ name: muhlnickel-spec-guard
 # No path filter: behavior follows imports and entry points, so moving or
 # renaming executable code cannot route around the boundary.
 on:
-  push:
-    branches:
-      - main
   pull_request:
   workflow_dispatch:
 
@@ -13,8 +10,8 @@ permissions:
   contents: read
 
 concurrency:
-  # Same-head PR synchronize is stale boundary work. Unique push/main and
-  # workflow_dispatch keep run_id groups so they cannot cancel each other.
+  # Same-head PR synchronize is stale boundary work. workflow_dispatch keeps
+  # run_id groups so manual diagnostics cannot cancel each other.
   group: "${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.head.label || github.run_id }}"
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 

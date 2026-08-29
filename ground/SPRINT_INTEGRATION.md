@@ -6,6 +6,12 @@ Owner rule for every Commons sprint. Machine copy:
 [repo-pulse.yml](../.github/workflows/repo-pulse.yml). Skill:
 [sprint-integration](../.agents/skills/sprint-integration/SKILL.md).
 
+Live velocity is measured from the local Git graph with
+`python3 host/main_velocity.py --target origin/main --json`; it does not page
+the GitHub API. Main observer checks are coalesced by
+`main-range-verify.yml`: one frozen range, one run per relevant verifier, one
+receipt. Commit count does not multiply verifier count.
+
 ## The rule
 
 Merge is the default. Parallel branches are not collisions.
@@ -24,6 +30,12 @@ code** AND **disagrees semantically**.
 Busy main, a stale base, and unrelated checks are **not** stopping conditions.
 They are facts. Record them. Merge anyway unless the checker returned
 `CONFLICT`.
+
+At high velocity, freeze the current base/head pair and verify that range.
+Commits arriving after the frozen head belong to the next range. They do not
+invalidate completed work, restart the current run, or request human approval.
+Ordinary integration has no Bryce approval state; the only semantic stop is
+an evidenced `CONFLICT` on the same effective code.
 
 The checker must be exact. A feeling that the table is crowded is not a
 collision. A red check on another path is not a collision. A branch that

@@ -1,0 +1,43 @@
+name: main-range-verify
+
+# Busy main is sampled as a range. One run replaces five per-push observers.
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+    inputs:
+      lookback_minutes:
+        description: Minutes of main history to coalesce
+        required: false
+        default: '30'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: commons-main-range-verify
+  cancel-in-progress: false
+
+jobs:
+  verify-range:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: verify one frozen main range
+        env:
+          DISPATCH_LOOKBACK: ${{ inputs.lookback_minutes }}
+        run: |
+          lookback="${DISPATCH_LOOKBACK:-30}"
+          python3 host/main_range.py \
+            --head HEAD \
+            --lookback-minutes "$lookback" \
+            --receipt "$RUNNER_TEMP/main-range.json" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: main-range-${{ github.run_id }}
+          path: ${{ runner.temp }}/main-range.json
+          if-no-files-found: error
