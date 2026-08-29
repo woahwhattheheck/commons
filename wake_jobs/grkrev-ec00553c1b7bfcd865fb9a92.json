@@ -1,5 +1,5 @@
 {
-  "attempt_count": 0,
+  "attempt_count": 1,
   "backoff_seconds": 30,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -7,7 +7,7 @@
     "capture_start": {
       "arguments": {
         "exact_prompts": [
-          "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact — \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) — landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only — do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test — no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
+          "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact \u2014 \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) \u2014 landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only \u2014 do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
         ],
         "origin": {
           "event_id": "kimi-distro-listing-20260829-01",
@@ -23,7 +23,7 @@
     },
     "conversation_url": "",
     "exact_prompts": [
-      "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact — \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) — landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only — do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test — no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
+      "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact \u2014 \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) \u2014 landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only \u2014 do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
     ],
     "execution": {
       "active_attempt_id": "",
@@ -64,18 +64,42 @@
     "run_key": "grkrev-ec00553c1b7bfcd865fb9a92-run-1",
     "schema": "commons-grok-executor-job/v1",
     "step": 0,
-    "task": "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact — \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) — landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only — do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test — no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
+    "task": "WORK ORDER kimi-distro-listing-20260829-01 (orchestrator: KIMI K3, owner-directed 2026-08-29). You have the GitHub connector: land on current main of woahwhattheheck/commons and merge yourself. Fire and forget.\n\nEND STATE: a public sales page for the MUHLNICKEL DISTRO artifact \u2014 \"a computer you copy as a folder\" (140 KB .mno container + reader; both-senses ring law measured 0/65536 vs 65536/65536; dual checksum refuses a flipped bit) \u2014 landed as a static page on the Pages site (same style family as agent-rescue.html), plus the page linked from land/stripe-payment-links-20260826.md WITHOUT adding, removing, or reordering any existing Stripe link (leave one clearly-marked owner slot if a dedicated link is needed). Plus: one line in the White Box pilot copy referencing WB-RANGE (#5317): stored weights read by address over HTTP Range, 14 KB fetched of 1.56 TB measured live.\n\nCONSTRAINTS (owner's): additive-only. Sales page only \u2014 do NOT publish the artifact itself. Owner's register: plain, measured claims only (sizes, gate counts, the both-senses law), no hype adjectives. No locks on the open door, no auth gates. Reality is the test \u2014 no verification spirals.\n\nACCEPTANCE: page + links edit on current main; receipt p/kimi-distro-listing-20260829-01.md with PR URL + merge SHA; exactly one reply in Slack thread 1787988957.632549. Do not replay old event/job ids; do not collide with walker (grkrev-586556417a505065ef22978b), pages-speed (grkrev-61f23cb97822565c76c4ec91), durability-repair, or watchdog lanes."
   },
   "completion_predicate": {
     "type": "result_address_on_head"
   },
   "created_at": "2026-08-29T07:36:35Z",
   "deadline": "2026-09-28T07:36:35Z",
-  "event_receipts": [],
+  "event_receipts": [
+    {
+      "attempt_id": "grkrev-ec00553c1b7bfcd865fb9a92-a01",
+      "event": "wake",
+      "lease_id": "lease-b73c202ab73b",
+      "ts": "2026-08-29T07:39:16Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-ec00553c1b7bfcd865fb9a92-a01",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-ec00553c1b7bfcd865fb9a92",
+      "ts": "2026-08-29T07:39:16Z"
+    }
+  ],
   "harness": "grok.com authenticated browser via Commons MCP",
   "in_backoff": false,
   "job_id": "grkrev-ec00553c1b7bfcd865fb9a92",
-  "lease": null,
+  "last_wake_at": "2026-08-29T07:39:16Z",
+  "last_wake_checkpoint_fp": "eb1f31566db60db3",
+  "last_wake_checkpoint_sha256": "eb1f31566db60db36d6332423dddcf151e5f5f642d21ef1b6ab870e8e2bb9a5c",
+  "lease": {
+    "holder": "gh-watchdog",
+    "lease_id": "lease-b73c202ab73b",
+    "until": "2026-08-29T07:44:16Z"
+  },
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
@@ -84,8 +108,8 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-29T07:36:35Z",
-  "woke_once": false
+  "updated_at": "2026-08-29T07:39:16Z",
+  "woke_once": true
 }
