@@ -85,11 +85,20 @@ class GrokcomRevenueOrchestratorTests(unittest.TestCase):
         self.assertEqual(result["sales"]["truth"]["cash_state"], "NOT_LANDED")
         self.assertFalse(result["sales"]["truth"]["cash_claimed"])
 
-    def test_grokcom_result_routes_exact_artifact_to_gpt(self):
+    def test_intake_announces_direct_landing_without_peer_review(self):
+        result = orchestrate({"stage": "INTAKE", "event": EVENT})
+        self.assertEqual(result["state"], "GROKCOM_WORK")
+        self.assertIn("direct landing follows capture", result["slack_reply"])
+        self.assertNotIn("review", result["slack_reply"].casefold())
+
+    def test_grokcom_result_routes_exact_artifact_directly_to_git(self):
         result = orchestrate({"stage": "GROKCOM_RESULT", "event": EVENT, "artifact": ARTIFACT})
-        self.assertEqual(result["state"], "GPT_REVIEW")
-        self.assertEqual(result["gpt_review"]["artifact"], ARTIFACT)
-        self.assertEqual(result["gpt_review"]["required_checks"], list(REVIEW_CHECKS))
+        self.assertEqual(result["state"], "GIT_LAND")
+        self.assertEqual(result["next"], "REFRESH_MAIN_COMMIT_PUSH_PR_MERGE_READBACK")
+        self.assertEqual(result["artifact"], ARTIFACT)
+        self.assertFalse(result["git"]["force_push"])
+        self.assertTrue(result["git"]["preserve_unrelated_dirt"])
+        self.assertNotIn("gpt_review", result)
 
     def test_approval_missing_any_check_returns_precise_revision(self):
         checks = {name: True for name in REVIEW_CHECKS}
