@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-28T22:07:59Z",
-    "base_main_sha": "fefebfd74c7aea86f8f2673d1c727ba3c994745b",
+    "observed_at": "2026-08-29T04:05:47Z",
+    "base_main_sha": "d3414c8cf82c205387b23366f17eaff60cd48822",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1787954879.428259",
-  "source_id": "codex-supergrok-commons-tool-consumer-activation-20260828-01",
+  "slack_ts": "1787976347.829539",
+  "source_id": "codex-github-actions-watchdog-production-activation-20260829-01",
   "supersedes_source_ids": [
+    "codex-supergrok-commons-tool-consumer-activation-20260828-01",
     "codex-github-actions-watchdog-advancement-20260828-01",
     "codex-grok-executor-queue-activation-20260828-01",
     "codex-mcp-conformance-product-activation-20260828-01",
@@ -47,7 +48,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Grok Heavy consumed one real Commons Slack custom-tool read; provider UI and downstream scheduler remain constrained",
+  "subject": "MASTER RESOURCE LEDGER — GitHub Actions watchdog now produces durable moving-main writes; underlying Grok jobs remain degraded",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -68,7 +69,8 @@
     "inventory/resources/records/codex-mcp-conformance-product-activation-20260828-01.json",
     "inventory/resources/records/codex-grok-executor-queue-activation-20260828-01.json",
     "inventory/resources/records/codex-github-actions-watchdog-advancement-20260828-01.json",
-    "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json"
+    "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
+    "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json"
   ],
   "priority_queue": [
     {
@@ -1127,23 +1129,23 @@
       "name": "github-actions",
       "kind": "COMPUTE",
       "capacity": "LIVE",
-      "stage": "EXERCISED",
+      "stage": "PRODUCING",
       "condition": "DEGRADED",
       "holder": "Commons",
       "authority": "SHA_PINNED_SAFE_JOBS; NON_FORCE_MOVING_MAIN_RETRY",
       "consumer": "Tests, Pages, imports, labels, canaries, and durable wake_jobs state landing",
-      "value": "23 workflows plus a landed five-attempt push/fetch/rebase repair for the measured job-watchdog moving-main race",
-      "next_action": "Observe one post-repair job-watchdog run through a terminal durable wake_jobs readback; retain DEGRADED until that result exists.",
-      "source": "PR #4894; .github/workflows/job-watchdog.yml; harness_wake/land.py; test_job_watchdog_land.py",
-      "evidence_ts": "2026-08-28T16:03:25Z",
-      "auth_surface": "GitHub main and Actions run reads",
-      "exact_safe_probe": "PR #4894 head 413ad92d53fe8afe315f61eb1d766a70b9382552 merged as 19eb45ead8e89c676664b1a77a1df932ef4141a7 after eight intervening current-main commits touched none of its four paths; all four merge blobs match moving main; five PR-head workflows remain queued; canonical Grok wake job remains OPEN with tokens_used 0 and empty result_address.",
-      "rate_plan_boundary": "Landed retry code is not a successful post-repair workflow, a completed Grok job, provider spend, deployment, device action, payment, or cash.",
-      "assigned_backlog": "first terminal post-repair watchdog run and exact wake_jobs current-main readback",
-      "last_receipt": "codex-github-actions-watchdog-advancement-20260828-01",
-      "last_used_at": "2026-08-28T16:01:27Z",
-      "stale_after": "first post-repair terminal run",
-      "priority": 85
+      "value": "23 workflows plus a production-proven bounded retry road that wrote three post-repair watchdog ticks to moving public main",
+      "next_action": "Let the five existing backoff jobs terminalize or produce results at their current attempt boundary; do not enqueue duplicates or equate infrastructure writes with model completion.",
+      "source": "PR #4894; commits 08b734f5, 33ee7a16, d3414c8c; .github/workflows/job-watchdog.yml; harness_wake/land.py",
+      "evidence_ts": "2026-08-29T03:57:19Z",
+      "auth_surface": "GitHub current-main commit and exact wake_jobs blob reads",
+      "exact_safe_probe": "Three post-repair jobs:watchdog tick commits landed on main. At d3414c8c, five exact queue JSON blobs read back at attempt_count 5, no_progress_count 5, OPEN, in_backoff true, lease null, tokens_used 0, and empty result_address.",
+      "rate_plan_boundary": "Durable watchdog state production is not a completed Grok job, model execution, provider spend, deployment, device action, payment, settlement, payout, revenue, or cash.",
+      "assigned_backlog": "terminalize or produce the five existing nonduplicate backoff jobs; no new enqueue",
+      "last_receipt": "codex-github-actions-watchdog-production-activation-20260829-01",
+      "last_used_at": "2026-08-29T03:57:19Z",
+      "stale_after": "next terminal watchdog result",
+      "priority": 70
     },
     {
       "name": "external-ci-pool",
